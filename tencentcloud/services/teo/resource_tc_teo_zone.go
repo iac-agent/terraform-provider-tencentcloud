@@ -35,7 +35,7 @@ func ResourceTencentCloudTeoZone() *schema.Resource {
 			"type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Site access type. The value of this parameter is as follows, and the default is partial if not filled in:partial: CNAME access; full: NS access; noDomainAccess: No domain access.",
+				Description: "Site access type. The value of this parameter is as follows, and the default is partial if not filled in: partial: CNAME access; full: NS access; noDomainAccess: No domain access; dnsPodAccess: DNSPod access; ai: AI access.",
 			},
 
 			"alias_zone_name": {
