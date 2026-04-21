@@ -2507,3 +2507,61 @@ func (me *TeoService) DescribeTeoConfigGroupVersionById(ctx context.Context, zon
 	ret = response.Response
 	return
 }
+
+func (me *TeoService) DescribeTeoJustInTimeTranscodeTemplateById(ctx context.Context, zoneId, templateId string) (ret *teo.JustInTimeTranscodeTemplate, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := teo.NewDescribeJustInTimeTranscodeTemplatesRequest()
+	request.ZoneId = &zoneId
+	request.Filters = []*teo.Filter{
+		{
+			Name:   helper.String("template-id"),
+			Values: []*string{&templateId},
+		},
+	}
+	request.Limit = helper.IntInt64(1000)
+	request.Offset = helper.IntInt64(0)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	var templates []*teo.JustInTimeTranscodeTemplate
+
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseTeoV20220901Client().DescribeJustInTimeTranscodeTemplates(request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		} else {
+			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("Describe teo just in time transcode templates failed, Response is nil."))
+		}
+
+		templates = result.Response.TemplateSet
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	if len(templates) < 1 {
+		return
+	}
+
+	for _, v := range templates {
+		if v.TemplateId != nil && *v.TemplateId == templateId {
+			ret = v
+			return
+		}
+	}
+
+	return
+}
