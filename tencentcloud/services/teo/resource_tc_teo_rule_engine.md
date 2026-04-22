@@ -122,8 +122,51 @@ resource "tencentcloud_teo_rule_engine" "rule1" {
     }
   }
 }
-
 ```
+
+Example Usage with filters
+
+```hcl
+resource "tencentcloud_teo_rule_engine" "rule1" {
+  zone_id   = tencentcloud_teo_zone.example.id
+  rule_name = "test-rule"
+  status    = "disable"
+
+  filters {
+    name   = "rule-id"
+    values = ["rule-xxx"]
+  }
+
+  rules {
+    actions {
+      normal_action {
+        action = "UpstreamUrlRedirect"
+        parameters {
+          name   = "Type"
+          values = ["Path"]
+        }
+        parameters {
+          name   = "Action"
+          values = ["addPrefix"]
+        }
+        parameters {
+          name   = "Value"
+          values = ["/sss"]
+        }
+      }
+    }
+
+    or {
+      and {
+        operator = "equal"
+        target   = "host"
+        values   = ["a.tf-teo-t.xyz"]
+      }
+    }
+  }
+}
+```
+
 Import
 
 teo rule_engine can be imported using the id#rule_id, e.g.

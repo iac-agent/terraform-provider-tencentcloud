@@ -1,0 +1,3 @@
+```release-note:enhancement
+resource/tencentcloud_teo_rule_engine: add filters and rule_items parameters to support custom filter conditions and expose full rule items list
+```
