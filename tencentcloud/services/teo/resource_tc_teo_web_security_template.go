@@ -30,6 +30,13 @@ func ResourceTencentCloudTeoWebSecurityTemplate() *schema.Resource {
 				Description: "Zone ID. Explicitly identifies the zone to which the policy template belongs for access control purposes.",
 			},
 
+			"template_id": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				Computed:    true,
+				Description: "Policy template ID.",
+			},
+
 			"template_name": {
 				Type:        schema.TypeString,
 				Required:    true,
@@ -9045,6 +9052,7 @@ func resourceTencentCloudTeoWebSecurityTemplateCreate(d *schema.ResourceData, me
 	templateId = *response.Response.TemplateId
 
 	d.SetId(strings.Join([]string{zoneId, templateId}, tccommon.FILED_SP))
+	_ = d.Set("template_id", templateId)
 
 	return resourceTencentCloudTeoWebSecurityTemplateRead(d, meta)
 }
@@ -9067,6 +9075,7 @@ func resourceTencentCloudTeoWebSecurityTemplateRead(d *schema.ResourceData, meta
 	templateId := idSplit[1]
 
 	_ = d.Set("zone_id", zoneId)
+	_ = d.Set("template_id", templateId)
 
 	respData, err := service.DescribeTeoWebSecurityTemplateById(ctx, zoneId, templateId)
 	if err != nil {

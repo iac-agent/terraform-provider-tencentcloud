@@ -21,6 +21,7 @@ Provides a resource to create a teo web security template
 resource "tencentcloud_teo_web_security_template" "web_security_template" {
   template_name = "tf-test"
   zone_id       = "zone-3fkff38fyw8s"
+  # template_id will be computed after creation
   security_policy {
     bot_management {
       enabled = "on"
@@ -251,6 +252,7 @@ The following arguments are supported:
 * `template_name` - (Required, String) Policy template name. Composed of Chinese characters, letters, digits, and underscores. Cannot begin with an underscore and must be less than or equal to 32 characters.
 * `zone_id` - (Required, String) Zone ID. Explicitly identifies the zone to which the policy template belongs for access control purposes.
 * `security_policy` - (Optional, List) Web security policy template configuration. Generates default config if empty. Supported: Exception rules, custom rules, rate limiting rules, managed rules. Not supported: Bot management rules (under development).
+* `template_id` - (Optional, String) Policy template ID.
 
 The `action` object of `adaptive_frequency_control` supports the following:
 
