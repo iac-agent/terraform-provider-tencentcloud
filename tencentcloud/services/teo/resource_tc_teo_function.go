@@ -77,6 +77,30 @@ func ResourceTencentCloudTeoFunction() *schema.Resource {
 				Computed:    true,
 				Description: "Modification time. The time is in Coordinated Universal Time (UTC) and follows the date and time format specified by the ISO 8601 standard.",
 			},
+
+			"filters": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				Description: "Filter conditions for querying functions. Supported filter names: `name` (fuzzy match by function name), `remark` (fuzzy match by function description).",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"name": {
+							Type:        schema.TypeString,
+							Required:    true,
+							Description: "Field name to filter on. Valid values: `name`, `remark`.",
+						},
+
+						"values": {
+							Type:     schema.TypeList,
+							Required: true,
+							Elem: &schema.Schema{
+								Type: schema.TypeString,
+							},
+							Description: "Filter values for the field.",
+						},
+					},
+				},
+			},
 		},
 	}
 }
@@ -167,7 +191,26 @@ func resourceTencentCloudTeoFunctionRead(d *schema.ResourceData, meta interface{
 
 	_ = d.Set("zone_id", zoneId)
 
-	respData, err := service.DescribeTeoFunctionById(ctx, zoneId, functionId)
+	var filters []*teov20220901.Filter
+	if v, ok := d.GetOk("filters"); ok {
+		filtersList := v.([]interface{})
+		for _, item := range filtersList {
+			filterMap := item.(map[string]interface{})
+			filter := &teov20220901.Filter{
+				Name: helper.String(filterMap["name"].(string)),
+			}
+			if valList, ok := filterMap["values"].([]interface{}); ok {
+				values := make([]*string, 0, len(valList))
+				for _, val := range valList {
+					values = append(values, helper.String(val.(string)))
+				}
+				filter.Values = values
+			}
+			filters = append(filters, filter)
+		}
+	}
+
+	respData, err := service.DescribeTeoFunctionById(ctx, zoneId, functionId, filters)
 	if err != nil {
 		return err
 	}
@@ -217,7 +260,7 @@ func resourceTencentCloudTeoFunctionUpdate(d *schema.ResourceData, meta interfac
 
 	ctx := tccommon.NewResourceLifeCycleHandleFuncContext(context.Background(), logId, d, meta)
 
-	immutableArgs := []string{"name"}
+	immutableArgs := []string{"name", "filters"}
 	for _, v := range immutableArgs {
 		if d.HasChange(v) {
 			return fmt.Errorf("argument `%s` cannot be changed", v)
