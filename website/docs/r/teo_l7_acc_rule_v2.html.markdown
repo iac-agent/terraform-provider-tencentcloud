@@ -111,7 +111,7 @@ resource "tencentcloud_teo_l7_acc_rule_v2" "example" {
 
 The following arguments are supported:
 
-* `zone_id` - (Required, String, ForceNew) Zone id.
+* `zone_id` - (Required, String, ForceNew) Zone id. test doc update.
 * `branches` - (Optional, List) Sub-Rule branch. this list currently supports filling in only one rule; multiple entries are invalid.
 * `description` - (Optional, List: [`String`]) Rule annotation. multiple annotations can be added.
 * `rule_name` - (Optional, String) Rule name. The name length limit is 255 characters.
