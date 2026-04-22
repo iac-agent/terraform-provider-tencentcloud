@@ -28,7 +28,7 @@ func ResourceTencentCloudTeoL7AccRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Zone id. Test description.",
+				Description: "Zone id, required field.",
 			},
 
 			"rules": {
