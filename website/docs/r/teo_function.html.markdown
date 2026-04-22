@@ -33,7 +33,7 @@ The following arguments are supported:
 
 * `content` - (Required, String) Function content, currently only supports JavaScript code, with a maximum size of 5MB.
 * `name` - (Required, String) Function name. It can only contain lowercase letters, numbers, hyphens, must start and end with a letter or number, and can have a maximum length of 30 characters.
-* `zone_id` - (Required, String, ForceNew) ID of the site.
+* `zone_id` - (Required, String, ForceNew) ID of the site. Required field.
 * `remark` - (Optional, String) Function description, maximum support of 60 characters.
 
 ## Attributes Reference

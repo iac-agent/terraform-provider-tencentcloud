@@ -33,7 +33,7 @@ func ResourceTencentCloudTeoFunction() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the site.",
+				Description: "ID of the site. Required field.",
 			},
 
 			"function_id": {
