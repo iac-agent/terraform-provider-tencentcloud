@@ -52,11 +52,11 @@ The website/docs/r/teo_l7_acc_rule.html.markdown file's `zone_id` argument refer
 ## Validation
 
 ### Success Criteria
-- [ ] `zone_id` field Description in Go source code has been updated
-- [ ] Documentation in website/docs/r/teo_l7_acc_rule.html.markdown has been updated
-- [ ] No functional logic changes
-- [ ] No syntax errors
+- [x] `zone_id` field Description in Go source code has been updated
+- [x] Documentation in website/docs/r/teo_l7_acc_rule.html.markdown has been updated
+- [x] No functional logic changes
+- [x] No syntax errors
 
 ### Code Quality
-- [ ] Follows existing code style
-- [ ] Description is clear and accurate
+- [x] Follows existing code style
+- [x] Description is clear and accurate
