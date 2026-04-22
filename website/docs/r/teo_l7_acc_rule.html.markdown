@@ -344,7 +344,7 @@ resource "tencentcloud_teo_l7_acc_rule" "example" {
 
 The following arguments are supported:
 
-* `zone_id` - (Required, String, ForceNew) Zone id, required field.
+* `zone_id` - (Required, String, ForceNew) Zone id, which must be a valid value and cannot be null or empty string.
 * `rules` - (Optional, List) Rules content.
 
 The `access_url_redirect_parameters` object of `actions` supports the following:
