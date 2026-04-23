@@ -28,7 +28,7 @@ func ResourceTencentCloudTeoDnsRecord() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Zone id.",
+				Description: "Site ID.",
 			},
 
 			"name": {
@@ -91,17 +91,18 @@ func ResourceTencentCloudTeoDnsRecord() *schema.Resource {
 				Optional: true,
 				Description: "DNS record resolution status, the following values:\n" +
 					"	- enable: has taken effect;\n" +
-					"	- disable: has been disabled.",
+					"	- disable: has been disabled.\n" +
+					"Note: Status is output-only for ModifyDnsRecords API and is managed through the separate ModifyDnsRecordsStatus API.",
 			},
 			"created_on": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time.",
+				Description: "Creation time. Note: CreatedOn is output-only for ModifyDnsRecords API.",
 			},
 			"modified_on": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Modify time.",
+				Description: "Modification time. Note: ModifiedOn is output-only for ModifyDnsRecords API.",
 			},
 		},
 	}
