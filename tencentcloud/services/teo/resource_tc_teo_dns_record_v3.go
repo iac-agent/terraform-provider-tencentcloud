@@ -258,8 +258,6 @@ func resourceTencentCloudTeoDnsRecordV3Read(d *schema.ResourceData, meta interfa
 		_ = d.Set("modified_on", respData.ModifiedOn)
 	}
 
-	_ = zoneId
-	_ = recordId
 	return nil
 }
 
