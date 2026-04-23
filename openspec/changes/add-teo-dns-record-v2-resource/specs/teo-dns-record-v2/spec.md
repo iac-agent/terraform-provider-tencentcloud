@@ -106,6 +106,11 @@ The resource SHALL have a corresponding `.md` documentation file following the g
 - **WHEN** the resource is implemented
 - **THEN** a `resource_tc_teo_dns_record_v2.md` file SHALL exist with description, example usage, and import section
 
+#### Scenario: Documentation includes multiple example scenarios
+- **WHEN** the documentation is written
+- **THEN** the example usage SHALL include scenarios for A record, CNAME record, MX record, TXT record, and AAAA record with custom resolution route
+- **AND** each scenario SHALL demonstrate the relevant parameters for that record type
+
 ### Requirement: Unit Tests
 The resource SHALL have unit tests using gomonkey mock for business logic verification.
 

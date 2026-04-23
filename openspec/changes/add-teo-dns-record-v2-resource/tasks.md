@@ -19,6 +19,7 @@
 ## 4. 文档
 
 - [x] 4.1 创建 `tencentcloud/services/teo/resource_tc_teo_dns_record_v2.md` 文件，包含资源描述、Example Usage、Import 部分
+- [x] 4.2 补充更详细的 Example Usage，包含 A 记录、CNAME 记录、MX 记录、TXT 记录、AAAA 记录（含自定义解析线路）等多个场景示例
 
 ## 5. 单元测试
 
