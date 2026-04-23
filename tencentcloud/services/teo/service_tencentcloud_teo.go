@@ -1246,6 +1246,49 @@ func (me *TeoService) DescribeTeoCertificateConfigById(ctx context.Context, zone
 	return
 }
 
+func (me *TeoService) DescribeTeoHostsSetting(ctx context.Context, zoneId string, host string) (ret *teo.DetailHost, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := teo.NewDescribeHostsSettingRequest()
+	request.ZoneId = &zoneId
+	filter := &teo.Filter{
+		Name:   helper.String("host"),
+		Values: []*string{&host},
+	}
+	request.Filters = append(request.Filters, filter)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	ratelimit.Check(request.GetAction())
+
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		result, e := me.client.UseTeoClient().DescribeHostsSetting(request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+		if result != nil && result.Response != nil {
+			for _, detailHost := range result.Response.DetailHosts {
+				if detailHost.Host != nil && *detailHost.Host == host {
+					ret = detailHost
+					return nil
+				}
+			}
+		}
+		return nil
+	})
+	if err != nil {
+		errRet = err
+		return
+	}
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), "DescribeHostsSetting")
+
+	return
+}
+
 func (me *TeoService) DescribeTeoL4ProxyById(ctx context.Context, zoneId string, proxyId string) (ret *teo.L4Proxy, errRet error) {
 	logId := tccommon.GetLogId(ctx)
 

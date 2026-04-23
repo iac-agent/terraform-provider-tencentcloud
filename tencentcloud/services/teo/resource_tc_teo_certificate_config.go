@@ -161,6 +161,70 @@ func ResourceTencentCloudTeoCertificateConfig() *schema.Resource {
 				},
 			},
 
+			"apply_type": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				Computed:    true,
+				Description: "Hosting type. Values: `none`: Do not host EO; `apply`: Host EO.",
+			},
+
+			"client_cert_info": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				Computed:    true,
+				MaxItems:    1,
+				Description: "In the edge mutual authentication scenario, this field is the client CA certificate, deployed in the EO node for the EO node to authenticate the client certificate. Disabled by default; leaving the field blank will retain the current configuration.",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"switch": {
+							Type:        schema.TypeString,
+							Required:    true,
+							Description: "Mutual authentication configuration switch, the values are: `on`: enable; `off`: disable.",
+						},
+						"cert_infos": {
+							Type:        schema.TypeList,
+							Optional:    true,
+							Computed:    true,
+							Description: "Mutual authentication certificate list.\nNote: When using ClientCertInfo as an input parameter in ModifyHostsCertificate, you only need to provide the CertId of the corresponding certificate. You can check the CertId from the [SSL Certificate List](https://console.cloud.tencent.com/ssl).",
+							Elem: &schema.Resource{
+								Schema: map[string]*schema.Schema{
+									"cert_id": {
+										Type:        schema.TypeString,
+										Required:    true,
+										Description: "Certificate ID, which originates from the SSL side. You can check the CertId from the [SSL Certificate List](https://console.cloud.tencent.com/ssl).",
+									},
+									"alias": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "Alias of the certificate.",
+									},
+									"type": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "Type of the certificate. Values: `default`: Default certificate `upload`: Specified certificate `managed`: Tencent Cloud-managed certificate.",
+									},
+									"expire_time": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "The certificate expiration time.",
+									},
+									"deploy_time": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "Time when the certificate is deployed.",
+									},
+									"sign_algo": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "Signature algorithm.",
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+
 			"mode": {
 				Type:        schema.TypeString,
 				Optional:    true,

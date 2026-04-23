@@ -1,4 +1,4 @@
-Provides a resource to create a teo certificate
+Provides a resource to create a teo certificate config for EdgeOne(TEO)
 
 Example Usage
 
@@ -20,6 +20,28 @@ resource "tencentcloud_teo_certificate_config" "certificate" {
 
   server_cert_info {
     cert_id     = "8xiUJIJd"
+  }
+}
+```
+
+Configure SSL certificate with apply_type and client_cert_info
+
+```hcl
+resource "tencentcloud_teo_certificate_config" "certificate" {
+  host       = "test.tencentcloud-terraform-provider.cn"
+  mode       = "sslcert"
+  zone_id    = "zone-2o1t24kgy362"
+  apply_type = "apply"
+
+  server_cert_info {
+    cert_id     = "8xiUJIJd"
+  }
+
+  client_cert_info {
+    switch = "on"
+    cert_infos {
+      cert_id = "cert-abc123"
+    }
   }
 }
 ```
