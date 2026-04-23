@@ -24,6 +24,27 @@ resource "tencentcloud_teo_certificate_config" "certificate" {
 }
 ```
 
+Configure SSL certificate with client cert info for edge mutual TLS
+
+```hcl
+resource "tencentcloud_teo_certificate_config" "certificate" {
+  host    = "test.tencentcloud-terraform-provider.cn"
+  mode    = "sslcert"
+  zone_id = "zone-2o1t24kgy362"
+
+  server_cert_info {
+    cert_id     = "8xiUJIJd"
+  }
+
+  client_cert_info {
+    switch = "on"
+    cert_infos {
+      cert_id = "abc123"
+    }
+  }
+}
+```
+
 Import
 
 teo certificate can be imported using the id, e.g.

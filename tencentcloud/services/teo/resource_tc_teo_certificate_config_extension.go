@@ -72,6 +72,51 @@ func resourceTencentCloudTeoCertificateConfigReadPostHandleResponse0(ctx context
 
 		_ = d.Set("server_cert_info", serverCertInfoList)
 
+		if accelerationDomain.Certificate.ClientCertInfo != nil {
+			clientCertInfoMap := map[string]interface{}{}
+
+			if accelerationDomain.Certificate.ClientCertInfo.Switch != nil {
+				clientCertInfoMap["switch"] = accelerationDomain.Certificate.ClientCertInfo.Switch
+			}
+
+			certInfosList := make([]map[string]interface{}, 0, len(accelerationDomain.Certificate.ClientCertInfo.CertInfos))
+			if accelerationDomain.Certificate.ClientCertInfo.CertInfos != nil {
+				for _, certInfos := range accelerationDomain.Certificate.ClientCertInfo.CertInfos {
+					certInfosMap := map[string]interface{}{}
+
+					if certInfos.CertId != nil {
+						certInfosMap["cert_id"] = certInfos.CertId
+					}
+
+					if certInfos.Alias != nil {
+						certInfosMap["alias"] = certInfos.Alias
+					}
+
+					if certInfos.Type != nil {
+						certInfosMap["type"] = certInfos.Type
+					}
+
+					if certInfos.ExpireTime != nil {
+						certInfosMap["expire_time"] = certInfos.ExpireTime
+					}
+
+					if certInfos.DeployTime != nil {
+						certInfosMap["deploy_time"] = certInfos.DeployTime
+					}
+
+					if certInfos.SignAlgo != nil {
+						certInfosMap["sign_algo"] = certInfos.SignAlgo
+					}
+
+					certInfosList = append(certInfosList, certInfosMap)
+				}
+
+				clientCertInfoMap["cert_infos"] = certInfosList
+			}
+
+			_ = d.Set("client_cert_info", []interface{}{clientCertInfoMap})
+		}
+
 		upstreamCertInfoMap := map[string]interface{}{}
 		if accelerationDomain.Certificate.UpstreamCertInfo != nil {
 			upstreamMutualTLSMap := map[string]interface{}{}
@@ -224,6 +269,24 @@ func resourceTencentCloudTeoCertificateConfigUpdateOnStart(ctx context.Context) 
 			upstreamCertInfo.UpstreamMutualTLS = &mutualTLS2
 		}
 		request.UpstreamCertInfo = &upstreamCertInfo
+	}
+
+	if clientCertInfoMap, ok := helper.InterfacesHeadMap(d, "client_cert_info"); ok {
+		clientCertInfo := teo.MutualTLS{}
+		if v, ok := clientCertInfoMap["switch"].(string); ok && v != "" {
+			clientCertInfo.Switch = helper.String(v)
+		}
+		if v, ok := clientCertInfoMap["cert_infos"]; ok {
+			for _, item := range v.([]interface{}) {
+				certInfosMap := item.(map[string]interface{})
+				certificateInfo := teo.CertificateInfo{}
+				if v, ok := certInfosMap["cert_id"].(string); ok && v != "" {
+					certificateInfo.CertId = helper.String(v)
+				}
+				clientCertInfo.CertInfos = append(clientCertInfo.CertInfos, &certificateInfo)
+			}
+		}
+		request.ClientCertInfo = &clientCertInfo
 	}
 
 	if v, ok := d.GetOk("mode"); ok {
