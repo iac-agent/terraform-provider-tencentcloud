@@ -1793,6 +1793,33 @@ func (me *TeoService) TeoL7AccRuleStateRefreshFunc(zoneId, taskId string, failSt
 	}
 }
 
+func (me *TeoService) TeoImportZoneConfigStateRefreshFunc(zoneId, taskId string, failStates []string) resource.StateRefreshFunc {
+	return func() (interface{}, string, error) {
+		request := teov20220901.NewDescribeZoneConfigImportResultRequest()
+		request.ZoneId = helper.String(zoneId)
+		request.TaskId = helper.String(taskId)
+		ratelimit.Check(request.GetAction())
+		object, err := me.client.UseTeoV20220901Client().DescribeZoneConfigImportResult(request)
+
+		if err != nil {
+			return nil, "", err
+		}
+		if object == nil || object.Response == nil || object.Response.Status == nil {
+			return nil, "", nil
+		}
+		status := helper.PString(object.Response.Status)
+		if len(failStates) > 0 {
+			for _, state := range failStates {
+				if strings.Contains(status, state) {
+					return object, status, fmt.Errorf("teo[%s] import zone config task[%s] failed, status is on [%s], message: %s", zoneId, taskId, status, helper.PString(object.Response.Message))
+				}
+			}
+		}
+
+		return object, status, nil
+	}
+}
+
 func (me *TeoService) DescribeTeoDnsRecordById(ctx context.Context, zoneId, recordId string) (ret *teov20220901.DnsRecord, errRet error) {
 	logId := tccommon.GetLogId(ctx)
 
