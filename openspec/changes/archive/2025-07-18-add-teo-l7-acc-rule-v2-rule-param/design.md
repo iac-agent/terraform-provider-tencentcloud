@@ -1,47 +1,39 @@
 ## Context
 
-The `tencentcloud_teo_l7_acc_rule_v2` resource manages TEO L7 acceleration rules. Currently, the resource exposes individual top-level schema fields (`status`, `rule_name`, `description`, `branches`) that are internally assembled into a `RuleEngineItem` struct for API calls. The `ModifyL7AccRule` API accepts `ZoneId` and `Rule` as input parameters. While `zone_id` is already a schema field, the `Rule` parameter does not have a corresponding schema field — the individual sub-fields are flattened at the top level.
+The `tencentcloud_teo_l7_acc_rule_v2` resource currently maps the `ModifyL7AccRule` API's `Rule` parameter (of type `*RuleEngineItem`) by decomposing it into individual top-level Terraform schema fields: `status`, `rule_name`, `description`, and `branches`. The `ZoneId` field is also a top-level `zone_id` parameter.
 
-The cloud API `ModifyL7AccRule` (package: `github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/teo/v20220901`) accepts:
-- `ZoneId` (*string) — already mapped to `zone_id` in the schema
-- `Rule` (*RuleEngineItem) — needs to be exposed as a `rule` schema parameter
+The ModifyL7AccRule API expects two parameters:
+- `ZoneId` (*string) - already mapped to `zone_id` (ForceNew, Required)
+- `Rule` (*RuleEngineItem) - currently constructed from individual top-level fields but not exposed as a single schema parameter
 
 The `RuleEngineItem` struct contains: `Status`, `RuleId`, `RuleName`, `Description`, `Branches`, `RulePriority`.
+
+Current state: The update function creates a `RuleEngineItem` from the top-level schema fields and sets `request.Rule = rule`. There is no `rule` parameter in the Terraform schema.
 
 ## Goals / Non-Goals
 
 **Goals:**
-- Add a `rule` parameter (TypeList, MaxItems: 1, Optional) to the `tencentcloud_teo_l7_acc_rule_v2` resource schema
-- The `rule` parameter maps to `request.Rule` in the `ModifyL7AccRule` API
-- The `rule` block contains sub-fields: `status`, `rule_name`, `description`, `branches`
-- Update Create/Read/Update functions to support the new `rule` parameter
-- Maintain backward compatibility with existing top-level fields
-- Add unit tests for the new parameter
+- Add a new `rule` parameter (TypeList, MaxItems=1, Optional) to the `tencentcloud_teo_l7_acc_rule_v2` resource schema that maps to the `Rule` field of the ModifyL7AccRule API
+- The `rule` parameter will contain nested fields matching the `RuleEngineItem` structure: `rule_id`, `status`, `rule_name`, `description`, and `branches`
+- Maintain full backward compatibility with existing configurations using individual top-level fields
+- Update Create, Read, and Update functions to handle the new `rule` parameter
 
 **Non-Goals:**
-- Removing or deprecating existing top-level schema fields (`status`, `rule_name`, `description`, `branches`)
-- Changing the `ModifyL7AccRule` API behavior
-- Modifying any other resources or data sources
+- Removing or deprecating existing top-level fields (status, rule_name, description, branches) - these remain for backward compatibility
+- Modifying the `zone_id` parameter - it already exists and is correctly mapped
+- Changes to other TEO resources or data sources
 
 ## Decisions
 
-### Decision 1: `rule` parameter as TypeList with MaxItems: 1
+1. **New `rule` parameter as TypeList with MaxItems=1**: The `Rule` field in ModifyL7AccRule is a single `*RuleEngineItem`, not a list. However, following Terraform convention for nested blocks in this codebase, we use TypeList with MaxItems=1 to represent a single object. This matches the pattern used for `branches` in the same resource.
 
-The `rule` parameter will be a `TypeList` with `MaxItems: 1` containing a nested `schema.Resource` with sub-fields matching `RuleEngineItem`. This follows the existing pattern in the codebase for nested configuration blocks (e.g., `branches`).
+2. **Coexistence with existing top-level fields**: The new `rule` parameter will coexist with the existing top-level fields (`status`, `rule_name`, `description`, `branches`). In the Update function, if the `rule` parameter is specified, it will be used to populate the `RuleEngineItem`. Otherwise, the existing individual fields will be used. This maintains backward compatibility.
 
-**Alternative considered**: TypeMap — rejected because the sub-fields have different types (string, list of strings, nested list) which cannot be represented in a TypeMap.
+3. **Nested schema for `rule`**: The `rule` parameter's nested schema will include `rule_id` (Computed), `status`, `rule_name`, `description`, and `branches` - matching the `RuleEngineItem` structure. The `branches` sub-field will reuse the existing `TencentTeoL7RuleBranchBasicInfo` helper function.
 
-### Decision 2: Coexistence with top-level fields
-
-The `rule` parameter and the existing top-level fields (`status`, `rule_name`, `description`, `branches`) will coexist. When the `rule` block is specified, its values will be used for constructing the `RuleEngineItem`. When `rule` is not specified, the existing top-level fields will be used as before.
-
-**Alternative considered**: Deprecate top-level fields — rejected because it would break backward compatibility.
-
-### Decision 3: Read function populates both
-
-The Read function will continue to populate the existing top-level fields from the API response. It will also populate the `rule` block if the user has configured it.
+4. **Read function**: When reading the resource state, the `rule` parameter will be populated from the API response alongside the existing top-level fields.
 
 ## Risks / Trade-offs
 
-- **Duplicate configuration paths**: Users can specify rule properties via either the `rule` block or the top-level fields. If both are specified, the `rule` block takes precedence. → Mitigation: Document the behavior clearly in the resource description and .md file.
-- **State consistency**: When reading, both the top-level fields and the `rule` block will be populated. If a user only uses top-level fields, the `rule` block will remain empty, and vice versa. → Mitigation: This follows standard Terraform patterns for optional nested blocks.
+- [Schema duplication] The same data can be represented both via top-level fields and via the `rule` block → Mitigation: In the Update function, the `rule` block takes precedence if specified; otherwise individual fields are used. Documentation should clarify the preferred approach.
+- [State migration] Existing state files will not have the `rule` field populated → Mitigation: The `rule` field is Optional, so existing state files are valid. The Read function will populate it on the next refresh.

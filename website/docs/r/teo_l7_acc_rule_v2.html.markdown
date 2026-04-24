@@ -17,44 +17,6 @@ Provides a resource to create a TEO l7 acc rule v2
 
 ```hcl
 resource "tencentcloud_teo_l7_acc_rule_v2" "example" {
-  zone_id = "zone-3fkff38fyw8s"
-  rule {
-    description = ["description"]
-    rule_name   = "Web Acceleration"
-    status      = "enable"
-    branches {
-      condition = "$${http.request.host} in ['www.example.com']"
-      actions {
-        name = "Cache"
-        cache_parameters {
-          custom_time {
-            cache_time           = 2592000
-            ignore_cache_control = "off"
-            switch               = "on"
-          }
-        }
-      }
-
-      actions {
-        name = "CacheKey"
-        cache_key_parameters {
-          full_url_cache = "on"
-          ignore_case    = "off"
-          query_string {
-            switch = "off"
-            values = []
-          }
-        }
-      }
-    }
-  }
-}
-```
-
-### Example Usage with Top-Level Fields
-
-```hcl
-resource "tencentcloud_teo_l7_acc_rule_v2" "example" {
   zone_id     = "zone-3fkff38fyw8s"
   description = ["description"]
   rule_name   = "Web Acceleration"
@@ -145,6 +107,32 @@ resource "tencentcloud_teo_l7_acc_rule_v2" "example" {
 }
 ```
 
+### parameter
+
+```hcl
+resource "tencentcloud_teo_l7_acc_rule_v2" "example" {
+  zone_id = "zone-3fkff38fyw8s"
+  rule {
+    status      = "enable"
+    rule_name   = "Web Acceleration"
+    description = ["description"]
+    branches {
+      condition = "$${http.request.host} in ['www.example.com']"
+      actions {
+        name = "Cache"
+        cache_parameters {
+          custom_time {
+            cache_time           = 2592000
+            ignore_cache_control = "off"
+            switch               = "on"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
 ## Argument Reference
 
 The following arguments are supported:
@@ -153,7 +141,7 @@ The following arguments are supported:
 * `branches` - (Optional, List) Sub-Rule branch. this list currently supports filling in only one rule; multiple entries are invalid.
 * `description` - (Optional, List: [`String`]) Rule annotation. multiple annotations can be added.
 * `rule_name` - (Optional, String) Rule name. The name length limit is 255 characters.
-* `rule` - (Optional, List) Rule configuration block. When specified, the values in this block take precedence over the top-level fields (status, rule_name, description, branches).
+* `rule` - (Optional, List) Rule configuration. This parameter maps to the Rule field of the ModifyL7AccRule API.
 * `status` - (Optional, String) Rule status. The possible values are: `enable`: enabled; `disable`: disabled.
 
 The `access_url_redirect_parameters` object of `actions` supports the following:

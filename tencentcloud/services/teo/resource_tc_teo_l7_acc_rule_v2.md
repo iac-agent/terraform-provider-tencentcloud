@@ -6,44 +6,6 @@ Example Usage
 
 ```hcl
 resource "tencentcloud_teo_l7_acc_rule_v2" "example" {
-  zone_id = "zone-3fkff38fyw8s"
-  rule {
-    description = ["description"]
-    rule_name   = "Web Acceleration"
-    status      = "enable"
-    branches {
-      condition = "$${http.request.host} in ['www.example.com']"
-      actions {
-        name = "Cache"
-        cache_parameters {
-          custom_time {
-            cache_time           = 2592000
-            ignore_cache_control = "off"
-            switch               = "on"
-          }
-        }
-      }
-
-      actions {
-        name = "CacheKey"
-        cache_key_parameters {
-          full_url_cache = "on"
-          ignore_case    = "off"
-          query_string {
-            switch = "off"
-            values = []
-          }
-        }
-      }
-    }
-  }
-}
-```
-
-Example Usage with Top-Level Fields
-
-```hcl
-resource "tencentcloud_teo_l7_acc_rule_v2" "example" {
   zone_id     = "zone-3fkff38fyw8s"
   description = ["description"]
   rule_name   = "Web Acceleration"
@@ -126,6 +88,32 @@ resource "tencentcloud_teo_l7_acc_rule_v2" "example" {
           max_age_parameters {
             cache_time    = 3600
             follow_origin = "off"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+Use the `rule` parameter
+
+```hcl
+resource "tencentcloud_teo_l7_acc_rule_v2" "example" {
+  zone_id = "zone-3fkff38fyw8s"
+  rule {
+    status      = "enable"
+    rule_name   = "Web Acceleration"
+    description = ["description"]
+    branches {
+      condition = "$${http.request.host} in ['www.example.com']"
+      actions {
+        name = "Cache"
+        cache_parameters {
+          custom_time {
+            cache_time           = 2592000
+            ignore_cache_control = "off"
+            switch               = "on"
           }
         }
       }
