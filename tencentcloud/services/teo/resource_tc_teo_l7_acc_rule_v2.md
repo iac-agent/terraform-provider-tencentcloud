@@ -93,6 +93,11 @@ resource "tencentcloud_teo_l7_acc_rule_v2" "example" {
       }
     }
   }
+
+  filters {
+    name   = "rule-id"
+    values = ["rule-abc123"]
+  }
 }
 ```
 
