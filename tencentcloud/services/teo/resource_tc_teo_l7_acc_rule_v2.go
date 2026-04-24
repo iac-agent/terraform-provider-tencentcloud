@@ -55,6 +55,42 @@ func ResourceTencentCloudTeoL7AccRuleV2() *schema.Resource {
 					Schema: TencentTeoL7RuleBranchBasicInfo(1),
 				},
 			},
+			"rule": {
+				Type:        schema.TypeList,
+				MaxItems:    1,
+				Optional:    true,
+				Description: "Rule configuration block. When specified, the values in this block take precedence over the top-level fields (status, rule_name, description, branches).",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"status": {
+							Type:        schema.TypeString,
+							Optional:    true,
+							Description: "Rule status. The possible values are: `enable`: enabled; `disable`: disabled.",
+						},
+						"rule_name": {
+							Type:        schema.TypeString,
+							Optional:    true,
+							Description: "Rule name. The name length limit is 255 characters.",
+						},
+						"description": {
+							Type:        schema.TypeList,
+							Optional:    true,
+							Description: "Rule annotation. multiple annotations can be added.",
+							Elem: &schema.Schema{
+								Type: schema.TypeString,
+							},
+						},
+						"branches": {
+							Type:        schema.TypeList,
+							Optional:    true,
+							Description: "Sub-Rule branch. this list currently supports filling in only one rule; multiple entries are invalid.",
+							Elem: &schema.Resource{
+								Schema: TencentTeoL7RuleBranchBasicInfo(1),
+							},
+						},
+					},
+				},
+			},
 			"rule_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
@@ -83,22 +119,25 @@ func ResourceTencentCloudTeoL7AccRuleV2Create(d *schema.ResourceData, meta inter
 	request.ZoneId = helper.String(zoneId)
 	rule := &teov20220901.RuleEngineItem{}
 
-	if v, ok := d.GetOk("status"); ok {
-		rule.Status = helper.String(v.(string))
-	}
-	if v, ok := d.GetOk("rule_name"); ok {
-		rule.RuleName = helper.String(v.(string))
-	}
-	if v, ok := d.GetOk("description"); ok {
-		descriptionSet := v.([]interface{})
-		for i := range descriptionSet {
-			description := descriptionSet[i].(string)
-			rule.Description = append(rule.Description, helper.String(description))
+	if v, ok := d.GetOk("rule"); ok {
+		rule = ExpandTeoL7AccRuleV2RuleBlock(v.([]interface{}))
+	} else {
+		if v, ok := d.GetOk("status"); ok {
+			rule.Status = helper.String(v.(string))
 		}
-	}
-
-	if v, ok := d.GetOk("branches"); ok {
-		rule.Branches = resourceTencentCloudTeoL7AccRuleGetBranchs(map[string]interface{}{"branches": v})
+		if v, ok := d.GetOk("rule_name"); ok {
+			rule.RuleName = helper.String(v.(string))
+		}
+		if v, ok := d.GetOk("description"); ok {
+			descriptionSet := v.([]interface{})
+			for i := range descriptionSet {
+				description := descriptionSet[i].(string)
+				rule.Description = append(rule.Description, helper.String(description))
+			}
+		}
+		if v, ok := d.GetOk("branches"); ok {
+			rule.Branches = resourceTencentCloudTeoL7AccRuleGetBranchs(map[string]interface{}{"branches": v})
+		}
 	}
 
 	request.Rules = []*teov20220901.RuleEngineItem{rule}
@@ -160,6 +199,12 @@ func ResourceTencentCloudTeoL7AccRuleV2Read(d *schema.ResourceData, meta interfa
 		_ = d.Set("description", rule.Description)
 		_ = d.Set("rule_priority", rule.RulePriority)
 		_ = d.Set("branches", resourceTencentCloudTeoL7AccRuleSetBranchs(rule.Branches))
+
+		// Populate the `rule` block if it is configured
+		if _, ok := d.GetOk("rule"); ok {
+			ruleBlock := FlattenTeoL7AccRuleV2RuleBlock(rule)
+			_ = d.Set("rule", ruleBlock)
+		}
 	}
 
 	return nil
@@ -178,27 +223,33 @@ func ResourceTencentCloudTeoL7AccRuleV2Update(d *schema.ResourceData, meta inter
 	zoneId := idSplit[0]
 	ruleId := idSplit[1]
 
-	request := teov20220901.NewModifyL7AccRuleRequest()
-	request.ZoneId = helper.String(zoneId)
-	rule := &teov20220901.RuleEngineItem{}
-	rule.RuleId = &ruleId
+	if d.HasChange("rule") || d.HasChange("status") || d.HasChange("rule_name") || d.HasChange("description") || d.HasChange("branches") {
+		request := teov20220901.NewModifyL7AccRuleRequest()
+		request.ZoneId = helper.String(zoneId)
+		rule := &teov20220901.RuleEngineItem{}
+		rule.RuleId = &ruleId
 
-	if d.HasChange("status") || d.HasChange("rule_name") || d.HasChange("description") || d.HasChange("branches") {
-		if v, ok := d.GetOk("status"); ok {
-			rule.Status = helper.String(v.(string))
-		}
-		if v, ok := d.GetOk("rule_name"); ok {
-			rule.RuleName = helper.String(v.(string))
-		}
-		if v, ok := d.GetOk("description"); ok {
-			descriptionSet := v.([]interface{})
-			for i := range descriptionSet {
-				description := descriptionSet[i].(string)
-				rule.Description = append(rule.Description, helper.String(description))
+		if v, ok := d.GetOk("rule"); ok {
+			expandedRule := ExpandTeoL7AccRuleV2RuleBlock(v.([]interface{}))
+			expandedRule.RuleId = &ruleId
+			rule = expandedRule
+		} else {
+			if v, ok := d.GetOk("status"); ok {
+				rule.Status = helper.String(v.(string))
 			}
-		}
-		if v, ok := d.GetOk("branches"); ok {
-			rule.Branches = resourceTencentCloudTeoL7AccRuleGetBranchs(map[string]interface{}{"branches": v})
+			if v, ok := d.GetOk("rule_name"); ok {
+				rule.RuleName = helper.String(v.(string))
+			}
+			if v, ok := d.GetOk("description"); ok {
+				descriptionSet := v.([]interface{})
+				for i := range descriptionSet {
+					description := descriptionSet[i].(string)
+					rule.Description = append(rule.Description, helper.String(description))
+				}
+			}
+			if v, ok := d.GetOk("branches"); ok {
+				rule.Branches = resourceTencentCloudTeoL7AccRuleGetBranchs(map[string]interface{}{"branches": v})
+			}
 		}
 
 		request.Rule = rule
@@ -251,4 +302,62 @@ func ResourceTencentCloudTeoL7AccRuleV2Delete(d *schema.ResourceData, meta inter
 	}
 
 	return ResourceTencentCloudTeoL7AccRuleV2Read(d, meta)
+}
+
+// ExpandTeoL7AccRuleV2RuleBlock expands the `rule` schema block into a RuleEngineItem struct
+func ExpandTeoL7AccRuleV2RuleBlock(ruleList []interface{}) *teov20220901.RuleEngineItem {
+	rule := &teov20220901.RuleEngineItem{}
+	if len(ruleList) == 0 {
+		return rule
+	}
+	ruleMap := ruleList[0].(map[string]interface{})
+
+	if v, ok := ruleMap["status"].(string); ok && v != "" {
+		rule.Status = helper.String(v)
+	}
+	if v, ok := ruleMap["rule_name"].(string); ok && v != "" {
+		rule.RuleName = helper.String(v)
+	}
+	if v, ok := ruleMap["description"].([]interface{}); ok && len(v) > 0 {
+		for _, desc := range v {
+			if s, ok := desc.(string); ok {
+				rule.Description = append(rule.Description, helper.String(s))
+			}
+		}
+	}
+	if v, ok := ruleMap["branches"].([]interface{}); ok && len(v) > 0 {
+		rule.Branches = resourceTencentCloudTeoL7AccRuleGetBranchs(map[string]interface{}{"branches": v})
+	}
+
+	return rule
+}
+
+// FlattenTeoL7AccRuleV2RuleBlock flattens a RuleEngineItem struct into the `rule` schema block format
+func FlattenTeoL7AccRuleV2RuleBlock(rule *teov20220901.RuleEngineItem) []interface{} {
+	if rule == nil {
+		return []interface{}{}
+	}
+
+	ruleMap := map[string]interface{}{}
+
+	if rule.Status != nil {
+		ruleMap["status"] = *rule.Status
+	}
+	if rule.RuleName != nil {
+		ruleMap["rule_name"] = *rule.RuleName
+	}
+	if rule.Description != nil {
+		descriptionList := make([]string, 0, len(rule.Description))
+		for _, desc := range rule.Description {
+			if desc != nil {
+				descriptionList = append(descriptionList, *desc)
+			}
+		}
+		ruleMap["description"] = descriptionList
+	}
+	if rule.Branches != nil {
+		ruleMap["branches"] = resourceTencentCloudTeoL7AccRuleSetBranchs(rule.Branches)
+	}
+
+	return []interface{}{ruleMap}
 }
