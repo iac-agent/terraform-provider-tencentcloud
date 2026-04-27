@@ -1144,15 +1144,24 @@ func (me *TeoService) DescribeTeoRuleEngineById(ctx context.Context, zoneId stri
 	return
 }
 
-func (me *TeoService) DescribeTeoOriginGroupById(ctx context.Context, originGroupId string) (ret *teo.OriginGroup, errRet error) {
+func (me *TeoService) DescribeTeoOriginGroupById(ctx context.Context, zoneId, originGroupId string, filters []*teo.AdvancedFilter) (ret *teo.OriginGroup, errRet error) {
 	logId := tccommon.GetLogId(ctx)
 
 	request := teo.NewDescribeOriginGroupRequest()
-	advancedFilter := &teo.AdvancedFilter{
-		Name:   helper.String("origin-group-id"),
-		Values: []*string{helper.String(originGroupId)},
+
+	if zoneId != "" {
+		request.ZoneId = helper.String(zoneId)
 	}
-	request.Filters = append(request.Filters, advancedFilter)
+
+	if len(filters) > 0 {
+		request.Filters = filters
+	} else {
+		advancedFilter := &teo.AdvancedFilter{
+			Name:   helper.String("origin-group-id"),
+			Values: []*string{helper.String(originGroupId)},
+		}
+		request.Filters = append(request.Filters, advancedFilter)
+	}
 
 	defer func() {
 		if errRet != nil {
@@ -1164,7 +1173,7 @@ func (me *TeoService) DescribeTeoOriginGroupById(ctx context.Context, originGrou
 
 	var (
 		offset uint64 = 0
-		limit  uint64 = 20
+		limit  uint64 = 1000
 	)
 	var instances []*teo.OriginGroup
 	for {
