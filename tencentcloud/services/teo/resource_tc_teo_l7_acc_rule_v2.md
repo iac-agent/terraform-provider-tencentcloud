@@ -1,4 +1,4 @@
-Provides a resource to create a TEO l7 acc rule v2
+Provides a resource to create a TEO L7 acceleration rule v2
 
 ~> **NOTE:** Compared to tencentcloud_teo_l7_acc_rule, tencentcloud_teo_l7_acc_rule_v2 is simpler to use but is limited to managing a single rule and lacks the ability to maintain rule ordering. It is best suited for scenarios where you need to manage multiple rules independently and priority/sequencing is not a concern.
 
@@ -89,6 +89,33 @@ resource "tencentcloud_teo_l7_acc_rule_v2" "example" {
             cache_time    = 3600
             follow_origin = "off"
           }
+        }
+      }
+    }
+  }
+}
+```
+
+With filters:
+
+```hcl
+resource "tencentcloud_teo_l7_acc_rule_v2" "example" {
+  zone_id   = "zone-3fkff38fyw8s"
+  rule_name = "Web Acceleration"
+  status    = "enable"
+  filters {
+    name   = "rule-id"
+    values = ["rule-abc123"]
+  }
+  branches {
+    condition = "$${http.request.host} in ['www.example.com']"
+    actions {
+      name = "Cache"
+      cache_parameters {
+        custom_time {
+          cache_time           = 2592000
+          ignore_cache_control = "off"
+          switch               = "on"
         }
       }
     }
