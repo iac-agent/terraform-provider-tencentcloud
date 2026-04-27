@@ -1833,3 +1833,89 @@ func (me *ClsService) DescribeClsDlcDeliverById(ctx context.Context, topicId, ta
 	ret = response.Response.Infos[0]
 	return
 }
+
+func (me *ClsService) DescribeClsSearchViewById(ctx context.Context, viewId string) (searchView *cls.SearchViewInfo, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := cls.NewDescribeSearchViewsRequest()
+	filter := &cls.Filter{
+		Key:    helper.String("viewId"),
+		Values: []*string{&viewId},
+	}
+	request.Filters = append(request.Filters, filter)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	var (
+		offset uint64 = 0
+		limit  uint64 = 100
+	)
+
+	response := cls.NewDescribeSearchViewsResponse()
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		request.Offset = &offset
+		request.Limit = &limit
+		result, e := me.client.UseClsClient().DescribeSearchViewsWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		} else {
+			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("Describe cls search view failed, Response is nil."))
+		}
+
+		response = result
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	if len(response.Response.Infos) == 0 {
+		return
+	}
+
+	searchView = response.Response.Infos[0]
+	return
+}
+
+func (me *ClsService) DeleteClsSearchViewById(ctx context.Context, viewId string) (errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := cls.NewDeleteSearchViewRequest()
+	request.ViewId = &viewId
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseClsClient().DeleteSearchViewWithContext(ctx, request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		} else {
+			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	return
+}

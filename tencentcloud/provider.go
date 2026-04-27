@@ -2046,6 +2046,7 @@ func Provider() *schema.Provider {
 			"tencentcloud_cls_notice_content":                                                       cls.ResourceTencentCloudClsNoticeContent(),
 			"tencentcloud_cls_web_callback":                                                         cls.ResourceTencentCloudClsWebCallback(),
 			"tencentcloud_cls_cloud_product_log_task_v2":                                            cls.ResourceTencentCloudClsCloudProductLogTaskV2(),
+			"tencentcloud_cls_search_view_v2":                                                       cls.ResourceTencentCloudClsSearchViewV2(),
 			"tencentcloud_lighthouse_instance":                                                      lighthouse.ResourceTencentCloudLighthouseInstance(),
 			"tencentcloud_lighthouse_firewall_template":                                             lighthouse.ResourceTencentCloudLighthouseFirewallTemplate(),
 			"tencentcloud_tem_environment":                                                          tem.ResourceTencentCloudTemEnvironment(),
