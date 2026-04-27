@@ -4,12 +4,12 @@ layout: "tencentcloud"
 page_title: "TencentCloud: tencentcloud_cls_ckafka_consumer"
 sidebar_current: "docs-tencentcloud-resource-cls_ckafka_consumer"
 description: |-
-  Provides a resource to create a cls ckafka_consumer
+  Provides a resource to create a CLS ckafka consumer
 ---
 
 # tencentcloud_cls_ckafka_consumer
 
-Provides a resource to create a cls ckafka_consumer
+Provides a resource to create a CLS ckafka consumer
 
 ## Example Usage
 
@@ -40,6 +40,18 @@ resource "tencentcloud_cls_ckafka_consumer" "ckafka_consumer" {
     tag_json_not_tiled = true
     timestamp_accuracy = 2
   }
+
+  effective   = true
+  role_arn    = "qcs::cam::uin/123456789:roleName/MyRole"
+  external_id = "my-external-id"
+
+  advanced_config {
+    partition_hash_status = true
+    partition_fields = [
+      "__SOURCE__",
+      "__HOSTNAME__",
+    ]
+  }
 }
 ```
 
@@ -48,10 +60,19 @@ resource "tencentcloud_cls_ckafka_consumer" "ckafka_consumer" {
 The following arguments are supported:
 
 * `topic_id` - (Required, String, ForceNew) topic id.
+* `advanced_config` - (Optional, List) advanced configuration for ckafka consumer.
 * `ckafka` - (Optional, List) ckafka info.
 * `compression` - (Optional, Int) compression method. 0 for NONE, 2 for SNAPPY, 3 for LZ4.
 * `content` - (Optional, List) metadata information.
+* `effective` - (Optional, Bool) whether the delivery task is effective.
+* `external_id` - (Optional, String) external ID for role assumption.
 * `need_content` - (Optional, Bool) whether to deliver the metadata information of the log.
+* `role_arn` - (Optional, String) role access description name for cross-account access.
+
+The `advanced_config` object supports the following:
+
+* `partition_fields` - (Optional, Set) fields for partition hash, max 5 fields.
+* `partition_hash_status` - (Optional, Bool) whether to enable partition hash. true: enable; false: disable.
 
 The `ckafka` object supports the following:
 
@@ -79,7 +100,7 @@ In addition to all arguments above, the following attributes are exported:
 
 ## Import
 
-cls ckafka_consumer can be imported using the id, e.g.
+CLS ckafka consumer can be imported using the id, e.g.
 
 ```
 terraform import tencentcloud_cls_ckafka_consumer.ckafka_consumer topic_id

@@ -1,0 +1,3 @@
+```release-note:enhancement
+resource/tencentcloud_cls_ckafka_consumer: add `effective`, `role_arn`, `external_id` and `advanced_config` parameters
+```

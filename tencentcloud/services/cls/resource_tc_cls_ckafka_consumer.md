@@ -1,4 +1,4 @@
-Provides a resource to create a cls ckafka_consumer
+Provides a resource to create a CLS ckafka consumer
 
 Example Usage
 
@@ -29,12 +29,24 @@ resource "tencentcloud_cls_ckafka_consumer" "ckafka_consumer" {
     tag_json_not_tiled = true
     timestamp_accuracy = 2
   }
+
+  effective    = true
+  role_arn     = "qcs::cam::uin/123456789:roleName/MyRole"
+  external_id  = "my-external-id"
+
+  advanced_config {
+    partition_hash_status = true
+    partition_fields      = [
+      "__SOURCE__",
+      "__HOSTNAME__",
+    ]
+  }
 }
 ```
 
 Import
 
-cls ckafka_consumer can be imported using the id, e.g.
+CLS ckafka consumer can be imported using the id, e.g.
 
 ```
 terraform import tencentcloud_cls_ckafka_consumer.ckafka_consumer topic_id
