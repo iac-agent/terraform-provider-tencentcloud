@@ -1580,6 +1580,7 @@ tencentcloud_teo_check_cname_status_operation
 tencentcloud_teo_deploy_config_group_version
 tencentcloud_teo_identify_zone_operation
 tencentcloud_teo_just_in_time_transcode_template
+tencentcloud_teo_multi_path_gateway_line
 
 TencentCloud ServiceMesh(TCM)
 Data Source

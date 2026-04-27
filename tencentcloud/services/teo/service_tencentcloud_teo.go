@@ -2543,3 +2543,51 @@ func (me *TeoService) TeoIdentifyZone(zoneName, domain string) (ascription *teov
 
 	return
 }
+
+func (me *TeoService) DescribeTeoMultiPathGatewayLineById(ctx context.Context, zoneId string, gatewayId string, lineId string) (ret *teo.MultiPathGatewayLine, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := teo.NewDescribeMultiPathGatewayLineRequest()
+	var response *teo.DescribeMultiPathGatewayLineResponse
+	request.ZoneId = helper.String(zoneId)
+	request.GatewayId = helper.String(gatewayId)
+	request.LineId = helper.String(lineId)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	ratelimit.Check(request.GetAction())
+
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		result, e := me.client.UseTeoV20220901Client().DescribeMultiPathGatewayLine(request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		} else {
+			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
+		}
+
+		if result == nil || result.Response == nil {
+			return resource.NonRetryableError(fmt.Errorf("Describe teo multi path gateway line failed, Response is nil."))
+		}
+
+		response = result
+		return nil
+	})
+
+	if err != nil {
+		errRet = err
+		return
+	}
+
+	if response.Response.Line == nil {
+		return
+	}
+
+	ret = response.Response.Line
+	return
+}
