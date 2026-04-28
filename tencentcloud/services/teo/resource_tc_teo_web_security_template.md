@@ -234,6 +234,40 @@ resource "tencentcloud_teo_web_security_template" "web_security_template" {
 }
 ```
 
+Usage with bot_management_lite
+
+```hcl
+
+resource "tencentcloud_teo_web_security_template" "web_security_template" {
+  template_name = "tf-test-bot-lite"
+  zone_id       = "zone-3fkff38fyw8s"
+  security_policy {
+    bot_management_lite {
+      captcha_page_challenge {
+        enabled = "on"
+      }
+      ai_crawler_detection {
+        enabled = "on"
+        action {
+          name = "Monitor"
+        }
+      }
+    }
+    custom_rules {
+      rules {
+        condition = "$${http.request.ip} in ['36']"
+        enabled   = "on"
+        name      = "Custom Rule"
+        priority  = 50
+        action {
+          name = "Monitor"
+        }
+      }
+    }
+  }
+}
+```
+
 Import
 
 teo web security template can be imported using the id, e.g.

@@ -244,6 +244,39 @@ resource "tencentcloud_teo_web_security_template" "web_security_template" {
 }
 ```
 
+### Usage with bot_management_lite
+
+```hcl
+resource "tencentcloud_teo_web_security_template" "web_security_template" {
+  template_name = "tf-test-bot-lite"
+  zone_id       = "zone-3fkff38fyw8s"
+  security_policy {
+    bot_management_lite {
+      captcha_page_challenge {
+        enabled = "on"
+      }
+      ai_crawler_detection {
+        enabled = "on"
+        action {
+          name = "Monitor"
+        }
+      }
+    }
+    custom_rules {
+      rules {
+        condition = "$${http.request.ip} in ['36']"
+        enabled   = "on"
+        name      = "Custom Rule"
+        priority  = 50
+        action {
+          name = "Monitor"
+        }
+      }
+    }
+  }
+}
+```
+
 ## Argument Reference
 
 The following arguments are supported:
@@ -253,6 +286,16 @@ The following arguments are supported:
 * `security_policy` - (Optional, List) Web security policy template configuration. Generates default config if empty. Supported: Exception rules, custom rules, rate limiting rules, managed rules. Not supported: Bot management rules (under development).
 
 The `action` object of `adaptive_frequency_control` supports the following:
+
+* `name` - (Required, String) Specifies the specific actions for safe execution. valid values:. - Deny. specifies to block requests from accessing site resources. - Monitor: observation, only record logs. - Redirect: Redirect to URL. - Disabled: specifies that the rule is not enabled. - Allow: specifies whether to allow access with delayed processing of requests. - Challenge: specifies the challenge content to respond to. - Trans: pass and allow requests to directly access site resources. - BlockIP: to be deprecated. ip block. - ReturnCustomPage: to be deprecated. use specified page for interception. - JSChallenge: to be deprecated, JavaScript challenge;. - ManagedChallenge: to be deprecated. managed challenge.
+* `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
+* `block_ip_action_parameters` - (Optional, List) To be deprecated, additional parameter when Name is BlockIP.
+* `challenge_action_parameters` - (Optional, List) Additional parameter when Name is Challenge.
+* `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
+* `redirect_action_parameters` - (Optional, List) Additional parameter when Name is Redirect.
+* `return_custom_page_action_parameters` - (Optional, List) To be deprecated, additional parameter when Name is ReturnCustomPage.
+
+The `action` object of `ai_crawler_detection` supports the following:
 
 * `name` - (Required, String) Specifies the specific actions for safe execution. valid values:. - Deny. specifies to block requests from accessing site resources. - Monitor: observation, only record logs. - Redirect: Redirect to URL. - Disabled: specifies that the rule is not enabled. - Allow: specifies whether to allow access with delayed processing of requests. - Challenge: specifies the challenge content to respond to. - Trans: pass and allow requests to directly access site resources. - BlockIP: to be deprecated. ip block. - ReturnCustomPage: to be deprecated. use specified page for interception. - JSChallenge: to be deprecated, JavaScript challenge;. - ManagedChallenge: to be deprecated. managed challenge.
 * `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
@@ -337,6 +380,11 @@ The `adaptive_frequency_control` object of `http_ddos_protection` supports the f
 * `enabled` - (Required, String) Whether adaptive frequency control is enabled. valid values: - on: enable; - off: disable.
 * `action` - (Optional, List) The handling method of adaptive frequency control. this field is required when Enabled is on. valid values for SecurityAction Name: - Monitor: observation; - Deny: block; - Challenge: Challenge, where ChallengeActionParameters.Name only supports JSChallenge.
 * `sensitivity` - (Optional, String) The restriction level of adaptive frequency control. required when Enabled is on. valid values: - Loose: Loose- Moderate: Moderate- Strict: Strict.
+
+The `ai_crawler_detection` object of `bot_management_lite` supports the following:
+
+* `action` - (Optional, List) Execution action for AI crawler detection. valid values for SecurityAction Name: - Deny: block;- Monitor: observe;- Allow: pass;- Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.
+* `enabled` - (Optional, String) Whether AI crawler detection is enabled. valid values: - on: enabled;- off: disabled.
 
 The `allow_action_parameters` object of `action` supports the following:
 
@@ -593,6 +641,11 @@ The `bot_management_action_overrides` object of `source_idc` supports the follow
 * `action` - (Optional, List) Specifies the handling action for Bot rule items in Ids. valid values for the Name parameter in SecurityAction: - Deny: block;- Monitor: observe;- Disabled: Disabled, disable the specified rule;- Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;- Allow: pass (only for Bot basic feature management).
 * `ids` - (Optional, Set) Specific item under Bot rules used to rewrite the configuration content of this single rule. refer to the returned message from the DescribeBotManagedRules API for detailed information corresponding to Ids.
 
+The `bot_management_lite` object of `security_policy` supports the following:
+
+* `ai_crawler_detection` - (Optional, List) AI crawler detection configuration.
+* `captcha_page_challenge` - (Optional, List) CAPTCHA page challenge configuration.
+
 The `bot_management` object of `security_policy` supports the following:
 
 * `basic_bot_settings` - (Optional, List) Bot management basic configuration. takes effect on all domains associated with the policy. can be customized through CustomRules.
@@ -619,6 +672,10 @@ The `bot_session_validation` object of `action` supports the following:
 The `browser_impersonation_detection` object of `bot_management` supports the following:
 
 * `rules` - (Optional, List) List of browser spoofing identification Rules. When using ModifySecurityPolicy to modify Web protection configuration: - if Rules parameter in SecurityPolicy.BotManagement.BrowserImpersonationDetection is not specified or parameter length is zero: clear all browser spoofing identification rule configurations; - if BrowserImpersonationDetection parameter value is unspecified in SecurityPolicy.BotManagement parameters: keep existing browser spoofing identification rule configurations without modification.
+
+The `captcha_page_challenge` object of `bot_management_lite` supports the following:
+
+* `enabled` - (Optional, String) Whether CAPTCHA page challenge is enabled. valid values: - on: enabled;- off: disabled.
 
 The `challenge_action_parameters` object of `action` supports the following:
 
@@ -1350,6 +1407,7 @@ The `security_action` object of `action` supports the following:
 
 The `security_policy` object supports the following:
 
+* `bot_management_lite` - (Optional, List) Basic Bot management configuration.
 * `bot_management` - (Optional, List) Bot management configuration.
 * `custom_rules` - (Optional, List) Custom rules. If the parameter is null or not filled, the configuration last set will be used by default. Note: This field may return null, indicating that no valid value can be obtained.
 * `exception_rules` - (Optional, List) Exception rule configuration.
