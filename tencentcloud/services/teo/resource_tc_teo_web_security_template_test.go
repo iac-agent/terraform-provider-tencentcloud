@@ -90,6 +90,57 @@ func TestAccTencentCloudTeoWebSecurityTemplateResource_basic(t *testing.T) {
 	})
 }
 
+func TestAccTencentCloudTeoWebSecurityTemplateResource_botManagementLite(t *testing.T) {
+	t.Parallel()
+	resource.Test(t, resource.TestCase{
+		PreCheck: func() {
+			tcacctest.AccPreCheck(t)
+		},
+		Providers: tcacctest.AccProviders,
+		Steps: []resource.TestStep{
+			{
+				Config: testAccTeoWebSecurityTemplateBotManagementLite,
+				Check: resource.ComposeTestCheckFunc(
+					resource.TestCheckResourceAttrSet("tencentcloud_teo_web_security_template.web_security_template_bot_lite", "id"),
+					resource.TestCheckResourceAttr("tencentcloud_teo_web_security_template.web_security_template_bot_lite", "template_name", "tf-test-bot-lite"),
+					resource.TestCheckResourceAttr("tencentcloud_teo_web_security_template.web_security_template_bot_lite", "zone_id", "zone-3fkff38fyw8s"),
+					resource.TestCheckResourceAttr("tencentcloud_teo_web_security_template.web_security_template_bot_lite", "security_policy.#", "1"),
+					// bot_management_lite - captcha_page_challenge enabled
+					resource.TestCheckResourceAttr("tencentcloud_teo_web_security_template.web_security_template_bot_lite", "security_policy.0.bot_management_lite.#", "1"),
+					resource.TestCheckResourceAttr("tencentcloud_teo_web_security_template.web_security_template_bot_lite", "security_policy.0.bot_management_lite.0.captcha_page_challenge.#", "1"),
+					resource.TestCheckResourceAttr("tencentcloud_teo_web_security_template.web_security_template_bot_lite", "security_policy.0.bot_management_lite.0.captcha_page_challenge.0.enabled", "on"),
+					// bot_management_lite - ai_crawler_detection with Monitor action
+					resource.TestCheckResourceAttr("tencentcloud_teo_web_security_template.web_security_template_bot_lite", "security_policy.0.bot_management_lite.0.ai_crawler_detection.#", "1"),
+					resource.TestCheckResourceAttr("tencentcloud_teo_web_security_template.web_security_template_bot_lite", "security_policy.0.bot_management_lite.0.ai_crawler_detection.0.enabled", "on"),
+					resource.TestCheckResourceAttr("tencentcloud_teo_web_security_template.web_security_template_bot_lite", "security_policy.0.bot_management_lite.0.ai_crawler_detection.0.action.#", "1"),
+					resource.TestCheckResourceAttr("tencentcloud_teo_web_security_template.web_security_template_bot_lite", "security_policy.0.bot_management_lite.0.ai_crawler_detection.0.action.0.name", "Monitor"),
+				),
+			},
+			{
+				ResourceName:      "tencentcloud_teo_web_security_template.web_security_template_bot_lite",
+				ImportState:       true,
+				ImportStateVerify: true,
+			},
+			{
+				Config: testAccTeoWebSecurityTemplateBotManagementLiteUp,
+				Check: resource.ComposeTestCheckFunc(
+					resource.TestCheckResourceAttrSet("tencentcloud_teo_web_security_template.web_security_template_bot_lite", "id"),
+					resource.TestCheckResourceAttr("tencentcloud_teo_web_security_template.web_security_template_bot_lite", "template_name", "tf-test-bot-lite"),
+					// bot_management_lite - captcha_page_challenge disabled
+					resource.TestCheckResourceAttr("tencentcloud_teo_web_security_template.web_security_template_bot_lite", "security_policy.0.bot_management_lite.#", "1"),
+					resource.TestCheckResourceAttr("tencentcloud_teo_web_security_template.web_security_template_bot_lite", "security_policy.0.bot_management_lite.0.captcha_page_challenge.#", "1"),
+					resource.TestCheckResourceAttr("tencentcloud_teo_web_security_template.web_security_template_bot_lite", "security_policy.0.bot_management_lite.0.captcha_page_challenge.0.enabled", "off"),
+					// bot_management_lite - ai_crawler_detection with Deny action
+					resource.TestCheckResourceAttr("tencentcloud_teo_web_security_template.web_security_template_bot_lite", "security_policy.0.bot_management_lite.0.ai_crawler_detection.#", "1"),
+					resource.TestCheckResourceAttr("tencentcloud_teo_web_security_template.web_security_template_bot_lite", "security_policy.0.bot_management_lite.0.ai_crawler_detection.0.enabled", "on"),
+					resource.TestCheckResourceAttr("tencentcloud_teo_web_security_template.web_security_template_bot_lite", "security_policy.0.bot_management_lite.0.ai_crawler_detection.0.action.#", "1"),
+					resource.TestCheckResourceAttr("tencentcloud_teo_web_security_template.web_security_template_bot_lite", "security_policy.0.bot_management_lite.0.ai_crawler_detection.0.action.0.name", "Deny"),
+				),
+			},
+		},
+	})
+}
+
 const testAccTeoWebSecurityTemplate = `
 resource "tencentcloud_teo_web_security_template" "web_security_template" {
   template_name = "tf-test"
@@ -535,4 +586,66 @@ resource "tencentcloud_teo_web_security_template" "web_security_template" {
   }
 }
 
+`
+
+const testAccTeoWebSecurityTemplateBotManagementLite = `
+resource "tencentcloud_teo_web_security_template" "web_security_template_bot_lite" {
+  template_name = "tf-test-bot-lite"
+  zone_id       = "zone-3fkff38fyw8s"
+  security_policy {
+    bot_management_lite {
+      captcha_page_challenge {
+        enabled = "on"
+      }
+      ai_crawler_detection {
+        enabled = "on"
+        action {
+          name = "Monitor"
+        }
+      }
+    }
+    custom_rules {
+      rules {
+        condition = "$${http.request.ip} in ['36']"
+        enabled   = "on"
+        name      = "Custom Rule"
+        priority  = 50
+        action {
+          name = "Monitor"
+        }
+      }
+    }
+  }
+}
+`
+
+const testAccTeoWebSecurityTemplateBotManagementLiteUp = `
+resource "tencentcloud_teo_web_security_template" "web_security_template_bot_lite" {
+  template_name = "tf-test-bot-lite"
+  zone_id       = "zone-3fkff38fyw8s"
+  security_policy {
+    bot_management_lite {
+      captcha_page_challenge {
+        enabled = "off"
+      }
+      ai_crawler_detection {
+        enabled = "on"
+        action {
+          name = "Deny"
+        }
+      }
+    }
+    custom_rules {
+      rules {
+        condition = "$${http.request.ip} in ['36']"
+        enabled   = "on"
+        name      = "Custom Rule"
+        priority  = 50
+        action {
+          name = "Monitor"
+        }
+      }
+    }
+  }
+}
 `
