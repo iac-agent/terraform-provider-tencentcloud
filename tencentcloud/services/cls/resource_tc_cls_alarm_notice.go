@@ -2,11 +2,9 @@ package cls
 
 import (
 	"context"
-	"fmt"
 	"log"
 
 	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
-	svctag "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/tag"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
@@ -660,6 +658,15 @@ func resourceTencentCloudClsAlarmNoticeCreate(d *schema.ResourceData, meta inter
 		request.DeliverConfig = &deliverConfig
 	}
 
+	if tags := helper.GetTags(d, "tags"); len(tags) > 0 {
+		for k, v := range tags {
+			request.Tags = append(request.Tags, &cls.Tag{
+				Key:   helper.String(k),
+				Value: helper.String(v),
+			})
+		}
+	}
+
 	if v, ok := d.GetOk("notice_rules"); ok {
 		for _, item := range v.([]interface{}) {
 			dMap := item.(map[string]interface{})
@@ -776,16 +783,6 @@ func resourceTencentCloudClsAlarmNoticeCreate(d *schema.ResourceData, meta inter
 
 	alarmNoticeId = *response.Response.AlarmNoticeId
 	d.SetId(alarmNoticeId)
-
-	ctx := context.WithValue(context.TODO(), tccommon.LogIdKey, logId)
-	if tags := helper.GetTags(d, "tags"); len(tags) > 0 {
-		tagService := svctag.NewTagService(meta.(tccommon.ProviderMeta).GetAPIV3Conn())
-		region := meta.(tccommon.ProviderMeta).GetAPIV3Conn().Region
-		resourceName := fmt.Sprintf("qcs::cls:%s:uin/:alarmNotice/%s", region, d.Id())
-		if err := tagService.ModifyTags(ctx, resourceName, tags, nil); err != nil {
-			return err
-		}
-	}
 
 	return resourceTencentCloudClsAlarmNoticeRead(d, meta)
 }
@@ -1069,13 +1066,15 @@ func resourceTencentCloudClsAlarmNoticeRead(d *schema.ResourceData, meta interfa
 		_ = d.Set("notice_rules", noticeRulesList)
 	}
 
-	tcClient := meta.(tccommon.ProviderMeta).GetAPIV3Conn()
-	tagService := svctag.NewTagService(tcClient)
-	tags, err := tagService.DescribeResourceTags(ctx, "cls", "alarmNotice", tcClient.Region, d.Id())
-	if err != nil {
-		return err
+	if alarmNotice.Tags != nil {
+		tags := make(map[string]string)
+		for _, tag := range alarmNotice.Tags {
+			if tag.Key != nil && tag.Value != nil {
+				tags[*tag.Key] = *tag.Value
+			}
+		}
+		_ = d.Set("tags", tags)
 	}
-	_ = d.Set("tags", tags)
 
 	return nil
 }
@@ -1093,7 +1092,7 @@ func resourceTencentCloudClsAlarmNoticeUpdate(d *schema.ResourceData, meta inter
 	needChange := false
 	request.AlarmNoticeId = &alarmNoticeId
 
-	mutableArgs := []string{"name", "type", "notice_receivers", "web_callbacks", "jump_domain", "deliver_status", "deliver_config", "alarm_shield_status", "callback_prioritize", "notice_rules"}
+	mutableArgs := []string{"name", "type", "notice_receivers", "web_callbacks", "jump_domain", "deliver_status", "deliver_config", "alarm_shield_status", "callback_prioritize", "notice_rules", "tags"}
 
 	for _, v := range mutableArgs {
 		if d.HasChange(v) {
@@ -1331,6 +1330,17 @@ func resourceTencentCloudClsAlarmNoticeUpdate(d *schema.ResourceData, meta inter
 			}
 		}
 
+		if d.HasChange("tags") {
+			if tags := helper.GetTags(d, "tags"); len(tags) > 0 {
+				for k, v := range tags {
+					request.Tags = append(request.Tags, &cls.Tag{
+						Key:   helper.String(k),
+						Value: helper.String(v),
+					})
+				}
+			}
+		}
+
 		err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
 			result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseClsClient().ModifyAlarmNotice(request)
 			if e != nil {
@@ -1342,18 +1352,6 @@ func resourceTencentCloudClsAlarmNoticeUpdate(d *schema.ResourceData, meta inter
 		})
 		if err != nil {
 			log.Printf("[CRITAL]%s update cls alarmNotice failed, reason:%+v", logId, err)
-			return err
-		}
-	}
-
-	if d.HasChange("tags") {
-		ctx := context.WithValue(context.TODO(), tccommon.LogIdKey, logId)
-		tcClient := meta.(tccommon.ProviderMeta).GetAPIV3Conn()
-		tagService := svctag.NewTagService(tcClient)
-		oldTags, newTags := d.GetChange("tags")
-		replaceTags, deleteTags := svctag.DiffTags(oldTags.(map[string]interface{}), newTags.(map[string]interface{}))
-		resourceName := tccommon.BuildTagResourceName("cls", "alarmNotice", tcClient.Region, d.Id())
-		if err := tagService.ModifyTags(ctx, resourceName, replaceTags, deleteTags); err != nil {
 			return err
 		}
 	}
