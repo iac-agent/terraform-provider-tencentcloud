@@ -116,6 +116,48 @@ func ResourceTencentCloudClsCkafkaConsumer() *schema.Resource {
 				Type:        schema.TypeInt,
 				Description: "compression method. 0 for NONE, 2 for SNAPPY, 3 for LZ4.",
 			},
+
+			"effective": {
+				Optional:    true,
+				Type:        schema.TypeBool,
+				Description: "whether the consumer delivery task is effective.",
+			},
+
+			"role_arn": {
+				Optional:    true,
+				Type:        schema.TypeString,
+				Description: "role ARN for cross-account CKafka access.",
+			},
+
+			"external_id": {
+				Optional:    true,
+				Type:        schema.TypeString,
+				Description: "external ID for role assumption.",
+			},
+
+			"advanced_config": {
+				Optional:    true,
+				Type:        schema.TypeList,
+				MaxItems:    1,
+				Description: "advanced consumer configuration.",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"partition_hash_status": {
+							Type:        schema.TypeBool,
+							Optional:    true,
+							Description: "ckafka partition hash status, default false.",
+						},
+						"partition_fields": {
+							Type: schema.TypeSet,
+							Elem: &schema.Schema{
+								Type: schema.TypeString,
+							},
+							Optional:    true,
+							Description: "list of fields for hash calculation, max 5 fields.",
+						},
+					},
+				},
+			},
 		},
 	}
 }
@@ -185,6 +227,29 @@ func resourceTencentCloudClsCkafkaConsumerCreate(d *schema.ResourceData, meta in
 
 	if v, ok := d.GetOkExists("compression"); ok {
 		request.Compression = helper.IntInt64(v.(int))
+	}
+
+	if v, ok := d.GetOk("role_arn"); ok {
+		request.RoleArn = helper.String(v.(string))
+	}
+
+	if v, ok := d.GetOk("external_id"); ok {
+		request.ExternalId = helper.String(v.(string))
+	}
+
+	if dMap, ok := helper.InterfacesHeadMap(d, "advanced_config"); ok {
+		advancedConfig := cls.AdvancedConsumerConfiguration{}
+		if v, ok := dMap["partition_hash_status"]; ok {
+			advancedConfig.PartitionHashStatus = helper.Bool(v.(bool))
+		}
+		if v, ok := dMap["partition_fields"]; ok {
+			partitionFieldsSet := v.(*schema.Set).List()
+			for i := range partitionFieldsSet {
+				partitionField := partitionFieldsSet[i].(string)
+				advancedConfig.PartitionFields = append(advancedConfig.PartitionFields, &partitionField)
+			}
+		}
+		request.AdvancedConfig = &advancedConfig
 	}
 
 	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
@@ -291,6 +356,10 @@ func resourceTencentCloudClsCkafkaConsumerRead(d *schema.ResourceData, meta inte
 		_ = d.Set("compression", ckafkaConsumer.Compression)
 	}
 
+	if ckafkaConsumer.Effective != nil {
+		_ = d.Set("effective", ckafkaConsumer.Effective)
+	}
+
 	return nil
 }
 
@@ -307,7 +376,7 @@ func resourceTencentCloudClsCkafkaConsumerUpdate(d *schema.ResourceData, meta in
 	request.TopicId = &topicId
 
 	needChange := false
-	mutableArgs := []string{"need_content", "content", "ckafka", "compression"}
+	mutableArgs := []string{"need_content", "content", "ckafka", "compression", "effective", "role_arn", "external_id", "advanced_config"}
 
 	for _, v := range mutableArgs {
 		if d.HasChange(v) {
@@ -368,6 +437,33 @@ func resourceTencentCloudClsCkafkaConsumerUpdate(d *schema.ResourceData, meta in
 
 		if v, ok := d.GetOkExists("compression"); ok {
 			request.Compression = helper.IntInt64(v.(int))
+		}
+
+		if v, ok := d.GetOkExists("effective"); ok {
+			request.Effective = helper.Bool(v.(bool))
+		}
+
+		if v, ok := d.GetOk("role_arn"); ok {
+			request.RoleArn = helper.String(v.(string))
+		}
+
+		if v, ok := d.GetOk("external_id"); ok {
+			request.ExternalId = helper.String(v.(string))
+		}
+
+		if dMap, ok := helper.InterfacesHeadMap(d, "advanced_config"); ok {
+			advancedConfig := cls.AdvancedConsumerConfiguration{}
+			if v, ok := dMap["partition_hash_status"]; ok {
+				advancedConfig.PartitionHashStatus = helper.Bool(v.(bool))
+			}
+			if v, ok := dMap["partition_fields"]; ok {
+				partitionFieldsSet := v.(*schema.Set).List()
+				for i := range partitionFieldsSet {
+					partitionField := partitionFieldsSet[i].(string)
+					advancedConfig.PartitionFields = append(advancedConfig.PartitionFields, &partitionField)
+				}
+			}
+			request.AdvancedConfig = &advancedConfig
 		}
 
 		err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
