@@ -23,6 +23,12 @@ func ResourceTencentCloudClsNoticeContent() *schema.Resource {
 			State: schema.ImportStatePassthrough,
 		},
 		Schema: map[string]*schema.Schema{
+			"notice_content_id": {
+				Type:        schema.TypeString,
+				Computed:    true,
+				Description: "Notice content ID.",
+			},
+
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
@@ -198,6 +204,8 @@ func resourceTencentCloudClsNoticeContentCreate(d *schema.ResourceData, meta int
 
 	d.SetId(noticeContentId)
 
+	_ = d.Set("notice_content_id", noticeContentId)
+
 	return resourceTencentCloudClsNoticeContentRead(d, meta)
 }
 
@@ -223,6 +231,11 @@ func resourceTencentCloudClsNoticeContentRead(d *schema.ResourceData, meta inter
 		log.Printf("[WARN]%s resource `cls_notice_content` [%s] not found, please check if it has been deleted.\n", logId, d.Id())
 		return nil
 	}
+
+	if respData.NoticeContentId != nil {
+		_ = d.Set("notice_content_id", respData.NoticeContentId)
+	}
+
 	if respData.Name != nil {
 		_ = d.Set("name", respData.Name)
 	}

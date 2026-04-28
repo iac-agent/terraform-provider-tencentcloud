@@ -70,7 +70,7 @@ The `trigger_content` object of `notice_contents` supports the following:
 In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
-
+* `notice_content_id` - Notice content ID.
 
 
 ## Import
