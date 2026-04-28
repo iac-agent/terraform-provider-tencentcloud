@@ -103,6 +103,32 @@ func ResourceTencentCloudClsCloudProductLogTaskV2() *schema.Resource {
 				Optional:    true,
 				Description: "Indicate whether to forcibly delete the corresponding logset and topic. If set to true, it will be forcibly deleted. Default is false.",
 			},
+
+			"tags": {
+				Type:        schema.TypeMap,
+				Optional:    true,
+				Description: "Tag description list. By specifying this parameter, you can bind tags to the corresponding topic at the same time. Maximum 10 tag key-value pairs are supported, and the same resource can only be bound to the same tag key.",
+			},
+
+			"is_delete_topic": {
+				Type:        schema.TypeBool,
+				Optional:    true,
+				Default:     false,
+				Description: "Indicate whether to delete the associated topic when deleting the log collection. If set to true, the associated topic will be deleted.",
+			},
+
+			"is_delete_logset": {
+				Type:        schema.TypeBool,
+				Optional:    true,
+				Default:     false,
+				Description: "Indicate whether to delete the associated logset when deleting the log collection. If set to true, the associated logset will be deleted. If the logset still has topics, it will not be deleted.",
+			},
+
+			"status": {
+				Type:        schema.TypeInt,
+				Computed:    true,
+				Description: "Task status. Valid values: -1 (creating), 0 (creating), 1 (created), 2 (deleting), 3 (deleted).",
+			},
 		},
 	}
 }
@@ -165,6 +191,18 @@ func resourceTencentCloudClsCloudProductLogTaskV2Create(d *schema.ResourceData, 
 		request.TopicId = helper.String(v.(string))
 	}
 
+	if tags := helper.GetTags(d, "tags"); len(tags) > 0 {
+		for k, v := range tags {
+			key := k
+			value := v
+			request.Tags = append(request.Tags, &clsv20201016.Tag{
+				Key:   &key,
+				Value: &value,
+			})
+		}
+	}
+
+	var createResponse *clsv20201016.CreateCloudProductLogCollectionResponse
 	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
 		result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseClsV20201016Client().CreateCloudProductLogCollectionWithContext(ctx, request)
 		if e != nil {
@@ -177,12 +215,17 @@ func resourceTencentCloudClsCloudProductLogTaskV2Create(d *schema.ResourceData, 
 			return resource.NonRetryableError(fmt.Errorf("Create cls cloud product log task failed, Response is nil."))
 		}
 
+		createResponse = result
 		return nil
 	})
 
 	if err != nil {
 		log.Printf("[CRITAL]%s create cls cloud product log task failed, reason:%+v", logId, err)
 		return err
+	}
+
+	if createResponse != nil && createResponse.Response != nil && createResponse.Response.Status != nil {
+		_ = d.Set("status", int(*createResponse.Response.Status))
 	}
 
 	// wait
@@ -276,6 +319,22 @@ func resourceTencentCloudClsCloudProductLogTaskV2Read(d *schema.ResourceData, me
 
 	_ = d.Set("force_delete", deleteForce)
 
+	if respData.Tasks[0].Status != nil {
+		_ = d.Set("status", int(*respData.Tasks[0].Status))
+	}
+
+	var isDeleteTopic bool
+	if v, ok := d.GetOkExists("is_delete_topic"); ok {
+		isDeleteTopic = v.(bool)
+	}
+	_ = d.Set("is_delete_topic", isDeleteTopic)
+
+	var isDeleteLogset bool
+	if v, ok := d.GetOkExists("is_delete_logset"); ok {
+		isDeleteLogset = v.(bool)
+	}
+	_ = d.Set("is_delete_logset", isDeleteLogset)
+
 	return nil
 }
 
@@ -288,7 +347,7 @@ func resourceTencentCloudClsCloudProductLogTaskV2Update(d *schema.ResourceData, 
 		ctx   = tccommon.NewResourceLifeCycleHandleFuncContext(context.Background(), logId, d, meta)
 	)
 
-	immutableArgs := []string{"cls_region"}
+	immutableArgs := []string{"cls_region", "tags", "is_delete_topic", "is_delete_logset"}
 	for _, v := range immutableArgs {
 		if d.HasChange(v) {
 			return fmt.Errorf("argument `%s` cannot be changed", v)
@@ -369,6 +428,15 @@ func resourceTencentCloudClsCloudProductLogTaskV2Delete(d *schema.ResourceData, 
 	request.AssumerName = helper.String(assumerName)
 	request.LogType = helper.String(logType)
 	request.CloudProductRegion = helper.String(cloudProductRegion)
+
+	if v, ok := d.GetOk("is_delete_topic"); ok {
+		request.IsDeleteTopic = helper.Bool(v.(bool))
+	}
+
+	if v, ok := d.GetOk("is_delete_logset"); ok {
+		request.IsDeleteLogset = helper.Bool(v.(bool))
+	}
+
 	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
 		result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseClsV20201016Client().DeleteCloudProductLogCollectionWithContext(ctx, request)
 		if e != nil {
