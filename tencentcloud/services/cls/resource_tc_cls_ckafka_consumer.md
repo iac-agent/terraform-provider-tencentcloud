@@ -29,6 +29,18 @@ resource "tencentcloud_cls_ckafka_consumer" "ckafka_consumer" {
     tag_json_not_tiled = true
     timestamp_accuracy = 2
   }
+
+  effective    = true
+  role_arn     = "qcs::cam::uin/100000000001:roleName/MyRole"
+  external_id  = "myExternalId"
+
+  advanced_config {
+    partition_hash_status = true
+    partition_fields      = [
+      "__SOURCE__",
+      "__FILENAME__",
+    ]
+  }
 }
 ```
 
