@@ -28,76 +28,66 @@ func ResourceTencentCloudTeoDnsRecord21() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Zone id.",
+				Description: "Site ID. This field is required.",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "DNS record name. if the domain name is in chinese, korean, or japanese, it needs to be converted to punycode before input.",
+				Description: "DNS record name. If the domain is in Chinese, Korean, or Japanese, convert it to punycode before input.",
 			},
 
 			"type": {
 				Type:     schema.TypeString,
 				Required: true,
-				Description: "DNS record type. valid values are:\n" +
-					"	- A: points the domain name to an external ipv4 address, such as 8.8.8.8;\n" +
-					"	- AAAA: points the domain name to an external ipv6 address;\n" +
-					"	- MX: used for email servers. when there are multiple mx records, the lower the priority value, the higher the priority;\n" +
-					"	- CNAME: points the domain name to another domain name, which then resolves to the final ip address;\n" +
-					"	- TXT: identifies and describes the domain name, commonly used for domain verification and spf records (anti-spam);\n" +
-					"	- NS: if you need to delegate the subdomain to another dns service provider for resolution, you need to add an ns record. the root domain cannot add ns records;\n" +
-					"	- CAA: specifies the ca that can issue certificates for this site;\n" +
-					"	- SRV: identifies a server using a service, commonly used in microsoft's directory management.\n" +
-					"Different record types, such as SRV and CAA records, have different requirements for host record names and record value formats. for detailed descriptions and format examples of each record type, please refer to: [introduction to dns record types](https://intl.cloud.tencent.com/document/product/1552/90453?from_cn_redirect=1#2f681022-91ab-4a9e-ac3d-0a6c454d954e).",
+				Description: "DNS record type. Valid values: A, AAAA, MX, CNAME, TXT, NS, CAA, SRV." +
+					" Different record types have different requirements for the host record name and record value format. For details, see: [DNS Record Types](https://cloud.tencent.com/document/product/1552/90453#2f681022-91ab-4a9e-ac3d-0a6c454d954e).",
 			},
 
 			"content": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "DNS record content. fill in the corresponding content according to the type value. if the domain name is in chinese, korean, or japanese, it needs to be converted to punycode before input.",
+				Description: "DNS record content. Fill in the corresponding content according to the Type value. If the domain is in Chinese, Korean, or Japanese, convert it to punycode before input.",
 			},
 
 			"location": {
 				Type:        schema.TypeString,
 				Computed:    true,
 				Optional:    true,
-				Description: "DNS record resolution route. if not specified, the default is DEFAULT, which means the default resolution route and is effective in all regions.\n\n- resolution route configuration is only applicable when type (dns record type) is A, AAAA, or CNAME.\n- resolution route configuration is only applicable to standard version and enterprise edition packages. for valid values, please refer to: [resolution routes and corresponding code enumeration](https://intl.cloud.tencent.com/document/product/1552/112542?from_cn_redirect=1).",
+				Description: "DNS record resolution line. Default is Default, representing all regions. Resolution line configuration only applies when Type is A, AAAA, or CNAME. For standard and enterprise editions only. For valid values, see: [Resolution Lines and Codes](https://cloud.tencent.com/document/product/1552/112542).",
 			},
 
 			"ttl": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Cache time. users can specify a value range of 60-86400. the smaller the value, the faster the modification records will take effect in all regions. default value: 300. unit: seconds.",
+				Description: "Cache time in seconds. Valid range: 60-86400. Smaller values mean faster propagation. Default: 300.",
 			},
 
 			"weight": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "DNS record weight. users can specify a value range of -1 to 100. a value of 0 means no resolution. if not specified, the default is -1, which means no weight is set. weight configuration is only applicable when type (dns record type) is A, AAAA, or CNAME. note: for the same subdomain, different dns records with the same resolution route should either all have weights set or none have weights set.",
+				Description: "DNS record weight. Valid range: -1 to 100. 0 means no resolution, -1 means no weight. Weight configuration only applies when Type is A, AAAA, or CNAME. Note: DNS records under the same subdomain with the same resolution line should either all have weights set or all have weights unset.",
 			},
 
 			"priority": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "MX record priority, which takes effect only when type (dns record type) is MX. the smaller the value, the higher the priority. users can specify a value range of 0-50. the default value is 0 if not specified.",
+				Description: "MX record priority. Only effective when Type is MX. Lower values indicate higher priority. Valid range: 0-50. Default: 0.",
 			},
 
 			"record_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "DNS record id.",
+				Description: "DNS record ID.",
 			},
 
 			"status": {
-				Type:     schema.TypeString,
-				Computed: true,
-				Description: "DNS record resolution status, the following values:\n" +
-					"	- enable: has taken effect;\n" +
-					"	- disable: has been disabled.",
+				Type:        schema.TypeString,
+				Computed:    true,
+				Description: "DNS record resolution status. Valid values: enable (has taken effect), disable (has been disabled).",
 			},
 
 			"created_on": {
@@ -109,7 +99,77 @@ func ResourceTencentCloudTeoDnsRecord21() *schema.Resource {
 			"modified_on": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Modify time.",
+				Description: "Last modification time.",
+			},
+
+			"dns_records": {
+				Type:        schema.TypeList,
+				Computed:    true,
+				Description: "List of DNS records.",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"zone_id": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Site ID. Note: ZoneId is output-only in ModifyDnsRecords and will be ignored if passed as input.",
+						},
+						"record_id": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "DNS record ID.",
+						},
+						"name": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "DNS record name.",
+						},
+						"type": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "DNS record type. Valid values: A, AAAA, MX, CNAME, TXT, NS, CAA, SRV.",
+						},
+						"location": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "DNS record resolution line. Default is Default, representing all regions. Resolution line configuration only applies when Type is A, AAAA, or CNAME. For valid values, see: [Resolution Lines and Codes](https://cloud.tencent.com/document/product/1552/112542).",
+						},
+						"content": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "DNS record content. Fill in the corresponding content according to the Type value.",
+						},
+						"ttl": {
+							Type:        schema.TypeInt,
+							Computed:    true,
+							Description: "Cache time in seconds. Valid range: 60-86400. Smaller values mean faster propagation.",
+						},
+						"weight": {
+							Type:        schema.TypeInt,
+							Computed:    true,
+							Description: "DNS record weight. Valid range: -1 to 100. -1 means no weight, 0 means no resolution. Weight configuration only applies when Type is A, AAAA, or CNAME.",
+						},
+						"priority": {
+							Type:        schema.TypeInt,
+							Computed:    true,
+							Description: "MX record priority. Valid range: 0-50. Lower values indicate higher priority.",
+						},
+						"status": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "DNS record resolution status. Valid values: enable (has taken effect), disable (has been disabled). Note: Status is output-only in ModifyDnsRecords and will be ignored if passed as input.",
+						},
+						"created_on": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Creation time. Note: CreatedOn is output-only in ModifyDnsRecords and will be ignored if passed as input.",
+						},
+						"modified_on": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Last modification time. Note: ModifiedOn is output-only in ModifyDnsRecords and will be ignored if passed as input.",
+						},
+					},
+				},
 			},
 		},
 	}
