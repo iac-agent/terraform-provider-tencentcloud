@@ -4,12 +4,12 @@ layout: "tencentcloud"
 page_title: "TencentCloud: tencentcloud_teo_dns_record_22"
 sidebar_current: "docs-tencentcloud-resource-teo_dns_record_22"
 description: |-
-  Provides a resource to create a TEO (EdgeOne) DNS record
+  Provides a resource to create a TEO (EdgeOne) DNS record.
 ---
 
 # tencentcloud_teo_dns_record_22
 
-Provides a resource to create a TEO (EdgeOne) DNS record
+Provides a resource to create a TEO (EdgeOne) DNS record.
 
 ## Example Usage
 
@@ -31,29 +31,21 @@ resource "tencentcloud_teo_dns_record_22" "example" {
 
 The following arguments are supported:
 
-* `content` - (Required, String) DNS record content. fill in the corresponding content according to the type value. if the domain name is in chinese, korean, or japanese, it needs to be converted to punycode before input.
-* `name` - (Required, String) DNS record name. if the domain name is in chinese, korean, or japanese, it needs to be converted to punycode before input.
-* `type` - (Required, String) DNS record type. valid values are:
-	- A: points the domain name to an external ipv4 address, such as 8.8.8.8;
-	- AAAA: points the domain name to an external ipv6 address;
-	- MX: used for email servers. when there are multiple mx records, the lower the priority value, the higher the priority;
-	- CNAME: points the domain name to another domain name, which then resolves to the final ip address;
-	- TXT: identifies and describes the domain name, commonly used for domain verification and spf records (anti-spam);
-	- NS: if you need to delegate the subdomain to another dns service provider for resolution, you need to add an ns record. the root domain cannot add ns records;
-	- CAA: specifies the ca that can issue certificates for this site;
-	- SRV: identifies a server using a service, commonly used in microsoft's directory management.
-Different record types, such as SRV and CAA records, have different requirements for host record names and record value formats. for detailed descriptions and format examples of each record type, please refer to: [introduction to dns record types](https://intl.cloud.tencent.com/document/product/1552/90453?from_cn_redirect=1#2f681022-91ab-4a9e-ac3d-0a6c454d954e).
-* `zone_id` - (Required, String, ForceNew) Zone id.
-* `location` - (Optional, String) DNS record resolution route. if not specified, the default is DEFAULT, which means the default resolution route and is effective in all regions.
+* `content` - (Required, String) DNS record content. Fill in the corresponding content based on the Type value. If the domain name is in Chinese, Korean, or Japanese, it needs to be converted to punycode before input.
+* `name` - (Required, String) DNS record name. If the domain name is in Chinese, Korean, or Japanese, it needs to be converted to punycode before input.
+* `type` - (Required, String) DNS record type. Valid values: <li>A: Points the domain to an external IPv4 address, e.g., 8.8.8.8;</li><li>AAAA: Points the domain to an external IPv6 address;</li><li>MX: Used for mail servers. Lower priority values are preferred when multiple MX records exist;</li><li>CNAME: Points the domain to another domain, which then resolves to the final IP address;</li><li>TXT: Identifies and describes the domain, commonly used for domain verification and SPF records (anti-spam);</li><li>NS: Required when delegating subdomain resolution to other DNS providers. NS records cannot be added to the root domain;</li><li>CAA: Specifies the CA that can issue certificates for this site;</li><li>SRV: Identifies a server using a specific service, commonly found in Microsoft system directory management.</li>
+Different record types (e.g., SRV, CAA) have different requirements for host record names and record value formats. For detailed descriptions and format examples of each record type, please refer to: [DNS Record Type Introduction](https://cloud.tencent.com/document/product/1552/90453#2f681022-91ab-4a9e-ac3d-0a6c454d954e).
+* `zone_id` - (Required, String, ForceNew) Site ID. Cannot be null or empty string.
+* `location` - (Optional, String) DNS record resolution line. Defaults to Default, which means the default resolution line that takes effect for all regions.
 
-- resolution route configuration is only applicable when type (dns record type) is A, AAAA, or CNAME.
-- resolution route configuration is only applicable to standard version and enterprise edition packages. for valid values, please refer to: [resolution routes and corresponding code enumeration](https://intl.cloud.tencent.com/document/product/1552/112542?from_cn_redirect=1).
-* `priority` - (Optional, Int) MX record priority, which takes effect only when type (dns record type) is MX. the smaller the value, the higher the priority. users can specify a value range of 0-50. the default value is 0 if not specified.
+- Resolution line configuration only applies when Type (DNS record type) is A, AAAA, or CNAME.
+- Resolution line configuration only applies to Standard and Enterprise editions. For valid values, please refer to: [Resolution Line and Corresponding Code Enumeration](https://cloud.tencent.com/document/product/1552/112542).
+* `priority` - (Optional, Int) MX record priority. This parameter only takes effect when Type (DNS record type) is MX. The smaller the value, the higher the priority. The user-specified value range is 0~50. Default is 0.
 * `status` - (Optional, String) DNS record resolution status, the following values:
 	- enable: has taken effect;
 	- disable: has been disabled.
-* `ttl` - (Optional, Int) Cache time. users can specify a value range of 60-86400. the smaller the value, the faster the modification records will take effect in all regions. default value: 300. unit: seconds.
-* `weight` - (Optional, Int) DNS record weight. users can specify a value range of -1 to 100. a value of 0 means no resolution. if not specified, the default is -1, which means no weight is set. weight configuration is only applicable when type (dns record type) is A, AAAA, or CNAME. note: for the same subdomain, different dns records with the same resolution route should either all have weights set or none have weights set.
+* `ttl` - (Optional, Int) Cache time. The user-specified value range is 60~86400. The smaller the value, the faster the record modification takes effect in each region. Default is 300, in seconds.
+* `weight` - (Optional, Int) DNS record weight. The user-specified value range is -1~100. Setting to 0 means no resolution. Default is -1, which means no weight is set. Weight configuration only applies when Type (DNS record type) is A, AAAA, or CNAME.<br>Note: Under the same subdomain, different DNS records with the same resolution line should either all have weights set or all have no weights set.
 
 ## Attributes Reference
 
@@ -61,6 +53,27 @@ In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
 * `created_on` - Creation time.
+* `dns_records` - List of DNS records.
+  * `content` - DNS record content. Fill in the corresponding content based on the Type value.
+  * `created_on` - Creation time.<br>Note: CreatedOn is only used as an output parameter. It cannot be used as an input parameter in ModifyDnsRecords. If this parameter is provided, it will be ignored.
+  * `location` - DNS record resolution line. Defaults to Default, which means the default resolution line that takes effect for all regions.<br>Resolution line configuration only applies when Type (DNS record type) is A, AAAA, or CNAME.<br>For valid values, please refer to: [Resolution Line and Corresponding Code Enumeration](https://cloud.tencent.com/document/product/1552/112542).
+  * `modified_on` - Modification time.<br>Note: ModifiedOn is only used as an output parameter. It cannot be used as an input parameter in ModifyDnsRecords. If this parameter is provided, it will be ignored.
+  * `name` - DNS record name.
+  * `priority` - MX record priority. Value range is 0~50. The smaller the value, the higher the priority.
+  * `record_id` - DNS record ID.
+  * `status` - DNS record resolution status. Valid values: <li>enable: has taken effect;</li><li>disable: has been disabled.</li>Note: Status is only used as an output parameter. It cannot be used as an input parameter in ModifyDnsRecords. If this parameter is provided, it will be ignored.
+  * `ttl` - Cache time. Value range is 60~86400. The smaller the value, the faster the record modification takes effect in each region, in seconds.
+  * `type` - DNS record type. Valid values:
+<li>A: Points the domain to an external IPv4 address, e.g., 8.8.8.8;</li>
+<li>AAAA: Points the domain to an external IPv6 address;</li>
+<li>MX: Used for mail servers. Lower priority values are preferred when multiple MX records exist;</li>
+<li>CNAME: Points the domain to another domain, which then resolves to the final IP address;</li>
+<li>TXT: Identifies and describes the domain, commonly used for domain verification and SPF records (anti-spam);</li>
+<li>NS: Required when delegating subdomain resolution to other DNS providers. NS records cannot be added to the root domain;</li>
+<li>CAA: Specifies the CA that can issue certificates for this site;</li>
+<li>SRV: Identifies a server using a specific service, commonly found in Microsoft system directory management.</li>.
+  * `weight` - DNS record weight. Value range is -1~100. -1 means no weight is assigned, 0 means no resolution. Weight configuration only applies when Type (DNS record type) is A, AAAA, or CNAME.
+  * `zone_id` - Site ID.<br>Note: ZoneId is only used as an output parameter. It cannot be used as an input parameter in ModifyDnsRecords. If this parameter is provided, it will be ignored.
 * `modified_on` - Modify time.
 * `record_id` - DNS record ID.
 
