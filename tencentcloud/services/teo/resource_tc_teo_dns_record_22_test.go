@@ -44,9 +44,9 @@ func TestTeoDnsRecord22_Create_Success(t *testing.T) {
 					Type:       ptrString("A"),
 					Content:    ptrString("1.2.3.5"),
 					Location:   ptrString("Default"),
-					TTL:        ptrInt64(300),
-					Weight:     ptrInt64(-1),
-					Priority:   ptrInt64(5),
+					TTL:        ptrInt64DNS22(300),
+					Weight:     ptrInt64DNS22(-1),
+					Priority:   ptrInt64DNS22(5),
 					Status:     ptrString("enable"),
 					CreatedOn:  ptrString("2024-01-01T00:00:00Z"),
 					ModifiedOn: ptrString("2024-01-01T00:00:00Z"),
@@ -121,9 +121,9 @@ func TestTeoDnsRecord22_Read_Success(t *testing.T) {
 					Type:       ptrString("A"),
 					Content:    ptrString("1.2.3.5"),
 					Location:   ptrString("Default"),
-					TTL:        ptrInt64(300),
-					Weight:     ptrInt64(-1),
-					Priority:   ptrInt64(5),
+					TTL:        ptrInt64DNS22(300),
+					Weight:     ptrInt64DNS22(-1),
+					Priority:   ptrInt64DNS22(5),
 					Status:     ptrString("enable"),
 					CreatedOn:  ptrString("2024-01-01T00:00:00Z"),
 					ModifiedOn: ptrString("2024-01-01T00:00:00Z"),
@@ -219,9 +219,9 @@ func TestTeoDnsRecord22_Update_ModifyDnsRecords(t *testing.T) {
 					Type:       ptrString("A"),
 					Content:    ptrString("1.2.3.6"),
 					Location:   ptrString("Default"),
-					TTL:        ptrInt64(300),
-					Weight:     ptrInt64(-1),
-					Priority:   ptrInt64(5),
+					TTL:        ptrInt64DNS22(300),
+					Weight:     ptrInt64DNS22(-1),
+					Priority:   ptrInt64DNS22(5),
 					Status:     ptrString("enable"),
 					CreatedOn:  ptrString("2024-01-01T00:00:00Z"),
 					ModifiedOn: ptrString("2024-01-01T01:00:00Z"),
@@ -287,9 +287,9 @@ func TestTeoDnsRecord22_Update_ModifyDnsRecordsStatus(t *testing.T) {
 					Type:       ptrString("A"),
 					Content:    ptrString("1.2.3.5"),
 					Location:   ptrString("Default"),
-					TTL:        ptrInt64(300),
-					Weight:     ptrInt64(-1),
-					Priority:   ptrInt64(5),
+					TTL:        ptrInt64DNS22(300),
+					Weight:     ptrInt64DNS22(-1),
+					Priority:   ptrInt64DNS22(5),
 					Status:     ptrString("disable"),
 					CreatedOn:  ptrString("2024-01-01T00:00:00Z"),
 					ModifiedOn: ptrString("2024-01-01T01:00:00Z"),
@@ -451,6 +451,6 @@ func TestTeoDnsRecord22_Schema(t *testing.T) {
 	assert.True(t, recordId.Computed)
 }
 
-func ptrInt64(i int64) *int64 {
+func ptrInt64DNS22(i int64) *int64 {
 	return &i
 }
