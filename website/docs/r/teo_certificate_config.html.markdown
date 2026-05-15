@@ -4,12 +4,12 @@ layout: "tencentcloud"
 page_title: "TencentCloud: tencentcloud_teo_certificate_config"
 sidebar_current: "docs-tencentcloud-resource-teo_certificate_config"
 description: |-
-  Provides a resource to create a teo certificate
+  Provides a resource to create a TEO certificate config
 ---
 
 # tencentcloud_teo_certificate_config
 
-Provides a resource to create a teo certificate
+Provides a resource to create a TEO certificate config
 
 ## Example Usage
 
@@ -35,19 +35,50 @@ resource "tencentcloud_teo_certificate_config" "certificate" {
 }
 ```
 
+### Configure SSL certificate with edge mutual TLS
+
+```hcl
+resource "tencentcloud_teo_certificate_config" "certificate" {
+  host    = "test.tencentcloud-terraform-provider.cn"
+  mode    = "sslcert"
+  zone_id = "zone-2o1t24kgy362"
+
+  server_cert_info {
+    cert_id = "8xiUJIJd"
+  }
+
+  client_cert_info {
+    switch = "on"
+    cert_infos {
+      cert_id = "aXZJd2x"
+    }
+  }
+}
+```
+
 ## Argument Reference
 
 The following arguments are supported:
 
 * `host` - (Required, String, ForceNew) Acceleration domain name that needs to modify the certificate configuration.
 * `zone_id` - (Required, String, ForceNew) Site ID.
+* `client_cert_info` - (Optional, List) Client CA certificate configuration for edge mutual TLS. When used as an input parameter in ModifyHostsCertificate, you only need to provide the Switch and the CertId of the corresponding certificate.
 * `mode` - (Optional, String) Mode of configuring the certificate, the values are: `disable`: Do not configure the certificate; `eofreecert`: Configure EdgeOne free certificate; `sslcert`: Configure SSL certificate. If not filled in, the default value is `disable`.
 * `server_cert_info` - (Optional, List) SSL certificate configuration, this parameter takes effect only when mode = sslcert, just enter the corresponding CertId. You can go to the SSL certificate list to view the CertId.
 * `upstream_cert_info` - (Optional, List) Configures the certificate presented by the EO node during origin-pull for mutual TLS authentication. Disabled by default; leaving the field blank will retain the current configuration. This feature is currently in beta testing. please [contact us](https://cloud.tencent.com/online-service) to request access.
 
+The `cert_infos` object of `client_cert_info` supports the following:
+
+* `cert_id` - (Required, String) Certificate ID, which originates from the SSL side. You can check the CertId from the SSL Certificate List.
+
 The `cert_infos` object of `upstream_mutual_tls` supports the following:
 
 * `cert_id` - (Required, String) Certificate ID, which originates from the SSL side. You can check the CertId from the [SSL Certificate List](https://console.cloud.tencent.com/ssl).
+
+The `client_cert_info` object supports the following:
+
+* `switch` - (Required, String) Mutual authentication configuration switch, the values are: `on`: enable; `off`: disable.
+* `cert_infos` - (Optional, List) Client certificate list. When used as an input parameter in ModifyHostsCertificate, you only need to provide the CertId of the corresponding certificate.
 
 The `server_cert_info` object supports the following:
 

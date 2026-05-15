@@ -93,6 +93,68 @@ func ResourceTencentCloudTeoCertificateConfig() *schema.Resource {
 				},
 			},
 
+			"client_cert_info": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				Computed:    true,
+				MaxItems:    1,
+				Description: "Client CA certificate configuration for edge mutual TLS. When used as an input parameter in ModifyHostsCertificate, you only need to provide the Switch and the CertId of the corresponding certificate.",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"switch": {
+							Type:        schema.TypeString,
+							Required:    true,
+							Description: "Mutual authentication configuration switch, the values are: `on`: enable; `off`: disable.",
+						},
+						"cert_infos": {
+							Type:        schema.TypeList,
+							Optional:    true,
+							Computed:    true,
+							Description: "Client certificate list. When used as an input parameter in ModifyHostsCertificate, you only need to provide the CertId of the corresponding certificate.",
+							Elem: &schema.Resource{
+								Schema: map[string]*schema.Schema{
+									"cert_id": {
+										Type:        schema.TypeString,
+										Required:    true,
+										Description: "Certificate ID, which originates from the SSL side. You can check the CertId from the SSL Certificate List.",
+									},
+									"alias": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "Alias of the certificate.",
+									},
+									"type": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "Type of the certificate. Values: `default`: Default certificate; `upload`: Specified certificate; `managed`: Tencent Cloud-managed certificate.",
+									},
+									"expire_time": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "The certificate expiration time.",
+									},
+									"deploy_time": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "Time when the certificate is deployed.",
+									},
+									"sign_algo": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "Signature algorithm.",
+									},
+									"status": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "Certificate status. Values: `deployed`: Deployed; `processing`: Processing; `applying`: Applying; `failed`: Failed; `issued`: Issued.",
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+
 			"upstream_cert_info": {
 				Type:        schema.TypeList,
 				Optional:    true,
