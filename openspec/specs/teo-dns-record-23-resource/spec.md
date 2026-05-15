@@ -1,0 +1,70 @@
+## ADDED Requirements
+
+### Requirement: Create TEO DNS Record
+The system SHALL allow users to create a TEO DNS record by calling the CreateDnsRecord API with zone_id, name, type, content, and optional location, ttl, weight, priority parameters. Upon successful creation, the resource SHALL set its ID to the composite format `zone_id#record_id` and store the returned record_id.
+
+#### Scenario: Successful DNS record creation
+- **WHEN** user creates a tencentcloud_teo_dns_record_23 resource with zone_id, name="a.example.com", type="A", content="1.2.3.4"
+- **THEN** the system calls CreateDnsRecord API, sets resource ID to `zone_id#record_id`, and stores the returned record_id
+
+#### Scenario: DNS record creation with all optional parameters
+- **WHEN** user creates a resource with zone_id, name, type, content, location="Default", ttl=300, weight=-1, priority=0
+- **THEN** the system calls CreateDnsRecord API with all parameters and sets the composite ID
+
+#### Scenario: DNS record creation fails with nil response
+- **WHEN** CreateDnsRecord API returns nil response or nil RecordId
+- **THEN** the system returns a NonRetryableError indicating creation failure
+
+### Requirement: Read TEO DNS Record
+The system SHALL allow users to read a TEO DNS record by calling TeoService.DescribeTeoDnsRecordById with zone_id and record_id parsed from the composite ID. The system SHALL set all schema fields from the API response, with nil checks before setting each field.
+
+#### Scenario: Successful DNS record read
+- **WHEN** user reads a tencentcloud_teo_dns_record_23 resource with valid composite ID
+- **THEN** the system parses zone_id and record_id from the ID, calls DescribeTeoDnsRecordById, and sets all fields from the response
+
+#### Scenario: DNS record not found
+- **WHEN** DescribeTeoDnsRecordById returns nil for a given zone_id and record_id
+- **THEN** the system sets resource ID to empty string and logs a warning
+
+### Requirement: Update TEO DNS Record
+The system SHALL allow users to update a TEO DNS record by calling the ModifyDnsRecords API when any of the mutable arguments (name, type, content, location, ttl, weight, priority) change. The system SHALL only call ModifyDnsRecords when at least one mutable field has changed.
+
+#### Scenario: Update DNS record name
+- **WHEN** user updates the name field of a tencentcloud_teo_dns_record_23 resource
+- **THEN** the system detects the change, calls ModifyDnsRecords with the updated DnsRecord containing RecordId and new name
+
+#### Scenario: Update multiple DNS record fields
+- **WHEN** user updates both type and content fields
+- **THEN** the system calls ModifyDnsRecords with a DnsRecord containing RecordId and both updated fields
+
+#### Scenario: No mutable fields changed
+- **WHEN** user updates only computed/ForceNew fields
+- **THEN** the system skips the ModifyDnsRecords API call and directly calls Read
+
+### Requirement: Delete TEO DNS Record
+The system SHALL allow users to delete a TEO DNS record by calling the DeleteDnsRecords API with zone_id and record_id parsed from the composite ID.
+
+#### Scenario: Successful DNS record deletion
+- **WHEN** user deletes a tencentcloud_teo_dns_record_23 resource
+- **THEN** the system parses zone_id and record_id from the composite ID, calls DeleteDnsRecords with RecordIds containing the single record_id
+
+### Requirement: Import TEO DNS Record
+The system SHALL support importing existing TEO DNS records using the composite ID format `zone_id#record_id` via schema.ImportStatePassthrough.
+
+#### Scenario: Import existing DNS record
+- **WHEN** user imports a tencentcloud_teo_dns_record_23 resource with ID "zone-abc#rec-xyz"
+- **THEN** the system parses the composite ID and calls Read to populate the resource state
+
+### Requirement: Resource Registration
+The system SHALL register the tencentcloud_teo_dns_record_23 resource in provider.go and add documentation entry in provider.md.
+
+#### Scenario: Resource available in provider
+- **WHEN** the Terraform provider is initialized
+- **THEN** the tencentcloud_teo_dns_record_23 resource is registered and available for use
+
+### Requirement: Unit Tests
+The system SHALL include unit tests using gomonkey mock approach for the resource's CRUD operations, and the tests SHALL pass with `go test -gcflags=all=-l`.
+
+#### Scenario: Unit tests for CRUD operations
+- **WHEN** running `go test` with gomonkey mocks for CreateDnsRecord, DescribeDnsRecords, ModifyDnsRecords, DeleteDnsRecords
+- **THEN** all unit tests pass successfully
