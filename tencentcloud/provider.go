@@ -2088,6 +2088,7 @@ func Provider() *schema.Provider {
 			"tencentcloud_teo_dns_record_23":                                                        teo.ResourceTencentCloudTeoDnsRecord23(),
 			"tencentcloud_teo_bind_security_template":                                               teo.ResourceTencentCloudTeoBindSecurityTemplate(),
 			"tencentcloud_teo_plan":                                                                 teo.ResourceTencentCloudTeoPlan(),
+			"tencentcloud_teo_plan_v2":                                                              teo.ResourceTencentCloudTeoPlanV2(),
 			"tencentcloud_teo_content_identifier":                                                   teo.ResourceTencentCloudTeoContentIdentifier(),
 			"tencentcloud_teo_just_in_time_transcode_template":                                      teo.ResourceTencentCloudTeoJustInTimeTranscodeTemplate(),
 			"tencentcloud_teo_customize_error_page":                                                 teo.ResourceTencentCloudTeoCustomizeErrorPage(),
