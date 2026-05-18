@@ -57,6 +57,27 @@ In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
 * `created_on` - Creation time.
+* `dns_records` - DNS record list.
+  * `content` - DNS record content. fill in the corresponding content according to the type value.
+  * `created_on` - Creation time. note: CreatedOn is only used as an output parameter, and cannot be used as an input parameter in ModifyDnsRecords. if this parameter is passed, it will be ignored.
+  * `location` - DNS record resolution route. if not specified, the default is DEFAULT, which means the default resolution route and is effective in all regions. resolution route configuration is only applicable when type (dns record type) is A, AAAA, or CNAME. for valid values, please refer to: [resolution routes and corresponding code enumeration](https://intl.cloud.tencent.com/document/product/1552/112542?from_cn_redirect=1).
+  * `modified_on` - Modify time. note: ModifiedOn is only used as an output parameter, and cannot be used as an input parameter in ModifyDnsRecords. if this parameter is passed, it will be ignored.
+  * `name` - DNS record name.
+  * `priority` - MX record priority. value range 0-50. the smaller the value, the higher the priority.
+  * `record_id` - DNS record id.
+  * `status` - DNS record resolution status. valid values: enable: has taken effect; disable: has been disabled. note: Status is only used as an output parameter, and cannot be used as an input parameter in ModifyDnsRecords. if this parameter is passed, it will be ignored.
+  * `ttl` - Cache time. value range 60-86400. the smaller the value, the faster the modification records will take effect in all regions. unit: seconds.
+  * `type` - DNS record type. valid values are:
+	- A: points the domain name to an external ipv4 address, such as 8.8.8.8;
+	- AAAA: points the domain name to an external ipv6 address;
+	- MX: used for email servers. when there are multiple mx records, the lower the priority value, the higher the priority;
+	- CNAME: points the domain name to another domain name, which then resolves to the final ip address;
+	- TXT: identifies and describes the domain name, commonly used for domain verification and spf records (anti-spam);
+	- NS: if you need to delegate the subdomain to another dns service provider for resolution, you need to add an ns record. the root domain cannot add ns records;
+	- CAA: specifies the ca that can issue certificates for this site;
+	- SRV: identifies a server using a service, commonly used in microsoft's directory management.
+  * `weight` - DNS record weight. value range -1 to 100. -1 means no weight is assigned, 0 means no resolution. weight configuration is only applicable when type (dns record type) is A, AAAA, or CNAME.
+  * `zone_id` - Zone id. note: ZoneId is only used as an output parameter, and cannot be used as an input parameter in ModifyDnsRecords. if this parameter is passed, it will be ignored.
 * `modified_on` - Modify time.
 * `record_id` - DNS record id.
 * `status` - DNS record resolution status, the following values:

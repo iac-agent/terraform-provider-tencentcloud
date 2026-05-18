@@ -111,6 +111,84 @@ func ResourceTencentCloudTeoDnsRecord23() *schema.Resource {
 				Computed:    true,
 				Description: "Modify time.",
 			},
+
+			"dns_records": {
+				Type:        schema.TypeList,
+				Computed:    true,
+				Description: "DNS record list.",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"zone_id": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Zone id. note: ZoneId is only used as an output parameter, and cannot be used as an input parameter in ModifyDnsRecords. if this parameter is passed, it will be ignored.",
+						},
+						"record_id": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "DNS record id.",
+						},
+						"name": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "DNS record name.",
+						},
+						"type": {
+							Type:     schema.TypeString,
+							Computed: true,
+							Description: "DNS record type. valid values are:\n" +
+								"	- A: points the domain name to an external ipv4 address, such as 8.8.8.8;\n" +
+								"	- AAAA: points the domain name to an external ipv6 address;\n" +
+								"	- MX: used for email servers. when there are multiple mx records, the lower the priority value, the higher the priority;\n" +
+								"	- CNAME: points the domain name to another domain name, which then resolves to the final ip address;\n" +
+								"	- TXT: identifies and describes the domain name, commonly used for domain verification and spf records (anti-spam);\n" +
+								"	- NS: if you need to delegate the subdomain to another dns service provider for resolution, you need to add an ns record. the root domain cannot add ns records;\n" +
+								"	- CAA: specifies the ca that can issue certificates for this site;\n" +
+								"	- SRV: identifies a server using a service, commonly used in microsoft's directory management.",
+						},
+						"location": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "DNS record resolution route. if not specified, the default is DEFAULT, which means the default resolution route and is effective in all regions. resolution route configuration is only applicable when type (dns record type) is A, AAAA, or CNAME. for valid values, please refer to: [resolution routes and corresponding code enumeration](https://intl.cloud.tencent.com/document/product/1552/112542?from_cn_redirect=1).",
+						},
+						"content": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "DNS record content. fill in the corresponding content according to the type value.",
+						},
+						"ttl": {
+							Type:        schema.TypeInt,
+							Computed:    true,
+							Description: "Cache time. value range 60-86400. the smaller the value, the faster the modification records will take effect in all regions. unit: seconds.",
+						},
+						"weight": {
+							Type:        schema.TypeInt,
+							Computed:    true,
+							Description: "DNS record weight. value range -1 to 100. -1 means no weight is assigned, 0 means no resolution. weight configuration is only applicable when type (dns record type) is A, AAAA, or CNAME.",
+						},
+						"priority": {
+							Type:        schema.TypeInt,
+							Computed:    true,
+							Description: "MX record priority. value range 0-50. the smaller the value, the higher the priority.",
+						},
+						"status": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "DNS record resolution status. valid values: enable: has taken effect; disable: has been disabled. note: Status is only used as an output parameter, and cannot be used as an input parameter in ModifyDnsRecords. if this parameter is passed, it will be ignored.",
+						},
+						"created_on": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Creation time. note: CreatedOn is only used as an output parameter, and cannot be used as an input parameter in ModifyDnsRecords. if this parameter is passed, it will be ignored.",
+						},
+						"modified_on": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Modify time. note: ModifiedOn is only used as an output parameter, and cannot be used as an input parameter in ModifyDnsRecords. if this parameter is passed, it will be ignored.",
+						},
+					},
+				},
+			},
 		},
 	}
 }
