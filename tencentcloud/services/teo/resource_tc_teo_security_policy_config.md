@@ -257,6 +257,87 @@ resource "tencentcloud_teo_security_policy_config" "example" {
         enabled                            = "off"
       }
     }
+
+    bot_management {
+      enabled = "on"
+      custom_rules {
+        rules {
+          name      = "bot-custom-rule-1"
+          enabled   = "on"
+          priority  = 50
+          condition = "$${http.request.uri.path} contain ['/api']"
+          action {
+            security_action {
+              name = "Monitor"
+            }
+            weight = 80
+          }
+          action {
+            security_action {
+              name = "Deny"
+              deny_action_parameters {
+                block_ip         = "on"
+                block_ip_duration = "120s"
+              }
+            }
+            weight = 20
+          }
+        }
+      }
+
+      basic_bot_settings {
+        source_idc {
+          base_action {
+            name = "Monitor"
+          }
+          action_overrides {
+            ids = ["IDC_RULE_001"]
+            action {
+              name = "Deny"
+            }
+          }
+        }
+
+        search_engine_bots {
+          base_action {
+            name = "Allow"
+          }
+        }
+
+        known_bot_categories {
+          base_action {
+            name = "Monitor"
+          }
+        }
+
+        ip_reputation {
+          enabled = "on"
+          ip_reputation_group {
+            base_action {
+              name = "Deny"
+            }
+          }
+        }
+
+        bot_intelligence {
+          enabled = "on"
+          bot_ratings {
+            high_risk_bot_requests_action {
+              name = "Deny"
+            }
+            likely_bot_requests_action {
+              name = "Monitor"
+            }
+            verified_bot_requests_action {
+              name = "Allow"
+            }
+            human_requests_action {
+              name = "Allow"
+            }
+          }
+        }
+      }
+    }
   }
 }
 ```

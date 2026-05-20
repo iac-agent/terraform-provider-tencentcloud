@@ -1565,6 +1565,712 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 								},
 							},
 						},
+						"bot_management": {
+							Type:        schema.TypeList,
+							Optional:    true,
+							MaxItems:    1,
+							Description: "Bot management configuration.",
+							Elem: &schema.Resource{
+								Schema: map[string]*schema.Schema{
+									"enabled": {
+										Type:        schema.TypeString,
+										Required:    true,
+										Description: "Whether Bot management is enabled. valid values: <li>on: enabled</li> <li>off: disabled</li>.",
+									},
+									"custom_rules": {
+										Type:        schema.TypeList,
+										Optional:    true,
+										MaxItems:    1,
+										Description: "Bot custom rules configuration.",
+										Elem: &schema.Resource{
+											Schema: map[string]*schema.Schema{
+												"rules": {
+													Type:        schema.TypeList,
+													Optional:    true,
+													Description: "List of Bot custom rules.",
+													Elem: &schema.Resource{
+														Schema: map[string]*schema.Schema{
+															"id": {
+																Type:        schema.TypeString,
+																Computed:    true,
+																Description: "Rule ID. add a new rule when ID is empty; modify an existing rule when ID is specified; existing rules not included in the list will be deleted.",
+															},
+															"name": {
+																Type:        schema.TypeString,
+																Required:    true,
+																Description: "Rule name.",
+															},
+															"enabled": {
+																Type:        schema.TypeString,
+																Required:    true,
+																Description: "Whether the rule is enabled. valid values: <li>on: enabled</li> <li>off: disabled</li>.",
+															},
+															"priority": {
+																Type:        schema.TypeInt,
+																Optional:    true,
+																Description: "Priority of the rule. value range: 1-100, default 50.",
+															},
+															"condition": {
+																Type:        schema.TypeString,
+																Required:    true,
+																Description: "Match condition expression. must comply with the expression grammar.",
+															},
+															"action": {
+																Type:        schema.TypeList,
+																Required:    true,
+																Description: "Weighted action list. all weights must sum to 100.",
+																Elem: &schema.Resource{
+																	Schema: map[string]*schema.Schema{
+																		"security_action": {
+																			Type:        schema.TypeList,
+																			Required:    true,
+																			MaxItems:    1,
+																			Description: "Security action configuration.",
+																			Elem: &schema.Resource{
+																				Schema: map[string]*schema.Schema{
+																					"name": {
+																						Type:        schema.TypeString,
+																						Required:    true,
+																						Description: "Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.",
+																					},
+																					"deny_action_parameters": {
+																						Type:        schema.TypeList,
+																						Optional:    true,
+																						MaxItems:    1,
+																						Description: "Additional parameters when Name is Deny.",
+																						Elem: &schema.Resource{
+																							Schema: map[string]*schema.Schema{
+																								"block_ip": {
+																									Type:        schema.TypeString,
+																									Optional:    true,
+																									Description: "Whether to enable IP ban extension. valid values: on/off.",
+																								},
+																								"block_ip_duration": {
+																									Type:        schema.TypeString,
+																									Optional:    true,
+																									Description: "IP ban duration. required when BlockIp is on.",
+																								},
+																								"return_custom_page": {
+																									Type:        schema.TypeString,
+																									Optional:    true,
+																									Description: "Whether to use custom page. valid values: on/off.",
+																								},
+																								"response_code": {
+																									Type:        schema.TypeString,
+																									Optional:    true,
+																									Description: "Custom page response status code.",
+																								},
+																								"error_page_id": {
+																									Type:        schema.TypeString,
+																									Optional:    true,
+																									Description: "Custom page ID.",
+																								},
+																								"stall": {
+																									Type:        schema.TypeString,
+																									Optional:    true,
+																									Description: "Whether to stall connection. valid values: on/off.",
+																								},
+																							},
+																						},
+																					},
+																					"redirect_action_parameters": {
+																						Type:        schema.TypeList,
+																						Optional:    true,
+																						MaxItems:    1,
+																						Description: "Additional parameters when Name is Redirect.",
+																						Elem: &schema.Resource{
+																							Schema: map[string]*schema.Schema{
+																								"url": {
+																									Type:        schema.TypeString,
+																									Optional:    true,
+																									Description: "Redirect target URL.",
+																								},
+																							},
+																						},
+																					},
+																					"allow_action_parameters": {
+																						Type:        schema.TypeList,
+																						Optional:    true,
+																						MaxItems:    1,
+																						Description: "Additional parameters when Name is Allow.",
+																						Elem: &schema.Resource{
+																							Schema: map[string]*schema.Schema{
+																								"min_delay_time": {
+																									Type:        schema.TypeString,
+																									Optional:    true,
+																									Description: "Minimum delay response time.",
+																								},
+																								"max_delay_time": {
+																									Type:        schema.TypeString,
+																									Optional:    true,
+																									Description: "Maximum delay response time.",
+																								},
+																							},
+																						},
+																					},
+																					"challenge_action_parameters": {
+																						Type:        schema.TypeList,
+																						Optional:    true,
+																						MaxItems:    1,
+																						Description: "Additional parameters when Name is Challenge.",
+																						Elem: &schema.Resource{
+																							Schema: map[string]*schema.Schema{
+																								"challenge_option": {
+																									Type:        schema.TypeString,
+																									Optional:    true,
+																									Description: "Challenge type. valid values: InterstitialChallenge, InlineChallenge, JSChallenge, ManagedChallenge.",
+																								},
+																								"interval": {
+																									Type:        schema.TypeString,
+																									Optional:    true,
+																									Description: "Repeat challenge interval.",
+																								},
+																								"attester_id": {
+																									Type:        schema.TypeString,
+																									Optional:    true,
+																									Description: "Client attestation method ID.",
+																								},
+																							},
+																						},
+																					},
+																				},
+																			},
+																		},
+																		"weight": {
+																			Type:        schema.TypeInt,
+																			Required:    true,
+																			Description: "Action weight. value range: 10-100, must be multiples of 10, sum of all weights must equal 100.",
+																		},
+																	},
+																},
+															},
+														},
+													},
+												},
+											},
+										},
+									},
+									"basic_bot_settings": {
+										Type:        schema.TypeList,
+										Optional:    true,
+										MaxItems:    1,
+										Description: "Basic Bot settings configuration that applies to all domains.",
+										Elem: &schema.Resource{
+											Schema: map[string]*schema.Schema{
+												"source_idc": {
+													Type:        schema.TypeList,
+													Optional:    true,
+													MaxItems:    1,
+													Description: "IDC source IP configuration.",
+													Elem: &schema.Resource{
+														Schema: map[string]*schema.Schema{
+															"base_action": {
+																Type:        schema.TypeList,
+																Optional:    true,
+																MaxItems:    1,
+																Description: "Default action for IDC source requests.",
+																Elem:        securityActionSchemaForBotManagement(),
+															},
+															"action_overrides": {
+																Type:        schema.TypeList,
+																Optional:    true,
+																Description: "Action overrides for specific IDC source rule IDs.",
+																Elem: &schema.Resource{
+																	Schema: map[string]*schema.Schema{
+																		"ids": {
+																			Type:        schema.TypeList,
+																			Required:    true,
+																			Description: "Rule IDs to override.",
+																			Elem:        &schema.Schema{Type: schema.TypeString},
+																		},
+																		"action": {
+																			Type:        schema.TypeList,
+																			Required:    true,
+																			MaxItems:    1,
+																			Description: "Override action.",
+																			Elem:        securityActionSchemaForBotManagement(),
+																		},
+																	},
+																},
+															},
+														},
+													},
+												},
+												"search_engine_bots": {
+													Type:        schema.TypeList,
+													Optional:    true,
+													MaxItems:    1,
+													Description: "Search engine bot configuration.",
+													Elem: &schema.Resource{
+														Schema: map[string]*schema.Schema{
+															"base_action": {
+																Type:        schema.TypeList,
+																Optional:    true,
+																MaxItems:    1,
+																Description: "Default action for search engine bot requests.",
+																Elem:        securityActionSchemaForBotManagement(),
+															},
+															"action_overrides": {
+																Type:        schema.TypeList,
+																Optional:    true,
+																Description: "Action overrides for specific search engine bot rule IDs.",
+																Elem: &schema.Resource{
+																	Schema: map[string]*schema.Schema{
+																		"ids": {
+																			Type:        schema.TypeList,
+																			Required:    true,
+																			Description: "Rule IDs to override.",
+																			Elem:        &schema.Schema{Type: schema.TypeString},
+																		},
+																		"action": {
+																			Type:        schema.TypeList,
+																			Required:    true,
+																			MaxItems:    1,
+																			Description: "Override action.",
+																			Elem:        securityActionSchemaForBotManagement(),
+																		},
+																	},
+																},
+															},
+														},
+													},
+												},
+												"known_bot_categories": {
+													Type:        schema.TypeList,
+													Optional:    true,
+													MaxItems:    1,
+													Description: "Known Bot category configuration.",
+													Elem: &schema.Resource{
+														Schema: map[string]*schema.Schema{
+															"base_action": {
+																Type:        schema.TypeList,
+																Optional:    true,
+																MaxItems:    1,
+																Description: "Default action for known bot category requests.",
+																Elem:        securityActionSchemaForBotManagement(),
+															},
+															"action_overrides": {
+																Type:        schema.TypeList,
+																Optional:    true,
+																Description: "Action overrides for specific known bot category rule IDs.",
+																Elem: &schema.Resource{
+																	Schema: map[string]*schema.Schema{
+																		"ids": {
+																			Type:        schema.TypeList,
+																			Required:    true,
+																			Description: "Rule IDs to override.",
+																			Elem:        &schema.Schema{Type: schema.TypeString},
+																		},
+																		"action": {
+																			Type:        schema.TypeList,
+																			Required:    true,
+																			MaxItems:    1,
+																			Description: "Override action.",
+																			Elem:        securityActionSchemaForBotManagement(),
+																		},
+																	},
+																},
+															},
+														},
+													},
+												},
+												"ip_reputation": {
+													Type:        schema.TypeList,
+													Optional:    true,
+													MaxItems:    1,
+													Description: "IP threat intelligence configuration.",
+													Elem: &schema.Resource{
+														Schema: map[string]*schema.Schema{
+															"enabled": {
+																Type:        schema.TypeString,
+																Optional:    true,
+																Description: "Whether IP reputation is enabled. valid values: on/off.",
+															},
+															"ip_reputation_group": {
+																Type:        schema.TypeList,
+																Optional:    true,
+																MaxItems:    1,
+																Description: "IP reputation group configuration.",
+																Elem: &schema.Resource{
+																	Schema: map[string]*schema.Schema{
+																		"base_action": {
+																			Type:        schema.TypeList,
+																			Optional:    true,
+																			MaxItems:    1,
+																			Description: "Default action for IP reputation requests.",
+																			Elem:        securityActionSchemaForBotManagement(),
+																		},
+																		"action_overrides": {
+																			Type:        schema.TypeList,
+																			Optional:    true,
+																			Description: "Action overrides for specific IP reputation rule IDs.",
+																			Elem: &schema.Resource{
+																				Schema: map[string]*schema.Schema{
+																					"ids": {
+																						Type:        schema.TypeList,
+																						Required:    true,
+																						Description: "Rule IDs to override.",
+																						Elem:        &schema.Schema{Type: schema.TypeString},
+																					},
+																					"action": {
+																						Type:        schema.TypeList,
+																						Required:    true,
+																						MaxItems:    1,
+																						Description: "Override action.",
+																						Elem:        securityActionSchemaForBotManagement(),
+																					},
+																				},
+																			},
+																		},
+																	},
+																},
+															},
+														},
+													},
+												},
+												"bot_intelligence": {
+													Type:        schema.TypeList,
+													Optional:    true,
+													MaxItems:    1,
+													Description: "Bot intelligence analysis configuration.",
+													Elem: &schema.Resource{
+														Schema: map[string]*schema.Schema{
+															"enabled": {
+																Type:        schema.TypeString,
+																Optional:    true,
+																Description: "Whether Bot intelligence is enabled. valid values: on/off.",
+															},
+															"id": {
+																Type:        schema.TypeString,
+																Computed:    true,
+																Description: "Rule ID (output only).",
+															},
+															"bot_ratings": {
+																Type:        schema.TypeList,
+																Optional:    true,
+																MaxItems:    1,
+																Description: "Bot rating-based action configuration.",
+																Elem: &schema.Resource{
+																	Schema: map[string]*schema.Schema{
+																		"high_risk_bot_requests_action": {
+																			Type:        schema.TypeList,
+																			Optional:    true,
+																			MaxItems:    1,
+																			Description: "Action for high risk Bot requests.",
+																			Elem:        securityActionSchemaForBotManagement(),
+																		},
+																		"likely_bot_requests_action": {
+																			Type:        schema.TypeList,
+																			Optional:    true,
+																			MaxItems:    1,
+																			Description: "Action for likely Bot requests.",
+																			Elem:        securityActionSchemaForBotManagement(),
+																		},
+																		"verified_bot_requests_action": {
+																			Type:        schema.TypeList,
+																			Optional:    true,
+																			MaxItems:    1,
+																			Description: "Action for verified Bot requests.",
+																			Elem:        securityActionSchemaForBotManagement(),
+																		},
+																		"human_requests_action": {
+																			Type:        schema.TypeList,
+																			Optional:    true,
+																			MaxItems:    1,
+																			Description: "Action for human requests.",
+																			Elem:        securityActionSchemaForBotManagement(),
+																		},
+																	},
+																},
+															},
+														},
+													},
+												},
+											},
+										},
+									},
+									"client_attestation_rules": {
+										Type:        schema.TypeList,
+										Optional:    true,
+										MaxItems:    1,
+										Description: "Client attestation rules configuration (beta feature, requires a support ticket).",
+										Elem: &schema.Resource{
+											Schema: map[string]*schema.Schema{
+												"rules": {
+													Type:        schema.TypeList,
+													Optional:    true,
+													Description: "List of client attestation rules.",
+													Elem: &schema.Resource{
+														Schema: map[string]*schema.Schema{
+															"id": {
+																Type:        schema.TypeString,
+																Computed:    true,
+																Description: "Rule ID.",
+															},
+															"name": {
+																Type:        schema.TypeString,
+																Required:    true,
+																Description: "Rule name.",
+															},
+															"enabled": {
+																Type:        schema.TypeString,
+																Required:    true,
+																Description: "Whether the rule is enabled. valid values: on/off.",
+															},
+															"priority": {
+																Type:        schema.TypeInt,
+																Optional:    true,
+																Description: "Priority of the rule. value range: 0-100, default 0.",
+															},
+															"condition": {
+																Type:        schema.TypeString,
+																Required:    true,
+																Description: "Match condition expression.",
+															},
+															"attester_id": {
+																Type:        schema.TypeString,
+																Required:    true,
+																Description: "Client attestation option ID.",
+															},
+															"device_profiles": {
+																Type:        schema.TypeList,
+																Optional:    true,
+																Description: "Device profiles configuration.",
+																Elem: &schema.Resource{
+																	Schema: map[string]*schema.Schema{
+																		"client_type": {
+																			Type:        schema.TypeString,
+																			Required:    true,
+																			Description: "Client type. valid values: iOS, Android, WebView, WeChatMiniProgram.",
+																		},
+																		"high_risk_min_score": {
+																			Type:        schema.TypeInt,
+																			Optional:    true,
+																			Description: "Minimum score for high risk. value range: 1-99, default 50.",
+																		},
+																		"high_risk_request_action": {
+																			Type:        schema.TypeList,
+																			Optional:    true,
+																			MaxItems:    1,
+																			Description: "Action for high risk requests.",
+																			Elem:        securityActionSchemaForBotManagement(),
+																		},
+																		"medium_risk_min_score": {
+																			Type:        schema.TypeInt,
+																			Optional:    true,
+																			Description: "Minimum score for medium risk. value range: 1-99, default 15.",
+																		},
+																		"medium_risk_request_action": {
+																			Type:        schema.TypeList,
+																			Optional:    true,
+																			MaxItems:    1,
+																			Description: "Action for medium risk requests.",
+																			Elem:        securityActionSchemaForBotManagement(),
+																		},
+																	},
+																},
+															},
+															"invalid_attestation_action": {
+																Type:        schema.TypeList,
+																Optional:    true,
+																MaxItems:    1,
+																Description: "Action when attestation is invalid.",
+																Elem:        securityActionSchemaForBotManagement(),
+															},
+														},
+													},
+												},
+											},
+										},
+									},
+									"browser_impersonation_detection": {
+										Type:        schema.TypeList,
+										Optional:    true,
+										MaxItems:    1,
+										Description: "Browser impersonation detection configuration.",
+										Elem: &schema.Resource{
+											Schema: map[string]*schema.Schema{
+												"rules": {
+													Type:        schema.TypeList,
+													Optional:    true,
+													Description: "List of browser impersonation detection rules.",
+													Elem: &schema.Resource{
+														Schema: map[string]*schema.Schema{
+															"id": {
+																Type:        schema.TypeString,
+																Computed:    true,
+																Description: "Rule ID.",
+															},
+															"name": {
+																Type:        schema.TypeString,
+																Required:    true,
+																Description: "Rule name.",
+															},
+															"enabled": {
+																Type:        schema.TypeString,
+																Required:    true,
+																Description: "Whether the rule is enabled. valid values: on/off.",
+															},
+															"condition": {
+																Type:        schema.TypeString,
+																Required:    true,
+																Description: "Match condition expression.",
+															},
+															"action": {
+																Type:        schema.TypeList,
+																Required:    true,
+																MaxItems:    1,
+																Description: "Browser impersonation detection action.",
+																Elem: &schema.Resource{
+																	Schema: map[string]*schema.Schema{
+																		"bot_session_validation": {
+																			Type:        schema.TypeList,
+																			Optional:    true,
+																			MaxItems:    1,
+																			Description: "Bot session validation configuration.",
+																			Elem: &schema.Resource{
+																				Schema: map[string]*schema.Schema{
+																					"issue_new_bot_session_cookie": {
+																						Type:        schema.TypeString,
+																						Optional:    true,
+																						Description: "Whether to issue new Bot session cookie. valid values: on (update+validate), off (validate only).",
+																					},
+																					"max_new_session_trigger_config": {
+																						Type:        schema.TypeList,
+																						Optional:    true,
+																						MaxItems:    1,
+																						Description: "Trigger threshold for cookie renewal.",
+																						Elem: &schema.Resource{
+																							Schema: map[string]*schema.Schema{
+																								"max_new_session_count_interval": {
+																									Type:        schema.TypeString,
+																									Optional:    true,
+																									Description: "Time window for new session count.",
+																								},
+																								"max_new_session_count_threshold": {
+																									Type:        schema.TypeInt,
+																									Optional:    true,
+																									Description: "Cumulative count threshold for new sessions.",
+																								},
+																							},
+																						},
+																					},
+																					"session_expired_action": {
+																						Type:        schema.TypeList,
+																						Optional:    true,
+																						MaxItems:    1,
+																						Description: "Action for expired sessions.",
+																						Elem:        securityActionSchemaForBotManagement(),
+																					},
+																					"session_invalid_action": {
+																						Type:        schema.TypeList,
+																						Optional:    true,
+																						MaxItems:    1,
+																						Description: "Action for invalid sessions.",
+																						Elem:        securityActionSchemaForBotManagement(),
+																					},
+																					"session_rate_control": {
+																						Type:        schema.TypeList,
+																						Optional:    true,
+																						MaxItems:    1,
+																						Description: "Session rate control configuration.",
+																						Elem: &schema.Resource{
+																							Schema: map[string]*schema.Schema{
+																								"enabled": {
+																									Type:        schema.TypeString,
+																									Optional:    true,
+																									Description: "Whether session rate control is enabled. valid values: on/off.",
+																								},
+																								"high_rate_session_action": {
+																									Type:        schema.TypeList,
+																									Optional:    true,
+																									MaxItems:    1,
+																									Description: "Action for high rate sessions.",
+																									Elem:        securityActionSchemaForBotManagement(),
+																								},
+																								"mid_rate_session_action": {
+																									Type:        schema.TypeList,
+																									Optional:    true,
+																									MaxItems:    1,
+																									Description: "Action for medium rate sessions.",
+																									Elem:        securityActionSchemaForBotManagement(),
+																								},
+																								"low_rate_session_action": {
+																									Type:        schema.TypeList,
+																									Optional:    true,
+																									MaxItems:    1,
+																									Description: "Action for low rate sessions.",
+																									Elem:        securityActionSchemaForBotManagement(),
+																								},
+																							},
+																						},
+																					},
+																				},
+																			},
+																		},
+																		"client_behavior_detection": {
+																			Type:        schema.TypeList,
+																			Optional:    true,
+																			MaxItems:    1,
+																			Description: "Client behavior detection configuration.",
+																			Elem: &schema.Resource{
+																				Schema: map[string]*schema.Schema{
+																					"crypto_challenge_intensity": {
+																						Type:        schema.TypeString,
+																						Optional:    true,
+																						Description: "Proof-of-work intensity. valid values: low, medium, high.",
+																					},
+																					"crypto_challenge_delay_before": {
+																						Type:        schema.TypeString,
+																						Optional:    true,
+																						Description: "Execution delay before challenge. valid range: 0ms-1000ms.",
+																					},
+																					"max_challenge_count_interval": {
+																						Type:        schema.TypeString,
+																						Optional:    true,
+																						Description: "Threshold time window.",
+																					},
+																					"max_challenge_count_threshold": {
+																						Type:        schema.TypeInt,
+																						Optional:    true,
+																						Description: "Threshold cumulative count. value range: 1-100000000.",
+																					},
+																					"challenge_not_finished_action": {
+																						Type:        schema.TypeList,
+																						Optional:    true,
+																						MaxItems:    1,
+																						Description: "Action when JS challenge not finished.",
+																						Elem:        securityActionSchemaForBotManagement(),
+																					},
+																					"challenge_timeout_action": {
+																						Type:        schema.TypeList,
+																						Optional:    true,
+																						MaxItems:    1,
+																						Description: "Action on challenge timeout.",
+																						Elem:        securityActionSchemaForBotManagement(),
+																					},
+																					"bot_client_action": {
+																						Type:        schema.TypeList,
+																						Optional:    true,
+																						MaxItems:    1,
+																						Description: "Action for Bot client.",
+																						Elem:        securityActionSchemaForBotManagement(),
+																					},
+																				},
+																			},
+																		},
+																	},
+																},
+															},
+														},
+													},
+												},
+											},
+										},
+									},
+								},
+							},
+						},
 					},
 				},
 			},
@@ -1592,6 +2298,818 @@ func ResourceTencentCloudTeoSecurityPolicyConfig() *schema.Resource {
 			},
 		},
 	}
+}
+
+func securityActionSchemaForBotManagement() *schema.Resource {
+	return &schema.Resource{
+		Schema: map[string]*schema.Schema{
+			"name": {
+				Type:        schema.TypeString,
+				Required:    true,
+				Description: "Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.",
+			},
+			"deny_action_parameters": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				MaxItems:    1,
+				Description: "Additional parameters when Name is Deny.",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"block_ip": {
+							Type:        schema.TypeString,
+							Optional:    true,
+							Description: "Whether to enable IP ban extension. valid values: on/off.",
+						},
+						"block_ip_duration": {
+							Type:        schema.TypeString,
+							Optional:    true,
+							Description: "IP ban duration.",
+						},
+						"return_custom_page": {
+							Type:        schema.TypeString,
+							Optional:    true,
+							Description: "Whether to use custom page. valid values: on/off.",
+						},
+						"response_code": {
+							Type:        schema.TypeString,
+							Optional:    true,
+							Description: "Custom page response status code.",
+						},
+						"error_page_id": {
+							Type:        schema.TypeString,
+							Optional:    true,
+							Description: "Custom page ID.",
+						},
+						"stall": {
+							Type:        schema.TypeString,
+							Optional:    true,
+							Description: "Whether to stall connection. valid values: on/off.",
+						},
+					},
+				},
+			},
+			"redirect_action_parameters": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				MaxItems:    1,
+				Description: "Additional parameters when Name is Redirect.",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"url": {
+							Type:        schema.TypeString,
+							Optional:    true,
+							Description: "Redirect target URL.",
+						},
+					},
+				},
+			},
+			"allow_action_parameters": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				MaxItems:    1,
+				Description: "Additional parameters when Name is Allow.",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"min_delay_time": {
+							Type:        schema.TypeString,
+							Optional:    true,
+							Description: "Minimum delay response time.",
+						},
+						"max_delay_time": {
+							Type:        schema.TypeString,
+							Optional:    true,
+							Description: "Maximum delay response time.",
+						},
+					},
+				},
+			},
+			"challenge_action_parameters": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				MaxItems:    1,
+				Description: "Additional parameters when Name is Challenge.",
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"challenge_option": {
+							Type:        schema.TypeString,
+							Optional:    true,
+							Description: "Challenge type. valid values: InterstitialChallenge, InlineChallenge, JSChallenge, ManagedChallenge.",
+						},
+						"interval": {
+							Type:        schema.TypeString,
+							Optional:    true,
+							Description: "Repeat challenge interval.",
+						},
+						"attester_id": {
+							Type:        schema.TypeString,
+							Optional:    true,
+							Description: "Client attestation method ID.",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func flattenSecurityActionForBotManagement(action *teov20220901.SecurityAction) map[string]interface{} {
+	actionMap := map[string]interface{}{}
+	if action == nil {
+		return actionMap
+	}
+	if action.Name != nil {
+		actionMap["name"] = action.Name
+	}
+	if action.DenyActionParameters != nil {
+		denyMap := map[string]interface{}{}
+		if action.DenyActionParameters.BlockIp != nil {
+			denyMap["block_ip"] = action.DenyActionParameters.BlockIp
+		}
+		if action.DenyActionParameters.BlockIpDuration != nil {
+			denyMap["block_ip_duration"] = action.DenyActionParameters.BlockIpDuration
+		}
+		if action.DenyActionParameters.ReturnCustomPage != nil {
+			denyMap["return_custom_page"] = action.DenyActionParameters.ReturnCustomPage
+		}
+		if action.DenyActionParameters.ResponseCode != nil {
+			denyMap["response_code"] = action.DenyActionParameters.ResponseCode
+		}
+		if action.DenyActionParameters.ErrorPageId != nil {
+			denyMap["error_page_id"] = action.DenyActionParameters.ErrorPageId
+		}
+		if action.DenyActionParameters.Stall != nil {
+			denyMap["stall"] = action.DenyActionParameters.Stall
+		}
+		actionMap["deny_action_parameters"] = []interface{}{denyMap}
+	}
+	if action.RedirectActionParameters != nil {
+		redirectMap := map[string]interface{}{}
+		if action.RedirectActionParameters.URL != nil {
+			redirectMap["url"] = action.RedirectActionParameters.URL
+		}
+		actionMap["redirect_action_parameters"] = []interface{}{redirectMap}
+	}
+	if action.AllowActionParameters != nil {
+		allowMap := map[string]interface{}{}
+		if action.AllowActionParameters.MinDelayTime != nil {
+			allowMap["min_delay_time"] = action.AllowActionParameters.MinDelayTime
+		}
+		if action.AllowActionParameters.MaxDelayTime != nil {
+			allowMap["max_delay_time"] = action.AllowActionParameters.MaxDelayTime
+		}
+		actionMap["allow_action_parameters"] = []interface{}{allowMap}
+	}
+	if action.ChallengeActionParameters != nil {
+		challengeMap := map[string]interface{}{}
+		if action.ChallengeActionParameters.ChallengeOption != nil {
+			challengeMap["challenge_option"] = action.ChallengeActionParameters.ChallengeOption
+		}
+		if action.ChallengeActionParameters.Interval != nil {
+			challengeMap["interval"] = action.ChallengeActionParameters.Interval
+		}
+		if action.ChallengeActionParameters.AttesterId != nil {
+			challengeMap["attester_id"] = action.ChallengeActionParameters.AttesterId
+		}
+		actionMap["challenge_action_parameters"] = []interface{}{challengeMap}
+	}
+	return actionMap
+}
+
+func flattenActionOverrides(overrides []*teov20220901.BotManagementActionOverrides) []interface{} {
+	result := make([]interface{}, 0, len(overrides))
+	for _, override := range overrides {
+		overrideMap := map[string]interface{}{}
+		if override.Ids != nil {
+			idsList := make([]interface{}, 0, len(override.Ids))
+			for _, id := range override.Ids {
+				if id != nil {
+					idsList = append(idsList, *id)
+				}
+			}
+			overrideMap["ids"] = idsList
+		}
+		if override.Action != nil {
+			overrideMap["action"] = []interface{}{flattenSecurityActionForBotManagement(override.Action)}
+		}
+		result = append(result, overrideMap)
+	}
+	return result
+}
+
+func flattenBaseActionAndOverrides(baseAction *teov20220901.SecurityAction, actionOverrides []*teov20220901.BotManagementActionOverrides) map[string]interface{} {
+	result := map[string]interface{}{}
+	if baseAction != nil {
+		result["base_action"] = []interface{}{flattenSecurityActionForBotManagement(baseAction)}
+	}
+	if actionOverrides != nil {
+		result["action_overrides"] = flattenActionOverrides(actionOverrides)
+	}
+	return result
+}
+
+func flattenBotManagement(botManagement *teov20220901.BotManagement) map[string]interface{} {
+	botManagementMap := map[string]interface{}{}
+	if botManagement == nil {
+		return botManagementMap
+	}
+	if botManagement.Enabled != nil {
+		botManagementMap["enabled"] = botManagement.Enabled
+	}
+	if botManagement.CustomRules != nil {
+		customRulesMap := map[string]interface{}{}
+		if botManagement.CustomRules.Rules != nil {
+			rulesList := make([]interface{}, 0, len(botManagement.CustomRules.Rules))
+			for _, rule := range botManagement.CustomRules.Rules {
+				ruleMap := map[string]interface{}{}
+				if rule.Id != nil {
+					ruleMap["id"] = rule.Id
+				}
+				if rule.Name != nil {
+					ruleMap["name"] = rule.Name
+				}
+				if rule.Enabled != nil {
+					ruleMap["enabled"] = rule.Enabled
+				}
+				if rule.Priority != nil {
+					ruleMap["priority"] = rule.Priority
+				}
+				if rule.Condition != nil {
+					ruleMap["condition"] = rule.Condition
+				}
+				if rule.Action != nil {
+					actionList := make([]interface{}, 0, len(rule.Action))
+					for _, weightedAction := range rule.Action {
+						weightedActionMap := map[string]interface{}{}
+						if weightedAction.SecurityAction != nil {
+							weightedActionMap["security_action"] = []interface{}{flattenSecurityActionForBotManagement(weightedAction.SecurityAction)}
+						}
+						if weightedAction.Weight != nil {
+							weightedActionMap["weight"] = weightedAction.Weight
+						}
+						actionList = append(actionList, weightedActionMap)
+					}
+					ruleMap["action"] = actionList
+				}
+				rulesList = append(rulesList, ruleMap)
+			}
+			customRulesMap["rules"] = rulesList
+		}
+		botManagementMap["custom_rules"] = []interface{}{customRulesMap}
+	}
+	if botManagement.BasicBotSettings != nil {
+		basicBotSettingsMap := map[string]interface{}{}
+		if botManagement.BasicBotSettings.SourceIDC != nil {
+			sourceIDCMap := flattenBaseActionAndOverrides(botManagement.BasicBotSettings.SourceIDC.BaseAction, botManagement.BasicBotSettings.SourceIDC.BotManagementActionOverrides)
+			basicBotSettingsMap["source_idc"] = []interface{}{sourceIDCMap}
+		}
+		if botManagement.BasicBotSettings.SearchEngineBots != nil {
+			searchEngineBotsMap := flattenBaseActionAndOverrides(botManagement.BasicBotSettings.SearchEngineBots.BaseAction, botManagement.BasicBotSettings.SearchEngineBots.BotManagementActionOverrides)
+			basicBotSettingsMap["search_engine_bots"] = []interface{}{searchEngineBotsMap}
+		}
+		if botManagement.BasicBotSettings.KnownBotCategories != nil {
+			knownBotCategoriesMap := flattenBaseActionAndOverrides(botManagement.BasicBotSettings.KnownBotCategories.BaseAction, botManagement.BasicBotSettings.KnownBotCategories.BotManagementActionOverrides)
+			basicBotSettingsMap["known_bot_categories"] = []interface{}{knownBotCategoriesMap}
+		}
+		if botManagement.BasicBotSettings.IPReputation != nil {
+			ipReputationMap := map[string]interface{}{}
+			if botManagement.BasicBotSettings.IPReputation.Enabled != nil {
+				ipReputationMap["enabled"] = botManagement.BasicBotSettings.IPReputation.Enabled
+			}
+			if botManagement.BasicBotSettings.IPReputation.IPReputationGroup != nil {
+				ipReputationGroupMap := flattenBaseActionAndOverrides(
+					botManagement.BasicBotSettings.IPReputation.IPReputationGroup.BaseAction,
+					botManagement.BasicBotSettings.IPReputation.IPReputationGroup.BotManagementActionOverrides,
+				)
+				ipReputationMap["ip_reputation_group"] = []interface{}{ipReputationGroupMap}
+			}
+			basicBotSettingsMap["ip_reputation"] = []interface{}{ipReputationMap}
+		}
+		if botManagement.BasicBotSettings.BotIntelligence != nil {
+			botIntelligenceMap := map[string]interface{}{}
+			if botManagement.BasicBotSettings.BotIntelligence.Enabled != nil {
+				botIntelligenceMap["enabled"] = botManagement.BasicBotSettings.BotIntelligence.Enabled
+			}
+			if botManagement.BasicBotSettings.BotIntelligence.Id != nil {
+				botIntelligenceMap["id"] = botManagement.BasicBotSettings.BotIntelligence.Id
+			}
+			if botManagement.BasicBotSettings.BotIntelligence.BotRatings != nil {
+				botRatingsMap := map[string]interface{}{}
+				if botManagement.BasicBotSettings.BotIntelligence.BotRatings.HighRiskBotRequestsAction != nil {
+					botRatingsMap["high_risk_bot_requests_action"] = []interface{}{flattenSecurityActionForBotManagement(botManagement.BasicBotSettings.BotIntelligence.BotRatings.HighRiskBotRequestsAction)}
+				}
+				if botManagement.BasicBotSettings.BotIntelligence.BotRatings.LikelyBotRequestsAction != nil {
+					botRatingsMap["likely_bot_requests_action"] = []interface{}{flattenSecurityActionForBotManagement(botManagement.BasicBotSettings.BotIntelligence.BotRatings.LikelyBotRequestsAction)}
+				}
+				if botManagement.BasicBotSettings.BotIntelligence.BotRatings.VerifiedBotRequestsAction != nil {
+					botRatingsMap["verified_bot_requests_action"] = []interface{}{flattenSecurityActionForBotManagement(botManagement.BasicBotSettings.BotIntelligence.BotRatings.VerifiedBotRequestsAction)}
+				}
+				if botManagement.BasicBotSettings.BotIntelligence.BotRatings.HumanRequestsAction != nil {
+					botRatingsMap["human_requests_action"] = []interface{}{flattenSecurityActionForBotManagement(botManagement.BasicBotSettings.BotIntelligence.BotRatings.HumanRequestsAction)}
+				}
+				botIntelligenceMap["bot_ratings"] = []interface{}{botRatingsMap}
+			}
+			basicBotSettingsMap["bot_intelligence"] = []interface{}{botIntelligenceMap}
+		}
+		botManagementMap["basic_bot_settings"] = []interface{}{basicBotSettingsMap}
+	}
+	if botManagement.ClientAttestationRules != nil {
+		clientAttestationRulesMap := map[string]interface{}{}
+		if botManagement.ClientAttestationRules.Rules != nil {
+			rulesList := make([]interface{}, 0, len(botManagement.ClientAttestationRules.Rules))
+			for _, rule := range botManagement.ClientAttestationRules.Rules {
+				ruleMap := map[string]interface{}{}
+				if rule.Id != nil {
+					ruleMap["id"] = rule.Id
+				}
+				if rule.Name != nil {
+					ruleMap["name"] = rule.Name
+				}
+				if rule.Enabled != nil {
+					ruleMap["enabled"] = rule.Enabled
+				}
+				if rule.Priority != nil {
+					ruleMap["priority"] = rule.Priority
+				}
+				if rule.Condition != nil {
+					ruleMap["condition"] = rule.Condition
+				}
+				if rule.AttesterId != nil {
+					ruleMap["attester_id"] = rule.AttesterId
+				}
+				if rule.DeviceProfiles != nil {
+					deviceProfilesList := make([]interface{}, 0, len(rule.DeviceProfiles))
+					for _, profile := range rule.DeviceProfiles {
+						profileMap := map[string]interface{}{}
+						if profile.ClientType != nil {
+							profileMap["client_type"] = profile.ClientType
+						}
+						if profile.HighRiskMinScore != nil {
+							profileMap["high_risk_min_score"] = profile.HighRiskMinScore
+						}
+						if profile.HighRiskRequestAction != nil {
+							profileMap["high_risk_request_action"] = []interface{}{flattenSecurityActionForBotManagement(profile.HighRiskRequestAction)}
+						}
+						if profile.MediumRiskMinScore != nil {
+							profileMap["medium_risk_min_score"] = profile.MediumRiskMinScore
+						}
+						if profile.MediumRiskRequestAction != nil {
+							profileMap["medium_risk_request_action"] = []interface{}{flattenSecurityActionForBotManagement(profile.MediumRiskRequestAction)}
+						}
+						deviceProfilesList = append(deviceProfilesList, profileMap)
+					}
+					ruleMap["device_profiles"] = deviceProfilesList
+				}
+				if rule.InvalidAttestationAction != nil {
+					ruleMap["invalid_attestation_action"] = []interface{}{flattenSecurityActionForBotManagement(rule.InvalidAttestationAction)}
+				}
+				rulesList = append(rulesList, ruleMap)
+			}
+			clientAttestationRulesMap["rules"] = rulesList
+		}
+		botManagementMap["client_attestation_rules"] = []interface{}{clientAttestationRulesMap}
+	}
+	if botManagement.BrowserImpersonationDetection != nil {
+		browserImpersonationDetectionMap := map[string]interface{}{}
+		if botManagement.BrowserImpersonationDetection.Rules != nil {
+			rulesList := make([]interface{}, 0, len(botManagement.BrowserImpersonationDetection.Rules))
+			for _, rule := range botManagement.BrowserImpersonationDetection.Rules {
+				ruleMap := map[string]interface{}{}
+				if rule.Id != nil {
+					ruleMap["id"] = rule.Id
+				}
+				if rule.Name != nil {
+					ruleMap["name"] = rule.Name
+				}
+				if rule.Enabled != nil {
+					ruleMap["enabled"] = rule.Enabled
+				}
+				if rule.Condition != nil {
+					ruleMap["condition"] = rule.Condition
+				}
+				if rule.Action != nil {
+					actionMap := map[string]interface{}{}
+					if rule.Action.BotSessionValidation != nil {
+						bsvMap := map[string]interface{}{}
+						if rule.Action.BotSessionValidation.IssueNewBotSessionCookie != nil {
+							bsvMap["issue_new_bot_session_cookie"] = rule.Action.BotSessionValidation.IssueNewBotSessionCookie
+						}
+						if rule.Action.BotSessionValidation.MaxNewSessionTriggerConfig != nil {
+							triggerConfigMap := map[string]interface{}{}
+							if rule.Action.BotSessionValidation.MaxNewSessionTriggerConfig.MaxNewSessionCountInterval != nil {
+								triggerConfigMap["max_new_session_count_interval"] = rule.Action.BotSessionValidation.MaxNewSessionTriggerConfig.MaxNewSessionCountInterval
+							}
+							if rule.Action.BotSessionValidation.MaxNewSessionTriggerConfig.MaxNewSessionCountThreshold != nil {
+								triggerConfigMap["max_new_session_count_threshold"] = rule.Action.BotSessionValidation.MaxNewSessionTriggerConfig.MaxNewSessionCountThreshold
+							}
+							bsvMap["max_new_session_trigger_config"] = []interface{}{triggerConfigMap}
+						}
+						if rule.Action.BotSessionValidation.SessionExpiredAction != nil {
+							bsvMap["session_expired_action"] = []interface{}{flattenSecurityActionForBotManagement(rule.Action.BotSessionValidation.SessionExpiredAction)}
+						}
+						if rule.Action.BotSessionValidation.SessionInvalidAction != nil {
+							bsvMap["session_invalid_action"] = []interface{}{flattenSecurityActionForBotManagement(rule.Action.BotSessionValidation.SessionInvalidAction)}
+						}
+						if rule.Action.BotSessionValidation.SessionRateControl != nil {
+							srcMap := map[string]interface{}{}
+							if rule.Action.BotSessionValidation.SessionRateControl.Enabled != nil {
+								srcMap["enabled"] = rule.Action.BotSessionValidation.SessionRateControl.Enabled
+							}
+							if rule.Action.BotSessionValidation.SessionRateControl.HighRateSessionAction != nil {
+								srcMap["high_rate_session_action"] = []interface{}{flattenSecurityActionForBotManagement(rule.Action.BotSessionValidation.SessionRateControl.HighRateSessionAction)}
+							}
+							if rule.Action.BotSessionValidation.SessionRateControl.MidRateSessionAction != nil {
+								srcMap["mid_rate_session_action"] = []interface{}{flattenSecurityActionForBotManagement(rule.Action.BotSessionValidation.SessionRateControl.MidRateSessionAction)}
+							}
+							if rule.Action.BotSessionValidation.SessionRateControl.LowRateSessionAction != nil {
+								srcMap["low_rate_session_action"] = []interface{}{flattenSecurityActionForBotManagement(rule.Action.BotSessionValidation.SessionRateControl.LowRateSessionAction)}
+							}
+							bsvMap["session_rate_control"] = []interface{}{srcMap}
+						}
+						actionMap["bot_session_validation"] = []interface{}{bsvMap}
+					}
+					if rule.Action.ClientBehaviorDetection != nil {
+						cbdMap := map[string]interface{}{}
+						if rule.Action.ClientBehaviorDetection.CryptoChallengeIntensity != nil {
+							cbdMap["crypto_challenge_intensity"] = rule.Action.ClientBehaviorDetection.CryptoChallengeIntensity
+						}
+						if rule.Action.ClientBehaviorDetection.CryptoChallengeDelayBefore != nil {
+							cbdMap["crypto_challenge_delay_before"] = rule.Action.ClientBehaviorDetection.CryptoChallengeDelayBefore
+						}
+						if rule.Action.ClientBehaviorDetection.MaxChallengeCountInterval != nil {
+							cbdMap["max_challenge_count_interval"] = rule.Action.ClientBehaviorDetection.MaxChallengeCountInterval
+						}
+						if rule.Action.ClientBehaviorDetection.MaxChallengeCountThreshold != nil {
+							cbdMap["max_challenge_count_threshold"] = rule.Action.ClientBehaviorDetection.MaxChallengeCountThreshold
+						}
+						if rule.Action.ClientBehaviorDetection.ChallengeNotFinishedAction != nil {
+							cbdMap["challenge_not_finished_action"] = []interface{}{flattenSecurityActionForBotManagement(rule.Action.ClientBehaviorDetection.ChallengeNotFinishedAction)}
+						}
+						if rule.Action.ClientBehaviorDetection.ChallengeTimeoutAction != nil {
+							cbdMap["challenge_timeout_action"] = []interface{}{flattenSecurityActionForBotManagement(rule.Action.ClientBehaviorDetection.ChallengeTimeoutAction)}
+						}
+						if rule.Action.ClientBehaviorDetection.BotClientAction != nil {
+							cbdMap["bot_client_action"] = []interface{}{flattenSecurityActionForBotManagement(rule.Action.ClientBehaviorDetection.BotClientAction)}
+						}
+						actionMap["client_behavior_detection"] = []interface{}{cbdMap}
+					}
+					ruleMap["action"] = []interface{}{actionMap}
+				}
+				rulesList = append(rulesList, ruleMap)
+			}
+			browserImpersonationDetectionMap["rules"] = rulesList
+		}
+		botManagementMap["browser_impersonation_detection"] = []interface{}{browserImpersonationDetectionMap}
+	}
+	return botManagementMap
+}
+
+func expandSecurityActionForBotManagement(actionMap map[string]interface{}) *teov20220901.SecurityAction {
+	securityAction := teov20220901.SecurityAction{}
+	if v, ok := actionMap["name"].(string); ok && v != "" {
+		securityAction.Name = helper.String(v)
+	}
+	if denyMap, ok := helper.ConvertInterfacesHeadToMap(actionMap["deny_action_parameters"]); ok {
+		denyActionParameters := teov20220901.DenyActionParameters{}
+		if v, ok := denyMap["block_ip"].(string); ok && v != "" {
+			denyActionParameters.BlockIp = helper.String(v)
+		}
+		if v, ok := denyMap["block_ip_duration"].(string); ok && v != "" {
+			denyActionParameters.BlockIpDuration = helper.String(v)
+		}
+		if v, ok := denyMap["return_custom_page"].(string); ok && v != "" {
+			denyActionParameters.ReturnCustomPage = helper.String(v)
+		}
+		if v, ok := denyMap["response_code"].(string); ok && v != "" {
+			denyActionParameters.ResponseCode = helper.String(v)
+		}
+		if v, ok := denyMap["error_page_id"].(string); ok && v != "" {
+			denyActionParameters.ErrorPageId = helper.String(v)
+		}
+		if v, ok := denyMap["stall"].(string); ok && v != "" {
+			denyActionParameters.Stall = helper.String(v)
+		}
+		securityAction.DenyActionParameters = &denyActionParameters
+	}
+	if redirectMap, ok := helper.ConvertInterfacesHeadToMap(actionMap["redirect_action_parameters"]); ok {
+		redirectActionParameters := teov20220901.RedirectActionParameters{}
+		if v, ok := redirectMap["url"].(string); ok && v != "" {
+			redirectActionParameters.URL = helper.String(v)
+		}
+		securityAction.RedirectActionParameters = &redirectActionParameters
+	}
+	if allowMap, ok := helper.ConvertInterfacesHeadToMap(actionMap["allow_action_parameters"]); ok {
+		allowActionParameters := teov20220901.AllowActionParameters{}
+		if v, ok := allowMap["min_delay_time"].(string); ok && v != "" {
+			allowActionParameters.MinDelayTime = helper.String(v)
+		}
+		if v, ok := allowMap["max_delay_time"].(string); ok && v != "" {
+			allowActionParameters.MaxDelayTime = helper.String(v)
+		}
+		securityAction.AllowActionParameters = &allowActionParameters
+	}
+	if challengeMap, ok := helper.ConvertInterfacesHeadToMap(actionMap["challenge_action_parameters"]); ok {
+		challengeActionParameters := teov20220901.ChallengeActionParameters{}
+		if v, ok := challengeMap["challenge_option"].(string); ok && v != "" {
+			challengeActionParameters.ChallengeOption = helper.String(v)
+		}
+		if v, ok := challengeMap["interval"].(string); ok && v != "" {
+			challengeActionParameters.Interval = helper.String(v)
+		}
+		if v, ok := challengeMap["attester_id"].(string); ok && v != "" {
+			challengeActionParameters.AttesterId = helper.String(v)
+		}
+		securityAction.ChallengeActionParameters = &challengeActionParameters
+	}
+	return &securityAction
+}
+
+func expandActionOverrides(overridesList []interface{}) []*teov20220901.BotManagementActionOverrides {
+	result := make([]*teov20220901.BotManagementActionOverrides, 0, len(overridesList))
+	for _, item := range overridesList {
+		overrideMap := item.(map[string]interface{})
+		override := teov20220901.BotManagementActionOverrides{}
+		if v, ok := overrideMap["ids"]; ok {
+			idsList := v.([]interface{})
+			for _, id := range idsList {
+				if id != nil {
+					idStr := id.(string)
+					override.Ids = append(override.Ids, &idStr)
+				}
+			}
+		}
+		if actionMap, ok := helper.ConvertInterfacesHeadToMap(overrideMap["action"]); ok {
+			override.Action = expandSecurityActionForBotManagement(actionMap)
+		}
+		result = append(result, &override)
+	}
+	return result
+}
+
+func expandBotManagement(botManagementMap map[string]interface{}) *teov20220901.BotManagement {
+	botManagement := teov20220901.BotManagement{}
+	if v, ok := botManagementMap["enabled"].(string); ok && v != "" {
+		botManagement.Enabled = helper.String(v)
+	}
+	if customRulesMap, ok := helper.ConvertInterfacesHeadToMap(botManagementMap["custom_rules"]); ok {
+		customRules := teov20220901.BotManagementCustomRules{}
+		if v, ok := customRulesMap["rules"]; ok {
+			for _, item := range v.([]interface{}) {
+				ruleMap := item.(map[string]interface{})
+				rule := teov20220901.BotManagementCustomRule{}
+				if v, ok := ruleMap["id"].(string); ok && v != "" {
+					rule.Id = helper.String(v)
+				}
+				if v, ok := ruleMap["name"].(string); ok && v != "" {
+					rule.Name = helper.String(v)
+				}
+				if v, ok := ruleMap["enabled"].(string); ok && v != "" {
+					rule.Enabled = helper.String(v)
+				}
+				if v, ok := ruleMap["priority"].(int); ok {
+					rule.Priority = helper.IntInt64(v)
+				}
+				if v, ok := ruleMap["condition"].(string); ok && v != "" {
+					rule.Condition = helper.String(v)
+				}
+				if v, ok := ruleMap["action"]; ok {
+					actionList := v.([]interface{})
+					for _, actionItem := range actionList {
+						weightedActionMap := actionItem.(map[string]interface{})
+						weightedAction := teov20220901.SecurityWeightedAction{}
+						if saMap, ok := helper.ConvertInterfacesHeadToMap(weightedActionMap["security_action"]); ok {
+							weightedAction.SecurityAction = expandSecurityActionForBotManagement(saMap)
+						}
+						if v, ok := weightedActionMap["weight"].(int); ok {
+							weightedAction.Weight = helper.IntInt64(v)
+						}
+						rule.Action = append(rule.Action, &weightedAction)
+					}
+				}
+				customRules.Rules = append(customRules.Rules, &rule)
+			}
+		}
+		botManagement.CustomRules = &customRules
+	}
+	if basicBotSettingsMap, ok := helper.ConvertInterfacesHeadToMap(botManagementMap["basic_bot_settings"]); ok {
+		basicBotSettings := teov20220901.BasicBotSettings{}
+		if sourceIDCMap, ok := helper.ConvertInterfacesHeadToMap(basicBotSettingsMap["source_idc"]); ok {
+			sourceIDC := teov20220901.SourceIDC{}
+			if baseActionMap, ok := helper.ConvertInterfacesHeadToMap(sourceIDCMap["base_action"]); ok {
+				sourceIDC.BaseAction = expandSecurityActionForBotManagement(baseActionMap)
+			}
+			if v, ok := sourceIDCMap["action_overrides"]; ok {
+				sourceIDC.BotManagementActionOverrides = expandActionOverrides(v.([]interface{}))
+			}
+			basicBotSettings.SourceIDC = &sourceIDC
+		}
+		if searchEngineBotsMap, ok := helper.ConvertInterfacesHeadToMap(basicBotSettingsMap["search_engine_bots"]); ok {
+			searchEngineBots := teov20220901.SearchEngineBots{}
+			if baseActionMap, ok := helper.ConvertInterfacesHeadToMap(searchEngineBotsMap["base_action"]); ok {
+				searchEngineBots.BaseAction = expandSecurityActionForBotManagement(baseActionMap)
+			}
+			if v, ok := searchEngineBotsMap["action_overrides"]; ok {
+				searchEngineBots.BotManagementActionOverrides = expandActionOverrides(v.([]interface{}))
+			}
+			basicBotSettings.SearchEngineBots = &searchEngineBots
+		}
+		if knownBotCategoriesMap, ok := helper.ConvertInterfacesHeadToMap(basicBotSettingsMap["known_bot_categories"]); ok {
+			knownBotCategories := teov20220901.KnownBotCategories{}
+			if baseActionMap, ok := helper.ConvertInterfacesHeadToMap(knownBotCategoriesMap["base_action"]); ok {
+				knownBotCategories.BaseAction = expandSecurityActionForBotManagement(baseActionMap)
+			}
+			if v, ok := knownBotCategoriesMap["action_overrides"]; ok {
+				knownBotCategories.BotManagementActionOverrides = expandActionOverrides(v.([]interface{}))
+			}
+			basicBotSettings.KnownBotCategories = &knownBotCategories
+		}
+		if ipReputationMap, ok := helper.ConvertInterfacesHeadToMap(basicBotSettingsMap["ip_reputation"]); ok {
+			ipReputation := teov20220901.IPReputation{}
+			if v, ok := ipReputationMap["enabled"].(string); ok && v != "" {
+				ipReputation.Enabled = helper.String(v)
+			}
+			if ipReputationGroupMap, ok := helper.ConvertInterfacesHeadToMap(ipReputationMap["ip_reputation_group"]); ok {
+				ipReputationGroup := teov20220901.IPReputationGroup{}
+				if baseActionMap, ok := helper.ConvertInterfacesHeadToMap(ipReputationGroupMap["base_action"]); ok {
+					ipReputationGroup.BaseAction = expandSecurityActionForBotManagement(baseActionMap)
+				}
+				if v, ok := ipReputationGroupMap["action_overrides"]; ok {
+					ipReputationGroup.BotManagementActionOverrides = expandActionOverrides(v.([]interface{}))
+				}
+				ipReputation.IPReputationGroup = &ipReputationGroup
+			}
+			basicBotSettings.IPReputation = &ipReputation
+		}
+		if botIntelligenceMap, ok := helper.ConvertInterfacesHeadToMap(basicBotSettingsMap["bot_intelligence"]); ok {
+			botIntelligence := teov20220901.BotIntelligence{}
+			if v, ok := botIntelligenceMap["enabled"].(string); ok && v != "" {
+				botIntelligence.Enabled = helper.String(v)
+			}
+			if botRatingsMap, ok := helper.ConvertInterfacesHeadToMap(botIntelligenceMap["bot_ratings"]); ok {
+				botRatings := teov20220901.BotRatings{}
+				if actionMap, ok := helper.ConvertInterfacesHeadToMap(botRatingsMap["high_risk_bot_requests_action"]); ok {
+					botRatings.HighRiskBotRequestsAction = expandSecurityActionForBotManagement(actionMap)
+				}
+				if actionMap, ok := helper.ConvertInterfacesHeadToMap(botRatingsMap["likely_bot_requests_action"]); ok {
+					botRatings.LikelyBotRequestsAction = expandSecurityActionForBotManagement(actionMap)
+				}
+				if actionMap, ok := helper.ConvertInterfacesHeadToMap(botRatingsMap["verified_bot_requests_action"]); ok {
+					botRatings.VerifiedBotRequestsAction = expandSecurityActionForBotManagement(actionMap)
+				}
+				if actionMap, ok := helper.ConvertInterfacesHeadToMap(botRatingsMap["human_requests_action"]); ok {
+					botRatings.HumanRequestsAction = expandSecurityActionForBotManagement(actionMap)
+				}
+				botIntelligence.BotRatings = &botRatings
+			}
+			basicBotSettings.BotIntelligence = &botIntelligence
+		}
+		botManagement.BasicBotSettings = &basicBotSettings
+	}
+	if clientAttestationRulesMap, ok := helper.ConvertInterfacesHeadToMap(botManagementMap["client_attestation_rules"]); ok {
+		clientAttestationRules := teov20220901.ClientAttestationRules{}
+		if v, ok := clientAttestationRulesMap["rules"]; ok {
+			for _, item := range v.([]interface{}) {
+				ruleMap := item.(map[string]interface{})
+				rule := teov20220901.ClientAttestationRule{}
+				if v, ok := ruleMap["id"].(string); ok && v != "" {
+					rule.Id = helper.String(v)
+				}
+				if v, ok := ruleMap["name"].(string); ok && v != "" {
+					rule.Name = helper.String(v)
+				}
+				if v, ok := ruleMap["enabled"].(string); ok && v != "" {
+					rule.Enabled = helper.String(v)
+				}
+				if v, ok := ruleMap["priority"].(int); ok {
+					rule.Priority = helper.IntUint64(v)
+				}
+				if v, ok := ruleMap["condition"].(string); ok && v != "" {
+					rule.Condition = helper.String(v)
+				}
+				if v, ok := ruleMap["attester_id"].(string); ok && v != "" {
+					rule.AttesterId = helper.String(v)
+				}
+				if v, ok := ruleMap["device_profiles"]; ok {
+					for _, profileItem := range v.([]interface{}) {
+						profileMap := profileItem.(map[string]interface{})
+						profile := teov20220901.DeviceProfile{}
+						if v, ok := profileMap["client_type"].(string); ok && v != "" {
+							profile.ClientType = helper.String(v)
+						}
+						if v, ok := profileMap["high_risk_min_score"].(int); ok {
+							profile.HighRiskMinScore = helper.IntUint64(v)
+						}
+						if actionMap, ok := helper.ConvertInterfacesHeadToMap(profileMap["high_risk_request_action"]); ok {
+							profile.HighRiskRequestAction = expandSecurityActionForBotManagement(actionMap)
+						}
+						if v, ok := profileMap["medium_risk_min_score"].(int); ok {
+							profile.MediumRiskMinScore = helper.IntUint64(v)
+						}
+						if actionMap, ok := helper.ConvertInterfacesHeadToMap(profileMap["medium_risk_request_action"]); ok {
+							profile.MediumRiskRequestAction = expandSecurityActionForBotManagement(actionMap)
+						}
+						rule.DeviceProfiles = append(rule.DeviceProfiles, &profile)
+					}
+				}
+				if actionMap, ok := helper.ConvertInterfacesHeadToMap(ruleMap["invalid_attestation_action"]); ok {
+					rule.InvalidAttestationAction = expandSecurityActionForBotManagement(actionMap)
+				}
+				clientAttestationRules.Rules = append(clientAttestationRules.Rules, &rule)
+			}
+		}
+		botManagement.ClientAttestationRules = &clientAttestationRules
+	}
+	if browserImpersonationDetectionMap, ok := helper.ConvertInterfacesHeadToMap(botManagementMap["browser_impersonation_detection"]); ok {
+		browserImpersonationDetection := teov20220901.BrowserImpersonationDetection{}
+		if v, ok := browserImpersonationDetectionMap["rules"]; ok {
+			for _, item := range v.([]interface{}) {
+				ruleMap := item.(map[string]interface{})
+				rule := teov20220901.BrowserImpersonationDetectionRule{}
+				if v, ok := ruleMap["id"].(string); ok && v != "" {
+					rule.Id = helper.String(v)
+				}
+				if v, ok := ruleMap["name"].(string); ok && v != "" {
+					rule.Name = helper.String(v)
+				}
+				if v, ok := ruleMap["enabled"].(string); ok && v != "" {
+					rule.Enabled = helper.String(v)
+				}
+				if v, ok := ruleMap["condition"].(string); ok && v != "" {
+					rule.Condition = helper.String(v)
+				}
+				if actionMap, ok := helper.ConvertInterfacesHeadToMap(ruleMap["action"]); ok {
+					bidAction := teov20220901.BrowserImpersonationDetectionAction{}
+					if bsvMap, ok := helper.ConvertInterfacesHeadToMap(actionMap["bot_session_validation"]); ok {
+						bsv := teov20220901.BotSessionValidation{}
+						if v, ok := bsvMap["issue_new_bot_session_cookie"].(string); ok && v != "" {
+							bsv.IssueNewBotSessionCookie = helper.String(v)
+						}
+						if triggerConfigMap, ok := helper.ConvertInterfacesHeadToMap(bsvMap["max_new_session_trigger_config"]); ok {
+							triggerConfig := teov20220901.MaxNewSessionTriggerConfig{}
+							if v, ok := triggerConfigMap["max_new_session_count_interval"].(string); ok && v != "" {
+								triggerConfig.MaxNewSessionCountInterval = helper.String(v)
+							}
+							if v, ok := triggerConfigMap["max_new_session_count_threshold"].(int); ok {
+								triggerConfig.MaxNewSessionCountThreshold = helper.IntInt64(v)
+							}
+							bsv.MaxNewSessionTriggerConfig = &triggerConfig
+						}
+						if actionMap, ok := helper.ConvertInterfacesHeadToMap(bsvMap["session_expired_action"]); ok {
+							bsv.SessionExpiredAction = expandSecurityActionForBotManagement(actionMap)
+						}
+						if actionMap, ok := helper.ConvertInterfacesHeadToMap(bsvMap["session_invalid_action"]); ok {
+							bsv.SessionInvalidAction = expandSecurityActionForBotManagement(actionMap)
+						}
+						if srcMap, ok := helper.ConvertInterfacesHeadToMap(bsvMap["session_rate_control"]); ok {
+							src := teov20220901.SessionRateControl{}
+							if v, ok := srcMap["enabled"].(string); ok && v != "" {
+								src.Enabled = helper.String(v)
+							}
+							if actionMap, ok := helper.ConvertInterfacesHeadToMap(srcMap["high_rate_session_action"]); ok {
+								src.HighRateSessionAction = expandSecurityActionForBotManagement(actionMap)
+							}
+							if actionMap, ok := helper.ConvertInterfacesHeadToMap(srcMap["mid_rate_session_action"]); ok {
+								src.MidRateSessionAction = expandSecurityActionForBotManagement(actionMap)
+							}
+							if actionMap, ok := helper.ConvertInterfacesHeadToMap(srcMap["low_rate_session_action"]); ok {
+								src.LowRateSessionAction = expandSecurityActionForBotManagement(actionMap)
+							}
+							bsv.SessionRateControl = &src
+						}
+						bidAction.BotSessionValidation = &bsv
+					}
+					if cbdMap, ok := helper.ConvertInterfacesHeadToMap(actionMap["client_behavior_detection"]); ok {
+						cbd := teov20220901.ClientBehaviorDetection{}
+						if v, ok := cbdMap["crypto_challenge_intensity"].(string); ok && v != "" {
+							cbd.CryptoChallengeIntensity = helper.String(v)
+						}
+						if v, ok := cbdMap["crypto_challenge_delay_before"].(string); ok && v != "" {
+							cbd.CryptoChallengeDelayBefore = helper.String(v)
+						}
+						if v, ok := cbdMap["max_challenge_count_interval"].(string); ok && v != "" {
+							cbd.MaxChallengeCountInterval = helper.String(v)
+						}
+						if v, ok := cbdMap["max_challenge_count_threshold"].(int); ok {
+							cbd.MaxChallengeCountThreshold = helper.IntInt64(v)
+						}
+						if actionMap, ok := helper.ConvertInterfacesHeadToMap(cbdMap["challenge_not_finished_action"]); ok {
+							cbd.ChallengeNotFinishedAction = expandSecurityActionForBotManagement(actionMap)
+						}
+						if actionMap, ok := helper.ConvertInterfacesHeadToMap(cbdMap["challenge_timeout_action"]); ok {
+							cbd.ChallengeTimeoutAction = expandSecurityActionForBotManagement(actionMap)
+						}
+						if actionMap, ok := helper.ConvertInterfacesHeadToMap(cbdMap["bot_client_action"]); ok {
+							cbd.BotClientAction = expandSecurityActionForBotManagement(actionMap)
+						}
+						bidAction.ClientBehaviorDetection = &cbd
+					}
+					rule.Action = &bidAction
+				}
+				browserImpersonationDetection.Rules = append(browserImpersonationDetection.Rules, &rule)
+			}
+		}
+		botManagement.BrowserImpersonationDetection = &browserImpersonationDetection
+	}
+	return &botManagement
 }
 
 func resourceTencentCloudTeoSecurityPolicyConfigCreate(d *schema.ResourceData, meta interface{}) error {
@@ -2638,6 +4156,11 @@ func resourceTencentCloudTeoSecurityPolicyConfigRead(d *schema.ResourceData, met
 		}
 	}
 
+	if respData.BotManagement != nil {
+		botManagementMap := flattenBotManagement(respData.BotManagement)
+		securityPolicyMap["bot_management"] = []interface{}{botManagementMap}
+	}
+
 	securityPolicyList = append(securityPolicyList, securityPolicyMap)
 	_ = d.Set("security_policy", securityPolicyList)
 	return nil
@@ -3624,6 +5147,10 @@ func resourceTencentCloudTeoSecurityPolicyConfigUpdate(d *schema.ResourceData, m
 			securityPolicy.ExceptionRules = &teov20220901.ExceptionRules{
 				Rules: []*teov20220901.ExceptionRule{},
 			}
+		}
+
+		if botManagementMap, ok := helper.ConvertInterfacesHeadToMap(securityPolicyMap["bot_management"]); ok {
+			securityPolicy.BotManagement = expandBotManagement(botManagementMap)
 		}
 
 		request.SecurityPolicy = &securityPolicy
