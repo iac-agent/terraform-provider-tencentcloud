@@ -268,6 +268,87 @@ resource "tencentcloud_teo_security_policy_config" "example" {
         enabled                            = "off"
       }
     }
+
+    bot_management {
+      enabled = "on"
+      custom_rules {
+        rules {
+          name      = "bot-custom-rule-1"
+          enabled   = "on"
+          priority  = 50
+          condition = "$${http.request.uri.path} contain ['/api']"
+          action {
+            security_action {
+              name = "Monitor"
+            }
+            weight = 80
+          }
+          action {
+            security_action {
+              name = "Deny"
+              deny_action_parameters {
+                block_ip          = "on"
+                block_ip_duration = "120s"
+              }
+            }
+            weight = 20
+          }
+        }
+      }
+
+      basic_bot_settings {
+        source_idc {
+          base_action {
+            name = "Monitor"
+          }
+          action_overrides {
+            ids = ["IDC_RULE_001"]
+            action {
+              name = "Deny"
+            }
+          }
+        }
+
+        search_engine_bots {
+          base_action {
+            name = "Allow"
+          }
+        }
+
+        known_bot_categories {
+          base_action {
+            name = "Monitor"
+          }
+        }
+
+        ip_reputation {
+          enabled = "on"
+          ip_reputation_group {
+            base_action {
+              name = "Deny"
+            }
+          }
+        }
+
+        bot_intelligence {
+          enabled = "on"
+          bot_ratings {
+            high_risk_bot_requests_action {
+              name = "Deny"
+            }
+            likely_bot_requests_action {
+              name = "Monitor"
+            }
+            verified_bot_requests_action {
+              name = "Allow"
+            }
+            human_requests_action {
+              name = "Allow"
+            }
+          }
+        }
+      }
+    }
   }
 }
 ```
@@ -642,6 +723,34 @@ The following arguments are supported:
 * `security_policy` - (Optional, List) Security policy configuration. it is recommended to use for custom policies and managed rule configurations of Web protection. it supports configuring security policies with expression grammar.
 * `template_id` - (Optional, String, ForceNew) Specify the policy Template ID. use this parameter to specify the ID of the policy Template when the Entity parameter value is Template.
 
+The `action_overrides` object of `ip_reputation_group` supports the following:
+
+* `action` - (Required, List) Override action.
+* `ids` - (Required, List) Rule IDs to override.
+
+The `action_overrides` object of `known_bot_categories` supports the following:
+
+* `action` - (Required, List) Override action.
+* `ids` - (Required, List) Rule IDs to override.
+
+The `action_overrides` object of `search_engine_bots` supports the following:
+
+* `action` - (Required, List) Override action.
+* `ids` - (Required, List) Rule IDs to override.
+
+The `action_overrides` object of `source_idc` supports the following:
+
+* `action` - (Required, List) Override action.
+* `ids` - (Required, List) Rule IDs to override.
+
+The `action` object of `action_overrides` supports the following:
+
+* `name` - (Required, String) Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.
+* `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
+* `challenge_action_parameters` - (Optional, List) Additional parameters when Name is Challenge.
+* `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
+* `redirect_action_parameters` - (Optional, List) Additional parameters when Name is Redirect.
+
 The `action` object of `adaptive_frequency_control` supports the following:
 
 * `name` - (Required, String) The specific action of security execution. The values are:
@@ -733,6 +842,11 @@ The `action` object of `rule_actions` supports the following:
 
 The `action` object of `rules` supports the following:
 
+* `bot_session_validation` - (Optional, List) Bot session validation configuration.
+* `client_behavior_detection` - (Optional, List) Client behavior detection configuration.
+
+The `action` object of `rules` supports the following:
+
 * `name` - (Required, String) Specific actions for safe execution. valid values:.
 <li>Deny: block</li> <li>Monitor: Monitor</li> <li>ReturnCustomPage: use specified page to block</li> <li>Redirect: Redirect to URL</li> <li>BlockIP: IP block</li> <li>JSChallenge: JavaScript challenge</li> <li>ManagedChallenge: managed challenge</li> <li>Disabled: Disabled</li> <li>Allow: Allow</li>.
 * `block_ip_action_parameters` - (Optional, List) Additional parameter when Name is BlockIP.
@@ -757,6 +871,11 @@ The `action` object of `rules` supports the following:
 * `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
 * `redirect_action_parameters` - (Optional, List) Additional parameters when Name is Redirect.
 * `return_custom_page_action_parameters` - (Optional, List) To be deprecated, additional parameter when Name is ReturnCustomPage.
+
+The `action` object of `rules` supports the following:
+
+* `security_action` - (Required, List) Security action configuration.
+* `weight` - (Required, Int) Action weight. value range: 10-100, must be multiples of 10, sum of all weights must equal 100.
 
 The `action` object of `slow_attack_defense` supports the following:
 
@@ -783,6 +902,96 @@ The `adaptive_frequency_control` object of `http_ddos_protection` supports the f
 * `action` - (Optional, List) The handling method of adaptive frequency control. When Enabled is on, this field is required. SecurityAction's Name value supports: <li>Monitor: Observe; </li><li>Deny: Intercept; </li><li>Challenge: Challenge, where ChallengeActionParameters.Name only supports JSChallenge. </li>.
 * `sensitivity` - (Optional, String) The restriction level of adaptive frequency control. When Enabled is on, this field is required. The values are: <li>Loose: loose; </li><li>Moderate: moderate; </li><li>Strict: strict. </li>.
 
+The `allow_action_parameters` object of `action` supports the following:
+
+* `max_delay_time` - (Optional, String) Maximum delay response time.
+* `min_delay_time` - (Optional, String) Minimum delay response time.
+
+The `allow_action_parameters` object of `base_action` supports the following:
+
+* `max_delay_time` - (Optional, String) Maximum delay response time.
+* `min_delay_time` - (Optional, String) Minimum delay response time.
+
+The `allow_action_parameters` object of `bot_client_action` supports the following:
+
+* `max_delay_time` - (Optional, String) Maximum delay response time.
+* `min_delay_time` - (Optional, String) Minimum delay response time.
+
+The `allow_action_parameters` object of `challenge_not_finished_action` supports the following:
+
+* `max_delay_time` - (Optional, String) Maximum delay response time.
+* `min_delay_time` - (Optional, String) Minimum delay response time.
+
+The `allow_action_parameters` object of `challenge_timeout_action` supports the following:
+
+* `max_delay_time` - (Optional, String) Maximum delay response time.
+* `min_delay_time` - (Optional, String) Minimum delay response time.
+
+The `allow_action_parameters` object of `high_rate_session_action` supports the following:
+
+* `max_delay_time` - (Optional, String) Maximum delay response time.
+* `min_delay_time` - (Optional, String) Minimum delay response time.
+
+The `allow_action_parameters` object of `high_risk_bot_requests_action` supports the following:
+
+* `max_delay_time` - (Optional, String) Maximum delay response time.
+* `min_delay_time` - (Optional, String) Minimum delay response time.
+
+The `allow_action_parameters` object of `high_risk_request_action` supports the following:
+
+* `max_delay_time` - (Optional, String) Maximum delay response time.
+* `min_delay_time` - (Optional, String) Minimum delay response time.
+
+The `allow_action_parameters` object of `human_requests_action` supports the following:
+
+* `max_delay_time` - (Optional, String) Maximum delay response time.
+* `min_delay_time` - (Optional, String) Minimum delay response time.
+
+The `allow_action_parameters` object of `invalid_attestation_action` supports the following:
+
+* `max_delay_time` - (Optional, String) Maximum delay response time.
+* `min_delay_time` - (Optional, String) Minimum delay response time.
+
+The `allow_action_parameters` object of `likely_bot_requests_action` supports the following:
+
+* `max_delay_time` - (Optional, String) Maximum delay response time.
+* `min_delay_time` - (Optional, String) Minimum delay response time.
+
+The `allow_action_parameters` object of `low_rate_session_action` supports the following:
+
+* `max_delay_time` - (Optional, String) Maximum delay response time.
+* `min_delay_time` - (Optional, String) Minimum delay response time.
+
+The `allow_action_parameters` object of `medium_risk_request_action` supports the following:
+
+* `max_delay_time` - (Optional, String) Maximum delay response time.
+* `min_delay_time` - (Optional, String) Minimum delay response time.
+
+The `allow_action_parameters` object of `mid_rate_session_action` supports the following:
+
+* `max_delay_time` - (Optional, String) Maximum delay response time.
+* `min_delay_time` - (Optional, String) Minimum delay response time.
+
+The `allow_action_parameters` object of `security_action` supports the following:
+
+* `max_delay_time` - (Optional, String) Maximum delay response time.
+* `min_delay_time` - (Optional, String) Minimum delay response time.
+
+The `allow_action_parameters` object of `session_expired_action` supports the following:
+
+* `max_delay_time` - (Optional, String) Maximum delay response time.
+* `min_delay_time` - (Optional, String) Minimum delay response time.
+
+The `allow_action_parameters` object of `session_invalid_action` supports the following:
+
+* `max_delay_time` - (Optional, String) Maximum delay response time.
+* `min_delay_time` - (Optional, String) Minimum delay response time.
+
+The `allow_action_parameters` object of `verified_bot_requests_action` supports the following:
+
+* `max_delay_time` - (Optional, String) Maximum delay response time.
+* `min_delay_time` - (Optional, String) Minimum delay response time.
+
 The `auto_update` object of `managed_rules` supports the following:
 
 * `auto_update_to_latest_version` - (Required, String) Indicates whether to enable automatic update to the latest version. valid values: <li>on: enabled</li> <li>off: disabled</li>.
@@ -792,6 +1001,38 @@ The `bandwidth_abuse_defense` object of `http_ddos_protection` supports the foll
 * `enabled` - (Required, String) Whether the anti-theft feature (only applicable to mainland China) is enabled. The possible values are: <li>on: enabled; </li><li>off: disabled. </li>.
 * `action` - (Optional, List) The method for preventing traffic fraud (only applicable to mainland China). When Enabled is on, this field is required. SecurityAction Name value supports: <li>Monitor: Observe; </li><li>Deny: Intercept; </li><li>Challenge: Challenge, where ChallengeActionParameters.Name only supports JSChallenge. </li>.
 
+The `base_action` object of `ip_reputation_group` supports the following:
+
+* `name` - (Required, String) Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.
+* `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
+* `challenge_action_parameters` - (Optional, List) Additional parameters when Name is Challenge.
+* `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
+* `redirect_action_parameters` - (Optional, List) Additional parameters when Name is Redirect.
+
+The `base_action` object of `known_bot_categories` supports the following:
+
+* `name` - (Required, String) Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.
+* `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
+* `challenge_action_parameters` - (Optional, List) Additional parameters when Name is Challenge.
+* `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
+* `redirect_action_parameters` - (Optional, List) Additional parameters when Name is Redirect.
+
+The `base_action` object of `search_engine_bots` supports the following:
+
+* `name` - (Required, String) Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.
+* `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
+* `challenge_action_parameters` - (Optional, List) Additional parameters when Name is Challenge.
+* `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
+* `redirect_action_parameters` - (Optional, List) Additional parameters when Name is Redirect.
+
+The `base_action` object of `source_idc` supports the following:
+
+* `name` - (Required, String) Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.
+* `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
+* `challenge_action_parameters` - (Optional, List) Additional parameters when Name is Challenge.
+* `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
+* `redirect_action_parameters` - (Optional, List) Additional parameters when Name is Redirect.
+
 The `basic_access_rules` object of `custom_rules` supports the following:
 
 * `action` - (Required, List) Execution actions for custom rules. the Name parameter value of SecurityAction supports: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>ReturnCustomPage: block using a specified page;</li> <li>Redirect: Redirect to URL;</li> <li>BlockIP: IP blocking;</li> <li>JSChallenge: JavaScript challenge;</li> <li>ManagedChallenge: managed challenge;</li> <li>Allow: Allow.</li>.
@@ -799,6 +1040,14 @@ The `basic_access_rules` object of `custom_rules` supports the following:
 * `enabled` - (Required, String) Indicates whether the custom rule is enabled. valid values: <li>on: enabled</li> <li>off: disabled</li>.
 * `name` - (Required, String) The name of the custom rule.
 * `priority` - (Optional, Int) Customizes the priority of rules. value range: 0-100. it defaults to 0. only supports `rule_type` is `PreciseMatchRule`.
+
+The `basic_bot_settings` object of `bot_management` supports the following:
+
+* `bot_intelligence` - (Optional, List) Bot intelligence analysis configuration.
+* `ip_reputation` - (Optional, List) IP threat intelligence configuration.
+* `known_bot_categories` - (Optional, List) Known Bot category configuration.
+* `search_engine_bots` - (Optional, List) Search engine bot configuration.
+* `source_idc` - (Optional, List) IDC source IP configuration.
 
 The `block_ip_action_parameters` object of `action` supports the following:
 
@@ -808,22 +1057,213 @@ The `block_ip_action_parameters` object of `action` supports the following:
 
 * `duration` - (Required, String) The penalty duration for banning an IP. Supported units are: <li>s: seconds, value range 1 to 120; </li><li>m: minutes, value range 1 to 120; </li><li>h: hours, value range 1 to 48. </li>.
 
+The `bot_client_action` object of `client_behavior_detection` supports the following:
+
+* `name` - (Required, String) Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.
+* `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
+* `challenge_action_parameters` - (Optional, List) Additional parameters when Name is Challenge.
+* `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
+* `redirect_action_parameters` - (Optional, List) Additional parameters when Name is Redirect.
+
+The `bot_intelligence` object of `basic_bot_settings` supports the following:
+
+* `bot_ratings` - (Optional, List) Bot rating-based action configuration.
+* `enabled` - (Optional, String) Whether Bot intelligence is enabled. valid values: on/off.
+
+The `bot_management` object of `security_policy` supports the following:
+
+* `enabled` - (Required, String) Whether Bot management is enabled. valid values: <li>on: enabled</li> <li>off: disabled</li>.
+* `basic_bot_settings` - (Optional, List) Basic Bot settings configuration that applies to all domains.
+* `browser_impersonation_detection` - (Optional, List) Browser impersonation detection configuration.
+* `client_attestation_rules` - (Optional, List) Client attestation rules configuration (beta feature, requires a support ticket).
+* `custom_rules` - (Optional, List) Bot custom rules configuration.
+
+The `bot_ratings` object of `bot_intelligence` supports the following:
+
+* `high_risk_bot_requests_action` - (Optional, List) Action for high risk Bot requests.
+* `human_requests_action` - (Optional, List) Action for human requests.
+* `likely_bot_requests_action` - (Optional, List) Action for likely Bot requests.
+* `verified_bot_requests_action` - (Optional, List) Action for verified Bot requests.
+
+The `bot_session_validation` object of `action` supports the following:
+
+* `issue_new_bot_session_cookie` - (Optional, String) Whether to issue new Bot session cookie. valid values: on (update+validate), off (validate only).
+* `max_new_session_trigger_config` - (Optional, List) Trigger threshold for cookie renewal.
+* `session_expired_action` - (Optional, List) Action for expired sessions.
+* `session_invalid_action` - (Optional, List) Action for invalid sessions.
+* `session_rate_control` - (Optional, List) Session rate control configuration.
+
+The `browser_impersonation_detection` object of `bot_management` supports the following:
+
+* `rules` - (Optional, List) List of browser impersonation detection rules.
+
+The `challenge_action_parameters` object of `action` supports the following:
+
+* `attester_id` - (Optional, String) Client attestation method ID.
+* `challenge_option` - (Optional, String) Challenge type. valid values: InterstitialChallenge, InlineChallenge, JSChallenge, ManagedChallenge.
+* `interval` - (Optional, String) Repeat challenge interval.
+
 The `challenge_action_parameters` object of `action` supports the following:
 
 * `challenge_option` - (Required, String) The specific challenge action to be executed safely. The possible values are: <li> InterstitialChallenge: interstitial challenge; </li><li> InlineChallenge: embedded challenge; </li><li> JSChallenge: JavaScript challenge; </li><li> ManagedChallenge: managed challenge. </li>.
 * `attester_id` - (Optional, String) Client authentication method ID. This field is required when Name is InterstitialChallenge/InlineChallenge.
 * `interval` - (Optional, String) The time interval for repeating the challenge. When Name is InterstitialChallenge/InlineChallenge, this field is required. The default value is 300s. Supported units are: <li>s: seconds, value range 1 to 60; </li><li>m: minutes, value range 1 to 60; </li><li>h: hours, value range 1 to 24. </li>.
 
+The `challenge_action_parameters` object of `base_action` supports the following:
+
+* `attester_id` - (Optional, String) Client attestation method ID.
+* `challenge_option` - (Optional, String) Challenge type. valid values: InterstitialChallenge, InlineChallenge, JSChallenge, ManagedChallenge.
+* `interval` - (Optional, String) Repeat challenge interval.
+
+The `challenge_action_parameters` object of `bot_client_action` supports the following:
+
+* `attester_id` - (Optional, String) Client attestation method ID.
+* `challenge_option` - (Optional, String) Challenge type. valid values: InterstitialChallenge, InlineChallenge, JSChallenge, ManagedChallenge.
+* `interval` - (Optional, String) Repeat challenge interval.
+
+The `challenge_action_parameters` object of `challenge_not_finished_action` supports the following:
+
+* `attester_id` - (Optional, String) Client attestation method ID.
+* `challenge_option` - (Optional, String) Challenge type. valid values: InterstitialChallenge, InlineChallenge, JSChallenge, ManagedChallenge.
+* `interval` - (Optional, String) Repeat challenge interval.
+
+The `challenge_action_parameters` object of `challenge_timeout_action` supports the following:
+
+* `attester_id` - (Optional, String) Client attestation method ID.
+* `challenge_option` - (Optional, String) Challenge type. valid values: InterstitialChallenge, InlineChallenge, JSChallenge, ManagedChallenge.
+* `interval` - (Optional, String) Repeat challenge interval.
+
+The `challenge_action_parameters` object of `high_rate_session_action` supports the following:
+
+* `attester_id` - (Optional, String) Client attestation method ID.
+* `challenge_option` - (Optional, String) Challenge type. valid values: InterstitialChallenge, InlineChallenge, JSChallenge, ManagedChallenge.
+* `interval` - (Optional, String) Repeat challenge interval.
+
+The `challenge_action_parameters` object of `high_risk_bot_requests_action` supports the following:
+
+* `attester_id` - (Optional, String) Client attestation method ID.
+* `challenge_option` - (Optional, String) Challenge type. valid values: InterstitialChallenge, InlineChallenge, JSChallenge, ManagedChallenge.
+* `interval` - (Optional, String) Repeat challenge interval.
+
+The `challenge_action_parameters` object of `high_risk_request_action` supports the following:
+
+* `attester_id` - (Optional, String) Client attestation method ID.
+* `challenge_option` - (Optional, String) Challenge type. valid values: InterstitialChallenge, InlineChallenge, JSChallenge, ManagedChallenge.
+* `interval` - (Optional, String) Repeat challenge interval.
+
+The `challenge_action_parameters` object of `human_requests_action` supports the following:
+
+* `attester_id` - (Optional, String) Client attestation method ID.
+* `challenge_option` - (Optional, String) Challenge type. valid values: InterstitialChallenge, InlineChallenge, JSChallenge, ManagedChallenge.
+* `interval` - (Optional, String) Repeat challenge interval.
+
+The `challenge_action_parameters` object of `invalid_attestation_action` supports the following:
+
+* `attester_id` - (Optional, String) Client attestation method ID.
+* `challenge_option` - (Optional, String) Challenge type. valid values: InterstitialChallenge, InlineChallenge, JSChallenge, ManagedChallenge.
+* `interval` - (Optional, String) Repeat challenge interval.
+
+The `challenge_action_parameters` object of `likely_bot_requests_action` supports the following:
+
+* `attester_id` - (Optional, String) Client attestation method ID.
+* `challenge_option` - (Optional, String) Challenge type. valid values: InterstitialChallenge, InlineChallenge, JSChallenge, ManagedChallenge.
+* `interval` - (Optional, String) Repeat challenge interval.
+
+The `challenge_action_parameters` object of `low_rate_session_action` supports the following:
+
+* `attester_id` - (Optional, String) Client attestation method ID.
+* `challenge_option` - (Optional, String) Challenge type. valid values: InterstitialChallenge, InlineChallenge, JSChallenge, ManagedChallenge.
+* `interval` - (Optional, String) Repeat challenge interval.
+
+The `challenge_action_parameters` object of `medium_risk_request_action` supports the following:
+
+* `attester_id` - (Optional, String) Client attestation method ID.
+* `challenge_option` - (Optional, String) Challenge type. valid values: InterstitialChallenge, InlineChallenge, JSChallenge, ManagedChallenge.
+* `interval` - (Optional, String) Repeat challenge interval.
+
+The `challenge_action_parameters` object of `mid_rate_session_action` supports the following:
+
+* `attester_id` - (Optional, String) Client attestation method ID.
+* `challenge_option` - (Optional, String) Challenge type. valid values: InterstitialChallenge, InlineChallenge, JSChallenge, ManagedChallenge.
+* `interval` - (Optional, String) Repeat challenge interval.
+
+The `challenge_action_parameters` object of `security_action` supports the following:
+
+* `attester_id` - (Optional, String) Client attestation method ID.
+* `challenge_option` - (Optional, String) Challenge type. valid values: InterstitialChallenge, InlineChallenge, JSChallenge, ManagedChallenge.
+* `interval` - (Optional, String) Repeat challenge interval.
+
+The `challenge_action_parameters` object of `session_expired_action` supports the following:
+
+* `attester_id` - (Optional, String) Client attestation method ID.
+* `challenge_option` - (Optional, String) Challenge type. valid values: InterstitialChallenge, InlineChallenge, JSChallenge, ManagedChallenge.
+* `interval` - (Optional, String) Repeat challenge interval.
+
+The `challenge_action_parameters` object of `session_invalid_action` supports the following:
+
+* `attester_id` - (Optional, String) Client attestation method ID.
+* `challenge_option` - (Optional, String) Challenge type. valid values: InterstitialChallenge, InlineChallenge, JSChallenge, ManagedChallenge.
+* `interval` - (Optional, String) Repeat challenge interval.
+
+The `challenge_action_parameters` object of `verified_bot_requests_action` supports the following:
+
+* `attester_id` - (Optional, String) Client attestation method ID.
+* `challenge_option` - (Optional, String) Challenge type. valid values: InterstitialChallenge, InlineChallenge, JSChallenge, ManagedChallenge.
+* `interval` - (Optional, String) Repeat challenge interval.
+
+The `challenge_not_finished_action` object of `client_behavior_detection` supports the following:
+
+* `name` - (Required, String) Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.
+* `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
+* `challenge_action_parameters` - (Optional, List) Additional parameters when Name is Challenge.
+* `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
+* `redirect_action_parameters` - (Optional, List) Additional parameters when Name is Redirect.
+
+The `challenge_timeout_action` object of `client_behavior_detection` supports the following:
+
+* `name` - (Required, String) Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.
+* `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
+* `challenge_action_parameters` - (Optional, List) Additional parameters when Name is Challenge.
+* `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
+* `redirect_action_parameters` - (Optional, List) Additional parameters when Name is Redirect.
+
+The `client_attestation_rules` object of `bot_management` supports the following:
+
+* `rules` - (Optional, List) List of client attestation rules.
+
+The `client_behavior_detection` object of `action` supports the following:
+
+* `bot_client_action` - (Optional, List) Action for Bot client.
+* `challenge_not_finished_action` - (Optional, List) Action when JS challenge not finished.
+* `challenge_timeout_action` - (Optional, List) Action on challenge timeout.
+* `crypto_challenge_delay_before` - (Optional, String) Execution delay before challenge. valid range: 0ms-1000ms.
+* `crypto_challenge_intensity` - (Optional, String) Proof-of-work intensity. valid values: low, medium, high.
+* `max_challenge_count_interval` - (Optional, String) Threshold time window.
+* `max_challenge_count_threshold` - (Optional, Int) Threshold cumulative count. value range: 1-100000000.
+
 The `client_filtering` object of `http_ddos_protection` supports the following:
 
 * `enabled` - (Required, String) Whether smart client filtering is enabled. The possible values are: <li>on: enabled; </li><li>off: disabled. </li>.
 * `action` - (Optional, List) The method of intelligent client filtering. When Enabled is on, this field is required. SecurityAction Name value supports: <li>Monitor: Observe; </li><li>Deny: Intercept; </li><li>Challenge: Challenge, where ChallengeActionParameters.Name only supports JSChallenge. </li>.
+
+The `custom_rules` object of `bot_management` supports the following:
+
+* `rules` - (Optional, List) List of Bot custom rules.
 
 The `custom_rules` object of `security_policy` supports the following:
 
 * `basic_access_rules` - (Optional, List) List of custom rule definitions. <br>when modifying the Web protection configuration using ModifySecurityPolicy: <br> - if the Rules parameter is not specified or the parameter length of Rules is zero: clear all custom rule configurations. <br> - if the parameter value of CustomRules in the SecurityPolicy parameter is not specified: keep the existing custom rule configuration without modification.
 * `precise_match_rules` - (Optional, List) List of custom rule definitions. <br>when modifying the Web protection configuration using ModifySecurityPolicy: <br> - if the Rules parameter is not specified or the parameter length of Rules is zero: clear all custom rule configurations. <br> - if the parameter value of CustomRules in the SecurityPolicy parameter is not specified: keep the existing custom rule configuration without modification.
 * `rules` - (Optional, List, **Deprecated**) It has been deprecated from version 1.81.184. Please use `precise_match_rules` or `basic_access_rules` instead. List of custom rule definitions. <br>when modifying the Web protection configuration using ModifySecurityPolicy: <br> - if the Rules parameter is not specified or the parameter length of Rules is zero: clear all custom rule configurations. <br> - if the parameter value of CustomRules in the SecurityPolicy parameter is not specified: keep the existing custom rule configuration without modification.
+
+The `deny_action_parameters` object of `action` supports the following:
+
+* `block_ip_duration` - (Optional, String) IP ban duration.
+* `block_ip` - (Optional, String) Whether to enable IP ban extension. valid values: on/off.
+* `error_page_id` - (Optional, String) Custom page ID.
+* `response_code` - (Optional, String) Custom page response status code.
+* `return_custom_page` - (Optional, String) Whether to use custom page. valid values: on/off.
+* `stall` - (Optional, String) Whether to stall connection. valid values: on/off.
 
 The `deny_action_parameters` object of `action` supports the following:
 
@@ -846,9 +1286,194 @@ Note: This option cannot be enabled at the same time as the BlockIp or Stall opt
 After enabling, it will no longer respond to requests in the current connection session and will not actively disconnect. It is used to fight against crawlers and consume client connection resources.
 Note: This option cannot be enabled at the same time as the BlockIp or ReturnCustomPage options.
 
+The `deny_action_parameters` object of `base_action` supports the following:
+
+* `block_ip_duration` - (Optional, String) IP ban duration.
+* `block_ip` - (Optional, String) Whether to enable IP ban extension. valid values: on/off.
+* `error_page_id` - (Optional, String) Custom page ID.
+* `response_code` - (Optional, String) Custom page response status code.
+* `return_custom_page` - (Optional, String) Whether to use custom page. valid values: on/off.
+* `stall` - (Optional, String) Whether to stall connection. valid values: on/off.
+
+The `deny_action_parameters` object of `bot_client_action` supports the following:
+
+* `block_ip_duration` - (Optional, String) IP ban duration.
+* `block_ip` - (Optional, String) Whether to enable IP ban extension. valid values: on/off.
+* `error_page_id` - (Optional, String) Custom page ID.
+* `response_code` - (Optional, String) Custom page response status code.
+* `return_custom_page` - (Optional, String) Whether to use custom page. valid values: on/off.
+* `stall` - (Optional, String) Whether to stall connection. valid values: on/off.
+
+The `deny_action_parameters` object of `challenge_not_finished_action` supports the following:
+
+* `block_ip_duration` - (Optional, String) IP ban duration.
+* `block_ip` - (Optional, String) Whether to enable IP ban extension. valid values: on/off.
+* `error_page_id` - (Optional, String) Custom page ID.
+* `response_code` - (Optional, String) Custom page response status code.
+* `return_custom_page` - (Optional, String) Whether to use custom page. valid values: on/off.
+* `stall` - (Optional, String) Whether to stall connection. valid values: on/off.
+
+The `deny_action_parameters` object of `challenge_timeout_action` supports the following:
+
+* `block_ip_duration` - (Optional, String) IP ban duration.
+* `block_ip` - (Optional, String) Whether to enable IP ban extension. valid values: on/off.
+* `error_page_id` - (Optional, String) Custom page ID.
+* `response_code` - (Optional, String) Custom page response status code.
+* `return_custom_page` - (Optional, String) Whether to use custom page. valid values: on/off.
+* `stall` - (Optional, String) Whether to stall connection. valid values: on/off.
+
+The `deny_action_parameters` object of `high_rate_session_action` supports the following:
+
+* `block_ip_duration` - (Optional, String) IP ban duration.
+* `block_ip` - (Optional, String) Whether to enable IP ban extension. valid values: on/off.
+* `error_page_id` - (Optional, String) Custom page ID.
+* `response_code` - (Optional, String) Custom page response status code.
+* `return_custom_page` - (Optional, String) Whether to use custom page. valid values: on/off.
+* `stall` - (Optional, String) Whether to stall connection. valid values: on/off.
+
+The `deny_action_parameters` object of `high_risk_bot_requests_action` supports the following:
+
+* `block_ip_duration` - (Optional, String) IP ban duration.
+* `block_ip` - (Optional, String) Whether to enable IP ban extension. valid values: on/off.
+* `error_page_id` - (Optional, String) Custom page ID.
+* `response_code` - (Optional, String) Custom page response status code.
+* `return_custom_page` - (Optional, String) Whether to use custom page. valid values: on/off.
+* `stall` - (Optional, String) Whether to stall connection. valid values: on/off.
+
+The `deny_action_parameters` object of `high_risk_request_action` supports the following:
+
+* `block_ip_duration` - (Optional, String) IP ban duration.
+* `block_ip` - (Optional, String) Whether to enable IP ban extension. valid values: on/off.
+* `error_page_id` - (Optional, String) Custom page ID.
+* `response_code` - (Optional, String) Custom page response status code.
+* `return_custom_page` - (Optional, String) Whether to use custom page. valid values: on/off.
+* `stall` - (Optional, String) Whether to stall connection. valid values: on/off.
+
+The `deny_action_parameters` object of `human_requests_action` supports the following:
+
+* `block_ip_duration` - (Optional, String) IP ban duration.
+* `block_ip` - (Optional, String) Whether to enable IP ban extension. valid values: on/off.
+* `error_page_id` - (Optional, String) Custom page ID.
+* `response_code` - (Optional, String) Custom page response status code.
+* `return_custom_page` - (Optional, String) Whether to use custom page. valid values: on/off.
+* `stall` - (Optional, String) Whether to stall connection. valid values: on/off.
+
+The `deny_action_parameters` object of `invalid_attestation_action` supports the following:
+
+* `block_ip_duration` - (Optional, String) IP ban duration.
+* `block_ip` - (Optional, String) Whether to enable IP ban extension. valid values: on/off.
+* `error_page_id` - (Optional, String) Custom page ID.
+* `response_code` - (Optional, String) Custom page response status code.
+* `return_custom_page` - (Optional, String) Whether to use custom page. valid values: on/off.
+* `stall` - (Optional, String) Whether to stall connection. valid values: on/off.
+
+The `deny_action_parameters` object of `likely_bot_requests_action` supports the following:
+
+* `block_ip_duration` - (Optional, String) IP ban duration.
+* `block_ip` - (Optional, String) Whether to enable IP ban extension. valid values: on/off.
+* `error_page_id` - (Optional, String) Custom page ID.
+* `response_code` - (Optional, String) Custom page response status code.
+* `return_custom_page` - (Optional, String) Whether to use custom page. valid values: on/off.
+* `stall` - (Optional, String) Whether to stall connection. valid values: on/off.
+
+The `deny_action_parameters` object of `low_rate_session_action` supports the following:
+
+* `block_ip_duration` - (Optional, String) IP ban duration.
+* `block_ip` - (Optional, String) Whether to enable IP ban extension. valid values: on/off.
+* `error_page_id` - (Optional, String) Custom page ID.
+* `response_code` - (Optional, String) Custom page response status code.
+* `return_custom_page` - (Optional, String) Whether to use custom page. valid values: on/off.
+* `stall` - (Optional, String) Whether to stall connection. valid values: on/off.
+
+The `deny_action_parameters` object of `medium_risk_request_action` supports the following:
+
+* `block_ip_duration` - (Optional, String) IP ban duration.
+* `block_ip` - (Optional, String) Whether to enable IP ban extension. valid values: on/off.
+* `error_page_id` - (Optional, String) Custom page ID.
+* `response_code` - (Optional, String) Custom page response status code.
+* `return_custom_page` - (Optional, String) Whether to use custom page. valid values: on/off.
+* `stall` - (Optional, String) Whether to stall connection. valid values: on/off.
+
+The `deny_action_parameters` object of `mid_rate_session_action` supports the following:
+
+* `block_ip_duration` - (Optional, String) IP ban duration.
+* `block_ip` - (Optional, String) Whether to enable IP ban extension. valid values: on/off.
+* `error_page_id` - (Optional, String) Custom page ID.
+* `response_code` - (Optional, String) Custom page response status code.
+* `return_custom_page` - (Optional, String) Whether to use custom page. valid values: on/off.
+* `stall` - (Optional, String) Whether to stall connection. valid values: on/off.
+
+The `deny_action_parameters` object of `security_action` supports the following:
+
+* `block_ip_duration` - (Optional, String) IP ban duration. required when BlockIp is on.
+* `block_ip` - (Optional, String) Whether to enable IP ban extension. valid values: on/off.
+* `error_page_id` - (Optional, String) Custom page ID.
+* `response_code` - (Optional, String) Custom page response status code.
+* `return_custom_page` - (Optional, String) Whether to use custom page. valid values: on/off.
+* `stall` - (Optional, String) Whether to stall connection. valid values: on/off.
+
+The `deny_action_parameters` object of `session_expired_action` supports the following:
+
+* `block_ip_duration` - (Optional, String) IP ban duration.
+* `block_ip` - (Optional, String) Whether to enable IP ban extension. valid values: on/off.
+* `error_page_id` - (Optional, String) Custom page ID.
+* `response_code` - (Optional, String) Custom page response status code.
+* `return_custom_page` - (Optional, String) Whether to use custom page. valid values: on/off.
+* `stall` - (Optional, String) Whether to stall connection. valid values: on/off.
+
+The `deny_action_parameters` object of `session_invalid_action` supports the following:
+
+* `block_ip_duration` - (Optional, String) IP ban duration.
+* `block_ip` - (Optional, String) Whether to enable IP ban extension. valid values: on/off.
+* `error_page_id` - (Optional, String) Custom page ID.
+* `response_code` - (Optional, String) Custom page response status code.
+* `return_custom_page` - (Optional, String) Whether to use custom page. valid values: on/off.
+* `stall` - (Optional, String) Whether to stall connection. valid values: on/off.
+
+The `deny_action_parameters` object of `verified_bot_requests_action` supports the following:
+
+* `block_ip_duration` - (Optional, String) IP ban duration.
+* `block_ip` - (Optional, String) Whether to enable IP ban extension. valid values: on/off.
+* `error_page_id` - (Optional, String) Custom page ID.
+* `response_code` - (Optional, String) Custom page response status code.
+* `return_custom_page` - (Optional, String) Whether to use custom page. valid values: on/off.
+* `stall` - (Optional, String) Whether to stall connection. valid values: on/off.
+
+The `device_profiles` object of `rules` supports the following:
+
+* `client_type` - (Required, String) Client type. valid values: iOS, Android, WebView, WeChatMiniProgram.
+* `high_risk_min_score` - (Optional, Int) Minimum score for high risk. value range: 1-99, default 50.
+* `high_risk_request_action` - (Optional, List) Action for high risk requests.
+* `medium_risk_min_score` - (Optional, Int) Minimum score for medium risk. value range: 1-99, default 15.
+* `medium_risk_request_action` - (Optional, List) Action for medium risk requests.
+
 The `exception_rules` object of `security_policy` supports the following:
 
 * `rules` - (Optional, List) Definition list of exception rules. When using ModifySecurityPolicy to modify the Web protection configuration: <li>If the Rules parameter is not specified, or the length of the Rules parameter is zero: clear all exception rule configurations. </li>.<li>If the ExceptionRules parameter value is not specified in the SecurityPolicy parameter: keep the existing exception rule configurations and do not modify them. </li>.
+
+The `high_rate_session_action` object of `session_rate_control` supports the following:
+
+* `name` - (Required, String) Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.
+* `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
+* `challenge_action_parameters` - (Optional, List) Additional parameters when Name is Challenge.
+* `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
+* `redirect_action_parameters` - (Optional, List) Additional parameters when Name is Redirect.
+
+The `high_risk_bot_requests_action` object of `bot_ratings` supports the following:
+
+* `name` - (Required, String) Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.
+* `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
+* `challenge_action_parameters` - (Optional, List) Additional parameters when Name is Challenge.
+* `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
+* `redirect_action_parameters` - (Optional, List) Additional parameters when Name is Redirect.
+
+The `high_risk_request_action` object of `device_profiles` supports the following:
+
+* `name` - (Required, String) Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.
+* `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
+* `challenge_action_parameters` - (Optional, List) Additional parameters when Name is Challenge.
+* `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
+* `redirect_action_parameters` - (Optional, List) Additional parameters when Name is Redirect.
 
 The `http_ddos_protection` object of `security_policy` supports the following:
 
@@ -856,6 +1481,53 @@ The `http_ddos_protection` object of `security_policy` supports the following:
 * `bandwidth_abuse_defense` - (Optional, List) Specific configuration of traffic fraud prevention.
 * `client_filtering` - (Optional, List) Specific configuration of intelligent client filtering.
 * `slow_attack_defense` - (Optional, List) Specific configuration of slow attack protection.
+
+The `human_requests_action` object of `bot_ratings` supports the following:
+
+* `name` - (Required, String) Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.
+* `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
+* `challenge_action_parameters` - (Optional, List) Additional parameters when Name is Challenge.
+* `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
+* `redirect_action_parameters` - (Optional, List) Additional parameters when Name is Redirect.
+
+The `invalid_attestation_action` object of `rules` supports the following:
+
+* `name` - (Required, String) Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.
+* `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
+* `challenge_action_parameters` - (Optional, List) Additional parameters when Name is Challenge.
+* `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
+* `redirect_action_parameters` - (Optional, List) Additional parameters when Name is Redirect.
+
+The `ip_reputation_group` object of `ip_reputation` supports the following:
+
+* `action_overrides` - (Optional, List) Action overrides for specific IP reputation rule IDs.
+* `base_action` - (Optional, List) Default action for IP reputation requests.
+
+The `ip_reputation` object of `basic_bot_settings` supports the following:
+
+* `enabled` - (Optional, String) Whether IP reputation is enabled. valid values: on/off.
+* `ip_reputation_group` - (Optional, List) IP reputation group configuration.
+
+The `known_bot_categories` object of `basic_bot_settings` supports the following:
+
+* `action_overrides` - (Optional, List) Action overrides for specific known bot category rule IDs.
+* `base_action` - (Optional, List) Default action for known bot category requests.
+
+The `likely_bot_requests_action` object of `bot_ratings` supports the following:
+
+* `name` - (Required, String) Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.
+* `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
+* `challenge_action_parameters` - (Optional, List) Additional parameters when Name is Challenge.
+* `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
+* `redirect_action_parameters` - (Optional, List) Additional parameters when Name is Redirect.
+
+The `low_rate_session_action` object of `session_rate_control` supports the following:
+
+* `name` - (Required, String) Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.
+* `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
+* `challenge_action_parameters` - (Optional, List) Additional parameters when Name is Challenge.
+* `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
+* `redirect_action_parameters` - (Optional, List) Additional parameters when Name is Redirect.
 
 The `managed_rule_groups` object of `managed_rules` supports the following:
 
@@ -872,8 +1544,29 @@ The `managed_rules` object of `security_policy` supports the following:
 * `managed_rule_groups` - (Optional, Set) Configuration of the managed rule group. if this structure is passed as an empty array or the GroupId is not included in the list, it will be processed based on the default method.
 * `semantic_analysis` - (Optional, String) Whether the managed rule semantic analysis option is Enabled is valid only when the Enabled parameter is on. valid values: <li>on: enable. perform semantic analysis on requests before processing them;</li> <li>off: disable. process requests directly without semantic analysis.</li> <br/>default off.
 
+The `max_new_session_trigger_config` object of `bot_session_validation` supports the following:
+
+* `max_new_session_count_interval` - (Optional, String) Time window for new session count.
+* `max_new_session_count_threshold` - (Optional, Int) Cumulative count threshold for new sessions.
+
+The `medium_risk_request_action` object of `device_profiles` supports the following:
+
+* `name` - (Required, String) Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.
+* `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
+* `challenge_action_parameters` - (Optional, List) Additional parameters when Name is Challenge.
+* `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
+* `redirect_action_parameters` - (Optional, List) Additional parameters when Name is Redirect.
+
 The `meta_data` object of `managed_rule_groups` supports the following:
 
+
+The `mid_rate_session_action` object of `session_rate_control` supports the following:
+
+* `name` - (Required, String) Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.
+* `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
+* `challenge_action_parameters` - (Optional, List) Additional parameters when Name is Challenge.
+* `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
+* `redirect_action_parameters` - (Optional, List) Additional parameters when Name is Redirect.
 
 The `minimal_request_body_transfer_rate` object of `slow_attack_defense` supports the following:
 
@@ -895,11 +1588,83 @@ The `rate_limiting_rules` object of `security_policy` supports the following:
 
 The `redirect_action_parameters` object of `action` supports the following:
 
+* `url` - (Optional, String) Redirect target URL.
+
+The `redirect_action_parameters` object of `action` supports the following:
+
 * `url` - (Required, String) Redirect URL.
 
 The `redirect_action_parameters` object of `action` supports the following:
 
 * `url` - (Required, String) The URL to redirect.
+
+The `redirect_action_parameters` object of `base_action` supports the following:
+
+* `url` - (Optional, String) Redirect target URL.
+
+The `redirect_action_parameters` object of `bot_client_action` supports the following:
+
+* `url` - (Optional, String) Redirect target URL.
+
+The `redirect_action_parameters` object of `challenge_not_finished_action` supports the following:
+
+* `url` - (Optional, String) Redirect target URL.
+
+The `redirect_action_parameters` object of `challenge_timeout_action` supports the following:
+
+* `url` - (Optional, String) Redirect target URL.
+
+The `redirect_action_parameters` object of `high_rate_session_action` supports the following:
+
+* `url` - (Optional, String) Redirect target URL.
+
+The `redirect_action_parameters` object of `high_risk_bot_requests_action` supports the following:
+
+* `url` - (Optional, String) Redirect target URL.
+
+The `redirect_action_parameters` object of `high_risk_request_action` supports the following:
+
+* `url` - (Optional, String) Redirect target URL.
+
+The `redirect_action_parameters` object of `human_requests_action` supports the following:
+
+* `url` - (Optional, String) Redirect target URL.
+
+The `redirect_action_parameters` object of `invalid_attestation_action` supports the following:
+
+* `url` - (Optional, String) Redirect target URL.
+
+The `redirect_action_parameters` object of `likely_bot_requests_action` supports the following:
+
+* `url` - (Optional, String) Redirect target URL.
+
+The `redirect_action_parameters` object of `low_rate_session_action` supports the following:
+
+* `url` - (Optional, String) Redirect target URL.
+
+The `redirect_action_parameters` object of `medium_risk_request_action` supports the following:
+
+* `url` - (Optional, String) Redirect target URL.
+
+The `redirect_action_parameters` object of `mid_rate_session_action` supports the following:
+
+* `url` - (Optional, String) Redirect target URL.
+
+The `redirect_action_parameters` object of `security_action` supports the following:
+
+* `url` - (Optional, String) Redirect target URL.
+
+The `redirect_action_parameters` object of `session_expired_action` supports the following:
+
+* `url` - (Optional, String) Redirect target URL.
+
+The `redirect_action_parameters` object of `session_invalid_action` supports the following:
+
+* `url` - (Optional, String) Redirect target URL.
+
+The `redirect_action_parameters` object of `verified_bot_requests_action` supports the following:
+
+* `url` - (Optional, String) Redirect target URL.
 
 The `request_body_transfer_timeout` object of `slow_attack_defense` supports the following:
 
@@ -944,6 +1709,23 @@ The `rule_actions` object of `managed_rule_groups` supports the following:
 The `rule_details` object of `meta_data` supports the following:
 
 
+The `rules` object of `browser_impersonation_detection` supports the following:
+
+* `action` - (Required, List) Browser impersonation detection action.
+* `condition` - (Required, String) Match condition expression.
+* `enabled` - (Required, String) Whether the rule is enabled. valid values: on/off.
+* `name` - (Required, String) Rule name.
+
+The `rules` object of `client_attestation_rules` supports the following:
+
+* `attester_id` - (Required, String) Client attestation option ID.
+* `condition` - (Required, String) Match condition expression.
+* `enabled` - (Required, String) Whether the rule is enabled. valid values: on/off.
+* `name` - (Required, String) Rule name.
+* `device_profiles` - (Optional, List) Device profiles configuration.
+* `invalid_attestation_action` - (Optional, List) Action when attestation is invalid.
+* `priority` - (Optional, Int) Priority of the rule. value range: 0-100, default 0.
+
 The `rules` object of `custom_rules` supports the following:
 
 * `action` - (Required, List) Execution actions for custom rules. the Name parameter value of SecurityAction supports: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>ReturnCustomPage: block using a specified page;</li> <li>Redirect: Redirect to URL;</li> <li>BlockIP: IP blocking;</li> <li>JSChallenge: JavaScript challenge;</li> <li>ManagedChallenge: managed challenge;</li> <li>Allow: Allow.</li>.
@@ -953,6 +1735,14 @@ The `rules` object of `custom_rules` supports the following:
 * `id` - (Optional, String) The ID of a custom rule. <br> the rule ID supports different rule configuration operations: <br> - add a new rule: ID is empty or the ID parameter is not specified; <br> - modify an existing rule: specify the rule ID that needs to be updated/modified; <br> - delete an existing rule: existing Rules not included in the Rules list of the CustomRules parameter will be deleted.
 * `priority` - (Optional, Int) Customizes the priority of rules. value range: 0-100. it defaults to 0. only supports `rule_type` is `PreciseMatchRule`.
 * `rule_type` - (Optional, String) Type of custom rule. valid values: <li>BasicAccessRule: basic access control;</li> <li>PreciseMatchRule: exact matching rule, default;</li> <li>ManagedAccessRule: expert customized rule, for output only.</li> the default value is PreciseMatchRule.
+
+The `rules` object of `custom_rules` supports the following:
+
+* `action` - (Required, List) Weighted action list. all weights must sum to 100.
+* `condition` - (Required, String) Match condition expression. must comply with the expression grammar.
+* `enabled` - (Required, String) Whether the rule is enabled. valid values: <li>on: enabled</li> <li>off: disabled</li>.
+* `name` - (Required, String) Rule name.
+* `priority` - (Optional, Int) Priority of the rule. value range: 1-100, default 50.
 
 The `rules` object of `exception_rules` supports the following:
 
@@ -980,13 +1770,50 @@ The `rules` object of `rate_limiting_rules` supports the following:
 * `name` - (Optional, String) The name of the precise rate limit.
 * `priority` - (Optional, Int) The priority of precise rate limiting ranges from 0 to 100, and the default is 0.
 
+The `search_engine_bots` object of `basic_bot_settings` supports the following:
+
+* `action_overrides` - (Optional, List) Action overrides for specific search engine bot rule IDs.
+* `base_action` - (Optional, List) Default action for search engine bot requests.
+
+The `security_action` object of `action` supports the following:
+
+* `name` - (Required, String) Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.
+* `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
+* `challenge_action_parameters` - (Optional, List) Additional parameters when Name is Challenge.
+* `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
+* `redirect_action_parameters` - (Optional, List) Additional parameters when Name is Redirect.
+
 The `security_policy` object supports the following:
 
+* `bot_management` - (Optional, List) Bot management configuration.
 * `custom_rules` - (Optional, List) Custom rule configuration.
 * `exception_rules` - (Optional, List) Exception rule configuration.
 * `http_ddos_protection` - (Optional, List) HTTP DDOS protection configuration.
 * `managed_rules` - (Optional, List) Managed rule configuration.
 * `rate_limiting_rules` - (Optional, List) Rate limiting rule configuration.
+
+The `session_expired_action` object of `bot_session_validation` supports the following:
+
+* `name` - (Required, String) Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.
+* `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
+* `challenge_action_parameters` - (Optional, List) Additional parameters when Name is Challenge.
+* `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
+* `redirect_action_parameters` - (Optional, List) Additional parameters when Name is Redirect.
+
+The `session_invalid_action` object of `bot_session_validation` supports the following:
+
+* `name` - (Required, String) Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.
+* `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
+* `challenge_action_parameters` - (Optional, List) Additional parameters when Name is Challenge.
+* `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
+* `redirect_action_parameters` - (Optional, List) Additional parameters when Name is Redirect.
+
+The `session_rate_control` object of `bot_session_validation` supports the following:
+
+* `enabled` - (Optional, String) Whether session rate control is enabled. valid values: on/off.
+* `high_rate_session_action` - (Optional, List) Action for high rate sessions.
+* `low_rate_session_action` - (Optional, List) Action for low rate sessions.
+* `mid_rate_session_action` - (Optional, List) Action for medium rate sessions.
 
 The `slow_attack_defense` object of `http_ddos_protection` supports the following:
 
@@ -994,6 +1821,19 @@ The `slow_attack_defense` object of `http_ddos_protection` supports the followin
 * `action` - (Optional, List) The handling method of slow attack protection. When Enabled is on, this field is required. SecurityAction Name value supports: <li>Monitor: Observe; </li><li>Deny: Intercept; </li>.
 * `minimal_request_body_transfer_rate` - (Optional, List) Specific configuration of the minimum rate threshold for text transmission. This field is required when Enabled is on.
 * `request_body_transfer_timeout` - (Optional, List) Specific configuration of the text transmission timeout. When Enabled is on, this field is required.
+
+The `source_idc` object of `basic_bot_settings` supports the following:
+
+* `action_overrides` - (Optional, List) Action overrides for specific IDC source rule IDs.
+* `base_action` - (Optional, List) Default action for IDC source requests.
+
+The `verified_bot_requests_action` object of `bot_ratings` supports the following:
+
+* `name` - (Required, String) Action name. valid values: Deny, Monitor, Allow, Challenge, Disabled, Redirect, Trans.
+* `allow_action_parameters` - (Optional, List) Additional parameters when Name is Allow.
+* `challenge_action_parameters` - (Optional, List) Additional parameters when Name is Challenge.
+* `deny_action_parameters` - (Optional, List) Additional parameters when Name is Deny.
+* `redirect_action_parameters` - (Optional, List) Additional parameters when Name is Redirect.
 
 ## Attributes Reference
 

@@ -450,7 +450,3 @@ func TestTeoDnsRecord22_Schema(t *testing.T) {
 	assert.Equal(t, schema.TypeString, recordId.Type)
 	assert.True(t, recordId.Computed)
 }
-
-func ptrInt64(i int64) *int64 {
-	return &i
-}
