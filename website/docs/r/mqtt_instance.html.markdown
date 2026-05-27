@@ -90,6 +90,7 @@ resource "tencentcloud_mqtt_instance" "example" {
   force_delete         = false
   automatic_activation = true
   authorization_policy = true
+  message_rate         = 100
   tags = {
     createBy = "Terraform"
   }
@@ -106,6 +107,7 @@ The following arguments are supported:
 * `authorization_policy` - (Optional, Bool) Authorization policy switch. Default is false.
 * `automatic_activation` - (Optional, Bool) Is the automatic registration certificate automatically activated. Default is false.
 * `force_delete` - (Optional, Bool) Indicate whether to force delete the instance. Default is `false`. If set true, the instance will be permanently deleted instead of being moved into the recycle bin. Note: only works for `PREPAID` instance.
+* `message_rate` - (Optional, Int) Per-client message send/receive rate limit, unit: messages/second.
 * `pay_mode` - (Optional, Int) Payment mode (0: Postpaid; 1: Prepaid).
 * `remark` - (Optional, String) Remarks.
 * `renew_flag` - (Optional, Int) Whether to enable auto-renewal (0: Disabled; 1: Enabled).

@@ -113,6 +113,13 @@ func ResourceTencentCloudMqttInstance() *schema.Resource {
 				Description: "Authorization policy switch. Default is false.",
 			},
 
+			"message_rate": {
+				Type:        schema.TypeInt,
+				Optional:    true,
+				Computed:    true,
+				Description: "Per-client message send/receive rate limit, unit: messages/second.",
+			},
+
 			"force_delete": {
 				Type:        schema.TypeBool,
 				Optional:    true,
@@ -237,6 +244,7 @@ func ResourceTencentCloudMqttInstanceCreate(d *schema.ResourceData, meta interfa
 	var (
 		isAutomaticActivation bool
 		isAuthorizationPolicy bool
+		isMessageRate         bool
 	)
 
 	if v, ok := d.GetOkExists("automatic_activation"); ok {
@@ -247,12 +255,20 @@ func ResourceTencentCloudMqttInstanceCreate(d *schema.ResourceData, meta interfa
 		isAuthorizationPolicy = v.(bool)
 	}
 
-	// open automatic_activation or authorization_policy
-	if isAutomaticActivation || isAuthorizationPolicy {
+	if v, ok := d.GetOkExists("message_rate"); ok {
+		isMessageRate = true
+		_ = v.(int)
+	}
+
+	// open automatic_activation or authorization_policy or message_rate
+	if isAutomaticActivation || isAuthorizationPolicy || isMessageRate {
 		modifyRequest := mqttv20240516.NewModifyInstanceRequest()
 		modifyRequest.InstanceId = &instanceId
 		modifyRequest.AutomaticActivation = helper.Bool(isAutomaticActivation)
 		modifyRequest.AuthorizationPolicy = helper.Bool(isAuthorizationPolicy)
+		if v, ok := d.GetOkExists("message_rate"); ok {
+			modifyRequest.MessageRate = helper.IntInt64(v.(int))
+		}
 		reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
 			result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseMqttV20240516Client().ModifyInstanceWithContext(ctx, modifyRequest)
 			if e != nil {
@@ -346,6 +362,10 @@ func ResourceTencentCloudMqttInstanceRead(d *schema.ResourceData, meta interface
 		_ = d.Set("authorization_policy", respData.AuthorizationPolicy)
 	}
 
+	if respData.MessageRate != nil {
+		_ = d.Set("message_rate", respData.MessageRate)
+	}
+
 	forceDelete := false
 	if v, ok := d.GetOkExists("force_delete"); ok {
 		forceDelete = v.(bool)
@@ -380,7 +400,7 @@ func ResourceTencentCloudMqttInstanceUpdate(d *schema.ResourceData, meta interfa
 	}
 
 	needChange := false
-	mutableArgs := []string{"name", "remark", "sku_code", "device_certificate_provision_type", "automatic_activation", "authorization_policy"}
+	mutableArgs := []string{"name", "remark", "sku_code", "device_certificate_provision_type", "automatic_activation", "authorization_policy", "message_rate"}
 	for _, v := range mutableArgs {
 		if d.HasChange(v) {
 			needChange = true
@@ -409,6 +429,10 @@ func ResourceTencentCloudMqttInstanceUpdate(d *schema.ResourceData, meta interfa
 
 		if v, ok := d.GetOkExists("authorization_policy"); ok {
 			request.AuthorizationPolicy = helper.Bool(v.(bool))
+		}
+
+		if v, ok := d.GetOkExists("message_rate"); ok {
+			request.MessageRate = helper.IntInt64(v.(int))
 		}
 
 		reqErr := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
