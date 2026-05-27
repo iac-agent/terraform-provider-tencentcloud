@@ -79,6 +79,7 @@ resource "tencentcloud_mqtt_instance" "example" {
   force_delete         = false
   automatic_activation = true
   authorization_policy = true
+  message_rate         = 100
   tags = {
     createBy = "Terraform"
   }
