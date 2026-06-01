@@ -1,4 +1,4 @@
-Provides a resource to create a cvm renew_instance
+Provides a resource to renew a CVM prepaid instance
 
 Example Usage
 
