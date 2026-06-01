@@ -4,12 +4,12 @@ layout: "tencentcloud"
 page_title: "TencentCloud: tencentcloud_cvm_renew_instance"
 sidebar_current: "docs-tencentcloud-resource-cvm_renew_instance"
 description: |-
-  Provides a resource to create a cvm renew_instance
+  Provides a resource to renew a CVM prepaid instance
 ---
 
 # tencentcloud_cvm_renew_instance
 
-Provides a resource to create a cvm renew_instance
+Provides a resource to renew a CVM prepaid instance
 
 ## Example Usage
 
