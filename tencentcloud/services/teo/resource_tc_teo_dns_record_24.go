@@ -28,7 +28,7 @@ func ResourceTencentCloudTeoDnsRecord24() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "站点 ID。比输入值1112222333333444qewd",
+				Description: "站点 ID。比输入值1112222333333444",
 			},
 
 			"name": {
