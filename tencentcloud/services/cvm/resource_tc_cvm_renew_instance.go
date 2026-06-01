@@ -23,7 +23,7 @@ func ResourceTencentCloudCvmRenewInstance() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.111222.",
+				Description: "Instance ID.",
 			},
 
 			"instance_charge_prepaid": {

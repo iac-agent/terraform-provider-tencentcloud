@@ -73,7 +73,7 @@ resource "tencentcloud_cvm_renew_instance" "example" {
 
 The following arguments are supported:
 
-* `instance_id` - (Required, String, ForceNew) Instance ID.111222.
+* `instance_id` - (Required, String, ForceNew) Instance ID.
 * `instance_charge_prepaid` - (Optional, List, ForceNew) Prepaid mode, that is, yearly and monthly subscription related parameter settings. Through this parameter, you can specify the renewal duration of the Subscription instance, whether to set automatic renewal, and other attributes. For yearly and monthly subscription instances, this parameter is required.
 * `renew_portable_data_disk` - (Optional, Bool, ForceNew) Whether to renew the elastic data disk. Valid values:
 - `TRUE`: Indicates to renew the subscription instance and renew the attached elastic data disk at the same time
