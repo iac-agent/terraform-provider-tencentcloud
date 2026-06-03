@@ -1401,6 +1401,77 @@ func (me *LightHouseService) DeleteFirewallTemplateById(ctx context.Context, tem
 	return
 }
 
+func (me *LightHouseService) DescribeLighthouseDockerActivitiesByFilter(ctx context.Context, param map[string]interface{}) (dockerActivities []*lighthouse.DockerActivity, errRet error) {
+	var (
+		logId   = tccommon.GetLogId(ctx)
+		request = lighthouse.NewDescribeDockerActivitiesRequest()
+	)
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	// Map InstanceId parameter
+	if v, ok := param["InstanceId"]; ok {
+		instanceId := v.(string)
+		request.InstanceId = &instanceId
+	}
+
+	// Map ActivityIds parameter
+	if v, ok := param["ActivityIds"]; ok {
+		activityIds := v.([]*string)
+		request.ActivityIds = activityIds
+	}
+
+	// Map CreatedTimeBegin parameter
+	if v, ok := param["CreatedTimeBegin"]; ok {
+		createdTimeBegin := v.(int64)
+		request.CreatedTimeBegin = &createdTimeBegin
+	}
+
+	// Map CreatedTimeEnd parameter
+	if v, ok := param["CreatedTimeEnd"]; ok {
+		createdTimeEnd := v.(int64)
+		request.CreatedTimeEnd = &createdTimeEnd
+	}
+
+	// Pagination loop - automatically fetch all results
+	var offset int64 = 0
+	var pageSize int64 = 100
+	dockerActivities = make([]*lighthouse.DockerActivity, 0)
+
+	for {
+		request.Offset = &offset
+		request.Limit = &pageSize
+		ratelimit.Check(request.GetAction())
+
+		response, err := me.client.UseLighthouseClient().DescribeDockerActivities(request)
+		if err != nil {
+			errRet = err
+			return
+		}
+
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+		if response == nil || response.Response == nil || len(response.Response.DockerActivitySet) < 1 {
+			break
+		}
+
+		dockerActivities = append(dockerActivities, response.Response.DockerActivitySet...)
+
+		if len(response.Response.DockerActivitySet) < int(pageSize) {
+			break
+		}
+
+		offset += pageSize
+	}
+
+	return
+}
+
 func (me *LightHouseService) DescribeFirewallTemplateRulesById(ctx context.Context, templateId string) (firewallTemplateRules []*lighthouse.FirewallTemplateRuleInfo, errRet error) {
 	logId := tccommon.GetLogId(ctx)
 
