@@ -67,6 +67,19 @@ func ResourceTencentCloudCvmExportImages() *schema.Resource {
 				Type:        schema.TypeString,
 				Description: "Role name (Default: CVM_QcsRole). Before exporting the images, make sure the role exists, and it has write permission to COS.",
 			},
+
+			"task_id": {
+				Computed:    true,
+				Type:        schema.TypeInt,
+				Description: "Export image task ID.",
+			},
+
+			"cos_paths": {
+				Computed:    true,
+				Type:        schema.TypeList,
+				Elem:        &schema.Schema{Type: schema.TypeString},
+				Description: "List of COS file names for the exported image. The file name format is as follows: system disk: prefix_image ID_system_snapshot ID.image format, data disk: prefix_image ID_data_snapshot ID.image format.",
+			},
 		},
 	}
 }
@@ -82,6 +95,8 @@ func resourceTencentCloudCvmExportImagesCreate(d *schema.ResourceData, meta inte
 		imageId        string
 		bucketName     string
 		fileNamePrefix string
+		taskId         uint64
+		cosPaths       []*string
 	)
 	imageId = d.Get("image_id").(string)
 	bucketName = d.Get("bucket_name").(string)
@@ -113,6 +128,14 @@ func resourceTencentCloudCvmExportImagesCreate(d *schema.ResourceData, meta inte
 		} else {
 			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
 		}
+		if result.Response != nil {
+			if result.Response.TaskId != nil {
+				taskId = *result.Response.TaskId
+			}
+			if result.Response.CosPaths != nil {
+				cosPaths = result.Response.CosPaths
+			}
+		}
 		return nil
 	})
 	if err != nil {
@@ -121,6 +144,13 @@ func resourceTencentCloudCvmExportImagesCreate(d *schema.ResourceData, meta inte
 	}
 
 	d.SetId(imageId)
+
+	if taskId > 0 {
+		_ = d.Set("task_id", taskId)
+	}
+	if len(cosPaths) > 0 {
+		_ = d.Set("cos_paths", cosPaths)
+	}
 
 	service := CvmService{client: meta.(tccommon.ProviderMeta).GetAPIV3Conn()}
 
