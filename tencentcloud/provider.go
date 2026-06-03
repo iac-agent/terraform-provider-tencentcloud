@@ -1158,6 +1158,7 @@ func Provider() *schema.Provider {
 			"tencentcloud_tsf_ms_api_list":                                       tsf.DataSourceTencentCloudTsfMsApiList(),
 			"tencentcloud_lighthouse_bundle":                                     lighthouse.DataSourceTencentCloudLighthouseBundle(),
 			"tencentcloud_lighthouse_blueprints":                                 lighthouse.DataSourceTencentCloudLighthouseBlueprints(),
+			"tencentcloud_lighthouse_docker_activitie":                           lighthouse.DataSourceTencentCloudLighthouseDockerActivitie(),
 			"tencentcloud_api_gateway_api_docs":                                  apigateway.DataSourceTencentCloudAPIGatewayAPIDocs(),
 			"tencentcloud_api_gateway_api_apps":                                  apigateway.DataSourceTencentCloudAPIGatewayAPIApps(),
 			"tencentcloud_tse_access_address":                                    tse.DataSourceTencentCloudTseAccessAddress(),
