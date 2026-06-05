@@ -96,6 +96,7 @@ resource "tencentcloud_teo_zone_setting" "zone_setting" {
 
   origin {
     backup_origins       = []
+    cos_private_access   = "on"
     origin_pull_protocol = "follow"
     origins              = []
   }
@@ -253,6 +254,7 @@ The `offline_cache` object supports the following:
 The `origin` object supports the following:
 
 * `backup_origins` - (Optional, Set) Backup origin sites list. Note: This field may return null, indicating that no valid value can be obtained.
+* `cos_private_access` - (Optional, String) Whether to enable private access for the origin server bucket when the origin is a Tencent Cloud COS bucket. Valid values: `on` for private access, `off` for public access.
 * `origin_pull_protocol` - (Optional, String) Origin-pull protocol.
 - `http`: Switch HTTPS requests to HTTP.
 - `follow`: Follow the protocol of the request.

@@ -85,6 +85,7 @@ resource "tencentcloud_teo_zone_setting" "zone_setting" {
 
   origin {
     backup_origins       = []
+    cos_private_access   = "on"
     origin_pull_protocol = "follow"
     origins              = []
   }
