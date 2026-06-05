@@ -391,6 +391,12 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 							Computed:    true,
 							Description: "Origin-pull protocol.\n- `http`: Switch HTTPS requests to HTTP.\n- `follow`: Follow the protocol of the request.\n- `https`: Switch HTTP requests to HTTPS. This only supports port 443 on the origin server. Note: This field may return null, indicating that no valid value can be obtained.",
 						},
+						"cos_private_access": {
+							Type:        schema.TypeString,
+							Optional:    true,
+							Computed:    true,
+							Description: "Whether to enable private access for the origin server bucket when the origin is a Tencent Cloud COS bucket. Valid values: `on` for private access, `off` for public access.",
+						},
 					},
 				},
 			},
@@ -755,6 +761,10 @@ func resourceTencentCloudTeoZoneSettingRead(d *schema.ResourceData, meta interfa
 			originMap["origin_pull_protocol"] = respData.Origin.OriginPullProtocol
 		}
 
+		if respData.Origin.CosPrivateAccess != nil {
+			originMap["cos_private_access"] = respData.Origin.CosPrivateAccess
+		}
+
 		_ = d.Set("origin", []interface{}{originMap})
 	}
 
@@ -1028,6 +1038,9 @@ func resourceTencentCloudTeoZoneSettingUpdate(d *schema.ResourceData, meta inter
 			}
 			if v, ok := originMap["origin_pull_protocol"]; ok {
 				origin.OriginPullProtocol = helper.String(v.(string))
+			}
+			if v, ok := originMap["cos_private_access"]; ok {
+				origin.CosPrivateAccess = helper.String(v.(string))
 			}
 			request.Origin = &origin
 		}

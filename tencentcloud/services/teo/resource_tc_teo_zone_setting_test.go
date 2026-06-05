@@ -9,8 +9,14 @@ import (
 	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
 	svcteo "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/teo"
 
+	"github.com/agiledragon/gomonkey/v2"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+	"github.com/stretchr/testify/assert"
+	teov20220901 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/teo/v20220901"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/connectivity"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/teo"
 )
 
 // go test -test.run TestAccTencentCloudTeoZoneSetting_basic -v
@@ -221,3 +227,160 @@ resource "tencentcloud_teo_zone_setting" "basic" {
   }
 }
 `
+
+// go test ./tencentcloud/services/teo/ -run "TestTeoZoneSettingCosPrivateAccess" -v -count=1 -gcflags="all=-l"
+
+// TestTeoZoneSettingCosPrivateAccess_Read_WithCosPrivateAccess tests Read maps CosPrivateAccess from API response
+func TestTeoZoneSettingCosPrivateAccess_Read_WithCosPrivateAccess(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(&connectivity.TencentCloudClient{}, "UseTeoClient", teoClient)
+
+	patches.ApplyMethodFunc(teoClient, "DescribeZoneSetting", func(request *teov20220901.DescribeZoneSettingRequest) (*teov20220901.DescribeZoneSettingResponse, error) {
+		resp := teov20220901.NewDescribeZoneSettingResponse()
+		resp.Response = &teov20220901.DescribeZoneSettingResponseParams{
+			ZoneSetting: &teov20220901.ZoneSetting{
+				ZoneName: ptrString("zone-12345678"),
+				Origin: &teov20220901.Origin{
+					Origins:            []*string{ptrString("origin1.example.com")},
+					OriginPullProtocol: ptrString("follow"),
+					CosPrivateAccess:   ptrString("on"),
+				},
+			},
+			RequestId: ptrString("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	meta := newMockMeta()
+	res := teo.ResourceTencentCloudTeoZoneSetting()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-12345678",
+	})
+	d.SetId("zone-12345678")
+
+	err := res.Read(d, meta)
+	assert.NoError(t, err)
+
+	originList := d.Get("origin").([]interface{})
+	assert.Equal(t, 1, len(originList))
+	originMap := originList[0].(map[string]interface{})
+	assert.Equal(t, "on", originMap["cos_private_access"])
+}
+
+// TestTeoZoneSettingCosPrivateAccess_Read_CosPrivateAccessNil tests Read handles nil CosPrivateAccess
+func TestTeoZoneSettingCosPrivateAccess_Read_CosPrivateAccessNil(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(&connectivity.TencentCloudClient{}, "UseTeoClient", teoClient)
+
+	patches.ApplyMethodFunc(teoClient, "DescribeZoneSetting", func(request *teov20220901.DescribeZoneSettingRequest) (*teov20220901.DescribeZoneSettingResponse, error) {
+		resp := teov20220901.NewDescribeZoneSettingResponse()
+		resp.Response = &teov20220901.DescribeZoneSettingResponseParams{
+			ZoneSetting: &teov20220901.ZoneSetting{
+				ZoneName: ptrString("zone-12345678"),
+				Origin: &teov20220901.Origin{
+					Origins:            []*string{ptrString("origin1.example.com")},
+					OriginPullProtocol: ptrString("follow"),
+				},
+			},
+			RequestId: ptrString("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	meta := newMockMeta()
+	res := teo.ResourceTencentCloudTeoZoneSetting()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-12345678",
+	})
+	d.SetId("zone-12345678")
+
+	err := res.Read(d, meta)
+	assert.NoError(t, err)
+
+	originList := d.Get("origin").([]interface{})
+	assert.Equal(t, 1, len(originList))
+	originMap := originList[0].(map[string]interface{})
+	assert.Equal(t, "", originMap["cos_private_access"], "cos_private_access should be empty when API returns nil")
+}
+
+// TestTeoZoneSettingCosPrivateAccess_Update_WithCosPrivateAccess tests Update sends CosPrivateAccess in request
+func TestTeoZoneSettingCosPrivateAccess_Update_WithCosPrivateAccess(t *testing.T) {
+	patches := gomonkey.NewPatches()
+	defer patches.Reset()
+
+	teoClient := &teov20220901.Client{}
+	patches.ApplyMethodReturn(&connectivity.TencentCloudClient{}, "UseTeoClient", teoClient)
+
+	var capturedRequest *teov20220901.ModifyZoneSettingRequest
+	patches.ApplyMethodFunc(teoClient, "ModifyZoneSettingWithContext", func(ctx context.Context, request *teov20220901.ModifyZoneSettingRequest) (*teov20220901.ModifyZoneSettingResponse, error) {
+		capturedRequest = request
+		resp := teov20220901.NewModifyZoneSettingResponse()
+		resp.Response = &teov20220901.ModifyZoneSettingResponseParams{
+			RequestId: ptrString("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	patches.ApplyMethodFunc(teoClient, "DescribeZoneSetting", func(request *teov20220901.DescribeZoneSettingRequest) (*teov20220901.DescribeZoneSettingResponse, error) {
+		resp := teov20220901.NewDescribeZoneSettingResponse()
+		resp.Response = &teov20220901.DescribeZoneSettingResponseParams{
+			ZoneSetting: &teov20220901.ZoneSetting{
+				ZoneName: ptrString("zone-12345678"),
+				Origin: &teov20220901.Origin{
+					Origins:            []*string{ptrString("origin1.example.com")},
+					OriginPullProtocol: ptrString("follow"),
+					CosPrivateAccess:   ptrString("on"),
+				},
+			},
+			RequestId: ptrString("fake-request-id"),
+		}
+		return resp, nil
+	})
+
+	meta := newMockMeta()
+	res := teo.ResourceTencentCloudTeoZoneSetting()
+	d := schema.TestResourceDataRaw(t, res.Schema, map[string]interface{}{
+		"zone_id": "zone-12345678",
+		"origin": []interface{}{
+			map[string]interface{}{
+				"origins":              []interface{}{},
+				"backup_origins":       []interface{}{},
+				"origin_pull_protocol": "follow",
+				"cos_private_access":   "on",
+			},
+		},
+	})
+	d.SetId("zone-12345678")
+
+	err := res.Update(d, meta)
+	assert.NoError(t, err)
+	assert.NotNil(t, capturedRequest)
+	assert.NotNil(t, capturedRequest.Origin)
+	assert.NotNil(t, capturedRequest.Origin.CosPrivateAccess)
+	assert.Equal(t, "on", *capturedRequest.Origin.CosPrivateAccess)
+}
+
+// TestTeoZoneSettingCosPrivateAccess_Schema validates the cos_private_access field in the schema
+func TestTeoZoneSettingCosPrivateAccess_Schema(t *testing.T) {
+	res := teo.ResourceTencentCloudTeoZoneSetting()
+
+	assert.NotNil(t, res)
+	assert.Contains(t, res.Schema, "origin")
+
+	originSchema := res.Schema["origin"]
+	assert.Equal(t, schema.TypeList, originSchema.Type)
+	originElem := originSchema.Elem.(*schema.Resource)
+	assert.Contains(t, originElem.Schema, "cos_private_access")
+
+	cosPrivateAccessSchema := originElem.Schema["cos_private_access"]
+	assert.Equal(t, schema.TypeString, cosPrivateAccessSchema.Type)
+	assert.True(t, cosPrivateAccessSchema.Optional)
+	assert.True(t, cosPrivateAccessSchema.Computed)
+	assert.Equal(t, "Whether to enable private access for the origin server bucket when the origin is a Tencent Cloud COS bucket. Valid values: `on` for private access, `off` for public access.", cosPrivateAccessSchema.Description)
+}
