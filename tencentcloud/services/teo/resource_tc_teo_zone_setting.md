@@ -87,6 +87,7 @@ resource "tencentcloud_teo_zone_setting" "zone_setting" {
     backup_origins       = []
     origin_pull_protocol = "follow"
     origins              = []
+    cos_private_access   = "off"
   }
 
   post_max_size {
