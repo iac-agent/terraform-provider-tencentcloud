@@ -1,0 +1,3 @@
+```release-note:enhancement
+resource/tencentcloud_teo_zone_setting: add cos_private_access parameter to control private access to COS origin bucket
+```
