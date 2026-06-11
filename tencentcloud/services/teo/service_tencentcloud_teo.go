@@ -2580,3 +2580,48 @@ func (me *TeoService) TeoIdentifyZone(zoneName, domain string) (ascription *teov
 
 	return
 }
+
+func (me *TeoService) DescribeTeoFunctionReplicaById(ctx context.Context, zoneId string, functionId string, replicaName string) (ret *teo.FunctionReplica, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := teo.NewDescribeFunctionReplicasRequest()
+	response := teo.NewDescribeFunctionReplicasResponse()
+	request.ZoneId = helper.String(zoneId)
+	request.FunctionId = helper.String(functionId)
+	request.Limit = helper.Int64(200)
+	request.Filters = []*teo.AdvancedFilter{
+		{
+			Name:   helper.String("replica-name"),
+			Values: []*string{helper.String(replicaName)},
+			Fuzzy:  helper.Bool(false),
+		},
+	}
+
+	defer func() {
+		if errRet != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n", logId, request.GetAction(), request.ToJsonString(), errRet.Error())
+		}
+	}()
+
+	err := resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
+		ratelimit.Check(request.GetAction())
+		result, e := me.client.UseTeoV20220901Client().DescribeFunctionReplicas(request)
+		if e != nil {
+			return tccommon.RetryError(e)
+		}
+		response = result
+		return nil
+	})
+	if err != nil {
+		errRet = err
+		return
+	}
+	log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+	if response.Response == nil || len(response.Response.FunctionReplicas) < 1 {
+		return
+	}
+
+	ret = response.Response.FunctionReplicas[0]
+	return
+}
