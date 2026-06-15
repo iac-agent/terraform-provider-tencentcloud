@@ -483,7 +483,7 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "IPv6 access configuration.",
+				Description: "IPv6 access configuration. hwztesttest.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {

@@ -136,7 +136,7 @@ The following arguments are supported:
 * `compression` - (Optional, List) Smart compression configuration.
 * `force_redirect` - (Optional, List) Force HTTPS redirect configuration.
 * `https` - (Optional, List) HTTPS acceleration configuration.
-* `ipv6` - (Optional, List) IPv6 access configuration.
+* `ipv6` - (Optional, List) IPv6 access configuration. hwztesttest.
 * `max_age` - (Optional, List) Browser cache configuration.
 * `offline_cache` - (Optional, List) Offline cache configuration.
 * `origin` - (Optional, List) Origin server configuration.
