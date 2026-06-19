@@ -38,6 +38,7 @@ The following arguments are supported:
 In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
-
+* `cos_paths` - List of COS file names for the exported image. File name format: system disk - prefix_imageID_system_snapshotID.imageFormat, data disk - prefix_imageID_data_snapshotID.imageFormat.
+* `task_id` - Export image task ID.
 
 

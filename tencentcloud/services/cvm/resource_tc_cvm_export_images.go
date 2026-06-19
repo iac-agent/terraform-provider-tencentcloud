@@ -67,6 +67,21 @@ func ResourceTencentCloudCvmExportImages() *schema.Resource {
 				Type:        schema.TypeString,
 				Description: "Role name (Default: CVM_QcsRole). Before exporting the images, make sure the role exists, and it has write permission to COS.",
 			},
+
+			"task_id": {
+				Computed:    true,
+				Type:        schema.TypeInt,
+				Description: "Export image task ID.",
+			},
+
+			"cos_paths": {
+				Computed: true,
+				Type:     schema.TypeList,
+				Elem: &schema.Schema{
+					Type: schema.TypeString,
+				},
+				Description: "List of COS file names for the exported image. File name format: system disk - prefix_imageID_system_snapshotID.imageFormat, data disk - prefix_imageID_data_snapshotID.imageFormat.",
+			},
 		},
 	}
 }
