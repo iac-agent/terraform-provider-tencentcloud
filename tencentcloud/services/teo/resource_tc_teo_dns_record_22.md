@@ -1,4 +1,4 @@
-Provides a resource to create a TEO (EdgeOne) DNS record
+Provides a resource to create a TEO (EdgeOne) DNS record.
 
 Example Usage
 
