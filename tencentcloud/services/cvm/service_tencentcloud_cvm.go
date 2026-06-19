@@ -1248,6 +1248,53 @@ func (me *CvmService) DescribeImagesByFilter(ctx context.Context, filters map[st
 	return
 }
 
+func (me *CvmService) DescribeCvmImage4ByFilter(ctx context.Context, paramMap map[string]interface{}) (images []*cvm.Image, errRet error) {
+	logId := tccommon.GetLogId(ctx)
+
+	request := cvm.NewDescribeImagesRequest()
+
+	if v, ok := paramMap["ImageIds"]; ok {
+		request.ImageIds = v.([]*string)
+	}
+
+	if v, ok := paramMap["Filters"]; ok {
+		request.Filters = v.([]*cvm.Filter)
+	}
+
+	if v, ok := paramMap["InstanceType"]; ok {
+		request.InstanceType = v.(*string)
+	}
+
+	var offset uint64 = 0
+	var pageSize uint64 = 100
+	images = make([]*cvm.Image, 0)
+	for {
+		request.Offset = &offset
+		request.Limit = &pageSize
+		ratelimit.Check(request.GetAction())
+		response, err := me.client.UseCvmClient().DescribeImages(request)
+		if err != nil {
+			log.Printf("[CRITAL]%s api[%s] fail, request body [%s], reason[%s]\n",
+				logId, request.GetAction(), request.ToJsonString(), err.Error())
+			errRet = err
+			return
+		}
+		log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n",
+			logId, request.GetAction(), request.ToJsonString(), response.ToJsonString())
+
+		if response == nil || len(response.Response.ImageSet) < 1 {
+			break
+		}
+		images = append(images, response.Response.ImageSet...)
+		if len(response.Response.ImageSet) < int(pageSize) {
+			break
+		}
+		offset += pageSize
+	}
+
+	return
+}
+
 func (me *CvmService) ModifyRenewParam(ctx context.Context, instanceId string, renewFlag string) error {
 	logId := tccommon.GetLogId(ctx)
 	request := cvm.NewModifyInstancesRenewFlagRequest()
