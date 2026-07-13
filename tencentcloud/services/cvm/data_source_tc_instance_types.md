@@ -124,3 +124,36 @@ output "pricing_info" {
   }]
 }
 ```
+
+Query with CBS Filter and Disk Usage
+
+```hcl
+data "tencentcloud_instance_types" "with_disk_usage" {
+  cpu_core_count   = 2
+  memory_size      = 2
+  exclude_sold_out = true
+
+  filter {
+    name   = "instance-family"
+    values = ["S6"]
+  }
+
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
+
+  cbs_filter {
+    disk_types        = ["CLOUD_SSD"]
+    disk_charge_type  = "PREPAID"
+    disk_usage        = "SYSTEM_DISK"
+  }
+}
+
+output "disk_usage_info" {
+  value = [for instance in data.tencentcloud_instance_types.with_disk_usage.instance_types : {
+    type       = instance.instance_type
+    disk_usage = instance.disk_usage
+  }]
+}
+```

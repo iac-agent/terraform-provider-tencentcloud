@@ -136,6 +136,39 @@ output "pricing_info" {
 }
 ```
 
+### Query with CBS Filter and Disk Usage
+
+```hcl
+data "tencentcloud_instance_types" "with_disk_usage" {
+  cpu_core_count   = 2
+  memory_size      = 2
+  exclude_sold_out = true
+
+  filter {
+    name   = "instance-family"
+    values = ["S6"]
+  }
+
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
+
+  cbs_filter {
+    disk_types       = ["CLOUD_SSD"]
+    disk_charge_type = "PREPAID"
+    disk_usage       = "SYSTEM_DISK"
+  }
+}
+
+output "disk_usage_info" {
+  value = [for instance in data.tencentcloud_instance_types.with_disk_usage.instance_types : {
+    type       = instance.instance_type
+    disk_usage = instance.disk_usage
+  }]
+}
+```
+
 ## Argument Reference
 
 The following arguments are supported:
@@ -199,6 +232,7 @@ In addition to all arguments above, the following attributes are exported:
     * `zone` - The availability zone to which the Cloud Block Storage belongs.
   * `cpu_core_count` - The number of CPU cores of the instance.
   * `cpu_type` - Processor model.
+  * `disk_usage` - Cloud disk type. Valid values: SYSTEM_DISK, DATA_DISK. Only populated when cbs_filter is provided.
   * `externals` - Extended attributes.
     * `release_address` - Whether to release address.
     * `storage_block_attr` - HDD local storage attributes.

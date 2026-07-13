@@ -218,6 +218,11 @@ func DataSourceTencentCloudInstanceTypes() *schema.Resource {
 							Computed:    true,
 							Description: "Stock status category. Valid values: EnoughStock, NormalStock, UnderStock, WithoutStock.",
 						},
+						"disk_usage": {
+							Type:        schema.TypeString,
+							Computed:    true,
+							Description: "Cloud disk type. Valid values: SYSTEM_DISK, DATA_DISK. Only populated when cbs_filter is provided.",
+						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
@@ -590,6 +595,7 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 	cbsService := svccbs.NewCbsService(client)
 	cbsFilterParams := make(map[string]interface{})
 	var hasCbsFilter bool
+	var cbsFilterDiskUsage string
 	if dMap, ok := helper.InterfacesHeadMap(d, "cbs_filter"); ok {
 		if v, ok := dMap["disk_types"].([]interface{}); ok && len(v) > 0 {
 			cbsFilterParams["disk_types"] = helper.InterfacesStrings(v)
@@ -599,11 +605,16 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 		}
 		if v, ok := dMap["disk_usage"].(string); ok && v != "" {
 			cbsFilterParams["disk_usage"] = v
+			cbsFilterDiskUsage = v
 		}
 		hasCbsFilter = true
 	}
 	if hasCbsFilter {
 		for idx, t := range typeList {
+			// Set top-level disk_usage from cbs_filter input
+			if cbsFilterDiskUsage != "" {
+				typeList[idx]["disk_usage"] = cbsFilterDiskUsage
+			}
 			filterParams := make(map[string]interface{})
 			for k, v := range cbsFilterParams {
 				filterParams[k] = v
@@ -642,6 +653,14 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 				})
 			}
 			typeList[idx]["cbs_configs"] = cbsConfigList
+			// When cbs_filter disk_usage input is not provided, extract disk_usage from the first cbs_config item
+			if cbsFilterDiskUsage == "" && len(cbsConfigList) > 0 {
+				if cbsConfig, ok := cbsConfigList[0].(map[string]interface{}); ok {
+					if v, ok := cbsConfig["disk_usage"].(*string); ok && v != nil {
+						typeList[idx]["disk_usage"] = *v
+					}
+				}
+			}
 		}
 	}
 
