@@ -1,0 +1,3 @@
+```release-note:enhancement
+data-source/tencentcloud_instance_types: add disk usage related parameters
+```

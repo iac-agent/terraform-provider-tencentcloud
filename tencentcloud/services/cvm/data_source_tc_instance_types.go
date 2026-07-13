@@ -102,6 +102,14 @@ func DataSourceTencentCloudInstanceTypes() *schema.Resource {
 				Default:     false,
 				Description: "Indicate to filter instances types that is sold out or not, default is false.",
 			},
+			"disk_usage": {
+				Type:     schema.TypeString,
+				Computed: true,
+				Description: "Cloud disk type. Value range:\n" +
+					"	- SYSTEM_DISK: Represents the system disk;\n" +
+					"	- DATA_DISK: Represents the data disk. " +
+					"Only populated when cbs_filter is provided.",
+			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
@@ -634,6 +642,12 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 				})
 			}
 			typeList[idx]["cbs_configs"] = cbsConfigList
+		}
+	}
+
+	if hasCbsFilter {
+		if v, ok := cbsFilterParams["disk_usage"].(string); ok && v != "" {
+			_ = d.Set("disk_usage", v)
 		}
 	}
 

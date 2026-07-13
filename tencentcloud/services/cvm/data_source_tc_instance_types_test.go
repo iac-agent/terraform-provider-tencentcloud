@@ -66,6 +66,45 @@ func TestAccTencentCloudCvmInstanceTypesDataSource_WithCbsFilter(t *testing.T) {
 					resource.TestCheckResourceAttr("data.tencentcloud_instance_types.with_cbs_filter", "instance_types.0.cbs_configs.0.disk_type", "CLOUD_SSD"),
 					resource.TestCheckResourceAttr("data.tencentcloud_instance_types.with_cbs_filter", "instance_types.0.cbs_configs.0.disk_charge_type", "PREPAID"),
 					resource.TestCheckResourceAttr("data.tencentcloud_instance_types.with_cbs_filter", "instance_types.0.cbs_configs.0.disk_usage", "SYSTEM_DISK"),
+					resource.TestCheckResourceAttr("data.tencentcloud_instance_types.with_cbs_filter", "disk_usage", "SYSTEM_DISK"),
+				),
+			},
+		},
+	})
+}
+
+func TestAccTencentCloudCvmInstanceTypesDataSource_WithCbsFilterDataDisk(t *testing.T) {
+	t.Parallel()
+	resource.Test(t, resource.TestCase{
+		PreCheck: func() {
+			acctest.AccPreCheck(t)
+		},
+		Providers: acctest.AccProviders,
+		Steps: []resource.TestStep{
+			{
+				Config: testAccCvmInstanceTypesDataSource_WithCbsFilterDataDisk,
+				Check: resource.ComposeTestCheckFunc(
+					acctest.AccCheckTencentCloudDataSourceID("data.tencentcloud_instance_types.with_cbs_filter_data_disk"),
+					resource.TestCheckResourceAttr("data.tencentcloud_instance_types.with_cbs_filter_data_disk", "disk_usage", "DATA_DISK"),
+				),
+			},
+		},
+	})
+}
+
+func TestAccTencentCloudCvmInstanceTypesDataSource_WithoutCbsFilter(t *testing.T) {
+	t.Parallel()
+	resource.Test(t, resource.TestCase{
+		PreCheck: func() {
+			acctest.AccPreCheck(t)
+		},
+		Providers: acctest.AccProviders,
+		Steps: []resource.TestStep{
+			{
+				Config: testAccCvmInstanceTypesDataSource_WithoutCbsFilter,
+				Check: resource.ComposeTestCheckFunc(
+					acctest.AccCheckTencentCloudDataSourceID("data.tencentcloud_instance_types.no_cbs_filter"),
+					resource.TestCheckResourceAttr("data.tencentcloud_instance_types.no_cbs_filter", "disk_usage", ""),
 				),
 			},
 		},
@@ -111,5 +150,37 @@ data "tencentcloud_instance_types" "with_cbs_filter" {
         disk_charge_type = "PREPAID"
         disk_usage = "SYSTEM_DISK"
     }
+}
+`
+
+const testAccCvmInstanceTypesDataSource_WithCbsFilterDataDisk = `
+
+data "tencentcloud_instance_types" "with_cbs_filter_data_disk" {
+    cpu_core_count = 2
+    memory_size = 2
+    exclude_sold_out = true
+
+    filter {
+        name = "instance-family"
+        values = ["S6"]
+    }
+    filter {
+        name = "zone"
+        values = ["ap-guangzhou-6"]
+    }
+    cbs_filter {
+        disk_types = ["CLOUD_SSD"]
+        disk_charge_type = "POSTPAID_BY_HOUR"
+        disk_usage = "DATA_DISK"
+    }
+}
+`
+
+const testAccCvmInstanceTypesDataSource_WithoutCbsFilter = `
+
+data "tencentcloud_instance_types" "no_cbs_filter" {
+    availability_zone = "ap-guangzhou-6"
+    cpu_core_count = 4
+    memory_size = 8
 }
 `

@@ -30,6 +30,25 @@ data "tencentcloud_instance_types" "example" {
 }
 ```
 
+Query with CBS Filter
+
+```hcl
+data "tencentcloud_instance_types" "cbs_example" {
+  availability_zone = "ap-guangzhou-6"
+  cpu_core_count    = 4
+  memory_size       = 8
+
+  cbs_filter {
+    disk_usage       = "DATA_DISK"
+    disk_charge_type = "POSTPAID_BY_HOUR"
+  }
+}
+
+output "disk_usage" {
+  value = data.tencentcloud_instance_types.cbs_example.disk_usage
+}
+```
+
 Query with Network and Performance Requirements
 
 ```hcl
