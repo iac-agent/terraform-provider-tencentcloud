@@ -96,6 +96,17 @@ func DataSourceTencentCloudInstanceTypes() *schema.Resource {
 					},
 				},
 			},
+			"inquiry_type": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				Default:     "INQUIRY_CVM_CONFIG",
+				Description: "Query category for the DescribeDiskConfigQuota API. Valid values: `INQUIRY_CBS_CONFIG` (query cloud disk configuration list only), `INQUIRY_CVM_CONFIG` (query cloud disk and instance combination configuration list). Default is `INQUIRY_CVM_CONFIG`. This parameter is only used when `cbs_filter` is present.",
+			},
+			"disk_charge_type": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				Description: "Payment model for the DescribeDiskConfigQuota API. Valid values: `PREPAID` (prepaid mode), `POSTPAID_BY_HOUR` (postpaid by hour mode). When both this top-level parameter and `cbs_filter.disk_charge_type` are specified, the top-level value takes precedence. This parameter is only used when `cbs_filter` is present.",
+			},
 			"exclude_sold_out": {
 				Type:        schema.TypeBool,
 				Optional:    true,
@@ -595,6 +606,16 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 		hasCbsFilter = true
 	}
 	if hasCbsFilter {
+		// Pass inquiry_type to CBS service (default to INQUIRY_CVM_CONFIG)
+		if v, ok := d.GetOk("inquiry_type"); ok {
+			cbsFilterParams["inquiry_type"] = v.(string)
+		} else {
+			cbsFilterParams["inquiry_type"] = "INQUIRY_CVM_CONFIG"
+		}
+		// Pass top-level disk_charge_type with precedence over cbs_filter.disk_charge_type
+		if v, ok := d.GetOk("disk_charge_type"); ok {
+			cbsFilterParams["disk_charge_type"] = v.(string)
+		}
 		for idx, t := range typeList {
 			filterParams := make(map[string]interface{})
 			for k, v := range cbsFilterParams {
