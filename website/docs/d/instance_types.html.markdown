@@ -117,6 +117,40 @@ output "pricing_info" {
 }
 ```
 
+### Query CBS Disk Config with Override Parameters
+
+```hcl
+data "tencentcloud_instance_types" "disk_config" {
+  cpu_core_count   = 4
+  memory_size      = 8
+  exclude_sold_out = true
+
+  filter {
+    name   = "instance-family"
+    values = ["SA2"]
+  }
+
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
+
+  cbs_filter {
+    disk_charge_type = "POSTPAID_BY_HOUR"
+    disk_usage       = "DATA_DISK"
+  }
+
+  # Override disk types for CBS query
+  disk_types = ["CLOUD_SSD", "CLOUD_HSSD"]
+
+  # Override zones for CBS query
+  zones = ["ap-guangzhou-3", "ap-guangzhou-6"]
+
+  # Override memory for CBS query
+  memory = 16
+}
+```
+
 ## Argument Reference
 
 The following arguments are supported:
@@ -124,11 +158,14 @@ The following arguments are supported:
 * `availability_zone` - (Optional, String) The available zone that the CVM instance locates at. This field is conflict with `filter`.
 * `cbs_filter` - (Optional, List) Cbs filter.
 * `cpu_core_count` - (Optional, Int) The number of CPU cores of the instance.
+* `disk_types` - (Optional, List: [`String`]) Hard disk media type used to override the DiskTypes parameter for DescribeDiskConfigQuota. Value range: CLOUD_BASIC, CLOUD_PREMIUM, CLOUD_SSD, CLOUD_HSSD. When specified, it overrides cbs_filter.disk_types.
 * `exclude_sold_out` - (Optional, Bool) Indicate to filter instances types that is sold out or not, default is false.
 * `filter` - (Optional, Set) One or more name/value pairs to filter. This field is conflict with `availability_zone`.
 * `gpu_core_count` - (Optional, Int) The number of GPU cores of the instance.
 * `memory_size` - (Optional, Int) Instance memory capacity, unit in GB.
+* `memory` - (Optional, Int) Instance memory size in GB used to override the Memory parameter for DescribeDiskConfigQuota. When specified, it overrides the memory_size derived from each instance type.
 * `result_output_file` - (Optional, String) Used to save results.
+* `zones` - (Optional, List: [`String`]) Availability zones used to override the Zones parameter for DescribeDiskConfigQuota. When specified, it overrides the zone derived from each instance type.
 
 The `cbs_filter` object supports the following:
 

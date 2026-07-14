@@ -62,6 +62,23 @@ func DataSourceTencentCloudInstanceTypes() *schema.Resource {
 					},
 				},
 			},
+			"disk_types": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				Elem:        &schema.Schema{Type: schema.TypeString},
+				Description: "Hard disk media type used to override the DiskTypes parameter for DescribeDiskConfigQuota. Value range: CLOUD_BASIC, CLOUD_PREMIUM, CLOUD_SSD, CLOUD_HSSD. When specified, it overrides cbs_filter.disk_types.",
+			},
+			"zones": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				Elem:        &schema.Schema{Type: schema.TypeString},
+				Description: "Availability zones used to override the Zones parameter for DescribeDiskConfigQuota. When specified, it overrides the zone derived from each instance type.",
+			},
+			"memory": {
+				Type:        schema.TypeInt,
+				Optional:    true,
+				Description: "Instance memory size in GB used to override the Memory parameter for DescribeDiskConfigQuota. When specified, it overrides the memory_size derived from each instance type.",
+			},
 			"cbs_filter": {
 				Type:        schema.TypeList,
 				Optional:    true,
@@ -594,6 +611,21 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 		}
 		hasCbsFilter = true
 	}
+
+	// Extract top-level override parameters for DescribeDiskConfigQuota
+	if v, ok := d.GetOk("disk_types"); ok {
+		diskTypesOverride := helper.InterfacesStrings(v.([]interface{}))
+		cbsFilterParams["disk_types_override"] = diskTypesOverride
+	}
+	if v, ok := d.GetOk("zones"); ok {
+		zonesOverride := helper.InterfacesStrings(v.([]interface{}))
+		cbsFilterParams["zones_override"] = zonesOverride
+	}
+	if v, ok := d.GetOk("memory"); ok {
+		memoryOverride := int64(v.(int))
+		cbsFilterParams["memory_override"] = memoryOverride
+	}
+
 	if hasCbsFilter {
 		for idx, t := range typeList {
 			filterParams := make(map[string]interface{})
@@ -609,6 +641,13 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 			}
 			if v, ok := t["memory_size"].(*int64); ok && v != nil {
 				filterParams["memory_size"] = *v
+			}
+			if v, ok := t["family"].(*string); ok && v != nil {
+				filterParams["family"] = *v
+			}
+
+			if v, ok := t["cpu_core_count"].(*int64); ok && v != nil {
+				filterParams["cpu_core_count"] = *v
 			}
 			if v, ok := t["family"].(*string); ok && v != nil {
 				filterParams["family"] = *v
