@@ -105,3 +105,39 @@ output "pricing_info" {
   }]
 }
 ```
+
+Query CBS Disk Config with Top-Level Parameters
+
+```hcl
+data "tencentcloud_instance_types" "cbs_top_level" {
+  availability_zone = "ap-guangzhou-6"
+  cpu_core_count    = 4
+  memory_size       = 8
+
+  inquiry_type      = "INQUIRY_CBS_CONFIG"
+  disk_charge_type  = "PREPAID"
+  instance_families = ["S5"]
+}
+
+output "cbs_available" {
+  value = data.tencentcloud_instance_types.cbs_top_level.available
+}
+```
+
+Query CBS Disk Config with Top-Level Parameters and cbs_filter
+
+```hcl
+data "tencentcloud_instance_types" "cbs_combined" {
+  availability_zone = "ap-guangzhou-6"
+  cpu_core_count    = 4
+  memory_size       = 8
+
+  inquiry_type = "INQUIRY_CVM_CONFIG"
+  disk_charge_type = "POSTPAID_BY_HOUR"
+
+  cbs_filter {
+    disk_types    = ["CLOUD_SSD"]
+    disk_usage    = "DATA_DISK"
+  }
+}
+```

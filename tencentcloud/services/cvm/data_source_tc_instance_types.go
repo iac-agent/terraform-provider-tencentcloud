@@ -96,6 +96,28 @@ func DataSourceTencentCloudInstanceTypes() *schema.Resource {
 					},
 				},
 			},
+			"inquiry_type": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				Default:     "INQUIRY_CVM_CONFIG",
+				Description: "Query category for DescribeDiskConfigQuota. Valid values: INQUIRY_CBS_CONFIG, INQUIRY_CVM_CONFIG. Default is INQUIRY_CVM_CONFIG.",
+			},
+			"disk_charge_type": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				Description: "Disk payment model for DescribeDiskConfigQuota. Valid values: PREPAID, POSTPAID_BY_HOUR. When specified at the top level, takes precedence over cbs_filter.disk_charge_type.",
+			},
+			"instance_families": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				Elem:        &schema.Schema{Type: schema.TypeString},
+				Description: "Instance family filters for DescribeDiskConfigQuota. When specified, overrides auto-populated instance families from instance type results.",
+			},
+			"available": {
+				Type:        schema.TypeBool,
+				Computed:    true,
+				Description: "Whether disk configurations are available from DescribeDiskConfigQuota.",
+			},
 			"exclude_sold_out": {
 				Type:        schema.TypeBool,
 				Optional:    true,
@@ -594,7 +616,18 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 		}
 		hasCbsFilter = true
 	}
-	if hasCbsFilter {
+
+	// Read new top-level parameters
+	inquiryType := d.Get("inquiry_type").(string)
+	topLevelDiskChargeType := d.Get("disk_charge_type").(string)
+	topLevelInstanceFamilies := helper.InterfacesStrings(d.Get("instance_families").([]interface{}))
+
+	// Determine if CBS query should be triggered
+	// CBS query is triggered when cbs_filter is provided OR when any of the new top-level CBS params are provided
+	hasCbsQuery := hasCbsFilter || topLevelDiskChargeType != "" || len(topLevelInstanceFamilies) > 0
+
+	available := false
+	if hasCbsQuery {
 		for idx, t := range typeList {
 			filterParams := make(map[string]interface{})
 			for k, v := range cbsFilterParams {
@@ -610,15 +643,36 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 			if v, ok := t["memory_size"].(*int64); ok && v != nil {
 				filterParams["memory_size"] = *v
 			}
-			if v, ok := t["family"].(*string); ok && v != nil {
+
+			// InquiryType: pass top-level inquiry_type parameter
+			if inquiryType != "" {
+				filterParams["inquiry_type"] = inquiryType
+			}
+
+			// DiskChargeType: top-level takes precedence over cbs_filter disk_charge_type
+			if topLevelDiskChargeType != "" {
+				filterParams["disk_charge_type"] = topLevelDiskChargeType
+			} else if v, ok := filterParams["disk_charge_type"].(string); !ok || v == "" {
+				// If neither top-level nor cbs_filter provides disk_charge_type, leave empty
+				// The CBS service will not set it in the request
+			}
+
+			// InstanceFamilies: top-level takes precedence over auto-populated family
+			if len(topLevelInstanceFamilies) > 0 {
+				filterParams["instance_families"] = topLevelInstanceFamilies
+			} else if v, ok := t["family"].(*string); ok && v != nil {
 				filterParams["family"] = *v
 			}
+
 			diskConfigSet, err := cbsService.DescribeDiskConfigQuota(ctx, filterParams)
 			if err != nil {
 				return err
 			}
 			cbsConfigList := make([]interface{}, 0)
 			for _, diskConfig := range diskConfigSet {
+				if diskConfig.Available != nil && *diskConfig.Available {
+					available = true
+				}
 				cbsConfigList = append(cbsConfigList, map[string]interface{}{
 					"available":               diskConfig.Available,
 					"disk_charge_type":        diskConfig.DiskChargeType,
@@ -636,6 +690,8 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 			typeList[idx]["cbs_configs"] = cbsConfigList
 		}
 	}
+
+	_ = d.Set("available", available)
 
 	d.SetId(helper.DataResourceIdsHash(ids))
 	err = d.Set("instance_types", typeList)
