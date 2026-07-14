@@ -1,0 +1,3 @@
+```release-note:enhancement
+data-source/tencentcloud_instance_types: add inquiry_type, disk_charge_type, instance_families and available parameters for CBS disk config quota query
+```

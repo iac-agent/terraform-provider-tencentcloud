@@ -41,6 +41,45 @@ data "tencentcloud_instance_types" "example" {
 }
 ```
 
+### Query with CBS Disk Config Quota
+
+```hcl
+data "tencentcloud_instance_types" "with_cbs_filter" {
+  availability_zone = "ap-guangzhou-6"
+  cpu_core_count    = 4
+  memory_size       = 8
+
+  cbs_filter {
+    disk_types       = ["CLOUD_SSD"]
+    disk_charge_type = "PREPAID"
+    disk_usage       = "SYSTEM_DISK"
+  }
+}
+```
+
+### Query CBS Disk Config Quota with Top-Level Parameters
+
+```hcl
+data "tencentcloud_instance_types" "with_cbs_top_level_params" {
+  cpu_core_count = 4
+
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
+
+  cbs_filter {
+    disk_charge_type = "PREPAID"
+    disk_usage       = "SYSTEM_DISK"
+  }
+
+  # Top-level parameters override cbs_filter and derived values for CBS disk config quota query
+  disk_types = ["CLOUD_SSD", "CLOUD_HSSD"]
+  zones      = ["ap-guangzhou-6", "ap-guangzhou-3"]
+  memory     = 8
+}
+```
+
 ### Query with Network and Performance Requirements
 
 ```hcl
@@ -117,6 +156,42 @@ output "pricing_info" {
 }
 ```
 
+### Query CBS Disk Config with Top-Level Parameters
+
+```hcl
+data "tencentcloud_instance_types" "cbs_top_level" {
+  availability_zone = "ap-guangzhou-6"
+  cpu_core_count    = 4
+  memory_size       = 8
+
+  inquiry_type      = "INQUIRY_CBS_CONFIG"
+  disk_charge_type  = "PREPAID"
+  instance_families = ["S5"]
+}
+
+output "cbs_available" {
+  value = data.tencentcloud_instance_types.cbs_top_level.available
+}
+```
+
+### Query CBS Disk Config with Top-Level Parameters and cbs_filter
+
+```hcl
+data "tencentcloud_instance_types" "cbs_combined" {
+  availability_zone = "ap-guangzhou-6"
+  cpu_core_count    = 4
+  memory_size       = 8
+
+  inquiry_type     = "INQUIRY_CVM_CONFIG"
+  disk_charge_type = "POSTPAID_BY_HOUR"
+
+  cbs_filter {
+    disk_types = ["CLOUD_SSD"]
+    disk_usage = "DATA_DISK"
+  }
+}
+```
+
 ## Argument Reference
 
 The following arguments are supported:
@@ -124,9 +199,12 @@ The following arguments are supported:
 * `availability_zone` - (Optional, String) The available zone that the CVM instance locates at. This field is conflict with `filter`.
 * `cbs_filter` - (Optional, List) Cbs filter.
 * `cpu_core_count` - (Optional, Int) The number of CPU cores of the instance.
+* `disk_charge_type` - (Optional, String) Disk payment model for DescribeDiskConfigQuota. Valid values: PREPAID, POSTPAID_BY_HOUR. When specified at the top level, takes precedence over cbs_filter.disk_charge_type.
 * `exclude_sold_out` - (Optional, Bool) Indicate to filter instances types that is sold out or not, default is false.
 * `filter` - (Optional, Set) One or more name/value pairs to filter. This field is conflict with `availability_zone`.
 * `gpu_core_count` - (Optional, Int) The number of GPU cores of the instance.
+* `inquiry_type` - (Optional, String) Query category for DescribeDiskConfigQuota. Valid values: INQUIRY_CBS_CONFIG, INQUIRY_CVM_CONFIG. Default is INQUIRY_CVM_CONFIG.
+* `instance_families` - (Optional, List: [`String`]) Instance family filters for DescribeDiskConfigQuota. When specified, overrides auto-populated instance families from instance type results.
 * `memory_size` - (Optional, Int) Instance memory capacity, unit in GB.
 * `result_output_file` - (Optional, String) Used to save results.
 
@@ -153,6 +231,7 @@ The `filter` object supports the following:
 
 In addition to all arguments above, the following attributes are exported:
 
+* `available` - Whether disk configurations are available from DescribeDiskConfigQuota.
 * `instance_types` - An information list of cvm instance. Each element contains the following attributes:
   * `availability_zone` - The available zone that the CVM instance locates at.
   * `cbs_configs` - CBS config. The cbs_configs is populated when the cbs_filter is added.

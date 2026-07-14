@@ -8,10 +8,10 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/stretchr/testify/assert"
 
-	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
-	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/connectivity"
 	cbs "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cbs/v20170312"
 	cvmSDK "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
+	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
+	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/connectivity"
 
 	svccbs "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/cbs"
 	svcvm "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/services/cvm"
@@ -33,8 +33,8 @@ func newMockMeta() *mockMeta {
 }
 
 func ptrString(s string) *string { return &s }
-func ptrInt64(i int64) *int64 { return &i }
-func ptrBool(b bool) *bool { return &b }
+func ptrInt64(i int64) *int64    { return &i }
+func ptrBool(b bool) *bool       { return &b }
 
 // go test ./tencentcloud/services/cvm/ -run "TestInstanceTypesInquiryType" -v -count=1 -gcflags="all=-l"
 // TestInstanceTypesInquiryType verifies InquiryType parameter is correctly passed to the CBS API request
@@ -47,12 +47,12 @@ func TestInstanceTypesInquiryType(t *testing.T) {
 		func(ctx context.Context, filters map[string][]string) ([]*cvmSDK.InstanceTypeQuotaItem, error) {
 			return []*cvmSDK.InstanceTypeQuotaItem{
 				{
-					Zone:            ptrString("ap-guangzhou-6"),
-					Cpu:             ptrInt64(4),
-					Memory:          ptrInt64(8),
-					InstanceFamily:  ptrString("S5"),
-					InstanceType:    ptrString("S5.MEDIUM4"),
-					Status:          ptrString("SELL"),
+					Zone:               ptrString("ap-guangzhou-6"),
+					Cpu:                ptrInt64(4),
+					Memory:             ptrInt64(8),
+					InstanceFamily:     ptrString("S5"),
+					InstanceType:       ptrString("S5.MEDIUM4"),
+					Status:             ptrString("SELL"),
 					InstanceChargeType: ptrString("POSTPAID_BY_HOUR"),
 				},
 			}, nil
@@ -68,11 +68,11 @@ func TestInstanceTypesInquiryType(t *testing.T) {
 			}
 			return []*cbs.DiskConfig{
 				{
-					Available:       ptrBool(true),
-					DiskChargeType:  ptrString("PREPAID"),
-					Zone:            ptrString("ap-guangzhou-6"),
-					InstanceFamily:  ptrString("S5"),
-					DiskType:        ptrString("CLOUD_SSD"),
+					Available:      ptrBool(true),
+					DiskChargeType: ptrString("PREPAID"),
+					Zone:           ptrString("ap-guangzhou-6"),
+					InstanceFamily: ptrString("S5"),
+					DiskType:       ptrString("CLOUD_SSD"),
 				},
 			}, nil
 		},
@@ -104,12 +104,12 @@ func TestInstanceTypesDiskChargeTypePrecedence(t *testing.T) {
 		func(ctx context.Context, filters map[string][]string) ([]*cvmSDK.InstanceTypeQuotaItem, error) {
 			return []*cvmSDK.InstanceTypeQuotaItem{
 				{
-					Zone:            ptrString("ap-guangzhou-6"),
-					Cpu:             ptrInt64(4),
-					Memory:          ptrInt64(8),
-					InstanceFamily:  ptrString("S5"),
-					InstanceType:    ptrString("S5.MEDIUM4"),
-					Status:          ptrString("SELL"),
+					Zone:               ptrString("ap-guangzhou-6"),
+					Cpu:                ptrInt64(4),
+					Memory:             ptrInt64(8),
+					InstanceFamily:     ptrString("S5"),
+					InstanceType:       ptrString("S5.MEDIUM4"),
+					Status:             ptrString("SELL"),
 					InstanceChargeType: ptrString("POSTPAID_BY_HOUR"),
 				},
 			}, nil
@@ -124,11 +124,11 @@ func TestInstanceTypesDiskChargeTypePrecedence(t *testing.T) {
 			}
 			return []*cbs.DiskConfig{
 				{
-					Available:       ptrBool(true),
-					DiskChargeType:  ptrString("POSTPAID_BY_HOUR"),
-					Zone:            ptrString("ap-guangzhou-6"),
-					InstanceFamily:  ptrString("S5"),
-					DiskType:        ptrString("CLOUD_SSD"),
+					Available:      ptrBool(true),
+					DiskChargeType: ptrString("POSTPAID_BY_HOUR"),
+					Zone:           ptrString("ap-guangzhou-6"),
+					InstanceFamily: ptrString("S5"),
+					DiskType:       ptrString("CLOUD_SSD"),
 				},
 			}, nil
 		},
@@ -167,12 +167,12 @@ func TestInstanceTypesInstanceFamiliesOverride(t *testing.T) {
 		func(ctx context.Context, filters map[string][]string) ([]*cvmSDK.InstanceTypeQuotaItem, error) {
 			return []*cvmSDK.InstanceTypeQuotaItem{
 				{
-					Zone:            ptrString("ap-guangzhou-6"),
-					Cpu:             ptrInt64(4),
-					Memory:          ptrInt64(8),
-					InstanceFamily:  ptrString("S5"),
-					InstanceType:    ptrString("S5.MEDIUM4"),
-					Status:          ptrString("SELL"),
+					Zone:               ptrString("ap-guangzhou-6"),
+					Cpu:                ptrInt64(4),
+					Memory:             ptrInt64(8),
+					InstanceFamily:     ptrString("S5"),
+					InstanceType:       ptrString("S5.MEDIUM4"),
+					Status:             ptrString("SELL"),
 					InstanceChargeType: ptrString("POSTPAID_BY_HOUR"),
 				},
 			}, nil
@@ -189,11 +189,11 @@ func TestInstanceTypesInstanceFamiliesOverride(t *testing.T) {
 			}
 			return []*cbs.DiskConfig{
 				{
-					Available:       ptrBool(true),
-					DiskChargeType:  ptrString("PREPAID"),
-					Zone:            ptrString("ap-guangzhou-6"),
-					InstanceFamily:  ptrString("S5"),
-					DiskType:        ptrString("CLOUD_SSD"),
+					Available:      ptrBool(true),
+					DiskChargeType: ptrString("PREPAID"),
+					Zone:           ptrString("ap-guangzhou-6"),
+					InstanceFamily: ptrString("S5"),
+					DiskType:       ptrString("CLOUD_SSD"),
 				},
 			}, nil
 		},
@@ -226,12 +226,12 @@ func TestInstanceTypesAvailableAttribute(t *testing.T) {
 		func(ctx context.Context, filters map[string][]string) ([]*cvmSDK.InstanceTypeQuotaItem, error) {
 			return []*cvmSDK.InstanceTypeQuotaItem{
 				{
-					Zone:            ptrString("ap-guangzhou-6"),
-					Cpu:             ptrInt64(4),
-					Memory:          ptrInt64(8),
-					InstanceFamily:  ptrString("S5"),
-					InstanceType:    ptrString("S5.MEDIUM4"),
-					Status:          ptrString("SELL"),
+					Zone:               ptrString("ap-guangzhou-6"),
+					Cpu:                ptrInt64(4),
+					Memory:             ptrInt64(8),
+					InstanceFamily:     ptrString("S5"),
+					InstanceType:       ptrString("S5.MEDIUM4"),
+					Status:             ptrString("SELL"),
 					InstanceChargeType: ptrString("POSTPAID_BY_HOUR"),
 				},
 			}, nil
@@ -243,18 +243,18 @@ func TestInstanceTypesAvailableAttribute(t *testing.T) {
 		func(ctx context.Context, cvmInfo map[string]interface{}) ([]*cbs.DiskConfig, error) {
 			return []*cbs.DiskConfig{
 				{
-					Available:       ptrBool(true),
-					DiskChargeType:  ptrString("PREPAID"),
-					Zone:            ptrString("ap-guangzhou-6"),
-					InstanceFamily:  ptrString("S5"),
-					DiskType:        ptrString("CLOUD_SSD"),
+					Available:      ptrBool(true),
+					DiskChargeType: ptrString("PREPAID"),
+					Zone:           ptrString("ap-guangzhou-6"),
+					InstanceFamily: ptrString("S5"),
+					DiskType:       ptrString("CLOUD_SSD"),
 				},
 				{
-					Available:       ptrBool(false),
-					DiskChargeType:  ptrString("PREPAID"),
-					Zone:            ptrString("ap-guangzhou-6"),
-					InstanceFamily:  ptrString("S5"),
-					DiskType:        ptrString("CLOUD_PREMIUM"),
+					Available:      ptrBool(false),
+					DiskChargeType: ptrString("PREPAID"),
+					Zone:           ptrString("ap-guangzhou-6"),
+					InstanceFamily: ptrString("S5"),
+					DiskType:       ptrString("CLOUD_PREMIUM"),
 				},
 			}, nil
 		},
@@ -286,12 +286,12 @@ func TestInstanceTypesAvailableAllFalse(t *testing.T) {
 		func(ctx context.Context, filters map[string][]string) ([]*cvmSDK.InstanceTypeQuotaItem, error) {
 			return []*cvmSDK.InstanceTypeQuotaItem{
 				{
-					Zone:            ptrString("ap-guangzhou-6"),
-					Cpu:             ptrInt64(4),
-					Memory:          ptrInt64(8),
-					InstanceFamily:  ptrString("S5"),
-					InstanceType:    ptrString("S5.MEDIUM4"),
-					Status:          ptrString("SELL"),
+					Zone:               ptrString("ap-guangzhou-6"),
+					Cpu:                ptrInt64(4),
+					Memory:             ptrInt64(8),
+					InstanceFamily:     ptrString("S5"),
+					InstanceType:       ptrString("S5.MEDIUM4"),
+					Status:             ptrString("SELL"),
 					InstanceChargeType: ptrString("POSTPAID_BY_HOUR"),
 				},
 			}, nil
@@ -302,11 +302,11 @@ func TestInstanceTypesAvailableAllFalse(t *testing.T) {
 		func(ctx context.Context, cvmInfo map[string]interface{}) ([]*cbs.DiskConfig, error) {
 			return []*cbs.DiskConfig{
 				{
-					Available:       ptrBool(false),
-					DiskChargeType:  ptrString("PREPAID"),
-					Zone:            ptrString("ap-guangzhou-6"),
-					InstanceFamily:  ptrString("S5"),
-					DiskType:        ptrString("CLOUD_SSD"),
+					Available:      ptrBool(false),
+					DiskChargeType: ptrString("PREPAID"),
+					Zone:           ptrString("ap-guangzhou-6"),
+					InstanceFamily: ptrString("S5"),
+					DiskType:       ptrString("CLOUD_SSD"),
 				},
 			}, nil
 		},
@@ -338,12 +338,12 @@ func TestInstanceTypesBackwardCompatibility(t *testing.T) {
 		func(ctx context.Context, filters map[string][]string) ([]*cvmSDK.InstanceTypeQuotaItem, error) {
 			return []*cvmSDK.InstanceTypeQuotaItem{
 				{
-					Zone:            ptrString("ap-guangzhou-6"),
-					Cpu:             ptrInt64(4),
-					Memory:          ptrInt64(8),
-					InstanceFamily:  ptrString("S5"),
-					InstanceType:    ptrString("S5.MEDIUM4"),
-					Status:          ptrString("SELL"),
+					Zone:               ptrString("ap-guangzhou-6"),
+					Cpu:                ptrInt64(4),
+					Memory:             ptrInt64(8),
+					InstanceFamily:     ptrString("S5"),
+					InstanceType:       ptrString("S5.MEDIUM4"),
+					Status:             ptrString("SELL"),
 					InstanceChargeType: ptrString("POSTPAID_BY_HOUR"),
 				},
 			}, nil
@@ -368,11 +368,11 @@ func TestInstanceTypesBackwardCompatibility(t *testing.T) {
 			}
 			return []*cbs.DiskConfig{
 				{
-					Available:       ptrBool(true),
-					DiskChargeType:  ptrString("PREPAID"),
-					Zone:            ptrString("ap-guangzhou-6"),
-					InstanceFamily:  ptrString("S5"),
-					DiskType:        ptrString("CLOUD_SSD"),
+					Available:      ptrBool(true),
+					DiskChargeType: ptrString("PREPAID"),
+					Zone:           ptrString("ap-guangzhou-6"),
+					InstanceFamily: ptrString("S5"),
+					DiskType:       ptrString("CLOUD_SSD"),
 				},
 			}, nil
 		},
@@ -415,12 +415,12 @@ func TestInstanceTypesNoCbsQueryAvailableFalse(t *testing.T) {
 		func(ctx context.Context, filters map[string][]string) ([]*cvmSDK.InstanceTypeQuotaItem, error) {
 			return []*cvmSDK.InstanceTypeQuotaItem{
 				{
-					Zone:            ptrString("ap-guangzhou-6"),
-					Cpu:             ptrInt64(4),
-					Memory:          ptrInt64(8),
-					InstanceFamily:  ptrString("S5"),
-					InstanceType:    ptrString("S5.MEDIUM4"),
-					Status:          ptrString("SELL"),
+					Zone:               ptrString("ap-guangzhou-6"),
+					Cpu:                ptrInt64(4),
+					Memory:             ptrInt64(8),
+					InstanceFamily:     ptrString("S5"),
+					InstanceType:       ptrString("S5.MEDIUM4"),
+					Status:             ptrString("SELL"),
 					InstanceChargeType: ptrString("POSTPAID_BY_HOUR"),
 				},
 			}, nil
