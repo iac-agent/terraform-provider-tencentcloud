@@ -41,6 +41,45 @@ data "tencentcloud_instance_types" "example" {
 }
 ```
 
+### Query with CBS Disk Config Quota
+
+```hcl
+data "tencentcloud_instance_types" "with_cbs_filter" {
+  availability_zone = "ap-guangzhou-6"
+  cpu_core_count    = 4
+  memory_size       = 8
+
+  cbs_filter {
+    disk_types       = ["CLOUD_SSD"]
+    disk_charge_type = "PREPAID"
+    disk_usage       = "SYSTEM_DISK"
+  }
+}
+```
+
+### Query CBS Disk Config Quota with Top-Level Parameters
+
+```hcl
+data "tencentcloud_instance_types" "with_cbs_top_level_params" {
+  cpu_core_count = 4
+
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
+
+  cbs_filter {
+    disk_charge_type = "PREPAID"
+    disk_usage       = "SYSTEM_DISK"
+  }
+
+  # Top-level parameters override cbs_filter and derived values for CBS disk config quota query
+  disk_types = ["CLOUD_SSD", "CLOUD_HSSD"]
+  zones      = ["ap-guangzhou-6", "ap-guangzhou-3"]
+  memory     = 8
+}
+```
+
 ### Query with Network and Performance Requirements
 
 ```hcl
@@ -124,11 +163,19 @@ The following arguments are supported:
 * `availability_zone` - (Optional, String) The available zone that the CVM instance locates at. This field is conflict with `filter`.
 * `cbs_filter` - (Optional, List) Cbs filter.
 * `cpu_core_count` - (Optional, Int) The number of CPU cores of the instance.
+* `disk_types` - (Optional, List: [`String`]) Hard disk media type for CBS disk config quota query. Value range:
+	- CLOUD_BASIC: Represents ordinary Cloud Block Storage;
+	- CLOUD_PREMIUM: Represents high-performance Cloud Block Storage;
+	- CLOUD_SSD: Represents SSD Cloud Block Storage;
+	- CLOUD_HSSD: Represents enhanced SSD Cloud Block Storage.
+	When specified, this top-level parameter overrides `cbs_filter.disk_types` in the DescribeDiskConfigQuota API call.
 * `exclude_sold_out` - (Optional, Bool) Indicate to filter instances types that is sold out or not, default is false.
 * `filter` - (Optional, Set) One or more name/value pairs to filter. This field is conflict with `availability_zone`.
 * `gpu_core_count` - (Optional, Int) The number of GPU cores of the instance.
 * `memory_size` - (Optional, Int) Instance memory capacity, unit in GB.
+* `memory` - (Optional, Int) Instance memory size in GB for CBS disk config quota query. When specified, this top-level parameter overrides the derived memory_size in the DescribeDiskConfigQuota API call.
 * `result_output_file` - (Optional, String) Used to save results.
+* `zones` - (Optional, List: [`String`]) Availability zones for CBS disk config quota query. When specified, this top-level parameter overrides the derived availability_zone in the DescribeDiskConfigQuota API call.
 
 The `cbs_filter` object supports the following:
 

@@ -977,13 +977,31 @@ func (me *CbsService) DescribeDiskConfigQuota(ctx context.Context, cvmInfo map[s
 	}()
 
 	request.InquiryType = helper.String("INQUIRY_CVM_CONFIG")
-	request.Zones = helper.Strings([]string{cvmInfo["availability_zone"].(string)})
-	request.CPU = helper.Int64Uint64(cvmInfo["cpu_core_count"].(int64))
-	request.Memory = helper.Int64Uint64(cvmInfo["memory_size"].(int64))
-	request.InstanceFamilies = helper.Strings([]string{cvmInfo["family"].(string)})
-	request.DiskTypes = helper.Strings(cvmInfo["disk_types"].([]string))
-	request.DiskChargeType = helper.String(cvmInfo["disk_charge_type"].(string))
-	request.DiskUsage = helper.String(cvmInfo["disk_usage"].(string))
+	if v, ok := cvmInfo["zones"]; ok {
+		request.Zones = helper.Strings(v.([]string))
+	} else if v, ok := cvmInfo["availability_zone"]; ok {
+		request.Zones = helper.Strings([]string{v.(string)})
+	}
+	if v, ok := cvmInfo["cpu_core_count"]; ok {
+		request.CPU = helper.Int64Uint64(v.(int64))
+	}
+	if v, ok := cvmInfo["memory"]; ok {
+		request.Memory = helper.Int64Uint64(int64(v.(int)))
+	} else if v, ok := cvmInfo["memory_size"]; ok {
+		request.Memory = helper.Int64Uint64(v.(int64))
+	}
+	if v, ok := cvmInfo["family"]; ok {
+		request.InstanceFamilies = helper.Strings([]string{v.(string)})
+	}
+	if v, ok := cvmInfo["disk_types"]; ok {
+		request.DiskTypes = helper.Strings(v.([]string))
+	}
+	if v, ok := cvmInfo["disk_charge_type"]; ok {
+		request.DiskChargeType = helper.String(v.(string))
+	}
+	if v, ok := cvmInfo["disk_usage"]; ok {
+		request.DiskUsage = helper.String(v.(string))
+	}
 	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
 		ratelimit.Check(request.GetAction())
 		result, e := me.client.UseCbsClient().DescribeDiskConfigQuota(request)

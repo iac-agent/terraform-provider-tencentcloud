@@ -30,6 +30,45 @@ data "tencentcloud_instance_types" "example" {
 }
 ```
 
+Query with CBS Disk Config Quota
+
+```hcl
+data "tencentcloud_instance_types" "with_cbs_filter" {
+  availability_zone = "ap-guangzhou-6"
+  cpu_core_count    = 4
+  memory_size       = 8
+
+  cbs_filter {
+    disk_types       = ["CLOUD_SSD"]
+    disk_charge_type = "PREPAID"
+    disk_usage       = "SYSTEM_DISK"
+  }
+}
+```
+
+Query CBS Disk Config Quota with Top-Level Parameters
+
+```hcl
+data "tencentcloud_instance_types" "with_cbs_top_level_params" {
+  cpu_core_count = 4
+
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
+
+  cbs_filter {
+    disk_charge_type = "PREPAID"
+    disk_usage       = "SYSTEM_DISK"
+  }
+
+  # Top-level parameters override cbs_filter and derived values for CBS disk config quota query
+  disk_types = ["CLOUD_SSD", "CLOUD_HSSD"]
+  zones      = ["ap-guangzhou-6", "ap-guangzhou-3"]
+  memory     = 8
+}
+```
+
 Query with Network and Performance Requirements
 
 ```hcl
