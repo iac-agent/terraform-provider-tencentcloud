@@ -1,0 +1,3 @@
+```release-note:enhancement
+data-source/tencentcloud_instance_types: add InstanceFamilies and DiskTypes input parameters for simplified filtering
+```
