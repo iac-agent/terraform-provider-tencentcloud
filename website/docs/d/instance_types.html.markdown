@@ -117,6 +117,51 @@ output "pricing_info" {
 }
 ```
 
+### Query with CBS Filter and Inquiry Type
+
+```hcl
+data "tencentcloud_instance_types" "cbs_inquiry" {
+  cpu_core_count   = 4
+  memory_size      = 8
+  exclude_sold_out = true
+
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
+
+  cbs_filter {
+    inquiry_type     = "INQUIRY_CBS_CONFIG"
+    disk_types       = ["CLOUD_SSD"]
+    disk_charge_type = "POSTPAID_BY_HOUR"
+    disk_usage       = "DATA_DISK"
+  }
+}
+```
+
+### Query with CBS Filter and Instance Families
+
+```hcl
+data "tencentcloud_instance_types" "cbs_families" {
+  cpu_core_count   = 4
+  memory_size      = 8
+  exclude_sold_out = true
+
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
+
+  cbs_filter {
+    inquiry_type      = "INQUIRY_CVM_CONFIG"
+    instance_families = ["S5", "M5"]
+    disk_types        = ["CLOUD_SSD"]
+    disk_charge_type  = "PREPAID"
+    disk_usage        = "SYSTEM_DISK"
+  }
+}
+```
+
 ## Argument Reference
 
 The following arguments are supported:
@@ -143,6 +188,11 @@ The `cbs_filter` object supports the following:
 * `disk_usage` - (Optional, String) System disk or data disk. Value range:
 	- SYSTEM_DISK: Represents the system disk;
 	- DATA_DISK: Represents the data disk.
+* `inquiry_type` - (Optional, String) Query category. Value range:
+	- INQUIRY_CBS_CONFIG: Query cloud disk configuration list;
+	- INQUIRY_CVM_CONFIG: Query cloud disk configuration list combined with instance type.
+* `instance_families` - (Optional, List) Instance family names for filtering, which overrides the instance type's family for CBS filtering. Value range:
+	Refer to instance family naming like S5, M5, etc.
 
 The `filter` object supports the following:
 
