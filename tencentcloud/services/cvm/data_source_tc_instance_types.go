@@ -69,6 +69,13 @@ func DataSourceTencentCloudInstanceTypes() *schema.Resource {
 				MaxItems:    1,
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
+						"inquiry_type": {
+							Type:     schema.TypeString,
+							Optional: true,
+							Description: "Query category. Value range:\n" +
+								"	- INQUIRY_CBS_CONFIG: Query cloud disk configuration list;\n" +
+								"	- INQUIRY_CVM_CONFIG: Query cloud disk configuration list combined with instance type.",
+						},
 						"disk_types": {
 							Type:     schema.TypeList,
 							Optional: true,
@@ -85,6 +92,13 @@ func DataSourceTencentCloudInstanceTypes() *schema.Resource {
 							Description: "Payment model. Value range:\n" +
 								"	- PREPAID: Prepaid;\n" +
 								"	- POSTPAID_BY_HOUR: Post-payment.",
+						},
+						"instance_families": {
+							Type:     schema.TypeList,
+							Optional: true,
+							Elem:     &schema.Schema{Type: schema.TypeString},
+							Description: "Instance family names for filtering, which overrides the instance type's family for CBS filtering. Value range:\n" +
+								"	Refer to instance family naming like S5, M5, etc.",
 						},
 						"disk_usage": {
 							Type:     schema.TypeString,
@@ -583,6 +597,12 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 	cbsFilterParams := make(map[string]interface{})
 	var hasCbsFilter bool
 	if dMap, ok := helper.InterfacesHeadMap(d, "cbs_filter"); ok {
+		if v, ok := dMap["inquiry_type"].(string); ok && v != "" {
+			cbsFilterParams["inquiry_type"] = v
+		}
+		if v, ok := dMap["instance_families"].([]interface{}); ok && len(v) > 0 {
+			cbsFilterParams["instance_families"] = helper.InterfacesStrings(v)
+		}
 		if v, ok := dMap["disk_types"].([]interface{}); ok && len(v) > 0 {
 			cbsFilterParams["disk_types"] = helper.InterfacesStrings(v)
 		}

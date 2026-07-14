@@ -72,6 +72,47 @@ func TestAccTencentCloudCvmInstanceTypesDataSource_WithCbsFilter(t *testing.T) {
 	})
 }
 
+func TestAccTencentCloudCvmInstanceTypesDataSource_WithCbsFilterInquiryType(t *testing.T) {
+	t.Parallel()
+	resource.Test(t, resource.TestCase{
+		PreCheck: func() {
+			acctest.AccPreCheck(t)
+		},
+		Providers: acctest.AccProviders,
+		Steps: []resource.TestStep{
+			{
+				Config: testAccCvmInstanceTypesDataSource_WithCbsFilterInquiryType,
+				Check: resource.ComposeTestCheckFunc(
+					acctest.AccCheckTencentCloudDataSourceID("data.tencentcloud_instance_types.with_cbs_inquiry"),
+					resource.TestCheckResourceAttr("data.tencentcloud_instance_types.with_cbs_inquiry", "cbs_filter.0.inquiry_type", "INQUIRY_CBS_CONFIG"),
+					resource.TestCheckResourceAttrSet("data.tencentcloud_instance_types.with_cbs_inquiry", "instance_types.0.cbs_configs.#"),
+				),
+			},
+		},
+	})
+}
+
+func TestAccTencentCloudCvmInstanceTypesDataSource_WithCbsFilterInstanceFamilies(t *testing.T) {
+	t.Parallel()
+	resource.Test(t, resource.TestCase{
+		PreCheck: func() {
+			acctest.AccPreCheck(t)
+		},
+		Providers: acctest.AccProviders,
+		Steps: []resource.TestStep{
+			{
+				Config: testAccCvmInstanceTypesDataSource_WithCbsFilterInstanceFamilies,
+				Check: resource.ComposeTestCheckFunc(
+					acctest.AccCheckTencentCloudDataSourceID("data.tencentcloud_instance_types.with_cbs_families"),
+					resource.TestCheckResourceAttr("data.tencentcloud_instance_types.with_cbs_families", "cbs_filter.0.inquiry_type", "INQUIRY_CVM_CONFIG"),
+					resource.TestCheckResourceAttr("data.tencentcloud_instance_types.with_cbs_families", "cbs_filter.0.instance_families.#", "2"),
+					resource.TestCheckResourceAttrSet("data.tencentcloud_instance_types.with_cbs_families", "instance_types.0.cbs_configs.#"),
+				),
+			},
+		},
+	})
+}
+
 const testAccCvmInstanceTypesDataSource_SellCreate = `
 
 data "tencentcloud_instance_types" "example" {
@@ -110,6 +151,49 @@ data "tencentcloud_instance_types" "with_cbs_filter" {
         disk_types = ["CLOUD_SSD"]
         disk_charge_type = "PREPAID"
         disk_usage = "SYSTEM_DISK"
+    }
+}
+`
+
+const testAccCvmInstanceTypesDataSource_WithCbsFilterInquiryType = `
+
+data "tencentcloud_instance_types" "with_cbs_inquiry" {
+    cpu_core_count = 2
+    memory_size = 2
+    exclude_sold_out = true
+
+    filter {
+        name = "zone"
+        values = ["ap-guangzhou-6"]
+    }
+
+    cbs_filter {
+        inquiry_type     = "INQUIRY_CBS_CONFIG"
+        disk_types       = ["CLOUD_SSD"]
+        disk_charge_type = "POSTPAID_BY_HOUR"
+        disk_usage       = "DATA_DISK"
+    }
+}
+`
+
+const testAccCvmInstanceTypesDataSource_WithCbsFilterInstanceFamilies = `
+
+data "tencentcloud_instance_types" "with_cbs_families" {
+    cpu_core_count = 2
+    memory_size = 2
+    exclude_sold_out = true
+
+    filter {
+        name = "zone"
+        values = ["ap-guangzhou-6"]
+    }
+
+    cbs_filter {
+        inquiry_type      = "INQUIRY_CVM_CONFIG"
+        instance_families = ["S5", "M5"]
+        disk_types        = ["CLOUD_SSD"]
+        disk_charge_type  = "PREPAID"
+        disk_usage        = "SYSTEM_DISK"
     }
 }
 `
