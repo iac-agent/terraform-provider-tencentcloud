@@ -105,3 +105,30 @@ output "pricing_info" {
   }]
 }
 ```
+
+Query with CBS Filter and Inquiry Type
+
+```hcl
+data "tencentcloud_instance_types" "with_cbs_filter" {
+  cpu_core_count   = 2
+  memory_size      = 2
+  exclude_sold_out = true
+
+  filter {
+    name   = "instance-family"
+    values = ["S6"]
+  }
+
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
+
+  cbs_filter {
+    disk_types       = ["CLOUD_SSD"]
+    disk_charge_type = "PREPAID"
+    disk_usage       = "SYSTEM_DISK"
+    inquiry_type     = "INQUIRY_CVM_CONFIG"
+  }
+}
+```

@@ -93,6 +93,13 @@ func DataSourceTencentCloudInstanceTypes() *schema.Resource {
 								"	- SYSTEM_DISK: Represents the system disk;\n" +
 								"	- DATA_DISK: Represents the data disk.",
 						},
+						"inquiry_type": {
+							Type:     schema.TypeString,
+							Optional: true,
+							Description: "Inquiry type. Value range:\n" +
+								"	- INQUIRY_CBS_CONFIG: Represents querying cloud disk configuration list;\n" +
+								"	- INQUIRY_CVM_CONFIG: Represents querying cloud disk and instance pairing configuration list.",
+						},
 					},
 				},
 			},
@@ -591,6 +598,11 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 		}
 		if v, ok := dMap["disk_usage"].(string); ok && v != "" {
 			cbsFilterParams["disk_usage"] = v
+		}
+		if v, ok := dMap["inquiry_type"].(string); ok && v != "" {
+			cbsFilterParams["inquiry_type"] = v
+		} else {
+			cbsFilterParams["inquiry_type"] = "INQUIRY_CVM_CONFIG"
 		}
 		hasCbsFilter = true
 	}

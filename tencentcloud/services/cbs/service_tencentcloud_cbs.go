@@ -976,7 +976,11 @@ func (me *CbsService) DescribeDiskConfigQuota(ctx context.Context, cvmInfo map[s
 		}
 	}()
 
-	request.InquiryType = helper.String("INQUIRY_CVM_CONFIG")
+	if v, ok := cvmInfo["inquiry_type"].(string); ok && v != "" {
+		request.InquiryType = helper.String(v)
+	} else {
+		request.InquiryType = helper.String("INQUIRY_CVM_CONFIG")
+	}
 	request.Zones = helper.Strings([]string{cvmInfo["availability_zone"].(string)})
 	request.CPU = helper.Int64Uint64(cvmInfo["cpu_core_count"].(int64))
 	request.Memory = helper.Int64Uint64(cvmInfo["memory_size"].(int64))

@@ -1,0 +1,3 @@
+```release-note:enhancement
+data-source/tencentcloud_instance_types: add inquiry_type parameter to cbs_filter block
+```

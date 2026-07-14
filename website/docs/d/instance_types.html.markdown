@@ -117,6 +117,33 @@ output "pricing_info" {
 }
 ```
 
+### Query with CBS Filter and Inquiry Type
+
+```hcl
+data "tencentcloud_instance_types" "with_cbs_filter" {
+  cpu_core_count   = 2
+  memory_size      = 2
+  exclude_sold_out = true
+
+  filter {
+    name   = "instance-family"
+    values = ["S6"]
+  }
+
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
+
+  cbs_filter {
+    disk_types       = ["CLOUD_SSD"]
+    disk_charge_type = "PREPAID"
+    disk_usage       = "SYSTEM_DISK"
+    inquiry_type     = "INQUIRY_CVM_CONFIG"
+  }
+}
+```
+
 ## Argument Reference
 
 The following arguments are supported:
@@ -143,6 +170,9 @@ The `cbs_filter` object supports the following:
 * `disk_usage` - (Optional, String) System disk or data disk. Value range:
 	- SYSTEM_DISK: Represents the system disk;
 	- DATA_DISK: Represents the data disk.
+* `inquiry_type` - (Optional, String) Inquiry type. Value range:
+	- INQUIRY_CBS_CONFIG: Represents querying cloud disk configuration list;
+	- INQUIRY_CVM_CONFIG: Represents querying cloud disk and instance pairing configuration list.
 
 The `filter` object supports the following:
 
