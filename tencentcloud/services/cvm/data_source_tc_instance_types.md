@@ -105,3 +105,26 @@ output "pricing_info" {
   }]
 }
 ```
+
+Query CBS Disk Configuration with InquiryType and InstanceFamilies
+
+```hcl
+data "tencentcloud_instance_types" "cbs_config" {
+  cpu_core_count   = 4
+  memory_size      = 8
+  exclude_sold_out = true
+
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
+
+  cbs_filter {
+    inquiry_type     = "INQUIRY_CBS_CONFIG"
+    instance_families = ["S5", "SA2"]
+    disk_types       = ["CLOUD_SSD"]
+    disk_charge_type = "POSTPAID_BY_HOUR"
+    disk_usage       = "DATA_DISK"
+  }
+}
+``

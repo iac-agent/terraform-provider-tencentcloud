@@ -967,7 +967,7 @@ func (me *CbsService) ApplyDiskBackup(ctx context.Context, diskBackupId, diskId 
 	return
 }
 
-func (me *CbsService) DescribeDiskConfigQuota(ctx context.Context, cvmInfo map[string]interface{}) (diskConfigSet []*cbs.DiskConfig, errRet error) {
+func (me *CbsService) DescribeDiskConfigQuota(ctx context.Context, cvmInfo map[string]interface{}, inquiryType string, instanceFamilies []string) (diskConfigSet []*cbs.DiskConfig, errRet error) {
 	logId := tccommon.GetLogId(ctx)
 	request := cbs.NewDescribeDiskConfigQuotaRequest()
 	defer func() {
@@ -976,11 +976,19 @@ func (me *CbsService) DescribeDiskConfigQuota(ctx context.Context, cvmInfo map[s
 		}
 	}()
 
-	request.InquiryType = helper.String("INQUIRY_CVM_CONFIG")
+	if inquiryType != "" {
+		request.InquiryType = helper.String(inquiryType)
+	} else {
+		request.InquiryType = helper.String("INQUIRY_CVM_CONFIG")
+	}
 	request.Zones = helper.Strings([]string{cvmInfo["availability_zone"].(string)})
 	request.CPU = helper.Int64Uint64(cvmInfo["cpu_core_count"].(int64))
 	request.Memory = helper.Int64Uint64(cvmInfo["memory_size"].(int64))
-	request.InstanceFamilies = helper.Strings([]string{cvmInfo["family"].(string)})
+	if len(instanceFamilies) > 0 {
+		request.InstanceFamilies = helper.Strings(instanceFamilies)
+	} else {
+		request.InstanceFamilies = helper.Strings([]string{cvmInfo["family"].(string)})
+	}
 	request.DiskTypes = helper.Strings(cvmInfo["disk_types"].([]string))
 	request.DiskChargeType = helper.String(cvmInfo["disk_charge_type"].(string))
 	request.DiskUsage = helper.String(cvmInfo["disk_usage"].(string))

@@ -143,6 +143,10 @@ The `cbs_filter` object supports the following:
 * `disk_usage` - (Optional, String) System disk or data disk. Value range:
 	- SYSTEM_DISK: Represents the system disk;
 	- DATA_DISK: Represents the data disk.
+* `inquiry_type` - (Optional, String) Query type for CBS disk configuration. Value range:
+	- INQUIRY_CVM_CONFIG: Query disk configuration list matched with CVM instance;
+	- INQUIRY_CBS_CONFIG: Query CBS disk configuration list only. Default is INQUIRY_CVM_CONFIG.
+* `instance_families` - (Optional, List) Instance family names for CBS configuration filtering, e.g. S5, M5. When not specified, derived from instance type results' family field.
 
 The `filter` object supports the following:
 

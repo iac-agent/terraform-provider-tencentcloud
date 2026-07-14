@@ -93,6 +93,20 @@ func DataSourceTencentCloudInstanceTypes() *schema.Resource {
 								"	- SYSTEM_DISK: Represents the system disk;\n" +
 								"	- DATA_DISK: Represents the data disk.",
 						},
+						"inquiry_type": {
+							Type:     schema.TypeString,
+							Optional: true,
+							Description: "Query type for CBS disk configuration. Value range:\n" +
+								"	- INQUIRY_CVM_CONFIG: Query disk configuration list matched with CVM instance;\n" +
+								"	- INQUIRY_CBS_CONFIG: Query CBS disk configuration list only. Default is INQUIRY_CVM_CONFIG.",
+						},
+						"instance_families": {
+							Type:     schema.TypeList,
+							Optional: true,
+							Elem:     &schema.Schema{Type: schema.TypeString},
+							Description: "Instance family names for CBS configuration filtering, e.g. S5, M5. " +
+								"When not specified, derived from instance type results' family field.",
+						},
 					},
 				},
 			},
@@ -582,6 +596,8 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 	cbsService := svccbs.NewCbsService(client)
 	cbsFilterParams := make(map[string]interface{})
 	var hasCbsFilter bool
+	var inquiryType string
+	var instanceFamilies []string
 	if dMap, ok := helper.InterfacesHeadMap(d, "cbs_filter"); ok {
 		if v, ok := dMap["disk_types"].([]interface{}); ok && len(v) > 0 {
 			cbsFilterParams["disk_types"] = helper.InterfacesStrings(v)
@@ -591,6 +607,12 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 		}
 		if v, ok := dMap["disk_usage"].(string); ok && v != "" {
 			cbsFilterParams["disk_usage"] = v
+		}
+		if v, ok := dMap["inquiry_type"].(string); ok && v != "" {
+			inquiryType = v
+		}
+		if v, ok := dMap["instance_families"].([]interface{}); ok && len(v) > 0 {
+			instanceFamilies = helper.InterfacesStrings(v)
 		}
 		hasCbsFilter = true
 	}
@@ -613,7 +635,7 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 			if v, ok := t["family"].(*string); ok && v != nil {
 				filterParams["family"] = *v
 			}
-			diskConfigSet, err := cbsService.DescribeDiskConfigQuota(ctx, filterParams)
+			diskConfigSet, err := cbsService.DescribeDiskConfigQuota(ctx, filterParams, inquiryType, instanceFamilies)
 			if err != nil {
 				return err
 			}
