@@ -105,3 +105,37 @@ output "pricing_info" {
   }]
 }
 ```
+
+Query CBS Disk Config with Override Parameters
+
+```hcl
+data "tencentcloud_instance_types" "disk_config" {
+  cpu_core_count    = 4
+  memory_size       = 8
+  exclude_sold_out  = true
+
+  filter {
+    name   = "instance-family"
+    values = ["SA2"]
+  }
+
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
+
+  cbs_filter {
+    disk_charge_type = "POSTPAID_BY_HOUR"
+    disk_usage       = "DATA_DISK"
+  }
+
+  # Override disk types for CBS query
+  disk_types = ["CLOUD_SSD", "CLOUD_HSSD"]
+
+  # Override zones for CBS query
+  zones = ["ap-guangzhou-3", "ap-guangzhou-6"]
+
+  # Override memory for CBS query
+  memory = 16
+}
+```
