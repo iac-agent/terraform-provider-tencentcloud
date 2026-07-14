@@ -62,6 +62,28 @@ func DataSourceTencentCloudInstanceTypes() *schema.Resource {
 					},
 				},
 			},
+			"disk_types": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				Elem:        &schema.Schema{Type: schema.TypeString},
+				Description: "Hard disk media type for CBS disk config quota query. Value range:\n" +
+					"	- CLOUD_BASIC: Represents ordinary Cloud Block Storage;\n" +
+					"	- CLOUD_PREMIUM: Represents high-performance Cloud Block Storage;\n" +
+					"	- CLOUD_SSD: Represents SSD Cloud Block Storage;\n" +
+					"	- CLOUD_HSSD: Represents enhanced SSD Cloud Block Storage.\n" +
+					"	When specified, this top-level parameter overrides `cbs_filter.disk_types` in the DescribeDiskConfigQuota API call.",
+			},
+			"zones": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				Elem:        &schema.Schema{Type: schema.TypeString},
+				Description: "Availability zones for CBS disk config quota query. When specified, this top-level parameter overrides the derived availability_zone in the DescribeDiskConfigQuota API call.",
+			},
+			"memory": {
+				Type:        schema.TypeInt,
+				Optional:    true,
+				Description: "Instance memory size in GB for CBS disk config quota query. When specified, this top-level parameter overrides the derived memory_size in the DescribeDiskConfigQuota API call.",
+			},
 			"cbs_filter": {
 				Type:        schema.TypeList,
 				Optional:    true,
@@ -594,6 +616,19 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 		}
 		hasCbsFilter = true
 	}
+	// Top-level parameters override cbs_filter derived values for DescribeDiskConfigQuota
+	if v, ok := d.GetOk("disk_types"); ok && len(v.([]interface{})) > 0 {
+		cbsFilterParams["disk_types"] = helper.InterfacesStrings(v.([]interface{}))
+		hasCbsFilter = true
+	}
+	if v, ok := d.GetOk("zones"); ok && len(v.([]interface{})) > 0 {
+		cbsFilterParams["zones"] = helper.InterfacesStrings(v.([]interface{}))
+		hasCbsFilter = true
+	}
+	if v, ok := d.GetOk("memory"); ok {
+		cbsFilterParams["memory"] = v.(int)
+		hasCbsFilter = true
+	}
 	if hasCbsFilter {
 		for idx, t := range typeList {
 			filterParams := make(map[string]interface{})
@@ -601,14 +636,19 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 				filterParams[k] = v
 			}
 
-			if v, ok := t["availability_zone"].(*string); ok && v != nil {
-				filterParams["availability_zone"] = *v
+			// Derived values from instance type results are used as fallback when top-level overrides are not present
+			if _, ok := filterParams["zones"]; !ok {
+				if v, ok := t["availability_zone"].(*string); ok && v != nil {
+					filterParams["availability_zone"] = *v
+				}
 			}
 			if v, ok := t["cpu_core_count"].(*int64); ok && v != nil {
 				filterParams["cpu_core_count"] = *v
 			}
-			if v, ok := t["memory_size"].(*int64); ok && v != nil {
-				filterParams["memory_size"] = *v
+			if _, ok := filterParams["memory"]; !ok {
+				if v, ok := t["memory_size"].(*int64); ok && v != nil {
+					filterParams["memory_size"] = *v
+				}
 			}
 			if v, ok := t["family"].(*string); ok && v != nil {
 				filterParams["family"] = *v
