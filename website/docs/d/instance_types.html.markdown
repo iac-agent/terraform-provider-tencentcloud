@@ -4,12 +4,12 @@ layout: "tencentcloud"
 page_title: "TencentCloud: tencentcloud_instance_types"
 sidebar_current: "docs-tencentcloud-datasource-instance_types"
 description: |-
-  Use this data source to query instances type.
+  Use this data source to query CVM instances type.
 ---
 
 # tencentcloud_instance_types
 
-Use this data source to query instances type.
+Use this data source to query CVM instances type.
 
 ## Example Usage
 
@@ -33,6 +33,22 @@ data "tencentcloud_instance_types" "example" {
     name   = "instance-family"
     values = ["SA2"]
   }
+
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
+}
+```
+
+### Query by Instance Families
+
+```hcl
+data "tencentcloud_instance_types" "by_family" {
+  cpu_core_count    = 4
+  memory_size       = 8
+  exclude_sold_out  = true
+  instance_families = ["SA2", "S5"]
 
   filter {
     name   = "zone"
@@ -117,6 +133,23 @@ output "pricing_info" {
 }
 ```
 
+### Query with Disk Types Filter
+
+```hcl
+data "tencentcloud_instance_types" "with_disk_types" {
+  cpu_core_count    = 4
+  memory_size       = 8
+  exclude_sold_out  = true
+  instance_families = ["SA2"]
+  disk_types        = ["CLOUD_SSD", "CLOUD_PREMIUM"]
+
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
+}
+```
+
 ## Argument Reference
 
 The following arguments are supported:
@@ -124,9 +157,11 @@ The following arguments are supported:
 * `availability_zone` - (Optional, String) The available zone that the CVM instance locates at. This field is conflict with `filter`.
 * `cbs_filter` - (Optional, List) Cbs filter.
 * `cpu_core_count` - (Optional, Int) The number of CPU cores of the instance.
+* `disk_types` - (Optional, List: [`String`]) Filter by disk media type. Value range: CLOUD_BASIC, CLOUD_PREMIUM, CLOUD_SSD, CLOUD_HSSD. Values will be passed directly to DescribeDiskConfigQuota API.
 * `exclude_sold_out` - (Optional, Bool) Indicate to filter instances types that is sold out or not, default is false.
 * `filter` - (Optional, Set) One or more name/value pairs to filter. This field is conflict with `availability_zone`.
 * `gpu_core_count` - (Optional, Int) The number of GPU cores of the instance.
+* `instance_families` - (Optional, List: [`String`]) Filter by instance family names. Values will be translated to `instance-family` filter when calling DescribeZoneInstanceConfigInfos API, and passed directly to DescribeDiskConfigQuota API.
 * `memory_size` - (Optional, Int) Instance memory capacity, unit in GB.
 * `result_output_file` - (Optional, String) Used to save results.
 

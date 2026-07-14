@@ -96,6 +96,18 @@ func DataSourceTencentCloudInstanceTypes() *schema.Resource {
 					},
 				},
 			},
+			"instance_families": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				Elem:        &schema.Schema{Type: schema.TypeString},
+				Description: "Filter by instance family names. Values will be translated to `instance-family` filter when calling DescribeZoneInstanceConfigInfos API, and passed directly to DescribeDiskConfigQuota API.",
+			},
+			"disk_types": {
+				Type:        schema.TypeList,
+				Optional:    true,
+				Elem:        &schema.Schema{Type: schema.TypeString},
+				Description: "Filter by disk media type. Value range: CLOUD_BASIC, CLOUD_PREMIUM, CLOUD_SSD, CLOUD_HSSD. Values will be passed directly to DescribeDiskConfigQuota API.",
+			},
 			"exclude_sold_out": {
 				Type:        schema.TypeBool,
 				Optional:    true,
@@ -471,6 +483,23 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 	if zone != "" {
 		filterMap["zone"] = []string{zone}
 	}
+
+	// Translate InstanceFamilies top-level parameter to instance-family filter values
+	var instanceFamilies []string
+	if v, ok := d.GetOk("instance_families"); ok {
+		instanceFamilies = helper.InterfacesStrings(v.([]interface{}))
+	}
+	if len(instanceFamilies) > 0 {
+		if existing, ok := filterMap["instance-family"]; ok {
+			// Merge InstanceFamilies values with existing filter block instance-family values
+			merged := make([]string, 0, len(existing)+len(instanceFamilies))
+			merged = append(merged, existing...)
+			merged = append(merged, instanceFamilies...)
+			filterMap["instance-family"] = merged
+		} else {
+			filterMap["instance-family"] = instanceFamilies
+		}
+	}
 	err = resource.Retry(tccommon.ReadRetryTimeout, func() *resource.RetryError {
 		instanceSellTypes, errRet = cvmService.DescribeInstancesSellTypeByFilter(ctx, filterMap)
 		if errRet != nil {
@@ -594,6 +623,25 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 		}
 		hasCbsFilter = true
 	}
+
+	// Handle top-level DiskTypes parameter
+	var diskTypes []string
+	if v, ok := d.GetOk("disk_types"); ok {
+		diskTypes = helper.InterfacesStrings(v.([]interface{}))
+	}
+	if len(diskTypes) > 0 {
+		// DiskTypes takes precedence over cbs_filter.disk_types
+		cbsFilterParams["disk_types"] = diskTypes
+		hasCbsFilter = true
+	}
+
+	// Handle top-level InstanceFamilies parameter for CBS queries
+	// When InstanceFamilies is provided and CBS config queries are triggered,
+	// pass InstanceFamilies values directly to DescribeDiskConfigQuota API
+	if len(instanceFamilies) > 0 {
+		cbsFilterParams["instance_families_list"] = instanceFamilies
+	}
+
 	if hasCbsFilter {
 		for idx, t := range typeList {
 			filterParams := make(map[string]interface{})
@@ -610,8 +658,11 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 			if v, ok := t["memory_size"].(*int64); ok && v != nil {
 				filterParams["memory_size"] = *v
 			}
-			if v, ok := t["family"].(*string); ok && v != nil {
-				filterParams["family"] = *v
+			// Only pass family if instance_families_list is not provided (auto-populate from instance type)
+			if _, ok := filterParams["instance_families_list"]; !ok {
+				if v, ok := t["family"].(*string); ok && v != nil {
+					filterParams["family"] = *v
+				}
 			}
 			diskConfigSet, err := cbsService.DescribeDiskConfigQuota(ctx, filterParams)
 			if err != nil {

@@ -1,4 +1,4 @@
-Use this data source to query instances type.
+Use this data source to query CVM instances type.
 
 Example Usage
 
@@ -22,6 +22,22 @@ data "tencentcloud_instance_types" "example" {
     name   = "instance-family"
     values = ["SA2"]
   }
+
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
+}
+```
+
+Query by Instance Families
+
+```hcl
+data "tencentcloud_instance_types" "by_family" {
+  cpu_core_count    = 4
+  memory_size       = 8
+  exclude_sold_out  = true
+  instance_families = ["SA2", "S5"]
 
   filter {
     name   = "zone"
@@ -58,7 +74,7 @@ Query GPU Instances
 ```hcl
 data "tencentcloud_instance_types" "gpu_instances" {
   gpu_core_count = 1
-  
+
   filter {
     name   = "zone"
     values = ["ap-guangzhou-6"]
@@ -83,7 +99,7 @@ data "tencentcloud_instance_types" "local_disk" {
 }
 
 output "local_disk_types" {
-  value = [for instance in data.tencentcloud_instance_types.local_disk.instance_types : 
+  value = [for instance in data.tencentcloud_instance_types.local_disk.instance_types :
     instance.local_disk_type_list if length(instance.local_disk_type_list) > 0
   ]
 }
@@ -103,5 +119,22 @@ output "pricing_info" {
     type  = instance.instance_type
     price = length(instance.price) > 0 ? instance.price[0] : null
   }]
+}
+```
+
+Query with Disk Types Filter
+
+```hcl
+data "tencentcloud_instance_types" "with_disk_types" {
+  cpu_core_count    = 4
+  memory_size       = 8
+  exclude_sold_out  = true
+  instance_families = ["SA2"]
+  disk_types        = ["CLOUD_SSD", "CLOUD_PREMIUM"]
+
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
 }
 ```
