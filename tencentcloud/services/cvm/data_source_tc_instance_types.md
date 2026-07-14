@@ -89,6 +89,84 @@ output "local_disk_types" {
 }
 ```
 
+Query with CBS Filter
+
+```hcl
+data "tencentcloud_instance_types" "with_cbs_filter" {
+  cpu_core_count   = 2
+  memory_size      = 2
+  exclude_sold_out = true
+
+  filter {
+    name   = "instance-family"
+    values = ["S6"]
+  }
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
+
+  cbs_filter {
+    disk_types       = ["CLOUD_SSD"]
+    disk_charge_type = "PREPAID"
+    disk_usage       = "SYSTEM_DISK"
+  }
+}
+```
+
+Query with CBS Filter and InquiryType
+
+```hcl
+data "tencentcloud_instance_types" "cbs_config_only" {
+  cpu_core_count   = 2
+  memory_size      = 2
+  exclude_sold_out = true
+
+  filter {
+    name   = "instance-family"
+    values = ["S6"]
+  }
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
+
+  inquiry_type = "INQUIRY_CBS_CONFIG"
+
+  cbs_filter {
+    disk_types       = ["CLOUD_SSD"]
+    disk_charge_type = "PREPAID"
+    disk_usage       = "SYSTEM_DISK"
+  }
+}
+```
+
+Query with CBS Filter and Top-Level DiskChargeType
+
+```hcl
+data "tencentcloud_instance_types" "postpaid_cbs" {
+  cpu_core_count   = 2
+  memory_size      = 2
+  exclude_sold_out = true
+
+  filter {
+    name   = "instance-family"
+    values = ["S6"]
+  }
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
+
+  disk_charge_type = "POSTPAID_BY_HOUR"
+
+  cbs_filter {
+    disk_types = ["CLOUD_SSD"]
+    disk_usage = "DATA_DISK"
+  }
+}
+```
+
 Query Price Information
 
 ```hcl
