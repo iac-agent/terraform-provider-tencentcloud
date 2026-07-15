@@ -117,6 +117,28 @@ output "pricing_info" {
 }
 ```
 
+### Query with CBS Filter and Instance Families
+
+```hcl
+data "tencentcloud_instance_types" "with_cbs_filter" {
+  cpu_core_count   = 2
+  memory_size      = 2
+  exclude_sold_out = true
+
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
+
+  cbs_filter {
+    disk_types        = ["CLOUD_SSD"]
+    disk_charge_type  = "PREPAID"
+    disk_usage        = "SYSTEM_DISK"
+    instance_families = ["S5", "M5"]
+  }
+}
+```
+
 ## Argument Reference
 
 The following arguments are supported:
@@ -143,6 +165,7 @@ The `cbs_filter` object supports the following:
 * `disk_usage` - (Optional, String) System disk or data disk. Value range:
 	- SYSTEM_DISK: Represents the system disk;
 	- DATA_DISK: Represents the data disk.
+* `instance_families` - (Optional, List) List of instance family names used to filter disk configuration quotas, e.g., ["S5", "M5"]. When specified, it takes priority over the single family derived from instance type results.
 
 The `filter` object supports the following:
 

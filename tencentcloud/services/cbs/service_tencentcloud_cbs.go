@@ -980,7 +980,11 @@ func (me *CbsService) DescribeDiskConfigQuota(ctx context.Context, cvmInfo map[s
 	request.Zones = helper.Strings([]string{cvmInfo["availability_zone"].(string)})
 	request.CPU = helper.Int64Uint64(cvmInfo["cpu_core_count"].(int64))
 	request.Memory = helper.Int64Uint64(cvmInfo["memory_size"].(int64))
-	request.InstanceFamilies = helper.Strings([]string{cvmInfo["family"].(string)})
+	if instanceFamilies, ok := cvmInfo["instance_families"].([]string); ok && len(instanceFamilies) > 0 {
+		request.InstanceFamilies = helper.Strings(instanceFamilies)
+	} else {
+		request.InstanceFamilies = helper.Strings([]string{cvmInfo["family"].(string)})
+	}
 	request.DiskTypes = helper.Strings(cvmInfo["disk_types"].([]string))
 	request.DiskChargeType = helper.String(cvmInfo["disk_charge_type"].(string))
 	request.DiskUsage = helper.String(cvmInfo["disk_usage"].(string))

@@ -105,3 +105,25 @@ output "pricing_info" {
   }]
 }
 ```
+
+Query with CBS Filter and Instance Families
+
+```hcl
+data "tencentcloud_instance_types" "with_cbs_filter" {
+  cpu_core_count   = 2
+  memory_size      = 2
+  exclude_sold_out = true
+
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
+
+  cbs_filter {
+    disk_types        = ["CLOUD_SSD"]
+    disk_charge_type  = "PREPAID"
+    disk_usage        = "SYSTEM_DISK"
+    instance_families = ["S5", "M5"]
+  }
+}
+```
