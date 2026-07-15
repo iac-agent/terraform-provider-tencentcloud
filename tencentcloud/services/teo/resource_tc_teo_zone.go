@@ -3,7 +3,6 @@ package teo
 
 import (
 	"context"
-	"fmt"
 	"log"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
@@ -113,6 +112,20 @@ func ResourceTencentCloudTeoZone() *schema.Resource {
 				},
 			},
 
+			"resource_region": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				Computed:    true,
+				Description: "Resource region for tag operations. Resources that are not region-specific can ignore this parameter. Defaults to the provider configured region.",
+			},
+
+			"service_type": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				Computed:    true,
+				Description: "Service type for tag operations. Defaults to teo.",
+			},
+
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
@@ -207,8 +220,16 @@ func resourceTencentCloudTeoZoneCreate(d *schema.ResourceData, meta interface{})
 
 	if tags := helper.GetTags(d, "tags"); len(tags) > 0 {
 		tagService := svctag.NewTagService(meta.(tccommon.ProviderMeta).GetAPIV3Conn())
-		region := meta.(tccommon.ProviderMeta).GetAPIV3Conn().Region
-		resourceName := fmt.Sprintf("qcs::teo:%s:uin/:zone/%s", region, d.Id())
+		tcClient := meta.(tccommon.ProviderMeta).GetAPIV3Conn()
+		region := tcClient.Region
+		if v, ok := d.GetOk("resource_region"); ok {
+			region = v.(string)
+		}
+		serviceType := "teo"
+		if v, ok := d.GetOk("service_type"); ok {
+			serviceType = v.(string)
+		}
+		resourceName := tccommon.BuildTagResourceName(serviceType, "zone", region, d.Id())
 		if err := tagService.ModifyTags(ctx, resourceName, tags, nil); err != nil {
 			return err
 		}
@@ -314,11 +335,21 @@ func resourceTencentCloudTeoZoneRead(d *schema.ResourceData, meta interface{}) e
 
 	tcClient := meta.(tccommon.ProviderMeta).GetAPIV3Conn()
 	tagService := svctag.NewTagService(tcClient)
-	tags, err := tagService.DescribeResourceTags(ctx, "teo", "zone", tcClient.Region, d.Id())
+	region := tcClient.Region
+	if v, ok := d.GetOk("resource_region"); ok {
+		region = v.(string)
+	}
+	serviceType := "teo"
+	if v, ok := d.GetOk("service_type"); ok {
+		serviceType = v.(string)
+	}
+	tags, err := tagService.DescribeResourceTags(ctx, serviceType, "zone", region, d.Id())
 	if err != nil {
 		return err
 	}
 	_ = d.Set("tags", tags)
+	_ = d.Set("resource_region", region)
+	_ = d.Set("service_type", serviceType)
 
 	return nil
 }
@@ -411,13 +442,21 @@ func resourceTencentCloudTeoZoneUpdate(d *schema.ResourceData, meta interface{})
 		}
 	}
 
-	if d.HasChange("tags") {
+	if d.HasChange("tags") || d.HasChange("resource_region") || d.HasChange("service_type") {
 		ctx := context.WithValue(context.TODO(), tccommon.LogIdKey, logId)
 		tcClient := meta.(tccommon.ProviderMeta).GetAPIV3Conn()
 		tagService := svctag.NewTagService(tcClient)
+		region := tcClient.Region
+		if v, ok := d.GetOk("resource_region"); ok {
+			region = v.(string)
+		}
+		serviceType := "teo"
+		if v, ok := d.GetOk("service_type"); ok {
+			serviceType = v.(string)
+		}
 		oldTags, newTags := d.GetChange("tags")
 		replaceTags, deleteTags := svctag.DiffTags(oldTags.(map[string]interface{}), newTags.(map[string]interface{}))
-		resourceName := tccommon.BuildTagResourceName("teo", "zone", tcClient.Region, d.Id())
+		resourceName := tccommon.BuildTagResourceName(serviceType, "zone", region, d.Id())
 		if err := tagService.ModifyTags(ctx, resourceName, replaceTags, deleteTags); err != nil {
 			return err
 		}
