@@ -285,6 +285,51 @@ func DataSourceTencentCloudInstanceTypes() *schema.Resource {
 										Computed:    true,
 										Description: "The maximum configurable cloud disk size, in GB.",
 									},
+									"charge_unit": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "Post-paid billing unit, e.g., HOUR.",
+									},
+									"discount_price": {
+										Type:        schema.TypeFloat,
+										Computed:    true,
+										Description: "Pre-paid discount price, unit: CNY.",
+									},
+									"discount_price_high": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "High-precision pre-paid discount price, unit: CNY.",
+									},
+									"original_price": {
+										Type:        schema.TypeFloat,
+										Computed:    true,
+										Description: "Pre-paid original price, unit: CNY.",
+									},
+									"original_price_high": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "High-precision pre-paid original price, unit: CNY.",
+									},
+									"unit_price": {
+										Type:        schema.TypeFloat,
+										Computed:    true,
+										Description: "Post-paid unit price, unit: CNY.",
+									},
+									"unit_price_discount": {
+										Type:        schema.TypeFloat,
+										Computed:    true,
+										Description: "Post-paid discount unit price, unit: CNY.",
+									},
+									"unit_price_discount_high": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "High-precision post-paid discount unit price, unit: CNY.",
+									},
+									"unit_price_high": {
+										Type:        schema.TypeString,
+										Computed:    true,
+										Description: "High-precision post-paid unit price, unit: CNY.",
+									},
 								},
 							},
 						},
@@ -619,7 +664,7 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 			}
 			cbsConfigList := make([]interface{}, 0)
 			for _, diskConfig := range diskConfigSet {
-				cbsConfigList = append(cbsConfigList, map[string]interface{}{
+				cbsConfigMap := map[string]interface{}{
 					"available":               diskConfig.Available,
 					"disk_charge_type":        diskConfig.DiskChargeType,
 					"zone":                    diskConfig.Zone,
@@ -631,7 +676,19 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 					"disk_usage":              diskConfig.DiskUsage,
 					"min_disk_size":           diskConfig.MinDiskSize,
 					"max_disk_size":           diskConfig.MaxDiskSize,
-				})
+				}
+				if diskConfig.Price != nil {
+					cbsConfigMap["charge_unit"] = diskConfig.Price.ChargeUnit
+					cbsConfigMap["discount_price"] = diskConfig.Price.DiscountPrice
+					cbsConfigMap["discount_price_high"] = diskConfig.Price.DiscountPriceHigh
+					cbsConfigMap["original_price"] = diskConfig.Price.OriginalPrice
+					cbsConfigMap["original_price_high"] = diskConfig.Price.OriginalPriceHigh
+					cbsConfigMap["unit_price"] = diskConfig.Price.UnitPrice
+					cbsConfigMap["unit_price_discount"] = diskConfig.Price.UnitPriceDiscount
+					cbsConfigMap["unit_price_discount_high"] = diskConfig.Price.UnitPriceDiscountHigh
+					cbsConfigMap["unit_price_high"] = diskConfig.Price.UnitPriceHigh
+				}
+				cbsConfigList = append(cbsConfigList, cbsConfigMap)
 			}
 			typeList[idx]["cbs_configs"] = cbsConfigList
 		}
