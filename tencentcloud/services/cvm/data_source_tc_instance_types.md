@@ -105,3 +105,47 @@ output "pricing_info" {
   }]
 }
 ```
+
+Query with CBS Filter and Disk Pricing
+
+```hcl
+data "tencentcloud_instance_types" "with_cbs_pricing" {
+  cpu_core_count   = 2
+  memory_size      = 4
+  exclude_sold_out = true
+
+  filter {
+    name   = "instance-family"
+    values = ["S6"]
+  }
+
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
+
+  cbs_filter {
+    disk_types       = ["CLOUD_SSD"]
+    disk_charge_type = "POSTPAID_BY_HOUR"
+    disk_usage       = "DATA_DISK"
+  }
+}
+
+output "cbs_pricing_info" {
+  value = [for instance in data.tencentcloud_instance_types.with_cbs_pricing.instance_types : {
+    type        = instance.instance_type
+    cbs_configs = [for c in instance.cbs_configs : {
+      disk_type              = c.disk_type
+      charge_unit            = c.charge_unit
+      unit_price             = c.unit_price
+      unit_price_discount    = c.unit_price_discount
+      unit_price_high        = c.unit_price_high
+      unit_price_discount_high = c.unit_price_discount_high
+      original_price         = c.original_price
+      original_price_high    = c.original_price_high
+      discount_price         = c.discount_price
+      discount_price_high    = c.discount_price_high
+    }]
+  }]
+}
+```

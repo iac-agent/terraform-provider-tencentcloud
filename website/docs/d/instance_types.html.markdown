@@ -117,6 +117,50 @@ output "pricing_info" {
 }
 ```
 
+### Query with CBS Filter and Disk Pricing
+
+```hcl
+data "tencentcloud_instance_types" "with_cbs_pricing" {
+  cpu_core_count   = 2
+  memory_size      = 4
+  exclude_sold_out = true
+
+  filter {
+    name   = "instance-family"
+    values = ["S6"]
+  }
+
+  filter {
+    name   = "zone"
+    values = ["ap-guangzhou-6"]
+  }
+
+  cbs_filter {
+    disk_types       = ["CLOUD_SSD"]
+    disk_charge_type = "POSTPAID_BY_HOUR"
+    disk_usage       = "DATA_DISK"
+  }
+}
+
+output "cbs_pricing_info" {
+  value = [for instance in data.tencentcloud_instance_types.with_cbs_pricing.instance_types : {
+    type = instance.instance_type
+    cbs_configs = [for c in instance.cbs_configs : {
+      disk_type                = c.disk_type
+      charge_unit              = c.charge_unit
+      unit_price               = c.unit_price
+      unit_price_discount      = c.unit_price_discount
+      unit_price_high          = c.unit_price_high
+      unit_price_discount_high = c.unit_price_discount_high
+      original_price           = c.original_price
+      original_price_high      = c.original_price_high
+      discount_price           = c.discount_price
+      discount_price_high      = c.discount_price_high
+    }]
+  }]
+}
+```
+
 ## Argument Reference
 
 The following arguments are supported:
@@ -157,7 +201,10 @@ In addition to all arguments above, the following attributes are exported:
   * `availability_zone` - The available zone that the CVM instance locates at.
   * `cbs_configs` - CBS config. The cbs_configs is populated when the cbs_filter is added.
     * `available` - Whether the configuration is available.
+    * `charge_unit` - Billing unit for postpaid cloud disks, e.g. HOUR.
     * `device_class` - Device class.
+    * `discount_price_high` - High-precision discount price for prepaid cloud disks, unit: CNY.
+    * `discount_price` - Discount price for prepaid cloud disks, unit: CNY.
     * `disk_charge_type` - Payment model. Value range:
 	- PREPAID: Prepaid;
 	- POSTPAID_BY_HOUR: Post-payment.
@@ -173,7 +220,13 @@ In addition to all arguments above, the following attributes are exported:
     * `instance_family` - Instance family.
     * `max_disk_size` - The maximum configurable cloud disk size, in GB.
     * `min_disk_size` - The minimum configurable cloud disk size, in GB.
+    * `original_price_high` - High-precision original price for prepaid cloud disks, unit: CNY.
+    * `original_price` - Original price for prepaid cloud disks, unit: CNY.
     * `step_size` - Minimum step size change in cloud disk size, in GB.
+    * `unit_price_discount_high` - High-precision discounted unit price for postpaid cloud disks, unit: CNY.
+    * `unit_price_discount` - Discounted unit price for postpaid cloud disks, unit: CNY.
+    * `unit_price_high` - High-precision original unit price for postpaid cloud disks, unit: CNY.
+    * `unit_price` - Original unit price for postpaid cloud disks, unit: CNY.
     * `zone` - The availability zone to which the Cloud Block Storage belongs.
   * `cpu_core_count` - The number of CPU cores of the instance.
   * `cpu_type` - Processor model.
