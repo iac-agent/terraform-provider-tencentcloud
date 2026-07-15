@@ -19,6 +19,7 @@ resource "tencentcloud_cvm_launch_template" "example" {
   launch_template_version_description = "CentOS 8.2"
   instance_type                       = "S5.SMALL1"
   instance_charge_type                = "POSTPAID_BY_HOUR"
+  enable_jumbo_frame                  = true
   system_disk {
     disk_size = 50
     disk_type = "CLOUD_PREMIUM"
