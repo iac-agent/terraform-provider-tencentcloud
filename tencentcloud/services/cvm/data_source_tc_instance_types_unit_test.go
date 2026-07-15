@@ -6,8 +6,8 @@ import (
 	"github.com/agiledragon/gomonkey/v2"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/stretchr/testify/assert"
-	cvmSDK "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
 	cbsSDK "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cbs/v20170312"
+	cvmSDK "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
 
 	tccommon "github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/common"
 	"github.com/tencentcloudstack/terraform-provider-tencentcloud/tencentcloud/connectivity"
@@ -45,12 +45,12 @@ func TestInstanceTypesCbsPricing_Read_WithPriceFields(t *testing.T) {
 		resp.Response = &cvmSDK.DescribeZoneInstanceConfigInfosResponseParams{
 			InstanceTypeQuotaSet: []*cvmSDK.InstanceTypeQuotaItem{
 				{
-					Zone:            helper.String("ap-guangzhou-6"),
-					InstanceFamily:  helper.String("S6"),
-					InstanceType:    helper.String("S6.MEDIUM4"),
-					Cpu:             helper.Int64(2),
-					Memory:          helper.Int64(4),
-					Status:          helper.String("Sell"),
+					Zone:               helper.String("ap-guangzhou-6"),
+					InstanceFamily:     helper.String("S6"),
+					InstanceType:       helper.String("S6.MEDIUM4"),
+					Cpu:                helper.Int64(2),
+					Memory:             helper.Int64(4),
+					Status:             helper.String("Sell"),
 					InstanceChargeType: helper.String("POSTPAID_BY_HOUR"),
 				},
 			},
@@ -67,25 +67,25 @@ func TestInstanceTypesCbsPricing_Read_WithPriceFields(t *testing.T) {
 		resp.Response = &cbsSDK.DescribeDiskConfigQuotaResponseParams{
 			DiskConfigSet: []*cbsSDK.DiskConfig{
 				{
-					Available:       helper.Bool(true),
-					DiskChargeType:  helper.String("POSTPAID_BY_HOUR"),
-					Zone:            helper.String("ap-guangzhou-6"),
-					InstanceFamily:  helper.String("S6"),
-					DiskType:        helper.String("CLOUD_SSD"),
-					StepSize:        helper.Uint64(10),
-					DiskUsage:       helper.String("DATA_DISK"),
-					MinDiskSize:     helper.Uint64(20),
-					MaxDiskSize:     helper.Uint64(500),
+					Available:      helper.Bool(true),
+					DiskChargeType: helper.String("POSTPAID_BY_HOUR"),
+					Zone:           helper.String("ap-guangzhou-6"),
+					InstanceFamily: helper.String("S6"),
+					DiskType:       helper.String("CLOUD_SSD"),
+					StepSize:       helper.Uint64(10),
+					DiskUsage:      helper.String("DATA_DISK"),
+					MinDiskSize:    helper.Uint64(20),
+					MaxDiskSize:    helper.Uint64(500),
 					Price: &cbsSDK.Price{
 						ChargeUnit:            helper.String("HOUR"),
-						UnitPrice:            helper.Float64(0.5),
-						UnitPriceDiscount:    helper.Float64(0.3),
-						UnitPriceHigh:        helper.String("0.5000"),
+						UnitPrice:             helper.Float64(0.5),
+						UnitPriceDiscount:     helper.Float64(0.3),
+						UnitPriceHigh:         helper.String("0.5000"),
 						UnitPriceDiscountHigh: helper.String("0.3000"),
-						OriginalPrice:        helper.Float64(100.0),
-						OriginalPriceHigh:    helper.String("100.0000"),
-						DiscountPrice:        helper.Float64(80.0),
-						DiscountPriceHigh:    helper.String("80.0000"),
+						OriginalPrice:         helper.Float64(100.0),
+						OriginalPriceHigh:     helper.String("100.0000"),
+						DiscountPrice:         helper.Float64(80.0),
+						DiscountPriceHigh:     helper.String("80.0000"),
 					},
 				},
 			},
@@ -154,12 +154,12 @@ func TestInstanceTypesCbsPricing_Read_NilPrice(t *testing.T) {
 		resp.Response = &cvmSDK.DescribeZoneInstanceConfigInfosResponseParams{
 			InstanceTypeQuotaSet: []*cvmSDK.InstanceTypeQuotaItem{
 				{
-					Zone:            helper.String("ap-guangzhou-6"),
-					InstanceFamily:  helper.String("S6"),
-					InstanceType:    helper.String("S6.MEDIUM4"),
-					Cpu:             helper.Int64(2),
-					Memory:          helper.Int64(4),
-					Status:          helper.String("Sell"),
+					Zone:               helper.String("ap-guangzhou-6"),
+					InstanceFamily:     helper.String("S6"),
+					InstanceType:       helper.String("S6.MEDIUM4"),
+					Cpu:                helper.Int64(2),
+					Memory:             helper.Int64(4),
+					Status:             helper.String("Sell"),
 					InstanceChargeType: helper.String("POSTPAID_BY_HOUR"),
 				},
 			},
@@ -176,16 +176,16 @@ func TestInstanceTypesCbsPricing_Read_NilPrice(t *testing.T) {
 		resp.Response = &cbsSDK.DescribeDiskConfigQuotaResponseParams{
 			DiskConfigSet: []*cbsSDK.DiskConfig{
 				{
-					Available:       helper.Bool(true),
-					DiskChargeType:  helper.String("POSTPAID_BY_HOUR"),
-					Zone:            helper.String("ap-guangzhou-6"),
-					InstanceFamily:  helper.String("S6"),
-					DiskType:        helper.String("CLOUD_SSD"),
-					StepSize:        helper.Uint64(10),
-					DiskUsage:       helper.String("DATA_DISK"),
-					MinDiskSize:     helper.Uint64(20),
-					MaxDiskSize:     helper.Uint64(500),
-					Price:           nil,
+					Available:      helper.Bool(true),
+					DiskChargeType: helper.String("POSTPAID_BY_HOUR"),
+					Zone:           helper.String("ap-guangzhou-6"),
+					InstanceFamily: helper.String("S6"),
+					DiskType:       helper.String("CLOUD_SSD"),
+					StepSize:       helper.Uint64(10),
+					DiskUsage:      helper.String("DATA_DISK"),
+					MinDiskSize:    helper.Uint64(20),
+					MaxDiskSize:    helper.Uint64(500),
+					Price:          nil,
 				},
 			},
 			RequestId: helper.String("fake-request-id"),

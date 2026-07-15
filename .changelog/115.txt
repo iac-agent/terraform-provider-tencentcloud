@@ -1,0 +1,3 @@
+```release-note:enhancement
+data-source/tencentcloud_instance_types: add CBS pricing fields (charge_unit, unit_price, unit_price_discount, unit_price_high, unit_price_discount_high, original_price, original_price_high, discount_price, discount_price_high) to cbs_configs block
+```
