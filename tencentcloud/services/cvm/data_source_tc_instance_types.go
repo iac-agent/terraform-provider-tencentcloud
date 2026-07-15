@@ -93,6 +93,12 @@ func DataSourceTencentCloudInstanceTypes() *schema.Resource {
 								"	- SYSTEM_DISK: Represents the system disk;\n" +
 								"	- DATA_DISK: Represents the data disk.",
 						},
+						"instance_families": {
+							Type:        schema.TypeList,
+							Optional:    true,
+							Elem:        &schema.Schema{Type: schema.TypeString},
+							Description: "List of instance family names used to filter disk configuration quotas, e.g., [\"S5\", \"M5\"]. When specified, it takes priority over the single family derived from instance type results.",
+						},
 					},
 				},
 			},
@@ -591,6 +597,9 @@ func dataSourceTencentCloudInstanceTypesRead(d *schema.ResourceData, meta interf
 		}
 		if v, ok := dMap["disk_usage"].(string); ok && v != "" {
 			cbsFilterParams["disk_usage"] = v
+		}
+		if v, ok := dMap["instance_families"].([]interface{}); ok && len(v) > 0 {
+			cbsFilterParams["instance_families"] = helper.InterfacesStrings(v)
 		}
 		hasCbsFilter = true
 	}
