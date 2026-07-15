@@ -30,6 +30,7 @@ resource "tencentcloud_cvm_launch_template" "example" {
   launch_template_version_description = "CentOS 8.2"
   instance_type                       = "S5.SMALL1"
   instance_charge_type                = "POSTPAID_BY_HOUR"
+  enable_jumbo_frame                  = true
   system_disk {
     disk_size = 50
     disk_type = "CLOUD_PREMIUM"
@@ -87,6 +88,7 @@ The following arguments are supported:
 * `disable_api_termination` - (Optional, Bool, ForceNew) Instance destruction protection flag.
 * `disaster_recover_group_ids` - (Optional, Set: [`String`], ForceNew) The ID of disaster recover group.
 * `dry_run` - (Optional, Bool, ForceNew) Whether to preflight only this request, true or false.
+* `enable_jumbo_frame` - (Optional, Bool, ForceNew) Whether to enable jumbo frame for the instance. Only instance types that support jumbo frame can set this field.
 * `enhanced_service` - (Optional, List, ForceNew) Enhanced service. If this parameter is not specified, cloud monitoring and cloud security services will be enabled by default in public images.
 * `host_name` - (Optional, String, ForceNew) The host name of CVM.
 * `hpc_cluster_id` - (Optional, String, ForceNew) The ID of HPC cluster.

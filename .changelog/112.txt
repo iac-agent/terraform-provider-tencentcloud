@@ -1,0 +1,3 @@
+```release-note:enhancement
+resource/tencentcloud_cvm_launch_template: add enable_jumbo_frame parameter to support jumbo frame for CVM instances
+```

@@ -594,6 +594,13 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 				Description: "Instance destruction protection flag.",
 			},
 
+			"enable_jumbo_frame": {
+				Optional:    true,
+				ForceNew:    true,
+				Type:        schema.TypeBool,
+				Description: "Whether to enable jumbo frame for the instance. Only instance types that support jumbo frame can set this field.",
+			},
+
 			"tags": {
 				Type:        schema.TypeMap,
 				ForceNew:    true,
@@ -936,6 +943,10 @@ func resourceTencentCloudCvmLaunchTemplateCreate(d *schema.ResourceData, meta in
 
 	if v, _ := d.GetOk("disable_api_termination"); v != nil {
 		request.DisableApiTermination = helper.Bool(v.(bool))
+	}
+
+	if v, _ := d.GetOk("enable_jumbo_frame"); v != nil {
+		request.EnableJumboFrame = helper.Bool(v.(bool))
 	}
 
 	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
