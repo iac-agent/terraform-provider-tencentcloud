@@ -4,12 +4,12 @@ layout: "tencentcloud"
 page_title: "TencentCloud: tencentcloud_waf_saas_instance"
 sidebar_current: "docs-tencentcloud-resource-waf_saas_instance"
 description: |-
-  Provides a resource to create a waf saas instance
+  Provides a resource to create a WAF SaaS instance
 ---
 
 # tencentcloud_waf_saas_instance
 
-Provides a resource to create a waf saas instance
+Provides a resource to create a WAF SaaS instance
 
 ~> **NOTE:** Region only supports `ap-guangzhou` and `ap-seoul`.
 
@@ -57,6 +57,25 @@ resource "tencentcloud_waf_saas_instance" "example" {
 }
 ```
 
+### Create waf saas instance with custom goods_num, pid and region_id
+
+```hcl
+resource "tencentcloud_waf_saas_instance" "example" {
+  goods_category  = "premium_saas"
+  instance_name   = "tf-example-saas-waf"
+  goods_num       = 2
+  pid             = 1000827
+  region_id       = 1
+  time_span       = 1
+  time_unit       = "m"
+  auto_renew_flag = 1
+  elastic_mode    = 1
+  real_region     = "gz"
+  bot_management  = 1
+  api_security    = 1
+}
+```
+
 ## Argument Reference
 
 The following arguments are supported:
@@ -66,9 +85,12 @@ The following arguments are supported:
 * `auto_renew_flag` - (Optional, Int) Auto renew flag, 1: enable, 0: disable.
 * `bot_management` - (Optional, Int) Whether to purchase Bot management, 1: yes, 0: no. Default is 0.
 * `elastic_mode` - (Optional, Int) Is elastic billing enabled, 1: enable, 0: disable.
+* `goods_num` - (Optional, Int) Goods number. Default is 1.
 * `instance_name` - (Optional, String) Waf instance name.
+* `pid` - (Optional, Int) Product ID. When set, it overrides the Pid value derived from goods_category.
 * `qps_limit` - (Optional, Int) QPS Limit, Minimum setting 10000. Only `elastic_mode` is 1, can be set.
 * `real_region` - (Optional, String) region. If Region is `ap-guangzhou`, support: gz, sh, bj, cd (Means: GuangZhou, ShangHai, BeiJing, ChengDu); If Region is `ap-seoul`, support: hk, sg, th, kr, in, de, ca, use, sao, usw, jkt (Means: HongKong, Singapore, Bandkok, Seoul, Mumbai, Frankfurt, Toronto, Virginia, SaoPaulo, SiliconValley, Jakarta).
+* `region_id` - (Optional, Int) Region ID. When set, it overrides the RegionId value derived from the provider region.
 * `time_span` - (Optional, Int) Time interval.
 * `time_unit` - (Optional, String) Time unit, support d, m, y. d: day, m: month, y: year.
 
@@ -78,9 +100,18 @@ In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
 * `begin_time` - waf instance start time.
+* `deal_names` - Order numbers from the creation response.
 * `edition` - waf instance edition, clb or saas.
 * `instance_id` - waf instance id.
 * `status` - waf instance status.
 * `valid_time` - waf instance valid time.
 
+
+## Import
+
+WAF SaaS instance can be imported using the id, e.g.
+
+```
+terraform import tencentcloud_waf_saas_instance.example waf-instance-id
+```
 

@@ -46,7 +46,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/clb v1.3.52
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudaudit v1.0.1033
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cls v1.3.58
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.108
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.133
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v1.3.80
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm v1.3.69
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cwp v1.3.30
@@ -100,7 +100,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tsf v1.0.674
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vod v1.3.40
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vpc v1.3.62
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/waf v1.3.36
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/waf v1.3.133
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wedata v1.3.30
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wss v1.0.199
 	github.com/tencentyun/cos-go-sdk-v5 v0.7.72

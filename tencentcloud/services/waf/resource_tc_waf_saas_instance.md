@@ -1,4 +1,4 @@
-Provides a resource to create a waf saas instance
+Provides a resource to create a WAF SaaS instance
 
 ~> **NOTE:** Region only supports `ap-guangzhou` and `ap-seoul`.
 
@@ -44,4 +44,31 @@ resource "tencentcloud_waf_saas_instance" "example" {
   bot_management  = 1
   api_security    = 1
 }
+```
+
+Create waf saas instance with custom goods_num, pid and region_id
+
+```hcl
+resource "tencentcloud_waf_saas_instance" "example" {
+  goods_category  = "premium_saas"
+  instance_name   = "tf-example-saas-waf"
+  goods_num       = 2
+  pid             = 1000827
+  region_id       = 1
+  time_span       = 1
+  time_unit       = "m"
+  auto_renew_flag = 1
+  elastic_mode    = 1
+  real_region     = "gz"
+  bot_management  = 1
+  api_security    = 1
+}
+```
+
+Import
+
+WAF SaaS instance can be imported using the id, e.g.
+
+```
+terraform import tencentcloud_waf_saas_instance.example waf-instance-id
 ```
