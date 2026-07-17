@@ -110,6 +110,29 @@ resource "tencentcloud_waf_cc" "example" {
 }
 ```
 
+### If advance is 0 with timed job
+
+```hcl
+resource "tencentcloud_waf_cc" "example" {
+  domain          = "www.demo.com"
+  name            = "tf-example"
+  status          = 1
+  advance         = "0"
+  limit           = "60"
+  interval        = "60"
+  url             = "/cc_demo"
+  match_func      = 0
+  action_type     = "22"
+  priority        = 50
+  valid_time      = 600
+  edition         = "sparta-waf"
+  type            = 1
+  job_type        = "TimedJob"
+  start_date_time = 1700000000
+  time_t_zone     = "UTC+8"
+}
+```
+
 ## Argument Reference
 
 The following arguments are supported:
@@ -128,6 +151,7 @@ The following arguments are supported:
 * `valid_time` - (Required, Int) Action ValidTime, minute unit. Min: 60, Max: 604800.
 * `cel_rule` - (Optional, String) Cel expression.
 * `event_id` - (Optional, String) Event ID.
+* `job_type` - (Optional, String) Rule execution method. TimedJob means timed execution, CronJob means periodic execution.
 * `limit_method` - (Optional, String) Frequency limiting method.
 * `logical_op` - (Optional, String) Logical operator of configuration mode, and/or.
 * `options_arr` - (Optional, String) CC matching conditions JSON serialized string. Example: [{"key":"Method","args":["=R0VU"],"match":"0","encodeflag":true}]. 
@@ -149,6 +173,8 @@ Match operators by key type:
 
 Encoding rules: The args parameter requires encodeflag to be set to true. For Post, Cookie, or CustomHeader keys, Base64 encode both parameter name and value (remove trailing =), then concatenate with = sign (e.g., Base64(name)=Base64(value)). For Referer or User-Agent keys, Base64 encode the value (remove trailing =) and prefix with = sign (e.g., =Base64(value)).
 * `session_applied` - (Optional, Set: [`Int`]) Session ID that needs to be enabled for the rule.
+* `start_date_time` - (Optional, Int) Start timestamp of timed execution in seconds.
+* `time_t_zone` - (Optional, String) Time zone.
 * `type` - (Optional, Int) Operate Type.
 
 ## Attributes Reference
@@ -156,6 +182,7 @@ Encoding rules: The args parameter requires encodeflag to be set to true. For Po
 In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the resource.
+* `data` - DeleteCCRule response data.
 * `rule_id` - Rule ID.
 
 

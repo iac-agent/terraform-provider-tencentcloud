@@ -49,6 +49,39 @@ func TestAccTencentCloudWafCcResource_basic(t *testing.T) {
 	})
 }
 
+// go test -i; go test -test.run TestAccTencentCloudWafCcResource_withJobParams -v
+func TestAccTencentCloudWafCcResource_withJobParams(t *testing.T) {
+	t.Parallel()
+	resource.Test(t, resource.TestCase{
+		PreCheck: func() {
+			tcacctest.AccPreCheck(t)
+		},
+		Providers: tcacctest.AccProviders,
+		Steps: []resource.TestStep{
+			{
+				Config: testAccWafCcWithJobParams,
+				Check: resource.ComposeTestCheckFunc(
+					resource.TestCheckResourceAttrSet("tencentcloud_waf_cc.example", "id"),
+					resource.TestCheckResourceAttr("tencentcloud_waf_cc.example", "domain", "keep.qcloudwaf.com"),
+					resource.TestCheckResourceAttr("tencentcloud_waf_cc.example", "name", "terraform"),
+					resource.TestCheckResourceAttr("tencentcloud_waf_cc.example", "job_type", "TimedJob"),
+					resource.TestCheckResourceAttr("tencentcloud_waf_cc.example", "start_date_time", "1700000000"),
+					resource.TestCheckResourceAttr("tencentcloud_waf_cc.example", "time_t_zone", "UTC+8"),
+				),
+			},
+			{
+				Config: testAccWafCcWithJobParamsUpdate,
+				Check: resource.ComposeTestCheckFunc(
+					resource.TestCheckResourceAttrSet("tencentcloud_waf_cc.example", "id"),
+					resource.TestCheckResourceAttr("tencentcloud_waf_cc.example", "domain", "keep.qcloudwaf.com"),
+					resource.TestCheckResourceAttr("tencentcloud_waf_cc.example", "name", "terraform"),
+					resource.TestCheckResourceAttr("tencentcloud_waf_cc.example", "job_type", "CronJob"),
+				),
+			},
+		},
+	})
+}
+
 const testAccWafCc = `
 resource "tencentcloud_waf_cc" "example" {
   domain      = "keep.qcloudwaf.com"
@@ -82,5 +115,45 @@ resource "tencentcloud_waf_cc" "example" {
   valid_time  = 600
   edition     = "sparta-waf"
   type        = 1
+}
+`
+
+const testAccWafCcWithJobParams = `
+resource "tencentcloud_waf_cc" "example" {
+  domain          = "keep.qcloudwaf.com"
+  name            = "terraform"
+  status          = 1
+  advance         = "0"
+  limit           = "60"
+  interval        = "60"
+  url             = "/cc_demo"
+  match_func      = 0
+  action_type     = "22"
+  priority        = 50
+  valid_time      = 600
+  edition         = "sparta-waf"
+  type            = 1
+  job_type        = "TimedJob"
+  start_date_time = 1700000000
+  time_t_zone     = "UTC+8"
+}
+`
+
+const testAccWafCcWithJobParamsUpdate = `
+resource "tencentcloud_waf_cc" "example" {
+  domain      = "keep.qcloudwaf.com"
+  name        = "terraform"
+  status      = 1
+  advance     = "0"
+  limit       = "60"
+  interval    = "60"
+  url         = "/cc_demo"
+  match_func  = 0
+  action_type = "22"
+  priority    = 50
+  valid_time  = 600
+  edition     = "sparta-waf"
+  type        = 1
+  job_type    = "CronJob"
 }
 `

@@ -146,6 +146,26 @@ func ResourceTencentCloudWafCc() *schema.Resource {
 				Type:        schema.TypeString,
 				Description: "Rule ID.",
 			},
+			"job_type": {
+				Optional:    true,
+				Type:        schema.TypeString,
+				Description: "Rule execution method. TimedJob means timed execution, CronJob means periodic execution.",
+			},
+			"start_date_time": {
+				Optional:    true,
+				Type:        schema.TypeInt,
+				Description: "Start timestamp of timed execution in seconds.",
+			},
+			"time_t_zone": {
+				Optional:    true,
+				Type:        schema.TypeString,
+				Description: "Time zone.",
+			},
+			"data": {
+				Computed:    true,
+				Type:        schema.TypeString,
+				Description: "DeleteCCRule response data.",
+			},
 		},
 	}
 }
@@ -245,6 +265,26 @@ func resourceTencentCloudWafCcCreate(d *schema.ResourceData, meta interface{}) e
 
 	if v, ok := d.GetOk("logical_op"); ok {
 		request.LogicalOp = helper.String(v.(string))
+	}
+
+	if v, ok := d.GetOk("job_type"); ok {
+		request.JobType = helper.String(v.(string))
+	}
+
+	if v, ok := d.GetOkExists("start_date_time"); ok {
+		if request.JobDateTime == nil {
+			request.JobDateTime = &waf.JobDateTime{}
+		}
+		timedJob := &waf.TimedJob{}
+		timedJob.StartDateTime = helper.IntUint64(v.(int))
+		request.JobDateTime.Timed = append(request.JobDateTime.Timed, timedJob)
+	}
+
+	if v, ok := d.GetOk("time_t_zone"); ok {
+		if request.JobDateTime == nil {
+			request.JobDateTime = &waf.JobDateTime{}
+		}
+		request.JobDateTime.TimeTZone = helper.String(v.(string))
 	}
 
 	request.RuleId = helper.IntInt64(0)
@@ -379,6 +419,19 @@ func resourceTencentCloudWafCcRead(d *schema.ResourceData, meta interface{}) err
 		_ = d.Set("rule_id", ruleIdStr)
 	}
 
+	if cc.JobType != nil {
+		_ = d.Set("job_type", cc.JobType)
+	}
+
+	if cc.JobDateTime != nil {
+		if cc.JobDateTime.TimeTZone != nil {
+			_ = d.Set("time_t_zone", cc.JobDateTime.TimeTZone)
+		}
+		if cc.JobDateTime.Timed != nil && len(cc.JobDateTime.Timed) > 0 && cc.JobDateTime.Timed[0].StartDateTime != nil {
+			_ = d.Set("start_date_time", cc.JobDateTime.Timed[0].StartDateTime)
+		}
+	}
+
 	return nil
 }
 
@@ -483,6 +536,26 @@ func resourceTencentCloudWafCcUpdate(d *schema.ResourceData, meta interface{}) e
 		request.LogicalOp = helper.String(v.(string))
 	}
 
+	if v, ok := d.GetOk("job_type"); ok {
+		request.JobType = helper.String(v.(string))
+	}
+
+	if v, ok := d.GetOkExists("start_date_time"); ok {
+		if request.JobDateTime == nil {
+			request.JobDateTime = &waf.JobDateTime{}
+		}
+		timedJob := &waf.TimedJob{}
+		timedJob.StartDateTime = helper.IntUint64(v.(int))
+		request.JobDateTime.Timed = append(request.JobDateTime.Timed, timedJob)
+	}
+
+	if v, ok := d.GetOk("time_t_zone"); ok {
+		if request.JobDateTime == nil {
+			request.JobDateTime = &waf.JobDateTime{}
+		}
+		request.JobDateTime.TimeTZone = helper.String(v.(string))
+	}
+
 	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
 		result, e := meta.(tccommon.ProviderMeta).GetAPIV3Conn().UseWafClient().UpsertCCRule(request)
 		if e != nil {
@@ -520,8 +593,13 @@ func resourceTencentCloudWafCcDelete(d *schema.ResourceData, meta interface{}) e
 	ruleId := idSplit[1]
 	name := idSplit[2]
 
-	if err := service.DeleteWafCcById(ctx, domain, ruleId, name); err != nil {
+	data, err := service.DeleteWafCcById(ctx, domain, ruleId, name)
+	if err != nil {
 		return err
+	}
+
+	if data != "" {
+		_ = d.Set("data", data)
 	}
 
 	return nil

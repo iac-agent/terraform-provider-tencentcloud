@@ -1333,7 +1333,7 @@ func (me *WafService) DescribeWafCcById(ctx context.Context, domain, ruleId stri
 	return
 }
 
-func (me *WafService) DeleteWafCcById(ctx context.Context, domain, ruleId, name string) (errRet error) {
+func (me *WafService) DeleteWafCcById(ctx context.Context, domain, ruleId, name string) (data string, errRet error) {
 	logId := tccommon.GetLogId(ctx)
 
 	request := waf.NewDeleteCCRuleRequest()
@@ -1348,6 +1348,7 @@ func (me *WafService) DeleteWafCcById(ctx context.Context, domain, ruleId, name 
 		}
 	}()
 
+	var response *waf.DeleteCCRuleResponse
 	err := resource.Retry(tccommon.WriteRetryTimeout, func() *resource.RetryError {
 		ratelimit.Check(request.GetAction())
 		result, e := me.client.UseWafClient().DeleteCCRule(request)
@@ -1357,12 +1358,17 @@ func (me *WafService) DeleteWafCcById(ctx context.Context, domain, ruleId, name 
 			log.Printf("[DEBUG]%s api[%s] success, request body [%s], response body [%s]\n", logId, request.GetAction(), request.ToJsonString(), result.ToJsonString())
 		}
 
+		response = result
 		return nil
 	})
 
 	if err != nil {
 		errRet = err
 		return
+	}
+
+	if response != nil && response.Response != nil && response.Response.Data != nil {
+		data = *response.Response.Data
 	}
 
 	return
