@@ -77,6 +77,21 @@ func ResourceTencentCloudWafSaasInstance() *schema.Resource {
 				ValidateFunc: tccommon.ValidateAllowedStringValue(SAAS_REAL_REGIONS),
 				Description:  "region. If Region is `ap-guangzhou`, support: gz, sh, bj, cd (Means: GuangZhou, ShangHai, BeiJing, ChengDu); If Region is `ap-seoul`, support: hk, sg, th, kr, in, de, ca, use, sao, usw, jkt (Means: HongKong, Singapore, Bandkok, Seoul, Mumbai, Frankfurt, Toronto, Virginia, SaoPaulo, SiliconValley, Jakarta).",
 			},
+			"goods_num": {
+				Optional:    true,
+				Type:        schema.TypeInt,
+				Description: "Goods number. Default is 1.",
+			},
+			"pid": {
+				Optional:    true,
+				Type:        schema.TypeInt,
+				Description: "Product ID. When set, it overrides the Pid value derived from goods_category.",
+			},
+			"region_id": {
+				Optional:    true,
+				Type:        schema.TypeInt,
+				Description: "Region ID. When set, it overrides the RegionId value derived from the provider region.",
+			},
 			"bot_management": {
 				Optional:     true,
 				Type:         schema.TypeInt,
@@ -103,6 +118,12 @@ func ResourceTencentCloudWafSaasInstance() *schema.Resource {
 			//	ValidateFunc: tccommon.ValidateIntegerMin(1),
 			//	Description:  "QPS extension package count.",
 			//},
+			"deal_names": {
+				Computed:    true,
+				Type:        schema.TypeList,
+				Elem:        &schema.Schema{Type: schema.TypeString},
+				Description: "Order numbers from the creation response.",
+			},
 			// computed
 			"instance_id": {
 				Computed:    true,
@@ -165,13 +186,20 @@ func resourceTencentCloudWafSaasInstanceCreate(d *schema.ResourceData, meta inte
 	// make main instance
 	instanceGood := waf.GoodNews{}
 	instanceGoodDetail := new(waf.GoodsDetailNew)
-	instanceGood.GoodsNum = helper.IntInt64(1)
+	if v, ok := d.GetOkExists("goods_num"); ok {
+		instanceGood.GoodsNum = helper.IntInt64(v.(int))
+	} else {
+		instanceGood.GoodsNum = helper.IntInt64(1)
+	}
 	if v, ok := d.GetOk("goods_category"); ok {
 		goodsCategory = v.(string)
 		goodsCategoryId := int64(WAF_CATEGORY_ID_SAAS[goodsCategory])
 		subProductCode := SUB_PRODUCT_CODE_SAAS[goodsCategory]
 		labelTypes := LABEL_TYPES_SAAS[goodsCategory]
 		pid := int64(PID_SAAS[goodsCategory])
+		if customPid, ok := d.GetOkExists("pid"); ok {
+			pid = int64(customPid.(int))
+		}
 		labelCounts := int64(1)
 
 		instanceGood.GoodsCategoryId = &goodsCategoryId
@@ -221,6 +249,12 @@ func resourceTencentCloudWafSaasInstanceCreate(d *schema.ResourceData, meta inte
 	}
 
 	instanceGood.GoodsDetail = instanceGoodDetail
+
+	// override RegionId if region_id is explicitly set
+	if v, ok := d.GetOkExists("region_id"); ok {
+		instanceGood.RegionId = helper.IntInt64(v.(int))
+	}
+
 	goods = append(goods, &instanceGood)
 
 	// bot management
@@ -365,6 +399,17 @@ func resourceTencentCloudWafSaasInstanceCreate(d *schema.ResourceData, meta inte
 
 	instanceId = *response.Response.InstanceId
 	d.SetId(instanceId)
+
+	// set deal_names from creation response
+	if response.Response.Data != nil && response.Response.Data.DealNames != nil {
+		dealNames := make([]string, 0, len(response.Response.Data.DealNames))
+		for _, dealName := range response.Response.Data.DealNames {
+			if dealName != nil {
+				dealNames = append(dealNames, *dealName)
+			}
+		}
+		_ = d.Set("deal_names", dealNames)
+	}
 
 	// set elastic mode
 	if v, ok := d.GetOkExists("elastic_mode"); ok {
@@ -521,7 +566,7 @@ func resourceTencentCloudWafSaasInstanceUpdate(d *schema.ResourceData, meta inte
 		elasticMode                    int
 	)
 
-	immutableArgs := []string{"goods_category", "time_span", "time_unit", "domain_pkg_count", "qps_pkg_count", "bot_management", "api_security"}
+	immutableArgs := []string{"goods_category", "time_span", "time_unit", "domain_pkg_count", "qps_pkg_count", "bot_management", "api_security", "goods_num", "pid", "region_id"}
 
 	for _, v := range immutableArgs {
 		if d.HasChange(v) {
