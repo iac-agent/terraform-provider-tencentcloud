@@ -98,3 +98,26 @@ resource "tencentcloud_waf_cc" "example" {
   cel_rule        = "(has(request.url) && request.url.startsWith('/prefix')) && (has(request.method) && request.method == 'POST')"
 }
 ```
+
+If advance is 0 with timed job
+
+```hcl
+resource "tencentcloud_waf_cc" "example" {
+  domain          = "www.demo.com"
+  name            = "tf-example"
+  status          = 1
+  advance         = "0"
+  limit           = "60"
+  interval        = "60"
+  url             = "/cc_demo"
+  match_func      = 0
+  action_type     = "22"
+  priority        = 50
+  valid_time      = 600
+  edition         = "sparta-waf"
+  type            = 1
+  job_type        = "TimedJob"
+  start_date_time = 1700000000
+  time_t_zone     = "UTC+8"
+}
+```

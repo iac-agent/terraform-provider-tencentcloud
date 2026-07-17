@@ -1,0 +1,3 @@
+```release-note:enhancement
+resource/tencentcloud_waf_cc: add job_type, start_date_time, time_t_zone, data params for scheduled execution and delete response
+```
