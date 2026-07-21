@@ -1,4 +1,4 @@
-Provides a resource to create a TEO (EdgeOne) DNS record
+提供 TEO（EdgeOne）DNS 记录资源。
 
 Example Usage
 
@@ -18,7 +18,7 @@ resource "tencentcloud_teo_dns_record_22" "example" {
 
 Import
 
-TEO (EdgeOne) DNS record can be imported using the id, e.g.
+TEO（EdgeOne）DNS 记录可以通过 ID 导入，例如：
 
 ```
 terraform import tencentcloud_teo_dns_record_22.example {zoneId}#{recordId}
