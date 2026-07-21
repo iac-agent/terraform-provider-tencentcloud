@@ -46,6 +46,13 @@ func ResourceTencentCloudTeoFunctionRule() *schema.Resource {
 				Description: "ID of the Function.",
 			},
 
+			"trigger_type": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				Computed:    true,
+				Description: "Function selection configuration type. Valid values: `direct`, `weight`, `region`. Defaults to `direct` when not specified.",
+			},
+
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
@@ -177,6 +184,10 @@ func resourceTencentCloudTeoFunctionRuleCreate(d *schema.ResourceData, meta inte
 
 	request.FunctionId = helper.String(functionId)
 
+	if v, ok := d.GetOk("trigger_type"); ok {
+		request.TriggerType = helper.String(v.(string))
+	}
+
 	if v, ok := d.GetOk("remark"); ok {
 		request.Remark = helper.String(v.(string))
 	}
@@ -257,6 +268,10 @@ func resourceTencentCloudTeoFunctionRuleRead(d *schema.ResourceData, meta interf
 		_ = d.Set("remark", respData.Remark)
 	}
 
+	if respData.TriggerType != nil {
+		_ = d.Set("trigger_type", respData.TriggerType)
+	}
+
 	if respData.Priority != nil {
 		_ = d.Set("priority", respData.Priority)
 	}
@@ -322,7 +337,7 @@ func resourceTencentCloudTeoFunctionRuleUpdate(d *schema.ResourceData, meta inte
 	ruleId := idSplit[2]
 
 	needChange := false
-	mutableArgs := []string{"function_rule_conditions", "remark"}
+	mutableArgs := []string{"function_rule_conditions", "trigger_type", "remark"}
 	for _, v := range mutableArgs {
 		if d.HasChange(v) {
 			needChange = true
@@ -372,6 +387,10 @@ func resourceTencentCloudTeoFunctionRuleUpdate(d *schema.ResourceData, meta inte
 		}
 
 		request.FunctionId = helper.String(functionId)
+
+		if v, ok := d.GetOk("trigger_type"); ok {
+			request.TriggerType = helper.String(v.(string))
+		}
 
 		if v, ok := d.GetOk("remark"); ok {
 			request.Remark = helper.String(v.(string))

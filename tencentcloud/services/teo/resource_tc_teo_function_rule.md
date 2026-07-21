@@ -5,6 +5,7 @@ Example Usage
 ```hcl
 resource "tencentcloud_teo_function_rule" "teo_function_rule" {
     function_id   = "ef-txx7fnua"
+    trigger_type  = "weight"
     remark        = "aaa"
     zone_id       = "zone-2qtuhspy7cr6"
 
