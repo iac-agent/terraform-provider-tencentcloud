@@ -29,7 +29,7 @@ const (
 var (
 	hclMatch          = regexp.MustCompile("(?si)([^`]+)?```(hcl)?(.*?)```")
 	usageMatch        = regexp.MustCompile(`(?s)(?m)^([^ \n].*?)(?:\n{2}|$)(.*)`)
-	bigSymbol         = regexp.MustCompile("([\u007F-\uffff])")
+	bigSymbol         = regexp.MustCompile("([\u0080-\u2E7F\uA000-\uF8FF\uFB00-\uFE2F\uFE50-\uFEFF\uFFF0-\uFFFF])")
 	productNameRegexp = regexp.MustCompile(`^.*\((.*)\)$`)
 )
 
@@ -517,7 +517,7 @@ func checkDescription(k, s string) {
 		os.Exit(1)
 	}
 
-	if s[len(s)-1] != '.' && s[len(s)-1] != ':' {
+	if !strings.HasSuffix(s, ".") && !strings.HasSuffix(s, ":") && !strings.HasSuffix(s, "。") {
 		message("[FAIL!]There is no ending charset(. or :) on the description: '%s': '%s'", k, s)
 		os.Exit(1)
 	}
@@ -537,12 +537,26 @@ func checkDescription(k, s string) {
 
 // containsBigSymbol returns the Big symbol if found
 func containsBigSymbol(s string) string {
-	m := bigSymbol.FindStringSubmatch(s)
-	if len(m) > 0 {
-		return m[0]
+	for _, r := range s {
+		if r > 0x7F && !isCJKChar(r) {
+			return string(r)
+		}
 	}
-
 	return ""
+}
+
+// isCJKChar checks if a rune is a CJK character or punctuation
+func isCJKChar(r rune) bool {
+	return (r >= 0x2E80 && r <= 0x9FFF) || // CJK Radicals through CJK Unified Ideographs
+		(r >= 0xF900 && r <= 0xFAFF) || // CJK Compatibility Ideographs
+		(r >= 0xFE30 && r <= 0xFE4F) || // CJK Compatibility Forms
+		(r >= 0xFF00 && r <= 0xFFEF) || // Halfwidth and Fullwidth Forms
+		(r >= 0x3000 && r <= 0x303F) || // CJK Symbols and Punctuation
+		(r >= 0x3400 && r <= 0x4DBF) || // CJK Unified Ideographs Extension A
+		(r >= 0x20000 && r <= 0x2A6DF) || // CJK Unified Ideographs Extension B
+		(r >= 0x2A700 && r <= 0x2B73F) || // CJK Unified Ideographs Extension C
+		(r >= 0x2B740 && r <= 0x2B81F) || // CJK Unified Ideographs Extension D
+		(r >= 0x2B820 && r <= 0x2CEAF) // CJK Unified Ideographs Extension E
 }
 
 // message print color message
