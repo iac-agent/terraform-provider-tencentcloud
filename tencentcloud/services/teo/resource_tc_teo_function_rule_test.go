@@ -22,6 +22,7 @@ func TestAccTencentCloudTeoFunctionRuleResource_basic(t *testing.T) {
 					resource.TestCheckResourceAttrSet("tencentcloud_teo_function_rule.teo_function_rule", "id"),
 					resource.TestCheckResourceAttrSet("tencentcloud_teo_function_rule.teo_function_rule", "function_id"),
 					resource.TestCheckResourceAttrSet("tencentcloud_teo_function_rule.teo_function_rule", "zone_id"),
+					resource.TestCheckResourceAttr("tencentcloud_teo_function_rule.teo_function_rule", "trigger_type", "weight"),
 					resource.TestCheckResourceAttr("tencentcloud_teo_function_rule.teo_function_rule", "remark", "aaa"),
 					resource.TestCheckResourceAttr("tencentcloud_teo_function_rule.teo_function_rule", "function_rule_conditions.#", "2"),
 					resource.TestCheckResourceAttr("tencentcloud_teo_function_rule.teo_function_rule", "function_rule_conditions.0.rule_conditions.#", "2"),
@@ -59,6 +60,7 @@ func TestAccTencentCloudTeoFunctionRuleResource_basic(t *testing.T) {
 					resource.TestCheckResourceAttrSet("tencentcloud_teo_function_rule.teo_function_rule", "id"),
 					resource.TestCheckResourceAttrSet("tencentcloud_teo_function_rule.teo_function_rule", "function_id"),
 					resource.TestCheckResourceAttrSet("tencentcloud_teo_function_rule.teo_function_rule", "zone_id"),
+					resource.TestCheckResourceAttr("tencentcloud_teo_function_rule.teo_function_rule", "trigger_type", "direct"),
 					resource.TestCheckResourceAttr("tencentcloud_teo_function_rule.teo_function_rule", "remark", "bbb"),
 					resource.TestCheckResourceAttr("tencentcloud_teo_function_rule.teo_function_rule", "function_rule_conditions.#", "2"),
 					resource.TestCheckResourceAttr("tencentcloud_teo_function_rule.teo_function_rule", "function_rule_conditions.0.rule_conditions.#", "2"),
@@ -93,6 +95,7 @@ const testAccTeoFunctionRule = `
 
 resource "tencentcloud_teo_function_rule" "teo_function_rule" {
     function_id   = "ef-txx7fnua"
+    trigger_type  = "weight"
     remark        = "aaa"
     zone_id       = "zone-2qtuhspy7cr6"
 
@@ -143,6 +146,7 @@ const testAccTeoFunctionRuleUp = `
 
 resource "tencentcloud_teo_function_rule" "teo_function_rule" {
     function_id   = "ef-txx7fnua"
+    trigger_type  = "direct"
     remark        = "bbb"
     zone_id       = "zone-2qtuhspy7cr6"
 
