@@ -30,66 +30,66 @@ func ResourceTencentCloudTeoFunctionRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the site.",
+				Description: "站点 ID。",
 			},
 
 			"rule_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "ID of the Function Rule.",
+				Description: "函数规则 ID。",
 			},
 
 			"function_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the Function.",
+				Description: "函数 ID。",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Rule description, maximum support of 60 characters.",
+				Description: "规则描述，最大支持 60 个字符。",
 			},
 
 			"function_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The name of the function.",
+				Description: "函数名称。",
 			},
 
 			"priority": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "The priority of the function trigger rule. A higher numerical value indicates a higher priority.",
+				Description: "函数触发规则的优先级，数值越大优先级越高。",
 			},
 
 			"function_rule_conditions": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "The list of rule conditions, where the conditions are connected by an \"OR\" relationship.",
+				Description: "规则条件列表，条件之间是“或”的关系。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"rule_conditions": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "For edge function trigger rule conditions, if all items in the list are satisfied, then the condition is considered fulfilled.",
+							Description: "边缘函数触发规则条件，当列表中的所有项都满足时，则认为该条件满足。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"operator": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Operator. Valid values:\n  - `equals`: Equals.\n  - `notEquals`: Does not equal.\n  - `exist`: Exists.\n  - `notexist`: Does not exist.",
+										Description: "操作符。取值有：\n  - `equals`: 等于。\n  - `notEquals`: 不等于。\n  - `exist`: 存在。\n  - `notexist`: 不存在。",
 									},
 									"target": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The match type. Values:\n  - `filename`: File name.\n  - `extension`: File extension.\n  - `host`: Host.\n  - `full_url`: Full URL, which indicates the complete URL path under the current site and must contain the HTTP protocol, host, and path.\n  - `url`: Partial URL under the current site.\n  - `client_country`: Country/Region of the client.\n  - `query_string`: Query string in the request URL.\n  - `request_header`: HTTP request header.",
+										Description: "匹配类型。取值有：\n  - `filename`: 文件名称。\n  - `extension`: 文件后缀。\n  - `host`: 主机。\n  - `full_url`: 完整 URL，表示当前站点下的完整 URL 路径，必须包含 HTTP 协议、主机和路径。\n  - `url`: 当前站点下的部分 URL。\n  - `client_country`: 客户端所在的国家/地区。\n  - `query_string`: 请求 URL 中的查询字符串。\n  - `request_header`: HTTP 请求头。",
 									},
 									"values": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "The parameter value of the match type. It can be an empty string only when `Target=query string/request header` and `Operator=exist/notexist`.\n  - When `Target=extension`, enter the file extension, such as \"jpg\" and \"txt\".\n  - When `Target=filename`, enter the file name, such as \"foo\" in \"foo.jpg\".\n  - When `Target=all`, it indicates any site request.\n  - When `Target=host`, enter the host under the current site, such as \"www.maxx55.com\".\n  - When `Target=url`, enter the partial URL path under the current site, such as \"/example\".\n  - When `Target=full_url`, enter the complete URL under the current site. It must contain the HTTP protocol, host, and path, such as \"https://www.maxx55.cn/example\".\n  - When `Target=client_country`, enter the ISO-3166 country/region code.\n  - When `Target=query_string`, enter the value of the query string, such as \"cn\" and \"1\" in \"lang=cn&version=1\".\n  - When `Target=request_header`, enter the HTTP request header value, such as \"zh-CN,zh;q=0.9\" in the \"Accept-Language:zh-CN,zh;q=0.9\" header.",
+										Description: "匹配类型的参数值。仅当 `Target=query string/request header` 且 `Operator=exist/notexist` 时可以为空字符串。\n  - 当 `Target=extension` 时，输入文件后缀，如 \"jpg\"、\"txt\"。\n  - 当 `Target=filename` 时，输入文件名称，如 \"foo.jpg\" 中的 \"foo\"。\n  - 当 `Target=all` 时，表示任意站点请求。\n  - 当 `Target=host` 时，输入当前站点下的主机，如 \"www.maxx55.com\"。\n  - 当 `Target=url` 时，输入当前站点下的部分 URL 路径，如 \"/example\"。\n  - 当 `Target=full_url` 时，输入当前站点下的完整 URL，必须包含 HTTP 协议、主机和路径，如 \"https://www.maxx55.cn/example\"。\n  - 当 `Target=client_country` 时，输入 ISO-3166 国家/地区代码。\n  - 当 `Target=query_string` 时，输入查询字符串的值，如 \"lang=cn&version=1\" 中的 \"cn\" 和 \"1\"。\n  - 当 `Target=request_header` 时，输入 HTTP 请求头的值，如 \"Accept-Language:zh-CN,zh;q=0.9\" 头中的 \"zh-CN,zh;q=0.9\"。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -97,12 +97,12 @@ func ResourceTencentCloudTeoFunctionRule() *schema.Resource {
 									"ignore_case": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Whether the parameter value is case insensitive. Default value: false.",
+										Description: "是否忽略参数值的大小写。默认值：false。",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The parameter name of the match type. This field is required only when `Target=query_string/request_header`.\n  - `query_string`: Name of the query string, such as \"lang\" and \"version\" in \"lang=cn&version=1\".\n  - `request_header`: Name of the HTTP request header, such as \"Accept-Language\" in the \"Accept-Language:zh-CN,zh;q=0.9\" header.",
+										Description: "匹配类型的参数名称。仅当 `Target=query_string/request_header` 时该字段必填。\n  - `query_string`: 查询字符串的名称，如 \"lang=cn&version=1\" 中的 \"lang\" 和 \"version\"。\n  - `request_header`: HTTP 请求头的名称，如 \"Accept-Language:zh-CN,zh;q=0.9\" 头中的 \"Accept-Language\"。",
 									},
 								},
 							},
