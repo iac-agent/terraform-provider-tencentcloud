@@ -36,14 +36,14 @@ func ResourceTencentCloudTeoFunctionRule() *schema.Resource {
 			"rule_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "边缘函数触发规则 ID。",
+				Description: "函数规则 ID。",
 			},
 
 			"function_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "边缘函数 ID。",
+				Description: "函数 ID。",
 			},
 
 			"remark": {
@@ -67,29 +67,29 @@ func ResourceTencentCloudTeoFunctionRule() *schema.Resource {
 			"function_rule_conditions": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "规则条件列表，条件之间为「或」关系。",
+				Description: "规则条件列表，条件之间是“或”的关系。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"rule_conditions": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "边缘函数触发规则条件，当列表内所有条件都满足时，该条件才认为满足。",
+							Description: "边缘函数触发规则条件，当列表中的所有项都满足时，则认为该条件满足。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"operator": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "操作符。取值有：\n  - `equals`：等于。\n  - `notEquals`：不等于。\n  - `exist`：存在。\n  - `notexist`：不存在。",
+										Description: "操作符。取值有：\n  - `equals`: 等于。\n  - `notEquals`: 不等于。\n  - `exist`: 存在。\n  - `notexist`: 不存在。",
 									},
 									"target": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "匹配类型。取值有：\n  - `filename`：文件名。\n  - `extension`：文件扩展名。\n  - `host`：主机。\n  - `full_url`：完整 URL，即当前站点下的完整 URL 路径，必须包含 HTTP 协议、主机和路径。\n  - `url`：当前站点下的部分 URL。\n  - `client_country`：客户端国家/地区。\n  - `query_string`：请求 URL 中的查询字符串。\n  - `request_header`：HTTP 请求头。",
+										Description: "匹配类型。取值有：\n  - `filename`: 文件名称。\n  - `extension`: 文件后缀。\n  - `host`: 主机。\n  - `full_url`: 完整 URL，表示当前站点下的完整 URL 路径，必须包含 HTTP 协议、主机和路径。\n  - `url`: 当前站点下的部分 URL。\n  - `client_country`: 客户端所在的国家/地区。\n  - `query_string`: 请求 URL 中的查询字符串。\n  - `request_header`: HTTP 请求头。",
 									},
 									"values": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "匹配类型的参数值。仅当 `Target=query_string/request_header` 且 `Operator=exist/notexist` 时允许为空。\n  - 当 `Target=extension` 时，输入文件扩展名，如 \"jpg\"、\"txt\"。\n  - 当 `Target=filename` 时，输入文件名，如 \"foo.jpg\" 中的 \"foo\"。\n  - 当 `Target=all` 时，表示任意站点请求。\n  - 当 `Target=host` 时，输入当前站点下的主机名，如 \"www.maxx55.com\"。\n  - 当 `Target=url` 时，输入当前站点下的部分 URL 路径，如 \"/example\"。\n  - 当 `Target=full_url` 时，输入当前站点下的完整 URL，必须包含 HTTP 协议、主机和路径，如 \"https://www.maxx55.cn/example\"。\n  - 当 `Target=client_country` 时，输入 ISO-3166 国家/地区代码。\n  - 当 `Target=query_string` 时，输入查询字符串的值，如 \"lang=cn&version=1\" 中的 \"cn\" 和 \"1\"。\n  - 当 `Target=request_header` 时，输入 HTTP 请求头的值，如 \"Accept-Language:zh-CN,zh;q=0.9\" 头中的 \"zh-CN,zh;q=0.9\"。",
+										Description: "匹配类型的参数值。仅当 `Target=query string/request header` 且 `Operator=exist/notexist` 时可以为空字符串。\n  - 当 `Target=extension` 时，输入文件后缀，如 \"jpg\"、\"txt\"。\n  - 当 `Target=filename` 时，输入文件名称，如 \"foo.jpg\" 中的 \"foo\"。\n  - 当 `Target=all` 时，表示任意站点请求。\n  - 当 `Target=host` 时，输入当前站点下的主机，如 \"www.maxx55.com\"。\n  - 当 `Target=url` 时，输入当前站点下的部分 URL 路径，如 \"/example\"。\n  - 当 `Target=full_url` 时，输入当前站点下的完整 URL，必须包含 HTTP 协议、主机和路径，如 \"https://www.maxx55.cn/example\"。\n  - 当 `Target=client_country` 时，输入 ISO-3166 国家/地区代码。\n  - 当 `Target=query_string` 时，输入查询字符串的值，如 \"lang=cn&version=1\" 中的 \"cn\" 和 \"1\"。\n  - 当 `Target=request_header` 时，输入 HTTP 请求头的值，如 \"Accept-Language:zh-CN,zh;q=0.9\" 头中的 \"zh-CN,zh;q=0.9\"。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -97,12 +97,12 @@ func ResourceTencentCloudTeoFunctionRule() *schema.Resource {
 									"ignore_case": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "参数值是否忽略大小写。默认值：false。",
+										Description: "是否忽略参数值的大小写。默认值：false。",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "匹配类型的参数名称。仅当 `Target=query_string/request_header` 时需要填写。\n  - `query_string`：查询字符串的名称，如 \"lang=cn&version=1\" 中的 \"lang\" 和 \"version\"。\n  - `request_header`：HTTP 请求头的名称，如 \"Accept-Language:zh-CN,zh;q=0.9\" 头中的 \"Accept-Language\"。",
+										Description: "匹配类型的参数名称。仅当 `Target=query_string/request_header` 时该字段必填。\n  - `query_string`: 查询字符串的名称，如 \"lang=cn&version=1\" 中的 \"lang\" 和 \"version\"。\n  - `request_header`: HTTP 请求头的名称，如 \"Accept-Language:zh-CN,zh;q=0.9\" 头中的 \"Accept-Language\"。",
 									},
 								},
 							},
