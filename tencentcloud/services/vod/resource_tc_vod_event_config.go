@@ -26,14 +26,14 @@ func ResourceTencentCloudVodEventConfig() *schema.Resource {
 			"sub_app_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Sub app id。",
+				Description: "Sub app ID。",
 			},
 
 			"mode": {
 				Optional: true,
 				Computed: true,
 				Type:     schema.TypeString,
-				Description: "How to receive event notifications. Valid values:\n" +
+				Description: "How 到 receive 事件 notifications. 有效 值:\n" +
 					"- Push: HTTP callback notification;\n" +
 					"- PULL: Reliable notification based on message queuing.",
 			},
@@ -41,21 +41,21 @@ func ResourceTencentCloudVodEventConfig() *schema.Resource {
 			"notification_url": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The 地址 用于receive 3.0 格式 callbacks when receiving HTTP callback notifications. Note: If you take the NotificationUrl parameter and the 值 is an empty string，the 3.0 格式 callback 地址 is cleared。",
+				Description: "地址 用于receive 3.0 格式 callbacks 当 receiving HTTP callback notifications. 注意: 如果 您 take NotificationUrl 参数 和 值 是 空 字符串， 3.0 格式 callback 地址 是 cleared。",
 			},
 
 			"upload_media_complete_event_switch": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "是否receive video upload completion event notification，default `OFF` means to ignore the event notification，`ON` means to receive event notification。",
+				Description: "是否receive 视频 upload completion 事件 通知，默认值 `OFF` 表示 到 ignore 事件 通知，`ON` 表示 到 receive 事件 通知。",
 			},
 
 			"delete_media_complete_event_switch": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "是否receive video deletion completion event notification，default `OFF` is to ignore the event notification，`ON` is to receive event notification。",
+				Description: "是否receive 视频 deletion completion 事件 通知，默认值 `OFF` 是 到 ignore 事件 通知，`ON` 是 到 receive 事件 通知。",
 			},
 		},
 	}

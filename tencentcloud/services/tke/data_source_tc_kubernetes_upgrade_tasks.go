@@ -29,7 +29,7 @@ func DataSourceTencentCloudKubernetesUpgradeTasks() *schema.Resource {
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Task 名称",
+							Description: "任务 名称",
 						},
 						"component": {
 							Type:        schema.TypeString,

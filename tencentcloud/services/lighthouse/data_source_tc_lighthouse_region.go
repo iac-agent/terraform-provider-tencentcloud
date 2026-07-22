@@ -19,7 +19,7 @@ func DataSourceTencentCloudLighthouseRegion() *schema.Resource {
 			"region_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "地域 information list。",
+				Description: "地域 信息 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
@@ -40,7 +40,7 @@ func DataSourceTencentCloudLighthouseRegion() *schema.Resource {
 						"is_china_mainland": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否region is in the Chinese mainland。",
+							Description: "是否region 是 在 Chinese mainland。",
 						},
 					},
 				},

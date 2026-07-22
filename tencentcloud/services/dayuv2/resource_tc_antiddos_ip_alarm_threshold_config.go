@@ -31,18 +31,18 @@ func ResourceTencentCloudAntiddosIpAlarmThresholdConfig() *schema.Resource {
 			"alarm_type": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Alarm threshold 类型，值 [1 (incoming traffic alarm threshold) 2 (attack cleaning traffic alarm threshold)]。",
+				Description: "Alarm 阈值 类型，值 [1 (incoming 流量 告警 阈值) 2 (attack cleaning 流量 告警 阈值)]。",
 			},
 			"alarm_threshold": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Alarm threshold，in Mbps，with a 值 of&gt;=0; When used as an input parameter，setting 0 will delete the alarm threshold configuration;。",
+				Description: "Alarm 阈值，在 Mbps，使用 值 的&gt;=0; 当 使用 作为 input 参数，setting 0 将 delete 告警 阈值 配置;。",
 			},
 
 			"instance_ip": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance ip。",
+				Description: "实例 ip。",
 			},
 			"instance_id": {
 				Type:        schema.TypeString,

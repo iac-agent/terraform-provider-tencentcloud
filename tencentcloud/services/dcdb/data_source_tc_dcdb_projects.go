@@ -19,7 +19,7 @@ func DataSourceTencentCloudDcdbProjects() *schema.Resource {
 			"projects": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Project list。",
+				Description: "Project 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"project_id": {
@@ -30,7 +30,7 @@ func DataSourceTencentCloudDcdbProjects() *schema.Resource {
 						"owner_uin": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The UIN of the resource 所有者 (root 账号)。",
+							Description: "UIN 的 资源 所有者 (root 账号)。",
 						},
 						"app_id": {
 							Type:        schema.TypeInt,
@@ -50,7 +50,7 @@ func DataSourceTencentCloudDcdbProjects() *schema.Resource {
 						"src_plat": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "来源 platform。",
+							Description: "来源 平台。",
 						},
 						"src_app_id": {
 							Type:        schema.TypeInt,
@@ -60,7 +60,7 @@ func DataSourceTencentCloudDcdbProjects() *schema.Resource {
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Project 状态 有效值：`0` (normal)，`-1` (已禁用)，`3` (default project)。",
+							Description: "Project 状态 有效值：`0` (normal)，`-1` (已禁用)，`3` (默认值 项目)。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
@@ -70,7 +70,7 @@ func DataSourceTencentCloudDcdbProjects() *schema.Resource {
 						"is_default": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否为the default project. 有效值：`1` (yes)，`0` (no)。",
+							Description: "是否为the 默认值 项目. 有效值：`1` (yes)，`0` (无)。",
 						},
 						"info": {
 							Type:        schema.TypeString,

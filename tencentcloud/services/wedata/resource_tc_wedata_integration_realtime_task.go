@@ -34,48 +34,48 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 			"task_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Task 名称",
+				Description: "任务 名称",
 			},
 			"sync_type": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Synchronization 类型: 1. Whole database synchronization，2. Single table synchronization。",
+				Description: "Synchronization 类型: 1. Whole 数据库 synchronization，2. Single 表 synchronization。",
 			},
 			"task_mode": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Task display 模式，0: canvas 模式，1: form 模式",
+				Description: "任务 display 模式，0: canvas 模式，1: form 模式",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "描述 information。",
+				Description: "描述 信息。",
 			},
 			// modifyTask
 			"task_info": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Task Information。",
+				Description: "任务 Information。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"workflow_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "The workflow id to which the task belongs。",
+							Description: "工作流 ID 到 其中 任务 belongs。",
 						},
 						"schedule_task_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Task scheduling id (作业 ID such as oceanus or us)。",
+							Description: "任务 scheduling ID (作业 ID such 作为 oceanus 或 us)。",
 						},
 						"task_group_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Inlong Task 组 ID",
+							Description: "Inlong 任务 组 ID",
 						},
 						"creator_uin": {
 							Type:        schema.TypeString,
@@ -99,18 +99,18 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "用户 App Id。",
+							Description: "用户 App ID。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Task 状态 1. Not started | Task initialization，2. Task starting，3. Running，4. Paused，5. Task stopping，6. Stopped，7. Execution failed，8. deleted，9. Locked，404. unknown 状态",
+							Description: "任务 状态 1. Not started | 任务 initialization，2. 任务 starting，3. Running，4. Paused，5. 任务 stopping，6. Stopped，7. Execution failed，8. 删除，9. Locked，404. unknown 状态",
 						},
 						"nodes": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Task Node Information。",
+							Description: "任务 Node Information。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"id": {
@@ -121,7 +121,7 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 									"task_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The 任务 ID to which the node belongs。",
+										Description: "任务 ID 到 其中 节点 belongs。",
 									},
 									"name": {
 										Type:        schema.TypeString,
@@ -151,7 +151,7 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 									"config": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Node configuration information。",
+										Description: "Node 配置 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
@@ -170,7 +170,7 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 									"ext_config": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Node extension configuration information。",
+										Description: "Node extension 配置 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
@@ -189,7 +189,7 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 									"schema": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Schema information。",
+										Description: "Schema 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"id": {
@@ -264,7 +264,7 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 												"source_schema": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "来源 node schema information。",
+													Description: "来源 节点 schema 信息。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"id": {
@@ -322,18 +322,18 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 												"schema_mappings": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "Schema mapping information。",
+													Description: "Schema mapping 信息。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"source_schema_id": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Schema ID from 来源 node。",
+																Description: "Schema ID 从 来源 节点。",
 															},
 															"sink_schema_id": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Schema ID from sink node。",
+																Description: "Schema ID 从 sink 节点。",
 															},
 														},
 													},
@@ -341,7 +341,7 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 												"ext_config": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "Node extension configuration information。",
+													Description: "Node extension 配置 信息。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"name": {
@@ -363,7 +363,7 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 									"app_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "用户 App Id。",
+										Description: "用户 App ID。",
 									},
 									"project_id": {
 										Type:        schema.TypeString,
@@ -401,12 +401,12 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 						"executor_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Executor resource ID。",
+							Description: "Executor 资源 ID。",
 						},
 						"config": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Task configuration。",
+							Description: "任务 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
@@ -425,7 +425,7 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 						"ext_config": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Node extension configuration information。",
+							Description: "Node extension 配置 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
@@ -479,7 +479,7 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 									"source_schema": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "来源 node schema information。",
+										Description: "来源 节点 schema 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"id": {
@@ -537,18 +537,18 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 									"schema_mappings": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Schema mapping information。",
+										Description: "Schema mapping 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"source_schema_id": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Schema ID from 来源 node。",
+													Description: "Schema ID 从 来源 节点。",
 												},
 												"sink_schema_id": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Schema ID from sink node。",
+													Description: "Schema ID 从 sink 节点。",
 												},
 											},
 										},
@@ -556,7 +556,7 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 									"ext_config": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Node extension configuration information。",
+										Description: "Node extension 配置 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
@@ -578,7 +578,7 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 						//"task_mode": {
 						//	Type:        schema.TypeString,
 						//	Optional:    true,
-						//	Description: "Task display mode, 0: canvas mode, 1: form mode.",
+						//	Description: "任务 display 模式, 0: canvas 模式, 1: form 模式.",
 						//},
 						"incharge": {
 							Type:        schema.TypeString,
@@ -589,43 +589,43 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 						//	Type:        schema.TypeList,
 						//	MaxItems:    1,
 						//	Optional:    true,
-						//	Description: "Offline task scheduling configuration.",
+						//	Description: "Offline 任务 scheduling 配置.",
 						//	Elem: &schema.Resource{
 						//		Schema: map[string]*schema.Schema{
 						//			"workflow_name": {
 						//				Type:        schema.TypeString,
 						//				Optional:    true,
-						//				Description: "The name of the workflow to which the task belongs.",
+						//				Description: "名称 的 工作流 到 其中 任务 belongs.",
 						//			},
 						//			"dependency_workflow": {
 						//				Type:        schema.TypeString,
 						//				Optional:    true,
-						//				Description: "Whether to support workflow dependencies: yes / no, default value: no.",
+						//				Description: "Whether 到 support 工作流 dependencies: yes / 无, 默认值 值: 无.",
 						//			},
 						//			"start_time": {
 						//				Type:        schema.TypeString,
 						//				Optional:    true,
-						//				Description: "Effective start time, the format is yyyy-MM-dd HH:mm:ss.",
+						//				Description: "Effective start 时间, 格式 是 yyyy-MM-dd HH:mm:ss.",
 						//			},
 						//			"end_time": {
 						//				Type:        schema.TypeString,
 						//				Optional:    true,
-						//				Description: "Effective end time, the format is yyyy-MM-dd HH:mm:ss.",
+						//				Description: "Effective end 时间, 格式 是 yyyy-MM-dd HH:mm:ss.",
 						//			},
 						//			"cycle_type": {
 						//				Type:        schema.TypeInt,
 						//				Optional:    true,
-						//				Description: "Scheduling type, 0: crontab type, 1: minutes, 2: hours, 3: days, 4: weeks, 5: months, 6: one-time, 7: user-driven, 10: elastic period (week), 11: elastic period (month), 12: year, 13: instant trigger.",
+						//				Description: "Scheduling 类型, 0: crontab 类型, 1: minutes, 2: hours, 3: days, 4: weeks, 5: months, 6: 一个-时间, 7: 用户-driven, 10: elastic 周期 (week), 11: elastic 周期 (month), 12: year, 13: instant 触发器.",
 						//			},
 						//			"cycle_step": {
 						//				Type:        schema.TypeInt,
 						//				Optional:    true,
-						//				Description: "Interval time of scheduling, the minimum value: 1.",
+						//				Description: "Interval 时间 的 scheduling, 最小 值: 1.",
 						//			},
 						//			"delay_time": {
 						//				Type:        schema.TypeInt,
 						//				Optional:    true,
-						//				Description: "Execution time, unit is minutes, only available for day/week/month/year scheduling. For example, daily scheduling is executed once every day at 02:00, and the delayTime is 120 minutes.",
+						//				Description: "Execution 时间, 单位 是 minutes, 仅 可用 对于 day/week/month/year scheduling. For 示例, daily scheduling 是 executed once every day 在 02:00, 和 delayTime 是 120 minutes.",
 						//			},
 						//			"crontab_expression": {
 						//				Type:        schema.TypeString,
@@ -635,57 +635,57 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 						//			"retry_wait": {
 						//				Type:        schema.TypeInt,
 						//				Optional:    true,
-						//				Description: "Retry waiting time, unit is minutes.",
+						//				Description: "Retry waiting 时间, 单位 是 minutes.",
 						//			},
 						//			"retriable": {
 						//				Type:        schema.TypeInt,
 						//				Optional:    true,
-						//				Description: "Whether to retry.",
+						//				Description: "Whether 到 retry.",
 						//			},
 						//			"try_limit": {
 						//				Type:        schema.TypeInt,
 						//				Optional:    true,
-						//				Description: "Number of retries.",
+						//				Description: "Number 的 retries.",
 						//			},
 						//			"run_priority": {
 						//				Type:        schema.TypeInt,
 						//				Optional:    true,
-						//				Description: "Task running priority.",
+						//				Description: "任务 running 优先级.",
 						//			},
 						//			"product_name": {
 						//				Type:        schema.TypeString,
 						//				Optional:    true,
-						//				Description: "Product name: DATA_INTEGRATION.",
+						//				Description: "Product 名称: DATA_INTEGRATION.",
 						//			},
 						//			"self_depend": {
 						//				Type:        schema.TypeInt,
 						//				Optional:    true,
-						//				Description: "Self-dependent rules, 1: Ordered serial one at a time, queued execution, 2: Unordered serial one at a time, not queued execution, 3: Parallel, multiple at once.",
+						//				Description: "Self-dependent 规则, 1: Ordered serial 一个 在 时间, queued execution, 2: Unordered serial 一个 在 时间, 不 queued execution, 3: Parallel, 多个 在 once.",
 						//			},
 						//			"task_action": {
 						//				Type:        schema.TypeString,
 						//				Optional:    true,
-						//				Description: "Flexible cycle configuration, if it is a weekly task: 1 is Sunday, 2 is Monday, 3 is Tuesday, and so on. If it is a monthly task: &amp;#39;1,3&amp;#39; represents the 1st and 3rd; &amp;#39;L&amp;#39; represents the end of the month.",
+						//				Description: "Flexible cycle 配置, 如果 它 是 weekly 任务: 1 是 Sunday, 2 是 Monday, 3 是 Tuesday, 和 so 在. 如果 它 是 monthly 任务: &amp;#39;1,3&amp;#39; 表示 1st 和 3rd; &amp;#39;L&amp;#39; 表示 end 的 month.",
 						//			},
 						//			"execution_end_time": {
 						//				Type:        schema.TypeString,
 						//				Optional:    true,
-						//				Description: "Scheduling execution end time.",
+						//				Description: "Scheduling execution end 时间.",
 						//			},
 						//			"execution_start_time": {
 						//				Type:        schema.TypeString,
 						//				Optional:    true,
-						//				Description: "Scheduling execution start time.",
+						//				Description: "Scheduling execution start 时间.",
 						//			},
 						//			"task_auto_submit": {
 						//				Type:        schema.TypeBool,
 						//				Optional:    true,
-						//				Description: "Whether to automatically submit.",
+						//				Description: "Whether 到 automatically submit.",
 						//			},
 						//			"instance_init_strategy": {
 						//				Type:        schema.TypeString,
 						//				Optional:    true,
-						//				Description: "Instance initialization strategy.",
+						//				Description: "实例 initialization strategy.",
 						//			},
 						//		},
 						//	},
@@ -706,7 +706,7 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "InLong stream id。",
+							Description: "InLong 流 ID。",
 						},
 						"in_long_manager_version": {
 							Type:        schema.TypeString,
@@ -725,7 +725,7 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Computed:    true,
-							Description: "是否task 版本 has been submitted for operation and maintenance。",
+							Description: "是否task 版本 has been submitted 对于 operation 和 maintenance。",
 						},
 						"input_datasource_type": {
 							Type:        schema.TypeString,
@@ -755,13 +755,13 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 							Type:        schema.TypeFloat,
 							Optional:    true,
 							Computed:    true,
-							Description: "Read latency。",
+							Description: "Read 延迟。",
 						},
 						"num_restarts": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Times of restarts。",
+							Description: "Times 的 restarts。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
@@ -779,13 +779,13 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "The last time the task was run。",
+							Description: "last 时间 任务 是 run。",
 						},
 						"stop_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "The time the task was stopped。",
+							Description: "时间 任务 是 stopped。",
 						},
 						"has_version": {
 							Type:        schema.TypeBool,
@@ -803,26 +803,26 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "用户 locked task。",
+							Description: "用户 locked 任务。",
 						},
 						"running_cu": {
 							Type:        schema.TypeFloat,
 							Optional:    true,
 							Computed:    true,
-							Description: "The amount of resources consumed by real-time task。",
+							Description: "amount 的 resources consumed 通过 real-时间 任务。",
 						},
 						"task_alarm_regular_list": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Optional:    true,
 							Computed:    true,
-							Description: "Task alarm regular。",
+							Description: "任务 告警 regular。",
 						},
 						"switch_resource": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Resource tiering 状态，0: in progress，1: successful，2: failed。",
+							Description: "Resource tiering 状态，0: 在 progress，1: successful，2: failed。",
 						},
 						"read_phase": {
 							Type:        schema.TypeInt,
@@ -834,7 +834,7 @@ func ResourceTencentCloudWedataIntegrationRealtimeTask() *schema.Resource {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Instance 版本",
+							Description: "实例 版本",
 						},
 					},
 				},

@@ -19,13 +19,13 @@ func DataSourceTencentCloudCkafkaDatahubGroupOffsets() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "topic 名称 that the task subscribe。",
+				Description: "主题 名称 该 任务 subscribe。",
 			},
 
 			"group": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Kafka consumer group。",
+				Description: "Kafka 消费者 组。",
 			},
 
 			"search_word": {
@@ -37,34 +37,34 @@ func DataSourceTencentCloudCkafkaDatahubGroupOffsets() *schema.Resource {
 			"topic_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "The topic array，where each element is a json object。",
+				Description: "主题 数组，其中 each element 是 json 对象。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"topic": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "topic 名称",
+							Description: "主题 名称",
 						},
 						"partitions": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "The topic partition array，where each element is a json object。",
+							Description: "主题 分区 数组，其中 each element 是 json 对象。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"partition": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "topic partitionId。",
+										Description: "主题 partitionId。",
 									},
 									"offset": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "consumer 偏移量",
+										Description: "消费者 偏移量",
 									},
 									"metadata": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Usually an empty string。",
+										Description: "Usually 空 字符串。",
 									},
 									"error_code": {
 										Type:        schema.TypeInt,
@@ -74,12 +74,12 @@ func DataSourceTencentCloudCkafkaDatahubGroupOffsets() *schema.Resource {
 									"log_end_offset": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "partition Log End 偏移量",
+										Description: "分区 Log End 偏移量",
 									},
 									"lag": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The 数量 unconsumed messages。",
+										Description: "数量 unconsumed messages。",
 									},
 								},
 							},

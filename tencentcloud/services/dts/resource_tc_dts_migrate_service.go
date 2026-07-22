@@ -27,13 +27,13 @@ func ResourceTencentCloudDtsMigrateService() *schema.Resource {
 			"src_database_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "来源 database 类型，可选 值 is mysql/redis/percona/mongodb/postgresql/sqlserver/mariadb。",
+				Description: "来源 数据库 类型，可选 值 是 mysql/redis/percona/mongodb/postgresql/sqlserver/mariadb。",
 			},
 
 			"dst_database_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "destination database 类型，可选 值 is mysql/redis/percona/mongodb/postgresql/sqlserver/mariadb。",
+				Description: "destination 数据库 类型，可选 值 是 mysql/redis/percona/mongodb/postgresql/sqlserver/mariadb。",
 			},
 
 			"src_region": {
@@ -51,7 +51,7 @@ func ResourceTencentCloudDtsMigrateService() *schema.Resource {
 			"instance_class": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "instance class，可选 值 is small/medium/large/xlarge/2xlarge。",
+				Description: "实例 class，可选 值 是 small/medium/large/xlarge/2xlarge。",
 			},
 
 			"job_name": {

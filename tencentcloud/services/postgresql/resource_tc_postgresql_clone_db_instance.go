@@ -23,28 +23,28 @@ func ResourceTencentCloudPostgresqlCloneDbInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID original instance to be cloned。",
+				Description: "ID original 实例 到 是 cloned。",
 			},
 
 			"spec_code": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Purchasable 代码，which can be obtained from the `SpecCode` field in the 返回值 of the [DescribeClasses](https://intl.cloud.tencent.com/document/api/409/89019?from_cn_redirect=1) API。",
+				Description: "Purchasable 代码，其中 可以 是 获取 从 `SpecCode` 字段 在 返回值 的 [DescribeClasses](https://intl.云.tencent.com/document/api/409/89019?from_cn_redirect=1) API。",
 			},
 
 			"storage": {
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance storage capacity （GB）。",
+				Description: "实例 存储 容量 （GB）。",
 			},
 
 			"period": {
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Purchase duration，in months.\n- Prepaid: Supports `1`，`2`，`3`，`4`，`5`，`6`，`7`，`8`，`9`，`10`，`11`，`12`，`24`，and `36`.\n- Pay-as-you-go: Only supports `1`。",
+				Description: "Purchase 时长，在 months.\n- Prepaid: Supports `1`，`2`，`3`，`4`，`5`，`6`，`7`，`8`，`9`，`10`，`11`，`12`，`24`，和 `36`.\n- Pay-作为-您-go: Only 支持 `1`。",
 			},
 
 			"auto_renew_flag": {
@@ -58,14 +58,14 @@ func ResourceTencentCloudPostgresqlCloneDbInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "私有网络 ID in the 格式 of `vpc-xxxxxxx`，which can be obtained in the console or from the `unVpcId` field in the 返回值 of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API。",
+				Description: "私有网络 ID 在 格式 的 `vpc-xxxxxxx`，其中 可以 是 获取 在 console 或 从 `unVpcId` 字段 在 返回值 的 [DescribeVpcEx](https://intl.云.tencent.com/document/api/215/1372?from_cn_redirect=1) API。",
 			},
 
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "VPC subnet ID in the 格式 of `subnet-xxxxxxxx`，which can be obtained in the console or from the `unSubnetId` field in the 返回值 of the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API。",
+				Description: "VPC 子网 ID 在 格式 的 `子网-xxxxxxxx`，其中 可以 是 获取 在 console 或 从 `unSubnetId` 字段 在 返回值 的 [DescribeSubnets](https://intl.云.tencent.com/document/api/215/15784?from_cn_redirect=1) API。",
 			},
 
 			"name": {
@@ -79,14 +79,14 @@ func ResourceTencentCloudPostgresqlCloneDbInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Instance billing 类型，which currently supports:\n\n- PREPAID: Prepaid，i.e.，monthly subscription\n- POSTPAID_BY_HOUR: Pay-as-you-go，i.e.，pay by consumption\n\n默认值：PREPAID。",
+				Description: "实例 billing 类型，其中 currently 支持:\n\n- PREPAID: Prepaid，i.e.，monthly subscription\n- POSTPAID_BY_HOUR: Pay-作为-您-go，i.e.，pay 通过 consumption\n\n默认值：PREPAID。",
 			},
 
 			"security_group_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Security group of the instance，which can be obtained from the `sgld` field in the 返回值 of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API. If this parameter is not specified，the default security group will be bound。",
+				Description: "Security 组 的 实例，其中 可以 是 获取 从 `sgld` 字段 在 返回值 的 [DescribeSecurityGroups](https://intl.云.tencent.com/document/api/215/15808?from_cn_redirect=1) API. 如果 此 参数 是 不 指定， 默认值 安全 组 将 是 bound。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -103,7 +103,7 @@ func ResourceTencentCloudPostgresqlCloneDbInstance() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "The information of 标签 to be bound with the instance，which is left empty by default. This parameter can be obtained from the `标签` field in the 返回值 of the [DescribeTags](https://intl.cloud.tencent.com/document/api/651/35316?from_cn_redirect=1) API。",
+				Description: "信息 的 标签 到 是 bound 使用 实例，其中 是 left 空 通过 默认值. 此 参数 可以 是 获取 从 `标签` 字段 在 返回值 的 [DescribeTags](https://intl.云.tencent.com/document/api/651/35316?from_cn_redirect=1) API。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
@@ -126,26 +126,26 @@ func ResourceTencentCloudPostgresqlCloneDbInstance() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Deployment information of the instance node，which will display the information of each AZ when the instance node is deployed across multiple AZs.\nThe information of AZ can be obtained from the `可用区` field in the 返回值 of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API。",
+				Description: "Deployment 信息 的 实例 节点，其中 将 display 信息 的 each AZ 当 实例 节点 是 deployed across 多个 AZs.\nThe 信息 的 AZ 可以 是 获取 从 `可用区` 字段 在 返回值 的 [DescribeZones](https://intl.云.tencent.com/document/api/409/16769?from_cn_redirect=1) API。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"role": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Node 类型 Valid values:\n`Primary`;\n`Standby`。",
+							Description: "Node 类型 有效 值:\n`Primary`;\n`Standby`。",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "AZ where the node resides，such as ap-guangzhou-1。",
+							Description: "AZ 其中 节点 resides，such 作为 ap-guangzhou-1。",
 						},
 						"dedicated_cluster_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Dedicated cluster ID。",
+							Description: "Dedicated 集群 ID。",
 						},
 					},
 				},
@@ -162,21 +162,21 @@ func ResourceTencentCloudPostgresqlCloneDbInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Basic backup set ID。",
+				Description: "Basic 备份 集合 ID。",
 			},
 
 			"recovery_target_time": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Restoration point in time。",
+				Description: "Restoration point 在 时间。",
 			},
 
 			"sync_mode": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Primary-standby sync 模式，which supports:\nSemi-sync: Semi-sync\nAsync: Asynchronous\nDefault 值 for the primary instance: Semi-sync\nDefault 值 for the read-only instance: Async。",
+				Description: "Primary-standby sync 模式，其中 支持:\nSemi-sync: Semi-sync\nAsync: Asynchronous\nDefault 值 对于 primary 实例: Semi-sync\nDefault 值 对于 read-仅 实例: Async。",
 			},
 		},
 	}

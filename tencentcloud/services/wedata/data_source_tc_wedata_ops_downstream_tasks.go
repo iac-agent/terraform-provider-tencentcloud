@@ -52,12 +52,12 @@ func DataSourceTencentCloudWedataOpsDownstreamTasks() *schema.Resource {
 						"page_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Pagination size。",
+							Description: "Pagination 大小。",
 						},
 						"items": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Paging data。",
+							Description: "Paging 数据。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"task_id": {
@@ -68,12 +68,12 @@ func DataSourceTencentCloudWedataOpsDownstreamTasks() *schema.Resource {
 									"task_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task 名称",
+										Description: "任务 名称",
 									},
 									"workflow_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Workflow id。",
+										Description: "Workflow ID。",
 									},
 									"workflow_name": {
 										Type:        schema.TypeString,
@@ -93,17 +93,17 @@ func DataSourceTencentCloudWedataOpsDownstreamTasks() *schema.Resource {
 									"status": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task 状态: -N: New，-Y: Scheduling，-F: Offline，-O: Paused，-T: Offlining，-INVALID: Invalid。",
+										Description: "任务 状态: -N: New，-Y: Scheduling，-F: Offline，-O: Paused，-T: Offlining，-INVALID: Invalid。",
 									},
 									"task_type_id": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Task 类型 Id. 21:JDBC SQL，23:TDSQL-PostgreSQL，26:OfflineSynchronization，30:Python，31:PySpark，33:Impala，34:Hive SQL，35:Shell，36:Spark SQL，38:Shell Form 模式，39:Spark，40:TCHouse-P，41:Kettle，42:Tchouse-X，43:TCHouse-X SQL，46:DLC Spark，47:TiOne，48:Trino，50:DLC PySpark，92:MapReduce，130:Branch Node，131:Merged Node，132:Notebook，133:SSH，134:StarRocks，137:For-each，138:Setats SQL. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "任务 类型 ID. 21:JDBC SQL，23:TDSQL-PostgreSQL，26:OfflineSynchronization，30:Python，31:PySpark，33:Impala，34:Hive SQL，35:Shell，36:Spark SQL，38:Shell Form 模式，39:Spark，40:TCHouse-P，41:Kettle，42:Tchouse-X，43:TCHouse-X SQL，46:DLC Spark，47:TiOne，48:Trino，50:DLC PySpark，92:MapReduce，130:Branch Node，131:Merged Node，132:Notebook，133:SSH，134:StarRocks，137:For-each，138:Setats SQL. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"task_type_desc": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task 类型 描述 -20 : universal data synchronization，- 25 :  ETLTaskType，- 26 :  ETLTaskType，- 30 :  python，- 31 :  pyspark，- 34 :  hivesql，- 35 :  shell，- 36 :  sparksql，- 21 :  jdbcsql，- 32 :  dlc，- 33 :  ImpalaTaskType，- 40 :  CDWTaskType，- 41 :  kettle，- 42 :  TCHouse-X，- 43 :  TCHouse-X SQL，- 46 :  dlcsparkTaskType，- 47 :  TiOneMachineLearningTaskType，- 48 :  Trino，- 50 :  DLCPyspark，- 23 :  TencentDistributedSQL，- 39 :  spark，- 92 :  MRTaskType，- 38 :  ShellScript，- 70 :  HiveSQLScrip，-130: 指定branch，-131: 指定merge，-132: 指定Notebook explore，-133: 指定SSH node，- 134 :  StarRocks，- 137 :  For-each，-10000: common custom business. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "任务 类型 描述 -20 : universal 数据 synchronization，- 25 : ETLTaskType，- 26 : ETLTaskType，- 30 : python，- 31 : pyspark，- 34 : hivesql，- 35 : shell，- 36 : sparksql，- 21 : jdbcsql，- 32 : dlc，- 33 : ImpalaTaskType，- 40 : CDWTaskType，- 41 : kettle，- 42 : TCHouse-X，- 43 : TCHouse-X SQL，- 46 : dlcsparkTaskType，- 47 : TiOneMachineLearningTaskType，- 48 : Trino，- 50 : DLCPyspark，- 23 : TencentDistributedSQL，- 39 : spark，- 92 : MRTaskType，- 38 : ShellScript，- 70 : HiveSQLScrip，-130: 指定branch，-131: 指定merge，-132: 指定Notebook explore，-133: 指定SSH 节点，- 134 : StarRocks，- 137 : For-each，-10000: common 自定义 business. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"folder_name": {
 										Type:        schema.TypeString,
@@ -118,37 +118,37 @@ func DataSourceTencentCloudWedataOpsDownstreamTasks() *schema.Resource {
 									"first_submit_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Latest submission time。",
+										Description: "Latest submission 时间。",
 									},
 									"first_run_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "First running time。",
+										Description: "First running 时间。",
 									},
 									"schedule_desc": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Describes the scheduling plan display 描述 information。",
+										Description: "Describes scheduling plan display 描述 信息。",
 									},
 									"cycle_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task Cycle 类型: ONEOFF_CYCLE: One-time，YEAR_CYCLE: Yearly，MONTH_CYCLE: Monthly，WEEK_CYCLE: Weekly，DAY_CYCLE: Daily，HOUR_CYCLE: Hourly，MINUTE_CYCLE: Minute-级别，CRONTAB_CYCLE: Crontab expression-based。",
+										Description: "任务 Cycle 类型: ONEOFF_CYCLE: One-时间，YEAR_CYCLE: Yearly，MONTH_CYCLE: Monthly，WEEK_CYCLE: Weekly，DAY_CYCLE: Daily，HOUR_CYCLE: Hourly，MINUTE_CYCLE: Minute-级别，CRONTAB_CYCLE: Crontab expression-based。",
 									},
 									"owner_uin": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "指定person in charge。",
+										Description: "指定person 在 charge。",
 									},
 									"execution_start_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Execution 开始时间. 格式: HH:mm，for example 00:00。",
+										Description: "Execution 开始时间. 格式: HH:mm，对于 示例 00:00。",
 									},
 									"execution_end_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Execution 结束时间. 格式: HH:mm，for example 23:59。",
+										Description: "Execution 结束时间. 格式: HH:mm，对于 示例 23:59。",
 									},
 								},
 							},

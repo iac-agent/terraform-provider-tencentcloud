@@ -25,17 +25,17 @@ func DataSourceTencentCloudCdnDomainVerifyRecord() *schema.Resource {
 			"verify_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "指定verify 类型，values: `dns` (default)，`file`。",
+				Description: "指定verify 类型，值: `dns` (默认值)，`文件`。",
 			},
 			"auto_verify": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "指定是否keep first create 结果 instead of re-create again。",
+				Description: "指定是否keep first create 结果 instead 的 re-create again。",
 			},
 			"freeze_record": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "指定是否verification record needs to be freeze instead of refresh every 8 hours，this 用于domain verification。",
+				Description: "指定是否verification 记录 needs 到 是 freeze instead 的 refresh every 8 hours，此 用于domain verification。",
 			},
 			"verify_result": {
 				Type:        schema.TypeBool,
@@ -45,7 +45,7 @@ func DataSourceTencentCloudCdnDomainVerifyRecord() *schema.Resource {
 			"failed_reason": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "表示failed reason of verification。",
+				Description: "表示failed reason 的 verification。",
 			},
 			"sub_domain": {
 				Type:        schema.TypeString,
@@ -55,7 +55,7 @@ func DataSourceTencentCloudCdnDomainVerifyRecord() *schema.Resource {
 			"record": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Resolution record 值",
+				Description: "Resolution 记录 值",
 			},
 			"record_type": {
 				Type:        schema.TypeString,
@@ -70,13 +70,13 @@ func DataSourceTencentCloudCdnDomainVerifyRecord() *schema.Resource {
 			"file_verify_domains": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "列表 file verified domains。",
+				Description: "列表 文件 verified domains。",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 			"file_verify_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "名称 file verifications。",
+				Description: "名称 文件 verifications。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,

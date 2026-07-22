@@ -30,47 +30,47 @@ func ResourceTencentCloudSqlserverAccount() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Name of the SQL Server account.",
+				Description: "Name 的 SQL Server account.",
 			},
 			"password": {
 				Type:        schema.TypeString,
 				Required:    true,
 				Sensitive:   true,
-				Description: "Password of the SQL Server account.",
+				Description: "Password 的 SQL Server account.",
 			},
 			"is_admin": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Indicate that the account is root account or not.",
+				Description: "Indicate 该 account 是 root account 或 不.",
 			},
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "",
-				Description: "Remark of the SQL Server account.",
+				Description: "Remark 的 SQL Server account.",
 			},
 			"instance_id": {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "Instance ID that the account belongs to.",
+				Description: "实例 ID 该 account belongs 到.",
 			},
 			//computed
 			"status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Status of the SQL Server account. Valid values: 1, 2, 3, 4. 1 for creating, 2 for running, 3 for modifying, 4 for resetting password, -1 for deleting.",
+				Description: "Status 的 SQL Server account. 有效 值: 1, 2, 3, 4. 1 对于 creating, 2 对于 running, 3 对于 modifying, 4 对于 resetting 密码, -1 对于 deleting.",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create time of the SQL Server account.",
+				Description: "Create 时间 的 SQL Server account.",
 			},
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Last updated time of the SQL Server account.",
+				Description: "Last 更新 时间 的 SQL Server account.",
 			},
 		},
 	}

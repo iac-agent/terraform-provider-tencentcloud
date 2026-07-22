@@ -25,7 +25,7 @@ func DataSourceTencentCloudMqttTopics() *schema.Resource {
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Topic list。",
+				Description: "Topic 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {

@@ -38,7 +38,7 @@ func ResourceTencentCloudConfigCompliancePack() *schema.Resource {
 			"config_rules": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "列表 compliance pack rules。",
+				Description: "列表 compliance pack 规则。",
 				Set: func(v interface{}) int {
 					m := v.(map[string]interface{})
 					identifier, _ := m["identifier"].(string)
@@ -49,7 +49,7 @@ func ResourceTencentCloudConfigCompliancePack() *schema.Resource {
 						"identifier": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Rule identifier (managed rule 名称 or custom rule cloud function ARN)。",
+							Description: "Rule identifier (managed 规则 名称 或 自定义 规则 云 函数 ARN)。",
 						},
 						"rule_name": {
 							Type:        schema.TypeString,
@@ -73,19 +73,19 @@ func ResourceTencentCloudConfigCompliancePack() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Managed rule identifier (preset rule identity)。",
+							Description: "Managed 规则 identifier (preset 规则 identity)。",
 						},
 						"config_rule_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "配置 rule ID。",
+							Description: "配置 规则 ID。",
 						},
 						"compliance_pack_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Compliance pack ID that this rule belongs to。",
+							Description: "Compliance pack ID 该 此 规则 belongs 到。",
 						},
 						"status": {
 							Type:        schema.TypeString,
@@ -100,7 +100,7 @@ func ResourceTencentCloudConfigCompliancePack() *schema.Resource {
 						"input_parameter": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Rule input parameters。",
+							Description: "Rule input 参数。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"parameter_key": {
@@ -111,7 +111,7 @@ func ResourceTencentCloudConfigCompliancePack() *schema.Resource {
 									"type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Parameter 类型: Require or 可选",
+										Description: "Parameter 类型: Require 或 可选",
 									},
 									"value": {
 										Type:        schema.TypeString,
@@ -148,7 +148,7 @@ func ResourceTencentCloudConfigCompliancePack() *schema.Resource {
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 of the compliance pack。",
+				Description: "创建时间 的 compliance pack。",
 			},
 		},
 	}

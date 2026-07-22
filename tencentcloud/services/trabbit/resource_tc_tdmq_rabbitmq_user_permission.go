@@ -30,7 +30,7 @@ func ResourceTencentCloudTdmqRabbitmqUserPermission() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "Cluster instance ID。",
+				Description: "Cluster 实例 ID。",
 			},
 			"user": {
 				Required:    true,
@@ -47,17 +47,17 @@ func ResourceTencentCloudTdmqRabbitmqUserPermission() *schema.Resource {
 			"config_regexp": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Configure permission regexp，controls which resources can be declared。",
+				Description: "Configure 权限 regexp，controls 其中 resources 可以 是 declared。",
 			},
 			"write_regexp": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Write permission regexp，controls which resources can be written。",
+				Description: "Write 权限 regexp，controls 其中 resources 可以 是 written。",
 			},
 			"read_regexp": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Read permission regexp，controls which resources can be read。",
+				Description: "Read 权限 regexp，controls 其中 resources 可以 是 read。",
 			},
 		},
 	}

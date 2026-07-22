@@ -20,18 +20,18 @@ func DataSourceTencentCloudMonitorGrafanaPluginOverviews() *schema.Resource {
 			"plugin_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Plugin set。",
+				Description: "Plugin 集合。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"plugin_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Grafana plugin ID。",
+							Description: "Grafana 插件 ID。",
 						},
 						"version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Grafana plugin 版本",
+							Description: "Grafana 插件 版本",
 						},
 					},
 				},

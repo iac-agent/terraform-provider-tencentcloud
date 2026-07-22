@@ -29,7 +29,7 @@ func ResourceTencentCloudAsScaleInInstances() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "数量 instances to be reduced。",
+				Description: "数量 实例 到 是 reduced。",
 			},
 		},
 	}

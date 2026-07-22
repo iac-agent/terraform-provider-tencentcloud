@@ -28,20 +28,20 @@ func ResourceTencentCloudRouteTableEntryConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Route table ID。",
+				Description: "Route 表 ID。",
 			},
 
 			"route_item_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID route table entry。",
+				Description: "ID 路由 表 entry。",
 			},
 
 			"disabled": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "是否entry is 已禁用",
+				Description: "是否entry 是 已禁用",
 			},
 		},
 	}

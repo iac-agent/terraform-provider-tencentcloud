@@ -31,28 +31,28 @@ func DataSourceTencentCloudWafPeakPoints() *schema.Resource {
 			"domain": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The 域名 名称 to be queried. If all 域名 名称 data is queried，this parameter is not filled in。",
+				Description: "域名 名称 到 是 queried. 如果 all 域名 名称 数据 是 queried，此 参数 是 不 filled 在。",
 			},
 			"edition": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Only support sparta-waf and clb-waf. 如果未传入，there will be no filtering。",
+				Description: "Only support sparta-waf 和 clb-waf. 如果未传入，there 将 是 无 filtering。",
 			},
 			"instance_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "WAF instance ID，如果未传入，there will be no filtering。",
+				Description: "WAF 实例 ID，如果未传入，there 将 是 无 filtering。",
 			},
 			"metric_name": {
 				Optional:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(MetricNameList),
-				Description:  "Twelve values are available: `access`-Peak qps trend chart; `botAccess`- bot peak qps trend chart; `down`-Downstream peak bandwidth trend chart; `up`-Upstream peak bandwidth trend chart; `attack`-Trend chart of total 数量 web attacks; `cc`-Trend chart of total 数量 CC attacks; `bw`- Black IP Attack Total Trend Chart; `tamper`- Anti Tamper Attack Total Trend Chart; `leak`- Trend chart of total 数量 anti leakage attacks; `acl`- Trend chart of total 数量 access control attacks; `http_status`- Trend chart of 状态 代码 frequency; `wx_access`- WeChat Mini Program Peak QPS Trend Chart。",
+				Description:  "Twelve 值 是 可用: `访问`-Peak qps trend chart; `botAccess`- bot peak qps trend chart; `down`-Downstream peak 带宽 trend chart; `up`-Upstream peak 带宽 trend chart; `attack`-Trend chart 的 总数 数量 web attacks; `cc`-Trend chart 的 总数 数量 CC attacks; `bw`- Black IP Attack Total Trend Chart; `tamper`- Anti Tamper Attack Total Trend Chart; `leak`- Trend chart 的 总数 数量 anti leakage attacks; `acl`- Trend chart 的 总数 数量 访问 control attacks; `http_status`- Trend chart 的 状态 代码 频率; `wx_access`- WeChat Mini Program Peak QPS Trend Chart。",
 			},
 			"points": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "point list。",
+				Description: "point 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"time": {
@@ -83,47 +83,47 @@ func DataSourceTencentCloudWafPeakPoints() *schema.Resource {
 						"down": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Peak downlink bandwidth，unit B。",
+							Description: "Peak downlink 带宽，单位 B。",
 						},
 						"up": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Peak uplink bandwidth，unit B。",
+							Description: "Peak uplink 带宽，单位 B。",
 						},
 						"status_server_error": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Trend chart of the 数量 状态 codes returned by WAF to the server。",
+							Description: "Trend chart 的 数量 状态 codes 返回 通过 WAF 到 服务器。",
 						},
 						"status_client_error": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Trend chart of the 数量 状态 codes returned by WAF to the client。",
+							Description: "Trend chart 的 数量 状态 codes 返回 通过 WAF 到 客户端。",
 						},
 						"status_redirect": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Trend chart of the 数量 状态 codes returned by WAF to the client。",
+							Description: "Trend chart 的 数量 状态 codes 返回 通过 WAF 到 客户端。",
 						},
 						"status_ok": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Trend chart of the 数量 状态 codes returned by WAF to the client。",
+							Description: "Trend chart 的 数量 状态 codes 返回 通过 WAF 到 客户端。",
 						},
 						"upstream_server_error": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Trend chart of the 数量 状态 codes returned to WAF by the origin site。",
+							Description: "Trend chart 的 数量 状态 codes 返回 到 WAF 通过 源站 site。",
 						},
 						"upstream_client_error": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Trend chart of the 数量 状态 codes returned to WAF by the origin site。",
+							Description: "Trend chart 的 数量 状态 codes 返回 到 WAF 通过 源站 site。",
 						},
 						"upstream_redirect": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Trend chart of the 数量 状态 codes returned to WAF by the origin site。",
+							Description: "Trend chart 的 数量 状态 codes 返回 到 WAF 通过 源站 site。",
 						},
 					},
 				},

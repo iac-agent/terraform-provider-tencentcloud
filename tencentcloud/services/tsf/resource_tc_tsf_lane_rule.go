@@ -27,25 +27,25 @@ func ResourceTencentCloudTsfLaneRule() *schema.Resource {
 			"rule_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Rule id。",
+				Description: "Rule ID。",
 			},
 
 			"rule_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "lane rule 名称",
+				Description: "lane 规则 名称",
 			},
 
 			"remark": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Lane rule notes。",
+				Description: "Lane 规则 notes。",
 			},
 
 			"rule_tag_list": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "列表 swimlane rule labels。",
+				Description: "列表 swimlane 规则 labels。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_id": {
@@ -73,7 +73,7 @@ func ResourceTencentCloudTsfLaneRule() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "lane rule ID。",
+							Description: "lane 规则 ID。",
 						},
 						"create_time": {
 							Type:        schema.TypeInt,
@@ -94,7 +94,7 @@ func ResourceTencentCloudTsfLaneRule() *schema.Resource {
 			"rule_tag_relationship": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "lane rule 标签 relationship。",
+				Description: "lane 规则 标签 relationship。",
 			},
 
 			"lane_id": {
@@ -133,7 +133,7 @@ func ResourceTencentCloudTsfLaneRule() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Program id list。",
+				Description: "Program ID 列表。",
 			},
 		},
 	}

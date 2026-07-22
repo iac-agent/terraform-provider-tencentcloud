@@ -29,14 +29,14 @@ func ResourceTencentCloudTdmqRocketmqGroup() *schema.Resource {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "组名称 (8-64 characters)。",
+				Description: "组名称 (8-64 字符)。",
 			},
 
 			"namespace": {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "Namespace. Currently，only one namespace is supported。",
+				Description: "Namespace. Currently，仅 一个 命名空间 是 支持。",
 			},
 
 			"read_enable": {
@@ -61,13 +61,13 @@ func ResourceTencentCloudTdmqRocketmqGroup() *schema.Resource {
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "备注 (up to 128 characters)。",
+				Description: "备注 (up 到 128 字符)。",
 			},
 
 			"consumer_num": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "The 数量 online consumers。",
+				Description: "数量 online consumers。",
 			},
 
 			"tps": {
@@ -79,7 +79,7 @@ func ResourceTencentCloudTdmqRocketmqGroup() *schema.Resource {
 			"total_accumulative": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "The total 数量 heaped messages。",
+				Description: "总数 数量 heaped messages。",
 			},
 
 			"consumption_mode": {
@@ -91,7 +91,7 @@ func ResourceTencentCloudTdmqRocketmqGroup() *schema.Resource {
 			"retry_partition_num": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "The 数量 partitions in a retry topic。",
+				Description: "数量 partitions 在 retry 主题。",
 			},
 
 			"create_time": {
@@ -115,7 +115,7 @@ func ResourceTencentCloudTdmqRocketmqGroup() *schema.Resource {
 			"consumer_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Consumer 类型 Enumerated values: ACTIVELY or PASSIVELY。",
+				Description: "Consumer 类型 Enumerated 值: ACTIVELY 或 PASSIVELY。",
 			},
 		},
 	}

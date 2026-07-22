@@ -35,7 +35,7 @@ func ResourceTencentCloudRedisLogDelivery() *schema.Resource {
 				Optional:      true,
 				Computed:      true,
 				ConflictsWith: []string{"logset_name"},
-				Description:   "The ID log set being delivered。",
+				Description:   "ID 日志 集合 being delivered。",
 			},
 
 			"topic_id": {
@@ -43,7 +43,7 @@ func ResourceTencentCloudRedisLogDelivery() *schema.Resource {
 				Optional:      true,
 				Computed:      true,
 				ConflictsWith: []string{"topic_name"},
-				Description:   "The ID topic being delivered。",
+				Description:   "ID 主题 being delivered。",
 			},
 
 			"logset_name": {
@@ -51,7 +51,7 @@ func ResourceTencentCloudRedisLogDelivery() *schema.Resource {
 				Optional:      true,
 				ConflictsWith: []string{"logset_id"},
 				Computed:      true,
-				Description:   "Log set 名称 If LogsetId does not 指定a specific log set ID，please configure this parameter to set the log set 名称，and the system will automatically create a new log set with the specified 名称",
+				Description:   "Log 集合 名称 如果 LogsetId does 不 指定a 特定 日志 集合 ID，please configure 此 参数 到 集合 日志 集合 名称，和 系统 将 automatically create new 日志 集合 使用 指定 名称",
 			},
 
 			"topic_name": {
@@ -59,28 +59,28 @@ func ResourceTencentCloudRedisLogDelivery() *schema.Resource {
 				Optional:      true,
 				ConflictsWith: []string{"topic_id"},
 				Computed:      true,
-				Description:   "Log topic 名称，必填 when TopicId is empty，a new log topic will be automatically created。",
+				Description:   "Log 主题 名称，必填 当 TopicId 是 空， new 日志 主题 将 是 automatically 创建。",
 			},
 
 			"log_region": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The 地域 where the log set is located; 如果未指定，the 地域 where the instance is located will be used by default。",
+				Description: "地域 其中 日志 集合 是 located; 如果未指定， 地域 其中 实例 是 located 将 是 使用 通过 默认值。",
 			},
 
 			"period": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Log storage time，默认为 30 days，with an 可选 range of 1-3600 days。",
+				Description: "Log 存储 时间，默认为 30 days，使用 可选 范围 的 1-3600 days。",
 			},
 
 			"create_index": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "是否create an 索引 when creating a log topic。",
+				Description: "是否create 索引 当 creating 日志 主题。",
 			},
 		},
 	}

@@ -39,7 +39,7 @@ func ResourceTencentCloudCosBucketDomainCertificateAttachment() *schema.Resource
 				MaxItems:    1,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The certificate of specified doamin。",
+				Description: "证书 的 指定 doamin。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"certificate": {
@@ -61,28 +61,28 @@ func ResourceTencentCloudCosBucketDomainCertificateAttachment() *schema.Resource
 										MaxItems:    1,
 										Required:    true,
 										ForceNew:    true,
-										Description: "Custom certificate。",
+										Description: "Custom 证书。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"cert_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													ForceNew:    true,
-													Description: "ID certificate。",
+													Description: "ID 证书。",
 												},
 												"cert": {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
 													Sensitive:   true,
-													Description: "Public 键 of certificate。",
+													Description: "Public 键 的 证书。",
 												},
 												"private_key": {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
 													Sensitive:   true,
-													Description: "Private 键 of certificate。",
+													Description: "Private 键 的 证书。",
 												},
 											},
 										},

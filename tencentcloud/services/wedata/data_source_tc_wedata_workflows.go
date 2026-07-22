@@ -30,13 +30,13 @@ func DataSourceTencentCloudWedataWorkflows() *schema.Resource {
 			"parent_folder_path": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Workflow folder。",
+				Description: "Workflow 文件夹。",
 			},
 
 			"workflow_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Workflow 类型 有效值：cycle and manual。",
+				Description: "Workflow 类型 有效值：cycle 和 manual。",
 			},
 
 			"bundle_id": {
@@ -60,7 +60,7 @@ func DataSourceTencentCloudWedataWorkflows() *schema.Resource {
 			"modify_time": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "修改时间 interval yyyy-MM-dd HH:MM:ss. fill in two times in the array。",
+				Description: "修改时间 间隔 yyyy-MM-dd HH:MM:ss. fill 在 two times 在 数组。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -69,7 +69,7 @@ func DataSourceTencentCloudWedataWorkflows() *schema.Resource {
 			"create_time": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "创建时间 range yyyy-MM-dd HH:MM:ss. two times must be filled in the array。",
+				Description: "创建时间 范围 yyyy-MM-dd HH:MM:ss. two times 必须 是 filled 在 数组。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -78,7 +78,7 @@ func DataSourceTencentCloudWedataWorkflows() *schema.Resource {
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Describes workflow pagination information。",
+				Description: "Describes 工作流 pagination 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"workflow_id": {
@@ -94,7 +94,7 @@ func DataSourceTencentCloudWedataWorkflows() *schema.Resource {
 						"workflow_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Workflow 类型: cycle or manual。",
+							Description: "Workflow 类型: cycle 或 manual。",
 						},
 						"owner_uin": {
 							Type:        schema.TypeString,
@@ -114,7 +114,7 @@ func DataSourceTencentCloudWedataWorkflows() *schema.Resource {
 						"update_user_uin": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Last updated 用户 ID。",
+							Description: "Last 更新 用户 ID。",
 						},
 						"workflow_desc": {
 							Type:        schema.TypeString,

@@ -42,29 +42,29 @@ func ResourceTencentCloudWedataWorkflowPermissions() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Authorization entity 类型，folder/workflow。",
+				Description: "Authorization entity 类型，文件夹/工作流。",
 			},
 
 			"permission_list": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Authorization information array。",
+				Description: "Authorization 信息 数组。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"permission_target_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Authorization target 类型 (用户: 用户，角色: 角色)。",
+							Description: "Authorization 目标 类型 (用户: 用户，角色: 角色)。",
 						},
 						"permission_target_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Authorization target ID array (userId/roleId)。",
+							Description: "Authorization 目标 ID 数组 (userId/roleId)。",
 						},
 						"permission_type_list": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Authorization permission 类型 array (CAN_VIEW/CAN_RUN/CAN_EDIT/CAN_MANAGE，currently only supports CAN_MANAGE)。",
+							Description: "Authorization 权限 类型 数组 (CAN_VIEW/CAN_RUN/CAN_EDIT/CAN_MANAGE，currently 仅 支持 CAN_MANAGE)。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},

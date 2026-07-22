@@ -49,7 +49,7 @@ func DataSourceTencentCloudMqttInstanceDetail() *schema.Resource {
 			"tps_limit": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Elastic TPS current 限制 值",
+				Description: "Elastic TPS 当前 限制 值",
 			},
 
 			"created_time": {
@@ -67,7 +67,7 @@ func DataSourceTencentCloudMqttInstanceDetail() *schema.Resource {
 			"instance_status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "实例状态 RUNNING- In operation; MAINTAINING- Under Maintenance; ABNORMAL- abnormal; OVERDUE- Arrears of fees; DESTROYED- Deleted; CREATING- Creating in progress; MODIFYING- In the process of transformation; CREATE_FAILURE- Creation failed; MODIFY_FAILURE- Transformation failed; DELETING- deleting。",
+				Description: "实例状态 RUNNING- In operation; MAINTAINING- Under Maintenance; ABNORMAL- abnormal; OVERDUE- Arrears 的 fees; DESTROYED- Deleted; CREATING- Creating 在 progress; MODIFYING- In process 的 transformation; CREATE_FAILURE- Creation failed; MODIFY_FAILURE- Transformation failed; DELETING- deleting。",
 			},
 
 			"sku_code": {
@@ -79,43 +79,43 @@ func DataSourceTencentCloudMqttInstanceDetail() *schema.Resource {
 			"max_subscription_per_client": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "最大subscriptions per client。",
+				Description: "最大subscriptions per 客户端。",
 			},
 
 			"authorization_policy_limit": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "限制 on the 数量 authorization rules。",
+				Description: "限制 在 数量 authorization 规则。",
 			},
 
 			"client_num_limit": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "数量 client connections online。",
+				Description: "数量 客户端 connections online。",
 			},
 
 			"device_certificate_provision_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Client certificate registration method: JITP: Automatic Registration; API: Manually register through API。",
+				Description: "Client 证书 registration 方法: JITP: Automatic Registration; API: Manually register through API。",
 			},
 
 			"automatic_activation": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Is it automatically activated when registering device certificates automatically。",
+				Description: "Is 它 automatically activated 当 registering device certificates automatically。",
 			},
 
 			"renew_flag": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "是否renew automatically. Only the annual and monthly package cluster is effective. 1: Automatic renewal; 0: Non automatic renewal。",
+				Description: "是否renew automatically. Only annual 和 monthly 包 集群 是 effective. 1: Automatic renewal; 0: Non automatic renewal。",
 			},
 
 			"pay_mode": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Billing 模式，POSTPAID，pay as you go PREPAID，annual and monthly package。",
+				Description: "Billing 模式，POSTPAID，pay 作为 您 go PREPAID，annual 和 monthly 包。",
 			},
 
 			"expiry_time": {
@@ -127,19 +127,19 @@ func DataSourceTencentCloudMqttInstanceDetail() *schema.Resource {
 			"destroy_time": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Pre destruction time，millisecond 时间戳。",
+				Description: "Pre destruction 时间，millisecond 时间戳。",
 			},
 
 			"x509_mode": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "TLS，Unidirectional authentication mTLS，bidirectional authentication BYOC; One machine，one certificate。",
+				Description: "TLS，Unidirectional authentication mTLS，bidirectional authentication BYOC; One machine，一个 证书。",
 			},
 
 			"max_ca_num": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Maximum Ca quota。",
+				Description: "Maximum Ca 配额。",
 			},
 
 			"registration_code": {
@@ -151,7 +151,7 @@ func DataSourceTencentCloudMqttInstanceDetail() *schema.Resource {
 			"max_subscription": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "最大subscriptions in the cluster。",
+				Description: "最大subscriptions 在 集群。",
 			},
 
 			"authorization_policy": {

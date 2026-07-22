@@ -25,7 +25,7 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 			"instance_enum_param": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Enum parameter。",
+				Description: "Enum 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"current_value": {
@@ -49,12 +49,12 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 						"need_restart": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "if need restart。",
+							Description: "如果 need restart。",
 						},
 						"param_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 parameter。",
+							Description: "名称 参数。",
 						},
 						"tips": {
 							Type: schema.TypeSet,
@@ -62,7 +62,7 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "descripition of parameter。",
+							Description: "descripition 的 参数。",
 						},
 						"value_type": {
 							Type:        schema.TypeString,
@@ -72,7 +72,7 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "if is running。",
+							Description: "如果 是 running。",
 						},
 					},
 				},
@@ -81,7 +81,7 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 			"instance_integer_param": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Integer parameter。",
+				Description: "Integer 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"current_value": {
@@ -107,12 +107,12 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 						"need_restart": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "if need restart。",
+							Description: "如果 need restart。",
 						},
 						"param_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 parameter。",
+							Description: "名称 参数。",
 						},
 						"tips": {
 							Type: schema.TypeSet,
@@ -120,7 +120,7 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "descripition of parameter。",
+							Description: "descripition 的 参数。",
 						},
 						"value_type": {
 							Type:        schema.TypeString,
@@ -130,7 +130,7 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "if is running。",
+							Description: "如果 是 running。",
 						},
 					},
 				},
@@ -139,7 +139,7 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 			"instance_text_param": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "text parameter。",
+				Description: "text 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"current_value": {
@@ -155,12 +155,12 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 						"need_restart": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "if need restart。",
+							Description: "如果 need restart。",
 						},
 						"param_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 parameter。",
+							Description: "名称 参数。",
 						},
 						"text_value": {
 							Type:        schema.TypeString,
@@ -173,7 +173,7 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "descripition of parameter。",
+							Description: "descripition 的 参数。",
 						},
 						"value_type": {
 							Type:        schema.TypeString,
@@ -183,7 +183,7 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "if is running。",
+							Description: "如果 是 running。",
 						},
 					},
 				},
@@ -192,7 +192,7 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 			"instance_multi_param": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "multi parameter。",
+				Description: "multi 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"current_value": {
@@ -216,17 +216,17 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 						"need_restart": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "if need restart。",
+							Description: "如果 need restart。",
 						},
 						"param_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 parameter。",
+							Description: "名称 参数。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "if is running。",
+							Description: "如果 是 running。",
 						},
 						"tips": {
 							Type: schema.TypeSet,
@@ -234,7 +234,7 @@ func DataSourceTencentCloudMongodbInstanceParams() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "descripition of parameter。",
+							Description: "descripition 的 参数。",
 						},
 						"value_type": {
 							Type:        schema.TypeString,

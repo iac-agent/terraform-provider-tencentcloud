@@ -61,7 +61,7 @@ func DataSourceTencentCloudDcdbSaleInfo() *schema.Resource {
 									"on_sale": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "is 可用区 on sale。",
+										Description: "是 可用区 在 sale。",
 									},
 								},
 							},
@@ -69,7 +69,7 @@ func DataSourceTencentCloudDcdbSaleInfo() *schema.Resource {
 						"available_choice": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "available 可用区 choice。",
+							Description: "可用 可用区 choice。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"master_zone": {
@@ -96,7 +96,7 @@ func DataSourceTencentCloudDcdbSaleInfo() *schema.Resource {
 												"on_sale": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "is 可用区 on sale。",
+													Description: "是 可用区 在 sale。",
 												},
 											},
 										},
@@ -125,7 +125,7 @@ func DataSourceTencentCloudDcdbSaleInfo() *schema.Resource {
 												"on_sale": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "is 可用区 on sale。",
+													Description: "是 可用区 在 sale。",
 												},
 											},
 										},

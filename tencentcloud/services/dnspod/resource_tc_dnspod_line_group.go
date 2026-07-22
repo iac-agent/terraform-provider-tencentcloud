@@ -35,7 +35,7 @@ func ResourceTencentCloudDnspodLineGroup() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Line 组名称，length 1-17 characters。",
+				Description: "Line 组名称，长度 1-17 字符。",
 			},
 
 			"lines": {
@@ -44,7 +44,7 @@ func ResourceTencentCloudDnspodLineGroup() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "列表 lines in the group. Maximum 120 lines。",
+				Description: "列表 lines 在 组. Maximum 120 lines。",
 			},
 
 			"domain_id": {

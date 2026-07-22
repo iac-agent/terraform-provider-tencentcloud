@@ -19,7 +19,7 @@ func DataSourceTencentCloudTsfUnitRules() *schema.Resource {
 			"gateway_instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway 实例 ID",
+				Description: "网关 实例 ID",
 			},
 
 			"status": {
@@ -31,29 +31,29 @@ func DataSourceTencentCloudTsfUnitRules() *schema.Resource {
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Pagination list information。",
+				Description: "Pagination 列表 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "total 数量 records。",
+							Description: "总数 数量 records。",
 						},
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "record entity list。",
+							Description: "记录 entity 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "rule 名称",
+										Description: "规则 名称",
 									},
 									"id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "rule ID。",
+										Description: "规则 ID。",
 									},
 									"gateway_instance_id": {
 										Type:        schema.TypeString,
@@ -73,7 +73,7 @@ func DataSourceTencentCloudTsfUnitRules() *schema.Resource {
 									"unit_rule_item_list": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "列表 rule items。",
+										Description: "列表 规则 items。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"relationship": {
@@ -89,27 +89,27 @@ func DataSourceTencentCloudTsfUnitRules() *schema.Resource {
 												"dest_namespace_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "destination namespace 名称",
+													Description: "destination 命名空间 名称",
 												},
 												"name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "rule item 名称",
+													Description: "规则 item 名称",
 												},
 												"id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "rule item ID。",
+													Description: "规则 item ID。",
 												},
 												"unit_rule_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Unitization rule ID。",
+													Description: "Unitization 规则 ID。",
 												},
 												"priority": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Rule 顺序，the smaller the higher the 优先级: the 默认为 0。",
+													Description: "Rule 顺序， smaller higher 优先级: 默认为 0。",
 												},
 												"description": {
 													Type:        schema.TypeString,
@@ -119,7 +119,7 @@ func DataSourceTencentCloudTsfUnitRules() *schema.Resource {
 												"unit_rule_tag_list": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "列表 rule labels。",
+													Description: "列表 规则 labels。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"tag_type": {
@@ -145,12 +145,12 @@ func DataSourceTencentCloudTsfUnitRules() *schema.Resource {
 															"unit_rule_item_id": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Unitization rule item ID。",
+																Description: "Unitization 规则 item ID。",
 															},
 															"id": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "rule ID。",
+																Description: "规则 ID。",
 															},
 														},
 													},
@@ -161,12 +161,12 @@ func DataSourceTencentCloudTsfUnitRules() *schema.Resource {
 									"created_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "created time。",
+										Description: "创建 时间。",
 									},
 									"updated_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Updated time。",
+										Description: "Updated 时间。",
 									},
 								},
 							},

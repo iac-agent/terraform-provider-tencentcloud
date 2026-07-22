@@ -22,13 +22,13 @@ func ResourceTencentCloudTcaplusTableGroup() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID TcaplusDB cluster to which the table group belongs。",
+				Description: "ID TcaplusDB 集群 到 其中 表 组 belongs。",
 			},
 			"tablegroup_name": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 30),
-				Description:  "名称 TcaplusDB table group. 名称 length should be between 1 and 30。",
+				Description:  "名称 TcaplusDB 表 组. 名称 长度 should 是 between 1 和 30。",
 			},
 			// Computed values.
 			"table_count": {
@@ -39,12 +39,12 @@ func ResourceTencentCloudTcaplusTableGroup() *schema.Resource {
 			"total_size": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Total storage size (MB)。",
+				Description: "Total 存储 大小 (MB)。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 of the TcaplusDB table group。",
+				Description: "创建时间 的 TcaplusDB 表 组。",
 			},
 		},
 	}

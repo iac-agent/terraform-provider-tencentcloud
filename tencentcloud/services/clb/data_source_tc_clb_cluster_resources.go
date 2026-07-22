@@ -19,7 +19,7 @@ func DataSourceTencentCloudClbClusterResources() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "过滤查询集群的条件。 cluster-id - String - 必填：否 - （过滤条件）按集群 ID 过滤，如 tgw-12345678。 VIP - 字符串 - 必填：否 - （过滤条件）按负载均衡器 VIP 过滤，例如 192.168.0.1。 loadblancer-id - 字符串 - 必填：否 - （过滤条件）按 loadblancer ID 过滤，例如 lbl-12345678。 idle - String - 必填：否 - （过滤条件）过滤条件 负载均衡是否空闲，如True、False。",
+				Description: "过滤查询集群的条件。 集群-ID - String - 必填：否 - （过滤条件）按集群 ID 过滤，如 tgw-12345678。 VIP - 字符串 - 必填：否 - （过滤条件）按负载均衡器 VIP 过滤，例如 192.168.0.1。 loadblancer-ID - 字符串 - 必填：否 - （过滤条件）按 loadblancer ID 过滤，例如 lbl-12345678。 idle - String - 必填：否 - （过滤条件）过滤条件 负载均衡是否空闲，如True、False。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {

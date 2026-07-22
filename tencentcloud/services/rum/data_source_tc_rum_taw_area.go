@@ -23,7 +23,7 @@ func DataSourceTencentCloudRumTawArea() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Area id.",
+				Description: "Area ID.",
 			},
 
 			"area_keys": {
@@ -32,7 +32,7 @@ func DataSourceTencentCloudRumTawArea() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Area key.",
+				Description: "Area 键.",
 			},
 
 			"area_statuses": {
@@ -41,44 +41,44 @@ func DataSourceTencentCloudRumTawArea() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Area status `1`:valid; `2`:invalid.",
+				Description: "Area 状态 `1`:有效; `2`:无效.",
 			},
 
 			"area_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Area list.",
+				Description: "Area 列表.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"area_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Area id.",
+							Description: "Area ID.",
 						},
 						"area_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Area status `1`:&amp;#39;valid&amp;#39;; `2`:&amp;#39;invalid&amp;#39;.",
+							Description: "Area 状态 `1`:&amp;#39;有效&amp;#39;; `2`:&amp;#39;无效&amp;#39;.",
 						},
 						"area_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Area name.",
+							Description: "Area 名称.",
 						},
 						"area_key": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Area key.",
+							Description: "Area 键.",
 						},
 						"area_region_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Area code id.",
+							Description: "Area 代码 ID.",
 						},
 						"area_region_code": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Area code.",
+							Description: "Area 代码.",
 						},
 						"area_abbr": {
 							Type:        schema.TypeString,
@@ -92,7 +92,7 @@ func DataSourceTencentCloudRumTawArea() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

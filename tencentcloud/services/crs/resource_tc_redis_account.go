@@ -30,20 +30,20 @@ func ResourceTencentCloudRedisAccount() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID instance。",
+				Description: "ID 实例。",
 			},
 
 			"account_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The 账号 名称",
+				Description: "账号 名称",
 			},
 
 			"account_password": {
 				Required:    true,
 				Type:        schema.TypeString,
 				Sensitive:   true,
-				Description: "1: Length 8-30 digits，it is recommended to use a 密码 of more than 12 digits; 2: Cannot start with `/`; 3: Include at least two items: a.Lowercase letters `a-z`; b.Uppercase letters `A-Z` c.Numbers `0-9`;  d.`()`~!@#$%^&*-+=_|{}[]:;<>,.?/`。",
+				Description: "1: Length 8-30 digits，它 是 recommended 到 使用 密码 的 more 比 12 digits; 2: Cannot start 使用 `/`; 3: Include 在 least two items: .Lowercase letters `-z`; b.Uppercase letters `A-Z` c.Numbers `0-9`; d.`()`~!@#$%^&*-+=_|{}[]:;<>,.?/`。",
 			},
 
 			"remark": {
@@ -58,13 +58,13 @@ func ResourceTencentCloudRedisAccount() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Routing policy: Enter master or replication，which 表示master node or slave node，cannot be empty when modifying operations。",
+				Description: "Routing 策略: Enter master 或 复制，其中 表示master 节点 或 slave 节点，不能 是 空 当 modifying operations。",
 			},
 
 			"privilege": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Read and write policy: Enter R and RW to indicate read-only，read-write，cannot be empty when modifying operations。",
+				Description: "Read 和 write 策略: Enter R 和 RW 到 indicate read-仅，read-write，不能 是 空 当 modifying operations。",
 			},
 		},
 	}

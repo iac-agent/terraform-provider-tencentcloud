@@ -18,19 +18,19 @@ func DataSourceTencentCloudSqlserverCollationTimeZone() *schema.Resource {
 			"machine_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The host type of the purchased instance, PM-physical machine, CLOUD_PREMIUM-cloud server high-performance cloud disk, CLOUD_SSD-cloud server SSD cloud disk, CLOUD_HSSD-cloud server enhanced SSD cloud disk, CLOUD_TSSD-cloud server ultra-fast SSD cloud disk, CLOUD_BSSD-cloud server general SSD cloud disk, CLOUD_BASIC-cloud server cloud hard disk, the default value is PM.",
+				Description: "主机 类型 的 purchased 实例, PM-physical machine, CLOUD_PREMIUM-云 服务器 high-performance 云 磁盘, CLOUD_SSD-云 服务器 SSD 云 磁盘, CLOUD_HSSD-云 服务器 enhanced SSD 云 磁盘, CLOUD_TSSD-云 服务器 ultra-fast SSD 云 磁盘, CLOUD_BSSD-云 服务器 general SSD 云 磁盘, CLOUD_BASIC-云 服务器 云 hard 磁盘, 默认值 值 是 PM.",
 			},
 
 			"db_version": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Purchase instance version number.",
+				Description: "Purchase 实例 版本 数量.",
 			},
 
 			"collation": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of system character set collations.",
+				Description: "List 的 系统 character 集合 collations.",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -39,7 +39,7 @@ func DataSourceTencentCloudSqlserverCollationTimeZone() *schema.Resource {
 			"time_zone": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "System time zone list.",
+				Description: "System 时间 zone 列表.",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -48,7 +48,7 @@ func DataSourceTencentCloudSqlserverCollationTimeZone() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

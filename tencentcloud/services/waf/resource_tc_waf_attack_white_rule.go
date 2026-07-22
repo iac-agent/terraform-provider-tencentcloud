@@ -41,7 +41,7 @@ func ResourceTencentCloudWafAttackWhiteRule() *schema.Resource {
 			"rules": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Rule list。",
+				Description: "Rule 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"match_field": {
@@ -52,7 +52,7 @@ func ResourceTencentCloudWafAttackWhiteRule() *schema.Resource {
 						"match_method": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Matching method。",
+							Description: "Matching 方法。",
 						},
 						"match_content": {
 							Type:        schema.TypeString,
@@ -72,7 +72,7 @@ func ResourceTencentCloudWafAttackWhiteRule() *schema.Resource {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whitelist of rule IDs。",
+				Description: "Whitelist 的 规则 IDs。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -82,7 +82,7 @@ func ResourceTencentCloudWafAttackWhiteRule() *schema.Resource {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				Computed:    true,
-				Description: "The whitened category rule ID。",
+				Description: "whitened category 规则 ID。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -92,7 +92,7 @@ func ResourceTencentCloudWafAttackWhiteRule() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "0: Whiten according to a specific rule ID，1: Whiten according to the rule 类型",
+				Description: "0: Whiten according 到 特定 规则 ID，1: Whiten according 到 规则 类型",
 			},
 
 			"name": {

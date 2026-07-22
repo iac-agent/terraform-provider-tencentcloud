@@ -22,7 +22,7 @@ func TencentSqlServerBasicInfo(isROInstance bool) map[string]*schema.Schema {
 			Type:         schema.TypeString,
 			Required:     true,
 			ValidateFunc: tccommon.ValidateStringLengthInRange(1, 60),
-			Description:  "Name of the SQL Server instance.",
+			Description:  "Name 的 SQL Server 实例.",
 		},
 		"charge_type": {
 			Type:         schema.TypeString,
@@ -30,19 +30,19 @@ func TencentSqlServerBasicInfo(isROInstance bool) map[string]*schema.Schema {
 			Default:      svcpostgresql.COMMON_PAYTYPE_POSTPAID,
 			ForceNew:     true,
 			ValidateFunc: tccommon.ValidateAllowedStringValue([]string{svcpostgresql.COMMON_PAYTYPE_PREPAID, svcpostgresql.COMMON_PAYTYPE_POSTPAID}),
-			Description:  "Pay type of the SQL Server instance. Available values `PREPAID`, `POSTPAID_BY_HOUR`.",
+			Description:  "Pay 类型 的 SQL Server 实例. Available 值 `PREPAID`, `POSTPAID_BY_HOUR`.",
 		},
 		"period": {
 			Type:         schema.TypeInt,
 			Optional:     true,
 			ValidateFunc: tccommon.ValidateIntegerInRange(1, 48),
-			Description:  "Purchase instance period in month. The value does not exceed 48.",
+			Description:  "Purchase 实例 周期 在 month. 值 does 不 exceed 48.",
 		},
 		"auto_voucher": {
 			Type:        schema.TypeInt,
 			Optional:    true,
 			Default:     0,
-			Description: "Whether to use the voucher automatically; 1 for yes, 0 for no, the default is 0.",
+			Description: "Whether 到 使用 voucher automatically; 1 对于 yes, 0 对于 无, 默认值 是 0.",
 		},
 		"voucher_ids": {
 			Type:     schema.TypeSet,
@@ -50,27 +50,27 @@ func TencentSqlServerBasicInfo(isROInstance bool) map[string]*schema.Schema {
 			Elem: &schema.Schema{
 				Type: schema.TypeString,
 			},
-			Description: "An array of voucher IDs, currently only one can be used for a single order.",
+			Description: "An 数组 的 voucher IDs, currently 仅 一个 可以 是 使用 对于 单个 order.",
 		},
 		"vpc_id": {
 			Type:        schema.TypeString,
 			Optional:    true,
-			Description: "ID of VPC.",
+			Description: "ID 的 VPC.",
 		},
 		"subnet_id": {
 			Type:        schema.TypeString,
 			Optional:    true,
-			Description: "ID of subnet.",
+			Description: "ID 的 子网.",
 		},
 		"storage": {
 			Type:        schema.TypeInt,
 			Required:    true,
-			Description: "Disk size (in GB). Allowed value must be a multiple of 10. The storage must be set with the limit of `storage_min` and `storage_max` which data source `tencentcloud_sqlserver_specinfos` provides.",
+			Description: "Disk 大小 (在 GB). Allowed 值 必须 是 多个 的 10. 存储 必须 是 集合 使用 限制 的 `storage_min` 和 `storage_max` 其中 数据 source `tencentcloud_sqlserver_specinfos` provides.",
 		},
 		"memory": {
 			Type:        schema.TypeInt,
 			Required:    true,
-			Description: "Memory size (in GB). Allowed value must be larger than `memory` that data source `tencentcloud_sqlserver_specinfos` provides.",
+			Description: "Memory 大小 (在 GB). Allowed 值 必须 是 larger 比 `内存` 该 数据 source `tencentcloud_sqlserver_specinfos` provides.",
 		},
 		"availability_zone": {
 			Type:        schema.TypeString,
@@ -85,60 +85,60 @@ func TencentSqlServerBasicInfo(isROInstance bool) map[string]*schema.Schema {
 			Elem: &schema.Schema{
 				Type: schema.TypeString,
 			},
-			Description: "Security group bound to the instance.",
+			Description: "Security 组 bound 到 实例.",
 		},
 		"time_zone": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Optional:    true,
-			Description: "System time zone, default: `China Standard Time`.",
+			Description: "System 时间 zone, 默认值: `China Standard Time`.",
 		},
 		//Computed values
 		"ro_flag": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "Readonly flag. `RO` (read-only instance), `MASTER` (primary instance with read-only instances). If it is left empty, it refers to an instance which is not read-only and has no RO group.",
+			Description: "Readonly flag. `RO` (read-仅 实例), `MASTER` (primary 实例 使用 read-仅 实例). 如果 它 是 left 空, 它 refers 到 实例 其中 是 不 read-仅 和 has 无 RO 组.",
 		},
 		"vip": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "IP for private access.",
+			Description: "IP 对于 私有 访问.",
 		},
 		"vport": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "Port for private access.",
+			Description: "Port 对于 私有 访问.",
 		},
 		"create_time": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "Create time of the SQL Server instance.",
+			Description: "Create 时间 的 SQL Server 实例.",
 		},
 		"status": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "Status of the SQL Server instance. 1 for applying, 2 for running, 3 for running with limit, 4 for isolated, 5 for recycling, 6 for recycled, 7 for running with task, 8 for off-line, 9 for expanding, 10 for migrating, 11 for readonly, 12 for rebooting.",
+			Description: "Status 的 SQL Server 实例. 1 对于 applying, 2 对于 running, 3 对于 running 使用 限制, 4 对于 isolated, 5 对于 recycling, 6 对于 recycled, 7 对于 running 使用 任务, 8 对于 关闭-line, 9 对于 expanding, 10 对于 migrating, 11 对于 readonly, 12 对于 rebooting.",
 		},
 		"tags": {
 			Type:        schema.TypeMap,
 			Optional:    true,
-			Description: "The tags of the SQL Server.",
+			Description: "tags 的 SQL Server.",
 		},
 		"wait_switch": {
 			Type:        schema.TypeInt,
 			Optional:    true,
 			Deprecated:  "It has been deprecated from version 1.81.2.",
-			Description: "The way to execute the allocation. Supported values include: 0 - execute immediately, 1 - execute in maintenance window.",
+			Description: "way 到 execute allocation. Supported 值 include: 0 - execute immediately, 1 - execute 在 maintenance window.",
 		},
 		"dns_pod_domain": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "Internet address domain name.",
+			Description: "Internet 地址 域名 名称.",
 		},
 		"tgw_wan_vport": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "External port number.",
+			Description: "External 端口 数量.",
 		},
 	}
 
@@ -146,7 +146,7 @@ func TencentSqlServerBasicInfo(isROInstance bool) map[string]*schema.Schema {
 		basicSchema["auto_renew"] = &schema.Schema{
 			Type:        schema.TypeInt,
 			Optional:    true,
-			Description: "Automatic renewal sign. 0 for normal renewal, 1 for automatic renewal (Default). Only valid when purchasing a prepaid instance.",
+			Description: "Automatic renewal sign. 0 对于 normal renewal, 1 对于 automatic renewal (Default). Only 有效 当 purchasing prepaid 实例.",
 		}
 	}
 
@@ -160,7 +160,7 @@ func ResourceTencentCloudSqlserverInstance() *schema.Resource {
 			ForceNew:    true,
 			Optional:    true,
 			Computed:    true,
-			Description: "Indicate whether to deploy across availability zones.",
+			Description: "Indicate whether 到 deploy across availability zones.",
 		},
 		//RO computed values
 		"engine_version": {
@@ -168,14 +168,14 @@ func ResourceTencentCloudSqlserverInstance() *schema.Resource {
 			ForceNew:    true,
 			Optional:    true,
 			Default:     "2008R2",
-			Description: "Version of the SQL Server database engine. Allowed values are `2008R2`(SQL Server 2008 Enterprise), `2012SP3`(SQL Server 2012 Enterprise), `2016SP1` (SQL Server 2016 Enterprise), `201602`(SQL Server 2016 Standard) and `2017`(SQL Server 2017 Enterprise). Default is `2008R2`.",
+			Description: "Version 的 SQL Server 数据库 引擎. Allowed 值 是 `2008R2`(SQL Server 2008 Enterprise), `2012SP3`(SQL Server 2012 Enterprise), `2016SP1` (SQL Server 2016 Enterprise), `201602`(SQL Server 2016 Standard) 和 `2017`(SQL Server 2017 Enterprise). Default 是 `2008R2`.",
 		},
 		"ha_type": {
 			Type:        schema.TypeString,
 			ForceNew:    true,
 			Optional:    true,
 			Default:     "DUAL",
-			Description: "Instance type. `DUAL` (dual-server high availability), `CLUSTER` (cluster). Default is `DUAL`.",
+			Description: "实例 类型. `DUAL` (dual-服务器 high availability), `CLUSTER` (集群). Default 是 `DUAL`.",
 			Deprecated:  "It has been deprecated from version 1.81.136.",
 		},
 		"maintenance_week_set": {
@@ -183,25 +183,25 @@ func ResourceTencentCloudSqlserverInstance() *schema.Resource {
 			Optional:    true,
 			Computed:    true,
 			Elem:        &schema.Schema{Type: schema.TypeInt},
-			Description: "A list of integer indicates weekly maintenance. For example, [2,7] presents do weekly maintenance on every Tuesday and Sunday.",
+			Description: "A 列表 的 整数 indicates weekly maintenance. For 示例, [2,7] presents do weekly maintenance 在 every Tuesday 和 Sunday.",
 		},
 		"maintenance_start_time": {
 			Type:        schema.TypeString,
 			Optional:    true,
 			Computed:    true,
-			Description: "Start time of the maintenance in one day, format like `HH:mm`.",
+			Description: "Start 时间 的 maintenance 在 一个 day, 格式 like `HH:mm`.",
 		},
 		"maintenance_time_span": {
 			Type:        schema.TypeInt,
 			Optional:    true,
 			Computed:    true,
-			Description: "The timespan of maintenance in one day, unit is hour.",
+			Description: "timespan 的 maintenance 在 一个 day, 单位 是 hour.",
 		},
 		"project_id": {
 			Type:        schema.TypeInt,
 			Optional:    true,
 			Computed:    true,
-			Description: "Project ID, default value is 0.",
+			Description: "Project ID, 默认值 值 是 0.",
 		},
 	}
 	basic := TencentSqlServerBasicInfo(false)

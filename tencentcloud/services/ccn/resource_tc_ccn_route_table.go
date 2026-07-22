@@ -32,18 +32,18 @@ func ResourceTencentCloudCcnRouteTable() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "CCN Route table 名称",
+				Description: "CCN Route 表 名称",
 			},
 			"description": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "描述 CCN Route table。",
+				Description: "描述 CCN Route 表。",
 			},
 			// computed
 			"is_default_table": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "True: default routing table False: non default routing table。",
+				Description: "True: 默认值 routing 表 False: non 默认值 routing 表。",
 			},
 			"create_time": {
 				Computed:    true,

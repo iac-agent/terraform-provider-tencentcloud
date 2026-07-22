@@ -19,7 +19,7 @@ func DataSourceTencentCloudEbPlatformProducts() *schema.Resource {
 			"platform_products": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Platform product list。",
+				Description: "Platform product 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"product_name": {

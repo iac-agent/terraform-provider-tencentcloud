@@ -37,28 +37,28 @@ func ResourceTencentCloudWafOwaspWhiteRule() *schema.Resource {
 			"strategies": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Rule-Based matching policy list。",
+				Description: "Rule-Based matching 策略 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"field": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Specifies the matching field.\n\nDifferent matching fields result in different matching parameters, logical operators, and matching contents. the details are as follows:.\n<table><thead><tr><th>Matching Field</th> <th>Matching Parameter</th> <th>Logical Symbol</th> <th>Matching Content</th></tr></thead> <tbody><tr><td>IP (source IP)</td> <td>Parameters are not supported.</td> <td>ipmatch (match)<br/>ipnmatch (mismatch)</td> <td>Multiple IP addresses are separated by commas. A maximum of 20 IP addresses are allowed.</td></tr> <tr><td>IPv6 (source IPv6)</td> <td>Parameters are not supported.</td> <td>ipmatch (match)<br/>ipnmatch (mismatch)</td> <td>A single IPv6 address is supported.</td></tr> <tr><td>Referer (referer)</td> <td>Parameters are not supported.</td> <td>empty (Content is empty.)<br/>null (do not exist)<br/>eq (equal to)<br/>neq (not equal to)<br/>contains (contain)<br/>ncontains (do not contain)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td> <td>Enter the content, with a maximum of 512 characters.</td></tr> <tr><td>URL (request path)</td> <td>Parameters are not supported.</td> <td>eq (equal to)<br/>neq (not equal to)<br/>contains (contain)<br/>ncontains (do not contain)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is \n less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td> <td>Enter the content starting with /, with a maximum of 512 characters.</td></tr> <tr><td>UserAgent (UserAgent)</td> <td>Parameters are not supported.</td><td>Same logical symbols as the matching field <font color=\"Red\">Referer</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>HTTP_METHOD (HTTP request method)</td> <td>Parameters are not supported.</td> <td>eq (equal to)<br/>neq (not equal to)</td> <td>Enter the method name. The uppercase is recommended.</td></tr> <tr><td>QUERY_STRING (request string)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color=\"Red\">Request Path</font></td><td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>GET (GET parameter value)</td> <td>Parameter entry is supported.</td> <td>contains (contain)<br/>ncontains (do not contain)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)</td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>GET_PARAMS_NAMES (GET parameter name)</td> <td>Parameters are not supported.</td> <td>exist (Parameter exists.)<br/>nexist (Parameter does not exist.)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)</td><td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>POST (POST parameter value)</td> <td>Parameter entry is supported.</td> <td>Same logical symbol as the matching field <font color=\"Red\">GET Parameter Value</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>GET_POST_NAMES (POST parameter name)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color=\"Red\">GET Parameter Name</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>POST_BODY (complete body)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color=\"Red\">Request Path</font></td><td>Enter the body content with a maximum of 512 characters.</td></tr> <tr><td>COOKIE (cookie)</td> <td>Parameters are not supported.</td> <td>empty (Content is empty.)<br/>null (do not exist)<br/>rematch (regular expression matching)</td> <td><font color=\"Red\">Unsupported currently</font></td></tr> <tr><td>GET_COOKIES_NAMES (cookie parameter name)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color=\"Red\">GET Parameter Name</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>ARGS_COOKIE (cookie parameter value)</td> <td>Parameter entry is supported.</td> <td>Same logical symbol as the matching field <font color=\"Red\">GET Parameter Value</font></td> <td>Enter the content512 characters limit</td></tr><tr><td>GET_HEADERS_NAMES (Header parameter name)</td><td>parameter not supported</td><td>exsit (parameter exists)<br/>nexsit (parameter does not exist)<br/>len_eq (LENGTH equal)<br/>len_gt (LENGTH greater than)<br/>len_lt (LENGTH less than)<br/>strprefix (prefix match)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td><td>enter CONTENT, lowercase is recommended, up to 512 characters</td></tr><tr><td>ARGS_Header (Header parameter value)</td><td>support parameter entry</td><td>contains (include)<br/>ncontains (does not include)<br/>len_eq (LENGTH equal)<br/>len_gt (LENGTH greater than)<br/>len_lt (LENGTH less than)<br/>strprefix (prefix match)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td><td>enter CONTENT, up to 512 characters</td></tr><tr><td>CONTENT_LENGTH (CONTENT-LENGTH)</td><td>support parameter entry</td><td>numgt (value greater than)<br/>numlt (value smaller than)<br/>numeq (value equal to)<br/></td><td>enter an integer between 0-9999999999999</td></tr><tr><td>IP_GEO (source IP geolocation)</td><td>support parameter entry</td><td>GEO_in (belong)<br/>GEO_not_in (not_in)<br/></td><td>enter CONTENT, up to 10240 characters, format: serialized JSON, format: [{\"Country\":\"china\",\"Region\":\"guangdong\",\"City\":\"shenzhen\"}]</td></tr><tr><td>CAPTCHA_RISK (CAPTCHA RISK)</td><td>parameter not supported</td><td>eq (equal)<br/>neq (not equal to)<br/>belong (belong)<br/>not_belong (not belong to)<br/>null (nonexistent)<br/>exist (exist)</td><td>enter RISK level value, value range 0-255</td></tr><tr><td>CAPTCHA_DEVICE_RISK (CAPTCHA DEVICE RISK)</td><td>parameter not supported</td><td>eq (equal)<br/>neq (not equal to)<br/>belong (belong)<br/>not_belong (not belong to)<br/>null (nonexistent)<br/>exist (exist)</td><td>enter DEVICE RISK code, valid values: 101, 201, 301, 401, 501, 601, 701</td></tr><tr><td>CAPTCHAR_SCORE (CAPTCHA RISK assessment SCORE)</td><td>parameter not supported</td><td>numeq (value equal to)<br/>numgt (value greater than)<br/>numlt (value smaller than)<br/>numle (less than or equal to)<br/>numge (value is greater than or equal to)<br/>null (nonexistent)<br/>exist (exist)</td><td>enter assessment SCORE, value range 0-100</td></tr>.\n</tbody></table>.",
+							Description: "Specifies matching 字段.\n\nDifferent matching 字段 结果 在 different matching 参数, logical operators, 和 matching contents. details 是 作为 follows:.\n<表><thead><tr><th>Matching Field</th> <th>Matching Parameter</th> <th>Logical Symbol</th> <th>Matching Content</th></tr></thead> <tbody><tr><td>IP (source IP)</td> <td>Parameters 是 不 支持.</td> <td>ipmatch (match)<br/>ipnmatch (mismatch)</td> <td>Multiple IP addresses 是 separated 通过 commas. A 最大 的 20 IP addresses 是 allowed.</td></tr> <tr><td>IPv6 (source IPv6)</td> <td>Parameters 是 不 支持.</td> <td>ipmatch (match)<br/>ipnmatch (mismatch)</td> <td>A 单个 IPv6 地址 是 支持.</td></tr> <tr><td>Referer (referer)</td> <td>Parameters 是 不 支持.</td> <td>空 (Content 是 空.)<br/>null (do 不 exist)<br/>eq (equal 到)<br/>neq (不 equal 到)<br/>contains (contain)<br/>ncontains (do 不 contain)<br/>len_eq (长度 equals 到)<br/>len_gt (长度 是 greater 比)<br/>len_lt (长度 是 less 比)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td> <td>Enter 内容, 使用 最大 的 512 字符.</td></tr> <tr><td>URL (请求 路径)</td> <td>Parameters 是 不 支持.</td> <td>eq (equal 到)<br/>neq (不 equal 到)<br/>contains (contain)<br/>ncontains (do 不 contain)<br/>len_eq (长度 equals 到)<br/>len_gt (长度 是 greater 比)<br/>len_lt (长度 是 \n less 比)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td> <td>Enter 内容 starting 使用 /, 使用 最大 的 512 字符.</td></tr> <tr><td>UserAgent (UserAgent)</td> <td>Parameters 是 不 支持.</td><td>Same logical symbols 作为 matching 字段 <font color=\"Red\">Referer</font></td> <td>Enter 内容 使用 最大 的 512 字符.</td></tr> <tr><td>HTTP_METHOD (HTTP 请求 方法)</td> <td>Parameters 是 不 支持.</td> <td>eq (equal 到)<br/>neq (不 equal 到)</td> <td>Enter 方法 名称. uppercase 是 recommended.</td></tr> <tr><td>QUERY_STRING (请求 字符串)</td> <td>Parameters 是 不 支持.</td> <td>Same logical symbol 作为 matching 字段 <font color=\"Red\">Request Path</font></td><td>Enter 内容 使用 最大 的 512 字符.</td></tr> <tr><td>GET (GET 参数 值)</td> <td>Parameter entry 是 支持.</td> <td>contains (contain)<br/>ncontains (do 不 contain)<br/>len_eq (长度 equals 到)<br/>len_gt (长度 是 greater 比)<br/>len_lt (长度 是 less 比)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)</td> <td>Enter 内容 使用 最大 的 512 字符.</td></tr> <tr><td>GET_PARAMS_NAMES (GET 参数 名称)</td> <td>Parameters 是 不 支持.</td> <td>exist (Parameter exists.)<br/>nexist (Parameter does 不 exist.)<br/>len_eq (长度 equals 到)<br/>len_gt (长度 是 greater 比)<br/>len_lt (长度 是 less 比)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)</td><td>Enter 内容 使用 最大 的 512 字符.</td></tr> <tr><td>POST (POST 参数 值)</td> <td>Parameter entry 是 支持.</td> <td>Same logical symbol 作为 matching 字段 <font color=\"Red\">GET Parameter Value</font></td> <td>Enter 内容 使用 最大 的 512 字符.</td></tr> <tr><td>GET_POST_NAMES (POST 参数 名称)</td> <td>Parameters 是 不 支持.</td> <td>Same logical symbol 作为 matching 字段 <font color=\"Red\">GET Parameter Name</font></td> <td>Enter 内容 使用 最大 的 512 字符.</td></tr> <tr><td>POST_BODY (完整 正文)</td> <td>Parameters 是 不 支持.</td> <td>Same logical symbol 作为 matching 字段 <font color=\"Red\">Request Path</font></td><td>Enter 正文 内容 使用 最大 的 512 字符.</td></tr> <tr><td>COOKIE (cookie)</td> <td>Parameters 是 不 支持.</td> <td>空 (Content 是 空.)<br/>null (do 不 exist)<br/>rematch (regular expression matching)</td> <td><font color=\"Red\">Unsupported currently</font></td></tr> <tr><td>GET_COOKIES_NAMES (cookie 参数 名称)</td> <td>Parameters 是 不 支持.</td> <td>Same logical symbol 作为 matching 字段 <font color=\"Red\">GET Parameter Name</font></td> <td>Enter 内容 使用 最大 的 512 字符.</td></tr> <tr><td>ARGS_COOKIE (cookie 参数 值)</td> <td>Parameter entry 是 支持.</td> <td>Same logical symbol 作为 matching 字段 <font color=\"Red\">GET Parameter Value</font></td> <td>Enter content512 字符 限制</td></tr><tr><td>GET_HEADERS_NAMES (Header 参数 名称)</td><td>参数 不 支持</td><td>exsit (参数 exists)<br/>nexsit (参数 does 不 exist)<br/>len_eq (LENGTH equal)<br/>len_gt (LENGTH greater 比)<br/>len_lt (LENGTH less 比)<br/>strprefix (prefix match)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td><td>enter CONTENT, lowercase 是 recommended, up 到 512 字符</td></tr><tr><td>ARGS_Header (Header 参数 值)</td><td>support 参数 entry</td><td>contains (include)<br/>ncontains (does 不 include)<br/>len_eq (LENGTH equal)<br/>len_gt (LENGTH greater 比)<br/>len_lt (LENGTH less 比)<br/>strprefix (prefix match)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td><td>enter CONTENT, up 到 512 字符</td></tr><tr><td>CONTENT_LENGTH (CONTENT-LENGTH)</td><td>support 参数 entry</td><td>numgt (值 greater 比)<br/>numlt (值 smaller 比)<br/>numeq (值 equal 到)<br/></td><td>enter 整数 between 0-9999999999999</td></tr><tr><td>IP_GEO (source IP geolocation)</td><td>support 参数 entry</td><td>GEO_in (belong)<br/>GEO_not_in (not_in)<br/></td><td>enter CONTENT, up 到 10240 字符, 格式: serialized JSON, 格式: [{\"Country\":\"china\",\"Region\":\"guangdong\",\"City\":\"shenzhen\"}]</td></tr><tr><td>CAPTCHA_RISK (CAPTCHA RISK)</td><td>参数 不 支持</td><td>eq (equal)<br/>neq (不 equal 到)<br/>belong (belong)<br/>not_belong (不 belong 到)<br/>null (nonexistent)<br/>exist (exist)</td><td>enter RISK 级别 值, 值 范围 0-255</td></tr><tr><td>CAPTCHA_DEVICE_RISK (CAPTCHA DEVICE RISK)</td><td>参数 不 支持</td><td>eq (equal)<br/>neq (不 equal 到)<br/>belong (belong)<br/>not_belong (不 belong 到)<br/>null (nonexistent)<br/>exist (exist)</td><td>enter DEVICE RISK 代码, 有效 值: 101, 201, 301, 401, 501, 601, 701</td></tr><tr><td>CAPTCHAR_SCORE (CAPTCHA RISK assessment SCORE)</td><td>参数 不 支持</td><td>numeq (值 equal 到)<br/>numgt (值 greater 比)<br/>numlt (值 smaller 比)<br/>numle (less 比 或 equal 到)<br/>numge (值 是 greater 比 或 equal 到)<br/>null (nonexistent)<br/>exist (exist)</td><td>enter assessment SCORE, 值 范围 0-100</td></tr>.\n</tbody></表>.",
 						},
 						"compare_func": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "指定logic symbol. \n\nLogical symbols are divided into the following types:.\nEmpty (内容 is empty).\nnull (not found).\nEq (equal to).\nneq (not equal to).\n包含(contain).\nn包含(do not contain).\nstrprefix (prefix matching).\nstrsuffix (suffix matching).\nLen_eq (length equals to).\nLen_gt (length greater than).\nLen_lt (length less than).\nipmatch (belong).\nipnmatch (not_in).\nnumgt (值 greater than).\nNumValue smaller than].\nValue equal to.\nnumneq (值 not equal to).\nnumle (less than or equal to).\nnumge (值 is greater than or equal to).\ngeo_in (IP geographic belong).\ngeo_not_in (IP geographic not_in).\n指定different logical operators for matching fields. for details，see the matching field table above。",
+							Description: "指定logic symbol. \n\nLogical symbols 是 divided into following types:.\nEmpty (内容 是 空).\nnull (不 found).\nEq (equal 到).\nneq (不 equal 到).\n包含(contain).\nn包含(do 不 contain).\nstrprefix (prefix matching).\nstrsuffix (suffix matching).\nLen_eq (长度 equals 到).\nLen_gt (长度 greater 比).\nLen_lt (长度 less 比).\nipmatch (belong).\nipnmatch (not_in).\nnumgt (值 greater 比).\nNumValue smaller 比].\nValue equal 到.\nnumneq (值 不 equal 到).\nnumle (less 比 或 equal 到).\nnumge (值 是 greater 比 或 equal 到).\ngeo_in (IP geographic belong).\ngeo_not_in (IP geographic not_in).\n指定different logical operators 对于 matching 字段. 对于 details，see matching 字段 表 above。",
 						},
 						"content": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "指定match 内容\n\nCurrently，when the match field is COOKIE (COOKIE)，match 内容 不是必填项. all others are needed。",
+							Description: "指定match 内容\n\nCurrently，当 match 字段 是 COOKIE (COOKIE)，match 内容 不是必填项. all others 是 needed。",
 						},
 						"arg": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "指定matching parameter.\n\nConfiguration parameters are divided into two data types: parameter not supported and support parameters.\nWhen the match field is one of the following four，the matching parameter can be entered，otherwise not supported.\nGET (get parameter 值).\v\t\t\nPOST (post parameter 值).\v\t\t\nARGS_COOKIE (COOKIE parameter 值).\v\t\t\nARGS_HEADER (HEADER parameter 值)。",
+							Description: "指定matching 参数.\n\nConfiguration 参数 是 divided into two 数据 types: 参数 不 支持 和 support 参数.\nWhen match 字段 是 一个 的 following four， matching 参数 可以 是 entered，otherwise 不 支持.\nGET (get 参数 值).\v\t\t\nPOST (post 参数 值).\v\t\t\nARGS_COOKIE (COOKIE 参数 值).\v\t\t\nARGS_HEADER (HEADER 参数 值)。",
 						},
 						"case_not_sensitive": {
 							Type:        schema.TypeInt,
@@ -72,7 +72,7 @@ func ResourceTencentCloudWafOwaspWhiteRule() *schema.Resource {
 			"ids": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "ID 列表 allowlisted rules。",
+				Description: "ID 列表 allowlisted 规则。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -81,7 +81,7 @@ func ResourceTencentCloudWafOwaspWhiteRule() *schema.Resource {
 			"type": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Allowlist 类型 有效值：0 (allowlisting by specific rule ID)，1 (allowlisting by rule 类型)。",
+				Description: "Allowlist 类型 有效值：0 (allowlisting 通过 特定 规则 ID)，1 (allowlisting 通过 规则 类型)。",
 			},
 
 			"job_type": {
@@ -94,13 +94,13 @@ func ResourceTencentCloudWafOwaspWhiteRule() *schema.Resource {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Scheduled task configuration。",
+				Description: "Scheduled 任务 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"timed": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Time parameter for scheduled execution。",
+							Description: "Time 参数 对于 scheduled execution。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"start_date_time": {
@@ -119,13 +119,13 @@ func ResourceTencentCloudWafOwaspWhiteRule() *schema.Resource {
 						"cron": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Time parameter for periodic execution。",
+							Description: "Time 参数 对于 periodic execution。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"days": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Execution day of each month。",
+										Description: "Execution day 的 each month。",
 										Elem: &schema.Schema{
 											Type: schema.TypeInt,
 										},
@@ -133,7 +133,7 @@ func ResourceTencentCloudWafOwaspWhiteRule() *schema.Resource {
 									"w_days": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Execution day of each week。",
+										Description: "Execution day 的 each week。",
 										Elem: &schema.Schema{
 											Type: schema.TypeInt,
 										},
@@ -163,14 +163,14 @@ func ResourceTencentCloudWafOwaspWhiteRule() *schema.Resource {
 			"expire_time": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "If the JobDateTime field is not set，this field is used. 0 means permanent，other values indicate the cutoff time for scheduled effect (unit: seconds)。",
+				Description: "如果 JobDateTime 字段 是 不 集合，此 字段 是 使用. 0 表示 permanent，other 值 indicate cutoff 时间 对于 scheduled effect (单位: 秒)。",
 			},
 
 			"status": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Rule 状态 有效值：0 (已禁用)，1 (已启用). 已启用 by default。",
+				Description: "Rule 状态 有效值：0 (已禁用)，1 (已启用). 已启用 通过 默认值。",
 			},
 
 			// computed

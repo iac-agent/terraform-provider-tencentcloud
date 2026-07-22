@@ -35,7 +35,7 @@ func ResourceTencentCloudCiMediaSmartCoverTemplate() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The 模板名称 only supports `Chinese`，`English`，`numbers`，`_`，`-` and `*`。",
+				Description: "模板名称 仅 支持 `Chinese`，`English`，`numbers`，`_`，`-` 和 `*`。",
 			},
 
 			"smart_cover": {
@@ -53,12 +53,12 @@ func ResourceTencentCloudCiMediaSmartCoverTemplate() *schema.Resource {
 						"width": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Width，取值范围：[128，4096]，unit: px，if only Width is set，Height is calculated according to the original ratio of the video。",
+							Description: "宽度，取值范围：[128，4096]，单位: 像素，如果 仅 宽度 是 集合，高度 是 calculated according 到 original ratio 的 视频。",
 						},
 						"height": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Height，取值范围：[128，4096]，unit: px，if only Height is set，Width is calculated according to the original video ratio。",
+							Description: "高度，取值范围：[128，4096]，单位: 像素，如果 仅 高度 是 集合，宽度 是 calculated according 到 original 视频 ratio。",
 						},
 						"count": {
 							Type:        schema.TypeString,

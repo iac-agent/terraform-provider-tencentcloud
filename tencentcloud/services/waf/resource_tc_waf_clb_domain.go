@@ -30,7 +30,7 @@ func ResourceTencentCloudWafClbDomain() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance unique ID。",
+				Description: "实例 唯一 ID。",
 			},
 			"domain": {
 				Type:        schema.TypeString,
@@ -42,7 +42,7 @@ func ResourceTencentCloudWafClbDomain() *schema.Resource {
 				Optional:     true,
 				Default:      CLB_DOMAIN_STATUS_1,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(CLB_DOMAIN_STATUS),
-				Description:  "Binding 状态 between waf and LB，0:not bind，1:binding。",
+				Description:  "Binding 状态 between waf 和 LB，0:不 bind，1:binding。",
 			},
 			"engine": {
 				Type:         schema.TypeInt,
@@ -56,7 +56,7 @@ func ResourceTencentCloudWafClbDomain() *schema.Resource {
 				Optional:     true,
 				Default:      ISCDN_0,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(ISCDN_STSTUS),
-				Description:  "Whether a proxy has been 已启用 before WAF，0 no deployment，1 deployment and use first IP in X-Forwarded-For as 客户端 IP，2 deployment and use remote_addr as 客户端 IP，3 deployment and use values of custom headers as 客户端 IP",
+				Description:  "Whether proxy has been 已启用 before WAF，0 无 部署，1 部署 和 使用 first IP 在 X-Forwarded-For 作为 客户端 IP，2 部署 和 使用 remote_addr 作为 客户端 IP，3 部署 和 使用 值 的 自定义 headers 作为 客户端 IP",
 			},
 			"load_balancer_set": {
 				Type:        schema.TypeList,
@@ -67,7 +67,7 @@ func ResourceTencentCloudWafClbDomain() *schema.Resource {
 						"load_balancer_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "LoadBalancer unique ID。",
+							Description: "LoadBalancer 唯一 ID。",
 						},
 						"load_balancer_name": {
 							Type:        schema.TypeString,
@@ -77,7 +77,7 @@ func ResourceTencentCloudWafClbDomain() *schema.Resource {
 						"listener_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Unique ID listener in LB。",
+							Description: "Unique ID listener 在 LB。",
 						},
 						"listener_name": {
 							Type:        schema.TypeString,
@@ -103,7 +103,7 @@ func ResourceTencentCloudWafClbDomain() *schema.Resource {
 						"protocol": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "协议 of listener，http or https。",
+							Description: "协议 的 listener，http 或 https。",
 						},
 						"zone": {
 							Type:        schema.TypeString,
@@ -113,12 +113,12 @@ func ResourceTencentCloudWafClbDomain() *schema.Resource {
 						"numerical_vpc_id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "VPCID for load balancer，public network is -1，and internal network is filled in according to actual conditions。",
+							Description: "VPCID 对于 load balancer，公有 网络 是 -1，和 内部 网络 是 filled 在 according 到 actual conditions。",
 						},
 						"load_balancer_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Network 类型 for load balancer。",
+							Description: "Network 类型 对于 load balancer。",
 						},
 						"load_balancer_domain": {
 							Type:        schema.TypeString,
@@ -129,13 +129,13 @@ func ResourceTencentCloudWafClbDomain() *schema.Resource {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "The ID member to whom the listener belongs。",
+							Description: "ID member 到 whom listener belongs。",
 						},
 						"member_uin": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Uin of the listener member。",
+							Description: "Uin 的 listener member。",
 						},
 					},
 				},
@@ -143,54 +143,54 @@ func ResourceTencentCloudWafClbDomain() *schema.Resource {
 			"region": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Regions of LB bound by 域名",
+				Description: "Regions 的 LB bound 通过 域名",
 			},
 			"flow_mode": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Default:      FLOW_MODE_0,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(FLOW_MODE_STATUS),
-				Description:  "WAF traffic 模式，1 cleaning 模式，0 mirroring 模式",
+				Description:  "WAF 流量 模式，1 cleaning 模式，0 mirroring 模式",
 			},
 			"cls_status": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Default:      CLS_STATUS_0,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(CLS_STATUS),
-				Description:  "是否enable access logs，1 enable，0 disable。",
+				Description:  "是否enable 访问 logs，1 启用，0 disable。",
 			},
 			"bot_status": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Default:      BOT_STATUS_0,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(BOT_STATUS),
-				Description:  "是否enable bot，1 enable，0 disable。",
+				Description:  "是否enable bot，1 启用，0 disable。",
 			},
 			"api_safe_status": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Default:      API_SAFE_STATUS_0,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(API_SAFE_STATUS),
-				Description:  "是否enable api safe，1 enable，0 disable。",
+				Description:  "是否enable api safe，1 启用，0 disable。",
 			},
 			"alb_type": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Default:      ALB_TYPE_CLB,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(ALB_TYPES),
-				Description:  "Load balancer 类型: clb，apisix or tsegw，default clb。",
+				Description:  "Load balancer 类型: clb，apisix 或 tsegw，默认值 clb。",
 			},
 			"ip_headers": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "When is_cdn=3，this parameter needs to be filled in to indicate a custom header。",
+				Description: "当 is_cdn=3，此 参数 needs 到 是 filled 在 到 indicate 自定义 头部。",
 			},
 			"cloud_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Cloud 类型 `public`: public cloud; `private`: private cloud; `hybrid`: hybrid cloud。",
+				Description: "Cloud 类型 `公有`: 公有 云; `私有`: 私有 云; `hybrid`: hybrid 云。",
 			},
 			"note": {
 				Type:        schema.TypeString,
@@ -201,7 +201,7 @@ func ResourceTencentCloudWafClbDomain() *schema.Resource {
 			"domain_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "域名 id。",
+				Description: "域名 ID。",
 			},
 		},
 	}

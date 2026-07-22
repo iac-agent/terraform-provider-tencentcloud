@@ -25,7 +25,7 @@ func DataSourceTencentCloudAPIGatewayAPIKeys() *schema.Resource {
 			"api_key_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Created API 键 ID，this field is exactly the same as ID。",
+				Description: "Created API 键 ID，此 字段 是 exactly same 作为 ID。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -47,7 +47,7 @@ func DataSourceTencentCloudAPIGatewayAPIKeys() *schema.Resource {
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "键 状态 Values: `on`，`off`。",
+							Description: "键 状态 Values: `在`，`关闭`。",
 						},
 						"access_key_secret": {
 							Type:        schema.TypeString,
@@ -57,12 +57,12 @@ func DataSourceTencentCloudAPIGatewayAPIKeys() *schema.Resource {
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "最后修改时间 in the 格式 of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used。",
+							Description: "最后修改时间 在 格式 的 `YYYY-MM-DDThh:mm:ssZ` according 到 ISO 8601 standard. UTC 时间 是 使用。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 in the 格式 of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used。",
+							Description: "创建时间 在 格式 的 `YYYY-MM-DDThh:mm:ssZ` according 到 ISO 8601 standard. UTC 时间 是 使用。",
 						},
 					},
 				},

@@ -18,13 +18,13 @@ func DataSourceTencentCloudIgtmDetectTaskPackageList() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Detect task filter conditions。",
+				Description: "Detect 任务 过滤器 conditions。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "过滤字段名称，supported list as follows:\n- ResourceId: detect task 资源 ID\n- PeriodStart: minimum 过期时间.\n- PeriodEnd: maximum 过期时间。",
+							Description: "过滤字段名称，支持 列表 作为 follows:\n- ResourceId: detect 任务 资源 ID\n- PeriodStart: 最小 过期时间.\n- PeriodEnd: 最大 过期时间。",
 						},
 						"value": {
 							Type:        schema.TypeSet,
@@ -37,7 +37,7 @@ func DataSourceTencentCloudIgtmDetectTaskPackageList() *schema.Resource {
 						"fuzzy": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "是否enable fuzzy query，only supports 过滤字段名称 as 域名\nWhen fuzzy query is 已启用，maximum 值 length is 1，otherwise maximum 值 length is 5. (Reserved field，not currently used)。",
+							Description: "是否enable fuzzy 查询，仅 支持 过滤字段名称 作为 域名\nWhen fuzzy 查询 是 已启用，最大 值 长度 是 1，otherwise 最大 值 长度 是 5. (Reserved 字段，不 currently 使用)。",
 						},
 					},
 				},
@@ -46,7 +46,7 @@ func DataSourceTencentCloudIgtmDetectTaskPackageList() *schema.Resource {
 			"task_package_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Detect task package list。",
+				Description: "Detect 任务 包 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_id": {
@@ -57,7 +57,7 @@ func DataSourceTencentCloudIgtmDetectTaskPackageList() *schema.Resource {
 						"resource_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "资源类型\nTASK Detect task。",
+							Description: "资源类型\nTASK Detect 任务。",
 						},
 						"quota": {
 							Type:        schema.TypeInt,
@@ -77,7 +77,7 @@ func DataSourceTencentCloudIgtmDetectTaskPackageList() *schema.Resource {
 						"is_expire": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether expired 0 no 1 yes。",
+							Description: "Whether expired 0 无 1 yes。",
 						},
 						"status": {
 							Type:        schema.TypeString,
@@ -87,7 +87,7 @@ func DataSourceTencentCloudIgtmDetectTaskPackageList() *schema.Resource {
 						"auto_renew_flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether auto-renew 0 no 1 yes。",
+							Description: "Whether auto-renew 0 无 1 yes。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
@@ -116,7 +116,7 @@ func DataSourceTencentCloudIgtmDetectTaskPackageList() *schema.Resource {
 						"group": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Detect task 类型: 100 system setting; 200 billing; 300 management system; 110D monitoring migration free task; 120 disaster recovery switch task。",
+							Description: "Detect 任务 类型: 100 系统 setting; 200 billing; 300 management 系统; 110D 监控 迁移 free 任务; 120 disaster recovery switch 任务。",
 						},
 					},
 				},

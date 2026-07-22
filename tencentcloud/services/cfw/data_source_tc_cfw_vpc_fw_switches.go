@@ -22,7 +22,7 @@ func DataSourceTencentCloudCfwVpcFwSwitches() *schema.Resource {
 			"switch_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Switch list。",
+				Description: "Switch 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch_id": {
@@ -43,7 +43,7 @@ func DataSourceTencentCloudCfwVpcFwSwitches() *schema.Resource {
 						"enable": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Switch 状态 0: off，1: on。",
+							Description: "Switch 状态 0: 关闭，1: 在。",
 						},
 						"status": {
 							Type:        schema.TypeInt,

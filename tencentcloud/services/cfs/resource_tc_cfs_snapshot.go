@@ -30,13 +30,13 @@ func ResourceTencentCloudCfsSnapshot() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Id of file system。",
+				Description: "ID 的 文件 系统。",
 			},
 
 			"snapshot_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "名称 snapshot。",
+				Description: "名称 快照。",
 			},
 
 			"tags": {

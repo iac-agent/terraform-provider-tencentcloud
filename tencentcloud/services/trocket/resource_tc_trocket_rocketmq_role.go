@@ -29,7 +29,7 @@ func ResourceTencentCloudTrocketRocketmqRole() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "ID instance。",
+				Description: "ID 实例。",
 			},
 
 			"role": {
@@ -48,13 +48,13 @@ func ResourceTencentCloudTrocketRocketmqRole() *schema.Resource {
 			"perm_write": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "是否enable production permission。",
+				Description: "是否enable production 权限。",
 			},
 
 			"perm_read": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "是否enable consumption permission。",
+				Description: "是否enable consumption 权限。",
 			},
 
 			"access_key": {
@@ -72,13 +72,13 @@ func ResourceTencentCloudTrocketRocketmqRole() *schema.Resource {
 			"created_time": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Created time。",
+				Description: "Created 时间。",
 			},
 
 			"modified_time": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Modified time。",
+				Description: "Modified 时间。",
 			},
 		},
 	}

@@ -20,53 +20,53 @@ func DataSourceTencentCloudDbbrainTopSpaceTables() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID.",
 			},
 
 			"limit": {
 				Optional:    true,
 				Type:        schema.TypeInt,
 				Default:     20,
-				Description: "The number of Top tables returned, the maximum value is 100, and the default is 20.",
+				Description: "数量 的 Top tables 返回, 最大 值 是 100, 和 默认值 是 20.",
 			},
 
 			"sort_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The sorting field used to filter the Top table. The optional fields include DataLength, IndexLength, TotalLength, DataFree, FragRatio, TableRows, and PhysicalFileSize (only supported by ApsaraDB for MySQL instances). The default for ApsaraDB for MySQL instances is PhysicalFileSize, and the default for other product instances is TotalLength.",
+				Description: "sorting 字段 使用 到 过滤器 Top 表. 可选 字段 include DataLength, IndexLength, TotalLength, DataFree, FragRatio, TableRows, 和 PhysicalFileSize (仅 支持 通过 ApsaraDB 对于 MySQL 实例). 默认值 对于 ApsaraDB 对于 MySQL 实例 是 PhysicalFileSize, 和 默认值 对于 other product 实例 是 TotalLength.",
 			},
 
 			"product": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Service product type, supported values include: mysql - cloud database MySQL, cynosdb - cloud database CynosDB for MySQL, the default is mysql.",
+				Description: "Service product 类型, 支持 值 include: mysql - 云 数据库 MySQL, cynosdb - 云 数据库 CynosDB 对于 MySQL, 默认值 是 mysql.",
 			},
 
 			"top_space_tables": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The list of Top tablespace statistics returned.",
+				Description: "列表 的 Top tablespace 统计 返回.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"table_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "table name.",
+							Description: "表 名称.",
 						},
 						"table_schema": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "database name.",
+							Description: "数据库 名称.",
 						},
 						"engine": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Storage engine for database tables.",
+							Description: "Storage 引擎 对于 数据库 tables.",
 						},
 						"data_length": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "data space (MB).",
+							Description: "数据 space (MB).",
 						},
 						"index_length": {
 							Type:        schema.TypeFloat,
@@ -81,22 +81,22 @@ func DataSourceTencentCloudDbbrainTopSpaceTables() *schema.Resource {
 						"total_length": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Total space used (MB).",
+							Description: "Total space 使用 (MB).",
 						},
 						"frag_ratio": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Fragmentation rate (%).",
+							Description: "Fragmentation 速率 (%).",
 						},
 						"table_rows": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of lines.",
+							Description: "Number 的 lines.",
 						},
 						"physical_file_size": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "The independent physical file size (MB) corresponding to the table.",
+							Description: "independent physical 文件 大小 (MB) corresponding 到 表.",
 						},
 					},
 				},
@@ -105,13 +105,13 @@ func DataSourceTencentCloudDbbrainTopSpaceTables() *schema.Resource {
 			"timestamp": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The timestamp (in seconds) of collecting tablespace data.",
+				Description: "timestamp (在 秒) 的 collecting tablespace 数据.",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

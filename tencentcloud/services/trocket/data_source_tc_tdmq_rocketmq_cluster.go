@@ -20,13 +20,13 @@ func DataSourceTencentCloudTdmqRocketmqCluster() *schema.Resource {
 			"id_keyword": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search by cluster ID。",
+				Description: "Search 通过 集群 ID。",
 			},
 
 			"name_keyword": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search by 集群名称",
+				Description: "Search 通过 集群名称",
 			},
 
 			"cluster_id_list": {
@@ -35,25 +35,25 @@ func DataSourceTencentCloudTdmqRocketmqCluster() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "Filter by cluster ID。",
+				Description: "过滤器 通过 集群 ID。",
 			},
 
 			"cluster_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Cluster information。",
+				Description: "Cluster 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Basic cluster information。",
+							Description: "Basic 集群 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"remark": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cluster 描述 (up to 128 characters)。",
+										Description: "Cluster 描述 (up 到 128 字符)。",
 									},
 									"cluster_id": {
 										Type:        schema.TypeString,
@@ -68,7 +68,7 @@ func DataSourceTencentCloudTdmqRocketmqCluster() *schema.Resource {
 									"region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "地域 information。",
+										Description: "地域 信息。",
 									},
 									"create_time": {
 										Type:        schema.TypeInt,
@@ -78,22 +78,22 @@ func DataSourceTencentCloudTdmqRocketmqCluster() *schema.Resource {
 									"public_end_point": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Public network access 地址",
+										Description: "Public 网络 访问 地址",
 									},
 									"vpc_end_point": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "VPC access 地址",
+										Description: "VPC 访问 地址",
 									},
 									"support_namespace_endpoint": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "是否namespace access point is supported。",
+										Description: "是否namespace 访问 point 是 支持。",
 									},
 									"vpcs": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Vpc list。",
+										Description: "Vpc 列表。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"vpc_id": {
@@ -112,12 +112,12 @@ func DataSourceTencentCloudTdmqRocketmqCluster() *schema.Resource {
 									"is_vip": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "是否为an exclusive instance。",
+										Description: "是否为an exclusive 实例。",
 									},
 									"rocketmq_flag": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Rocketmq cluster identification。",
+										Description: "Rocketmq 集群 identification。",
 									},
 								},
 							},
@@ -125,13 +125,13 @@ func DataSourceTencentCloudTdmqRocketmqCluster() *schema.Resource {
 						"config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Cluster configuration information。",
+							Description: "Cluster 配置 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"max_tps_per_namespace": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Maximum TPS per namespace。",
+										Description: "Maximum TPS per 命名空间。",
 									},
 									"max_namespace_num": {
 										Type:        schema.TypeInt,
@@ -141,7 +141,7 @@ func DataSourceTencentCloudTdmqRocketmqCluster() *schema.Resource {
 									"used_namespace_num": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "数量 used namespaces。",
+										Description: "数量 使用 namespaces。",
 									},
 									"max_topic_num": {
 										Type:        schema.TypeInt,
@@ -151,7 +151,7 @@ func DataSourceTencentCloudTdmqRocketmqCluster() *schema.Resource {
 									"used_topic_num": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "数量 used topics。",
+										Description: "数量 使用 topics。",
 									},
 									"max_group_num": {
 										Type:        schema.TypeInt,
@@ -161,7 +161,7 @@ func DataSourceTencentCloudTdmqRocketmqCluster() *schema.Resource {
 									"used_group_num": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "数量 used groups。",
+										Description: "数量 使用 groups。",
 									},
 									"max_retention_time": {
 										Type:        schema.TypeInt,
@@ -171,7 +171,7 @@ func DataSourceTencentCloudTdmqRocketmqCluster() *schema.Resource {
 									"max_latency_time": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Maximum 消息 延迟 in millisecond。",
+										Description: "Maximum 消息 延迟 在 millisecond。",
 									},
 								},
 							},

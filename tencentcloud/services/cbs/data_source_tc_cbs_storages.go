@@ -21,17 +21,17 @@ func DataSourceTencentCloudCbsStorages() *schema.Resource {
 			"storage_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID CBS to be queried。",
+				Description: "ID CBS 到 是 queried。",
 			},
 			"storage_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "名称 CBS to be queried。",
+				Description: "名称 CBS 到 是 queried。",
 			},
 			"availability_zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The available 可用区 that the CBS instance locates at。",
+				Description: "可用 可用区 该 CBS 实例 locates 在。",
 			},
 			"dedicated_cluster_id": {
 				Type:        schema.TypeString,
@@ -41,58 +41,58 @@ func DataSourceTencentCloudCbsStorages() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "ID project with which the CBS is associated。",
+				Description: "ID 项目 使用 其中 CBS 是 associated。",
 			},
 			"storage_type": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CBS_STORAGE_TYPE),
-				Description:  "Filter by cloud disk media 类型 (`CLOUD_BASIC`: HDD cloud disk | `CLOUD_PREMIUM`: Premium Cloud Storage | `CLOUD_SSD`: SSD cloud disk)。",
+				Description:  "过滤器 通过 云 磁盘 media 类型 (`CLOUD_BASIC`: HDD 云 磁盘 | `CLOUD_PREMIUM`: Premium Cloud Storage | `CLOUD_SSD`: SSD 云 磁盘)。",
 			},
 			"storage_usage": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Filter by cloud disk 类型 (`SYSTEM_DISK`: system disk | `DATA_DISK`: data disk)。",
+				Description: "过滤器 通过 云 磁盘 类型 (`SYSTEM_DISK`: 系统 磁盘 | `DATA_DISK`: 数据 磁盘)。",
 			},
 			"charge_type": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "List filter by disk 计费类型 (`POSTPAID_BY_HOUR` | `PREPAID` | `CDCPAID` | `DEDICATED_CLUSTER_PAID`)。",
+				Description: "List 过滤器 通过 磁盘 计费类型 (`POSTPAID_BY_HOUR` | `PREPAID` | `CDCPAID` | `DEDICATED_CLUSTER_PAID`)。",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 			"portable": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Filter by 是否disk is portable (Boolean `true` or `false`)。",
+				Description: "过滤器 通过 是否disk 是 portable (Boolean `true` 或 `false`)。",
 			},
 			"storage_state": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "List filter by disk state (`UNATTACHED` | `ATTACHING` | `ATTACHED` | `DETACHING` | `EXPANDING` | `ROLLBACKING` | `TORECYCLE`)。",
+				Description: "List 过滤器 通过 磁盘 state (`UNATTACHED` | `ATTACHING` | `ATTACHED` | `DETACHING` | `EXPANDING` | `ROLLBACKING` | `TORECYCLE`)。",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 			"instance_ips": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "List filter by attached instance public or private IPs。",
+				Description: "List 过滤器 通过 attached 实例 公有 或 私有 IPs。",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 			"instance_name": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "List filter by attached 实例名称",
+				Description: "List 过滤器 通过 attached 实例名称",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 			"tag_keys": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "List filter by 标签 keys。",
+				Description: "List 过滤器 通过 标签 keys。",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 			"tag_values": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "List filter by 标签 values。",
+				Description: "List 过滤器 通过 标签 值。",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 			"result_output_file": {
@@ -103,7 +103,7 @@ func DataSourceTencentCloudCbsStorages() *schema.Resource {
 			"storage_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A 列表 storage. Each element 包含following attributes:",
+				Description: "A 列表 存储. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"storage_id": {
@@ -119,17 +119,17 @@ func DataSourceTencentCloudCbsStorages() *schema.Resource {
 						"storage_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Types of storage medium。",
+							Description: "Types 的 存储 medium。",
 						},
 						"storage_usage": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Types of CBS。",
+							Description: "Types 的 CBS。",
 						},
 						"availability_zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 可用区 of CBS。",
+							Description: "可用区 的 CBS。",
 						},
 						"dedicated_cluster_id": {
 							Type:        schema.TypeString,
@@ -139,22 +139,22 @@ func DataSourceTencentCloudCbsStorages() *schema.Resource {
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "ID project。",
+							Description: "ID 项目。",
 						},
 						"storage_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Volume of CBS。",
+							Description: "Volume 的 CBS。",
 						},
 						"attached": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "表示是否CBS is mounted the CVM。",
+							Description: "表示是否CBS 是 mounted CVM。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID CVM instance that be mounted by this CBS。",
+							Description: "ID CVM 实例 该 是 mounted 通过 此 CBS。",
 						},
 						"kms_key_id": {
 							Type:        schema.TypeString,
@@ -164,12 +164,12 @@ func DataSourceTencentCloudCbsStorages() *schema.Resource {
 						"encrypt": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "表示是否CBS is encrypted。",
+							Description: "表示是否CBS 是 encrypted。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of CBS。",
+							Description: "创建时间 的 CBS。",
 						},
 						"status": {
 							Type:        schema.TypeString,
@@ -179,22 +179,22 @@ func DataSourceTencentCloudCbsStorages() *schema.Resource {
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "The available 标签 within this CBS。",
+							Description: "可用 标签 within 此 CBS。",
 						},
 						"prepaid_renew_flag": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The way that CBS instance will be renew automatically or not when it reach the end of the prepaid tenancy。",
+							Description: "way 该 CBS 实例 将 是 renew automatically 或 不 当 它 reach end 的 prepaid tenancy。",
 						},
 						"charge_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Pay 类型 CBS instance。",
+							Description: "Pay 类型 CBS 实例。",
 						},
 						"throughput_performance": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Add extra performance to the data disk. Only works when disk 类型 is `CLOUD_TSSD` or `CLOUD_HSSD`。",
+							Description: "Add extra performance 到 数据 磁盘. Only works 当 磁盘 类型 是 `CLOUD_TSSD` 或 `CLOUD_HSSD`。",
 						},
 					},
 				},

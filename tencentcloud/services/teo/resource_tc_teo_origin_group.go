@@ -47,7 +47,7 @@ func ResourceTencentCloudTeoOriginGroup() *schema.Resource {
 			"type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "类型 origin site. Valid values:\n- `GENERAL`: Universal origin site group，only supports adding IP/域名 名称 origin sites，which can be referenced by 域名 名称 service，rule engine，four-layer proxy，general load balancing，and HTTP-specific load balancing.\n- `HTTP`: The HTTP-specific origin site group，supports adding IP/域名 名称 and object storage origin site as the origin site，it cannot be referenced by the four-layer proxy，it can only be added to the acceleration 域名 名称，rule engine-modify origin site，and HTTP-specific load balancing reference。",
+				Description: "类型 源站 site. 有效 值:\n- `GENERAL`: Universal 源站 site 组，仅 支持 adding IP/域名 名称 源站 sites，其中 可以 是 referenced 通过 域名 名称 服务，规则 引擎，four-layer proxy，general load balancing，和 HTTP-特定 load balancing.\n- `HTTP`: HTTP-特定 源站 site 组，支持 adding IP/域名 名称 和 对象 存储 源站 site 作为 源站 site，它 不能 是 referenced 通过 four-layer proxy，它 可以 仅 是 added 到 acceleration 域名 名称，规则 引擎-modify 源站 site，和 HTTP-特定 load balancing reference。",
 			},
 
 			"records": {
@@ -59,45 +59,45 @@ func ResourceTencentCloudTeoOriginGroup() *schema.Resource {
 						"record": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Origin site record 值，does not include 端口 information，can be: IPv4，IPv6，域名 名称 格式",
+							Description: "Origin site 记录 值，does 不 include 端口 信息，可以 是: IPv4，IPv6，域名 名称 格式",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Origin site 类型，the values are:\n  - `IP_DOMAIN`: IPV4，IPV6，域名 名称 类型 origin site.\n  - `COS`: COS 来源\n  - `AWS_S3`: AWS S3 object storage origin site。",
+							Description: "Origin site 类型， 值 是:\n - `IP_DOMAIN`: IPV4，IPV6，域名 名称 类型 源站 site.\n - `COS`: COS 来源\n - `AWS_S3`: AWS S3 对象 存储 源站 site。",
 						},
 						"record_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Origin record ID。",
+							Description: "Origin 记录 ID。",
 						},
 						"weight": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The 权重 of the origin site，the 值 is 0-100. If it is not filled in，it means that the 权重 will not be set and the system will schedule it freely. If it is filled in with 0，it means that the 权重 is 0 and the traffic will not be scheduled to this origin site。",
+							Description: "权重 的 源站 site， 值 是 0-100. 如果 它 是 不 filled 在，它 表示 该 权重 将 不 是 集合 和 系统 将 调度 它 freely. 如果 它 是 filled 在 使用 0，它 表示 该 权重 是 0 和 流量 将 不 是 scheduled 到 此 源站 site。",
 						},
 						"private": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Default:     false,
-							Description: "是否use private authentication，it takes effect when the origin site 类型 RecordType=COS/AWS_S3，the values are:\n  - `true`: Use private authentication.\n  - `false`: Do not use private authentication。",
+							Description: "是否use 私有 authentication，它 takes effect 当 源站 site 类型 RecordType=COS/AWS_S3， 值 是:\n - `true`: Use 私有 authentication.\n - `false`: Do 不 使用 私有 authentication。",
 						},
 						"private_parameters": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Parameters for private authentication. Only valid when `Private` is `true`。",
+							Description: "Parameters 对于 私有 authentication. Only 有效 当 `Private` 是 `true`。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Private authentication parameter 名称，the values are:\n  - `AccessKeyId`: Authentication parameter Access 键 ID.\n  - `SecretAccessKey`: Authentication parameter Secret Access 键\n  - `SignatureVersion`: Authentication 版本，v2 or v4.\n  - `地域`: 存储桶 地域",
+										Description: "Private authentication 参数 名称， 值 是:\n - `AccessKeyId`: Authentication 参数 Access 键 ID.\n - `SecretAccessKey`: Authentication 参数 Secret Access 键\n - `SignatureVersion`: Authentication 版本，v2 或 v4.\n - `地域`: 存储桶 地域",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Private authentication parameter 值",
+										Description: "Private authentication 参数 值",
 									},
 								},
 							},
@@ -109,29 +109,29 @@ func ResourceTencentCloudTeoOriginGroup() *schema.Resource {
 			"host_header": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Back-to-origin 主机 Header，it only takes effect when 类型 = HTTP is passed in. The rule engine modifies the 主机 Header configuration 优先级 to be higher than the 主机 Header of the origin site group。",
+				Description: "Back-到-源站 主机 Header，它 仅 takes effect 当 类型 = HTTP 是 passed 在. 规则 引擎 modifies 主机 Header 配置 优先级 到 是 higher 比 主机 Header 的 源站 site 组。",
 			},
 
 			"references": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "列表 referenced instances of the origin site group。",
+				Description: "列表 referenced 实例 的 源站 site 组。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Reference service 类型，the values are:\n  - `AccelerationDomain`: Acceleration 域名 名称\n  - `RuleEngine`: Rule engine.\n  - `Loadbalance`: Load balancing.\n  - `ApplicationProxy`: Four-layer proxy。",
+							Description: "Reference 服务 类型， 值 是:\n - `AccelerationDomain`: Acceleration 域名 名称\n - `RuleEngine`: Rule 引擎.\n - `Loadbalance`: Load balancing.\n - `ApplicationProxy`: Four-layer proxy。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The instance ID reference 类型",
+							Description: "实例 ID reference 类型",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance 名称 application 类型",
+							Description: "实例 名称 应用 类型",
 						},
 					},
 				},
@@ -140,13 +140,13 @@ func ResourceTencentCloudTeoOriginGroup() *schema.Resource {
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Origin site group 创建时间。",
+				Description: "Origin site 组 创建时间。",
 			},
 
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Origin site group 更新时间。",
+				Description: "Origin site 组 更新时间。",
 			},
 		},
 	}

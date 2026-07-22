@@ -29,21 +29,21 @@ func ResourceTencentCloudTemLogConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "environment ID。",
+				Description: "环境 ID。",
 			},
 
 			"application_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "application ID。",
+				Description: "应用 ID。",
 			},
 
 			"workload_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "application ID，which is combined by environment ID and application ID，like `en-o5edaepv#app-3j29aa2p`。",
+				Description: "应用 ID，其中 是 combined 通过 环境 ID 和 应用 ID，like `en-o5edaepv#app-3j29aa2p`。",
 			},
 
 			"name": {
@@ -62,19 +62,19 @@ func ResourceTencentCloudTemLogConfig() *schema.Resource {
 			"topic_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "topic。",
+				Description: "主题。",
 			},
 
 			"input_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "container_stdout or container_file。",
+				Description: "container_stdout 或 container_file。",
 			},
 
 			"log_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "minimalist_log or multiline_log。",
+				Description: "minimalist_log 或 multiline_log。",
 			},
 
 			"beginning_regex": {
@@ -86,13 +86,13 @@ func ResourceTencentCloudTemLogConfig() *schema.Resource {
 			"log_path": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "directory if container_file。",
+				Description: "directory 如果 container_file。",
 			},
 
 			"file_pattern": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "file 名称 pattern if container_file。",
+				Description: "文件 名称 pattern 如果 container_file。",
 			},
 		},
 	}

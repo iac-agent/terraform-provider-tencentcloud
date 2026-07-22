@@ -19,17 +19,17 @@ func DataSourceTencentCloudSsmServiceStatus() *schema.Resource {
 			"service_enabled": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "True means the service has been activated，false means the service has not been activated yet。",
+				Description: "True 表示 服务 has been activated，false 表示 服务 has 不 been activated yet。",
 			},
 			"invalid_type": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Service unavailability 类型: 0-Not purchased，1-Normal，2-Service suspended due to arrears，3-Resource release。",
+				Description: "Service unavailability 类型: 0-Not purchased，1-Normal，2-Service suspended due 到 arrears，3-Resource release。",
 			},
 			"access_key_escrow_enabled": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "True means that the 用户 can already use the 键 safe hosting function，false means that the 用户 cannot use the 键 safe hosting function temporarily。",
+				Description: "True 表示 该 用户 可以 already 使用 键 safe hosting 函数，false 表示 该 用户 不能 使用 键 safe hosting 函数 temporarily。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,

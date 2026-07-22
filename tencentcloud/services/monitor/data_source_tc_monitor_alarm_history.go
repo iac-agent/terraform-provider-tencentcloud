@@ -19,25 +19,25 @@ func DataSourceTencentCloudMonitorAlarmHistory() *schema.Resource {
 			"module": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "值 fixed at monitor。",
+				Description: "值 fixed 在 监控。",
 			},
 
 			"order": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "排序方式 the first occurrence time in descending 排序依据 default. 有效值：ASC (ascending)，DESC (descending)。",
+				Description: "排序方式 first occurrence 时间 在 descending 排序依据 默认值. 有效值：ASC (ascending)，DESC (descending)。",
 			},
 
 			"start_time": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "开始时间，which is the 时间戳 one day ago by default and the time when the alarm FirstOccurTime first occurs. An alarm record can be searched only if its FirstOccurTime is later than the StartTime。",
+				Description: "开始时间，其中 是 时间戳 一个 day ago 通过 默认值 和 时间 当 告警 FirstOccurTime first occurs. An 告警 记录 可以 是 searched 仅 如果 its FirstOccurTime 是 later 比 StartTime。",
 			},
 
 			"end_time": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "结束时间，which is the current 时间戳 and the time when the alarm FirstOccurTime first occurs. An alarm record can be searched only if its FirstOccurTime is earlier than the EndTime。",
+				Description: "结束时间，其中 是 当前 时间戳 和 时间 当 告警 FirstOccurTime first occurs. An 告警 记录 可以 是 searched 仅 如果 its FirstOccurTime 是 earlier 比 EndTime。",
 			},
 
 			"monitor_types": {
@@ -46,13 +46,13 @@ func DataSourceTencentCloudMonitorAlarmHistory() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Filter by 监控类型 有效值：MT_QCE (Tencent Cloud service monitoring)，MT_TAW (application performance monitoring)，MT_RUM (frontend performance monitoring)，MT_PROBE (cloud automated testing). 如果此参数为空，all types will be queried by default。",
+				Description: "过滤器 通过 监控类型 有效值：MT_QCE (Tencent Cloud 服务 监控)，MT_TAW (应用 performance 监控)，MT_RUM (frontend performance 监控)，MT_PROBE (云 automated testing). 如果此参数为空，all types 将 是 queried 通过 默认值。",
 			},
 
 			"alarm_object": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filter by alarm object. Fuzzy search with string is supported。",
+				Description: "过滤器 通过 告警 对象. Fuzzy search 使用 字符串 是 支持。",
 			},
 
 			"alarm_status": {
@@ -61,7 +61,7 @@ func DataSourceTencentCloudMonitorAlarmHistory() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Filter by 告警状态 有效值：ALARM (not resolved)，OK (resolved)，NO_CONF (expired)，NO_DATA (insufficient data). 如果此参数为空，all will be queried by default。",
+				Description: "过滤器 通过 告警状态 有效值：ALARM (不 resolved)，OK (resolved)，NO_CONF (expired)，NO_DATA (insufficient 数据). 如果此参数为空，all 将 是 queried 通过 默认值。",
 			},
 
 			"project_ids": {
@@ -70,7 +70,7 @@ func DataSourceTencentCloudMonitorAlarmHistory() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Filter by project ID. 有效值：-1 (no project)，0 (default project)。",
+				Description: "过滤器 通过 项目 ID. 有效值：-1 (无 项目)，0 (默认值 项目)。",
 			},
 
 			"instance_group_ids": {
@@ -79,13 +79,13 @@ func DataSourceTencentCloudMonitorAlarmHistory() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Filter by instance 组 ID",
+				Description: "过滤器 通过 实例 组 ID",
 			},
 
 			"namespaces": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter by policy 类型 Monitoring 类型 and policy 类型 are first-级别 and second-级别 filters respectively and both need to be passed in. For example，[{MonitorType: MT_QCE，Namespace: cvm_device}]。",
+				Description: "过滤器 通过 策略 类型 Monitoring 类型 和 策略 类型 是 first-级别 和 second-级别 filters respectively 和 both need 到 是 passed 在. For 示例，[{MonitorType: MT_QCE，Namespace: cvm_device}]。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"monitor_type": {
@@ -108,19 +108,19 @@ func DataSourceTencentCloudMonitorAlarmHistory() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Filter by 指标名称",
+				Description: "过滤器 通过 指标名称",
 			},
 
 			"policy_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Fuzzy search by policy 名称",
+				Description: "Fuzzy search 通过 策略 名称",
 			},
 
 			"content": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Fuzzy search by alarm 内容",
+				Description: "Fuzzy search 通过 告警 内容",
 			},
 
 			"receiver_uids": {
@@ -129,7 +129,7 @@ func DataSourceTencentCloudMonitorAlarmHistory() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Search by recipient。",
+				Description: "Search 通过 recipient。",
 			},
 
 			"receiver_groups": {
@@ -138,7 +138,7 @@ func DataSourceTencentCloudMonitorAlarmHistory() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Search by recipient group。",
+				Description: "Search 通过 recipient 组。",
 			},
 
 			"policy_ids": {
@@ -147,7 +147,7 @@ func DataSourceTencentCloudMonitorAlarmHistory() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Search by 告警策略 ID list。",
+				Description: "Search 通过 告警策略 ID 列表。",
 			},
 
 			"alarm_levels": {
@@ -162,13 +162,13 @@ func DataSourceTencentCloudMonitorAlarmHistory() *schema.Resource {
 			"histories": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Alarm record list。",
+				Description: "Alarm 记录 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"alarm_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Alarm record ID。",
+							Description: "Alarm 记录 ID。",
 						},
 						"monitor_type": {
 							Type:        schema.TypeString,
@@ -183,7 +183,7 @@ func DataSourceTencentCloudMonitorAlarmHistory() *schema.Resource {
 						"alarm_object": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Alarm object。",
+							Description: "Alarm 对象。",
 						},
 						"content": {
 							Type:        schema.TypeString,
@@ -193,17 +193,17 @@ func DataSourceTencentCloudMonitorAlarmHistory() *schema.Resource {
 						"first_occur_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "时间戳 of the first occurrence。",
+							Description: "时间戳 的 first occurrence。",
 						},
 						"last_occur_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "时间戳 of the last occurrence。",
+							Description: "时间戳 的 last occurrence。",
 						},
 						"alarm_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "告警状态 有效值：ALARM (not resolved)，OK (resolved)，NO_CONF (expired)，NO_DATA (insufficient data)。",
+							Description: "告警状态 有效值：ALARM (不 resolved)，OK (resolved)，NO_CONF (expired)，NO_DATA (insufficient 数据)。",
 						},
 						"policy_id": {
 							Type:        schema.TypeString,
@@ -218,7 +218,7 @@ func DataSourceTencentCloudMonitorAlarmHistory() *schema.Resource {
 						"vpc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC of alarm object for basic product alarm。",
+							Description: "VPC 的 告警 对象 对于 basic product 告警。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
@@ -233,18 +233,18 @@ func DataSourceTencentCloudMonitorAlarmHistory() *schema.Resource {
 						"instance_group": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Instance group of alarm object。",
+							Description: "实例 组 的 告警 对象。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Instance 组 ID",
+										Description: "实例 组 ID",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance 组名称",
+										Description: "实例 组名称",
 									},
 								},
 							},
@@ -255,7 +255,7 @@ func DataSourceTencentCloudMonitorAlarmHistory() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "Recipient list。",
+							Description: "Recipient 列表。",
 						},
 						"receiver_groups": {
 							Type: schema.TypeSet,
@@ -263,7 +263,7 @@ func DataSourceTencentCloudMonitorAlarmHistory() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "Recipient group list。",
+							Description: "Recipient 组 列表。",
 						},
 						"notice_ways": {
 							Type: schema.TypeSet,
@@ -271,12 +271,12 @@ func DataSourceTencentCloudMonitorAlarmHistory() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Alarm channel list. 有效值：SMS (SMS)，EMAIL (email)，CALL (phone)，WECHAT (WeChat)。",
+							Description: "Alarm channel 列表. 有效值：SMS (SMS)，EMAIL (email)，CALL (phone)，WECHAT (WeChat)。",
 						},
 						"origin_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "告警策略 ID，which can be used when you call APIs (BindingPolicyObject，UnBindingAllPolicyObject，UnBindingPolicyObject) to bind/unbind instances or instance groups to/from an alarm policy。",
+							Description: "告警策略 ID，其中 可以 是 使用 当 您 call APIs (BindingPolicyObject，UnBindingAllPolicyObject，UnBindingPolicyObject) 到 bind/unbind 实例 或 实例 groups 到/从 告警 策略。",
 						},
 						"alarm_type": {
 							Type:        schema.TypeString,
@@ -296,18 +296,18 @@ func DataSourceTencentCloudMonitorAlarmHistory() *schema.Resource {
 						"policy_exists": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否policy exists. 有效值：0 (no)，1 (yes)。",
+							Description: "是否policy exists. 有效值：0 (无)，1 (yes)。",
 						},
 						"metrics_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Metric informationNote: this field may return null，indicating that no valid values can be obtained。",
+							Description: "Metric informationNote: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"qce_namespace": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Namespace 用于query data by Tencent Cloud service monitoring 类型",
+										Description: "Namespace 用于query 数据 通过 Tencent Cloud 服务 监控 类型",
 									},
 									"metric_name": {
 										Type:        schema.TypeString,
@@ -322,7 +322,7 @@ func DataSourceTencentCloudMonitorAlarmHistory() *schema.Resource {
 									"value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "值 triggering alarm。",
+										Description: "值 triggering 告警。",
 									},
 									"description": {
 										Type:        schema.TypeString,
@@ -335,12 +335,12 @@ func DataSourceTencentCloudMonitorAlarmHistory() *schema.Resource {
 						"dimensions": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Dimension information of an instance that triggered alarms.Note: this field may return null，indicating that no valid values can be obtained。",
+							Description: "Dimension 信息 的 实例 该 triggered alarms.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"alarm_level": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Alarm 级别Note: this field may return null，indicating that no valid values can be obtained。",
+							Description: "Alarm 级别Note: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 					},
 				},

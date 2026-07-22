@@ -203,7 +203,7 @@ func ResourceTencentCloudClbInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "可用的zone id，仅适用于开放的CLB。",
+				Description: "可用的zone ID，仅适用于开放的CLB。",
 			},
 			"slave_zone_id": {
 				Type:        schema.TypeString,
@@ -311,7 +311,7 @@ func ResourceTencentCloudClbInstance() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    1,
-							Description: "vpcgw cluster\n注意：该字段可能返回null，表示取不到有效值。",
+							Description: "vpcgw 集群\n注意：该字段可能返回null，表示取不到有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"cluster_id": {

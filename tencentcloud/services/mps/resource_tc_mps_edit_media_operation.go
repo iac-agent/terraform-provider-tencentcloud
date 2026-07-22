@@ -22,42 +22,42 @@ func ResourceTencentCloudMpsEditMediaOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "Information of input video file。",
+				Description: "Information 的 input 视频 文件。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"input_info": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Required:    true,
-							Description: "Video input information。",
+							Description: "Video input 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The input 类型 有效值：`COS`: A COS 存储桶 地址  `URL`: A URL  `AWS-S3`: An AWS S3 存储桶 地址 Currently，this 类型 is only supported for transcoding tasks。",
+										Description: "input 类型 有效值：`COS`: A COS 存储桶 地址 `URL`: A URL `AWS-S3`: An AWS S3 存储桶 地址 Currently，此 类型 是 仅 支持 对于 transcoding tasks。",
 									},
 									"cos_input_info": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "The information of the COS object to process. This parameter is valid and 必填 when `类型` is `COS`。",
+										Description: "信息 的 COS 对象 到 process. 此 参数 是 有效 和 必填 当 `类型` 是 `COS`。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"bucket": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The COS 存储桶 of the object to process，such as `TopRankVideo-125xxx88`。",
+													Description: "COS 存储桶 的 对象 到 process，such 作为 `TopRankVideo-125xxx88`。",
 												},
 												"region": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The 地域 of the COS 存储桶，such as `ap-chongqing`。",
+													Description: "地域 的 COS 存储桶，such 作为 `ap-chongqing`。",
 												},
 												"object": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The 路径 of the object to process，such as `/movie/201907/WildAnimal.mov`。",
+													Description: "路径 的 对象 到 process，such 作为 `/movie/201907/WildAnimal.mov`。",
 												},
 											},
 										},
@@ -66,13 +66,13 @@ func ResourceTencentCloudMpsEditMediaOperation() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "The URL of the object to process. This parameter is valid and 必填 when `类型` is `URL`.注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "URL 的 对象 到 process. 此 参数 是 有效 和 必填 当 `类型` 是 `URL`.注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"url": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "URL of a video。",
+													Description: "URL 的 视频。",
 												},
 											},
 										},
@@ -81,33 +81,33 @@ func ResourceTencentCloudMpsEditMediaOperation() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "The information of the AWS S3 object processed. This parameter 为必填项 if `类型` is `AWS-S3`.注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "信息 的 AWS S3 对象 processed. 此 参数 为必填项 如果 `类型` 是 `AWS-S3`.注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"s3_bucket": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The AWS S3 存储桶",
+													Description: "AWS S3 存储桶",
 												},
 												"s3_region": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The 地域 of the AWS S3 存储桶",
+													Description: "地域 的 AWS S3 存储桶",
 												},
 												"s3_object": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The 路径 of the AWS S3 object。",
+													Description: "路径 的 AWS S3 对象。",
 												},
 												"s3_secret_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The 键 ID 必填 to access the AWS S3 object。",
+													Description: "键 ID 必填 到 访问 AWS S3 对象。",
 												},
 												"s3_secret_key": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The 键 必填 to access the AWS S3 object。",
+													Description: "键 必填 到 访问 AWS S3 对象。",
 												},
 											},
 										},
@@ -118,12 +118,12 @@ func ResourceTencentCloudMpsEditMediaOperation() *schema.Resource {
 						"start_time_offset": {
 							Type:        schema.TypeFloat,
 							Optional:    true,
-							Description: "开始时间 偏移量 of video clipping （秒）。",
+							Description: "开始时间 偏移量 的 视频 clipping （秒）。",
 						},
 						"end_time_offset": {
 							Type:        schema.TypeFloat,
 							Optional:    true,
-							Description: "结束时间 偏移量 of video clipping （秒）。",
+							Description: "结束时间 偏移量 的 视频 clipping （秒）。",
 						},
 					},
 				},
@@ -134,30 +134,30 @@ func ResourceTencentCloudMpsEditMediaOperation() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "The storage location of the media processing 输出文件",
+				Description: "存储 location 的 media processing 输出文件",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The storage 类型 for a media processing 输出文件 有效值：`COS`: Tencent Cloud COS. `AWS-S3`: AWS S3. This 类型 is only supported for AWS tasks，and the 输出存储桶 must be in the same 地域 as the 存储桶 of the 来源 file。",
+							Description: "存储 类型 对于 media processing 输出文件 有效值：`COS`: Tencent Cloud COS. `AWS-S3`: AWS S3. 此 类型 是 仅 支持 对于 AWS tasks，和 输出存储桶 必须 是 在 same 地域 作为 存储桶 的 来源 文件。",
 						},
 						"cos_output_storage": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "The location to save the output object in COS. This parameter is valid and 必填 when `类型` is COS.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "location 到 save output 对象 在 COS. 此 参数 是 有效 和 必填 当 `类型` 是 COS.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"bucket": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The 存储桶 to which the 输出文件 of media processing is saved，such as `TopRankVideo-125xxx88`. 如果此参数为空，the 值 of the upper layer will be inherited。",
+										Description: "存储桶 到 其中 输出文件 的 media processing 是 saved，such 作为 `TopRankVideo-125xxx88`. 如果此参数为空， 值 的 upper layer 将 是 inherited。",
 									},
 									"region": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The 地域 of the 输出存储桶，such as `ap-chongqing`. 如果此参数为空，the 值 of the upper layer will be inherited。",
+										Description: "地域 的 输出存储桶，such 作为 `ap-chongqing`. 如果此参数为空， 值 的 upper layer 将 是 inherited。",
 									},
 								},
 							},
@@ -166,28 +166,28 @@ func ResourceTencentCloudMpsEditMediaOperation() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "The AWS S3 存储桶 to save the 输出文件 This parameter 为必填项 if `类型` is `AWS-S3`.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "AWS S3 存储桶 到 save 输出文件 此 参数 为必填项 如果 `类型` 是 `AWS-S3`.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"s3_bucket": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The AWS S3 存储桶",
+										Description: "AWS S3 存储桶",
 									},
 									"s3_region": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The 地域 of the AWS S3 存储桶",
+										Description: "地域 的 AWS S3 存储桶",
 									},
 									"s3_secret_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The 键 ID 必填 to upload files to the AWS S3 object。",
+										Description: "键 ID 必填 到 upload files 到 AWS S3 对象。",
 									},
 									"s3_secret_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The 键 必填 to upload files to the AWS S3 object。",
+										Description: "键 必填 到 upload files 到 AWS S3 对象。",
 									},
 								},
 							},
@@ -200,7 +200,7 @@ func ResourceTencentCloudMpsEditMediaOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The 路径 to save the media processing 输出文件",
+				Description: "路径 到 save media processing 输出文件",
 			},
 
 			"output_config": {
@@ -208,18 +208,18 @@ func ResourceTencentCloudMpsEditMediaOperation() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Configuration for output files of video editing。",
+				Description: "Configuration 对于 output files 的 视频 editing。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"container": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "格式 有效值：`mp4` (default)，`hls`，`mov`，`flv`，`avi`。",
+							Description: "格式 有效值：`mp4` (默认值)，`hls`，`mov`，`flv`，`avi`。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The editing 模式 Valid values are `normal` and `fast`. The 默认为 `normal`，which 表示precise editing。",
+							Description: "editing 模式 有效 值 是 `normal` 和 `fast`. 默认为 `normal`，其中 表示precise editing。",
 						},
 					},
 				},
@@ -230,70 +230,70 @@ func ResourceTencentCloudMpsEditMediaOperation() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Event notification information of task. 如果此参数为空，no event notifications will be obtained。",
+				Description: "Event 通知 信息 的 任务. 如果此参数为空，无 事件 notifications 将 是 获取。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cmq_model": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The CMQ or TDMQ-CMQ model. 有效值：Queue，Topic。",
+							Description: "CMQ 或 TDMQ-CMQ model. 有效值：Queue，Topic。",
 						},
 						"cmq_region": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The CMQ or TDMQ-CMQ 地域，such as `sh` (Shanghai) or `bj` (Beijing)。",
+							Description: "CMQ 或 TDMQ-CMQ 地域，such 作为 `sh` (Shanghai) 或 `bj` (Beijing)。",
 						},
 						"topic_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The CMQ or TDMQ-CMQ topic to receive notifications. This parameter is valid when `CmqModel` is `Topic`。",
+							Description: "CMQ 或 TDMQ-CMQ 主题 到 receive notifications. 此 参数 是 有效 当 `CmqModel` 是 `Topic`。",
 						},
 						"queue_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The CMQ or TDMQ-CMQ queue to receive notifications. This parameter is valid when `CmqModel` is `Queue`。",
+							Description: "CMQ 或 TDMQ-CMQ queue 到 receive notifications. 此 参数 是 有效 当 `CmqModel` 是 `Queue`。",
 						},
 						"notify_mode": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Workflow notification method. 有效值：Finish，Change. 如果此参数为空，`Finish` will be used。",
+							Description: "Workflow 通知 方法. 有效值：Finish，Change. 如果此参数为空，`Finish` 将 是 使用。",
 						},
 						"notify_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The notification 类型 有效值：`CMQ`: This 值 is no longer used. Please use `TDMQ-CMQ` instead. `TDMQ-CMQ`: 消息 queue. `URL`: If `NotifyType` is set to `URL`，HTTP callbacks are sent to the URL specified by `NotifyUrl`. HTTP and JSON are 用于the callbacks. The packet 包含response parameters of the `ParseNotification` API. `SCF`: This notification 类型 is not recommended. You need to configure it in the SCF console. `AWS-SQS`: AWS queue. This 类型 is only supported for AWS tasks，and the queue must be in the same 地域 as the AWS 存储桶 If you do not pass this parameter or pass in an empty string，`CMQ` will be used. To use a different notification 类型，指定this parameter accordingly。",
+							Description: "通知 类型 有效值：`CMQ`: 此 值 是 无 longer 使用. Please 使用 `TDMQ-CMQ` instead. `TDMQ-CMQ`: 消息 queue. `URL`: 如果 `NotifyType` 是 集合 到 `URL`，HTTP callbacks 是 sent 到 URL 指定 通过 `NotifyUrl`. HTTP 和 JSON 是 用于the callbacks. packet 包含response 参数 的 `ParseNotification` API. `SCF`: 此 通知 类型 是 不 recommended. You need 到 configure 它 在 SCF console. `AWS-SQS`: AWS queue. 此 类型 是 仅 支持 对于 AWS tasks，和 queue 必须 是 在 same 地域 作为 AWS 存储桶 如果 您 do 不 pass 此 参数 或 pass 在 空 字符串，`CMQ` 将 是 使用. To 使用 different 通知 类型，指定this 参数 accordingly。",
 						},
 						"notify_url": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "HTTP callback URL，必填 if `NotifyType` is set to `URL`。",
+							Description: "HTTP callback URL，必填 如果 `NotifyType` 是 集合 到 `URL`。",
 						},
 						"aws_sqs": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "The AWS SQS queue. This parameter 为必填项 if `NotifyType` is `AWS-SQS`.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "AWS SQS queue. 此 参数 为必填项 如果 `NotifyType` 是 `AWS-SQS`.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"sqs_region": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The 地域 of the SQS queue。",
+										Description: "地域 的 SQS queue。",
 									},
 									"sqs_queue_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The 名称 SQS queue。",
+										Description: "名称 SQS queue。",
 									},
 									"s3_secret_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The 键 ID 必填 to read from/write to the SQS queue。",
+										Description: "键 ID 必填 到 read 从/write 到 SQS queue。",
 									},
 									"s3_secret_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The 键 必填 to read from/write to the SQS queue。",
+										Description: "键 必填 到 read 从/write 到 SQS queue。",
 									},
 								},
 							},
@@ -306,21 +306,21 @@ func ResourceTencentCloudMpsEditMediaOperation() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Task 优先级 The higher the 值，the higher the 优先级 取值范围：[-10,10]. 如果此参数为空，0 will be used。",
+				Description: "任务 优先级 higher 值， higher 优先级 取值范围：[-10,10]. 如果此参数为空，0 将 是 使用。",
 			},
 
 			"session_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The ID 用于deduplication. If there was a request with the same ID in the last three days，the current request will return an 错误 The ID can contain up to 50 characters. 如果此参数为空 or an empty string is entered，no deduplication will be performed。",
+				Description: "ID 用于deduplication. 如果 there 是 请求 使用 same ID 在 last three days， 当前 请求 将 返回 错误 ID 可以 contain up 到 50 字符. 如果此参数为空 或 空 字符串 是 entered，无 deduplication 将 是 performed。",
 			},
 
 			"session_context": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The 来源 context which is 用于pass through the 用户 request information. The task flow 状态 change callback will return the 值 of this field. It can contain up to 1,000 characters。",
+				Description: "来源 context 其中 是 用于pass through 用户 请求 信息. 任务 flow 状态 change callback 将 返回 值 的 此 字段. It 可以 contain up 到 1,000 字符。",
 			},
 		},
 	}

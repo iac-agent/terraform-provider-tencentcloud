@@ -38,7 +38,7 @@ func DataSourceTencentCloudAntiddosOverviewIndex() *schema.Resource {
 			"antiddos_ip_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Total 数量 advanced defense IPs (including advanced defense packets and advanced defense IPs)。",
+				Description: "Total 数量 advanced defense IPs (包括 advanced defense packets 和 advanced defense IPs)。",
 			},
 
 			"attack_ip_count": {
@@ -74,19 +74,19 @@ func DataSourceTencentCloudAntiddosOverviewIndex() *schema.Resource {
 			"new_attack_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The time in the most recent attack。",
+				Description: "时间 在 most recent attack。",
 			},
 
 			"new_attack_ip": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The IP 地址 in the most recent attack。",
+				Description: "IP 地址 在 most recent attack。",
 			},
 
 			"new_attack_type": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The 类型 in the most recent attack。",
+				Description: "类型 在 most recent attack。",
 			},
 
 			"result_output_file": {

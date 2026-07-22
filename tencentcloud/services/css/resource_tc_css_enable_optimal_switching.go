@@ -27,13 +27,13 @@ func ResourceTencentCloudCssEnableOptimalSwitching() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Stream id。",
+				Description: "Stream ID。",
 			},
 
 			"enable_switch": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "`0`:已禁用，`1`:enable。",
+				Description: "`0`:已禁用，`1`:启用。",
 			},
 
 			"host_group_name": {

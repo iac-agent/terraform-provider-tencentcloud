@@ -31,43 +31,43 @@ func DataSourceTencentCloudTsfContainerGroup() *schema.Resource {
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The sorting field. By default，it is the createTime field. Supports id，名称，createTime。",
+				Description: "sorting 字段. By 默认值，它 是 createTime 字段. Supports ID，名称，createTime。",
 			},
 
 			"order_type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The sorting 顺序 By default，it is 1，indicating 降序 0 表示ascending 顺序，and 1 表示descending 顺序",
+				Description: "sorting 顺序 By 默认值，它 是 1，indicating 降序 0 表示ascending 顺序，和 1 表示descending 顺序",
 			},
 
 			"cluster_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster Id。",
+				Description: "Cluster ID。",
 			},
 
 			"namespace_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Namespace Id。",
+				Description: "Namespace ID。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "结果 list。",
+				Description: "结果 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "列表 deployment groups.注意：此字段可能返回 null，表示未找到有效值。",
+							Description: "列表 部署 groups.注意：此字段可能返回 null，表示未找到有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"group_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Group Id.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Group ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"group_name": {
 										Type:        schema.TypeString,
@@ -82,7 +82,7 @@ func DataSourceTencentCloudTsfContainerGroup() *schema.Resource {
 									"server": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Image server.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Image 服务器.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"repo_name": {
 										Type:        schema.TypeString,
@@ -97,7 +97,7 @@ func DataSourceTencentCloudTsfContainerGroup() *schema.Resource {
 									"cluster_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cluster Id.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Cluster ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"cluster_name": {
 										Type:        schema.TypeString,
@@ -107,7 +107,7 @@ func DataSourceTencentCloudTsfContainerGroup() *schema.Resource {
 									"namespace_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Namespace Id.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Namespace ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"namespace_name": {
 										Type:        schema.TypeString,
@@ -117,32 +117,32 @@ func DataSourceTencentCloudTsfContainerGroup() *schema.Resource {
 									"cpu_request": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The initial amount of CPU，corresponding to K8S request.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "initial amount 的 CPU，corresponding 到 K8S 请求.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"cpu_limit": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The maximum amount of CPU，corresponding to K8S 限制注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "最大 amount 的 CPU，corresponding 到 K8S 限制注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"mem_request": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The initial amount of memory allocated in MiB，corresponding to K8S request.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "initial amount 的 内存 allocated 在 MiB，corresponding 到 K8S 请求.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"mem_limit": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The maximum amount of memory allocated in MiB，corresponding to K8S 限制注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "最大 amount 的 内存 allocated 在 MiB，corresponding 到 K8S 限制注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"alias": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The Group 描述注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Group 描述注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"kube_inject_enable": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "The 值 of KubeInjectEnable.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "值 的 KubeInjectEnable.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"updated_time": {
 										Type:        schema.TypeString,

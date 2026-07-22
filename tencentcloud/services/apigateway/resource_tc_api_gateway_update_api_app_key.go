@@ -23,13 +23,13 @@ func ResourceTencentCloudApiGatewayUpdateApiAppKey() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Application unique ID。",
+				Description: "Application 唯一 ID。",
 			},
 			"api_app_key": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "键 of the application。",
+				Description: "键 的 应用。",
 			},
 			//"api_app_secret": {
 			//	Optional:    true,

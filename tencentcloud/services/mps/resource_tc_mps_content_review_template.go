@@ -26,33 +26,33 @@ func ResourceTencentCloudMpsContentReviewTemplate() *schema.Resource {
 			"name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "内容 review 模板名称，length 限制: 64 characters。",
+				Description: "内容 review 模板名称，长度 限制: 64 字符。",
 			},
 
 			"comment": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "内容 review 模板描述 information，length 限制: 256 characters。",
+				Description: "内容 review 模板描述 信息，长度 限制: 256 字符。",
 			},
 
 			"porn_configure": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Control parameters for porn image。",
+				Description: "Control 参数 对于 porn 镜像。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"img_review_info": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Porn image Identification Control Parameters。",
+							Description: "Porn 镜像 Identification Control Parameters。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Porn screen task switch，可选 值:ON/OFF。",
+										Description: "Porn screen 任务 switch，可选 值:ON/OFF。",
 									},
 									"label_set": {
 										Type: schema.TypeSet,
@@ -60,17 +60,17 @@ func ResourceTencentCloudMpsContentReviewTemplate() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Optional:    true,
-										Description: "Porn image filter 标签，if the review 结果 包含selected 标签，the 结果 will be returned. If the filter 标签 is empty，all the review results will be returned. The 可选 值 is:porn，vulgar，intimacy，sexy。",
+										Description: "Porn 镜像 过滤器 标签，如果 review 结果 包含selected 标签， 结果 将 是 返回. 如果 过滤器 标签 是 空，all review results 将 是 返回. 可选 值 是:porn，vulgar，intimacy，sexy。",
 									},
 									"block_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging suspected violations. When the smart review reaches the score above，it is considered suspected violations. If it is not filled，the 默认为 90 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging suspected violations. 当 smart review reaches score above，它 是 considered suspected violations. 如果 它 是 不 filled， 默认为 90 points. 取值范围：0~100。",
 									},
 									"review_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging whether manual review 为必填项 for violations. When the intelligent review reaches the score above，it is considered that manual review 为必填项. If it is not filled，the 默认为 0. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging whether manual review 为必填项 对于 violations. 当 intelligent review reaches score above，它 是 considered 该 manual review 为必填项. 如果 它 是 不 filled， 默认为 0. 取值范围：0~100。",
 									},
 								},
 							},
@@ -79,23 +79,23 @@ func ResourceTencentCloudMpsContentReviewTemplate() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Voice pornography control parameters。",
+							Description: "Voice pornography control 参数。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Voice pornography task switch，可选 值:ON/OFF。",
+										Description: "Voice pornography 任务 switch，可选 值:ON/OFF。",
 									},
 									"block_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging suspected violations. When the smart review reaches the score above，it is considered suspected violations. If it is not filled，the 默认为 100 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging suspected violations. 当 smart review reaches score above，它 是 considered suspected violations. 如果 它 是 不 filled， 默认为 100 points. 取值范围：0~100。",
 									},
 									"review_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging whether manual review 为必填项 for violations. When the intelligent review reaches the score above，it is considered that manual review 为必填项. If it is not filled，the 默认为 75 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging whether manual review 为必填项 对于 violations. 当 intelligent review reaches score above，它 是 considered 该 manual review 为必填项. 如果 它 是 不 filled， 默认为 75 points. 取值范围：0~100。",
 									},
 								},
 							},
@@ -104,23 +104,23 @@ func ResourceTencentCloudMpsContentReviewTemplate() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Ocr pornography control parameters。",
+							Description: "Ocr pornography control 参数。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Ocr pornography task switch，可选 值:ON/OFF。",
+										Description: "Ocr pornography 任务 switch，可选 值:ON/OFF。",
 									},
 									"block_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging suspected violations. When the smart review reaches the score above，it is considered suspected violations. If it is not filled，the 默认为 100 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging suspected violations. 当 smart review reaches score above，它 是 considered suspected violations. 如果 它 是 不 filled， 默认为 100 points. 取值范围：0~100。",
 									},
 									"review_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging whether manual review 为必填项 for violations. When the intelligent review reaches the score above，it is considered that manual review 为必填项. If it is not filled，the 默认为 75 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging whether manual review 为必填项 对于 violations. 当 intelligent review reaches score above，它 是 considered 该 manual review 为必填项. 如果 它 是 不 filled， 默认为 75 points. 取值范围：0~100。",
 									},
 								},
 							},
@@ -133,20 +133,20 @@ func ResourceTencentCloudMpsContentReviewTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Control parameters for unsafe information。",
+				Description: "Control 参数 对于 unsafe 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"img_review_info": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Terrorism image task control parameters。",
+							Description: "Terrorism 镜像 任务 control 参数。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Terrorism image task switch，可选 值:ON/OFF。",
+										Description: "Terrorism 镜像 任务 switch，可选 值:ON/OFF。",
 									},
 									"label_set": {
 										Type: schema.TypeSet,
@@ -154,17 +154,17 @@ func ResourceTencentCloudMpsContentReviewTemplate() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Optional:    true,
-										Description: "Terrorism image filter 标签，if the review 结果 包含selected 标签，the 结果 will be returned，if the filter 标签 is empty，all the review results will be returned，the 可选 值 is:guns，crowd，bloody，police，banners，militant，explosion，terrorists，scenario。",
+										Description: "Terrorism 镜像 过滤器 标签，如果 review 结果 包含selected 标签， 结果 将 是 返回，如果 过滤器 标签 是 空，all review results 将 是 返回， 可选 值 是:guns，crowd，bloody，police，banners，militant，explosion，terrorists，scenario。",
 									},
 									"block_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging suspected violations. When the smart review reaches the score above，it is considered suspected violations. If it is not filled，the 默认为 90 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging suspected violations. 当 smart review reaches score above，它 是 considered suspected violations. 如果 它 是 不 filled， 默认为 90 points. 取值范围：0~100。",
 									},
 									"review_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging whether manual review 为必填项 for violations. When the intelligent review reaches the score above，it is considered that manual review 为必填项. If it is not filled，the 默认为 80 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging whether manual review 为必填项 对于 violations. 当 intelligent review reaches score above，它 是 considered 该 manual review 为必填项. 如果 它 是 不 filled， 默认为 80 points. 取值范围：0~100。",
 									},
 								},
 							},
@@ -173,23 +173,23 @@ func ResourceTencentCloudMpsContentReviewTemplate() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Required:    true,
-							Description: "Ocr terrorism task Control Parameters。",
+							Description: "Ocr terrorism 任务 Control Parameters。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Ocr terrorism image task switch，可选 值:ON/OFF。",
+										Description: "Ocr terrorism 镜像 任务 switch，可选 值:ON/OFF。",
 									},
 									"block_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging suspected violations. When the smart review reaches the score above，it is considered suspected violations. If it is not filled，the 默认为 100 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging suspected violations. 当 smart review reaches score above，它 是 considered suspected violations. 如果 它 是 不 filled， 默认为 100 points. 取值范围：0~100。",
 									},
 									"review_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging whether manual review 为必填项 for violations. When the intelligent review reaches the score above，it is considered that manual review 为必填项. If it is not filled，the 默认为 75 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging whether manual review 为必填项 对于 violations. 当 intelligent review reaches score above，它 是 considered 该 manual review 为必填项. 如果 它 是 不 filled， 默认为 75 points. 取值范围：0~100。",
 									},
 								},
 							},
@@ -202,20 +202,20 @@ func ResourceTencentCloudMpsContentReviewTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Political control parameters。",
+				Description: "Political control 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"img_review_info": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Political image control parameters。",
+							Description: "Political 镜像 control 参数。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Political image task switch，可选 值:ON/OFF。",
+										Description: "Political 镜像 任务 switch，可选 值:ON/OFF。",
 									},
 									"label_set": {
 										Type: schema.TypeSet,
@@ -223,17 +223,17 @@ func ResourceTencentCloudMpsContentReviewTemplate() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Optional:    true,
-										Description: "Political image filter 标签，if the review 结果 包含selected 标签，the 结果 will be returned，if the filter 标签 is empty，all the review results will be returned，the 可选 值 is:violation_photo，politician，entertainment，sport，entrepreneur，scholar，celebrity，military。",
+										Description: "Political 镜像 过滤器 标签，如果 review 结果 包含selected 标签， 结果 将 是 返回，如果 过滤器 标签 是 空，all review results 将 是 返回， 可选 值 是:violation_photo，politician，entertainment，sport，entrepreneur，scholar，celebrity，military。",
 									},
 									"block_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging suspected violations. When the smart review reaches the score above，it is considered suspected violations. If it is not filled，the 默认为 97 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging suspected violations. 当 smart review reaches score above，它 是 considered suspected violations. 如果 它 是 不 filled， 默认为 97 points. 取值范围：0~100。",
 									},
 									"review_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging whether manual review 为必填项 for violations. When the intelligent review reaches the score above，it is considered that manual review 为必填项. If it is not filled，the 默认为 95 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging whether manual review 为必填项 对于 violations. 当 intelligent review reaches score above，它 是 considered 该 manual review 为必填项. 如果 它 是 不 filled， 默认为 95 points. 取值范围：0~100。",
 									},
 								},
 							},
@@ -242,23 +242,23 @@ func ResourceTencentCloudMpsContentReviewTemplate() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Political asr control parameters。",
+							Description: "Political asr control 参数。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Political asr task switch，可选 值:ON/OFF。",
+										Description: "Political asr 任务 switch，可选 值:ON/OFF。",
 									},
 									"block_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging suspected violations. When the smart review reaches the score above，it is considered suspected violations. If it is not filled，the 默认为 100 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging suspected violations. 当 smart review reaches score above，它 是 considered suspected violations. 如果 它 是 不 filled， 默认为 100 points. 取值范围：0~100。",
 									},
 									"review_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging whether manual review 为必填项 for violations. When the intelligent review reaches the score above，it is considered that manual review 为必填项. If it is not filled，the 默认为 75 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging whether manual review 为必填项 对于 violations. 当 intelligent review reaches score above，它 是 considered 该 manual review 为必填项. 如果 它 是 不 filled， 默认为 75 points. 取值范围：0~100。",
 									},
 								},
 							},
@@ -267,23 +267,23 @@ func ResourceTencentCloudMpsContentReviewTemplate() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Political ocr control parameters。",
+							Description: "Political ocr control 参数。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Political ocr task switch，可选 值:ON/OFF。",
+										Description: "Political ocr 任务 switch，可选 值:ON/OFF。",
 									},
 									"block_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging suspected violations. When the smart review reaches the score above，it is considered suspected violations. If it is not filled，the 默认为 100 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging suspected violations. 当 smart review reaches score above，它 是 considered suspected violations. 如果 它 是 不 filled， 默认为 100 points. 取值范围：0~100。",
 									},
 									"review_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging whether manual review 为必填项 for violations. When the intelligent review reaches the score above，it is considered that manual review 为必填项. If it is not filled，the 默认为 75 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging whether manual review 为必填项 对于 violations. 当 intelligent review reaches score above，它 是 considered 该 manual review 为必填项. 如果 它 是 不 filled， 默认为 75 points. 取值范围：0~100。",
 									},
 								},
 							},
@@ -296,7 +296,7 @@ func ResourceTencentCloudMpsContentReviewTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Prohibited control parameters. Prohibited 内容 includes:abuse，drug-related violations.Note: this parameter is not yet supported。",
+				Description: "Prohibited control 参数. Prohibited 内容 includes:abuse，drug-related violations.注意: 此 参数 是 不 yet 支持。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"asr_review_info": {
@@ -309,17 +309,17 @@ func ResourceTencentCloudMpsContentReviewTemplate() *schema.Resource {
 									"switch": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Voice Prohibition task switch，可选 值:ON/OFF。",
+										Description: "Voice Prohibition 任务 switch，可选 值:ON/OFF。",
 									},
 									"block_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging suspected violations. When the smart review reaches the score above，it is considered suspected violations. If it is not filled，the 默认为 100 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging suspected violations. 当 smart review reaches score above，它 是 considered suspected violations. 如果 它 是 不 filled， 默认为 100 points. 取值范围：0~100。",
 									},
 									"review_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging whether manual review 为必填项 for violations. When the intelligent review reaches the score above，it is considered that manual review 为必填项. If it is not filled，the 默认为 75 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging whether manual review 为必填项 对于 violations. 当 intelligent review reaches score above，它 是 considered 该 manual review 为必填项. 如果 它 是 不 filled， 默认为 75 points. 取值范围：0~100。",
 									},
 								},
 							},
@@ -334,17 +334,17 @@ func ResourceTencentCloudMpsContentReviewTemplate() *schema.Resource {
 									"switch": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Ocr Prohibition task switch，可选 值:ON/OFF。",
+										Description: "Ocr Prohibition 任务 switch，可选 值:ON/OFF。",
 									},
 									"block_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging suspected violations. When the smart review reaches the score above，it is considered suspected violations. If it is not filled，the 默认为 100 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging suspected violations. 当 smart review reaches score above，它 是 considered suspected violations. 如果 它 是 不 filled， 默认为 100 points. 取值范围：0~100。",
 									},
 									"review_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging whether manual review 为必填项 for violations. When the intelligent review reaches the score above，it is considered that manual review 为必填项. If it is not filled，the 默认为 75 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging whether manual review 为必填项 对于 violations. 当 intelligent review reaches score above，它 是 considered 该 manual review 为必填项. 如果 它 是 不 filled， 默认为 75 points. 取值范围：0~100。",
 									},
 								},
 							},
@@ -364,13 +364,13 @@ func ResourceTencentCloudMpsContentReviewTemplate() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "用户-defined face review control parameters。",
+							Description: "用户-defined face review control 参数。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "用户-defined face review task switch，可选 值:ON/OFF。",
+										Description: "用户-defined face review 任务 switch，可选 值:ON/OFF。",
 									},
 									"label_set": {
 										Type: schema.TypeSet,
@@ -378,17 +378,17 @@ func ResourceTencentCloudMpsContentReviewTemplate() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Optional:    true,
-										Description: "用户-defined face review 标签，the review 结果 包含selected 标签 and 返回result，if the filter 标签 is empty，all review results are returned. If you want to use the 标签 filtering function，when adding a face library，you need to add the corresponding character 标签The 最大tags is 10，and the length of each 标签 is up to 16 characters。",
+										Description: "用户-defined face review 标签， review 结果 包含selected 标签 和 返回result，如果 过滤器 标签 是 空，all review results 是 返回. 如果 您 want 到 使用 标签 filtering 函数，当 adding face 库，您 need 到 add corresponding character 标签The 最大tags 是 10，和 长度 的 each 标签 是 up 到 16 字符。",
 									},
 									"block_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging suspected violations. When the smart review reaches the score above，it is considered suspected violations. If it is not filled，the 默认为 100 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging suspected violations. 当 smart review reaches score above，它 是 considered suspected violations. 如果 它 是 不 filled， 默认为 100 points. 取值范围：0~100。",
 									},
 									"review_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging whether manual review 为必填项 for violations. When the intelligent review reaches the score above，it is considered that manual review 为必填项. If it is not filled，the 默认为 75 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging whether manual review 为必填项 对于 violations. 当 intelligent review reaches score above，它 是 considered 该 manual review 为必填项. 如果 它 是 不 filled， 默认为 75 points. 取值范围：0~100。",
 									},
 								},
 							},
@@ -397,13 +397,13 @@ func ResourceTencentCloudMpsContentReviewTemplate() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "用户-defined asr text review control parameters。",
+							Description: "用户-defined asr text review control 参数。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "用户-defined asr review task switch，可选 值:ON/OFF。",
+										Description: "用户-defined asr review 任务 switch，可选 值:ON/OFF。",
 									},
 									"label_set": {
 										Type: schema.TypeSet,
@@ -411,17 +411,17 @@ func ResourceTencentCloudMpsContentReviewTemplate() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Optional:    true,
-										Description: "用户-defined asr 标签，the review 结果 包含selected 标签 and 返回result，if the filter 标签 is empty，all review results are returned. If you want to use the 标签 filtering function，when adding a asr library，you need to add the corresponding character 标签The 最大tags is 10，and the length of each 标签 is up to 16 characters。",
+										Description: "用户-defined asr 标签， review 结果 包含selected 标签 和 返回result，如果 过滤器 标签 是 空，all review results 是 返回. 如果 您 want 到 使用 标签 filtering 函数，当 adding asr 库，您 need 到 add corresponding character 标签The 最大tags 是 10，和 长度 的 each 标签 是 up 到 16 字符。",
 									},
 									"block_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging suspected violations. When the smart review reaches the score above，it is considered suspected violations. If it is not filled，the 默认为 100 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging suspected violations. 当 smart review reaches score above，它 是 considered suspected violations. 如果 它 是 不 filled， 默认为 100 points. 取值范围：0~100。",
 									},
 									"review_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging whether manual review 为必填项 for violations. When the intelligent review reaches the score above，it is considered that manual review 为必填项. If it is not filled，the 默认为 75 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging whether manual review 为必填项 对于 violations. 当 intelligent review reaches score above，它 是 considered 该 manual review 为必填项. 如果 它 是 不 filled， 默认为 75 points. 取值范围：0~100。",
 									},
 								},
 							},
@@ -430,13 +430,13 @@ func ResourceTencentCloudMpsContentReviewTemplate() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "用户-defined ocr text review control parameters。",
+							Description: "用户-defined ocr text review control 参数。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "用户-defined ocr text review task switch，可选 值:ON/OFF。",
+										Description: "用户-defined ocr text review 任务 switch，可选 值:ON/OFF。",
 									},
 									"label_set": {
 										Type: schema.TypeSet,
@@ -444,17 +444,17 @@ func ResourceTencentCloudMpsContentReviewTemplate() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Optional:    true,
-										Description: "用户-defined ocr 标签，the review 结果 包含selected 标签 and 返回result，if the filter 标签 is empty，all review results are returned. If you want to use the 标签 filtering function，when adding a ocr library，you need to add the corresponding character 标签The 最大tags is 10，and the length of each 标签 is up to 16 characters。",
+										Description: "用户-defined ocr 标签， review 结果 包含selected 标签 和 返回result，如果 过滤器 标签 是 空，all review results 是 返回. 如果 您 want 到 使用 标签 filtering 函数，当 adding ocr 库，您 need 到 add corresponding character 标签The 最大tags 是 10，和 长度 的 each 标签 是 up 到 16 字符。",
 									},
 									"block_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging suspected violations. When the smart review reaches the score above，it is considered suspected violations. If it is not filled，the 默认为 100 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging suspected violations. 当 smart review reaches score above，它 是 considered suspected violations. 如果 它 是 不 filled， 默认为 100 points. 取值范围：0~100。",
 									},
 									"review_confidence": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The score threshold for judging whether manual review 为必填项 for violations. When the intelligent review reaches the score above，it is considered that manual review 为必填项. If it is not filled，the 默认为 75 points. 取值范围：0~100。",
+										Description: "score 阈值 对于 judging whether manual review 为必填项 对于 violations. 当 intelligent review reaches score above，它 是 considered 该 manual review 为必填项. 如果 它 是 不 filled， 默认为 75 points. 取值范围：0~100。",
 									},
 								},
 							},

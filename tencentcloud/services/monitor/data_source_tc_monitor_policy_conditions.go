@@ -20,7 +20,7 @@ func DataSourceTencentCloudMonitorPolicyConditions() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "名称 policy 名称，support partial matching，eg:`Cloud Virtual Machine`,`Virtual`,`Cloud Load Banlancer-Private CLB Listener`。",
+				Description: "名称 策略 名称，support partial matching，eg:`Cloud Virtual Machine`,`Virtual`,`Cloud Load Banlancer-Private CLB Listener`。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -31,13 +31,13 @@ func DataSourceTencentCloudMonitorPolicyConditions() *schema.Resource {
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list policy condition. Each element 包含following attributes:",
+				Description: "A 列表 策略 condition. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"policy_view_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Policy view 名称，eg:`cvm_device`,`BANDWIDTHPACKAGE`，refer to `data.tencentcloud_monitor_policy_conditions(policy_view_name)`。",
+							Description: "Policy view 名称，eg:`cvm_device`,`BANDWIDTHPACKAGE`，refer 到 `数据.tencentcloud_monitor_policy_conditions(policy_view_name)`。",
 						},
 						"is_support_multi_region": {
 							Type:        schema.TypeBool,
@@ -47,29 +47,29 @@ func DataSourceTencentCloudMonitorPolicyConditions() *schema.Resource {
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 this policy 名称",
+							Description: "名称 此 策略 名称",
 						},
 						"support_regions": {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Computed:    true,
-							Description: "Support regions of this policy view。",
+							Description: "Support regions 的 此 策略 view。",
 						},
 						"event_metrics": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "A 列表 event condition metrics. Each element 包含following attributes:",
+							Description: "A 列表 事件 condition metrics. Each element 包含following attributes:",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"event_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "ID this event metric。",
+										Description: "ID 此 事件 metric。",
 									},
 									"event_show_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "名称 this event metric。",
+										Description: "名称 此 事件 metric。",
 									},
 									"need_recovered": {
 										Type:        schema.TypeBool,
@@ -82,147 +82,147 @@ func DataSourceTencentCloudMonitorPolicyConditions() *schema.Resource {
 						"metrics": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "A 列表 event condition metrics. Each element 包含following attributes:",
+							Description: "A 列表 事件 condition metrics. Each element 包含following attributes:",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"metric_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "ID this metric。",
+										Description: "ID 此 metric。",
 									},
 									"metric_show_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "名称 this metric。",
+										Description: "名称 此 metric。",
 									},
 									"metric_unit": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The unit of this metric。",
+										Description: "单位 的 此 metric。",
 									},
 									"calc_type_keys": {
 										Type:        schema.TypeList,
 										Elem:        &schema.Schema{Type: schema.TypeInt},
 										Computed:    true,
-										Description: "Calculate 类型 this metric。",
+										Description: "Calculate 类型 此 metric。",
 									},
 									"calc_type_need": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether `calc_type` 必填 in the configuration。",
+										Description: "Whether `calc_type` 必填 在 配置。",
 									},
 									"calc_value_default": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The default calculate 值 of this metric。",
+										Description: "默认值 calculate 值 的 此 metric。",
 									},
 									"calc_value_fixed": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The fixed calculate 值 of this metric。",
+										Description: "fixed calculate 值 的 此 metric。",
 									},
 									"calc_value_min": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The min calculate 值 of this metric。",
+										Description: "min calculate 值 的 此 metric。",
 									},
 									"calc_value_max": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The max calculate 值 of this metric。",
+										Description: "max calculate 值 的 此 metric。",
 									},
 									"calc_value_need": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether `calc_value` 必填 in the configuration。",
+										Description: "Whether `calc_value` 必填 在 配置。",
 									},
 									"continue_time_default": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The default continue time(seconds) 配置 for this metric。",
+										Description: "默认值 continue 时间(秒) 配置 对于 此 metric。",
 									},
 									"continue_time_keys": {
 										Type:        schema.TypeList,
 										Elem:        &schema.Schema{Type: schema.TypeInt},
 										Computed:    true,
-										Description: "The continue time(seconds) keys for this metric。",
+										Description: "continue 时间(秒) keys 对于 此 metric。",
 									},
 									"continue_time_need": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether `continue_time` 必填 in the configuration。",
+										Description: "Whether `continue_time` 必填 在 配置。",
 									},
 									"period_default": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The default data time(seconds) 配置 for this metric。",
+										Description: "默认值 数据 时间(秒) 配置 对于 此 metric。",
 									},
 									"period_keys": {
 										Type:        schema.TypeList,
 										Elem:        &schema.Schema{Type: schema.TypeInt},
 										Computed:    true,
-										Description: "The data time(seconds) keys for this metric。",
+										Description: "数据 时间(秒) keys 对于 此 metric。",
 									},
 									"period_need": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether `周期` 必填 in the configuration。",
+										Description: "Whether `周期` 必填 在 配置。",
 									},
 									"period_num_default": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The default 周期 number 配置 for this metric。",
+										Description: "默认值 周期 数量 配置 对于 此 metric。",
 									},
 									"period_num_keys": {
 										Type:        schema.TypeList,
 										Elem:        &schema.Schema{Type: schema.TypeInt},
 										Computed:    true,
-										Description: "The 周期 number keys for this metric。",
+										Description: "周期 数量 keys 对于 此 metric。",
 									},
 									"period_num_need": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether `period_num` 必填 in the configuration。",
+										Description: "Whether `period_num` 必填 在 配置。",
 									},
 									"stat_type_p5": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Data aggregation 模式，cycle of 5 seconds。",
+										Description: "Data aggregation 模式，cycle 的 5 秒。",
 									},
 									"stat_type_p10": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Data aggregation 模式，cycle of 10 seconds。",
+										Description: "Data aggregation 模式，cycle 的 10 秒。",
 									},
 									"stat_type_p60": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Data aggregation 模式，cycle of 60 seconds。",
+										Description: "Data aggregation 模式，cycle 的 60 秒。",
 									},
 									"stat_type_p300": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Data aggregation 模式，cycle of 300 seconds。",
+										Description: "Data aggregation 模式，cycle 的 300 秒。",
 									},
 									"stat_type_p600": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Data aggregation 模式，cycle of 600 seconds。",
+										Description: "Data aggregation 模式，cycle 的 600 秒。",
 									},
 									"stat_type_p1800": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Data aggregation 模式，cycle of 1800 seconds。",
+										Description: "Data aggregation 模式，cycle 的 1800 秒。",
 									},
 									"stat_type_p3600": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Data aggregation 模式，cycle of 3600 seconds。",
+										Description: "Data aggregation 模式，cycle 的 3600 秒。",
 									},
 									"stat_type_p86400": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Data aggregation 模式，cycle of 86400 seconds。",
+										Description: "Data aggregation 模式，cycle 的 86400 秒。",
 									},
 								},
 							},

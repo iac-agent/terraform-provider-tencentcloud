@@ -34,7 +34,7 @@ func DataSourceTencentCloudClbInstanceDetail() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "描述 CLB 实例详细信息的查询列表过滤条件：loadbalancer-id - String - 必填：否 - （过滤条件）CLB 实例 ID，如 lb-12345678； project-id - String - 必填：否 - （过滤条件）项目ID，如0、123； network - String - 必填：否 - （过滤条件）CLB实例的网络类型，例如Public、Private等。&amp;lt;/li&gt;&amp;lt;li&gt; VIP - String - 必填：否 - （过滤条件）CLB实例VIP，如1.1.1.1、2204::22:3； target-ip - String - 必填：否 - （过滤条件）目标真实服务器的私有IP，例如1.1.1.1和2203::214:4； vpcid - String - 必填：否 - （过滤条件）CLB实例所属VPC实例标识符，如vpc-12345678； 可用区 - String - 必填：否 - （过滤条件）CLB实例所在可用区，如ap-guangzhou-1； 标签-键 - String - 必填：否 - （过滤条件）CLB实例的Tag 键，例如名称； 标签:* - 字符串 - 必填：否 - （过滤条件）CLB 实例标记，冒号后跟标记键。例如，使用 {名称: 标签:名称,Values: [zhangsan，lisi]} 过滤标签键“名称”，标签值“zhangsan”和“lisi”； fuzzy-search - 字符串 - 必填：否 - （过滤条件）对 CLB 实例 VIP 和 CLB 实例名称进行模糊搜索，如 1。",
+				Description: "描述 CLB 实例详细信息的查询列表过滤条件：loadbalancer-ID - String - 必填：否 - （过滤条件）CLB 实例 ID，如 lb-12345678； 项目-ID - String - 必填：否 - （过滤条件）项目ID，如0、123； 网络 - String - 必填：否 - （过滤条件）CLB实例的网络类型，例如Public、Private等。&amp;lt;/li&gt;&amp;lt;li&gt; VIP - String - 必填：否 - （过滤条件）CLB实例VIP，如1.1.1.1、2204::22:3； 目标-ip - String - 必填：否 - （过滤条件）目标真实服务器的私有IP，例如1.1.1.1和2203::214:4； vpcid - String - 必填：否 - （过滤条件）CLB实例所属VPC实例标识符，如vpc-12345678； 可用区 - String - 必填：否 - （过滤条件）CLB实例所在可用区，如ap-guangzhou-1； 标签-键 - String - 必填：否 - （过滤条件）CLB实例的Tag 键，例如名称； 标签:* - 字符串 - 必填：否 - （过滤条件）CLB 实例标记，冒号后跟标记键。例如，使用 {名称: 标签:名称,Values: [zhangsan，lisi]} 过滤标签键“名称”，标签值“zhangsan”和“lisi”； fuzzy-search - 字符串 - 必填：否 - （过滤条件）对 CLB 实例 VIP 和 CLB 实例名称进行模糊搜索，如 1。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -73,7 +73,7 @@ func DataSourceTencentCloudClbInstanceDetail() *schema.Resource {
 						"load_balancer_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLB实例网络类型：Public：公网； private：私有网络。注意：该字段可能返回null，表示取不到有效值。",
+							Description: "CLB实例网络类型：Public：公网； 私有：私有网络。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"status": {
 							Type:        schema.TypeInt,

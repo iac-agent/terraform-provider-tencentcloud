@@ -28,19 +28,19 @@ func ResourceTencentCloudKmsCloudResourceAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "CMK unique identifier。",
+				Description: "CMK 唯一 identifier。",
 			},
 			"product_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "A unique identifier for the cloud product。",
+				Description: "A 唯一 identifier 对于 云 product。",
 			},
 			"resource_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The resource/instance ID cloud product。",
+				Description: "资源/实例 ID 云 product。",
 			},
 			// computed
 			"alias": {

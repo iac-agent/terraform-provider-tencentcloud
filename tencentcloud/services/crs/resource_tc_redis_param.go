@@ -28,13 +28,13 @@ func ResourceTencentCloudRedisParam() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID instance。",
+				Description: "ID 实例。",
 			},
 
 			"instance_params": {
 				Required:    true,
 				Type:        schema.TypeMap,
-				Description: "A 列表 parameters modified by the instance。",
+				Description: "A 列表 参数 modified 通过 实例。",
 			},
 		},
 	}

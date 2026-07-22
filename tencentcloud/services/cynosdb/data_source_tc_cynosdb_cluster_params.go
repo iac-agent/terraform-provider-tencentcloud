@@ -50,7 +50,7 @@ func DataSourceTencentCloudCynosdbClusterParams() *schema.Resource {
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
-							Description: "当参数为enum/string/bool时，可选值列表。注意：该字段可能返回null，表示取不到有效值。",
+							Description: "当参数为enum/字符串/bool时，可选值列表。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"max": {
 							Type:        schema.TypeString,

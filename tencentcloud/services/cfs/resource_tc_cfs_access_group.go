@@ -29,19 +29,19 @@ func ResourceTencentCloudCfsAccessGroup() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 64),
-				Description:  "名称 access group，and max length is 64。",
+				Description:  "名称 访问 组，和 max 长度 是 64。",
 			},
 			"description": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 255),
-				Description:  "描述 access group，and max length is 255。",
+				Description:  "描述 访问 组，和 max 长度 是 255。",
 			},
 			//computed
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 of the access group。",
+				Description: "创建时间 的 访问 组。",
 			},
 		},
 	}

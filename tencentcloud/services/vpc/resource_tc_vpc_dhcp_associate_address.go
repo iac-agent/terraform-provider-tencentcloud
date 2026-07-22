@@ -74,14 +74,14 @@ func ResourceTencentCloudVpcDhcpAssociateAddress() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "`DhcpIp` unique `ID`，like: `dhcpip-9o233uri`. Must be a `DhcpIp` that is not bound to `EIP`。",
+				Description: "`DhcpIp` 唯一 `ID`，like: `dhcpip-9o233uri`. Must 是 `DhcpIp` 该 是 不 bound 到 `EIP`。",
 			},
 
 			"address_ip": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Elastic public network `IP`. Must be `EIP` not bound to `DhcpIp`。",
+				Description: "Elastic 公有 网络 `IP`. Must 是 `EIP` 不 bound 到 `DhcpIp`。",
 			},
 		},
 	}

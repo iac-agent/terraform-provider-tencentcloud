@@ -33,12 +33,12 @@ func ResourceTencentCloudDasbResource() *schema.Resource {
 			"vpc_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Deploy resource vpcId。",
+				Description: "Deploy 资源 vpcId。",
 			},
 			"subnet_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Deploy resource subnetId。",
+				Description: "Deploy 资源 subnetId。",
 			},
 			"resource_edition": {
 				Required:     true,
@@ -49,23 +49,23 @@ func ResourceTencentCloudDasbResource() *schema.Resource {
 			"resource_node": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "数量 resource nodes。",
+				Description: "数量 资源 nodes。",
 			},
 			"time_unit": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Billing cycle，only support m: month. This field is mandatory，fill in m。",
+				Description: "Billing cycle，仅 support m: month. 此 字段 是 mandatory，fill 在 m。",
 			},
 			"time_span": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Billing time. This field is mandatory，with a minimum 值 of 1。",
+				Description: "Billing 时间. 此 字段 是 mandatory，使用 最小 值 的 1。",
 			},
 			"auto_renew_flag": {
 				Required:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
-				Description:  "Automatic renewal. 1 is auto 续费标识，0 is not。",
+				Description:  "Automatic renewal. 1 是 auto 续费标识，0 是 不。",
 			},
 			"deploy_zone": {
 				Required:    true,
@@ -75,24 +75,24 @@ func ResourceTencentCloudDasbResource() *schema.Resource {
 			"cidr_block": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Subnet segments that require service activation。",
+				Description: "Subnet segments 该 require 服务 activation。",
 			},
 			"vpc_cidr_block": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The network segment corresponding to the VPC that requires service activation。",
+				Description: "网络 segment corresponding 到 VPC 该 requires 服务 activation。",
 			},
 			"package_bandwidth": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "数量 bandwidth expansion packets (4M)，The set 值 is an integer multiple of 4。",
+				Description: "数量 带宽 expansion packets (4M)， 集合 值 是 整数 多个 的 4。",
 			},
 			//"package_node": {
 			//	Optional:    true,
 			//	Computed:    true,
 			//	Type:        schema.TypeInt,
-			//	Description: "Number of authorized point extension packages (50 points). Cannot exceed 100.",
+			//	Description: "Number 的 authorized point extension packages (50 points). Cannot exceed 100.",
 			//},
 		},
 	}

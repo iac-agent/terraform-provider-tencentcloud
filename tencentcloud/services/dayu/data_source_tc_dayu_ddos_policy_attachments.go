@@ -20,18 +20,18 @@ func DataSourceTencentCloudDayuDdosPolicyAttachments() *schema.Resource {
 			"resource_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID attached resource to be queried。",
+				Description: "ID attached 资源 到 是 queried。",
 			},
 			"resource_type": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(DAYU_RESOURCE_TYPE),
-				Description:  "类型 resource that the DDoS policy works for，valid values are `bgpip`，`bgp`，`bgp-multip` and `net`。",
+				Description:  "类型 资源 该 DDoS 策略 works 对于，有效 值 是 `bgpip`，`bgp`，`bgp-multip` 和 `net`。",
 			},
 			"policy_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Id of the policy to be queried。",
+				Description: "ID 的 策略 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -41,23 +41,23 @@ func DataSourceTencentCloudDayuDdosPolicyAttachments() *schema.Resource {
 			"dayu_ddos_policy_attachment_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A 列表 dayu DDoS policy attachments. Each element 包含following attributes:",
+				Description: "A 列表 dayu DDoS 策略 attachments. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID attached resource。",
+							Description: "ID attached 资源。",
 						},
 						"resource_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "类型 resource that the DDoS policy works for。",
+							Description: "类型 资源 该 DDoS 策略 works 对于。",
 						},
 						"policy_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID policy。",
+							Description: "ID 策略。",
 						},
 					},
 				},

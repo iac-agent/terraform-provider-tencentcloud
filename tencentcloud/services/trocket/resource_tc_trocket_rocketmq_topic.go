@@ -37,20 +37,20 @@ func ResourceTencentCloudTrocketRocketmqTopic() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "topic。",
+				Description: "主题。",
 			},
 
 			"topic_type": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Topic 类型 `UNSPECIFIED`: not specified，`NORMAL`: normal 消息，`FIFO`: sequential 消息，`DELAY`: delayed 消息",
+				Description: "Topic 类型 `UNSPECIFIED`: 不 指定，`NORMAL`: normal 消息，`FIFO`: sequential 消息，`DELAY`: delayed 消息",
 			},
 
 			"queue_num": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "数量 queue. Must be greater than or equal to 3。",
+				Description: "数量 queue. Must 是 greater 比 或 equal 到 3。",
 			},
 
 			"remark": {
@@ -63,7 +63,7 @@ func ResourceTencentCloudTrocketRocketmqTopic() *schema.Resource {
 				Type:        schema.TypeMap,
 				Optional:    true,
 				Computed:    true,
-				Description: "标签 of topic。",
+				Description: "标签 的 主题。",
 			},
 		},
 	}

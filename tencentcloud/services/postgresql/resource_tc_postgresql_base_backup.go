@@ -39,7 +39,7 @@ func ResourceTencentCloudPostgresqlBaseBackup() *schema.Resource {
 			"base_backup_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Base backup ID。",
+				Description: "Base 备份 ID。",
 			},
 
 			"new_expire_time": {

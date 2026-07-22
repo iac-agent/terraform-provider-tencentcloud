@@ -24,13 +24,13 @@ func DataSourceTencentCloudTeoOriginAcl() *schema.Resource {
 			"origin_acl_info": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Describes the binding relationship between the l7 acceleration 域名/l4 proxy instance and the origin server IP range。",
+				Description: "Describes binding relationship between l7 acceleration 域名/l4 proxy 实例 和 源站 服务器 IP 范围。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"l7_hosts": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "The 列表 L7 accelerated domains that enable the origin ACLs. This field is empty when origin protection is not 已启用",
+							Description: "列表 L7 accelerated domains 该 启用 源站 ACLs. 此 字段 是 空 当 源站 protection 是 不 已启用",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -38,7 +38,7 @@ func DataSourceTencentCloudTeoOriginAcl() *schema.Resource {
 						"l4_proxy_ids": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "The 列表 L4 proxy instances that enable the origin ACLs. This field is empty when origin protection is not 已启用",
+							Description: "列表 L4 proxy 实例 该 启用 源站 ACLs. 此 字段 是 空 当 源站 protection 是 不 已启用",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -46,13 +46,13 @@ func DataSourceTencentCloudTeoOriginAcl() *schema.Resource {
 						"current_origin_acl": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Currently effective origin ACLs. This field is empty when origin protection is not 已启用\nNote: This field may return null，which 表示a failure to obtain a valid 值",
+							Description: "Currently effective 源站 ACLs. 此 字段 是 空 当 源站 protection 是 不 已启用\nNote: 此 字段 可能 返回 null，其中 表示a failure 到 obtain 有效 值",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"entire_addresses": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "IP range details.\nNote: This field may return null，which 表示a failure to obtain a valid 值",
+										Description: "IP 范围 details.\nNote: 此 字段 可能 返回 null，其中 表示a failure 到 obtain 有效 值",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"i_pv4": {
@@ -95,17 +95,17 @@ func DataSourceTencentCloudTeoOriginAcl() *schema.Resource {
 									"version": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "版本 number.\nNote: This field may return null，which 表示a failure to obtain a valid 值",
+										Description: "版本 数量.\nNote: 此 字段 可能 返回 null，其中 表示a failure 到 obtain 有效 值",
 									},
 									"active_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "版本 effective time in UTC+8，following the date and 时间格式 of the ISO 8601 standard.\nNote: This field may return null，which 表示a failure to obtain a valid 值",
+										Description: "版本 effective 时间 在 UTC+8，following date 和 时间格式 的 ISO 8601 standard.\nNote: 此 字段 可能 返回 null，其中 表示a failure 到 obtain 有效 值",
 									},
 									"is_planed": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "This parameter is used to record whether \"I've upgraded to the lastest version\" is completed before the origin ACLs version is effective. valid values:.\n- true: specifies that the version is effective and the update to the latest version is confirmed.\n- false: when the version takes effect, the confirmation of updating to the latest origin ACLs are not completed. The IP range is forcibly updated to the latest version in the backend. When this parameter returns false, please confirm in time whether your origin server firewall configuration has been updated to the latest version to avoid origin-pull failure.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
+										Description: "此 参数 是 使用 到 记录 whether \"I've upgraded 到 lastest 版本\" 是 completed before 源站 ACLs 版本 是 effective. 有效 值:.\n- true: specifies 该 版本 是 effective 和 update 到 latest 版本 是 confirmed.\n- false: 当 版本 takes effect, confirmation 的 updating 到 latest 源站 ACLs 是 不 completed. IP 范围 是 forcibly 更新 到 latest 版本 在 backend. 当 此 参数 returns false, please confirm 在 时间 whether your 源站 服务器 firewall 配置 has been 更新 到 latest 版本 到 avoid 源站-pull failure.\nNote: 此 字段 可能 返回 null, 其中 indicates failure 到 obtain 有效 值.",
 									},
 								},
 							},
@@ -113,23 +113,23 @@ func DataSourceTencentCloudTeoOriginAcl() *schema.Resource {
 						"next_origin_acl": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "When the origin ACLs are updated，this field will be returned with the next 版本's origin IP range to take effect，including a comparison with the current origin IP range. This field is empty if not updated or origin protection is not 已启用\nNote: This field may return null，which 表示a failure to obtain a valid 值",
+							Description: "当 源站 ACLs 是 更新，此 字段 将 是 返回 使用 next 版本's 源站 IP 范围 到 take effect，包括 comparison 使用 当前 源站 IP 范围. 此 字段 是 空 如果 不 更新 或 源站 protection 是 不 已启用\nNote: 此 字段 可能 返回 null，其中 表示a failure 到 obtain 有效 值",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"version": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "版本 number。",
+										Description: "版本 数量。",
 									},
 									"planned_active_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "版本 effective time，which adopts UTC+8 and follows the date and 时间格式 of the ISO 8601 standard。",
+										Description: "版本 effective 时间，其中 adopts UTC+8 和 follows date 和 时间格式 的 ISO 8601 standard。",
 									},
 									"entire_addresses": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "IP range details。",
+										Description: "IP 范围 details。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"i_pv4": {
@@ -172,7 +172,7 @@ func DataSourceTencentCloudTeoOriginAcl() *schema.Resource {
 									"added_addresses": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "The latest origin IP range newly-added compared with the origin IP range in CurrentOrginACL。",
+										Description: "latest 源站 IP 范围 newly-added compared 使用 源站 IP 范围 在 CurrentOrginACL。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"i_pv4": {
@@ -215,7 +215,7 @@ func DataSourceTencentCloudTeoOriginAcl() *schema.Resource {
 									"removed_addresses": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "The latest origin IP range deleted compared with the origin IP range in CurrentOrginACL。",
+										Description: "latest 源站 IP 范围 删除 compared 使用 源站 IP 范围 在 CurrentOrginACL。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"i_pv4": {
@@ -258,7 +258,7 @@ func DataSourceTencentCloudTeoOriginAcl() *schema.Resource {
 									"no_change_addresses": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "The latest origin IP range is unchanged compared with the origin IP range in CurrentOrginACL。",
+										Description: "latest 源站 IP 范围 是 unchanged compared 使用 源站 IP 范围 在 CurrentOrginACL。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"i_pv4": {
@@ -304,7 +304,7 @@ func DataSourceTencentCloudTeoOriginAcl() *schema.Resource {
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Origin protection 状态 Vaild values:\n- online: in effect;\n- offline: 已禁用;\n- updating: configuration deployment in progress。",
+							Description: "Origin protection 状态 Vaild 值:\n- online: 在 effect;\n- offline: 已禁用;\n- updating: 配置 部署 在 progress。",
 						},
 					},
 				},

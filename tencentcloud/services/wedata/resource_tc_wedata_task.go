@@ -35,18 +35,18 @@ func ResourceTencentCloudWedataTask() *schema.Resource {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Basic task attributes。",
+				Description: "Basic 任务 attributes。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"task_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task 名称",
+							Description: "任务 名称",
 						},
 						"task_type_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task 类型 ID:\n\n* 21:JDBC SQL\n* 23:TDSQL-PostgreSQL\n* 26:OfflineSynchronization\n* 30:Python\n* 31:PySpark\n* 32:DLC SQL\n* 33:Impala\n* 34:Hive SQL\n* 35:Shell\n* 36:Spark SQL\n* 38:Shell Form 模式\n* 39:Spark\n* 40:TCHouse-P\n* 41:Kettle\n* 42:Tchouse-X\n* 43:TCHouse-X SQL\n* 46:DLC Spark\n* 47:TiOne\n* 48:Trino\n* 50:DLC PySpark\n* 92:MapReduce\n* 130:Branch Node\n* 131:Merged Node\n* 132:Notebook\n* 133:SSH\n* 134:StarRocks\n* 137:For-each\n* 138:Setats SQL。",
+							Description: "任务 类型 ID:\n\n* 21:JDBC SQL\n* 23:TDSQL-PostgreSQL\n* 26:OfflineSynchronization\n* 30:Python\n* 31:PySpark\n* 32:DLC SQL\n* 33:Impala\n* 34:Hive SQL\n* 35:Shell\n* 36:Spark SQL\n* 38:Shell Form 模式\n* 39:Spark\n* 40:TCHouse-P\n* 41:Kettle\n* 42:Tchouse-X\n* 43:TCHouse-X SQL\n* 46:DLC Spark\n* 47:TiOne\n* 48:Trino\n* 50:DLC PySpark\n* 92:MapReduce\n* 130:Branch Node\n* 131:Merged Node\n* 132:Notebook\n* 133:SSH\n* 134:StarRocks\n* 137:For-each\n* 138:Setats SQL。",
 						},
 						"workflow_id": {
 							Type:        schema.TypeString,
@@ -57,13 +57,13 @@ func ResourceTencentCloudWedataTask() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Task 所有者 ID，默认为 current 用户",
+							Description: "任务 所有者 ID，默认为 当前 用户",
 						},
 						"task_description": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Task 描述",
+							Description: "任务 描述",
 						},
 					},
 				},
@@ -73,14 +73,14 @@ func ResourceTencentCloudWedataTask() *schema.Resource {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Task configuration。",
+				Description: "任务 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_group": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Resource 组 ID: Need to obtain ExecutorGroupId via DescribeNormalSchedulerExecutorGroups。",
+							Description: "Resource 组 ID: Need 到 obtain ExecutorGroupId via DescribeNormalSchedulerExecutorGroups。",
 						},
 						"code_content": {
 							Type:        schema.TypeString,
@@ -92,7 +92,7 @@ func ResourceTencentCloudWedataTask() *schema.Resource {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Computed:    true,
-							Description: "Task extended attribute configuration list。",
+							Description: "任务 extended attribute 配置 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"param_key": {
@@ -118,31 +118,31 @@ func ResourceTencentCloudWedataTask() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Specified running node。",
+							Description: "Specified running 节点。",
 						},
 						"yarn_queue": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Resource pool queue 名称，need to obtain via DescribeProjectClusterQueues。",
+							Description: "Resource 池 queue 名称，need 到 obtain via DescribeProjectClusterQueues。",
 						},
 						"source_service_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "来源 数据源 ID，separated by `;`，need to obtain via DescribeDataSourceWithoutInfo。",
+							Description: "来源 数据源 ID，separated 通过 `;`，need 到 obtain via DescribeDataSourceWithoutInfo。",
 						},
 						"target_service_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Target 数据源 ID，separated by `;`，need to obtain via DescribeDataSourceWithoutInfo。",
+							Description: "Target 数据源 ID，separated 通过 `;`，need 到 obtain via DescribeDataSourceWithoutInfo。",
 						},
 						"task_scheduling_parameter_list": {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Computed:    true,
-							Description: "Scheduling parameters。",
+							Description: "Scheduling 参数。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"param_key": {
@@ -162,13 +162,13 @@ func ResourceTencentCloudWedataTask() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "ID used by Bundle。",
+							Description: "ID 使用 通过 Bundle。",
 						},
 						"bundle_info": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Bundle information。",
+							Description: "Bundle 信息。",
 						},
 					},
 				},
@@ -178,14 +178,14 @@ func ResourceTencentCloudWedataTask() *schema.Resource {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Task scheduling configuration。",
+				Description: "任务 scheduling 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cycle_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Cycle 类型: 默认为 DAY_CYCLE.\n\nSupported types are\n\n* ONEOFF_CYCLE: One-time\n* YEAR_CYCLE: Yearly\n* MONTH_CYCLE: Monthly\n* WEEK_CYCLE: Weekly\n* DAY_CYCLE: Daily\n* HOUR_CYCLE: Hourly\n* MINUTE_CYCLE: Minutely\n* CRONTAB_CYCLE: Crontab expression 类型",
+							Description: "Cycle 类型: 默认为 DAY_CYCLE.\n\nSupported types 是\n\n* ONEOFF_CYCLE: One-时间\n* YEAR_CYCLE: Yearly\n* MONTH_CYCLE: Monthly\n* WEEK_CYCLE: Weekly\n* DAY_CYCLE: Daily\n* HOUR_CYCLE: Hourly\n* MINUTE_CYCLE: Minutely\n* CRONTAB_CYCLE: Crontab expression 类型",
 						},
 						"schedule_time_zone": {
 							Type:        schema.TypeString,
@@ -203,7 +203,7 @@ func ResourceTencentCloudWedataTask() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Effective date，默认为 00:00:00 of current date。",
+							Description: "Effective date，默认为 00:00:00 的 当前 date。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
@@ -215,13 +215,13 @@ func ResourceTencentCloudWedataTask() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "执行时间 left-closed interval，default 00:00。",
+							Description: "执行时间 left-closed 间隔，默认值 00:00。",
 						},
 						"execution_end_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "执行时间 right-closed interval，default 23:59。",
+							Description: "执行时间 right-closed 间隔，默认值 23:59。",
 						},
 						"schedule_run_type": {
 							Type:        schema.TypeString,
@@ -233,7 +233,7 @@ func ResourceTencentCloudWedataTask() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Calendar scheduling: Values are 0 and 1，1 for 已启用，0 for 已禁用，默认为 0。",
+							Description: "Calendar scheduling: Values 是 0 和 1，1 对于 已启用，0 对于 已禁用，默认为 0。",
 						},
 						"calendar_id": {
 							Type:        schema.TypeString,
@@ -245,13 +245,13 @@ func ResourceTencentCloudWedataTask() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Self-dependency，默认值 serial，values: parallel，serial，orderly。",
+							Description: "Self-dependency，默认值 serial，值: parallel，serial，orderly。",
 						},
 						"upstream_dependency_config_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Computed:    true,
-							Description: "Upstream dependency array。",
+							Description: "Upstream dependency 数组。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"task_id": {
@@ -262,19 +262,19 @@ func ResourceTencentCloudWedataTask() *schema.Resource {
 									"main_cyclic_config": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Main dependency configuration，values:\n\n* CRONTAB\n* DAY\n* HOUR\n* LIST_DAY\n* LIST_HOUR\n* LIST_MINUTE\n* MINUTE\n* MONTH\n* RANGE_DAY\n* RANGE_HOUR\n* RANGE_MINUTE\n* WEEK\n* YEAR。",
+										Description: "Main dependency 配置，值:\n\n* CRONTAB\n* DAY\n* HOUR\n* LIST_DAY\n* LIST_HOUR\n* LIST_MINUTE\n* MINUTE\n* MONTH\n* RANGE_DAY\n* RANGE_HOUR\n* RANGE_MINUTE\n* WEEK\n* YEAR。",
 									},
 									"subordinate_cyclic_config": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Secondary dependency configuration，values:\n* ALL_DAY_OF_YEAR\n* ALL_MONTH_OF_YEAR\n* CURRENT\n* CURRENT_DAY\n* CURRENT_HOUR\n* CURRENT_MINUTE\n* CURRENT_MONTH\n* CURRENT_WEEK\n* CURRENT_YEAR\n* PREVIOUS_BEGIN_OF_MONTH\n* PREVIOUS_DAY\n* PREVIOUS_DAY_LATER_OFFSET_HOUR\n* PREVIOUS_DAY_LATER_OFFSET_MINUTE\n* PREVIOUS_END_OF_MONTH\n* PREVIOUS_FRIDAY\n* PREVIOUS_HOUR\n* PREVIOUS_HOUR_CYCLE\n* PREVIOUS_HOUR_LATER_OFFSET_MINUTE\n* PREVIOUS_MINUTE_CYCLE\n* PREVIOUS_MONTH\n* PREVIOUS_WEEK\n* PREVIOUS_WEEKEND\n* RECENT_DATE。",
+										Description: "Secondary dependency 配置，值:\n* ALL_DAY_OF_YEAR\n* ALL_MONTH_OF_YEAR\n* CURRENT\n* CURRENT_DAY\n* CURRENT_HOUR\n* CURRENT_MINUTE\n* CURRENT_MONTH\n* CURRENT_WEEK\n* CURRENT_YEAR\n* PREVIOUS_BEGIN_OF_MONTH\n* PREVIOUS_DAY\n* PREVIOUS_DAY_LATER_OFFSET_HOUR\n* PREVIOUS_DAY_LATER_OFFSET_MINUTE\n* PREVIOUS_END_OF_MONTH\n* PREVIOUS_FRIDAY\n* PREVIOUS_HOUR\n* PREVIOUS_HOUR_CYCLE\n* PREVIOUS_HOUR_LATER_OFFSET_MINUTE\n* PREVIOUS_MINUTE_CYCLE\n* PREVIOUS_MONTH\n* PREVIOUS_WEEK\n* PREVIOUS_WEEKEND\n* RECENT_DATE。",
 									},
 									"offset": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "偏移量 in interval and list modes。",
+										Description: "偏移量 在 间隔 和 列表 modes。",
 									},
 									"dependency_strategy": {
 										Type:        schema.TypeList,
@@ -288,13 +288,13 @@ func ResourceTencentCloudWedataTask() *schema.Resource {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "Strategy for waiting for upstream task instances: EXECUTING; WAITING。",
+													Description: "Strategy 对于 waiting 对于 upstream 任务 实例: EXECUTING; WAITING。",
 												},
 												"task_dependency_executing_strategies": {
 													Type:        schema.TypeSet,
 													Optional:    true,
 													Computed:    true,
-													Description: "This field 为必填项 only when PollingNullStrategy is EXECUTING，List 类型: NOT_EXIST (default，when minute depends on minute/hour depends on hour，parent instance is not within the downstream instance scheduling time range); PARENT_EXPIRED (parent instance failed); PARENT_TIMEOUT (parent instance timed out). If any of the above scenarios is met，the parent task instance dependency judgment can be passed; otherwise，it is necessary to wait for the parent instance。",
+													Description: "此 字段 为必填项 仅 当 PollingNullStrategy 是 EXECUTING，List 类型: NOT_EXIST (默认值，当 minute depends 在 minute/hour depends 在 hour，parent 实例 是 不 within downstream 实例 scheduling 时间 范围); PARENT_EXPIRED (parent 实例 failed); PARENT_TIMEOUT (parent 实例 timed out). 如果 any 的 above scenarios 是 met， parent 任务 实例 dependency judgment 可以 是 passed; otherwise，它 是 necessary 到 wait 对于 parent 实例。",
 													Elem: &schema.Schema{
 														Type: schema.TypeString,
 													},
@@ -303,7 +303,7 @@ func ResourceTencentCloudWedataTask() *schema.Resource {
 													Type:        schema.TypeInt,
 													Optional:    true,
 													Computed:    true,
-													Description: "This field 为必填项 only when TaskDependencyExecutingStrategies 包含PARENT_TIMEOUT，the timeout time for downstream tasks depending on parent instance execution，unit: minutes。",
+													Description: "此 字段 为必填项 仅 当 TaskDependencyExecutingStrategies 包含PARENT_TIMEOUT， 超时 时间 对于 downstream tasks depending 在 parent 实例 execution，单位: minutes。",
 												},
 											},
 										},
@@ -315,7 +315,7 @@ func ResourceTencentCloudWedataTask() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Computed:    true,
-							Description: "Event array。",
+							Description: "Event 数组。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"event_name": {
@@ -337,7 +337,7 @@ func ResourceTencentCloudWedataTask() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										Computed:    true,
-										Description: "Extended information。",
+										Description: "Extended 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"param_key": {
@@ -360,13 +360,13 @@ func ResourceTencentCloudWedataTask() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Task scheduling 优先级: 4 for high，5 for medium，6 for low，默认值：6。",
+							Description: "任务 scheduling 优先级: 4 对于 high，5 对于 medium，6 对于 low，默认值：6。",
 						},
 						"retry_wait": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Retry strategy - retry waiting time，unit: minutes: 默认值：5。",
+							Description: "Retry strategy - retry waiting 时间，单位: minutes: 默认值：5。",
 						},
 						"max_retry_attempts": {
 							Type:        schema.TypeString,
@@ -378,25 +378,25 @@ func ResourceTencentCloudWedataTask() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Timeout handling strategy - running time timeout (unit: minutes) 默认为 -1。",
+							Description: "Timeout handling strategy - running 时间 超时 (单位: minutes) 默认为 -1。",
 						},
 						"wait_execution_total_ttl": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Timeout handling strategy - total waiting time timeout (unit: minutes) 默认为 -1。",
+							Description: "Timeout handling strategy - 总数 waiting 时间 超时 (单位: minutes) 默认为 -1。",
 						},
 						"allow_redo_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Rerun & backfill configuration，默认为 ALL; ALL: can rerun or backfill after success or failure; FAILURE: cannot rerun or backfill after success，can rerun or backfill after failure; NONE: cannot rerun or backfill after success or failure。",
+							Description: "Rerun & backfill 配置，默认为 ALL; ALL: 可以 rerun 或 backfill after success 或 failure; FAILURE: 不能 rerun 或 backfill after success，可以 rerun 或 backfill after failure; NONE: 不能 rerun 或 backfill after success 或 failure。",
 						},
 						"param_task_out_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Computed:    true,
-							Description: "Output parameter array。",
+							Description: "Output 参数 数组。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"param_key": {
@@ -416,7 +416,7 @@ func ResourceTencentCloudWedataTask() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Computed:    true,
-							Description: "Input parameter array。",
+							Description: "Input 参数 数组。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"param_key": {
@@ -427,17 +427,17 @@ func ResourceTencentCloudWedataTask() *schema.Resource {
 									"param_desc": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Parameter 描述: 格式 is project_identifier.task_name.parameter_name; example: project_wedata_1.sh_250820_104107.pp_out。",
+										Description: "Parameter 描述: 格式 是 project_identifier.task_name.parameter_name; 示例: project_wedata_1.sh_250820_104107.pp_out。",
 									},
 									"from_task_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Parent task ID。",
+										Description: "Parent 任务 ID。",
 									},
 									"from_param_key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Parent task parameter 键",
+										Description: "Parent 任务 参数 键",
 									},
 								},
 							},
@@ -472,24 +472,24 @@ func ResourceTencentCloudWedataTask() *schema.Resource {
 									"data_flow_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Input/output table 类型\n      Input stream\n UPSTREAM,\n      Output stream\n  DOWNSTREAM。",
+										Description: "Input/output 表 类型\n Input 流\n UPSTREAM,\n Output 流\n DOWNSTREAM。",
 									},
 									"table_physical_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Table physical unique ID。",
+										Description: "Table physical 唯一 ID。",
 									},
 									"db_guid": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Database unique identifier。",
+										Description: "Database 唯一 identifier。",
 									},
 									"table_guid": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Table unique identifier。",
+										Description: "Table 唯一 identifier。",
 									},
 								},
 							},
@@ -498,7 +498,7 @@ func ResourceTencentCloudWedataTask() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "**Instance generation strategy**\n* T_PLUS_0: T+0 generation，default strategy\n* T_PLUS_1: T+1 generation。",
+							Description: "**实例 generation strategy**\n* T_PLUS_0: T+0 generation，默认值 strategy\n* T_PLUS_1: T+1 generation。",
 						},
 					},
 				},

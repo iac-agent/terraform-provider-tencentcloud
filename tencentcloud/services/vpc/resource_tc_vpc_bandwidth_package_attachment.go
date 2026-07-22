@@ -28,21 +28,21 @@ func ResourceTencentCloudVpcBandwidthPackageAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The unique ID resource，currently supports EIP resources and LB resources，such as `eip-xxxx`，`lb-xxxx`。",
+				Description: "唯一 ID 资源，currently 支持 EIP resources 和 LB resources，such 作为 `eip-xxxx`，`lb-xxxx`。",
 			},
 
 			"bandwidth_package_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Bandwidth package unique ID，in the form of `bwp-xxxx`。",
+				Description: "Bandwidth 包 唯一 ID，在 form 的 `bwp-xxxx`。",
 			},
 
 			"network_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Bandwidth packet 类型，currently supports `BGP` 类型，indicating that the internal resource is BGP IP。",
+				Description: "Bandwidth packet 类型，currently 支持 `BGP` 类型，indicating 该 内部 资源 是 BGP IP。",
 			},
 
 			"resource_type": {
@@ -50,14 +50,14 @@ func ResourceTencentCloudVpcBandwidthPackageAttachment() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "Resource types，including `地址`，`LoadBalance`。",
+				Description: "Resource types，包括 `地址`，`LoadBalance`。",
 			},
 
 			"protocol": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Bandwidth packet 协议 类型 Currently `ipv4` and `ipv6` 协议 types are supported。",
+				Description: "Bandwidth packet 协议 类型 Currently `ipv4` 和 `ipv6` 协议 types 是 支持。",
 			},
 		},
 	}

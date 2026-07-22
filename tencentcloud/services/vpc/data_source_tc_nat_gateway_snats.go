@@ -20,7 +20,7 @@ func DataSourceTencentCloudNatGatewaySnats() *schema.Resource {
 			"nat_gateway_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "NAT gateway ID。",
+				Description: "NAT 网关 ID。",
 			},
 			"subnet_id": {
 				Type:        schema.TypeString,
@@ -36,7 +36,7 @@ func DataSourceTencentCloudNatGatewaySnats() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Elastic IP 地址 pool。",
+				Description: "Elastic IP 地址 池。",
 			},
 			"description": {
 				Type:        schema.TypeString,
@@ -53,7 +53,7 @@ func DataSourceTencentCloudNatGatewaySnats() *schema.Resource {
 			"snat_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information 列表 the nat gateway snat。",
+				Description: "Information 列表 nat 网关 snat。",
 				Elem: &schema.Resource{
 					Schema: NatGatewaySnatPara(),
 				},

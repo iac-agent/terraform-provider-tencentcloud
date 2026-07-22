@@ -19,29 +19,29 @@ func DataSourceTencentCloudAPIGatewayApiAppService() *schema.Resource {
 			"service_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The unique ID service to be queried。",
+				Description: "唯一 ID 服务 到 是 queried。",
 			},
 			"api_region": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Territory to which the service belongs。",
+				Description: "Territory 到 其中 服务 belongs。",
 			},
 			// computed
 			"api_id_status_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "API list.注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "API 列表.注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"service_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Service unique ID。",
+							Description: "Service 唯一 ID。",
 						},
 						"api_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "API unique ID。",
+							Description: "API 唯一 ID。",
 						},
 						"api_desc": {
 							Type:        schema.TypeString,
@@ -76,7 +76,7 @@ func DataSourceTencentCloudAPIGatewayApiAppService() *schema.Resource {
 						"uniq_vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC unique ID.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "VPC 唯一 ID.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"api_type": {
 							Type:        schema.TypeString,
@@ -111,7 +111,7 @@ func DataSourceTencentCloudAPIGatewayApiAppService() *schema.Resource {
 						"oauth_config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "OAuth configuration information.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "OAuth 配置 信息.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"public_key": {
@@ -122,12 +122,12 @@ func DataSourceTencentCloudAPIGatewayApiAppService() *schema.Resource {
 									"token_location": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "令牌 passes the position。",
+										Description: "令牌 passes position。",
 									},
 									"login_redirect_url": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Redirect 地址，用于guide users in login operations。",
+										Description: "Redirect 地址，用于guide users 在 login operations。",
 									},
 								},
 							},
@@ -135,7 +135,7 @@ func DataSourceTencentCloudAPIGatewayApiAppService() *schema.Resource {
 						"token_location": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "OAuth2.0 API request，令牌 storage location.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "OAuth2.0 API 请求，令牌 存储 location.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -149,7 +149,7 @@ func DataSourceTencentCloudAPIGatewayApiAppService() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "列表 service environments.注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "列表 服务 environments.注意：此字段可能返回 null，表示无法获取有效值。",
 			},
 			"created_time": {
 				Computed:    true,
@@ -159,17 +159,17 @@ func DataSourceTencentCloudAPIGatewayApiAppService() *schema.Resource {
 			"inner_http_port": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Internal network access HTTP service 端口 number。",
+				Description: "Internal 网络 访问 HTTP 服务 端口 数量。",
 			},
 			"inner_https_port": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Internal network access https 端口 number。",
+				Description: "Internal 网络 访问 https 端口 数量。",
 			},
 			"internal_sub_domain": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Intranet access sub 域名 名称",
+				Description: "Intranet 访问 sub 域名 名称",
 			},
 			"ip_version": {
 				Computed:    true,
@@ -185,17 +185,17 @@ func DataSourceTencentCloudAPIGatewayApiAppService() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "A 列表 network types，where INNER represents internal network access and OUTER represents external network access。",
+				Description: "A 列表 网络 types，其中 INNER 表示 内部 网络 访问 和 OUTER 表示 外部 网络 访问。",
 			},
 			"outer_sub_domain": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "External network access sub 域名 名称",
+				Description: "External 网络 访问 sub 域名 名称",
 			},
 			"protocol": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Service support 协议，可选 values are http，https，and http&amp;amp;https。",
+				Description: "Service support 协议，可选 值 是 http，https，和 http&amp;amp;https。",
 			},
 			"service_desc": {
 				Computed:    true,
@@ -210,12 +210,12 @@ func DataSourceTencentCloudAPIGatewayApiAppService() *schema.Resource {
 			"set_id": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Reserved fields.注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "Reserved 字段.注意：此字段可能返回 null，表示无法获取有效值。",
 			},
 			"usage_plan_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Use a plan array.注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "Use plan 数组.注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"environment": {
@@ -226,12 +226,12 @@ func DataSourceTencentCloudAPIGatewayApiAppService() *schema.Resource {
 						"usage_plan_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Use a unique ID for the plan。",
+							Description: "Use 唯一 ID 对于 plan。",
 						},
 						"usage_plan_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Use the plan 名称",
+							Description: "Use plan 名称",
 						},
 						"usage_plan_desc": {
 							Type:        schema.TypeString,
@@ -246,12 +246,12 @@ func DataSourceTencentCloudAPIGatewayApiAppService() *schema.Resource {
 						"created_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Use planned time。",
+							Description: "Use planned 时间。",
 						},
 						"modified_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Use the schedule to modify the time。",
+							Description: "Use 调度 到 modify 时间。",
 						},
 					},
 				},
@@ -264,7 +264,7 @@ func DataSourceTencentCloudAPIGatewayApiAppService() *schema.Resource {
 			"user_type": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The 用户 类型 this service.注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "用户 类型 此 服务.注意：此字段可能返回 null，表示无法获取有效值。",
 			},
 			//"tags": {
 			//	Type:        schema.TypeMap,

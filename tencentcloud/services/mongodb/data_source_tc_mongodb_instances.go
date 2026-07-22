@@ -22,23 +22,23 @@ func DataSourceTencentCloudMongodbInstances() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID Mongodb instance to be queried。",
+				Description: "ID Mongodb 实例 到 是 queried。",
 			},
 			"instance_name_prefix": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "名称 prefix of the Mongodb instance。",
+				Description: "名称 prefix 的 Mongodb 实例。",
 			},
 			"cluster_type": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(MONGODB_CLUSTER_TYPE),
-				Description:  "类型 Mongodb cluster，and available values include replica set cluster(expressed with `REPLSET`)，sharding cluster(expressed with `SHARD`)。",
+				Description:  "类型 Mongodb 集群，和 可用 值 include 副本 集合 集群(expressed 使用 `REPLSET`)，sharding 集群(expressed 使用 `SHARD`)。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "标签 of the Mongodb instance to be queried。",
+				Description: "标签 的 Mongodb 实例 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -50,33 +50,33 @@ func DataSourceTencentCloudMongodbInstances() *schema.Resource {
 			"instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A 列表 instances. Each element 包含following attributes:",
+				Description: "A 列表 实例. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID Mongodb instance。",
+							Description: "ID Mongodb 实例。",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 Mongodb instance。",
+							Description: "名称 Mongodb 实例。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "ID project which the instance belongs。",
+							Description: "ID 项目 其中 实例 belongs。",
 						},
 						"cluster_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "类型 Mongodb cluster。",
+							Description: "类型 Mongodb 集群。",
 						},
 						"available_zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The available 可用区 of the Mongodb。",
+							Description: "可用 可用区 的 Mongodb。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
@@ -86,32 +86,32 @@ func DataSourceTencentCloudMongodbInstances() *schema.Resource {
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID subnet。",
+							Description: "ID 子网。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "状态 Mongodb，and available values include pending initialization(expressed with 0)， processing(expressed with 1)，running(expressed with 2) and expired(expressed with -2)。",
+							Description: "状态 Mongodb，和 可用 值 include pending initialization(expressed 使用 0)， processing(expressed 使用 1)，running(expressed 使用 2) 和 expired(expressed 使用 -2)。",
 						},
 						"vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IP of the Mongodb instance。",
+							Description: "IP 的 Mongodb 实例。",
 						},
 						"vport": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "IP 端口 of the Mongodb instance。",
+							Description: "IP 端口 的 Mongodb 实例。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of the Mongodb instance。",
+							Description: "创建时间 的 Mongodb 实例。",
 						},
 						"engine_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "版本 of the Mongodb engine。",
+							Description: "版本 的 Mongodb 引擎。",
 						},
 						"cpu": {
 							Type:        schema.TypeInt,
@@ -121,17 +121,17 @@ func DataSourceTencentCloudMongodbInstances() *schema.Resource {
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Memory size。",
+							Description: "Memory 大小。",
 						},
 						"volume": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Disk size。",
+							Description: "Disk 大小。",
 						},
 						"machine_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "类型 Mongodb instance。",
+							Description: "类型 Mongodb 实例。",
 						},
 						"shard_quantity": {
 							Type:        schema.TypeInt,
@@ -141,13 +141,13 @@ func DataSourceTencentCloudMongodbInstances() *schema.Resource {
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "标签 of the Mongodb instance。",
+							Description: "标签 的 Mongodb 实例。",
 						},
 						// payment
 						"charge_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The charge 类型 instance。",
+							Description: "charge 类型 实例。",
 						},
 						"auto_renew_flag": {
 							Type:        schema.TypeInt,

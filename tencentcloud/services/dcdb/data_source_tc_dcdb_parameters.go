@@ -26,18 +26,18 @@ func DataSourceTencentCloudDcdbParameters() *schema.Resource {
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "parameter list。",
+				Description: "参数 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"param": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "parameter 名称",
+							Description: "参数 名称",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "parameter 值",
+							Description: "参数 值",
 						},
 						"default": {
 							Type:        schema.TypeString,
@@ -58,12 +58,12 @@ func DataSourceTencentCloudDcdbParameters() *schema.Resource {
 									"enum": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "a 列表 可选 values of 类型 num。",
+										Description: "列表 可选 值 的 类型 num。",
 									},
 									"range": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "range constraint。",
+										Description: "范围 constraint。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"min": {
@@ -82,7 +82,7 @@ func DataSourceTencentCloudDcdbParameters() *schema.Resource {
 									"string": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "constraint 类型 is string。",
+										Description: "constraint 类型 是 字符串。",
 									},
 								},
 							},
@@ -90,7 +90,7 @@ func DataSourceTencentCloudDcdbParameters() *schema.Resource {
 						"have_set_value": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "have set 值",
+							Description: "have 集合 值",
 						},
 						"need_restart": {
 							Type:        schema.TypeBool,

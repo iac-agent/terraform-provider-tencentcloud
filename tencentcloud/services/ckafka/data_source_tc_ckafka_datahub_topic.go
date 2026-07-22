@@ -19,27 +19,27 @@ func DataSourceTencentCloudCkafkaDatahubTopic() *schema.Resource {
 			"search_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "query 键 word。",
+				Description: "查询 键 word。",
 			},
 
 			"offset": {
 				Optional:    true,
 				Default:     0,
 				Type:        schema.TypeInt,
-				Description: "The 偏移量 position of this query，the 默认为 0。",
+				Description: "偏移量 position 的 此 查询， 默认为 0。",
 			},
 
 			"limit": {
 				Optional:    true,
 				Default:     50,
 				Type:        schema.TypeInt,
-				Description: "The 最大results returned this time，the 默认为 50，and the maximum 值 is 50。",
+				Description: "最大results 返回 此 时间， 默认为 50，和 最大 值 是 50。",
 			},
 
 			"topic_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Topic list。",
+				Description: "Topic 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -55,7 +55,7 @@ func DataSourceTencentCloudCkafkaDatahubTopic() *schema.Resource {
 						"topic_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Topic Id。",
+							Description: "Topic ID。",
 						},
 						"partition_num": {
 							Type:        schema.TypeInt,
@@ -75,7 +75,7 @@ func DataSourceTencentCloudCkafkaDatahubTopic() *schema.Resource {
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "状态，1 in use，2 in deletion。",
+							Description: "状态，1 在 使用，2 在 deletion。",
 						},
 					},
 				},

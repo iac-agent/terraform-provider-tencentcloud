@@ -25,25 +25,25 @@ func DataSourceTencentCloudClickhouseInstanceNodes() *schema.Resource {
 			"node_role": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster 角色 类型，默认为 `data` data node。",
+				Description: "Cluster 角色 类型，默认为 `数据` 数据 节点。",
 			},
 
 			"display_policy": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Display strategy，display all when All。",
+				Description: "Display strategy，display all 当 All。",
 			},
 
 			"force_all": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "When true，返回all nodes，that is，the 限制 is infinitely large。",
+				Description: "当 true，返回all nodes，该 是， 限制 是 infinitely large。",
 			},
 
 			"instance_nodes_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Total 数量 instance nodes。",
+				Description: "Total 数量 实例 nodes。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ip": {
@@ -54,7 +54,7 @@ func DataSourceTencentCloudClickhouseInstanceNodes() *schema.Resource {
 						"spec": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Model，such as S1。",
+							Description: "Model，such 作为 S1。",
 						},
 						"core": {
 							Type:        schema.TypeInt,
@@ -64,7 +64,7 @@ func DataSourceTencentCloudClickhouseInstanceNodes() *schema.Resource {
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Memory size。",
+							Description: "Memory 大小。",
 						},
 						"disk_type": {
 							Type:        schema.TypeString,
@@ -74,17 +74,17 @@ func DataSourceTencentCloudClickhouseInstanceNodes() *schema.Resource {
 						"disk_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Disk size。",
+							Description: "Disk 大小。",
 						},
 						"cluster": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 clickhouse cluster to which it belongs。",
+							Description: "名称 clickhouse 集群 到 其中 它 belongs。",
 						},
 						"node_groups": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Group information to which the node belongs。",
+							Description: "Group 信息 到 其中 节点 belongs。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"group_name": {
@@ -113,7 +113,7 @@ func DataSourceTencentCloudClickhouseInstanceNodes() *schema.Resource {
 						"is_ch_proxy": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "When true，it 表示that the chproxy process has been deployed on the node。",
+							Description: "当 true，它 表示that chproxy process has been deployed 在 节点。",
 						},
 					},
 				},

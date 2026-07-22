@@ -26,7 +26,7 @@ func ResourceTencentCloudKubernetesClusterMaintenanceWindowAndExclusion() *schem
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "集群 ID，can be obtained from the container service cluster console (https://console.cloud.tencent.com/tke2/cluster)。",
+				Description: "集群 ID，可以 是 获取 从 容器 服务 集群 console (https://console.云.tencent.com/tke2/集群)。",
 			},
 
 			"maintenance_time": {
@@ -38,13 +38,13 @@ func ResourceTencentCloudKubernetesClusterMaintenanceWindowAndExclusion() *schem
 			"duration": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Maintenance duration (hours)。",
+				Description: "Maintenance 时长 (hours)。",
 			},
 
 			"day_of_week": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "'Maintenance cycle (which days of the week)，supported parameter values are as follows:\n\n- MO: Monday\n- TU: Tuesday\n- WE: Wednesday\n- TH: Thursday\n- FR: Friday\n- SA: Saturday\n- SU: Sunday。",
+				Description: "'Maintenance cycle (其中 days 的 week)，支持 参数 值 是 作为 follows:\n\n- MO: Monday\n- TU: Tuesday\n- WE: Wednesday\n- TH: Thursday\n- FR: Friday\n- SA: Saturday\n- SU: Sunday。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},

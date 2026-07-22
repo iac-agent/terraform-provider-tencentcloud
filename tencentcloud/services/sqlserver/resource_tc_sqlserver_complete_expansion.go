@@ -24,7 +24,7 @@ func ResourceTencentCloudSqlserverCompleteExpansion() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "ID of imported target instance.",
+				Description: "ID 的 imported 目标 实例.",
 			},
 		},
 	}

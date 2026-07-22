@@ -26,7 +26,7 @@ func ResourceTencentCloudWedataDataSource() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Data 来源 project ID。",
+				Description: "Data 来源 项目 ID。",
 			},
 
 			"name": {
@@ -40,78 +40,78 @@ func ResourceTencentCloudWedataDataSource() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Data 来源 类型: enumeration values.\n\n- MYSQL\n- TENCENT_MYSQL\n- POSTGRE\n- ORACLE\n- SQLSERVER\n- FTP\n- HIVE\n- HUDI\n- HDFS\n- ICEBERG\n- KAFKA\n- DTS_KAFKA\n- HBASE\n- SPARK\n- TBASE\n- DB2\n- DM\n- GAUSSDB\n- GBASE\n- IMPALA\n- ES\n- TENCENT_ES\n- GREENPLUM\n- SAP_HANA\n- SFTP\n- OCEANBASE\n- CLICKHOUSE\n- KUDU\n- VERTICA\n- REDIS\n- COS\n- DLC\n- DORIS\n- CKAFKA\n- S3_DATAINSIGHT\n- TDSQL\n- TDSQL_MYSQL\n- MONGODB\n- TENCENT_MONGODB\n- REST_API\n- TiDB\n- StarRocks\n- Trino\n- Kyuubi\n- TCHOUSE_X\n- TCHOUSE_P\n- TCHOUSE_C\n- TCHOUSE_D\n- INFLUXDB\n- BIG_QUERY\n- SSH\n- BLOB\n- TDSQL_POSTGRE\n- GDB\n- TDENGINE\n- TDSQLC。",
+				Description: "Data 来源 类型: enumeration 值.\n\n- MYSQL\n- TENCENT_MYSQL\n- POSTGRE\n- ORACLE\n- SQLSERVER\n- FTP\n- HIVE\n- HUDI\n- HDFS\n- ICEBERG\n- KAFKA\n- DTS_KAFKA\n- HBASE\n- SPARK\n- TBASE\n- DB2\n- DM\n- GAUSSDB\n- GBASE\n- IMPALA\n- ES\n- TENCENT_ES\n- GREENPLUM\n- SAP_HANA\n- SFTP\n- OCEANBASE\n- CLICKHOUSE\n- KUDU\n- VERTICA\n- REDIS\n- COS\n- DLC\n- DORIS\n- CKAFKA\n- S3_DATAINSIGHT\n- TDSQL\n- TDSQL_MYSQL\n- MONGODB\n- TENCENT_MONGODB\n- REST_API\n- TiDB\n- StarRocks\n- Trino\n- Kyuubi\n- TCHOUSE_X\n- TCHOUSE_P\n- TCHOUSE_C\n- TCHOUSE_D\n- INFLUXDB\n- BIG_QUERY\n- SSH\n- BLOB\n- TDSQL_POSTGRE\n- GDB\n- TDENGINE\n- TDSQLC。",
 			},
 
 			"prod_con_properties": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Data source configuration information, stored in JSON KV format, with different KV storage information for each data source type.\n\n> deployType: \nCONNSTR_PUBLICDB(Public network instance) \nCONNSTR_CVMDB(Self-built instance)\nINSTANCE(Cloud instance)\n\n```\nmysql: Self-built instance\n{\n    \"deployType\": \"CONNSTR_CVMDB\",\n    \"url\": \"jdbc:mysql://1.1.1.1:1111/database\",\n    \"username\": \"root\",\n    \"password\": \"root\",\n    \"region\": \"ap-shanghai\",\n    \"vpcId\": \"vpc-kprq42yo\",\n    \"type\": \"MYSQL\"\n}\nmysql: Cloud instance\n{\n    \"instanceid\": \"cdb-12uxdo5e\",\n    \"db\": \"db\",\n    \"region\": \"ap-shanghai\",\n    \"username\": \"msyql\",\n    \"password\": \"mysql\",\n    \"deployType\": \"INSTANCE\",\n    \"type\": \"TENCENT_MYSQL\"\n}\nsql_server: \n{\n    \"deployType\": \"CONNSTR_PUBLICDB\",\n    \"url\": \"jdbc:sqlserver://1.1.1.1:223;DatabaseName=database\",\n    \"username\": \"user_1\",\n    \"password\": \"pass_2\",\n    \"type\": \"SQLSERVER\"\n}\nredis:\n    redisType:\n    -NO_ACCOUT(No account)\n    -SELF_ACCOUNT(Custom account)\n{\n    \"deployType\": \"CONNSTR_PUBLICDB\",\n    \"username\":\"\"\n    \"password\": \"pass\",\n    \"ip\": \"1.1.1.1\",\n    \"port\": \"6379\",\n    \"redisType\": \"NO_ACCOUT\",\n    \"type\": \"REDIS\"\n}\noracle: \n{\n    \"deployType\": \"CONNSTR_CVMDB\",\n    \"url\": \"jdbc:oracle:thin:@1.1.1.1:1521:prod\",\n    \"username\": \"oracle\",\n    \"password\": \"pass\",\n    \"region\": \"ap-shanghai\",\n    \"vpcId\": \"vpc-kprq42yo\",\n    \"type\": \"ORACLE\"\n}\nmongodb:\n    advanceParams(Custom parameters, will be appended to the URL)\n{\n    \"advanceParams\": [\n        {\n            \"key\": \"authSource\",\n            \"value\": \"auth\"\n        }\n    ],\n    \"db\": \"admin\",\n    \"deployType\": \"CONNSTR_PUBLICDB\",\n    \"username\": \"user\",\n    \"password\": \"pass\",\n    \"type\": \"MONGODB\",\n    \"host\": \"1.1.1.1:9200\"\n}\npostgresql:\n{\n    \"deployType\": \"CONNSTR_PUBLICDB\",\n    \"url\": \"jdbc:postgresql://1.1.1.1:1921/database\",\n    \"username\": \"user\",\n    \"password\": \"pass\",\n    \"type\": \"POSTGRE\"\n}\nkafka:\n    authType:\n        - sasl\n        - jaas\n        - sasl_plaintext\n        - sasl_ssl\n        - GSSAPI\n    ssl:\n        -PLAIN\n        -GSSAPI\n{\n    \"deployType\": \"CONNSTR_PUBLICDB\",\n    \"host\": \"1.1.1.1:9092\",\n    \"ssl\": \"GSSAPI\",\n    \"authType\": \"sasl\",\n    \"type\": \"KAFKA\",\n    \"principal\": \"aaaa\",\n    \"serviceName\": \"kafka\"\n}\n\ncos:\n{\n    \"region\": \"ap-shanghai\",\n    \"deployType\": \"INSTANCE\",\n    \"secretId\": \"aaaaa\",\n    \"secretKey\": \"sssssss\",\n    \"bucket\": \"aaa\",\n    \"type\": \"COS\"\n}\n\n```.",
+				Description: "Data source 配置 信息, stored 在 JSON KV 格式, 使用 different KV 存储 信息 对于 each 数据 source 类型.\n\n> deployType: \nCONNSTR_PUBLICDB(Public 网络 实例) \nCONNSTR_CVMDB(Self-built 实例)\nINSTANCE(Cloud 实例)\n\n```\nmysql: Self-built 实例\n{\n \"deployType\": \"CONNSTR_CVMDB\",\n \"url\": \"jdbc:mysql://1.1.1.1:1111/数据库\",\n \"username\": \"root\",\n \"密码\": \"root\",\n \"地域\": \"ap-shanghai\",\n \"vpcId\": \"vpc-kprq42yo\",\n \"类型\": \"MYSQL\"\n}\nmysql: Cloud 实例\n{\n \"instanceid\": \"cdb-12uxdo5e\",\n \"db\": \"db\",\n \"地域\": \"ap-shanghai\",\n \"username\": \"msyql\",\n \"密码\": \"mysql\",\n \"deployType\": \"INSTANCE\",\n \"类型\": \"TENCENT_MYSQL\"\n}\nsql_server: \n{\n \"deployType\": \"CONNSTR_PUBLICDB\",\n \"url\": \"jdbc:sqlserver://1.1.1.1:223;DatabaseName=数据库\",\n \"username\": \"user_1\",\n \"密码\": \"pass_2\",\n \"类型\": \"SQLSERVER\"\n}\nredis:\n redisType:\n -NO_ACCOUT(No account)\n -SELF_ACCOUNT(Custom account)\n{\n \"deployType\": \"CONNSTR_PUBLICDB\",\n \"username\":\"\"\n \"密码\": \"pass\",\n \"ip\": \"1.1.1.1\",\n \"端口\": \"6379\",\n \"redisType\": \"NO_ACCOUT\",\n \"类型\": \"REDIS\"\n}\noracle: \n{\n \"deployType\": \"CONNSTR_CVMDB\",\n \"url\": \"jdbc:oracle:thin:@1.1.1.1:1521:prod\",\n \"username\": \"oracle\",\n \"密码\": \"pass\",\n \"地域\": \"ap-shanghai\",\n \"vpcId\": \"vpc-kprq42yo\",\n \"类型\": \"ORACLE\"\n}\nmongodb:\n advanceParams(Custom 参数, 将 是 appended 到 URL)\n{\n \"advanceParams\": [\n {\n \"键\": \"authSource\",\n \"值\": \"auth\"\n }\n ],\n \"db\": \"admin\",\n \"deployType\": \"CONNSTR_PUBLICDB\",\n \"username\": \"用户\",\n \"密码\": \"pass\",\n \"类型\": \"MONGODB\",\n \"主机\": \"1.1.1.1:9200\"\n}\npostgresql:\n{\n \"deployType\": \"CONNSTR_PUBLICDB\",\n \"url\": \"jdbc:postgresql://1.1.1.1:1921/数据库\",\n \"username\": \"用户\",\n \"密码\": \"pass\",\n \"类型\": \"POSTGRE\"\n}\nkafka:\n authType:\n - sasl\n - jaas\n - sasl_plaintext\n - sasl_ssl\n - GSSAPI\n ssl:\n -PLAIN\n -GSSAPI\n{\n \"deployType\": \"CONNSTR_PUBLICDB\",\n \"主机\": \"1.1.1.1:9092\",\n \"ssl\": \"GSSAPI\",\n \"authType\": \"sasl\",\n \"类型\": \"KAFKA\",\n \"principal\": \"aaaa\",\n \"serviceName\": \"kafka\"\n}\n\ncos:\n{\n \"地域\": \"ap-shanghai\",\n \"deployType\": \"INSTANCE\",\n \"secretId\": \"aaaaa\",\n \"secretKey\": \"sssssss\",\n \"存储桶\": \"aaa\",\n \"类型\": \"COS\"\n}\n\n```.",
 			},
 
 			"dev_con_properties": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Development environment data 来源 configuration information，必填 if the project is in standard 模式",
+				Description: "Development 环境 数据 来源 配置 信息，必填 如果 项目 是 在 standard 模式",
 			},
 
 			"prod_file_upload": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Production environment data 来源 file upload。",
+				Description: "Production 环境 数据 来源 文件 upload。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"trust_store": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Truststore authentication file，default filename truststore.jks。",
+							Description: "Truststore authentication 文件，默认值 filename truststore.jks。",
 						},
 						"key_store": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Keystore authentication file，default filename keystore.jks。",
+							Description: "Keystore authentication 文件，默认值 filename keystore.jks。",
 						},
 						"core_site": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "core-site.xml file。",
+							Description: "core-site.xml 文件。",
 						},
 						"hdfs_site": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "hdfs-site.xml file。",
+							Description: "hdfs-site.xml 文件。",
 						},
 						"hive_site": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "hive-site.xml file。",
+							Description: "hive-site.xml 文件。",
 						},
 						"hbase_site": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "hbase-site file。",
+							Description: "hbase-site 文件。",
 						},
 						"key_tab": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "keytab file，default filename [数据源名称].keytab。",
+							Description: "keytab 文件，默认值 filename [数据源名称].keytab。",
 						},
 						"krb5_conf": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "krb5.conf file。",
+							Description: "krb5.conf 文件。",
 						},
 						"private_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Private 键，default filename private_key.pem。",
+							Description: "Private 键，默认值 filename private_key.pem。",
 						},
 						"public_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Public 键，default filename public_key.pem。",
+							Description: "Public 键，默认值 filename public_key.pem。",
 						},
 					},
 				},
@@ -121,58 +121,58 @@ func ResourceTencentCloudWedataDataSource() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Development environment data 来源 file upload。",
+				Description: "Development 环境 数据 来源 文件 upload。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"trust_store": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Truststore authentication file，default filename truststore.jks。",
+							Description: "Truststore authentication 文件，默认值 filename truststore.jks。",
 						},
 						"key_store": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Keystore authentication file，default filename keystore.jks。",
+							Description: "Keystore authentication 文件，默认值 filename keystore.jks。",
 						},
 						"core_site": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "core-site.xml file。",
+							Description: "core-site.xml 文件。",
 						},
 						"hdfs_site": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "hdfs-site.xml file。",
+							Description: "hdfs-site.xml 文件。",
 						},
 						"hive_site": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "hive-site.xml file。",
+							Description: "hive-site.xml 文件。",
 						},
 						"hbase_site": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "hbase-site file。",
+							Description: "hbase-site 文件。",
 						},
 						"key_tab": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "keytab file，default filename [数据源名称].keytab。",
+							Description: "keytab 文件，默认值 filename [数据源名称].keytab。",
 						},
 						"krb5_conf": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "krb5.conf file。",
+							Description: "krb5.conf 文件。",
 						},
 						"private_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Private 键，default filename private_key.pem。",
+							Description: "Private 键，默认值 filename private_key.pem。",
 						},
 						"public_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Public 键，default filename public_key.pem。",
+							Description: "Public 键，默认值 filename public_key.pem。",
 						},
 					},
 				},
@@ -181,13 +181,13 @@ func ResourceTencentCloudWedataDataSource() *schema.Resource {
 			"display_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Data 来源 display 名称，for visual viewing。",
+				Description: "Data 来源 display 名称，对于 visual viewing。",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Data 来源 描述 information。",
+				Description: "Data 来源 描述 信息。",
 			},
 
 			// computed

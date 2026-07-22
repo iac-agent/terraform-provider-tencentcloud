@@ -36,7 +36,7 @@ func ResourceTencentCloudTdmqSendRocketmqMessage() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "topic 名称",
+				Description: "主题 名称",
 			},
 			"msg_body": {
 				Required:    true,
@@ -48,13 +48,13 @@ func ResourceTencentCloudTdmqSendRocketmqMessage() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "消息 键 information。",
+				Description: "消息 键 信息。",
 			},
 			"msg_tag": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "消息 标签 information。",
+				Description: "消息 标签 信息。",
 			},
 		},
 	}

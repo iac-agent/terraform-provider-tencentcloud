@@ -20,7 +20,7 @@ func DataSourceTencentCloudMysqlUserTask() *schema.Resource {
 			"instance_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "实例ID，格式为：cdb-c1nl9rpv，与云数据库控制台页面显示的实例ID相同，可以通过【查询实例列表】（https://cloud.tencent.com/document/api/236/15872）接口获取输出参数中InstanceId字段的值。",
+				Description: "实例ID，格式为：cdb-c1nl9rpv，与云数据库控制台页面显示的实例ID相同，可以通过【查询实例列表】（https://云.tencent.com/document/api/236/15872）接口获取输出参数中InstanceId字段的值。",
 			},
 
 			"async_request_id": {

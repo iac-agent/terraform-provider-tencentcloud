@@ -19,7 +19,7 @@ func DataSourceTencentCloudCamSubAccounts() *schema.Resource {
 			"filter_sub_account_uin": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "列表 sub-用户 UINs. Up to 50 UINs are supported。",
+				Description: "列表 sub-用户 UINs. Up 到 50 UINs 是 支持。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -28,7 +28,7 @@ func DataSourceTencentCloudCamSubAccounts() *schema.Resource {
 			"sub_accounts": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Sub-用户 list。",
+				Description: "Sub-用户 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"uin": {
@@ -44,7 +44,7 @@ func DataSourceTencentCloudCamSubAccounts() *schema.Resource {
 						"uid": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Sub-用户 UID. UID is the unique identifier of a 用户 who is a 消息 recipient，while UIN is a unique identifier of a 用户",
+							Description: "Sub-用户 UID. UID 是 唯一 identifier 的 用户 who 是 消息 recipient，while UIN 是 唯一 identifier 的 用户",
 						},
 						"remark": {
 							Type:        schema.TypeString,
@@ -54,7 +54,7 @@ func DataSourceTencentCloudCamSubAccounts() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "创建时间\nNote: this field may return null，indicating that no valid values can be obtained。",
+							Description: "创建时间\nNote: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"user_type": {
 							Type:        schema.TypeInt,
@@ -69,7 +69,7 @@ func DataSourceTencentCloudCamSubAccounts() *schema.Resource {
 						"last_login_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Last login time。",
+							Description: "Last login 时间。",
 						},
 					},
 				},

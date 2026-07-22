@@ -26,13 +26,13 @@ func ResourceTencentCloudMpsEnableScheduleConfig() *schema.Resource {
 			"schedule_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The scheme ID。",
+				Description: "scheme ID。",
 			},
 
 			"enabled": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "true: enable; false: disable。",
+				Description: "true: 启用; false: disable。",
 			},
 		},
 	}

@@ -40,7 +40,7 @@ func ResourceTencentCloudBhUserDirectory() *schema.Resource {
 			"user_org_set": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "IOA group information。",
+				Description: "IOA 组 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"org_id": {
@@ -66,7 +66,7 @@ func ResourceTencentCloudBhUserDirectory() *schema.Resource {
 						"user_total": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "数量 users under the IOA 用户 organization ID。",
+							Description: "数量 users under IOA 用户 organization ID。",
 						},
 					},
 				},
@@ -96,7 +96,7 @@ func ResourceTencentCloudBhUserDirectory() *schema.Resource {
 			"user_count": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "数量 users included in the directory。",
+				Description: "数量 users included 在 directory。",
 			},
 		},
 	}

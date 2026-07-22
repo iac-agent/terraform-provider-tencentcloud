@@ -21,32 +21,32 @@ func DataSourceTencentCloudApmInstances() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Filter by instance ID list (exact match)。",
+				Description: "过滤器 通过 实例 ID 列表 (exact match)。",
 			},
 			"instance_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Filter by instance ID (fuzzy match)。",
+				Description: "过滤器 通过 实例 ID (fuzzy match)。",
 			},
 			"instance_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Filter by 实例名称 (fuzzy match)。",
+				Description: "过滤器 通过 实例名称 (fuzzy match)。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Filter by 标签",
+				Description: "过滤器 通过 标签",
 			},
 			"demo_instance_flag": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "是否query official demo instances. 0: non-demo，1: demo. 默认为 0。",
+				Description: "是否query official demo 实例. 0: non-demo，1: demo. 默认为 0。",
 			},
 			"all_regions_flag": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "是否query instances in all regions. 0: no，1: yes. 默认为 0。",
+				Description: "是否query 实例 在 all regions. 0: 无，1: yes. 默认为 0。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -56,7 +56,7 @@ func DataSourceTencentCloudApmInstances() *schema.Resource {
 			"instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "APM instance list。",
+				Description: "APM 实例 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
@@ -72,7 +72,7 @@ func DataSourceTencentCloudApmInstances() *schema.Resource {
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance 描述",
+							Description: "实例 描述",
 						},
 						"region": {
 							Type:        schema.TypeString,
@@ -97,12 +97,12 @@ func DataSourceTencentCloudApmInstances() *schema.Resource {
 						"trace_duration": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Trace data retention duration。",
+							Description: "Trace 数据 retention 时长。",
 						},
 						"span_daily_counters": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Daily span count quota。",
+							Description: "Daily span count 配额。",
 						},
 						"pay_mode": {
 							Type:        schema.TypeInt,
@@ -136,12 +136,12 @@ func DataSourceTencentCloudApmInstances() *schema.Resource {
 						"err_rate_threshold": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "错误 rate threshold。",
+							Description: "错误 速率 阈值。",
 						},
 						"sample_rate": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Sampling rate。",
+							Description: "Sampling 速率。",
 						},
 						"error_sample": {
 							Type:        schema.TypeInt,
@@ -166,17 +166,17 @@ func DataSourceTencentCloudApmInstances() *schema.Resource {
 						"billing_instance": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether billing is 已启用 0: not 已启用，1: 已启用",
+							Description: "Whether billing 是 已启用 0: 不 已启用，1: 已启用",
 						},
 						"slow_request_saved_threshold": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Slow request saved threshold in ms。",
+							Description: "Slow 请求 saved 阈值 在 ms。",
 						},
 						"log_region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLS log 地域",
+							Description: "CLS 日志 地域",
 						},
 						"log_source": {
 							Type:        schema.TypeString,
@@ -186,7 +186,7 @@ func DataSourceTencentCloudApmInstances() *schema.Resource {
 						"is_related_log": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Log feature switch. 0: off，1: on。",
+							Description: "Log 功能 switch. 0: 关闭，1: 在。",
 						},
 						"log_topic_id": {
 							Type:        schema.TypeString,
@@ -196,22 +196,22 @@ func DataSourceTencentCloudApmInstances() *schema.Resource {
 						"client_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Client application count。",
+							Description: "Client 应用 count。",
 						},
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "活跃 application count in recent 2 days。",
+							Description: "活跃 应用 count 在 recent 2 days。",
 						},
 						"log_set": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLS log set。",
+							Description: "CLS 日志 集合。",
 						},
 						"metric_duration": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Metric data retention duration in days。",
+							Description: "Metric 数据 retention 时长 在 days。",
 						},
 						"custom_show_tags": {
 							Type:        schema.TypeList,
@@ -222,52 +222,52 @@ func DataSourceTencentCloudApmInstances() *schema.Resource {
 						"pay_mode_effective": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether 付费模式 is effective。",
+							Description: "Whether 付费模式 是 effective。",
 						},
 						"response_duration_warning_threshold": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Response duration 警告 threshold in ms。",
+							Description: "Response 时长 警告 阈值 在 ms。",
 						},
 						"default_tsf": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否为the default TSF instance. 0: no，1: yes。",
+							Description: "是否为the 默认值 TSF 实例. 0: 无，1: yes。",
 						},
 						"is_related_dashboard": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether dashboard is associated. 0: off，1: on。",
+							Description: "Whether 仪表盘 是 associated. 0: 关闭，1: 在。",
 						},
 						"dashboard_topic_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Associated dashboard ID。",
+							Description: "Associated 仪表盘 ID。",
 						},
 						"is_instrumentation_vulnerability_scan": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether instrumentation vulnerability scan is 已启用 0: off，1: on。",
+							Description: "Whether instrumentation vulnerability scan 是 已启用 0: 关闭，1: 在。",
 						},
 						"is_sql_injection_analysis": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether SQL injection analysis is 已启用 0: off，1: on。",
+							Description: "Whether SQL injection analysis 是 已启用 0: 关闭，1: 在。",
 						},
 						"stop_reason": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Throttling reason. 1: official 版本 quota，2: trial 版本 quota，4: trial expired，8: 账号 overdue。",
+							Description: "Throttling reason. 1: official 版本 配额，2: trial 版本 配额，4: trial expired，8: 账号 overdue。",
 						},
 						"is_remote_command_execution_analysis": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether remote command execution detection is 已启用 0: off，1: on。",
+							Description: "Whether 远程 command execution detection 是 已启用 0: 关闭，1: 在。",
 						},
 						"is_memory_hijacking_analysis": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether memory hijacking detection is 已启用 0: off，1: on。",
+							Description: "Whether 内存 hijacking detection 是 已启用 0: 关闭，1: 在。",
 						},
 						"log_index_type": {
 							Type:        schema.TypeInt,
@@ -277,82 +277,82 @@ func DataSourceTencentCloudApmInstances() *schema.Resource {
 						"log_trace_id_key": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "TraceId 索引 键，effective when CLS 索引 类型 is 键-值",
+							Description: "TraceId 索引 键，effective 当 CLS 索引 类型 是 键-值",
 						},
 						"is_delete_any_file_analysis": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether delete any file detection is 已启用 0: off，1: on。",
+							Description: "Whether delete any 文件 detection 是 已启用 0: 关闭，1: 在。",
 						},
 						"is_read_any_file_analysis": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether read any file detection is 已启用 0: off，1: on。",
+							Description: "Whether read any 文件 detection 是 已启用 0: 关闭，1: 在。",
 						},
 						"is_upload_any_file_analysis": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether upload any file detection is 已启用 0: off，1: on。",
+							Description: "Whether upload any 文件 detection 是 已启用 0: 关闭，1: 在。",
 						},
 						"is_include_any_file_analysis": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether include any file detection is 已启用 0: off，1: on。",
+							Description: "Whether include any 文件 detection 是 已启用 0: 关闭，1: 在。",
 						},
 						"is_directory_traversal_analysis": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether directory traversal detection is 已启用 0: off，1: on。",
+							Description: "Whether directory traversal detection 是 已启用 0: 关闭，1: 在。",
 						},
 						"is_template_engine_injection_analysis": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether template engine injection detection is 已启用 0: off，1: on。",
+							Description: "Whether template 引擎 injection detection 是 已启用 0: 关闭，1: 在。",
 						},
 						"is_script_engine_injection_analysis": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether script engine injection detection is 已启用 0: off，1: on。",
+							Description: "Whether 脚本 引擎 injection detection 是 已启用 0: 关闭，1: 在。",
 						},
 						"is_expression_injection_analysis": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether expression injection detection is 已启用 0: off，1: on。",
+							Description: "Whether expression injection detection 是 已启用 0: 关闭，1: 在。",
 						},
 						"is_jndi_injection_analysis": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether JNDI injection detection is 已启用 0: off，1: on。",
+							Description: "Whether JNDI injection detection 是 已启用 0: 关闭，1: 在。",
 						},
 						"is_jni_injection_analysis": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether JNI injection detection is 已启用 0: off，1: on。",
+							Description: "Whether JNI injection detection 是 已启用 0: 关闭，1: 在。",
 						},
 						"is_webshell_backdoor_analysis": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether webshell backdoor detection is 已启用 0: off，1: on。",
+							Description: "Whether webshell backdoor detection 是 已启用 0: 关闭，1: 在。",
 						},
 						"is_deserialization_analysis": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether deserialization detection is 已启用 0: off，1: on。",
+							Description: "Whether deserialization detection 是 已启用 0: 关闭，1: 在。",
 						},
 						"token": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance authentication 令牌",
+							Description: "实例 authentication 令牌",
 						},
 						"url_long_segment_threshold": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "URL long segment convergence threshold。",
+							Description: "URL long segment convergence 阈值。",
 						},
 						"url_number_segment_threshold": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "URL number segment convergence threshold。",
+							Description: "URL 数量 segment convergence 阈值。",
 						},
 					},
 				},

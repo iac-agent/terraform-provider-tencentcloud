@@ -32,7 +32,7 @@ func DataSourceTencentCloudAntiddosOverviewDdosEventList() *schema.Resource {
 			"attack_status": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "filter event by attack 状态，start: attacking; end: attack end。",
+				Description: "过滤器 事件 通过 attack 状态，start: attacking; end: attack end。",
 			},
 
 			"event_list": {
@@ -44,7 +44,7 @@ func DataSourceTencentCloudAntiddosOverviewDdosEventList() *schema.Resource {
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "event id。",
+							Description: "事件 ID。",
 						},
 						"vip": {
 							Type:        schema.TypeString,
@@ -69,22 +69,22 @@ func DataSourceTencentCloudAntiddosOverviewDdosEventList() *schema.Resource {
 						"attack_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Attack 状态，0: Under attack; 1: End of attack。",
+							Description: "Attack 状态，0: Under attack; 1: End 的 attack。",
 						},
 						"mbps": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Attack traffic，unit Mbps。",
+							Description: "Attack 流量，单位 Mbps。",
 						},
 						"pps": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "unit Mbps。",
+							Description: "单位 Mbps。",
 						},
 						"business": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Dayu sub product 代码 (bgpip represents advanced defense IP; net represents professional 版本 of advanced defense IP)。",
+							Description: "Dayu sub product 代码 (bgpip 表示 advanced defense IP; net 表示 professional 版本 的 advanced defense IP)。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,

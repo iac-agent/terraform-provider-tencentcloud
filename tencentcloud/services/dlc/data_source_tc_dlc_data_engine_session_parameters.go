@@ -18,13 +18,13 @@ func DataSourceTencentCloudDlcDataEngineSessionParameters() *schema.Resource {
 			"data_engine_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "DataEngine Id。",
+				Description: "DataEngine ID。",
 			},
 
 			"data_engine_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Engine 名称 When the engine 名称 is specified，the 名称 is used first to obtain the configuration。",
+				Description: "Engine 名称 当 引擎 名称 是 指定， 名称 是 使用 first 到 obtain 配置。",
 			},
 
 			"data_engine_parameters": {
@@ -41,7 +41,7 @@ func DataSourceTencentCloudDlcDataEngineSessionParameters() *schema.Resource {
 						"child_image_version_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Minor 版本 image ID。",
+							Description: "Minor 版本 镜像 ID。",
 						},
 						"engine_type": {
 							Type:        schema.TypeString,
@@ -66,12 +66,12 @@ func DataSourceTencentCloudDlcDataEngineSessionParameters() *schema.Resource {
 						"value_length_limit": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Length 限制 of the 值",
+							Description: "Length 限制 的 值",
 						},
 						"value_regexp_limit": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Regular expression constraint for the 值",
+							Description: "Regular expression constraint 对于 值",
 						},
 						"value_default": {
 							Type:        schema.TypeString,
@@ -81,17 +81,17 @@ func DataSourceTencentCloudDlcDataEngineSessionParameters() *schema.Resource {
 						"is_public": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "是否为a public 版本: 1 for public; 2 for private。",
+							Description: "是否为a 公有 版本: 1 对于 公有; 2 对于 私有。",
 						},
 						"parameter_type": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Configuration 类型: 1 for session 配置 (default); 2 for common 配置; 3 for cluster 配置",
+							Description: "Configuration 类型: 1 对于 会话 配置 (默认值); 2 对于 common 配置; 3 对于 集群 配置",
 						},
 						"submit_method": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Submission method: 用户 or BackGround。",
+							Description: "Submission 方法: 用户 或 BackGround。",
 						},
 						"operator": {
 							Type:        schema.TypeString,
@@ -101,7 +101,7 @@ func DataSourceTencentCloudDlcDataEngineSessionParameters() *schema.Resource {
 						"insert_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Insert time。",
+							Description: "Insert 时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,

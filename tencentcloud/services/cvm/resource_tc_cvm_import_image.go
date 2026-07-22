@@ -25,28 +25,28 @@ func ResourceTencentCloudCvmImportImage() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "OS architecture of the image to be imported，`x86_64` or `i386`。",
+				Description: "OS architecture 的 镜像 到 是 imported，`x86_64` 或 `i386`。",
 			},
 
 			"os_type": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "OS 类型 image to be imported. You can call `DescribeImportImageOs` to obtain the 列表 supported operating systems。",
+				Description: "OS 类型 镜像 到 是 imported. You 可以 call `DescribeImportImageOs` 到 obtain 列表 支持 operating systems。",
 			},
 
 			"os_version": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "OS 版本 of the image to be imported. You can call `DescribeImportImageOs` to obtain the 列表 supported operating systems。",
+				Description: "OS 版本 的 镜像 到 是 imported. You 可以 call `DescribeImportImageOs` 到 obtain 列表 支持 operating systems。",
 			},
 
 			"image_url": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "地址 on COS where the image to be imported is stored。",
+				Description: "地址 在 COS 其中 镜像 到 是 imported 是 stored。",
 			},
 
 			"image_name": {
@@ -67,27 +67,27 @@ func ResourceTencentCloudCvmImportImage() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Dry run to check the parameters without performing the operation。",
+				Description: "Dry run 到 check 参数 without performing operation。",
 			},
 
 			"force": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "是否force import the image。",
+				Description: "是否force import 镜像。",
 			},
 
 			"tag_specification": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "标签描述列表 This parameter is 用于bind a 标签 to a custom image。",
+				Description: "标签描述列表 此 参数 是 用于bind 标签 到 自定义 镜像。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "资源类型 有效值：instance (CVM)，主机 (CDH)，image (for image)，and keypair (for 键). 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "资源类型 有效值：实例 (CVM)，主机 (CDH)，镜像 (对于 镜像)，和 keypair (对于 键). 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"tags": {
 							Type:        schema.TypeList,
@@ -116,7 +116,7 @@ func ResourceTencentCloudCvmImportImage() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The license 类型 用于activate the OS after importing an image. 有效值：TencentCloud: Tencent Cloud official license BYOL: Bring Your Own License。",
+				Description: "license 类型 用于activate OS after importing 镜像. 有效值：TencentCloud: Tencent Cloud official license BYOL: Bring Your Own License。",
 			},
 
 			"boot_mode": {

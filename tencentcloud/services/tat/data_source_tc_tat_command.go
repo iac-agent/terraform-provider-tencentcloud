@@ -32,13 +32,13 @@ func DataSourceTencentCloudTatCommand() *schema.Resource {
 			"command_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "命令类型，值 is `SHELL` or `POWERSHELL`。",
+				Description: "命令类型，值 是 `SHELL` 或 `POWERSHELL`。",
 			},
 
 			"created_by": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Command 创建者 `TAT` 表示a public command and `USER` 表示a personal command。",
+				Description: "Command 创建者 `TAT` 表示a 公有 command 和 `USER` 表示a personal command。",
 			},
 
 			"command_set": {
@@ -80,7 +80,7 @@ func DataSourceTencentCloudTatCommand() *schema.Resource {
 						"timeout": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Command timeout 周期",
+							Description: "Command 超时 周期",
 						},
 						"created_time": {
 							Type:        schema.TypeString,
@@ -95,27 +95,27 @@ func DataSourceTencentCloudTatCommand() *schema.Resource {
 						"enable_parameter": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否enable the custom parameter feature。",
+							Description: "是否enable 自定义 参数 功能。",
 						},
 						"default_parameters": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Default custom parameter 值",
+							Description: "Default 自定义 参数 值",
 						},
 						"formatted_description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Formatted 描述 command. This parameter is an empty string for 用户 commands and 包含values for public commands。",
+							Description: "Formatted 描述 command. 此 参数 是 空 字符串 对于 用户 commands 和 包含values 对于 公有 commands。",
 						},
 						"created_by": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Command 创建者 `TAT` 表示a public command and `USER` 表示a personal command。",
+							Description: "Command 创建者 `TAT` 表示a 公有 command 和 `USER` 表示a personal command。",
 						},
 						"tags": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "标签 bound to the command. At most 10 标签 are allowed。",
+							Description: "标签 bound 到 command. At most 10 标签 是 allowed。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
@@ -134,17 +134,17 @@ func DataSourceTencentCloudTatCommand() *schema.Resource {
 						"username": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 用户 who executes the command on the instance。",
+							Description: "用户 who executes command 在 实例。",
 						},
 						"output_cos_bucket_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The COS 存储桶 URL for uploading logs。",
+							Description: "COS 存储桶 URL 对于 uploading logs。",
 						},
 						"output_cos_key_prefix": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The COS 存储桶 directory where the logs are saved。",
+							Description: "COS 存储桶 directory 其中 logs 是 saved。",
 						},
 					},
 				},

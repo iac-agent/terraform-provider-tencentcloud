@@ -20,18 +20,18 @@ func DataSourceTencentCloudTdmqProInstanceDetail() *schema.Resource {
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster Id。",
+				Description: "Cluster ID。",
 			},
 			"cluster_info": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Cluster information。",
+				Description: "Cluster 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster Id。",
+							Description: "Cluster ID。",
 						},
 						"cluster_name": {
 							Type:        schema.TypeString,
@@ -41,7 +41,7 @@ func DataSourceTencentCloudTdmqProInstanceDetail() *schema.Resource {
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Descriptive information。",
+							Description: "Descriptive 信息。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
@@ -56,7 +56,7 @@ func DataSourceTencentCloudTdmqProInstanceDetail() *schema.Resource {
 						"version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "cluster 版本",
+							Description: "集群 版本",
 						},
 						"node_distribution": {
 							Type:        schema.TypeList,
@@ -85,12 +85,12 @@ func DataSourceTencentCloudTdmqProInstanceDetail() *schema.Resource {
 						"max_storage": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum storage capacity，unit: MB。",
+							Description: "Maximum 存储 容量，单位: MB。",
 						},
 						"can_edit_route": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Can the route be modified注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Can 路由 是 modified注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -98,23 +98,23 @@ func DataSourceTencentCloudTdmqProInstanceDetail() *schema.Resource {
 			"network_access_point_infos": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Cluster network access point information注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "Cluster 网络 访问 point information注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The ID vpc，the supporting network and the access point of the public network，this field is empty注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "ID vpc， supporting 网络 和 访问 point 的 公有 网络，此 字段 是 empty注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "子网 ID，support network and public network access point，this field is empty注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "子网 ID，support 网络 和 公有 网络 访问 point，此 字段 是 empty注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"endpoint": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "access 地址",
+							Description: "访问 地址",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
@@ -124,7 +124,7 @@ func DataSourceTencentCloudTdmqProInstanceDetail() *schema.Resource {
 						"route_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Access point 类型: 0: support network access point 1: VPC access point 2: public network access point。",
+							Description: "Access point 类型: 0: support 网络 访问 point 1: VPC 访问 point 2: 公有 网络 访问 point。",
 						},
 					},
 				},
@@ -132,7 +132,7 @@ func DataSourceTencentCloudTdmqProInstanceDetail() *schema.Resource {
 			"cluster_spec_info": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Cluster specification information注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "Cluster 规格 information注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"spec_name": {
@@ -148,7 +148,7 @@ func DataSourceTencentCloudTdmqProInstanceDetail() *schema.Resource {
 						"max_band_width": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "peak bandwidth. 单位：mbps。",
+							Description: "peak 带宽. 单位：mbps。",
 						},
 						"max_namespaces": {
 							Type:        schema.TypeInt,

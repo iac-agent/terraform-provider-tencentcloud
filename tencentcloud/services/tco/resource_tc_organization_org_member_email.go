@@ -46,43 +46,43 @@ func ResourceTencentCloudOrganizationOrgMemberEmail() *schema.Resource {
 			"phone": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Phone number。",
+				Description: "Phone 数量。",
 			},
 
 			"bind_id": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Binding IDNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "Binding IDNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"apply_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Application timeNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "Application timeNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"bind_status": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Binding 状态 is not binding: unbound，to be activated: 值，successful binding: success，binding failure: failedNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "Binding 状态 是 不 binding: unbound，到 是 activated: 值，successful binding: success，binding failure: failedNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"bind_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Binding timeNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "Binding timeNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"description": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "FailedNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "FailedNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"phone_bind": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Safe mobile phone binding state is not bound: 0，has been binded: 1Note: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "Safe mobile phone binding state 是 不 bound: 0，has been binded: 1Note: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 		},
 	}

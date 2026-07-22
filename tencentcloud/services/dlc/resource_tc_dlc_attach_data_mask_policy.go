@@ -25,7 +25,7 @@ func ResourceTencentCloudDlcAttachDataMaskPolicy() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "A collection of data masking policy permission objects to be bound。",
+				Description: "A collection 的 数据 masking 策略 权限 objects 到 是 bound。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"policy_info": {
@@ -33,32 +33,32 @@ func ResourceTencentCloudDlcAttachDataMaskPolicy() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    1,
-							Description: "Data masking permission object。",
+							Description: "Data masking 权限 对象。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"database": {
 										Type:        schema.TypeString,
 										Required:    true,
 										ForceNew:    true,
-										Description: "The 名称 database to be authorized. Use * to represent all databases under the current Catalog. For administrator-级别 authorization，only * is allowed. For data connection-级别 authorization，leave it empty. For other types，指定database 名称",
+										Description: "名称 数据库 到 是 authorized. Use * 到 represent all databases under 当前 Catalog. For administrator-级别 authorization，仅 * 是 allowed. For 数据 连接-级别 authorization，leave 它 空. For other types，指定database 名称",
 									},
 									"catalog": {
 										Type:        schema.TypeString,
 										Required:    true,
 										ForceNew:    true,
-										Description: "The 名称 data 来源 to be authorized. For administrator-级别 authorization，only * is allowed (representing all resources at this 级别). For data 来源-级别 and database-级别 authorization，only COSDataCatalog or * is allowed. For table-级别 authorization，custom data sources can be specified. 默认为 DataLakeCatalog 如果未指定. Note: For custom data sources，DLC can only manage a subset of permissions provided by the 用户 during data 来源 integration。",
+										Description: "名称 数据 来源 到 是 authorized. For administrator-级别 authorization，仅 * 是 allowed (representing all resources 在 此 级别). For 数据 来源-级别 和 数据库-级别 authorization，仅 COSDataCatalog 或 * 是 allowed. For 表-级别 authorization，自定义 数据 sources 可以 是 指定. 默认为 DataLakeCatalog 如果未指定. 注意: For 自定义 数据 sources，DLC 可以 仅 manage subset 的 permissions 提供 通过 用户 during 数据 来源 integration。",
 									},
 									"table": {
 										Type:        schema.TypeString,
 										Required:    true,
 										ForceNew:    true,
-										Description: "The 名称 table to be authorized. Use * to represent all tables under the current Database. For administrator-级别 authorization，only * is allowed. For data connection-级别 and database-级别 authorization，leave it empty. For other types，指定table 名称",
+										Description: "名称 表 到 是 authorized. Use * 到 represent all tables under 当前 Database. For administrator-级别 authorization，仅 * 是 allowed. For 数据 连接-级别 和 数据库-级别 authorization，leave 它 空. For other types，指定table 名称",
 									},
 									"column": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "The 名称 column to be authorized. Use * to represent all columns. For administrator-级别 authorization，only * is allowed。",
+										Description: "名称 列 到 是 authorized. Use * 到 represent all columns. For administrator-级别 authorization，仅 * 是 allowed。",
 									},
 								},
 							},
@@ -67,13 +67,13 @@ func ResourceTencentCloudDlcAttachDataMaskPolicy() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "The ID data masking strategy。",
+							Description: "ID 数据 masking strategy。",
 						},
 						"column_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "The 类型 bound field。",
+							Description: "类型 bound 字段。",
 						},
 					},
 				},

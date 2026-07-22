@@ -18,7 +18,7 @@ func DataSourceTencentCloudWedataProjects() *schema.Resource {
 			"project_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "列表 project IDs。",
+				Description: "列表 项目 IDs。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -27,25 +27,25 @@ func DataSourceTencentCloudWedataProjects() *schema.Resource {
 			"project_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "项目名称 or unique identifier 名称，supports fuzzy search。",
+				Description: "项目名称 或 唯一 identifier 名称，支持 fuzzy search。",
 			},
 
 			"status": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Project 状态，可选 values: 0 (已禁用)，1 (normal)。",
+				Description: "Project 状态，可选 值: 0 (已禁用)，1 (normal)。",
 			},
 
 			"project_model": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Project model，可选 values: SIMPLE，STANDARD。",
+				Description: "Project model，可选 值: SIMPLE，STANDARD。",
 			},
 
 			"items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "列表 data sources。",
+				Description: "列表 数据 sources。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"project_id": {
@@ -61,7 +61,7 @@ func DataSourceTencentCloudWedataProjects() *schema.Resource {
 						"display_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Project display 名称，can be Chinese 名称",
+							Description: "Project display 名称，可以 是 Chinese 名称",
 						},
 						"description": {
 							Type:        schema.TypeString,

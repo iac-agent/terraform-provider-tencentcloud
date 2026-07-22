@@ -18,7 +18,7 @@ func DataSourceTencentCloudCssDeliverLogDownList() *schema.Resource {
 			"log_info_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "列表 log information。",
+				Description: "列表 日志 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"log_name": {
@@ -34,12 +34,12 @@ func DataSourceTencentCloudCssDeliverLogDownList() *schema.Resource {
 						"log_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Log time. UTC 格式，for example: 2018-11-29T19:00:00Z.Note:Beijing time is UTC time + 8 hours，formatted according to the ISO 8601 standard，see ISO date 格式 描述 for details。",
+							Description: "Log 时间. UTC 格式，对于 示例: 2018-11-29T19:00:00Z.注意:Beijing 时间 是 UTC 时间 + 8 hours，formatted according 到 ISO 8601 standard，see ISO date 格式 描述 对于 details。",
 						},
 						"file_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "File size，in bytes。",
+							Description: "File 大小，在 bytes。",
 						},
 					},
 				},

@@ -26,7 +26,7 @@ func DataSourceTencentCloudTdmqRocketmqNamespace() *schema.Resource {
 			"name_keyword": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search by 名称",
+				Description: "Search 通过 名称",
 			},
 
 			"namespaces": {
@@ -38,32 +38,32 @@ func DataSourceTencentCloudTdmqRocketmqNamespace() *schema.Resource {
 						"namespace_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Namespace 名称，which can contain 3-64 letters，digits，hyphens，and underscores。",
+							Description: "Namespace 名称，其中 可以 contain 3-64 letters，digits，hyphens，和 underscores。",
 						},
 						"ttl": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Retention time of unconsumed messages （毫秒）。 取值范围：60 seconds-15 days。",
+							Description: "Retention 时间 的 unconsumed messages （毫秒）。 取值范围：60 秒-15 days。",
 						},
 						"retention_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Retention time of persisted messages （毫秒）。",
+							Description: "Retention 时间 的 persisted messages （毫秒）。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "备注 (up to 128 characters)。",
+							Description: "备注 (up 到 128 字符)。",
 						},
 						"public_endpoint": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Public network access point 地址",
+							Description: "Public 网络 访问 point 地址",
 						},
 						"vpc_endpoint": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC access point 地址",
+							Description: "VPC 访问 point 地址",
 						},
 					},
 				},

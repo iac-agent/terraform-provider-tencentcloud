@@ -19,7 +19,7 @@ func DataSourceTencentCloudMonitorNoticeContentTmpls() *schema.Resource {
 			"tmpl_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "模板 ID list for query。",
+				Description: "模板 ID 列表 对于 查询。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -27,28 +27,28 @@ func DataSourceTencentCloudMonitorNoticeContentTmpls() *schema.Resource {
 			"tmpl_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "模板名称 for query。",
+				Description: "模板名称 对于 查询。",
 			},
 			"notice_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Notice 模板 ID for query。",
+				Description: "Notice 模板 ID 对于 查询。",
 			},
 			"tmpl_language": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Template 语言 for query. 有效值：`en`，`zh`。",
+				Description: "模板 语言 对于 查询. 有效值：`en`，`zh`。",
 			},
 			"monitor_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "监控类型 for query. Valid 值: `MT_QCE`。",
+				Description: "监控类型 对于 查询. 有效 值: `MT_QCE`。",
 			},
 
 			"notice_content_tmpl_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Notification 内容模板 list。",
+				Description: "Notification 内容模板 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tmpl_id": {
@@ -69,7 +69,7 @@ func DataSourceTencentCloudMonitorNoticeContentTmpls() *schema.Resource {
 						"tmpl_language": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Template 语言",
+							Description: "模板 语言",
 						},
 						"creator": {
 							Type:        schema.TypeString,
@@ -89,7 +89,7 @@ func DataSourceTencentCloudMonitorNoticeContentTmpls() *schema.Resource {
 						"tmpl_contents_json": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Template 内容 in JSON 格式",
+							Description: "模板 内容 在 JSON 格式",
 						},
 					},
 				},

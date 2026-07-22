@@ -25,13 +25,13 @@ func DataSourceTencentCloudPostgresqlRecoveryTime() *schema.Resource {
 			"recovery_begin_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The earliest restoration time (UTC+8)。",
+				Description: "earliest restoration 时间 (UTC+8)。",
 			},
 
 			"recovery_end_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The latest restoration time (UTC+8)。",
+				Description: "latest restoration 时间 (UTC+8)。",
 			},
 
 			"result_output_file": {

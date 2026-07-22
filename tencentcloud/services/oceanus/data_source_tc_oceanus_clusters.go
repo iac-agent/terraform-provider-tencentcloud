@@ -21,30 +21,30 @@ func DataSourceTencentCloudOceanusClusters() *schema.Resource {
 				Type:        schema.TypeSet,
 				MaxItems:    100,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Query one or more clusters by their ID. The 最大clusters that can be queried at once is 100。",
+				Description: "Query 一个 或 more clusters 通过 their ID. 最大clusters 该 可以 是 queried 在 once 是 100。",
 			},
 			"order_type": {
 				Optional:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(CLUSTER_ORDER_TYPE),
-				Description:  "The sorting rule of the cluster information results. Possible values are 1 (排序方式 time in 降序)，2 (排序方式 time in 升序)，and 3 (排序方式 状态)。",
+				Description:  "sorting 规则 的 集群 信息 results. Possible 值 是 1 (排序方式 时间 在 降序)，2 (排序方式 时间 在 升序)，和 3 (排序方式 状态)。",
 			},
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "The filtering rules。",
+				Description: "filtering 规则。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The field to be filtered。",
+							Description: "字段 到 是 filtered。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Required:    true,
-							Description: "The filtering values of the field。",
+							Description: "filtering 值 的 字段。",
 						},
 					},
 				},
@@ -57,99 +57,99 @@ func DataSourceTencentCloudOceanusClusters() *schema.Resource {
 			"cluster_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Cluster list。",
+				Description: "Cluster 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The ID cluster。",
+							Description: "ID 集群。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 名称 cluster。",
+							Description: "名称 集群。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 地域 where the cluster is located。",
+							Description: "地域 其中 集群 是 located。",
 						},
 						"app_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 用户 AppID。",
+							Description: "用户 AppID。",
 						},
 						"owner_uin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The main 账号 UIN。",
+							Description: "main 账号 UIN。",
 						},
 						"creator_uin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 创建者 UIN。",
+							Description: "创建者 UIN。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 状态 cluster. Possible values are 1 (uninitialized)，3 (initializing)，and 2 (running)。",
+							Description: "状态 集群. Possible 值 是 1 (uninitialized)，3 (initializing)，和 2 (running)。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "A 描述 cluster。",
+							Description: "A 描述 集群。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The time when the cluster was created。",
+							Description: "时间 当 集群 是 创建。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The time of the last operation on the cluster。",
+							Description: "时间 的 last operation 在 集群。",
 						},
 						"cu_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 数量 CUs。",
+							Description: "数量 CUs。",
 						},
 						"cu_mem": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The memory specification of the CU。",
+							Description: "内存 规格 的 CU。",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The availability 可用区",
+							Description: "availability 可用区",
 						},
 						"status_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 状态 描述",
+							Description: "状态 描述",
 						},
 						"ccns": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "The network。",
+							Description: "网络。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"vpc_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The ID VPC。",
+										Description: "ID VPC。",
 									},
 									"subnet_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The ID subnet。",
+										Description: "ID 子网。",
 									},
 									"ccn_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The ID Cloud Connect Network (CCN)，such as ccn-rahigzjd。",
+										Description: "ID Cloud Connect Network (CCN)，such 作为 ccn-rahigzjd。",
 									},
 								},
 							},
@@ -157,28 +157,28 @@ func DataSourceTencentCloudOceanusClusters() *schema.Resource {
 						"net_environment_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The network。",
+							Description: "网络。",
 						},
 						"free_cu_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 数量 free CUs。",
+							Description: "数量 free CUs。",
 						},
 						"tags": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "The 标签 bound to the cluster.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "标签 bound 到 集群.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The 标签键注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "标签键注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"tag_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The 标签值注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "标签值注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -186,64 +186,64 @@ func DataSourceTencentCloudOceanusClusters() *schema.Resource {
 						"isolated_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The time when the cluster was isolated. If the cluster has not been isolated，this field will be -.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "时间 当 集群 是 isolated. 如果 集群 has 不 been isolated，此 字段 将 是 -.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"expire_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 过期时间 of the cluster. If the cluster does not have an 过期时间，this field will be -.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "过期时间 的 集群. 如果 集群 does 不 have 过期时间，此 字段 将 是 -.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"seconds_until_expiry": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 数量 seconds until the cluster expires. If the cluster does not have an 过期时间，this field will be -.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "数量 秒 until 集群 expires. 如果 集群 does 不 have 过期时间，此 字段 将 是 -.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"auto_renew_flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The auto-renewal flag. 0 表示default state (the 用户 has not set it，which is the initial state; if the 用户 has 已启用 the prepaid non-stop privilege，the cluster will be automatically renewed)，1 表示automatic renewal，and 2 表示no automatic renewal (set by the 用户).注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "auto-renewal flag. 0 表示default state ( 用户 has 不 集合 它，其中 是 initial state; 如果 用户 has 已启用 prepaid non-stop privilege， 集群 将 是 automatically renewed)，1 表示automatic renewal，和 2 表示no automatic renewal (集合 通过 用户).注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"default_cos_bucket": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The default COS 存储桶 of the cluster.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "默认值 COS 存储桶 的 集群.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"cls_log_set": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The CLS logset of the cluster.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "CLS logset 的 集群.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"cls_topic_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The CLS topic ID cluster.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "CLS 主题 ID 集群.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"cls_log_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 名称 CLS logset of the cluster.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "名称 CLS logset 的 集群.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"cls_topic_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 名称 CLS topic of the cluster.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "名称 CLS 主题 的 集群.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"version": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "The 版本 information of the cluster.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "版本 信息 的 集群.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"flink": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The Flink 版本 of the cluster.注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Flink 版本 的 集群.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"supported_flink": {
 										Type:        schema.TypeSet,
 										Elem:        &schema.Schema{Type: schema.TypeString},
 										Computed:    true,
-										Description: "The Flink versions supported by the cluster.注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Flink versions 支持 通过 集群.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -251,22 +251,22 @@ func DataSourceTencentCloudOceanusClusters() *schema.Resource {
 						"free_cu": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "The 数量 free CUs at the granularity 级别注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "数量 free CUs 在 granularity 级别注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"default_log_collect_conf": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The default log collection configuration of the cluster.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "默认值 日志 collection 配置 的 集群.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"customized_dns_enabled": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "值: 0 - not set，1 - set，2 - not allowed to set.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "值: 0 - 不 集合，1 - 集合，2 - 不 allowed 到 集合.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"correlations": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Space information.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Space 信息.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"cluster_group_id": {
@@ -307,7 +307,7 @@ func DataSourceTencentCloudOceanusClusters() *schema.Resource {
 									"project_id_str": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "项目 ID in string 格式注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "项目 ID 在 字符串 格式注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -325,12 +325,12 @@ func DataSourceTencentCloudOceanusClusters() *schema.Resource {
 						"is_need_manage_node": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Front-end distinguishes 是否cluster needs 2CU logic，because historical clusters do not need to be changed. 默认为 1. All new clusters need to be changed.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Front-end distinguishes 是否cluster needs 2CU logic，because historical clusters do 不 need 到 是 changed. 默认为 1. All new clusters need 到 是 changed.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"cluster_sessions": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Session cluster information.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Session 集群 信息.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{},
 							},
@@ -348,7 +348,7 @@ func DataSourceTencentCloudOceanusClusters() *schema.Resource {
 						"orders": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "顺序 information.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "顺序 信息.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"type": {
@@ -364,17 +364,17 @@ func DataSourceTencentCloudOceanusClusters() *schema.Resource {
 									"operate_uin": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "UIN of the 操作者注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "UIN 的 操作者注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"compute_cu": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The 数量 CUs in the final cluster.注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "数量 CUs 在 final 集群.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"order_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The time of the 顺序注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "时间 的 顺序注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -382,7 +382,7 @@ func DataSourceTencentCloudOceanusClusters() *schema.Resource {
 						"sql_gateways": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Gateway information.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Gateway 信息.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"serial_id": {
@@ -414,22 +414,22 @@ func DataSourceTencentCloudOceanusClusters() *schema.Resource {
 												"workspace_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Unique identifier of the space。",
+													Description: "Unique identifier 的 space。",
 												},
 												"resource_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Unique identifier of the resource。",
+													Description: "Unique identifier 的 资源。",
 												},
 												"version": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "版本 number。",
+													Description: "版本 数量。",
 												},
 												"type": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Reference 类型 0: 用户 resource.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "Reference 类型 0: 用户 资源.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -437,7 +437,7 @@ func DataSourceTencentCloudOceanusClusters() *schema.Resource {
 									"cu_spec": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "CU specification.注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "CU 规格.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
@@ -452,18 +452,18 @@ func DataSourceTencentCloudOceanusClusters() *schema.Resource {
 									"properties": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Configuration parameters.注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Configuration 参数.注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "键 of the system configuration。",
+													Description: "键 的 系统 配置。",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "值 of the system configuration。",
+													Description: "值 的 系统 配置。",
 												},
 											},
 										},

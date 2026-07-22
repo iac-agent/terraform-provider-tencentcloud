@@ -29,7 +29,7 @@ func ResourceTencentCloudPostgresqlReadonlyGroup() *schema.Resource {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "Primary instance ID。",
+				Description: "Primary 实例 ID。",
 			},
 			"name": {
 				Type:        schema.TypeString,
@@ -49,7 +49,7 @@ func ResourceTencentCloudPostgresqlReadonlyGroup() *schema.Resource {
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "VPC subnet ID。",
+				Description: "VPC 子网 ID。",
 			},
 			"replay_lag_eliminate": {
 				Type:     schema.TypeInt,
@@ -66,45 +66,45 @@ func ResourceTencentCloudPostgresqlReadonlyGroup() *schema.Resource {
 			"max_replay_lag": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "延迟 threshold in ms。",
+				Description: "延迟 阈值 在 ms。",
 			},
 			"max_replay_latency": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Delayed log size threshold （MB）。",
+				Description: "Delayed 日志 大小 阈值 （MB）。",
 			},
 			"min_delay_eliminate_reserve": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "The 最小read-only replicas that must be retained in an RO group。",
+				Description: "最小read-仅 replicas 该 必须 是 retained 在 RO 组。",
 			},
 			"security_groups_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "ID security group. If both vpc_id and subnet_id are not set，this argument should not be set either。",
+				Description: "ID 安全 组. 如果 both vpc_id 和 subnet_id 是 不 集合，此 argument should 不 是 集合 either。",
 			},
 			// Computed values
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 of the postgresql instance。",
+				Description: "创建时间 的 postgresql 实例。",
 			},
 			"net_info_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "列表 db instance net info。",
+				Description: "列表 db 实例 net info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Ip 地址 of the net info。",
+							Description: "Ip 地址 的 net info。",
 						},
 						"port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "端口 of the net info。",
+							Description: "端口 的 net info。",
 						},
 					},
 				},

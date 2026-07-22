@@ -45,7 +45,7 @@ func ResourceTencentCloudCkafkaConsumerGroup() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "数组 topic names。",
+				Description: "数组 主题 names。",
 			},
 		},
 	}

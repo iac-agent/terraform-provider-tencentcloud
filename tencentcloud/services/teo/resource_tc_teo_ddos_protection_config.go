@@ -33,19 +33,19 @@ func ResourceTencentCloudTeoDdosProtectionConfig() *schema.Resource {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "指定exclusive Anti-DDoS configuration。",
+				Description: "指定exclusive Anti-DDoS 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"protection_option": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "指定protection 范围 of standalone DDoS. valid values:.\n<li>protect_all_domains: 指定exclusive Anti-DDoS protection for all 域名 names in the site. newly added 域名 names automatically enable exclusive Anti-DDoS protection. when this parameter is specified，DomainDDoSProtections will not be processed.</li>.\n<li>protect_specified_domains: only applicable to specified domains. specific 范围 can be set via DomainDDoSProtection parameter.</li>。",
+							Description: "指定protection 范围 的 standalone DDoS. 有效 值:.\n<li>protect_all_domains: 指定exclusive Anti-DDoS protection 对于 all 域名 names 在 site. newly added 域名 names automatically 启用 exclusive Anti-DDoS protection. 当 此 参数 是 指定，DomainDDoSProtections 将 不 是 processed.</li>.\n<li>protect_specified_domains: 仅 applicable 到 指定 domains. 特定 范围 可以 是 集合 via DomainDDoSProtection 参数.</li>。",
 						},
 						"domain_ddos_protections": {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Computed:    true,
-							Description: "Anti-DDoS configuration of the 域名 指定exclusive ddos protection settings for the 域名 in request parameters.\n<li>When ProtectionOption remains protect_specified_domains，the 域名 names not filled in keep their exclusive Anti-DDoS protection configuration unchanged，while explicitly specified 域名 names are updated according to the input parameters.</li>.\n<li>When ProtectionOption switches from protect_all_domains to protect_specified_domains: if DomainDDoSProtections is empty，disable exclusive DDoS protection for all domains under the site; if DomainDDoSProtections is not empty，disable or maintain exclusive DDoS protection for the 域名 names specified in the parameter，and disable exclusive DDoS protection for other unlisted 域名 names.</li>。",
+							Description: "Anti-DDoS 配置 的 域名 指定exclusive ddos protection settings 对于 域名 在 请求 参数.\n<li>当 ProtectionOption remains protect_specified_domains， 域名 names 不 filled 在 keep their exclusive Anti-DDoS protection 配置 unchanged，while explicitly 指定 域名 names 是 更新 according 到 input 参数.</li>.\n<li>当 ProtectionOption switches 从 protect_all_domains 到 protect_specified_domains: 如果 DomainDDoSProtections 是 空，disable exclusive DDoS protection 对于 all domains under site; 如果 DomainDDoSProtections 是 不 空，disable 或 maintain exclusive DDoS protection 对于 域名 names 指定 在 参数，和 disable exclusive DDoS protection 对于 other unlisted 域名 names.</li>。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"domain": {
@@ -56,7 +56,7 @@ func ResourceTencentCloudTeoDdosProtectionConfig() *schema.Resource {
 									"switch": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Standalone DDoS switch of the 域名 valid values:.\n<li>on: 已启用;</li>.\n<li>off: closed.</li>。",
+										Description: "Standalone DDoS switch 的 域名 有效 值:.\n<li>在: 已启用;</li>.\n<li>关闭: closed.</li>。",
 									},
 								},
 							},
@@ -64,7 +64,7 @@ func ResourceTencentCloudTeoDdosProtectionConfig() *schema.Resource {
 						"shared_cname_ddos_protections": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "指定exclusive DDoS protection configuration of a shared CNAME. used as an output parameter。",
+							Description: "指定exclusive DDoS protection 配置 的 shared CNAME. 使用 作为 output 参数。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"domain": {
@@ -75,7 +75,7 @@ func ResourceTencentCloudTeoDdosProtectionConfig() *schema.Resource {
 									"switch": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Standalone DDoS switch of the 域名 valid values:.\n<li>on: 已启用;</li>.\n<li>off: closed.</li>。",
+										Description: "Standalone DDoS switch 的 域名 有效 值:.\n<li>在: 已启用;</li>.\n<li>关闭: closed.</li>。",
 									},
 								},
 							},

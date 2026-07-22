@@ -74,7 +74,7 @@ func ResourceTencentCloudScfFunction() *schema.Resource {
 					tccommon.ValidateStringLengthInRange(2, 60),
 					scfFunctionValidate(false),
 				),
-				Description: "名称 SCF function. 名称 supports 26 English letters，numbers，connectors，and underscores，it should start with a letter. The last character cannot be `-` or `_`. Available length is 2-60。",
+				Description: "名称 SCF 函数. 名称 支持 26 English letters，numbers，connectors，和 underscores，它 should start 使用 letter. last character 不能 是 `-` 或 `_`. Available 长度 是 2-60。",
 			},
 			"handler": {
 				Type:     schema.TypeString,
@@ -83,14 +83,14 @@ func ResourceTencentCloudScfFunction() *schema.Resource {
 					tccommon.ValidateStringLengthInRange(2, 60),
 					scfFunctionValidate(true),
 				),
-				Description: "Handler of the SCF function. The 格式 of 名称 is `<filename>.<method_name>`，and it supports 26 English letters，numbers，connectors，and underscores，it should start with a letter. The last character cannot be `-` or `_`. Available length is 2-60。",
+				Description: "Handler 的 SCF 函数. 格式 的 名称 是 `<filename>.<method_name>`，和 它 支持 26 English letters，numbers，connectors，和 underscores，它 should start 使用 letter. last character 不能 是 `-` 或 `_`. Available 长度 是 2-60。",
 			},
 			"description": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Default:      "",
 				ValidateFunc: tccommon.ValidateStringLengthInRange(0, 1000),
-				Description:  "描述 SCF function. 描述 supports English letters，numbers，spaces，commas，newlines，periods and Chinese，the maximum length is 1000。",
+				Description:  "描述 SCF 函数. 描述 支持 English letters，numbers，spaces，commas，newlines，periods 和 Chinese， 最大 长度 是 1000。",
 			},
 			"mem_size": {
 				Type:     schema.TypeInt,
@@ -105,75 +105,75 @@ func ResourceTencentCloudScfFunction() *schema.Resource {
 						return
 					},
 				),
-				Description: "Memory size of the SCF function，unit is MB. The 默认为 `128`MB. The ladder is 128M。",
+				Description: "Memory 大小 的 SCF 函数，单位 是 MB. 默认为 `128`MB. ladder 是 128M。",
 			},
 			"timeout": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Default:      3,
 				ValidateFunc: tccommon.ValidateIntegerInRange(1, 900),
-				Description:  "Timeout of the SCF function，unit is second. Default `3`. Available 值 is 1-900。",
+				Description:  "Timeout 的 SCF 函数，单位 是 second. Default `3`. Available 值 是 1-900。",
 			},
 			"environment": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Environment of the SCF function。",
+				Description: "Environment 的 SCF 函数。",
 			},
 			"runtime": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Runtime of the SCF function，only supports `Python2.7`，`Python3.6`，`Nodejs6.10`，`Nodejs8.9`，`Nodejs10.15`，`Nodejs12.16`，`Php5.2`，`Php7.4`，`Go1`，`Java8`，and `CustomRuntime`，默认为 `Python2.7`。",
+				Description: "Runtime 的 SCF 函数，仅 支持 `Python2.7`，`Python3.6`，`Nodejs6.10`，`Nodejs8.9`，`Nodejs10.15`，`Nodejs12.16`，`Php5.2`，`Php7.4`，`Go1`，`Java8`，和 `CustomRuntime`，默认为 `Python2.7`。",
 			},
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "私有网络 ID SCF function。",
+				Description: "私有网络 ID SCF 函数。",
 			},
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "子网 ID SCF function。",
+				Description: "子网 ID SCF 函数。",
 			},
 			"namespace": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "default",
 				ForceNew:    true,
-				Description: "Namespace of the SCF function，默认为 `default`。",
+				Description: "Namespace 的 SCF 函数，默认为 `默认值`。",
 			},
 			"role": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "角色 of the SCF function。",
+				Description: "角色 的 SCF 函数。",
 			},
 			"cls_logset_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "cls logset ID SCF function。",
+				Description: "cls logset ID SCF 函数。",
 			},
 			"cls_topic_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "cls topic ID SCF function。",
+				Description: "cls 主题 ID SCF 函数。",
 			},
 			"func_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "Event",
-				Description: "Function 类型 The 默认值为 Event. Enter Event if you need to create a trigger function. Enter HTTP if you need to create an HTTP function service。",
+				Description: "Function 类型 默认值为 Event. Enter Event 如果 您 need 到 create 触发器 函数. Enter HTTP 如果 您 need 到 create HTTP 函数 服务。",
 			},
 			"l5_enable": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Enable L5 for SCF function，默认为 `false`。",
+				Description: "Enable L5 对于 SCF 函数，默认为 `false`。",
 			},
 			"layers": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "The 列表 association layers。",
+				Description: "列表 association layers。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"layer_name": {
@@ -184,7 +184,7 @@ func ResourceTencentCloudScfFunction() *schema.Resource {
 						"layer_version": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The 版本 of layer。",
+							Description: "版本 的 layer。",
 						},
 					},
 				},
@@ -192,7 +192,7 @@ func ResourceTencentCloudScfFunction() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "标签 of the SCF function。",
+				Description: "标签 的 SCF 函数。",
 			},
 			"async_run_enable": {
 				Type:         schema.TypeString,
@@ -200,39 +200,39 @@ func ResourceTencentCloudScfFunction() *schema.Resource {
 				ForceNew:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{SCF_FUNCTION_OPEN, SCF_FUNCTION_CLOSE}),
-				Description:  "Whether SCF function asynchronous attribute is 已启用 `TRUE` is open，`FALSE` is close。",
+				Description:  "Whether SCF 函数 asynchronous attribute 是 已启用 `TRUE` 是 open，`FALSE` 是 close。",
 			},
 			"enable_public_net": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "表示是否public net 配置 已启用 Default `false`. NOTE: only `vpc_id` specified can disable public net 配置",
+				Description: "表示是否public net 配置 已启用 Default `false`. NOTE: 仅 `vpc_id` 指定 可以 disable 公有 net 配置",
 			},
 			"enable_eip_config": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "表示是否EIP 配置 set to `ENABLE` when `enable_public_net` was true. Default `false`。",
+				Description: "表示是否EIP 配置 集合 到 `ENABLE` 当 `enable_public_net` 是 true. Default `false`。",
 			},
 			// cos code
 			"cos_bucket_name": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"zip_file", "image_config"},
-				Description:   "Cos 存储桶 名称 SCF function，such as `cos-1234567890`，conflict with `zip_file`。",
+				Description:   "Cos 存储桶 名称 SCF 函数，such 作为 `cos-1234567890`，conflict 使用 `zip_file`。",
 			},
 			"cos_object_name": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"zip_file", "image_config"},
 				ValidateFunc:  tccommon.ValidateStringSuffix(".zip", ".jar"),
-				Description:   "Cos object 名称 SCF function，should have suffix `.zip` or `.jar`，conflict with `zip_file`。",
+				Description:   "Cos 对象 名称 SCF 函数，should have suffix `.zip` 或 `.jar`，conflict 使用 `zip_file`。",
 			},
 			"cos_bucket_region": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"zip_file", "image_config"},
-				Description:   "Cos 存储桶 地域 of the SCF function，conflict with `zip_file`。",
+				Description:   "Cos 存储桶 地域 的 SCF 函数，conflict 使用 `zip_file`。",
 			},
 
 			// zip upload
@@ -240,7 +240,7 @@ func ResourceTencentCloudScfFunction() *schema.Resource {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"cos_bucket_name", "cos_object_name", "cos_bucket_region", "image_config"},
-				Description:   "Zip file of the SCF function，conflict with `cos_bucket_name`，`cos_object_name`，`cos_bucket_region`。",
+				Description:   "Zip 文件 的 SCF 函数，conflict 使用 `cos_bucket_name`，`cos_object_name`，`cos_bucket_region`。",
 			},
 
 			// image
@@ -248,14 +248,14 @@ func ResourceTencentCloudScfFunction() *schema.Resource {
 				Type:          schema.TypeList,
 				Optional:      true,
 				ConflictsWith: []string{"cos_bucket_name", "cos_object_name", "cos_bucket_region", "zip_file"},
-				Description:   "Image of the SCF function，conflict with `cos_bucket_name`，`cos_object_name`，`cos_bucket_region`，`zip_file`。",
+				Description:   "Image 的 SCF 函数，conflict 使用 `cos_bucket_name`，`cos_object_name`，`cos_bucket_region`，`zip_file`。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"image_type": {
 							Type:         schema.TypeString,
 							Required:     true,
 							ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"personal", "enterprise"}),
-							Description:  "The image 类型 personal or enterprise。",
+							Description:  "镜像 类型 personal 或 enterprise。",
 						},
 						"image_uri": {
 							Type:     schema.TypeString,
@@ -266,7 +266,7 @@ func ResourceTencentCloudScfFunction() *schema.Resource {
 								// Suppress diff when they represent the same image.
 								return normalizeImageUri(oldVal, newVal) == newVal
 							},
-							Description: "The uri of image. Supports three formats:\n" +
+							Description: "uri 的 镜像. Supports three formats:\n" +
 								"  - Format A: registry/repo:tag\n" +
 								"  - Format B: registry/repo@sha256:digest\n" +
 								"  - Format C: registry/repo:tag@sha256:digest.",
@@ -274,22 +274,22 @@ func ResourceTencentCloudScfFunction() *schema.Resource {
 						"registry_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The registry ID TCR. When image 类型 is enterprise，it must be set。",
+							Description: "registry ID TCR. 当 镜像 类型 是 enterprise，它 必须 是 集合。",
 						},
 						"entry_point": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The entrypoint of app。",
+							Description: "entrypoint 的 app。",
 						},
 						"command": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The command of entrypoint。",
+							Description: "command 的 entrypoint。",
 						},
 						"args": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "the parameters of command。",
+							Description: "参数 的 command。",
 						},
 						"container_image_accelerate": {
 							Type:        schema.TypeBool,
@@ -302,7 +302,7 @@ func ResourceTencentCloudScfFunction() *schema.Resource {
 							Optional:     true,
 							Default:      9000,
 							ValidateFunc: tccommon.ValidateIntegerInRange(-1, 65535),
-							Description:  "Image function 端口 setting. 默认为 `9000`，-1 表示no 端口 mirroring function. Other 值 ranges 0 ~ 65535。",
+							Description:  "Image 函数 端口 setting. 默认为 `9000`，-1 表示no 端口 mirroring 函数. Other 值 ranges 0 ~ 65535。",
 						},
 					},
 				},
@@ -311,29 +311,29 @@ func ResourceTencentCloudScfFunction() *schema.Resource {
 			"triggers": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Trigger 列表 the SCF function，note that if you modify the trigger list，all existing triggers will be deleted，and then create triggers in the new list. Each element 包含following attributes:",
+				Description: "Trigger 列表 SCF 函数，note 该 如果 您 modify 触发器 列表，all existing triggers 将 是 删除，和 then create triggers 在 new 列表. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:         schema.TypeString,
 							Required:     true,
 							ValidateFunc: tccommon.ValidateStringLengthInRange(1, 100),
-							Description:  "名称 SCF function trigger，if `类型` is `ckafka`，the 格式 of 名称 must be `<ckafkaInstanceId>-<topicId>`; if `类型` is `cos`，the 名称 is COS 存储桶 id，other In any case，it can be combined arbitrarily. It can only contain English letters，numbers，connectors and underscores. The maximum length is 100。",
+							Description:  "名称 SCF 函数 触发器，如果 `类型` 是 `ckafka`， 格式 的 名称 必须 是 `<ckafkaInstanceId>-<topicId>`; 如果 `类型` 是 `cos`， 名称 是 COS 存储桶 ID，other In any case，它 可以 是 combined arbitrarily. It 可以 仅 contain English letters，numbers，connectors 和 underscores. 最大 长度 是 100。",
 						},
 						"cos_region": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "地域 of COS 存储桶 if `类型` is `cos`，`cos_region` 为必填项。",
+							Description: "地域 的 COS 存储桶 如果 `类型` 是 `cos`，`cos_region` 为必填项。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "类型 SCF function trigger，support `timer`，`ckafka`，`custom_kafka`，`apigw`，`cmq`，`cos`，`mqtt`，`cls`，`clb`，`mps`，`vod`，`cm`，`eb`，`http`。",
+							Description: "类型 SCF 函数 触发器，support `timer`，`ckafka`，`custom_kafka`，`apigw`，`cmq`，`cos`，`mqtt`，`cls`，`clb`，`mps`，`vod`，`cm`，`eb`，`http`。",
 						},
 						"trigger_desc": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "TriggerDesc of the SCF function trigger, parameter format of `timer` is linux cron expression; parameter of `cos` type is json string `{\"bucketUrl\":\"<name-appid>.cos.<region>.myqcloud.com\",\"event\":\"cos:ObjectCreated:*\",\"filter\":{\"Prefix\":\"\",\"Suffix\":\"\"}}`, where `bucketUrl` is cos bucket (optional), `event` is the cos event trigger, `Prefix` is the corresponding file prefix filter condition, `Suffix` is the suffix filter condition, if not need filter condition can not pass; `cmq` type does not pass this parameter; `ckafka` type parameter format is json string `{\"maxMsgNum\":\"1\",\"offset\":\"latest\"}`; `apigw` type parameter format is json string `{\"api\":{\"authRequired\":\"FALSE\",\"requestConfig\":{\"method\":\"ANY\"},\"isIntegratedResponse\":\"FALSE\"},\"service\":{\"serviceId\":\"service-dqzh68sg\"},\"release\":{\"environmentName\":\"test\"}}`.",
+							Description: "TriggerDesc 的 SCF 函数 触发器, 参数 格式 的 `timer` 是 linux cron expression; 参数 的 `cos` 类型 是 json 字符串 `{\"bucketUrl\":\"<名称-appid>.cos.<地域>.myqcloud.com\",\"事件\":\"cos:ObjectCreated:*\",\"过滤器\":{\"Prefix\":\"\",\"Suffix\":\"\"}}`, 其中 `bucketUrl` 是 cos 存储桶 (可选), `事件` 是 cos 事件 触发器, `Prefix` 是 corresponding 文件 prefix 过滤器 condition, `Suffix` 是 suffix 过滤器 condition, 如果 不 need 过滤器 condition 可以 不 pass; `cmq` 类型 does 不 pass 此 参数; `ckafka` 类型 参数 格式 是 json 字符串 `{\"maxMsgNum\":\"1\",\"偏移量\":\"latest\"}`; `apigw` 类型 参数 格式 是 json 字符串 `{\"api\":{\"authRequired\":\"FALSE\",\"requestConfig\":{\"方法\":\"ANY\"},\"isIntegratedResponse\":\"FALSE\"},\"服务\":{\"serviceId\":\"服务-dqzh68sg\"},\"release\":{\"environmentName\":\"测试\"}}`.",
 						},
 					},
 				},
@@ -354,17 +354,17 @@ func ResourceTencentCloudScfFunction() *schema.Resource {
 						"user_group_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "ID 用户 group。",
+							Description: "ID 用户 组。",
 						},
 						"cfs_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "File system instance ID。",
+							Description: "File 系统 实例 ID。",
 						},
 						"mount_ins_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "File system mount instance ID。",
+							Description: "File 系统 mount 实例 ID。",
 						},
 						"local_mount_dir": {
 							Type:        schema.TypeString,
@@ -379,17 +379,17 @@ func ResourceTencentCloudScfFunction() *schema.Resource {
 						"ip_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "(Readonly) File system ip 地址",
+							Description: "(Readonly) File 系统 ip 地址",
 						},
 						"mount_vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "(Readonly) File system virtual private network ID。",
+							Description: "(Readonly) File 系统 virtual 私有 网络 ID。",
 						},
 						"mount_subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "(Readonly) File system subnet ID。",
+							Description: "(Readonly) File 系统 子网 ID。",
 						},
 					},
 				},
@@ -399,27 +399,27 @@ func ResourceTencentCloudScfFunction() *schema.Resource {
 			"modify_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "SCF function 最后修改时间。",
+				Description: "SCF 函数 最后修改时间。",
 			},
 			"code_size": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "SCF function 代码 size，unit is M。",
+				Description: "SCF 函数 代码 大小，单位 是 M。",
 			},
 			"code_result": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "SCF function 代码 is correct。",
+				Description: "SCF 函数 代码 是 correct。",
 			},
 			"code_error": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "SCF function 代码 错误信息",
+				Description: "SCF 函数 代码 错误信息",
 			},
 			"err_no": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "SCF function 代码 错误码",
+				Description: "SCF 函数 代码 错误码",
 			},
 			"install_dependency": {
 				Type:        schema.TypeBool,
@@ -429,7 +429,7 @@ func ResourceTencentCloudScfFunction() *schema.Resource {
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "SCF function 状态",
+				Description: "SCF 函数 状态",
 			},
 			"status_desc": {
 				Type:        schema.TypeString,
@@ -439,64 +439,64 @@ func ResourceTencentCloudScfFunction() *schema.Resource {
 			"eip_fixed": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Whether EIP is a fixed IP。",
+				Description: "Whether EIP 是 fixed IP。",
 			},
 			"eips": {
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Computed:    true,
-				Description: "SCF function EIP list。",
+				Description: "SCF 函数 EIP 列表。",
 			},
 			"host": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "SCF function 域名 名称",
+				Description: "SCF 函数 域名 名称",
 			},
 			"vip": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "SCF function VIP",
+				Description: "SCF 函数 VIP",
 			},
 			"trigger_info": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "SCF trigger details list. Each element 包含following attributes:",
+				Description: "SCF 触发器 details 列表. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 SCF function trigger。",
+							Description: "名称 SCF 函数 触发器。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "类型 SCF function trigger。",
+							Description: "类型 SCF 函数 触发器。",
 						},
 						"trigger_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "TriggerDesc of SCF function trigger。",
+							Description: "TriggerDesc 的 SCF 函数 触发器。",
 						},
 						"enable": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether SCF function trigger is enable。",
+							Description: "Whether SCF 函数 触发器 是 启用。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of SCF function trigger。",
+							Description: "创建时间 的 SCF 函数 触发器。",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "修改时间 of SCF function trigger。",
+							Description: "修改时间 的 SCF 函数 触发器。",
 						},
 						"custom_argument": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "用户-defined parameters of SCF function trigger。",
+							Description: "用户-defined 参数 的 SCF 函数 触发器。",
 						},
 					},
 				},
@@ -505,20 +505,20 @@ func ResourceTencentCloudScfFunction() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "是否enable Dns caching capability，only the EVENT function is supported. 默认为 false。",
+				Description: "是否enable Dns caching capability，仅 EVENT 函数 是 支持. 默认为 false。",
 			},
 			"intranet_config": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Intranet access configuration。",
+				Description: "Intranet 访问 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ip_fixed": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "是否enable fixed intranet IP，ENABLE is 已启用，DISABLE is 已禁用",
+							Description: "是否enable fixed intranet IP，ENABLE 是 已启用，DISABLE 是 已禁用",
 						},
 						"ip_address": {
 							Type: schema.TypeList,
@@ -526,7 +526,7 @@ func ResourceTencentCloudScfFunction() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "If fixed intranet IP is 已启用，this field 返回IP list used。",
+							Description: "如果 fixed intranet IP 是 已启用，此 字段 返回IP 列表 使用。",
 						},
 					},
 				},
@@ -534,7 +534,7 @@ func ResourceTencentCloudScfFunction() *schema.Resource {
 			"function_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "function ID。",
+				Description: "函数 ID。",
 			},
 		},
 	}

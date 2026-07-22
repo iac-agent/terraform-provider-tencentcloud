@@ -19,7 +19,7 @@ func DataSourceTencentCloudCcnCrossBorderRegionBandwidthLimits() *schema.Resourc
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter condition. Currently，only one 值 is supported. The supported fields，1)来源-地域，the 值 is like ap-guangzhou; 2)destination-地域，the 值 is like ap-shanghai; 3)ccn-ids,cloud network ID array，the 值 is like ccn-12345678; 4)用户-账号-id,用户 账号 ID，the 值 is like 12345678。",
+				Description: "过滤器 condition. Currently，仅 一个 值 是 支持. 支持 字段，1)来源-地域， 值 是 like ap-guangzhou; 2)destination-地域， 值 是 like ap-shanghai; 3)ccn-ids,云 网络 ID 数组， 值 是 like ccn-12345678; 4)用户-账号-ID,用户 账号 ID， 值 是 like 12345678。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -33,7 +33,7 @@ func DataSourceTencentCloudCcnCrossBorderRegionBandwidthLimits() *schema.Resourc
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "值 of the field。",
+							Description: "值 的 字段。",
 						},
 					},
 				},
@@ -42,13 +42,13 @@ func DataSourceTencentCloudCcnCrossBorderRegionBandwidthLimits() *schema.Resourc
 			"ccn_bandwidth_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Info of cross 地域 ccn instance。",
+				Description: "Info 的 cross 地域 ccn 实例。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ccn_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ccn id。",
+							Description: "ccn ID。",
 						},
 						"created_time": {
 							Type:        schema.TypeString,
@@ -63,7 +63,7 @@ func DataSourceTencentCloudCcnCrossBorderRegionBandwidthLimits() *schema.Resourc
 						"region_flow_control_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Id of RegionFlowControl。",
+							Description: "ID 的 RegionFlowControl。",
 						},
 						"renew_flag": {
 							Type:        schema.TypeString,
@@ -73,23 +73,23 @@ func DataSourceTencentCloudCcnCrossBorderRegionBandwidthLimits() *schema.Resourc
 						"ccn_region_bandwidth_limit": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "bandwidth 限制 of cross 地域",
+							Description: "带宽 限制 的 cross 地域",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"source_region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "来源 地域，such as &#39;ap-shanghai&#39;。",
+										Description: "来源 地域，such 作为 &#39;ap-shanghai&#39;。",
 									},
 									"destination_region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "destination 地域，such as。",
+										Description: "destination 地域，such 作为。",
 									},
 									"bandwidth_limit": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "bandwidth list(Mbps)。",
+										Description: "带宽 列表(Mbps)。",
 									},
 								},
 							},
@@ -97,27 +97,27 @@ func DataSourceTencentCloudCcnCrossBorderRegionBandwidthLimits() *schema.Resourc
 						"market_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "market id。",
+							Description: "market ID。",
 						},
 						"user_account_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "用户 账号 id。",
+							Description: "用户 账号 ID。",
 						},
 						"is_cross_border": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "if cross 地域",
+							Description: "如果 cross 地域",
 						},
 						"is_security_lock": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "`true` means locked。",
+							Description: "`true` 表示 locked。",
 						},
 						"instance_charge_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "`POSTPAID` or `PREPAID`。",
+							Description: "`POSTPAID` 或 `PREPAID`。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,

@@ -22,19 +22,19 @@ func DataSourceTencentCloudGaapDomainErrorPageInfos() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Customized 错误 ID list，supporting up to 10。",
+				Description: "Customized 错误 ID 列表，supporting up 到 10。",
 			},
 
 			"error_page_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Custom 错误 response configuration set注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "Custom 错误 response 配置 set注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"error_page_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Configuration ID for 错误 customization response。",
+							Description: "Configuration ID 对于 错误 customization response。",
 						},
 						"listener_id": {
 							Type:        schema.TypeString,
@@ -65,23 +65,23 @@ func DataSourceTencentCloudGaapDomainErrorPageInfos() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Response headers that need to be cleaned注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Response headers 该 need 到 是 cleaned注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"set_headers": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Response header to be set注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Response 头部 到 是 set注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"header_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "HTTP header 名称",
+										Description: "HTTP 头部 名称",
 									},
 									"header_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "HTTP header 值",
+										Description: "HTTP 头部 值",
 									},
 								},
 							},
@@ -89,7 +89,7 @@ func DataSourceTencentCloudGaapDomainErrorPageInfos() *schema.Resource {
 						"body": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Response body set (excluding HTTP header)注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Response 正文 集合 (excluding HTTP 头部)注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"status": {
 							Type:        schema.TypeInt,

@@ -18,7 +18,7 @@ func DataSourceTencentCloudKubernetesUpgradeTaskDetail() *schema.Resource {
 			"task_id": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Upgrade task ID。",
+				Description: "Upgrade 任务 ID。",
 			},
 
 			"upgrade_plans": {

@@ -34,7 +34,7 @@ func ResourceTencentCloudElasticsearchSecurityGroup() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "安全组 ID list。",
+				Description: "安全组 ID 列表。",
 			},
 		},
 	}

@@ -33,7 +33,7 @@ func ResourceTencentCloudWafModuleStatus() *schema.Resource {
 				Required:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
-				Description:  "WEB security 模块 状态，0:closed，1:opened。",
+				Description:  "WEB 安全 模块 状态，0:closed，1:opened。",
 			},
 			"access_control": {
 				Required:     true,
@@ -51,7 +51,7 @@ func ResourceTencentCloudWafModuleStatus() *schema.Resource {
 				Required:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
-				Description:  "API security 模块 状态，0:closed，1:opened。",
+				Description:  "API 安全 模块 状态，0:closed，1:opened。",
 			},
 			"anti_tamper": {
 				Optional:     true,

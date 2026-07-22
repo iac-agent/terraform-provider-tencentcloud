@@ -30,13 +30,13 @@ func ResourceTencentCloudCfwBlockIgnore() *schema.Resource {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ExactlyOneOf: []string{"domain"},
-				Description:  "Rule IP 地址，one of IP and 域名 为必填项。",
+				Description:  "Rule IP 地址，一个 的 IP 和 域名 为必填项。",
 			},
 			"domain": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ExactlyOneOf: []string{"ip"},
-				Description:  "Rule 域名 名称，one of IP and 域名 为必填项。",
+				Description:  "Rule 域名 名称，一个 的 IP 和 域名 为必填项。",
 			},
 			"direction": {
 				Type:         schema.TypeString,
@@ -47,12 +47,12 @@ func ResourceTencentCloudCfwBlockIgnore() *schema.Resource {
 			"end_time": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Rule 结束时间，格式: 2006-01-02 15:04:05，must be greater than the current time。",
+				Description: "Rule 结束时间，格式: 2006-01-02 15:04:05，必须 是 greater 比 当前 时间。",
 			},
 			"comment": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "备注 information，length cannot exceed 50。",
+				Description: "备注 信息，长度 不能 exceed 50。",
 			},
 			"start_time": {
 				Type:        schema.TypeString,
@@ -64,7 +64,7 @@ func ResourceTencentCloudCfwBlockIgnore() *schema.Resource {
 				Required:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(RULE_TYPE),
-				Description:  "Rule 类型，1 block，2 ignore，域名 block is not supported。",
+				Description:  "Rule 类型，1 block，2 ignore，域名 block 是 不 支持。",
 			},
 		},
 	}

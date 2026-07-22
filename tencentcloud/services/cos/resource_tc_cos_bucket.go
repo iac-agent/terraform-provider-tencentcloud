@@ -34,56 +34,56 @@ func originPullRules() *schema.Resource {
 			"priority": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "优先级 of origin-pull rules，do not set the same 值 for multiple rules。",
+				Description: "优先级 的 源站-pull 规则，do 不 集合 same 值 对于 多个 规则。",
 			},
 			"sync_back_to_source": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
 				Deprecated:  "It has been deprecated from version 1.81.196. Please use `back_to_source_mode` instead.",
-				Description: "If `true`，COS will not return 3XX 状态 代码 when pulling data from an origin server. Current available 可用区: ap-beijing，ap-shanghai，ap-singapore，ap-mumbai。",
+				Description: "如果 `true`，COS 将 不 返回 3XX 状态 代码 当 pulling 数据 从 源站 服务器. Current 可用 可用区: ap-beijing，ap-shanghai，ap-singapore，ap-mumbai。",
 			},
 			"back_to_source_mode": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"Proxy", "Mirror", "Redirect"}),
-				Description:  "Back to 来源 模式 Allow 值: Proxy，Mirror，Redirect。",
+				Description:  "Back 到 来源 模式 Allow 值: Proxy，Mirror，Redirect。",
 			},
 			"http_redirect_code": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Redirect 代码 Effective when `back_to_source_mode` is `Redirect`. ex: 301，302，307. 默认为 302。",
+				Description: "Redirect 代码 Effective 当 `back_to_source_mode` 是 `Redirect`. ex: 301，302，307. 默认为 302。",
 			},
 			"prefix": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "",
-				Description: "Triggers the origin-pull rule when the requested file 名称 matches this prefix。",
+				Description: "Triggers 源站-pull 规则 当 requested 文件 名称 matches 此 prefix。",
 			},
 			"protocol": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "",
-				Description: "the 协议 用于COS to access the specified origin server. The available 值 include `HTTP`，`HTTPS` and `FOLLOW`。",
+				Description: "协议 用于COS 到 访问 指定 源站 服务器. 可用 值 include `HTTP`，`HTTPS` 和 `FOLLOW`。",
 			},
 			"host": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Allows only a 域名 名称 or IP 地址 You can optionally append a 端口 number to the 地址",
+				Description: "Allows 仅 域名 名称 或 IP 地址 You 可以 optionally append 端口 数量 到 地址",
 			},
 			"follow_query_string": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     true,
-				Description: "指定是否pass through COS request query string when accessing the origin server。",
+				Description: "指定是否pass through COS 请求 查询 字符串 当 accessing 源站 服务器。",
 			},
 			"follow_redirection": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     true,
-				Description: "指定是否follow 3XX redirect to another origin server to pull data from。",
+				Description: "指定是否follow 3XX redirect 到 another 源站 服务器 到 pull 数据 从。",
 			},
 			//"copy_origin_data": {
 			//	Type:		 schema.TypeBool,
@@ -97,23 +97,23 @@ func originPullRules() *schema.Resource {
 				Set: func(i interface{}) int {
 					return helper.HashString(i.(string))
 				},
-				Description: "指定pass through headers when accessing the origin server。",
+				Description: "指定pass through headers 当 accessing 源站 服务器。",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 			"custom_http_headers": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "指定custom headers that you can add for COS to access your origin server。",
+				Description: "指定custom headers 该 您 可以 add 对于 COS 到 访问 your 源站 服务器。",
 			},
 			//"redirect_prefix": {
 			//	Type:		schema.TypeString,
 			//	Optional:   true,
-			//	Description: "Prefix for the file to which a request is redirected when the origin-pull rule is triggered.",
+			//	Description: "Prefix 对于 文件 到 其中 请求 是 redirected 当 源站-pull 规则 是 triggered.",
 			//},
 			//"redirect_suffix": {
 			//	Type:		schema.TypeString,
 			//	Optional:   true,
-			//	Description: "Suffix for the file to which a request is redirected when the origin-pull rule is triggered.",
+			//	Description: "Suffix 对于 文件 到 其中 请求 是 redirected 当 源站-pull 规则 是 triggered.",
 			//},
 		},
 	}
@@ -124,33 +124,33 @@ func originPullRules() *schema.Resource {
 //	return &schema.Schema{
 //		Type:        schema.TypeMap,
 //		Optional:    true,
-//		Description: "ACL x-cos-grant-* headers for multiple grand info",
+//		Description: "ACL x-cos-grant-* headers 对于 多个 grand info",
 //		Elem: &schema.Resource{
 //			Schema: map[string]*schema.Schema{
 //				"grant_read": {
 //					Type:        schema.TypeString,
 //					Optional:    true,
-//					Description: "Allows grantee to read the bucket; format: `id=\"[OwnerUin]\"`.Use comma (,) to separate multiple users, e.g `id=\"100000000001\",id=\"100000000002\"`",
+//					Description: "Allows grantee 到 read 存储桶; 格式: `ID=\"[OwnerUin]\"`.Use comma (,) 到 separate 多个 users, e.g `ID=\"100000000001\",ID=\"100000000002\"`",
 //				},
 //				"grant_write": {
 //					Type:        schema.TypeString,
 //					Optional:    true,
-//					Description: "Allows grantee to write to the bucket; format: `id=\"[OwnerUin]\"`.Use comma (,) to separate multiple users, e.g `id=\"100000000001\",id=\"100000000002\"`",
+//					Description: "Allows grantee 到 write 到 存储桶; 格式: `ID=\"[OwnerUin]\"`.Use comma (,) 到 separate 多个 users, e.g `ID=\"100000000001\",ID=\"100000000002\"`",
 //				},
 //				"grant_read_acp": {
 //					Type:        schema.TypeString,
 //					Optional:    true,
-//					Description: "Allows grantee to read the ACL of the bucket; format: `id=\"[OwnerUin]\"`.Use comma (,) to separate multiple users, e.g `id=\"100000000001\",id=\"100000000002\"`",
+//					Description: "Allows grantee 到 read ACL 的 存储桶; 格式: `ID=\"[OwnerUin]\"`.Use comma (,) 到 separate 多个 users, e.g `ID=\"100000000001\",ID=\"100000000002\"`",
 //				},
 //				"grant_write_acp": {
 //					Type:        schema.TypeString,
 //					Optional:    true,
-//					Description: "Allows grantee to write the ACL of the bucket; format: `id=\"[OwnerUin]\"`.Use comma (,) to separate multiple users, e.g `id=\"100000000001\",id=\"100000000002\"`",
+//					Description: "Allows grantee 到 write ACL 的 存储桶; 格式: `ID=\"[OwnerUin]\"`.Use comma (,) 到 separate 多个 users, e.g `ID=\"100000000001\",ID=\"100000000002\"`",
 //				},
 //				"grant_full_control": {
 //					Type:        schema.TypeString,
 //					Optional:    true,
-//					Description: "Grants a user full permission to perform operations on the bucket; format: `id=\"[OwnerUin]\"`.Use comma (,) to separate multiple users, e.g `id=\"100000000001\",id=\"100000000002\"`",
+//					Description: "Grants 用户 full 权限 到 perform operations 在 存储桶; 格式: `ID=\"[OwnerUin]\"`.Use comma (,) 到 separate 多个 users, e.g `ID=\"100000000001\",ID=\"100000000002\"`",
 //				},
 //			},
 //		},
@@ -175,7 +175,7 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateCosBucketName,
-				Description:  "名称 a 存储桶 to be created. 存储桶 格式 should be [custom 名称]-[appid]，for example `mycos-1258798060`。",
+				Description:  "名称 存储桶 到 是 创建. 存储桶 格式 should 是 [自定义 名称]-[appid]，对于 示例 `mycos-1258798060`。",
 			},
 			"acl": {
 				Type:     schema.TypeString,
@@ -186,7 +186,7 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 					s3.ObjectCannedACLPublicRead,
 					s3.ObjectCannedACLPublicReadWrite,
 				}),
-				Description: "The canned ACL to apply. 有效值：private，public-read，and public-read-write. 默认为 private。",
+				Description: "canned ACL 到 apply. 有效值：私有，公有-read，和 公有-read-write. 默认为 私有。",
 			},
 			"acl_body": {
 				Type:     schema.TypeString,
@@ -197,23 +197,23 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 				},
 				DiffSuppressOnRefresh: true,
 				ValidateFunc:          validateACLBody,
-				Description:           "ACL XML body for multiple grant info. NOTE: this argument will overwrite `acl`. Check https://intl.cloud.tencent.com/document/product/436/7737 for more detail。",
+				Description:           "ACL XML 正文 对于 多个 grant info. NOTE: 此 argument 将 overwrite `acl`. Check https://intl.云.tencent.com/document/product/436/7737 对于 more detail。",
 			},
 			"encryption_algorithm": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The server-side encryption algorithm to use. Valid values are `AES256`，`KMS` and `SM4`。",
+				Description: "服务器-side 加密 algorithm 到 使用. 有效 值 是 `AES256`，`KMS` 和 `SM4`。",
 			},
 			"kms_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The KMS Master 键 ID. This 值 is valid only when `encryption_algorithm` is set to KMS. Set kms id to the specified 值 如果未指定，the default kms id is used。",
+				Description: "KMS Master 键 ID. 此 值 是 有效 仅 当 `encryption_algorithm` 是 集合 到 KMS. Set kms ID 到 指定 值 如果未指定， 默认值 kms ID 是 使用。",
 			},
 			"versioning_enable": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Enable 存储桶 versioning. NOTE: The `multi_az` feature is true for the current 存储桶，cannot disable 版本 control。",
+				Description: "Enable 存储桶 versioning. NOTE: `multi_az` 功能 是 true 对于 当前 存储桶，不能 disable 版本 control。",
 			},
 			"acceleration_enable": {
 				Type:        schema.TypeBool,
@@ -231,19 +231,19 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 				Type:         schema.TypeString,
 				Optional:     true,
 				RequiredWith: []string{"replica_rules", "versioning_enable"},
-				Description:  "Request initiator identifier，格式: `qcs::cam::uin/<owneruin>:uin/<subuin>`. NOTE: only `versioning_enable` is true can configure this argument。",
+				Description:  "Request initiator identifier，格式: `qcs::cam::uin/<owneruin>:uin/<subuin>`. NOTE: 仅 `versioning_enable` 是 true 可以 configure 此 argument。",
 			},
 			"replica_rules": {
 				Type:         schema.TypeList,
 				Optional:     true,
-				Description:  "列表 replica rule. NOTE: only `versioning_enable` is true and `replica_role` set can configure this argument。",
+				Description:  "列表 副本 规则. NOTE: 仅 `versioning_enable` 是 true 和 `replica_role` 集合 可以 configure 此 argument。",
 				RequiredWith: []string{"replica_role", "versioning_enable"},
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "名称 a specific rule。",
+							Description: "名称 特定 规则。",
 						},
 						"status": {
 							Type:        schema.TypeString,
@@ -253,39 +253,39 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 						"priority": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Execution 优先级，用于handle scenarios where the target storage buckets are the same and multiple replication rules match the same object. Note: Supports setting positive integers in the range of 1-1000. The 优先级 values of different rules cannot be duplicated. Storage 存储桶 replication rules must either all have 优先级 set or all not have 优先级 set. When all rules have 优先级 set，overlapping prefixes are allowed for different rules when the target storage buckets are the same. When different rules match the same object，the rule with the smallest 优先级 值 will be triggered first. When none of the rules have 优先级 set，overlapping prefixes are not allowed for different rules。",
+							Description: "Execution 优先级，用于handle scenarios 其中 目标 存储 buckets 是 same 和 多个 复制 规则 match same 对象. 注意: Supports setting positive integers 在 范围 的 1-1000. 优先级 值 的 different 规则 不能 是 duplicated. Storage 存储桶 复制 规则 必须 either all have 优先级 集合 或 all 不 have 优先级 集合. 当 all 规则 have 优先级 集合，overlapping prefixes 是 allowed 对于 different 规则 当 目标 存储 buckets 是 same. 当 different 规则 match same 对象， 规则 使用 smallest 优先级 值 将 是 triggered first. 当 none 的 规则 have 优先级 集合，overlapping prefixes 是 不 allowed 对于 different 规则。",
 						},
 						"prefix": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Prefix matching policy. Policies cannot overlap; otherwise，an 错误 will be returned. To match the root directory，leave this parameter empty。",
+							Description: "Prefix matching 策略. Policies 不能 overlap; otherwise， 错误 将 是 返回. To match root directory，leave 此 参数 空。",
 						},
 						"filter": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Computed:    true,
 							MaxItems:    1,
-							Description: "Filter the objects to be copied. The 存储桶 feature will copy objects that match the prefixes and 标签 specified in the Filter settings。",
+							Description: "过滤器 objects 到 是 copied. 存储桶 功能 将 copy objects 该 match prefixes 和 标签 指定 在 过滤器 settings。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"and": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "When filtering objects to be copied，if both prefix and object 标签 conditions 为必填项 simultaneously，or if multiple object 标签 conditions are needed，they must be enclosed in an `And` statement。",
+										Description: "当 filtering objects 到 是 copied，如果 both prefix 和 对象 标签 conditions 为必填项 simultaneously，或 如果 多个 对象 标签 conditions 是 needed，they 必须 是 enclosed 在 `And` statement。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"prefix": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "Filter objects by prefix; you can 指定at most one prefix。",
+													Description: "过滤器 objects 通过 prefix; 您 可以 指定at most 一个 prefix。",
 												},
 												"tag": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "When filtering objects to be copied，you can use object 标签 (multiple 标签 are supported) as filtering criteria，with a maximum of 10 标签 allowed. After adding 标签 as filtering criteria，the `delete_marker_replication.状态` option must be set to false。",
+													Description: "当 filtering objects 到 是 copied，您 可以 使用 对象 标签 (多个 标签 是 支持) 作为 filtering criteria，使用 最大 的 10 标签 allowed. After adding 标签 作为 filtering criteria， `delete_marker_replication.状态` 选项 必须 是 集合 到 false。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"key": {
@@ -308,7 +308,7 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Filter objects by prefix; you can 指定at most one prefix。",
+										Description: "过滤器 objects 通过 prefix; 您 可以 指定at most 一个 prefix。",
 									},
 								},
 							},
@@ -316,17 +316,17 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 						"destination_bucket": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Destination 存储桶 identifier，格式: `qcs::cos:<地域>::<bucketname-appid>`. NOTE: destination 存储桶 must enable versioning。",
+							Description: "Destination 存储桶 identifier，格式: `qcs::cos:<地域>::<bucketname-appid>`. NOTE: destination 存储桶 必须 启用 versioning。",
 						},
 						"destination_storage_class": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Storage class of destination，可用值：`Standard`，`Intelligent_Tiering`，`Standard_IA`. 默认为 following current class of destination。",
+							Description: "Storage class 的 destination，可用值：`Standard`，`Intelligent_Tiering`，`Standard_IA`. 默认为 following 当前 class 的 destination。",
 						},
 						"destination_encryption_kms_key_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "This field must be included when `source_selection_criteria.sse_kms_encrypted_objects.状态` is set to 已启用 It is 用于指定KMS 键 用于KMS-encrypted objects copied to the destination 存储桶",
+							Description: "此 字段 必须 是 included 当 `source_selection_criteria.sse_kms_encrypted_objects.状态` 是 集合 到 已启用 It 是 用于指定KMS 键 用于KMS-encrypted objects copied 到 destination 存储桶",
 						},
 						"delete_marker_replication": {
 							Type:        schema.TypeList,
@@ -338,7 +338,7 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 									"status": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "是否synchronously delete the 标签，supports 已禁用 or 已启用 The 默认值为 已启用，meaning the 标签 will be deleted synchronously。",
+										Description: "是否synchronously delete 标签，支持 已禁用 或 已启用 默认值为 已启用，meaning 标签 将 是 删除 synchronously。",
 									},
 								},
 							},
@@ -348,7 +348,7 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 							Optional:    true,
 							Computed:    true,
 							MaxItems:    1,
-							Description: "This is 用于指定additional conditions for objects supported by 存储桶 replication rules. Currently，only the option to replicate KMS-encrypted objects is supported。",
+							Description: "此 是 用于指定additional conditions 对于 objects 支持 通过 存储桶 复制 规则. Currently，仅 选项 到 replicate KMS-encrypted objects 是 支持。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"sse_kms_encrypted_objects": {
@@ -356,14 +356,14 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 										Optional:    true,
 										Computed:    true,
 										MaxItems:    1,
-										Description: "Choose 是否copy the KMS-encrypted objects。",
+										Description: "Choose 是否copy KMS-encrypted objects。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"status": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "Choose 是否copy KMS encrypted objects; supported values are 已启用 and 已禁用",
+													Description: "Choose 是否copy KMS encrypted objects; 支持 值 是 已启用 和 已禁用",
 												},
 											},
 										},
@@ -377,37 +377,37 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 			"cors_rules": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "A rule of Cross-Origin Resource Sharing (documented below)。",
+				Description: "A 规则 的 Cross-Origin Resource Sharing (documented below)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"allowed_origins": {
 							Type:        schema.TypeList,
 							Required:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "指定which origins are allowed。",
+							Description: "指定which origins 是 allowed。",
 						},
 						"allowed_methods": {
 							Type:        schema.TypeList,
 							Required:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "指定which methods are allowed. Can be `GET`，`PUT`，`POST`，`DELETE` or `HEAD`。",
+							Description: "指定which methods 是 allowed. Can 是 `GET`，`PUT`，`POST`，`DELETE` 或 `HEAD`。",
 						},
 						"allowed_headers": {
 							Type:        schema.TypeList,
 							Required:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "指定which headers are allowed。",
+							Description: "指定which headers 是 allowed。",
 						},
 						"max_age_seconds": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "指定time （秒） that browser can cache the response for a preflight request。",
+							Description: "指定time （秒） 该 browser 可以 缓存 response 对于 preflight 请求。",
 						},
 						"expose_headers": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "指定expose header in the response。",
+							Description: "指定expose 头部 在 response。",
 						},
 					},
 				},
@@ -445,7 +445,7 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 						//"force_replacement": {
 						//	Type:		 schema.TypeString,
 						//	Optional: 	 true,
-						//	Description: "Specify type to replace exist domain resolve record.",
+						//	Description: "Specify 类型 到 replace exist 域名 resolve 记录.",
 						//},
 					},
 				},
@@ -453,43 +453,43 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 			"lifecycle_rules": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "A configuration of object lifecycle management (documented below)。",
+				Description: "A 配置 的 对象 lifecycle management (documented below)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
 							Optional:    true,
-							Description: "A unique identifier for the rule. It can be up to 255 characters。",
+							Description: "A 唯一 identifier 对于 规则. It 可以 是 up 到 255 字符。",
 						},
 						"filter_prefix": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Object 键 prefix identifying one or more objects to which the rule applies。",
+							Description: "Object 键 prefix identifying 一个 或 more objects 到 其中 规则 applies。",
 						},
 						"transition": {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Set:         transitionHash,
-							Description: "指定a 周期 in the object's transitions (documented below)。",
+							Description: "指定a 周期 在 对象's transitions (documented below)。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"date": {
 										Type:         schema.TypeString,
 										Optional:     true,
 										ValidateFunc: tccommon.ValidateCosBucketLifecycleTimestamp,
-										Description:  "指定date after which you want the corresponding 操作 to take effect。",
+										Description:  "指定date after 其中 您 want corresponding 操作 到 take effect。",
 									},
 									"days": {
 										Type:         schema.TypeInt,
 										Optional:     true,
 										ValidateFunc: tccommon.ValidateIntegerMin(0),
-										Description:  "指定number of days after object creation when the specific rule 操作 takes effect。",
+										Description:  "指定number 的 days after 对象 creation 当 特定 规则 操作 takes effect。",
 									},
 									"storage_class": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "指定storage class to which you want the object to transition. Available values include `STANDARD_IA`，`MAZ_STANDARD_IA`，`INTELLIGENT_TIERING`，`MAZ_INTELLIGENT_TIERING`，`ARCHIVE`，`DEEP_ARCHIVE`. For more information，please refer to: https://cloud.tencent.com/document/product/436/33417。",
+										Description: "指定storage class 到 其中 您 want 对象 到 transition. Available 值 include `STANDARD_IA`，`MAZ_STANDARD_IA`，`INTELLIGENT_TIERING`，`MAZ_INTELLIGENT_TIERING`，`ARCHIVE`，`DEEP_ARCHIVE`. For more 信息，please refer 到: https://云.tencent.com/document/product/436/33417。",
 									},
 								},
 							},
@@ -499,25 +499,25 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 							Optional:    true,
 							Set:         expirationHash,
 							MaxItems:    1,
-							Description: "指定a 周期 in the object's expire (documented below)。",
+							Description: "指定a 周期 在 对象's expire (documented below)。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"date": {
 										Type:         schema.TypeString,
 										Optional:     true,
 										ValidateFunc: tccommon.ValidateCosBucketLifecycleTimestamp,
-										Description:  "指定date after which you want the corresponding 操作 to take effect。",
+										Description:  "指定date after 其中 您 want corresponding 操作 到 take effect。",
 									},
 									"days": {
 										Type:         schema.TypeInt,
 										Optional:     true,
 										ValidateFunc: tccommon.ValidateIntegerMin(0),
-										Description:  "指定number of days after object creation when the specific rule 操作 takes effect。",
+										Description:  "指定number 的 days after 对象 creation 当 特定 规则 操作 takes effect。",
 									},
 									"delete_marker": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "表示是否delete marker of an expired object will be removed。",
+										Description: "表示是否delete marker 的 expired 对象 将 是 removed。",
 									},
 								},
 							},
@@ -526,19 +526,19 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Set:         nonCurrentTransitionHash,
-							Description: "指定a 周期 in the non current object's transitions。",
+							Description: "指定a 周期 在 non 当前 对象's transitions。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"non_current_days": {
 										Type:         schema.TypeInt,
 										Optional:     true,
 										ValidateFunc: tccommon.ValidateIntegerMin(0),
-										Description:  "数量 days after non current object creation when the specific rule 操作 takes effect。",
+										Description:  "数量 days after non 当前 对象 creation 当 特定 规则 操作 takes effect。",
 									},
 									"storage_class": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "指定storage class to which you want the non current object to transition. Available values include `STANDARD_IA`，`MAZ_STANDARD_IA`，`INTELLIGENT_TIERING`，`MAZ_INTELLIGENT_TIERING`，`ARCHIVE`，`DEEP_ARCHIVE`. For more information，please refer to: https://cloud.tencent.com/document/product/436/33417。",
+										Description: "指定storage class 到 其中 您 want non 当前 对象 到 transition. Available 值 include `STANDARD_IA`，`MAZ_STANDARD_IA`，`INTELLIGENT_TIERING`，`MAZ_INTELLIGENT_TIERING`，`ARCHIVE`，`DEEP_ARCHIVE`. For more 信息，please refer 到: https://云.tencent.com/document/product/436/33417。",
 									},
 								},
 							},
@@ -548,14 +548,14 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 							Optional:    true,
 							Set:         nonCurrentExpirationHash,
 							MaxItems:    1,
-							Description: "指定when non current object versions shall expire。",
+							Description: "指定when non 当前 对象 versions shall expire。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"non_current_days": {
 										Type:         schema.TypeInt,
 										Optional:     true,
 										ValidateFunc: tccommon.ValidateIntegerMin(0),
-										Description:  "数量 days after non current object creation when the specific rule 操作 takes effect. The maximum 值 is 3650。",
+										Description:  "数量 days after non 当前 对象 creation 当 特定 规则 操作 takes effect. 最大 值 是 3650。",
 									},
 								},
 							},
@@ -565,14 +565,14 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 							Optional:    true,
 							Set:         abortIncompleteMultipartUploadHash,
 							MaxItems:    1,
-							Description: "Set the maximum time a multipart upload is allowed to remain running。",
+							Description: "Set 最大 时间 multipart upload 是 allowed 到 remain running。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"days_after_initiation": {
 										Type:         schema.TypeInt,
 										Required:     true,
 										ValidateFunc: tccommon.ValidateIntegerMin(1),
-										Description:  "指定number of days after the multipart upload starts that the upload must be completed. The maximum 值 is 3650。",
+										Description:  "指定number 的 days after multipart upload starts 该 upload 必须 是 completed. 最大 值 是 3650。",
 									},
 								},
 							},
@@ -584,63 +584,63 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "A website object(documented below)。",
+				Description: "A website 对象(documented below)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"index_document": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "COS 返回this 索引 document when requests are made to the root 域名 or any of the subfolders。",
+							Description: "COS 返回this 索引 document 当 requests 是 made 到 root 域名 或 any 的 subfolders。",
 						},
 						"error_document": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "An absolute 路径 to the document to return in case of a 4XX 错误",
+							Description: "An absolute 路径 到 document 到 返回 在 case 的 4XX 错误",
 						},
 						"redirect_all_requests_to": {
 							Type:         schema.TypeString,
 							Optional:     true,
 							Computed:     true,
 							ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"http", "https"}),
-							Description:  "Redirects all request configurations. 有效值：http，https. 默认为 `http`。",
+							Description:  "Redirects all 请求 configurations. 有效值：http，https. 默认为 `http`。",
 						},
 						"routing_rules": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Routing rule configuration. A RoutingRules container can contain up to 100 RoutingRule elements。",
+							Description: "Routing 规则 配置. A RoutingRules 容器 可以 contain up 到 100 RoutingRule elements。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"rules": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "Routing rule list。",
+										Description: "Routing 规则 列表。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"condition_error_code": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "指定error 代码 as the match condition for the routing rule. 有效值：only 4xx return codes，such as 403 or 404。",
+													Description: "指定error 代码 作为 match condition 对于 routing 规则. 有效值：仅 4xx 返回 codes，such 作为 403 或 404。",
 												},
 												"condition_prefix": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "指定object 键 prefix as the match condition for the routing rule。",
+													Description: "指定object 键 prefix 作为 match condition 对于 routing 规则。",
 												},
 												"redirect_protocol": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "指定target 协议 for the routing rule. Only HTTPS is supported。",
+													Description: "指定target 协议 对于 routing 规则. Only HTTPS 是 支持。",
 												},
 												"redirect_replace_key": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "指定target object 键 to replace the original object 键 in the request。",
+													Description: "指定target 对象 键 到 replace original 对象 键 在 请求。",
 												},
 												"redirect_replace_key_prefix": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "指定object 键 prefix to replace the original prefix in the request. You can set this parameter only if the condition is KeyPrefixEquals。",
+													Description: "指定object 键 prefix 到 replace original prefix 在 请求. You 可以 集合 此 参数 仅 如果 condition 是 KeyPrefixEquals。",
 												},
 											},
 										},
@@ -651,7 +651,7 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 						"endpoint": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "`Endpoint` of the static website。",
+							Description: "`Endpoint` 的 静态 website。",
 						},
 					},
 				},
@@ -659,95 +659,95 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "The 标签 of a 存储桶",
+				Description: "标签 的 存储桶",
 			},
 			"log_enable": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Indicate the access log of this 存储桶 to be saved or not. 默认为 `false`. If set `true`，the access log will be saved with `log_target_bucket`. To enable log，the full access of log service must be granted. [Full Access 角色 Policy](https://intl.cloud.tencent.com/document/product/436/16920)。",
+				Description: "Indicate 访问 日志 的 此 存储桶 到 是 saved 或 不. 默认为 `false`. 如果 集合 `true`， 访问 日志 将 是 saved 使用 `log_target_bucket`. To 启用 日志， full 访问 的 日志 服务 必须 是 granted. [Full Access 角色 Policy](https://intl.云.tencent.com/document/product/436/16920)。",
 			},
 			"log_target_bucket": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The target 存储桶名称 which saves the access log of this 存储桶 per 5 minutes. The log access file 格式 is `log_target_bucket`/`log_prefix`{YYYY}/{MM}/{DD}/{time}_{random}_{索引}.gz. Only valid when `log_enable` is `true`. 用户 must have full access on this 存储桶",
+				Description: "目标 存储桶名称 其中 saves 访问 日志 的 此 存储桶 per 5 minutes. 日志 访问 文件 格式 是 `log_target_bucket`/`log_prefix`{YYYY}/{MM}/{DD}/{时间}_{random}_{索引}.gz. Only 有效 当 `log_enable` 是 `true`. 用户 必须 have full 访问 在 此 存储桶",
 			},
 			"log_prefix": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The prefix log 名称 which saves the access log of this 存储桶 per 5 minutes. Eg. `MyLogPrefix/`. The log access file 格式 is `log_target_bucket`/`log_prefix`{YYYY}/{MM}/{DD}/{time}_{random}_{索引}.gz. Only valid when `log_enable` is `true`。",
+				Description: "prefix 日志 名称 其中 saves 访问 日志 的 此 存储桶 per 5 minutes. Eg. `MyLogPrefix/`. 日志 访问 文件 格式 是 `log_target_bucket`/`log_prefix`{YYYY}/{MM}/{DD}/{时间}_{random}_{索引}.gz. Only 有效 当 `log_enable` 是 `true`。",
 			},
 			"multi_az": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "表示是否create a 存储桶 of multi available 可用区",
+				Description: "表示是否create 存储桶 的 multi 可用 可用区",
 			},
 			"chdfs_ofs": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				ForceNew:    true,
 				Computed:    true,
-				Description: "表示是否create a 存储桶 of metadata acceleration. For more information，please refer to `https://www.tencentcloud.com/document/product/436/43305`。",
+				Description: "表示是否create 存储桶 的 metadata acceleration. For more 信息，please refer 到 `https://www.tencentcloud.com/document/product/436/43305`。",
 			},
 			"enable_intelligent_tiering": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Enable intelligent tiering. NOTE: When intelligent tiering configuration is 已启用，it cannot be turned off or modified。",
+				Description: "Enable intelligent tiering. NOTE: 当 intelligent tiering 配置 是 已启用，它 不能 是 turned 关闭 或 modified。",
 			},
 			"intelligent_tiering_days": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "指定limit of days for standard-tier data to low-frequency data in an intelligent tiered storage configuration，with 可选 days of 30，60，90. 默认值为 30。",
+				Description: "指定limit 的 days 对于 standard-tier 数据 到 low-频率 数据 在 intelligent tiered 存储 配置，使用 可选 days 的 30，60，90. 默认值为 30。",
 			},
 			"intelligent_tiering_request_frequent": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "指定access 限制 for converting standard layer data into low-frequency layer data in the configuration. The 默认值为 once，which can be used in combination with the 数量 days to achieve the conversion effect. For example，if the parameter is set to 1 and the 数量 access days is 30，it means that objects with less than one visit in 30 consecutive days will be reduced from the standard layer to the low frequency layer。",
+				Description: "指定access 限制 对于 converting standard layer 数据 into low-频率 layer 数据 在 配置. 默认值为 once，其中 可以 是 使用 在 combination 使用 数量 days 到 achieve conversion effect. For 示例，如果 参数 是 集合 到 1 和 数量 访问 days 是 30，它 表示 该 objects 使用 less 比 一个 visit 在 30 consecutive days 将 是 reduced 从 standard layer 到 low 频率 layer。",
 			},
 			"intelligent_tiering_archiving_rule_list": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "列表 intelligent tiered storage，archiving，and deep archiving rules. NOTE: only `enable_intelligent_tiering` is true can configure this argument。",
+				Description: "列表 intelligent tiered 存储，archiving，和 deep archiving 规则. NOTE: 仅 `enable_intelligent_tiering` 是 true 可以 configure 此 argument。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"rule_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The 名称 intelligent tiering rule 名称 list task，with the ID set to a non-default string，表示that this rule is a conversion rule for archive and deep archive tiers。",
+							Description: "名称 intelligent tiering 规则 名称 列表 任务，使用 ID 集合 到 non-默认值 字符串，表示that 此 规则 是 conversion 规则 对于 archive 和 deep archive tiers。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "表示是否intelligent tiering rule is 已启用 可能的值：已启用，已禁用 When the ID is `default`，only `已启用` is supported。",
+							Description: "表示是否intelligent tiering 规则 是 已启用 可能的值：已启用，已禁用 当 ID 是 `默认值`，仅 `已启用` 是 支持。",
 						},
 						"filter": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Computed:    true,
 							MaxItems:    1,
-							Description: "指定configuration information related to data transformation in the intelligent tiered storage configuration。",
+							Description: "指定configuration 信息 related 到 数据 transformation 在 intelligent tiered 存储 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"and": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "For filtering conditions，if both prefix and object 标签 conditions 为必填项 simultaneously，they need to be wrapped with an `And` 操作者",
+										Description: "For filtering conditions，如果 both prefix 和 对象 标签 conditions 为必填项 simultaneously，they need 到 是 wrapped 使用 `And` 操作者",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"prefix": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Filter objects by prefix; you can 指定at most one prefix。",
+													Description: "过滤器 objects 通过 prefix; 您 可以 指定at most 一个 prefix。",
 												},
 												"tag": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "When filtering objects for analysis，you can use object 标签 (multiple 标签 are supported) as filtering criteria。",
+													Description: "当 filtering objects 对于 analysis，您 可以 使用 对象 标签 (多个 标签 是 支持) 作为 filtering criteria。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"key": {
@@ -769,12 +769,12 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 									"prefix": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Filter objects by prefix; you can 指定at most one prefix。",
+										Description: "过滤器 objects 通过 prefix; 您 可以 指定at most 一个 prefix。",
 									},
 									"tag": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "When filtering objects for analysis，you can use object 标签 (multiple 标签 are supported) as filtering criteria。",
+										Description: "当 filtering objects 对于 analysis，您 可以 使用 对象 标签 (多个 标签 是 支持) 作为 filtering criteria。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
@@ -796,18 +796,18 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 						"tiering": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "指定configuration information related to data transformation in the intelligent tiered storage configuration。",
+							Description: "指定configuration 信息 related 到 数据 transformation 在 intelligent tiered 存储 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"access_tier": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "When `rule_id` is not `default`，this parameter is 用于指定archiving or deep archiving tier.  The possible 值 are: ARCHIVE_ACCESS，DEEP_ARCHIVE_ACCESS。",
+										Description: "当 `rule_id` 是 不 `默认值`，此 参数 是 用于指定archiving 或 deep archiving tier. possible 值 是: ARCHIVE_ACCESS，DEEP_ARCHIVE_ACCESS。",
 									},
 									"days": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "When the `rule_id` is not set to default，this 指定number of days after which data is transitioned to the archive or deep archive tier in the intelligent tiering storage configuration. The archive tier (ARCHIVE_ACCESS) supports a range of 91 to 730 days. The deep archive tier (DEEP_ARCHIVE_ACCESS) supports a range of 180 to 730 days. Within the same rule，the 数量 days for the deep archive tier must be greater than the 数量 days for the archive tier。",
+										Description: "当 `rule_id` 是 不 集合 到 默认值，此 指定number 的 days after 其中 数据 是 transitioned 到 archive 或 deep archive tier 在 intelligent tiering 存储 配置. archive tier (ARCHIVE_ACCESS) 支持 范围 的 91 到 730 days. deep archive tier (DEEP_ARCHIVE_ACCESS) 支持 范围 的 180 到 730 days. Within same 规则， 数量 days 对于 deep archive tier 必须 是 greater 比 数量 days 对于 archive tier。",
 									},
 								},
 							},
@@ -819,37 +819,37 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "CDC cluster ID。",
+				Description: "CDC 集群 ID。",
 			},
 			"object_lock_configuration": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Object locking configuration. Once 已启用，this feature cannot be 已禁用",
+				Description: "Object locking 配置. Once 已启用，此 功能 不能 是 已禁用",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"enabled": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Enable object lock configuration。",
+							Description: "Enable 对象 lock 配置。",
 						},
 						"rule": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Object locking configuration。",
+							Description: "Object locking 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"days": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Object lock default duration (range: 1-36500)。",
+										Description: "Object lock 默认值 时长 (范围: 1-36500)。",
 									},
 									// "mode": {
 									// 	Type:        schema.TypeString,
 									// 	Optional:    true,
-									// 	Description: "The object lock default mode only supports the enumerated value `COMPLIANCE`. If this field is left blank, it defaults to `COMPLIANCE`.",
+									// 	Description: "对象 lock 默认值 模式 仅 支持 enumerated 值 `COMPLIANCE`. 如果 此 字段 是 left blank, 它 defaults 到 `COMPLIANCE`.",
 									// },
 								},
 							},
@@ -861,7 +861,7 @@ func ResourceTencentCloudCosBucket() *schema.Resource {
 			"cos_bucket_url": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The URL of this COS 存储桶",
+				Description: "URL 的 此 COS 存储桶",
 			},
 		},
 	}

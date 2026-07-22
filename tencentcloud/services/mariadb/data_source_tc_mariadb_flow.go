@@ -20,7 +20,7 @@ func DataSourceTencentCloudMariadbFlow() *schema.Resource {
 			"flow_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Flow ID returned by async request API。",
+				Description: "Flow ID 返回 通过 async 请求 API。",
 			},
 			"status": {
 				Computed:    true,

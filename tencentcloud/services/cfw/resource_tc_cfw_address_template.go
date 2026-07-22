@@ -31,12 +31,12 @@ func ResourceTencentCloudCfwAddressTemplate() *schema.Resource {
 			"detail": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Template Detail。",
+				Description: "模板 Detail。",
 			},
 			"ip_string": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "类型 is 1，ip template eg: 1.1.1.1,2.2.2.2; 类型 is 5，域名 名称 template eg: www.qq.com，www.tencent.com。",
+				Description: "类型 是 1，ip template eg: 1.1.1.1,2.2.2.2; 类型 是 5，域名 名称 template eg: www.qq.com，www.tencent.com。",
 			},
 			"type": {
 				Required:     true,

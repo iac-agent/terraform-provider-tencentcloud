@@ -19,63 +19,63 @@ func DataSourceTencentCloudSqlserverSlowlogs() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Query start time.",
+				Description: "Query start 时间.",
 			},
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Query end time.",
+				Description: "Query end 时间.",
 			},
 			"slowlogs": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Information list of slow query logs.",
+				Description: "Information 列表 的 slow 查询 logs.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Unique ID of slow query log file.",
+							Description: "Unique ID 的 slow 查询 日志 文件.",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "File generation start time.",
+							Description: "File generation start 时间.",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "File generation end time.",
+							Description: "File generation end 时间.",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "File size in KB.",
+							Description: "File 大小 在 KB.",
 						},
 						"count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of logs in file.",
+							Description: "Number 的 logs 在 文件.",
 						},
 						"internal_addr": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Download address for private network.",
+							Description: "Download 地址 对于 私有 网络.",
 						},
 						"external_addr": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Download address for public network.",
+							Description: "Download 地址 对于 公有 网络.",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Status (1: success, 2: failure) Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Status (1: success, 2: failure) 注意: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 						},
 					},
 				},
@@ -83,7 +83,7 @@ func DataSourceTencentCloudSqlserverSlowlogs() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

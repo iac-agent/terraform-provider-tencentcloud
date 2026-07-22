@@ -30,24 +30,24 @@ func ResourceTencentCloudMongodbInstanceTransparentDataEncryption() *schema.Reso
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "实例 ID，for example: cmgo-p8vn ***. Currently supported general versions include: 4.4 and 5.0，but the cloud disk 版本 is not currently supported。",
+				Description: "实例 ID，对于 示例: cmgo-p8vn ***. Currently 支持 general versions include: 4.4 和 5.0，但 云 磁盘 版本 是 不 currently 支持。",
 			},
 
 			"kms_region": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The 地域 where the 键 Management Service (KMS) serves，such as ap-shanghai。",
+				Description: "地域 其中 键 Management Service (KMS) serves，such 作为 ap-shanghai。",
 			},
 
 			"key_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "键 ID. If this parameter is not set and the specific 键 ID is not specified，Tencent Cloud will automatically generate the 键 and this 键 will be beyond the control of Terraform。",
+				Description: "键 ID. 如果 此 参数 是 不 集合 和 特定 键 ID 是 不 指定，Tencent Cloud 将 automatically generate 键 和 此 键 将 是 beyond control 的 Terraform。",
 			},
 			"transparent_data_encryption_status": {
 				Computed: true,
 				Type:     schema.TypeString,
-				Description: "Represents whether transparent encryption is turned on. Valid values:\n" +
+				Description: "Represents whether transparent 加密 是 turned 在. 有效 值:\n" +
 					"- close: Not opened;\n" +
 					"- open: It has been opened.",
 			},
@@ -70,7 +70,7 @@ func ResourceTencentCloudMongodbInstanceTransparentDataEncryption() *schema.Reso
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance and 键 binding time。",
+							Description: "实例 和 键 binding 时间。",
 						},
 						"status": {
 							Type:        schema.TypeString,
@@ -80,12 +80,12 @@ func ResourceTencentCloudMongodbInstanceTransparentDataEncryption() *schema.Reso
 						"key_usage": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Purpose of the 键",
+							Description: "Purpose 的 键",
 						},
 						"key_origin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "键 origin。",
+							Description: "键 源站。",
 						},
 					},
 				},

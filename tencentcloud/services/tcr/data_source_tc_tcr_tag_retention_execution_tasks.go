@@ -25,13 +25,13 @@ func DataSourceTencentCloudTcrTagRetentionExecutionTasks() *schema.Resource {
 			"retention_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "retention id。",
+				Description: "retention ID。",
 			},
 
 			"execution_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "execution id。",
+				Description: "execution ID。",
 			},
 
 			"retention_task_list": {
@@ -48,22 +48,22 @@ func DataSourceTencentCloudTcrTagRetentionExecutionTasks() *schema.Resource {
 						"execution_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "the rule execution id。",
+							Description: "规则 execution ID。",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "task 开始时间。",
+							Description: "任务 开始时间。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "task 结束时间。",
+							Description: "任务 结束时间。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "the execution 状态 task: Failed，Succeed，Stopped，InProgress。",
+							Description: "execution 状态 任务: Failed，Succeed，Stopped，InProgress。",
 						},
 						"total": {
 							Type:        schema.TypeInt,

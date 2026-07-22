@@ -32,63 +32,63 @@ func ResourceTencentCloudTkeClusterEndpoint() *schema.Resource {
 				Type:        schema.TypeBool,
 				Default:     false,
 				Optional:    true,
-				Description: "Open internet access or not。",
+				Description: "Open internet 访问 或 不。",
 			},
 			"cluster_intranet": {
 				Type:        schema.TypeBool,
 				Default:     false,
 				Optional:    true,
-				Description: "Open intranet access or not。",
+				Description: "Open intranet 访问 或 不。",
 			},
 			"cluster_internet_security_group": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "安全组 ID for internet cluster endpoint. NOTE: This argument must not be empty if cluster internet 已启用",
+				Description: "安全组 ID 对于 internet 集群 端点. NOTE: 此 argument 必须 不 是 空 如果 集群 internet 已启用",
 			},
 			"cluster_intranet_security_group": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "安全组 ID for intranet cluster endpoint。",
+				Description: "安全组 ID 对于 intranet 集群 端点。",
 			},
 			"managed_cluster_internet_security_policies": {
 				Type:       schema.TypeList,
 				Optional:   true,
 				Elem:       &schema.Schema{Type: schema.TypeString},
 				Deprecated: "this argument was deprecated, use `cluster_internet_security_group` instead.",
-				Description: "Security policies for managed cluster internet, like:'192.168.1.0/24' or '113.116.51.27', '0.0.0.0/0' means all." +
+				Description: "Security policies 对于 managed 集群 internet, like:'192.168.1.0/24' 或 '113.116.51.27', '0.0.0.0/0' 表示 all." +
 					" This field can only set when field `cluster_deploy_type` is 'MANAGED_CLUSTER' and `cluster_internet` is true." +
 					" `managed_cluster_internet_security_policies` can not delete or empty once be set.",
 			},
 			"cluster_internet_domain": {
 				Type:     schema.TypeString,
 				Optional: true,
-				Description: "Domain name for cluster Kube-apiserver internet access. " +
+				Description: "Domain 名称 对于 集群 Kube-apiserver internet 访问." +
 					" Be careful if you modify value of this parameter, the cluster_external_endpoint value may be changed automatically too.",
 			},
 			"extensive_parameters": {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Optional:    true,
-				Description: "The LB parameter. Only 用于public network access。",
+				Description: "LB 参数. Only 用于public 网络 访问。",
 			},
 			"cluster_intranet_domain": {
 				Type:     schema.TypeString,
 				Optional: true,
-				Description: "Domain name for cluster Kube-apiserver intranet access." +
+				Description: "Domain 名称 对于 集群 Kube-apiserver intranet 访问." +
 					" Be careful if you modify value of this parameter, the pgw_endpoint value may be changed automatically too.",
 			},
 			"cluster_intranet_subnet_id": {
 				Type:     schema.TypeString,
 				Optional: true,
-				Description: "Subnet id who can access this independent cluster, this field must and can only set  when `cluster_intranet` is true." +
+				Description: "Subnet ID who 可以 访问 此 independent 集群, 此 字段 必须 和 可以 仅 集合 当 `cluster_intranet` 是 true." +
 					" `cluster_intranet_subnet_id` can not modify once be set.",
 			},
 			// Computed
 			"cluster_deploy_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Cluster deploy 类型 `MANAGED_CLUSTER` or `INDEPENDENT_CLUSTER`。",
+				Description: "Cluster deploy 类型 `MANAGED_CLUSTER` 或 `INDEPENDENT_CLUSTER`。",
 			},
 			"user_name": {
 				Type:        schema.TypeString,
@@ -99,39 +99,39 @@ func ResourceTencentCloudTkeClusterEndpoint() *schema.Resource {
 				Type:        schema.TypeString,
 				Computed:    true,
 				Sensitive:   true,
-				Description: "密码 of 账号",
+				Description: "密码 的 账号",
 			},
 			"certification_authority": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The certificate 用于access。",
+				Description: "证书 用于access。",
 			},
 			"cluster_external_endpoint": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "External network 地址 to access。",
+				Description: "External 网络 地址 到 访问。",
 			},
 			"domain": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "域名 名称 for access。",
+				Description: "域名 名称 对于 访问。",
 			},
 			"pgw_endpoint": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The Intranet 地址 用于access。",
+				Description: "Intranet 地址 用于access。",
 			},
 			"kube_config": {
 				Type:        schema.TypeString,
 				Computed:    true,
 				Sensitive:   true,
-				Description: "The Intranet 地址 用于access。",
+				Description: "Intranet 地址 用于access。",
 			},
 			"kube_config_intranet": {
 				Type:        schema.TypeString,
 				Computed:    true,
 				Sensitive:   true,
-				Description: "Kubernetes 配置 of private network。",
+				Description: "Kubernetes 配置 的 私有 网络。",
 			},
 		},
 	}

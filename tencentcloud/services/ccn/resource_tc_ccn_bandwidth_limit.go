@@ -28,19 +28,19 @@ func ResourceTencentCloudCcnBandwidthLimit() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Limitation of 地域",
+				Description: "Limitation 的 地域",
 			},
 			"bandwidth_limit": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Limitation of bandwidth. 默认为 `0`。",
+				Description: "Limitation 的 带宽. 默认为 `0`。",
 			},
 			"dst_region": {
 				Type:     schema.TypeString,
 				Optional: true,
 				ForceNew: true,
-				Description: "Destination area restriction. If the `CCN` rate limit type is `OUTER_REGION_LIMIT`, " +
+				Description: "Destination area restriction. 如果 `CCN` 速率 限制 类型 是 `OUTER_REGION_LIMIT`," +
 					"this value does not need to be set.",
 			},
 		},

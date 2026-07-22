@@ -53,7 +53,7 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Required:    true,
-				Description: "Mesh configuration。",
+				Description: "Mesh 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tracing": {
@@ -68,7 +68,7 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 										Type:        schema.TypeBool,
 										Optional:    true,
 										Computed:    true,
-										Description: "Whether enable tracing。",
+										Description: "Whether 启用 追踪。",
 									},
 									"apm": {
 										Type:        schema.TypeList,
@@ -82,7 +82,7 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 													Type:        schema.TypeBool,
 													Optional:    true,
 													Computed:    true,
-													Description: "Whether enable APM。",
+													Description: "Whether 启用 APM。",
 												},
 												"region": {
 													Type:        schema.TypeString,
@@ -129,7 +129,7 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 							MaxItems:    1,
 							Optional:    true,
 							Computed:    true,
-							Description: "Prometheus configuration。",
+							Description: "Prometheus 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"vpc_id": {
@@ -168,7 +168,7 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 													Type:        schema.TypeBool,
 													Optional:    true,
 													Computed:    true,
-													Description: "是否为public 地址，default false。",
+													Description: "是否为public 地址，默认值 false。",
 												},
 												"vpc_id": {
 													Type:        schema.TypeString,
@@ -179,7 +179,7 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 												"url": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Url of the prometheus。",
+													Description: "Url 的 prometheus。",
 												},
 												"auth_type": {
 													Type:        schema.TypeString,
@@ -190,13 +190,13 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "用户名 of the prometheus，used in basic authentication 类型",
+													Description: "用户名 的 prometheus，使用 在 basic authentication 类型",
 												},
 												"password": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "密码 of the prometheus，used in basic authentication 类型",
+													Description: "密码 的 prometheus，使用 在 basic authentication 类型",
 												},
 											},
 										},
@@ -208,19 +208,19 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Istio configuration。",
+							Description: "Istio 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"outbound_traffic_policy": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Outbound traffic policy，REGISTRY_ONLY or ALLOW_ANY，see https://istio.io/latest/docs/reference/配置/istio.mesh.v1alpha1/#MeshConfig-OutboundTrafficPolicy-模式",
+										Description: "Outbound 流量 策略，REGISTRY_ONLY 或 ALLOW_ANY，see https://istio.io/latest/docs/reference/配置/istio.mesh.v1alpha1/#MeshConfig-OutboundTrafficPolicy-模式",
 									},
 									"tracing": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "Tracing 配置(已弃用，please use MeshConfig.Tracing for configuration)。",
+										Description: "Tracing 配置(已弃用，please 使用 MeshConfig.Tracing 对于 配置)。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"sampling": {
@@ -232,7 +232,7 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 												"enable": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "Whether enable tracing。",
+													Description: "Whether 启用 追踪。",
 												},
 												"apm": {
 													Type:        schema.TypeList,
@@ -244,7 +244,7 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 															"enable": {
 																Type:        schema.TypeBool,
 																Required:    true,
-																Description: "Whether enable APM。",
+																Description: "Whether 启用 APM。",
 															},
 															"region": {
 																Type:        schema.TypeString,
@@ -280,7 +280,7 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 									"disable_policy_checks": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Disable policy checks。",
+										Description: "Disable 策略 checks。",
 									},
 									"enable_pilot_http": {
 										Type:        schema.TypeBool,
@@ -296,7 +296,7 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "SmartDNS configuration。",
+										Description: "SmartDNS 配置。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"istio_meta_dns_capture": {
@@ -319,7 +319,7 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Sidecar inject configuration。",
+							Description: "Sidecar inject 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"exclude_ip_ranges": {
@@ -328,17 +328,17 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Optional:    true,
-										Description: "IP ranges that should not be proxied。",
+										Description: "IP ranges 该 should 不 是 proxied。",
 									},
 									"hold_application_until_proxy_starts": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Let istio-proxy(sidecar) start first，before app container。",
+										Description: "Let istio-proxy(sidecar) start first，before app 容器。",
 									},
 									"hold_proxy_until_application_ends": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Let istio-proxy(sidecar) stop last，after app container。",
+										Description: "Let istio-proxy(sidecar) stop last，after app 容器。",
 									},
 								},
 							},
@@ -347,7 +347,7 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Default sidecar requests and limits。",
+							Description: "Default sidecar requests 和 limits。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"limits": {
@@ -359,12 +359,12 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 												"name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "资源类型 名称，`cpu/memory`。",
+													Description: "资源类型 名称，`cpu/内存`。",
 												},
 												"quantity": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Resource quantity，example: cpu-`100m`，memory-`1Gi`。",
+													Description: "Resource quantity，示例: cpu-`100m`，内存-`1Gi`。",
 												},
 											},
 										},
@@ -378,12 +378,12 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 												"name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "资源类型 名称，`cpu/memory`。",
+													Description: "资源类型 名称，`cpu/内存`。",
 												},
 												"quantity": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Resource quantity，example: cpu-`100m`，memory-`1Gi`。",
+													Description: "Resource quantity，示例: cpu-`100m`，内存-`1Gi`。",
 												},
 											},
 										},
@@ -414,7 +414,7 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 						"passthrough": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Passthrough to other related product。",
+							Description: "Passthrough 到 other related product。",
 						},
 					},
 				},

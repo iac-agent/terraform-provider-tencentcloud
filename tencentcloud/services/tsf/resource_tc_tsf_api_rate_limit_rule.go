@@ -28,7 +28,7 @@ func ResourceTencentCloudTsfApiRateLimitRule() *schema.Resource {
 			"api_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Api Id。",
+				Description: "Api ID。",
 			},
 
 			"max_qps": {
@@ -42,13 +42,13 @@ func ResourceTencentCloudTsfApiRateLimitRule() *schema.Resource {
 				Computed:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"enabled", "disabled"}),
-				Description:  "已启用/已禁用，已启用/已禁用，如果未传入，it is 已启用 by default。",
+				Description:  "已启用/已禁用，已启用/已禁用，如果未传入，它 是 已启用 通过 默认值。",
 			},
 
 			"rule_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "rule Id。",
+				Description: "规则 ID。",
 			},
 
 			"rule_name": {

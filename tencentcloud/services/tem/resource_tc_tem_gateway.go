@@ -29,20 +29,20 @@ func ResourceTencentCloudTemGateway() *schema.Resource {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "gateway properties。",
+				Description: "网关 properties。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ingress_name": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "gateway 名称",
+							Description: "网关 名称",
 						},
 						"environment_id": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "environment ID。",
+							Description: "环境 ID。",
 						},
 						"address_ip_version": {
 							Type:        schema.TypeString,
@@ -52,12 +52,12 @@ func ResourceTencentCloudTemGateway() *schema.Resource {
 						"rewrite_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "redirect 模式，support AUTO and NONE。",
+							Description: "redirect 模式，support AUTO 和 NONE。",
 						},
 						"mixed": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "mixing HTTP and HTTPS。",
+							Description: "mixing HTTP 和 HTTPS。",
 						},
 						"tls": {
 							Type:        schema.TypeList,
@@ -77,7 +77,7 @@ func ResourceTencentCloudTemGateway() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "secret 名称，if you use a certificate，you don't need to fill in this field。",
+										Description: "secret 名称，如果 您 使用 证书，您 don't need 到 fill 在 此 字段。",
 									},
 									"certificate_id": {
 										Type:        schema.TypeString,
@@ -90,7 +90,7 @@ func ResourceTencentCloudTemGateway() *schema.Resource {
 						"rules": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "proxy rules。",
+							Description: "proxy 规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"host": {
@@ -107,7 +107,7 @@ func ResourceTencentCloudTemGateway() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Required:    true,
-										Description: "rule payload。",
+										Description: "规则 payload。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"paths": {
@@ -153,13 +153,13 @@ func ResourceTencentCloudTemGateway() *schema.Resource {
 						"vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "gateway VIP",
+							Description: "网关 VIP",
 						},
 						"clb_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "related CLB ID，support binding existing clb，does not support modification。",
+							Description: "related CLB ID，support binding existing clb，does 不 support modification。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,

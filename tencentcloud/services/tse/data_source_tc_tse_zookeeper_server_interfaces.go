@@ -19,13 +19,13 @@ func DataSourceTencentCloudTseZookeeperServerInterfaces() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "engine instance ID。",
+				Description: "引擎 实例 ID。",
 			},
 
 			"content": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "interface list。",
+				Description: "interface 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"interface": {

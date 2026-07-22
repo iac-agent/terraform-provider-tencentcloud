@@ -35,14 +35,14 @@ func ResourceTencentCloudCiBucketPicStyle() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "style 名称，style names are case-sensitive，and a combination of uppercase and lowercase letters，numbers，and `$ + _ ( )` is supported。",
+				Description: "style 名称，style names 是 case-sensitive，和 combination 的 uppercase 和 lowercase letters，numbers，和 `$ + _ ( )` 是 支持。",
 			},
 
 			"style_body": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "style details，example: mageMogr2/grayscale/1。",
+				Description: "style details，示例: mageMogr2/grayscale/1。",
 			},
 		},
 	}

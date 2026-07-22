@@ -26,13 +26,13 @@ func DataSourceTencentCloudVpnDefaultHealthCheckIp() *schema.Resource {
 			"health_check_local_ip": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "local ip of health check。",
+				Description: "本地 ip 的 health check。",
 			},
 
 			"health_check_remote_ip": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "remote ip for health check。",
+				Description: "远程 ip 对于 health check。",
 			},
 
 			"result_output_file": {

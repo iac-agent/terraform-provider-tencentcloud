@@ -69,7 +69,7 @@ func DataSourceTencentCloudAPIGatewayAPIApps() *schema.Resource {
 						"modified_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ApiApp modified time。",
+							Description: "ApiApp modified 时间。",
 						},
 						"api_app_desc": {
 							Type:        schema.TypeString,

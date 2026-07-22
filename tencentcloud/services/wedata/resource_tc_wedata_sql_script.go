@@ -42,7 +42,7 @@ func ResourceTencentCloudWedataSqlScript() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Parent folder 路径，/aaa/bbb/ccc，root directory is empty string or /。",
+				Description: "Parent 文件夹 路径，/aaa/bbb/ccc，root directory 是 空 字符串 或 /。",
 			},
 
 			"script_config": {
@@ -50,7 +50,7 @@ func ResourceTencentCloudWedataSqlScript() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Data exploration script configuration。",
+				Description: "Data exploration 脚本 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"datasource_id": {
@@ -61,7 +61,7 @@ func ResourceTencentCloudWedataSqlScript() *schema.Resource {
 						"datasource_env": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Data 来源 environment。",
+							Description: "Data 来源 环境。",
 						},
 						"compute_resource": {
 							Type:        schema.TypeString,
@@ -71,17 +71,17 @@ func ResourceTencentCloudWedataSqlScript() *schema.Resource {
 						"executor_group_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Execution resource group。",
+							Description: "Execution 资源 组。",
 						},
 						"params": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Advanced runtime parameters，variable substitution，map-json String,String。",
+							Description: "Advanced runtime 参数，variable substitution，map-json String,String。",
 						},
 						"advance_config": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Advanced settings，execution configuration parameters，map-json String,String. Encoded in Base64。",
+							Description: "Advanced settings，execution 配置 参数，map-json String,String. Encoded 在 Base64。",
 						},
 					},
 				},
@@ -90,7 +90,7 @@ func ResourceTencentCloudWedataSqlScript() *schema.Resource {
 			"script_content": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Script 内容，if there is a 值",
+				Description: "Script 内容，如果 there 是 值",
 			},
 
 			"access_scope": {
@@ -111,7 +111,7 @@ func ResourceTencentCloudWedataSqlScript() *schema.Resource {
 			"path": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The full 路径 of the node，/aaa/bbb/ccc.ipynb，consists of the names of each node。",
+				Description: "full 路径 的 节点，/aaa/bbb/ccc.ipynb，consists 的 names 的 each 节点。",
 			},
 		},
 	}

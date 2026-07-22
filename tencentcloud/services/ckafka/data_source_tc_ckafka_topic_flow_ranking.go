@@ -25,7 +25,7 @@ func DataSourceTencentCloudCkafkaTopicFlowRanking() *schema.Resource {
 			"ranking_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Ranking 类型 `PRO`: topic production flow，`CON`: topic consumption traffic。",
+				Description: "Ranking 类型 `PRO`: 主题 production flow，`CON`: 主题 consumption 流量。",
 			},
 
 			"begin_date": {

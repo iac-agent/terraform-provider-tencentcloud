@@ -18,7 +18,7 @@ func DataSourceTencentCloudIgtmDetectors() *schema.Resource {
 			"detector_group_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Detector group list。",
+				Description: "Detector 组 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"gid": {
@@ -44,7 +44,7 @@ func DataSourceTencentCloudIgtmDetectors() *schema.Resource {
 						"package_set": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "Supported package types。",
+							Description: "Supported 包 types。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},

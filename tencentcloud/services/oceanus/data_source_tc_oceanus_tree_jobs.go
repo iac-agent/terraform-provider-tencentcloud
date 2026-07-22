@@ -26,19 +26,19 @@ func DataSourceTencentCloudOceanusTreeJobs() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter rules。",
+				Description: "过滤器 规则。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "待过滤字段 Can only be set `可用区` or `JobType` or `JobStatus`。",
+							Description: "待过滤字段 Can 仅 是 集合 `可用区` 或 `JobType` 或 `JobStatus`。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Required:    true,
-							Description: "Filter values for the field。",
+							Description: "过滤器 值 对于 字段。",
 						},
 					},
 				},
@@ -46,7 +46,7 @@ func DataSourceTencentCloudOceanusTreeJobs() *schema.Resource {
 			"tree_info": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Tree structure information。",
+				Description: "Tree structure 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
@@ -62,7 +62,7 @@ func DataSourceTencentCloudOceanusTreeJobs() *schema.Resource {
 						"parent_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Parent Id。",
+							Description: "Parent ID。",
 						},
 						"job_set": {
 							Type:        schema.TypeList,
@@ -88,7 +88,7 @@ func DataSourceTencentCloudOceanusTreeJobs() *schema.Resource {
 									"running_cu": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Resources occupied by homework。",
+										Description: "Resources occupied 通过 homework。",
 									},
 									"status": {
 										Type:        schema.TypeInt,

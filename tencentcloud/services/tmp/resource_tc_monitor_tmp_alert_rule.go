@@ -40,12 +40,12 @@ func ResourceTencentCloudMonitorTmpAlertRule() *schema.Resource {
 			"expr": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Rule expression，reference documentation: `https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/`。",
+				Description: "Rule expression，reference documentation: `https://prometheus.io/docs/prometheus/latest/配置/alerting_rules/`。",
 			},
 			"receivers": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Alarm notification template id list。",
+				Description: "Alarm 通知 template ID 列表。",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 			"rule_state": {
@@ -56,12 +56,12 @@ func ResourceTencentCloudMonitorTmpAlertRule() *schema.Resource {
 			"duration": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Rule alarm duration。",
+				Description: "Rule 告警 时长。",
 			},
 			"labels": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Rule alarm duration。",
+				Description: "Rule 告警 时长。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
@@ -80,7 +80,7 @@ func ResourceTencentCloudMonitorTmpAlertRule() *schema.Resource {
 			"annotations": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Rule alarm duration。",
+				Description: "Rule 告警 时长。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
@@ -99,7 +99,7 @@ func ResourceTencentCloudMonitorTmpAlertRule() *schema.Resource {
 			"type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Alarm Policy Template Classification。",
+				Description: "Alarm Policy 模板 Classification。",
 			},
 		},
 	}

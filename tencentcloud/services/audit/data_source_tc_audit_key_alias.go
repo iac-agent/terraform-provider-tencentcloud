@@ -31,7 +31,7 @@ func DataSourceTencentCloudAuditKeyAlias() *schema.Resource {
 			"audit_key_alias_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "列表 available 键 alias supported by audit。",
+				Description: "列表 可用 键 alias 支持 通过 audit。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key_id": {

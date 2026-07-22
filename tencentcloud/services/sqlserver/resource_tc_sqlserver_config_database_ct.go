@@ -29,23 +29,23 @@ func ResourceTencentCloudSqlserverConfigDatabaseCT() *schema.Resource {
 			"db_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "database name.",
+				Description: "数据库 名称.",
 			},
 			"modify_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Enable or disable CT. Valid values: enable, disable.",
+				Description: "Enable 或 disable CT. 有效 值: 启用, disable.",
 			},
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 			"change_retention_day": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Retention period (in days) of change tracking information when CT is enabled. Value range: 3-30. Default value: 3.",
+				Description: "Retention 周期 (在 days) 的 change tracking 信息 当 CT 是 已启用. Value 范围: 3-30. Default 值: 3.",
 			},
 		},
 	}

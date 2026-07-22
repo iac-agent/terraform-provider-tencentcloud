@@ -27,13 +27,13 @@ func ResourceTencentCloudVpcRoutePolicyEntries() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "指定instance ID route reception policy。",
+				Description: "指定instance ID 路由 reception 策略。",
 			},
 
 			"route_policy_entry_set": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Route reception policy entry list。",
+				Description: "Route reception 策略 entry 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"route_policy_entry_id": {
@@ -44,37 +44,37 @@ func ResourceTencentCloudVpcRoutePolicyEntries() *schema.Resource {
 						"cidr_block": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Destination ip range.\n注意：此字段可能返回 null，表示未找到有效值。",
+							Description: "Destination ip 范围.\n注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Describes the routing strategy rule.\n注意：此字段可能返回 null，表示未找到有效值。",
+							Description: "Describes routing strategy 规则.\n注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"route_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Routing 类型\n\n指定USER-customized data 类型\nNETD: 指定route for network detection.\nCCN: CCN route.\n注意：此字段可能返回 null，表示未找到有效值。",
+							Description: "Routing 类型\n\n指定USER-customized 数据 类型\nNETD: 指定route 对于 网络 detection.\nCCN: CCN 路由.\n注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"gateway_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Next hop 类型 types currently supported:.\nCVM: cloud virtual machine with public network gateway 类型\nVPN: vpn gateway.\nDIRECTCONNECT: direct connect gateway.\nPEERCONNECTION: peering connection.\nHAVIP: high availability virtual ip.\nNAT: 指定nat gateway. \nEIP: 指定public ip 地址 of the cloud virtual machine.\nLOCAL_GATEWAY: 指定local gateway.\nPVGW: pvgw gateway.\n注意：此字段可能返回 null，表示未找到有效值。",
+							Description: "Next hop 类型 types currently 支持:.\nCVM: 云 virtual machine 使用 公有 网络 网关 类型\nVPN: vpn 网关.\nDIRECTCONNECT: direct connect 网关.\nPEERCONNECTION: peering 连接.\nHAVIP: high availability virtual ip.\nNAT: 指定nat 网关. \nEIP: 指定public ip 地址 的 云 virtual machine.\nLOCAL_GATEWAY: 指定local 网关.\nPVGW: pvgw 网关.\n注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"gateway_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Gateway unique ID.\n注意：此字段可能返回 null，表示未找到有效值。",
+							Description: "Gateway 唯一 ID.\n注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"priority": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "优先级 a smaller 值 表示a higher 优先级\n注意：此字段可能返回 null，表示未找到有效值。",
+							Description: "优先级 smaller 值 表示a higher 优先级\n注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"action": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "操作\nDROP: drop.\nDISABLE: receive and disable.\nACCEPT: receive and enable.\n注意：此字段可能返回 null，表示未找到有效值。",
+							Description: "操作\nDROP: drop.\nDISABLE: receive 和 disable.\nACCEPT: receive 和 启用.\n注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"created_time": {
 							Type:        schema.TypeString,

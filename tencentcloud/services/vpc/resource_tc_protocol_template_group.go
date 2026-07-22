@@ -24,7 +24,7 @@ func ResourceTencentCloudProtocolTemplateGroup() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "名称 协议 template group。",
+				Description: "名称 协议 template 组。",
 			},
 			"template_ids": {
 				Type: schema.TypeSet,
@@ -32,7 +32,7 @@ func ResourceTencentCloudProtocolTemplateGroup() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Required:    true,
-				Description: "Service 模板 ID list。",
+				Description: "Service 模板 ID 列表。",
 			},
 		},
 	}

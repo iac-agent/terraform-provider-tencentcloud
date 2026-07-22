@@ -35,7 +35,7 @@ func ResourceTencentCloudVpnGateway() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 60),
-				Description:  "名称 VPN gateway. The length of character is limited to 1-60。",
+				Description:  "名称 VPN 网关. 长度 的 character 是 limited 到 1-60。",
 			},
 			"vpc_id": {
 				Type:     schema.TypeString,
@@ -47,48 +47,48 @@ func ResourceTencentCloudVpnGateway() *schema.Resource {
 					}
 					return old == new
 				},
-				Description: "ID VPC. 必填 if vpn gateway is not in `CCN` or `SSL_CCN` 类型，and doesn't make sense for `CCN` or `SSL_CCN` vpn gateway。",
+				Description: "ID VPC. 必填 如果 vpn 网关 是 不 在 `CCN` 或 `SSL_CCN` 类型，和 doesn't make sense 对于 `CCN` 或 `SSL_CCN` vpn 网关。",
 			},
 			"bandwidth": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     5,
-				Description: "The maximum public network output bandwidth of VPN gateway (unit: Mbps)，the available values include: 5,10,20,50,100,200,500,1000. 默认为 5. When 计费类型 is `PREPAID`，bandwidth degradation operation is unsupported。",
+				Description: "最大 公有 网络 output 带宽 的 VPN 网关 (单位: Mbps)， 可用 值 include: 5,10,20,50,100,200,500,1000. 默认为 5. 当 计费类型 是 `PREPAID`，带宽 degradation operation 是 unsupported。",
 			},
 			"public_ip_address": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Public IP of the VPN gateway。",
+				Description: "Public IP 的 VPN 网关。",
 			},
 			"type": {
 				Type:        schema.TypeString,
 				Computed:    true,
 				Optional:    true,
-				Description: "类型 gateway instance，默认为 `IPSEC`. Valid 值: `IPSEC`，`SSL`，`CCN` and `SSL_CCN`。",
+				Description: "类型 网关 实例，默认为 `IPSEC`. 有效 值: `IPSEC`，`SSL`，`CCN` 和 `SSL_CCN`。",
 			},
 			"state": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "State of the VPN gateway. Valid 值: `PENDING`，`DELETING`，`AVAILABLE`。",
+				Description: "State 的 VPN 网关. 有效 值: `PENDING`，`DELETING`，`AVAILABLE`。",
 			},
 			"prepaid_renew_flag": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     svcvpc.VPN_PERIOD_PREPAID_RENEW_FLAG_AUTO_NOTIFY,
-				Description: "Flag 表示是否renew or not. Valid 值: `NOTIFY_AND_AUTO_RENEW`，`NOTIFY_AND_MANUAL_RENEW`。",
+				Description: "Flag 表示是否renew 或 不. 有效 值: `NOTIFY_AND_AUTO_RENEW`，`NOTIFY_AND_MANUAL_RENEW`。",
 			},
 			"prepaid_period": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Default:      1,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{1, 2, 3, 4, 6, 7, 8, 9, 12, 24, 36}),
-				Description:  "周期 of instance to be prepaid. Valid 值: `1`，`2`，`3`，`4`，`6`，`7`，`8`，`9`，`12`，`24`，`36`. The unit is month. Caution: when this para and renew_flag para are valid，the request means to renew several months more pre-paid 周期 This para can only be changed on `IPSEC` vpn gateway。",
+				Description:  "周期 的 实例 到 是 prepaid. 有效 值: `1`，`2`，`3`，`4`，`6`，`7`，`8`，`9`，`12`，`24`，`36`. 单位 是 month. Caution: 当 此 para 和 renew_flag para 是 有效， 请求 表示 到 renew several months more pre-paid 周期 此 para 可以 仅 是 changed 在 `IPSEC` vpn 网关。",
 			},
 			"charge_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     svcvpc.VPN_CHARGE_TYPE_POSTPAID_BY_HOUR,
-				Description: "Charge 类型 VPN gateway. Valid 值: `PREPAID`，`POSTPAID_BY_HOUR`. The 默认为 `POSTPAID_BY_HOUR`。",
+				Description: "Charge 类型 VPN 网关. 有效 值: `PREPAID`，`POSTPAID_BY_HOUR`. 默认为 `POSTPAID_BY_HOUR`。",
 			},
 			"cdc_id": {
 				Type:        schema.TypeString,
@@ -100,34 +100,34 @@ func ResourceTencentCloudVpnGateway() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "最大connected clients allowed for the SSL VPN gateway. 有效值：[5，10，20，50，100]. This parameter is only 必填 for SSL VPN gateways。",
+				Description: "最大connected clients allowed 对于 SSL VPN 网关. 有效值：[5，10，20，50，100]. 此 参数 是 仅 必填 对于 SSL VPN gateways。",
 			},
 			"expired_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "过期时间 of the VPN gateway when 计费类型 is `PREPAID`。",
+				Description: "过期时间 的 VPN 网关 当 计费类型 是 `PREPAID`。",
 			},
 			"is_address_blocked": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "表示是否ip 地址 is blocked。",
+				Description: "表示是否ip 地址 是 blocked。",
 			},
 			"new_purchase_plan": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The plan of new purchase. Valid 值: `PREPAID_TO_POSTPAID`。",
+				Description: "plan 的 new purchase. 有效 值: `PREPAID_TO_POSTPAID`。",
 			},
 			"restrict_state": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Restrict state of gateway. Valid 值: `PRETECIVELY_ISOLATED`，`NORMAL`。",
+				Description: "Restrict state 的 网关. 有效 值: `PRETECIVELY_ISOLATED`，`NORMAL`。",
 			},
 			"zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
 				Computed:    true,
-				Description: "可用区 of the VPN gateway。",
+				Description: "可用区 的 VPN 网关。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
@@ -142,7 +142,7 @@ func ResourceTencentCloudVpnGateway() *schema.Resource {
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 of the VPN gateway。",
+				Description: "创建时间 的 VPN 网关。",
 			},
 		},
 	}

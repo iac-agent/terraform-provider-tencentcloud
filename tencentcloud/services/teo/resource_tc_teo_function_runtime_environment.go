@@ -42,23 +42,23 @@ func ResourceTencentCloudTeoFunctionRuntimeEnvironment() *schema.Resource {
 			"environment_variables": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "The environment variable list。",
+				Description: "环境 variable 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The 名称 variable，which is limited to alphanumeric characters and the special characters `@`，`.`，`-`，and `_`. It can have a maximum of 64 bytes and should not be duplicated。",
+							Description: "名称 variable，其中 是 limited 到 alphanumeric 字符 和 special 字符 `@`，`.`，`-`，和 `_`. It 可以 have 最大 的 64 bytes 和 should 不 是 duplicated。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The 值 of the variable，which is limited to a maximum of 5000 bytes. The 默认值为 empty。",
+							Description: "值 的 variable，其中 是 limited 到 最大 的 5000 bytes. 默认值为 空。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The 类型 variable can have the following values:  - `string`: Represents a string 类型  - `json`: Represents a JSON object 类型",
+							Description: "类型 variable 可以 have following 值: - `字符串`: Represents 字符串 类型 - `json`: Represents JSON 对象 类型",
 						},
 					},
 				},

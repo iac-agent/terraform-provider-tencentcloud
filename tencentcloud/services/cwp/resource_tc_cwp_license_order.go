@@ -38,20 +38,20 @@ func ResourceTencentCloudCwpLicenseOrder() *schema.Resource {
 				Type:         schema.TypeInt,
 				Default:      LICENSE_TYPE_0,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(LICENSE_TYPE),
-				Description:  "Authorization 类型 0: Pro Edition-pay-as-you-go; 1: Pro Edition-monthly subscription; 2 - Ultimate Edition-monthly subscriptionThe 默认为 0。",
+				Description:  "Authorization 类型 0: Pro Edition-pay-作为-您-go; 1: Pro Edition-monthly subscription; 2 - Ultimate Edition-monthly subscriptionThe 默认为 0。",
 			},
 			"license_num": {
 				Optional:    true,
 				Type:        schema.TypeInt,
 				Default:     1,
-				Description: "Authorization quantity: the 数量 units that need to be purchased，The 默认为 1。",
+				Description: "Authorization quantity: 数量 units 该 need 到 是 purchased， 默认为 1。",
 			},
 			"region_id": {
 				Optional:     true,
 				Type:         schema.TypeInt,
 				Default:      REGION_ID_1,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(REGION_ID),
-				Description:  "地域 of purchase 顺序 In this case，only 1 - Guangzhou and 9 - Singapore are supported. Guangzhou is recommended. Singapore 地域 is reserved for allowlisted users. The 默认为 1。",
+				Description:  "地域 的 purchase 顺序 In 此 case，仅 1 - Guangzhou 和 9 - Singapore 是 支持. Guangzhou 是 recommended. Singapore 地域 是 reserved 对于 allowlisted users. 默认为 1。",
 			},
 			"project_id": {
 				Optional:    true,
@@ -62,7 +62,7 @@ func ResourceTencentCloudCwpLicenseOrder() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "标签 of the license 顺序",
+				Description: "标签 的 license 顺序",
 			},
 			"resource_id": {
 				Type:        schema.TypeString,
@@ -72,7 +72,7 @@ func ResourceTencentCloudCwpLicenseOrder() *schema.Resource {
 			"license_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "license id。",
+				Description: "license ID。",
 			},
 		},
 	}

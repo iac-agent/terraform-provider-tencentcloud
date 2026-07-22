@@ -30,13 +30,13 @@ func ResourceTencentCloudMqttMessageEnrichmentRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "MQTT instance ID。",
+				Description: "MQTT 实例 ID。",
 			},
 
 			"rule_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Rule 名称，3-64 characters，supports Chinese，letters，numbers，`-` and `_`。",
+				Description: "Rule 名称，3-64 字符，支持 Chinese，letters，numbers，`-` 和 `_`。",
 			},
 
 			"condition": {
@@ -75,7 +75,7 @@ func ResourceTencentCloudMqttMessageEnrichmentRule() *schema.Resource {
 						"message_expiry_interval": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "消息 expiration interval。",
+							Description: "消息 expiration 间隔。",
 						},
 						"response_topic": {
 							Type:        schema.TypeString,
@@ -113,7 +113,7 @@ func ResourceTencentCloudMqttMessageEnrichmentRule() *schema.Resource {
 			"priority": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Rule 优先级，smaller number means higher 优先级",
+				Description: "Rule 优先级，smaller 数量 表示 higher 优先级",
 			},
 
 			"status": {
@@ -126,7 +126,7 @@ func ResourceTencentCloudMqttMessageEnrichmentRule() *schema.Resource {
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "备注 information. not exceeding 128 characters in length。",
+				Description: "备注 信息. 不 exceeding 128 字符 在 长度。",
 			},
 
 			// computed

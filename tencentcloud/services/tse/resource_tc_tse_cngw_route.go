@@ -28,19 +28,19 @@ func ResourceTencentCloudTseCngwRoute() *schema.Resource {
 			"gateway_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway ID。",
+				Description: "网关 ID。",
 			},
 
 			"service_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID service which the route belongs to。",
+				Description: "ID 服务 其中 路由 belongs 到。",
 			},
 
 			"route_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "the 名称 route，unique in the instance。",
+				Description: "名称 路由，唯一 在 实例。",
 			},
 
 			"methods": {
@@ -49,7 +49,7 @@ func ResourceTencentCloudTseCngwRoute() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "route methods. Reference 值:`GET`,`POST`,`DELETE`,`PUT`,`OPTIONS`,`PATCH`,`HEAD`,`ANY`,`TRACE`,`COPY`,`MOVE`,`PROPFIND`,`PROPPATCH`,`MKCOL`,`LOCK`,`UNLOCK`。",
+				Description: "路由 methods. Reference 值:`GET`,`POST`,`DELETE`,`PUT`,`OPTIONS`,`PATCH`,`HEAD`,`ANY`,`TRACE`,`COPY`,`MOVE`,`PROPFIND`,`PROPPATCH`,`MKCOL`,`LOCK`,`UNLOCK`。",
 			},
 
 			"hosts": {
@@ -58,7 +58,7 @@ func ResourceTencentCloudTseCngwRoute() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "主机 list。",
+				Description: "主机 列表。",
 			},
 
 			"paths": {
@@ -67,7 +67,7 @@ func ResourceTencentCloudTseCngwRoute() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "路径 list。",
+				Description: "路径 列表。",
 			},
 
 			"protocols": {
@@ -76,13 +76,13 @@ func ResourceTencentCloudTseCngwRoute() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "the 协议 列表 route.Reference 值:`https`,`http`。",
+				Description: "协议 列表 路由.Reference 值:`https`,`http`。",
 			},
 
 			"preserve_host": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "是否keep the 主机 when forwarding to the backend。",
+				Description: "是否keep 主机 当 forwarding 到 backend。",
 			},
 
 			"https_redirect_status_code": {
@@ -94,14 +94,14 @@ func ResourceTencentCloudTseCngwRoute() *schema.Resource {
 			"strip_path": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "是否strip 路径 when forwarding to the backend。",
+				Description: "是否strip 路径 当 forwarding 到 backend。",
 			},
 
 			"force_https": {
 				Optional:    true,
 				Type:        schema.TypeBool,
 				Deprecated:  "This field has been deprecated and will be deleted in subsequent versions.",
-				Description: "是否enable forced HTTPS，no longer use。",
+				Description: "是否enable forced HTTPS，无 longer 使用。",
 			},
 
 			"destination_ports": {
@@ -110,24 +110,24 @@ func ResourceTencentCloudTseCngwRoute() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "destination 端口 for Layer 4 matching。",
+				Description: "destination 端口 对于 Layer 4 matching。",
 			},
 
 			"headers": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "the headers of route。",
+				Description: "headers 的 路由。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "键 of header。",
+							Description: "键 的 头部。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "值 of header。",
+							Description: "值 的 头部。",
 						},
 					},
 				},
@@ -136,7 +136,7 @@ func ResourceTencentCloudTseCngwRoute() *schema.Resource {
 			"route_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "the ID route，unique in the instance。",
+				Description: "ID 路由，唯一 在 实例。",
 			},
 		},
 	}

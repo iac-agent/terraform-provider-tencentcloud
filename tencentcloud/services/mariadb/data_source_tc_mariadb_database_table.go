@@ -25,30 +25,30 @@ func DataSourceTencentCloudMariadbDatabaseTable() *schema.Resource {
 			"db_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "database 名称",
+				Description: "数据库 名称",
 			},
 
 			"table": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "table 名称",
+				Description: "表 名称",
 			},
 
 			"cols": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "column list。",
+				Description: "列 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"col": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "column 名称",
+							Description: "列 名称",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "column 类型",
+							Description: "列 类型",
 						},
 					},
 				},

@@ -23,7 +23,7 @@ func DataSourceTencentCloudMariadbDatabases() *schema.Resource {
 			"databases": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The database 列表 this instance。",
+				Description: "数据库 列表 此 实例。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"db_name": {

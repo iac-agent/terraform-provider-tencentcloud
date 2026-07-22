@@ -39,7 +39,7 @@ func ResourceTencentCloudMonitorGrafanaDnsConfig() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "DNS nameserver list。",
+				Description: "DNS nameserver 列表。",
 			},
 		},
 	}

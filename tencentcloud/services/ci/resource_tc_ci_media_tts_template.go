@@ -33,25 +33,25 @@ func ResourceTencentCloudCiMediaTtsTemplate() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The 模板名称 only supports `Chinese`，`English`，`numbers`，`_`，`-` and `*`。",
+				Description: "模板名称 仅 支持 `Chinese`，`English`，`numbers`，`_`，`-` 和 `*`。",
 			},
 
 			"mode": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Processing 模式，默认值 Asyc，Asyc (asynchronous composition)，Sync (synchronous composition)，When Asyc is selected，the codec only supports pcm。",
+				Description: "Processing 模式，默认值 Asyc，Asyc (asynchronous composition)，Sync (synchronous composition)，当 Asyc 是 selected， codec 仅 支持 pcm。",
 			},
 
 			"codec": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Audio 格式，default wav (synchronous)/pcm (asynchronous，wav，mp3，pcm。",
+				Description: "Audio 格式，默认值 wav (synchronous)/pcm (asynchronous，wav，mp3，pcm。",
 			},
 
 			"voice_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Timbre，the 默认值为 ruxue。",
+				Description: "Timbre， 默认值为 ruxue。",
 			},
 
 			"volume": {
@@ -63,7 +63,7 @@ func ResourceTencentCloudCiMediaTtsTemplate() *schema.Resource {
 			"speed": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Speech rate，the 默认值为 100，[50,200]。",
+				Description: "Speech 速率， 默认值为 100，[50,200]。",
 			},
 		},
 	}

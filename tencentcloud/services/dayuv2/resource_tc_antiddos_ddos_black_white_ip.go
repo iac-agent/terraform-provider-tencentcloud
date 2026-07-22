@@ -35,7 +35,7 @@ func ResourceTencentCloudAntiddosDdosBlackWhiteIp() *schema.Resource {
 			"ip": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ip list。",
+				Description: "ip 列表。",
 			},
 			"mask": {
 				Type:        schema.TypeInt,
@@ -46,7 +46,7 @@ func ResourceTencentCloudAntiddosDdosBlackWhiteIp() *schema.Resource {
 			"type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ip 类型，black: black ip list，white: white ip list。",
+				Description: "ip 类型，black: black ip 列表，white: white ip 列表。",
 			},
 		},
 	}

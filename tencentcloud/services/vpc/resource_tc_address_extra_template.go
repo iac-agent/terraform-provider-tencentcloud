@@ -53,12 +53,12 @@ func ResourceTencentCloudAddressExtraTemplate() *schema.Resource {
 						},
 					},
 				},
-				Description: "The 地址 information can contain 备注 and be presented by the IP，CIDR block or IP 地址 range。",
+				Description: "地址 信息 可以 contain 备注 和 是 presented 通过 IP，CIDR block 或 IP 地址 范围。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "标签 of the Addresses。",
+				Description: "标签 的 Addresses。",
 			},
 		},
 	}

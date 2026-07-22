@@ -18,17 +18,17 @@ func DataSourceTencentCloudTcaplusIdls() *schema.Resource {
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID TcaplusDB cluster to be query。",
+				Description: "ID TcaplusDB 集群 到 是 查询。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "File for saving results。",
+				Description: "File 对于 saving results。",
 			},
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A 列表 TcaplusDB table IDL. Each element 包含following attributes。",
+				Description: "A 列表 TcaplusDB 表 IDL. Each element 包含following attributes。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"idl_id": {

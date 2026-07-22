@@ -26,7 +26,7 @@ func ResourceTencentCloudSesVerifyDomain() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "域名 名称 requested for verification。",
+				Description: "域名 名称 requested 对于 verification。",
 			},
 		},
 	}

@@ -20,7 +20,7 @@ func DataSourceTencentCloudProjects() *schema.Resource {
 			"all_list": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "1 means to list all project，0 means to list visible project。",
+				Description: "1 表示 到 列表 all 项目，0 表示 到 列表 visible 项目。",
 			},
 
 			"projects": {
@@ -42,12 +42,12 @@ func DataSourceTencentCloudProjects() *schema.Resource {
 						"creator_uin": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Uin of 创建者",
+							Description: "Uin 的 创建者",
 						},
 						"project_info": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "描述 project。",
+							Description: "描述 项目。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,

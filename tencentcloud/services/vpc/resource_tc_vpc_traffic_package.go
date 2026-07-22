@@ -45,7 +45,7 @@ func ResourceTencentCloudVpcTrafficPackage() *schema.Resource {
 			"created_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Created time。",
+				Description: "Created 时间。",
 			},
 		},
 	}

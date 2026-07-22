@@ -29,7 +29,7 @@ func ResourceTencentCloudDlcAddUsersToWorkGroupAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "Information about working groups and users to be operated。",
+				Description: "Information about working groups 和 users 到 是 operated。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"work_group_id": {
@@ -43,7 +43,7 @@ func ResourceTencentCloudDlcAddUsersToWorkGroupAttachment() *schema.Resource {
 							Required:    true,
 							ForceNew:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "用户 ID which matches the Uin on the CAM side。",
+							Description: "用户 ID 其中 matches Uin 在 CAM side。",
 						},
 					},
 				},

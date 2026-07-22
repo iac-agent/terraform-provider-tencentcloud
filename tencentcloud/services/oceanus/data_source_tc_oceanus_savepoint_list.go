@@ -30,7 +30,7 @@ func DataSourceTencentCloudOceanusSavepointList() *schema.Resource {
 			//	Optional:    true,
 			//	Type:        schema.TypeList,
 			//	Elem:        &schema.Schema{Type: schema.TypeInt},
-			//	Description: "RecordTypes. 1 is triggering the savepoint, 2 is the checkpoint, and 3 is stopping the triggered savepoint",
+			//	Description: "RecordTypes. 1 是 triggering savepoint, 2 是 checkpoint, 和 3 是 stopping triggered savepoint",
 			//},
 			"savepoint": {
 				Computed:    true,
@@ -81,7 +81,7 @@ func DataSourceTencentCloudOceanusSavepointList() *schema.Resource {
 						"job_runtime_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Sequential ID running job instance注意：此字段可能返回 null，表示未找到有效值。",
+							Description: "Sequential ID running 作业 instance注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"description": {
 							Type:        schema.TypeString,
@@ -106,7 +106,7 @@ func DataSourceTencentCloudOceanusSavepointList() *schema.Resource {
 						"path_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Snapshot 路径 状态: 1=available; 2=unavailable;注意：此字段可能返回 null，表示未找到有效值。",
+							Description: "Snapshot 路径 状态: 1=可用; 2=unavailable;注意：此字段可能返回 null，表示未找到有效值。",
 						},
 					},
 				},

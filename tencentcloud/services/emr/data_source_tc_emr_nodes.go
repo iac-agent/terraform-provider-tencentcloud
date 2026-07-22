@@ -20,7 +20,7 @@ func DataSourceTencentCloudEmrNodes() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Cluster instance ID, the instance ID is as follows: emr-xxxxxxxx.",
+				Description: "Cluster 实例 ID, 实例 ID 是 作为 follows: emr-xxxxxxxx.",
 			},
 			"node_flag": {
 				Type:     schema.TypeString,
@@ -42,30 +42,30 @@ func DataSourceTencentCloudEmrNodes() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "all",
-				Description: "Resource type: Support all/host/pod, default is all.",
+				Description: "Resource 类型: Support all/主机/pod, 默认值 是 all.",
 			},
 			"offset": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
-				Description: "Page number, with a default value of 0, represents the first page.",
+				Description: "Page 数量, 使用 默认值 值 的 0, 表示 first 页面.",
 			},
 			"limit": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     100,
-				Description: "The number returned per page, the default value is 100, and the maximum value is 100.",
+				Description: "数量 返回 per 页面, 默认值 值 是 100, 和 最大 值 是 100.",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 			"nodes": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of node details.",
+				Description: "List 的 节点 details.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"app_id": {
@@ -76,22 +76,22 @@ func DataSourceTencentCloudEmrNodes() *schema.Resource {
 						"serial_no": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Serial number.",
+							Description: "Serial 数量.",
 						},
 						"order_no": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Machine instance ID.",
+							Description: "Machine 实例 ID.",
 						},
 						"wan_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The master node is bound to the Internet IP address.",
+							Description: "master 节点 是 bound 到 Internet IP 地址.",
 						},
 						"flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Node type. 0: common node; 1: master node; 2: core node; 3: task node.",
+							Description: "Node 类型. 0: common 节点; 1: master 节点; 2: core 节点; 3: 任务 节点.",
 						},
 						"spec": {
 							Type:        schema.TypeString,
@@ -101,67 +101,67 @@ func DataSourceTencentCloudEmrNodes() *schema.Resource {
 						"cpu_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of node cores.",
+							Description: "Number 的 节点 cores.",
 						},
 						"mem_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Node memory.",
+							Description: "Node 内存.",
 						},
 						"mem_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Node memory description.",
+							Description: "Node 内存 描述.",
 						},
 						"region_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The node is located in the region.",
+							Description: "节点 是 located 在 地域.",
 						},
 						"zone_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Zone where the node is located.",
+							Description: "Zone 其中 节点 是 located.",
 						},
 						"apply_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Application time.",
+							Description: "Application 时间.",
 						},
 						"free_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Release time.",
+							Description: "Release 时间.",
 						},
 						"disk_size": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Hard disk size.",
+							Description: "Hard 磁盘 大小.",
 						},
 						"name_tag": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Node description.",
+							Description: "Node 描述.",
 						},
 						"services": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Node deployment service.",
+							Description: "Node 部署 服务.",
 						},
 						"storage_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Disk type.",
+							Description: "Disk 类型.",
 						},
 						"root_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The size of the system disk.",
+							Description: "大小 的 系统 磁盘.",
 						},
 						"charge_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The type of payment.",
+							Description: "类型 的 payment.",
 						},
 						"cdb_ip": {
 							Type:        schema.TypeString,
@@ -171,37 +171,37 @@ func DataSourceTencentCloudEmrNodes() *schema.Resource {
 						"cdb_port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Database port.",
+							Description: "Database 端口.",
 						},
 						"hw_disk_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Hard disk capacity.",
+							Description: "Hard 磁盘 容量.",
 						},
 						"hw_disk_size_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Hard disk capacity description.",
+							Description: "Hard 磁盘 容量 描述.",
 						},
 						"hw_mem_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Memory capacity.",
+							Description: "Memory 容量.",
 						},
 						"hw_mem_size_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Memory capacity description.",
+							Description: "Memory 容量 描述.",
 						},
 						"expire_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Expiration time.",
+							Description: "Expiration 时间.",
 						},
 						"emr_resource_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Node resource ID.",
+							Description: "Node 资源 ID.",
 						},
 						"is_auto_renew": {
 							Type:        schema.TypeInt,
@@ -226,43 +226,43 @@ func DataSourceTencentCloudEmrNodes() *schema.Resource {
 						"destroyable": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether this node is destroyable, 1 can be destroyed, 0 is not destroyable.",
+							Description: "Whether 此 节点 是 destroyable, 1 可以 是 destroyed, 0 是 不 destroyable.",
 						},
 						"auto_flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether it is an autoscaling node, 0 is a normal node, and 1 is an autoscaling node.",
+							Description: "Whether 它 是 autoscaling 节点, 0 是 normal 节点, 和 1 是 autoscaling 节点.",
 						},
 						"hardware_resource_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource type, host/pod.",
+							Description: "Resource 类型, 主机/pod.",
 						},
 						"is_dynamic_spec": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Floating specifications, 1 yes, 0 no.",
+							Description: "Floating specifications, 1 yes, 0 无.",
 						},
 						"dynamic_pod_spec": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Floating specification value json string.",
+							Description: "Floating 规格 值 json 字符串.",
 						},
 						"support_modify_pay_mode": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether to support change billing type 1 Yes and 0 No.",
+							Description: "Whether 到 support change billing 类型 1 Yes 和 0 No.",
 						},
 						"cdb_node_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Database information.",
+							Description: "Database 信息.",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "DB instance.",
+										Description: "DB 实例.",
 									},
 									"ip": {
 										Type:        schema.TypeString,
@@ -272,47 +272,47 @@ func DataSourceTencentCloudEmrNodes() *schema.Resource {
 									"port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Database port.",
+										Description: "Database 端口.",
 									},
 									"mem_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Database memory specifications.",
+										Description: "Database 内存 specifications.",
 									},
 									"volume": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Database disk specifications.",
+										Description: "Database 磁盘 specifications.",
 									},
 									"service": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The service identity.",
+										Description: "服务 identity.",
 									},
 									"expire_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Expiration time.",
+										Description: "Expiration 时间.",
 									},
 									"apply_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Application time.",
+										Description: "Application 时间.",
 									},
 									"pay_type": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The type of payment.",
+										Description: "类型 的 payment.",
 									},
 									"expire_flag": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Expired id.",
+										Description: "Expired ID.",
 									},
 									"status": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Database status.",
+										Description: "Database 状态.",
 									},
 									"is_auto_renew": {
 										Type:        schema.TypeInt,
@@ -322,17 +322,17 @@ func DataSourceTencentCloudEmrNodes() *schema.Resource {
 									"serial_no": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Database string.",
+										Description: "Database 字符串.",
 									},
 									"zone_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Zone Id.",
+										Description: "Zone ID.",
 									},
 									"region_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Region id.",
+										Description: "Region ID.",
 									},
 								},
 							},
@@ -340,23 +340,23 @@ func DataSourceTencentCloudEmrNodes() *schema.Resource {
 						"mc_multi_disks": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Multi-cloud disk.",
+							Description: "Multi-云 磁盘.",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The number of cloud disks of this type.",
+										Description: "数量 的 云 disks 的 此 类型.",
 									},
 									"type": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Disk type.",
+										Description: "Disk 类型.",
 									},
 									"volume": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The size of the cloud disk.",
+										Description: "大小 的 云 磁盘.",
 									},
 								},
 							},
@@ -364,18 +364,18 @@ func DataSourceTencentCloudEmrNodes() *schema.Resource {
 						"tags": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "The label of the node binding.",
+							Description: "label 的 节点 binding.",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag key.",
+										Description: "Tag 键.",
 									},
 									"tag_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag value.",
+										Description: "Tag 值.",
 									},
 								},
 							},

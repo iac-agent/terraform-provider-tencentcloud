@@ -25,7 +25,7 @@ func ResourceTencentCloudMysqlRenewDbInstanceOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "需要续费的实例ID，格式为：cdb-c1nl9rpv，与云数据库控制台页面显示的实例ID相同，可以使用【查询实例列表】(https://cloud.tencent.com/document/api/236/15872)。",
+				Description: "需要续费的实例ID，格式为：cdb-c1nl9rpv，与云数据库控制台页面显示的实例ID相同，可以使用【查询实例列表】(https://云.tencent.com/document/api/236/15872)。",
 			},
 
 			"time_span": {

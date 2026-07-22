@@ -26,13 +26,13 @@ func DataSourceTencentCloudWedataTriggerTaskCode() *schema.Resource {
 			"task_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "task Id。",
+				Description: "任务 ID。",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Get task 代码 results。",
+				Description: "Get 任务 代码 results。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"code_info": {
@@ -43,7 +43,7 @@ func DataSourceTencentCloudWedataTriggerTaskCode() *schema.Resource {
 						"code_file_size": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "代码 file size，in kilobytes (KB)。",
+							Description: "代码 文件 大小，在 kilobytes (KB)。",
 						},
 					},
 				},

@@ -32,14 +32,14 @@ func ResourceTencentCloudAPIGatewayUsagePlanAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID service。",
+				Description: "ID 服务。",
 			},
 			"environment": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(API_GATEWAY_SERVICE_ENVS),
-				Description:  "The environment to be bound. 有效值：`test`，`prepub`，`release`。",
+				Description:  "环境 到 是 bound. 有效值：`测试`，`prepub`，`release`。",
 			},
 			"bind_type": {
 				Type:         schema.TypeString,
@@ -53,14 +53,14 @@ func ResourceTencentCloudAPIGatewayUsagePlanAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "ID API. This parameter will be 必填 when `bind_type` is `API`。",
+				Description: "ID API. 此 参数 将 是 必填 当 `bind_type` 是 `API`。",
 			},
 			"access_key_ids": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "数组 键 IDs to be bound。",
+				Description: "数组 键 IDs 到 是 bound。",
 			},
 		},
 	}

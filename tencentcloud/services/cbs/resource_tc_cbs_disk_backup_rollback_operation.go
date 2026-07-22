@@ -24,18 +24,18 @@ func ResourceTencentCloudCbsDiskBackupRollbackOperation() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Cloud disk backup point ID。",
+				Description: "Cloud 磁盘 备份 point ID。",
 			},
 			"disk_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Cloud disk backup point original cloud disk ID。",
+				Description: "Cloud 磁盘 备份 point original 云 磁盘 ID。",
 			},
 			"is_rollback_completed": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "是否rollback is completed. `true` meaing rollback completed，`false` meaning still rollbacking。",
+				Description: "是否rollback 是 completed. `true` meaing rollback completed，`false` meaning still rollbacking。",
 			},
 		},
 	}

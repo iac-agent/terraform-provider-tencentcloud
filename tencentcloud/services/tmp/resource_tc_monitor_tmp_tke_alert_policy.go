@@ -36,7 +36,7 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Required:    true,
-				Description: "Alarm notification channels。",
+				Description: "Alarm 通知 channels。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -47,7 +47,7 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 						"rules": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "A 列表 rules。",
+							Description: "A 列表 规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
@@ -74,7 +74,7 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 												"value": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "值 of map。",
+													Description: "值 的 map。",
 												},
 											},
 										},
@@ -87,17 +87,17 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 									"for": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Time of duration。",
+										Description: "Time 的 时长。",
 									},
 									"describe": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "A 描述 rule。",
+										Description: "A 描述 规则。",
 									},
 									"annotations": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Refer to annotations in prometheus rule。",
+										Description: "Refer 到 annotations 在 prometheus 规则。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
@@ -108,7 +108,7 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 												"value": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "值 of map。",
+													Description: "值 的 map。",
 												},
 											},
 										},
@@ -116,7 +116,7 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 									"rule_state": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Alarm rule 状态",
+										Description: "Alarm 规则 状态",
 									},
 								},
 							},
@@ -124,18 +124,18 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 						"id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "告警策略 ID Note: This field may return null，indicating that a valid 值 could not be retrieved。",
+							Description: "告警策略 ID 注意: 此 字段 可能 返回 null，indicating 该 有效 值 could 不 是 retrieved。",
 						},
 						"template_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "If the alarm is sent from a template，the TemplateId is the template id。",
+							Description: "如果 告警 是 sent 从 template， TemplateId 是 template ID。",
 						},
 						"notification": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Alarm channels，which may be returned using null in the template。",
+							Description: "Alarm channels，其中 可能 是 返回 使用 null 在 template。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"enabled": {
@@ -146,18 +146,18 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 									"type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The channel 类型，which 默认为 amp，supports the following `amp`，`webhook`，`alertmanager`。",
+										Description: "channel 类型，其中 默认为 amp，支持 following `amp`，`webhook`，`alertmanager`。",
 									},
 									"web_hook": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "If 类型 is webhook，the field 为必填项. Note: This field may return null，indicating that a valid 值 could not be retrieved。",
+										Description: "如果 类型 是 webhook， 字段 为必填项. 注意: 此 字段 可能 返回 null，indicating 该 有效 值 could 不 是 retrieved。",
 									},
 									"alert_manager": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "If 类型 is alertmanager，the field 为必填项. Note: This field may return null，indicating that a valid 值 could not be retrieved.。",
+										Description: "如果 类型 是 alertmanager， 字段 为必填项. 注意: 此 字段 可能 返回 null，indicating 该 有效 值 could 不 是 retrieved.。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"url": {
@@ -168,12 +168,12 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 												"cluster_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Alertmanager is deployed in the 集群类型 Note: This field may return null，indicating that a valid 值 could not be retrieved。",
+													Description: "Alertmanager 是 deployed 在 集群类型 注意: 此 字段 可能 返回 null，indicating 该 有效 值 could 不 是 retrieved。",
 												},
 												"cluster_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The ID cluster where the alertmanager is deployed. Note: This field may return null，indicating that a valid 值 could not be retrieved。",
+													Description: "ID 集群 其中 alertmanager 是 deployed. 注意: 此 字段 可能 返回 null，indicating 该 有效 值 could 不 是 retrieved。",
 												},
 											},
 										},
@@ -181,12 +181,12 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 									"repeat_interval": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Convergence time。",
+										Description: "Convergence 时间。",
 									},
 									"time_range_start": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The time from which it takes effect。",
+										Description: "时间 从 其中 它 takes effect。",
 									},
 									"time_range_end": {
 										Type:        schema.TypeString,
@@ -199,7 +199,7 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Optional:    true,
-										Description: "Alarm notification method. At present，there are SMS，EMAIL，CALL，WECHAT methods。",
+										Description: "Alarm 通知 方法. At present，there 是 SMS，EMAIL，CALL，WECHAT methods。",
 									},
 									"receiver_groups": {
 										Type: schema.TypeSet,
@@ -215,7 +215,7 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 											Type: schema.TypeInt,
 										},
 										Optional:    true,
-										Description: "Telephone alarm sequence。",
+										Description: "Telephone 告警 sequence。",
 									},
 									"phone_circle_times": {
 										Type:        schema.TypeInt,
@@ -225,12 +225,12 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 									"phone_inner_interval": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Telephone alarm wheel intervals. 单位：Seconds。",
+										Description: "Telephone 告警 wheel intervals. 单位：Seconds。",
 									},
 									"phone_circle_interval": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Effective end timeTelephone alarm wheel interval. 单位：Seconds。",
+										Description: "Effective end timeTelephone 告警 wheel 间隔. 单位：Seconds。",
 									},
 									"phone_arrive_notice": {
 										Type:        schema.TypeBool,
@@ -248,7 +248,7 @@ func ResourceTencentCloudMonitorTmpTkeAlertPolicy() *schema.Resource {
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "If the alarm policy is derived from the CRD resource definition of the 用户 cluster，the 集群 ID is the cluster ID to which it belongs。",
+							Description: "如果 告警 策略 是 derived 从 CRD 资源 definition 的 用户 集群， 集群 ID 是 集群 ID 到 其中 它 belongs。",
 						},
 					},
 				},

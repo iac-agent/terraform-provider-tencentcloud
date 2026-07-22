@@ -22,14 +22,14 @@ func ResourceTencentCloudVpcResumeSnapshotInstance() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Snapshot policy Id。",
+				Description: "Snapshot 策略 ID。",
 			},
 
 			"snapshot_file_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Snapshot file Id。",
+				Description: "Snapshot 文件 ID。",
 			},
 
 			"instance_id": {

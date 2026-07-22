@@ -28,13 +28,13 @@ func ResourceTencentCloudApmSampleConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Business system ID。",
+				Description: "Business 系统 ID。",
 			},
 
 			"sample_rate": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Sampling rate。",
+				Description: "Sampling 速率。",
 			},
 
 			"service_name": {
@@ -47,7 +47,7 @@ func ResourceTencentCloudApmSampleConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Sampling rule 名称",
+				Description: "Sampling 规则 名称",
 			},
 
 			"tags": {
@@ -79,7 +79,7 @@ func ResourceTencentCloudApmSampleConfig() *schema.Resource {
 			"operation_type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "0: exact match (default); 1: prefix match; 2: suffix match。",
+				Description: "0: exact match (默认值); 1: prefix match; 2: suffix match。",
 			},
 		},
 	}

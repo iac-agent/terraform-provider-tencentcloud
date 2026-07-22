@@ -19,7 +19,7 @@ func DataSourceTencentCloudVpcProductQuota() *schema.Resource {
 			"product": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The 名称 network product to be queried. The products that can be queried are:vpc，ccn，vpn，dc，dfw，clb，eip。",
+				Description: "名称 网络 product 到 是 queried. products 该 可以 是 queried 是:vpc，ccn，vpn，dc，dfw，clb，eip。",
 			},
 
 			"product_quota_set": {
@@ -31,7 +31,7 @@ func DataSourceTencentCloudVpcProductQuota() *schema.Resource {
 						"quota_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Quota Id。",
+							Description: "Quota ID。",
 						},
 						"quota_name": {
 							Type:        schema.TypeString,

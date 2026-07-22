@@ -282,7 +282,7 @@ func ResourceTencentCloudClsAlarm() *schema.Resource {
 			"classifications": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "报警分类信息图。键必须匹配正则表达式 `^[a-z]([a-z0-9_]{0,49})$`，值长度不能超过 200 个字符。最多 20 个条目。",
+				Description: "报警分类信息图。键必须匹配正则表达式 `^[-z]([-z0-9_]{0,49})$`，值长度不能超过 200 个字符。最多 20 个条目。",
 			},
 
 			"tags": {

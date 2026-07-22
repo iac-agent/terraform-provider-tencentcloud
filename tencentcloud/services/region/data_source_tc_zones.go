@@ -18,19 +18,19 @@ func DataSourceTencentCloudZones() *schema.Resource {
 			"product": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Product 名称 to query，e.g. `cvm`. Use `tencentcloud_products` to get available product names。",
+				Description: "Product 名称 到 查询，e.g. `cvm`. Use `tencentcloud_products` 到 get 可用 product names。",
 			},
 
 			"scene": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Scene control parameter. `0` or not set means do not query 可选 business whitelist; `1` means query 可选 business whitelist。",
+				Description: "Scene control 参数. `0` 或 不 集合 表示 do 不 查询 可选 business whitelist; `1` 表示 查询 可选 business whitelist。",
 			},
 
 			"zone_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "可用区 list。",
+				Description: "可用区 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"zone": {
@@ -51,7 +51,7 @@ func DataSourceTencentCloudZones() *schema.Resource {
 						"zone_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "可用区 状态，`AVAILABLE` or `UNAVAILABLE`。",
+							Description: "可用区 状态，`AVAILABLE` 或 `UNAVAILABLE`。",
 						},
 						"parent_zone": {
 							Type:        schema.TypeString,

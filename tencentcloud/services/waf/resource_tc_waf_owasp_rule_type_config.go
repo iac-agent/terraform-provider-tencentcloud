@@ -42,21 +42,21 @@ func ResourceTencentCloudWafOwaspRuleTypeConfig() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "The switch 状态 rule 类型 有效值：0 (已禁用)，1 (已启用)。",
+				Description: "switch 状态 规则 类型 有效值：0 (已禁用)，1 (已启用)。",
 			},
 
 			"rule_type_action": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Protection 模式 of the rule 类型 有效值：0 (observation)，1 (intercept)。",
+				Description: "Protection 模式 的 规则 类型 有效值：0 (observation)，1 (intercept)。",
 			},
 
 			"rule_type_level": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Protection 级别 of the rule. 有效值：100 (loose)，200 (normal)，300 (strict)，400 (ultra-strict)。",
+				Description: "Protection 级别 的 规则. 有效值：100 (loose)，200 (normal)，300 (strict)，400 (ultra-strict)。",
 			},
 
 			// computed
@@ -81,13 +81,13 @@ func ResourceTencentCloudWafOwaspRuleTypeConfig() *schema.Resource {
 			"total_rule": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "指定all rules under the rule 类型 always。",
+				Description: "指定all 规则 under 规则 类型 always。",
 			},
 
 			"active_rule": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "表示total 数量 rules 已启用 under the rule 类型",
+				Description: "表示total 数量 规则 已启用 under 规则 类型",
 			},
 		},
 	}

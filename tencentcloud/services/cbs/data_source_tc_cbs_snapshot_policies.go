@@ -21,12 +21,12 @@ func DataSourceTencentCloudCbsSnapshotPolicies() *schema.Resource {
 			"snapshot_policy_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID snapshot policy to be queried。",
+				Description: "ID 快照 策略 到 是 queried。",
 			},
 			"snapshot_policy_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "名称 snapshot policy to be queried。",
+				Description: "名称 快照 策略 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -36,51 +36,51 @@ func DataSourceTencentCloudCbsSnapshotPolicies() *schema.Resource {
 			"snapshot_policy_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A 列表 snapshot policy. Each element 包含following attributes:",
+				Description: "A 列表 快照 策略. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"snapshot_policy_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID snapshot policy。",
+							Description: "ID 快照 策略。",
 						},
 						"snapshot_policy_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 snapshot policy。",
+							Description: "名称 快照 策略。",
 						},
 						"repeat_weekdays": {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeInt},
 							Computed:    true,
-							Description: "Trigger days of periodic snapshot。",
+							Description: "Trigger days 的 periodic 快照。",
 						},
 						"repeat_hours": {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeInt},
 							Computed:    true,
-							Description: "Trigger hours of periodic snapshot。",
+							Description: "Trigger hours 的 periodic 快照。",
 						},
 						"retention_days": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Retention days of the snapshot。",
+							Description: "Retention days 的 快照。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "状态 snapshot policy。",
+							Description: "状态 快照 策略。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of the snapshot policy。",
+							Description: "创建时间 的 快照 策略。",
 						},
 						"attached_storage_ids": {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Computed:    true,
-							Description: "Storage IDs that the snapshot policy attached。",
+							Description: "Storage IDs 该 快照 策略 attached。",
 						},
 					},
 				},

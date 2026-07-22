@@ -19,7 +19,7 @@ func DataSourceTencentCloudVpcSnapshotFiles() *schema.Resource {
 			"business_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Business 类型，currently supports security group:securitygroup。",
+				Description: "Business 类型，currently 支持 安全 组:securitygroup。",
 			},
 
 			"instance_id": {
@@ -31,25 +31,25 @@ func DataSourceTencentCloudVpcSnapshotFiles() *schema.Resource {
 			"start_date": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Start date in the 格式 %Y-%m-%d %H:%M:%S。",
+				Description: "Start date 在 格式 %Y-%m-%d %H:%M:%S。",
 			},
 
 			"end_date": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "End date in the 格式 %Y-%m-%d %H:%M:%S。",
+				Description: "End date 在 格式 %Y-%m-%d %H:%M:%S。",
 			},
 
 			"snapshot_file_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "snap shot file set。",
+				Description: "snap shot 文件 集合。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"snapshot_policy_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Snapshot Policy Id。",
+							Description: "Snapshot Policy ID。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
@@ -59,17 +59,17 @@ func DataSourceTencentCloudVpcSnapshotFiles() *schema.Resource {
 						"snapshot_file_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "snap shot file id。",
+							Description: "snap shot 文件 ID。",
 						},
 						"backup_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "backup time。",
+							Description: "备份 时间。",
 						},
 						"operator": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Uin of 操作者",
+							Description: "Uin 的 操作者",
 						},
 					},
 				},

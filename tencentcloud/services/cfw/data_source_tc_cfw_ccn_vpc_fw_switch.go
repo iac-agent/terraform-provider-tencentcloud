@@ -24,7 +24,7 @@ func DataSourceTencentCloudCfwCcnVpcFwSwitch() *schema.Resource {
 			"interconnect_pairs": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Interconnect pair configuration。",
+				Description: "Interconnect pair 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"group_a": {
@@ -41,22 +41,22 @@ func DataSourceTencentCloudCfwCcnVpcFwSwitch() *schema.Resource {
 									"instance_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "实例类型 such as VPC or DIRECTCONNECT。",
+										Description: "实例类型 such 作为 VPC 或 DIRECTCONNECT。",
 									},
 									"instance_region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "地域 where the instance is located。",
+										Description: "地域 其中 实例 是 located。",
 									},
 									"access_cidr_mode": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Network segment 模式 for accessing firewall: 0-no access，1-access all network segments associated with the instance，2-access 用户-defined network segments。",
+										Description: "Network segment 模式 对于 accessing firewall: 0-无 访问，1-访问 all 网络 segments associated 使用 实例，2-访问 用户-defined 网络 segments。",
 									},
 									"access_cidr_list": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "列表 network segments for accessing firewall。",
+										Description: "列表 网络 segments 对于 accessing firewall。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -78,22 +78,22 @@ func DataSourceTencentCloudCfwCcnVpcFwSwitch() *schema.Resource {
 									"instance_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "实例类型 such as VPC or DIRECTCONNECT。",
+										Description: "实例类型 such 作为 VPC 或 DIRECTCONNECT。",
 									},
 									"instance_region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "地域 where the instance is located。",
+										Description: "地域 其中 实例 是 located。",
 									},
 									"access_cidr_mode": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Network segment 模式 for accessing firewall: 0-no access，1-access all network segments associated with the instance，2-access 用户-defined network segments。",
+										Description: "Network segment 模式 对于 accessing firewall: 0-无 访问，1-访问 all 网络 segments associated 使用 实例，2-访问 用户-defined 网络 segments。",
 									},
 									"access_cidr_list": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "列表 network segments for accessing firewall。",
+										Description: "列表 网络 segments 对于 accessing firewall。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -104,7 +104,7 @@ func DataSourceTencentCloudCfwCcnVpcFwSwitch() *schema.Resource {
 						"interconnect_mode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Interconnect mode: \"CrossConnect\": cross interconnect (each instance in group A interconnects with each instance in group B), \"FullMesh\": full mesh (group A content is identical to group B, equivalent to pairwise interconnection within the group).",
+							Description: "Interconnect 模式: \"CrossConnect\": cross interconnect (each 实例 在 组 A interconnects 使用 each 实例 在 组 B), \"FullMesh\": full mesh (组 A 内容 是 identical 到 组 B, equivalent 到 pairwise interconnection within 组).",
 						},
 					},
 				},

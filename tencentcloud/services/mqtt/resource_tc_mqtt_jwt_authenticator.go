@@ -34,13 +34,13 @@ func ResourceTencentCloudMqttJwtAuthenticator() *schema.Resource {
 			"algorithm": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Algorithm. hmac-based，public-键",
+				Description: "Algorithm. hmac-based，公有-键",
 			},
 
 			"from": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Pass the 键 of JWT when connecting the device; 用户名 - passed using the 用户名 field; 密码 - Pass using 密码 field。",
+				Description: "Pass 键 的 JWT 当 connecting device; 用户名 - passed 使用 用户名 字段; 密码 - Pass 使用 密码 字段。",
 			},
 
 			"secret": {

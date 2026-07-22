@@ -30,7 +30,7 @@ func DataSourceTencentCloudTeoConfigGroupVersions() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filtering condition. The maximum 值 of Filters.Values is 20. If this parameter is not specified，all 版本 information for the selected configuration group is returned. Detailed filtering conditions: 版本-id (Filter by 版本 ID)。",
+				Description: "Filtering condition. 最大 值 的 Filters.Values 是 20. 如果 此 参数 是 不 指定，all 版本 信息 对于 selected 配置 组 是 返回. Detailed filtering conditions: 版本-ID (过滤器 通过 版本 ID)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -41,7 +41,7 @@ func DataSourceTencentCloudTeoConfigGroupVersions() *schema.Resource {
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "值 of the filtered field。",
+							Description: "值 的 filtered 字段。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -49,7 +49,7 @@ func DataSourceTencentCloudTeoConfigGroupVersions() *schema.Resource {
 						"fuzzy": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "是否enable fuzzy query。",
+							Description: "是否enable fuzzy 查询。",
 						},
 					},
 				},
@@ -58,7 +58,7 @@ func DataSourceTencentCloudTeoConfigGroupVersions() *schema.Resource {
 			"config_group_version_infos": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "版本 information list。",
+				Description: "版本 信息 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"version_id": {
@@ -79,7 +79,7 @@ func DataSourceTencentCloudTeoConfigGroupVersions() *schema.Resource {
 						"group_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Configuration group 类型 有效值：l7_acceleration (L7 acceleration configuration group)，edge_functions (Edge function configuration group)。",
+							Description: "Configuration 组 类型 有效值：l7_acceleration (L7 acceleration 配置 组)，edge_functions (Edge 函数 配置 组)。",
 						},
 						"description": {
 							Type:        schema.TypeString,
@@ -89,12 +89,12 @@ func DataSourceTencentCloudTeoConfigGroupVersions() *schema.Resource {
 						"status": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "版本 状态 有效值：creating (Being created)，inactive (Not effective)，活跃 (Effective)。",
+							Description: "版本 状态 有效值：creating (Being 创建)，inactive (Not effective)，活跃 (Effective)。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "版本 创建时间. The 时间格式 follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC)。",
+							Description: "版本 创建时间. 时间格式 follows ISO 8601 standard 和 是 represented 在 Coordinated Universal Time (UTC)。",
 						},
 					},
 				},

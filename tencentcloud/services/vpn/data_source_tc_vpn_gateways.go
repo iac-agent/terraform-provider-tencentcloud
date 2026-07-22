@@ -25,23 +25,23 @@ func DataSourceTencentCloudVpnGateways() *schema.Resource {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 60),
-				Description:  "名称 VPN gateway. The length of character is limited to 1-60。",
+				Description:  "名称 VPN 网关. 长度 的 character 是 limited 到 1-60。",
 			},
 			"id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID VPN gateway。",
+				Description: "ID VPN 网关。",
 			},
 			"public_ip_address": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateIp,
-				Description:  "Public ip 地址 of the VPN gateway。",
+				Description:  "Public ip 地址 的 VPN 网关。",
 			},
 			"zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "可用区 of the VPN gateway。",
+				Description: "可用区 的 VPN 网关。",
 			},
 			"vpc_id": {
 				Type:        schema.TypeString,
@@ -51,7 +51,7 @@ func DataSourceTencentCloudVpnGateways() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "标签 of the VPN gateway to be queried。",
+				Description: "标签 的 VPN 网关 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -63,18 +63,18 @@ func DataSourceTencentCloudVpnGateways() *schema.Resource {
 			"gateway_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information 列表 the dedicated gateways。",
+				Description: "Information 列表 dedicated gateways。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID VPN gateway。",
+							Description: "ID VPN 网关。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 VPN gateway。",
+							Description: "名称 VPN 网关。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
@@ -84,57 +84,57 @@ func DataSourceTencentCloudVpnGateways() *schema.Resource {
 						"bandwidth": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The maximum public network output bandwidth of VPN gateway (unit: Mbps)。",
+							Description: "最大 公有 网络 output 带宽 的 VPN 网关 (单位: Mbps)。",
 						},
 						"public_ip_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Public ip of the VPN gateway。",
+							Description: "Public ip 的 VPN 网关。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "类型 gateway instance。",
+							Description: "类型 网关 实例。",
 						},
 						"state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "State of the VPN gateway。",
+							Description: "State 的 VPN 网关。",
 						},
 						"prepaid_renew_flag": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Flag 表示是否renew or not。",
+							Description: "Flag 表示是否renew 或 不。",
 						},
 						"charge_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Charge 类型 VPN gateway。",
+							Description: "Charge 类型 VPN 网关。",
 						},
 						"expired_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "过期时间 of the VPN gateway when 计费类型 is `PREPAID`。",
+							Description: "过期时间 的 VPN 网关 当 计费类型 是 `PREPAID`。",
 						},
 						"is_address_blocked": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "表示是否ip 地址 is blocked。",
+							Description: "表示是否ip 地址 是 blocked。",
 						},
 						"new_purchase_plan": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The plan of new purchase。",
+							Description: "plan 的 new purchase。",
 						},
 						"restrict_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Restrict state of VPN gateway。",
+							Description: "Restrict state 的 VPN 网关。",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "可用区 of the VPN gateway。",
+							Description: "可用区 的 VPN 网关。",
 						},
 						"tags": {
 							Type:        schema.TypeMap,
@@ -144,7 +144,7 @@ func DataSourceTencentCloudVpnGateways() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of the VPN gateway。",
+							Description: "创建时间 的 VPN 网关。",
 						},
 					},
 				},

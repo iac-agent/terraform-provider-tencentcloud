@@ -19,7 +19,7 @@ func DataSourceTencentCloudCcnCrossBorderCompliance() *schema.Resource {
 			"service_provider": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Exact match) service provider，可选 值: 'UNICOM'。",
+				Description: "(Exact match) 服务 provider，可选 值: 'UNICOM'。",
 			},
 
 			"compliance_id": {
@@ -31,7 +31,7 @@ func DataSourceTencentCloudCcnCrossBorderCompliance() *schema.Resource {
 			"company": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Fuzzy query) 公司名称",
+				Description: "(Fuzzy 查询) 公司名称",
 			},
 
 			"uniform_social_credit_code": {
@@ -43,19 +43,19 @@ func DataSourceTencentCloudCcnCrossBorderCompliance() *schema.Resource {
 			"legal_person": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Fuzzy query) legal representative。",
+				Description: "(Fuzzy 查询) legal representative。",
 			},
 
 			"issuing_authority": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Fuzzy query) Issuing authority。",
+				Description: "(Fuzzy 查询) Issuing authority。",
 			},
 
 			"business_address": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Fuzzy query) business license 地址",
+				Description: "(Fuzzy 查询) business license 地址",
 			},
 
 			"post_code": {
@@ -67,25 +67,25 @@ func DataSourceTencentCloudCcnCrossBorderCompliance() *schema.Resource {
 			"manager": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Fuzzy query) Person in charge。",
+				Description: "(Fuzzy 查询) Person 在 charge。",
 			},
 
 			"manager_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Exact query) ID 数量 the person in charge。",
+				Description: "(Exact 查询) ID 数量 person 在 charge。",
 			},
 
 			"manager_address": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Fuzzy query) ID card 地址 of the person in charge。",
+				Description: "(Fuzzy 查询) ID card 地址 的 person 在 charge。",
 			},
 
 			"manager_telephone": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Exact match) contact 数量 the person in charge。",
+				Description: "(Exact match) contact 数量 person 在 charge。",
 			},
 
 			"email": {
@@ -97,13 +97,13 @@ func DataSourceTencentCloudCcnCrossBorderCompliance() *schema.Resource {
 			"service_start_date": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Exact match) service start date，such as: '2020-07-28'。",
+				Description: "(Exact match) 服务 start date，such 作为: '2020-07-28'。",
 			},
 
 			"service_end_date": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "(Exact match) service end date，such as: '2020-07-28'。",
+				Description: "(Exact match) 服务 end date，such 作为: '2020-07-28'。",
 			},
 
 			"state": {

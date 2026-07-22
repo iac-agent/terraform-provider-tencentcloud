@@ -32,19 +32,19 @@ func ResourceTencentCloudSsmSecret() *schema.Resource {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "名称 secret which cannot be repeated in the same 地域 The maximum length is 128 bytes. The 名称 can only contain English letters，numbers，underscore and hyphen '-'. The first character must be a letter or number。",
+				Description: "名称 secret 其中 不能 是 repeated 在 same 地域 最大 长度 是 128 bytes. 名称 可以 仅 contain English letters，numbers，underscore 和 hyphen '-'. first character 必须 是 letter 或 数量。",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "描述 secret. The maximum is 2048 bytes。",
+				Description: "描述 secret. 最大 是 2048 bytes。",
 			},
 			"kms_key_id": {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Optional:    true,
 				Computed:    true,
-				Description: "KMS keyId 用于encrypt secret. If it is empty，it means that the CMK created by SSM for you by 默认为 用于encryption. You can also 指定KMS CMK created by yourself in the same 地域 for encryption。",
+				Description: "KMS keyId 用于encrypt secret. 如果 它 是 空，它 表示 该 CMK 创建 通过 SSM 对于 您 通过 默认为 用于encryption. You 可以 also 指定KMS CMK 创建 通过 yourself 在 same 地域 对于 加密。",
 			},
 			"secret_type": {
 				Type:        schema.TypeInt,
@@ -55,12 +55,12 @@ func ResourceTencentCloudSsmSecret() *schema.Resource {
 			"additional_config": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Additional 配置 for specific secret types in JSON string 格式",
+				Description: "Additional 配置 对于 特定 secret types 在 JSON 字符串 格式",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "标签 of secret。",
+				Description: "标签 的 secret。",
 			},
 			"is_enabled": {
 				Type:        schema.TypeBool,
@@ -72,7 +72,7 @@ func ResourceTencentCloudSsmSecret() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
-				Description: "指定scheduled deletion date. 默认值为 `0` that means to delete immediately. 1-30 means the 数量 days reserved，completely deleted after this date。",
+				Description: "指定scheduled deletion date. 默认值为 `0` 该 表示 到 delete immediately. 1-30 表示 数量 days reserved，completely 删除 after 此 date。",
 			},
 			"status": {
 				Type:        schema.TypeString,

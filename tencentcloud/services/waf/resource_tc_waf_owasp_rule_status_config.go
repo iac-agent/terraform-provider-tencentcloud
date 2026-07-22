@@ -34,7 +34,7 @@ func ResourceTencentCloudWafOwaspRuleStatusConfig() *schema.Resource {
 			"rule_status": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Rule switch. 有效值：0 (已禁用)，1 (已启用)，2 (observation only)。",
+				Description: "Rule switch. 有效值：0 (已禁用)，1 (已启用)，2 (observation 仅)。",
 			},
 
 			"rule_id": {
@@ -48,14 +48,14 @@ func ResourceTencentCloudWafOwaspRuleStatusConfig() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "If reverse requires the input of data 类型",
+				Description: "如果 reverse requires input 的 数据 类型",
 			},
 
 			"reason": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Reason for modification. 有效值：0: none (compatibility record is empty). 1: avoid false positives due to business characteristics. 2: reporting of rule-based false positives. 3: gray release of core business rules. 4: others。",
+				Description: "Reason 对于 modification. 有效值：0: none (compatibility 记录 是 空). 1: avoid false positives due 到 business characteristics. 2: 报告 的 规则-based false positives. 3: gray release 的 core business 规则. 4: others。",
 			},
 
 			// computed
@@ -74,7 +74,7 @@ func ResourceTencentCloudWafOwaspRuleStatusConfig() *schema.Resource {
 			"level": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Protection 级别 of the rule. 有效值：100 (loose)，200 (normal)，300 (strict)，400 (ultra-strict)。",
+				Description: "Protection 级别 的 规则. 有效值：100 (loose)，200 (normal)，300 (strict)，400 (ultra-strict)。",
 			},
 
 			"vul_level": {
@@ -86,7 +86,7 @@ func ResourceTencentCloudWafOwaspRuleStatusConfig() *schema.Resource {
 			"locked": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "是否user is locked。",
+				Description: "是否user 是 locked。",
 			},
 		},
 	}

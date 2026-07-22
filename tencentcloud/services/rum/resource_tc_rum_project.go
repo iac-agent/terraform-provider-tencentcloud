@@ -28,49 +28,49 @@ func ResourceTencentCloudRumProject() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Name of the created project (required and up to 200 characters).",
+				Description: "Name 的 创建 项目 (必填 和 up 到 200 字符).",
 			},
 
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Business system ID.",
+				Description: "Business 系统 ID.",
 			},
 
 			"rate": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project sampling rate (greater than or equal to 0).",
+				Description: "Project sampling 速率 (greater 比 或 equal 到 0).",
 			},
 
 			"enable_url_group": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Whether to enable aggregation.",
+				Description: "Whether 到 启用 aggregation.",
 			},
 
 			"type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project type (valid values: `web`, `mp`, `android`, `ios`, `node`, `hippy`, `weex`, `viola`, `rn`).",
+				Description: "Project 类型 (有效 值: `web`, `mp`, `android`, `ios`, `节点`, `hippy`, `weex`, `viola`, `rn`).",
 			},
 
 			"repo": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Repository address of the project (optional and up to 256 characters).",
+				Description: "Repository 地址 的 项目 (可选 和 up 到 256 字符).",
 			},
 
 			"url": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Webpage address of the project (optional and up to 256 characters).",
+				Description: "Webpage 地址 的 项目 (可选 和 up 到 256 字符).",
 			},
 
 			"desc": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Description of the created project (optional and up to 1,000 characters).",
+				Description: "Description 的 创建 项目 (可选 和 up 到 1,000 字符).",
 			},
 
 			"creator": {
@@ -88,31 +88,31 @@ func ResourceTencentCloudRumProject() *schema.Resource {
 			"key": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Unique project key (12 characters).",
+				Description: "Unique 项目 键 (12 字符).",
 			},
 
 			"instance_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Instance name.",
+				Description: "实例 名称.",
 			},
 
 			"instance_key": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Instance key.",
+				Description: "实例 键.",
 			},
 
 			"is_star": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Starred status. `1`: yes; `0`: no.",
+				Description: "Starred 状态. `1`: yes; `0`: 无.",
 			},
 
 			"project_status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Project status (`1`: Creating; `2`: Running; `3`: Abnormal; `4`: Restarting; `5`: Stopping; `6`: Stopped; `7`: Terminating; `8`: Terminated).",
+				Description: "Project 状态 (`1`: Creating; `2`: Running; `3`: Abnormal; `4`: Restarting; `5`: Stopping; `6`: Stopped; `7`: Terminating; `8`: Terminated).",
 			},
 		},
 	}

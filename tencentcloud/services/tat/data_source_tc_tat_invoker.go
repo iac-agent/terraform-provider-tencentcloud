@@ -38,7 +38,7 @@ func DataSourceTencentCloudTatInvoker() *schema.Resource {
 			"invoker_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Invoker information。",
+				Description: "Invoker 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"invoker_id": {
@@ -69,7 +69,7 @@ func DataSourceTencentCloudTatInvoker() *schema.Resource {
 						"parameters": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Custom parameters。",
+							Description: "Custom 参数。",
 						},
 						"instance_ids": {
 							Type: schema.TypeSet,
@@ -77,33 +77,33 @@ func DataSourceTencentCloudTatInvoker() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "实例 ID list。",
+							Description: "实例 ID 列表。",
 						},
 						"enable": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否enable the invoker。",
+							Description: "是否enable invoker。",
 						},
 						"schedule_settings": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Execution schedule of the invoker. This field is returned for recurring invokers。",
+							Description: "Execution 调度 的 invoker. 此 字段 是 返回 对于 recurring invokers。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"policy": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Execution policy: `ONCE`: Execute once; `RECURRENCE`: Execute repeatedly。",
+										Description: "Execution 策略: `ONCE`: Execute once; `RECURRENCE`: Execute repeatedly。",
 									},
 									"recurrence": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Trigger the crontab expression. This field 为必填项 if `Policy` is `RECURRENCE`. The crontab expression is parsed in UTC+8。",
+										Description: "Trigger crontab expression. 此 字段 为必填项 如果 `Policy` 是 `RECURRENCE`. crontab expression 是 parsed 在 UTC+8。",
 									},
 									"invoke_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The next 执行时间 of the invoker. This field 为必填项 if Policy is ONCE。",
+										Description: "next 执行时间 的 invoker. 此 字段 为必填项 如果 Policy 是 ONCE。",
 									},
 								},
 							},

@@ -29,18 +29,18 @@ func ResourceTencentCloudVpcRouteTable() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID VPC to which the route table should be associated。",
+				Description: "ID VPC 到 其中 路由 表 should 是 associated。",
 			},
 			"name": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 60),
-				Description:  "名称 routing table。",
+				Description:  "名称 routing 表。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "The 标签 of routing table。",
+				Description: "标签 的 routing 表。",
 			},
 
 			// Computed values
@@ -50,7 +50,7 @@ func ResourceTencentCloudVpcRouteTable() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "ID 列表 the subnets associated with this route table。",
+				Description: "ID 列表 subnets associated 使用 此 路由 表。",
 			},
 			"route_entry_ids": {
 				Type:     schema.TypeList,
@@ -58,17 +58,17 @@ func ResourceTencentCloudVpcRouteTable() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "ID 列表 the routing entries。",
+				Description: "ID 列表 routing entries。",
 			},
 			"is_default": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "表示是否it is the default routing table。",
+				Description: "表示是否it 是 默认值 routing 表。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 of the routing table。",
+				Description: "创建时间 的 routing 表。",
 			},
 		},
 	}

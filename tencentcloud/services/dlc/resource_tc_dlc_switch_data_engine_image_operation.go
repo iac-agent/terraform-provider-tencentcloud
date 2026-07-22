@@ -30,7 +30,7 @@ func ResourceTencentCloudDlcSwitchDataEngineImageOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "New image 版本 ID。",
+				Description: "New 镜像 版本 ID。",
 			},
 		},
 	}

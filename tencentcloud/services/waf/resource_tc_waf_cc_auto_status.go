@@ -35,7 +35,7 @@ func ResourceTencentCloudWafCcAutoStatus() *schema.Resource {
 				ForceNew:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(EDITION_TYPE),
-				Description:  "Waf edition. clb-waf means clb-waf，sparta-waf means saas-waf。",
+				Description:  "Waf edition. clb-waf 表示 clb-waf，sparta-waf 表示 saas-waf。",
 			},
 			"status": {
 				Computed:    true,

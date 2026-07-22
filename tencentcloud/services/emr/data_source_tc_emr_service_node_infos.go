@@ -18,7 +18,7 @@ func DataSourceTencentCloudEmrServiceNodeInfos() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "EMR Instance ID.",
+				Description: "EMR 实例 ID.",
 			},
 
 			"offset": {
@@ -30,7 +30,7 @@ func DataSourceTencentCloudEmrServiceNodeInfos() *schema.Resource {
 			"limit": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Number of Items per Page.",
+				Description: "Number 的 Items per Page.",
 			},
 
 			"search_text": {
@@ -48,37 +48,37 @@ func DataSourceTencentCloudEmrServiceNodeInfos() *schema.Resource {
 			"maintain_state_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Filter Condition: Maintenance Status - 0 represents all statuses, 1 represents normal mode, 2 represents maintenance mode.",
+				Description: "过滤器 Condition: Maintenance Status - 0 表示 all statuses, 1 表示 normal 模式, 2 表示 maintenance 模式.",
 			},
 
 			"operator_state_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Filter Condition: Operation Status - 0 represents all statuses, 1 represents started, 2 represents stopped.",
+				Description: "过滤器 Condition: Operation Status - 0 表示 all statuses, 1 表示 started, 2 表示 stopped.",
 			},
 
 			"health_state_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Filter Conditions: Health Status, 0 represents unavailable, 1 represents good, -2 represents unknown, -99 represents all, -3 represents potential risks, -4 represents not detected.",
+				Description: "过滤器 Conditions: Health Status, 0 表示 unavailable, 1 表示 good, -2 表示 unknown, -99 表示 all, -3 表示 potential risks, -4 表示 不 detected.",
 			},
 
 			"service_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Service Component Name, all in uppercase, e.g., YARN.",
+				Description: "Service Component Name, all 在 uppercase, e.g., YARN.",
 			},
 
 			"node_type_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Node Names: master, core, task, common, router, all.",
+				Description: "Node Names: master, core, 任务, common, router, all.",
 			},
 
 			"data_node_maintenance_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Filter Condition: Whether DN is in Maintenance Mode - 0 represents all statuses, 1 represents in maintenance mode.",
+				Description: "过滤器 Condition: Whether DN 是 在 Maintenance Mode - 0 表示 all statuses, 1 表示 在 maintenance 模式.",
 			},
 
 			"search_fields": {
@@ -90,12 +90,12 @@ func DataSourceTencentCloudEmrServiceNodeInfos() *schema.Resource {
 						"search_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Types Supported for Search.",
+							Description: "Types Supported 对于 Search.",
 						},
 						"search_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Values Supported for Search.",
+							Description: "Values Supported 对于 Search.",
 						},
 					},
 				},
@@ -110,7 +110,7 @@ func DataSourceTencentCloudEmrServiceNodeInfos() *schema.Resource {
 			"alias_info": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Serialization of Aliases for All Nodes in the Cluster.",
+				Description: "Serialization 的 Aliases 对于 All Nodes 在 Cluster.",
 			},
 
 			"support_node_flag_filter_list": {
@@ -131,7 +131,7 @@ func DataSourceTencentCloudEmrServiceNodeInfos() *schema.Resource {
 						"ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The IP address of the node where the process resides.",
+							Description: "IP 地址 的 节点 其中 process resides.",
 						},
 						"node_type": {
 							Type:        schema.TypeInt,
@@ -220,7 +220,7 @@ func DataSourceTencentCloudEmrServiceNodeInfos() *schema.Resource {
 						"node_flag_filter": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Node Flag Filter.",
+							Description: "Node Flag 过滤器.",
 						},
 						"health_status": {
 							Type:        schema.TypeList,
@@ -249,7 +249,7 @@ func DataSourceTencentCloudEmrServiceNodeInfos() *schema.Resource {
 						"is_support_role_monitor": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether Monitoring is Supported.",
+							Description: "Whether Monitoring 是 Supported.",
 						},
 						"stop_policies": {
 							Type:        schema.TypeList,
@@ -275,7 +275,7 @@ func DataSourceTencentCloudEmrServiceNodeInfos() *schema.Resource {
 									"batch_size_range": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "Batch  Node Count Optional Range.",
+										Description: "Batch Node Count Optional Range.",
 										Elem: &schema.Schema{
 											Type: schema.TypeInt,
 										},
@@ -283,7 +283,7 @@ func DataSourceTencentCloudEmrServiceNodeInfos() *schema.Resource {
 									"is_default": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Whether it is the Default Policy.",
+										Description: "Whether 它 是 Default Policy.",
 									},
 								},
 							},
@@ -301,7 +301,7 @@ func DataSourceTencentCloudEmrServiceNodeInfos() *schema.Resource {
 						"is_federation": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether Federation is Supported.",
+							Description: "Whether Federation 是 Supported.",
 						},
 						"data_node_maintenance_state": {
 							Type:        schema.TypeInt,
@@ -315,7 +315,7 @@ func DataSourceTencentCloudEmrServiceNodeInfos() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

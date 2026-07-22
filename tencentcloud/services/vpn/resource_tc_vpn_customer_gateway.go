@@ -33,14 +33,14 @@ func ResourceTencentCloudVpnCustomerGateway() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 60),
-				Description:  "名称 customer gateway. The length of character is limited to 1-60。",
+				Description:  "名称 customer 网关. 长度 的 character 是 limited 到 1-60。",
 			},
 			"public_ip_address": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateIp,
-				Description:  "Public IP of the customer gateway。",
+				Description:  "Public IP 的 customer 网关。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
@@ -50,12 +50,12 @@ func ResourceTencentCloudVpnCustomerGateway() *schema.Resource {
 			"bgp_asn": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "BGP ASN. 取值范围：1 - 4294967295. Using BGP requires configuring ASN. 139341，45090，and 58835 are not available。",
+				Description: "BGP ASN. 取值范围：1 - 4294967295. Using BGP requires configuring ASN. 139341，45090，和 58835 是 不 可用。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 of the customer gateway。",
+				Description: "创建时间 的 customer 网关。",
 			},
 		},
 	}

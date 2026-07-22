@@ -307,7 +307,7 @@ func DataSourceTencentCloudCynosdbClusterInstanceGroups() *schema.Resource {
 									"storage_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Prepaid Storage Id。注意：该字段可能返回null，表示取不到有效值。",
+										Description: "Prepaid Storage ID。注意：该字段可能返回null，表示取不到有效值。",
 									},
 									"storage_pay_mode": {
 										Type:        schema.TypeInt,

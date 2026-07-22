@@ -31,7 +31,7 @@ func DataSourceTencentCloudWedataOpsWorkflows() *schema.Resource {
 			"status": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Workflow 状态 filter: `ALL_RUNNING`: All scheduled，`ALL_FREEZED`: All paused，`ALL_STOPPTED`: All offline，`PART_RUNNING`: Partially scheduled，`ALL_NO_RUNNING`: All unscheduled，`ALL_INVALID`: All invalid。",
+				Description: "Workflow 状态 过滤器: `ALL_RUNNING`: All scheduled，`ALL_FREEZED`: All paused，`ALL_STOPPTED`: All offline，`PART_RUNNING`: Partially scheduled，`ALL_NO_RUNNING`: All unscheduled，`ALL_INVALID`: All 无效。",
 			},
 
 			"owner_uin": {
@@ -43,25 +43,25 @@ func DataSourceTencentCloudWedataOpsWorkflows() *schema.Resource {
 			"workflow_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Workflow 类型 filter，支持的值：`Cycle` or `Manual`. By default，only `Cycle` is queried。",
+				Description: "Workflow 类型 过滤器，支持的值：`Cycle` 或 `Manual`. By 默认值，仅 `Cycle` 是 queried。",
 			},
 
 			"key_word": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Workflow keyword filter，supports fuzzy matching by workflow ID/名称",
+				Description: "Workflow keyword 过滤器，支持 fuzzy matching 通过 工作流 ID/名称",
 			},
 
 			"sort_item": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sorting field，可选 values: `CreateTime`，`TaskCount`。",
+				Description: "Sorting 字段，可选 值: `CreateTime`，`TaskCount`。",
 			},
 
 			"sort_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sorting 顺序，`DESC` or `ASC`，uppercase。",
+				Description: "Sorting 顺序，`DESC` 或 `ASC`，uppercase。",
 			},
 
 			"create_user_uin": {
@@ -85,13 +85,13 @@ func DataSourceTencentCloudWedataOpsWorkflows() *schema.Resource {
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Record list。",
+				Description: "Record 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"task_count": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Task count。",
+							Description: "任务 count。",
 						},
 						"folder_name": {
 							Type:        schema.TypeString,
@@ -101,7 +101,7 @@ func DataSourceTencentCloudWedataOpsWorkflows() *schema.Resource {
 						"folder_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Workflow file ID。",
+							Description: "Workflow 文件 ID。",
 						},
 						"workflow_id": {
 							Type:        schema.TypeString,
@@ -126,7 +126,7 @@ func DataSourceTencentCloudWedataOpsWorkflows() *schema.Resource {
 						"owner_uin": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Responsible person's 用户 ID，multiple IDs separated by ';'。",
+							Description: "Responsible person's 用户 ID，多个 IDs separated 通过 ';'。",
 						},
 						"project_id": {
 							Type:        schema.TypeString,
@@ -141,7 +141,7 @@ func DataSourceTencentCloudWedataOpsWorkflows() *schema.Resource {
 						"status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Workflow 状态: `ALL_RUNNING`: All scheduled; `ALL_FREEZED`: All paused; `ALL_STOPPTED`: All offline; `PART_RUNNING`: Partially scheduled; `ALL_NO_RUNNING`: All unscheduled; `ALL_INVALID`: All invalid。",
+							Description: "Workflow 状态: `ALL_RUNNING`: All scheduled; `ALL_FREEZED`: All paused; `ALL_STOPPTED`: All offline; `PART_RUNNING`: Partially scheduled; `ALL_NO_RUNNING`: All unscheduled; `ALL_INVALID`: All 无效。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
@@ -151,12 +151,12 @@ func DataSourceTencentCloudWedataOpsWorkflows() *schema.Resource {
 						"update_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Last 更新时间，including development and production changes。",
+							Description: "Last 更新时间，包括 development 和 production changes。",
 						},
 						"update_user_uin": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Last updated by，including development and production changes。",
+							Description: "Last 更新 通过，包括 development 和 production changes。",
 						},
 					},
 				},

@@ -19,33 +19,33 @@ func DataSourceTencentCloudChdfsFileSystems() *schema.Resource {
 			"file_systems": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "file system list。",
+				Description: "文件 系统 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"app_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "appid of the 用户",
+							Description: "appid 的 用户",
 						},
 						"file_system_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "file system 名称",
+							Description: "文件 系统 名称",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "desc of the file system。",
+							Description: "desc 的 文件 系统。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "地域 of the file system。",
+							Description: "地域 的 文件 系统。",
 						},
 						"file_system_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "file system id。",
+							Description: "文件 系统 ID。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
@@ -55,17 +55,17 @@ func DataSourceTencentCloudChdfsFileSystems() *schema.Resource {
 						"block_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "block size of the file system(byte)。",
+							Description: "block 大小 的 文件 系统(byte)。",
 						},
 						"capacity_quota": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "capacity of the file system(byte)。",
+							Description: "容量 的 文件 系统(byte)。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "状态 file system(1: creating create success 3: create failed)。",
+							Description: "状态 文件 系统(1: creating create success 3: create failed)。",
 						},
 						"super_users": {
 							Type: schema.TypeSet,
@@ -73,17 +73,17 @@ func DataSourceTencentCloudChdfsFileSystems() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "super users of the file system。",
+							Description: "super users 的 文件 系统。",
 						},
 						"posix_acl": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "check POSIX ACL or not。",
+							Description: "check POSIX ACL 或 不。",
 						},
 						"enable_ranger": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "check the ranger 地址 or not。",
+							Description: "check ranger 地址 或 不。",
 						},
 						"ranger_service_addresses": {
 							Type: schema.TypeSet,
@@ -91,7 +91,7 @@ func DataSourceTencentCloudChdfsFileSystems() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "ranger 地址 list。",
+							Description: "ranger 地址 列表。",
 						},
 					},
 				},

@@ -19,13 +19,13 @@ func DataSourceTencentCloudTseZookeeperReplicas() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "engine instance ID。",
+				Description: "引擎 实例 ID。",
 			},
 
 			"replicas": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Engine instance replica information。",
+				Description: "Engine 实例 副本 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {

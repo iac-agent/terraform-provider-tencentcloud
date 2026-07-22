@@ -19,7 +19,7 @@ func DataSourceTencentCloudCfwNatFwSwitches() *schema.Resource {
 			"nat_ins_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filter the NAT firewall instance to which the NAT firewall subnet switch belongs。",
+				Description: "过滤器 NAT firewall 实例 到 其中 NAT firewall 子网 switch belongs。",
 			},
 			"status": {
 				Optional:    true,
@@ -30,12 +30,12 @@ func DataSourceTencentCloudCfwNatFwSwitches() *schema.Resource {
 			"enable": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Switch enable 状态，1 open; 0 close。",
+				Description: "Switch 启用 状态，1 open; 0 close。",
 			},
 			"data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "NAT border firewall switch list data。",
+				Description: "NAT border firewall switch 列表 数据。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
@@ -46,7 +46,7 @@ func DataSourceTencentCloudCfwNatFwSwitches() *schema.Resource {
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Subnet Id。",
+							Description: "Subnet ID。",
 						},
 						"subnet_name": {
 							Type:        schema.TypeString,
@@ -61,7 +61,7 @@ func DataSourceTencentCloudCfwNatFwSwitches() *schema.Resource {
 						"route_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Route Id。",
+							Description: "Route ID。",
 						},
 						"route_name": {
 							Type:        schema.TypeString,
@@ -96,7 +96,7 @@ func DataSourceTencentCloudCfwNatFwSwitches() *schema.Resource {
 						"nat_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "NAT gatway Id。",
+							Description: "NAT gatway ID。",
 						},
 						"nat_name": {
 							Type:        schema.TypeString,
@@ -106,7 +106,7 @@ func DataSourceTencentCloudCfwNatFwSwitches() *schema.Resource {
 						"nat_ins_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "NAT firewall instance Id。",
+							Description: "NAT firewall 实例 ID。",
 						},
 						"nat_ins_name": {
 							Type:        schema.TypeString,
@@ -121,7 +121,7 @@ func DataSourceTencentCloudCfwNatFwSwitches() *schema.Resource {
 						"abnormal": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否switch is abnormal，0: normal，1: abnormal。",
+							Description: "是否switch 是 abnormal，0: normal，1: abnormal。",
 						},
 					},
 				},

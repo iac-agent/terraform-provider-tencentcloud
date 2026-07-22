@@ -20,12 +20,12 @@ func DataSourceTencentCloudDcInstances() *schema.Resource {
 			"dc_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID DC to be queried。",
+				Description: "ID DC 到 是 queried。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "名称 DC to be queried。",
+				Description: "名称 DC 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -37,7 +37,7 @@ func DataSourceTencentCloudDcInstances() *schema.Resource {
 			"instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information 列表 the DC。",
+				Description: "Information 列表 DC。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"dc_id": {
@@ -53,7 +53,7 @@ func DataSourceTencentCloudDcInstances() *schema.Resource {
 						"state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "State of the DC，and available values include `REJECTED`，`TOPAY`，`PAID`，`ALLOCATED`，`AVAILABLE`，`DELETING` and `DELETED`。",
+							Description: "State 的 DC，和 可用 值 include `REJECTED`，`TOPAY`，`PAID`，`ALLOCATED`，`AVAILABLE`，`DELETING` 和 `DELETED`。",
 						},
 						"access_point_id": {
 							Type:        schema.TypeString,
@@ -63,27 +63,27 @@ func DataSourceTencentCloudDcInstances() *schema.Resource {
 						"line_operator": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "操作者 of the DC，and available values include `ChinaTelecom`，`ChinaMobile`，`ChinaUnicom`，`In-houseWiring`，`ChinaOther` and `InternationalOperator`。",
+							Description: "操作者 的 DC，和 可用 值 include `ChinaTelecom`，`ChinaMobile`，`ChinaUnicom`，`In-houseWiring`，`ChinaOther` 和 `InternationalOperator`。",
 						},
 						"location": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The DC location where the connection is located。",
+							Description: "DC location 其中 连接 是 located。",
 						},
 						"bandwidth": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Bandwidth of the DC。",
+							Description: "Bandwidth 的 DC。",
 						},
 						"port_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "端口 类型 DC in client，and available values include `100Base-T`，`1000Base-T`，`1000Base-LX`，`10GBase-T` and `10GBase-LR`. The 默认值为 `1000Base-LX`。",
+							Description: "端口 类型 DC 在 客户端，和 可用 值 include `100Base-T`，`1000Base-T`，`1000Base-LX`，`10GBase-T` 和 `10GBase-LR`. 默认值为 `1000Base-LX`。",
 						},
 						"circuit_code": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The circuit 代码 provided by the 操作者 for the DC。",
+							Description: "circuit 代码 提供 通过 操作者 对于 DC。",
 						},
 						"redundant_dc_id": {
 							Type:        schema.TypeString,
@@ -93,52 +93,52 @@ func DataSourceTencentCloudDcInstances() *schema.Resource {
 						"tencent_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Interconnect IP of the DC within Tencent. Note: This field may return null，indicating that no valid values are taken。",
+							Description: "Interconnect IP 的 DC within Tencent. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 taken。",
 						},
 						"customer_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Interconnect IP of the DC within client. Note: This field may return null，indicating that no valid values are taken。",
+							Description: "Interconnect IP 的 DC within 客户端. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 taken。",
 						},
 						"customer_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Applicant 名称 DC，the 默认为 obtained from the 账号 Note: This field may return null，indicating that no valid values are taken。",
+							Description: "Applicant 名称 DC， 默认为 获取 从 账号 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 taken。",
 						},
 						"customer_email": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Applicant email of the DC，the 默认为 obtained from the 账号 Note: This field may return null，indicating that no valid values are taken。",
+							Description: "Applicant email 的 DC， 默认为 获取 从 账号 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 taken。",
 						},
 						"customer_phone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Applicant phone 数量 the DC，the 默认为 obtained from the 账号 Note: This field may return null，indicating that no valid values are taken。",
+							Description: "Applicant phone 数量 DC， 默认为 获取 从 账号 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 taken。",
 						},
 						"fault_report_contact_person": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Contact of reporting a faulty. Note: This field may return null，indicating that no valid values are taken。",
+							Description: "Contact 的 报告 faulty. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 taken。",
 						},
 						"fault_report_contact_phone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Phone 数量 reporting a faulty. Note: This field may return null，indicating that no valid values are taken。",
+							Description: "Phone 数量 报告 faulty. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 taken。",
 						},
 						"enabled_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Enable time of resource。",
+							Description: "Enable 时间 的 资源。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of resource。",
+							Description: "创建时间 的 资源。",
 						},
 						"expired_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Expire date of resource。",
+							Description: "Expire date 的 资源。",
 						},
 					},
 				},

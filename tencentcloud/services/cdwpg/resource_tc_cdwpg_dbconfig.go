@@ -30,7 +30,7 @@ func ResourceTencentCloudCdwpgDbconfig() *schema.Resource {
 			"node_config_params": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Node 配置 parameters。",
+				Description: "Node 配置 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"node_type": {

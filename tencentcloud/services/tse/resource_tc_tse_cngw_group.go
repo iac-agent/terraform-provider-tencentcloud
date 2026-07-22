@@ -28,31 +28,31 @@ func ResourceTencentCloudTseCngwGroup() *schema.Resource {
 			"gateway_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway IDonly postpaid gateway supported。",
+				Description: "网关 IDonly postpaid 网关 支持。",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway 组名称",
+				Description: "网关 组名称",
 			},
 
 			"node_config": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "group node configration。",
+				Description: "组 节点 configration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"specification": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "group specification，1c2g|2c4g|4c8g|8c16g。",
+							Description: "组 规格，1c2g|2c4g|4c8g|8c16g。",
 						},
 						"number": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "group node number，2-50。",
+							Description: "组 节点 数量，2-50。",
 						},
 					},
 				},
@@ -61,19 +61,19 @@ func ResourceTencentCloudTseCngwGroup() *schema.Resource {
 			"subnet_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "subnet ID. Assign an IP 地址 to the engine in the VPC subnet. Reference 值:- subnet-ahde9me9。",
+				Description: "子网 ID. Assign IP 地址 到 引擎 在 VPC 子网. Reference 值:- 子网-ahde9me9。",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "描述 information of group。",
+				Description: "描述 信息 的 组。",
 			},
 
 			"internet_max_bandwidth_out": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "public network outbound traffic bandwidth,[1,2048]Mbps。",
+				Description: "公有 网络 outbound 流量 带宽,[1,2048]Mbps。",
 			},
 
 			"internet_config": {
@@ -96,7 +96,7 @@ func ResourceTencentCloudTseCngwGroup() *schema.Resource {
 						"internet_max_bandwidth_out": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "public network bandwidth。",
+							Description: "公有 网络 带宽。",
 						},
 						"description": {
 							Type:        schema.TypeString,
@@ -106,12 +106,12 @@ func ResourceTencentCloudTseCngwGroup() *schema.Resource {
 						"sla_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "specification 类型 clb. Default shared 类型 when this parameter is empty. Reference 值:- SLA LCU-supported。",
+							Description: "规格 类型 clb. Default shared 类型 当 此 参数 是 空. Reference 值:- SLA LCU-支持。",
 						},
 						"multi_zone_flag": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether load balancing has multiple availability zones。",
+							Description: "Whether load balancing has 多个 availability zones。",
 						},
 						"master_zone_id": {
 							Type:        schema.TypeString,
@@ -130,7 +130,7 @@ func ResourceTencentCloudTseCngwGroup() *schema.Resource {
 			"group_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "gateway group id。",
+				Description: "网关 组 ID。",
 			},
 		},
 	}

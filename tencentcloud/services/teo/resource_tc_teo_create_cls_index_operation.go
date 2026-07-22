@@ -27,7 +27,7 @@ func ResourceTencentCloudTeoCreateCLSIndexOperation() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Realtime log delivery task ID。",
+				Description: "Realtime 日志 delivery 任务 ID。",
 			},
 		},
 	}

@@ -36,7 +36,7 @@ func ResourceTencentCloudKubernetesAddon() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID cluster。",
+				Description: "ID 集群。",
 			},
 
 			"addon_name": {
@@ -50,13 +50,13 @@ func ResourceTencentCloudKubernetesAddon() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "版本 of addon. If no set，the latest 版本 will be installed by default。",
+				Description: "版本 的 addon. 如果 无 集合， latest 版本 将 是 installed 通过 默认值。",
 			},
 
 			"raw_values": {
 				Type:             schema.TypeString,
 				Optional:         true,
-				Description:      "Params of addon，base64 encoded json 格式",
+				Description:      "Params 的 addon，base64 encoded json 格式",
 				DiffSuppressFunc: helper.DiffSupressJSON,
 			},
 
@@ -69,7 +69,7 @@ func ResourceTencentCloudKubernetesAddon() *schema.Resource {
 			"reason": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Reason of addon failed。",
+				Description: "Reason 的 addon failed。",
 			},
 		},
 	}

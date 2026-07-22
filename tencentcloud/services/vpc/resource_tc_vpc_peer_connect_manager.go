@@ -27,19 +27,19 @@ func ResourceTencentCloudVpcPeerConnectManager() *schema.Resource {
 			"source_vpc_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The unique ID local VPC。",
+				Description: "唯一 ID 本地 VPC。",
 			},
 
 			"peering_connection_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Peer connection 名称",
+				Description: "Peer 连接 名称",
 			},
 
 			"destination_vpc_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The unique ID peer VPC。",
+				Description: "唯一 ID peer VPC。",
 			},
 
 			"destination_uin": {
@@ -57,14 +57,14 @@ func ResourceTencentCloudVpcPeerConnectManager() *schema.Resource {
 			"bandwidth": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Bandwidth upper 限制，unit Mbps。",
+				Description: "Bandwidth upper 限制，单位 Mbps。",
 			},
 
 			"type": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Interworking 类型，VPC_PEER interworking between VPCs; VPC_BM_PEER interworking between VPC and BM Network。",
+				Description: "Interworking 类型，VPC_PEER interworking between VPCs; VPC_BM_PEER interworking between VPC 和 BM Network。",
 			},
 
 			"charge_type": {

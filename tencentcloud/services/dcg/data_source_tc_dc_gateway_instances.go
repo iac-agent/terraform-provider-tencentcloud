@@ -18,12 +18,12 @@ func DataSourceTencentCloudDcGatewayInstances() *schema.Resource {
 			"dcg_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID DCG to be queried。",
+				Description: "ID DCG 到 是 queried。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "名称 DCG to be queried。",
+				Description: "名称 DCG 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -35,7 +35,7 @@ func DataSourceTencentCloudDcGatewayInstances() *schema.Resource {
 			"instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information 列表 the DCG。",
+				Description: "Information 列表 DCG。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"dcg_id": {
@@ -51,37 +51,37 @@ func DataSourceTencentCloudDcGatewayInstances() *schema.Resource {
 						"dcg_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IP of the DCG。",
+							Description: "IP 的 DCG。",
 						},
 						"network_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IP of the DCG。",
+							Description: "IP 的 DCG。",
 						},
 						"network_instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "类型 associated network. 有效值：`VPC` and `CCN`。",
+							Description: "类型 associated 网络. 有效值：`VPC` 和 `CCN`。",
 						},
 						"gateway_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "类型 gateway. 有效值：`NORMAL` and `NAT`. 默认为 `NORMAL`。",
+							Description: "类型 网关. 有效值：`NORMAL` 和 `NAT`. 默认为 `NORMAL`。",
 						},
 						"cnn_route_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "类型 CCN route. 有效值：`BGP` and `STATIC`。",
+							Description: "类型 CCN 路由. 有效值：`BGP` 和 `STATIC`。",
 						},
 						"enable_bgp": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "表示是否BGP is 已启用",
+							Description: "表示是否BGP 是 已启用",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of resource。",
+							Description: "创建时间 的 资源。",
 						},
 					},
 				},

@@ -49,7 +49,7 @@ func ResourceTencentCloudCvmChcConfig() *schema.Resource {
 				Optional:     true,
 				RequiredWith: []string{"password"},
 				Type:         schema.TypeString,
-				Description:  "Valid characters: Letters，numbers，hyphens and underscores. Only set when update 密码",
+				Description:  "有效 字符: Letters，numbers，hyphens 和 underscores. Only 集合 当 update 密码",
 			},
 
 			"password": {
@@ -58,7 +58,7 @@ func ResourceTencentCloudCvmChcConfig() *schema.Resource {
 				RequiredWith: []string{"bmc_user"},
 				Type:         schema.TypeString,
 
-				Description: "The 密码 can contain 8 to 16 characters，including letters，numbers and special symbols (()`~!@#$%^&amp;amp;*-+=_|{})。",
+				Description: "密码 可以 contain 8 到 16 字符，包括 letters，numbers 和 special symbols (()`~!@#$%^&amp;amp;*-+=_|{})。",
 			},
 
 			"bmc_virtual_private_cloud": {
@@ -67,26 +67,26 @@ func ResourceTencentCloudCvmChcConfig() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Out-of-band network information。",
+				Description: "Out-的-band 网络 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "私有网络 ID in the 格式 of vpc-xxx. To obtain valid VPC IDs，you can log in to the [console](https://console.tencentcloud.com/vpc/vpc?rid=1) or call the DescribeVpcEx API and look for the unVpcId fields in the response. If you 指定DEFAULT for both VpcId and SubnetId when creating an instance，the default VPC will be used。",
+							Description: "私有网络 ID 在 格式 的 vpc-xxx. To obtain 有效 VPC IDs，您 可以 日志 在 到 [console](https://console.tencentcloud.com/vpc/vpc?rid=1) 或 call DescribeVpcEx API 和 look 对于 unVpcId 字段 在 response. 如果 您 指定DEFAULT 对于 both VpcId 和 SubnetId 当 creating 实例， 默认值 VPC 将 是 使用。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "VPC subnet ID in the 格式 subnet-xxx. To obtain valid subnet IDs，you can log in to the [console](https://console.tencentcloud.com/vpc/vpc?rid=1) or call DescribeSubnets and look for the unSubnetId fields in the response. If you 指定DEFAULT for both SubnetId and VpcId when creating an instance，the default VPC will be used。",
+							Description: "VPC 子网 ID 在 格式 子网-xxx. To obtain 有效 子网 IDs，您 可以 日志 在 到 [console](https://console.tencentcloud.com/vpc/vpc?rid=1) 或 call DescribeSubnets 和 look 对于 unSubnetId 字段 在 response. 如果 您 指定DEFAULT 对于 both SubnetId 和 VpcId 当 creating 实例， 默认值 VPC 将 是 使用。",
 						},
 						"as_vpc_gateway": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "是否use a CVM instance as a public gateway. The public gateway is only available when the instance has a public IP and resides in a VPC. Valid values:&lt;br&gt;&lt;li&gt;TRUE: yes;&lt;br&gt;&lt;li&gt;FALSE: no&lt;br&gt;&lt;br&gt;默认值：FALSE。",
+							Description: "是否use CVM 实例 作为 公有 网关. 公有 网关 是 仅 可用 当 实例 has 公有 IP 和 resides 在 VPC. 有效 值:&lt;br&gt;&lt;li&gt;TRUE: yes;&lt;br&gt;&lt;li&gt;FALSE: 无&lt;br&gt;&lt;br&gt;默认值：FALSE。",
 						},
 						"private_ip_addresses": {
 							Type: schema.TypeList,
@@ -96,14 +96,14 @@ func ResourceTencentCloudCvmChcConfig() *schema.Resource {
 							Optional:    true,
 							Computed:    true,
 							ForceNew:    true,
-							Description: "数组 VPC subnet IPs. You can use this parameter when creating instances or modifying VPC attributes of instances. Currently you can 指定multiple IPs in one subnet only when creating multiple instances at the same time。",
+							Description: "数组 VPC 子网 IPs. You 可以 使用 此 参数 当 creating 实例 或 modifying VPC attributes 的 实例. Currently 您 可以 指定multiple IPs 在 一个 子网 仅 当 creating 多个 实例 在 same 时间。",
 						},
 						"ipv6_address_count": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
 							ForceNew:    true,
-							Description: "数量 IPv6 addresses randomly generated for the ENI。",
+							Description: "数量 IPv6 addresses randomly generated 对于 ENI。",
 						},
 					},
 				},
@@ -118,7 +118,7 @@ func ResourceTencentCloudCvmChcConfig() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				RequiredWith: []string{"bmc_virtual_private_cloud"},
-				Description:  "Out-of-band network security group list。",
+				Description:  "Out-的-band 网络 安全 组 列表。",
 			},
 
 			"deploy_virtual_private_cloud": {
@@ -127,26 +127,26 @@ func ResourceTencentCloudCvmChcConfig() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Deployment network information。",
+				Description: "Deployment 网络 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "私有网络 ID in the 格式 of vpc-xxx. To obtain valid VPC IDs，you can log in to the [console](https://console.tencentcloud.com/vpc/vpc?rid=1) or call the DescribeVpcEx API and look for the unVpcId fields in the response. If you 指定DEFAULT for both VpcId and SubnetId when creating an instance，the default VPC will be used。",
+							Description: "私有网络 ID 在 格式 的 vpc-xxx. To obtain 有效 VPC IDs，您 可以 日志 在 到 [console](https://console.tencentcloud.com/vpc/vpc?rid=1) 或 call DescribeVpcEx API 和 look 对于 unVpcId 字段 在 response. 如果 您 指定DEFAULT 对于 both VpcId 和 SubnetId 当 creating 实例， 默认值 VPC 将 是 使用。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "VPC subnet ID in the 格式 subnet-xxx. To obtain valid subnet IDs，you can log in to the [console](https://console.tencentcloud.com/vpc/vpc?rid=1) or call DescribeSubnets and look for the unSubnetId fields in the response. If you 指定DEFAULT for both SubnetId and VpcId when creating an instance，the default VPC will be used。",
+							Description: "VPC 子网 ID 在 格式 子网-xxx. To obtain 有效 子网 IDs，您 可以 日志 在 到 [console](https://console.tencentcloud.com/vpc/vpc?rid=1) 或 call DescribeSubnets 和 look 对于 unSubnetId 字段 在 response. 如果 您 指定DEFAULT 对于 both SubnetId 和 VpcId 当 creating 实例， 默认值 VPC 将 是 使用。",
 						},
 						"as_vpc_gateway": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "是否use a CVM instance as a public gateway. The public gateway is only available when the instance has a public IP and resides in a VPC. Valid values:&lt;br&gt;&lt;li&gt;TRUE: yes;&lt;br&gt;&lt;li&gt;FALSE: no&lt;br&gt;&lt;br&gt;默认值：FALSE。",
+							Description: "是否use CVM 实例 作为 公有 网关. 公有 网关 是 仅 可用 当 实例 has 公有 IP 和 resides 在 VPC. 有效 值:&lt;br&gt;&lt;li&gt;TRUE: yes;&lt;br&gt;&lt;li&gt;FALSE: 无&lt;br&gt;&lt;br&gt;默认值：FALSE。",
 						},
 						"private_ip_addresses": {
 							Type: schema.TypeList,
@@ -156,14 +156,14 @@ func ResourceTencentCloudCvmChcConfig() *schema.Resource {
 							Optional:    true,
 							Computed:    true,
 							ForceNew:    true,
-							Description: "数组 VPC subnet IPs. You can use this parameter when creating instances or modifying VPC attributes of instances. Currently you can 指定multiple IPs in one subnet only when creating multiple instances at the same time。",
+							Description: "数组 VPC 子网 IPs. You 可以 使用 此 参数 当 creating 实例 或 modifying VPC attributes 的 实例. Currently 您 可以 指定multiple IPs 在 一个 子网 仅 当 creating 多个 实例 在 same 时间。",
 						},
 						"ipv6_address_count": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
 							ForceNew:    true,
-							Description: "数量 IPv6 addresses randomly generated for the ENI。",
+							Description: "数量 IPv6 addresses randomly generated 对于 ENI。",
 						},
 					},
 				},
@@ -178,7 +178,7 @@ func ResourceTencentCloudCvmChcConfig() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				RequiredWith: []string{"deploy_virtual_private_cloud"},
-				Description:  "Deployment network security group list。",
+				Description:  "Deployment 网络 安全 组 列表。",
 			},
 		},
 	}

@@ -24,7 +24,7 @@ func DataSourceTencentCloudWedataTasks() *schema.Resource {
 			"task_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Task 名称",
+				Description: "任务 名称",
 			},
 
 			"workflow_id": {
@@ -42,13 +42,13 @@ func DataSourceTencentCloudWedataTasks() *schema.Resource {
 			"task_type_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Task 类型",
+				Description: "任务 类型",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Task 状态:\n* N: New\n* Y: Scheduling\n* F: Offline\n* O: Paused\n* T: Offlining\n* INVALID: Invalid。",
+				Description: "任务 状态:\n* N: New\n* Y: Scheduling\n* F: Offline\n* O: Paused\n* T: Offlining\n* INVALID: Invalid。",
 			},
 
 			"submit": {
@@ -60,7 +60,7 @@ func DataSourceTencentCloudWedataTasks() *schema.Resource {
 			"bundle_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Bundle id。",
+				Description: "Bundle ID。",
 			},
 
 			"create_user_uin": {
@@ -72,7 +72,7 @@ func DataSourceTencentCloudWedataTasks() *schema.Resource {
 			"modify_time": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "修改时间 range (yyyy-MM-dd HH:mm:ss). Two time values must be provided in the array。",
+				Description: "修改时间 范围 (yyyy-MM-dd HH:mm:ss). Two 时间 值 必须 是 提供 在 数组。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -81,7 +81,7 @@ func DataSourceTencentCloudWedataTasks() *schema.Resource {
 			"create_time": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "创建时间 range (yyyy-MM-dd HH:MM:ss). Two time values must be provided in the array。",
+				Description: "创建时间 范围 (yyyy-MM-dd HH:MM:ss). Two 时间 值 必须 是 提供 在 数组。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -90,7 +90,7 @@ func DataSourceTencentCloudWedataTasks() *schema.Resource {
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Describes the task pagination information。",
+				Description: "Describes 任务 pagination 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 
@@ -112,17 +112,17 @@ func DataSourceTencentCloudWedataTasks() *schema.Resource {
 						"task_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Task 名称",
+							Description: "任务 名称",
 						},
 						"task_latest_version_no": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Last save 版本 number。",
+							Description: "Last save 版本 数量。",
 						},
 						"task_latest_submit_version_no": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Last 提交 版本 number。",
+							Description: "Last 提交 版本 数量。",
 						},
 						"workflow_name": {
 							Type:        schema.TypeString,
@@ -132,22 +132,22 @@ func DataSourceTencentCloudWedataTasks() *schema.Resource {
 						"status": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Task 状态:\n\n* N: New\n* Y: Scheduling\n* F: Offline\n* O: Paused\n* T: Offlining (in the process of being taken offline)\n* INVALID: Invalid。",
+							Description: "任务 状态:\n\n* N: New\n* Y: Scheduling\n* F: Offline\n* O: Paused\n* T: Offlining (在 process 的 being taken offline)\n* INVALID: Invalid。",
 						},
 						"submit": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Latest submission 状态 task. 指定whether it has been submitted: true/false。",
+							Description: "Latest submission 状态 任务. 指定whether 它 has been submitted: true/false。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Task 创建时间. example: 2022-02-12 11:13:41。",
+							Description: "任务 创建时间. 示例: 2022-02-12 11:13:41。",
 						},
 						"last_update_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Last 更新时间. example: 2025-08-13 16:34:06。",
+							Description: "Last 更新时间. 示例: 2025-08-13 16:34:06。",
 						},
 						"last_update_user_name": {
 							Type:        schema.TypeString,
@@ -157,7 +157,7 @@ func DataSourceTencentCloudWedataTasks() *schema.Resource {
 						"last_ops_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Last operation time。",
+							Description: "Last operation 时间。",
 						},
 						"last_ops_user_name": {
 							Type:        schema.TypeString,
@@ -167,12 +167,12 @@ func DataSourceTencentCloudWedataTasks() *schema.Resource {
 						"owner_uin": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Task 所有者 ID。",
+							Description: "任务 所有者 ID。",
 						},
 						"task_description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Task 描述",
+							Description: "任务 描述",
 						},
 						"update_user_uin": {
 							Type:        schema.TypeString,

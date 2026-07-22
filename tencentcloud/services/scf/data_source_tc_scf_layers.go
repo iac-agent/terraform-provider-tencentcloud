@@ -25,13 +25,13 @@ func DataSourceTencentCloudScfLayers() *schema.Resource {
 			"search_key": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Query 键，which fuzzily matches the 名称",
+				Description: "Query 键，其中 fuzzily matches 名称",
 			},
 
 			"layers": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Layer list。",
+				Description: "Layer 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"compatible_runtimes": {
@@ -40,7 +40,7 @@ func DataSourceTencentCloudScfLayers() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Runtime applicable to a version注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Runtime applicable 到 version注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"add_time": {
 							Type:        schema.TypeString,
@@ -60,7 +60,7 @@ func DataSourceTencentCloudScfLayers() *schema.Resource {
 						"layer_version": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "版本 number。",
+							Description: "版本 数量。",
 						},
 						"layer_name": {
 							Type:        schema.TypeString,
@@ -70,7 +70,7 @@ func DataSourceTencentCloudScfLayers() *schema.Resource {
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Current 状态 specific layer 版本 For valid values，please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)。",
+							Description: "Current 状态 特定 layer 版本 For 有效 值，please see [here](https://intl.云.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)。",
 						},
 						"stamp": {
 							Type:        schema.TypeString,

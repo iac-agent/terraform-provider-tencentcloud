@@ -29,7 +29,7 @@ func ResourceTencentCloudTdmqRocketmqEnvironmentRole() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Environment (namespace) 名称",
+				Description: "Environment (命名空间) 名称",
 			},
 
 			"role_name": {
@@ -45,7 +45,7 @@ func ResourceTencentCloudTdmqRocketmqEnvironmentRole() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Required:    true,
-				Description: "Permissions，which is a non-empty string 数组 `produce` and `consume` at the most。",
+				Description: "Permissions，其中 是 non-空 字符串 数组 `produce` 和 `consume` 在 most。",
 			},
 
 			"cluster_id": {

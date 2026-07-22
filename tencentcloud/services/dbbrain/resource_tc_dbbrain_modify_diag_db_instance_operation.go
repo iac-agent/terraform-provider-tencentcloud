@@ -23,7 +23,7 @@ func ResourceTencentCloudDbbrainModifyDiagDbInstanceOperation() *schema.Resource
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Instance configuration, including inspection, overview switch, etc.",
+				Description: "实例 配置, 包括 inspection, overview switch, etc.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"daily_inspection": {
@@ -34,7 +34,7 @@ func ResourceTencentCloudDbbrainModifyDiagDbInstanceOperation() *schema.Resource
 						"overview_display": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Instance overview switch, Yes/No.",
+							Description: "实例 overview switch, Yes/No.",
 						},
 					},
 				},
@@ -45,14 +45,14 @@ func ResourceTencentCloudDbbrainModifyDiagDbInstanceOperation() *schema.Resource
 				ForceNew:    true,
 				Default:     "All",
 				Type:        schema.TypeString,
-				Description: "Effective instance region, the value is All, which means all regions.",
+				Description: "Effective 实例 地域, 值 是 All, 其中 表示 all regions.",
 			},
 
 			"product": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Service product type, supported values include: mysql - cloud database MySQL, cynosdb - cloud database CynosDB for MySQL.",
+				Description: "Service product 类型, 支持 值 include: mysql - 云 数据库 MySQL, cynosdb - 云 数据库 CynosDB 对于 MySQL.",
 			},
 
 			"instance_ids": {
@@ -62,7 +62,7 @@ func ResourceTencentCloudDbbrainModifyDiagDbInstanceOperation() *schema.Resource
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Specifies the ID of the instance whose inspection status is changed.",
+				Description: "Specifies ID 的 实例 whose inspection 状态 是 changed.",
 			},
 		},
 	}

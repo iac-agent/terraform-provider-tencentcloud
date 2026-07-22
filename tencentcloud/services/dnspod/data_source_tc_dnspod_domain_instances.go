@@ -25,23 +25,23 @@ func DataSourceTencentCloudDnspodDomainInstances() *schema.Resource {
 			"instance_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "域名 list。",
+				Description: "域名 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 域名",
+							Description: "域名",
 						},
 						"group_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The Group Id of 域名",
+							Description: "Group ID 的 域名",
 						},
 						"is_mark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "是否Mark the 域名",
+							Description: "是否Mark 域名",
 						},
 						"status": {
 							Type:        schema.TypeString,
@@ -51,7 +51,7 @@ func DataSourceTencentCloudDnspodDomainInstances() *schema.Resource {
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 备注 of 域名",
+							Description: "备注 的 域名",
 						},
 						"id": {
 							Computed:    true,
@@ -66,7 +66,7 @@ func DataSourceTencentCloudDnspodDomainInstances() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of the 域名",
+							Description: "创建时间 的 域名",
 						},
 						"slave_dns": {
 							Type:        schema.TypeString,
@@ -76,17 +76,17 @@ func DataSourceTencentCloudDnspodDomainInstances() *schema.Resource {
 						"record_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 DNS records under this 域名",
+							Description: "数量 DNS records under 此 域名",
 						},
 						"grade": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The DNS plan/package grade of the 域名 (e.g.，DP_Free，DP_Plus)。",
+							Description: "DNS plan/包 grade 的 域名 (e.g.，DP_Free，DP_Plus)。",
 						},
 						"updated_on": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last 修改时间 of the 域名",
+							Description: "Last 修改时间 的 域名",
 						},
 					},
 				},

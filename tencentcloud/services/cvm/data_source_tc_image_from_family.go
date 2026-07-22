@@ -24,7 +24,7 @@ func DataSourceTencentCloudImageFromFamily() *schema.Resource {
 			"image": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information of Image。",
+				Description: "Information 的 Image。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"image_id": {
@@ -35,7 +35,7 @@ func DataSourceTencentCloudImageFromFamily() *schema.Resource {
 						"os_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Operating system of the image。",
+							Description: "Operating 系统 的 镜像。",
 						},
 						"image_type": {
 							Type:        schema.TypeString,
@@ -45,7 +45,7 @@ func DataSourceTencentCloudImageFromFamily() *schema.Resource {
 						"created_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "创建时间 of the image。",
+							Description: "创建时间 的 镜像。",
 						},
 						"image_name": {
 							Type:        schema.TypeString,
@@ -60,7 +60,7 @@ func DataSourceTencentCloudImageFromFamily() *schema.Resource {
 						"image_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Image size。",
+							Description: "Image 大小。",
 						},
 						"architecture": {
 							Type:        schema.TypeString,
@@ -75,7 +75,7 @@ func DataSourceTencentCloudImageFromFamily() *schema.Resource {
 						"platform": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "来源 platform of the image。",
+							Description: "来源 平台 的 镜像。",
 						},
 						"image_creator": {
 							Type:        schema.TypeString,
@@ -95,12 +95,12 @@ func DataSourceTencentCloudImageFromFamily() *schema.Resource {
 						"is_support_cloudinit": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "是否image supports cloud-init。",
+							Description: "是否image 支持 云-init。",
 						},
 						"snapshot_set": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Information on the snapshots associated with the image。",
+							Description: "Information 在 snapshots associated 使用 镜像。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"snapshot_id": {
@@ -111,12 +111,12 @@ func DataSourceTencentCloudImageFromFamily() *schema.Resource {
 									"disk_usage": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "类型 cloud disk 用于create the snapshot. 有效值：YSTEM_DISK: system disk，DATA_DISK: data disk。",
+										Description: "类型 云 磁盘 用于create 快照. 有效值：YSTEM_DISK: 系统 磁盘，DATA_DISK: 数据 磁盘。",
 									},
 									"disk_size": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Size of the cloud disk 用于create the snapshot，unit(GB)。",
+										Description: "Size 的 云 磁盘 用于create 快照，单位(GB)。",
 									},
 								},
 							},
@@ -124,7 +124,7 @@ func DataSourceTencentCloudImageFromFamily() *schema.Resource {
 						"tags": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "The 列表 标签 bound to the image。",
+							Description: "列表 标签 bound 到 镜像。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
@@ -153,7 +153,7 @@ func DataSourceTencentCloudImageFromFamily() *schema.Resource {
 						"image_deprecated": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "If Image 已弃用",
+							Description: "如果 Image 已弃用",
 						},
 					},
 				},

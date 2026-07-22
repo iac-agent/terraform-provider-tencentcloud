@@ -50,13 +50,13 @@ func ResourceTencentCloudTcssImageRegistry() *schema.Resource {
 			"registry_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Repository 类型，which can be `harbor`. 有效值：harbor，quay，jfrog，aws，azure，other-tcr。",
+				Description: "Repository 类型，其中 可以 是 `harbor`. 有效值：harbor，quay，jfrog，aws，azure，other-tcr。",
 			},
 
 			"net_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Network 类型，which can be `public` (public network)。",
+				Description: "Network 类型，其中 可以 是 `公有` (公有 网络)。",
 			},
 
 			"registry_version": {
@@ -68,7 +68,7 @@ func ResourceTencentCloudTcssImageRegistry() *schema.Resource {
 			"registry_region": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "地域 默认值：`default`。",
+				Description: "地域 默认值：`默认值`。",
 			},
 
 			"speed_limit": {
@@ -80,13 +80,13 @@ func ResourceTencentCloudTcssImageRegistry() *schema.Resource {
 			"insecure": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "有效值：`0` (secure 模式 with certificate verification，which is the 默认值); `1` (unsecure 模式 that skips certificate verification)。",
+				Description: "有效值：`0` (secure 模式 使用 证书 verification，其中 是 默认值); `1` (unsecure 模式 该 skips 证书 verification)。",
 			},
 
 			"conn_detect_config": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Connectivity detection configuration。",
+				Description: "Connectivity detection 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"quuid": {
@@ -106,7 +106,7 @@ func ResourceTencentCloudTcssImageRegistry() *schema.Resource {
 			"need_scan": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "是否scan the latest image。",
+				Description: "是否scan latest 镜像。",
 			},
 
 			"sync_status": {

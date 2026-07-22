@@ -100,7 +100,7 @@ func ResourceTencentCloudClsCkafkaConsumer() *schema.Resource {
 						"topic_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "ckafka 的主题 id。",
+							Description: "ckafka 的主题 ID。",
 						},
 						"topic_name": {
 							Type:        schema.TypeString,

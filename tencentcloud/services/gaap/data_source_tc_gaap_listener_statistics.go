@@ -19,7 +19,7 @@ func DataSourceTencentCloudGaapListenerStatistics() *schema.Resource {
 			"listener_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Listener Id。",
+				Description: "Listener ID。",
 			},
 
 			"start_time": {
@@ -46,7 +46,7 @@ func DataSourceTencentCloudGaapListenerStatistics() *schema.Resource {
 			"granularity": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Monitoring granularity，currently supporting 300 3600 86400，（秒）。The query time range does not exceed 1 day and supports a minimum granularity of 300 seconds;The query interval should not exceed 7 days and support a minimum granularity of 3600 seconds;The query interval exceeds 7 days and supports a minimum granularity of 86400 seconds。",
+				Description: "Monitoring granularity，currently supporting 300 3600 86400，（秒）。 查询 时间 范围 does 不 exceed 1 day 和 支持 最小 granularity 的 300 秒; 查询 间隔 should 不 exceed 7 days 和 support 最小 granularity 的 3600 秒; 查询 间隔 exceeds 7 days 和 支持 最小 granularity 的 86400 秒。",
 			},
 
 			"statistics_data": {
@@ -74,7 +74,7 @@ func DataSourceTencentCloudGaapListenerStatistics() *schema.Resource {
 									"data": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Statistical data value注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Statistical 数据 value注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},

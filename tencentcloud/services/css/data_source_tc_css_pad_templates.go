@@ -20,13 +20,13 @@ func DataSourceTencentCloudCssPadTemplates() *schema.Resource {
 			"templates": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Live pad template information。",
+				Description: "Live pad template 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"template_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Template id。",
+							Description: "模板 ID。",
 						},
 						"template_name": {
 							Type:        schema.TypeString,
@@ -41,12 +41,12 @@ func DataSourceTencentCloudCssPadTemplates() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Template 创建时间。",
+							Description: "模板 创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Template 修改时间。",
+							Description: "模板 修改时间。",
 						},
 						"description": {
 							Type:        schema.TypeString,
@@ -56,12 +56,12 @@ func DataSourceTencentCloudCssPadTemplates() *schema.Resource {
 						"wait_duration": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Stream interruption waiting time.取值范围：0-30000.单位：milliseconds。",
+							Description: "Stream interruption waiting 时间.取值范围：0-30000.单位：milliseconds。",
 						},
 						"max_duration": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum pad duration.取值范围：0 - positive infinity.单位：milliseconds。",
+							Description: "Maximum pad 时长.取值范围：0 - positive infinity.单位：milliseconds。",
 						},
 						"type": {
 							Type:        schema.TypeInt,

@@ -19,22 +19,22 @@ func DataSourceTencentCloudApiGatewayApiPlugins() *schema.Resource {
 			"api_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "API ID to be queried。",
+				Description: "API ID 到 是 queried。",
 			},
 			"service_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The 服务 ID to be queried。",
+				Description: "服务 ID 到 是 queried。",
 			},
 			"environment_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Environment information。",
+				Description: "Environment 信息。",
 			},
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "API list information that the plug-in can bind。",
+				Description: "API 列表 信息 该 plug-在 可以 bind。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"plugin_id": {
@@ -45,12 +45,12 @@ func DataSourceTencentCloudApiGatewayApiPlugins() *schema.Resource {
 						"environment": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Environment information。",
+							Description: "Environment 信息。",
 						},
 						"attached_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Binding time。",
+							Description: "Binding 时间。",
 						},
 						"plugin_name": {
 							Type:        schema.TypeString,
@@ -70,7 +70,7 @@ func DataSourceTencentCloudApiGatewayApiPlugins() *schema.Resource {
 						"plugin_data": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Plug-in definition statement。",
+							Description: "Plug-在 definition statement。",
 						},
 					},
 				},

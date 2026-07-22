@@ -28,28 +28,28 @@ func ResourceTencentCloudClassicElasticPublicIpv6() *schema.Resource {
 			"ip6_address": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "IPV6 addresses that require public network access。",
+				Description: "IPV6 addresses 该 require 公有 网络 访问。",
 			},
 
 			"internet_max_bandwidth_out": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Bandwidth in Mbps. 默认为 1Mbps。",
+				Description: "Bandwidth 在 Mbps. 默认为 1Mbps。",
 			},
 
 			"internet_charge_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Network billing model. IPV6 currently supports `TRAFFIC_POSTPAID_BY_HOUR` and `BANDWIDTH_PACKAGE`. The default network charging 模式 is `TRAFFIC_POSTPAID_BY_HOUR`。",
+				Description: "Network billing model. IPV6 currently 支持 `TRAFFIC_POSTPAID_BY_HOUR` 和 `BANDWIDTH_PACKAGE`. 默认值 网络 charging 模式 是 `TRAFFIC_POSTPAID_BY_HOUR`。",
 			},
 
 			"bandwidth_package_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Bandwidth package id，move the 账号 up，and you need to pass in the ipv6 地址 to apply for bandwidth package charging 模式",
+				Description: "Bandwidth 包 ID，move 账号 up，和 您 need 到 pass 在 ipv6 地址 到 apply 对于 带宽 包 charging 模式",
 			},
 
 			"tags": {

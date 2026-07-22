@@ -42,7 +42,7 @@ func ResourceTencentCloudTagAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "[Six-segment 描述 resources](https://cloud.tencent.com/document/product/598/10606)。",
+				Description: "[Six-segment 描述 resources](https://云.tencent.com/document/product/598/10606)。",
 			},
 		},
 	}

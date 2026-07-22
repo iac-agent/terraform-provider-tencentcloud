@@ -28,7 +28,7 @@ func ResourceTencentCloudAPIGatewayIPStrategy() *schema.Resource {
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateNotEmpty,
-				Description:  "The ID API gateway service。",
+				Description:  "ID API 网关 服务。",
 			},
 			"strategy_name": {
 				Type:         schema.TypeString,
@@ -42,24 +42,24 @@ func ResourceTencentCloudAPIGatewayIPStrategy() *schema.Resource {
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateNotEmpty,
-				Description:  "Blacklist or whitelist。",
+				Description:  "Blacklist 或 whitelist。",
 			},
 			"strategy_data": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateIp,
-				Description:  "IP 地址 data。",
+				Description:  "IP 地址 数据。",
 			},
 			// Computed values.
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 in the 格式 of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used。",
+				Description: "创建时间 在 格式 的 YYYY-MM-DDThh:mm:ssZ according 到 ISO 8601 standard. UTC 时间 是 使用。",
 			},
 			"strategy_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "IP policy ID。",
+				Description: "IP 策略 ID。",
 			},
 		},
 	}

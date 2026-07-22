@@ -40,7 +40,7 @@ func ResourceTencentCloudMariadbSecurityGroups() *schema.Resource {
 			"product": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "product 名称，fixed to mariadb。",
+				Description: "product 名称，fixed 到 mariadb。",
 			},
 		},
 	}

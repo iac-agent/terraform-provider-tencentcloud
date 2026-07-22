@@ -27,24 +27,24 @@ func ResourceTencentCloudCfwVpcInstance() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "VPC firewall (group) 名称",
+				Description: "VPC firewall (组) 名称",
 			},
 			"mode": {
 				Required:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(MODE),
-				Description:  "模式 0: private network 模式; 1: CCN cloud networking 模式",
+				Description:  "模式 0: 私有 网络 模式; 1: CCN 云 networking 模式",
 			},
 			"vpc_fw_instances": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "列表 firewall instances under firewall (group)。",
+				Description: "列表 firewall 实例 under firewall (组)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"fw_ins_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Firewall instance ID (passed in editing scenario)。",
+							Description: "Firewall 实例 ID (passed 在 editing scenario)。",
 						},
 						"name": {
 							Type:        schema.TypeString,
@@ -55,13 +55,13 @@ func ResourceTencentCloudCfwVpcInstance() *schema.Resource {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "列表 VpcIds accessed in private network 模式; only used in private network 模式",
+							Description: "列表 VpcIds accessed 在 私有 网络 模式; 仅 使用 在 私有 网络 模式",
 						},
 						"fw_deploy": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Required:    true,
-							Description: "Deploy regional information。",
+							Description: "Deploy regional 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"deploy_region": {
@@ -72,13 +72,13 @@ func ResourceTencentCloudCfwVpcInstance() *schema.Resource {
 									"width": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Bandwidth，unit: Mbps。",
+										Description: "Bandwidth，单位: Mbps。",
 									},
 									"cross_a_zone": {
 										Type:         schema.TypeInt,
 										Optional:     true,
 										ValidateFunc: tccommon.ValidateAllowedIntValue(CROSS_A_ZONE),
-										Description:  "Off-site disaster recovery 1: use off-site disaster recovery; 0: do not use off-site disaster recovery; if it is empty，off-site disaster recovery will not be used by default。",
+										Description:  "Off-site disaster recovery 1: 使用 关闭-site disaster recovery; 0: do 不 使用 关闭-site disaster recovery; 如果 它 是 空，关闭-site disaster recovery 将 不 是 使用 通过 默认值。",
 									},
 									"zone_set": {
 										Type:        schema.TypeSet,
@@ -86,7 +86,7 @@ func ResourceTencentCloudCfwVpcInstance() *schema.Resource {
 										MinItems:    1,
 										MaxItems:    2,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "可用区 list。",
+										Description: "可用区 列表。",
 									},
 								},
 							},
@@ -121,18 +121,18 @@ func ResourceTencentCloudCfwVpcInstance() *schema.Resource {
 				Required:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(SWITCH_MODE),
-				Description:  "Switch 模式 of firewall instance. 1: Single point intercommunication; 2: Multi-point communication; 4: Custom Routing。",
+				Description:  "Switch 模式 的 firewall 实例. 1: Single point intercommunication; 2: Multi-point communication; 4: Custom Routing。",
 			},
 			"fw_vpc_cidr": {
 				Optional:    true,
 				Type:        schema.TypeString,
 				Default:     "auto",
-				Description: "auto Automatically select the firewall network segment; 10.10.10.0/24 The firewall network segment entered by the 用户",
+				Description: "auto Automatically select firewall 网络 segment; 10.10.10.0/24 firewall 网络 segment entered 通过 用户",
 			},
 			"ccn_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Cloud networking id，suitable for cloud networking 模式",
+				Description: "Cloud networking ID，suitable 对于 云 networking 模式",
 			},
 			// computed
 			"fw_group_id": {

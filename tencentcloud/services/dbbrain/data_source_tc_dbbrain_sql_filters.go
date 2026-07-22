@@ -20,7 +20,7 @@ func DataSourceTencentCloudDbbrainSqlFilters() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "instance id.",
+				Description: "实例 ID.",
 			},
 
 			"filter_ids": {
@@ -29,7 +29,7 @@ func DataSourceTencentCloudDbbrainSqlFilters() *schema.Resource {
 					Type: schema.TypeInt,
 				},
 				Optional:    true,
-				Description: "filter id list.",
+				Description: "过滤器 ID 列表.",
 			},
 
 			"statuses": {
@@ -38,39 +38,39 @@ func DataSourceTencentCloudDbbrainSqlFilters() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "status list.",
+				Description: "状态 列表.",
 			},
 
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "sql filter list.",
+				Description: "sql 过滤器 列表.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "task id.",
+							Description: "任务 ID.",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "task status, optional value is RUNNING, FINISHED, TERMINATED.",
+							Description: "任务 状态, 可选 值 是 RUNNING, FINISHED, TERMINATED.",
 						},
 						"sql_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "sql type, optional value is SELECT, UPDATE, DELETE, INSERT, REPLACE.",
+							Description: "sql 类型, 可选 值 是 SELECT, UPDATE, DELETE, INSERT, REPLACE.",
 						},
 						"origin_keys": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "origin keys.",
+							Description: "源站 keys.",
 						},
 						"origin_rule": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "origin rule.",
+							Description: "源站 规则.",
 						},
 						"rejected_sql_count": {
 							Type:        schema.TypeInt,
@@ -80,7 +80,7 @@ func DataSourceTencentCloudDbbrainSqlFilters() *schema.Resource {
 						"current_concurrency": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "current concurrency.",
+							Description: "当前 concurrency.",
 						},
 						"max_concurrency": {
 							Type:        schema.TypeInt,
@@ -90,17 +90,17 @@ func DataSourceTencentCloudDbbrainSqlFilters() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "create time.",
+							Description: "create 时间.",
 						},
 						"current_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "current time.",
+							Description: "当前 时间.",
 						},
 						"expire_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "expire time.",
+							Description: "expire 时间.",
 						},
 					},
 				},
@@ -109,7 +109,7 @@ func DataSourceTencentCloudDbbrainSqlFilters() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

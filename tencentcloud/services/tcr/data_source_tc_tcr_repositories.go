@@ -22,17 +22,17 @@ func DataSourceTencentCloudTCRRepositories() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID TCR instance that the repository belongs to。",
+				Description: "ID TCR 实例 该 repository belongs 到。",
 			},
 			"namespace_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "名称 namespace that the repository belongs to。",
+				Description: "名称 命名空间 该 repository belongs 到。",
 			},
 			"repository_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID TCR repositories to query。",
+				Description: "ID TCR repositories 到 查询。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -44,7 +44,7 @@ func DataSourceTencentCloudTCRRepositories() *schema.Resource {
 			"repository_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information 列表 the dedicated TCR repositories。",
+				Description: "Information 列表 dedicated TCR repositories。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -55,12 +55,12 @@ func DataSourceTencentCloudTCRRepositories() *schema.Resource {
 						"namespace_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 namespace that the repository belongs to。",
+							Description: "名称 命名空间 该 repository belongs 到。",
 						},
 						"is_public": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Indicate that the repository is public or not。",
+							Description: "Indicate 该 repository 是 公有 或 不。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
@@ -85,7 +85,7 @@ func DataSourceTencentCloudTCRRepositories() *schema.Resource {
 						"url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "URL of the repository。",
+							Description: "URL 的 repository。",
 						},
 					},
 				},

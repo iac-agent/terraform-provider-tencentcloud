@@ -40,7 +40,7 @@ func ResourceTencentCloudTdcpgInstance() *schema.Resource {
 			"memory": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "memory size。",
+				Description: "内存 大小。",
 			},
 
 			"instance_name": {
@@ -52,7 +52,7 @@ func ResourceTencentCloudTdcpgInstance() *schema.Resource {
 			"operation_timing": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "operation timing，可选 值 is IMMEDIATE or MAINTAIN_PERIOD。",
+				Description: "operation timing，可选 值 是 IMMEDIATE 或 MAINTAIN_PERIOD。",
 			},
 		},
 	}

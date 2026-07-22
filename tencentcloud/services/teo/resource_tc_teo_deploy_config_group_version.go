@@ -35,14 +35,14 @@ func ResourceTencentCloudTeoDeployConfigGroupVersion() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Environment ID. Please 指定environment ID to which the 版本 should be released。",
+				Description: "Environment ID. Please 指定environment ID 到 其中 版本 should 是 released。",
 			},
 
 			"config_group_version_infos": {
 				Type:        schema.TypeSet,
 				Required:    true,
 				ForceNew:    true,
-				Description: "版本 information 必填 for release. Multiple versions of different configuration groups can be modified simultaneously，while each group allows modifying only one 版本 at a time。",
+				Description: "版本 信息 必填 对于 release. Multiple versions 的 different 配置 groups 可以 是 modified simultaneously，while each 组 allows modifying 仅 一个 版本 在 时间。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"version_id": {
@@ -64,7 +64,7 @@ func ResourceTencentCloudTeoDeployConfigGroupVersion() *schema.Resource {
 						"group_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Configuration group 类型 有效值：l7_acceleration (L7 acceleration configuration group)，edge_functions (Edge function configuration group)。",
+							Description: "Configuration 组 类型 有效值：l7_acceleration (L7 acceleration 配置 组)，edge_functions (Edge 函数 配置 组)。",
 						},
 						"description": {
 							Type:        schema.TypeString,
@@ -74,12 +74,12 @@ func ResourceTencentCloudTeoDeployConfigGroupVersion() *schema.Resource {
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "版本 状态 有效值：creating (Being created)，inactive (Not effective)，活跃 (Effective)。",
+							Description: "版本 状态 有效值：creating (Being 创建)，inactive (Not effective)，活跃 (Effective)。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "版本 创建时间. The 时间格式 follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC)。",
+							Description: "版本 创建时间. 时间格式 follows ISO 8601 standard 和 是 represented 在 Coordinated Universal Time (UTC)。",
 						},
 					},
 				},
@@ -89,19 +89,19 @@ func ResourceTencentCloudTeoDeployConfigGroupVersion() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Change 描述 It is 用于describe the 内容 and reasons for this change. A maximum of 100 characters are supported。",
+				Description: "Change 描述 It 是 用于describe 内容 和 reasons 对于 此 change. A 最大 的 100 字符 是 支持。",
 			},
 
 			"record_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Deploy record ID。",
+				Description: "Deploy 记录 ID。",
 			},
 
 			"deploy_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Deploy time. The time follows the ISO 8601 standard in the date and 时间格式。",
+				Description: "Deploy 时间. 时间 follows ISO 8601 standard 在 date 和 时间格式。",
 			},
 
 			"status": {

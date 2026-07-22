@@ -33,7 +33,7 @@ func ResourceTencentCloudWedataDqRule() *schema.Resource {
 			"rule_group_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Rule group id。",
+				Description: "Rule 组 ID。",
 			},
 			"name": {
 				Required:    true,
@@ -43,33 +43,33 @@ func ResourceTencentCloudWedataDqRule() *schema.Resource {
 			"table_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Table id。",
+				Description: "Table ID。",
 			},
 			"rule_template_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Rule template id。",
+				Description: "Rule template ID。",
 			},
 			"type": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Rule 类型 1. System Template，2. Custom Template，3. Custom SQL。",
+				Description: "Rule 类型 1. System 模板，2. Custom 模板，3. Custom SQL。",
 			},
 			"quality_dim": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Rules belong to quality dimensions (1. accuracy，2. uniqueness，3. completeness，4. consistency，5. timeliness，6. effectiveness)。",
+				Description: "Rules belong 到 quality dimensions (1. accuracy，2. uniqueness，3. completeness，4. consistency，5. timeliness，6. effectiveness)。",
 			},
 			"source_object_data_type_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "来源 field 类型 int，string。",
+				Description: "来源 字段 类型 int，字符串。",
 			},
 			"source_object_value": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "来源 field 名称",
+				Description: "来源 字段 名称",
 			},
 			"condition_type": {
 				Required:    true,
@@ -90,7 +90,7 @@ func ResourceTencentCloudWedataDqRule() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Alarm trigger condition。",
+				Description: "Alarm 触发器 condition。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"items": {
@@ -102,7 +102,7 @@ func ResourceTencentCloudWedataDqRule() *schema.Resource {
 									"compare_type": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "比较类型 1. Fixed 值 2. Fluctuating 值 3. Comparison of 值 range 4. Enumeration range comparison 5. Do not compare注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "比较类型 1. Fixed 值 2. Fluctuating 值 3. Comparison 的 值 范围 4. Enumeration 范围 comparison 5. Do 不 compare注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"operator": {
 										Type:        schema.TypeString,
@@ -112,18 +112,18 @@ func ResourceTencentCloudWedataDqRule() *schema.Resource {
 									"value_compute_type": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Quality statistics 类型 1. Absolute 值 2. Increase 3. Decrease 4. C 包含5. N C does not contain注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Quality 统计 类型 1. Absolute 值 2. Increase 3. Decrease 4. C 包含5. N C does 不 contain注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"value_list": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Compare the threshold list注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Compare 阈值 list注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"value_type": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Threshold 类型 1. Low threshold 2. High threshold 3. Common threshold 4. Enumerated value注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "Threshold 类型 1. Low 阈值 2. High 阈值 3. Common 阈值 4. Enumerated value注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"value": {
 													Type:        schema.TypeString,
@@ -139,7 +139,7 @@ func ResourceTencentCloudWedataDqRule() *schema.Resource {
 						"cycle_step": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Periodic 表示default 周期 of a template，in seconds注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Periodic 表示default 周期 的 template，在 seconds注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -147,7 +147,7 @@ func ResourceTencentCloudWedataDqRule() *schema.Resource {
 			"alarm_level": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Alarm trigger levels 1. Low，2. Medium，3. High。",
+				Description: "Alarm 触发器 levels 1. Low，2. Medium，3. High。",
 			},
 			"description": {
 				Optional:    true,
@@ -157,38 +157,38 @@ func ResourceTencentCloudWedataDqRule() *schema.Resource {
 			//"datasource_id": {
 			//	Required:    true,
 			//	Type:        schema.TypeString,
-			//	Description: "Datasource id.",
+			//	Description: "Datasource ID.",
 			//},
 			//"database_id": {
 			//	Required:    true,
 			//	Type:        schema.TypeString,
-			//	Description: "Database id.",
+			//	Description: "Database ID.",
 			//},
 			"target_database_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Target database id。",
+				Description: "Target 数据库 ID。",
 			},
 			"target_table_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Target table id。",
+				Description: "Target 表 ID。",
 			},
 			"target_condition_expr": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Target filter condition expression。",
+				Description: "Target 过滤器 condition expression。",
 			},
 			"rel_condition_expr": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The 来源 field and the target field are associated with a conditional on expression。",
+				Description: "来源 字段 和 目标 字段 是 associated 使用 conditional 在 expression。",
 			},
 			"field_config": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Custom template sql expression field replacement parameters。",
+				Description: "Custom template sql expression 字段 replacement 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"where_config": {
@@ -218,7 +218,7 @@ func ResourceTencentCloudWedataDqRule() *schema.Resource {
 						"table_config": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Library table variable注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Library 表 variable注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"database_id": {
@@ -279,14 +279,14 @@ func ResourceTencentCloudWedataDqRule() *schema.Resource {
 			"target_object_value": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Target field 名称  CITY。",
+				Description: "Target 字段 名称 CITY。",
 			},
 			"source_engine_types": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "列表 execution engines supported by this rule。",
+				Description: "列表 execution engines 支持 通过 此 规则。",
 			},
 			"rule_id": {
 				Computed:    true,

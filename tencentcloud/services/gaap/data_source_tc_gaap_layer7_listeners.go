@@ -21,33 +21,33 @@ func DataSourceTencentCloudGaapLayer7Listeners() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"HTTP", "HTTPS"}),
-				Description:  "协议 of the layer7 listener to be queried. 有效值：`HTTP` and `HTTPS`。",
+				Description:  "协议 的 layer7 listener 到 是 queried. 有效值：`HTTP` 和 `HTTPS`。",
 			},
 			"proxy_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID GAAP proxy to be queried。",
+				Description: "ID GAAP proxy 到 是 queried。",
 			},
 			"group_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Group id。",
+				Description: "Group ID。",
 			},
 			"listener_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID layer7 listener to be queried。",
+				Description: "ID layer7 listener 到 是 queried。",
 			},
 			"listener_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "名称 layer7 listener to be queried。",
+				Description: "名称 layer7 listener 到 是 queried。",
 			},
 			"port": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidatePort,
-				Description:  "端口 of the layer7 listener to be queried。",
+				Description:  "端口 的 layer7 listener 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -59,13 +59,13 @@ func DataSourceTencentCloudGaapLayer7Listeners() *schema.Resource {
 			"listeners": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information 列表 layer7 listeners. Each element 包含following attributes:",
+				Description: "An 信息 列表 layer7 listeners. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "协议 of the layer7 listener。",
+							Description: "协议 的 layer7 listener。",
 						},
 						"id": {
 							Type:        schema.TypeString,
@@ -85,7 +85,7 @@ func DataSourceTencentCloudGaapLayer7Listeners() *schema.Resource {
 						"port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "端口 of the layer7 listener。",
+							Description: "端口 的 layer7 listener。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
@@ -101,18 +101,18 @@ func DataSourceTencentCloudGaapLayer7Listeners() *schema.Resource {
 							Deprecated:  "It has been deprecated from version 1.26.0. Use `client_certificate_ids` instead.",
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID client certificate。",
+							Description: "ID 客户端 证书。",
 						},
 						"client_certificate_ids": {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Computed:    true,
-							Description: "ID 列表 the client certificate。",
+							Description: "ID 列表 客户端 证书。",
 						},
 						"auth_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Authentication 类型 layer7 listener. `0` is one-way authentication and `1` is mutual authentication。",
+							Description: "Authentication 类型 layer7 listener. `0` 是 一个-way authentication 和 `1` 是 mutual authentication。",
 						},
 						"forward_protocol": {
 							Type:        schema.TypeString,
@@ -122,7 +122,7 @@ func DataSourceTencentCloudGaapLayer7Listeners() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of the layer7 listener。",
+							Description: "创建时间 的 layer7 listener。",
 						},
 						"tls_support_versions": {
 							Type:        schema.TypeSet,
@@ -134,7 +134,7 @@ func DataSourceTencentCloudGaapLayer7Listeners() *schema.Resource {
 						"tls_ciphers": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "密码 Suite，可选 GAAP_TLS_CIPHERS_STRICT，GAAP_TLS_CIPHERS_GENERAL，GAAP_TLS_CIPHERS_WIDE(default)。",
+							Description: "密码 Suite，可选 GAAP_TLS_CIPHERS_STRICT，GAAP_TLS_CIPHERS_GENERAL，GAAP_TLS_CIPHERS_WIDE(默认值)。",
 						},
 					},
 				},

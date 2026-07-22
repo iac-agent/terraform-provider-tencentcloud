@@ -27,7 +27,7 @@ func ResourceTencentCloudCamRoleSSO() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "名称 resource。",
+				Description: "名称 资源。",
 			},
 			"identity_url": {
 				Type:        schema.TypeString,
@@ -37,7 +37,7 @@ func ResourceTencentCloudCamRoleSSO() *schema.Resource {
 			"identity_key": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Sign the public 键",
+				Description: "Sign 公有 键",
 			},
 			"client_ids": {
 				Type:        schema.TypeSet,
@@ -48,7 +48,7 @@ func ResourceTencentCloudCamRoleSSO() *schema.Resource {
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "描述 resource。",
+				Description: "描述 资源。",
 			},
 		},
 	}

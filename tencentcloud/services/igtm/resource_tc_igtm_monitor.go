@@ -32,43 +32,43 @@ func ResourceTencentCloudIgtmMonitor() *schema.Resource {
 			"check_protocol": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Detection 协议，可选 values `PING`，`TCP`，`HTTP`，`HTTPS`。",
+				Description: "Detection 协议，可选 值 `PING`，`TCP`，`HTTP`，`HTTPS`。",
 			},
 
 			"check_interval": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Check interval (seconds)，可选 values 15 60 120 300。",
+				Description: "Check 间隔 (秒)，可选 值 15 60 120 300。",
 			},
 
 			"timeout": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Timeout time，unit seconds，可选 values 2 3 5 10。",
+				Description: "Timeout 时间，单位 秒，可选 值 2 3 5 10。",
 			},
 
 			"fail_times": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Retry count，可选 values 0，1，2。",
+				Description: "Retry count，可选 值 0，1，2。",
 			},
 
 			"fail_rate": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Failure rate，values 20 30 40 50 60 70 80 100，默认值 50。",
+				Description: "Failure 速率，值 20 30 40 50 60 70 80 100，默认值 50。",
 			},
 
 			"detector_style": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Monitoring node 类型，可选 values AUTO INTERNAL OVERSEAS IPV6 ALL。",
+				Description: "Monitoring 节点 类型，可选 值 AUTO INTERNAL OVERSEAS IPV6 ALL。",
 			},
 
 			"detector_group_ids": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Detector 组 ID list separated by commas。",
+				Description: "Detector 组 ID 列表 separated 通过 commas。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -78,14 +78,14 @@ func ResourceTencentCloudIgtmMonitor() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "PING packet count，必填 when CheckProtocol=ping，可选 values 20 50 100。",
+				Description: "PING packet count，必填 当 CheckProtocol=ping，可选 值 20 50 100。",
 			},
 
 			"tcp_port": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Check 端口，可选 values between 1-65535。",
+				Description: "Check 端口，可选 值 between 1-65535。",
 			},
 
 			"host": {
@@ -98,42 +98,42 @@ func ResourceTencentCloudIgtmMonitor() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "URL path, default is \"/\".",
+				Description: "URL 路径, 默认值 是 \"/\".",
 			},
 
 			"return_code_threshold": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Return 错误码 threshold，可选 values 400 and 500，默认值 500。",
+				Description: "Return 错误码 阈值，可选 值 400 和 500，默认值 500。",
 			},
 
 			"enable_redirect": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Follow 3XX redirect，DISABLED for 已禁用，ENABLED for 已启用，default 已禁用",
+				Description: "Follow 3XX redirect，DISABLED 对于 已禁用，ENABLED 对于 已启用，默认值 已禁用",
 			},
 
 			"enable_sni": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Enable SNI，DISABLED for 已禁用，ENABLED for 已启用，default 已禁用",
+				Description: "Enable SNI，DISABLED 对于 已禁用，ENABLED 对于 已启用，默认值 已禁用",
 			},
 
 			"packet_loss_rate": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Packet loss rate alarm threshold，必填 when CheckProtocol=ping，values 10 30 50 80 90 100。",
+				Description: "Packet loss 速率 告警 阈值，必填 当 CheckProtocol=ping，值 10 30 50 80 90 100。",
 			},
 
 			"continue_period": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Continuous 周期 count，可选 values 1-5。",
+				Description: "Continuous 周期 count，可选 值 1-5。",
 			},
 
 			// computed

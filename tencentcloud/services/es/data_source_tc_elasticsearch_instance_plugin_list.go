@@ -25,13 +25,13 @@ func DataSourceTencentCloudElasticsearchInstancePluginList() *schema.Resource {
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "顺序 field. 有效值：`pluginName`。",
+				Description: "顺序 字段. 有效值：`pluginName`。",
 			},
 
 			"order_by_type": {
 				Optional: true,
 				Type:     schema.TypeString,
-				Description: "Order type. Valid values:\n" +
+				Description: "Order 类型. 有效 值:\n" +
 					"- asc: Ascending asc\n" +
 					"- desc: Descending Desc.",
 			},
@@ -39,13 +39,13 @@ func DataSourceTencentCloudElasticsearchInstancePluginList() *schema.Resource {
 			"plugin_type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Plugin 类型 有效值：`0`: System plugin。",
+				Description: "Plugin 类型 有效值：`0`: System 插件。",
 			},
 
 			"plugin_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Plugin information list。",
+				Description: "Plugin 信息 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"plugin_name": {
@@ -66,7 +66,7 @@ func DataSourceTencentCloudElasticsearchInstancePluginList() *schema.Resource {
 						"status": {
 							Type:     schema.TypeInt,
 							Computed: true,
-							Description: "Plugin status. Valid values:\n" +
+							Description: "Plugin 状态. 有效 值:\n" +
 								"- `-2` has been uninstalled\n" +
 								"- `-1` has been installed in\n" +
 								"- `0` installation.",
@@ -74,12 +74,12 @@ func DataSourceTencentCloudElasticsearchInstancePluginList() *schema.Resource {
 						"removable": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否plug-in can be uninstalled。",
+							Description: "是否plug-在 可以 是 uninstalled。",
 						},
 						"plugin_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Plugin 类型 有效值：`0`: System plugin。",
+							Description: "Plugin 类型 有效值：`0`: System 插件。",
 						},
 						"plugin_update_time": {
 							Type:        schema.TypeString,

@@ -35,7 +35,7 @@ func ResourceTencentCloudTseWafDomains() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The waf protected 域名 名称",
+				Description: "waf protected 域名 名称",
 			},
 		},
 	}

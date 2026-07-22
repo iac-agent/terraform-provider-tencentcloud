@@ -40,7 +40,7 @@ func ResourceTencentCloudWafAntiInfoLeak() *schema.Resource {
 				Required:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(ANTI_INFO_LEAK_ACTION_TYPE),
-				Description:  "Rule 操作，0 (log)，1 (replace)，2 (only display the first four digits)，3 (only display the last four digits)，4 (deny)。",
+				Description:  "Rule 操作，0 (日志)，1 (replace)，2 (仅 display first four digits)，3 (仅 display last four digits)，4 (deny)。",
 			},
 			"strategies": {
 				Required:    true,
@@ -52,7 +52,7 @@ func ResourceTencentCloudWafAntiInfoLeak() *schema.Resource {
 							Type:         schema.TypeString,
 							Required:     true,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(STRATEGIES_FIELD),
-							Description:  "Matching Criteria，returncode (Response 代码)，keywords (Keywords)，information (Sensitive Information)。",
+							Description:  "Matching Criteria，returncode (Response 代码)，keywords (Keywords)，信息 (Sensitive Information)。",
 						},
 						"content": {
 							Type:     schema.TypeString,

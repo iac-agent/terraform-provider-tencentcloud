@@ -31,7 +31,7 @@ func DataSourceTencentCloudWedataOpsTaskCode() *schema.Resource {
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Retrieves the task 代码 结果",
+				Description: "Retrieves 任务 代码 结果",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"code_content": {
@@ -42,7 +42,7 @@ func DataSourceTencentCloudWedataOpsTaskCode() *schema.Resource {
 						"code_file_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "指定size of the 代码 file in bytes。",
+							Description: "指定size 的 代码 文件 在 bytes。",
 						},
 					},
 				},

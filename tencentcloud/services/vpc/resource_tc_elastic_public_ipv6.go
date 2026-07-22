@@ -29,42 +29,42 @@ func ResourceTencentCloudElasticPublicIpv6() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "EIP 名称，用于customize the personalized 名称 EIP when applying for EIP. 默认值：unnamed。",
+				Description: "EIP 名称，用于customize personalized 名称 EIP 当 applying 对于 EIP. 默认值：unnamed。",
 			},
 
 			"address_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Elastic IPv6 类型，可选 values:\n\t- EIPv6: Ordinary IPv6\n\t- HighQualityEIPv6: Premium IPv6\nNote: You need to contact the product to open a premium IPv6 white list，and only some regions support premium IPv6\n默认值：EIPv6。",
+				Description: "Elastic IPv6 类型，可选 值:\n\t- EIPv6: Ordinary IPv6\n\t- HighQualityEIPv6: Premium IPv6\nNote: You need 到 contact product 到 open premium IPv6 white 列表，和 仅 some regions support premium IPv6\n默认值：EIPv6。",
 			},
 
 			"internet_charge_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Elastic IPv6 charging method，可选 values:\n\t- BANDWIDTH_PACKAGE: Payment for Shared Bandwidth Package\n\t- TRAFFIC_POSTPAID_BY_HOUR: Traffic is paid by the hour\n默认值：TRAFFIC_POSTPAID_BY_HOUR。",
+				Description: "Elastic IPv6 charging 方法，可选 值:\n\t- BANDWIDTH_PACKAGE: Payment 对于 Shared Bandwidth Package\n\t- TRAFFIC_POSTPAID_BY_HOUR: Traffic 是 paid 通过 hour\n默认值：TRAFFIC_POSTPAID_BY_HOUR。",
 			},
 
 			"internet_service_provider": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Elastic IPv6 line 类型，默认值：BGP.\nFor users who have activated a static single-line IP whitelist，selectable values:\n\t- CMCC: China Mobile\n\t- CTCC: China Telecom\n\t- CUCC: China Unicom\nNote: Static single-wire IP is only supported in some regions。",
+				Description: "Elastic IPv6 line 类型，默认值：BGP.\nFor users who have activated 静态 单个-line IP whitelist，selectable 值:\n\t- CMCC: China Mobile\n\t- CTCC: China Telecom\n\t- CUCC: China Unicom\nNote: Static 单个-wire IP 是 仅 支持 在 some regions。",
 			},
 
 			"internet_max_bandwidth_out": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Elastic IPv6 bandwidth 限制 in Mbps.\nThe range of selectable values depends on the EIP billing method:\n\t- BANDWIDTH_PACKAGE: 1 Mbps to 2000 Mbps\n\t- TRAFFIC_POSTPAID_BY_HOUR: 1 Mbps to 100 Mbps\n默认值：1 Mbps。",
+				Description: "Elastic IPv6 带宽 限制 在 Mbps.\nThe 范围 的 selectable 值 depends 在 EIP billing 方法:\n\t- BANDWIDTH_PACKAGE: 1 Mbps 到 2000 Mbps\n\t- TRAFFIC_POSTPAID_BY_HOUR: 1 Mbps 到 100 Mbps\n默认值：1 Mbps。",
 			},
 
 			"bandwidth_package_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Bandwidth packet unique ID parameter. If this parameter is set and the InternetChargeType is BANDWIDTH_PACKAGE，it means that the EIP created is added to the BGP bandwidth packet and the bandwidth packet is charged。",
+				Description: "Bandwidth packet 唯一 ID 参数. 如果 此 参数 是 集合 和 InternetChargeType 是 BANDWIDTH_PACKAGE，它 表示 该 EIP 创建 是 added 到 BGP 带宽 packet 和 带宽 packet 是 charged。",
 			},
 
 			"tags": {
@@ -77,14 +77,14 @@ func ResourceTencentCloudElasticPublicIpv6() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Elastic IPv6 network exit，可选 values:\n\t- CENTER_EGRESS_1: Center Exit 1\n\t- CENTER_EGRESS_2: Center Exit 2\n\t- CENTER_EGRESS_3: Center Exit 3\nNote: Network exports corresponding to different operators or resource types need to contact the product for clarification\n默认值：CENTER_EGRESS_1。",
+				Description: "Elastic IPv6 网络 exit，可选 值:\n\t- CENTER_EGRESS_1: Center Exit 1\n\t- CENTER_EGRESS_2: Center Exit 2\n\t- CENTER_EGRESS_3: Center Exit 3\nNote: Network exports corresponding 到 different operators 或 资源 types need 到 contact product 对于 clarification\n默认值：CENTER_EGRESS_1。",
 			},
 
 			"address_ip": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "External network IP 地址",
+				Description: "External 网络 IP 地址",
 			},
 		},
 	}

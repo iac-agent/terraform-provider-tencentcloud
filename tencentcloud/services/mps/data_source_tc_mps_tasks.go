@@ -19,26 +19,26 @@ func DataSourceTencentCloudMpsTasks() *schema.Resource {
 			"status": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Filter condition: task 状态，可选 values: WAITING，PROCESSING，FINISH。",
+				Description: "过滤器 condition: 任务 状态，可选 值: WAITING，PROCESSING，FINISH。",
 			},
 
 			"limit": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Return the 数量 records，默认值：10，maximum 值: 100。",
+				Description: "Return 数量 records，默认值：10，最大 值: 100。",
 			},
 
 			"scroll_token": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Page turning flag，used when pulling in batches: when a single request cannot pull all the data，the interface will return a ScrollToken，and the next request will carry this 令牌，and it will be obtained from the next record。",
+				Description: "Page turning flag，使用 当 pulling 在 batches: 当 单个 请求 不能 pull all 数据， interface 将 返回 ScrollToken，和 next 请求 将 carry 此 令牌，和 它 将 是 获取 从 next 记录。",
 			},
 
 			"task_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Task list。",
+				Description: "任务 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"task_id": {
@@ -49,22 +49,22 @@ func DataSourceTencentCloudMpsTasks() *schema.Resource {
 						"task_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Task 类型，including:WorkflowTask，EditMediaTask，LiveProcessTask。",
+							Description: "任务 类型，包括:WorkflowTask，EditMediaTask，LiveProcessTask。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间，in ISO date 格式 Refer to https://cloud.tencent.com/document/product/862/37710#52。",
+							Description: "创建时间，在 ISO date 格式 Refer 到 https://云.tencent.com/document/product/862/37710#52。",
 						},
 						"begin_process_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Begin process time，in ISO date 格式 Refer to https://cloud.tencent.com/document/product/862/37710#52. If the task has not started yet，this field is: 0000-00-00T00:00:00Z。",
+							Description: "Begin process 时间，在 ISO date 格式 Refer 到 https://云.tencent.com/document/product/862/37710#52. 如果 任务 has 不 started yet，此 字段 是: 0000-00-00T00:00:00Z。",
 						},
 						"finish_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Task finish time，in ISO date 格式 Refer to https://cloud.tencent.com/document/product/862/37710#52. If the task has not been completed，this field is: 0000-00-00T00:00:00Z。",
+							Description: "任务 finish 时间，在 ISO date 格式 Refer 到 https://云.tencent.com/document/product/862/37710#52. 如果 任务 has 不 been completed，此 字段 是: 0000-00-00T00:00:00Z。",
 						},
 						"sub_task_types": {
 							Type: schema.TypeSet,
@@ -72,7 +72,7 @@ func DataSourceTencentCloudMpsTasks() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Sub task types。",
+							Description: "Sub 任务 types。",
 						},
 					},
 				},

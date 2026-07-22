@@ -20,7 +20,7 @@ func DataSourceTencentCloudDnspodRecordType() *schema.Resource {
 			"domain_grade": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "域名 级别 + Old packages: D_FREE，D_PLUS，D_EXTRA，D_EXPERT，D_ULTRA correspond to free package，personal luxury，enterprise 1，enterprise 2，enterprise 3. + New packages: DP_FREE，DP_PLUS，DP_EXTRA，DP_EXPERT，DP_ULTRA correspond to new free，personal professional，enterprise basic，enterprise standard，enterprise flagship。",
+				Description: "域名 级别 + Old packages: D_FREE，D_PLUS，D_EXTRA，D_EXPERT，D_ULTRA correspond 到 free 包，personal luxury，enterprise 1，enterprise 2，enterprise 3. + New packages: DP_FREE，DP_PLUS，DP_EXTRA，DP_EXPERT，DP_ULTRA correspond 到 new free，personal professional，enterprise basic，enterprise standard，enterprise flagship。",
 			},
 
 			"type_list": {
@@ -29,7 +29,7 @@ func DataSourceTencentCloudDnspodRecordType() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Record 类型 list。",
+				Description: "Record 类型 列表。",
 			},
 
 			"result_output_file": {

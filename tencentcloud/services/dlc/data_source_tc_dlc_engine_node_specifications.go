@@ -24,7 +24,7 @@ func DataSourceTencentCloudDlcEngineNodeSpecifications() *schema.Resource {
 			"driver_spec": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Driver available specifications。",
+				Description: "Driver 可用 specifications。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -35,7 +35,7 @@ func DataSourceTencentCloudDlcEngineNodeSpecifications() *schema.Resource {
 						"cu": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Current specification of CU number。",
+							Description: "Current 规格 的 CU 数量。",
 						},
 						"cpu": {
 							Type:        schema.TypeInt,
@@ -45,7 +45,7 @@ func DataSourceTencentCloudDlcEngineNodeSpecifications() *schema.Resource {
 						"memory": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The current memory size，（GB）。",
+							Description: "当前 内存 大小，（GB）。",
 						},
 					},
 				},
@@ -65,7 +65,7 @@ func DataSourceTencentCloudDlcEngineNodeSpecifications() *schema.Resource {
 						"cu": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Current specification of CU number。",
+							Description: "Current 规格 的 CU 数量。",
 						},
 						"cpu": {
 							Type:        schema.TypeInt,
@@ -75,7 +75,7 @@ func DataSourceTencentCloudDlcEngineNodeSpecifications() *schema.Resource {
 						"memory": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The current memory size，（GB）。",
+							Description: "当前 内存 大小，（GB）。",
 						},
 					},
 				},

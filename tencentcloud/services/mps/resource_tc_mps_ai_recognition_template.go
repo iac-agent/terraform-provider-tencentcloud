@@ -26,31 +26,31 @@ func ResourceTencentCloudMpsAiRecognitionTemplate() *schema.Resource {
 			"name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Ai recognition 模板名称，length 限制: 64 characters。",
+				Description: "Ai recognition 模板名称，长度 限制: 64 字符。",
 			},
 
 			"comment": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Ai recognition 模板描述 information，length 限制: 256 characters。",
+				Description: "Ai recognition 模板描述 信息，长度 限制: 256 字符。",
 			},
 
 			"face_configure": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Face recognition control parameters。",
+				Description: "Face recognition control 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Ai face recognition task switch，可选 值:ON/OFF。",
+							Description: "Ai face recognition 任务 switch，可选 值:ON/OFF。",
 						},
 						"score": {
 							Type:        schema.TypeFloat,
 							Optional:    true,
-							Description: "Face recognition filter score，when the recognition 结果 reaches the score above，the recognition 结果 will be returned. The 默认为 95 points. 取值范围：0 - 100。",
+							Description: "Face recognition 过滤器 score，当 recognition 结果 reaches score above， recognition 结果 将 是 返回. 默认为 95 points. 取值范围：0 - 100。",
 						},
 						"default_library_label_set": {
 							Type: schema.TypeSet,
@@ -58,7 +58,7 @@ func ResourceTencentCloudMpsAiRecognitionTemplate() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "Default face filter 标签，指定tag of the default face that needs to be returned. 如果未填写 or empty，all default face results will be returned. 标签 可选 值:entertainment，sport，politician。",
+							Description: "Default face 过滤器 标签，指定tag 的 默认值 face 该 needs 到 是 返回. 如果未填写 或 空，all 默认值 face results 将 是 返回. 标签 可选 值:entertainment，sport，politician。",
 						},
 						"user_define_library_label_set": {
 							Type: schema.TypeSet,
@@ -66,12 +66,12 @@ func ResourceTencentCloudMpsAiRecognitionTemplate() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "用户-defined face filter 标签，指定tag of the 用户-defined face that needs to be returned. 如果未填写 or empty，all custom face results will be returned.The 最大tags is 100，and the length of each 标签 is up to 16 characters。",
+							Description: "用户-defined face 过滤器 标签，指定tag 的 用户-defined face 该 needs 到 是 返回. 如果未填写 或 空，all 自定义 face results 将 是 返回. 最大tags 是 100，和 长度 的 each 标签 是 up 到 16 字符。",
 						},
 						"face_library": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Face library selection，可选 值:Default，UserDefine，All默认值：All，use the system default face library and 用户-defined face library。",
+							Description: "Face 库 selection，可选 值:Default，UserDefine，All默认值：All，使用 系统 默认值 face 库 和 用户-defined face 库。",
 						},
 					},
 				},
@@ -81,13 +81,13 @@ func ResourceTencentCloudMpsAiRecognitionTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Ocr full text control parameters。",
+				Description: "Ocr full text control 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Ocr full text recognition task switch，可选 值:ON/OFF。",
+							Description: "Ocr full text recognition 任务 switch，可选 值:ON/OFF。",
 						},
 					},
 				},
@@ -97,13 +97,13 @@ func ResourceTencentCloudMpsAiRecognitionTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Ocr words recognition control parameters。",
+				Description: "Ocr words recognition control 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Ocr words recognition task switch，可选 值:ON/OFF。",
+							Description: "Ocr words recognition 任务 switch，可选 值:ON/OFF。",
 						},
 						"label_set": {
 							Type: schema.TypeSet,
@@ -111,7 +111,7 @@ func ResourceTencentCloudMpsAiRecognitionTemplate() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "Keyword filter 标签，指定label of the keyword to be returned. 如果未填写 or empty，all results will be returned.The 最大tags is 10，and the length of each 标签 is up to 16 characters。",
+							Description: "Keyword 过滤器 标签，指定label 的 keyword 到 是 返回. 如果未填写 或 空，all results 将 是 返回. 最大tags 是 10，和 长度 的 each 标签 是 up 到 16 字符。",
 						},
 					},
 				},
@@ -121,18 +121,18 @@ func ResourceTencentCloudMpsAiRecognitionTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Asr full text recognition control parameters。",
+				Description: "Asr full text recognition control 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Asr full text recognition task switch，可选 值:ON/OFF。",
+							Description: "Asr full text recognition 任务 switch，可选 值:ON/OFF。",
 						},
 						"subtitle_format": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Generated subtitle file 格式，if left blank or blank string means no subtitle file will be generated，可选 值:vtt: Generate WebVTT subtitle files。",
+							Description: "Generated subtitle 文件 格式，如果 left blank 或 blank 字符串 表示 无 subtitle 文件 将 是 generated，可选 值:vtt: Generate WebVTT subtitle files。",
 						},
 					},
 				},
@@ -142,13 +142,13 @@ func ResourceTencentCloudMpsAiRecognitionTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Asr word recognition control parameters。",
+				Description: "Asr word recognition control 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Asr word recognition task switch，可选 值:ON/OFF。",
+							Description: "Asr word recognition 任务 switch，可选 值:ON/OFF。",
 						},
 						"label_set": {
 							Type: schema.TypeSet,
@@ -156,7 +156,7 @@ func ResourceTencentCloudMpsAiRecognitionTemplate() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "Keyword filter 标签，指定label of the keyword to be returned. 如果未填写 or empty，all results will be returned.The 最大tags is 10，and the length of each 标签 is up to 16 characters。",
+							Description: "Keyword 过滤器 标签，指定label 的 keyword 到 是 返回. 如果未填写 或 空，all results 将 是 返回. 最大tags 是 10，和 长度 的 each 标签 是 up 到 16 字符。",
 						},
 					},
 				},

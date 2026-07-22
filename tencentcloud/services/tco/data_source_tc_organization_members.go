@@ -25,7 +25,7 @@ func DataSourceTencentCloudOrganizationMembers() *schema.Resource {
 			"search_key": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Search by member 名称 or ID。",
+				Description: "Search 通过 member 名称 或 ID。",
 			},
 
 			"auth_name": {
@@ -37,13 +37,13 @@ func DataSourceTencentCloudOrganizationMembers() *schema.Resource {
 			"product": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Abbreviation of the trusted service，which 为必填项 during querying the trusted service admin。",
+				Description: "Abbreviation 的 trusted 服务，其中 为必填项 during querying trusted 服务 admin。",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Member list。",
+				Description: "Member 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"member_uin": {
@@ -59,22 +59,22 @@ func DataSourceTencentCloudOrganizationMembers() *schema.Resource {
 						"member_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Member 类型 有效值：`Invite` (invited); `Create` (created).注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Member 类型 有效值：`Invite` (invited); `Create` (创建).注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"org_policy_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Relationship policy type注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Relationship 策略 type注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"org_policy_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Relationship policy name注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Relationship 策略 name注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"org_permission": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Relationship policy permission注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Relationship 策略 permission注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"id": {
@@ -118,7 +118,7 @@ func DataSourceTencentCloudOrganizationMembers() *schema.Resource {
 						"is_allow_quit": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "是否member is allowed to leave. 有效值：`Allow`，`Denied`.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "是否member 是 allowed 到 leave. 有效值：`Allow`，`Denied`.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"pay_uin": {
 							Type:        schema.TypeString,
@@ -152,12 +152,12 @@ func DataSourceTencentCloudOrganizationMembers() *schema.Resource {
 						"bind_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Security information binding 状态 有效值：`Unbound`，`Valid`，`Success`，`Failed`.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Security 信息 binding 状态 有效值：`Unbound`，`有效`，`Success`，`Failed`.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"permission_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Member permission 状态 有效值：`Confirmed`，`UnConfirmed`.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Member 权限 状态 有效值：`Confirmed`，`UnConfirmed`.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"nick_name": {
 							Type:        schema.TypeString,

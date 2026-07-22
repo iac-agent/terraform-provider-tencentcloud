@@ -29,13 +29,13 @@ func ResourceTencentCloudSqlserverRenewDBInstance() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 			"period": {
 				Optional:    true,
 				Type:        schema.TypeInt,
 				Default:     1,
-				Description: "How many months to renew, the value range is 1-48, the default is 1.",
+				Description: "How many months 到 renew, 值 范围 是 1-48, 默认值 是 1.",
 			},
 		},
 	}

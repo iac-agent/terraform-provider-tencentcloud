@@ -19,27 +19,27 @@ func DataSourceTencentCloudSqlserverQueryXevent() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 			"event_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Event type. Valid values: slow (Slow SQL event), blocked (blocking event), deadlock` (deadlock event).",
+				Description: "Event 类型. 有效 值: slow (Slow SQL 事件), blocked (blocking 事件), deadlock` (deadlock 事件).",
 			},
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Generation start time of an extended file.",
+				Description: "Generation start 时间 的 extended 文件.",
 			},
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Generation end time of an extended file.",
+				Description: "Generation end 时间 的 extended 文件.",
 			},
 			"events": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of extended events.",
+				Description: "List 的 extended events.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
@@ -50,42 +50,42 @@ func DataSourceTencentCloudSqlserverQueryXevent() *schema.Resource {
 						"file_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "File name of an extended event.",
+							Description: "File 名称 的 extended 事件.",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "File size of an extended event.",
+							Description: "File 大小 的 extended 事件.",
 						},
 						"event_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Event type. Valid values: slow (Slow SQL event), blocked (blocking event), deadlock (deadlock event).",
+							Description: "Event 类型. 有效 值: slow (Slow SQL 事件), blocked (blocking 事件), deadlock (deadlock 事件).",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Event record status. Valid values: 1 (succeeded), 2 (failed).",
+							Description: "Event 记录 状态. 有效 值: 1 (succeeded), 2 (failed).",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Generation start time of an extended file.",
+							Description: "Generation start 时间 的 extended 文件.",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Generation end time of an extended file.",
+							Description: "Generation end 时间 的 extended 文件.",
 						},
 						"internal_addr": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Download address on the private network.",
+							Description: "Download 地址 在 私有 网络.",
 						},
 						"external_addr": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Download address on the public network.",
+							Description: "Download 地址 在 公有 网络.",
 						},
 					},
 				},
@@ -93,7 +93,7 @@ func DataSourceTencentCloudSqlserverQueryXevent() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

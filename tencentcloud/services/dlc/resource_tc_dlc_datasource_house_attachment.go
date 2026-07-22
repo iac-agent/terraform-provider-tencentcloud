@@ -24,7 +24,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Network configuration 名称",
+				Description: "Network 配置 名称",
 			},
 
 			"datasource_connection_type": {
@@ -39,7 +39,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "Data 来源 network configuration。",
+				Description: "Data 来源 网络 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"mysql": {
@@ -47,7 +47,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    1,
-							Description: "Properties of MySQL data 来源 connection。",
+							Description: "Properties 的 MySQL 数据 来源 连接。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									// "jdbc_url": {
@@ -73,14 +73,14 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 										Required:    true,
 										ForceNew:    true,
 										MaxItems:    1,
-										Description: "Network information for MySQL data 来源",
+										Description: "Network 信息 对于 MySQL 数据 来源",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"vpc_id": {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
-													Description: "VPC 实例 ID where the data connection is located，such as 'vpc-azd4dt1c'。",
+													Description: "VPC 实例 ID 其中 数据 连接 是 located，such 作为 'vpc-azd4dt1c'。",
 												},
 												"vpc_cidr_block": {
 													Type:        schema.TypeString,
@@ -92,7 +92,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
-													Description: "子网实例 ID where the data connection is located，such as 'subnet-bthucmmy'。",
+													Description: "子网实例 ID 其中 数据 连接 是 located，such 作为 '子网-bthucmmy'。",
 												},
 												"subnet_cidr_block": {
 													Type:        schema.TypeString,
@@ -113,13 +113,13 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Database instance ID，consistent with the database side。",
+										Description: "Database 实例 ID，consistent 使用 数据库 side。",
 									},
 									"instance_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Database 实例名称，consistent with the database side。",
+										Description: "Database 实例名称，consistent 使用 数据库 side。",
 									},
 								},
 							},
@@ -129,34 +129,34 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    1,
-							Description: "Properties of Hive data 来源 connection。",
+							Description: "Properties 的 Hive 数据 来源 连接。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"meta_store_url": {
 										Type:        schema.TypeString,
 										Required:    true,
 										ForceNew:    true,
-										Description: "地址 of Hive metastore。",
+										Description: "地址 的 Hive metastore。",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Required:    true,
 										ForceNew:    true,
-										Description: "Hive data 来源 类型，representing data storage location，COS or HDFS。",
+										Description: "Hive 数据 来源 类型，representing 数据 存储 location，COS 或 HDFS。",
 									},
 									"location": {
 										Type:        schema.TypeList,
 										Required:    true,
 										ForceNew:    true,
 										MaxItems:    1,
-										Description: "Private network information where the data 来源 is located。",
+										Description: "Private 网络 信息 其中 数据 来源 是 located。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"vpc_id": {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
-													Description: "VPC 实例 ID where the data connection is located，such as 'vpc-azd4dt1c'。",
+													Description: "VPC 实例 ID 其中 数据 连接 是 located，such 作为 'vpc-azd4dt1c'。",
 												},
 												"vpc_cidr_block": {
 													Type:        schema.TypeString,
@@ -168,7 +168,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
-													Description: "子网实例 ID where the data connection is located，such as 'subnet-bthucmmy'。",
+													Description: "子网实例 ID 其中 数据 连接 是 located，such 作为 '子网-bthucmmy'。",
 												},
 												"subnet_cidr_block": {
 													Type:        schema.TypeString,
@@ -189,26 +189,26 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 										Type:        schema.TypeBool,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "If the 类型 is HDFS，high availability needs to be selected。",
+										Description: "如果 类型 是 HDFS，high availability needs 到 是 selected。",
 									},
 									"bucket_url": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "If the 类型 is COS，COS 存储桶 connection needs to be filled in。",
+										Description: "如果 类型 是 COS，COS 存储桶 连接 needs 到 是 filled 在。",
 									},
 									"hdfs_properties": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "JSON string. If the 类型 is HDFS，this field needs to be filled in。",
+										Description: "JSON 字符串. 如果 类型 是 HDFS，此 字段 needs 到 是 filled 在。",
 									},
 									"mysql": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										ForceNew:    true,
 										MaxItems:    1,
-										Description: "Metadata database information for Hive。",
+										Description: "Metadata 数据库 信息 对于 Hive。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												// "jdbc_url": {
@@ -234,14 +234,14 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 													Required:    true,
 													ForceNew:    true,
 													MaxItems:    1,
-													Description: "Network information for MySQL data 来源",
+													Description: "Network 信息 对于 MySQL 数据 来源",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"vpc_id": {
 																Type:        schema.TypeString,
 																Required:    true,
 																ForceNew:    true,
-																Description: "VPC 实例 ID where the data connection is located，such as 'vpc-azd4dt1c'。",
+																Description: "VPC 实例 ID 其中 数据 连接 是 located，such 作为 'vpc-azd4dt1c'。",
 															},
 															"vpc_cidr_block": {
 																Type:        schema.TypeString,
@@ -253,7 +253,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 																Type:        schema.TypeString,
 																Required:    true,
 																ForceNew:    true,
-																Description: "子网实例 ID where the data connection is located，such as 'subnet-bthucmmy'。",
+																Description: "子网实例 ID 其中 数据 连接 是 located，such 作为 '子网-bthucmmy'。",
 															},
 															"subnet_cidr_block": {
 																Type:        schema.TypeString,
@@ -274,13 +274,13 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 													Type:        schema.TypeString,
 													Optional:    true,
 													ForceNew:    true,
-													Description: "Database instance ID，consistent with the database side。",
+													Description: "Database 实例 ID，consistent 使用 数据库 side。",
 												},
 												"instance_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													ForceNew:    true,
-													Description: "Database 实例名称，consistent with the database side。",
+													Description: "Database 实例名称，consistent 使用 数据库 side。",
 												},
 											},
 										},
@@ -289,7 +289,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "EMR cluster ID。",
+										Description: "EMR 集群 ID。",
 									},
 									"instance_name": {
 										Type:        schema.TypeString,
@@ -301,7 +301,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "版本 数量 Hive component in EMR cluster。",
+										Description: "版本 数量 Hive 组件 在 EMR 集群。",
 									},
 									"kerberos_info": {
 										Type:        schema.TypeList,
@@ -315,13 +315,13 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 													Type:        schema.TypeString,
 													Optional:    true,
 													ForceNew:    true,
-													Description: "Krb5Conf file 值",
+													Description: "Krb5Conf 文件 值",
 												},
 												"key_tab": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													ForceNew:    true,
-													Description: "KeyTab file 值",
+													Description: "KeyTab 文件 值",
 												},
 												"service_principal": {
 													Type:        schema.TypeString,
@@ -346,28 +346,28 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    1,
-							Description: "Properties of Kafka data 来源 connection。",
+							Description: "Properties 的 Kafka 数据 来源 连接。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_id": {
 										Type:        schema.TypeString,
 										Required:    true,
 										ForceNew:    true,
-										Description: "Kafka instance ID。",
+										Description: "Kafka 实例 ID。",
 									},
 									"location": {
 										Type:        schema.TypeList,
 										Required:    true,
 										ForceNew:    true,
 										MaxItems:    1,
-										Description: "Network information for Kafka data 来源",
+										Description: "Network 信息 对于 Kafka 数据 来源",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"vpc_id": {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
-													Description: "VPC 实例 ID where the data connection is located，such as 'vpc-azd4dt1c'。",
+													Description: "VPC 实例 ID 其中 数据 连接 是 located，such 作为 'vpc-azd4dt1c'。",
 												},
 												"vpc_cidr_block": {
 													Type:        schema.TypeString,
@@ -379,7 +379,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
-													Description: "子网实例 ID where the data connection is located，such as 'subnet-bthucmmy'。",
+													Description: "子网实例 ID 其中 数据 连接 是 located，such 作为 '子网-bthucmmy'。",
 												},
 												"subnet_cidr_block": {
 													Type:        schema.TypeString,
@@ -398,7 +398,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    1,
-							Description: "Properties of other data 来源 connection。",
+							Description: "Properties 的 other 数据 来源 连接。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"location": {
@@ -406,14 +406,14 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 										Required:    true,
 										ForceNew:    true,
 										MaxItems:    1,
-										Description: "Network parameters。",
+										Description: "Network 参数。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"vpc_id": {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
-													Description: "VPC 实例 ID where the data connection is located，such as 'vpc-azd4dt1c'。",
+													Description: "VPC 实例 ID 其中 数据 连接 是 located，such 作为 'vpc-azd4dt1c'。",
 												},
 												"vpc_cidr_block": {
 													Type:        schema.TypeString,
@@ -425,7 +425,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
-													Description: "子网实例 ID where the data connection is located，such as 'subnet-bthucmmy'。",
+													Description: "子网实例 ID 其中 数据 连接 是 located，such 作为 '子网-bthucmmy'。",
 												},
 												"subnet_cidr_block": {
 													Type:        schema.TypeString,
@@ -444,20 +444,20 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    1,
-							Description: "Properties of PostgreSQL data 来源 connection。",
+							Description: "Properties 的 PostgreSQL 数据 来源 连接。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Unique ID data 来源 instance。",
+										Description: "Unique ID 数据 来源 实例。",
 									},
 									"instance_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "名称 data 来源",
+										Description: "名称 数据 来源",
 									},
 									// "jdbc_url": {
 									// 	Type:        schema.TypeString,
@@ -482,14 +482,14 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 										Optional:    true,
 										ForceNew:    true,
 										MaxItems:    1,
-										Description: "VPC and subnet information for the data 来源",
+										Description: "VPC 和 子网 信息 对于 数据 来源",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"vpc_id": {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
-													Description: "VPC 实例 ID where the data connection is located，such as 'vpc-azd4dt1c'。",
+													Description: "VPC 实例 ID 其中 数据 连接 是 located，such 作为 'vpc-azd4dt1c'。",
 												},
 												"vpc_cidr_block": {
 													Type:        schema.TypeString,
@@ -501,7 +501,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
-													Description: "子网实例 ID where the data connection is located，such as 'subnet-bthucmmy'。",
+													Description: "子网实例 ID 其中 数据 连接 是 located，such 作为 '子网-bthucmmy'。",
 												},
 												"subnet_cidr_block": {
 													Type:        schema.TypeString,
@@ -516,7 +516,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Default database 名称",
+										Description: "Default 数据库 名称",
 									},
 								},
 							},
@@ -526,20 +526,20 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    1,
-							Description: "Properties of SQLServer data 来源 connection。",
+							Description: "Properties 的 SQLServer 数据 来源 连接。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Unique ID data 来源 instance。",
+										Description: "Unique ID 数据 来源 实例。",
 									},
 									"instance_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "名称 data 来源",
+										Description: "名称 数据 来源",
 									},
 									// "jdbc_url": {
 									// 	Type:        schema.TypeString,
@@ -564,14 +564,14 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 										Optional:    true,
 										ForceNew:    true,
 										MaxItems:    1,
-										Description: "VPC and subnet information for the data 来源",
+										Description: "VPC 和 子网 信息 对于 数据 来源",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"vpc_id": {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
-													Description: "VPC 实例 ID where the data connection is located，such as 'vpc-azd4dt1c'。",
+													Description: "VPC 实例 ID 其中 数据 连接 是 located，such 作为 'vpc-azd4dt1c'。",
 												},
 												"vpc_cidr_block": {
 													Type:        schema.TypeString,
@@ -583,7 +583,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
-													Description: "子网实例 ID where the data connection is located，such as 'subnet-bthucmmy'。",
+													Description: "子网实例 ID 其中 数据 连接 是 located，such 作为 '子网-bthucmmy'。",
 												},
 												"subnet_cidr_block": {
 													Type:        schema.TypeString,
@@ -598,7 +598,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Default database 名称",
+										Description: "Default 数据库 名称",
 									},
 								},
 							},
@@ -608,20 +608,20 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    1,
-							Description: "Properties of ClickHouse data 来源 connection。",
+							Description: "Properties 的 ClickHouse 数据 来源 连接。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Unique ID data 来源 instance。",
+										Description: "Unique ID 数据 来源 实例。",
 									},
 									"instance_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "名称 data 来源",
+										Description: "名称 数据 来源",
 									},
 									// "jdbc_url": {
 									// 	Type:        schema.TypeString,
@@ -646,14 +646,14 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 										Optional:    true,
 										ForceNew:    true,
 										MaxItems:    1,
-										Description: "VPC and subnet information for the data 来源",
+										Description: "VPC 和 子网 信息 对于 数据 来源",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"vpc_id": {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
-													Description: "VPC 实例 ID where the data connection is located，such as 'vpc-azd4dt1c'。",
+													Description: "VPC 实例 ID 其中 数据 连接 是 located，such 作为 'vpc-azd4dt1c'。",
 												},
 												"vpc_cidr_block": {
 													Type:        schema.TypeString,
@@ -665,7 +665,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
-													Description: "子网实例 ID where the data connection is located，such as 'subnet-bthucmmy'。",
+													Description: "子网实例 ID 其中 数据 连接 是 located，such 作为 '子网-bthucmmy'。",
 												},
 												"subnet_cidr_block": {
 													Type:        schema.TypeString,
@@ -680,7 +680,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Default database 名称",
+										Description: "Default 数据库 名称",
 									},
 								},
 							},
@@ -690,7 +690,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    1,
-							Description: "Properties of Elasticsearch data 来源 connection。",
+							Description: "Properties 的 Elasticsearch 数据 来源 连接。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_id": {
@@ -722,14 +722,14 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 										Optional:    true,
 										ForceNew:    true,
 										MaxItems:    1,
-										Description: "VPC and subnet information for the data 来源",
+										Description: "VPC 和 子网 信息 对于 数据 来源",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"vpc_id": {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
-													Description: "VPC 实例 ID where the data connection is located，such as 'vpc-azd4dt1c'。",
+													Description: "VPC 实例 ID 其中 数据 连接 是 located，such 作为 'vpc-azd4dt1c'。",
 												},
 												"vpc_cidr_block": {
 													Type:        schema.TypeString,
@@ -741,7 +741,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
-													Description: "子网实例 ID where the data connection is located，such as 'subnet-bthucmmy'。",
+													Description: "子网实例 ID 其中 数据 连接 是 located，such 作为 '子网-bthucmmy'。",
 												},
 												"subnet_cidr_block": {
 													Type:        schema.TypeString,
@@ -756,26 +756,26 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Default database 名称",
+										Description: "Default 数据库 名称",
 									},
 									"service_info": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "IP and 端口 information for accessing Elasticsearch。",
+										Description: "IP 和 端口 信息 对于 accessing Elasticsearch。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"ip": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													ForceNew:    true,
-													Description: "IP information。",
+													Description: "IP 信息。",
 												},
 												"port": {
 													Type:        schema.TypeInt,
 													Optional:    true,
 													ForceNew:    true,
-													Description: "端口 information。",
+													Description: "端口 信息。",
 												},
 											},
 										},
@@ -788,20 +788,20 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    1,
-							Description: "Properties of TDSQL-PostgreSQL data 来源 connection。",
+							Description: "Properties 的 TDSQL-PostgreSQL 数据 来源 连接。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Unique ID data 来源 instance。",
+										Description: "Unique ID 数据 来源 实例。",
 									},
 									"instance_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "名称 data 来源",
+										Description: "名称 数据 来源",
 									},
 									// "jdbc_url": {
 									// 	Type:        schema.TypeString,
@@ -826,14 +826,14 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 										Optional:    true,
 										ForceNew:    true,
 										MaxItems:    1,
-										Description: "VPC and subnet information for the data 来源",
+										Description: "VPC 和 子网 信息 对于 数据 来源",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"vpc_id": {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
-													Description: "VPC 实例 ID where the data connection is located，such as 'vpc-azd4dt1c'。",
+													Description: "VPC 实例 ID 其中 数据 连接 是 located，such 作为 'vpc-azd4dt1c'。",
 												},
 												"vpc_cidr_block": {
 													Type:        schema.TypeString,
@@ -845,7 +845,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
-													Description: "子网实例 ID where the data connection is located，such as 'subnet-bthucmmy'。",
+													Description: "子网实例 ID 其中 数据 连接 是 located，such 作为 '子网-bthucmmy'。",
 												},
 												"subnet_cidr_block": {
 													Type:        schema.TypeString,
@@ -860,7 +860,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Default database 名称",
+										Description: "Default 数据库 名称",
 									},
 								},
 							},
@@ -870,14 +870,14 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    1,
-							Description: "Properties of Doris data 来源 connection。",
+							Description: "Properties 的 Doris 数据 来源 连接。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Unique ID data 来源 instance。",
+										Description: "Unique ID 数据 来源 实例。",
 									},
 									"instance_name": {
 										Type:        schema.TypeString,
@@ -908,14 +908,14 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 										Optional:    true,
 										ForceNew:    true,
 										MaxItems:    1,
-										Description: "VPC and subnet information for the data 来源",
+										Description: "VPC 和 子网 信息 对于 数据 来源",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"vpc_id": {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
-													Description: "VPC 实例 ID where the data connection is located，such as 'vpc-azd4dt1c'。",
+													Description: "VPC 实例 ID 其中 数据 连接 是 located，such 作为 'vpc-azd4dt1c'。",
 												},
 												"vpc_cidr_block": {
 													Type:        schema.TypeString,
@@ -927,7 +927,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
-													Description: "子网实例 ID where the data connection is located，such as 'subnet-bthucmmy'。",
+													Description: "子网实例 ID 其中 数据 连接 是 located，such 作为 '子网-bthucmmy'。",
 												},
 												"subnet_cidr_block": {
 													Type:        schema.TypeString,
@@ -942,13 +942,13 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Default database 名称",
+										Description: "Default 数据库 名称",
 									},
 									"access_info": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Access information。",
+										Description: "Access 信息。",
 									},
 								},
 							},
@@ -958,7 +958,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    1,
-							Description: "TccHive data catalog connection information。",
+							Description: "TccHive 数据 catalog 连接 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_id": {
@@ -983,7 +983,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Thrift connection 地址",
+										Description: "Thrift 连接 地址",
 									},
 									"hive_version": {
 										Type:        schema.TypeString,
@@ -996,7 +996,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 										Optional:    true,
 										ForceNew:    true,
 										MaxItems:    1,
-										Description: "Network information。",
+										Description: "Network 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"clb_ip": {
@@ -1042,7 +1042,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "HMS endpoint 服务 ID",
+										Description: "HMS 端点 服务 ID",
 									},
 								},
 							},
@@ -1056,7 +1056,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "Engine 名称，only one engine can be bound。",
+				Description: "Engine 名称，仅 一个 引擎 可以 是 bound。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -1072,7 +1072,7 @@ func ResourceTencentCloudDlcDatasourceHouseAttachment() *schema.Resource {
 			"network_connection_desc": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Network configuration 描述",
+				Description: "Network 配置 描述",
 			},
 		},
 	}

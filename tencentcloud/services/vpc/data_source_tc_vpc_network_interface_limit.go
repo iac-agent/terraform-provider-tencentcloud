@@ -19,43 +19,43 @@ func DataSourceTencentCloudVpcNetworkInterfaceLimit() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID CVM instance or ENI to query。",
+				Description: "ID CVM 实例 或 ENI 到 查询。",
 			},
 
 			"eni_quantity": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Quota of ENIs mounted to a CVM instance in a standard way。",
+				Description: "Quota 的 ENIs mounted 到 CVM 实例 在 standard way。",
 			},
 
 			"eni_private_ip_address_quantity": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Quota of IP addresses that can be allocated to each standard-mounted ENI。",
+				Description: "Quota 的 IP addresses 该 可以 是 allocated 到 each standard-mounted ENI。",
 			},
 
 			"extend_eni_quantity": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Quota of ENIs mounted to a CVM instance as an extensionNote: this field may return `null`，indicating that no valid values can be obtained。",
+				Description: "Quota 的 ENIs mounted 到 CVM 实例 作为 extensionNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 			},
 
 			"extend_eni_private_ip_address_quantity": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Quota of IP addresses that can be allocated to each extension-mounted ENI.Note: this field may return `null`，indicating that no valid values can be obtained。",
+				Description: "Quota 的 IP addresses 该 可以 是 allocated 到 each extension-mounted ENI.注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 			},
 
 			"sub_eni_quantity": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The quota of relayed ENIsNote: This field may return `null`，indicating that no valid values can be obtained。",
+				Description: "配额 的 relayed ENIsNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 			},
 
 			"sub_eni_private_ip_address_quantity": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The quota of IPs that can be assigned to each relayed ENI.Note: This field may return `null`，indicating that no valid values can be obtained。",
+				Description: "配额 的 IPs 该 可以 是 assigned 到 each relayed ENI.注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 			},
 
 			"result_output_file": {

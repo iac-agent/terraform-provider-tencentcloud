@@ -19,7 +19,7 @@ func DataSourceTencentCloudAntiddosBgpBizTrend() *schema.Resource {
 			"business": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Dayu sub product 代码 (bgpip represents advanced defense IP; net represents professional 版本 of advanced defense IP)。",
+				Description: "Dayu sub product 代码 (bgpip 表示 advanced defense IP; net 表示 professional 版本 的 advanced defense IP)。",
 			},
 
 			"start_time": {
@@ -38,7 +38,7 @@ func DataSourceTencentCloudAntiddosBgpBizTrend() *schema.Resource {
 				Required:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"intraffic", "outtraffic", "inpkg", "outpkg"}),
-				Description:  "Statistic 指标名称，for example: intraffic，outtraffic，inpkg，outpkg。",
+				Description:  "Statistic 指标名称，对于 示例: intraffic，outtraffic，inpkg，outpkg。",
 			},
 
 			"instance_id": {
@@ -51,7 +51,7 @@ func DataSourceTencentCloudAntiddosBgpBizTrend() *schema.Resource {
 				Required:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
-				Description:  "0 represents fixed time，1 represents custom time。",
+				Description:  "0 表示 fixed 时间，1 表示 自定义 时间。",
 			},
 
 			"data_list": {
@@ -60,19 +60,19 @@ func DataSourceTencentCloudAntiddosBgpBizTrend() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Values at various time points on the graph。",
+				Description: "Values 在 various 时间 points 在 graph。",
 			},
 
 			"total": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "数量 values in the curve graph。",
+				Description: "数量 值 在 curve graph。",
 			},
 
 			"max_data": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "返回maximum 值 of an array。",
+				Description: "返回maximum 值 的 数组。",
 			},
 
 			"result_output_file": {

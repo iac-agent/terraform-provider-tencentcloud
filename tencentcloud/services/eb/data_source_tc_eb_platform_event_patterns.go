@@ -25,7 +25,7 @@ func DataSourceTencentCloudEbPlatformEventPatterns() *schema.Resource {
 			"event_patterns": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Platform product event matching rules。",
+				Description: "Platform product 事件 matching 规则。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"event_name": {
@@ -36,7 +36,7 @@ func DataSourceTencentCloudEbPlatformEventPatterns() *schema.Resource {
 						"event_pattern": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Platform event matching rules.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Platform 事件 matching 规则.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},

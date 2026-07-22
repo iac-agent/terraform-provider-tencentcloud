@@ -33,13 +33,13 @@ func ResourceTencentCloudMonitorTmpMultipleWritesList() *schema.Resource {
 			"remote_writes": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Data multiple write configuration。",
+				Description: "Data 多个 write 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"url": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Data multiple write URL",
+							Description: "Data 多个 write URL",
 						},
 						"url_relabel_config": {
 							Type:        schema.TypeString,
@@ -50,7 +50,7 @@ func ResourceTencentCloudMonitorTmpMultipleWritesList() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Authentication information。",
+							Description: "Authentication 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"user_name": {
@@ -85,12 +85,12 @@ func ResourceTencentCloudMonitorTmpMultipleWritesList() *schema.Resource {
 									"key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "HTTP header 键",
+										Description: "HTTP 头部 键",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "HTTP header 值",
+										Description: "HTTP 头部 值",
 									},
 								},
 							},

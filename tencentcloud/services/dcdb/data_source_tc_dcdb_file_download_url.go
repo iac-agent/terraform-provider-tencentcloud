@@ -24,13 +24,13 @@ func DataSourceTencentCloudDcdbFileDownloadUrl() *schema.Resource {
 			"shard_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance Shard ID。",
+				Description: "实例 Shard ID。",
 			},
 
 			"file_path": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Unsigned file 路径",
+				Description: "Unsigned 文件 路径",
 			},
 
 			"pre_signed_url": {

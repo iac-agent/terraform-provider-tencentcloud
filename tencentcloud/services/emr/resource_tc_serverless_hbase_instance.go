@@ -29,50 +29,50 @@ func ResourceTencentCloudServerlessHbaseInstance() *schema.Resource {
 			"instance_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance name. Length limit is 6-36 characters. Only Chinese characters, letters, numbers, -, and _ are allowed.",
+				Description: "实例 名称. Length 限制 是 6-36 字符. Only Chinese 字符, letters, numbers, -, 和 _ 是 allowed.",
 			},
 
 			"pay_mode": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Instance pay mode. Value range: 0: indicates post-pay mode, that is, pay-as-you-go. 1: indicates pre-pay mode, that is, monthly subscription.",
+				Description: "实例 pay 模式. Value 范围: 0: indicates post-pay 模式, 该 是, pay-作为-您-go. 1: indicates pre-pay 模式, 该 是, monthly subscription.",
 			},
 
 			"disk_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance disk type, Value range: CLOUD_HSSD: indicate performance cloud storage(ESSD). CLOUD_BSSD: indicate standard cloud storage(SSD).",
+				Description: "实例 磁盘 类型, Value 范围: CLOUD_HSSD: indicate performance 云 存储(ESSD). CLOUD_BSSD: indicate standard 云 存储(SSD).",
 			},
 
 			"disk_size": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Instance single-node disk capacity, in GB. The single-node disk capacity must be greater than or equal to 100 and less than or equal to 250 times the number of CPU cores. The capacity adjustment step is 100.",
+				Description: "实例 单个-节点 磁盘 容量, 在 GB. 单个-节点 磁盘 容量 必须 是 greater 比 或 equal 到 100 和 less 比 或 equal 到 250 times 数量 的 CPU cores. 容量 adjustment step 是 100.",
 			},
 
 			"node_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Instance node type, can be filled in as 4C16G, 8C32G, 16C64G, 32C128G, case insensitive.",
+				Description: "实例 节点 类型, 可以 是 filled 在 作为 4C16G, 8C32G, 16C64G, 32C128G, case insensitive.",
 			},
 
 			"zone_settings": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Detailed configuration of the instance availability zone, currently supports multiple availability zones, the number of availability zones can only be 1 or 3, including zone name, VPC information, and number of nodes. The total number of nodes across all zones must be greater than or equal to 3 and less than or equal to 50.",
+				Description: "Detailed 配置 的 实例 availability zone, currently 支持 多个 availability zones, 数量 的 availability zones 可以 仅 是 1 或 3, 包括 zone 名称, VPC 信息, 和 数量 的 nodes. 总数 数量 的 nodes across all zones 必须 是 greater 比 或 equal 到 3 和 less 比 或 equal 到 50.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"zone": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The availability zone to which the instance belongs, such as ap-guangzhou-1.",
+							Description: "availability zone 到 其中 实例 belongs, such 作为 ap-guangzhou-1.",
 						},
 						"vpc_settings": {
 							Type:        schema.TypeList,
 							Required:    true,
 							MaxItems:    1,
-							Description: "Private network related information configuration. This parameter can be used to specify the ID of the private network, subnet ID, and other information.",
+							Description: "Private 网络 related 信息 配置. 此 参数 可以 是 使用 到 specify ID 的 私有 网络, 子网 ID, 和 other 信息.",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"vpc_id": {
@@ -91,7 +91,7 @@ func ResourceTencentCloudServerlessHbaseInstance() *schema.Resource {
 						"node_num": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Number of nodes.",
+							Description: "Number 的 nodes.",
 						},
 					},
 				},
@@ -100,18 +100,18 @@ func ResourceTencentCloudServerlessHbaseInstance() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "List of tags to bind to the instance.",
+				Description: "List 的 tags 到 bind 到 实例.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Tag key.",
+							Description: "Tag 键.",
 						},
 						"tag_value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Tag value.",
+							Description: "Tag 值.",
 						},
 					},
 				},
@@ -125,13 +125,13 @@ func ResourceTencentCloudServerlessHbaseInstance() *schema.Resource {
 			"time_unit": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Time unit, fill in m which means month.",
+				Description: "Time 单位, fill 在 m 其中 表示 month.",
 			},
 			"auto_renew_flag": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "AutoRenewFlag, Value range: 0: indicates NOTIFY_AND_MANUAL_RENEW; 1: indicates NOTIFY_AND_AUTO_RENEW; 2: indicates DISABLE_NOTIFY_AND_MANUAL_RENEW.",
+				Description: "AutoRenewFlag, Value 范围: 0: indicates NOTIFY_AND_MANUAL_RENEW; 1: indicates NOTIFY_AND_AUTO_RENEW; 2: indicates DISABLE_NOTIFY_AND_MANUAL_RENEW.",
 			},
 		},
 	}

@@ -34,7 +34,7 @@ func ResourceTencentCloudClsDlcDeliver() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "任务名称。长度不超过64个字符，以字母开头，接受0-9、a-z、A-Z、_、-、汉字。",
+				Description: "任务名称。长度不超过64个字符，以字母开头，接受0-9、-z、A-Z、_、-、汉字。",
 			},
 
 			"deliver_type": {

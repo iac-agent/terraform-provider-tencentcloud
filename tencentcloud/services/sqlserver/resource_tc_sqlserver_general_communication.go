@@ -27,7 +27,7 @@ func ResourceTencentCloudSqlserverGeneralCommunication() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "ID of instances.",
+				Description: "ID 的 实例.",
 			},
 		},
 	}

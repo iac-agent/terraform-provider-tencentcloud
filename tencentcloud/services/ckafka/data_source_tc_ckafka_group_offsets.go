@@ -25,7 +25,7 @@ func DataSourceTencentCloudCkafkaGroupOffsets() *schema.Resource {
 			"group": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Kafka consumer 组名称",
+				Description: "Kafka 消费者 组名称",
 			},
 
 			"topics": {
@@ -34,7 +34,7 @@ func DataSourceTencentCloudCkafkaGroupOffsets() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "An 数组 topic names subscribed by the group，if there is no such array，it means all topic information under the specified group。",
+				Description: "An 数组 主题 names subscribed 通过 组，如果 there 是 无 such 数组，它 表示 all 主题 信息 under 指定 组。",
 			},
 
 			"search_word": {
@@ -46,7 +46,7 @@ func DataSourceTencentCloudCkafkaGroupOffsets() *schema.Resource {
 			"topic_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "The topic array，where each element is a json object。",
+				Description: "主题 数组，其中 each element 是 json 对象。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"topic": {
@@ -57,23 +57,23 @@ func DataSourceTencentCloudCkafkaGroupOffsets() *schema.Resource {
 						"partitions": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "he topic partition array，where each element is a json object。",
+							Description: "he 主题 分区 数组，其中 each element 是 json 对象。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"partition": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "topic partitionId。",
+										Description: "主题 partitionId。",
 									},
 									"offset": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The 偏移量 of the position。",
+										Description: "偏移量 的 position。",
 									},
 									"metadata": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "When consumers 提交 messages，they can pass in metadata for other purposes. Currently，it is usually an empty string。",
+										Description: "当 consumers 提交 messages，they 可以 pass 在 metadata 对于 other purposes. Currently，它 是 usually 空 字符串。",
 									},
 									"error_code": {
 										Type:        schema.TypeInt,
@@ -83,12 +83,12 @@ func DataSourceTencentCloudCkafkaGroupOffsets() *schema.Resource {
 									"log_end_offset": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The latest 偏移量 of the current partition。",
+										Description: "latest 偏移量 的 当前 分区。",
 									},
 									"lag": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The 数量 unconsumed messages。",
+										Description: "数量 unconsumed messages。",
 									},
 								},
 							},

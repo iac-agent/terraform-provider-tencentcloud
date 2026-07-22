@@ -22,7 +22,7 @@ func DataSourceTencentCloudTcmMesh() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Mesh instance Id。",
+				Description: "Mesh 实例 ID。",
 			},
 
 			"mesh_name": {
@@ -55,13 +55,13 @@ func DataSourceTencentCloudTcmMesh() *schema.Resource {
 			"mesh_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The mesh information is queried注意：此字段可能返回 null，表示有效值不可用。",
+				Description: "mesh 信息 是 queried注意：此字段可能返回 null，表示有效值不可用。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"mesh_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Mesh instance Id。",
+							Description: "Mesh 实例 ID。",
 						},
 						"display_name": {
 							Type:        schema.TypeString,
@@ -76,29 +76,29 @@ func DataSourceTencentCloudTcmMesh() *schema.Resource {
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Mesh 类型  值 range:- `STANDALONE`: Standalone mesh- `HOSTED`: hosted the mesh。",
+							Description: "Mesh 类型 值 范围:- `STANDALONE`: Standalone mesh- `HOSTED`: hosted mesh。",
 						},
 						"config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Mesh configuration。",
+							Description: "Mesh 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"istio": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Istio configuration。",
+										Description: "Istio 配置。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"outbound_traffic_policy": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Outbound traffic policy。",
+													Description: "Outbound 流量 策略。",
 												},
 												"disable_policy_checks": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Disable policy checks。",
+													Description: "Disable 策略 checks。",
 												},
 												"enable_pilot_http": {
 													Type:        schema.TypeBool,
@@ -113,7 +113,7 @@ func DataSourceTencentCloudTcmMesh() *schema.Resource {
 												"smart_dns": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "SmartDNS configuration。",
+													Description: "SmartDNS 配置。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"istio_meta_dns_capture": {
@@ -154,7 +154,7 @@ func DataSourceTencentCloudTcmMesh() *schema.Resource {
 									"passthrough": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Passthrough to other related product。",
+										Description: "Passthrough 到 other related product。",
 									},
 								},
 							},

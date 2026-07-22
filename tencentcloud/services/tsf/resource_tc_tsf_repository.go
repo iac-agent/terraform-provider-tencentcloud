@@ -65,19 +65,19 @@ func ResourceTencentCloudTsfRepository() *schema.Resource {
 			"repository_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "warehouse 类型 (default warehouse: default，private warehouse: private)。",
+				Description: "warehouse 类型 (默认值 warehouse: 默认值，私有 warehouse: 私有)。",
 			},
 
 			"bucket_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "the 名称 存储桶 where the warehouse is located。",
+				Description: "名称 存储桶 其中 warehouse 是 located。",
 			},
 
 			"bucket_region": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "存储桶 地域 where the warehouse is located。",
+				Description: "存储桶 地域 其中 warehouse 是 located。",
 			},
 
 			"directory": {
@@ -97,7 +97,7 @@ func ResourceTencentCloudTsfRepository() *schema.Resource {
 			"is_used": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "是否repository is in use。",
+				Description: "是否repository 是 在 使用。",
 			},
 
 			"create_time": {

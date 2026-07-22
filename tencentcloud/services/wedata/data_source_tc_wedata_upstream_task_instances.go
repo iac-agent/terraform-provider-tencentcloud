@@ -31,13 +31,13 @@ func DataSourceTencentCloudWedataUpstreamTaskInstances() *schema.Resource {
 			"time_zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "时区，default UTC+8。",
+				Description: "时区，默认值 UTC+8。",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Upstream instance list。",
+				Description: "Upstream 实例 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
@@ -63,7 +63,7 @@ func DataSourceTencentCloudWedataUpstreamTaskInstances() *schema.Resource {
 						"items": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Data list。",
+							Description: "Data 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"project_id": {
@@ -104,27 +104,27 @@ func DataSourceTencentCloudWedataUpstreamTaskInstances() *schema.Resource {
 									"task_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task 名称",
+										Description: "任务 名称",
 									},
 									"cur_run_date": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Instance data time。",
+										Description: "实例 数据 时间。",
 									},
 									"instance_state": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "实例状态\n- WAIT_EVENT: Waiting for event\n- WAIT_UPSTREAM: Waiting for upstream\n- WAIT_RUN: Waiting to run\n- RUNNING: Running\n- SKIP_RUNNING: Skipped running\n- FAILED_RETRY: Failed retry\n- EXPIRED: Failed\n- COMPLETED: Success。",
+										Description: "实例状态\n- WAIT_EVENT: Waiting 对于 事件\n- WAIT_UPSTREAM: Waiting 对于 upstream\n- WAIT_RUN: Waiting 到 run\n- RUNNING: Running\n- SKIP_RUNNING: Skipped running\n- FAILED_RETRY: Failed retry\n- EXPIRED: Failed\n- COMPLETED: Success。",
 									},
 									"instance_type": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "实例类型\n\n- 0: Backfill 类型\n- 1: Periodic instance\n- 2: Non-periodic instance。",
+										Description: "实例类型\n\n- 0: Backfill 类型\n- 1: Periodic 实例\n- 2: Non-periodic 实例。",
 									},
 									"owner_uin_list": {
 										Type:        schema.TypeSet,
 										Required:    true,
-										Description: "所有者 list。",
+										Description: "所有者 列表。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -137,17 +137,17 @@ func DataSourceTencentCloudWedataUpstreamTaskInstances() *schema.Resource {
 									"task_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task 类型 描述",
+										Description: "任务 类型 描述",
 									},
 									"task_type_id": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Task 类型 ID。",
+										Description: "任务 类型 ID。",
 									},
 									"cycle_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task cycle 类型\nSupports filtering multiple types with OR relationship.\n* O: ONEOFF_CYCLE\n* Y: YEAR_CYCLE\n* M: MONTH_CYCLE\n* W: WEEK_CYCLE\n* D: DAY_CYCLE\n* H: HOUR_CYCLE\n* I: MINUTE_CYCLE\n* C: CRONTAB_CYCLE。",
+										Description: "任务 cycle 类型\nSupports filtering 多个 types 使用 OR relationship.\n* O: ONEOFF_CYCLE\n* Y: YEAR_CYCLE\n* M: MONTH_CYCLE\n* W: WEEK_CYCLE\n* D: DAY_CYCLE\n* H: HOUR_CYCLE\n* I: MINUTE_CYCLE\n* C: CRONTAB_CYCLE。",
 									},
 									"try_limit": {
 										Type:        schema.TypeInt,
@@ -157,7 +157,7 @@ func DataSourceTencentCloudWedataUpstreamTaskInstances() *schema.Resource {
 									"tries": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Failed retry count.\nReset to 0 when manually rerun or backfilled。",
+										Description: "Failed retry count.\nReset 到 0 当 manually rerun 或 backfilled。",
 									},
 									"start_time": {
 										Type:        schema.TypeString,
@@ -172,12 +172,12 @@ func DataSourceTencentCloudWedataUpstreamTaskInstances() *schema.Resource {
 									"cost_time": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Execution duration，in ms。",
+										Description: "Execution 时长，在 ms。",
 									},
 									"scheduler_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Scheduled time。",
+										Description: "Scheduled 时间。",
 									},
 									"last_update_time": {
 										Type:        schema.TypeString,
@@ -187,7 +187,7 @@ func DataSourceTencentCloudWedataUpstreamTaskInstances() *schema.Resource {
 									"executor_group_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Executor resource 组 ID",
+										Description: "Executor 资源 组 ID",
 									},
 									"executor_group_name": {
 										Type:        schema.TypeString,

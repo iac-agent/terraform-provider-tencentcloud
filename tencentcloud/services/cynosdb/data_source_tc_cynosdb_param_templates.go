@@ -41,7 +41,7 @@ func DataSourceTencentCloudCynosdbParamTemplates() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "模板的 id 列表。",
+				Description: "模板的 ID 列表。",
 			},
 
 			"db_modes": {

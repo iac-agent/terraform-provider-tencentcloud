@@ -25,14 +25,14 @@ func ResourceTencentCloudSslUpdateCertificateRecordRetryOperation() *schema.Reso
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Deployment record ID to be retried。",
+				Description: "Deployment 记录 ID 到 是 retried。",
 			},
 
 			"deploy_record_detail_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Deployment record details ID to be retried。",
+				Description: "Deployment 记录 details ID 到 是 retried。",
 			},
 		},
 	}

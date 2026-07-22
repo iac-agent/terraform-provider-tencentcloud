@@ -27,17 +27,17 @@ func ResourceTencentCloudSqlserverInstanceTDE() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 			"certificate_attribution": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Certificate attribution. self- means to use the account's own certificate, others- means to refer to the certificate of other accounts, and the default is self.",
+				Description: "Certificate attribution. self- 表示 到 使用 account's own 证书, others- 表示 到 refer 到 证书 的 other accounts, 和 默认值 是 self.",
 			},
 			"quote_uin": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Other referenced main account IDs, required when CertificateAttribute is others.",
+				Description: "Other referenced main account IDs, 必填 当 CertificateAttribute 是 others.",
 			},
 		},
 	}

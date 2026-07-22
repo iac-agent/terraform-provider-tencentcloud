@@ -18,7 +18,7 @@ func DataSourceTencentCloudOceanusMetaTable() *schema.Resource {
 			"work_space_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Unique identifier of the space。",
+				Description: "Unique identifier 的 space。",
 			},
 			"catalog": {
 				Required:    true,
@@ -39,17 +39,17 @@ func DataSourceTencentCloudOceanusMetaTable() *schema.Resource {
 			"serial_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Unique identifier of the metadata table。",
+				Description: "Unique identifier 的 metadata 表。",
 			},
 			"ddl": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Table creation statement，encoded in Base64.For example,Q1JFQVRFIFRBQkxFIGRhdGFnZW5fc291cmNlX3RhYmxlICggCiAgICBpZCBJTlQsIAogICAgbmFtZSBTVFJJTkcgCikgV0lUSCAoCidjb25uZWN0b3InPSdkYXRhZ2VuJywKJ3Jvd3MtcGVyLXNlY29uZCcgPSAnMScKKTs=。",
+				Description: "Table creation statement，encoded 在 Base64.For 示例,Q1JFQVRFIFRBQkxFIGRhdGFnZW5fc291cmNlX3RhYmxlICggCiAgICBpZCBJTlQsIAogICAgbmFtZSBTVFJJTkcgCikgV0lUSCAoCidjb25uZWN0b3InPSdkYXRhZ2VuJywKJ3Jvd3MtcGVyLXNlY29uZCcgPSAnMScKKTs=。",
 			},
 			"create_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Scene time。",
+				Description: "Scene 时间。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,

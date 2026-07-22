@@ -34,7 +34,7 @@ func ResourceTencentCloudMonitorTmpAlertGroup() *schema.Resource {
 			"group_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Alarm group id。",
+				Description: "Alarm 组 ID。",
 			},
 
 			"group_name": {
@@ -49,14 +49,14 @@ func ResourceTencentCloudMonitorTmpAlertGroup() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Tencent cloud notification template id list。",
+				Description: "Tencent 云 通知 template ID 列表。",
 			},
 
 			"custom_receiver": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "用户 custom notification template，such as webhook，alertmanager。",
+				Description: "用户 自定义 通知 template，such 作为 webhook，alertmanager。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
@@ -67,23 +67,23 @@ func ResourceTencentCloudMonitorTmpAlertGroup() *schema.Resource {
 						"url": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Custom receiver 地址，can be accessed by process in prometheus instance subnet。",
+							Description: "Custom receiver 地址，可以 是 accessed 通过 process 在 prometheus 实例 子网。",
 						},
 						"allowed_time_ranges": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Time ranges which allow alert 消息 send。",
+							Description: "Time ranges 其中 allow alert 消息 send。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"start": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Time range start，seconds since 0 o'clock。",
+										Description: "Time 范围 start，秒 since 0 o'clock。",
 									},
 									"end": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Time range end，seconds since 0 o'clock。",
+										Description: "Time 范围 end，秒 since 0 o'clock。",
 									},
 								},
 							},
@@ -91,12 +91,12 @@ func ResourceTencentCloudMonitorTmpAlertGroup() *schema.Resource {
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Only effect when alertmanager in 用户 cluster，this 集群 ID",
+							Description: "Only effect 当 alertmanager 在 用户 集群，此 集群 ID",
 						},
 						"cluster_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Only effect when alertmanager in 用户 cluster，this 集群类型 (tke|eks|tdcc)。",
+							Description: "Only effect 当 alertmanager 在 用户 集群，此 集群类型 (tke|eks|tdcc)。",
 						},
 					},
 				},
@@ -105,34 +105,34 @@ func ResourceTencentCloudMonitorTmpAlertGroup() *schema.Resource {
 			"repeat_interval": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Alert 消息 send interval，default 1 hour。",
+				Description: "Alert 消息 send 间隔，默认值 1 hour。",
 			},
 
 			"rules": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "A 列表 alert rules。",
+				Description: "A 列表 alert 规则。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"rule_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Alert rule 名称",
+							Description: "Alert 规则 名称",
 						},
 						"labels": {
 							Type:        schema.TypeMap,
 							Optional:    true,
-							Description: "Labels of alert rule。",
+							Description: "Labels 的 alert 规则。",
 						},
 						"annotations": {
 							Type:        schema.TypeMap,
 							Optional:    true,
-							Description: "Annotation of alert rule. `summary`，`描述` is special annotation in prometheus，mapping `Alarm Object`，`Alarm Information` in alarm 消息",
+							Description: "Annotation 的 alert 规则. `summary`，`描述` 是 special annotation 在 prometheus，mapping `Alarm Object`，`Alarm Information` 在 告警 消息",
 						},
 						"duration": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Rule alarm duration。",
+							Description: "Rule 告警 时长。",
 						},
 						"expr": {
 							Type:        schema.TypeString,
@@ -142,7 +142,7 @@ func ResourceTencentCloudMonitorTmpAlertGroup() *schema.Resource {
 						"state": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Rule state. `2`-enable，`3`-disable，default `2`。",
+							Description: "Rule state. `2`-启用，`3`-disable，默认值 `2`。",
 						},
 					},
 				},

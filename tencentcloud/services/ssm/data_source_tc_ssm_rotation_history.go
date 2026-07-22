@@ -24,7 +24,7 @@ func DataSourceTencentCloudSsmRotationHistory() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "The 数量 版本 numbers. The 最大version numbers that can be displayed to users is 10。",
+				Description: "数量 版本 numbers. 最大version numbers 该 可以 是 displayed 到 users 是 10。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,

@@ -39,7 +39,7 @@ func ResourceTencentCloudWedataTriggerWorkflow() *schema.Resource {
 			"parent_folder_path": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Parent folder 路径",
+				Description: "Parent 文件夹 路径",
 			},
 
 			"workflow_desc": {
@@ -57,7 +57,7 @@ func ResourceTencentCloudWedataTriggerWorkflow() *schema.Resource {
 			"workflow_params": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Workflow parameters。",
+				Description: "Workflow 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"param_key": {
@@ -77,18 +77,18 @@ func ResourceTencentCloudWedataTriggerWorkflow() *schema.Resource {
 			"trigger_workflow_scheduler_configurations": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Unified scheduling configuration。",
+				Description: "Unified scheduling 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"trigger_mode": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Trigger 模式: Scheduled trigger:  `TIME_TRIGGER`; Continuous run: `CONTINUE_RUN`; File arrival: `FILE_ARRIVAL`. Notes: For `TIME_TRIGGER` and `CONTINUE_RUN` modes，SchedulerStatus，SchedulerTimeZone，StartTime，EndTime，ConfigMode，CycleType，and CrontabExpression 为必填项; For `FILE_ARRIVAL` 模式，FileArrivalPath，TriggerMinimumIntervalSecond，and TriggerWaitTimeSecond 为必填项。",
+							Description: "Trigger 模式: Scheduled 触发器: `TIME_TRIGGER`; Continuous run: `CONTINUE_RUN`; File arrival: `FILE_ARRIVAL`. Notes: For `TIME_TRIGGER` 和 `CONTINUE_RUN` modes，SchedulerStatus，SchedulerTimeZone，StartTime，EndTime，ConfigMode，CycleType，和 CrontabExpression 为必填项; For `FILE_ARRIVAL` 模式，FileArrivalPath，TriggerMinimumIntervalSecond，和 TriggerWaitTimeSecond 为必填项。",
 						},
 						"extra_info": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "WorkflowTriggerConfig converted to JSON 格式，用于reconciliation。",
+							Description: "WorkflowTriggerConfig converted 到 JSON 格式，用于reconciliation。",
 						},
 						"schedule_time_zone": {
 							Type:        schema.TypeString,
@@ -108,12 +108,12 @@ func ResourceTencentCloudWedataTriggerWorkflow() *schema.Resource {
 						"config_mode": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Configuration 模式，COMMON or CRON_EXPRESSION。",
+							Description: "Configuration 模式，COMMON 或 CRON_EXPRESSION。",
 						},
 						"cycle_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Cycle 类型 支持的值：`ONEOFF_CYCLE`: One-time; `YEAR_CYCLE`: Yearly; `MONTH_CYCLE`: Monthly; `WEEK_CYCLE`: Weekly; `DAY_CYCLE`: Daily; `HOUR_CYCLE`: Hourly; `MINUTE_CYCLE`: Minutely; `CRONTAB_CYCLE`: Crontab expression。",
+							Description: "Cycle 类型 支持的值：`ONEOFF_CYCLE`: One-时间; `YEAR_CYCLE`: Yearly; `MONTH_CYCLE`: Monthly; `WEEK_CYCLE`: Weekly; `DAY_CYCLE`: Daily; `HOUR_CYCLE`: Hourly; `MINUTE_CYCLE`: Minutely; `CRONTAB_CYCLE`: Crontab expression。",
 						},
 						"crontab_expression": {
 							Type:        schema.TypeString,
@@ -128,22 +128,22 @@ func ResourceTencentCloudWedataTriggerWorkflow() *schema.Resource {
 						"file_arrival_path": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Listening 路径 in the storage system for file arrival 模式",
+							Description: "Listening 路径 在 存储 系统 对于 文件 arrival 模式",
 						},
 						"trigger_minimum_interval_second": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Minimum trigger interval in file arrival 模式 (seconds)。",
+							Description: "Minimum 触发器 间隔 在 文件 arrival 模式 (秒)。",
 						},
 						"trigger_wait_time_second": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Trigger wait time in file arrival 模式 (seconds)。",
+							Description: "Trigger wait 时间 在 文件 arrival 模式 (秒)。",
 						},
 						"scheduler_status": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Trigger 状态，ACTIVE or PAUSED。",
+							Description: "Trigger 状态，ACTIVE 或 PAUSED。",
 						},
 					},
 				},
@@ -158,24 +158,24 @@ func ResourceTencentCloudWedataTriggerWorkflow() *schema.Resource {
 			"bundle_info": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Bundle information。",
+				Description: "Bundle 信息。",
 			},
 
 			"general_task_params": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "General task parameter configuration。",
+				Description: "General 任务 参数 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "General task parameter 类型，currently only SPARK_SQL is supported。",
+							Description: "General 任务 参数 类型，currently 仅 SPARK_SQL 是 支持。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "General task parameter 内容; multiple parameters are separated by semicolons (;)。",
+							Description: "General 任务 参数 内容; 多个 参数 是 separated 通过 semicolons (;)。",
 						},
 					},
 				},

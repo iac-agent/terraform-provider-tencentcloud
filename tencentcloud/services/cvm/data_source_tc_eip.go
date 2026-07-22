@@ -25,19 +25,19 @@ func DataSourceTencentCloudEip() *schema.Resource {
 			"filter": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "One or more 名称/值 pairs to filter。",
+				Description: "One 或 more 名称/值 pairs 到 过滤器。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "键 of the filter，valid keys: `地址-id`,`地址-名称`,`地址-ip`。",
+							Description: "键 的 过滤器，有效 keys: `地址-ID`,`地址-名称`,`地址-ip`。",
 						},
 						"values": {
 							Type:        schema.TypeList,
 							Required:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "值 of the filter。",
+							Description: "值 的 过滤器。",
 						},
 					},
 				},
@@ -45,27 +45,27 @@ func DataSourceTencentCloudEip() *schema.Resource {
 			"include_arrears": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "是否IP is arrears。",
+				Description: "是否IP 是 arrears。",
 			},
 			"include_blocked": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "是否IP is blocked。",
+				Description: "是否IP 是 blocked。",
 			},
 			"id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "An EIP id indicate the uniqueness of a certain EIP， which can be 用于instance binding or network interface binding。",
+				Description: "An EIP ID indicate uniqueness 的 certain EIP， 其中 可以 是 用于instance binding 或 网络 interface binding。",
 			},
 			"public_ip": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "An 公网 IP 地址 for the EIP。",
+				Description: "An 公网 IP 地址 对于 EIP。",
 			},
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The 状态 EIP，there are several 状态 like `BIND`，`UNBIND`，and `BIND_ENI`。",
+				Description: "状态 EIP，there 是 several 状态 like `BIND`，`UNBIND`，和 `BIND_ENI`。",
 			},
 		},
 	}

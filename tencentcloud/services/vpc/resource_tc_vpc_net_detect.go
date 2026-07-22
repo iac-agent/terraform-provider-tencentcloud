@@ -27,20 +27,20 @@ func ResourceTencentCloudVpcNetDetect() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "`VPC` instance `ID`. Such as:`vpc-12345678`。",
+				Description: "`VPC` 实例 `ID`. Such 作为:`vpc-12345678`。",
 			},
 
 			"subnet_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "子网实例 ID Such as:subnet-12345678。",
+				Description: "子网实例 ID Such 作为:子网-12345678。",
 			},
 
 			"net_detect_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Network probe 名称，the maximum length cannot exceed 60 bytes。",
+				Description: "Network probe 名称， 最大 长度 不能 exceed 60 bytes。",
 			},
 
 			"detect_destination_ip": {
@@ -49,19 +49,19 @@ func ResourceTencentCloudVpcNetDetect() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "An 数组 probe destination IPv4 addresses. Up to two。",
+				Description: "An 数组 probe destination IPv4 addresses. Up 到 two。",
 			},
 
 			"next_hop_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The next hop 类型，currently we support the following types: `VPN`: VPN gateway; `DIRECTCONNECT`: private line gateway; `PEERCONNECTION`: peer connection; `NAT`: NAT gateway; `NORMAL_CVM`: normal cloud server; `CCN`: cloud networking gateway; `NONEXTHOP`: no next hop。",
+				Description: "next hop 类型，currently we support following types: `VPN`: VPN 网关; `DIRECTCONNECT`: 私有 line 网关; `PEERCONNECTION`: peer 连接; `NAT`: NAT 网关; `NORMAL_CVM`: normal 云 服务器; `CCN`: 云 networking 网关; `NONEXTHOP`: 无 next hop。",
 			},
 
 			"next_hop_destination": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The destination gateway of the next hop，the 值 is related to the next hop 类型 If the next hop 类型 is VPN，and the 值 is the VPN 网关 ID，such as: vpngw-12345678; If the next hop 类型 is DIRECTCONNECT，and the 值 is the private line gateway ID，such as: dcg-12345678; If the next hop 类型 is PEERCONNECTION，which takes the 值 of the peer connection ID，such as: pcx-12345678; If the next hop 类型 is NAT，and the 值 is Nat gateway，such as: nat-12345678; If the next hop 类型 is NORMAL_CVM，which takes the IPv4 地址 of the cloud server，such as: 10.0.0.12; If the next hop 类型 is CCN，and the 值 is the cloud network ID，such as: ccn-12345678; If the next hop 类型 is NONEXTHOP，and the specified network probe is a network probe without a next hop。",
+				Description: "destination 网关 的 next hop， 值 是 related 到 next hop 类型 如果 next hop 类型 是 VPN，和 值 是 VPN 网关 ID，such 作为: vpngw-12345678; 如果 next hop 类型 是 DIRECTCONNECT，和 值 是 私有 line 网关 ID，such 作为: dcg-12345678; 如果 next hop 类型 是 PEERCONNECTION，其中 takes 值 的 peer 连接 ID，such 作为: pcx-12345678; 如果 next hop 类型 是 NAT，和 值 是 Nat 网关，such 作为: nat-12345678; 如果 next hop 类型 是 NORMAL_CVM，其中 takes IPv4 地址 的 云 服务器，such 作为: 10.0.0.12; 如果 next hop 类型 是 CCN，和 值 是 云 网络 ID，such 作为: ccn-12345678; 如果 next hop 类型 是 NONEXTHOP，和 指定 网络 probe 是 网络 probe without next hop。",
 			},
 
 			"net_detect_description": {

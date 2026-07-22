@@ -28,7 +28,7 @@ func ResourceTencentCloudKubernetesHealthCheckPolicy() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID cluster。",
+				Description: "ID 集群。",
 			},
 
 			"name": {
@@ -41,23 +41,23 @@ func ResourceTencentCloudKubernetesHealthCheckPolicy() *schema.Resource {
 			"rules": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Health check policy rule list。",
+				Description: "Health check 策略 规则 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"auto_repair_enabled": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Enable repair or not。",
+							Description: "Enable repair 或 不。",
 						},
 						"enabled": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Enable detection of this project or not。",
+							Description: "Enable detection 的 此 项目 或 不。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Health check rule details。",
+							Description: "Health check 规则 details。",
 						},
 					},
 				},

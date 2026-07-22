@@ -21,13 +21,13 @@ func DataSourceTencentCloudKubernetesCharts() *schema.Resource {
 			"kind": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Kind of app chart. 可用值：`log`，`scheduler`，`network`，`storage`，`monitor`，`dns`，`image`，`other`，`invisible`。",
+				Description: "Kind 的 app chart. 可用值：`日志`，`scheduler`，`网络`，`存储`，`监控`，`dns`，`镜像`，`other`，`invisible`。",
 			},
 
 			"arch": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Operation system app supported. 可用值：`arm32`，`arm64`，`amd64`。",
+				Description: "Operation 系统 app 支持. 可用值：`arm32`，`arm64`，`amd64`。",
 			},
 
 			"cluster_type": {
@@ -39,7 +39,7 @@ func DataSourceTencentCloudKubernetesCharts() *schema.Resource {
 			"chart_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "App chart list。",
+				Description: "App chart 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -50,7 +50,7 @@ func DataSourceTencentCloudKubernetesCharts() *schema.Resource {
 						"label": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "标签 of chart。",
+							Description: "标签 的 chart。",
 						},
 						"latest_version": {
 							Type:        schema.TypeString,

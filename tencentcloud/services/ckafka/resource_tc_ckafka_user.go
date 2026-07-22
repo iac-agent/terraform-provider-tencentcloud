@@ -25,30 +25,30 @@ func ResourceTencentCloudCkafkaUser() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID ckafka instance。",
+				Description: "ID ckafka 实例。",
 			},
 			"account_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "账号 名称 用于access to ckafka instance。",
+				Description: "账号 名称 用于access 到 ckafka 实例。",
 			},
 			"password": {
 				Type:        schema.TypeString,
 				Required:    true,
 				Sensitive:   true,
-				Description: "密码 of the 账号",
+				Description: "密码 的 账号",
 			},
 			// computed
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 of the 账号",
+				Description: "创建时间 的 账号",
 			},
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The last 更新时间 of the 账号",
+				Description: "last 更新时间 的 账号",
 			},
 		},
 	}

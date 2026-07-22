@@ -32,13 +32,13 @@ func ResourceTencentCloudCcn() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 60),
-				Description:  "名称 CCN to be queried，and maximum length does not exceed 60 bytes。",
+				Description:  "名称 CCN 到 是 queried，和 最大 长度 does 不 exceed 60 bytes。",
 			},
 			"description": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(0, 100),
-				Description:  "描述 CCN，and maximum length does not exceed 100 bytes。",
+				Description:  "描述 CCN，和 最大 长度 does 不 exceed 100 bytes。",
 			},
 			"qos": {
 				Type:         schema.TypeString,
@@ -46,7 +46,7 @@ func ResourceTencentCloudCcn() *schema.Resource {
 				ForceNew:     true,
 				Default:      CNN_QOS_AU,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{CNN_QOS_PT, CNN_QOS_AU, CNN_QOS_AG}),
-				Description:  "CCN service quality，'PT': Platinum，'AU': Gold，'AG': Silver. The 默认为 'AU'。",
+				Description:  "CCN 服务 quality，'PT': Platinum，'AU': Gold，'AG': Silver. 默认为 'AU'。",
 			},
 			"charge_type": {
 				Type:         schema.TypeString,
@@ -54,7 +54,7 @@ func ResourceTencentCloudCcn() *schema.Resource {
 				ForceNew:     true,
 				Default:      POSTPAID,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{POSTPAID, PREPAID}),
-				Description: "Billing mode. Valid values: `PREPAID`, `POSTPAID`. " +
+				Description: "Billing 模式. 有效 值: `PREPAID`, `POSTPAID`." +
 					"`PREPAID` means prepaid, which means annual and monthly subscription, " +
 					"`POSTPAID` means post-payment, which means billing by volume. " +
 					"The default is `POSTPAID`. The prepaid model only supports inter-regional speed limit, " +
@@ -65,7 +65,7 @@ func ResourceTencentCloudCcn() *schema.Resource {
 				Optional:     true,
 				Default:      OuterRegionLimit,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{OuterRegionLimit, InterRegionLimit}),
-				Description: "The speed limit type. Valid values: `INTER_REGION_LIMIT`, `OUTER_REGION_LIMIT`. " +
+				Description: "speed 限制 类型. 有效 值: `INTER_REGION_LIMIT`, `OUTER_REGION_LIMIT`." +
 					"`OUTER_REGION_LIMIT` represents the regional export speed limit, " +
 					"`INTER_REGION_LIMIT` is the inter-regional speed limit. " +
 					"The default is `OUTER_REGION_LIMIT`.",
@@ -75,40 +75,40 @@ func ResourceTencentCloudCcn() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "Instance metering 类型 有效值：`BANDWIDTH` (bandwidth billing)，`TRAFFIC` (traffic billing). This parameter cannot be modified after creation。",
+				Description: "实例 metering 类型 有效值：`BANDWIDTH` (带宽 billing)，`TRAFFIC` (流量 billing). 此 参数 不能 是 modified after creation。",
 			},
 			"route_ecmp_flag": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "是否enable the equivalent routing function. `true`: 已启用，`false`: 已禁用 默认为 false。",
+				Description: "是否enable equivalent routing 函数. `true`: 已启用，`false`: 已禁用 默认为 false。",
 			},
 			"route_overlap_flag": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "是否enable the routing overlap function. `true`: 已启用，`false`: 已禁用 默认为 true，cannot set to false。",
+				Description: "是否enable routing overlap 函数. `true`: 已启用，`false`: 已禁用 默认为 true，不能 集合 到 false。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Instance 标签",
+				Description: "实例 标签",
 			},
 			// Computed values
 			"state": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "States of instance. 有效值：`ISOLATED`(arrears) and `AVAILABLE`。",
+				Description: "States 的 实例. 有效值：`ISOLATED`(arrears) 和 `AVAILABLE`。",
 			},
 			"instance_count": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "数量 attached instances。",
+				Description: "数量 attached 实例。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 of resource。",
+				Description: "创建时间 的 资源。",
 			},
 		},
 	}

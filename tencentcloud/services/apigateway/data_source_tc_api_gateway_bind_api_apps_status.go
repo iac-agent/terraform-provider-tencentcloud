@@ -30,7 +30,7 @@ func DataSourceTencentCloudApiGatewayBindApiAppsStatus() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter conditions. Supports ApiAppId，Environment，KeyWord (can match 名称 or ID)。",
+				Description: "过滤器 conditions. Supports ApiAppId，Environment，KeyWord (可以 match 名称 或 ID)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -42,7 +42,7 @@ func DataSourceTencentCloudApiGatewayBindApiAppsStatus() *schema.Resource {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Required:    true,
-							Description: "过滤值 of the field。",
+							Description: "过滤值 的 字段。",
 						},
 					},
 				},
@@ -50,13 +50,13 @@ func DataSourceTencentCloudApiGatewayBindApiAppsStatus() *schema.Resource {
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "列表 APIs bound by the application。",
+				Description: "列表 APIs bound 通过 应用。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"api_app_api_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Application bound API information array。",
+							Description: "Application bound API 信息 数组。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"api_app_name": {
@@ -87,7 +87,7 @@ func DataSourceTencentCloudApiGatewayBindApiAppsStatus() *schema.Resource {
 									"authorized_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Authorization binding time，expressed in accordance with the ISO8601 standard and using UTC time. The 格式 is: YYYY-MM-DDThh:mm:ssZ。",
+										Description: "Authorization binding 时间，expressed 在 accordance 使用 ISO8601 standard 和 使用 UTC 时间. 格式 是: YYYY-MM-DDThh:mm:ssZ。",
 									},
 									"api_region": {
 										Type:        schema.TypeString,
@@ -97,7 +97,7 @@ func DataSourceTencentCloudApiGatewayBindApiAppsStatus() *schema.Resource {
 									"environment_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Authorization binding environment。",
+										Description: "Authorization binding 环境。",
 									},
 								},
 							},

@@ -24,18 +24,18 @@ func DataSourceTencentCloudIgtmStrategyList() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Strategy filter conditions: StrategyName: strategy 名称",
+				Description: "Strategy 过滤器 conditions: StrategyName: strategy 名称",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "过滤字段名称，supported list as follows:\n- 类型: main 资源类型，CDN.\n- instanceId: IGTM instance ID. This is a 必填 parameter，failure to pass will cause interface query failure。",
+							Description: "过滤字段名称，支持 列表 作为 follows:\n- 类型: main 资源类型，CDN.\n- instanceId: IGTM 实例 ID. 此 是 必填 参数，failure 到 pass 将 cause interface 查询 failure。",
 						},
 						"value": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Filter field values。",
+							Description: "过滤器 字段 值。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -43,7 +43,7 @@ func DataSourceTencentCloudIgtmStrategyList() *schema.Resource {
 						"fuzzy": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "是否enable fuzzy query，only supports 过滤字段名称 as 域名\nWhen fuzzy query is 已启用，值 maximum length is 1，otherwise 值 maximum length is 5. (Reserved field，currently unused)。",
+							Description: "是否enable fuzzy 查询，仅 支持 过滤字段名称 作为 域名\nWhen fuzzy 查询 是 已启用，值 最大 长度 是 1，otherwise 值 最大 长度 是 5. (Reserved 字段，currently unused)。",
 						},
 					},
 				},
@@ -52,7 +52,7 @@ func DataSourceTencentCloudIgtmStrategyList() *schema.Resource {
 			"strategy_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Strategy list。",
+				Description: "Strategy 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
@@ -97,22 +97,22 @@ func DataSourceTencentCloudIgtmStrategyList() *schema.Resource {
 						"activate_main_pool_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Activated main pool ID，null means unknown。",
+							Description: "Activated main 池 ID，null 表示 unknown。",
 						},
 						"activate_level": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Current activated 地址 pool 级别，0 means fallback activated，null means unknown。",
+							Description: "Current activated 地址 池 级别，0 表示 fallback activated，null 表示 unknown。",
 						},
 						"active_pool_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Current activated 地址 pool set 类型: main main pool; fallback fallback pool。",
+							Description: "Current activated 地址 池 集合 类型: main main 池; fallback fallback 池。",
 						},
 						"active_traffic_strategy": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Current activated 地址 pool traffic strategy: all resolve all; 权重 load balancing。",
+							Description: "Current activated 地址 池 流量 strategy: all resolve all; 权重 load balancing。",
 						},
 						"monitor_num": {
 							Type:        schema.TypeInt,
@@ -127,12 +127,12 @@ func DataSourceTencentCloudIgtmStrategyList() *schema.Resource {
 						"keep_domain_records": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "是否retain lines: 已启用 retain，已禁用 not retain，only retain default lines。",
+							Description: "是否retain lines: 已启用 retain，已禁用 不 retain，仅 retain 默认值 lines。",
 						},
 						"switch_pool_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scheduling 模式: AUTO default; PAUSE only pause without switching。",
+							Description: "Scheduling 模式: AUTO 默认值; PAUSE 仅 pause without switching。",
 						},
 						"created_on": {
 							Type:        schema.TypeString,

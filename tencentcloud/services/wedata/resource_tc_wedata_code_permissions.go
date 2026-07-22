@@ -40,18 +40,18 @@ func ResourceTencentCloudWedataCodePermissions() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Authorization resource information，including resourceId and resourceType。",
+							Description: "Authorization 资源 信息，包括 resourceId 和 resourceType。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"resource_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "资源类型，can only be these two types: folder，script。",
+										Description: "资源类型，可以 仅 是 these two types: 文件夹，脚本。",
 									},
 									"resource_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "资源 ID: directory ID or script ID。",
+										Description: "资源 ID: directory ID 或 脚本 ID。",
 									},
 									"resource_id_for_path": {
 										Type:        schema.TypeString,
@@ -75,12 +75,12 @@ func ResourceTencentCloudWedataCodePermissions() *schema.Resource {
 									"subject_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Subject 类型 (用户: 用户，角色: 角色，group: group)。",
+										Description: "Subject 类型 (用户: 用户，角色: 角色，组: 组)。",
 									},
 									"subject_values": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Subject 值 list。",
+										Description: "Subject 值 列表。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -88,7 +88,7 @@ func ResourceTencentCloudWedataCodePermissions() *schema.Resource {
 									"privileges": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Permission list。",
+										Description: "Permission 列表。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},

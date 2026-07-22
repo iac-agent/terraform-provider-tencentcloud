@@ -36,7 +36,7 @@ func DataSourceTencentCloudRedisClusters() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "Renewal 模式: 0- default state (manual renewal); 1- Automatic renewal; 2- Clearly stating that automatic renewal is not allowed。",
+				Description: "Renewal 模式: 0- 默认值 state (manual renewal); 1- Automatic renewal; 2- Clearly stating 该 automatic renewal 是 不 allowed。",
 			},
 			"cluster_name": {
 				Optional:    true,
@@ -46,7 +46,7 @@ func DataSourceTencentCloudRedisClusters() *schema.Resource {
 			"dedicated_cluster_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Dedicated cluster Id。",
+				Description: "Dedicated 集群 ID。",
 			},
 			// computed
 			"resources": {
@@ -68,17 +68,17 @@ func DataSourceTencentCloudRedisClusters() *schema.Resource {
 						"zone_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "可用区 Id。",
+							Description: "可用区 ID。",
 						},
 						"redis_cluster_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Redis Cluster Id。",
+							Description: "Redis Cluster ID。",
 						},
 						"pay_mode": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Billing 模式，1-annual and monthly package，0-quantity based billing。",
+							Description: "Billing 模式，1-annual 和 monthly 包，0-quantity based billing。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
@@ -88,7 +88,7 @@ func DataSourceTencentCloudRedisClusters() *schema.Resource {
 						"auto_renew_flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Renewal 模式: 0- default state (manual renewal); 1- Automatic renewal; 2- Clearly stating that automatic renewal is not allowed。",
+							Description: "Renewal 模式: 0- 默认值 state (manual renewal); 1- Automatic renewal; 2- Clearly stating 该 automatic renewal 是 不 allowed。",
 						},
 						"cluster_name": {
 							Type:        schema.TypeString,
@@ -98,12 +98,12 @@ func DataSourceTencentCloudRedisClusters() *schema.Resource {
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance 创建时间。",
+							Description: "实例 创建时间。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance 过期时间。",
+							Description: "实例 过期时间。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
@@ -124,7 +124,7 @@ func DataSourceTencentCloudRedisClusters() *schema.Resource {
 									"available_memory": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Saleable memory，unit: GB。",
+										Description: "Saleable 内存，单位: GB。",
 									},
 									"count": {
 										Type:        schema.TypeInt,
@@ -148,7 +148,7 @@ func DataSourceTencentCloudRedisClusters() *schema.Resource {
 									"available_memory": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Saleable memory，unit: GB。",
+										Description: "Saleable 内存，单位: GB。",
 									},
 									"count": {
 										Type:        schema.TypeInt,
@@ -161,7 +161,7 @@ func DataSourceTencentCloudRedisClusters() *schema.Resource {
 						"dedicated_cluster_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Dedicated cluster Id。",
+							Description: "Dedicated 集群 ID。",
 						},
 					},
 				},

@@ -32,7 +32,7 @@ func ResourceTencentCloudWedataTaskKillInstanceAsync() *schema.Resource {
 				Type:        schema.TypeSet,
 				Required:    true,
 				ForceNew:    true,
-				Description: "实例 ID list，which can be obtained from ListInstances。",
+				Description: "实例 ID 列表，其中 可以 是 获取 从 ListInstances。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},

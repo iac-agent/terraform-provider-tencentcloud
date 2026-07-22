@@ -25,22 +25,22 @@ func DataSourceTencentCloudVpnConnections() *schema.Resource {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 60),
-				Description:  "名称 VPN connection. The length of character is limited to 1-60。",
+				Description:  "名称 VPN 连接. 长度 的 character 是 limited 到 1-60。",
 			},
 			"id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID VPN connection。",
+				Description: "ID VPN 连接。",
 			},
 			"vpn_gateway_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "VPN 网关 ID VPN connection。",
+				Description: "VPN 网关 ID VPN 连接。",
 			},
 			"customer_gateway_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Customer gateway ID VPN connection。",
+				Description: "Customer 网关 ID VPN 连接。",
 			},
 			"vpc_id": {
 				Type:        schema.TypeString,
@@ -50,7 +50,7 @@ func DataSourceTencentCloudVpnConnections() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "标签 of the VPN connection to be queried。",
+				Description: "标签 的 VPN 连接 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -62,18 +62,18 @@ func DataSourceTencentCloudVpnConnections() *schema.Resource {
 			"connection_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information 列表 the dedicated connections。",
+				Description: "Information 列表 dedicated connections。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID VPN connection。",
+							Description: "ID VPN 连接。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 VPN connection。",
+							Description: "名称 VPN 连接。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
@@ -83,22 +83,22 @@ func DataSourceTencentCloudVpnConnections() *schema.Resource {
 						"customer_gateway_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID customer gateway。",
+							Description: "ID customer 网关。",
 						},
 						"vpn_gateway_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID VPN gateway。",
+							Description: "ID VPN 网关。",
 						},
 						"pre_share_key": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Pre-shared 键 of the VPN connection。",
+							Description: "Pre-shared 键 的 VPN 连接。",
 						},
 						"security_group_policy": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Security group policy of the VPN connection。",
+							Description: "Security 组 策略 的 VPN 连接。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"local_cidr_block": {
@@ -110,7 +110,7 @@ func DataSourceTencentCloudVpnConnections() *schema.Resource {
 										Type:        schema.TypeSet,
 										Computed:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "Remote cidr block list。",
+										Description: "Remote cidr block 列表。",
 									},
 								},
 							},
@@ -118,87 +118,87 @@ func DataSourceTencentCloudVpnConnections() *schema.Resource {
 						"ike_proto_encry_algorithm": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Proto encrypt algorithm of the IKE operation specification。",
+							Description: "Proto encrypt algorithm 的 IKE operation 规格。",
 						},
 						"ike_proto_authen_algorithm": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Proto authenticate algorithm of the IKE operation specification。",
+							Description: "Proto authenticate algorithm 的 IKE operation 规格。",
 						},
 						"ike_exchange_mode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Exchange 模式 of the IKE operation specification。",
+							Description: "Exchange 模式 的 IKE operation 规格。",
 						},
 						"ike_local_identity": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Local identity of the IKE operation specification。",
+							Description: "Local identity 的 IKE operation 规格。",
 						},
 						"ike_remote_identity": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Remote identity of the IKE operation specification。",
+							Description: "Remote identity 的 IKE operation 规格。",
 						},
 						"ike_local_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Local 地址 of the IKE operation specification。",
+							Description: "Local 地址 的 IKE operation 规格。",
 						},
 						"ike_remote_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Remote 地址 of the IKE operation specification。",
+							Description: "Remote 地址 的 IKE operation 规格。",
 						},
 						"ike_local_fqdn_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Local FQDN 名称 IKE operation specification。",
+							Description: "Local FQDN 名称 IKE operation 规格。",
 						},
 						"ike_remote_fqdn_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Remote FQDN 名称 IKE operation specification。",
+							Description: "Remote FQDN 名称 IKE operation 规格。",
 						},
 						"ike_dh_group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DH 组名称 of the IKE operation specification。",
+							Description: "DH 组名称 的 IKE operation 规格。",
 						},
 						"ike_sa_lifetime_seconds": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "SA lifetime of the IKE operation specification，unit is `second`。",
+							Description: "SA lifetime 的 IKE operation 规格，单位 是 `second`。",
 						},
 						"ike_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "版本 of the IKE operation specification。",
+							Description: "版本 的 IKE operation 规格。",
 						},
 						"ipsec_encrypt_algorithm": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Encrypt algorithm of the IPSEC operation specification。",
+							Description: "Encrypt algorithm 的 IPSEC operation 规格。",
 						},
 						"ipsec_integrity_algorithm": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Integrity algorithm of the IPSEC operation specification。",
+							Description: "Integrity algorithm 的 IPSEC operation 规格。",
 						},
 						"ipsec_sa_lifetime_seconds": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "SA lifetime of the IPSEC operation specification，unit is `second`。",
+							Description: "SA lifetime 的 IPSEC operation 规格，单位 是 `second`。",
 						},
 						"ipsec_pfs_dh_group": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "PFS DH 组名称 of the IPSEC operation specification。",
+							Description: "PFS DH 组名称 的 IPSEC operation 规格。",
 						},
 						"ipsec_sa_lifetime_traffic": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "SA lifetime traffic of the IPSEC operation specification，unit is `KB`。",
+							Description: "SA lifetime 流量 的 IPSEC operation 规格，单位 是 `KB`。",
 						},
 						"tags": {
 							Type:        schema.TypeMap,
@@ -208,32 +208,32 @@ func DataSourceTencentCloudVpnConnections() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of the VPN connection。",
+							Description: "创建时间 的 VPN 连接。",
 						},
 						"vpn_proto": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Vpn proto of the VPN connection。",
+							Description: "Vpn proto 的 VPN 连接。",
 						},
 						"encrypt_proto": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Encrypt proto of the VPN connection。",
+							Description: "Encrypt proto 的 VPN 连接。",
 						},
 						"route_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Route 类型 VPN connection。",
+							Description: "Route 类型 VPN 连接。",
 						},
 						"state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "State of the VPN connection。",
+							Description: "State 的 VPN 连接。",
 						},
 						"net_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Net 状态 VPN connection。",
+							Description: "Net 状态 VPN 连接。",
 						},
 					},
 				},

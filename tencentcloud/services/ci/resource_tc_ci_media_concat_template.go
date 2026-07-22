@@ -35,7 +35,7 @@ func ResourceTencentCloudCiMediaConcatTemplate() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The 模板名称 only supports `Chinese`，`English`，`numbers`，`_`，`-` and `*`。",
+				Description: "模板名称 仅 支持 `Chinese`，`English`，`numbers`，`_`，`-` 和 `*`。",
 			},
 
 			"concat_template": {
@@ -54,12 +54,12 @@ func ResourceTencentCloudCiMediaConcatTemplate() *schema.Resource {
 									"url": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Splicing object 地址",
+										Description: "Splicing 对象 地址",
 									},
 									"mode": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "node 类型，`start`，`end`。",
+										Description: "节点 类型，`start`，`end`。",
 									},
 								},
 							},
@@ -68,7 +68,7 @@ func ResourceTencentCloudCiMediaConcatTemplate() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "audio parameters，the target file does not require Audio information，need to set Audio.Remove to true。",
+							Description: "音频 参数， 目标 文件 does 不 require Audio 信息，need 到 集合 Audio.Remove 到 true。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"codec": {
@@ -79,17 +79,17 @@ func ResourceTencentCloudCiMediaConcatTemplate() *schema.Resource {
 									"samplerate": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Sampling Rate- 单位：Hz- 可选 11025，22050，32000，44100，48000，96000- Different packages，mp3 supports different sampling rates，as shown in the table below。",
+										Description: "Sampling Rate- 单位：Hz- 可选 11025，22050，32000，44100，48000，96000- Different packages，mp3 支持 different sampling rates，作为 shown 在 表 below。",
 									},
 									"bitrate": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Original audio bit rate，unit: Kbps，取值范围：[8，1000]。",
+										Description: "Original 音频 bit 速率，单位: Kbps，取值范围：[8，1000]。",
 									},
 									"channels": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "数量 channels- When Codec is set to aac，support 1，2，4，5，6，8- When Codec is set to mp3，support 1，2。",
+										Description: "数量 channels- 当 Codec 是 集合 到 aac，support 1，2，4，5，6，8- 当 Codec 是 集合 到 mp3，support 1，2。",
 									},
 								},
 							},
@@ -98,7 +98,7 @@ func ResourceTencentCloudCiMediaConcatTemplate() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "video information，do not upload Video，which is equivalent to deleting video information。",
+							Description: "视频 信息，do 不 upload Video，其中 是 equivalent 到 deleting 视频 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"codec": {
@@ -109,33 +109,33 @@ func ResourceTencentCloudCiMediaConcatTemplate() *schema.Resource {
 									"width": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "width，取值范围：[128，4096]，单位：px，If only Width is set，Height is calculated according to the original ratio of the video，must be even。",
+										Description: "宽度，取值范围：[128，4096]，单位：像素，如果 仅 宽度 是 集合，高度 是 calculated according 到 original ratio 的 视频，必须 是 even。",
 									},
 									"height": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "High，取值范围：[128，4096]，单位：px，If only Height is set，Width is calculated according to the original ratio of the video，must be even。",
+										Description: "High，取值范围：[128，4096]，单位：像素，如果 仅 高度 是 集合，宽度 是 calculated according 到 original ratio 的 视频，必须 是 even。",
 									},
 									"bitrate": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Original audio bit rate，unit: Kbps，取值范围：[8，1000]。",
+										Description: "Original 音频 bit 速率，单位: Kbps，取值范围：[8，1000]。",
 									},
 									"fps": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Frame rate，取值范围：(0，60]，单位：fps。",
+										Description: "Frame 速率，取值范围：(0，60]，单位：fps。",
 									},
 									"crf": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Bit rate-quality control factor，取值范围：(0，51]，If Crf is set，the setting of Bitrate will be invalid，When Bitrate is empty，the 默认为 25。",
+										Description: "Bit 速率-quality control factor，取值范围：(0，51]，如果 Crf 是 集合， setting 的 Bitrate 将 是 无效，当 Bitrate 是 空， 默认为 25。",
 									},
 									"remove": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "是否delete the 来源 audio stream，the 值 is true，false。",
+										Description: "是否delete 来源 音频 流， 值 是 true，false。",
 									},
 									"rotate": {
 										Type:        schema.TypeString,
@@ -163,23 +163,23 @@ func ResourceTencentCloudCiMediaConcatTemplate() *schema.Resource {
 						"audio_mix": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "mixing parameters。",
+							Description: "mixing 参数。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"audio_source": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The media 地址 of the audio track that needs to be mixed。",
+										Description: "media 地址 的 音频 track 该 needs 到 是 mixed。",
 									},
 									"mix_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Mixing 模式 Repeat: background sound loop，Once: The background sound is played once。",
+										Description: "Mixing 模式 Repeat: background sound loop，Once: background sound 是 played once。",
 									},
 									"replace": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "是否replace the original audio of the Input media file with the mixed audio track media。",
+										Description: "是否replace original 音频 的 Input media 文件 使用 mixed 音频 track media。",
 									},
 									"effect_config": {
 										Type:        schema.TypeList,
@@ -191,33 +191,33 @@ func ResourceTencentCloudCiMediaConcatTemplate() *schema.Resource {
 												"enable_start_fadein": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "enable fade in。",
+													Description: "启用 fade 在。",
 												},
 												"start_fadein_time": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Fade in duration，greater than 0，support floating point numbers。",
+													Description: "Fade 在 时长，greater 比 0，support floating point numbers。",
 												},
 												"enable_end_fadeout": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "enable fade out。",
+													Description: "启用 fade out。",
 												},
 												"end_fadeout_time": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "fade out time，greater than 0，support floating point numbers。",
+													Description: "fade out 时间，greater 比 0，support floating point numbers。",
 												},
 												"enable_bgm_fade": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Enable bgm conversion fade in。",
+													Description: "Enable bgm conversion fade 在。",
 												},
 												"bgm_fade_time": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "bgm transition fade-in duration，support floating point numbers。",
+													Description: "bgm transition fade-在 时长，support floating point numbers。",
 												},
 											},
 										},

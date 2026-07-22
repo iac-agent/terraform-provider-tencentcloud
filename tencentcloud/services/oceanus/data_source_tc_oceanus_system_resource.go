@@ -20,12 +20,12 @@ func DataSourceTencentCloudOceanusSystemResource() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "数组 resource IDs to be queried。",
+				Description: "数组 资源 IDs 到 是 queried。",
 			},
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Query the resource configuration list. 如果未指定，return all job configuration lists under ResourceIds.N。",
+				Description: "Query 资源 配置 列表. 如果未指定，返回 all 作业 配置 lists under ResourceIds.N。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -37,7 +37,7 @@ func DataSourceTencentCloudOceanusSystemResource() *schema.Resource {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Required:    true,
-							Description: "Filter values for the field。",
+							Description: "过滤器 值 对于 字段。",
 						},
 					},
 				},
@@ -50,12 +50,12 @@ func DataSourceTencentCloudOceanusSystemResource() *schema.Resource {
 			"flink_version": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Query built-in connectors for the corresponding Flink 版本",
+				Description: "Query built-在 connectors 对于 corresponding Flink 版本",
 			},
 			"resource_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Collection of resource details。",
+				Description: "Collection 的 资源 details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_id": {
@@ -71,7 +71,7 @@ func DataSourceTencentCloudOceanusSystemResource() *schema.Resource {
 						"resource_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "资源类型 1 表示JAR package，which is currently the only supported 值",
+							Description: "资源类型 1 表示JAR 包，其中 是 currently 仅 支持 值",
 						},
 						"remark": {
 							Type:        schema.TypeString,
@@ -81,12 +81,12 @@ func DataSourceTencentCloudOceanusSystemResource() *schema.Resource {
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "地域 to which the resource belongs。",
+							Description: "地域 到 其中 资源 belongs。",
 						},
 						"latest_resource_config_version": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Latest 版本 of the resource。",
+							Description: "Latest 版本 的 资源。",
 						},
 					},
 				},

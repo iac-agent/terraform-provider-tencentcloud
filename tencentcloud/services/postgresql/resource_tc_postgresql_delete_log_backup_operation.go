@@ -30,7 +30,7 @@ func ResourceTencentCloudPostgresqlDeleteLogBackupOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Log backup ID。",
+				Description: "Log 备份 ID。",
 			},
 		},
 	}

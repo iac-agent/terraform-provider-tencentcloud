@@ -27,7 +27,7 @@ func ResourceTencentCloudLighthouseDiskAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Disk id。",
+				Description: "Disk ID。",
 			},
 
 			"instance_id": {

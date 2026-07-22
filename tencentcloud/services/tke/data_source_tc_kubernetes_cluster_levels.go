@@ -20,19 +20,19 @@ func DataSourceTencentCloudKubernetesClusterLevels() *schema.Resource {
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "指定cluster Id，if set will only query current cluster's available levels。",
+				Description: "指定cluster ID，如果 集合 将 仅 查询 当前 集群's 可用 levels。",
 			},
 
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "列表 级别 information。",
+				Description: "列表 级别 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"alias": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Alias 用于pass to cluster 级别 arguments。",
+							Description: "Alias 用于pass 到 集群 级别 arguments。",
 						},
 						"crd_count": {
 							Type:        schema.TypeInt,

@@ -43,7 +43,7 @@ func ResourceTencentCloudMonitorTmpExporterIntegrationV2() *schema.Resource {
 			"content": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Integration 配置 For more details，please refer to [Cloud Monitoring](https://www.tencentcloud.com/document/product/248/63002?lang=en&pg=). PS: `spec.instanceSpec.restart` is used in Terraform to restart integration or update integration 版本 It is an integer，and the 值 can be a 时间戳 （秒）， 可选",
+				Description: "Integration 配置 For more details，please refer 到 [Cloud Monitoring](https://www.tencentcloud.com/document/product/248/63002?lang=en&pg=). PS: `spec.instanceSpec.restart` 是 使用 在 Terraform 到 restart integration 或 update integration 版本 It 是 整数，和 值 可以 是 时间戳 （秒）， 可选",
 			},
 
 			"kube_type": {
@@ -63,7 +63,7 @@ func ResourceTencentCloudMonitorTmpExporterIntegrationV2() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Integration is 已禁用 when the 值 is true. 默认为 false。",
+				Description: "Integration 是 已禁用 当 值 是 true. 默认为 false。",
 			},
 		},
 	}

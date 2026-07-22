@@ -30,7 +30,7 @@ func ResourceTencentCloudLighthouseApplyDiskBackup() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Disk backup ID。",
+				Description: "Disk 备份 ID。",
 			},
 		},
 	}

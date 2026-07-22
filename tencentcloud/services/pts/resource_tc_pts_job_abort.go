@@ -44,7 +44,7 @@ func ResourceTencentCloudPtsJobAbort() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "The reason for aborting the job.",
+				Description: "reason 对于 aborting 作业.",
 			},
 		},
 	}

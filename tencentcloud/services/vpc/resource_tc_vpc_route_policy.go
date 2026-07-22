@@ -26,7 +26,7 @@ func ResourceTencentCloudVpcRoutePolicy() *schema.Resource {
 			"route_policy_description": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Routing policy 描述",
+				Description: "Routing 策略 描述",
 			},
 
 			"route_policy_name": {
@@ -39,7 +39,7 @@ func ResourceTencentCloudVpcRoutePolicy() *schema.Resource {
 			"route_policy_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Route policy ID。",
+				Description: "Route 策略 ID。",
 			},
 		},
 	}

@@ -17,49 +17,49 @@ func DataSourceTencentCloudSqlserverDBs() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to store results.",
+				Description: "Used 到 store results.",
 			},
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "SQL Server instance ID which DB belongs to.",
+				Description: "SQL Server 实例 ID 其中 DB belongs 到.",
 			},
 			// Computed
 			"db_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of dbs belong to the specific instance. Each element contains the following attributes:",
+				Description: "A 列表 的 dbs belong 到 特定 实例. Each element contains following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "SQL Server instance ID which DB belongs to.",
+							Description: "SQL Server 实例 ID 其中 DB belongs 到.",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of DB.",
+							Description: "Name 的 DB.",
 						},
 						"charset": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Character set DB uses, could be `Chinese_PRC_CI_AS`, `Chinese_PRC_CS_AS`, `Chinese_PRC_BIN`, `Chinese_Taiwan_Stroke_CI_AS`, `SQL_Latin1_General_CP1_CI_AS`, and `SQL_Latin1_General_CP1_CS_AS`.",
+							Description: "Character 集合 DB uses, could 是 `Chinese_PRC_CI_AS`, `Chinese_PRC_CS_AS`, `Chinese_PRC_BIN`, `Chinese_Taiwan_Stroke_CI_AS`, `SQL_Latin1_General_CP1_CI_AS`, 和 `SQL_Latin1_General_CP1_CS_AS`.",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Remark of the DB.",
+							Description: "Remark 的 DB.",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database creation time.",
+							Description: "Database creation 时间.",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database status. Valid values are `creating`, `running`, `modifying`, `dropping`.",
+							Description: "Database 状态. 有效 值 是 `creating`, `running`, `modifying`, `dropping`.",
 						},
 					},
 				},

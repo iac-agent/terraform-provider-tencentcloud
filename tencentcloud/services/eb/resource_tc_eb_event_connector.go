@@ -35,13 +35,13 @@ func ResourceTencentCloudEbEventConnector() *schema.Resource {
 						"resource_description": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Resource qcs six-segment style，more reference [resource six-segment style](https://cloud.tencent.com/document/product/598/10606)。",
+							Description: "Resource qcs six-segment style，more reference [资源 six-segment style](https://云.tencent.com/document/product/598/10606)。",
 						},
 						"api_gw_params": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "apigw parameter,注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "apigw 参数,注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"protocol": {
@@ -61,7 +61,7 @@ func ResourceTencentCloudEbEventConnector() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "ckafka parameter，note: this field may return null，indicating that no valid 值 can be obtained。",
+							Description: "ckafka 参数，note: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"offset": {
@@ -72,7 +72,7 @@ func ResourceTencentCloudEbEventConnector() *schema.Resource {
 									"topic_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "ckafka  topic。",
+										Description: "ckafka 主题。",
 									},
 								},
 							},
@@ -85,7 +85,7 @@ func ResourceTencentCloudEbEventConnector() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "event bus Id。",
+				Description: "事件 bus ID。",
 			},
 
 			"connection_name": {

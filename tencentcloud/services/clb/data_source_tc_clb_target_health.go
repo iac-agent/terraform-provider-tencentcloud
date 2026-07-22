@@ -70,7 +70,7 @@ func DataSourceTencentCloudClbTargetHealth() *schema.Resource {
 									"rules": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "列表 forwarding rules of the listener.注意：该字段可能返回null，表示取不到有效值。",
+										Description: "列表 forwarding 规则 的 listener.注意：该字段可能返回null，表示取不到有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"location_id": {

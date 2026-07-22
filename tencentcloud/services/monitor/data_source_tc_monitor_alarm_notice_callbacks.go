@@ -19,13 +19,13 @@ func DataSourceTencentCloudMonitorAlarmNoticeCallbacks() *schema.Resource {
 			"url_notices": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Alarm callback notification。",
+				Description: "Alarm callback 通知。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Callback URL (limited to 256 characters)。",
+							Description: "Callback URL (limited 到 256 字符)。",
 						},
 						"is_valid": {
 							Type:        schema.TypeInt,
@@ -40,12 +40,12 @@ func DataSourceTencentCloudMonitorAlarmNoticeCallbacks() *schema.Resource {
 						"start_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 数量 seconds starting from the day of notification 开始时间。",
+							Description: "数量 秒 starting 从 day 的 通知 开始时间。",
 						},
 						"end_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 数量 seconds from the end of the notification day。",
+							Description: "数量 秒 从 end 的 通知 day。",
 						},
 						"weekday": {
 							Type: schema.TypeSet,
@@ -53,7 +53,7 @@ func DataSourceTencentCloudMonitorAlarmNoticeCallbacks() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "Notification 周期 1-7 represents Monday to Sunday。",
+							Description: "Notification 周期 1-7 表示 Monday 到 Sunday。",
 						},
 					},
 				},

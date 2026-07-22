@@ -38,14 +38,14 @@ func ResourceTencentCloudTseCngwCertificate() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Domains of the binding。",
+				Description: "Domains 的 binding。",
 			},
 
 			"cert_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "证书 ID ssl platform。",
+				Description: "证书 ID ssl 平台。",
 			},
 
 			"name": {
@@ -57,13 +57,13 @@ func ResourceTencentCloudTseCngwCertificate() *schema.Resource {
 			"key": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Private 键 of certificate。",
+				Description: "Private 键 的 证书。",
 			},
 
 			"crt": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Pem 格式 of certificate。",
+				Description: "Pem 格式 的 证书。",
 			},
 		},
 	}

@@ -19,13 +19,13 @@ func DataSourceTencentCloudCfwEdgeFwSwitches() *schema.Resource {
 			"data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Ip switch list。",
+				Description: "Ip switch 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"public_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "public ip。",
+							Description: "公有 ip。",
 						},
 						"public_ip_type": {
 							Type:        schema.TypeInt,
@@ -40,7 +40,7 @@ func DataSourceTencentCloudCfwEdgeFwSwitches() *schema.Resource {
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance 名称",
+							Description: "实例 名称",
 						},
 						"intranet_ip": {
 							Type:        schema.TypeString,

@@ -57,19 +57,19 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SERVICE_TYPE),
-				Description:  "Acceleration 域名 名称 service 类型 `web`: static acceleration，`download`: download acceleration，`media`: streaming media VOD acceleration，`hybrid`: hybrid acceleration，`dynamic`: dynamic acceleration。",
+				Description:  "Acceleration 域名 名称 服务 类型 `web`: 静态 acceleration，`download`: download acceleration，`media`: streaming media VOD acceleration，`hybrid`: hybrid acceleration，`动态`: 动态 acceleration。",
 			},
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
-				Description: "The project CDN belongs to，默认为 0。",
+				Description: "项目 CDN belongs 到，默认为 0。",
 			},
 			"area": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_AREA),
-				Description:  "域名 名称 acceleration 地域 `mainland`: acceleration inside mainland China，`overseas`: acceleration outside mainland China，`global`: global acceleration. Overseas acceleration service must be 已启用 to use overseas acceleration and global acceleration。",
+				Description:  "域名 名称 acceleration 地域 `mainland`: acceleration inside mainland China，`overseas`: acceleration outside mainland China，`全局`: 全局 acceleration. Overseas acceleration 服务 必须 是 已启用 到 使用 overseas acceleration 和 全局 acceleration。",
 			},
 			"full_url_cache": {
 				Type:          schema.TypeBool,
@@ -77,20 +77,20 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				Default:       true,
 				ConflictsWith: []string{"cache_key"},
 				Deprecated:    "Use `cache_key` -> `full_url_cache` instead.",
-				Description:   "是否enable full-路径 cache. 默认值为 `true`。",
+				Description:   "是否enable full-路径 缓存. 默认值为 `true`。",
 			},
 			"origin": {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Origin server configuration. It's a list and consist of at most one item。",
+				Description: "Origin 服务器 配置. It's 列表 和 consist 的 在 most 一个 item。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"origin_type": {
 							Type:         schema.TypeString,
 							Required:     true,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_ORIGIN_TYPE),
-							Description: "Master origin server type. The following types are supported: `domain`: Domain name, `domainv6`: IPv6 domain name, `cos`: COS bucket address, `third_party`: Third-party object storage origin, " +
+							Description: "Master 源站 服务器 类型. following types 是 支持: `域名`: Domain 名称, `domainv6`: IPv6 域名 名称, `cos`: COS 存储桶 地址, `third_party`: Third-party 对象 存储 源站," +
 								"`igtm`: IGTM origin, `ip`: IP address, `ipv6`: One IPv6 address, `ip_ipv6`: Multiple IPv4 addresses and one IPv6 address, " +
 								"`ip_domain`: IP addresses and domain names (only available to beta users), `ip_domainv6`: Multiple IPv4 addresses and one IPv6 domain name, `ipv6_domain`: Multiple IPv6 addresses and one domain name, `ipv6_domainv6`: Multiple IPv6 addresses and one IPv6 domain name, " +
 								"`domain_domainv6`: Multiple IPv4 domain names and one IPv6 domain name, `ip_ipv6_domain`: Multiple IPv4 and IPv6 addresses and one domain name, `ip_ipv6_domainv6`: Multiple IPv4 and IPv6 addresses and one IPv6 domain name, `ip_domain_domainv6`: Multiple IPv4 addresses and IPv4 domain names and one IPv6 domain name, " +
@@ -100,48 +100,48 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 							Type:        schema.TypeList,
 							Required:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Master origin server list. Valid values can be ip or 域名 名称 When modifying the origin server，you need to enter the corresponding `origin_type`。",
+							Description: "Master 源站 服务器 列表. 有效 值 可以 是 ip 或 域名 名称 当 modifying 源站 服务器，您 need 到 enter corresponding `origin_type`。",
 						},
 						"server_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "主机 header used when accessing the master origin server. 如果为空，the acceleration 域名 名称 will be used by default。",
+							Description: "主机 头部 使用 当 accessing master 源站 服务器. 如果为空， acceleration 域名 名称 将 是 使用 通过 默认值。",
 						},
 						"cos_private_access": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Default:     CDN_SWITCH_OFF,
-							Description: "When OriginType is COS，you can 指定if access to private buckets is allowed. Valid values are `on` and `off`. and 默认值为 `off`。",
+							Description: "当 OriginType 是 COS，您 可以 指定if 访问 到 私有 buckets 是 allowed. 有效 值 是 `在` 和 `关闭`. 和 默认值为 `关闭`。",
 						},
 						"origin_pull_protocol": {
 							Type:         schema.TypeString,
 							Optional:     true,
 							Default:      CDN_ORIGIN_PULL_PROTOCOL_HTTP,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_ORIGIN_PULL_PROTOCOL),
-							Description:  "Origin-pull 协议 configuration. `http`: forced HTTP origin-pull，`follow`: 协议 follow origin-pull，`https`: forced HTTPS origin-pull. This only supports origin server 端口 443 for origin-pull。",
+							Description:  "Origin-pull 协议 配置. `http`: forced HTTP 源站-pull，`follow`: 协议 follow 源站-pull，`https`: forced HTTPS 源站-pull. 此 仅 支持 源站 服务器 端口 443 对于 源站-pull。",
 						},
 						"backup_origin_type": {
 							Type:         schema.TypeString,
 							Optional:     true,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_BACKUP_ORIGIN_TYPE),
-							Description:  "Backup origin server 类型，which supports the following types: `域名`: 域名 名称 类型，`ip`: IP list used as origin server，`ipv6_domain`: Multiple IPv6 addresses and one 域名 名称，`ip_ipv6`: Multiple IPv4 addresses and one IPv6 地址，`ip_ipv6_domain`: Multiple IPv4 and IPv6 addresses and one 域名 名称",
+							Description:  "Backup 源站 服务器 类型，其中 支持 following types: `域名`: 域名 名称 类型，`ip`: IP 列表 使用 作为 源站 服务器，`ipv6_domain`: Multiple IPv6 addresses 和 一个 域名 名称，`ip_ipv6`: Multiple IPv4 addresses 和 一个 IPv6 地址，`ip_ipv6_domain`: Multiple IPv4 和 IPv6 addresses 和 一个 域名 名称",
 						},
 						"backup_origin_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Backup origin server list. Valid values can be ip or 域名 名称 When modifying the backup origin server，you need to enter the corresponding `backup_origin_type`。",
+							Description: "Backup 源站 服务器 列表. 有效 值 可以 是 ip 或 域名 名称 当 modifying 备份 源站 服务器，您 need 到 enter corresponding `backup_origin_type`。",
 						},
 						"backup_server_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "主机 header used when accessing the backup origin server. 如果为空，the ServerName of master origin server will be used by default。",
+							Description: "主机 头部 使用 当 accessing 备份 源站 服务器. 如果为空， ServerName 的 master 源站 服务器 将 是 使用 通过 默认值。",
 						},
 						"origin_company": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Object storage back to the 来源 vendor. 必填 when the 来源 station 类型 is a third-party storage 来源 station (third_party). 可选 values include the following: `aws_s3`: AWS S3; `ali_oss`: Alibaba Cloud OSS; `hw_obs`: Huawei OBS; `qiniu_kodo`: Qiniu Cloud kodo; `others`: other vendors' object storage，only supports object storage compatible with AWS 签名 algorithm，such as Tencent Cloud Financial 可用区 COS. Example 值: `hw_obs`。",
+							Description: "Object 存储 back 到 来源 vendor. 必填 当 来源 station 类型 是 third-party 存储 来源 station (third_party). 可选 值 include following: `aws_s3`: AWS S3; `ali_oss`: Alibaba Cloud OSS; `hw_obs`: Huawei OBS; `qiniu_kodo`: Qiniu Cloud kodo; `others`: other vendors' 对象 存储，仅 支持 对象 存储 compatible 使用 AWS 签名 algorithm，such 作为 Tencent Cloud Financial 可用区 COS. Example 值: `hw_obs`。",
 						},
 					},
 				},
@@ -151,48 +151,48 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "HTTPS acceleration configuration. It's a list and consist of at most one item。",
+				Description: "HTTPS acceleration 配置. It's 列表 和 consist 的 在 most 一个 item。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"https_switch": {
 							Type:         schema.TypeString,
 							Required:     true,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-							Description:  "HTTPS configuration switch. Valid values are `on` and `off`。",
+							Description:  "HTTPS 配置 switch. 有效 值 是 `在` 和 `关闭`。",
 						},
 						"http2_switch": {
 							Type:         schema.TypeString,
 							Optional:     true,
 							Default:      CDN_SWITCH_OFF,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-							Description:  "HTTP2 configuration switch. Valid values are `on` and `off`. and 默认值为 `off`。",
+							Description:  "HTTP2 配置 switch. 有效 值 是 `在` 和 `关闭`. 和 默认值为 `关闭`。",
 						},
 						"ocsp_stapling_switch": {
 							Type:         schema.TypeString,
 							Optional:     true,
 							Default:      CDN_SWITCH_OFF,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-							Description:  "OCSP configuration switch. Valid values are `on` and `off`. and 默认值为 `off`。",
+							Description:  "OCSP 配置 switch. 有效 值 是 `在` 和 `关闭`. 和 默认值为 `关闭`。",
 						},
 						"spdy_switch": {
 							Type:         schema.TypeString,
 							Optional:     true,
 							Default:      CDN_SWITCH_OFF,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-							Description:  "Spdy configuration switch. Valid values are `on` and `off`. and 默认值为 `off`. This parameter is for white-list customer。",
+							Description:  "Spdy 配置 switch. 有效 值 是 `在` 和 `关闭`. 和 默认值为 `关闭`. 此 参数 是 对于 white-列表 customer。",
 						},
 						"verify_client": {
 							Type:         schema.TypeString,
 							Optional:     true,
 							Default:      CDN_SWITCH_OFF,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-							Description:  "Client certificate authentication feature. Valid values are `on` and `off`. and 默认值为 `off`。",
+							Description:  "Client 证书 authentication 功能. 有效 值 是 `在` 和 `关闭`. 和 默认值为 `关闭`。",
 						},
 						"server_certificate_config": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Server certificate configuration information。",
+							Description: "Server 证书 配置 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"certificate_id": {
@@ -203,17 +203,17 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 									"certificate_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Server certificate 名称",
+										Description: "Server 证书 名称",
 									},
 									"certificate_content": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Server certificate information. This 为必填项 when uploading an external certificate，which should contain the complete certificate chain。",
+										Description: "Server 证书 信息. 此 为必填项 当 uploading 外部 证书，其中 should contain 完整 证书 chain。",
 									},
 									"private_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Server 键 information. This 为必填项 when uploading an external certificate。",
+										Description: "Server 键 信息. 此 为必填项 当 uploading 外部 证书。",
 									},
 									"message": {
 										Type:        schema.TypeString,
@@ -224,12 +224,12 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 									"deploy_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Deploy time of server certificate。",
+										Description: "Deploy 时间 的 服务器 证书。",
 									},
 									"expire_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Expire time of server certificate。",
+										Description: "Expire 时间 的 服务器 证书。",
 									},
 								},
 							},
@@ -238,28 +238,28 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Client certificate configuration information。",
+							Description: "Client 证书 配置 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"certificate_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Client certificate 名称",
+										Description: "Client 证书 名称",
 									},
 									"certificate_content": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Client Certificate PEM 格式，requires Base64 encoding。",
+										Description: "Client Certificate PEM 格式，requires Base64 编码。",
 									},
 									"deploy_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Deploy time of client certificate。",
+										Description: "Deploy 时间 的 客户端 证书。",
 									},
 									"expire_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Expire time of client certificate。",
+										Description: "Expire 时间 的 客户端 证书。",
 									},
 								},
 							},
@@ -269,7 +269,7 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 							Optional:    true,
 							Computed:    true,
 							MaxItems:    1,
-							Description: "Configuration of forced HTTP or HTTPS redirects。",
+							Description: "Configuration 的 forced HTTP 或 HTTPS redirects。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
@@ -277,14 +277,14 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 										Optional:     true,
 										Default:      CDN_SWITCH_OFF,
 										ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-										Description:  "Forced redirect configuration switch. Valid values are `on` and `off`. 默认值为 `off`。",
+										Description:  "Forced redirect 配置 switch. 有效 值 是 `在` 和 `关闭`. 默认值为 `关闭`。",
 									},
 									"redirect_type": {
 										Type:         schema.TypeString,
 										Optional:     true,
 										Default:      CDN_ORIGIN_PULL_PROTOCOL_HTTP,
 										ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_FORCE_REDIRECT_TYPE),
-										Description: "Forced redirect type. Valid values are `http` and `https`. `http` means a forced redirect from HTTPS to HTTP, `https` means a forced redirect from HTTP to HTTPS. " +
+										Description: "Forced redirect 类型. 有效 值 是 `http` 和 `https`. `http` 表示 forced redirect 从 HTTPS 到 HTTP, `https` 表示 forced redirect 从 HTTP 到 HTTPS." +
 											"When `switch` setting `off`, this property does not need to be set or set to `http`. Default value is `http`.",
 									},
 									"redirect_status_code": {
@@ -292,14 +292,14 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 										Optional:     true,
 										Default:      302,
 										ValidateFunc: tccommon.ValidateAllowedIntValue([]int{301, 302}),
-										Description: "Forced redirect status code. Valid values are `301` and `302`. " +
+										Description: "Forced redirect 状态 代码. 有效 值 是 `301` 和 `302`." +
 											"When `switch` setting `off`, this property does not need to be set or set to `302`. Default value is `302`.",
 									},
 									"carry_headers": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Default:     "off",
-										Description: "是否return the newly added header during force redirection. Values: `on`，`off`。",
+										Description: "是否return newly added 头部 during force redirection. Values: `在`，`关闭`。",
 									},
 								},
 							},
@@ -309,21 +309,21 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 							Optional:    true,
 							Computed:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Tls 版本 settings，only support some Advanced 域名 names，support settings TLSv1，TLSV1.1，TLSV1.2，TLSv1.3，when modifying must open consecutive versions。",
+							Description: "Tls 版本 settings，仅 support some Advanced 域名 names，support settings TLSv1，TLSV1.1，TLSV1.2，TLSv1.3，当 modifying 必须 open consecutive versions。",
 						},
 						"hsts": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Computed:    true,
 							MaxItems:    1,
-							Description: "HSTS configuration。",
+							Description: "HSTS 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:         schema.TypeString,
 										Required:     true,
 										ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-										Description:  "HSTS configuration switch. Valid values are `on` and `off`。",
+										Description:  "HSTS 配置 switch. 有效 值 是 `在` 和 `关闭`。",
 									},
 									"max_age": {
 										Type:        schema.TypeInt,
@@ -334,7 +334,7 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 										Type:         schema.TypeString,
 										Optional:     true,
 										ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-										Description:  "是否include sub domains，values `on` and `off`。",
+										Description:  "是否include sub domains，值 `在` 和 `关闭`。",
 									},
 								},
 							},
@@ -347,72 +347,72 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				Optional:     true,
 				Default:      CDN_SWITCH_ON,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-				Description:  "Sharding back to 来源 configuration switch. Valid values are `on` and `off`. 默认值为 `on`。",
+				Description:  "Sharding back 到 来源 配置 switch. 有效 值 是 `在` 和 `关闭`. 默认值为 `在`。",
 			},
 			"ipv6_access_switch": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Default:      CDN_SWITCH_OFF,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-				Description:  "ipv6 access configuration switch. Only available when area set to `mainland`. Valid values are `on` and `off`. 默认值为 `off`。",
+				Description:  "ipv6 访问 配置 switch. Only 可用 当 area 集合 到 `mainland`. 有效 值 是 `在` 和 `关闭`. 默认值为 `关闭`。",
 			},
 			"follow_redirect_switch": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Default:      CDN_SWITCH_OFF,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-				Description:  "301/302 redirect following switch，可用值：`on`，`off` (default)。",
+				Description:  "301/302 redirect following switch，可用值：`在`，`关闭` (默认值)。",
 			},
 			"authentication": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "指定timestamp hotlink protection configuration，NOTE: only one 类型 can choose for the sub elements。",
+				Description: "指定timestamp hotlink protection 配置，NOTE: 仅 一个 类型 可以 choose 对于 sub elements。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:         schema.TypeString,
 							Optional:     true,
-							Description:  "Authentication switching，可用值：`on`，`off`。",
+							Description:  "Authentication switching，可用值：`在`，`关闭`。",
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
 						},
 						"type_a": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "时间戳 hotlink protection 模式 A configuration。",
+							Description: "时间戳 hotlink protection 模式 A 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"secret_key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The 键 for 签名 calculation. Only digits，upper and lower-case letters are allowed. Length 限制: 6-32 characters。",
+										Description: "键 对于 签名 calculation. Only digits，upper 和 lower-case letters 是 allowed. Length 限制: 6-32 字符。",
 									},
 									"sign_param": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "签名 parameter 名称 Only upper and lower-case letters，digits，and underscores (_) are allowed. It cannot start with a digit. Length 限制: 1-100 characters。",
+										Description: "签名 参数 名称 Only upper 和 lower-case letters，digits，和 underscores (_) 是 allowed. It 不能 start 使用 digit. Length 限制: 1-100 字符。",
 									},
 									"expire_time": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "签名 过期时间 in second. The maximum 值 is 630720000。",
+										Description: "签名 过期时间 在 second. 最大 值 是 630720000。",
 									},
 									"file_extensions": {
 										Type:        schema.TypeList,
 										Required:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "File extension list settings determining if authentication should be performed. NOTE: If it 包含an asterisk (*)，this 表示all files。",
+										Description: "File extension 列表 settings determining 如果 authentication should 是 performed. NOTE: 如果 它 包含an asterisk (*)，此 表示all files。",
 									},
 									"filter_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "可用值：`whitelist` - all types apart from `file_extensions` are authenticated，`blacklist`: - only the types in the `file_extensions` are authenticated。",
+										Description: "可用值：`whitelist` - all types apart 从 `file_extensions` 是 authenticated，`blacklist`: - 仅 types 在 `file_extensions` 是 authenticated。",
 									},
 									"backup_secret_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "用于calculate a 签名 6-32 characters. Only digits and letters are allowed。",
+										Description: "用于calculate 签名 6-32 字符. Only digits 和 letters 是 allowed。",
 									},
 								},
 							},
@@ -421,34 +421,34 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "时间戳 hotlink protection 模式 B configuration. NOTE: according to upgrading of TencentCloud Platform，TypeB is unavailable for now。",
+							Description: "时间戳 hotlink protection 模式 B 配置. NOTE: according 到 upgrading 的 TencentCloud Platform，TypeB 是 unavailable 对于 now。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"secret_key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The 键 for 签名 calculation. Only digits，upper and lower-case letters are allowed. Length 限制: 6-32 characters。",
+										Description: "键 对于 签名 calculation. Only digits，upper 和 lower-case letters 是 allowed. Length 限制: 6-32 字符。",
 									},
 									"expire_time": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "签名 过期时间 in second. The maximum 值 is 630720000。",
+										Description: "签名 过期时间 在 second. 最大 值 是 630720000。",
 									},
 									"file_extensions": {
 										Type:        schema.TypeList,
 										Required:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "File extension list settings determining if authentication should be performed. NOTE: If it 包含an asterisk (*)，this 表示all files。",
+										Description: "File extension 列表 settings determining 如果 authentication should 是 performed. NOTE: 如果 它 包含an asterisk (*)，此 表示all files。",
 									},
 									"filter_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "可用值：`whitelist` - all types apart from `file_extensions` are authenticated，`blacklist`: - only the types in the `file_extensions` are authenticated。",
+										Description: "可用值：`whitelist` - all types apart 从 `file_extensions` 是 authenticated，`blacklist`: - 仅 types 在 `file_extensions` 是 authenticated。",
 									},
 									"backup_secret_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "用于calculate a 签名 6-32 characters. Only digits and letters are allowed。",
+										Description: "用于calculate 签名 6-32 字符. Only digits 和 letters 是 allowed。",
 									},
 								},
 							},
@@ -457,29 +457,29 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "时间戳 hotlink protection 模式 C configuration。",
+							Description: "时间戳 hotlink protection 模式 C 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"secret_key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The 键 for 签名 calculation. Only digits，upper and lower-case letters are allowed. Length 限制: 6-32 characters。",
+										Description: "键 对于 签名 calculation. Only digits，upper 和 lower-case letters 是 allowed. Length 限制: 6-32 字符。",
 									},
 									"expire_time": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "签名 过期时间 in second. The maximum 值 is 630720000。",
+										Description: "签名 过期时间 在 second. 最大 值 是 630720000。",
 									},
 									"file_extensions": {
 										Type:        schema.TypeList,
 										Required:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "File extension list settings determining if authentication should be performed. NOTE: If it 包含an asterisk (*)，this 表示all files。",
+										Description: "File extension 列表 settings determining 如果 authentication should 是 performed. NOTE: 如果 它 包含an asterisk (*)，此 表示all files。",
 									},
 									"filter_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "可用值：`whitelist` - all types apart from `file_extensions` are authenticated，`blacklist`: - only the types in the `file_extensions` are authenticated。",
+										Description: "可用值：`whitelist` - all types apart 从 `file_extensions` 是 authenticated，`blacklist`: - 仅 types 在 `file_extensions` 是 authenticated。",
 									},
 									"time_format": {
 										Type:        schema.TypeString,
@@ -489,7 +489,7 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 									"backup_secret_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "用于calculate a 签名 6-32 characters. Only digits and letters are allowed。",
+										Description: "用于calculate 签名 6-32 字符. Only digits 和 letters 是 allowed。",
 									},
 								},
 							},
@@ -498,34 +498,34 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "时间戳 hotlink protection 模式 D configuration。",
+							Description: "时间戳 hotlink protection 模式 D 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"secret_key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The 键 for 签名 calculation. Only digits，upper and lower-case letters are allowed. Length 限制: 6-32 characters。",
+										Description: "键 对于 签名 calculation. Only digits，upper 和 lower-case letters 是 allowed. Length 限制: 6-32 字符。",
 									},
 									"expire_time": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "签名 过期时间 in second. The maximum 值 is 630720000。",
+										Description: "签名 过期时间 在 second. 最大 值 是 630720000。",
 									},
 									"file_extensions": {
 										Type:        schema.TypeList,
 										Required:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "File extension list settings determining if authentication should be performed. NOTE: If it 包含an asterisk (*)，this 表示all files。",
+										Description: "File extension 列表 settings determining 如果 authentication should 是 performed. NOTE: 如果 它 包含an asterisk (*)，此 表示all files。",
 									},
 									"filter_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "可用值：`whitelist` - all types apart from `file_extensions` are authenticated，`blacklist`: - only the types in the `file_extensions` are authenticated。",
+										Description: "可用值：`whitelist` - all types apart 从 `file_extensions` 是 authenticated，`blacklist`: - 仅 types 在 `file_extensions` 是 authenticated。",
 									},
 									"time_param": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "时间戳 parameter 名称 Only upper and lower-case letters，digits，and underscores (_) are allowed. It cannot start with a digit. Length 限制: 1-100 characters。",
+										Description: "时间戳 参数 名称 Only upper 和 lower-case letters，digits，和 underscores (_) 是 allowed. It 不能 start 使用 digit. Length 限制: 1-100 字符。",
 									},
 									"time_format": {
 										Type:        schema.TypeString,
@@ -535,7 +535,7 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 									"backup_secret_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "用于calculate a 签名 6-32 characters. Only digits and letters are allowed。",
+										Description: "用于calculate 签名 6-32 字符. Only digits 和 letters 是 allowed。",
 									},
 								},
 							},
@@ -546,7 +546,7 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 			"rule_cache": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Advanced 路径 cache configuration。",
+				Description: "Advanced 路径 缓存 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"rule_paths": {
@@ -556,7 +556,7 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
-							Description: "Matching content under the corresponding type of CacheType: `all`: fill *, `file`: fill in the suffix name, such as jpg, txt, " +
+							Description: "Matching 内容 under corresponding 类型 的 CacheType: `all`: fill *, `文件`: fill 在 suffix 名称, such 作为 jpg, txt," +
 								"`directory`: fill in the path, such as /xxx/test, `path`: fill in the absolute path, such as /xxx/test.html, `index`: fill /.",
 						},
 						"rule_type": {
@@ -564,7 +564,7 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 							Optional:     true,
 							Default:      CDN_RULE_TYPE_DEFAULT,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_RULE_TYPE),
-							Description: "Rule type. The following types are supported: `all`: all documents take effect, `file`: the specified file suffix takes effect, " +
+							Description: "Rule 类型. following types 是 支持: `all`: all documents take effect, `文件`: 指定 文件 suffix takes effect," +
 								"`directory`: the specified path takes effect, `path`: specify the absolute path to take effect, `index`: home page.",
 						},
 						"switch": {
@@ -572,19 +572,19 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 							Optional:     true,
 							Default:      CDN_SWITCH_OFF,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-							Description:  "Cache configuration switch. Valid values are `on` and `off`。",
+							Description:  "Cache 配置 switch. 有效 值 是 `在` 和 `关闭`。",
 						},
 						"cache_time": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Cache 过期时间 setting，the unit is second，the maximum can be set to 365 days。",
+							Description: "Cache 过期时间 setting， 单位 是 second， 最大 可以 是 集合 到 365 days。",
 						},
 						"compare_max_age": {
 							Type:         schema.TypeString,
 							Optional:     true,
 							Default:      CDN_SWITCH_OFF,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-							Description: "Advanced cache expiration configuration. When it is turned on, it will compare the max-age value returned by the origin site with the cache expiration time set in CacheRules, " +
+							Description: "Advanced 缓存 expiration 配置. 当 它 是 turned 在, 它 将 compare max-age 值 返回 通过 源站 site 使用 缓存 expiration 时间 集合 在 CacheRules," +
 								"and take the minimum value to cache at the node. Valid values are `on` and `off`. Default value is `off`.",
 						},
 						"ignore_cache_control": {
@@ -592,7 +592,7 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 							Optional:     true,
 							Default:      CDN_SWITCH_OFF,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-							Description: "Force caching. After opening, the no-store and no-cache resources returned by the origin site will also be cached in accordance with the CacheRules " +
+							Description: "Force caching. After opening, 无-store 和 无-缓存 resources 返回 通过 源站 site 将 also 是 cached 在 accordance 使用 CacheRules" +
 								"rules. Valid values are `on` and `off`. Default value is `off`.",
 						},
 						"ignore_set_cookie": {
@@ -600,40 +600,40 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 							Optional:     true,
 							Default:      CDN_SWITCH_OFF,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-							Description:  "Ignore the Set-Cookie header of the origin site. Valid values are `on` and `off`. 默认值为 `off`. This parameter is for white-list customer。",
+							Description:  "Ignore Set-Cookie 头部 的 源站 site. 有效 值 是 `在` 和 `关闭`. 默认值为 `关闭`. 此 参数 是 对于 white-列表 customer。",
 						},
 						"no_cache_switch": {
 							Type:         schema.TypeString,
 							Optional:     true,
 							Default:      CDN_SWITCH_OFF,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-							Description:  "Cache configuration switch. Valid values are `on` and `off`。",
+							Description:  "Cache 配置 switch. 有效 值 是 `在` 和 `关闭`。",
 						},
 						"re_validate": {
 							Type:         schema.TypeString,
 							Optional:     true,
 							Default:      CDN_SWITCH_OFF,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-							Description:  "Always check back to origin. Valid values are `on` and `off`. 默认值为 `off`。",
+							Description:  "Always check back 到 源站. 有效 值 是 `在` 和 `关闭`. 默认值为 `关闭`。",
 						},
 						"follow_origin_switch": {
 							Type:         schema.TypeString,
 							Optional:     true,
 							Default:      CDN_SWITCH_OFF,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-							Description:  "Follow the 来源 station configuration switch. Valid values are `on` and `off`。",
+							Description:  "Follow 来源 station 配置 switch. 有效 值 是 `在` 和 `关闭`。",
 						},
 						"heuristic_cache_switch": {
 							Type:         schema.TypeString,
 							Optional:     true,
 							Default:      CDN_SWITCH_OFF,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-							Description:  "指定是否enable heuristic cache，only available while `follow_origin_switch` 已启用，values: `on`，`off` (Default)。",
+							Description:  "指定是否enable heuristic 缓存，仅 可用 while `follow_origin_switch` 已启用，值: `在`，`关闭` (Default)。",
 						},
 						"heuristic_cache_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "指定heuristic cache time in second，only available while `follow_origin_switch` and `heuristic_cache_switch` 已启用",
+							Description: "指定heuristic 缓存 时间 在 second，仅 可用 while `follow_origin_switch` 和 `heuristic_cache_switch` 已启用",
 						},
 					},
 				},
@@ -643,7 +643,7 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Request header configuration. It's a list and consist of at most one item。",
+				Description: "Request 头部 配置. It's 列表 和 consist 的 在 most 一个 item。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
@@ -651,43 +651,43 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 							Optional:     true,
 							Default:      CDN_SWITCH_OFF,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-							Description:  "Custom request header configuration switch. Valid values are `on` and `off`. and 默认值为 `off`。",
+							Description:  "Custom 请求 头部 配置 switch. 有效 值 是 `在` 和 `关闭`. 和 默认值为 `关闭`。",
 						},
 						"header_rules": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Custom request header configuration rules。",
+							Description: "Custom 请求 头部 配置 规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"header_mode": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Http header setting method. The following types are supported: `set`: sets a 值 for an existing header parameter，a new header parameter，or multiple header parameters. Multiple header parameters will be merged into one; `del`: deletes a header parameter; `add`: adds a header parameter. By default，you can repeat the same 操作 to add the same header parameter，which may affect browser response. Please consider the set operation first。",
+										Description: "Http 头部 setting 方法. following types 是 支持: `集合`: sets 值 对于 existing 头部 参数， new 头部 参数，或 多个 头部 参数. Multiple 头部 参数 将 是 merged into 一个; `del`: deletes 头部 参数; `add`: adds 头部 参数. By 默认值，您 可以 repeat same 操作 到 add same 头部 参数，其中 可能 affect browser response. Please consider 集合 operation first。",
 									},
 									"header_name": {
 										Type:         schema.TypeString,
 										Required:     true,
 										ValidateFunc: tccommon.ValidateStringLengthInRange(1, 100),
-										Description:  "Http header 名称",
+										Description:  "Http 头部 名称",
 									},
 									"header_value": {
 										Type:         schema.TypeString,
 										Required:     true,
 										ValidateFunc: tccommon.ValidateStringLengthInRange(1, 1000),
-										Description:  "Http header 值，可选 when 模式 is `del`，必填 when 模式 is `add`/`set`。",
+										Description:  "Http 头部 值，可选 当 模式 是 `del`，必填 当 模式 是 `add`/`集合`。",
 									},
 									"rule_type": {
 										Type:         schema.TypeString,
 										Required:     true,
 										ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_HEADER_RULE),
-										Description: "Rule type. The following types are supported: `all`: all documents take effect, `file`: the specified file suffix takes effect, " +
+										Description: "Rule 类型. following types 是 支持: `all`: all documents take effect, `文件`: 指定 文件 suffix takes effect," +
 											"`directory`: the specified path takes effect, `path`: specify the absolute path to take effect.",
 									},
 									"rule_paths": {
 										Type:     schema.TypeList,
 										Required: true,
 										Elem:     &schema.Schema{Type: schema.TypeString},
-										Description: "Matching content under the corresponding type of CacheType: `all`: fill *, `file`: fill in the suffix name, such as jpg, txt, " +
+										Description: "Matching 内容 under corresponding 类型 的 CacheType: `all`: fill *, `文件`: fill 在 suffix 名称, such 作为 jpg, txt," +
 											"`directory`: fill in the path, such as /xxx/test, `path`: fill in the absolute path, such as /xxx/test.html.",
 									},
 								},
@@ -700,14 +700,14 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 			"ip_filter": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "指定Ip filter configurations。",
+				Description: "指定Ip 过滤器 configurations。",
 				MaxItems:    1,
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration switch，可用值：`on`，`off` (default)。",
+							Description: "Configuration switch，可用值：`在`，`关闭` (默认值)。",
 						},
 						"filter_type": {
 							Type:        schema.TypeString,
@@ -717,35 +717,35 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 						"filters": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Ip filter list，Supports IPs in X.X.X.X 格式，or /8，/16，/24 格式 IP ranges. Up to 50 allowlists or blocklists can be entered。",
+							Description: "Ip 过滤器 列表，Supports IPs 在 X.X.X.X 格式，或 /8，/16，/24 格式 IP ranges. Up 到 50 allowlists 或 blocklists 可以 是 entered。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 						"filter_rules": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Ip filter rules，This feature is only available to selected beta customers。",
+							Description: "Ip 过滤器 规则，此 功能 是 仅 可用 到 selected beta customers。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"filter_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Ip filter `blacklist`/`whitelist` 类型 filter rules。",
+										Description: "Ip 过滤器 `blacklist`/`whitelist` 类型 过滤器 规则。",
 									},
 									"filters": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "Ip filter rule list，supports IPs in X.X.X.X 格式，or /8，/16，/24 格式 IP ranges. Up to 50 allowlists or blocklists can be entered。",
+										Description: "Ip 过滤器 规则 列表，支持 IPs 在 X.X.X.X 格式，或 /8，/16，/24 格式 IP ranges. Up 到 50 allowlists 或 blocklists 可以 是 entered。",
 										Elem:        &schema.Schema{Type: schema.TypeString},
 									},
 									"rule_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Ip filter rule 类型 filter rules，available: `all`，`file`，`directory`，`路径`。",
+										Description: "Ip 过滤器 规则 类型 过滤器 规则，可用: `all`，`文件`，`directory`，`路径`。",
 									},
 									"rule_paths": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "内容 list for each `rule_type`: `*` for `all`，file ext like `jpg` for `file`，`/dir/like/` for `directory` and `/路径/索引html` for `路径`。",
+										Description: "内容 列表 对于 each `rule_type`: `*` 对于 `all`，文件 ext like `jpg` 对于 `文件`，`/dir/like/` 对于 `directory` 和 `/路径/索引html` 对于 `路径`。",
 										Elem:        &schema.Schema{Type: schema.TypeString},
 									},
 								},
@@ -763,18 +763,18 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "指定Ip frequency 限制 configurations。",
+				Description: "指定Ip 频率 限制 configurations。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration switch，可用值：`on`，`off` (default)。",
+							Description: "Configuration switch，可用值：`在`，`关闭` (默认值)。",
 						},
 						"qps": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Sets the limited 数量 requests per second，514 will be returned for requests that exceed the 限制",
+							Description: "Sets limited 数量 requests per second，514 将 是 返回 对于 requests 该 exceed 限制",
 						},
 					},
 				},
@@ -784,29 +784,29 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				MaxItems:    1,
 				Optional:    true,
 				Computed:    true,
-				Description: "状态 代码 cache configurations。",
+				Description: "状态 代码 缓存 configurations。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration switch，可用值：`on`，`off` (default)。",
+							Description: "Configuration switch，可用值：`在`，`关闭` (默认值)。",
 						},
 						"cache_rules": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "列表 cache rule。",
+							Description: "列表 缓存 规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"status_code": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "代码 of 状态 cache. 可用值：`403`，`404`。",
+										Description: "代码 的 状态 缓存. 可用值：`403`，`404`。",
 									},
 									"cache_time": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "状态 代码 cache 过期时间 (in seconds)。",
+										Description: "状态 代码 缓存 过期时间 (在 秒)。",
 									},
 								},
 							},
@@ -818,56 +818,56 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "Smart compression configurations。",
+				Description: "Smart 压缩 configurations。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration switch，可用值：`on`，`off` (default)。",
+							Description: "Configuration switch，可用值：`在`，`关闭` (默认值)。",
 						},
 						"compression_rules": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "列表 compression rules。",
+							Description: "列表 压缩 规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"compress": {
 										Type:        schema.TypeBool,
 										Required:    true,
-										Description: "Must be set as true，enables compression。",
+										Description: "Must 是 集合 作为 true，enables 压缩。",
 									},
 									"min_length": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "The minimum file size to trigger compression (in bytes)。",
+										Description: "最小 文件 大小 到 触发器 压缩 (在 bytes)。",
 									},
 									"max_length": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "The maximum file size to trigger compression (in bytes)。",
+										Description: "最大 文件 大小 到 触发器 压缩 (在 bytes)。",
 									},
 									"algorithms": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "列表 algorithms，available: `gzip` and `brotli`。",
+										Description: "列表 algorithms，可用: `gzip` 和 `brotli`。",
 										Elem:        &schema.Schema{Type: schema.TypeString},
 									},
 									"file_extensions": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "列表 file extensions like `jpg`，`txt`。",
+										Description: "列表 文件 extensions like `jpg`，`txt`。",
 										Elem:        &schema.Schema{Type: schema.TypeString},
 									},
 									"rule_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Rule 类型，available: `all`，`file`，`directory`，`路径`，`contentType`。",
+										Description: "Rule 类型，可用: `all`，`文件`，`directory`，`路径`，`contentType`。",
 									},
 									"rule_paths": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "列表 rule paths for each `rule_type`: `*` for `all`，file ext like `jpg` for `file`，`/dir/like/` for `directory` and `/路径/索引html` for `路径`。",
+										Description: "列表 规则 paths 对于 each `rule_type`: `*` 对于 `all`，文件 ext like `jpg` 对于 `文件`，`/dir/like/` 对于 `directory` 和 `/路径/索引html` 对于 `路径`。",
 										Elem:        &schema.Schema{Type: schema.TypeString},
 									},
 								},
@@ -880,18 +880,18 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "Bandwidth cap configuration。",
+				Description: "Bandwidth cap 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration switch，可用值：`on`，`off` (default)。",
+							Description: "Configuration switch，可用值：`在`，`关闭` (默认值)。",
 						},
 						"bps_threshold": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "threshold of bps。",
+							Description: "阈值 的 bps。",
 						},
 						"counter_measure": {
 							Type:        schema.TypeString,
@@ -901,7 +901,7 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 						"last_trigger_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last trigger time。",
+							Description: "Last 触发器 时间。",
 						},
 						"alert_switch": {
 							Type:        schema.TypeString,
@@ -916,7 +916,7 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 						"last_trigger_time_overseas": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last trigger time of overseas。",
+							Description: "Last 触发器 时间 的 overseas。",
 						},
 						"metric": {
 							Type:        schema.TypeString,
@@ -927,13 +927,13 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "指定statistic item configuration。",
+							Description: "指定statistic item 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Configuration switch，可用值：`on`，`off` (default)。",
+										Description: "Configuration switch，可用值：`在`，`关闭` (默认值)。",
 									},
 									"type": {
 										Type:        schema.TypeString,
@@ -943,17 +943,17 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 									"unblock_time": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Time of auto unblock。",
+										Description: "Time 的 auto unblock。",
 									},
 									"bps_threshold": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "threshold of bps。",
+										Description: "阈值 的 bps。",
 									},
 									"counter_measure": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Counter measure，values: `RETURN_404`，`RESOLVE_DNS_TO_ORIGIN`。",
+										Description: "Counter measure，值: `RETURN_404`，`RESOLVE_DNS_TO_ORIGIN`。",
 									},
 									"alert_switch": {
 										Type:        schema.TypeString,
@@ -973,7 +973,7 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 									"cycle": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Cycle of checking in minutes，values `60`，`1440`。",
+										Description: "Cycle 的 checking 在 minutes，值 `60`，`1440`。",
 									},
 								},
 							},
@@ -985,34 +985,34 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "错误 page configurations。",
+				Description: "错误 页面 configurations。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration switch，可用值：`on`，`off` (default)。",
+							Description: "Configuration switch，可用值：`在`，`关闭` (默认值)。",
 						},
 						"page_rules": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "列表 错误 page rule。",
+							Description: "列表 错误 页面 规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"status_code": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "状态 代码 of 错误 page rules。",
+										Description: "状态 代码 的 错误 页面 规则。",
 									},
 									"redirect_code": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Redirect 代码 of 错误 page rules。",
+										Description: "Redirect 代码 的 错误 页面 规则。",
 									},
 									"redirect_url": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Redirect URL of 错误 page rules。",
+										Description: "Redirect URL 的 错误 页面 规则。",
 									},
 								},
 							},
@@ -1025,44 +1025,44 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				MaxItems:    1,
 				Optional:    true,
 				Computed:    true,
-				Description: "Response header configurations。",
+				Description: "Response 头部 configurations。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration switch，可用值：`on`，`off` (default)。",
+							Description: "Configuration switch，可用值：`在`，`关闭` (默认值)。",
 						},
 						"header_rules": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "列表 response header rule。",
+							Description: "列表 response 头部 规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"header_mode": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Response header 模式",
+										Description: "Response 头部 模式",
 									},
 									"header_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "response header 名称 rule。",
+										Description: "response 头部 名称 规则。",
 									},
 									"header_value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "response header 值 of rule。",
+										Description: "response 头部 值 的 规则。",
 									},
 									"rule_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "response rule 类型 rule。",
+										Description: "response 规则 类型 规则。",
 									},
 									"rule_paths": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "response rule paths of rule。",
+										Description: "response 规则 paths 的 规则。",
 										Elem:        &schema.Schema{Type: schema.TypeString},
 									},
 								},
@@ -1075,35 +1075,35 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "Downstream capping configuration。",
+				Description: "Downstream capping 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration switch，可用值：`on`，`off` (default)。",
+							Description: "Configuration switch，可用值：`在`，`关闭` (默认值)。",
 						},
 						"capping_rules": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "列表 capping rule。",
+							Description: "列表 capping 规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"rule_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Capping rule 类型",
+										Description: "Capping 规则 类型",
 									},
 									"rule_paths": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "列表 capping rule 路径",
+										Description: "列表 capping 规则 路径",
 										Elem:        &schema.Schema{Type: schema.TypeString},
 									},
 									"kbps_threshold": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Capping rule kbps threshold。",
+										Description: "Capping 规则 kbps 阈值。",
 									},
 								},
 							},
@@ -1114,24 +1114,24 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 			"response_header_cache_switch": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Response header cache switch，可用值：`on`，`off` (default)。",
+				Description: "Response 头部 缓存 switch，可用值：`在`，`关闭` (默认值)。",
 			},
 			"origin_pull_optimization": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "Cross-border linkage optimization configuration. (This feature is in beta and not generally available yet)。",
+				Description: "Cross-border linkage optimization 配置. (此 功能 是 在 beta 和 不 generally 可用 yet)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration switch，可用值：`on`，`off` (default)。",
+							Description: "Configuration switch，可用值：`在`，`关闭` (默认值)。",
 						},
 						"optimization_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Optimization 类型，values: `OVToCN` - Overseas to CN，`CNToOV` CN to Overseas。",
+							Description: "Optimization 类型，值: `OVToCN` - Overseas 到 CN，`CNToOV` CN 到 Overseas。",
 						},
 					},
 				},
@@ -1139,35 +1139,35 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 			"seo_switch": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "SEO switch，可用值：`on`，`off` (default)。",
+				Description: "SEO switch，可用值：`在`，`关闭` (默认值)。",
 			},
 			"referer": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "Referer configuration。",
+				Description: "Referer 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration switch，可用值：`on`，`off` (default)。",
+							Description: "Configuration switch，可用值：`在`，`关闭` (默认值)。",
 						},
 						"referer_rules": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "列表 referer rules。",
+							Description: "列表 referer 规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"rule_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Referer rule 类型",
+										Description: "Referer 规则 类型",
 									},
 									"rule_paths": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "Referer rule 路径 list。",
+										Description: "Referer 规则 路径 列表。",
 										Elem:        &schema.Schema{Type: schema.TypeString},
 									},
 									"referer_type": {
@@ -1178,7 +1178,7 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 									"referers": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "Referer list。",
+										Description: "Referer 列表。",
 										Elem:        &schema.Schema{Type: schema.TypeString},
 									},
 									"allow_empty": {
@@ -1195,46 +1195,46 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 			"video_seek_switch": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Video seek switch，可用值：`on`，`off` (default)。",
+				Description: "Video seek switch，可用值：`在`，`关闭` (默认值)。",
 			},
 			"max_age": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "Browser cache configuration. (This feature is in beta and not generally available yet)。",
+				Description: "Browser 缓存 配置. (此 功能 是 在 beta 和 不 generally 可用 yet)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration switch，可用值：`on`，`off` (default)。",
+							Description: "Configuration switch，可用值：`在`，`关闭` (默认值)。",
 						},
 						"max_age_rules": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "列表 Max Age rule configuration。",
+							Description: "列表 Max Age 规则 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"max_age_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The following types are supported: `all`: all documents take effect，`file`: the specified file suffix takes effect，`directory`: the specified 路径 takes effect，`路径`: 指定absolute 路径 to take effect，`索引`: home page。",
+										Description: "following types 是 支持: `all`: all documents take effect，`文件`: 指定 文件 suffix takes effect，`directory`: 指定 路径 takes effect，`路径`: 指定absolute 路径 到 take effect，`索引`: home 页面。",
 									},
 									"max_age_contents": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "列表 rule paths for each `max_age_type`: `*` for `all`，file ext like `jpg` for `file`，`/dir/like/` for `directory` and `/路径/索引html` for `路径`。",
+										Description: "列表 规则 paths 对于 each `max_age_type`: `*` 对于 `all`，文件 ext like `jpg` 对于 `文件`，`/dir/like/` 对于 `directory` 和 `/路径/索引html` 对于 `路径`。",
 										Elem:        &schema.Schema{Type: schema.TypeString},
 									},
 									"max_age_time": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Max Age time （秒）， this can set to `0` that stands for no cache。",
+										Description: "Max Age 时间 （秒）， 此 可以 集合 到 `0` 该 stands 对于 无 缓存。",
 									},
 									"follow_origin": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "是否follow origin，values: `on`/`off`，if set to `on`，the `max_age_time` will be ignored。",
+										Description: "是否follow 源站，值: `在`/`关闭`，如果 集合 到 `在`， `max_age_time` 将 是 ignored。",
 									},
 								},
 							},
@@ -1245,31 +1245,31 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 			"specific_config_mainland": {
 				Type:             schema.TypeString,
 				Optional:         true,
-				Description:      "Specific configuration for mainland，NOTE: Both specifying full schema or using it is superfluous，please use cloud api parameters json passthroughs，check the [Data Types](https://www.tencentcloud.com/document/api/228/31739#MainlandConfig) for more details。",
+				Description:      "Specific 配置 对于 mainland，NOTE: Both specifying full schema 或 使用 它 是 superfluous，please 使用 云 api 参数 json passthroughs，check [Data Types](https://www.tencentcloud.com/document/api/228/31739#MainlandConfig) 对于 more details。",
 				DiffSuppressFunc: helper.DiffSupressJSON,
 			},
 			"specific_config_overseas": {
 				Type:             schema.TypeString,
 				Optional:         true,
-				Description:      "Specific configuration for oversea，NOTE: Both specifying full schema or using it is superfluous，please use cloud api parameters json passthroughs，check the [Data Types](https://www.tencentcloud.com/document/api/228/31739#OverseaConfig) for more details。",
+				Description:      "Specific 配置 对于 oversea，NOTE: Both specifying full schema 或 使用 它 是 superfluous，please 使用 云 api 参数 json passthroughs，check [Data Types](https://www.tencentcloud.com/document/api/228/31739#OverseaConfig) 对于 more details。",
 				DiffSuppressFunc: helper.DiffSupressJSON,
 			},
 			"origin_pull_timeout": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "Cross-border linkage optimization configuration。",
+				Description: "Cross-border linkage optimization 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"connect_timeout": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The origin-pull connection timeout (in seconds). Valid range: 5-60。",
+							Description: "源站-pull 连接 超时 (在 秒). 有效 范围: 5-60。",
 						},
 						"receive_timeout": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The origin-pull receipt timeout (in seconds). Valid range: 10-60。",
+							Description: "源站-pull receipt 超时 (在 秒). 有效 范围: 10-60。",
 						},
 					},
 				},
@@ -1277,23 +1277,23 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 			"offline_cache_switch": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Offline cache switch，可用值：`on`，`off` (default)。",
+				Description: "Offline 缓存 switch，可用值：`在`，`关闭` (默认值)。",
 			},
 			"post_max_size": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Maximum post size configuration。",
+				Description: "Maximum post 大小 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration switch，可用值：`on`，`off` (default)。",
+							Description: "Configuration switch，可用值：`在`，`关闭` (默认值)。",
 						},
 						"max_size": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Maximum size （MB）， 值 range is `[1，200]`。",
+							Description: "Maximum 大小 （MB）， 值 范围 是 `[1，200]`。",
 						},
 					},
 				},
@@ -1301,57 +1301,57 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 			"quic_switch": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "QUIC switch，可用值：`on`，`off` (default)。",
+				Description: "QUIC switch，可用值：`在`，`关闭` (默认值)。",
 			},
 			"cache_key": {
 				Optional:      true,
 				Type:          schema.TypeList,
 				MaxItems:      1,
 				ConflictsWith: []string{"full_url_cache"},
-				Description:   "Cache 键 configuration (Ignore Query String configuration). NOTE: All of `full_url_cache` 默认值为 `on`。",
+				Description:   "Cache 键 配置 (Ignore Query String 配置). NOTE: All 的 `full_url_cache` 默认值为 `在`。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"full_url_cache": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Default:     CDN_SWITCH_ON,
-							Description: "是否enable full-路径 cache，values `on` (DEFAULT ON)，`off`。",
+							Description: "是否enable full-路径 缓存，值 `在` (DEFAULT ON)，`关闭`。",
 						},
 						"ignore_case": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Default:     CDN_SWITCH_OFF,
-							Description: "指定是否cache 键 is case sensitive。",
+							Description: "指定是否cache 键 是 case sensitive。",
 						},
 						"query_string": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Request parameter contained in CacheKey。",
+							Description: "Request 参数 contained 在 CacheKey。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Default:     CDN_SWITCH_OFF,
-										Description: "是否use QueryString as part of CacheKey，values `on`，`off` (Default)。",
+										Description: "是否use QueryString 作为 part 的 CacheKey，值 `在`，`关闭` (Default)。",
 									},
 									"reorder": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Default:     CDN_SWITCH_OFF,
-										Description: "是否sort again，values `on`，`off` (Default)。",
+										Description: "是否sort again，值 `在`，`关闭` (Default)。",
 									},
 									"action": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Include/exclude query parameters. Values: `includeAll` (Default)，`excludeAll`，`includeCustom`，`excludeCustom`。",
+										Description: "Include/exclude 查询 参数. Values: `includeAll` (Default)，`excludeAll`，`includeCustom`，`excludeCustom`。",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "数组 included/excluded query strings (separated by `;`)。",
+										Description: "数组 included/excluded 查询 strings (separated 通过 `;`)。",
 									},
 								},
 							},
@@ -1359,7 +1359,7 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 						"key_rules": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "路径-specific cache 键 configuration。",
+							Description: "路径-特定 缓存 键 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"rule_paths": {
@@ -1368,48 +1368,48 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Required:    true,
-										Description: "列表 rule paths for each `key_rules`: `/` for `索引`，file ext like `jpg` for `file`，`/dir/like/` for `directory` and `/路径/索引html` for `路径`。",
+										Description: "列表 规则 paths 对于 each `key_rules`: `/` 对于 `索引`，文件 ext like `jpg` 对于 `文件`，`/dir/like/` 对于 `directory` 和 `/路径/索引html` 对于 `路径`。",
 									},
 									"rule_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Rule 类型，available: `file`，`directory`，`路径`，`索引`。",
+										Description: "Rule 类型，可用: `文件`，`directory`，`路径`，`索引`。",
 									},
 									"full_url_cache": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Default:     CDN_SWITCH_ON,
-										Description: "是否enable full-路径 cache，values `on` (DEFAULT ON)，`off`。",
+										Description: "是否enable full-路径 缓存，值 `在` (DEFAULT ON)，`关闭`。",
 									},
 									"ignore_case": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Default:     CDN_SWITCH_OFF,
-										Description: "Whether caches are case insensitive。",
+										Description: "Whether caches 是 case insensitive。",
 									},
 									"query_string": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Required:    true,
-										Description: "Request parameter contained in CacheKey。",
+										Description: "Request 参数 contained 在 CacheKey。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"switch": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Default:     CDN_SWITCH_OFF,
-													Description: "是否use QueryString as part of CacheKey，values `on`，`off` (Default)。",
+													Description: "是否use QueryString 作为 part 的 CacheKey，值 `在`，`关闭` (Default)。",
 												},
 												"action": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "指定key rule QS 操作，values: `includeCustom`，`excludeCustom`。",
+													Description: "指定key 规则 QS 操作，值: `includeCustom`，`excludeCustom`。",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Default:     "",
-													Description: "数组 included/excluded query strings (separated by `;`)。",
+													Description: "数组 included/excluded 查询 strings (separated 通过 `;`)。",
 												},
 											},
 										},
@@ -1429,13 +1429,13 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "Access authentication for S3 origin。",
+				Description: "Access authentication 对于 S3 源站。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration switch，可用值：`on`，`off` (default)。",
+							Description: "Configuration switch，可用值：`在`，`关闭` (默认值)。",
 						},
 						"access_key": {
 							Type:        schema.TypeString,
@@ -1466,13 +1466,13 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "Access authentication for OSS origin。",
+				Description: "Access authentication 对于 OSS 源站。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration switch，可用值：`on`，`off` (default)。",
+							Description: "Configuration switch，可用值：`在`，`关闭` (默认值)。",
 						},
 						"access_key": {
 							Type:        schema.TypeString,
@@ -1503,13 +1503,13 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "Access authentication for OBS origin。",
+				Description: "Access authentication 对于 OBS 源站。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration switch，可用值：`on`，`off` (default)。",
+							Description: "Configuration switch，可用值：`在`，`关闭` (默认值)。",
 						},
 						"access_key": {
 							Type:        schema.TypeString,
@@ -1535,13 +1535,13 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "Access authentication for OBS origin。",
+				Description: "Access authentication 对于 OBS 源站。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration switch，可用值：`on`，`off` (default)。",
+							Description: "Configuration switch，可用值：`在`，`关闭` (默认值)。",
 						},
 						"access_key": {
 							Type:        schema.TypeString,
@@ -1562,13 +1562,13 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "Object storage back-to-来源 authentication of other vendors。",
+				Description: "Object 存储 back-到-来源 authentication 的 other vendors。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration switch，可用值：`on`，`off` (default)。",
+							Description: "Configuration switch，可用值：`在`，`关闭` (默认值)。",
 						},
 						"access_key": {
 							Type:        schema.TypeString,
@@ -1600,13 +1600,13 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "HTTPS service is 已启用 by default (this is a paid service; please refer to the billing information and product documentation for details)。",
+				Description: "HTTPS 服务 是 已启用 通过 默认值 (此 是 paid 服务; please refer 到 billing 信息 和 product documentation 对于 details)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "HTTPS service configuration switch，possible values are: on: 已启用 (default setting)，will incur charges; off: 已禁用，will block HTTPS requests。",
+							Description: "HTTPS 服务 配置 switch，possible 值 是: 在: 已启用 (默认值 setting)，将 incur charges; 关闭: 已禁用，将 block HTTPS requests。",
 						},
 					},
 				},
@@ -1616,25 +1616,25 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "UserAgent blacklist/whitelist configuration。",
+				Description: "UserAgent blacklist/whitelist 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:         schema.TypeString,
 							Required:     true,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-							Description:  "Configuration switch，valid values are `on` and `off`。",
+							Description:  "Configuration switch，有效 值 是 `在` 和 `关闭`。",
 						},
 						"filter_rules": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "UA blacklist/whitelist effect rule list。",
+							Description: "UA blacklist/whitelist effect 规则 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"rule_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Rule 类型，有效值：`all`，`file`，`directory`，`路径`。",
+										Description: "Rule 类型，有效值：`all`，`文件`，`directory`，`路径`。",
 									},
 									"rule_paths": {
 										Type:        schema.TypeList,
@@ -1646,12 +1646,12 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 										Type:        schema.TypeList,
 										Required:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "UserAgent list。",
+										Description: "UserAgent 列表。",
 									},
 									"filter_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Blacklist or whitelist，有效值：`blacklist`，`whitelist`。",
+										Description: "Blacklist 或 whitelist，有效值：`blacklist`，`whitelist`。",
 									},
 								},
 							},
@@ -1664,19 +1664,19 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "URL redirect configuration。",
+				Description: "URL redirect 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:         schema.TypeString,
 							Required:     true,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-							Description:  "Configuration switch，valid values are `on` and `off`。",
+							Description:  "Configuration switch，有效 值 是 `在` 和 `关闭`。",
 						},
 						"path_rules": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "URL redirect rule list，maximum 10 rules。",
+							Description: "URL redirect 规则 列表，最大 10 规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"redirect_status_code": {
@@ -1688,17 +1688,17 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 									"pattern": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "URL 路径 to match，supports wildcard `*`，max length 1024。",
+										Description: "URL 路径 到 match，支持 wildcard `*`，max 长度 1024。",
 									},
 									"redirect_url": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Target URL，must start with `/`，max length 1024。",
+										Description: "Target URL，必须 start 使用 `/`，max 长度 1024。",
 									},
 									"redirect_host": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Target 主机，must start with `http://` or `https://`。",
+										Description: "Target 主机，必须 start 使用 `http://` 或 `https://`。",
 									},
 									"full_match": {
 										Type:        schema.TypeBool,
@@ -1716,14 +1716,14 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Origin combine configuration。",
+				Description: "Origin combine 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:         schema.TypeString,
 							Required:     true,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-							Description:  "Configuration switch，valid values are `on` and `off`。",
+							Description:  "Configuration switch，有效 值 是 `在` 和 `关闭`。",
 						},
 					},
 				},
@@ -1733,31 +1733,31 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Range origin pull configuration with 路径-based rules。",
+				Description: "Range 源站 pull 配置 使用 路径-based 规则。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:         schema.TypeString,
 							Required:     true,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-							Description:  "Global range origin pull switch，valid values are `on` and `off`。",
+							Description:  "Global 范围 源站 pull switch，有效 值 是 `在` 和 `关闭`。",
 						},
 						"range_rules": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "路径-based range origin pull rules。",
+							Description: "路径-based 范围 源站 pull 规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:         schema.TypeString,
 										Required:     true,
 										ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-										Description:  "Rule switch，valid values are `on` and `off`。",
+										Description:  "Rule switch，有效 值 是 `在` 和 `关闭`。",
 									},
 									"rule_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Rule 类型，有效值：`file`，`directory`，`路径`。",
+										Description: "Rule 类型，有效值：`文件`，`directory`，`路径`。",
 									},
 									"rule_paths": {
 										Type:        schema.TypeList,
@@ -1774,65 +1774,65 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "标签 of cdn 域名",
+				Description: "标签 的 cdn 域名",
 			},
 
 			// computed
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Acceleration service 状态",
+				Description: "Acceleration 服务 状态",
 			},
 			"cname": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "CNAME 地址 of 域名 名称",
+				Description: "CNAME 地址 的 域名 名称",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 of 域名 名称",
+				Description: "创建时间 的 域名 名称",
 			},
 			"explicit_using_dry_run": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "用于validate only by store arguments to request json string as expected，WARNING: if set to `true`，NO Cloud Api will be invoked but store as local data，do not use this argument unless you really know what you are doing。",
+				Description: "用于validate 仅 通过 store arguments 到 请求 json 字符串 作为 expected，WARNING: 如果 集合 到 `true`，NO Cloud Api 将 是 invoked 但 store 作为 本地 数据，do 不 使用 此 argument unless 您 really know what 您 是 doing。",
 			},
 			"dry_run_create_result": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "用于store `dry_run` request json。",
+				Description: "用于store `dry_run` 请求 json。",
 			},
 			"access_port": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "Access 端口 configuration. 列表 ports that can be accessed。",
+				Description: "Access 端口 配置. 列表 ports 该 可以 是 accessed。",
 			},
 			"dry_run_update_result": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "用于store `dry_run` update request json。",
+				Description: "用于store `dry_run` update 请求 json。",
 			},
 			"auto_guard": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Traffic anti-hotlinking protection configuration. Note: Create API does not support this field，it will be set via Update API after creation。",
+				Description: "Traffic anti-hotlinking protection 配置. 注意: Create API does 不 support 此 字段，它 将 是 集合 via Update API after creation。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:         schema.TypeString,
 							Required:     true,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-							Description:  "AutoGuard switch，valid values are `on` and `off`。",
+							Description:  "AutoGuard switch，有效 值 是 `在` 和 `关闭`。",
 						},
 						"filter_rules": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "AutoGuard filter rules。",
+							Description: "AutoGuard 过滤器 规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"filter_type": {
@@ -1843,13 +1843,13 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 									"rule_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Block rule 类型 `all`: all requests; `file`: file requests with specified suffix。",
+										Description: "Block 规则 类型 `all`: all requests; `文件`: 文件 requests 使用 指定 suffix。",
 									},
 									"rule_paths": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "Block rule paths。",
+										Description: "Block 规则 paths。",
 									},
 								},
 							},
@@ -1862,19 +1862,19 @@ func ResourceTencentCloudCdnDomain() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Regional access control configuration. Note: Create API does not support this field，it will be set via Update API after creation。",
+				Description: "Regional 访问 control 配置. 注意: Create API does 不 support 此 字段，它 将 是 集合 via Update API after creation。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:         schema.TypeString,
 							Required:     true,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SWITCH),
-							Description:  "GeoBlocker switch，valid values are `on` and `off`。",
+							Description:  "GeoBlocker switch，有效 值 是 `在` 和 `关闭`。",
 						},
 						"block_rules": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "GeoBlocker block rules。",
+							Description: "GeoBlocker block 规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"block_type": {

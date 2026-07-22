@@ -22,28 +22,28 @@ func DataSourceTencentCloudInstances() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID instances to be queried。",
+				Description: "ID 实例 到 是 queried。",
 			},
 			"instance_name": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 128),
-				Description:  "名称 instances to be queried。",
+				Description:  "名称 实例 到 是 queried。",
 			},
 			"availability_zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The available 可用区 that the CVM instance locates at。",
+				Description: "可用 可用区 该 CVM 实例 locates 在。",
 			},
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "The project CVM belongs to。",
+				Description: "项目 CVM belongs 到。",
 			},
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID vpc to be queried。",
+				Description: "ID vpc 到 是 queried。",
 			},
 			"subnet_id": {
 				Type:        schema.TypeString,
@@ -63,12 +63,12 @@ func DataSourceTencentCloudInstances() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Instance set ids，max length is 100，conflict with other field。",
+				Description: "实例 集合 ids，max 长度 是 100，conflict 使用 other 字段。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "标签 of the instance。",
+				Description: "标签 的 实例。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -80,23 +80,23 @@ func DataSourceTencentCloudInstances() *schema.Resource {
 			"instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information 列表 cvm instance. Each element 包含following attributes:",
+				Description: "An 信息 列表 cvm 实例. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID instances。",
+							Description: "ID 实例。",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 instances。",
+							Description: "名称 实例。",
 						},
 						"instance_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "类型 instance。",
+							Description: "类型 实例。",
 						},
 						"dedicated_cluster_id": {
 							Type:        schema.TypeString,
@@ -106,83 +106,83 @@ func DataSourceTencentCloudInstances() *schema.Resource {
 						"cpu": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 数量 CPU 核数 of the instance。",
+							Description: "数量 CPU 核数 的 实例。",
 						},
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance memory capacity，unit （GB）。",
+							Description: "实例 内存 容量，单位 （GB）。",
 						},
 						"os_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance os 名称",
+							Description: "实例 os 名称",
 						},
 						"availability_zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The available 可用区 that the CVM instance locates at。",
+							Description: "可用 可用区 该 CVM 实例 locates 在。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The project CVM belongs to。",
+							Description: "项目 CVM belongs 到。",
 						},
 						"image_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID image。",
+							Description: "ID 镜像。",
 						},
 						"instance_charge_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The charge 类型 instance。",
+							Description: "charge 类型 实例。",
 						},
 						"system_disk_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "类型 system disk。",
+							Description: "类型 系统 磁盘。",
 						},
 						"system_disk_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Size of the system disk。",
+							Description: "Size 的 系统 磁盘。",
 						},
 						"system_disk_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Image ID system disk。",
+							Description: "Image ID 系统 磁盘。",
 						},
 						"rack_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The rack ID instance resource pool to which the instance belongs。",
+							Description: "rack ID 实例 资源 池 到 其中 实例 belongs。",
 						},
 						"data_disks": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "An information 列表 data disk. Each element 包含following attributes:",
+							Description: "An 信息 列表 数据 磁盘. Each element 包含following attributes:",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"data_disk_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "类型 data disk。",
+										Description: "类型 数据 磁盘。",
 									},
 									"data_disk_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Size of the data disk。",
+										Description: "Size 的 数据 磁盘。",
 									},
 									"data_disk_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Image ID data disk。",
+										Description: "Image ID 数据 磁盘。",
 									},
 									"delete_with_instance": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "表示是否data disk is destroyed with the instance。",
+										Description: "表示是否data 磁盘 是 destroyed 使用 实例。",
 									},
 								},
 							},
@@ -200,58 +200,58 @@ func DataSourceTencentCloudInstances() *schema.Resource {
 						"internet_charge_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The charge 类型 instance。",
+							Description: "charge 类型 实例。",
 						},
 						"internet_max_bandwidth_out": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Public network maximum output bandwidth of the instance。",
+							Description: "Public 网络 最大 output 带宽 的 实例。",
 						},
 						"allocate_public_ip": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "表示是否public ip is assigned。",
+							Description: "表示是否public ip 是 assigned。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "状态 instance。",
+							Description: "状态 实例。",
 						},
 						"public_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Public IP of the instance。",
+							Description: "Public IP 的 实例。",
 						},
 						"private_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Private IP of the instance。",
+							Description: "Private IP 的 实例。",
 						},
 						"security_groups": {
 							Type:        schema.TypeList,
 							Computed:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Security groups of the instance。",
+							Description: "Security groups 的 实例。",
 						},
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "标签 of the instance。",
+							Description: "标签 的 实例。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of the instance。",
+							Description: "创建时间 的 实例。",
 						},
 						"expired_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "过期时间 of the instance。",
+							Description: "过期时间 的 实例。",
 						},
 						"instance_charge_type_prepaid_renew_flag": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The way that CVM instance will be renew automatically or not when it reach the end of the prepaid tenancy。",
+							Description: "way 该 CVM 实例 将 是 renew automatically 或 不 当 它 reach end 的 prepaid tenancy。",
 						},
 						"cam_role_name": {
 							Type:        schema.TypeString,
@@ -261,7 +261,7 @@ func DataSourceTencentCloudInstances() *schema.Resource {
 						"uuid": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Globally unique ID instance。",
+							Description: "Globally 唯一 ID 实例。",
 						},
 					},
 				},

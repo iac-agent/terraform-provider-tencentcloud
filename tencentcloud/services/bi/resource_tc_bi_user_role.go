@@ -29,13 +29,13 @@ func ResourceTencentCloudBiUserRole() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "角色 id list。",
+				Description: "角色 ID 列表。",
 			},
 
 			"user_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "用户 id。",
+				Description: "用户 ID。",
 			},
 			"user_name": {
 				Type:        schema.TypeString,
@@ -45,17 +45,17 @@ func ResourceTencentCloudBiUserRole() *schema.Resource {
 			"email": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "E-mail(Note: This field may return null，indicating that no valid 值 can be obtained)。",
+				Description: "E-mail(注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取)。",
 			},
 			"phone_number": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Phone number(Note: This field may return null，indicating that no valid 值 can be obtained)。",
+				Description: "Phone 数量(注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取)。",
 			},
 			"area_code": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Mobile area 代码(Note: This field may return null，indicating that no valid 值 can be obtained)。",
+				Description: "Mobile area 代码(注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取)。",
 			},
 		},
 	}

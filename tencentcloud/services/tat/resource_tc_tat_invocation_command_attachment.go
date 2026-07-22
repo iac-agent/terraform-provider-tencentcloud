@@ -28,35 +28,35 @@ func ResourceTencentCloudTatInvocationCommandAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Base64-encoded command. The maximum length is 64 KB。",
+				Description: "Base64-encoded command. 最大 长度 是 64 KB。",
 			},
 
 			"instance_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "ID instances about to execute commands. Supported instance types:  CVM  LIGHTHOUSE。",
+				Description: "ID 实例 about 到 execute commands. Supported 实例 types: CVM LIGHTHOUSE。",
 			},
 
 			"command_name": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "命令名称 The 名称 can be up to 60 bytes，and contain [a-z]，[A-Z]，[0-9] and [_-.]。",
+				Description: "命令名称 名称 可以 是 up 到 60 bytes，和 contain [-z]，[A-Z]，[0-9] 和 [_-.]。",
 			},
 
 			"description": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "命令描述 The maximum length is 120 characters。",
+				Description: "命令描述 最大 长度 是 120 字符。",
 			},
 
 			"command_type": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "命令类型 SHELL and POWERSHELL are supported. The 默认值为 SHELL。",
+				Description: "命令类型 SHELL 和 POWERSHELL 是 支持. 默认值为 SHELL。",
 			},
 
 			"working_directory": {
@@ -64,63 +64,63 @@ func ResourceTencentCloudTatInvocationCommandAttachment() *schema.Resource {
 				ForceNew:    true,
 				Default:     "/root",
 				Type:        schema.TypeString,
-				Description: "Command execution 路径 The 默认值为 /root for SHELL commands and C:Program Filesqcloudtat_agentworkdir for POWERSHELL commands。",
+				Description: "Command execution 路径 默认值为 /root 对于 SHELL commands 和 C:Program Filesqcloudtat_agentworkdir 对于 POWERSHELL commands。",
 			},
 
 			"timeout": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Command timeout 周期 默认值：60 seconds. 取值范围：[1，86400]。",
+				Description: "Command 超时 周期 默认值：60 秒. 取值范围：[1，86400]。",
 			},
 
 			"save_command": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "是否save the command. Valid values:rue: SaveFalse:Do not saveThe 默认值为 False。",
+				Description: "是否save command. 有效 值:rue: SaveFalse:Do 不 saveThe 默认值为 False。",
 			},
 
 			"enable_parameter": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "是否enable the custom parameter feature.This cannot be modified once created.默认值：false。",
+				Description: "是否enable 自定义 参数 功能.此 不能 是 modified once 创建.默认值：false。",
 			},
 
 			"default_parameters": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The 默认值 of the custom parameter 值 when it is 已启用 The field 类型 is JSON encoded string. For example，{varA: 222}.键 is the 名称 custom parameter and 值 is the 默认值 Both 键 and 值 are strings.If Parameters is not provided，the default values specified here are used.Up to 20 custom parameters are supported.The 名称 custom parameter cannot exceed 64 characters and can contain [a-z]，[A-Z]，[0-9] and [-_]。",
+				Description: "默认值 的 自定义 参数 值 当 它 是 已启用 字段 类型 是 JSON encoded 字符串. For 示例，{varA: 222}.键 是 名称 自定义 参数 和 值 是 默认值 Both 键 和 值 是 strings.如果 Parameters 是 不 提供， 默认值 值 指定 here 是 使用.Up 到 20 自定义 参数 是 支持. 名称 自定义 参数 不能 exceed 64 字符 和 可以 contain [-z]，[A-Z]，[0-9] 和 [-_]。",
 			},
 
 			"parameters": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Custom parameters of Command. The field 类型 is JSON encoded string. For example，{varA: 222}.键 is the 名称 custom parameter and 值 is the 默认值 Both 键 and 值 are strings.If no parameter 值 is provided，the DefaultParameters is used.Up to 20 custom parameters are supported.The 名称 custom parameter cannot exceed 64 characters and can contain [a-z]，[A-Z]，[0-9] and [-_]。",
+				Description: "Custom 参数 的 Command. 字段 类型 是 JSON encoded 字符串. For 示例，{varA: 222}.键 是 名称 自定义 参数 和 值 是 默认值 Both 键 和 值 是 strings.如果 无 参数 值 是 提供， DefaultParameters 是 使用.Up 到 20 自定义 参数 是 支持. 名称 自定义 参数 不能 exceed 64 字符 和 可以 contain [-z]，[A-Z]，[0-9] 和 [-_]。",
 			},
 
 			"username": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The 用户名 用于execute the command on the CVM or Lighthouse instance.The principle of least privilege is the best practice for permission management. We recommend you execute TAT commands as a general 用户 By default，the 用户 root is 用于execute commands on Linux and the 用户 System is used on Windows。",
+				Description: "用户名 用于execute command 在 CVM 或 Lighthouse 实例. principle 的 least privilege 是 best practice 对于 权限 management. We recommend 您 execute TAT commands 作为 general 用户 By 默认值， 用户 root 是 用于execute commands 在 Linux 和 用户 System 是 使用 在 Windows。",
 			},
 
 			"output_cos_bucket_url": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The COS 存储桶 URL for uploading logs; The URL must start with https，such as https://BucketName-123454321.cos.ap-beijing.myqcloud.com。",
+				Description: "COS 存储桶 URL 对于 uploading logs; URL 必须 start 使用 https，such 作为 https://BucketName-123454321.cos.ap-beijing.myqcloud.com。",
 			},
 
 			"output_cos_key_prefix": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The COS 存储桶 directory where the logs are saved; Check below for the rules of the directory 名称: 1 It must be a combination of number，letters，and visible characters，Up to 60 characters are allowed; 2 Use a slash (/) to create a subdirectory; 3 can not be used as the folder 名称; It cannot start with a slash (/)，and cannot contain consecutive slashes。",
+				Description: "COS 存储桶 directory 其中 logs 是 saved; Check below 对于 规则 的 directory 名称: 1 It 必须 是 combination 的 数量，letters，和 visible 字符，Up 到 60 字符 是 allowed; 2 Use slash (/) 到 create subdirectory; 3 可以 不 是 使用 作为 文件夹 名称; It 不能 start 使用 slash (/)，和 不能 contain consecutive slashes。",
 			},
 
 			"command_id": {

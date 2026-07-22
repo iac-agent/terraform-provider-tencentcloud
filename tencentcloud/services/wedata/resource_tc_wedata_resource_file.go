@@ -31,43 +31,43 @@ func ResourceTencentCloudWedataResourceFile() *schema.Resource {
 			"resource_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The resource file 名称 should be consistent with the uploaded file 名称 as much as possible。",
+				Description: "资源 文件 名称 should 是 consistent 使用 uploaded 文件 名称 作为 much 作为 possible。",
 			},
 
 			"bucket_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "cos 存储桶名称，which can be obtained from the GetResourceCosPath interface。",
+				Description: "cos 存储桶名称，其中 可以 是 获取 从 GetResourceCosPath interface。",
 			},
 
 			"cos_region": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The COS 存储桶 area corresponding to the BucketName 存储桶",
+				Description: "COS 存储桶 area corresponding 到 BucketName 存储桶",
 			},
 
 			"parent_folder_path": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The 路径 to upload resource files in the project，example 值: /wedata/qxxxm/，root directory，please use/。",
+				Description: "路径 到 upload 资源 files 在 项目，示例 值: /wedata/qxxxm/，root directory，please 使用/。",
 			},
 
 			"resource_file": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "- You can only choose one of the two methods of uploading a file and manually filling. If both are provided，the 顺序 of values is file> manual filling 值\n-the manual filling 值 must be the existing cos 路径，/datastudio/resource/is a fixed prefix，projectId is the project ID，and a specific 值 needs to be passed in，parentFolderPath is the parent folder 路径，名称 is the file 名称，and examples of manual filling 值 values are: /datastudio/resource/projectId/parentFolderPath/名称 \n。",
+				Description: "- You 可以 仅 choose 一个 的 two methods 的 uploading 文件 和 manually filling. 如果 both 是 提供， 顺序 的 值 是 文件> manual filling 值\n- manual filling 值 必须 是 existing cos 路径，/datastudio/资源/是 fixed prefix，projectId 是 项目 ID，和 特定 值 needs 到 是 passed 在，parentFolderPath 是 parent 文件夹 路径，名称 是 文件 名称，和 examples 的 manual filling 值 值 是: /datastudio/资源/projectId/parentFolderPath/名称 \n。",
 			},
 
 			"bundle_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "bundle client ID。",
+				Description: "bundle 客户端 ID。",
 			},
 
 			"bundle_info": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "bundle client information。",
+				Description: "bundle 客户端 信息。",
 			},
 		},
 	}

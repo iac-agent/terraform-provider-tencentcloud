@@ -35,18 +35,18 @@ func ResourceTencentCloudClickhouseKeyvalConfig() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "configuration list。",
+				Description: "配置 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"conf_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instance 配置 键",
+							Description: "实例 配置 键",
 						},
 						"conf_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instance 配置 值",
+							Description: "实例 配置 值",
 						},
 					},
 				},

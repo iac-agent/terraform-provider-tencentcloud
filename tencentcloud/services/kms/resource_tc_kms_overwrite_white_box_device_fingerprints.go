@@ -23,13 +23,13 @@ func ResourceTencentCloudKmsOverwriteWhiteBoxDeviceFingerprints() *schema.Resour
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "CMK unique identifier。",
+				Description: "CMK 唯一 identifier。",
 			},
 			"device_fingerprints": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "Device fingerprint list。",
+				Description: "Device fingerprint 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"identity": {

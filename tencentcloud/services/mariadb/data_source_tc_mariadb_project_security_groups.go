@@ -19,7 +19,7 @@ func DataSourceTencentCloudMariadbProjectSecurityGroups() *schema.Resource {
 			"product": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Database engine 名称 Valid 值: `mariadb`。",
+				Description: "Database 引擎 名称 有效 值: `mariadb`。",
 			},
 			"project_id": {
 				Optional:    true,
@@ -29,7 +29,7 @@ func DataSourceTencentCloudMariadbProjectSecurityGroups() *schema.Resource {
 			"groups": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Security group details。",
+				Description: "Security 组 details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"project_id": {
@@ -40,7 +40,7 @@ func DataSourceTencentCloudMariadbProjectSecurityGroups() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 in the 格式 of yyyy-mm-dd hh:mm:ss。",
+							Description: "创建时间 在 格式 的 yyyy-mm-dd hh:mm:ss。",
 						},
 						"security_group_id": {
 							Type:        schema.TypeString,
@@ -55,23 +55,23 @@ func DataSourceTencentCloudMariadbProjectSecurityGroups() *schema.Resource {
 						"security_group_remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Security group 备注",
+							Description: "Security 组 备注",
 						},
 						"inbound": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Inbound rule。",
+							Description: "Inbound 规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"action": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Policy，which can be `ACCEPT` or `DROP`。",
+										Description: "Policy，其中 可以 是 `ACCEPT` 或 `DROP`。",
 									},
 									"cidr_ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "来源 IP or 来源 IP range，such as 192.168.0.0/16。",
+										Description: "来源 IP 或 来源 IP 范围，such 作为 192.168.0.0/16。",
 									},
 									"port_range": {
 										Type:        schema.TypeString,
@@ -81,7 +81,7 @@ func DataSourceTencentCloudMariadbProjectSecurityGroups() *schema.Resource {
 									"ip_protocol": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Network 协议 UDP and TCP are supported。",
+										Description: "Network 协议 UDP 和 TCP 是 支持。",
 									},
 								},
 							},
@@ -89,18 +89,18 @@ func DataSourceTencentCloudMariadbProjectSecurityGroups() *schema.Resource {
 						"outbound": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Outbound rule。",
+							Description: "Outbound 规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"action": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Policy，which can be `ACCEPT` or `DROP`。",
+										Description: "Policy，其中 可以 是 `ACCEPT` 或 `DROP`。",
 									},
 									"cidr_ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "来源 IP or 来源 IP range，such as 192.168.0.0/16。",
+										Description: "来源 IP 或 来源 IP 范围，such 作为 192.168.0.0/16。",
 									},
 									"port_range": {
 										Type:        schema.TypeString,
@@ -110,7 +110,7 @@ func DataSourceTencentCloudMariadbProjectSecurityGroups() *schema.Resource {
 									"ip_protocol": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Network 协议 UDP and TCP are supported。",
+										Description: "Network 协议 UDP 和 TCP 是 支持。",
 									},
 								},
 							},

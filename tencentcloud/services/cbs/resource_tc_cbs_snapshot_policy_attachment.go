@@ -36,7 +36,7 @@ func ResourceTencentCloudCbsSnapshotPolicyAttachment() *schema.Resource {
 				ForceNew:     true,
 				MinItems:     2,
 				ExactlyOneOf: []string{"storage_id"},
-				Description:  "IDs of CBS。",
+				Description:  "IDs 的 CBS。",
 				Elem:         &schema.Schema{Type: schema.TypeString},
 			},
 
@@ -44,7 +44,7 @@ func ResourceTencentCloudCbsSnapshotPolicyAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID CBS snapshot policy。",
+				Description: "ID CBS 快照 策略。",
 			},
 		},
 	}

@@ -17,7 +17,7 @@ func DataSourceTencentCloudCfsMountTargets() *schema.Resource {
 			"file_system_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "File system ID。",
+				Description: "File 系统 ID。",
 			},
 
 			"mount_targets": {
@@ -29,7 +29,7 @@ func DataSourceTencentCloudCfsMountTargets() *schema.Resource {
 						"file_system_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "File system ID。",
+							Description: "File 系统 ID。",
 						},
 						"mount_target_id": {
 							Type:        schema.TypeString,
@@ -79,12 +79,12 @@ func DataSourceTencentCloudCfsMountTargets() *schema.Resource {
 						"ccn_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CCN 实例 ID used by CFS Turbo。",
+							Description: "CCN 实例 ID 使用 通过 CFS Turbo。",
 						},
 						"cidr_block": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CCN IP range used by CFS Turbo。",
+							Description: "CCN IP 范围 使用 通过 CFS Turbo。",
 						},
 					},
 				},

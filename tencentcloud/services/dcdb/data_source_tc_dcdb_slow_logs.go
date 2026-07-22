@@ -20,31 +20,31 @@ func DataSourceTencentCloudDcdbSlowLogs() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "实例 ID in the 格式 of `tdsqlshard-ow728lmc`。",
+				Description: "实例 ID 在 格式 的 `tdsqlshard-ow728lmc`。",
 			},
 
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Query 开始时间 in the 格式 of 2016-07-23 14:55:20。",
+				Description: "Query 开始时间 在 格式 的 2016-07-23 14:55:20。",
 			},
 
 			"shard_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance shard ID in the 格式 of `shard-rc754ljk`。",
+				Description: "实例 分片 ID 在 格式 的 `分片-rc754ljk`。",
 			},
 
 			"end_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Query 结束时间 in the 格式 of 2016-08-22 14:55:20。",
+				Description: "Query 结束时间 在 格式 的 2016-08-22 14:55:20。",
 			},
 
 			"db": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Specific 名称 database to be queried。",
+				Description: "Specific 名称 数据库 到 是 queried。",
 			},
 
 			"order_by": {
@@ -62,13 +62,13 @@ func DataSourceTencentCloudDcdbSlowLogs() *schema.Resource {
 			"slave": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Query slow queries from either the primary or the replica. 有效值：0 (primary)，1 (replica)。",
+				Description: "Query slow queries 从 either primary 或 副本. 有效值：0 (primary)，1 (副本)。",
 			},
 
 			"lock_time_sum": {
 				Computed:    true,
 				Type:        schema.TypeFloat,
-				Description: "Total statement lock time。",
+				Description: "Total statement lock 时间。",
 			},
 
 			"query_count": {
@@ -80,19 +80,19 @@ func DataSourceTencentCloudDcdbSlowLogs() *schema.Resource {
 			"query_time_sum": {
 				Computed:    true,
 				Type:        schema.TypeFloat,
-				Description: "Total statement query time。",
+				Description: "Total statement 查询 时间。",
 			},
 
 			"data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Slow query log data。",
+				Description: "Slow 查询 日志 数据。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"check_sum": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Statement checksum for querying details。",
+							Description: "Statement checksum 对于 querying details。",
 						},
 						"db": {
 							Type:        schema.TypeString,
@@ -107,22 +107,22 @@ func DataSourceTencentCloudDcdbSlowLogs() *schema.Resource {
 						"lock_time_avg": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Average lock time。",
+							Description: "Average lock 时间。",
 						},
 						"lock_time_max": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Maximum lock time。",
+							Description: "Maximum lock 时间。",
 						},
 						"lock_time_min": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Minimum lock time。",
+							Description: "Minimum lock 时间。",
 						},
 						"lock_time_sum": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Total lock time。",
+							Description: "Total lock 时间。",
 						},
 						"query_count": {
 							Type:        schema.TypeString,
@@ -132,22 +132,22 @@ func DataSourceTencentCloudDcdbSlowLogs() *schema.Resource {
 						"query_time_avg": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Average query time。",
+							Description: "Average 查询 时间。",
 						},
 						"query_time_max": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Maximum query time。",
+							Description: "Maximum 查询 时间。",
 						},
 						"query_time_min": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Minimum query time。",
+							Description: "Minimum 查询 时间。",
 						},
 						"query_time_sum": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Total query time。",
+							Description: "Total 查询 时间。",
 						},
 						"rows_examined_sum": {
 							Type:        schema.TypeString,
@@ -182,7 +182,7 @@ func DataSourceTencentCloudDcdbSlowLogs() *schema.Resource {
 						"host": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "主机地址 of 账号",
+							Description: "主机地址 的 账号",
 						},
 					},
 				},

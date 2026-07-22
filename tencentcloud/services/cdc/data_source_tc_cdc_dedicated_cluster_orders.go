@@ -18,28 +18,28 @@ func DataSourceTencentCloudCdcDedicatedClusterOrders() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Filter by Dedicated 集群 ID",
+				Description: "过滤器 通过 Dedicated 集群 ID",
 			},
 			//"dedicated_cluster_order_id": {
 			//	Optional:    true,
 			//	Type:        schema.TypeString,
-			//	Description: "Filter by Dedicated Cluster Order ID.",
+			//	Description: "过滤器 通过 Dedicated Cluster Order ID.",
 			//},
 			"status": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filter by Dedicated Cluster 顺序 状态 Allow 过滤值: PENDING，INCONSTRUCTION，DELIVERING，DELIVERED，EXPIRED，CANCELLED，OFFLINE。",
+				Description: "过滤器 通过 Dedicated Cluster 顺序 状态 Allow 过滤值: PENDING，INCONSTRUCTION，DELIVERING，DELIVERED，EXPIRED，CANCELLED，OFFLINE。",
 			},
 			"action_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filter by Dedicated Cluster 顺序 操作 类型 Allow 过滤值: CREATE，EXTEND。",
+				Description: "过滤器 通过 Dedicated Cluster 顺序 操作 类型 Allow 过滤值: CREATE，EXTEND。",
 			},
 			// computed
 			"dedicated_cluster_order_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Filter by Dedicated Cluster 顺序",
+				Description: "过滤器 通过 Dedicated Cluster 顺序",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"dedicated_cluster_id": {
@@ -68,7 +68,7 @@ func DataSourceTencentCloudCdcDedicatedClusterOrders() *schema.Resource {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Computed:    true,
-							Description: "Dedicated Cluster Supported Instance Family。",
+							Description: "Dedicated Cluster Supported 实例 Family。",
 						},
 						"weight": {
 							Type:        schema.TypeInt,
@@ -133,7 +133,7 @@ func DataSourceTencentCloudCdcDedicatedClusterOrders() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Dedicated Cluster Supported Instance Family。",
+										Description: "Dedicated Cluster Supported 实例 Family。",
 									},
 									"weight": {
 										Type:        schema.TypeInt,

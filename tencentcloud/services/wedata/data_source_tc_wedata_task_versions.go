@@ -36,7 +36,7 @@ func DataSourceTencentCloudWedataTaskVersions() *schema.Resource {
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Task 版本 list。",
+				Description: "任务 版本 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 
@@ -48,7 +48,7 @@ func DataSourceTencentCloudWedataTaskVersions() *schema.Resource {
 						"version_num": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "版本 number。",
+							Description: "版本 数量。",
 						},
 						"create_user_uin": {
 							Type:        schema.TypeString,
@@ -68,17 +68,17 @@ func DataSourceTencentCloudWedataTaskVersions() *schema.Resource {
 						"approve_status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Approval 状态 (only for 提交 版本)。",
+							Description: "Approval 状态 (仅 对于 提交 版本)。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Production 状态 (only for 提交 版本)。",
+							Description: "Production 状态 (仅 对于 提交 版本)。",
 						},
 						"approve_user_uin": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Approver (only for 提交 版本)。",
+							Description: "Approver (仅 对于 提交 版本)。",
 						},
 					},
 				},

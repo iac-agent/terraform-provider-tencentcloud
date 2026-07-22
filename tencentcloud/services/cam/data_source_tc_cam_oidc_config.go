@@ -37,7 +37,7 @@ func DataSourceTencentCloudCamOidcConfig() *schema.Resource {
 			"identity_key": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Public 键 for 签名",
+				Description: "Public 键 对于 签名",
 			},
 
 			"client_id": {
@@ -52,7 +52,7 @@ func DataSourceTencentCloudCamOidcConfig() *schema.Resource {
 			"status": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "状态 0: Not set; 2: 已禁用; 11: 已启用",
+				Description: "状态 0: Not 集合; 2: 已禁用; 11: 已启用",
 			},
 
 			"description": {

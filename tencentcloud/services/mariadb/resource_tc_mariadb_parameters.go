@@ -33,18 +33,18 @@ func ResourceTencentCloudMariadbParameters() *schema.Resource {
 			"params": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "数量 days to keep，no more than 30。",
+				Description: "数量 days 到 keep，无 more 比 30。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"param": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "parameter 名称",
+							Description: "参数 名称",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "parameter 值",
+							Description: "参数 值",
 						},
 					},
 				},

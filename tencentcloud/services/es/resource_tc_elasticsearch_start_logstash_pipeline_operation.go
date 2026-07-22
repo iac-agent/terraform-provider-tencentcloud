@@ -33,7 +33,7 @@ func ResourceTencentCloudElasticsearchStartLogstashPipelineOperation() *schema.R
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Pipeline id。",
+				Description: "Pipeline ID。",
 			},
 		},
 	}

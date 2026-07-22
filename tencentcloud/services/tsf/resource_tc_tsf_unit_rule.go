@@ -27,19 +27,19 @@ func ResourceTencentCloudTsfUnitRule() *schema.Resource {
 			"gateway_instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway entity ID。",
+				Description: "网关 entity ID。",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "rule 名称",
+				Description: "规则 名称",
 			},
 
 			"rule_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "rule ID。",
+				Description: "规则 ID。",
 			},
 
 			"status": {
@@ -52,13 +52,13 @@ func ResourceTencentCloudTsfUnitRule() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "rule 描述",
+				Description: "规则 描述",
 			},
 
 			"unit_rule_item_list": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "列表 rule items。",
+				Description: "列表 规则 items。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"relationship": {
@@ -69,44 +69,44 @@ func ResourceTencentCloudTsfUnitRule() *schema.Resource {
 						"dest_namespace_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "destination namespace ID。",
+							Description: "destination 命名空间 ID。",
 						},
 						"dest_namespace_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "destination namespace 名称",
+							Description: "destination 命名空间 名称",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "rule item 名称",
+							Description: "规则 item 名称",
 						},
 						"rule_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "rule item ID。",
+							Description: "规则 item ID。",
 						},
 						"unit_rule_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Unitization rule ID。",
+							Description: "Unitization 规则 ID。",
 						},
 						"priority": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "rule 顺序，the smaller the higher the 优先级: the 默认为 0。",
+							Description: "规则 顺序， smaller higher 优先级: 默认为 0。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "rule 描述",
+							Description: "规则 描述",
 						},
 						"unit_rule_tag_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "列表 rule labels。",
+							Description: "列表 规则 labels。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_type": {
@@ -133,13 +133,13 @@ func ResourceTencentCloudTsfUnitRule() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Unitization rule item ID。",
+										Description: "Unitization 规则 item ID。",
 									},
 									"rule_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "rule ID。",
+										Description: "规则 ID。",
 									},
 								},
 							},

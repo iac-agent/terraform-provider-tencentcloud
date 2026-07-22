@@ -43,7 +43,7 @@ func ResourceTencentCloudScfTerminateAsyncEvent() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "是否enable grace shutdown. If it's true，a SIGTERM signal is sent to the specified request. See [Sending termination signal](https://www.tencentcloud.com/document/product/583/63969?from_cn_redirect=1#.E5.8F.91.E9.80.81.E7.BB.88.E6.AD.A2.E4.BF.A1.E5.8F.B7]. It's set to false by default。",
+				Description: "是否enable grace shutdown. 如果 它's true， SIGTERM signal 是 sent 到 指定 请求. See [Sending termination signal](https://www.tencentcloud.com/document/product/583/63969?from_cn_redirect=1#.E5.8F.91.E9.80.81.E7.BB.88.E6.AD.A2.E4.BF.A1.E5.8F.B7]. It's 集合 到 false 通过 默认值。",
 			},
 		},
 	}

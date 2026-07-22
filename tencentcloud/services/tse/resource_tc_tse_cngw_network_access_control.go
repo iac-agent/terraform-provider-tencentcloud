@@ -28,28 +28,28 @@ func ResourceTencentCloudTseCngwNetworkAccessControl() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "gateway ID。",
+				Description: "网关 ID。",
 			},
 
 			"group_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "gateway 组 ID",
+				Description: "网关 组 ID",
 			},
 
 			"network_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "network id。",
+				Description: "网络 ID。",
 			},
 
 			"access_control": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "access control policy。",
+				Description: "访问 control 策略。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"mode": {
@@ -62,13 +62,13 @@ func ResourceTencentCloudTseCngwNetworkAccessControl() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "White list。",
+							Description: "White 列表。",
 						},
 						"cidr_black_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Black list。",
+							Description: "Black 列表。",
 						},
 					},
 				},

@@ -32,21 +32,21 @@ func ResourceTencentCloudAsCompleteLifecycle() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "结果 of the lifecycle 操作 取值范围：`CONTINUE`，`ABANDON`。",
+				Description: "结果 的 lifecycle 操作 取值范围：`CONTINUE`，`ABANDON`。",
 			},
 
 			"instance_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "实例 ID Either 实例 ID or LifecycleActionToken must be specified。",
+				Description: "实例 ID Either 实例 ID 或 LifecycleActionToken 必须 是 指定。",
 			},
 
 			"lifecycle_action_token": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Either 实例 ID or LifecycleActionToken must be specified。",
+				Description: "Either 实例 ID 或 LifecycleActionToken 必须 是 指定。",
 			},
 		},
 	}

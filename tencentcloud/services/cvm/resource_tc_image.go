@@ -37,7 +37,7 @@ func ResourceTencentCloudImage() *schema.Resource {
 				Optional:     true,
 				ForceNew:     true,
 				ExactlyOneOf: []string{"snapshot_ids"},
-				Description:  "Cloud server instance ID。",
+				Description:  "Cloud 服务器 实例 ID。",
 			},
 			"snapshot_ids": {
 				Type:         schema.TypeSet,
@@ -47,7 +47,7 @@ func ResourceTencentCloudImage() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Cloud disk snapshot ID list; creating a mirror based on a snapshot must include a system disk snapshot. It cannot be passed in simultaneously with 实例 ID",
+				Description: "Cloud 磁盘 快照 ID 列表; creating mirror based 在 快照 必须 include 系统 磁盘 快照. It 不能 是 passed 在 simultaneously 使用 实例 ID",
 			},
 			"image_description": {
 				Type:        schema.TypeString,
@@ -58,12 +58,12 @@ func ResourceTencentCloudImage() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Set 是否force shutdown during mirroring. The 默认值为 `false`，when set to true，it means that the mirror will be made after shutdown。",
+				Description: "Set 是否force shutdown during mirroring. 默认值为 `false`，当 集合 到 true，它 表示 该 mirror 将 是 made after shutdown。",
 			},
 			"sysprep": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Sysprep function under Windows. When creating a Windows image，you can select true or false to enable or disable the Syspre function。",
+				Description: "Sysprep 函数 under Windows. 当 creating Windows 镜像，您 可以 select true 或 false 到 启用 或 disable Syspre 函数。",
 			},
 			"data_disk_ids": {
 				Type:     schema.TypeSet,
@@ -73,17 +73,17 @@ func ResourceTencentCloudImage() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Cloud disk ID list，When creating a whole machine image based on an instance，指定data disk ID contained in the image。",
+				Description: "Cloud 磁盘 ID 列表，当 creating whole machine 镜像 based 在 实例，指定data 磁盘 ID contained 在 镜像。",
 			},
 			"image_family": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Set image family. Example 值: `business-daily-update`。",
+				Description: "Set 镜像 family. Example 值: `business-daily-update`。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "标签 of the image。",
+				Description: "标签 的 镜像。",
 			},
 		},
 	}

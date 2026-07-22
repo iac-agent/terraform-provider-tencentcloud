@@ -30,7 +30,7 @@ func DataSourceTencentCloudTdmqRocketmqMessages() *schema.Resource {
 			"topic_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Topic，groupId is passed when querying dead letters。",
+				Description: "Topic，groupId 是 passed 当 querying dead letters。",
 			},
 			"msg_id": {
 				Required:    true,
@@ -40,22 +40,22 @@ func DataSourceTencentCloudTdmqRocketmqMessages() *schema.Resource {
 			"query_dlq_msg": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "The 值 is true when querying dead letters，only valid for Rocketmq。",
+				Description: "值 是 true 当 querying dead letters，仅 有效 对于 Rocketmq。",
 			},
 			"body": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "消息 body。",
+				Description: "消息 正文。",
 			},
 			"properties": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Detailed parameters。",
+				Description: "Detailed 参数。",
 			},
 			"produce_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Production time。",
+				Description: "Production 时间。",
 			},
 			"producer_addr": {
 				Computed:    true,
@@ -71,7 +71,7 @@ func DataSourceTencentCloudTdmqRocketmqMessages() *schema.Resource {
 						"group": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "consumer group。",
+							Description: "消费者 组。",
 						},
 						"consume_status": {
 							Type:        schema.TypeString,
@@ -94,7 +94,7 @@ func DataSourceTencentCloudTdmqRocketmqMessages() *schema.Resource {
 			"show_topic_name": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The topic 名称 displayed on the details page注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "主题 名称 displayed 在 details page注意：此字段可能返回 null，表示无法获取有效值。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,

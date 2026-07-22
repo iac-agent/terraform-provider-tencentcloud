@@ -35,7 +35,7 @@ func ResourceTencentCloudOrganizationOrgManagePolicyConfig() *schema.Resource {
 				ForceNew:    true,
 				Default:     ServiceControlPolicyType,
 				Type:        schema.TypeString,
-				Description: "Policy 类型 默认值为 SERVICE_CONTROL_POLICY.\nValid values:\n  - `SERVICE_CONTROL_POLICY`: Service control policy.\n  - `TAG_POLICY`: 标签 policy。",
+				Description: "Policy 类型 默认值为 SERVICE_CONTROL_POLICY.\nValid 值:\n - `SERVICE_CONTROL_POLICY`: Service control 策略.\n - `TAG_POLICY`: 标签 策略。",
 			},
 		},
 	}

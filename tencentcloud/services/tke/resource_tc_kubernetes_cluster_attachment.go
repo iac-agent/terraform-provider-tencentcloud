@@ -29,14 +29,14 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID cluster。",
+				Description: "ID 集群。",
 			},
 
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID CVM instance，this cvm will reinstall the system。",
+				Description: "ID CVM 实例，此 cvm 将 reinstall 系统。",
 			},
 
 			"image_id": {
@@ -44,7 +44,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "ID Node image。",
+				Description: "ID Node 镜像。",
 			},
 
 			"password": {
@@ -52,7 +52,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 				Optional:     true,
 				ForceNew:     true,
 				Sensitive:    true,
-				Description:  "密码 to access，should be set if `key_ids` not set。",
+				Description:  "密码 到 访问，should 是 集合 如果 `key_ids` 不 集合。",
 				ValidateFunc: tccommon.ValidateAsConfigPassword,
 			},
 
@@ -61,7 +61,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "The 键 pair to use for the instance，it looks like skey-16jig7tx，it should be set if `密码` not set。",
+				Description: "键 pair 到 使用 对于 实例，它 looks like skey-16jig7tx，它 should 是 集合 如果 `密码` 不 集合。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -71,7 +71,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "The 主机 名称 attached instance. Dot (.) and dash (-) cannot be used as the first and last characters of HostName and cannot be used consecutively. Windows example: The length of the 名称 character is [2，15]，letters (capitalization is not restricted)，numbers and dashes (-) are allowed，dots (.) are not supported，and not all numbers are allowed. Examples of other types (Linux，etc.): The character length is [2，60]，and multiple dots are allowed. There is a segment between the dots. Each segment allows letters (with no limitation on capitalization)，numbers and dashes (-)。",
+				Description: "主机 名称 attached 实例. Dot (.) 和 dash (-) 不能 是 使用 作为 first 和 last 字符 的 HostName 和 不能 是 使用 consecutively. Windows 示例: 长度 的 名称 character 是 [2，15]，letters (capitalization 是 不 restricted)，numbers 和 dashes (-) 是 allowed，dots (.) 是 不 支持，和 不 all numbers 是 allowed. Examples 的 other types (Linux，etc.): character 长度 是 [2，60]，和 多个 dots 是 allowed. There 是 segment between dots. Each segment allows letters (使用 无 limitation 在 capitalization)，numbers 和 dashes (-)。",
 			},
 
 			"worker_config": {
@@ -79,21 +79,21 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "Deploy the machine configuration information of the 'WORKER'，commonly 用于attach existing instances。",
+				Description: "Deploy machine 配置 信息 的 'WORKER'，commonly 用于attach existing 实例。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"mount_target": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "挂载目标 默认为 not mounting。",
+							Description: "挂载目标 默认为 不 mounting。",
 						},
 						"docker_graph_path": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
 							Computed:    true,
-							Description: "Docker graph 路径 默认为 determined by the platform (currently /var/lib/containerd for containerd-based nodes)。",
+							Description: "Docker graph 路径 默认为 determined 通过 平台 (currently /var/lib/containerd 对于 containerd-based nodes)。",
 						},
 						"data_disk": {
 							Type:        schema.TypeList,
@@ -108,7 +108,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 										Optional:     true,
 										ForceNew:     true,
 										Default:      "CLOUD_PREMIUM",
-										Description:  "Types of disk. Valid 值: `LOCAL_BASIC`，`LOCAL_SSD`，`CLOUD_BASIC`，`CLOUD_PREMIUM`，`CLOUD_SSD`，`CLOUD_HSSD`，`CLOUD_TSSD` and `CLOUD_BSSD`。",
+										Description:  "Types 的 磁盘. 有效 值: `LOCAL_BASIC`，`LOCAL_SSD`，`CLOUD_BASIC`，`CLOUD_PREMIUM`，`CLOUD_SSD`，`CLOUD_HSSD`，`CLOUD_TSSD` 和 `CLOUD_BSSD`。",
 										ValidateFunc: tccommon.ValidateAllowedStringValue(svcas.SYSTEM_DISK_ALLOW_TYPE),
 									},
 									"disk_size": {
@@ -116,21 +116,21 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 										Optional:    true,
 										ForceNew:    true,
 										Default:     0,
-										Description: "Volume of disk （GB）。 默认为 `0`。",
+										Description: "Volume 的 磁盘 （GB）。 默认为 `0`。",
 									},
 									"file_system": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
 										Default:     "",
-										Description: "File system，e.g. `ext3/ext4/xfs`。",
+										Description: "File 系统，e.g. `ext3/ext4/xfs`。",
 									},
 									"auto_format_and_mount": {
 										Type:        schema.TypeBool,
 										Optional:    true,
 										ForceNew:    true,
 										Default:     false,
-										Description: "Indicate 是否auto 格式 and mount or not. 默认为 `false`。",
+										Description: "Indicate 是否auto 格式 和 mount 或 不. 默认为 `false`。",
 									},
 									"mount_target": {
 										Type:        schema.TypeString,
@@ -143,7 +143,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "The 名称 device or partition to mount. NOTE: this argument doesn't support setting in node pool，or will leads to mount 错误",
+										Description: "名称 device 或 分区 到 mount. NOTE: 此 argument doesn't support setting 在 节点 池，或 将 leads 到 mount 错误",
 									},
 								},
 							},
@@ -152,7 +152,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Custom parameter information related to the node. This is a white-list parameter。",
+							Description: "Custom 参数 信息 related 到 节点. 此 是 white-列表 参数。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -161,13 +161,13 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Base64-encoded 用户 Data text，the length 限制 is 16KB。",
+							Description: "Base64-encoded 用户 Data text， 长度 限制 是 16KB。",
 						},
 						"pre_start_user_script": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Base64-encoded 用户 script，executed before initializing the node，currently only effective for adding existing nodes。",
+							Description: "Base64-encoded 用户 脚本，executed before initializing 节点，currently 仅 effective 对于 adding existing nodes。",
 						},
 						"taints": {
 							Type:        schema.TypeList,
@@ -180,19 +180,19 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "键 of the taint。",
+										Description: "键 的 taint。",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "值 of the taint。",
+										Description: "值 的 taint。",
 									},
 									"effect": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Effect of the taint。",
+										Description: "Effect 的 taint。",
 									},
 								},
 							},
@@ -203,20 +203,20 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 							ForceNew:    true,
 							Default:     true,
 							Deprecated:  "This argument was deprecated, use `unschedulable` instead.",
-							Description: "Indicate to schedule the adding node or not. 默认为 true。",
+							Description: "Indicate 到 调度 adding 节点 或 不. 默认为 true。",
 						},
 						"desired_pod_num": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Indicate to set desired pod number in node. valid when the cluster is podCIDR。",
+							Description: "Indicate 到 集合 desired pod 数量 在 节点. 有效 当 集群 是 podCIDR。",
 						},
 						"gpu_args": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    1,
-							Description: "GPU driver parameters。",
+							Description: "GPU 驱动 参数。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"mig_enable": {
@@ -228,13 +228,13 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 									"driver": {
 										Type:         schema.TypeMap,
 										Optional:     true,
-										Description:  "GPU driver 版本 格式 like: `{ 版本: String，名称: String }`. `版本`: 版本 of GPU driver or CUDA; `名称`: 名称 GPU driver or CUDA。",
+										Description:  "GPU 驱动 版本 格式 like: `{ 版本: String，名称: String }`. `版本`: 版本 的 GPU 驱动 或 CUDA; `名称`: 名称 GPU 驱动 或 CUDA。",
 										ValidateFunc: tccommon.ValidateTkeGpuDriverVersion,
 									},
 									"cuda": {
 										Type:         schema.TypeMap,
 										Optional:     true,
-										Description:  "CUDA  版本 格式 like: `{ 版本: String，名称: String }`. `版本`: 版本 of GPU driver or CUDA; `名称`: 名称 GPU driver or CUDA。",
+										Description:  "CUDA 版本 格式 like: `{ 版本: String，名称: String }`. `版本`: 版本 的 GPU 驱动 或 CUDA; `名称`: 名称 GPU 驱动 或 CUDA。",
 										ValidateFunc: tccommon.ValidateTkeGpuDriverVersion,
 									},
 									"cudnn": {
@@ -246,7 +246,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 									"custom_driver": {
 										Type:        schema.TypeMap,
 										Optional:    true,
-										Description: "Custom GPU driver. 格式 like: `{地址: String}`. `地址`: URL of custom GPU driver 地址",
+										Description: "Custom GPU 驱动. 格式 like: `{地址: String}`. `地址`: URL 的 自定义 GPU 驱动 地址",
 									},
 								},
 							},
@@ -260,7 +260,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "Override variable worker_config，commonly 用于attach existing instances。",
+				Description: "Override variable worker_config，commonly 用于attach existing 实例。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"mount_target": {
@@ -268,7 +268,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							Deprecated:  "This argument was no longer supported by TencentCloud TKE.",
-							Description: "挂载目标 默认为 not mounting。",
+							Description: "挂载目标 默认为 不 mounting。",
 						},
 						"docker_graph_path": {
 							Type:        schema.TypeString,
@@ -276,7 +276,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 							ForceNew:    true,
 							Computed:    true,
 							Deprecated:  "This argument was no longer supported by TencentCloud TKE.",
-							Description: "Docker graph 路径 默认为 determined by the platform (currently /var/lib/containerd for containerd-based nodes)。",
+							Description: "Docker graph 路径 默认为 determined 通过 平台 (currently /var/lib/containerd 对于 containerd-based nodes)。",
 						},
 						"data_disk": {
 							Type:        schema.TypeList,
@@ -291,7 +291,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 										Optional:     true,
 										ForceNew:     true,
 										Default:      "CLOUD_PREMIUM",
-										Description:  "Types of disk. Valid 值: `LOCAL_BASIC`，`LOCAL_SSD`，`CLOUD_BASIC`，`CLOUD_PREMIUM`，`CLOUD_SSD`，`CLOUD_HSSD`，`CLOUD_TSSD` and `CLOUD_BSSD`。",
+										Description:  "Types 的 磁盘. 有效 值: `LOCAL_BASIC`，`LOCAL_SSD`，`CLOUD_BASIC`，`CLOUD_PREMIUM`，`CLOUD_SSD`，`CLOUD_HSSD`，`CLOUD_TSSD` 和 `CLOUD_BSSD`。",
 										ValidateFunc: tccommon.ValidateAllowedStringValue(svcas.SYSTEM_DISK_ALLOW_TYPE),
 									},
 									"disk_size": {
@@ -299,21 +299,21 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 										Optional:    true,
 										ForceNew:    true,
 										Default:     0,
-										Description: "Volume of disk （GB）。 默认为 `0`。",
+										Description: "Volume 的 磁盘 （GB）。 默认为 `0`。",
 									},
 									"file_system": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
 										Default:     "",
-										Description: "File system，e.g. `ext3/ext4/xfs`。",
+										Description: "File 系统，e.g. `ext3/ext4/xfs`。",
 									},
 									"auto_format_and_mount": {
 										Type:        schema.TypeBool,
 										Optional:    true,
 										ForceNew:    true,
 										Default:     false,
-										Description: "Indicate 是否auto 格式 and mount or not. 默认为 `false`。",
+										Description: "Indicate 是否auto 格式 和 mount 或 不. 默认为 `false`。",
 									},
 									"mount_target": {
 										Type:        schema.TypeString,
@@ -326,7 +326,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "The 名称 device or partition to mount. NOTE: this argument doesn't support setting in node pool，or will leads to mount 错误",
+										Description: "名称 device 或 分区 到 mount. NOTE: 此 argument doesn't support setting 在 节点 池，或 将 leads 到 mount 错误",
 									},
 								},
 							},
@@ -336,7 +336,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							Deprecated:  "This argument was no longer supported by TencentCloud TKE.",
-							Description: "Custom parameter information related to the node. This is a white-list parameter。",
+							Description: "Custom 参数 信息 related 到 节点. 此 是 white-列表 参数。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -346,14 +346,14 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							Deprecated:  "This argument was no longer supported by TencentCloud TKE.",
-							Description: "Base64-encoded 用户 Data text，the length 限制 is 16KB。",
+							Description: "Base64-encoded 用户 Data text， 长度 限制 是 16KB。",
 						},
 						"pre_start_user_script": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
 							Deprecated:  "This argument was no longer supported by TencentCloud TKE.",
-							Description: "Base64-encoded 用户 script，executed before initializing the node，currently only effective for adding existing nodes。",
+							Description: "Base64-encoded 用户 脚本，executed before initializing 节点，currently 仅 effective 对于 adding existing nodes。",
 						},
 						"is_schedule": {
 							Type:        schema.TypeBool,
@@ -361,20 +361,20 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 							ForceNew:    true,
 							Default:     true,
 							Deprecated:  "This argument was deprecated, use `unschedulable` instead.",
-							Description: "Indicate to schedule the adding node or not. 默认为 true。",
+							Description: "Indicate 到 调度 adding 节点 或 不. 默认为 true。",
 						},
 						"desired_pod_num": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Indicate to set desired pod number in node. valid when the cluster is podCIDR。",
+							Description: "Indicate 到 集合 desired pod 数量 在 节点. 有效 当 集群 是 podCIDR。",
 						},
 						"gpu_args": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    1,
-							Description: "GPU driver parameters。",
+							Description: "GPU 驱动 参数。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"mig_enable": {
@@ -386,13 +386,13 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 									"driver": {
 										Type:         schema.TypeMap,
 										Optional:     true,
-										Description:  "GPU driver 版本 格式 like: `{ 版本: String，名称: String }`. `版本`: 版本 of GPU driver or CUDA; `名称`: 名称 GPU driver or CUDA。",
+										Description:  "GPU 驱动 版本 格式 like: `{ 版本: String，名称: String }`. `版本`: 版本 的 GPU 驱动 或 CUDA; `名称`: 名称 GPU 驱动 或 CUDA。",
 										ValidateFunc: tccommon.ValidateTkeGpuDriverVersion,
 									},
 									"cuda": {
 										Type:         schema.TypeMap,
 										Optional:     true,
-										Description:  "CUDA  版本 格式 like: `{ 版本: String，名称: String }`. `版本`: 版本 of GPU driver or CUDA; `名称`: 名称 GPU driver or CUDA。",
+										Description:  "CUDA 版本 格式 like: `{ 版本: String，名称: String }`. `版本`: 版本 的 GPU 驱动 或 CUDA; `名称`: 名称 GPU 驱动 或 CUDA。",
 										ValidateFunc: tccommon.ValidateTkeGpuDriverVersion,
 									},
 									"cudnn": {
@@ -404,7 +404,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 									"custom_driver": {
 										Type:        schema.TypeMap,
 										Optional:    true,
-										Description: "Custom GPU driver. 格式 like: `{地址: String}`. `地址`: URL of custom GPU driver 地址",
+										Description: "Custom GPU 驱动. 格式 like: `{地址: String}`. `地址`: URL 的 自定义 GPU 驱动 地址",
 									},
 								},
 							},
@@ -417,7 +417,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 				Type:        schema.TypeMap,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Labels of tke attachment exits CVM。",
+				Description: "Labels 的 tke attachment exits CVM。",
 			},
 
 			"unschedulable": {
@@ -425,7 +425,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Default:     0,
-				Description: "Sets 是否joining node participates in the schedule. 默认为 `0`，which means it participates in scheduling. Non-zero(eg: `1`) number means it does not participate in scheduling。",
+				Description: "Sets 是否joining 节点 participates 在 调度. 默认为 `0`，其中 表示 它 participates 在 scheduling. Non-zero(eg: `1`) 数量 表示 它 does 不 participate 在 scheduling。",
 			},
 
 			"security_groups": {
@@ -433,7 +433,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 				Computed:    true,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "A 列表 security group IDs after attach to cluster。",
+				Description: "A 列表 安全 组 IDs after attach 到 集群。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -442,7 +442,7 @@ func ResourceTencentCloudKubernetesClusterAttachment() *schema.Resource {
 			"state": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "State of the node。",
+				Description: "State 的 节点。",
 			},
 		},
 	}

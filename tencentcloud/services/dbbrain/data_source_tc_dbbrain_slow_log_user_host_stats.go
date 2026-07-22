@@ -19,53 +19,53 @@ func DataSourceTencentCloudDbbrainSlowLogUserHostStats() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID.",
 			},
 
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Start time of the query range, time format such as: 2019-09-10 12:13:14.",
+				Description: "Start 时间 的 查询 范围, 时间 格式 such 作为: 2019-09-10 12:13:14.",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "EndTime time of the query range, time format such as: 2019-09-10 12:13:14.",
+				Description: "EndTime 时间 的 查询 范围, 时间 格式 such 作为: 2019-09-10 12:13:14.",
 			},
 
 			"product": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Types of service products, supported values:`mysql` - Cloud Database MySQL; `cynosdb` - Cloud Database TDSQL-C for MySQL, defaults to `mysql`.",
+				Description: "Types 的 服务 products, 支持 值:`mysql` - Cloud Database MySQL; `cynosdb` - Cloud Database TDSQL-C 对于 MySQL, defaults 到 `mysql`.",
 			},
 
 			"md5": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "MD5 value of SOL template.",
+				Description: "MD5 值 的 SOL template.",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Detailed list of the slow log proportion for each source address.",
+				Description: "Detailed 列表 的 slow 日志 proportion 对于 each source 地址.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"user_host": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "source address.",
+							Description: "source 地址.",
 						},
 						"ratio": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "The ratio of the number of slow logs of the source address to the total, in %.",
+							Description: "ratio 的 数量 的 slow logs 的 source 地址 到 总数, 在 %.",
 						},
 						"count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of slow logs for this source address.",
+							Description: "数量 的 slow logs 对于 此 source 地址.",
 						},
 					},
 				},
@@ -74,7 +74,7 @@ func DataSourceTencentCloudDbbrainSlowLogUserHostStats() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

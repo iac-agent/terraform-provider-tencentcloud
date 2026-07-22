@@ -23,14 +23,14 @@ func ResourceTencentCloudCdwpgRestartInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance id (e.g., \"cdwpg-xxxx\").",
+				Description: "实例 ID (e.g., \"cdwpg-xxxx\").",
 			},
 
 			"node_types": {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Node types to restart (gtm/cn/dn)。",
+				Description: "Node types 到 restart (gtm/cn/dn)。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -40,7 +40,7 @@ func ResourceTencentCloudCdwpgRestartInstance() *schema.Resource {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Node ids to restart (指定nodes to reboot)。",
+				Description: "Node ids 到 restart (指定nodes 到 reboot)。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},

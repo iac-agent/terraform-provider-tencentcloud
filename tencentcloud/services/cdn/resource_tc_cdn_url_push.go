@@ -28,27 +28,27 @@ func ResourceTencentCloudUrlPush() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "列表 URL to push. NOTE: urls need include 协议 prefix `http://` or `https://`。",
+				Description: "列表 URL 到 push. NOTE: urls need include 协议 prefix `http://` 或 `https://`。",
 			},
 			"redo": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Change to push again. NOTE: this argument only works while resource update，if set to `0` or null will not be triggered。",
+				Description: "Change 到 push again. NOTE: 此 argument 仅 works while 资源 update，如果 集合 到 `0` 或 null 将 不 是 triggered。",
 			},
 			"area": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "指定push area. NOTE: only push same area cache contents。",
+				Description: "指定push area. NOTE: 仅 push same area 缓存 contents。",
 			},
 			"user_agent": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "指定`用户-Agent` HTTP header，默认值：`TencentCdn`。",
+				Description: "指定`用户-Agent` HTTP 头部，默认值：`TencentCdn`。",
 			},
 			"layer": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Layer to push。",
+				Description: "Layer 到 push。",
 			},
 			"parse_m3u8": {
 				Type:        schema.TypeBool,
@@ -64,12 +64,12 @@ func ResourceTencentCloudUrlPush() *schema.Resource {
 			//"disable_range": {
 			//	Type:        schema.TypeBool,
 			//	Optional:    true,
-			//	Description: "Whether to disable range origin pull.",
+			//	Description: "Whether 到 disable 范围 源站 pull.",
 			//},
 			"push_history": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "logs of latest push task。",
+				Description: "logs 的 latest push 任务。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"task_id": {
@@ -85,27 +85,27 @@ func ResourceTencentCloudUrlPush() *schema.Resource {
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Push 状态 `fail`，`done`，`process` or `invalid` (4xx，5xx response)。",
+							Description: "Push 状态 `fail`，`done`，`process` 或 `无效` (4xx，5xx response)。",
 						},
 						"percent": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Push progress in percent。",
+							Description: "Push progress 在 percent。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Push task 创建时间。",
+							Description: "Push 任务 创建时间。",
 						},
 						"area": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Push 标签 area in `mainland`，`overseas` or `global`。",
+							Description: "Push 标签 area 在 `mainland`，`overseas` 或 `全局`。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Push task 更新时间。",
+							Description: "Push 任务 更新时间。",
 						},
 					},
 				},

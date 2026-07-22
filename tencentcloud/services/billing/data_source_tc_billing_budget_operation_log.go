@@ -18,13 +18,13 @@ func DataSourceTencentCloudBillingBudgetOperationLog() *schema.Resource {
 			"budget_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Budget id。",
+				Description: "Budget ID。",
 			},
 
 			"records": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Query data list。",
+				Description: "Query 数据 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"payer_uin": {
@@ -60,7 +60,7 @@ func DataSourceTencentCloudBillingBudgetOperationLog() *schema.Resource {
 						"diff_value": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "change information。",
+							Description: "change 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"property": {
@@ -99,7 +99,7 @@ func DataSourceTencentCloudBillingBudgetOperationLog() *schema.Resource {
 						"budget_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Budget item id。",
+							Description: "Budget item ID。",
 						},
 					},
 				},

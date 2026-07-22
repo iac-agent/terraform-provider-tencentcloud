@@ -24,7 +24,7 @@ func DataSourceTencentCloudCfwCcnAssociatedInstances() *schema.Resource {
 			"ccn_associated_instances": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information of instances associated with CCN。",
+				Description: "Information 的 实例 associated 使用 CCN。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
@@ -45,7 +45,7 @@ func DataSourceTencentCloudCfwCcnAssociatedInstances() *schema.Resource {
 						"cidr_lst": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "列表 network segments for the instance。",
+							Description: "列表 网络 segments 对于 实例。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -53,7 +53,7 @@ func DataSourceTencentCloudCfwCcnAssociatedInstances() *schema.Resource {
 						"instance_region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "地域 where the instance belongs。",
+							Description: "地域 其中 实例 belongs。",
 						},
 					},
 				},

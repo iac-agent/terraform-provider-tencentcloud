@@ -26,7 +26,7 @@ func DataSourceTencentCloudTdmqVipInstance() *schema.Resource {
 			"cluster_info": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Cluster information。",
+				Description: "Cluster 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cluster_id": {
@@ -57,17 +57,17 @@ func DataSourceTencentCloudTdmqVipInstance() *schema.Resource {
 						"public_end_point": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Public network access 地址",
+							Description: "Public 网络 访问 地址",
 						},
 						"vpc_end_point": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC access 地址",
+							Description: "VPC 访问 地址",
 						},
 						"support_namespace_endpoint": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether namespace access points are supported注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Whether 命名空间 访问 points 是 supported注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"vpcs": {
 							Type:        schema.TypeList,
@@ -83,7 +83,7 @@ func DataSourceTencentCloudTdmqVipInstance() *schema.Resource {
 									"subnet_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Subnet Id。",
+										Description: "Subnet ID。",
 									},
 								},
 							},
@@ -96,27 +96,27 @@ func DataSourceTencentCloudTdmqVipInstance() *schema.Resource {
 						"rocket_mq_flag": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Rocketmq cluster identification注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Rocketmq 集群 identification注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Billing 状态，1 means normal，2 means stopped，3 means destroyed注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Billing 状态，1 表示 normal，2 表示 stopped，3 表示 destroyed注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"isolate_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Overdue suspension time，in milliseconds注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Overdue suspension 时间，在 milliseconds注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"http_public_endpoint": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "HTTP 协议 public network access address注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "HTTP 协议 公有 网络 访问 address注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"http_vpc_endpoint": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "HTTP 协议 VPC access address注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "HTTP 协议 VPC 访问 address注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -124,13 +124,13 @@ func DataSourceTencentCloudTdmqVipInstance() *schema.Resource {
 			"instance_config": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Cluster configuration。",
+				Description: "Cluster 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"max_tps_per_namespace": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Single namespace TPS upper 限制",
+							Description: "Single 命名空间 TPS upper 限制",
 						},
 						"max_namespace_num": {
 							Type:        schema.TypeInt,
@@ -140,7 +140,7 @@ func DataSourceTencentCloudTdmqVipInstance() *schema.Resource {
 						"used_namespace_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 used namespaces。",
+							Description: "数量 使用 namespaces。",
 						},
 						"max_topic_num": {
 							Type:        schema.TypeInt,
@@ -150,7 +150,7 @@ func DataSourceTencentCloudTdmqVipInstance() *schema.Resource {
 						"used_topic_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 数量 topics used。",
+							Description: "数量 topics 使用。",
 						},
 						"max_group_num": {
 							Type:        schema.TypeInt,
@@ -160,7 +160,7 @@ func DataSourceTencentCloudTdmqVipInstance() *schema.Resource {
 						"used_group_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 used groups。",
+							Description: "数量 使用 groups。",
 						},
 						"config_display": {
 							Type:        schema.TypeString,
@@ -170,7 +170,7 @@ func DataSourceTencentCloudTdmqVipInstance() *schema.Resource {
 						"node_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 cluster nodes。",
+							Description: "数量 集群 nodes。",
 						},
 						"node_distribution": {
 							Type:        schema.TypeList,

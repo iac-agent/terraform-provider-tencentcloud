@@ -37,47 +37,47 @@ func DataSourceTencentCloudCssTimeShiftRecordDetail() *schema.Resource {
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The starting time of the query range is specified in Unix 时间戳。",
+				Description: "starting 时间 的 查询 范围 是 指定 在 Unix 时间戳。",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The ending time of the query range is specified in Unix 时间戳。",
+				Description: "ending 时间 的 查询 范围 是 指定 在 Unix 时间戳。",
 			},
 
 			"domain_group": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The streaming 域名 belongs to a group. If there is no 域名 group or the 域名 group is an empty string，it can be left blank。",
+				Description: "streaming 域名 belongs 到 组. 如果 there 是 无 域名 组 或 域名 组 是 空 字符串，它 可以 是 left blank。",
 			},
 
 			"trans_code_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The transcoding 模板 ID can be left blank if it is 0。",
+				Description: "transcoding 模板 ID 可以 是 left blank 如果 它 是 0。",
 			},
 
 			"record_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The 数组 time-shift recording sessions.注意：此字段可能返回 null，表示未找到有效值。",
+				Description: "数组 时间-shift recording sessions.注意：此字段可能返回 null，表示未找到有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"sid": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The identifier for the time-shift recording session。",
+							Description: "identifier 对于 时间-shift recording 会话。",
 						},
 						"start_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 开始时间 of the recording session is specified in Unix 时间戳。",
+							Description: "开始时间 的 recording 会话 是 指定 在 Unix 时间戳。",
 						},
 						"end_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 结束时间 of the recording session is specified in Unix 时间戳。",
+							Description: "结束时间 的 recording 会话 是 指定 在 Unix 时间戳。",
 						},
 					},
 				},

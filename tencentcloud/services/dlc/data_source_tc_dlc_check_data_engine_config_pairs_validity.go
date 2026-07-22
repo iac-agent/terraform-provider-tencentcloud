@@ -19,13 +19,13 @@ func DataSourceTencentCloudDlcCheckDataEngineConfigPairsValidity() *schema.Resou
 			"child_image_version_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "ID minor 版本 of the engine。",
+				Description: "ID minor 版本 的 引擎。",
 			},
 
 			"data_engine_config_pairs": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "用户-defined parameters。",
+				Description: "用户-defined 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"config_item": {
@@ -45,20 +45,20 @@ func DataSourceTencentCloudDlcCheckDataEngineConfigPairsValidity() *schema.Resou
 			"image_version_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "ID major 版本 of the engine. If there is the ID minor 版本，only the ID minor 版本 needs to be input. If not，the latest ID minor 版本 under the major 版本 will be acquired。",
+				Description: "ID major 版本 的 引擎. 如果 there 是 ID minor 版本，仅 ID minor 版本 needs 到 是 input. 如果 不， latest ID minor 版本 under major 版本 将 是 acquired。",
 			},
 
 			"is_available": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Parameter validity: true: valid，false: at least one invalid parameter exists。",
+				Description: "Parameter validity: true: 有效，false: 在 least 一个 无效 参数 exists。",
 			},
 
 			"unavailable_config": {
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Invalid parameter set。",
+				Description: "Invalid 参数 集合。",
 			},
 
 			"result_output_file": {

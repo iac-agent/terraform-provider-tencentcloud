@@ -23,7 +23,7 @@ func DataSourceTencentCloudRumTawInstance() *schema.Resource {
 					Type: schema.TypeInt,
 				},
 				Optional:    true,
-				Description: "Billing status.",
+				Description: "Billing 状态.",
 			},
 
 			"charge_types": {
@@ -32,7 +32,7 @@ func DataSourceTencentCloudRumTawInstance() *schema.Resource {
 					Type: schema.TypeInt,
 				},
 				Optional:    true,
-				Description: "Billing type.",
+				Description: "Billing 类型.",
 			},
 
 			"area_ids": {
@@ -50,7 +50,7 @@ func DataSourceTencentCloudRumTawInstance() *schema.Resource {
 					Type: schema.TypeInt,
 				},
 				Optional:    true,
-				Description: "Instance status (`1`: creating; `2`: running; `3`: exceptional; `4`: restarting; `5`: stopping; `6`: stopped; `7`: terminating; `8`: terminated).",
+				Description: "实例 状态 (`1`: creating; `2`: running; `3`: exceptional; `4`: restarting; `5`: stopping; `6`: stopped; `7`: terminating; `8`: terminated).",
 			},
 
 			"instance_ids": {
@@ -59,19 +59,19 @@ func DataSourceTencentCloudRumTawInstance() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 
 			"instance_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Instance list.",
+				Description: "实例 列表.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance status (`1` = creating, `2` = running, `3` = exception, `4` = restarting, `5` = stopping, `6` = stopped, `7` = deleted).",
+							Description: "实例 状态 (`1` = creating, `2` = running, `3` = exception, `4` = restarting, `5` = stopping, `6` = stopped, `7` = 删除).",
 						},
 						"area_id": {
 							Type:        schema.TypeInt,
@@ -100,7 +100,7 @@ func DataSourceTencentCloudRumTawInstance() *schema.Resource {
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID.",
 						},
 						"cluster_id": {
 							Type:        schema.TypeInt,
@@ -110,37 +110,37 @@ func DataSourceTencentCloudRumTawInstance() *schema.Resource {
 						"instance_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance Desc.",
+							Description: "实例 Desc.",
 						},
 						"charge_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Billing status (`1` = in use, `2` = expired, `3` = destroyed, `4` = assigning, `5` = failed).",
+							Description: "Billing 状态 (`1` = 在 使用, `2` = expired, `3` = destroyed, `4` = assigning, `5` = failed).",
 						},
 						"charge_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Billing type (`1` = free version, `2` = prepaid, `3` = postpaid).",
+							Description: "Billing 类型 (`1` = free 版本, `2` = prepaid, `3` = postpaid).",
 						},
 						"updated_at": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Update time.",
+							Description: "Update 时间.",
 						},
 						"data_retention_days": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Data retention time (days).",
+							Description: "Data retention 时间 (days).",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance name.",
+							Description: "实例 名称.",
 						},
 						"created_at": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create time.",
+							Description: "Create 时间.",
 						},
 					},
 				},
@@ -149,7 +149,7 @@ func DataSourceTencentCloudRumTawInstance() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

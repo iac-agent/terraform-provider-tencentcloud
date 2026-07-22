@@ -43,14 +43,14 @@ func ResourceTencentCloudCssSnapshotRuleAttachment() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The streaming 路径 is consistent with the AppName in the streaming and playback addresses. The 默认为 live。",
+				Description: "streaming 路径 是 consistent 使用 AppName 在 streaming 和 playback addresses. 默认为 live。",
 			},
 
 			"stream_name": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Stream 名称 Note: If this parameter is set to a non empty string，the rule will only work on this streaming。",
+				Description: "Stream 名称 注意: 如果 此 参数 是 集合 到 non 空 字符串， 规则 将 仅 work 在 此 streaming。",
 			},
 		},
 	}

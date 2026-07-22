@@ -57,22 +57,22 @@ func DataSourceTencentCloudAPIGatewayUsagePlans() *schema.Resource {
 						"max_request_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total 数量 requests allowed. Valid 值 formats: `-1`，`[1,99999999]`. The 默认值为 -1，which 表示no 限制",
+							Description: "Total 数量 requests allowed. 有效 值 formats: `-1`，`[1,99999999]`. 默认值为 -1，其中 表示no 限制",
 						},
 						"max_request_num_pre_sec": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "限制 of requests per second. Valid values formats: `-1`，`[1,2000]`. The 默认值为 -1，which 表示no 限制",
+							Description: "限制 的 requests per second. 有效 值 formats: `-1`，`[1,2000]`. 默认值为 -1，其中 表示no 限制",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "最后修改时间 in the 格式 of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used。",
+							Description: "最后修改时间 在 格式 的 `YYYY-MM-DDThh:mm:ssZ` according 到 ISO 8601 standard. UTC 时间 是 使用。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 in the 格式 of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used。",
+							Description: "创建时间 在 格式 的 `YYYY-MM-DDThh:mm:ssZ` according 到 ISO 8601 standard. UTC 时间 是 使用。",
 						},
 					},
 				},

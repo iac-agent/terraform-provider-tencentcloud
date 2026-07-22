@@ -26,7 +26,7 @@ func DataSourceTencentCloudAuditCosRegions() *schema.Resource {
 			"audit_cos_region_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "列表 available regions supported by audit cos。",
+				Description: "列表 可用 regions 支持 通过 audit cos。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cos_region": {

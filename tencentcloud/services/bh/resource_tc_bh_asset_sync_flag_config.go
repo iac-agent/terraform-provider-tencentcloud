@@ -32,7 +32,7 @@ func ResourceTencentCloudBhAssetSyncFlagConfig() *schema.Resource {
 			"role_granted": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "是否role has been authorized，false - not authorized，true - authorized。",
+				Description: "是否role has been authorized，false - 不 authorized，true - authorized。",
 			},
 		},
 	}

@@ -19,13 +19,13 @@ func DataSourceTencentCloudVpcClassicLinkInstances() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter conditions.`vpc-id` - String - (Filter condition) The VPC 实例 ID `vm-ip` - String - (Filter condition) The IP 地址 of the CVM on the basic network。",
+				Description: "过滤器 conditions.`vpc-ID` - String - (过滤器 condition) VPC 实例 ID `vm-ip` - String - (过滤器 condition) IP 地址 的 CVM 在 basic 网络。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The attribute 名称 If more than one Filter exists，the logical relation between these Filters is `AND`。",
+							Description: "attribute 名称 如果 more 比 一个 过滤器 exists， logical relation between these Filters 是 `AND`。",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -33,7 +33,7 @@ func DataSourceTencentCloudVpcClassicLinkInstances() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "The attribute 值 If there are multiple Values for one Filter，the logical relation between these Values under the same Filter is `OR`。",
+							Description: "attribute 值 如果 there 是 多个 Values 对于 一个 过滤器， logical relation between these Values under same 过滤器 是 `OR`。",
 						},
 					},
 				},
@@ -42,7 +42,7 @@ func DataSourceTencentCloudVpcClassicLinkInstances() *schema.Resource {
 			"classic_link_instance_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Classiclink instance。",
+				Description: "Classiclink 实例。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
@@ -53,7 +53,7 @@ func DataSourceTencentCloudVpcClassicLinkInstances() *schema.Resource {
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The unique ID CVM instance。",
+							Description: "唯一 ID CVM 实例。",
 						},
 					},
 				},

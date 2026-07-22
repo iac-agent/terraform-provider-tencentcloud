@@ -26,7 +26,7 @@ func DataSourceTencentCloudTcrImages() *schema.Resource {
 			"namespace_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "namespace 名称",
+				Description: "命名空间 名称",
 			},
 
 			"repository_name": {
@@ -38,25 +38,25 @@ func DataSourceTencentCloudTcrImages() *schema.Resource {
 			"image_version": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "image 版本 名称，默认为 fuzzy match。",
+				Description: "镜像 版本 名称，默认为 fuzzy match。",
 			},
 
 			"digest": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "指定image digest for lookup。",
+				Description: "指定image digest 对于 lookup。",
 			},
 
 			"exact_match": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "指定whether it is an exact match，true is an exact match，and not filled is a fuzzy match。",
+				Description: "指定whether 它 是 exact match，true 是 exact match，和 不 filled 是 fuzzy match。",
 			},
 
 			"image_info_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "container image information list。",
+				Description: "容器 镜像 信息 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"digest": {
@@ -67,7 +67,7 @@ func DataSourceTencentCloudTcrImages() *schema.Resource {
 						"size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "image size (unit: byte)。",
+							Description: "镜像 大小 (单位: byte)。",
 						},
 						"image_version": {
 							Type:        schema.TypeString,
@@ -82,12 +82,12 @@ func DataSourceTencentCloudTcrImages() *schema.Resource {
 						"kind": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "产品类型,note: this field may return null，indicating that no valid 值 can be obtained。",
+							Description: "产品类型,note: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"kms_signature": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "kms 签名 information,note: this field may return null，indicating that no valid 值 can be obtained。",
+							Description: "kms 签名 信息,note: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 					},
 				},

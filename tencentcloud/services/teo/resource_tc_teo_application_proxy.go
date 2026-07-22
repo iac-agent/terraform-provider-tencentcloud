@@ -70,14 +70,14 @@ func ResourceTencentCloudTeoApplicationProxy() *schema.Resource {
 			"proxy_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "When `ProxyType` is hostname，`ProxyName` is the 域名 or subdomain 名称When `ProxyType` is instance，`ProxyName` is 名称 proxy application。",
+				Description: "当 `ProxyType` 是 hostname，`ProxyName` 是 域名 或 subdomain 名称When `ProxyType` 是 实例，`ProxyName` 是 名称 proxy 应用。",
 			},
 
 			"proxy_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Layer 4 proxy 模式 Valid values:- `hostname`: subdomain 模式- `instance`: instance 模式",
+				Description: "Layer 4 proxy 模式 有效 值:- `hostname`: subdomain 模式- `实例`: 实例 模式",
 			},
 
 			"plat_type": {
@@ -95,7 +95,7 @@ func ResourceTencentCloudTeoApplicationProxy() *schema.Resource {
 			"security_type": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "- `0`: Disable security protection.- `1`: Enable security protection。",
+				Description: "- `0`: Disable 安全 protection.- `1`: Enable 安全 protection。",
 			},
 
 			"accelerate_type": {
@@ -108,14 +108,14 @@ func ResourceTencentCloudTeoApplicationProxy() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Session persistence duration. 取值范围：30-3600 (in seconds)，默认值为 600。",
+				Description: "Session persistence 时长. 取值范围：30-3600 (在 秒)，默认值为 600。",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "状态 this application proxy. Valid values to set is `online` and `offline`.- `online`: Enable.- `offline`: Disable.- `progress`: Deploying.- `stopping`: Deactivating.- `fail`: Deploy or deactivate failed。",
+				Description: "状态 此 应用 proxy. 有效 值 到 集合 是 `online` 和 `offline`.- `online`: Enable.- `offline`: Disable.- `progress`: Deploying.- `stopping`: Deactivating.- `fail`: Deploy 或 deactivate failed。",
 			},
 
 			"ban_status": {
@@ -130,13 +130,13 @@ func ResourceTencentCloudTeoApplicationProxy() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Computed:    true,
-				Description: "Scheduling information。",
+				Description: "Scheduling 信息。",
 			},
 
 			"host_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "When `ProxyType` is hostname，this field is the ID subdomain。",
+				Description: "当 `ProxyType` 是 hostname，此 字段 是 ID subdomain。",
 			},
 
 			"ipv6": {
@@ -144,13 +144,13 @@ func ResourceTencentCloudTeoApplicationProxy() *schema.Resource {
 				MaxItems:    1,
 				Optional:    true,
 				Computed:    true,
-				Description: "IPv6 access configuration。",
+				Description: "IPv6 访问 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "- `on`: Enable.- `off`: Disable。",
+							Description: "- `在`: Enable.- `关闭`: Disable。",
 						},
 					},
 				},

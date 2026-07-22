@@ -36,22 +36,22 @@ func DataSourceTencentCloudElasticsearchViews() *schema.Resource {
 						"visible": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "是否cluster is visible。",
+							Description: "是否cluster 是 visible。",
 						},
 						"break": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "是否cluster is broken or not。",
+							Description: "是否cluster 是 broken 或 不。",
 						},
 						"avg_disk_usage": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Average disk utilization。",
+							Description: "Average 磁盘 utilization。",
 						},
 						"avg_mem_usage": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Average memory utilization。",
+							Description: "Average 内存 utilization。",
 						},
 						"avg_cpu_usage": {
 							Type:        schema.TypeFloat,
@@ -61,7 +61,7 @@ func DataSourceTencentCloudElasticsearchViews() *schema.Resource {
 						"total_disk_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total storage size of cluster。",
+							Description: "Total 存储 大小 的 集群。",
 						},
 						"target_node_types": {
 							Type: schema.TypeSet,
@@ -69,7 +69,7 @@ func DataSourceTencentCloudElasticsearchViews() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Client request node。",
+							Description: "Client 请求 节点。",
 						},
 						"node_num": {
 							Type:        schema.TypeInt,
@@ -84,12 +84,12 @@ func DataSourceTencentCloudElasticsearchViews() *schema.Resource {
 						"data_node_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 data nodes。",
+							Description: "数量 数据 nodes。",
 						},
 						"index_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "索引 number。",
+							Description: "索引 数量。",
 						},
 						"doc_num": {
 							Type:        schema.TypeInt,
@@ -99,47 +99,47 @@ func DataSourceTencentCloudElasticsearchViews() *schema.Resource {
 						"disk_used_in_bytes": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Bytes used on disk。",
+							Description: "Bytes 使用 在 磁盘。",
 						},
 						"shard_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Shard number。",
+							Description: "Shard 数量。",
 						},
 						"primary_shard_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Primary shard number。",
+							Description: "Primary 分片 数量。",
 						},
 						"relocating_shard_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Relocating shard number。",
+							Description: "Relocating 分片 数量。",
 						},
 						"initializing_shard_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Initializing shard number。",
+							Description: "Initializing 分片 数量。",
 						},
 						"unassigned_shard_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Unassigned shard number。",
+							Description: "Unassigned 分片 数量。",
 						},
 						"total_cos_storage": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Storage capacity of COS Enterprise Edition (in GB)。",
+							Description: "Storage 容量 的 COS Enterprise Edition (在 GB)。",
 						},
 						"searchable_snapshot_cos_bucket": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Enterprise cluster searchable 存储桶名称 stored in snapshot cos。",
+							Description: "Enterprise 集群 searchable 存储桶名称 stored 在 快照 cos。",
 						},
 						"searchable_snapshot_cos_app_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Enterprise cluster can search the appid to which snapshot cos belongs。",
+							Description: "Enterprise 集群 可以 search appid 到 其中 快照 cos belongs。",
 						},
 					},
 				},
@@ -154,7 +154,7 @@ func DataSourceTencentCloudElasticsearchViews() *schema.Resource {
 						"node_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Node id。",
+							Description: "Node ID。",
 						},
 						"node_ip": {
 							Type:        schema.TypeString,
@@ -164,7 +164,7 @@ func DataSourceTencentCloudElasticsearchViews() *schema.Resource {
 						"visible": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "是否node is visible。",
+							Description: "是否node 是 visible。",
 						},
 						"break": {
 							Type:        schema.TypeFloat,
@@ -174,7 +174,7 @@ func DataSourceTencentCloudElasticsearchViews() *schema.Resource {
 						"disk_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total disk size of node。",
+							Description: "Total 磁盘 大小 的 节点。",
 						},
 						"disk_usage": {
 							Type:        schema.TypeFloat,
@@ -184,7 +184,7 @@ func DataSourceTencentCloudElasticsearchViews() *schema.Resource {
 						"mem_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Node memory size (in GB)。",
+							Description: "Node 内存 大小 (在 GB)。",
 						},
 						"mem_usage": {
 							Type:        schema.TypeFloat,
@@ -194,7 +194,7 @@ func DataSourceTencentCloudElasticsearchViews() *schema.Resource {
 						"cpu_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "CPU number。",
+							Description: "CPU 数量。",
 						},
 						"cpu_usage": {
 							Type:        schema.TypeFloat,
@@ -219,12 +219,12 @@ func DataSourceTencentCloudElasticsearchViews() *schema.Resource {
 						"jvm_mem_usage": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "JVM memory usage。",
+							Description: "JVM 内存 usage。",
 						},
 						"shard_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 node fragments。",
+							Description: "数量 节点 fragments。",
 						},
 						"disk_ids": {
 							Type: schema.TypeSet,
@@ -232,7 +232,7 @@ func DataSourceTencentCloudElasticsearchViews() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "列表 disk ID on the node。",
+							Description: "列表 磁盘 ID 在 节点。",
 						},
 						"hidden": {
 							Type:        schema.TypeBool,
@@ -242,7 +242,7 @@ func DataSourceTencentCloudElasticsearchViews() *schema.Resource {
 						"is_coordination_node": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否act as a coordinator node or not。",
+							Description: "是否act 作为 coordinator 节点 或 不。",
 						},
 					},
 				},
@@ -257,12 +257,12 @@ func DataSourceTencentCloudElasticsearchViews() *schema.Resource {
 						"ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Kibana node ip。",
+							Description: "Kibana 节点 ip。",
 						},
 						"disk_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Disk size。",
+							Description: "Disk 大小。",
 						},
 						"disk_usage": {
 							Type:        schema.TypeFloat,
@@ -272,7 +272,7 @@ func DataSourceTencentCloudElasticsearchViews() *schema.Resource {
 						"mem_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Node memory size。",
+							Description: "Node 内存 大小。",
 						},
 						"mem_usage": {
 							Type:        schema.TypeFloat,
@@ -282,7 +282,7 @@ func DataSourceTencentCloudElasticsearchViews() *schema.Resource {
 						"cpu_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "CPU number。",
+							Description: "CPU 数量。",
 						},
 						"cpu_usage": {
 							Type:        schema.TypeFloat,
@@ -297,7 +297,7 @@ func DataSourceTencentCloudElasticsearchViews() *schema.Resource {
 						"node_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Node id。",
+							Description: "Node ID。",
 						},
 					},
 				},

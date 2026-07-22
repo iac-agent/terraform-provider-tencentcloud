@@ -25,7 +25,7 @@ func DataSourceTencentCloudCcnRouteTableInputPolicies() *schema.Resource {
 			"route_table_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "CCN Route table ID。",
+				Description: "CCN Route 表 ID。",
 			},
 
 			"policy_version": {
@@ -37,7 +37,7 @@ func DataSourceTencentCloudCcnRouteTableInputPolicies() *schema.Resource {
 			"policy_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Policy set。",
+				Description: "Policy 集合。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"policys": {
@@ -60,7 +60,7 @@ func DataSourceTencentCloudCcnRouteTableInputPolicies() *schema.Resource {
 												"values": {
 													Type:        schema.TypeSet,
 													Required:    true,
-													Description: "列表 conditional values。",
+													Description: "列表 conditional 值。",
 													Elem: &schema.Schema{
 														Type: schema.TypeString,
 													},
@@ -86,12 +86,12 @@ func DataSourceTencentCloudCcnRouteTableInputPolicies() *schema.Resource {
 									"operate_as_path": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "as-路径 operate",
+										Description: "作为-路径 operate",
 									},
 									"as_path_operate_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "as-路径 operate 模式",
+										Description: "作为-路径 operate 模式",
 									},
 								},
 							},

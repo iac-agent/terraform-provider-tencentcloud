@@ -29,28 +29,28 @@ func ResourceTencentCloudDbbrainSecurityAuditLogExportTask() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "security audit group id.",
+				Description: "安全 audit 组 ID.",
 			},
 
 			"start_time": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "start time.",
+				Description: "start 时间.",
 			},
 
 			"end_time": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "end time.",
+				Description: "end 时间.",
 			},
 
 			"product": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "product, optional value is mysql.",
+				Description: "product, 可选 值 是 mysql.",
 			},
 
 			"danger_levels": {
@@ -60,13 +60,13 @@ func ResourceTencentCloudDbbrainSecurityAuditLogExportTask() *schema.Resource {
 				},
 				Optional:    true,
 				ForceNew:    true,
-				Description: "List of log risk levels, supported values include: 0 no risk; 1 low risk; 2 medium risk; 3 high risk.",
+				Description: "List 的 日志 risk levels, 支持 值 include: 0 无 risk; 1 low risk; 2 medium risk; 3 high risk.",
 			},
 
 			"async_request_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "request of async id.",
+				Description: "请求 的 async ID.",
 			},
 		},
 	}

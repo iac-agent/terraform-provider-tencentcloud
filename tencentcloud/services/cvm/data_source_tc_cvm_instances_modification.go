@@ -23,18 +23,18 @@ func DataSourceTencentCloudCvmInstancesModification() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "One or more instance ID to be queried. It can be obtained from the 实例 ID in the returned 值 of API DescribeInstances. The 最大instances in batch for each request is 20。",
+				Description: "One 或 more 实例 ID 到 是 queried. It 可以 是 获取 从 实例 ID 在 返回 值 的 API DescribeInstances. 最大instances 在 batch 对于 each 请求 是 20。",
 			},
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "The upper 限制 of Filters for each request is 10 and the upper 限制 for Filter.Values is 2。",
+				Description: "upper 限制 的 Filters 对于 each 请求 是 10 和 upper 限制 对于 过滤器.Values 是 2。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Fields to be filtered。",
+							Description: "Fields 到 是 filtered。",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -42,7 +42,7 @@ func DataSourceTencentCloudCvmInstancesModification() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "值 of the field。",
+							Description: "值 的 字段。",
 						},
 					},
 				},
@@ -57,7 +57,7 @@ func DataSourceTencentCloudCvmInstancesModification() *schema.Resource {
 			"instance_type_config_status_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The 列表 model configurations that can be adjusted by the instance。",
+				Description: "列表 model configurations 该 可以 是 adjusted 通过 实例。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"status": {
@@ -68,12 +68,12 @@ func DataSourceTencentCloudCvmInstancesModification() *schema.Resource {
 						"message": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "状态 描述 information。",
+							Description: "状态 描述 信息。",
 						},
 						"instance_type_config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Configuration information。",
+							Description: "Configuration 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"zone": {
@@ -89,27 +89,27 @@ func DataSourceTencentCloudCvmInstancesModification() *schema.Resource {
 									"instance_family": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance family。",
+										Description: "实例 family。",
 									},
 									"gpu": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The 数量 GPU kernels，in cores。",
+										Description: "数量 GPU kernels，在 cores。",
 									},
 									"cpu": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The 数量 CPU kernels，in cores。",
+										Description: "数量 CPU kernels，在 cores。",
 									},
 									"memory": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Memory capacity (in GB)。",
+										Description: "Memory 容量 (在 GB)。",
 									},
 									"fpga": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The 数量 FPGA kernels，in cores。",
+										Description: "数量 FPGA kernels，在 cores。",
 									},
 								},
 							},

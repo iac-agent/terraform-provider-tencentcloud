@@ -36,31 +36,31 @@ func ResourceTencentCloudMonitorTmpTkeRecordRuleYaml() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateYaml,
-				Description:  "Contents of record rules in yaml 格式",
+				Description:  "Contents 的 记录 规则 在 yaml 格式",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "名称 instance。",
+				Description: "名称 实例。",
 			},
 
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "最后修改时间 of record rule。",
+				Description: "最后修改时间 的 记录 规则。",
 			},
 
 			"template_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "用于the argument，if the configuration comes to the template，the template id。",
+				Description: "用于the argument，如果 配置 comes 到 template， template ID。",
 			},
 
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "An ID identify the cluster，like cls-xxxxxx。",
+				Description: "An ID identify 集群，like cls-xxxxxx。",
 			},
 		},
 	}

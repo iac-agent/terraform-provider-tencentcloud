@@ -30,7 +30,7 @@ func ResourceTencentCloudTdmqRole() *schema.Resource {
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The ID tdmq cluster。",
+				Description: "ID tdmq 集群。",
 			},
 			"remark": {
 				Type:        schema.TypeString,
@@ -41,7 +41,7 @@ func ResourceTencentCloudTdmqRole() *schema.Resource {
 				Type:        schema.TypeString,
 				Computed:    true,
 				Sensitive:   true,
-				Description: "角色 令牌 This field is returned by the API and 用于authentication。",
+				Description: "角色 令牌 此 字段 是 返回 通过 API 和 用于authentication。",
 			},
 		},
 	}

@@ -23,7 +23,7 @@ func ResourceTencentCloudLighthouseRenewDisk() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "列表 disk ID。",
+				Description: "列表 磁盘 ID。",
 			},
 
 			"renew_disk_charge_prepaid": {
@@ -31,7 +31,7 @@ func ResourceTencentCloudLighthouseRenewDisk() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Renew cloud hard disk subscription related parameter settings。",
+				Description: "Renew 云 hard 磁盘 subscription related 参数 settings。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"period": {
@@ -42,17 +42,17 @@ func ResourceTencentCloudLighthouseRenewDisk() *schema.Resource {
 						"renew_flag": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Automatic renewal falg. 值:NOTIFY_AND_AUTO_RENEW: Notice expires and auto-renews.NOTIFY_AND_MANUAL_RENEW: Notification expires without automatic renewal，users need to manually renew.DISABLE_NOTIFY_AND_AUTO_RENEW: No automatic renewal and no notification.默认值：NOTIFY_AND_MANUAL_RENEW. If this parameter is specified as NOTIFY_AND_AUTO_RENEW，the disk will be automatically renewed monthly when the 账号 balance is sufficient。",
+							Description: "Automatic renewal falg. 值:NOTIFY_AND_AUTO_RENEW: Notice expires 和 auto-renews.NOTIFY_AND_MANUAL_RENEW: Notification expires without automatic renewal，users need 到 manually renew.DISABLE_NOTIFY_AND_AUTO_RENEW: No automatic renewal 和 无 通知.默认值：NOTIFY_AND_MANUAL_RENEW. 如果 此 参数 是 指定 作为 NOTIFY_AND_AUTO_RENEW， 磁盘 将 是 automatically renewed monthly 当 账号 balance 是 sufficient。",
 						},
 						"time_unit": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "newly purchased unit. 默认值：m。",
+							Description: "newly purchased 单位. 默认值：m。",
 						},
 						"cur_instance_deadline": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Current instance 过期时间. Such as 2018-01-01 00:00:00. Specifying this parameter can align the 过期时间 of the instance attached to the disk. One of this parameter and 周期 must be specified，and cannot be specified at the same time。",
+							Description: "Current 实例 过期时间. Such 作为 2018-01-01 00:00:00. Specifying 此 参数 可以 align 过期时间 的 实例 attached 到 磁盘. One 的 此 参数 和 周期 必须 是 指定，和 不能 是 指定 在 same 时间。",
 						},
 					},
 				},
@@ -62,7 +62,7 @@ func ResourceTencentCloudLighthouseRenewDisk() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "是否automatically use the voucher. Not used by default。",
+				Description: "是否automatically 使用 voucher. Not 使用 通过 默认值。",
 			},
 		},
 	}

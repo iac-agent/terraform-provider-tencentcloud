@@ -39,7 +39,7 @@ func ResourceTencentCloudCvmHpcCluster() *schema.Resource {
 			"remark": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "备注 of Hpc Cluster。",
+				Description: "备注 的 Hpc Cluster。",
 			},
 		},
 	}

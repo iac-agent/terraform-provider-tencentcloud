@@ -36,7 +36,7 @@ func DataSourceTencentCloudWedataListDatabase() *schema.Resource {
 			"items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Database record list。",
+				Description: "Database 记录 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"guid": {
@@ -67,7 +67,7 @@ func DataSourceTencentCloudWedataListDatabase() *schema.Resource {
 						"storage_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Database storage size。",
+							Description: "Database 存储 大小。",
 						},
 					},
 				},

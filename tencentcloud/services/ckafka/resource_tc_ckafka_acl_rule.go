@@ -37,28 +37,28 @@ func ResourceTencentCloudCkafkaAclRule() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Acl 资源类型，currently only supports Topic，enumeration 值 list{Topic}。",
+				Description: "Acl 资源类型，currently 仅 支持 Topic，enumeration 值 列表{Topic}。",
 			},
 
 			"pattern_type": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Match 类型，currently supports prefix matching and preset strategy，enumeration 值 list{PREFIXED/PRESET}。",
+				Description: "Match 类型，currently 支持 prefix matching 和 preset strategy，enumeration 值 列表{PREFIXED/PRESET}。",
 			},
 
 			"rule_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "rule 名称",
+				Description: "规则 名称",
 			},
 
 			"rule_list": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "列表 configured ACL rules。",
+				Description: "列表 已配置 ACL 规则。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"operation": {
@@ -71,19 +71,19 @@ func ResourceTencentCloudCkafkaAclRule() *schema.Resource {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "permission 类型，(Deny|Allow)。",
+							Description: "权限 类型，(Deny|Allow)。",
 						},
 						"host": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "The 默认为 *，which means that any 主机 can be accessed. Currently，ckafka does not support 主机 and ip network segment。",
+							Description: "默认为 *，其中 表示 该 any 主机 可以 是 accessed. Currently，ckafka does 不 support 主机 和 ip 网络 segment。",
 						},
 						"principal": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "用户 list，the 默认为 用户:，which means that any 用户 can access，and the current 用户 can only be the 用户 included in the 用户 list. The input 格式 needs to be prefixed with [用户:]. For example，用户 A is passed in as 用户:A。",
+							Description: "用户 列表， 默认为 用户:，其中 表示 该 any 用户 可以 访问，和 当前 用户 可以 仅 是 用户 included 在 用户 列表. input 格式 needs 到 是 prefixed 使用 [用户:]. For 示例，用户 A 是 passed 在 作为 用户:A。",
 						},
 					},
 				},
@@ -93,13 +93,13 @@ func ResourceTencentCloudCkafkaAclRule() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "A 值 representing the prefix that the prefix matches。",
+				Description: "A 值 representing prefix 该 prefix matches。",
 			},
 
 			"is_applied": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "是否preset ACL rule is applied to the newly added topic。",
+				Description: "是否preset ACL 规则 是 applied 到 newly added 主题。",
 			},
 		},
 	}

@@ -19,37 +19,37 @@ func DataSourceTencentCloudCamAccountSummary() *schema.Resource {
 			"policies": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The 数量 policy。",
+				Description: "数量 策略。",
 			},
 
 			"roles": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The 数量 角色",
+				Description: "数量 角色",
 			},
 
 			"user": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The 数量 Sub-用户",
+				Description: "数量 Sub-用户",
 			},
 
 			"group": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The 数量 Group。",
+				Description: "数量 Group。",
 			},
 
 			"member": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The 数量 grouped users。",
+				Description: "数量 grouped users。",
 			},
 
 			"identity_providers": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The 数量 identity provider。",
+				Description: "数量 identity provider。",
 			},
 
 			"result_output_file": {

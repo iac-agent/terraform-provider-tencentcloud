@@ -24,7 +24,7 @@ func ResourceTencentCloudRedisReplicaReadonly() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID instance。",
+				Description: "ID 实例。",
 			},
 
 			"readonly_policy": {
@@ -33,14 +33,14 @@ func ResourceTencentCloudRedisReplicaReadonly() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Routing policy: Enter `master` or `replication`，which 表示master node or slave node。",
+				Description: "Routing 策略: Enter `master` 或 `复制`，其中 表示master 节点 或 slave 节点。",
 			},
 
 			"operate": {
 				Required:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"enable", "disable"}),
-				Description:  "The replica is read-only，`enable` - enable read-write splitting，`disable`- disable read-write splitting。",
+				Description:  "副本 是 read-仅，`启用` - 启用 read-write splitting，`disable`- disable read-write splitting。",
 			},
 		},
 	}

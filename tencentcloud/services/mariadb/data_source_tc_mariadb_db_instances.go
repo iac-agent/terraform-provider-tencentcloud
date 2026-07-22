@@ -24,7 +24,7 @@ func DataSourceTencentCloudMariadbDbInstances() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "instance ids。",
+				Description: "实例 ids。",
 			},
 
 			"project_ids": {
@@ -33,13 +33,13 @@ func DataSourceTencentCloudMariadbDbInstances() *schema.Resource {
 					Type: schema.TypeInt,
 				},
 				Optional:    true,
-				Description: "project ids。",
+				Description: "项目 ids。",
 			},
 
 			"search_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "实例名称 or VIP",
+				Description: "实例名称 或 VIP",
 			},
 
 			"vpc_id": {
@@ -57,7 +57,7 @@ func DataSourceTencentCloudMariadbDbInstances() *schema.Resource {
 			"instances": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "instances info。",
+				Description: "实例 info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
@@ -83,17 +83,17 @@ func DataSourceTencentCloudMariadbDbInstances() *schema.Resource {
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "available 可用区",
+							Description: "可用 可用区",
 						},
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "meory of instance。",
+							Description: "meory 的 实例。",
 						},
 						"storage": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "storage of instance。",
+							Description: "存储 的 实例。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
@@ -108,7 +108,7 @@ func DataSourceTencentCloudMariadbDbInstances() *schema.Resource {
 						"db_version_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "db 版本 id。",
+							Description: "db 版本 ID。",
 						},
 						"vip": {
 							Type:        schema.TypeString,
@@ -123,7 +123,7 @@ func DataSourceTencentCloudMariadbDbInstances() *schema.Resource {
 						"internet_domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Public network access 域名 名称",
+							Description: "Public 网络 访问 域名 名称",
 						},
 						"internet_ip": {
 							Type:        schema.TypeString,
@@ -133,12 +133,12 @@ func DataSourceTencentCloudMariadbDbInstances() *schema.Resource {
 						"internet_port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Public network 端口",
+							Description: "Public 网络 端口",
 						},
 						"resource_tags": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "resource 标签",
+							Description: "资源 标签",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {

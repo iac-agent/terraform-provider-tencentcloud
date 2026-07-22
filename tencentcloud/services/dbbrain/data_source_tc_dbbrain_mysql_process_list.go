@@ -20,67 +20,67 @@ func DataSourceTencentCloudDbbrainMysqlProcessList() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID.",
 			},
 
 			"id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "thread ID, used to filter the thread list.",
+				Description: "thread ID, 使用 到 过滤器 thread 列表.",
 			},
 
 			"user": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The operating account name of the thread, used to filter the thread list.",
+				Description: "operating account 名称 的 thread, 使用 到 过滤器 thread 列表.",
 			},
 
 			"host": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The operating host address of the thread, used to filter the thread list.",
+				Description: "operating 主机 地址 的 thread, 使用 到 过滤器 thread 列表.",
 			},
 
 			"db": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The threads operations database, used to filter the thread list.",
+				Description: "threads operations 数据库, 使用 到 过滤器 thread 列表.",
 			},
 
 			"state": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The operational state of the thread, used to filter the thread list.",
+				Description: "operational state 的 thread, 使用 到 过滤器 thread 列表.",
 			},
 
 			"command": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The execution type of the thread, used to filter the thread list.",
+				Description: "execution 类型 的 thread, 使用 到 过滤器 thread 列表.",
 			},
 
 			"time": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The minimum value of the operation duration of a thread, in seconds, used to filter the list of threads whose operation duration is longer than this value.",
+				Description: "最小 值 的 operation 时长 的 thread, 在 秒, 使用 到 过滤器 列表 的 threads whose operation 时长 是 longer 比 此 值.",
 			},
 
 			"info": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The threads operation statement is used to filter the thread list.",
+				Description: "threads operation statement 是 使用 到 过滤器 thread 列表.",
 			},
 
 			"product": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Service product type, supported values: `mysql` - cloud database MySQL; `cynosdb` - cloud database TDSQL-C for MySQL, the default is `mysql`.",
+				Description: "Service product 类型, 支持 值: `mysql` - 云 数据库 MySQL; `cynosdb` - 云 数据库 TDSQL-C 对于 MySQL, 默认值 是 `mysql`.",
 			},
 
 			"process_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Live thread list.",
+				Description: "Live thread 列表.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
@@ -91,37 +91,37 @@ func DataSourceTencentCloudDbbrainMysqlProcessList() *schema.Resource {
 						"user": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The operating account name of the thread.",
+							Description: "operating account 名称 的 thread.",
 						},
 						"host": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The operating host address of the thread.",
+							Description: "operating 主机 地址 的 thread.",
 						},
 						"db": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The thread that operates the database.",
+							Description: "thread 该 operates 数据库.",
 						},
 						"state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The operational state of the thread.",
+							Description: "operational state 的 thread.",
 						},
 						"command": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The execution type of the thread.",
+							Description: "execution 类型 的 thread.",
 						},
 						"time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The operation duration of the thread, in seconds.",
+							Description: "operation 时长 的 thread, 在 秒.",
 						},
 						"info": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The operation statement for the thread.",
+							Description: "operation statement 对于 thread.",
 						},
 					},
 				},
@@ -130,7 +130,7 @@ func DataSourceTencentCloudDbbrainMysqlProcessList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

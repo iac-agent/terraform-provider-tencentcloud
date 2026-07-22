@@ -20,7 +20,7 @@ func DataSourceTencentCloudAPIGatewayUsagePlanEnvironments() *schema.Resource {
 			"usage_plan_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID usage plan to be queried。",
+				Description: "ID usage plan 到 是 queried。",
 			},
 			"bind_type": {
 				Type:         schema.TypeString,
@@ -44,47 +44,47 @@ func DataSourceTencentCloudAPIGatewayUsagePlanEnvironments() *schema.Resource {
 						"service_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 服务 ID",
+							Description: "服务 ID",
 						},
 						"service_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 服务名称",
+							Description: "服务名称",
 						},
 						"api_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The API ID，this 值 is empty if attach service。",
+							Description: "API ID，此 值 是 空 如果 attach 服务。",
 						},
 						"api_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The API 名称，this 值 is empty if attach service。",
+							Description: "API 名称，此 值 是 空 如果 attach 服务。",
 						},
 						"path": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The API 路径，this 值 is empty if attach service。",
+							Description: "API 路径，此 值 是 空 如果 attach 服务。",
 						},
 						"method": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The API method，this 值 is empty if attach service。",
+							Description: "API 方法，此 值 是 空 如果 attach 服务。",
 						},
 						"environment": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The environment 名称",
+							Description: "环境 名称",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "最后修改时间 in the 格式 of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used。",
+							Description: "最后修改时间 在 格式 的 `YYYY-MM-DDThh:mm:ssZ` according 到 ISO 8601 standard. UTC 时间 是 使用。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 in the 格式 of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used。",
+							Description: "创建时间 在 格式 的 `YYYY-MM-DDThh:mm:ssZ` according 到 ISO 8601 standard. UTC 时间 是 使用。",
 						},
 					},
 				},

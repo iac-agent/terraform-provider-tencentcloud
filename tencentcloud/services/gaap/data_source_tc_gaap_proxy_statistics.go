@@ -19,7 +19,7 @@ func DataSourceTencentCloudGaapProxyStatistics() *schema.Resource {
 			"proxy_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Proxy Id。",
+				Description: "Proxy ID。",
 			},
 
 			"start_time": {
@@ -46,13 +46,13 @@ func DataSourceTencentCloudGaapProxyStatistics() *schema.Resource {
 			"granularity": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Monitoring granularity，currently supporting 60 300 3600 86400，（秒）。When the time range does not exceed 3 days，support a minimum granularity of 60 seconds;When the time range does not exceed 7 days，support a minimum granularity of 300 seconds;When the time range does not exceed 30 days，the minimum granularity supported is 3600 seconds。",
+				Description: "Monitoring granularity，currently supporting 60 300 3600 86400，（秒）。当 时间 范围 does 不 exceed 3 days，support 最小 granularity 的 60 秒;当 时间 范围 does 不 exceed 7 days，support 最小 granularity 的 300 秒;当 时间 范围 does 不 exceed 30 days， 最小 granularity 支持 是 3600 秒。",
 			},
 
 			"isp": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "操作者 (valid when the proxy is a three network proxy)，supports CMCC，CUCC，CTCC，and merges data from the three operators if null values are passed or not passed。",
+				Description: "操作者 (有效 当 proxy 是 three 网络 proxy)，支持 CMCC，CUCC，CTCC，和 merges 数据 从 three operators 如果 null 值 是 passed 或 不 passed。",
 			},
 
 			"statistics_data": {

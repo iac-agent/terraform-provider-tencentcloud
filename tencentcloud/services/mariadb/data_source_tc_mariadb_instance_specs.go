@@ -19,7 +19,7 @@ func DataSourceTencentCloudMariadbInstanceSpecs() *schema.Resource {
 			"specs": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "列表 instance specifications。",
+				Description: "列表 实例 specifications。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"machine": {
@@ -41,17 +41,17 @@ func DataSourceTencentCloudMariadbInstanceSpecs() *schema.Resource {
 									"memory": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "memory，（GB）。",
+										Description: "内存，（GB）。",
 									},
 									"min_storage": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "minimum storage size，（GB）。",
+										Description: "最小 存储 大小，（GB）。",
 									},
 									"max_storage": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "maximum storage size，（GB）。",
+										Description: "最大 存储 大小，（GB）。",
 									},
 									"suit_info": {
 										Type:        schema.TypeString,
@@ -61,17 +61,17 @@ func DataSourceTencentCloudMariadbInstanceSpecs() *schema.Resource {
 									"qps": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "maximum QPS。",
+										Description: "最大 QPS。",
 									},
 									"pid": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "product price id。",
+										Description: "product 价格 ID。",
 									},
 									"node_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "node count。",
+										Description: "节点 count。",
 									},
 									"cpu": {
 										Type:        schema.TypeInt,

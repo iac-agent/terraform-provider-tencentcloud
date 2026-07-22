@@ -21,17 +21,17 @@ func DataSourceTencentCloudCamRoles() *schema.Resource {
 			"role_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID CAM 角色 to be queried。",
+				Description: "ID CAM 角色 到 是 queried。",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The 描述 CAM 角色 to be queried。",
+				Description: "描述 CAM 角色 到 是 queried。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "名称 CAM policy to be queried。",
+				Description: "名称 CAM 策略 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -47,7 +47,7 @@ func DataSourceTencentCloudCamRoles() *schema.Resource {
 						"role_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Id of CAM 角色",
+							Description: "ID 的 CAM 角色",
 						},
 						"name": {
 							Type:        schema.TypeString,
@@ -57,7 +57,7 @@ func DataSourceTencentCloudCamRoles() *schema.Resource {
 						"document": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Policy document of CAM 角色",
+							Description: "Policy document 的 CAM 角色",
 						},
 						"description": {
 							Type:        schema.TypeString,
@@ -67,17 +67,17 @@ func DataSourceTencentCloudCamRoles() *schema.Resource {
 						"console_login": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Indicate 是否CAM 角色 can be login or not。",
+							Description: "Indicate 是否CAM 角色 可以 是 login 或 不。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 创建时间 of the CAM 角色",
+							Description: "创建时间 的 CAM 角色",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The last 更新时间 of the CAM 角色",
+							Description: "last 更新时间 的 CAM 角色",
 						},
 					},
 				},

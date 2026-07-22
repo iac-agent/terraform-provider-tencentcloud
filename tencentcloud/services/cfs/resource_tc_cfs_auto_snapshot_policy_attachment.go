@@ -28,14 +28,14 @@ func ResourceTencentCloudCfsAutoSnapshotPolicyAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "ID snapshot to be unbound。",
+				Description: "ID 快照 到 是 unbound。",
 			},
 
 			"file_system_ids": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "列表 IDs of the file systems to be unbound，separated by comma。",
+				Description: "列表 IDs 的 文件 systems 到 是 unbound，separated 通过 comma。",
 			},
 		},
 	}

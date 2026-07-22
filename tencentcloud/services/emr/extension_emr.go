@@ -42,13 +42,13 @@ func buildResourceSpecSchema() *schema.Schema {
 					Type:        schema.TypeString,
 					Optional:    true,
 					ForceNew:    true,
-					Description: "Node specification description, such as CVM.SA2.",
+					Description: "Node 规格 描述, such 作为 CVM.SA2.",
 				},
 				"storage_type": {
 					Type:     schema.TypeInt,
 					Optional: true,
 					ForceNew: true,
-					Description: "Storage type. Value range:\n" +
+					Description: "Storage 类型. Value 范围:\n" +
 						"	- 4: Represents cloud SSD;\n" +
 						"	- 5: Represents efficient cloud disk;\n" +
 						"	- 6: Represents enhanced SSD Cloud Block Storage;\n" +
@@ -59,7 +59,7 @@ func buildResourceSpecSchema() *schema.Schema {
 					Type:     schema.TypeString,
 					Optional: true,
 					ForceNew: true,
-					Description: "disk types. Value range:\n" +
+					Description: "磁盘 types. Value 范围:\n" +
 						"	- CLOUD_SSD: Represents cloud SSD;\n" +
 						"	- CLOUD_PREMIUM: Represents efficient cloud disk;\n" +
 						"	- CLOUD_BASIC: Represents Cloud Block Storage.",
@@ -68,32 +68,32 @@ func buildResourceSpecSchema() *schema.Schema {
 					Type:        schema.TypeInt,
 					Optional:    true,
 					ForceNew:    true,
-					Description: "Memory size in M.",
+					Description: "Memory 大小 在 M.",
 				},
 				"cpu": {
 					Type:        schema.TypeInt,
 					Optional:    true,
 					ForceNew:    true,
-					Description: "Number of CPU cores.",
+					Description: "Number 的 CPU cores.",
 				},
 				"disk_size": {
 					Type:        schema.TypeInt,
 					Optional:    true,
 					ForceNew:    true,
-					Description: "Data disk capacity.",
+					Description: "Data 磁盘 容量.",
 				},
 				"root_size": {
 					Type:        schema.TypeInt,
 					Optional:    true,
 					ForceNew:    true,
-					Description: "Root disk capacity.",
+					Description: "Root 磁盘 容量.",
 				},
 				"multi_disks": {
 					Type:        schema.TypeSet,
 					Optional:    true,
 					Computed:    true,
 					ForceNew:    true,
-					Description: "Cloud disk list. When the data disk is a cloud disk, use disk_type and disk_size parameters directly, and use multi_disks for excess parts.",
+					Description: "Cloud 磁盘 列表. 当 数据 磁盘 是 云 磁盘, 使用 disk_type 和 disk_size 参数 directly, 和 使用 multi_disks 对于 excess parts.",
 					Elem: &schema.Resource{
 						Schema: map[string]*schema.Schema{
 							"disk_type": {
@@ -104,7 +104,7 @@ func buildResourceSpecSchema() *schema.Schema {
 								Elem: &schema.Schema{
 									Type: schema.TypeString,
 								},
-								Description: "Cloud disk type\n" +
+								Description: "Cloud 磁盘 类型\n" +
 									"	- CLOUD_SSD: Represents cloud SSD;\n" +
 									"	- CLOUD_PREMIUM: Represents efficient cloud disk;\n" +
 									"	- CLOUD_HSSD: Represents enhanced SSD Cloud Block Storage.",
@@ -114,14 +114,14 @@ func buildResourceSpecSchema() *schema.Schema {
 								Optional:    true,
 								ForceNew:    true,
 								Computed:    true,
-								Description: "Cloud disk size.",
+								Description: "Cloud 磁盘 大小.",
 							},
 							"count": {
 								Type:        schema.TypeInt,
 								Optional:    true,
 								ForceNew:    true,
 								Computed:    true,
-								Description: "Number of cloud disks of this type.",
+								Description: "Number 的 云 disks 的 此 类型.",
 							},
 						},
 					},

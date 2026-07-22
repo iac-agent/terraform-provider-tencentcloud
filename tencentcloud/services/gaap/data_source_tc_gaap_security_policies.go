@@ -16,7 +16,7 @@ func DataSourceTencentCloudGaapSecurityPolices() *schema.Resource {
 			"id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID security policy to be queried。",
+				Description: "ID 安全 策略 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -33,12 +33,12 @@ func DataSourceTencentCloudGaapSecurityPolices() *schema.Resource {
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "状态 security policy。",
+				Description: "状态 安全 策略。",
 			},
 			"action": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Default policy。",
+				Description: "Default 策略。",
 			},
 		},
 	}

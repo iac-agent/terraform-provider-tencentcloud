@@ -34,27 +34,27 @@ func ResourceTencentCloudCamRolePolicyAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID policy。",
+				Description: "ID 策略。",
 			},
 			"create_mode": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "模式 of Creation of the CAM 角色 policy attachment. `1` means the CAM policy attachment is created by production，and the others indicate syntax strategy ways。",
+				Description: "模式 的 Creation 的 CAM 角色 策略 attachment. `1` 表示 CAM 策略 attachment 是 创建 通过 production，和 others indicate syntax strategy ways。",
 			},
 			"policy_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "类型 policy strategy. `用户` means customer strategy and `QCS` means preset strategy。",
+				Description: "类型 策略 strategy. `用户` 表示 customer strategy 和 `QCS` 表示 preset strategy。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The 创建时间 of the CAM 角色 policy attachment。",
+				Description: "创建时间 的 CAM 角色 策略 attachment。",
 			},
 			"policy_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The 名称 policy。",
+				Description: "名称 策略。",
 			},
 		},
 	}

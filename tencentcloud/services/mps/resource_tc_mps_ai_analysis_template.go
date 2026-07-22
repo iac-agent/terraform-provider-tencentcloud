@@ -26,26 +26,26 @@ func ResourceTencentCloudMpsAiAnalysisTemplate() *schema.Resource {
 			"name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Ai analysis 模板名称，length 限制: 64 characters。",
+				Description: "Ai analysis 模板名称，长度 限制: 64 字符。",
 			},
 
 			"comment": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Ai analysis 模板描述 information，length 限制: 256 characters。",
+				Description: "Ai analysis 模板描述 信息，长度 限制: 256 字符。",
 			},
 
 			"classification_configure": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Ai classification task control parameters。",
+				Description: "Ai classification 任务 control 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Ai classification task switch，可选 值:ON/OFF。",
+							Description: "Ai classification 任务 switch，可选 值:ON/OFF。",
 						},
 					},
 				},
@@ -55,13 +55,13 @@ func ResourceTencentCloudMpsAiAnalysisTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Ai 标签 task control parameters。",
+				Description: "Ai 标签 任务 control 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Ai 标签 task switch，可选 值:ON/OFF。",
+							Description: "Ai 标签 任务 switch，可选 值:ON/OFF。",
 						},
 					},
 				},
@@ -71,13 +71,13 @@ func ResourceTencentCloudMpsAiAnalysisTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Ai cover task control parameters。",
+				Description: "Ai cover 任务 control 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Ai cover task switch，可选 值:ON/OFF。",
+							Description: "Ai cover 任务 switch，可选 值:ON/OFF。",
 						},
 					},
 				},
@@ -87,13 +87,13 @@ func ResourceTencentCloudMpsAiAnalysisTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Ai frame 标签 task control parameters。",
+				Description: "Ai frame 标签 任务 control 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Ai frame 标签 task switch，可选 值:ON/OFF。",
+							Description: "Ai frame 标签 任务 switch，可选 值:ON/OFF。",
 						},
 					},
 				},

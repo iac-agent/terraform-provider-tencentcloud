@@ -50,7 +50,7 @@ func DataSourceTencentCloudTdcpgInstances() *schema.Resource {
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "instance list。",
+				Description: "实例 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
@@ -71,7 +71,7 @@ func DataSourceTencentCloudTdcpgInstances() *schema.Resource {
 						"endpoint_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "endpoint id。",
+							Description: "端点 ID。",
 						},
 						"region": {
 							Type:        schema.TypeString,
@@ -121,7 +121,7 @@ func DataSourceTencentCloudTdcpgInstances() *schema.Resource {
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "memory size，unit is GiB。",
+							Description: "内存 大小，单位 是 GiB。",
 						},
 						"instance_type": {
 							Type:        schema.TypeString,

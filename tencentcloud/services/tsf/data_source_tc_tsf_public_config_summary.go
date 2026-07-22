@@ -19,19 +19,19 @@ func DataSourceTencentCloudTsfPublicConfigSummary() *schema.Resource {
 			"search_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Query keyword for fuzzy search: configuration item 名称 如果未传入 in，the full set will be queried。",
+				Description: "Query keyword 对于 fuzzy search: 配置 item 名称 如果未传入 在， full 集合 将 是 queried。",
 			},
 
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "排序方式 time: creation_time; 排序方式 名称: config_name。",
+				Description: "排序方式 时间: creation_time; 排序方式 名称: config_name。",
 			},
 
 			"order_type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Pass 0 for 升序 and 1 for 降序",
+				Description: "Pass 0 对于 升序 和 1 对于 降序",
 			},
 
 			"config_tag_list": {
@@ -55,7 +55,7 @@ func DataSourceTencentCloudTsfPublicConfigSummary() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "配置 Id List。",
+				Description: "配置 ID List。",
 			},
 
 			"result": {
@@ -72,7 +72,7 @@ func DataSourceTencentCloudTsfPublicConfigSummary() *schema.Resource {
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "配置 list。",
+							Description: "配置 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"config_id": {
@@ -123,7 +123,7 @@ func DataSourceTencentCloudTsfPublicConfigSummary() *schema.Resource {
 									"delete_flag": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Deletion flag，true: deletable; false: not deletable.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Deletion flag，true: deletable; false: 不 deletable.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"last_update_time": {
 										Type:        schema.TypeString,

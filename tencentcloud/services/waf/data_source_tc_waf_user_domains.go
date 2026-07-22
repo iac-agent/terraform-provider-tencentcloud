@@ -35,12 +35,12 @@ func DataSourceTencentCloudWafUserDomains() *schema.Resource {
 						"domain_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "域名 unique id。",
+							Description: "域名 唯一 ID。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance unique id。",
+							Description: "实例 唯一 ID。",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
@@ -50,22 +50,22 @@ func DataSourceTencentCloudWafUserDomains() *schema.Resource {
 						"edition": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "实例类型，sparta-waf represents SAAS WAF，clb-waf represents CLB WAF。",
+							Description: "实例类型，sparta-waf 表示 SAAS WAF，clb-waf 表示 CLB WAF。",
 						},
 						"level": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance 级别 info注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "实例 级别 info注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"write_config": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Switch for accessing log fields注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Switch 对于 accessing 日志 fields注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"cls": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "CLS switch 1: write，0: do not write注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "CLS switch 1: write，0: do 不 write注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},

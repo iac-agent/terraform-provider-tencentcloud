@@ -34,12 +34,12 @@ func ResourceTencentCloudTdmqRabbitmqVipInstance() *schema.Resource {
 			"vpc_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Private network VpcId。",
+				Description: "Private 网络 VpcId。",
 			},
 			"subnet_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Private network SubnetId。",
+				Description: "Private 网络 SubnetId。",
 			},
 			"cluster_name": {
 				Required:    true,
@@ -49,60 +49,60 @@ func ResourceTencentCloudTdmqRabbitmqVipInstance() *schema.Resource {
 			"node_spec": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Node specifications. 有效值：rabbit-VIP-basic-5 (for 2C4G)，rabbit-VIP-profession-2c8g (for 2C8G)，rabbit-VIP-basic-1 (for 4C8G)，rabbit-VIP-profession-4c16g (for 4C16G)，rabbit-VIP-basic-2 (for 8C16G)，rabbit-VIP-profession-8c32g (for 8C32G)，rabbit-VIP-basic-4 (for 16C32G)，rabbit-VIP-profession-16c64g (for 16C64G). The 默认为 rabbit-VIP-basic-1. NOTE: The above specifications may be sold out or removed from the shelves。",
+				Description: "Node specifications. 有效值：rabbit-VIP-basic-5 (对于 2C4G)，rabbit-VIP-profession-2c8g (对于 2C8G)，rabbit-VIP-basic-1 (对于 4C8G)，rabbit-VIP-profession-4c16g (对于 4C16G)，rabbit-VIP-basic-2 (对于 8C16G)，rabbit-VIP-profession-8c32g (对于 8C32G)，rabbit-VIP-basic-4 (对于 16C32G)，rabbit-VIP-profession-16c64g (对于 16C64G). 默认为 rabbit-VIP-basic-1. NOTE: above specifications 可能 是 sold out 或 removed 从 shelves。",
 			},
 			"node_num": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The 数量 nodes，a minimum of 3 nodes for a multi-availability 可用区 如果未传入，the default single availability 可用区 is 1，and the multi-availability 可用区 is 3。",
+				Description: "数量 nodes， 最小 的 3 nodes 对于 multi-availability 可用区 如果未传入， 默认值 单个 availability 可用区 是 1，和 multi-availability 可用区 是 3。",
 			},
 			"storage_size": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Single node storage specification，the 默认为 200G。",
+				Description: "Single 节点 存储 规格， 默认为 200G。",
 			},
 			"enable_create_default_ha_mirror_queue": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Mirrored queue，the 默认为 false。",
+				Description: "Mirrored queue， 默认为 false。",
 			},
 			"auto_renew_flag": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Automatic renewal，the 默认为 true。",
+				Description: "Automatic renewal， 默认为 true。",
 			},
 			"time_span": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Purchase duration，the 默认为 1 (month)。",
+				Description: "Purchase 时长， 默认为 1 (month)。",
 			},
 			"pay_mode": {
 				Optional:    true,
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Payment method: 0 表示postpaid; 1 表示prepaid. 默认值：prepaid。",
+				Description: "Payment 方法: 0 表示postpaid; 1 表示prepaid. 默认值：prepaid。",
 			},
 			"cluster_version": {
 				Optional:    true,
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Cluster 版本，the 默认为 `3.8.30`，有效值：`3.8.30`，`3.11.8` and `3.13.7`。",
+				Description: "Cluster 版本， 默认为 `3.8.30`，有效值：`3.8.30`，`3.11.8` 和 `3.13.7`。",
 			},
 			"resource_tags": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Instance resource 标签 Each 标签 is a 键-值 pair for resource identification and management。",
+				Description: "实例 资源 标签 Each 标签 是 键-值 pair 对于 资源 identification 和 management。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The 键 of 标签",
+							Description: "键 的 标签",
 						},
 						"tag_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The 值 of 标签",
+							Description: "值 的 标签",
 						},
 					},
 				},
@@ -111,12 +111,12 @@ func ResourceTencentCloudTdmqRabbitmqVipInstance() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Public network bandwidth in Mbps。",
+				Description: "Public 网络 带宽 在 Mbps。",
 			},
 			"enable_public_access": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "是否enable public network access. 默认为 false。",
+				Description: "是否enable 公有 网络 访问. 默认为 false。",
 			},
 			"public_access_endpoint": {
 				Type:        schema.TypeString,

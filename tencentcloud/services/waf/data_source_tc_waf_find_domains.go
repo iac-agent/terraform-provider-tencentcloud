@@ -19,17 +19,17 @@ func DataSourceTencentCloudWafFindDomains() *schema.Resource {
 			"key": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filter condition。",
+				Description: "过滤器 condition。",
 			},
 			"is_waf_domain": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Whether access to waf or not。",
+				Description: "Whether 访问 到 waf 或 不。",
 			},
 			"by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sorting parameter，eg: FindTime。",
+				Description: "Sorting 参数，eg: FindTime。",
 			},
 			"order": {
 				Optional:    true,
@@ -40,7 +40,7 @@ func DataSourceTencentCloudWafFindDomains() *schema.Resource {
 			"list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "域名 info list。",
+				Description: "域名 info 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"appid": {
@@ -62,27 +62,27 @@ func DataSourceTencentCloudWafFindDomains() *schema.Resource {
 						"find_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Find time。",
+							Description: "Find 时间。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance unique id。",
+							Description: "实例 唯一 ID。",
 						},
 						"domain_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "域名 unique id。",
+							Description: "域名 唯一 ID。",
 						},
 						"edition": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "实例类型，sparta-waf represents SAAS WAF，clb-waf represents CLB WAF。",
+							Description: "实例类型，sparta-waf 表示 SAAS WAF，clb-waf 表示 CLB WAF。",
 						},
 						"is_waf_domain": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether access to waf or not。",
+							Description: "Whether 访问 到 waf 或 不。",
 						},
 					},
 				},

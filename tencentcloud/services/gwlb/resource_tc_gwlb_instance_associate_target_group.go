@@ -24,7 +24,7 @@ func ResourceTencentCloudGwlbInstanceAssociateTargetGroup() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "GWLB instance ID。",
+				Description: "GWLB 实例 ID。",
 			},
 			"target_group_id": {
 				Type:        schema.TypeString,

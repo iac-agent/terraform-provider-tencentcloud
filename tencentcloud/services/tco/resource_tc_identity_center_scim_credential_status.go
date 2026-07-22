@@ -28,14 +28,14 @@ func ResourceTencentCloudIdentityCenterScimCredentialStatus() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Space ID. z-prefix starts with 12 random digits/lowercase letters。",
+				Description: "Space ID. z-prefix starts 使用 12 random digits/lowercase letters。",
 			},
 
 			"credential_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "SCIM 键 ID. scimcred-prefix and followed by 12 random digits/lowercase letters。",
+				Description: "SCIM 键 ID. scimcred-prefix 和 followed 通过 12 random digits/lowercase letters。",
 			},
 
 			"status": {

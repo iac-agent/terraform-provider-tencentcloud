@@ -28,18 +28,18 @@ func DataSourceTencentCloudGaapProxiesStatus() *schema.Resource {
 			"instance_status_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Proxy 状态 list。",
+				Description: "Proxy 状态 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "proxy instance ID。",
+							Description: "proxy 实例 ID。",
 						},
 						"status": {
 							Type:     schema.TypeString,
 							Computed: true,
-							Description: "proxy status.Among them:\n" +
+							Description: "proxy 状态.Among them:\n" +
 								"- RUNNING indicates running;\n" +
 								"- CREATING indicates being created;\n" +
 								"- DESTROYING indicates being destroyed;\n" +

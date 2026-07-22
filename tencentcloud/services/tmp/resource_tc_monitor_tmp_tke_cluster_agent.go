@@ -34,34 +34,34 @@ func ResourceTencentCloudMonitorTmpTkeClusterAgent() *schema.Resource {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Required:    true,
-				Description: "agent list。",
+				Description: "agent 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Limitation of 地域",
+							Description: "Limitation 的 地域",
 						},
 						"cluster_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "类型 cluster。",
+							Description: "类型 集群。",
 						},
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "An id identify the cluster，like `cls-xxxxxx`。",
+							Description: "An ID identify 集群，like `cls-xxxxxx`。",
 						},
 						"enable_external": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "是否enable the public network CLB。",
+							Description: "是否enable 公有 网络 CLB。",
 						},
 						"in_cluster_pod_config": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Pod configuration for components deployed in the cluster。",
+							Description: "Pod 配置 对于 components deployed 在 集群。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"host_net": {
@@ -72,18 +72,18 @@ func ResourceTencentCloudMonitorTmpTkeClusterAgent() *schema.Resource {
 									"node_selector": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "指定pod to run the node。",
+										Description: "指定pod 到 run 节点。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The pod configuration 名称 component deployed in the cluster。",
+													Description: "pod 配置 名称 组件 deployed 在 集群。",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Pod configuration values for components deployed in the cluster。",
+													Description: "Pod 配置 值 对于 components deployed 在 集群。",
 												},
 											},
 										},
@@ -97,7 +97,7 @@ func ResourceTencentCloudMonitorTmpTkeClusterAgent() *schema.Resource {
 												"key": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The taint 键 to which the tolerance applies。",
+													Description: "taint 键 到 其中 tolerance applies。",
 												},
 												"operator": {
 													Type:        schema.TypeString,
@@ -107,7 +107,7 @@ func ResourceTencentCloudMonitorTmpTkeClusterAgent() *schema.Resource {
 												"effect": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "blemish effect to match。",
+													Description: "blemish effect 到 match。",
 												},
 											},
 										},
@@ -118,7 +118,7 @@ func ResourceTencentCloudMonitorTmpTkeClusterAgent() *schema.Resource {
 						"external_labels": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "All metrics collected by the cluster will carry these labels。",
+							Description: "All metrics collected 通过 集群 将 carry these labels。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
@@ -137,23 +137,23 @@ func ResourceTencentCloudMonitorTmpTkeClusterAgent() *schema.Resource {
 						"not_install_basic_scrape": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "是否install the default collection configuration。",
+							Description: "是否install 默认值 collection 配置。",
 						},
 						"not_scrape": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "是否collect indicators，true means drop all indicators，false means collect default indicators。",
+							Description: "是否collect indicators，true 表示 drop all indicators，false 表示 collect 默认值 indicators。",
 						},
 						"open_default_record": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Computed:    true,
-							Description: "是否enable the default pre-aggregation rule。",
+							Description: "是否enable 默认值 pre-aggregation 规则。",
 						},
 						"cluster_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "the 名称 cluster。",
+							Description: "名称 集群。",
 						},
 						"status": {
 							Type:        schema.TypeString,

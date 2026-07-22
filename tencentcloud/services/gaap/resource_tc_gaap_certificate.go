@@ -24,53 +24,53 @@ func ResourceTencentCloudGaapCertificate() *schema.Resource {
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"BASIC", "CLIENT", "SERVER", "REALSERVER", "PROXY"}),
-				Description:  "类型 certificate. Valid 值: `BASIC`，`CLIENT`，`SERVER`，`REALSERVER` and `PROXY`. `BASIC` means basic certificate; `CLIENT` means client CA certificate; `SERVER` means server SSL certificate; `REALSERVER` means realserver CA certificate; `PROXY` means proxy SSL certificate。",
+				Description:  "类型 证书. 有效 值: `BASIC`，`CLIENT`，`SERVER`，`REALSERVER` 和 `PROXY`. `BASIC` 表示 basic 证书; `CLIENT` 表示 客户端 CA 证书; `SERVER` 表示 服务器 SSL 证书; `REALSERVER` 表示 realserver CA 证书; `PROXY` 表示 proxy SSL 证书。",
 			},
 			"content": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "内容 of the certificate，and URL encoding. When the certificate is basic authentication，use the `用户:xxx 密码:xxx` 格式，where the 密码 is encrypted with `htpasswd` or `openssl`; When the certificate is `CA` or `SSL`，the 格式 is `pem`。",
+				Description: "内容 的 证书，和 URL 编码. 当 证书 是 basic authentication，使用 `用户:xxx 密码:xxx` 格式，其中 密码 是 encrypted 使用 `htpasswd` 或 `openssl`; 当 证书 是 `CA` 或 `SSL`， 格式 是 `pem`。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "",
-				Description: "名称 certificate。",
+				Description: "名称 证书。",
 			},
 			"key": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
 				Sensitive:   true,
-				Description: "键 of the `SSL` certificate。",
+				Description: "键 的 `SSL` 证书。",
 			},
 
 			// computed
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 of the certificate。",
+				Description: "创建时间 的 证书。",
 			},
 			"begin_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Beginning time of the certificate。",
+				Description: "Beginning 时间 的 证书。",
 			},
 			"end_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Ending time of the certificate。",
+				Description: "Ending 时间 的 证书。",
 			},
 			"issuer_cn": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Issuer 名称 certificate。",
+				Description: "Issuer 名称 证书。",
 			},
 			"subject_cn": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Subject 名称 certificate。",
+				Description: "Subject 名称 证书。",
 			},
 		},
 	}

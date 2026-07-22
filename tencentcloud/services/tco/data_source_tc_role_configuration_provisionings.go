@@ -30,13 +30,13 @@ func DataSourceTencentCloudRoleConfigurationProvisionings() *schema.Resource {
 			"target_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "类型 synchronized target 账号 of the Tencent Cloud Organization. ManagerUin: admin 账号; MemberUin: member 账号",
+				Description: "类型 synchronized 目标 账号 的 Tencent Cloud Organization. ManagerUin: admin 账号; MemberUin: member 账号",
 			},
 
 			"target_uin": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "UIN of the synchronized target 账号 of the Tencent Cloud Organization。",
+				Description: "UIN 的 synchronized 目标 账号 的 Tencent Cloud Organization。",
 			},
 
 			"deployment_status": {
@@ -48,13 +48,13 @@ func DataSourceTencentCloudRoleConfigurationProvisionings() *schema.Resource {
 			"filter": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search by configuration 名称 is supported。",
+				Description: "Search 通过 配置 名称 是 支持。",
 			},
 
 			"role_configuration_provisionings": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Department member 账号 list。",
+				Description: "Department member 账号 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"deployment_status": {
@@ -70,17 +70,17 @@ func DataSourceTencentCloudRoleConfigurationProvisionings() *schema.Resource {
 						"role_configuration_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Permission configuration 名称",
+							Description: "Permission 配置 名称",
 						},
 						"target_uin": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "UIN of the target 账号 of the Tencent Cloud Organization。",
+							Description: "UIN 的 目标 账号 的 Tencent Cloud Organization。",
 						},
 						"target_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "名称 target 账号 of the Tencent Cloud Organization。",
+							Description: "名称 目标 账号 的 Tencent Cloud Organization。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
@@ -95,7 +95,7 @@ func DataSourceTencentCloudRoleConfigurationProvisionings() *schema.Resource {
 						"target_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "类型 synchronized target 账号 of the Tencent Cloud Organization. ManagerUin: admin 账号; MemberUin: member 账号",
+							Description: "类型 synchronized 目标 账号 的 Tencent Cloud Organization. ManagerUin: admin 账号; MemberUin: member 账号",
 						},
 					},
 				},

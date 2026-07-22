@@ -19,19 +19,19 @@ func DataSourceTencentCloudSslDescribeHostClbInstanceList() *schema.Resource {
 			"certificate_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "证书 ID to be deployed。",
+				Description: "证书 ID 到 是 deployed。",
 			},
 
 			"is_cache": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "是否query the cache，1: Yes; 0: No，the 默认为 the query cache，the cache is half an hour。",
+				Description: "是否query 缓存，1: Yes; 0: No， 默认为 查询 缓存， 缓存 是 half hour。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "列表 filtering parameters; Filterkey: domainmatch。",
+				Description: "列表 filtering 参数; Filterkey: domainmatch。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"filter_key": {
@@ -63,7 +63,7 @@ func DataSourceTencentCloudSslDescribeHostClbInstanceList() *schema.Resource {
 			"instance_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "CLB instance listener listNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "CLB 实例 listener listNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"load_balancer_id": {
@@ -79,7 +79,7 @@ func DataSourceTencentCloudSslDescribeHostClbInstanceList() *schema.Resource {
 						"listeners": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "CLB listener listNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "CLB listener listNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"listener_id": {
@@ -95,7 +95,7 @@ func DataSourceTencentCloudSslDescribeHostClbInstanceList() *schema.Resource {
 									"sni_switch": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "是否turn on SNI，1 to open，0 to close。",
+										Description: "是否turn 在 SNI，1 到 open，0 到 close。",
 									},
 									"protocol": {
 										Type:        schema.TypeString,
@@ -105,7 +105,7 @@ func DataSourceTencentCloudSslDescribeHostClbInstanceList() *schema.Resource {
 									"certificate": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Certificate data binding of listenersNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+										Description: "Certificate 数据 binding 的 listenersNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"cert_id": {
@@ -119,17 +119,17 @@ func DataSourceTencentCloudSslDescribeHostClbInstanceList() *schema.Resource {
 														Type: schema.TypeString,
 													},
 													Computed:    true,
-													Description: "域名 名称 binding of certificates。",
+													Description: "域名 名称 binding 的 certificates。",
 												},
 												"cert_ca_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Root certificate IDNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+													Description: "Root 证书 IDNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 												},
 												"s_s_l_mode": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Certificate certification 模式: unidirectional unidirectional authentication，Mutual two -way certificationNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+													Description: "Certificate certification 模式: unidirectional unidirectional authentication，Mutual two -way certificationNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 												},
 											},
 										},
@@ -137,7 +137,7 @@ func DataSourceTencentCloudSslDescribeHostClbInstanceList() *schema.Resource {
 									"rules": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "列表 listeners&#39; rulesNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+										Description: "列表 listeners&#39; rulesNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"location_id": {
@@ -153,12 +153,12 @@ func DataSourceTencentCloudSslDescribeHostClbInstanceList() *schema.Resource {
 												"is_match": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "是否rules match the 域名 名称 to be bound to the certificate。",
+													Description: "是否rules match 域名 名称 到 是 bound 到 证书。",
 												},
 												"certificate": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "Certificate data that has been bound to the rulesNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+													Description: "Certificate 数据 该 has been bound 到 rulesNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"cert_id": {
@@ -172,17 +172,17 @@ func DataSourceTencentCloudSslDescribeHostClbInstanceList() *schema.Resource {
 																	Type: schema.TypeString,
 																},
 																Computed:    true,
-																Description: "域名 名称 binding of certificates。",
+																Description: "域名 名称 binding 的 certificates。",
 															},
 															"cert_ca_id": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Root certificate IDNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+																Description: "Root 证书 IDNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 															},
 															"s_s_l_mode": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Certificate certification 模式: unidirectional unidirectional authentication，Mutual two -way certificationNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+																Description: "Certificate certification 模式: unidirectional unidirectional authentication，Mutual two -way certificationNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 															},
 														},
 													},
@@ -193,7 +193,7 @@ func DataSourceTencentCloudSslDescribeHostClbInstanceList() *schema.Resource {
 														Type: schema.TypeString,
 													},
 													Computed:    true,
-													Description: "列表 non -matching fieldsNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+													Description: "列表 non -matching fieldsNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 												},
 											},
 										},
@@ -204,7 +204,7 @@ func DataSourceTencentCloudSslDescribeHostClbInstanceList() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "列表 non -matching fieldsNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+										Description: "列表 non -matching fieldsNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 									},
 								},
 							},
@@ -216,19 +216,19 @@ func DataSourceTencentCloudSslDescribeHostClbInstanceList() *schema.Resource {
 			"async_total_num": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total 数量 asynchronous refreshNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "总数 数量 asynchronous refreshNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"async_offset": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Asynchronous refresh current execution numberNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "Asynchronous refresh 当前 execution numberNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"async_cache_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Current cache read timeNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "Current 缓存 read timeNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"result_output_file": {

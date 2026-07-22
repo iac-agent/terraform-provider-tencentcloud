@@ -40,7 +40,7 @@ func ResourceTencentCloudGaapDomainErrorPageInfo() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "New response body。",
+				Description: "New response 正文。",
 			},
 			"new_error_code": {
 				Type:        schema.TypeInt,
@@ -54,13 +54,13 @@ func ResourceTencentCloudGaapDomainErrorPageInfo() *schema.Resource {
 				ForceNew:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Set:         schema.HashString,
-				Description: "Response headers to be removed。",
+				Description: "Response headers 到 是 removed。",
 			},
 			"set_headers": {
 				Type:        schema.TypeMap,
 				ForceNew:    true,
 				Optional:    true,
-				Description: "Response headers to be set。",
+				Description: "Response headers 到 是 集合。",
 			},
 		},
 	}

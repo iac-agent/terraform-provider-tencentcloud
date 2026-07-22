@@ -18,13 +18,13 @@ func DataSourceTencentCloudIgtmAddressPoolList() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Alert filter conditions。",
+				Description: "Alert 过滤器 conditions。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "过滤字段名称，supported list as follows:\n- PoolName: 地址 pool 名称\n- MonitorId: Monitor ID. This is a 必填 parameter，failure to provide will cause interface query failure。",
+							Description: "过滤字段名称，支持 列表 作为 follows:\n- PoolName: 地址 池 名称\n- MonitorId: Monitor ID. 此 是 必填 参数，failure 到 provide 将 cause interface 查询 failure。",
 						},
 						"value": {
 							Type:        schema.TypeSet,
@@ -37,7 +37,7 @@ func DataSourceTencentCloudIgtmAddressPoolList() *schema.Resource {
 						"fuzzy": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "是否enable fuzzy query，only supports 过滤字段名称 as 域名\nWhen fuzzy query is 已启用，maximum 值 length is 1，otherwise maximum 值 length is 5. (Reserved field，currently not used)。",
+							Description: "是否enable fuzzy 查询，仅 支持 过滤字段名称 作为 域名\nWhen fuzzy 查询 是 已启用，最大 值 长度 是 1，otherwise 最大 值 长度 是 5. (Reserved 字段，currently 不 使用)。",
 						},
 					},
 				},
@@ -46,23 +46,23 @@ func DataSourceTencentCloudIgtmAddressPoolList() *schema.Resource {
 			"address_pool_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Resource group list。",
+				Description: "Resource 组 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"pool_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "地址 pool ID。",
+							Description: "地址 池 ID。",
 						},
 						"pool_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "地址 pool 名称",
+							Description: "地址 池 名称",
 						},
 						"addr_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "地址 pool 地址 类型: IPV4，IPV6，DOMAIN。",
+							Description: "地址 池 地址 类型: IPV4，IPV6，DOMAIN。",
 						},
 						"traffic_strategy": {
 							Type:        schema.TypeString,
@@ -92,12 +92,12 @@ func DataSourceTencentCloudIgtmAddressPoolList() *schema.Resource {
 						"monitor_task_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Detection task count。",
+							Description: "Detection 任务 count。",
 						},
 						"instance_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Instance related information。",
+							Description: "实例 related 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_id": {
@@ -116,13 +116,13 @@ func DataSourceTencentCloudIgtmAddressPoolList() *schema.Resource {
 						"address_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "地址 pool 地址 information。",
+							Description: "地址 池 地址 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"addr": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "地址 值: only supports IPv4，IPv6 and 域名 名称 formats;\nLoopback addresses，reserved addresses，internal network addresses and Tencent reserved network segments are not supported。",
+										Description: "地址 值: 仅 支持 IPv4，IPv6 和 域名 名称 formats;\nLoopback addresses，reserved addresses，内部 网络 addresses 和 Tencent reserved 网络 segments 是 不 支持。",
 									},
 									"is_enable": {
 										Type:        schema.TypeString,
@@ -147,7 +147,7 @@ func DataSourceTencentCloudIgtmAddressPoolList() *schema.Resource {
 									"weight": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "权重，必填 when traffic strategy is WEIGHT; range 1-100。",
+										Description: "权重，必填 当 流量 strategy 是 WEIGHT; 范围 1-100。",
 									},
 									"created_on": {
 										Type:        schema.TypeString,

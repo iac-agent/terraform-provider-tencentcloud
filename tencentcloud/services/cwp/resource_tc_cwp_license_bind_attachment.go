@@ -42,13 +42,13 @@ func ResourceTencentCloudCwpLicenseBindAttachment() *schema.Resource {
 				ForceNew:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(LICENSE_TYPE),
-				Description:  "LicenseType，0 CWP Pro - Pay as you go，1 CWP Pro - Monthly subscription，2 CWP Ultimate - Monthly subscription. 默认为 0。",
+				Description:  "LicenseType，0 CWP Pro - Pay 作为 您 go，1 CWP Pro - Monthly subscription，2 CWP Ultimate - Monthly subscription. 默认为 0。",
 			},
 			"quuid": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Machine quota that needs to be bound。",
+				Description: "Machine 配额 该 needs 到 是 bound。",
 			},
 			"machine_name": {
 				Computed:    true,
@@ -78,12 +78,12 @@ func ResourceTencentCloudCwpLicenseBindAttachment() *schema.Resource {
 			"is_unbind": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Allow unbinding，false does not allow unbinding。",
+				Description: "Allow unbinding，false does 不 allow unbinding。",
 			},
 			"is_switch_bind": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Is it allowed to change the binding，false is not allowed to change the binding。",
+				Description: "Is 它 allowed 到 change binding，false 是 不 allowed 到 change binding。",
 			},
 		},
 	}

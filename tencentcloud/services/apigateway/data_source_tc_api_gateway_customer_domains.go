@@ -19,7 +19,7 @@ func DataSourceTencentCloudAPIGatewayCustomerDomains() *schema.Resource {
 			"service_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The 服务 ID",
+				Description: "服务 ID",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -30,7 +30,7 @@ func DataSourceTencentCloudAPIGatewayCustomerDomains() *schema.Resource {
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Service custom 域名 名称 list。",
+				Description: "Service 自定义 域名 名称 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"domain_name": {
@@ -41,17 +41,17 @@ func DataSourceTencentCloudAPIGatewayCustomerDomains() *schema.Resource {
 						"is_status_on": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "域名 名称 resolution 状态 有效值：`true`，`false`. `true` means normal parsing，`false` means parsing failed。",
+							Description: "域名 名称 resolution 状态 有效值：`true`，`false`. `true` 表示 normal parsing，`false` 表示 parsing failed。",
 						},
 						"certificate_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 证书 ID",
+							Description: "证书 ID",
 						},
 						"is_default_mapping": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否use default 路径 mapping. 有效值：`true`，`false`. `true` means to use default 路径 mapping，`false` means to use custom 路径 mapping。",
+							Description: "是否use 默认值 路径 mapping. 有效值：`true`，`false`. `true` 表示 到 使用 默认值 路径 mapping，`false` 表示 到 使用 自定义 路径 mapping。",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
@@ -66,18 +66,18 @@ func DataSourceTencentCloudAPIGatewayCustomerDomains() *schema.Resource {
 						"path_mappings": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "域名 名称 mapping 路径 and environment list。",
+							Description: "域名 名称 mapping 路径 和 环境 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"path": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The 域名 mapping 路径",
+										Description: "域名 mapping 路径",
 									},
 									"environment": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Release environment。",
+										Description: "Release 环境。",
 									},
 								},
 							},

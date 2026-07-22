@@ -33,7 +33,7 @@ func ResourceTencentCloudVcubeApplicationAndWebPlayerLicense() *schema.Resource 
 				Type:        schema.TypeSet,
 				Required:    true,
 				ForceNew:    true,
-				Description: "域名 list。",
+				Description: "域名 列表。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -55,7 +55,7 @@ func ResourceTencentCloudVcubeApplicationAndWebPlayerLicense() *schema.Resource 
 			"app_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Application 类型: formal: formal application，test: test application。",
+				Description: "Application 类型: formal: formal 应用，测试: 测试 应用。",
 			},
 
 			"application_id": {

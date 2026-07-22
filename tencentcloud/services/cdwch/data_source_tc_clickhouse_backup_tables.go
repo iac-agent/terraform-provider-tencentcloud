@@ -41,12 +41,12 @@ func DataSourceTencentCloudClickhouseBackupTables() *schema.Resource {
 						"total_bytes": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Table total bytes。",
+							Description: "Table 总数 bytes。",
 						},
 						"v_cluster": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Virtual cluster。",
+							Description: "Virtual 集群。",
 						},
 						"ips": {
 							Type:        schema.TypeString,
@@ -61,7 +61,7 @@ func DataSourceTencentCloudClickhouseBackupTables() *schema.Resource {
 						"rip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Ip 地址 of cvm。",
+							Description: "Ip 地址 的 cvm。",
 						},
 					},
 				},

@@ -18,7 +18,7 @@ func DataSourceTencentCloudPrivateDnsForwardRules() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter parameters。",
+				Description: "过滤器 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -29,7 +29,7 @@ func DataSourceTencentCloudPrivateDnsForwardRules() *schema.Resource {
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "数组 parameter values。",
+							Description: "数组 参数 值。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -41,7 +41,7 @@ func DataSourceTencentCloudPrivateDnsForwardRules() *schema.Resource {
 			"forward_rule_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Private 域名 list。",
+				Description: "Private 域名 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"domain": {
@@ -52,7 +52,7 @@ func DataSourceTencentCloudPrivateDnsForwardRules() *schema.Resource {
 						"rule_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Forwarding rule 名称",
+							Description: "Forwarding 规则 名称",
 						},
 						"rule_id": {
 							Type:        schema.TypeString,
@@ -62,7 +62,7 @@ func DataSourceTencentCloudPrivateDnsForwardRules() *schema.Resource {
 						"rule_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Forwarding rule 类型 DOWN: From cloud to off-cloud; UP: From off-cloud to cloud。",
+							Description: "Forwarding 规则 类型 DOWN: From 云 到 关闭-云; UP: From 关闭-云 到 云。",
 						},
 						"created_at": {
 							Type:        schema.TypeString,
@@ -95,7 +95,7 @@ func DataSourceTencentCloudPrivateDnsForwardRules() *schema.Resource {
 						"vpc_set": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "列表 VPCs bound to the private 域名\n注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "列表 VPCs bound 到 私有 域名\n注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"uniq_vpc_id": {
@@ -114,7 +114,7 @@ func DataSourceTencentCloudPrivateDnsForwardRules() *schema.Resource {
 						"zone_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "ID bound private 域名",
+							Description: "ID bound 私有 域名",
 						},
 						"tags": {
 							Type:        schema.TypeList,

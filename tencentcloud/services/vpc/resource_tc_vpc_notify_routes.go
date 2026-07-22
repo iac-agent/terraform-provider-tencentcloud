@@ -28,7 +28,7 @@ func ResourceTencentCloudVpcNotifyRoutes() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The unique ID routing table。",
+				Description: "唯一 ID routing 表。",
 			},
 
 			"route_item_ids": {
@@ -39,13 +39,13 @@ func ResourceTencentCloudVpcNotifyRoutes() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The unique ID routing policy。",
+				Description: "唯一 ID routing 策略。",
 			},
 
 			"published_to_vbc": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "If published to vbc。",
+				Description: "如果 published 到 vbc。",
 			},
 		},
 	}

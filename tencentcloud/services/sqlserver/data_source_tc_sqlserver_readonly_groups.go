@@ -20,70 +20,70 @@ func DataSourceTencentCloudSqlserverReadonlyGroups() *schema.Resource {
 			"master_instance_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Master SQL Server instance ID.",
+				Description: "Master SQL Server 实例 ID.",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to store results.",
+				Description: "Used 到 store results.",
 			},
 			// Computed values
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of SQL Server readonly group. Each element contains the following attributes:",
+				Description: "A 列表 的 SQL Server readonly 组. Each element contains following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the readonly group.",
+							Description: "ID 的 readonly 组.",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the readonly group.",
+							Description: "Name 的 readonly 组.",
 						},
 						"master_instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Master instance id.",
+							Description: "Master 实例 ID.",
 						},
 						"max_delay_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum delay time of the readonly instances.",
+							Description: "Maximum delay 时间 的 readonly 实例.",
 						},
 						"is_offline_delay": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Indicate whether to offline delayed readonly instances.",
+							Description: "Indicate whether 到 offline delayed readonly 实例.",
 						},
 						"min_instances": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Minimum readonly instances that stays in the group.",
+							Description: "Minimum readonly 实例 该 stays 在 组.",
 						},
 						"vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Virtual IP address of the readonly group.",
+							Description: "Virtual IP 地址 的 readonly 组.",
 						},
 						"vport": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Virtual port of the readonly group.",
+							Description: "Virtual 端口 的 readonly 组.",
 						},
 						"readonly_instance_set": {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Computed:    true,
-							Description: "Readonly instance ID set of the readonly group.",
+							Description: "Readonly 实例 ID 集合 的 readonly 组.",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Status of the readonly group. `1` for running, `5` for applying.",
+							Description: "Status 的 readonly 组. `1` 对于 running, `5` 对于 applying.",
 						},
 					},
 				},

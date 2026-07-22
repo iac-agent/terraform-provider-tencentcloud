@@ -19,13 +19,13 @@ func DataSourceTencentCloudCamRoleDetail() *schema.Resource {
 			"role_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "角色 ID，用于指定role. Input either `RoleId` or `RoleName`。",
+				Description: "角色 ID，用于指定role. Input either `RoleId` 或 `RoleName`。",
 			},
 
 			"role_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "角色 名称，用于指定role. Input either `RoleId` or `RoleName`。",
+				Description: "角色 名称，用于指定role. Input either `RoleId` 或 `RoleName`。",
 			},
 
 			"role_info": {
@@ -47,7 +47,7 @@ func DataSourceTencentCloudCamRoleDetail() *schema.Resource {
 						"policy_document": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "角色 policy document。",
+							Description: "角色 策略 document。",
 						},
 						"description": {
 							Type:        schema.TypeString,
@@ -57,37 +57,37 @@ func DataSourceTencentCloudCamRoleDetail() *schema.Resource {
 						"add_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Time 角色 created。",
+							Description: "Time 角色 创建。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Time 角色 last updated。",
+							Description: "Time 角色 last 更新。",
 						},
 						"console_login": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "If login is allowed for the 角色",
+							Description: "如果 login 是 allowed 对于 角色",
 						},
 						"role_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "用户 角色 有效值：`用户`，`system`，`service_linked`\nNote: this field may return null，indicating that no valid values can be obtained。",
+							Description: "用户 角色 有效值：`用户`，`系统`，`service_linked`\nNote: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"session_duration": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Valid 周期\nNote: this field may return null，indicating that no valid values can be obtained。",
+							Description: "有效 周期\nNote: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"deletion_task_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task identifier for deleting a service-linked 角色 \nNote: this field may return null，indicating that no valid values can be obtained。",
+							Description: "任务 identifier 对于 deleting 服务-linked 角色 \nNote: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"tags": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "标签\nNote: This field may return `null`，indicating that no valid values can be obtained。",
+							Description: "标签\nNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {

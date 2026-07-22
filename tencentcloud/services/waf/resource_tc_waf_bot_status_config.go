@@ -41,7 +41,7 @@ func ResourceTencentCloudWafBotStatusConfig() *schema.Resource {
 			"status": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Bot 状态 1 - enable; 0 - disable。",
+				Description: "Bot 状态 1 - 启用; 0 - disable。",
 			},
 
 			"scene_count": {
@@ -59,7 +59,7 @@ func ResourceTencentCloudWafBotStatusConfig() *schema.Resource {
 			"current_global_scene": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "The currently 已启用 scenario with a global matching range and the highest 优先级",
+				Description: "currently 已启用 scenario 使用 全局 matching 范围 和 highest 优先级",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"scene_id": {
@@ -89,7 +89,7 @@ func ResourceTencentCloudWafBotStatusConfig() *schema.Resource {
 			"custom_rule_nums": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Total 数量 custom rules，excluding BOT whitelist。",
+				Description: "Total 数量 自定义 规则，excluding BOT whitelist。",
 			},
 		},
 	}

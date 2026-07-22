@@ -18,7 +18,7 @@ func DataSourceTencentCloudGsAndroidInstances() *schema.Resource {
 			"android_instance_ids": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "列表 instance IDs to query. Up to 100 per request。",
+				Description: "列表 实例 IDs 到 查询. Up 到 100 per 请求。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -27,19 +27,19 @@ func DataSourceTencentCloudGsAndroidInstances() *schema.Resource {
 			"android_instance_region": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Instance 地域 Aggregated query across regions is not currently supported。",
+				Description: "实例 地域 Aggregated 查询 across regions 是 不 currently 支持。",
 			},
 
 			"android_instance_zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Instance availability 可用区",
+				Description: "实例 availability 可用区",
 			},
 
 			"label_selector": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Instance 标签 selector。",
+				Description: "实例 标签 selector。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
@@ -50,12 +50,12 @@ func DataSourceTencentCloudGsAndroidInstances() *schema.Resource {
 						"operator": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "操作者 类型 IN: 标签值 must match one of Values; NOT_IN: must not match any; EXISTS: 标签 键 must exist; NOT_EXISTS: 标签 键 must not exist。",
+							Description: "操作者 类型 IN: 标签值 必须 match 一个 的 Values; NOT_IN: 必须 不 match any; EXISTS: 标签 键 必须 exist; NOT_EXISTS: 标签 键 必须 不 exist。",
 						},
 						"values": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "标签值 list. 必填 for IN and NOT_IN operators。",
+							Description: "标签值 列表. 必填 对于 IN 和 NOT_IN operators。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -67,7 +67,7 @@ func DataSourceTencentCloudGsAndroidInstances() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Field filters. Supported filter names: 名称，UserId，HostSerialNumber，HostServerSerialNumber，AndroidInstanceModel。",
+				Description: "Field filters. Supported 过滤器 names: 名称，UserId，HostSerialNumber，HostServerSerialNumber，AndroidInstanceModel。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -78,7 +78,7 @@ func DataSourceTencentCloudGsAndroidInstances() *schema.Resource {
 						"values": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Filter field values。",
+							Description: "过滤器 字段 值。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -91,7 +91,7 @@ func DataSourceTencentCloudGsAndroidInstances() *schema.Resource {
 			"android_instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "列表 Android instances。",
+				Description: "列表 Android 实例。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"android_instance_id": {
@@ -102,47 +102,47 @@ func DataSourceTencentCloudGsAndroidInstances() *schema.Resource {
 						"android_instance_region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance 地域",
+							Description: "实例 地域",
 						},
 						"android_instance_zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance availability 可用区",
+							Description: "实例 availability 可用区",
 						},
 						"state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance state: INITIALIZING，NORMAL，PROCESSING。",
+							Description: "实例 state: INITIALIZING，NORMAL，PROCESSING。",
 						},
 						"android_instance_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance specification。",
+							Description: "实例 规格。",
 						},
 						"android_instance_image_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance image ID。",
+							Description: "实例 镜像 ID。",
 						},
 						"width": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Resolution width。",
+							Description: "Resolution 宽度。",
 						},
 						"height": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Resolution height。",
+							Description: "Resolution 高度。",
 						},
 						"host_serial_number": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "主机 serial number。",
+							Description: "主机 serial 数量。",
 						},
 						"android_instance_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance 组 ID",
+							Description: "实例 组 ID",
 						},
 						"name": {
 							Type:        schema.TypeString,
@@ -162,27 +162,27 @@ func DataSourceTencentCloudGsAndroidInstances() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance 创建时间。",
+							Description: "实例 创建时间。",
 						},
 						"host_server_serial_number": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Chassis serial number。",
+							Description: "Chassis serial 数量。",
 						},
 						"service_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Service 状态 IDLE: not connected; ESTABLISHED: connected。",
+							Description: "Service 状态 IDLE: 不 connected; ESTABLISHED: connected。",
 						},
 						"android_instance_model": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Android instance model. YS1: basic; GC0/GC1/GC2: performance。",
+							Description: "Android 实例 model. YS1: basic; GC0/GC1/GC2: performance。",
 						},
 						"android_instance_labels": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Instance 标签 list。",
+							Description: "实例 标签 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {

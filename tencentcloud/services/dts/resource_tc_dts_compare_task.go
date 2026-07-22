@@ -34,13 +34,13 @@ func ResourceTencentCloudDtsCompareTask() *schema.Resource {
 			"task_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "task 名称",
+				Description: "任务 名称",
 			},
 
 			"object_mode": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "object 模式",
+				Description: "对象 模式",
 			},
 
 			"objects": {
@@ -53,26 +53,26 @@ func ResourceTencentCloudDtsCompareTask() *schema.Resource {
 						"object_mode": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "object 模式",
+							Description: "对象 模式",
 						},
 						"object_items": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Computed:    true,
-							Description: "object items。",
+							Description: "对象 items。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"db_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "database 名称",
+										Description: "数据库 名称",
 									},
 									"db_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "database 模式",
+										Description: "数据库 模式",
 									},
 									"schema_name": {
 										Type:        schema.TypeString,
@@ -84,20 +84,20 @@ func ResourceTencentCloudDtsCompareTask() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "table 模式",
+										Description: "表 模式",
 									},
 									"tables": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										Computed:    true,
-										Description: "table list。",
+										Description: "表 列表。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"table_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "table 名称",
+													Description: "表 名称",
 												},
 											},
 										},
@@ -112,7 +112,7 @@ func ResourceTencentCloudDtsCompareTask() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										Computed:    true,
-										Description: "view list。",
+										Description: "view 列表。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"view_name": {

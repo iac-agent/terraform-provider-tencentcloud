@@ -20,17 +20,17 @@ func DataSourceTencentCloudTCRVPCAttachments() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID instance to query。",
+				Description: "ID 实例 到 查询。",
 			},
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID VPC to query。",
+				Description: "ID VPC 到 查询。",
 			},
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID subnet to query。",
+				Description: "ID 子网 到 查询。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -41,7 +41,7 @@ func DataSourceTencentCloudTCRVPCAttachments() *schema.Resource {
 			"vpc_attachment_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information 列表 the dedicated TCR namespaces。",
+				Description: "Information 列表 dedicated TCR namespaces。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
@@ -52,22 +52,22 @@ func DataSourceTencentCloudTCRVPCAttachments() *schema.Resource {
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID subnet。",
+							Description: "ID 子网。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "状态 this VPC access。",
+							Description: "状态 此 VPC 访问。",
 						},
 						"access_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IP 地址 of this VPC access。",
+							Description: "IP 地址 的 此 VPC 访问。",
 						},
 						"enable_public_domain_dns": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否enable public 域名 dns。",
+							Description: "是否enable 公有 域名 dns。",
 						},
 						"enable_vpc_domain_dns": {
 							Type:        schema.TypeBool,

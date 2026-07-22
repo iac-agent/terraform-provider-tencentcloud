@@ -29,13 +29,13 @@ func DataSourceTencentCloudDcdbShards() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "shard instance ids。",
+				Description: "分片 实例 ids。",
 			},
 
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "shard list。",
+				Description: "分片 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
@@ -46,12 +46,12 @@ func DataSourceTencentCloudDcdbShards() *schema.Resource {
 						"shard_serial_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "shard serial id。",
+							Description: "分片 serial ID。",
 						},
 						"shard_instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "shard 实例 ID",
+							Description: "分片 实例 ID",
 						},
 						"status": {
 							Type:        schema.TypeInt,
@@ -96,12 +96,12 @@ func DataSourceTencentCloudDcdbShards() *schema.Resource {
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "memory，the unit is GB。",
+							Description: "内存， 单位 是 GB。",
 						},
 						"storage": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "memory，the unit is GB。",
+							Description: "内存， 单位 是 GB。",
 						},
 						"period_end_time": {
 							Type:        schema.TypeString,
@@ -111,17 +111,17 @@ func DataSourceTencentCloudDcdbShards() *schema.Resource {
 						"node_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "node count。",
+							Description: "节点 count。",
 						},
 						"storage_usage": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "storage usage。",
+							Description: "存储 usage。",
 						},
 						"memory_usage": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "memory usage。",
+							Description: "内存 usage。",
 						},
 						"proxy_version": {
 							Type:        schema.TypeString,
@@ -136,7 +136,7 @@ func DataSourceTencentCloudDcdbShards() *schema.Resource {
 						"shard_master_zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "shard master 可用区",
+							Description: "分片 master 可用区",
 						},
 						"shard_slave_zones": {
 							Type: schema.TypeSet,
@@ -144,7 +144,7 @@ func DataSourceTencentCloudDcdbShards() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "shard slave zones。",
+							Description: "分片 slave zones。",
 						},
 						"cpu": {
 							Type:        schema.TypeInt,
@@ -154,7 +154,7 @@ func DataSourceTencentCloudDcdbShards() *schema.Resource {
 						"range": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "the range of shard 键",
+							Description: "范围 的 分片 键",
 						},
 					},
 				},

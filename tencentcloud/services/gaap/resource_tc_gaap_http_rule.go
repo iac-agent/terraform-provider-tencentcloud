@@ -34,7 +34,7 @@ func ResourceTencentCloudGaapHttpRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Forward 域名 of the forward rule。",
+				Description: "Forward 域名 的 forward 规则。",
 			},
 			"path": {
 				Type:     schema.TypeString,
@@ -47,40 +47,40 @@ func ResourceTencentCloudGaapHttpRule() *schema.Resource {
 
 					return tccommon.ValidateStringPrefix("/")(v, k)
 				},
-				Description: "路径 of the forward rule. Maximum length is 80。",
+				Description: "路径 的 forward 规则. Maximum 长度 是 80。",
 			},
 			"realserver_type": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"IP", "DOMAIN"}),
 				ForceNew:     true,
-				Description:  "类型 realserver. Valid 值: `IP` and `DOMAIN`。",
+				Description:  "类型 realserver. 有效 值: `IP` 和 `DOMAIN`。",
 			},
 			"scheduler": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Default:      "rr",
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"rr", "wrr", "lc"}),
-				Description:  "Scheduling policy of the forward rule，默认值为 `rr`. Valid 值: `rr`，`wrr` and `lc`。",
+				Description:  "Scheduling 策略 的 forward 规则，默认值为 `rr`. 有效 值: `rr`，`wrr` 和 `lc`。",
 			},
 			"health_check": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "表示是否health check is enable。",
+				Description: "表示是否health check 是 启用。",
 			},
 			"interval": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Default:      5,
 				ValidateFunc: tccommon.ValidateIntegerInRange(5, 300),
-				Description:  "Interval of the health check，默认值为 5s。",
+				Description:  "Interval 的 health check，默认值为 5s。",
 			},
 			"connect_timeout": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Default:      2,
 				ValidateFunc: tccommon.ValidateIntegerInRange(2, 60),
-				Description:  "Timeout of the health check response，默认值为 2s。",
+				Description:  "Timeout 的 health check response，默认值为 2s。",
 			},
 			"health_check_path": {
 				Type:     schema.TypeString,
@@ -94,14 +94,14 @@ func ResourceTencentCloudGaapHttpRule() *schema.Resource {
 
 					return tccommon.ValidateStringPrefix("/")(v, k)
 				},
-				Description: "路径 of health check. Maximum length is 80。",
+				Description: "路径 的 health check. Maximum 长度 是 80。",
 			},
 			"health_check_method": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Default:      http.MethodHead,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{http.MethodGet, http.MethodHead}),
-				Description:  "Method of the health check. Valid 值: `GET` and `HEAD`。",
+				Description:  "Method 的 health check. 有效 值: `GET` 和 `HEAD`。",
 			},
 			"health_check_status_codes": {
 				Type:        schema.TypeSet,
@@ -109,7 +109,7 @@ func ResourceTencentCloudGaapHttpRule() *schema.Resource {
 				Elem:        &schema.Schema{Type: schema.TypeInt},
 				Set:         schema.HashInt,
 				Computed:    true,
-				Description: "Return 代码 of confirmed normal. Valid 值: `100`，`200`，`300`，`400` and `500`。",
+				Description: "Return 代码 的 confirmed normal. 有效 值: `100`，`200`，`300`，`400` 和 `500`。",
 			},
 			"realservers": {
 				Type:     schema.TypeSet,
@@ -119,7 +119,7 @@ func ResourceTencentCloudGaapHttpRule() *schema.Resource {
 					return helper.HashString(fmt.Sprintf("%s-%s-%d-%d", m["id"].(string), m["ip"].(string), m["port"].(int), m["weight"].(int)))
 
 				},
-				Description: "An information 列表 GAAP realserver。",
+				Description: "An 信息 列表 GAAP realserver。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
@@ -130,20 +130,20 @@ func ResourceTencentCloudGaapHttpRule() *schema.Resource {
 						"ip": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "IP of the GAAP realserver。",
+							Description: "IP 的 GAAP realserver。",
 						},
 						"port": {
 							Type:         schema.TypeInt,
 							Required:     true,
 							ValidateFunc: tccommon.ValidatePort,
-							Description:  "端口 of the GAAP realserver。",
+							Description:  "端口 的 GAAP realserver。",
 						},
 						"weight": {
 							Type:         schema.TypeInt,
 							Optional:     true,
 							Default:      1,
 							ValidateFunc: tccommon.ValidateIntegerInRange(1, 100),
-							Description:  "Scheduling 权重，默认值为 `1`. Valid 值 ranges: (1~100)。",
+							Description:  "Scheduling 权重，默认值为 `1`. 有效 值 ranges: (1~100)。",
 						},
 					},
 				},
@@ -152,20 +152,20 @@ func ResourceTencentCloudGaapHttpRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "default",
-				Description: "The 默认值 of requested 主机 which is forwarded to the realserver by the listener is `default`。",
+				Description: "默认值 的 requested 主机 其中 是 forwarded 到 realserver 通过 listener 是 `默认值`。",
 			},
 			"sni_switch": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{GAAP_SERVER_NAME_INDICATION_SWITCH_ON, GAAP_SERVER_NAME_INDICATION_SWITCH_OFF}),
-				Description:  "ServerNameIndication (SNI) switch. ON means on and OFF means off。",
+				Description:  "ServerNameIndication (SNI) switch. ON 表示 在 和 OFF 表示 关闭。",
 			},
 			"sni": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "ServerNameIndication (SNI) 为必填项 when the SNI switch is turned on。",
+				Description: "ServerNameIndication (SNI) 为必填项 当 SNI switch 是 turned 在。",
 			},
 		},
 	}

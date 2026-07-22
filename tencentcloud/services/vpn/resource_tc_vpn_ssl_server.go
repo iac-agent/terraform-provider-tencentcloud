@@ -38,12 +38,12 @@ func ResourceTencentCloudVpnSslServer() *schema.Resource {
 			"ssl_vpn_server_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "名称 ssl vpn server to be created。",
+				Description: "名称 ssl vpn 服务器 到 是 创建。",
 			},
 			"local_address": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "列表 local CIDR。",
+				Description: "列表 本地 CIDR。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -51,61 +51,61 @@ func ResourceTencentCloudVpnSslServer() *schema.Resource {
 			"remote_address": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Remote CIDR for client。",
+				Description: "Remote CIDR 对于 客户端。",
 			},
 			"ssl_vpn_protocol": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The 协议 of ssl vpn. 默认值：UDP。",
+				Description: "协议 的 ssl vpn. 默认值：UDP。",
 			},
 			"ssl_vpn_port": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "The 端口 of ssl vpn. Currently only supports UDP. 默认值：1194。",
+				Description: "端口 的 ssl vpn. Currently 仅 支持 UDP. 默认值：1194。",
 			},
 			"integrity_algorithm": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The integrity algorithm. 有效值：SHA1. 默认值：SHA1。",
+				Description: "integrity algorithm. 有效值：SHA1. 默认值：SHA1。",
 			},
 			"encrypt_algorithm": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: true,
-				Description: "The encrypt algorithm. Valid values: AES-128-CBC, AES-192-CBC, AES-256-CBC." +
+				Description: "encrypt algorithm. 有效 值: AES-128-CBC, AES-192-CBC, AES-256-CBC." +
 					"Default value: AES-128-CBC.",
 			},
 			"compress": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     svccvm.FALSE,
-				Description: "Need compressed. Currently is not supports compress. 默认值：False。",
+				Description: "Need compressed. Currently 是 不 支持 compress. 默认值：False。",
 			},
 			"sso_enabled": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Enable SSO authentication. 默认值：false. This feature requires whitelist approval。",
+				Description: "Enable SSO authentication. 默认值：false. 此 功能 requires whitelist approval。",
 			},
 			"access_policy_enabled": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "Enable access policy control. 默认值：false。",
+				Description: "Enable 访问 策略 control. 默认值：false。",
 			},
 			"saml_data": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "SAML-DATA. 必填 when sso_enabled is true。",
+				Description: "SAML-DATA. 必填 当 sso_enabled 是 true。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "标签 for resource management。",
+				Description: "标签 对于 资源 management。",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 			"dns_servers": {
@@ -113,18 +113,18 @@ func ResourceTencentCloudVpnSslServer() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "DNS server configuration。",
+				Description: "DNS 服务器 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"primary_dns": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Primary DNS server 地址",
+							Description: "Primary DNS 服务器 地址",
 						},
 						"secondary_dns": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Secondary DNS server 地址",
+							Description: "Secondary DNS 服务器 地址",
 						},
 					},
 				},

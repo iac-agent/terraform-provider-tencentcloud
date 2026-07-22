@@ -23,18 +23,18 @@ func DataSourceTencentCloudOceanusJobEvents() *schema.Resource {
 			"start_timestamp": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Filter condition:Start Unix 时间戳 (seconds)。",
+				Description: "过滤器 condition:Start Unix 时间戳 (秒)。",
 			},
 			"end_timestamp": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Filter condition:End Unix 时间戳 (seconds)。",
+				Description: "过滤器 condition:End Unix 时间戳 (秒)。",
 			},
 			"types": {
 				Optional:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Event types. 如果未传入，data of all types will be returned。",
+				Description: "Event types. 如果未传入，数据 的 all types 将 是 返回。",
 			},
 			"work_space_id": {
 				Required:    true,
@@ -46,43 +46,43 @@ func DataSourceTencentCloudOceanusJobEvents() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "数组 running instance IDs。",
+				Description: "数组 running 实例 IDs。",
 			},
 			"events": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "列表 events within the specified range for this job注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "列表 events within 指定 范围 对于 此 job注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Internally defined event 类型",
+							Description: "Internally defined 事件 类型",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "描述 text of the event 类型",
+							Description: "描述 text 的 事件 类型",
 						},
 						"timestamp": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Unix 时间戳 (seconds) when the event occurred。",
+							Description: "Unix 时间戳 (秒) 当 事件 occurred。",
 						},
 						"running_order_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Running ID when the event occurred注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Running ID 当 事件 occurred注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"message": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Some 可选 explanations of the event注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Some 可选 explanations 的 event注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"solution_link": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Troubleshooting manual link for the abnormal event注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Troubleshooting manual link 对于 abnormal event注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},

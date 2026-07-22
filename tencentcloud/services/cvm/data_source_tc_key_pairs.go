@@ -25,19 +25,19 @@ func DataSourceTencentCloudKeyPairs() *schema.Resource {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"key_name", "project_id"},
-				Description:   "ID 键 pair to be queried。",
+				Description:   "ID 键 pair 到 是 queried。",
 			},
 			"key_name": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"key_id"},
-				Description:   "名称 键 pair to be queried. Support regular expression search，only `^` and `$` are supported。",
+				Description:   "名称 键 pair 到 是 queried. Support regular expression search，仅 `^` 和 `$` 是 支持。",
 			},
 			"project_id": {
 				Type:          schema.TypeInt,
 				Optional:      true,
 				ConflictsWith: []string{"key_id"},
-				Description:   "项目 ID 键 pair to be queried。",
+				Description:   "项目 ID 键 pair 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -49,7 +49,7 @@ func DataSourceTencentCloudKeyPairs() *schema.Resource {
 			"key_pair_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information 列表 键 pair. Each element 包含following attributes:",
+				Description: "An 信息 列表 键 pair. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key_id": {
@@ -70,12 +70,12 @@ func DataSourceTencentCloudKeyPairs() *schema.Resource {
 						"public_key": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "public 键 of the 键 pair。",
+							Description: "公有 键 的 键 pair。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of the 键 pair。",
+							Description: "创建时间 的 键 pair。",
 						},
 					},
 				},

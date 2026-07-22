@@ -24,7 +24,7 @@ func DataSourceTencentCloudWedataListCatalog() *schema.Resource {
 			"items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Catalog record list。",
+				Description: "Catalog 记录 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {

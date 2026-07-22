@@ -29,7 +29,7 @@ func ResourceTencentCloudMariadbOperateHourDbInstance() *schema.Resource {
 			"operate": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Operation，`activate`- activate the hour db instance，`isolate`- isolate the hour db instance。",
+				Description: "Operation，`activate`- activate hour db 实例，`isolate`- isolate hour db 实例。",
 			},
 		},
 	}

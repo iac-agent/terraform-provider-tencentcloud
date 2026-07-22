@@ -266,7 +266,7 @@ func ResourceTencentCloudClbListener() *schema.Resource {
 				ForceNew:    true,
 				Computed:    true,
 				Optional:    true,
-				Description: "该参数用于指定结束端口，创建端口范围监听时需要此参数。输入“Ports”参数时只能传入一个成员，用于指定起始端口。如果您想尝试端口范围功能，请【提交工单】(https://console.cloud.tencent.com/workorder/category)。",
+				Description: "该参数用于指定结束端口，创建端口范围监听时需要此参数。输入“Ports”参数时只能传入一个成员，用于指定起始端口。如果您想尝试端口范围功能，请【提交工单】(https://console.云.tencent.com/workorder/category)。",
 			},
 			"h2c_switch": {
 				Type:        schema.TypeBool,

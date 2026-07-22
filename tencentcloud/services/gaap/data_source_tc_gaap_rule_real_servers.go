@@ -19,7 +19,7 @@ func DataSourceTencentCloudGaapRuleRealServers() *schema.Resource {
 			"rule_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Rule Id。",
+				Description: "Rule ID。",
 			},
 
 			"real_server_set": {
@@ -31,12 +31,12 @@ func DataSourceTencentCloudGaapRuleRealServers() *schema.Resource {
 						"real_server_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Real Server IP or 域名",
+							Description: "Real Server IP 或 域名",
 						},
 						"real_server_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Real Server Id。",
+							Description: "Real Server ID。",
 						},
 						"real_server_name": {
 							Type:        schema.TypeString,
@@ -51,7 +51,7 @@ func DataSourceTencentCloudGaapRuleRealServers() *schema.Resource {
 						"in_ban_blacklist": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Is it on the banned blacklist? 0 表示not on the blacklist，and 1 表示on the blacklist。",
+							Description: "Is 它 在 banned blacklist? 0 表示not 在 blacklist，和 1 表示on blacklist。",
 						},
 					},
 				},
@@ -66,12 +66,12 @@ func DataSourceTencentCloudGaapRuleRealServers() *schema.Resource {
 						"real_server_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Real Server Id。",
+							Description: "Real Server ID。",
 						},
 						"real_server_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Real Server Ip or 域名",
+							Description: "Real Server Ip 或 域名",
 						},
 						"real_server_weight": {
 							Type:        schema.TypeInt,
@@ -81,7 +81,7 @@ func DataSourceTencentCloudGaapRuleRealServers() *schema.Resource {
 						"real_server_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "RealServerStatus: 0 表示normal;1 表示an exception.When the health check 状态 is not 已启用，it is always normal.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "RealServerStatus: 0 表示normal;1 表示an exception.当 health check 状态 是 不 已启用，它 是 always normal.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"real_server_port": {
 							Type:        schema.TypeInt,
@@ -94,12 +94,12 @@ func DataSourceTencentCloudGaapRuleRealServers() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "When the real server is a 域名 名称，the 域名 名称 is resolved to one or more IPs，and this field represents the 列表 abnormal IPs. When the 状态 is abnormal，but the field is empty，it 表示that the 域名 名称 resolution is abnormal。",
+							Description: "当 real 服务器 是 域名 名称， 域名 名称 是 resolved 到 一个 或 more IPs，和 此 字段 表示 列表 abnormal IPs. 当 状态 是 abnormal，但 字段 是 空，它 表示that 域名 名称 resolution 是 abnormal。",
 						},
 						"real_server_failover_role": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The primary and secondary roles of the real server:master represents primary，slave represents secondary，and this parameter must be in the 活跃 and standby 模式 of the real server when the listener is turned on。",
+							Description: "primary 和 secondary roles 的 real 服务器:master 表示 primary，slave 表示 secondary，和 此 参数 必须 是 在 活跃 和 standby 模式 的 real 服务器 当 listener 是 turned 在。",
 						},
 					},
 				},

@@ -54,19 +54,19 @@ func DataSourceTencentCloudCdwpgLog() *schema.Resource {
 			"duration": {
 				Type:        schema.TypeFloat,
 				Optional:    true,
-				Description: "Filter duration。",
+				Description: "过滤器 时长。",
 			},
 
 			"slow_log_details": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Slow sql log details。",
+				Description: "Slow sql 日志 details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_time": {
 							Type:        schema.TypeFloat,
 							Required:    true,
-							Description: "Total time spent。",
+							Description: "Total 时间 spent。",
 						},
 						"total_call_times": {
 							Type:        schema.TypeInt,
@@ -102,17 +102,17 @@ func DataSourceTencentCloudCdwpgLog() *schema.Resource {
 									"normal_query": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Desensitized query。",
+										Description: "Desensitized 查询。",
 									},
 									"max_elapsed_query": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Longest 执行时间 query。",
+										Description: "Longest 执行时间 查询。",
 									},
 									"cost_time": {
 										Type:        schema.TypeFloat,
 										Required:    true,
-										Description: "Total time spent。",
+										Description: "Total 时间 spent。",
 									},
 									"client_ip": {
 										Type:        schema.TypeString,
@@ -132,17 +132,17 @@ func DataSourceTencentCloudCdwpgLog() *schema.Resource {
 									"total_cost_time_percent": {
 										Type:        schema.TypeFloat,
 										Required:    true,
-										Description: "Total time spent percentage。",
+										Description: "Total 时间 spent percentage。",
 									},
 									"min_cost_time": {
 										Type:        schema.TypeFloat,
 										Required:    true,
-										Description: "Minimum time spent。",
+										Description: "Minimum 时间 spent。",
 									},
 									"max_cost_time": {
 										Type:        schema.TypeFloat,
 										Required:    true,
-										Description: "Maximum time spent。",
+										Description: "Maximum 时间 spent。",
 									},
 									"first_time": {
 										Type:        schema.TypeString,
@@ -157,12 +157,12 @@ func DataSourceTencentCloudCdwpgLog() *schema.Resource {
 									"read_cost_time": {
 										Type:        schema.TypeFloat,
 										Required:    true,
-										Description: "Total read I/O time。",
+										Description: "Total read I/O 时间。",
 									},
 									"write_cost_time": {
 										Type:        schema.TypeFloat,
 										Required:    true,
-										Description: "Total write I/O time。",
+										Description: "Total write I/O 时间。",
 									},
 								},
 							},
@@ -174,7 +174,7 @@ func DataSourceTencentCloudCdwpgLog() *schema.Resource {
 			"error_log_details": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "错误 log details。",
+				Description: "错误 日志 details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"user_name": {
@@ -190,7 +190,7 @@ func DataSourceTencentCloudCdwpgLog() *schema.Resource {
 						"error_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "错误 time。",
+							Description: "错误 时间。",
 						},
 						"error_message": {
 							Type:        schema.TypeString,

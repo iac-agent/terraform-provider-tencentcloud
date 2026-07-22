@@ -28,63 +28,63 @@ func ResourceTencentCloudTeoZone() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "站点名称 When accessing CNAME/NS，please pass the second-级别 域名 (example.com) as the 站点名称; when accessing without a 域名 名称，please leave this 值 empty。",
+				Description: "站点名称 当 accessing CNAME/NS，please pass second-级别 域名 (示例.com) 作为 站点名称; 当 accessing without 域名 名称，please leave 此 值 空。",
 			},
 
 			"type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Site access 类型 The 值 of this parameter is as follows，and the 默认为 partial 如果未填写 in:partial: CNAME access; full: NS access; noDomainAccess: No 域名 access。",
+				Description: "Site 访问 类型 值 的 此 参数 是 作为 follows，和 默认为 partial 如果未填写 在:partial: CNAME 访问; full: NS 访问; noDomainAccess: No 域名 访问。",
 			},
 
 			"alias_zone_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Alias site identifier. 限制 the input to a combination of numbers，English，- and _，within 20 characters. For details，refer to the alias site identifier. If there is no such usage scenario，leave this field empty。",
+				Description: "Alias site identifier. 限制 input 到 combination 的 numbers，English，- 和 _，within 20 字符. For details，refer 到 alias site identifier. 如果 there 是 无 such usage scenario，leave 此 字段 空。",
 			},
 
 			"area": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "When the 类型 值 is partial/full，the acceleration 地域 of the L7 域名 名称 The following are the values of this parameter，and the 默认值为 overseas 如果未填写 in. When the 类型 值 is noDomainAccess，please leave this 值 empty:\n  - global: Global availability 可用区\n  - mainland: Chinese mainland availability 可用区\n  - overseas: Global availability 可用区 (excluding Chinese mainland)。",
+				Description: "当 类型 值 是 partial/full， acceleration 地域 的 L7 域名 名称 following 是 值 的 此 参数，和 默认值为 overseas 如果未填写 在. 当 类型 值 是 noDomainAccess，please leave 此 值 空:\n - 全局: Global availability 可用区\n - mainland: Chinese mainland availability 可用区\n - overseas: Global availability 可用区 (excluding Chinese mainland)。",
 			},
 
 			"plan_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The target Plan ID to be bound. When you have an existing Plan in your 账号，you can fill in this parameter to directly bind the site to the Plan. If you do not have a Plan that can be bound at the moment，please go to the console to purchase a Plan to complete the site creation。",
+				Description: "目标 Plan ID 到 是 bound. 当 您 have existing Plan 在 your 账号，您 可以 fill 在 此 参数 到 directly bind site 到 Plan. 如果 您 do 不 have Plan 该 可以 是 bound 在 moment，please go 到 console 到 purchase Plan 到 完整 site creation。",
 			},
 
 			"paused": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "表示是否site is 已禁用",
+				Description: "表示是否site 是 已禁用",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Site 状态 有效值：`活跃`: NS is switched; `pending`: NS is not switched; `moved`: NS is moved; `deactivated`: this site is blocked。",
+				Description: "Site 状态 有效值：`活跃`: NS 是 switched; `pending`: NS 是 不 switched; `moved`: NS 是 moved; `deactivated`: 此 site 是 blocked。",
 			},
 
 			"ownership_verification": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Ownership verification information. 注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "Ownership verification 信息. 注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"dns_verification": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "CNAME access，using DNS to resolve the information 必填 for authentication. For details，please refer to [Site/域名 名称 Ownership Verification ](https://cloud.tencent.com/document/product/1552/70789#7af6ecf8-afca-4e35-8811-b5797ed1bde5). 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "CNAME 访问，使用 DNS 到 resolve 信息 必填 对于 authentication. For details，please refer 到 [Site/域名 名称 Ownership Verification ](https://云.tencent.com/document/product/1552/70789#7af6ecf8-afca-4e35-8811-b5797ed1bde5). 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"subdomain": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "主机 record。",
+										Description: "主机 记录。",
 									},
 									"record_type": {
 										Type:        schema.TypeString,
@@ -94,7 +94,7 @@ func ResourceTencentCloudTeoZone() *schema.Resource {
 									"record_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Record the 值",
+										Description: "Record 值",
 									},
 								},
 							},
@@ -106,7 +106,7 @@ func ResourceTencentCloudTeoZone() *schema.Resource {
 			"name_servers": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "NS list allocated by Tencent Cloud。",
+				Description: "NS 列表 allocated 通过 Tencent Cloud。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -116,14 +116,14 @@ func ResourceTencentCloudTeoZone() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Resource 地域 for 标签 operations. Resources that are not 地域-specific can ignore this parameter. 默认为 the provider configured 地域",
+				Description: "Resource 地域 对于 标签 operations. Resources 该 是 不 地域-特定 可以 ignore 此 参数. 默认为 provider 已配置 地域",
 			},
 
 			"service_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Service 类型 for 标签 operations. 默认为 teo。",
+				Description: "Service 类型 对于 标签 operations. 默认为 teo。",
 			},
 
 			"tags": {
@@ -136,13 +136,13 @@ func ResourceTencentCloudTeoZone() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "Configuration group work 模式 Each configuration 模块 of the site can enable 版本 control 模式 or immediate effect 模式 according to the configuration group dimension. For details，please refer to [版本 Management](https://cloud.tencent.com/document/product/1552/113690)。",
+				Description: "Configuration 组 work 模式 Each 配置 模块 的 site 可以 启用 版本 control 模式 或 immediate effect 模式 according 到 配置 组 dimension. For details，please refer 到 [版本 Management](https://云.tencent.com/document/product/1552/113690)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"config_group_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration group 类型 有效值：`l7_acceleration`: L7 acceleration configuration group; `edge_functions`: Edge functions configuration group。",
+							Description: "Configuration 组 类型 有效值：`l7_acceleration`: L7 acceleration 配置 组; `edge_functions`: Edge functions 配置 组。",
 						},
 						"work_mode": {
 							Type:        schema.TypeString,

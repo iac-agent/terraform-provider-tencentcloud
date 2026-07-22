@@ -30,25 +30,25 @@ func ResourceTencentCloudMariadbHourDbInstance() *schema.Resource {
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Required:    true,
-				Description: "available 可用区 of instance。",
+				Description: "可用 可用区 的 实例。",
 			},
 
 			"node_count": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "数量 node for instance。",
+				Description: "数量 节点 对于 实例。",
 			},
 
 			"memory": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "instance memory。",
+				Description: "实例 内存。",
 			},
 
 			"storage": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "instance disk storage。",
+				Description: "实例 磁盘 存储。",
 			},
 
 			"project_id": {
@@ -67,7 +67,7 @@ func ResourceTencentCloudMariadbHourDbInstance() *schema.Resource {
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "子网 ID，it&amp;#39;s 必填 when vpcId is set。",
+				Description: "子网 ID，它&amp;#39;s 必填 当 vpcId 是 集合。",
 			},
 
 			"vip": {
@@ -81,13 +81,13 @@ func ResourceTencentCloudMariadbHourDbInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "db engine 版本，默认为 10.1.9。",
+				Description: "db 引擎 版本，默认为 10.1.9。",
 			},
 
 			"instance_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "名称 this instance。",
+				Description: "名称 此 实例。",
 			},
 
 			"tags": {

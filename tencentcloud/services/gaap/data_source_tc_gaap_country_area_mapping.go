@@ -19,7 +19,7 @@ func DataSourceTencentCloudGaapCountryAreaMapping() *schema.Resource {
 			"country_area_mapping_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Country/地域 代码 mapping table。",
+				Description: "Country/地域 代码 mapping 表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"nation_country_name": {
@@ -45,7 +45,7 @@ func DataSourceTencentCloudGaapCountryAreaMapping() *schema.Resource {
 						"continent_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 名称 continent。",
+							Description: "名称 continent。",
 						},
 						"continent_inner_code": {
 							Type:        schema.TypeString,

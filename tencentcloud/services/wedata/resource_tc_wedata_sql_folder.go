@@ -41,13 +41,13 @@ func ResourceTencentCloudWedataSqlFolder() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The parent folder 路径 is /aaa/bbb/ccc. The 路径 header must have a slash. To query the root directory，pass /。",
+				Description: "parent 文件夹 路径 是 /aaa/bbb/ccc. 路径 头部 必须 have slash. To 查询 root directory，pass /。",
 			},
 
 			"access_scope": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Permission range: SHARED，PRIVATE。",
+				Description: "Permission 范围: SHARED，PRIVATE。",
 			},
 
 			// computed

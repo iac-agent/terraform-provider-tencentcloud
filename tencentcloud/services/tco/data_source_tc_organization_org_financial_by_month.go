@@ -19,7 +19,7 @@ func DataSourceTencentCloudOrganizationOrgFinancialByMonth() *schema.Resource {
 			"end_month": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Query for the end month. 格式:yyyy-mm，for example:2021-01。",
+				Description: "Query 对于 end month. 格式:yyyy-mm，对于 示例:2021-01。",
 			},
 
 			"member_uins": {
@@ -28,7 +28,7 @@ func DataSourceTencentCloudOrganizationOrgFinancialByMonth() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Member uin list. Up to 100。",
+				Description: "Member uin 列表. Up 到 100。",
 			},
 
 			"product_codes": {
@@ -37,13 +37,13 @@ func DataSourceTencentCloudOrganizationOrgFinancialByMonth() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Product 代码 list. Up to 100。",
+				Description: "Product 代码 列表. Up 到 100。",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Organization financial info by month。",
+				Description: "Organization financial info 通过 month。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
@@ -59,12 +59,12 @@ func DataSourceTencentCloudOrganizationOrgFinancialByMonth() *schema.Resource {
 						"total_cost": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Total cost of the month。",
+							Description: "Total 费用 的 month。",
 						},
 						"growth_rate": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Growth rate compared to last month。",
+							Description: "Growth 速率 compared 到 last month。",
 						},
 					},
 				},

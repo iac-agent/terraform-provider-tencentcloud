@@ -22,13 +22,13 @@ func DataSourceTencentCloudAsAdvices() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "列表 scaling groups to be queried. Upper 限制: 100。",
+				Description: "列表 scaling groups 到 是 queried. Upper 限制: 100。",
 			},
 
 			"auto_scaling_advice_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "A collection of suggestions for scaling group configurations。",
+				Description: "A collection 的 suggestions 对于 scaling 组 configurations。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"auto_scaling_group_id": {
@@ -39,12 +39,12 @@ func DataSourceTencentCloudAsAdvices() *schema.Resource {
 						"level": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scaling group 警告 级别 有效值：NORMAL，WARNING，CRITICAL。",
+							Description: "Scaling 组 警告 级别 有效值：NORMAL，WARNING，CRITICAL。",
 						},
 						"advices": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "A collection of suggestions for scaling group configurations。",
+							Description: "A collection 的 suggestions 对于 scaling 组 configurations。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"problem": {

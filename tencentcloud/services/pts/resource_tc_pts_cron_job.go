@@ -34,13 +34,13 @@ func ResourceTencentCloudPtsCronJob() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project Id.",
+				Description: "Project ID.",
 			},
 
 			"scenario_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Scenario Id.",
+				Description: "Scenario ID.",
 			},
 
 			"scenario_name": {
@@ -52,13 +52,13 @@ func ResourceTencentCloudPtsCronJob() *schema.Resource {
 			"frequency_type": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Execution frequency type, `1`: execute only once; `2`: daily granularity; `3`: weekly granularity; `4`: advanced.",
+				Description: "Execution 频率 类型, `1`: execute 仅 once; `2`: daily granularity; `3`: weekly granularity; `4`: advanced.",
 			},
 
 			"cron_expression": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Cron expression, When setting cron_expression at that time, frequency_type must be greater than 1.",
+				Description: "Cron expression, 当 setting cron_expression 在 该 时间, frequency_type 必须 是 greater 比 1.",
 			},
 
 			"job_owner": {
@@ -70,7 +70,7 @@ func ResourceTencentCloudPtsCronJob() *schema.Resource {
 			"end_time": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "End Time; type: Timestamp ISO8601.",
+				Description: "End Time; 类型: Timestamp ISO8601.",
 			},
 
 			"notice_id": {
@@ -82,31 +82,31 @@ func ResourceTencentCloudPtsCronJob() *schema.Resource {
 			"note": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Note.",
+				Description: "注意.",
 			},
 
 			"abort_reason": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Reason for suspension.",
+				Description: "Reason 对于 suspension.",
 			},
 
 			"status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Scheduled task status.",
+				Description: "Scheduled 任务 状态.",
 			},
 
 			"created_at": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time; type: Timestamp ISO8601.",
+				Description: "Creation 时间; 类型: Timestamp ISO8601.",
 			},
 
 			"updated_at": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Update time; type: Timestamp ISO8601.",
+				Description: "Update 时间; 类型: Timestamp ISO8601.",
 			},
 
 			"app_id": {
@@ -124,13 +124,13 @@ func ResourceTencentCloudPtsCronJob() *schema.Resource {
 			"cron_job_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Cron job ID.",
+				Description: "Cron 作业 ID.",
 			},
 
 			"sub_account_uin": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Sub-user ID.",
+				Description: "Sub-用户 ID.",
 			},
 		},
 	}

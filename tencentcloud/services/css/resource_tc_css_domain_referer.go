@@ -32,7 +32,7 @@ func ResourceTencentCloudCssDomainReferer() *schema.Resource {
 			"enable": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "是否enable the referer blacklist authentication of the current 域名 名称,`0`: off，`1`: on。",
+				Description: "是否enable referer blacklist authentication 的 当前 域名 名称,`0`: 关闭，`1`: 在。",
 			},
 
 			"type": {
@@ -44,13 +44,13 @@ func ResourceTencentCloudCssDomainReferer() *schema.Resource {
 			"allow_empty": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Allow blank referers，0: not allowed，1: allowed。",
+				Description: "Allow blank referers，0: 不 allowed，1: allowed。",
 			},
 
 			"rules": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The 列表 referers to; separate。",
+				Description: "列表 referers 到; separate。",
 			},
 		},
 	}

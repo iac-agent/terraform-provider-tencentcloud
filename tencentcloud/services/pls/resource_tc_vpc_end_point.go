@@ -28,32 +28,32 @@ func ResourceTencentCloudVpcEndPoint() *schema.Resource {
 			"vpc_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID vpc instance。",
+				Description: "ID vpc 实例。",
 			},
 
 			"subnet_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID subnet instance。",
+				Description: "ID 子网 实例。",
 			},
 
 			"end_point_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "名称 endpoint。",
+				Description: "名称 端点。",
 			},
 
 			"end_point_service_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID endpoint service。",
+				Description: "ID 端点 服务。",
 			},
 
 			"end_point_vip": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "VIP of endpoint ip。",
+				Description: "VIP 的 端点 ip。",
 			},
 
 			"security_groups_ids": {
@@ -61,7 +61,7 @@ func ResourceTencentCloudVpcEndPoint() *schema.Resource {
 				Type:        schema.TypeList,
 				Computed:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Ordered security groups associated with the endpoint。",
+				Description: "Ordered 安全 groups associated 使用 端点。",
 			},
 
 			"end_point_owner": {
@@ -73,7 +73,7 @@ func ResourceTencentCloudVpcEndPoint() *schema.Resource {
 			"state": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "state of end point。",
+				Description: "state 的 end point。",
 			},
 
 			"create_time": {

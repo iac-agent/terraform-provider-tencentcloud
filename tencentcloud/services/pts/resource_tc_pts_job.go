@@ -28,7 +28,7 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 			"scenario_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Pts scenario id.",
+				Description: "Pts scenario ID.",
 			},
 
 			"job_owner": {
@@ -46,19 +46,19 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 			"debug": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to debug.",
+				Description: "Whether 到 调试.",
 			},
 
 			"note": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Note.",
+				Description: "注意.",
 			},
 
 			"load": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Pressure configuration of job.",
+				Description: "Pressure 配置 的 作业.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"load_spec": {
@@ -72,24 +72,24 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "Configuration of concurrent pressure mode.",
+										Description: "Configuration 的 concurrent pressure 模式.",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"stages": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "Multi-phase configuration array.",
+													Description: "Multi-phase 配置 数组.",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"duration_seconds": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "Pressure time.",
+																Description: "Pressure 时间.",
 															},
 															"target_virtual_users": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "Number of virtual users.",
+																Description: "Number 的 virtual users.",
 															},
 														},
 													},
@@ -97,7 +97,7 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 												"iteration_count": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Number of runs.",
+													Description: "Number 的 runs.",
 												},
 												"max_requests_per_second": {
 													Type:        schema.TypeInt,
@@ -107,7 +107,7 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 												"graceful_stop_seconds": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Wait time for graceful termination of the task.",
+													Description: "Wait 时间 对于 graceful termination 的 任务.",
 												},
 											},
 										},
@@ -116,7 +116,7 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "Configuration of RPS pressure mode.",
+										Description: "Configuration 的 RPS pressure 模式.",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"max_requests_per_second": {
@@ -127,12 +127,12 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 												"duration_seconds": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Pressure time.",
+													Description: "Pressure 时间.",
 												},
 												"resources": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Number of resources.",
+													Description: "Number 的 resources.",
 												},
 												"start_requests_per_second": {
 													Type:        schema.TypeInt,
@@ -142,12 +142,12 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 												"target_requests_per_second": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Target RPS, invalid input parameter.",
+													Description: "Target RPS, 无效 input 参数.",
 												},
 												"graceful_stop_seconds": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Elegant shutdown waiting time.",
+													Description: "Elegant shutdown waiting 时间.",
 												},
 											},
 										},
@@ -156,23 +156,23 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "Built-in stress mode in script.",
+										Description: "Built-在 stress 模式 在 脚本.",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"machine_number": {
 													Type:        schema.TypeInt,
 													Required:    true,
-													Description: "Number of machines.",
+													Description: "Number 的 machines.",
 												},
 												"machine_specification": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Machine specification.",
+													Description: "Machine 规格.",
 												},
 												"duration_seconds": {
 													Type:        schema.TypeInt,
 													Required:    true,
-													Description: "Pressure testing time.",
+													Description: "Pressure testing 时间.",
 												},
 											},
 										},
@@ -184,7 +184,7 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Source of stress.",
+							Description: "Source 的 stress.",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"region_id": {
@@ -208,7 +208,7 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Optional:    true,
-										Description: "Subnet ID list.",
+										Description: "Subnet ID 列表.",
 									},
 								},
 							},
@@ -244,23 +244,23 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 			"datasets": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Dataset file for the job.",
+				Description: "Dataset 文件 对于 作业.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The file name where the test dataset is located.",
+							Description: "文件 名称 其中 测试 dataset 是 located.",
 						},
 						"split": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Test whether the dataset is fragmented.",
+							Description: "Test whether dataset 是 fragmented.",
 						},
 						"header_in_file": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Whether the first line is the parameter name.",
+							Description: "Whether first line 是 参数 名称.",
 						},
 						"header_columns": {
 							Type: schema.TypeSet,
@@ -268,22 +268,22 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "Parameter name array.",
+							Description: "Parameter 名称 数组.",
 						},
 						"line_count": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Number of file lines.",
+							Description: "Number 的 文件 lines.",
 						},
 						"updated_at": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Update time.",
+							Description: "Update 时间.",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Number of file bytes.",
+							Description: "Number 的 文件 bytes.",
 						},
 						"head_lines": {
 							Type: schema.TypeSet,
@@ -291,7 +291,7 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "Header data row.",
+							Description: "Header 数据 row.",
 						},
 						"tail_lines": {
 							Type: schema.TypeSet,
@@ -299,12 +299,12 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "Trailing data row.",
+							Description: "Trailing 数据 row.",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File type.",
+							Description: "File 类型.",
 						},
 						"file_id": {
 							Type:        schema.TypeString,
@@ -318,37 +318,37 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 			"status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "The running status of the task; `0`: JobUnknown, `1`: JobCreated, `2`: JobPending, `3`: JobPreparing, `4`: JobSelectClustering, `5`: JobCreateTasking, `6`: JobSyncTasking, `11`: JobRunning, `12`: JobFinished, `13`: JobPrepareException, `14`: JobFinishException, `15`: JobAborting, `16`: JobAborted, `17`: JobAbortException, `18`: JobDeleted, `19`: JobSelectClusterException, `20`: JobCreateTaskException, `21`: JobSyncTaskException.",
+				Description: "running 状态 的 任务; `0`: JobUnknown, `1`: JobCreated, `2`: JobPending, `3`: JobPreparing, `4`: JobSelectClustering, `5`: JobCreateTasking, `6`: JobSyncTasking, `11`: JobRunning, `12`: JobFinished, `13`: JobPrepareException, `14`: JobFinishException, `15`: JobAborting, `16`: JobAborted, `17`: JobAbortException, `18`: JobDeleted, `19`: JobSelectClusterException, `20`: JobCreateTaskException, `21`: JobSyncTaskException.",
 			},
 
 			"start_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Start time of the job.",
+				Description: "Start 时间 的 作业.",
 			},
 
 			"end_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "End time of the job.",
+				Description: "End 时间 的 作业.",
 			},
 
 			"max_virtual_user_count": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Maximum number of VU for the job.",
+				Description: "Maximum 数量 的 VU 对于 作业.",
 			},
 
 			"error_rate": {
 				Type:        schema.TypeFloat,
 				Computed:    true,
-				Description: "Percentage of error rate.",
+				Description: "Percentage 的 错误 速率.",
 			},
 
 			"duration": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Job duration.",
+				Description: "Job 时长.",
 			},
 
 			"max_requests_per_second": {
@@ -360,71 +360,71 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 			"request_total": {
 				Type:        schema.TypeFloat,
 				Computed:    true,
-				Description: "Total number of requests.",
+				Description: "Total 数量 的 requests.",
 			},
 
 			"requests_per_second": {
 				Type:        schema.TypeFloat,
 				Computed:    true,
-				Description: "Average number of requests per second.",
+				Description: "Average 数量 的 requests per second.",
 			},
 
 			"response_time_average": {
 				Type:        schema.TypeFloat,
 				Computed:    true,
-				Description: "Average response time.",
+				Description: "Average response 时间.",
 			},
 
 			"response_time_p99": {
 				Type:        schema.TypeFloat,
 				Computed:    true,
-				Description: "99th percentile response time.",
+				Description: "99th percentile response 时间.",
 			},
 
 			"response_time_p95": {
 				Type:        schema.TypeFloat,
 				Computed:    true,
-				Description: "95th percentile response time.",
+				Description: "95th percentile response 时间.",
 			},
 
 			"response_time_p90": {
 				Type:        schema.TypeFloat,
 				Computed:    true,
-				Description: "90th percentile response time.",
+				Description: "90th percentile response 时间.",
 			},
 
 			"response_time_max": {
 				Type:        schema.TypeFloat,
 				Computed:    true,
-				Description: "Maximum response time.",
+				Description: "Maximum response 时间.",
 			},
 
 			"response_time_min": {
 				Type:        schema.TypeFloat,
 				Computed:    true,
-				Description: "Minimum response time.",
+				Description: "Minimum response 时间.",
 			},
 
 			// "load_source_infos": {
 			// 	Type:        schema.TypeList,
 			// 	Computed:    true,
-			// 	Description: "Host message of generating voltage.",
+			// 	Description: "Host 消息 的 generating voltage.",
 			// 	Elem: &schema.Resource{
 			// 		Schema: map[string]*schema.Schema{
 			// 			"ip": {
 			// 				Type:        schema.TypeString,
 			// 				Optional:    true,
-			// 				Description: "IP of host.",
+			// 				Description: "IP 的 主机.",
 			// 			},
 			// 			"pod_name": {
 			// 				Type:        schema.TypeString,
 			// 				Optional:    true,
-			// 				Description: "Pod of host.",
+			// 				Description: "Pod 的 主机.",
 			// 			},
 			// 			"region": {
 			// 				Type:        schema.TypeString,
 			// 				Optional:    true,
-			// 				Description: "Region to which it belongs.",
+			// 				Description: "Region 到 其中 它 belongs.",
 			// 			},
 			// 		},
 			// 	},
@@ -433,33 +433,33 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 			"test_scripts": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Test script information.",
+				Description: "Test 脚本 信息.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File name.",
+							Description: "File 名称.",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "File size.",
+							Description: "File 大小.",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File type.",
+							Description: "File 类型.",
 						},
 						"updated_at": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Update time.",
+							Description: "Update 时间.",
 						},
 						"encoded_content": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Base64 encoded file content.",
+							Description: "Base64 encoded 文件 内容.",
 						},
 						"encoded_http_archive": {
 							Type:        schema.TypeString,
@@ -469,7 +469,7 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 						"load_weight": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Script weight, range 1-100.",
+							Description: "Script 权重, 范围 1-100.",
 						},
 					},
 				},
@@ -478,28 +478,28 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 			"protocols": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Protocol script information.",
+				Description: "Protocol 脚本 信息.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Protocol name.",
+							Description: "Protocol 名称.",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "File name.",
+							Description: "File 名称.",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File type.",
+							Description: "File 类型.",
 						},
 						"updated_at": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Update time.",
+							Description: "Update 时间.",
 						},
 						"file_id": {
 							Type:        schema.TypeString,
@@ -513,33 +513,33 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 			"request_files": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Request file information.",
+				Description: "Request 文件 信息.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File name.",
+							Description: "File 名称.",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "File size.",
+							Description: "File 大小.",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File type.",
+							Description: "File 类型.",
 						},
 						"updated_at": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Update time.",
+							Description: "Update 时间.",
 						},
 						"file_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File id.",
+							Description: "File ID.",
 						},
 					},
 				},
@@ -548,33 +548,33 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 			"plugins": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Expansion package file information.",
+				Description: "Expansion 包 文件 信息.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File name.",
+							Description: "File 名称.",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "File size.",
+							Description: "File 大小.",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File type.",
+							Description: "File 类型.",
 						},
 						"updated_at": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Update time.",
+							Description: "Update 时间.",
 						},
 						"file_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File id.",
+							Description: "File ID.",
 						},
 					},
 				},
@@ -583,7 +583,7 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 			"cron_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Scheduled job ID.",
+				Description: "Scheduled 作业 ID.",
 			},
 
 			"type": {
@@ -595,13 +595,13 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 			"domain_name_config": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Domain name binding configuration.",
+				Description: "Domain 名称 binding 配置.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"host_aliases": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Domain name binding configuration.",
+							Description: "Domain 名称 binding 配置.",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"host_names": {
@@ -610,12 +610,12 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Optional:    true,
-										Description: "List of domain names to be bound.",
+										Description: "List 的 域名 names 到 是 bound.",
 									},
 									"ip": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The IP address to be bound.",
+										Description: "IP 地址 到 是 bound.",
 									},
 								},
 							},
@@ -624,7 +624,7 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "DNS configuration.",
+							Description: "DNS 配置.",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"nameservers": {
@@ -645,25 +645,25 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 			"abort_reason": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Cause of interruption.",
+				Description: "Cause 的 interruption.",
 			},
 
 			"job_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Job Id.",
+				Description: "Job ID.",
 			},
 
 			"created_at": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time of the job.",
+				Description: "Creation 时间 的 作业.",
 			},
 
 			// "notification_hooks": {
 			// 	Type:        schema.TypeList,
 			// 	Computed:    true,
-			// 	Description: "Notification event callback.",
+			// 	Description: "Notification 事件 callback.",
 			// 	Elem: &schema.Resource{
 			// 		Schema: map[string]*schema.Schema{
 			// 			"events": {
@@ -672,7 +672,7 @@ func ResourceTencentCloudPtsJob() *schema.Resource {
 			// 					Type: schema.TypeString,
 			// 				},
 			// 				Optional:    true,
-			// 				Description: "Notification event.",
+			// 				Description: "Notification 事件.",
 			// 			},
 			// 			"url": {
 			// 				Type:        schema.TypeString,

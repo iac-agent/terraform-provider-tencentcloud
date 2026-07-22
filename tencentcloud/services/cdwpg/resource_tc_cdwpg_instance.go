@@ -41,26 +41,26 @@ func ResourceTencentCloudCdwpgInstance() *schema.Resource {
 			"user_vpc_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "private network。",
+				Description: "私有 网络。",
 			},
 
 			"user_subnet_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "subnet。",
+				Description: "子网。",
 			},
 
 			"charge_properties": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "instance billing 模式",
+				Description: "实例 billing 模式",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"renew_flag": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "0-no automatic renewal,1-automatic renewal注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "0-无 automatic renewal,1-automatic renewal注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"time_span": {
 							Type:        schema.TypeInt,
@@ -70,12 +70,12 @@ func ResourceTencentCloudCdwpgInstance() *schema.Resource {
 						"time_unit": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Time Unit,Generally h and m注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Time Unit,Generally h 和 m注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"charge_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "计费类型，vaild values: PREPAID，POSTPAID_BY_HOUR。",
+							Description: "计费类型，vaild 值: PREPAID，POSTPAID_BY_HOUR。",
 						},
 					},
 				},
@@ -85,13 +85,13 @@ func ResourceTencentCloudCdwpgInstance() *schema.Resource {
 				Required:    true,
 				Sensitive:   true,
 				Type:        schema.TypeString,
-				Description: "cluster 密码",
+				Description: "集群 密码",
 			},
 
 			"resources": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "resource information。",
+				Description: "资源 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"spec_name": {
@@ -102,29 +102,29 @@ func ResourceTencentCloudCdwpgInstance() *schema.Resource {
 						"count": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "resource count。",
+							Description: "资源 count。",
 						},
 						"disk_spec": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Required:    true,
-							Description: "disk Information。",
+							Description: "磁盘 Information。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"disk_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "disk 类型",
+										Description: "磁盘 类型",
 									},
 									"disk_size": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "disk size。",
+										Description: "磁盘 大小。",
 									},
 									"disk_count": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "disk count。",
+										Description: "磁盘 count。",
 									},
 								},
 							},

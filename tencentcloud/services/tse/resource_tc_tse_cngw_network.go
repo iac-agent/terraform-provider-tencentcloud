@@ -27,20 +27,20 @@ func ResourceTencentCloudTseCngwNetwork() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "gateway ID。",
+				Description: "网关 ID。",
 			},
 
 			"group_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "gateway 组 ID",
+				Description: "网关 组 ID",
 			},
 
 			"network_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "network id。",
+				Description: "网络 ID。",
 			},
 
 			"internet_address_version": {
@@ -56,7 +56,7 @@ func ResourceTencentCloudTseCngwNetwork() *schema.Resource {
 			"internet_max_bandwidth_out": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "public network bandwidth。",
+				Description: "公有 网络 带宽。",
 			},
 			"description": {
 				Type:        schema.TypeString,
@@ -66,12 +66,12 @@ func ResourceTencentCloudTseCngwNetwork() *schema.Resource {
 			"sla_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "specification 类型 clb. Default `shared` 类型 when this parameter is empty，Note: input `shared` is not supported when creating. Reference 值:`clb.c2.medium`，`clb.c3.small`，`clb.c3.medium`，`clb.c4.small`，`clb.c4.medium`，`clb.c4.large`，`clb.c4.xlarge`。",
+				Description: "规格 类型 clb. Default `shared` 类型 当 此 参数 是 空，注意: input `shared` 是 不 支持 当 creating. Reference 值:`clb.c2.medium`，`clb.c3.small`，`clb.c3.medium`，`clb.c4.small`，`clb.c4.medium`，`clb.c4.large`，`clb.c4.xlarge`。",
 			},
 			"multi_zone_flag": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether load balancing has multiple availability zones。",
+				Description: "Whether load balancing has 多个 availability zones。",
 			},
 			"master_zone_id": {
 				Type:        schema.TypeString,

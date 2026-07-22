@@ -29,7 +29,7 @@ func ResourceTencentCloudTseCngwService() *schema.Resource {
 			"gateway_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway ID。",
+				Description: "网关 ID。",
 			},
 
 			"name": {
@@ -53,7 +53,7 @@ func ResourceTencentCloudTseCngwService() *schema.Resource {
 			"timeout": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "time out，unit:ms。",
+				Description: "时间 out，单位:ms。",
 			},
 
 			"retries": {
@@ -65,47 +65,47 @@ func ResourceTencentCloudTseCngwService() *schema.Resource {
 			"upstream_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "service 类型 Reference 值:`Kubernetes`，`Registry`，`IPList`，`HostIP`，`Scf`。",
+				Description: "服务 类型 Reference 值:`Kubernetes`，`Registry`，`IPList`，`HostIP`，`Scf`。",
 			},
 
 			"upstream_info": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "service 配置 information。",
+				Description: "服务 配置 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"host": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "an IP 地址 or 域名 名称",
+							Description: "IP 地址 或 域名 名称",
 						},
 						"port": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "backend service 端口有效值：`1` to `65535`。",
+							Description: "backend 服务 端口有效值：`1` 到 `65535`。",
 						},
 						"source_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "service 来源 ID。",
+							Description: "服务 来源 ID。",
 						},
 						"namespace": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "namespace。",
+							Description: "命名空间。",
 						},
 						"service_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "the 名称 service in registry or kubernetes。",
+							Description: "名称 服务 在 registry 或 kubernetes。",
 						},
 						"targets": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Computed:    true,
-							Description: "provided when service 类型 is IPList。",
+							Description: "提供 当 服务 类型 是 IPList。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"host": {
@@ -131,12 +131,12 @@ func ResourceTencentCloudTseCngwService() *schema.Resource {
 									"created_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "created time。",
+										Description: "创建 时间。",
 									},
 									"source": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "来源 of target。",
+										Description: "来源 的 目标。",
 									},
 								},
 							},
@@ -145,7 +145,7 @@ func ResourceTencentCloudTseCngwService() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "来源 service 类型",
+							Description: "来源 服务 类型",
 						},
 						"scf_type": {
 							Type:        schema.TypeString,
@@ -155,7 +155,7 @@ func ResourceTencentCloudTseCngwService() *schema.Resource {
 						"scf_namespace": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "scf lambda namespace。",
+							Description: "scf lambda 命名空间。",
 						},
 						"scf_lambda_name": {
 							Type:        schema.TypeString,
@@ -170,13 +170,13 @@ func ResourceTencentCloudTseCngwService() *schema.Resource {
 						"slow_start": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "slow 开始时间，unit: `second`，when it is 已启用，权重 of the node is increased from 1 to the target 值 gradually。",
+							Description: "slow 开始时间，单位: `second`，当 它 是 已启用，权重 的 节点 是 increased 从 1 到 目标 值 gradually。",
 						},
 						"algorithm": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "load balance algorithm,默认值：`round-robin`，`least-connections` and `consisten_hashing` also support。",
+							Description: "load balance algorithm,默认值：`round-robin`，`least-connections` 和 `consisten_hashing` also support。",
 						},
 						"auto_scaling_group_id": {
 							Type:        schema.TypeString,
@@ -186,28 +186,28 @@ func ResourceTencentCloudTseCngwService() *schema.Resource {
 						"auto_scaling_cvm_port": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "auto scaling group 端口 of cvm。",
+							Description: "auto scaling 组 端口 的 cvm。",
 						},
 						"auto_scaling_tat_cmd_status": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "tat cmd 状态 in auto scaling group of cvm。",
+							Description: "tat cmd 状态 在 auto scaling 组 的 cvm。",
 						},
 						"auto_scaling_hook_status": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "hook 状态 in auto scaling group of cvm。",
+							Description: "hook 状态 在 auto scaling 组 的 cvm。",
 						},
 						"source_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "名称 来源 service。",
+							Description: "名称 来源 服务。",
 						},
 						"real_source_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "exact 来源 service 类型",
+							Description: "exact 来源 服务 类型",
 						},
 					},
 				},
@@ -216,7 +216,7 @@ func ResourceTencentCloudTseCngwService() *schema.Resource {
 			"service_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "service id。",
+				Description: "服务 ID。",
 			},
 
 			"tags": {

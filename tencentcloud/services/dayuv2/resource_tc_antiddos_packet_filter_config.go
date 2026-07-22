@@ -37,7 +37,7 @@ func ResourceTencentCloudAntiddosPacketFilterConfig() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Feature filtering configuration。",
+				Description: "Feature filtering 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"protocol": {
@@ -48,42 +48,42 @@ func ResourceTencentCloudAntiddosPacketFilterConfig() *schema.Resource {
 						"sport_start": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Starting 来源 端口，ranging from 0 to 65535。",
+							Description: "Starting 来源 端口，ranging 从 0 到 65535。",
 						},
 						"sport_end": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "End 来源 端口，values range from 1 to 65535，must be greater than or equal to the start 来源 端口",
+							Description: "End 来源 端口，值 范围 从 1 到 65535，必须 是 greater 比 或 equal 到 start 来源 端口",
 						},
 						"dport_start": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Starting destination 端口，ranging from 0 to 65535。",
+							Description: "Starting destination 端口，ranging 从 0 到 65535。",
 						},
 						"dport_end": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "end destination 端口，ranging from 0 to 65535。",
+							Description: "end destination 端口，ranging 从 0 到 65535。",
 						},
 						"pktlen_min": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Minimum 消息 length，ranging from 1 to 1500。",
+							Description: "Minimum 消息 长度，ranging 从 1 到 1500。",
 						},
 						"pktlen_max": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The maximum 消息 length，ranging from 1 to 1500，must be greater than or equal to the minimum 消息 length。",
+							Description: "最大 消息 长度，ranging 从 1 到 1500，必须 是 greater 比 或 equal 到 最小 消息 长度。",
 						},
 						"action": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "操作，值 [drop (discard) transmit (release) drop_black (discard and pull black) drop_rst (intercept) drop_black_rst (intercept and pull black) forward (continue protection)]。",
+							Description: "操作，值 [drop (discard) transmit (release) drop_black (discard 和 pull black) drop_rst (intercept) drop_black_rst (intercept 和 pull black) forward (continue protection)]。",
 						},
 						"match_begin": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Detection position，值 [begin_l3 (IP header) begin_l4 (TCP/UDP header) begin_l5 (T payload) no_match (mismatch)]。",
+							Description: "Detection position，值 [begin_l3 (IP 头部) begin_l4 (TCP/UDP 头部) begin_l5 (T payload) no_match (mismatch)]。",
 						},
 						"match_type": {
 							Type:        schema.TypeString,
@@ -93,28 +93,28 @@ func ResourceTencentCloudAntiddosPacketFilterConfig() *schema.Resource {
 						"str": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Detection 值，键 string or regular expression，值 [When the detection 类型 is Sunday，please fill in the string or hexadecimal bytecode，for example，x313233 corresponds to the hexadecimal word&gt;section 代码 of the string &#39;123&#39;; when the detection 类型 is pcre，please fill in the regular expression character string;]。",
+							Description: "Detection 值，键 字符串 或 regular expression，值 [当 detection 类型 是 Sunday，please fill 在 字符串 或 hexadecimal bytecode，对于 示例，x313233 corresponds 到 hexadecimal word&gt;section 代码 的 字符串 &#39;123&#39;; 当 detection 类型 是 pcre，please fill 在 regular expression character 字符串;]。",
 						},
 						"depth": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The detection depth starting from the detection position，with a 值 of [0-1500]。",
+							Description: "detection depth starting 从 detection position，使用 值 的 [0-1500]。",
 						},
 						"offset": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The 偏移量 from the detection position，with a 值 range of [0，Depth]。",
+							Description: "偏移量 从 detection position，使用 值 范围 的 [0，Depth]。",
 						},
 						"is_not": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "是否include detection values，with a 值 of [0 (inclusive) and 1 (exclusive)]。",
+							Description: "是否include detection 值，使用 值 的 [0 (inclusive) 和 1 (exclusive)]。",
 						},
 						"match_logic": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "When there is a second detection condition，the AND or relationship with the first detection condition，with the 值 [and (and relationship) none (fill in this 值 when there is no second detection condition)]。",
+							Description: "当 there 是 second detection condition， AND 或 relationship 使用 first detection condition，使用 值 [和 (和 relationship) none (fill 在 此 值 当 there 是 无 second detection condition)]。",
 						},
 						"match_begin2": {
 							Type:        schema.TypeString,
@@ -125,32 +125,32 @@ func ResourceTencentCloudAntiddosPacketFilterConfig() *schema.Resource {
 						"match_type2": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The second detection 类型，with a 值 of [Sunday (keyword) pcre (regular expression)]。",
+							Description: "second detection 类型，使用 值 的 [Sunday (keyword) pcre (regular expression)]。",
 						},
 						"str2": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "键 string or regular expression，值 [When the detection 类型 is Sunday，please fill in the string or hexadecimal bytecode，for example，x313233 corresponds to the hexadecimal word&gt;section 代码 of the string &#39;123&#39;; when the detection 类型 is pcre，please fill in the regular expression character string;]。",
+							Description: "键 字符串 或 regular expression，值 [当 detection 类型 是 Sunday，please fill 在 字符串 或 hexadecimal bytecode，对于 示例，x313233 corresponds 到 hexadecimal word&gt;section 代码 的 字符串 &#39;123&#39;; 当 detection 类型 是 pcre，please fill 在 regular expression character 字符串;]。",
 						},
 						"depth2": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The second detection depth starting from the second detection position，with a 值 of [01500]。",
+							Description: "second detection depth starting 从 second detection position，使用 值 的 [01500]。",
 						},
 						"offset2": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The 偏移量 from the second detection position，with a 值 range of [0，Depth2]。",
+							Description: "偏移量 从 second detection position，使用 值 范围 的 [0，Depth2]。",
 						},
 						"is_not2": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "是否second detection includes detection values，with a 值 of [0 (inclusive) and 1 (exclusive)]。",
+							Description: "是否second detection includes detection 值，使用 值 的 [0 (inclusive) 和 1 (exclusive)]。",
 						},
 						"pkt_len_gt": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Greater than 消息 length，值 1+。",
+							Description: "Greater 比 消息 长度，值 1+。",
 						},
 					},
 				},

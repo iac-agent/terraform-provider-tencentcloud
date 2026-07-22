@@ -22,43 +22,43 @@ func DataSourceTencentCloudDayuL4RulesV2() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(svcdayu.DAYU_RESOURCE_TYPE),
-				Description:  "类型 resource that the layer 4 rule works for，valid values are `bgpip`，`bgp`，`bgp-multip` and `net`。",
+				Description:  "类型 资源 该 layer 4 规则 works 对于，有效 值 是 `bgpip`，`bgp`，`bgp-multip` 和 `net`。",
 			},
 			"virtual_port": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Virtual 端口 of resource。",
+				Description: "Virtual 端口 的 资源。",
 			},
 			"ip": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Ip of the resource。",
+				Description: "Ip 的 资源。",
 			},
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A 列表 layer 4 rules. Each element 包含following attributes:",
+				Description: "A 列表 layer 4 规则. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "协议 of the rule。",
+							Description: "协议 的 规则。",
 						},
 						"source_port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 来源 端口 of the layer 4 rule。",
+							Description: "来源 端口 的 layer 4 规则。",
 						},
 						"virtual_port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The virtual 端口 of the layer 4 rule。",
+							Description: "virtual 端口 的 layer 4 规则。",
 						},
 						"keeptime": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The keeptime of the layer 4 rule。",
+							Description: "keeptime 的 layer 4 规则。",
 						},
 						"source_list": {
 							Type:     schema.TypeList,
@@ -68,46 +68,46 @@ func DataSourceTencentCloudDayuL4RulesV2() *schema.Resource {
 									"source": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "来源 IP or 域名",
+										Description: "来源 IP 或 域名",
 									},
 									"weight": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "权重 of the 来源",
+										Description: "权重 的 来源",
 									},
 								},
 							},
-							Description: "来源 列表 the rule。",
+							Description: "来源 列表 规则。",
 						},
 						"rule_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID 4 layer rule。",
+							Description: "ID 4 layer 规则。",
 						},
 						"lb_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "LB 类型 rule，`1` for 权重 cycling and `2` for IP hash。",
+							Description: "LB 类型 规则，`1` 对于 权重 cycling 和 `2` 对于 IP hash。",
 						},
 						"keep_enable": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "session hold switch。",
+							Description: "会话 hold switch。",
 						},
 						"source_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "来源 类型，`1` for 来源 of 主机，`2` for 来源 of IP。",
+							Description: "来源 类型，`1` 对于 来源 的 主机，`2` 对于 来源 的 IP。",
 						},
 						"rule_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 rule。",
+							Description: "名称 规则。",
 						},
 						"remove_switch": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Remove the watermark state。",
+							Description: "Remove 水印 state。",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
@@ -117,17 +117,17 @@ func DataSourceTencentCloudDayuL4RulesV2() *schema.Resource {
 						"region": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Corresponding regional information。",
+							Description: "Corresponding regional 信息。",
 						},
 						"ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Bind the resource IP information。",
+							Description: "Bind 资源 IP 信息。",
 						},
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Bind the resource ID information。",
+							Description: "Bind 资源 ID 信息。",
 						},
 					},
 				},

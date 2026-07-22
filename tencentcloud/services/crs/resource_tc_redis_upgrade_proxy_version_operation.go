@@ -28,7 +28,7 @@ func ResourceTencentCloudRedisUpgradeProxyVersionOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "ID instance。",
+				Description: "ID 实例。",
 			},
 
 			"current_proxy_version": {

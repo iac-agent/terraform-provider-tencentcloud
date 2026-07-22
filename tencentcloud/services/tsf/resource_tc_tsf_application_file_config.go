@@ -38,21 +38,21 @@ func ResourceTencentCloudTsfApplicationFileConfig() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "配置 file 名称",
+				Description: "配置 文件 名称",
 			},
 
 			"config_file_value": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Configuration file 内容 (the original 内容 encoding needs to be in utf-8 格式，if the ConfigFileCode is gbk，it will be converted in the background)。",
+				Description: "Configuration 文件 内容 ( original 内容 编码 needs 到 是 在 utf-8 格式，如果 ConfigFileCode 是 gbk，它 将 是 converted 在 background)。",
 			},
 
 			"application_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "配置 file associated application ID。",
+				Description: "配置 文件 associated 应用 ID。",
 			},
 
 			"config_file_path": {
@@ -73,7 +73,7 @@ func ResourceTencentCloudTsfApplicationFileConfig() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Configuration file encoding，utf-8 or gbk. Note: If you choose gbk，you need the support of a new 版本 of tsf-consul-template (public cloud virtual machines need to use 1.32 tsf-agent，and containers need to obtain the latest tsf-consul-template-docker.tar.gz from the documentation)。",
+				Description: "Configuration 文件 编码，utf-8 或 gbk. 注意: 如果 您 choose gbk，您 need support 的 new 版本 的 tsf-consul-template (公有 云 virtual machines need 到 使用 1.32 tsf-agent，和 containers need 到 obtain latest tsf-consul-template-docker.tar.gz 从 documentation)。",
 			},
 
 			"config_post_cmd": {
@@ -87,7 +87,7 @@ func ResourceTencentCloudTsfApplicationFileConfig() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "the 配置 值 is encoded with base64 or not。",
+				Description: "配置 值 是 encoded 使用 base64 或 不。",
 			},
 
 			"program_id_list": {
@@ -97,7 +97,7 @@ func ResourceTencentCloudTsfApplicationFileConfig() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "datasource for auth。",
+				Description: "datasource 对于 auth。",
 			},
 		},
 	}

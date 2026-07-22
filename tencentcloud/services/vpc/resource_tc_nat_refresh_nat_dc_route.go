@@ -25,21 +25,21 @@ func ResourceTencentCloudNatRefreshNatDcRoute() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Unique identifier of Vpc。",
+				Description: "Unique identifier 的 Vpc。",
 			},
 
 			"nat_gateway_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Unique identifier of Nat Gateway。",
+				Description: "Unique identifier 的 Nat Gateway。",
 			},
 
 			"dry_run": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "是否pre-refresh，有效值：True:yes，False:no。",
+				Description: "是否pre-refresh，有效值：True:yes，False:无。",
 			},
 		},
 	}

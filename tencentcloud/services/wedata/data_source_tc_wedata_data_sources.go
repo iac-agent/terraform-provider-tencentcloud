@@ -36,7 +36,7 @@ func DataSourceTencentCloudWedataDataSources() *schema.Resource {
 			"type": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Data 来源 类型: enumeration values.\n\n- MYSQL\n- TENCENT_MYSQL\n- POSTGRE\n- ORACLE\n- SQLSERVER\n- FTP\n- HIVE\n- HUDI\n- HDFS\n- ICEBERG\n- KAFKA\n- HBASE\n- SPARK\n- VIRTUAL\n- TBASE\n- DB2\n- DM\n- GAUSSDB\n- GBASE\n- IMPALA\n- ES\n- TENCENT_ES\n- GREENPLUM\n- PHOENIX\n- SAP_HANA\n- SFTP\n- OCEANBASE\n- CLICKHOUSE\n- KUDU\n- VERTICA\n- REDIS\n- COS\n- DLC\n- DORIS\n- CKAFKA\n- S3\n- TDSQL\n- TDSQL_MYSQL\n- MONGODB\n- TENCENT_MONGODB\n- REST_API\n- SuperSQL\n- PRESTO\n- TiDB\n- StarRocks\n- Trino\n- Kyuubi\n- TCHOUSE_X\n- TCHOUSE_P\n- TCHOUSE_C\n- TCHOUSE_D\n- INFLUXDB\n- BIG_QUERY\n- SSH\n- BLOB。",
+				Description: "Data 来源 类型: enumeration 值.\n\n- MYSQL\n- TENCENT_MYSQL\n- POSTGRE\n- ORACLE\n- SQLSERVER\n- FTP\n- HIVE\n- HUDI\n- HDFS\n- ICEBERG\n- KAFKA\n- HBASE\n- SPARK\n- VIRTUAL\n- TBASE\n- DB2\n- DM\n- GAUSSDB\n- GBASE\n- IMPALA\n- ES\n- TENCENT_ES\n- GREENPLUM\n- PHOENIX\n- SAP_HANA\n- SFTP\n- OCEANBASE\n- CLICKHOUSE\n- KUDU\n- VERTICA\n- REDIS\n- COS\n- DLC\n- DORIS\n- CKAFKA\n- S3\n- TDSQL\n- TDSQL_MYSQL\n- MONGODB\n- TENCENT_MONGODB\n- REST_API\n- SuperSQL\n- PRESTO\n- TiDB\n- StarRocks\n- Trino\n- Kyuubi\n- TCHOUSE_X\n- TCHOUSE_P\n- TCHOUSE_C\n- TCHOUSE_D\n- INFLUXDB\n- BIG_QUERY\n- SSH\n- BLOB。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -51,13 +51,13 @@ func DataSourceTencentCloudWedataDataSources() *schema.Resource {
 			"items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Data 来源 list。",
+				Description: "Data 来源 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"project_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Belonging project ID。",
+							Description: "Belonging 项目 ID。",
 						},
 						"id": {
 							Type:        schema.TypeInt,
@@ -67,7 +67,7 @@ func DataSourceTencentCloudWedataDataSources() *schema.Resource {
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data 来源 类型: enumeration values。",
+							Description: "Data 来源 类型: enumeration 值。",
 						},
 						"name": {
 							Type:        schema.TypeString,
@@ -77,12 +77,12 @@ func DataSourceTencentCloudWedataDataSources() *schema.Resource {
 						"display_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data 来源 display 名称，for visual viewing。",
+							Description: "Data 来源 display 名称，对于 visual viewing。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data 来源 描述 information。",
+							Description: "Data 来源 描述 信息。",
 						},
 						"project_name": {
 							Type:        schema.TypeString,
@@ -112,17 +112,17 @@ func DataSourceTencentCloudWedataDataSources() *schema.Resource {
 						"prod_con_properties": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data 来源 configuration information，stored in JSON KV 格式，varies by data 来源 类型",
+							Description: "Data 来源 配置 信息，stored 在 JSON KV 格式，varies 通过 数据 来源 类型",
 						},
 						"dev_con_properties": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Same as params，包含data for development data 来源",
+							Description: "Same 作为 params，包含data 对于 development 数据 来源",
 						},
 						"category": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data 来源 category:\n\n- DB - custom 来源\n- CLUSTER - system 来源",
+							Description: "Data 来源 category:\n\n- DB - 自定义 来源\n- CLUSTER - 系统 来源",
 						},
 					},
 				},

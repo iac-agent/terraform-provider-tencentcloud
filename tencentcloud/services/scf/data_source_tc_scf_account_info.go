@@ -19,7 +19,7 @@ func DataSourceTencentCloudScfAccountInfo() *schema.Resource {
 			"account_usage": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Namespace usage information。",
+				Description: "Namespace usage 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"namespaces_count": {
@@ -39,7 +39,7 @@ func DataSourceTencentCloudScfAccountInfo() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Function array。",
+										Description: "Function 数组。",
 									},
 									"namespace": {
 										Type:        schema.TypeString,
@@ -49,22 +49,22 @@ func DataSourceTencentCloudScfAccountInfo() *schema.Resource {
 									"functions_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "数量 functions in namespace。",
+										Description: "数量 functions 在 命名空间。",
 									},
 									"total_concurrency_mem": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Total memory quota of the namespace 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Total 内存 配额 的 命名空间 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"total_allocated_concurrency_mem": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "并发 usage of the namespace 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "并发 usage 的 命名空间 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"total_allocated_provisioned_mem": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Provisioned 并发 usage of the namespace 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Provisioned 并发 usage 的 命名空间 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -72,17 +72,17 @@ func DataSourceTencentCloudScfAccountInfo() *schema.Resource {
 						"total_concurrency_mem": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Upper 限制 of 用户 并发 memory in the current 地域",
+							Description: "Upper 限制 的 用户 并发 内存 在 当前 地域",
 						},
 						"total_allocated_concurrency_mem": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Quota of configured 用户 并发 memory in the current 地域",
+							Description: "Quota 的 已配置 用户 并发 内存 在 当前 地域",
 						},
 						"user_concurrency_mem_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Quota of 账号 并发 actually configured by 用户",
+							Description: "Quota 的 账号 并发 actually 已配置 通过 用户",
 						},
 					},
 				},
@@ -91,18 +91,18 @@ func DataSourceTencentCloudScfAccountInfo() *schema.Resource {
 			"account_limit": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Namespace 限制 information。",
+				Description: "Namespace 限制 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"namespaces_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "限制 of namespace quantity。",
+							Description: "限制 的 命名空间 quantity。",
 						},
 						"namespace": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Namespace 限制 information。",
+							Description: "Namespace 限制 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"functions_count": {
@@ -113,7 +113,7 @@ func DataSourceTencentCloudScfAccountInfo() *schema.Resource {
 									"trigger": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Trigger information。",
+										Description: "Trigger 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"cos": {
@@ -197,27 +197,27 @@ func DataSourceTencentCloudScfAccountInfo() *schema.Resource {
 									"test_model_limit": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Test event 限制 Note: this field may return null，indicating that no valid values can be obtained。",
+										Description: "Test 事件 限制 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 									},
 									"init_timeout_limit": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Initialization timeout 限制",
+										Description: "Initialization 超时 限制",
 									},
 									"retry_num_limit": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "限制 of async retry attempt quantity。",
+										Description: "限制 的 async retry attempt quantity。",
 									},
 									"min_msg_ttl": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Lower 限制 of 消息 retention time for async retry。",
+										Description: "Lower 限制 的 消息 retention 时间 对于 async retry。",
 									},
 									"max_msg_ttl": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Upper 限制 of 消息 retention time for async retry。",
+										Description: "Upper 限制 的 消息 retention 时间 对于 async retry。",
 									},
 								},
 							},

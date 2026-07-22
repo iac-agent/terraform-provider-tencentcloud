@@ -18,13 +18,13 @@ func DataSourceTencentCloudDlcDescribeUserType() *schema.Resource {
 			"user_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "用户 ID (UIN). If it is not specified，it will be the sub-UIN of the caller by default。",
+				Description: "用户 ID (UIN). 如果 它 是 不 指定，它 将 是 sub-UIN 的 caller 通过 默认值。",
 			},
 
 			"user_type": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Types of users. ADMIN: administrators; COMMON: general users。",
+				Description: "Types 的 users. ADMIN: administrators; COMMON: general users。",
 			},
 
 			"result_output_file": {

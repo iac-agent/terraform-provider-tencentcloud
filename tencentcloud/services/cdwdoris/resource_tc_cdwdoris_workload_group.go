@@ -35,7 +35,7 @@ func ResourceTencentCloudCdwdorisWorkloadGroup() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Resource group configuration。",
+				Description: "Resource 组 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"workload_group_name": {
@@ -52,7 +52,7 @@ func ResourceTencentCloudCdwdorisWorkloadGroup() *schema.Resource {
 						"memory_limit": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Memory 限制，the sum of the memory 限制 values of all resource groups should be less than or equal to 100. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Memory 限制， sum 的 内存 限制 值 的 all 资源 groups should 是 less 比 或 equal 到 100. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"enable_memory_over_commit": {
 							Type:        schema.TypeBool,

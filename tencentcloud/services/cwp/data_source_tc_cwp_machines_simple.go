@@ -19,34 +19,34 @@ func DataSourceTencentCloudCwpMachinesSimple() *schema.Resource {
 			"machine_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Service types. -CVM: Cloud Virtual Machine; -ECM: Edge Computing Machine; -LH: Lighthouse; -Other: Mixed cloud; -ALL: All server types。",
+				Description: "Service types. -CVM: Cloud Virtual Machine; -ECM: Edge Computing Machine; -LH: Lighthouse; -Other: Mixed 云; -ALL: All 服务器 types。",
 			},
 			"machine_region": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The area where the machine belongs,Such as: ap-guangzhou，ap-shanghai，all-regions: All server 地域 types。",
+				Description: "area 其中 machine belongs,Such 作为: ap-guangzhou，ap-shanghai，all-regions: All 服务器 地域 types。",
 			},
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "filter list。",
+				Description: "过滤器 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Only supported Keywords，版本 and TagId。",
+							Description: "Only 支持 Keywords，版本 和 TagId。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Required:    true,
-							Description: "If `名称` is `Keywords`: enter keyword query; If `名称` is `版本`: enter PRO_VERSION: Professional Edition | BASIC_VERSION: Basic | Flagship: Flagship | ProtectedMachines: Professional+Flagship | UnFlagship: Non Flagship | PRO_POST_PAY: Professional Edition Pay by Volume | PRO_PRE_PAY: Professional Edition Monthly Package query; If `名称` is `TagId`: enter 标签 ID query。",
+							Description: "如果 `名称` 是 `Keywords`: enter keyword 查询; 如果 `名称` 是 `版本`: enter PRO_VERSION: Professional Edition | BASIC_VERSION: Basic | Flagship: Flagship | ProtectedMachines: Professional+Flagship | UnFlagship: Non Flagship | PRO_POST_PAY: Professional Edition Pay 通过 Volume | PRO_PRE_PAY: Professional Edition Monthly Package 查询; 如果 `名称` 是 `TagId`: enter 标签 ID 查询。",
 						},
 						"exact_match": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "exact match. true or false。",
+							Description: "exact match. true 或 false。",
 						},
 					},
 				},
@@ -55,12 +55,12 @@ func DataSourceTencentCloudCwpMachinesSimple() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "项目 ID list。",
+				Description: "项目 ID 列表。",
 			},
 			"machines": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Machine list。",
+				Description: "Machine 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"machine_name": {
@@ -76,12 +76,12 @@ func DataSourceTencentCloudCwpMachinesSimple() *schema.Resource {
 						"uuid": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cwp client sole UUID。",
+							Description: "Cwp 客户端 sole UUID。",
 						},
 						"quuid": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cloud server sole UUID。",
+							Description: "Cloud 服务器 sole UUID。",
 						},
 						"machine_ip": {
 							Type:        schema.TypeString,
@@ -91,7 +91,7 @@ func DataSourceTencentCloudCwpMachinesSimple() *schema.Resource {
 						"is_pro_version": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Paid 版本 or not. true: yes; false: no。",
+							Description: "Paid 版本 或 不. true: yes; false: 无。",
 						},
 						"machine_wan_ip": {
 							Type:        schema.TypeString,
@@ -101,7 +101,7 @@ func DataSourceTencentCloudCwpMachinesSimple() *schema.Resource {
 						"pay_mode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Payment model. POSTPAY: Pay as you go; PREPAY: Monthly subscription。",
+							Description: "Payment model. POSTPAY: Pay 作为 您 go; PREPAY: Monthly subscription。",
 						},
 						"tag": {
 							Type:        schema.TypeList,
@@ -112,7 +112,7 @@ func DataSourceTencentCloudCwpMachinesSimple() *schema.Resource {
 									"rid": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Relevance 标签 id。",
+										Description: "Relevance 标签 ID。",
 									},
 									"name": {
 										Type:        schema.TypeString,
@@ -136,7 +136,7 @@ func DataSourceTencentCloudCwpMachinesSimple() *schema.Resource {
 									"region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "地域，Such as ap-guangzhou，ap-shanghai，ap-beijing。",
+										Description: "地域，Such 作为 ap-guangzhou，ap-shanghai，ap-beijing。",
 									},
 									"region_name": {
 										Type:        schema.TypeString,
@@ -174,7 +174,7 @@ func DataSourceTencentCloudCwpMachinesSimple() *schema.Resource {
 						"machine_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Service types. -CVM: Cloud Virtual Machine; -ECM: Edge Computing Machine -LH: Lighthouse; -Other: Mixed cloud; -ALL: All server types。",
+							Description: "Service types. -CVM: Cloud Virtual Machine; -ECM: Edge Computing Machine -LH: Lighthouse; -Other: Mixed 云; -ALL: All 服务器 types。",
 						},
 						"kernel_version": {
 							Type:        schema.TypeString,
@@ -242,7 +242,7 @@ func DataSourceTencentCloudCwpMachinesSimple() *schema.Resource {
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "实例 ID注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},

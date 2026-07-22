@@ -26,7 +26,7 @@ func DataSourceTencentCloudDcdbDatabases() *schema.Resource {
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Database information。",
+				Description: "Database 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"db_name": {

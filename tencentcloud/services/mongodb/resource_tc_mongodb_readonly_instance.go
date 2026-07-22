@@ -26,19 +26,19 @@ func ResourceTencentCloudMongodbReadOnlyInstance() *schema.Resource {
 			Type:        schema.TypeString,
 			ForceNew:    true,
 			Required:    true,
-			Description: "表示region of main instance。",
+			Description: "表示region 的 main 实例。",
 		},
 		"father_instance_id": {
 			Type:        schema.TypeString,
 			ForceNew:    true,
 			Required:    true,
-			Description: "表示main instance ID readonly instances。",
+			Description: "表示main 实例 ID readonly 实例。",
 		},
 		"cluster_type": {
 			Type:     schema.TypeString,
 			Required: true,
 			ForceNew: true,
-			Description: "Instance schema type." +
+			Description: "实例 schema 类型." +
 				"	- REPLSET: Replset cluster;" +
 				"	- SHARD: Shard cluster.",
 		},
@@ -46,7 +46,7 @@ func ResourceTencentCloudMongodbReadOnlyInstance() *schema.Resource {
 			Type:        schema.TypeInt,
 			Optional:    true,
 			Computed:    true,
-			Description: "The 数量 nodes in each replica set. 默认值：3。",
+			Description: "数量 nodes 在 each 副本 集合. 默认值：3。",
 		},
 		"shard_quantity": {
 			Type:         schema.TypeInt,
@@ -62,7 +62,7 @@ func ResourceTencentCloudMongodbReadOnlyInstance() *schema.Resource {
 			Computed:     true,
 			ForceNew:     true,
 			ValidateFunc: tccommon.ValidateIntegerInRange(3, 5),
-			Description:  "节点数量 per shard，at least 3(one master and two slaves)。",
+			Description:  "节点数量 per 分片，在 least 3(一个 master 和 two slaves)。",
 		},
 	}
 	basic := TencentMongodbBasicInfo()

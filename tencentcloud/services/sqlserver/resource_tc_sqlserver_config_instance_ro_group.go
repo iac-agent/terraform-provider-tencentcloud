@@ -29,48 +29,48 @@ func ResourceTencentCloudSqlserverConfigInstanceRoGroup() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 			"read_only_group_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Read-only group ID.",
+				Description: "Read-仅 组 ID.",
 			},
 			"read_only_group_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Read-only group name. If this parameter is not specified, it is not modified.",
+				Description: "Read-仅 组 名称. 如果 此 参数 是 不 指定, 它 是 不 modified.",
 			},
 			"is_offline_delay": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to enable timeout culling function. 0- Disable the culling function. 1- Enable the culling function.",
+				Description: "Whether 到 启用 超时 culling 函数. 0- Disable culling 函数. 1- Enable culling 函数.",
 			},
 			"read_only_max_delay_time": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "After the timeout elimination function is enabled, the timeout threshold used, if this parameter is not filled, it will not be modified.",
+				Description: "After 超时 elimination 函数 是 已启用, 超时 阈值 使用, 如果 此 参数 是 不 filled, 它 将 不 是 modified.",
 			},
 			"min_read_only_in_group": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "After the timeout removal function is enabled, the number of read-only copies retained by the read-only group at least, if this parameter is not filled, it will not be modified.",
+				Description: "After 超时 removal 函数 是 已启用, 数量 的 read-仅 copies retained 通过 read-仅 组 在 least, 如果 此 参数 是 不 filled, 它 将 不 是 modified.",
 			},
 			"weight_pairs": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Read-only group instance weight modification set, if this parameter is not filled, it will not be modified.",
+				Description: "Read-仅 组 实例 权重 modification 集合, 如果 此 参数 是 不 filled, 它 将 不 是 modified.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"read_only_instance_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Read-only instance ID, in the format: mssqlro-3l3fgqn7.",
+							Description: "Read-仅 实例 ID, 在 格式: mssqlro-3l3fgqn7.",
 						},
 						"read_only_weight": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Read-only instance weight, the range is 0-100.",
+							Description: "Read-仅 实例 权重, 范围 是 0-100.",
 						},
 					},
 				},
@@ -78,12 +78,12 @@ func ResourceTencentCloudSqlserverConfigInstanceRoGroup() *schema.Resource {
 			"auto_weight": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "0-user-defined weight (adjusted according to WeightPairs), 1-system automatically assigns weight (WeightPairs is invalid), the default is 0.",
+				Description: "0-用户-defined 权重 (adjusted according 到 WeightPairs), 1-系统 automatically assigns 权重 (WeightPairs 是 无效), 默认值 是 0.",
 			},
 			"balance_weight": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "0-do not rebalance the load, 1-rebalance the load, the default is 0.",
+				Description: "0-do 不 rebalance load, 1-rebalance load, 默认值 是 0.",
 			},
 		},
 	}

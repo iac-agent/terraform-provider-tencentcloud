@@ -25,7 +25,7 @@ func DataSourceTencentCloudDcdbAccounts() *schema.Resource {
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Cloud database 账号 information。",
+				Description: "Cloud 数据库 账号 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"user_name": {
@@ -36,7 +36,7 @@ func DataSourceTencentCloudDcdbAccounts() *schema.Resource {
 						"host": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "From which 主机 the 用户 can log in (corresponding to the 主机 field of MySQL users，UserName + 主机 uniquely identifies a 用户，in the form of IP，the IP segment ends with %; supports filling in %; if it is empty，it 默认为 %)。",
+							Description: "From 其中 主机 用户 可以 日志 在 (corresponding 到 主机 字段 的 MySQL users，UserName + 主机 uniquely identifies 用户，在 form 的 IP， IP segment 结束 使用 %; 支持 filling 在 %; 如果 它 是 空，它 默认为 %)。",
 						},
 						"description": {
 							Type:        schema.TypeString,
@@ -56,17 +56,17 @@ func DataSourceTencentCloudDcdbAccounts() *schema.Resource {
 						"read_only": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Read-only flag，0: No，1: The SQL request of this 账号 is preferentially executed on the standby machine，and the 主机 is selected for execution when the standby machine is unavailable. 2: The standby machine is preferentially selected for execution，and the operation fails when the standby machine is unavailable。",
+							Description: "Read-仅 flag，0: No，1: SQL 请求 的 此 账号 是 preferentially executed 在 standby machine，和 主机 是 selected 对于 execution 当 standby machine 是 unavailable. 2: standby machine 是 preferentially selected 对于 execution，和 operation fails 当 standby machine 是 unavailable。",
 						},
 						"delay_thresh": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "If the standby machine 延迟 exceeds the setting 值 of this parameter，the system will consider that the standby machine is faulty and recommend that the parameter 值 be greater than 10. This parameter takes effect when ReadOnly selects 1 and 2。",
+							Description: "如果 standby machine 延迟 exceeds setting 值 的 此 参数， 系统 将 consider 该 standby machine 是 faulty 和 recommend 该 参数 值 是 greater 比 10. 此 参数 takes effect 当 ReadOnly selects 1 和 2。",
 						},
 						"slave_const": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "For read-only accounts，set the policy 是否fix the standby machine，0: not fix the standby machine，that is，the standby machine will not disconnect from the client if it does not meet the conditions，the Proxy selects other available standby machines，1: the standby machine will be disconnected if the conditions are not met，Make sure a connection is secured to the standby machine。",
+							Description: "For read-仅 accounts，集合 策略 是否fix standby machine，0: 不 fix standby machine，该 是， standby machine 将 不 disconnect 从 客户端 如果 它 does 不 meet conditions， Proxy selects other 可用 standby machines，1: standby machine 将 是 disconnected 如果 conditions 是 不 met，Make sure 连接 是 secured 到 standby machine。",
 						},
 					},
 				},

@@ -24,19 +24,19 @@ func DataSourceTencentCloudStsCallerIdentity() *schema.Resource {
 			"account_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The primary 账号 Uin to which the current caller belongs。",
+				Description: "primary 账号 Uin 到 其中 当前 caller belongs。",
 			},
 
 			"user_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Identity:- When the caller is a cloud 账号，the current 账号 `Uin` is returned.- When the caller is a 角色，it 返回`roleId:roleSessionName`- When the caller is a federated identity，it 返回`uin:federatedUserName`。",
+				Description: "Identity:- 当 caller 是 云 账号， 当前 账号 `Uin` 是 返回.- 当 caller 是 角色，它 返回`roleId:roleSessionName`- 当 caller 是 federated identity，它 返回`uin:federatedUserName`。",
 			},
 
 			"principal_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "账号 Uin to which the 键 belongs:- The caller is a cloud 账号，and the returned current 账号 Uin- The caller is a 角色，and the returned 账号 Uin that applies for the 角色 键",
+				Description: "账号 Uin 到 其中 键 belongs:- caller 是 云 账号，和 返回 当前 账号 Uin- caller 是 角色，和 返回 账号 Uin 该 applies 对于 角色 键",
 			},
 
 			"type": {

@@ -27,14 +27,14 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 			"task_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "名称 task。",
+				Description: "名称 任务。",
 			},
 
 			"task_type": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "类型 task，SOURCE(data input)，SINK(data output)。",
+				Description: "类型 任务，SOURCE(数据 input)，SINK(数据 output)。",
 			},
 
 			"source_resource": {
@@ -42,7 +42,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "data resource。",
+				Description: "数据 资源。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
@@ -54,33 +54,33 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "ckafka configuration，必填 when 类型 is KAFKA。",
+							Description: "ckafka 配置，必填 当 类型 是 KAFKA。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"self_built": {
 										Type:        schema.TypeBool,
 										Required:    true,
-										Description: "是否cluster is built by yourself instead of cloud product。",
+										Description: "是否cluster 是 built 通过 yourself instead 的 云 product。",
 									},
 									"resource": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "instance resource。",
+										Description: "实例 资源。",
 									},
 									"topic": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Topic 名称，use `,` when more than 1 topic。",
+										Description: "Topic 名称，使用 `,` 当 more 比 1 主题。",
 									},
 									"offset_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "偏移量 类型，from beginning:earliest，from latest:latest，from specific time:时间戳。",
+										Description: "偏移量 类型，从 beginning:earliest，从 latest:latest，从 特定 时间:时间戳。",
 									},
 									"start_time": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "when 偏移量 类型 时间戳 为必填项。",
+										Description: "当 偏移量 类型 时间戳 为必填项。",
 									},
 									"resource_name": {
 										Type:        schema.TypeString,
@@ -95,38 +95,38 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"topic_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Topic id。",
+										Description: "Topic ID。",
 									},
 									"partition_num": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "the partition num of the topic。",
+										Description: "分区 num 的 主题。",
 									},
 									"enable_toleration": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "enable dead letter queue。",
+										Description: "启用 dead letter queue。",
 									},
 									"qps_limit": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Qps(query per seconds) 限制",
+										Description: "Qps(查询 per 秒) 限制",
 									},
 									"table_mappings": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "maps of table to topic，必填 when multi topic is selected。",
+										Description: "maps 的 表 到 主题，必填 当 multi 主题 是 selected。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"database": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "database 名称",
+													Description: "数据库 名称",
 												},
 												"table": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "table 名称,use，to separate。",
+													Description: "表 名称,使用，到 separate。",
 												},
 												"topic": {
 													Type:        schema.TypeString,
@@ -144,22 +144,22 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"use_table_mapping": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "是否use multi table。",
+										Description: "是否use multi 表。",
 									},
 									"use_auto_create_topic": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Does the used topic need to be automatically created (currently only supports SOURCE inflow tasks，if you do not use to distribute to multiple topics，you need to fill in the topic 名称 that needs to be automatically created in the Topic field)。",
+										Description: "Does 使用 主题 need 到 是 automatically 创建 (currently 仅 支持 SOURCE inflow tasks，如果 您 do 不 使用 到 distribute 到 多个 topics，您 need 到 fill 在 主题 名称 该 needs 到 是 automatically 创建 在 Topic 字段)。",
 									},
 									"compression_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "是否compress when writing to the Topic，if it is not 已启用，fill in none，if it is 已启用，fill in open。",
+										Description: "是否compress 当 writing 到 Topic，如果 它 是 不 已启用，fill 在 none，如果 它 是 已启用，fill 在 open。",
 									},
 									"msg_multiple": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "1 来源 topic 消息 is amplified into msg Multiple and written to the target topic (this parameter is currently only applicable to ckafka flowing into ckafka)。",
+										Description: "1 来源 主题 消息 是 amplified into msg Multiple 和 written 到 目标 主题 (此 参数 是 currently 仅 applicable 到 ckafka flowing into ckafka)。",
 									},
 								},
 							},
@@ -168,7 +168,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "EB configuration，必填 when 类型 is EB。",
+							Description: "EB 配置，必填 当 类型 是 EB。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"type": {
@@ -189,17 +189,17 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"namespace": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "SCF namespace。",
+										Description: "SCF 命名空间。",
 									},
 									"function_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "SCF function 名称",
+										Description: "SCF 函数 名称",
 									},
 									"qualifier": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "SCF 版本 and alias。",
+										Description: "SCF 版本 和 alias。",
 									},
 								},
 							},
@@ -208,13 +208,13 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "MongoDB 配置，必填 when 类型 is MONGODB。",
+							Description: "MongoDB 配置，必填 当 类型 是 MONGODB。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"database": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "MongoDB database 名称",
+										Description: "MongoDB 数据库 名称",
 									},
 									"collection": {
 										Type:        schema.TypeString,
@@ -224,7 +224,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"copy_existing": {
 										Type:        schema.TypeBool,
 										Required:    true,
-										Description: "是否copy the stock data，the default parameter is true。",
+										Description: "是否copy stock 数据， 默认值 参数 是 true。",
 									},
 									"resource": {
 										Type:        schema.TypeString,
@@ -234,32 +234,32 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"ip": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Mongo DB connection ip。",
+										Description: "Mongo DB 连接 ip。",
 									},
 									"port": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "MongoDB connection 端口",
+										Description: "MongoDB 连接 端口",
 									},
 									"user_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "MongoDB database 用户 名称",
+										Description: "MongoDB 数据库 用户 名称",
 									},
 									"password": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "MongoDB database 密码",
+										Description: "MongoDB 数据库 密码",
 									},
 									"listening_event": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Listening event 类型，if it is empty，it means select all. Values include insert，update，replace，delete，invalidate，drop，dropdatabase，rename，used between multiple types，separated by commas。",
+										Description: "Listening 事件 类型，如果 它 是 空，它 表示 select all. Values include insert，update，replace，delete，invalidate，drop，dropdatabase，rename，使用 between 多个 types，separated 通过 commas。",
 									},
 									"read_preference": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Master-slave 优先级，default master node。",
+										Description: "Master-slave 优先级，默认值 master 节点。",
 									},
 									"pipeline": {
 										Type:        schema.TypeString,
@@ -278,7 +278,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Es configuration，必填 when 类型 is ES。",
+							Description: "Es 配置，必填 当 类型 是 ES。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"resource": {
@@ -289,7 +289,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"port": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Es connection 端口",
+										Description: "Es 连接 端口",
 									},
 									"user_name": {
 										Type:        schema.TypeString,
@@ -314,12 +314,12 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"uniq_vpc_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "instance 私有网络 ID",
+										Description: "实例 私有网络 ID",
 									},
 									"drop_invalid_message": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Whether Es discards the 消息 of parsing failure。",
+										Description: "Whether Es discards 消息 的 parsing failure。",
 									},
 									"index": {
 										Type:        schema.TypeString,
@@ -334,54 +334,54 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"content_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "键 for data in non-json 格式",
+										Description: "键 对于 数据 在 non-json 格式",
 									},
 									"drop_invalid_json_message": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Whether Es discards messages in non-json 格式",
+										Description: "Whether Es discards messages 在 non-json 格式",
 									},
 									"document_id_field": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The field 名称 document ID 值 dumped into Es。",
+										Description: "字段 名称 document ID 值 dumped into Es。",
 									},
 									"index_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Es custom 索引 名称 类型，STRING，JSONPATH，the 默认为 STRING。",
+										Description: "Es 自定义 索引 名称 类型，STRING，JSONPATH， 默认为 STRING。",
 									},
 									"drop_cls": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "When the member parameter Drop Invalid 消息 To Cls is set to true，the Drop Invalid 消息 parameter is invalid。",
+										Description: "当 member 参数 Drop Invalid 消息 To Cls 是 集合 到 true， Drop Invalid 消息 参数 是 无效。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"drop_invalid_message_to_cls": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "是否deliver to cls。",
+													Description: "是否deliver 到 cls。",
 												},
 												"drop_cls_region": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The 地域 where the cls is delivered。",
+													Description: "地域 其中 cls 是 delivered。",
 												},
 												"drop_cls_owneruin": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Delivery 账号 of cls。",
+													Description: "Delivery 账号 的 cls。",
 												},
 												"drop_cls_topic_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "topic of cls。",
+													Description: "主题 的 cls。",
 												},
 												"drop_cls_log_set": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "cls log set。",
+													Description: "cls 日志 集合。",
 												},
 											},
 										},
@@ -389,7 +389,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"database_primary_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "When the 消息 dumped to ES is the binlog of Database，if you need to synchronize database operations，that is，fill in the primary 键 of the database table when adding，deleting，and modifying operations to ES。",
+										Description: "当 消息 dumped 到 ES 是 binlog 的 Database，如果 您 need 到 synchronize 数据库 operations，该 是，fill 在 primary 键 的 数据库 表 当 adding，deleting，和 modifying operations 到 ES。",
 									},
 									"drop_dlq": {
 										Type:        schema.TypeList,
@@ -423,17 +423,17 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 															"topic": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Topic 名称，multiple separated by `,`。",
+																Description: "Topic 名称，多个 separated 通过 `,`。",
 															},
 															"offset_type": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "偏移量 类型，initial position earliest，latest position latest，time point position 时间戳。",
+																Description: "偏移量 类型，initial position earliest，latest position latest，时间 point position 时间戳。",
 															},
 															"start_time": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "It must be passed when the 偏移量 类型 is 时间戳，and the time stamp is passed，accurate to the second。",
+																Description: "It 必须 是 passed 当 偏移量 类型 是 时间戳，和 时间 stamp 是 passed，accurate 到 second。",
 															},
 															"resource_name": {
 																Type:        schema.TypeString,
@@ -448,7 +448,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 															"topic_id": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Topic Id。",
+																Description: "Topic ID。",
 															},
 															"partition_num": {
 																Type:        schema.TypeInt,
@@ -458,7 +458,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 															"enable_toleration": {
 																Type:        schema.TypeBool,
 																Optional:    true,
-																Description: "Enable the fault-tolerant instance and enable the dead-letter queue。",
+																Description: "Enable fault-tolerant 实例 和 启用 dead-letter queue。",
 															},
 															"qps_limit": {
 																Type:        schema.TypeInt,
@@ -468,18 +468,18 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 															"table_mappings": {
 																Type:        schema.TypeList,
 																Optional:    true,
-																Description: "The route from Table to Topic must be passed when the Distribute to multiple topics switch is turned on。",
+																Description: "路由 从 Table 到 Topic 必须 是 passed 当 Distribute 到 多个 topics switch 是 turned 在。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"database": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "database 名称",
+																			Description: "数据库 名称",
 																		},
 																		"table": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Table 名称，multiple tables，separated by (commas)。",
+																			Description: "Table 名称，多个 tables，separated 通过 (commas)。",
 																		},
 																		"topic": {
 																			Type:        schema.TypeString,
@@ -497,22 +497,22 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 															"use_table_mapping": {
 																Type:        schema.TypeBool,
 																Optional:    true,
-																Description: "Distribute to multiple topics switch，the 默认为 false。",
+																Description: "Distribute 到 多个 topics switch， 默认为 false。",
 															},
 															"use_auto_create_topic": {
 																Type:        schema.TypeBool,
 																Optional:    true,
-																Description: "是否used topic need to be automatically created (currently only supports SOURCE inflow tasks，if you do not use to distribute to multiple topics，you need to fill in the topic 名称 that needs to be automatically created in the Topic field)。",
+																Description: "是否used 主题 need 到 是 automatically 创建 (currently 仅 支持 SOURCE inflow tasks，如果 您 do 不 使用 到 distribute 到 多个 topics，您 need 到 fill 在 主题 名称 该 needs 到 是 automatically 创建 在 Topic 字段)。",
 															},
 															"compression_type": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "是否compress when writing to the Topic，if it is not 已启用，fill in none，if it is 已启用，fill in open。",
+																Description: "是否compress 当 writing 到 Topic，如果 它 是 不 已启用，fill 在 none，如果 它 是 已启用，fill 在 open。",
 															},
 															"msg_multiple": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "1 来源 topic 消息 is amplified into msg Multiple and written to the target topic (this parameter is currently only applicable to ckafka flowing into ckafka)。",
+																Description: "1 来源 主题 消息 是 amplified into msg Multiple 和 written 到 目标 主题 (此 参数 是 currently 仅 applicable 到 ckafka flowing into ckafka)。",
 															},
 														},
 													},
@@ -537,17 +537,17 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 															"resource": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "The topic 名称 topic sold separately。",
+																Description: "主题 名称 主题 sold separately。",
 															},
 															"offset_type": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "偏移量 类型，initial position earliest，latest position latest，time point position 时间戳。",
+																Description: "偏移量 类型，initial position earliest，latest position latest，时间 point position 时间戳。",
 															},
 															"start_time": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "It must be passed when the 偏移量 类型 is 时间戳，and the time stamp is passed，accurate to the second。",
+																Description: "It 必须 是 passed 当 偏移量 类型 是 时间戳，和 时间 stamp 是 passed，accurate 到 second。",
 															},
 															"topic_id": {
 																Type:        schema.TypeString,
@@ -557,17 +557,17 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 															"compression_type": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "是否perform compression when writing a topic，if it is not 已启用，fill in none，if it is 已启用，you can choose one of gzip，snappy，lz4 to fill in。",
+																Description: "是否perform 压缩 当 writing 主题，如果 它 是 不 已启用，fill 在 none，如果 它 是 已启用，您 可以 choose 一个 的 gzip，snappy，lz4 到 fill 在。",
 															},
 															"use_auto_create_topic": {
 																Type:        schema.TypeBool,
 																Optional:    true,
-																Description: "是否used topic need to be automatically created (currently only supports SOURCE inflow tasks)。",
+																Description: "是否used 主题 need 到 是 automatically 创建 (currently 仅 支持 SOURCE inflow tasks)。",
 															},
 															"msg_multiple": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "1 来源 topic 消息 is amplified into msg Multiple and written to the target topic (this parameter is currently only applicable to ckafka flowing into ckafka)。",
+																Description: "1 来源 主题 消息 是 amplified into msg Multiple 和 written 到 目标 主题 (此 参数 是 currently 仅 applicable 到 ckafka flowing into ckafka)。",
 															},
 														},
 													},
@@ -587,7 +587,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Tdw configuration，必填 when 类型 is TDW。",
+							Description: "Tdw 配置，必填 当 类型 是 TDW。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"bid": {
@@ -603,7 +603,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"is_domestic": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "default true。",
+										Description: "默认值 true。",
 									},
 									"tdw_host": {
 										Type:        schema.TypeString,
@@ -613,7 +613,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"tdw_port": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "TDW 端口，default 8099。",
+										Description: "TDW 端口，默认值 8099。",
 									},
 								},
 							},
@@ -622,33 +622,33 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Dts configuration，必填 when 类型 is DTS。",
+							Description: "Dts 配置，必填 当 类型 是 DTS。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"resource": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Dts instance Id。",
+										Description: "Dts 实例 ID。",
 									},
 									"ip": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Dts connection ip。",
+										Description: "Dts 连接 ip。",
 									},
 									"port": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Dts connection 端口",
+										Description: "Dts 连接 端口",
 									},
 									"topic": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Dts topic。",
+										Description: "Dts 主题。",
 									},
 									"group_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Dts consumer group Id。",
+										Description: "Dts 消费者 组 ID。",
 									},
 									"group_user": {
 										Type:        schema.TypeString,
@@ -658,12 +658,12 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"group_password": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Dts consumer group passwd。",
+										Description: "Dts 消费者 组 passwd。",
 									},
 									"tran_sql": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "False to synchronize the original data，true to synchronize the parsed json 格式 data，the 默认为 true。",
+										Description: "False 到 synchronize original 数据，true 到 synchronize parsed json 格式 数据， 默认为 true。",
 									},
 								},
 							},
@@ -678,17 +678,17 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"cluster": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "ClickHouse cluster。",
+										Description: "ClickHouse 集群。",
 									},
 									"database": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "ClickHouse database 名称",
+										Description: "ClickHouse 数据库 名称",
 									},
 									"table": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "ClickHouse table。",
+										Description: "ClickHouse 表。",
 									},
 									"schema": {
 										Type:        schema.TypeList,
@@ -699,22 +699,22 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"column_name": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "column 名称",
+													Description: "列 名称",
 												},
 												"json_key": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The json 键 名称 corresponding to this column。",
+													Description: "json 键 名称 corresponding 到 此 列。",
 												},
 												"type": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "类型 table column。",
+													Description: "类型 表 列。",
 												},
 												"allow_null": {
 													Type:        schema.TypeBool,
 													Required:    true,
-													Description: "是否column item is allowed to be empty。",
+													Description: "是否column item 是 allowed 到 是 空。",
 												},
 											},
 										},
@@ -752,7 +752,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"uniq_vpc_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "instance 私有网络 ID",
+										Description: "实例 私有网络 ID",
 									},
 									"self_built": {
 										Type:        schema.TypeBool,
@@ -762,7 +762,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"drop_invalid_message": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Whether ClickHouse discards the 消息 that fails to parse，the 默认为 true。",
+										Description: "Whether ClickHouse discards 消息 该 fails 到 parse， 默认为 true。",
 									},
 									"type": {
 										Type:        schema.TypeString,
@@ -773,13 +773,13 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "When the member parameter Drop Invalid 消息 To Cls is set to true，the Drop Invalid 消息 parameter is invalid。",
+										Description: "当 member 参数 Drop Invalid 消息 To Cls 是 集合 到 true， Drop Invalid 消息 参数 是 无效。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"drop_invalid_message_to_cls": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "是否deliver to cls。",
+													Description: "是否deliver 到 cls。",
 												},
 												"drop_cls_region": {
 													Type:        schema.TypeString,
@@ -811,33 +811,33 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Cls configuration，必填 when 类型 is CLS。",
+							Description: "Cls 配置，必填 当 类型 是 CLS。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"decode_json": {
 										Type:        schema.TypeBool,
 										Required:    true,
-										Description: "是否produced information is in json 格式",
+										Description: "是否produced 信息 是 在 json 格式",
 									},
 									"resource": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "cls id。",
+										Description: "cls ID。",
 									},
 									"log_set": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "LogSet id。",
+										Description: "LogSet ID。",
 									},
 									"content_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "必填 when Decode Json is false。",
+										Description: "必填 当 Decode Json 是 false。",
 									},
 									"time_field": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "指定content of a field in the 消息 as the time of the cls log. The 格式 of the field 内容 needs to be a second-级别 时间戳。",
+										Description: "指定content 的 字段 在 消息 作为 时间 的 cls 日志. 格式 的 字段 内容 needs 到 是 second-级别 时间戳。",
 									},
 								},
 							},
@@ -846,7 +846,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Cos configuration，必填 when 类型 is COS。",
+							Description: "Cos 配置，必填 当 类型 是 COS。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"bucket_name": {
@@ -867,7 +867,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"aggregate_batch_size": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The size of aggregated messages MB。",
+										Description: "大小 的 aggregated messages MB。",
 									},
 									"aggregate_interval": {
 										Type:        schema.TypeInt,
@@ -877,17 +877,17 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"format_output_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The file 格式 after 消息 aggregation csv|json。",
+										Description: "文件 格式 after 消息 aggregation csv|json。",
 									},
 									"object_key_prefix": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Dumped object directory prefix。",
+										Description: "Dumped 对象 directory prefix。",
 									},
 									"directory_time_format": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Partition 格式 formatted according to strptime time。",
+										Description: "Partition 格式 formatted according 到 strptime 时间。",
 									},
 								},
 							},
@@ -896,79 +896,79 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "MySQL configuration，必填 when 类型 is MYSQL。",
+							Description: "MySQL 配置，必填 当 类型 是 MYSQL。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"database": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "MySQL database 名称，* is the whole database。",
+										Description: "MySQL 数据库 名称，* 是 whole 数据库。",
 									},
 									"table": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The 名称 MySQL data table， is the non-system table in all the monitored databases，which can be separated by，to monitor multiple data tables，but the data table needs to be filled in the 格式 of data database 名称data table 名称，when a regular expression needs to be filled in，the 格式 is data database 名称data table 名称",
+										Description: "名称 MySQL 数据 表， 是 non-系统 表 在 all monitored databases，其中 可以 是 separated 通过，到 监控 多个 数据 tables，但 数据 表 needs 到 是 filled 在 格式 的 数据 数据库 名称data 表 名称，当 regular expression needs 到 是 filled 在， 格式 是 数据 数据库 名称data 表 名称",
 									},
 									"resource": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "MySQL connection Id。",
+										Description: "MySQL 连接 ID。",
 									},
 									"snapshot_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "是否Copy inventory information (schema_only does not copy，initial full amount)，the 默认为 initial。",
+										Description: "是否Copy inventory 信息 (schema_only does 不 copy，initial full amount)， 默认为 initial。",
 									},
 									"ddl_topic": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The Topic that stores the Ddl information of My SQL，if it is empty，it will not be stored by default。",
+										Description: "Topic 该 stores Ddl 信息 的 My SQL，如果 它 是 空，它 将 不 是 stored 通过 默认值。",
 									},
 									"data_source_monitor_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "TABLE 表示that the read item is a table，QUERY 表示that the read item is a query。",
+										Description: "TABLE 表示that read item 是 表，QUERY 表示that read item 是 查询。",
 									},
 									"data_source_monitor_resource": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "When DataMonitorMode=TABLE，pass in the Table that needs to be read; when DataMonitorMode=QUERY，pass in the query sql statement that needs to be read。",
+										Description: "当 DataMonitorMode=TABLE，pass 在 Table 该 needs 到 是 read; 当 DataMonitorMode=QUERY，pass 在 查询 sql statement 该 needs 到 是 read。",
 									},
 									"data_source_increment_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "TIMESTAMP 表示that the incremental column is of 时间戳 类型，INCREMENT 表示that the incremental column is of self-incrementing id 类型&#39;。",
+										Description: "TIMESTAMP 表示that incremental 列 是 的 时间戳 类型，INCREMENT 表示that incremental 列 是 的 self-incrementing ID 类型&#39;。",
 									},
 									"data_source_increment_column": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The 名称 column to be monitored。",
+										Description: "名称 列 到 是 monitored。",
 									},
 									"data_source_start_from": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "HEAD means copy stock + incremental data，TAIL means copy only incremental data。",
+										Description: "HEAD 表示 copy stock + incremental 数据，TAIL 表示 copy 仅 incremental 数据。",
 									},
 									"data_target_insert_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "INSERT means insert using Insert 模式，UPSERT means insert using Upsert 模式",
+										Description: "INSERT 表示 insert 使用 Insert 模式，UPSERT 表示 insert 使用 Upsert 模式",
 									},
 									"data_target_primary_key_field": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "When DataInsertMode=UPSERT，pass in the primary 键 that the current upsert depends on。",
+										Description: "当 DataInsertMode=UPSERT，pass 在 primary 键 该 当前 upsert depends 在。",
 									},
 									"data_target_record_mapping": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Mapping relationship between tables and messages。",
+										Description: "Mapping relationship between tables 和 messages。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"json_key": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The 键 名称 消息",
+													Description: "键 名称 消息",
 												},
 												"type": {
 													Type:        schema.TypeString,
@@ -978,37 +978,37 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"allow_null": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "是否message is allowed to be empty。",
+													Description: "是否message 是 allowed 到 是 空。",
 												},
 												"column_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Corresponding mapping column 名称",
+													Description: "Corresponding mapping 列 名称",
 												},
 												"extra_info": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Database table extra fields。",
+													Description: "Database 表 extra 字段。",
 												},
 												"column_size": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "current column size。",
+													Description: "当前 列 大小。",
 												},
 												"decimal_digits": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "current column precision。",
+													Description: "当前 列 precision。",
 												},
 												"auto_increment": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "是否为an auto-increment column。",
+													Description: "是否为an auto-increment 列。",
 												},
 												"default_value": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Database table default parameters。",
+													Description: "Database 表 默认值 参数。",
 												},
 											},
 										},
@@ -1016,7 +1016,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"topic_regex": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Regular expression for routing events to specific topics，默认为 (.*)。",
+										Description: "Regular expression 对于 routing events 到 特定 topics，默认为 (.*)。",
 									},
 									"topic_replacement": {
 										Type:        schema.TypeString,
@@ -1026,29 +1026,29 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"key_columns": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "格式 library1.table1 field 1,field 2;library 2.table2 field 2，between tables; (semicolon) separated，between fields，(comma) separated. The table that is not specified 默认为 the primary 键 of the table。",
+										Description: "格式 library1.table1 字段 1,字段 2;库 2.table2 字段 2，between tables; (semicolon) separated，between 字段，(comma) separated. 表 该 是 不 指定 默认为 primary 键 的 表。",
 									},
 									"drop_invalid_message": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "是否discard messages that fail to parse，the 默认为 true。",
+										Description: "是否discard messages 该 fail 到 parse， 默认为 true。",
 									},
 									"drop_cls": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "When the member parameter Drop Invalid 消息 To Cls is set to true，the Drop Invalid 消息 parameter is invalid。",
+										Description: "当 member 参数 Drop Invalid 消息 To Cls 是 集合 到 true， Drop Invalid 消息 参数 是 无效。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"drop_invalid_message_to_cls": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "是否deliver to cls。",
+													Description: "是否deliver 到 cls。",
 												},
 												"drop_cls_region": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The 地域 where the cls is delivered。",
+													Description: "地域 其中 cls 是 delivered。",
 												},
 												"drop_cls_owneruin": {
 													Type:        schema.TypeString,
@@ -1058,7 +1058,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"drop_cls_topic_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "cls topic。",
+													Description: "cls 主题。",
 												},
 												"drop_cls_log_set": {
 													Type:        schema.TypeString,
@@ -1076,32 +1076,32 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"is_table_prefix": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "When the Table input is a prefix，the 值 of this item is true，otherwise it is false。",
+										Description: "当 Table input 是 prefix， 值 的 此 item 是 true，otherwise 它 是 false。",
 									},
 									"include_content_changes": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "If the 值 is all，DDL data and DML data will also be written to the selected topic; if the 值 is dml，only DML data will be written to the selected topic。",
+										Description: "如果 值 是 all，DDL 数据 和 DML 数据 将 also 是 written 到 selected 主题; 如果 值 是 dml，仅 DML 数据 将 是 written 到 selected 主题。",
 									},
 									"include_query": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "If the 值 is true，and the 值 of the binlog rows query log events configuration item in My SQL is ON，the data flowing into the topic 包含original SQL statement; if the 值 is false，the data flowing into the topic does not contain Original SQL statement。",
+										Description: "如果 值 是 true，和 值 的 binlog rows 查询 日志 events 配置 item 在 My SQL 是 ON， 数据 flowing into 主题 包含original SQL statement; 如果 值 是 false， 数据 flowing into 主题 does 不 contain Original SQL statement。",
 									},
 									"record_with_schema": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "If the 值 is true，the 消息 will carry the schema corresponding to the 消息 structure，if the 值 is false，it will not carry。",
+										Description: "如果 值 是 true， 消息 将 carry schema corresponding 到 消息 structure，如果 值 是 false，它 将 不 carry。",
 									},
 									"signal_database": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "database 名称 signal table。",
+										Description: "数据库 名称 signal 表。",
 									},
 									"is_table_regular": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "是否input table is a regular expression，if this option and Is Table Prefix are true at the same time，the judgment 优先级 of this option is higher than Is Table Prefix。",
+										Description: "是否input 表 是 regular expression，如果 此 选项 和 Is Table Prefix 是 true 在 same 时间， judgment 优先级 的 此 选项 是 higher 比 Is Table Prefix。",
 									},
 								},
 							},
@@ -1110,59 +1110,59 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "PostgreSQL configuration，必填 when 类型 is POSTGRESQL or TDSQL C_POSTGRESQL。",
+							Description: "PostgreSQL 配置，必填 当 类型 是 POSTGRESQL 或 TDSQL C_POSTGRESQL。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"database": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "PostgreSQL database 名称",
+										Description: "PostgreSQL 数据库 名称",
 									},
 									"table": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "PostgreSQL tableName，* is the non-system table in all the monitored databases，you can use，to monitor multiple data tables，but the data table needs to be filled in the 格式 of Schema 名称Data table 名称，and you need to fill in a regular expression When，the 格式 is Schema 名称data table 名称",
+										Description: "PostgreSQL tableName，* 是 non-系统 表 在 all monitored databases，您 可以 使用，到 监控 多个 数据 tables，但 数据 表 needs 到 是 filled 在 格式 的 Schema 名称Data 表 名称，和 您 need 到 fill 在 regular expression 当， 格式 是 Schema 名称data 表 名称",
 									},
 									"resource": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "PostgreSQL connection Id。",
+										Description: "PostgreSQL 连接 ID。",
 									},
 									"plugin_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "(decoderbufs/pgoutput)，default decoderbufs。",
+										Description: "(decoderbufs/pgoutput)，默认值 decoderbufs。",
 									},
 									"snapshot_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "never|initial，default initial。",
+										Description: "never|initial，默认值 initial。",
 									},
 									"data_format": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Upstream data 格式 (JSON|Debezium)，必填 when the database synchronization 模式 matches the default field。",
+										Description: "Upstream 数据 格式 (JSON|Debezium)，必填 当 数据库 synchronization 模式 matches 默认值 字段。",
 									},
 									"data_target_insert_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "INSERT means insert using Insert 模式，UPSERT means insert using Upsert 模式",
+										Description: "INSERT 表示 insert 使用 Insert 模式，UPSERT 表示 insert 使用 Upsert 模式",
 									},
 									"data_target_primary_key_field": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "When DataInsertMode=UPSERT，pass in the primary 键 that the current upsert depends on。",
+										Description: "当 DataInsertMode=UPSERT，pass 在 primary 键 该 当前 upsert depends 在。",
 									},
 									"data_target_record_mapping": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Mapping relationship between tables and messages。",
+										Description: "Mapping relationship between tables 和 messages。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"json_key": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The 键 名称 消息",
+													Description: "键 名称 消息",
 												},
 												"type": {
 													Type:        schema.TypeString,
@@ -1172,7 +1172,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"allow_null": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "是否message is allowed to be empty。",
+													Description: "是否message 是 allowed 到 是 空。",
 												},
 												"column_name": {
 													Type:        schema.TypeString,
@@ -1182,27 +1182,27 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"extra_info": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Database table extra fields。",
+													Description: "Database 表 extra 字段。",
 												},
 												"column_size": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "current ColumnSize。",
+													Description: "当前 ColumnSize。",
 												},
 												"decimal_digits": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "current Column DecimalDigits。",
+													Description: "当前 Column DecimalDigits。",
 												},
 												"auto_increment": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "是否为an auto-increment column。",
+													Description: "是否为an auto-increment 列。",
 												},
 												"default_value": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Database table default parameters。",
+													Description: "Database 表 默认值 参数。",
 												},
 											},
 										},
@@ -1210,22 +1210,22 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"drop_invalid_message": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "是否discard messages that fail to parse，the 默认为 true。",
+										Description: "是否discard messages 该 fail 到 parse， 默认为 true。",
 									},
 									"is_table_regular": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "是否input table is a regular expression。",
+										Description: "是否input 表 是 regular expression。",
 									},
 									"key_columns": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "格式  library1.table1:field 1,field2;library2.table2:field2，between tables; (semicolon) separated，between fields，(comma) separated. The table that is not specified 默认为 the primary 键 of the table。",
+										Description: "格式 library1.table1:字段 1,field2;library2.table2:field2，between tables; (semicolon) separated，between 字段，(comma) separated. 表 该 是 不 指定 默认为 primary 键 的 表。",
 									},
 									"record_with_schema": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "If the 值 is true，the 消息 will carry the schema corresponding to the 消息 structure，if the 值 is false，it will not carry。",
+										Description: "如果 值 是 true， 消息 将 carry schema corresponding 到 消息 structure，如果 值 是 false，它 将 不 carry。",
 									},
 								},
 							},
@@ -1234,23 +1234,23 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Topic configuration，必填 when 类型 is Topic。",
+							Description: "Topic 配置，必填 当 类型 是 Topic。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"resource": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The topic 名称 topic sold separately。",
+										Description: "主题 名称 主题 sold separately。",
 									},
 									"offset_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "偏移量 类型，initial position earliest，latest position latest，time point position 时间戳。",
+										Description: "偏移量 类型，initial position earliest，latest position latest，时间 point position 时间戳。",
 									},
 									"start_time": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "It must be passed when the 偏移量 类型 is 时间戳，and the time stamp is passed，accurate to the second。",
+										Description: "It 必须 是 passed 当 偏移量 类型 是 时间戳，和 时间 stamp 是 passed，accurate 到 second。",
 									},
 									"topic_id": {
 										Type:        schema.TypeString,
@@ -1260,17 +1260,17 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"compression_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "是否perform compression when writing a topic，if it is not 已启用，fill in none，if it is 已启用，you can choose one of gzip，snappy，lz4 to fill in。",
+										Description: "是否perform 压缩 当 writing 主题，如果 它 是 不 已启用，fill 在 none，如果 它 是 已启用，您 可以 choose 一个 的 gzip，snappy，lz4 到 fill 在。",
 									},
 									"use_auto_create_topic": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "是否used topic need to be automatically created (currently only supports SOURCE inflow tasks)。",
+										Description: "是否used 主题 need 到 是 automatically 创建 (currently 仅 支持 SOURCE inflow tasks)。",
 									},
 									"msg_multiple": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "1 来源 topic 消息 is amplified into msg Multiple and written to the target topic (this parameter is currently only applicable to ckafka flowing into ckafka)。",
+										Description: "1 来源 主题 消息 是 amplified into msg Multiple 和 written 到 目标 主题 (此 参数 是 currently 仅 applicable 到 ckafka flowing into ckafka)。",
 									},
 								},
 							},
@@ -1279,38 +1279,38 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "MariaDB configuration，必填 when 类型 is MARIADB。",
+							Description: "MariaDB 配置，必填 当 类型 是 MARIADB。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"database": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "MariaDB database 名称，* for all database。",
+										Description: "MariaDB 数据库 名称，* 对于 all 数据库。",
 									},
 									"table": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "MariaDB db 名称，*is the non-system table in all the monitored databases，you can use，to monitor multiple data tables，but the data table needs to be filled in the 格式 of data database 名称data table 名称",
+										Description: "MariaDB db 名称，*是 non-系统 表 在 all monitored databases，您 可以 使用，到 监控 多个 数据 tables，但 数据 表 needs 到 是 filled 在 格式 的 数据 数据库 名称data 表 名称",
 									},
 									"resource": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "MariaDB connection Id。",
+										Description: "MariaDB 连接 ID。",
 									},
 									"snapshot_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "schema_only|initial，default initial。",
+										Description: "schema_only|initial，默认值 initial。",
 									},
 									"key_columns": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "格式  library 1. table 1: field 1，field 2; library 2. table 2: field 2，between tables; (semicolon) separated，between fields，(comma) separated. The table that is not specified 默认为 the primary 键 of the table。",
+										Description: "格式 库 1. 表 1: 字段 1，字段 2; 库 2. 表 2: 字段 2，between tables; (semicolon) separated，between 字段，(comma) separated. 表 该 是 不 指定 默认为 primary 键 的 表。",
 									},
 									"is_table_prefix": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "When the Table input is a prefix，the 值 of this item is true，otherwise it is false。",
+										Description: "当 Table input 是 prefix， 值 的 此 item 是 true，otherwise 它 是 false。",
 									},
 									"output_format": {
 										Type:        schema.TypeString,
@@ -1320,17 +1320,17 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"include_content_changes": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "If the 值 is all，DDL data and DML data will also be written to the selected topic; if the 值 is dml，only DML data will be written to the selected topic。",
+										Description: "如果 值 是 all，DDL 数据 和 DML 数据 将 also 是 written 到 selected 主题; 如果 值 是 dml，仅 DML 数据 将 是 written 到 selected 主题。",
 									},
 									"include_query": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "If the 值 is true，and the 值 of the binlog rows query log events configuration item in My SQL is ON，the data flowing into the topic 包含original SQL statement; if the 值 is false，the data flowing into the topic does not contain Original SQL statement。",
+										Description: "如果 值 是 true，和 值 的 binlog rows 查询 日志 events 配置 item 在 My SQL 是 ON， 数据 flowing into 主题 包含original SQL statement; 如果 值 是 false， 数据 flowing into 主题 does 不 contain Original SQL statement。",
 									},
 									"record_with_schema": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "If the 值 is true，the 消息 will carry the schema corresponding to the 消息 structure，if the 值 is false，it will not carry。",
+										Description: "如果 值 是 true， 消息 将 carry schema corresponding 到 消息 structure，如果 值 是 false，它 将 不 carry。",
 									},
 								},
 							},
@@ -1339,28 +1339,28 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "SQLServer configuration，必填 when 类型 is SQLSERVER。",
+							Description: "SQLServer 配置，必填 当 类型 是 SQLSERVER。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"database": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "SQLServer database 名称",
+										Description: "SQLServer 数据库 名称",
 									},
 									"table": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "SQLServer table，*is the non-system table in all the monitored databases，you can use，to monitor multiple data tables，but the data table needs to be filled in the 格式 of data database 名称data table 名称",
+										Description: "SQLServer 表，*是 non-系统 表 在 all monitored databases，您 可以 使用，到 监控 多个 数据 tables，但 数据 表 needs 到 是 filled 在 格式 的 数据 数据库 名称data 表 名称",
 									},
 									"resource": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "SQLServer connection Id。",
+										Description: "SQLServer 连接 ID。",
 									},
 									"snapshot_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "schema_only|initial default initial。",
+										Description: "schema_only|initial 默认值 initial。",
 									},
 								},
 							},
@@ -1369,7 +1369,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Ctsdb configuration，必填 when 类型 is CTSDB。",
+							Description: "Ctsdb 配置，必填 当 类型 是 CTSDB。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"resource": {
@@ -1389,33 +1389,33 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Scf configuration，必填 when 类型 is SCF。",
+							Description: "Scf 配置，必填 当 类型 是 SCF。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"function_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "SCF function 名称",
+										Description: "SCF 函数 名称",
 									},
 									"namespace": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "SCF cloud function namespace，the 默认为 default。",
+										Description: "SCF 云 函数 命名空间， 默认为 默认值。",
 									},
 									"qualifier": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "SCF cloud function 版本 and alias，the 默认为 DEFAULT。",
+										Description: "SCF 云 函数 版本 和 alias， 默认为 DEFAULT。",
 									},
 									"batch_size": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The 最大messages sent in each batch，the 默认为 1000。",
+										Description: "最大messages sent 在 each batch， 默认为 1000。",
 									},
 									"max_retries": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The 数量 retries after the SCF call fails，the 默认为 5。",
+										Description: "数量 retries after SCF call fails， 默认为 5。",
 									},
 								},
 							},
@@ -1441,33 +1441,33 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "ckafka configuration，必填 when 类型 is KAFKA。",
+							Description: "ckafka 配置，必填 当 类型 是 KAFKA。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"self_built": {
 										Type:        schema.TypeBool,
 										Required:    true,
-										Description: "是否cluster is built by yourself instead of cloud product。",
+										Description: "是否cluster 是 built 通过 yourself instead 的 云 product。",
 									},
 									"resource": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "instance resource。",
+										Description: "实例 资源。",
 									},
 									"topic": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Topic 名称，use `,` when more than 1 topic。",
+										Description: "Topic 名称，使用 `,` 当 more 比 1 主题。",
 									},
 									"offset_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "偏移量 类型，from beginning:earliest，from latest:latest，from specific time:时间戳。",
+										Description: "偏移量 类型，从 beginning:earliest，从 latest:latest，从 特定 时间:时间戳。",
 									},
 									"start_time": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "when 偏移量 类型 时间戳 为必填项。",
+										Description: "当 偏移量 类型 时间戳 为必填项。",
 									},
 									"resource_name": {
 										Type:        schema.TypeString,
@@ -1482,38 +1482,38 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"topic_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Topic id。",
+										Description: "Topic ID。",
 									},
 									"partition_num": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "the partition num of the topic。",
+										Description: "分区 num 的 主题。",
 									},
 									"enable_toleration": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "enable dead letter queue。",
+										Description: "启用 dead letter queue。",
 									},
 									"qps_limit": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Qps(query per seconds) 限制",
+										Description: "Qps(查询 per 秒) 限制",
 									},
 									"table_mappings": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "maps of table to topic，必填 when multi topic is selected。",
+										Description: "maps 的 表 到 主题，必填 当 multi 主题 是 selected。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"database": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "database 名称",
+													Description: "数据库 名称",
 												},
 												"table": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "table 名称,use，to separate。",
+													Description: "表 名称,使用，到 separate。",
 												},
 												"topic": {
 													Type:        schema.TypeString,
@@ -1531,22 +1531,22 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"use_table_mapping": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "是否use multi table。",
+										Description: "是否use multi 表。",
 									},
 									"use_auto_create_topic": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Does the used topic need to be automatically created (currently only supports SOURCE inflow tasks，if you do not use to distribute to multiple topics，you need to fill in the topic 名称 that needs to be automatically created in the Topic field)。",
+										Description: "Does 使用 主题 need 到 是 automatically 创建 (currently 仅 支持 SOURCE inflow tasks，如果 您 do 不 使用 到 distribute 到 多个 topics，您 need 到 fill 在 主题 名称 该 needs 到 是 automatically 创建 在 Topic 字段)。",
 									},
 									"compression_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "是否compress when writing to the Topic，if it is not 已启用，fill in none，if it is 已启用，fill in open。",
+										Description: "是否compress 当 writing 到 Topic，如果 它 是 不 已启用，fill 在 none，如果 它 是 已启用，fill 在 open。",
 									},
 									"msg_multiple": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "1 来源 topic 消息 is amplified into msg Multiple and written to the target topic (this parameter is currently only applicable to ckafka flowing into ckafka)。",
+										Description: "1 来源 主题 消息 是 amplified into msg Multiple 和 written 到 目标 主题 (此 参数 是 currently 仅 applicable 到 ckafka flowing into ckafka)。",
 									},
 								},
 							},
@@ -1555,7 +1555,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "EB configuration，必填 when 类型 is EB。",
+							Description: "EB 配置，必填 当 类型 是 EB。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"type": {
@@ -1576,17 +1576,17 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"namespace": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "SCF namespace。",
+										Description: "SCF 命名空间。",
 									},
 									"function_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "SCF function 名称",
+										Description: "SCF 函数 名称",
 									},
 									"qualifier": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "SCF 版本 and alias。",
+										Description: "SCF 版本 和 alias。",
 									},
 								},
 							},
@@ -1595,13 +1595,13 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "MongoDB 配置，必填 when 类型 is MONGODB。",
+							Description: "MongoDB 配置，必填 当 类型 是 MONGODB。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"database": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "MongoDB database 名称",
+										Description: "MongoDB 数据库 名称",
 									},
 									"collection": {
 										Type:        schema.TypeString,
@@ -1611,7 +1611,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"copy_existing": {
 										Type:        schema.TypeBool,
 										Required:    true,
-										Description: "是否copy the stock data，the default parameter is true。",
+										Description: "是否copy stock 数据， 默认值 参数 是 true。",
 									},
 									"resource": {
 										Type:        schema.TypeString,
@@ -1621,32 +1621,32 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"ip": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Mongo DB connection ip。",
+										Description: "Mongo DB 连接 ip。",
 									},
 									"port": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "MongoDB connection 端口",
+										Description: "MongoDB 连接 端口",
 									},
 									"user_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "MongoDB database 用户 名称",
+										Description: "MongoDB 数据库 用户 名称",
 									},
 									"password": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "MongoDB database 密码",
+										Description: "MongoDB 数据库 密码",
 									},
 									"listening_event": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Listening event 类型，if it is empty，it means select all. Values include insert，update，replace，delete，invalidate，drop，dropdatabase，rename，used between multiple types，separated by commas。",
+										Description: "Listening 事件 类型，如果 它 是 空，它 表示 select all. Values include insert，update，replace，delete，invalidate，drop，dropdatabase，rename，使用 between 多个 types，separated 通过 commas。",
 									},
 									"read_preference": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Master-slave 优先级，default master node。",
+										Description: "Master-slave 优先级，默认值 master 节点。",
 									},
 									"pipeline": {
 										Type:        schema.TypeString,
@@ -1665,7 +1665,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Es configuration，必填 when 类型 is ES。",
+							Description: "Es 配置，必填 当 类型 是 ES。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"resource": {
@@ -1676,7 +1676,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"port": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Es connection 端口",
+										Description: "Es 连接 端口",
 									},
 									"user_name": {
 										Type:        schema.TypeString,
@@ -1701,12 +1701,12 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"uniq_vpc_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "instance 私有网络 ID",
+										Description: "实例 私有网络 ID",
 									},
 									"drop_invalid_message": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Whether Es discards the 消息 of parsing failure。",
+										Description: "Whether Es discards 消息 的 parsing failure。",
 									},
 									"index": {
 										Type:        schema.TypeString,
@@ -1721,54 +1721,54 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"content_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "键 for data in non-json 格式",
+										Description: "键 对于 数据 在 non-json 格式",
 									},
 									"drop_invalid_json_message": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Whether Es discards messages in non-json 格式",
+										Description: "Whether Es discards messages 在 non-json 格式",
 									},
 									"document_id_field": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The field 名称 document ID 值 dumped into Es。",
+										Description: "字段 名称 document ID 值 dumped into Es。",
 									},
 									"index_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Es custom 索引 名称 类型，STRING，JSONPATH，the 默认为 STRING。",
+										Description: "Es 自定义 索引 名称 类型，STRING，JSONPATH， 默认为 STRING。",
 									},
 									"drop_cls": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "When the member parameter Drop Invalid 消息 To Cls is set to true，the Drop Invalid 消息 parameter is invalid。",
+										Description: "当 member 参数 Drop Invalid 消息 To Cls 是 集合 到 true， Drop Invalid 消息 参数 是 无效。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"drop_invalid_message_to_cls": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "是否deliver to cls。",
+													Description: "是否deliver 到 cls。",
 												},
 												"drop_cls_region": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The 地域 where the cls is delivered。",
+													Description: "地域 其中 cls 是 delivered。",
 												},
 												"drop_cls_owneruin": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Delivery 账号 of cls。",
+													Description: "Delivery 账号 的 cls。",
 												},
 												"drop_cls_topic_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "topic of cls。",
+													Description: "主题 的 cls。",
 												},
 												"drop_cls_log_set": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "cls log set。",
+													Description: "cls 日志 集合。",
 												},
 											},
 										},
@@ -1776,7 +1776,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"database_primary_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "When the 消息 dumped to ES is the binlog of Database，if you need to synchronize database operations，that is，fill in the primary 键 of the database table when adding，deleting，and modifying operations to ES。",
+										Description: "当 消息 dumped 到 ES 是 binlog 的 Database，如果 您 need 到 synchronize 数据库 operations，该 是，fill 在 primary 键 的 数据库 表 当 adding，deleting，和 modifying operations 到 ES。",
 									},
 									"drop_dlq": {
 										Type:        schema.TypeList,
@@ -1810,17 +1810,17 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 															"topic": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Topic 名称，multiple separated by,。",
+																Description: "Topic 名称，多个 separated 通过,。",
 															},
 															"offset_type": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "偏移量 类型，initial position earliest，latest position latest，time point position 时间戳。",
+																Description: "偏移量 类型，initial position earliest，latest position latest，时间 point position 时间戳。",
 															},
 															"start_time": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "It must be passed when the 偏移量 类型 is 时间戳，and the time stamp is passed，accurate to the second。",
+																Description: "It 必须 是 passed 当 偏移量 类型 是 时间戳，和 时间 stamp 是 passed，accurate 到 second。",
 															},
 															"resource_name": {
 																Type:        schema.TypeString,
@@ -1835,7 +1835,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 															"topic_id": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Topic Id。",
+																Description: "Topic ID。",
 															},
 															"partition_num": {
 																Type:        schema.TypeInt,
@@ -1845,7 +1845,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 															"enable_toleration": {
 																Type:        schema.TypeBool,
 																Optional:    true,
-																Description: "Enable the fault-tolerant instance and enable the dead-letter queue。",
+																Description: "Enable fault-tolerant 实例 和 启用 dead-letter queue。",
 															},
 															"qps_limit": {
 																Type:        schema.TypeInt,
@@ -1855,18 +1855,18 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 															"table_mappings": {
 																Type:        schema.TypeList,
 																Optional:    true,
-																Description: "The route from Table to Topic must be passed when the Distribute to multiple topics switch is turned on。",
+																Description: "路由 从 Table 到 Topic 必须 是 passed 当 Distribute 到 多个 topics switch 是 turned 在。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"database": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "database 名称",
+																			Description: "数据库 名称",
 																		},
 																		"table": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Table 名称，multiple tables，separated by (commas)。",
+																			Description: "Table 名称，多个 tables，separated 通过 (commas)。",
 																		},
 																		"topic": {
 																			Type:        schema.TypeString,
@@ -1884,22 +1884,22 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 															"use_table_mapping": {
 																Type:        schema.TypeBool,
 																Optional:    true,
-																Description: "Distribute to multiple topics switch，the 默认为 false。",
+																Description: "Distribute 到 多个 topics switch， 默认为 false。",
 															},
 															"use_auto_create_topic": {
 																Type:        schema.TypeBool,
 																Optional:    true,
-																Description: "是否used topic need to be automatically created (currently only supports SOURCE inflow tasks，if you do not use to distribute to multiple topics，you need to fill in the topic 名称 that needs to be automatically created in the Topic field)。",
+																Description: "是否used 主题 need 到 是 automatically 创建 (currently 仅 支持 SOURCE inflow tasks，如果 您 do 不 使用 到 distribute 到 多个 topics，您 need 到 fill 在 主题 名称 该 needs 到 是 automatically 创建 在 Topic 字段)。",
 															},
 															"compression_type": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "是否compress when writing to the Topic，if it is not 已启用，fill in none，if it is 已启用，fill in open。",
+																Description: "是否compress 当 writing 到 Topic，如果 它 是 不 已启用，fill 在 none，如果 它 是 已启用，fill 在 open。",
 															},
 															"msg_multiple": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "1 来源 topic 消息 is amplified into msg Multiple and written to the target topic (this parameter is currently only applicable to ckafka flowing into ckafka)。",
+																Description: "1 来源 主题 消息 是 amplified into msg Multiple 和 written 到 目标 主题 (此 参数 是 currently 仅 applicable 到 ckafka flowing into ckafka)。",
 															},
 														},
 													},
@@ -1924,17 +1924,17 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 															"resource": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "The topic 名称 topic sold separately。",
+																Description: "主题 名称 主题 sold separately。",
 															},
 															"offset_type": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "偏移量 类型，initial position earliest，latest position latest，time point position 时间戳。",
+																Description: "偏移量 类型，initial position earliest，latest position latest，时间 point position 时间戳。",
 															},
 															"start_time": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "It must be passed when the 偏移量 类型 is 时间戳，and the time stamp is passed，accurate to the second。",
+																Description: "It 必须 是 passed 当 偏移量 类型 是 时间戳，和 时间 stamp 是 passed，accurate 到 second。",
 															},
 															"topic_id": {
 																Type:        schema.TypeString,
@@ -1944,17 +1944,17 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 															"compression_type": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "是否perform compression when writing a topic，if it is not 已启用，fill in none，if it is 已启用，you can choose one of gzip，snappy，lz4 to fill in。",
+																Description: "是否perform 压缩 当 writing 主题，如果 它 是 不 已启用，fill 在 none，如果 它 是 已启用，您 可以 choose 一个 的 gzip，snappy，lz4 到 fill 在。",
 															},
 															"use_auto_create_topic": {
 																Type:        schema.TypeBool,
 																Optional:    true,
-																Description: "是否used topic need to be automatically created (currently only supports SOURCE inflow tasks)。",
+																Description: "是否used 主题 need 到 是 automatically 创建 (currently 仅 支持 SOURCE inflow tasks)。",
 															},
 															"msg_multiple": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "1 来源 topic 消息 is amplified into msg Multiple and written to the target topic (this parameter is currently only applicable to ckafka flowing into ckafka)。",
+																Description: "1 来源 主题 消息 是 amplified into msg Multiple 和 written 到 目标 主题 (此 参数 是 currently 仅 applicable 到 ckafka flowing into ckafka)。",
 															},
 														},
 													},
@@ -1974,7 +1974,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Tdw configuration，必填 when 类型 is TDW。",
+							Description: "Tdw 配置，必填 当 类型 是 TDW。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"bid": {
@@ -1990,7 +1990,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"is_domestic": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "default true。",
+										Description: "默认值 true。",
 									},
 									"tdw_host": {
 										Type:        schema.TypeString,
@@ -2000,7 +2000,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"tdw_port": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "TDW 端口，default 8099。",
+										Description: "TDW 端口，默认值 8099。",
 									},
 								},
 							},
@@ -2009,33 +2009,33 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Dts configuration，必填 when 类型 is DTS。",
+							Description: "Dts 配置，必填 当 类型 是 DTS。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"resource": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Dts instance Id。",
+										Description: "Dts 实例 ID。",
 									},
 									"ip": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Dts connection ip。",
+										Description: "Dts 连接 ip。",
 									},
 									"port": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Dts connection 端口",
+										Description: "Dts 连接 端口",
 									},
 									"topic": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Dts topic。",
+										Description: "Dts 主题。",
 									},
 									"group_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Dts consumer group Id。",
+										Description: "Dts 消费者 组 ID。",
 									},
 									"group_user": {
 										Type:        schema.TypeString,
@@ -2045,12 +2045,12 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"group_password": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Dts consumer group passwd。",
+										Description: "Dts 消费者 组 passwd。",
 									},
 									"tran_sql": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "False to synchronize the original data，true to synchronize the parsed json 格式 data，the 默认为 true。",
+										Description: "False 到 synchronize original 数据，true 到 synchronize parsed json 格式 数据， 默认为 true。",
 									},
 								},
 							},
@@ -2065,17 +2065,17 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"cluster": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "ClickHouse cluster。",
+										Description: "ClickHouse 集群。",
 									},
 									"database": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "ClickHouse database 名称",
+										Description: "ClickHouse 数据库 名称",
 									},
 									"table": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "ClickHouse table。",
+										Description: "ClickHouse 表。",
 									},
 									"schema": {
 										Type:        schema.TypeList,
@@ -2086,22 +2086,22 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"column_name": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "column 名称",
+													Description: "列 名称",
 												},
 												"json_key": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The json 键 名称 corresponding to this column。",
+													Description: "json 键 名称 corresponding 到 此 列。",
 												},
 												"type": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "类型 table column。",
+													Description: "类型 表 列。",
 												},
 												"allow_null": {
 													Type:        schema.TypeBool,
 													Required:    true,
-													Description: "是否column item is allowed to be empty。",
+													Description: "是否column item 是 allowed 到 是 空。",
 												},
 											},
 										},
@@ -2139,7 +2139,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"uniq_vpc_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "instance 私有网络 ID",
+										Description: "实例 私有网络 ID",
 									},
 									"self_built": {
 										Type:        schema.TypeBool,
@@ -2149,7 +2149,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"drop_invalid_message": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Whether ClickHouse discards the 消息 that fails to parse，the 默认为 true。",
+										Description: "Whether ClickHouse discards 消息 该 fails 到 parse， 默认为 true。",
 									},
 									"type": {
 										Type:        schema.TypeString,
@@ -2160,13 +2160,13 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "When the member parameter Drop Invalid 消息 To Cls is set to true，the Drop Invalid 消息 parameter is invalid。",
+										Description: "当 member 参数 Drop Invalid 消息 To Cls 是 集合 到 true， Drop Invalid 消息 参数 是 无效。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"drop_invalid_message_to_cls": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "是否deliver to cls。",
+													Description: "是否deliver 到 cls。",
 												},
 												"drop_cls_region": {
 													Type:        schema.TypeString,
@@ -2198,33 +2198,33 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Cls configuration，必填 when 类型 is CLS。",
+							Description: "Cls 配置，必填 当 类型 是 CLS。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"decode_json": {
 										Type:        schema.TypeBool,
 										Required:    true,
-										Description: "是否produced information is in json 格式",
+										Description: "是否produced 信息 是 在 json 格式",
 									},
 									"resource": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "cls id。",
+										Description: "cls ID。",
 									},
 									"log_set": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "LogSet id。",
+										Description: "LogSet ID。",
 									},
 									"content_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "必填 when Decode Json is false。",
+										Description: "必填 当 Decode Json 是 false。",
 									},
 									"time_field": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "指定content of a field in the 消息 as the time of the cls log. The 格式 of the field 内容 needs to be a second-级别 时间戳。",
+										Description: "指定content 的 字段 在 消息 作为 时间 的 cls 日志. 格式 的 字段 内容 needs 到 是 second-级别 时间戳。",
 									},
 								},
 							},
@@ -2233,7 +2233,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Cos configuration，必填 when 类型 is COS。",
+							Description: "Cos 配置，必填 当 类型 是 COS。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"bucket_name": {
@@ -2254,7 +2254,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"aggregate_batch_size": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The size of aggregated messages MB。",
+										Description: "大小 的 aggregated messages MB。",
 									},
 									"aggregate_interval": {
 										Type:        schema.TypeInt,
@@ -2264,17 +2264,17 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"format_output_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The file 格式 after 消息 aggregation csv|json。",
+										Description: "文件 格式 after 消息 aggregation csv|json。",
 									},
 									"object_key_prefix": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Dumped object directory prefix。",
+										Description: "Dumped 对象 directory prefix。",
 									},
 									"directory_time_format": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Partition 格式 formatted according to strptime time。",
+										Description: "Partition 格式 formatted according 到 strptime 时间。",
 									},
 								},
 							},
@@ -2283,79 +2283,79 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "MySQL configuration，必填 when 类型 is MYSQL。",
+							Description: "MySQL 配置，必填 当 类型 是 MYSQL。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"database": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "MySQL database 名称，* is the whole database。",
+										Description: "MySQL 数据库 名称，* 是 whole 数据库。",
 									},
 									"table": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The 名称 MySQL data table， is the non-system table in all the monitored databases，which can be separated by，to monitor multiple data tables，but the data table needs to be filled in the 格式 of data database 名称data table 名称，when a regular expression needs to be filled in，the 格式 is data database 名称data table 名称",
+										Description: "名称 MySQL 数据 表， 是 non-系统 表 在 all monitored databases，其中 可以 是 separated 通过，到 监控 多个 数据 tables，但 数据 表 needs 到 是 filled 在 格式 的 数据 数据库 名称data 表 名称，当 regular expression needs 到 是 filled 在， 格式 是 数据 数据库 名称data 表 名称",
 									},
 									"resource": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "MySQL connection Id。",
+										Description: "MySQL 连接 ID。",
 									},
 									"snapshot_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "是否Copy inventory information (schema_only does not copy，initial full amount)，the 默认为 initial。",
+										Description: "是否Copy inventory 信息 (schema_only does 不 copy，initial full amount)， 默认为 initial。",
 									},
 									"ddl_topic": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The Topic that stores the Ddl information of My SQL，if it is empty，it will not be stored by default。",
+										Description: "Topic 该 stores Ddl 信息 的 My SQL，如果 它 是 空，它 将 不 是 stored 通过 默认值。",
 									},
 									"data_source_monitor_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "TABLE 表示that the read item is a table，QUERY 表示that the read item is a query。",
+										Description: "TABLE 表示that read item 是 表，QUERY 表示that read item 是 查询。",
 									},
 									"data_source_monitor_resource": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "When DataMonitorMode=TABLE，pass in the Table that needs to be read; when DataMonitorMode=QUERY，pass in the query sql statement that needs to be read。",
+										Description: "当 DataMonitorMode=TABLE，pass 在 Table 该 needs 到 是 read; 当 DataMonitorMode=QUERY，pass 在 查询 sql statement 该 needs 到 是 read。",
 									},
 									"data_source_increment_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "TIMESTAMP 表示that the incremental column is of 时间戳 类型，INCREMENT 表示that the incremental column is of self-incrementing id 类型",
+										Description: "TIMESTAMP 表示that incremental 列 是 的 时间戳 类型，INCREMENT 表示that incremental 列 是 的 self-incrementing ID 类型",
 									},
 									"data_source_increment_column": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "the 名称 column to be monitored。",
+										Description: "名称 列 到 是 monitored。",
 									},
 									"data_source_start_from": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "HEAD means copy stock + incremental data，TAIL means copy only incremental data。",
+										Description: "HEAD 表示 copy stock + incremental 数据，TAIL 表示 copy 仅 incremental 数据。",
 									},
 									"data_target_insert_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "INSERT means insert using Insert 模式，UPSERT means insert using Upsert 模式",
+										Description: "INSERT 表示 insert 使用 Insert 模式，UPSERT 表示 insert 使用 Upsert 模式",
 									},
 									"data_target_primary_key_field": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "When DataInsertMode=UPSERT，pass in the primary 键 that the current upsert depends on。",
+										Description: "当 DataInsertMode=UPSERT，pass 在 primary 键 该 当前 upsert depends 在。",
 									},
 									"data_target_record_mapping": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Mapping relationship between tables and messages。",
+										Description: "Mapping relationship between tables 和 messages。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"json_key": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The 键 名称 消息",
+													Description: "键 名称 消息",
 												},
 												"type": {
 													Type:        schema.TypeString,
@@ -2365,37 +2365,37 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"allow_null": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "是否message is allowed to be empty。",
+													Description: "是否message 是 allowed 到 是 空。",
 												},
 												"column_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Corresponding mapping column 名称",
+													Description: "Corresponding mapping 列 名称",
 												},
 												"extra_info": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Database table extra fields。",
+													Description: "Database 表 extra 字段。",
 												},
 												"column_size": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "current column size。",
+													Description: "当前 列 大小。",
 												},
 												"decimal_digits": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "current column precision。",
+													Description: "当前 列 precision。",
 												},
 												"auto_increment": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "是否为an auto-increment column。",
+													Description: "是否为an auto-increment 列。",
 												},
 												"default_value": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Database table default parameters。",
+													Description: "Database 表 默认值 参数。",
 												},
 											},
 										},
@@ -2403,7 +2403,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"topic_regex": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Regular expression for routing events to specific topics，默认为 (.*)。",
+										Description: "Regular expression 对于 routing events 到 特定 topics，默认为 (.*)。",
 									},
 									"topic_replacement": {
 										Type:        schema.TypeString,
@@ -2413,29 +2413,29 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"key_columns": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "格式 library1.table1 field 1,field 2;library 2.table2 field 2，between tables; (semicolon) separated，between fields，(comma) separated. The table that is not specified 默认为 the primary 键 of the table。",
+										Description: "格式 library1.table1 字段 1,字段 2;库 2.table2 字段 2，between tables; (semicolon) separated，between 字段，(comma) separated. 表 该 是 不 指定 默认为 primary 键 的 表。",
 									},
 									"drop_invalid_message": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "是否discard messages that fail to parse，the 默认为 true。",
+										Description: "是否discard messages 该 fail 到 parse， 默认为 true。",
 									},
 									"drop_cls": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "When the member parameter Drop Invalid 消息 To Cls is set to true，the Drop Invalid 消息 parameter is invalid。",
+										Description: "当 member 参数 Drop Invalid 消息 To Cls 是 集合 到 true， Drop Invalid 消息 参数 是 无效。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"drop_invalid_message_to_cls": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "是否deliver to cls。",
+													Description: "是否deliver 到 cls。",
 												},
 												"drop_cls_region": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The 地域 where the cls is delivered。",
+													Description: "地域 其中 cls 是 delivered。",
 												},
 												"drop_cls_owneruin": {
 													Type:        schema.TypeString,
@@ -2445,7 +2445,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"drop_cls_topic_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "cls topic。",
+													Description: "cls 主题。",
 												},
 												"drop_cls_log_set": {
 													Type:        schema.TypeString,
@@ -2463,32 +2463,32 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"is_table_prefix": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "When the Table input is a prefix，the 值 of this item is true，otherwise it is false。",
+										Description: "当 Table input 是 prefix， 值 的 此 item 是 true，otherwise 它 是 false。",
 									},
 									"include_content_changes": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "If the 值 is all，DDL data and DML data will also be written to the selected topic; if the 值 is dml，only DML data will be written to the selected topic。",
+										Description: "如果 值 是 all，DDL 数据 和 DML 数据 将 also 是 written 到 selected 主题; 如果 值 是 dml，仅 DML 数据 将 是 written 到 selected 主题。",
 									},
 									"include_query": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "If the 值 is true，and the 值 of the binlog rows query log events configuration item in My SQL is ON，the data flowing into the topic 包含original SQL statement; if the 值 is false，the data flowing into the topic does not contain Original SQL statement。",
+										Description: "如果 值 是 true，和 值 的 binlog rows 查询 日志 events 配置 item 在 My SQL 是 ON， 数据 flowing into 主题 包含original SQL statement; 如果 值 是 false， 数据 flowing into 主题 does 不 contain Original SQL statement。",
 									},
 									"record_with_schema": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "If the 值 is true，the 消息 will carry the schema corresponding to the 消息 structure，if the 值 is false，it will not carry。",
+										Description: "如果 值 是 true， 消息 将 carry schema corresponding 到 消息 structure，如果 值 是 false，它 将 不 carry。",
 									},
 									"signal_database": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "database 名称 signal table。",
+										Description: "数据库 名称 signal 表。",
 									},
 									"is_table_regular": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "是否input table is a regular expression，if this option and Is Table Prefix are true at the same time，the judgment 优先级 of this option is higher than Is Table Prefix。",
+										Description: "是否input 表 是 regular expression，如果 此 选项 和 Is Table Prefix 是 true 在 same 时间， judgment 优先级 的 此 选项 是 higher 比 Is Table Prefix。",
 									},
 								},
 							},
@@ -2497,59 +2497,59 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "PostgreSQL configuration，必填 when 类型 is POSTGRESQL or TDSQL C_POSTGRESQL。",
+							Description: "PostgreSQL 配置，必填 当 类型 是 POSTGRESQL 或 TDSQL C_POSTGRESQL。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"database": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "PostgreSQL database 名称",
+										Description: "PostgreSQL 数据库 名称",
 									},
 									"table": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "PostgreSQL tableName，* is the non-system table in all the monitored databases，you can use，to monitor multiple data tables，but the data table needs to be filled in the 格式 of Schema 名称Data table 名称，and you need to fill in a regular expression When，the 格式 is Schema 名称data table 名称",
+										Description: "PostgreSQL tableName，* 是 non-系统 表 在 all monitored databases，您 可以 使用，到 监控 多个 数据 tables，但 数据 表 needs 到 是 filled 在 格式 的 Schema 名称Data 表 名称，和 您 need 到 fill 在 regular expression 当， 格式 是 Schema 名称data 表 名称",
 									},
 									"resource": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "PostgreSQL connection Id。",
+										Description: "PostgreSQL 连接 ID。",
 									},
 									"plugin_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "(decoderbufs/pgoutput)，default decoderbufs。",
+										Description: "(decoderbufs/pgoutput)，默认值 decoderbufs。",
 									},
 									"snapshot_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "never|initial，default initial。",
+										Description: "never|initial，默认值 initial。",
 									},
 									"data_format": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Upstream data 格式 (JSON|Debezium)，必填 when the database synchronization 模式 matches the default field。",
+										Description: "Upstream 数据 格式 (JSON|Debezium)，必填 当 数据库 synchronization 模式 matches 默认值 字段。",
 									},
 									"data_target_insert_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "INSERT means insert using Insert 模式，UPSERT means insert using Upsert 模式",
+										Description: "INSERT 表示 insert 使用 Insert 模式，UPSERT 表示 insert 使用 Upsert 模式",
 									},
 									"data_target_primary_key_field": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "When DataInsertMode=UPSERT，pass in the primary 键 that the current upsert depends on。",
+										Description: "当 DataInsertMode=UPSERT，pass 在 primary 键 该 当前 upsert depends 在。",
 									},
 									"data_target_record_mapping": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Mapping relationship between tables and messages。",
+										Description: "Mapping relationship between tables 和 messages。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"json_key": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The 键 名称 消息",
+													Description: "键 名称 消息",
 												},
 												"type": {
 													Type:        schema.TypeString,
@@ -2559,7 +2559,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"allow_null": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "是否message is allowed to be empty。",
+													Description: "是否message 是 allowed 到 是 空。",
 												},
 												"column_name": {
 													Type:        schema.TypeString,
@@ -2569,27 +2569,27 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"extra_info": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Database table extra fields。",
+													Description: "Database 表 extra 字段。",
 												},
 												"column_size": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "current ColumnSize。",
+													Description: "当前 ColumnSize。",
 												},
 												"decimal_digits": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "current Column DecimalDigits。",
+													Description: "当前 Column DecimalDigits。",
 												},
 												"auto_increment": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "是否为an auto-increment column。",
+													Description: "是否为an auto-increment 列。",
 												},
 												"default_value": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Database table default parameters。",
+													Description: "Database 表 默认值 参数。",
 												},
 											},
 										},
@@ -2597,22 +2597,22 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"drop_invalid_message": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "是否discard messages that fail to parse，the 默认为 true。",
+										Description: "是否discard messages 该 fail 到 parse， 默认为 true。",
 									},
 									"is_table_regular": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "是否input table is a regular expression。",
+										Description: "是否input 表 是 regular expression。",
 									},
 									"key_columns": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "格式  library1.table1:field 1,field2;library2.table2:field2，between tables; (semicolon) separated，between fields，(comma) separated. The table that is not specified 默认为 the primary 键 of the table。",
+										Description: "格式 library1.table1:字段 1,field2;library2.table2:field2，between tables; (semicolon) separated，between 字段，(comma) separated. 表 该 是 不 指定 默认为 primary 键 的 表。",
 									},
 									"record_with_schema": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "If the 值 is true，the 消息 will carry the schema corresponding to the 消息 structure，if the 值 is false，it will not carry。",
+										Description: "如果 值 是 true， 消息 将 carry schema corresponding 到 消息 structure，如果 值 是 false，它 将 不 carry。",
 									},
 								},
 							},
@@ -2621,23 +2621,23 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Topic configuration，必填 when 类型 is Topic。",
+							Description: "Topic 配置，必填 当 类型 是 Topic。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"resource": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The topic 名称 topic sold separately。",
+										Description: "主题 名称 主题 sold separately。",
 									},
 									"offset_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "偏移量 类型，initial position earliest，latest position latest，time point position 时间戳。",
+										Description: "偏移量 类型，initial position earliest，latest position latest，时间 point position 时间戳。",
 									},
 									"start_time": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "It must be passed when the 偏移量 类型 is 时间戳，and the time stamp is passed，accurate to the second。",
+										Description: "It 必须 是 passed 当 偏移量 类型 是 时间戳，和 时间 stamp 是 passed，accurate 到 second。",
 									},
 									"topic_id": {
 										Type:        schema.TypeString,
@@ -2648,17 +2648,17 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"compression_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "是否perform compression when writing a topic，if it is not 已启用，fill in none，if it is 已启用，you can choose one of gzip，snappy，lz4 to fill in。",
+										Description: "是否perform 压缩 当 writing 主题，如果 它 是 不 已启用，fill 在 none，如果 它 是 已启用，您 可以 choose 一个 的 gzip，snappy，lz4 到 fill 在。",
 									},
 									"use_auto_create_topic": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "是否used topic need to be automatically created (currently only supports SOURCE inflow tasks)。",
+										Description: "是否used 主题 need 到 是 automatically 创建 (currently 仅 支持 SOURCE inflow tasks)。",
 									},
 									"msg_multiple": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "1 来源 topic 消息 is amplified into msg Multiple and written to the target topic (this parameter is currently only applicable to ckafka flowing into ckafka)。",
+										Description: "1 来源 主题 消息 是 amplified into msg Multiple 和 written 到 目标 主题 (此 参数 是 currently 仅 applicable 到 ckafka flowing into ckafka)。",
 									},
 								},
 							},
@@ -2667,38 +2667,38 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "MariaDB configuration，必填 when 类型 is MARIADB。",
+							Description: "MariaDB 配置，必填 当 类型 是 MARIADB。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"database": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "MariaDB database 名称，* for all database。",
+										Description: "MariaDB 数据库 名称，* 对于 all 数据库。",
 									},
 									"table": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "MariaDB db 名称，*is the non-system table in all the monitored databases，you can use，to monitor multiple data tables，but the data table needs to be filled in the 格式 of data database 名称data table 名称",
+										Description: "MariaDB db 名称，*是 non-系统 表 在 all monitored databases，您 可以 使用，到 监控 多个 数据 tables，但 数据 表 needs 到 是 filled 在 格式 的 数据 数据库 名称data 表 名称",
 									},
 									"resource": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "MariaDB connection Id。",
+										Description: "MariaDB 连接 ID。",
 									},
 									"snapshot_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "schema_only|initial，default initial。",
+										Description: "schema_only|initial，默认值 initial。",
 									},
 									"key_columns": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "格式  library 1. table 1: field 1，field 2; library 2. table 2: field 2，between tables; (semicolon) separated，between fields，(comma) separated. The table that is not specified 默认为 the primary 键 of the table。",
+										Description: "格式 库 1. 表 1: 字段 1，字段 2; 库 2. 表 2: 字段 2，between tables; (semicolon) separated，between 字段，(comma) separated. 表 该 是 不 指定 默认为 primary 键 的 表。",
 									},
 									"is_table_prefix": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "When the Table input is a prefix，the 值 of this item is true，otherwise it is false。",
+										Description: "当 Table input 是 prefix， 值 的 此 item 是 true，otherwise 它 是 false。",
 									},
 									"output_format": {
 										Type:        schema.TypeString,
@@ -2708,17 +2708,17 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"include_content_changes": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "If the 值 is all，DDL data and DML data will also be written to the selected topic; if the 值 is dml，only DML data will be written to the selected topic。",
+										Description: "如果 值 是 all，DDL 数据 和 DML 数据 将 also 是 written 到 selected 主题; 如果 值 是 dml，仅 DML 数据 将 是 written 到 selected 主题。",
 									},
 									"include_query": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "If the 值 is true，and the 值 of the binlog rows query log events configuration item in My SQL is ON，the data flowing into the topic 包含original SQL statement; if the 值 is false，the data flowing into the topic does not contain Original SQL statement。",
+										Description: "如果 值 是 true，和 值 的 binlog rows 查询 日志 events 配置 item 在 My SQL 是 ON， 数据 flowing into 主题 包含original SQL statement; 如果 值 是 false， 数据 flowing into 主题 does 不 contain Original SQL statement。",
 									},
 									"record_with_schema": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "If the 值 is true，the 消息 will carry the schema corresponding to the 消息 structure，if the 值 is false，it will not carry。",
+										Description: "如果 值 是 true， 消息 将 carry schema corresponding 到 消息 structure，如果 值 是 false，它 将 不 carry。",
 									},
 								},
 							},
@@ -2727,28 +2727,28 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "SQLServer configuration，必填 when 类型 is SQLSERVER。",
+							Description: "SQLServer 配置，必填 当 类型 是 SQLSERVER。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"database": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "SQLServer database 名称",
+										Description: "SQLServer 数据库 名称",
 									},
 									"table": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "SQLServer table，*is the non-system table in all the monitored databases，you can use，to monitor multiple data tables，but the data table needs to be filled in the 格式 of data database 名称data table 名称",
+										Description: "SQLServer 表，*是 non-系统 表 在 all monitored databases，您 可以 使用，到 监控 多个 数据 tables，但 数据 表 needs 到 是 filled 在 格式 的 数据 数据库 名称data 表 名称",
 									},
 									"resource": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "SQLServer connection Id。",
+										Description: "SQLServer 连接 ID。",
 									},
 									"snapshot_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "schema_only|initial default initial。",
+										Description: "schema_only|initial 默认值 initial。",
 									},
 								},
 							},
@@ -2757,7 +2757,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Ctsdb configuration，必填 when 类型 is CTSDB。",
+							Description: "Ctsdb 配置，必填 当 类型 是 CTSDB。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"resource": {
@@ -2777,33 +2777,33 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Scf configuration，必填 when 类型 is SCF。",
+							Description: "Scf 配置，必填 当 类型 是 SCF。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"function_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "SCF function 名称",
+										Description: "SCF 函数 名称",
 									},
 									"namespace": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "SCF cloud function namespace，the 默认为 default。",
+										Description: "SCF 云 函数 命名空间， 默认为 默认值。",
 									},
 									"qualifier": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "SCF cloud function 版本 and alias，the 默认为 DEFAULT。",
+										Description: "SCF 云 函数 版本 和 alias， 默认为 DEFAULT。",
 									},
 									"batch_size": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The 最大messages sent in each batch，the 默认为 1000。",
+										Description: "最大messages sent 在 each batch， 默认为 1000。",
 									},
 									"max_retries": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The 数量 retries after the SCF call fails，the 默认为 5。",
+										Description: "数量 retries after SCF call fails， 默认为 5。",
 									},
 								},
 							},
@@ -2834,7 +2834,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Required:    true,
-							Description: "是否keep parsing failure data。",
+							Description: "是否keep parsing failure 数据。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"type": {
@@ -2862,17 +2862,17 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"topic": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Topic 名称，multiple separated by,。",
+													Description: "Topic 名称，多个 separated 通过,。",
 												},
 												"offset_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "偏移量 类型，initial position earliest，latest position latest，time point position 时间戳。",
+													Description: "偏移量 类型，initial position earliest，latest position latest，时间 point position 时间戳。",
 												},
 												"start_time": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "It must be passed when the 偏移量 类型 is 时间戳，and the time stamp is passed，accurate to the second。",
+													Description: "It 必须 是 passed 当 偏移量 类型 是 时间戳，和 时间 stamp 是 passed，accurate 到 second。",
 												},
 												"resource_name": {
 													Type:        schema.TypeString,
@@ -2887,7 +2887,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"topic_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Topic Id。",
+													Description: "Topic ID。",
 												},
 												"partition_num": {
 													Type:        schema.TypeInt,
@@ -2897,7 +2897,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"enable_toleration": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "Enable the fault-tolerant instance and enable the dead-letter queue。",
+													Description: "Enable fault-tolerant 实例 和 启用 dead-letter queue。",
 												},
 												"qps_limit": {
 													Type:        schema.TypeInt,
@@ -2907,18 +2907,18 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"table_mappings": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "The route from Table to Topic must be passed when the Distribute to multiple topics switch is turned on。",
+													Description: "路由 从 Table 到 Topic 必须 是 passed 当 Distribute 到 多个 topics switch 是 turned 在。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"database": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "database 名称",
+																Description: "数据库 名称",
 															},
 															"table": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Table 名称，multiple tables，separated by (commas)。",
+																Description: "Table 名称，多个 tables，separated 通过 (commas)。",
 															},
 															"topic": {
 																Type:        schema.TypeString,
@@ -2936,22 +2936,22 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"use_table_mapping": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "Distribute to multiple topics switch，the 默认为 false。",
+													Description: "Distribute 到 多个 topics switch， 默认为 false。",
 												},
 												"use_auto_create_topic": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "是否used topic need to be automatically created (currently only supports SOURCE inflow tasks，if you do not use to distribute to multiple topics，you need to fill in the topic 名称 that needs to be automatically created in the Topic field)。",
+													Description: "是否used 主题 need 到 是 automatically 创建 (currently 仅 支持 SOURCE inflow tasks，如果 您 do 不 使用 到 distribute 到 多个 topics，您 need 到 fill 在 主题 名称 该 needs 到 是 automatically 创建 在 Topic 字段)。",
 												},
 												"compression_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "是否compress when writing to the Topic，if it is not 已启用，fill in none，if it is 已启用，fill in open。",
+													Description: "是否compress 当 writing 到 Topic，如果 它 是 不 已启用，fill 在 none，如果 它 是 已启用，fill 在 open。",
 												},
 												"msg_multiple": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "1 来源 topic 消息 is amplified into msg Multiple and written to the target topic (this parameter is currently only applicable to ckafka flowing into ckafka)。",
+													Description: "1 来源 主题 消息 是 amplified into msg Multiple 和 written 到 目标 主题 (此 参数 是 currently 仅 applicable 到 ckafka flowing into ckafka)。",
 												},
 											},
 										},
@@ -2976,17 +2976,17 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"resource": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The topic 名称 topic sold separately。",
+													Description: "主题 名称 主题 sold separately。",
 												},
 												"offset_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "偏移量 类型，initial position earliest，latest position latest，time point position 时间戳。",
+													Description: "偏移量 类型，initial position earliest，latest position latest，时间 point position 时间戳。",
 												},
 												"start_time": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "It must be passed when the 偏移量 类型 is 时间戳，and the time stamp is passed，accurate to the second。",
+													Description: "It 必须 是 passed 当 偏移量 类型 是 时间戳，和 时间 stamp 是 passed，accurate 到 second。",
 												},
 												"topic_id": {
 													Type:        schema.TypeString,
@@ -2996,17 +2996,17 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"compression_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "是否perform compression when writing a topic，if it is not 已启用，fill in none，if it is 已启用，you can choose one of gzip，snappy，lz4 to fill in。",
+													Description: "是否perform 压缩 当 writing 主题，如果 它 是 不 已启用，fill 在 none，如果 它 是 已启用，您 可以 choose 一个 的 gzip，snappy，lz4 到 fill 在。",
 												},
 												"use_auto_create_topic": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "是否used topic need to be automatically created (currently only supports SOURCE inflow tasks)。",
+													Description: "是否used 主题 need 到 是 automatically 创建 (currently 仅 支持 SOURCE inflow tasks)。",
 												},
 												"msg_multiple": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "1 来源 topic 消息 is amplified into msg Multiple and written to the target topic (this parameter is currently only applicable to ckafka flowing into ckafka)。",
+													Description: "1 来源 主题 消息 是 amplified into msg Multiple 和 written 到 目标 主题 (此 参数 是 currently 仅 applicable 到 ckafka flowing into ckafka)。",
 												},
 											},
 										},
@@ -3022,12 +3022,12 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 						"content": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Raw data。",
+							Description: "Raw 数据。",
 						},
 						"source_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Data 来源，TOPIC pulls from the 来源 topic，CUSTOMIZE custom。",
+							Description: "Data 来源，TOPIC pulls 从 来源 主题，CUSTOMIZE 自定义。",
 						},
 						"regex": {
 							Type:        schema.TypeString,
@@ -3048,7 +3048,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "类型，DEFAULT default，DATE system default - 时间戳，CUSTOMIZE custom，MAPPING mapping。",
+										Description: "类型，DEFAULT 默认值，DATE 系统 默认值 - 时间戳，CUSTOMIZE 自定义，MAPPING mapping。",
 									},
 									"value": {
 										Type:        schema.TypeString,
@@ -3061,7 +3061,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 						"filter_param": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "filter。",
+							Description: "过滤器。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
@@ -3106,7 +3106,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "类型，DEFAULT default，DATE system default - 时间戳，CUSTOMIZE custom，MAPPING mapping。",
+										Description: "类型，DEFAULT 默认值，DATE 系统 默认值 - 时间戳，CUSTOMIZE 自定义，MAPPING mapping。",
 									},
 									"value": {
 										Type:        schema.TypeString,
@@ -3119,7 +3119,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 						"use_event_bus": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "是否underlying engine uses eb。",
+							Description: "是否underlying 引擎 uses eb。",
 						},
 					},
 				},
@@ -3137,13 +3137,13 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Data processing rules。",
+				Description: "Data processing 规则。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"content": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Raw data。",
+							Description: "Raw 数据。",
 						},
 						"field_chain": {
 							Type:        schema.TypeList,
@@ -3161,7 +3161,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"format": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Parsing 格式，JSON，DELIMITER delimiter，REGULAR regular extraction，SOURCE processing all results of the upper layer。",
+													Description: "Parsing 格式，JSON，DELIMITER delimiter，REGULAR regular extraction，SOURCE processing all results 的 upper layer。",
 												},
 												"regex": {
 													Type:        schema.TypeString,
@@ -3171,12 +3171,12 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"input_value_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "KEY to be processed again - 模式",
+													Description: "KEY 到 是 processed again - 模式",
 												},
 												"input_value": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "KEY to be processed again - KEY expression。",
+													Description: "KEY 到 是 processed again - KEY expression。",
 												},
 											},
 										},
@@ -3199,7 +3199,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"s_m_t": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "data processing。",
+										Description: "数据 processing。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
@@ -3210,12 +3210,12 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"operate": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Operation，DATE system preset - 时间戳，CUSTOMIZE customization，MAPPING mapping，JSONPATH。",
+													Description: "Operation，DATE 系统 preset - 时间戳，CUSTOMIZE customization，MAPPING mapping，JSONPATH。",
 												},
 												"scheme_type": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "data 类型，ORIGINAL，STRING，INT64，FLOAT64，BOOLEAN，MAP，ARRAY。",
+													Description: "数据 类型，ORIGINAL，STRING，INT64，FLOAT64，BOOLEAN，MAP，ARRAY。",
 												},
 												"value": {
 													Type:        schema.TypeString,
@@ -3232,7 +3232,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 															"type": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Processing 模式，REPLACE replacement，SUBSTR interception，DATE date conversion，TRIM removal of leading and trailing spaces，REGEX REPLACE regular replacement，URL DECODE，LOWERCASE conversion to lowercase。",
+																Description: "Processing 模式，REPLACE replacement，SUBSTR interception，DATE date conversion，TRIM removal 的 leading 和 trailing spaces，REGEX REPLACE regular replacement，URL DECODE，LOWERCASE conversion 到 lowercase。",
 															},
 															"replace": {
 																Type:        schema.TypeList,
@@ -3269,7 +3269,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"end": {
 																			Type:        schema.TypeInt,
 																			Required:    true,
-																			Description: "cut-off position。",
+																			Description: "cut-关闭 position。",
 																		},
 																	},
 																},
@@ -3278,7 +3278,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "Time conversion，必填 when TYPE=DATE。",
+																Description: "Time conversion，必填 当 TYPE=DATE。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"format": {
@@ -3289,12 +3289,12 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"target_type": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "input 类型，string|unix。",
+																			Description: "input 类型，字符串|unix。",
 																		},
 																		"time_zone": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "default GMT+8。",
+																			Description: "默认值 GMT+8。",
 																		},
 																	},
 																},
@@ -3303,7 +3303,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "Regular replacement，必填 when TYPE=REGEX REPLACE。",
+																Description: "Regular replacement，必填 当 TYPE=REGEX REPLACE。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"regex": {
@@ -3323,7 +3323,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "The 值 supports one split and multiple values，必填 when TYPE=SPLIT。",
+																Description: "值 支持 一个 split 和 多个 值，必填 当 TYPE=SPLIT。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"regex": {
@@ -3338,7 +3338,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "键-值 secondary analysis，must be passed when TYPE=KV。",
+																Description: "键-值 secondary analysis，必须 是 passed 当 TYPE=KV。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"delimiter": {
@@ -3354,7 +3354,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"keep_original_key": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Keep the 来源 键，the 默认为 false not to keep。",
+																			Description: "Keep 来源 键， 默认为 false 不 到 keep。",
 																		},
 																	},
 																},
@@ -3368,7 +3368,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "Json 路径 replacement，must pass when TYPE=JSON PATH REPLACE。",
+																Description: "Json 路径 replacement，必须 pass 当 TYPE=JSON PATH REPLACE。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"old_value": {
@@ -3379,7 +3379,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"new_value": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Replacement 值，Jsonpath expression or string。",
+																			Description: "Replacement 值，Jsonpath expression 或 字符串。",
 																		},
 																	},
 																},
@@ -3416,7 +3416,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 															"type": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Processing 模式，REPLACE replacement，SUBSTR interception，DATE date conversion，TRIM removal of leading and trailing spaces，REGEX REPLACE regular replacement，URL DECODE，LOWERCASE conversion to lowercase。",
+																Description: "Processing 模式，REPLACE replacement，SUBSTR interception，DATE date conversion，TRIM removal 的 leading 和 trailing spaces，REGEX REPLACE regular replacement，URL DECODE，LOWERCASE conversion 到 lowercase。",
 															},
 															"replace": {
 																Type:        schema.TypeList,
@@ -3453,7 +3453,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"end": {
 																			Type:        schema.TypeInt,
 																			Required:    true,
-																			Description: "cut-off position。",
+																			Description: "cut-关闭 position。",
 																		},
 																	},
 																},
@@ -3462,7 +3462,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "Time conversion，必填 when TYPE=DATE。",
+																Description: "Time conversion，必填 当 TYPE=DATE。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"format": {
@@ -3473,12 +3473,12 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"target_type": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "input 类型，string|unix。",
+																			Description: "input 类型，字符串|unix。",
 																		},
 																		"time_zone": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "default GMT+8。",
+																			Description: "默认值 GMT+8。",
 																		},
 																	},
 																},
@@ -3487,7 +3487,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "Regular replacement，必填 when TYPE=REGEX REPLACE。",
+																Description: "Regular replacement，必填 当 TYPE=REGEX REPLACE。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"regex": {
@@ -3507,7 +3507,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "The 值 supports one split and multiple values，必填 when TYPE=SPLIT。",
+																Description: "值 支持 一个 split 和 多个 值，必填 当 TYPE=SPLIT。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"regex": {
@@ -3522,7 +3522,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "键-值 secondary analysis，must be passed when TYPE=KV。",
+																Description: "键-值 secondary analysis，必须 是 passed 当 TYPE=KV。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"delimiter": {
@@ -3538,7 +3538,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"keep_original_key": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Keep the 来源 键，the 默认为 false not to keep。",
+																			Description: "Keep 来源 键， 默认为 false 不 到 keep。",
 																		},
 																	},
 																},
@@ -3552,7 +3552,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "Json 路径 replacement，must pass when TYPE=JSON PATH REPLACE。",
+																Description: "Json 路径 replacement，必须 pass 当 TYPE=JSON PATH REPLACE。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"old_value": {
@@ -3563,7 +3563,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"new_value": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Replacement 值，Jsonpath expression or string。",
+																			Description: "Replacement 值，Jsonpath expression 或 字符串。",
 																		},
 																	},
 																},
@@ -3608,12 +3608,12 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"operate": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Operation，DATE system preset - 时间戳，CUSTOMIZE customization，MAPPING mapping，JSONPATH。",
+													Description: "Operation，DATE 系统 preset - 时间戳，CUSTOMIZE customization，MAPPING mapping，JSONPATH。",
 												},
 												"scheme_type": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "data 类型，ORIGINAL，STRING，INT64，FLOAT64，BOOLEAN，MAP，ARRAY。",
+													Description: "数据 类型，ORIGINAL，STRING，INT64，FLOAT64，BOOLEAN，MAP，ARRAY。",
 												},
 												"value": {
 													Type:        schema.TypeString,
@@ -3630,7 +3630,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 															"type": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Processing 模式，REPLACE replacement，SUBSTR interception，DATE date conversion，TRIM removal of leading and trailing spaces，REGEX REPLACE regular replacement，URL DECODE，LOWERCASE conversion to lowercase。",
+																Description: "Processing 模式，REPLACE replacement，SUBSTR interception，DATE date conversion，TRIM removal 的 leading 和 trailing spaces，REGEX REPLACE regular replacement，URL DECODE，LOWERCASE conversion 到 lowercase。",
 															},
 															"replace": {
 																Type:        schema.TypeList,
@@ -3667,7 +3667,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"end": {
 																			Type:        schema.TypeInt,
 																			Required:    true,
-																			Description: "cut-off position。",
+																			Description: "cut-关闭 position。",
 																		},
 																	},
 																},
@@ -3676,7 +3676,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "Time conversion，必填 when TYPE=DATE。",
+																Description: "Time conversion，必填 当 TYPE=DATE。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"format": {
@@ -3687,12 +3687,12 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"target_type": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "input 类型，string|unix。",
+																			Description: "input 类型，字符串|unix。",
 																		},
 																		"time_zone": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "default GMT+8。",
+																			Description: "默认值 GMT+8。",
 																		},
 																	},
 																},
@@ -3701,7 +3701,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "Regular replacement，必填 when TYPE=REGEX REPLACE。",
+																Description: "Regular replacement，必填 当 TYPE=REGEX REPLACE。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"regex": {
@@ -3721,7 +3721,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "The 值 supports one split and multiple values，必填 when TYPE=SPLIT。",
+																Description: "值 支持 一个 split 和 多个 值，必填 当 TYPE=SPLIT。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"regex": {
@@ -3736,7 +3736,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "键-值 secondary analysis，must be passed when TYPE=KV。",
+																Description: "键-值 secondary analysis，必须 是 passed 当 TYPE=KV。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"delimiter": {
@@ -3752,7 +3752,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"keep_original_key": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Keep the 来源 键，the 默认为 false not to keep。",
+																			Description: "Keep 来源 键， 默认为 false 不 到 keep。",
 																		},
 																	},
 																},
@@ -3766,7 +3766,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "Json 路径 replacement，must pass when TYPE=JSON PATH REPLACE。",
+																Description: "Json 路径 replacement，必须 pass 当 TYPE=JSON PATH REPLACE。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"old_value": {
@@ -3777,7 +3777,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"new_value": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Replacement 值，Jsonpath expression or string。",
+																			Description: "Replacement 值，Jsonpath expression 或 字符串。",
 																		},
 																	},
 																},
@@ -3814,7 +3814,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 															"type": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Processing 模式，REPLACE replacement，SUBSTR interception，DATE date conversion，TRIM removal of leading and trailing spaces，REGEX REPLACE regular replacement，URL DECODE，LOWERCASE conversion to lowercase。",
+																Description: "Processing 模式，REPLACE replacement，SUBSTR interception，DATE date conversion，TRIM removal 的 leading 和 trailing spaces，REGEX REPLACE regular replacement，URL DECODE，LOWERCASE conversion 到 lowercase。",
 															},
 															"replace": {
 																Type:        schema.TypeList,
@@ -3851,7 +3851,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"end": {
 																			Type:        schema.TypeInt,
 																			Required:    true,
-																			Description: "cut-off position。",
+																			Description: "cut-关闭 position。",
 																		},
 																	},
 																},
@@ -3860,7 +3860,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "Time conversion，必填 when TYPE=DATE。",
+																Description: "Time conversion，必填 当 TYPE=DATE。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"format": {
@@ -3871,12 +3871,12 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"target_type": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "input 类型，string|unix。",
+																			Description: "input 类型，字符串|unix。",
 																		},
 																		"time_zone": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "default GMT+8。",
+																			Description: "默认值 GMT+8。",
 																		},
 																	},
 																},
@@ -3885,7 +3885,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "Regular replacement，必填 when TYPE=REGEX REPLACE。",
+																Description: "Regular replacement，必填 当 TYPE=REGEX REPLACE。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"regex": {
@@ -3905,7 +3905,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "The 值 supports one split and multiple values，必填 when TYPE=SPLIT。",
+																Description: "值 支持 一个 split 和 多个 值，必填 当 TYPE=SPLIT。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"regex": {
@@ -3920,7 +3920,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "键-值 secondary analysis，must be passed when TYPE=KV。",
+																Description: "键-值 secondary analysis，必须 是 passed 当 TYPE=KV。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"delimiter": {
@@ -3936,7 +3936,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"keep_original_key": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Keep the 来源 键，the 默认为 false not to keep。",
+																			Description: "Keep 来源 键， 默认为 false 不 到 keep。",
 																		},
 																	},
 																},
@@ -3950,7 +3950,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "Json 路径 replacement，must pass when TYPE=JSON PATH REPLACE。",
+																Description: "Json 路径 replacement，必须 pass 当 TYPE=JSON PATH REPLACE。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"old_value": {
@@ -3961,7 +3961,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"new_value": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Replacement 值，Jsonpath expression or string。",
+																			Description: "Replacement 值，Jsonpath expression 或 字符串。",
 																		},
 																	},
 																},
@@ -4001,12 +4001,12 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"operate": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Operation，DATE system preset - 时间戳，CUSTOMIZE customization，MAPPING mapping，JSONPATH。",
+													Description: "Operation，DATE 系统 preset - 时间戳，CUSTOMIZE customization，MAPPING mapping，JSONPATH。",
 												},
 												"scheme_type": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "data 类型，ORIGINAL，STRING，INT64，FLOAT64，BOOLEAN，MAP，ARRAY。",
+													Description: "数据 类型，ORIGINAL，STRING，INT64，FLOAT64，BOOLEAN，MAP，ARRAY。",
 												},
 												"value": {
 													Type:        schema.TypeString,
@@ -4023,7 +4023,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 															"type": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Processing 模式，REPLACE replacement，SUBSTR interception，DATE date conversion，TRIM removal of leading and trailing spaces，REGEX REPLACE regular replacement，URL DECODE，LOWERCASE conversion to lowercase。",
+																Description: "Processing 模式，REPLACE replacement，SUBSTR interception，DATE date conversion，TRIM removal 的 leading 和 trailing spaces，REGEX REPLACE regular replacement，URL DECODE，LOWERCASE conversion 到 lowercase。",
 															},
 															"replace": {
 																Type:        schema.TypeList,
@@ -4060,7 +4060,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"end": {
 																			Type:        schema.TypeInt,
 																			Required:    true,
-																			Description: "cut-off position。",
+																			Description: "cut-关闭 position。",
 																		},
 																	},
 																},
@@ -4069,7 +4069,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "Time conversion，必填 when TYPE=DATE。",
+																Description: "Time conversion，必填 当 TYPE=DATE。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"format": {
@@ -4080,12 +4080,12 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"target_type": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "input 类型，string|unix。",
+																			Description: "input 类型，字符串|unix。",
 																		},
 																		"time_zone": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "default GMT+8。",
+																			Description: "默认值 GMT+8。",
 																		},
 																	},
 																},
@@ -4094,7 +4094,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "Regular replacement，必填 when TYPE=REGEX REPLACE。",
+																Description: "Regular replacement，必填 当 TYPE=REGEX REPLACE。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"regex": {
@@ -4114,7 +4114,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "The 值 supports one split and multiple values，必填 when TYPE=SPLIT。",
+																Description: "值 支持 一个 split 和 多个 值，必填 当 TYPE=SPLIT。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"regex": {
@@ -4129,7 +4129,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "键-值 secondary analysis，must be passed when TYPE=KV。",
+																Description: "键-值 secondary analysis，必须 是 passed 当 TYPE=KV。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"delimiter": {
@@ -4145,7 +4145,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"keep_original_key": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Keep the 来源 键，the 默认为 false not to keep。",
+																			Description: "Keep 来源 键， 默认为 false 不 到 keep。",
 																		},
 																	},
 																},
@@ -4159,7 +4159,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "Json 路径 replacement，must pass when TYPE=JSON PATH REPLACE。",
+																Description: "Json 路径 replacement，必须 pass 当 TYPE=JSON PATH REPLACE。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"old_value": {
@@ -4170,7 +4170,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"new_value": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Replacement 值，Jsonpath expression or string。",
+																			Description: "Replacement 值，Jsonpath expression 或 字符串。",
 																		},
 																	},
 																},
@@ -4207,7 +4207,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 															"type": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Processing 模式，REPLACE replacement，SUBSTR interception，DATE date conversion，TRIM removal of leading and trailing spaces，REGEX REPLACE regular replacement，URL DECODE，LOWERCASE conversion to lowercase。",
+																Description: "Processing 模式，REPLACE replacement，SUBSTR interception，DATE date conversion，TRIM removal 的 leading 和 trailing spaces，REGEX REPLACE regular replacement，URL DECODE，LOWERCASE conversion 到 lowercase。",
 															},
 															"replace": {
 																Type:        schema.TypeList,
@@ -4244,7 +4244,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"end": {
 																			Type:        schema.TypeInt,
 																			Required:    true,
-																			Description: "cut-off position。",
+																			Description: "cut-关闭 position。",
 																		},
 																	},
 																},
@@ -4253,7 +4253,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "Time conversion，必填 when TYPE=DATE。",
+																Description: "Time conversion，必填 当 TYPE=DATE。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"format": {
@@ -4264,12 +4264,12 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"target_type": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "input 类型，string|unix。",
+																			Description: "input 类型，字符串|unix。",
 																		},
 																		"time_zone": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "default GMT+8。",
+																			Description: "默认值 GMT+8。",
 																		},
 																	},
 																},
@@ -4278,7 +4278,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "Regular replacement，必填 when TYPE=REGEX REPLACE。",
+																Description: "Regular replacement，必填 当 TYPE=REGEX REPLACE。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"regex": {
@@ -4298,7 +4298,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "The 值 supports one split and multiple values，必填 when TYPE=SPLIT。",
+																Description: "值 支持 一个 split 和 多个 值，必填 当 TYPE=SPLIT。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"regex": {
@@ -4313,7 +4313,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "键-值 secondary analysis，must be passed when TYPE=KV。",
+																Description: "键-值 secondary analysis，必须 是 passed 当 TYPE=KV。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"delimiter": {
@@ -4329,7 +4329,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"keep_original_key": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Keep the 来源 键，the 默认为 false not to keep。",
+																			Description: "Keep 来源 键， 默认为 false 不 到 keep。",
 																		},
 																	},
 																},
@@ -4343,7 +4343,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																Type:        schema.TypeList,
 																MaxItems:    1,
 																Optional:    true,
-																Description: "Json 路径 replacement，must pass when TYPE=JSON PATH REPLACE。",
+																Description: "Json 路径 replacement，必须 pass 当 TYPE=JSON PATH REPLACE。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"old_value": {
@@ -4354,7 +4354,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 																		"new_value": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Replacement 值，Jsonpath expression or string。",
+																			Description: "Replacement 值，Jsonpath expression 或 字符串。",
 																		},
 																	},
 																},
@@ -4383,12 +4383,12 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 									"analyse_json_result": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Parsing results in JSON 格式",
+										Description: "Parsing results 在 JSON 格式",
 									},
 									"secondary_analyse_json_result": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Secondary parsing results in JSON 格式",
+										Description: "Secondary parsing results 在 JSON 格式",
 									},
 								},
 							},
@@ -4396,7 +4396,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 						"filter_param": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "filter。",
+							Description: "过滤器。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
@@ -4454,17 +4454,17 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"topic": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Topic 名称，multiple separated by,。",
+													Description: "Topic 名称，多个 separated 通过,。",
 												},
 												"offset_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "偏移量 类型，initial position earliest，latest position latest，time point position 时间戳。",
+													Description: "偏移量 类型，initial position earliest，latest position latest，时间 point position 时间戳。",
 												},
 												"start_time": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "It must be passed when the 偏移量 类型 is 时间戳，and the time stamp is passed，accurate to the second。",
+													Description: "It 必须 是 passed 当 偏移量 类型 是 时间戳，和 时间 stamp 是 passed，accurate 到 second。",
 												},
 												"resource_name": {
 													Type:        schema.TypeString,
@@ -4479,7 +4479,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"topic_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Topic Id。",
+													Description: "Topic ID。",
 												},
 												"partition_num": {
 													Type:        schema.TypeInt,
@@ -4489,7 +4489,7 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"enable_toleration": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "Enable the fault-tolerant instance and enable the dead-letter queue。",
+													Description: "Enable fault-tolerant 实例 和 启用 dead-letter queue。",
 												},
 												"qps_limit": {
 													Type:        schema.TypeInt,
@@ -4499,18 +4499,18 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"table_mappings": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "The route from Table to Topic must be passed when the Distribute to multiple topics switch is turned on。",
+													Description: "路由 从 Table 到 Topic 必须 是 passed 当 Distribute 到 多个 topics switch 是 turned 在。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"database": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "database 名称",
+																Description: "数据库 名称",
 															},
 															"table": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Table 名称，multiple tables，separated by (commas)。",
+																Description: "Table 名称，多个 tables，separated 通过 (commas)。",
 															},
 															"topic": {
 																Type:        schema.TypeString,
@@ -4528,22 +4528,22 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"use_table_mapping": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "Distribute to multiple topics switch，the 默认为 false。",
+													Description: "Distribute 到 多个 topics switch， 默认为 false。",
 												},
 												"use_auto_create_topic": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "是否used topic need to be automatically created (currently only supports SOURCE inflow tasks，if you do not use to distribute to multiple topics，you need to fill in the topic 名称 that needs to be automatically created in the Topic field)。",
+													Description: "是否used 主题 need 到 是 automatically 创建 (currently 仅 支持 SOURCE inflow tasks，如果 您 do 不 使用 到 distribute 到 多个 topics，您 need 到 fill 在 主题 名称 该 needs 到 是 automatically 创建 在 Topic 字段)。",
 												},
 												"compression_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "是否compress when writing to the Topic，if it is not 已启用，fill in none，if it is 已启用，fill in open。",
+													Description: "是否compress 当 writing 到 Topic，如果 它 是 不 已启用，fill 在 none，如果 它 是 已启用，fill 在 open。",
 												},
 												"msg_multiple": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "1 来源 topic 消息 is amplified into msg Multiple and written to the target topic (this parameter is currently only applicable to ckafka flowing into ckafka)。",
+													Description: "1 来源 主题 消息 是 amplified into msg Multiple 和 written 到 目标 主题 (此 参数 是 currently 仅 applicable 到 ckafka flowing into ckafka)。",
 												},
 											},
 										},
@@ -4568,17 +4568,17 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"resource": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The topic 名称 topic sold separately。",
+													Description: "主题 名称 主题 sold separately。",
 												},
 												"offset_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "偏移量 类型，initial position earliest，latest position latest，time point position 时间戳。",
+													Description: "偏移量 类型，initial position earliest，latest position latest，时间 point position 时间戳。",
 												},
 												"start_time": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "It must be passed when the 偏移量 类型 is 时间戳，and the time stamp is passed，accurate to the second。",
+													Description: "It 必须 是 passed 当 偏移量 类型 是 时间戳，和 时间 stamp 是 passed，accurate 到 second。",
 												},
 												"topic_id": {
 													Type:        schema.TypeString,
@@ -4588,17 +4588,17 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 												"compression_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "是否perform compression when writing a topic，if it is not 已启用，fill in none，if it is 已启用，you can choose one of gzip，snappy，lz4 to fill in。",
+													Description: "是否perform 压缩 当 writing 主题，如果 它 是 不 已启用，fill 在 none，如果 它 是 已启用，您 可以 choose 一个 的 gzip，snappy，lz4 到 fill 在。",
 												},
 												"use_auto_create_topic": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "是否used topic need to be automatically created (currently only supports SOURCE inflow tasks)。",
+													Description: "是否used 主题 need 到 是 automatically 创建 (currently 仅 支持 SOURCE inflow tasks)。",
 												},
 												"msg_multiple": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "1 来源 topic 消息 is amplified into msg Multiple and written to the target topic (this parameter is currently only applicable to ckafka flowing into ckafka)。",
+													Description: "1 来源 主题 消息 是 amplified into msg Multiple 和 written 到 目标 主题 (此 参数 是 currently 仅 applicable 到 ckafka flowing into ckafka)。",
 												},
 											},
 										},
@@ -4619,18 +4619,18 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 						"source_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "data 来源",
+							Description: "数据 来源",
 						},
 						"output_format": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "output 格式，JSON，ROW，default JSON。",
+							Description: "output 格式，JSON，ROW，默认值 JSON。",
 						},
 						"row_param": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "The output 格式 is ROW 必填",
+							Description: "output 格式 是 ROW 必填",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"row_content": {
@@ -4654,19 +4654,19 @@ func ResourceTencentCloudCkafkaDatahubTask() *schema.Resource {
 						"keep_metadata": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "是否keep the data 来源 Topic metadata information (来源 Topic，Partition，偏移量)，the 默认为 false。",
+							Description: "是否keep 数据 来源 Topic metadata 信息 (来源 Topic，Partition，偏移量)， 默认为 false。",
 						},
 						"batch_analyse": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "data process。",
+							Description: "数据 process。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"format": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "ONE BY ONE single output，MERGE combined output。",
+										Description: "ONE BY ONE 单个 output，MERGE combined output。",
 									},
 								},
 							},

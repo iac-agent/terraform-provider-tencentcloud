@@ -32,7 +32,7 @@ func ResourceTencentCloudAsScaleOutInstances() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "数量 instances to be added。",
+				Description: "数量 实例 到 是 added。",
 			},
 		},
 	}

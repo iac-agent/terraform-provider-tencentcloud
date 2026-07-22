@@ -43,7 +43,7 @@ func DataSourceTencentCloudTsfGroups() *schema.Resource {
 			"namespace_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "namespace Id。",
+				Description: "命名空间 ID。",
 			},
 
 			"cluster_id": {
@@ -58,13 +58,13 @@ func DataSourceTencentCloudTsfGroups() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Group resourceType list。",
+				Description: "Group resourceType 列表。",
 			},
 
 			"status": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "group 状态 filter，`Running`: running，`Unknown`: unknown。",
+				Description: "组 状态 过滤器，`Running`: running，`Unknown`: unknown。",
 			},
 
 			"group_id_list": {
@@ -73,24 +73,24 @@ func DataSourceTencentCloudTsfGroups() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "group Id list。",
+				Description: "组 ID 列表。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Pagination information of the virtual machine deployment group.注意：此字段可能返回 null，表示未找到有效值。",
+				Description: "Pagination 信息 的 virtual machine 部署 组.注意：此字段可能返回 null，表示未找到有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "总数 virtual machine deployment group. 注意：此字段可能返回 null，表示未找到有效值。",
+							Description: "总数 virtual machine 部署 组. 注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Virtual machine deployment group list. 注意：此字段可能返回 null，表示未找到有效值。",
+							Description: "Virtual machine 部署 组 列表. 注意：此字段可能返回 null，表示未找到有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"group_id": {

@@ -26,14 +26,14 @@ func ResourceTencentCloudBhAccessWhiteListConfig() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "true: allow all 来源 IPs; false: do not allow all 来源 IPs。",
+				Description: "true: allow all 来源 IPs; false: do 不 allow all 来源 IPs。",
 			},
 
 			"allow_auto": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "true: allow automatically added IPs; false: do not allow automatically added IPs。",
+				Description: "true: allow automatically added IPs; false: do 不 allow automatically added IPs。",
 			},
 		},
 	}

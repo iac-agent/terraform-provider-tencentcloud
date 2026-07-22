@@ -21,12 +21,12 @@ func DataSourceTencentCloudTCRInstances() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "名称 TCR instance to query。",
+				Description: "名称 TCR 实例 到 查询。",
 			},
 			"instance_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID TCR instance to query。",
+				Description: "ID TCR 实例 到 查询。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -38,34 +38,34 @@ func DataSourceTencentCloudTCRInstances() *schema.Resource {
 			"instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information 列表 the dedicated TCR instances。",
+				Description: "Information 列表 dedicated TCR 实例。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID TCR instance。",
+							Description: "ID TCR 实例。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 TCR instance。",
+							Description: "名称 TCR 实例。",
 						},
 
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "状态 TCR instance。",
+							Description: "状态 TCR 实例。",
 						},
 						"public_domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Public 地址 for access of the TCR instance。",
+							Description: "Public 地址 对于 访问 的 TCR 实例。",
 						},
 						"internal_end_point": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Internal 地址 for access of the TCR instance。",
+							Description: "Internal 地址 对于 访问 的 TCR 实例。",
 						},
 						"instance_type": {
 							Type:        schema.TypeString,
@@ -75,7 +75,7 @@ func DataSourceTencentCloudTCRInstances() *schema.Resource {
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "标签 of the TCR instance。",
+							Description: "标签 的 TCR 实例。",
 						},
 					},
 				},

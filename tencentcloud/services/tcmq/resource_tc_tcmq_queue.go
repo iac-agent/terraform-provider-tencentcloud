@@ -28,59 +28,59 @@ func ResourceTencentCloudTcmqQueue() *schema.Resource {
 			"queue_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Queue 名称，which must be unique under the same 账号 in the same 地域 It can contain up to 64 letters，digits，and hyphens and must begin with a letter。",
+				Description: "Queue 名称，其中 必须 是 唯一 under same 账号 在 same 地域 It 可以 contain up 到 64 letters，digits，和 hyphens 和 必须 begin 使用 letter。",
 			},
 
 			"max_msg_heap_num": {
 				Optional:    true,
 				Default:     10000000,
 				Type:        schema.TypeInt,
-				Description: "最大heaped messages. The 值 range is 1,000,000-10,000,000 during the beta test and can be 1,000,000-1,000,000,000 after the product is officially released. The 默认值为 10,000,000 during the beta test and will be 100,000,000 after the product is officially released。",
+				Description: "最大heaped messages. 值 范围 是 1,000,000-10,000,000 during beta 测试 和 可以 是 1,000,000-1,000,000,000 after product 是 officially released. 默认值为 10,000,000 during beta 测试 和 将 是 100,000,000 after product 是 officially released。",
 			},
 
 			"polling_wait_seconds": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Long polling wait time for 消息 reception. 取值范围：0-30 seconds. 默认值：0。",
+				Description: "Long polling wait 时间 对于 消息 reception. 取值范围：0-30 秒. 默认值：0。",
 			},
 
 			"visibility_timeout": {
 				Optional:    true,
 				Default:     30,
 				Type:        schema.TypeInt,
-				Description: "消息 visibility timeout 周期 取值范围：1-43200 seconds (i.e.，12 hours). 默认值：30。",
+				Description: "消息 visibility 超时 周期 取值范围：1-43200 秒 (i.e.，12 hours). 默认值：30。",
 			},
 
 			"max_msg_size": {
 				Optional:    true,
 				Default:     65536,
 				Type:        schema.TypeInt,
-				Description: "Maximum 消息 length. 取值范围：1024-65536 bytes (i.e.，1-64 KB). 默认值：65536。",
+				Description: "Maximum 消息 长度. 取值范围：1024-65536 bytes (i.e.，1-64 KB). 默认值：65536。",
 			},
 
 			"msg_retention_seconds": {
 				Optional:    true,
 				Default:     3600,
 				Type:        schema.TypeInt,
-				Description: "The max 周期 during which a 消息 is retained before it is automatically acknowledged. 取值范围：30-43,200 seconds (30 seconds to 12 hours). 默认值：3600 seconds (1 hour)。",
+				Description: "max 周期 during 其中 消息 是 retained before 它 是 automatically acknowledged. 取值范围：30-43,200 秒 (30 秒 到 12 hours). 默认值：3600 秒 (1 hour)。",
 			},
 
 			"rewind_seconds": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Rewindable time of messages in the queue. 取值范围：0-1,296,000s (if 消息 rewind is 已启用). The 值 `0` 表示that 消息 rewind is not 已启用",
+				Description: "Rewindable 时间 的 messages 在 queue. 取值范围：0-1,296,000s (如果 消息 rewind 是 已启用). 值 `0` 表示that 消息 rewind 是 不 已启用",
 			},
 
 			"transaction": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "1: transaction queue; 0: general queue。",
+				Description: "1: 事务 queue; 0: general queue。",
 			},
 
 			"first_query_interval": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "First lookback interval。",
+				Description: "First lookback 间隔。",
 			},
 
 			"max_query_count": {
@@ -98,7 +98,7 @@ func ResourceTencentCloudTcmqQueue() *schema.Resource {
 			"policy": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Dead letter policy. 0: 消息 has been consumed multiple times but not deleted; 1: `Time-To-Live` has elapsed。",
+				Description: "Dead letter 策略. 0: 消息 has been consumed 多个 times 但 不 删除; 1: `Time-To-Live` has elapsed。",
 			},
 
 			"max_receive_count": {
@@ -112,19 +112,19 @@ func ResourceTencentCloudTcmqQueue() *schema.Resource {
 				Optional:    true,
 				Default:     300,
 				Type:        schema.TypeInt,
-				Description: "Maximum 周期 （秒） before an unconsumed 消息 expires，which 为必填项 if `policy` is 1. 取值范围：300-43200. This 值 should be smaller than `msgRetentionSeconds` (maximum 消息 retention 周期)。",
+				Description: "Maximum 周期 （秒） before unconsumed 消息 expires，其中 为必填项 如果 `策略` 是 1. 取值范围：300-43200. 此 值 should 是 smaller 比 `msgRetentionSeconds` (最大 消息 retention 周期)。",
 			},
 
 			"trace": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "是否enable 消息 trace. true: yes; false: no. If this field is not configured，the feature will not be 已启用",
+				Description: "是否enable 消息 trace. true: yes; false: 无. 如果 此 字段 是 不 已配置， 功能 将 不 是 已启用",
 			},
 
 			"retention_size_in_mb": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Queue storage space configured for 消息 rewind. 取值范围：10,240-512,000 MB (if 消息 rewind is 已启用). The 值 `0` 表示that 消息 rewind is not 已启用",
+				Description: "Queue 存储 space 已配置 对于 消息 rewind. 取值范围：10,240-512,000 MB (如果 消息 rewind 是 已启用). 值 `0` 表示that 消息 rewind 是 不 已启用",
 			},
 		},
 	}

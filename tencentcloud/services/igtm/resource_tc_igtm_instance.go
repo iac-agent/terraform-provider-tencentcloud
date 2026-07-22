@@ -32,13 +32,13 @@ func ResourceTencentCloudIgtmInstance() *schema.Resource {
 			"access_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "CUSTOM: Custom access 域名\nSYSTEM: System access 域名",
+				Description: "CUSTOM: Custom 访问 域名\nSYSTEM: System 访问 域名",
 			},
 
 			"global_ttl": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Resolution effective time。",
+				Description: "Resolution effective 时间。",
 			},
 
 			"package_type": {
@@ -76,7 +76,7 @@ func ResourceTencentCloudIgtmInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Package resource ID。",
+				Description: "Package 资源 ID。",
 			},
 
 			// computed

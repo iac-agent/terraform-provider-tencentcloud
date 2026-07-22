@@ -32,7 +32,7 @@ func ResourceTencentCloudMpsEnableWorkflowConfig() *schema.Resource {
 			"enabled": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "true: enable; false: disable。",
+				Description: "true: 启用; false: disable。",
 			},
 		},
 	}

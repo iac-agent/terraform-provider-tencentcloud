@@ -19,25 +19,25 @@ func DataSourceTencentCloudDbbrainHealthScores() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of the instance whose health score needs to be obtained.",
+				Description: "ID 的 实例 whose health score needs 到 是 获取.",
 			},
 
 			"time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The time to obtain the health score, the time format is as follows: 2019-09-10 12:13:14.",
+				Description: "时间 到 obtain health score, 时间 格式 是 作为 follows: 2019-09-10 12:13:14.",
 			},
 
 			"product": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Service product type, supported values include: mysql - cloud database MySQL, cynosdb - cloud database TDSQL-C for MySQL, the default is mysql.",
+				Description: "Service product 类型, 支持 值 include: mysql - 云 数据库 MySQL, cynosdb - 云 数据库 TDSQL-C 对于 MySQL, 默认值 是 mysql.",
 			},
 
 			"data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Health score and abnormal deduction items.",
+				Description: "Health score 和 abnormal deduction items.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"issue_types": {
@@ -54,7 +54,7 @@ func DataSourceTencentCloudDbbrainHealthScores() *schema.Resource {
 									"events": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "unusual event.",
+										Description: "unusual 事件.",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"event_id": {
@@ -65,12 +65,12 @@ func DataSourceTencentCloudDbbrainHealthScores() *schema.Resource {
 												"diag_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Diagnostic type.",
+													Description: "Diagnostic 类型.",
 												},
 												"start_time": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Starting time.",
+													Description: "Starting 时间.",
 												},
 												"end_time": {
 													Type:        schema.TypeString,
@@ -85,7 +85,7 @@ func DataSourceTencentCloudDbbrainHealthScores() *schema.Resource {
 												"severity": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "severity. The severity is divided into 5 levels, according to the degree of impact from high to low: 1: Fatal, 2: Serious, 3: Warning, 4: Prompt, 5: Healthy.",
+													Description: "severity. severity 是 divided into 5 levels, according 到 degree 的 impact 从 high 到 low: 1: Fatal, 2: Serious, 3: Warning, 4: Prompt, 5: Healthy.",
 												},
 												"score_lost": {
 													Type:        schema.TypeInt,
@@ -100,7 +100,7 @@ func DataSourceTencentCloudDbbrainHealthScores() *schema.Resource {
 												"count": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Number of alerts.",
+													Description: "Number 的 alerts.",
 												},
 											},
 										},
@@ -108,7 +108,7 @@ func DataSourceTencentCloudDbbrainHealthScores() *schema.Resource {
 									"total_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The total number of abnormal events.",
+										Description: "总数 数量 的 abnormal events.",
 									},
 								},
 							},
@@ -116,7 +116,7 @@ func DataSourceTencentCloudDbbrainHealthScores() *schema.Resource {
 						"events_total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The total number of abnormal events.",
+							Description: "总数 数量 的 abnormal events.",
 						},
 						"health_score": {
 							Type:        schema.TypeInt,
@@ -126,7 +126,7 @@ func DataSourceTencentCloudDbbrainHealthScores() *schema.Resource {
 						"health_level": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Health level, such as: HEALTH, SUB_HEALTH, RISK, HIGH_RISK.",
+							Description: "Health 级别, such 作为: HEALTH, SUB_HEALTH, RISK, HIGH_RISK.",
 						},
 					},
 				},
@@ -135,7 +135,7 @@ func DataSourceTencentCloudDbbrainHealthScores() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

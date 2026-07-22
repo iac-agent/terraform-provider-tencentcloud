@@ -19,33 +19,33 @@ func DataSourceTencentCloudMariadbLogFiles() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "实例 ID in the 格式 of `tdsql-ow728lmc`。",
+				Description: "实例 ID 在 格式 的 `tdsql-ow728lmc`。",
 			},
 			"type": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Requested log 类型 有效值：1 (binlog)，2 (cold backup)，3 (errlog)，4 (slowlog)。",
+				Description: "Requested 日志 类型 有效值：1 (binlog)，2 (cold 备份)，3 (errlog)，4 (slowlog)。",
 			},
 			"files": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Information such as `uri`，`length`，and `mtime` (修改时间)。",
+				Description: "Information such 作为 `uri`，`长度`，和 `mtime` (修改时间)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"mtime": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "最后修改时间 of log。",
+							Description: "最后修改时间 的 日志。",
 						},
 						"length": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "File length。",
+							Description: "File 长度。",
 						},
 						"uri": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Uniform resource identifier (URI) used during log download。",
+							Description: "Uniform 资源 identifier (URI) 使用 during 日志 download。",
 						},
 						"file_name": {
 							Type:        schema.TypeString,
@@ -58,12 +58,12 @@ func DataSourceTencentCloudMariadbLogFiles() *schema.Resource {
 			"vpc_prefix": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "For an instance in a VPC，this prefix plus URI can be used as the download 地址",
+				Description: "For 实例 在 VPC，此 prefix plus URI 可以 是 使用 作为 download 地址",
 			},
 			"normal_prefix": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "For an instance in a common network，this prefix plus URI can be used as the download 地址",
+				Description: "For 实例 在 common 网络，此 prefix plus URI 可以 是 使用 作为 download 地址",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,

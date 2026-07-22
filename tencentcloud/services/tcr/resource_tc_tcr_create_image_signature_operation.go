@@ -33,7 +33,7 @@ func ResourceTencentCloudTcrCreateImageSignatureOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "namespace 名称",
+				Description: "命名空间 名称",
 			},
 
 			"repository_name": {
@@ -47,7 +47,7 @@ func ResourceTencentCloudTcrCreateImageSignatureOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "image 版本 名称",
+				Description: "镜像 版本 名称",
 			},
 		},
 	}

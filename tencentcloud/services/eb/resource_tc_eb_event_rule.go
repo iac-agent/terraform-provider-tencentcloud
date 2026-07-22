@@ -29,19 +29,19 @@ func ResourceTencentCloudEbEventRule() *schema.Resource {
 			"event_pattern": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Reference: [Event 模式](https://cloud.tencent.com/document/product/1359/56084)。",
+				Description: "Reference: [Event 模式](https://云.tencent.com/document/product/1359/56084)。",
 			},
 
 			"event_bus_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "event bus Id。",
+				Description: "事件 bus ID。",
 			},
 
 			"rule_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Event rule 名称，which can only contain letters，numbers，underscores，hyphens，starts with a letter and ends with a number or letter，2~60 characters。",
+				Description: "Event 规则 名称，其中 可以 仅 contain letters，numbers，underscores，hyphens，starts 使用 letter 和 结束 使用 数量 或 letter，2~60 字符。",
 			},
 
 			"enable": {
@@ -53,7 +53,7 @@ func ResourceTencentCloudEbEventRule() *schema.Resource {
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Event set 描述，unlimited character 类型，描述 within 200 characters。",
+				Description: "Event 集合 描述，unlimited character 类型，描述 within 200 字符。",
 			},
 
 			"tags": {
@@ -65,7 +65,7 @@ func ResourceTencentCloudEbEventRule() *schema.Resource {
 			"rule_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "event rule id。",
+				Description: "事件 规则 ID。",
 			},
 		},
 	}

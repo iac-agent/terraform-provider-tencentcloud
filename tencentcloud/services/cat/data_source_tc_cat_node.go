@@ -26,13 +26,13 @@ func DataSourceTencentCloudCatNode() *schema.Resource {
 			"location": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Node area:1=Chinese Mainland,2=Hong Kong，Macao and Taiwan,3=Overseas。",
+				Description: "Node area:1=Chinese Mainland,2=Hong Kong，Macao 和 Taiwan,3=Overseas。",
 			},
 
 			"is_ipv6": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "is IPv6。",
+				Description: "是 IPv6。",
 			},
 
 			"node_name": {
@@ -50,7 +50,7 @@ func DataSourceTencentCloudCatNode() *schema.Resource {
 			"node_define": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Probe node list。",
+				Description: "Probe 节点 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -71,7 +71,7 @@ func DataSourceTencentCloudCatNode() *schema.Resource {
 						"net_service": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Network service provider。",
+							Description: "Network 服务 provider。",
 						},
 						"district": {
 							Type:        schema.TypeString,
@@ -91,12 +91,12 @@ func DataSourceTencentCloudCatNode() *schema.Resource {
 						"location": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Node area:1=Chinese Mainland,2=Hong Kong，Macao and Taiwan,3=Overseas。",
+							Description: "Node area:1=Chinese Mainland,2=Hong Kong，Macao 和 Taiwan,3=Overseas。",
 						},
 						"code_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "If the node 类型 is base，it is an availability dial test point; if it is blank，it is an advanced dial test point。",
+							Description: "如果 节点 类型 是 base，它 是 availability dial 测试 point; 如果 它 是 blank，它 是 advanced dial 测试 point。",
 						},
 						"node_define_status": {
 							Type:        schema.TypeInt,
@@ -107,7 +107,7 @@ func DataSourceTencentCloudCatNode() *schema.Resource {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeInt},
 							Computed:    true,
-							Description: "The task types supported by the node. `1`: page performance，`2`: file upload，`3`: file download，`4`: 端口 performance，`5`: network quality，`6`: audio and video experience。",
+							Description: "任务 types 支持 通过 节点. `1`: 页面 performance，`2`: 文件 upload，`3`: 文件 download，`4`: 端口 performance，`5`: 网络 quality，`6`: 音频 和 视频 experience。",
 						},
 					},
 				},

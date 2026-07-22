@@ -22,55 +22,55 @@ func DataSourceTencentCloudEnis() *schema.Resource {
 				Elem:          &schema.Schema{Type: schema.TypeString},
 				Set:           schema.HashString,
 				ConflictsWith: []string{"vpc_id", "subnet_id", "instance_id", "security_group", "name", "description", "ipv4", "tags"},
-				Description:   "ID ENIs to be queried. Conflict with `vpc_id`,`subnet_id`,`instance_id`,`security_group`,`名称`,`ipv4` and `标签`。",
+				Description:   "ID ENIs 到 是 queried. Conflict 使用 `vpc_id`,`subnet_id`,`instance_id`,`security_group`,`名称`,`ipv4` 和 `标签`。",
 			},
 			"vpc_id": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"ids"},
-				Description:   "ID vpc to be queried. Conflict with `ids`。",
+				Description:   "ID vpc 到 是 queried. Conflict 使用 `ids`。",
 			},
 			"subnet_id": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"ids"},
-				Description:   "ID subnet within this vpc to be queried. Conflict with `ids`。",
+				Description:   "ID 子网 within 此 vpc 到 是 queried. Conflict 使用 `ids`。",
 			},
 			"instance_id": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"ids"},
-				Description:   "ID instance which bind the ENI. Conflict with `ids`。",
+				Description:   "ID 实例 其中 bind ENI. Conflict 使用 `ids`。",
 			},
 			"security_group": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"ids"},
-				Description:   "A set of security group IDs which bind the ENI. Conflict with `ids`。",
+				Description:   "A 集合 的 安全 组 IDs 其中 bind ENI. Conflict 使用 `ids`。",
 			},
 			"name": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"ids"},
-				Description:   "名称 ENI to be queried. Conflict with `ids`。",
+				Description:   "名称 ENI 到 是 queried. Conflict 使用 `ids`。",
 			},
 			"description": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"ids"},
-				Description:   "描述 ENI. Conflict with `ids`。",
+				Description:   "描述 ENI. Conflict 使用 `ids`。",
 			},
 			"ipv4": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"ids"},
-				Description:   "Intranet IP of the ENI. Conflict with `ids`。",
+				Description:   "Intranet IP 的 ENI. Conflict 使用 `ids`。",
 			},
 			"tags": {
 				Type:          schema.TypeMap,
 				Optional:      true,
 				ConflictsWith: []string{"ids"},
-				Description:   "标签 of the ENI. Conflict with `ids`。",
+				Description:   "标签 的 ENI. Conflict 使用 `ids`。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -82,7 +82,7 @@ func DataSourceTencentCloudEnis() *schema.Resource {
 			"enis": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information 列表 ENIs. Each element 包含following attributes:",
+				Description: "An 信息 列表 ENIs. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
@@ -108,18 +108,18 @@ func DataSourceTencentCloudEnis() *schema.Resource {
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID subnet within this vpc。",
+							Description: "ID 子网 within 此 vpc。",
 						},
 						"security_groups": {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Computed:    true,
-							Description: "A set of security group IDs which bind the ENI。",
+							Description: "A 集合 的 安全 组 IDs 其中 bind ENI。",
 						},
 						"primary": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "表示是否IP is primary。",
+							Description: "表示是否IP 是 primary。",
 						},
 						"mac": {
 							Type:        schema.TypeString,
@@ -129,12 +129,12 @@ func DataSourceTencentCloudEnis() *schema.Resource {
 						"state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "States of the ENI。",
+							Description: "States 的 ENI。",
 						},
 						"ipv4s": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "A set of intranet IPv4s。",
+							Description: "A 集合 的 intranet IPv4s。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"ip": {
@@ -145,7 +145,7 @@ func DataSourceTencentCloudEnis() *schema.Resource {
 									"primary": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "表示是否IP is primary。",
+										Description: "表示是否IP 是 primary。",
 									},
 									"description": {
 										Type:        schema.TypeString,
@@ -158,13 +158,13 @@ func DataSourceTencentCloudEnis() *schema.Resource {
 						"ipv6s": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "A set of intranet IPv6s。",
+							Description: "A 集合 的 intranet IPv6s。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"address": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "`IPv6` 地址，such as `3402:4e00:20:100:0:8cd9:2a67:71f3`。",
+										Description: "`IPv6` 地址，such 作为 `3402:4e00:20:100:0:8cd9:2a67:71f3`。",
 									},
 									"primary": {
 										Type:        schema.TypeBool,
@@ -174,7 +174,7 @@ func DataSourceTencentCloudEnis() *schema.Resource {
 									"address_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The `ID` of the `EIP` instance，such as `eip-hxlqja90`。",
+										Description: "`ID` 的 `EIP` 实例，such 作为 `eip-hxlqja90`。",
 									},
 									"description": {
 										Type:        schema.TypeString,
@@ -184,7 +184,7 @@ func DataSourceTencentCloudEnis() *schema.Resource {
 									"is_wan_ip_blocked": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "是否public IP is blocked。",
+										Description: "是否public IP 是 blocked。",
 									},
 								},
 							},
@@ -192,17 +192,17 @@ func DataSourceTencentCloudEnis() *schema.Resource {
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID instance which bind the ENI。",
+							Description: "ID 实例 其中 bind ENI。",
 						},
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "标签 of the ENI。",
+							Description: "标签 的 ENI。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of the ENI。",
+							Description: "创建时间 的 ENI。",
 						},
 						"cdc_id": {
 							Type:        schema.TypeString,

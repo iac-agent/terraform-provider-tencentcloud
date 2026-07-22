@@ -19,25 +19,25 @@ func DataSourceTencentCloudTsfConfigSummary() *schema.Resource {
 			"application_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Application ID. 如果未传入，the query will be for all。",
+				Description: "Application ID. 如果未传入， 查询 将 是 对于 all。",
 			},
 
 			"search_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Query keyword，fuzzy query: application 名称，configuration item 名称 如果未传入，the query will be for all。",
+				Description: "Query keyword，fuzzy 查询: 应用 名称，配置 item 名称 如果未传入， 查询 将 是 对于 all。",
 			},
 
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "顺序 term. support 排序方式 time: creation_time; or 排序方式 名称: config_name。",
+				Description: "顺序 term. support 排序方式 时间: creation_time; 或 排序方式 名称: config_name。",
 			},
 
 			"order_type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Pass 0 for 升序 and 1 for 降序",
+				Description: "Pass 0 对于 升序 和 1 对于 降序",
 			},
 
 			"config_tag_list": {
@@ -61,7 +61,7 @@ func DataSourceTencentCloudTsfConfigSummary() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "配置 Id List。",
+				Description: "配置 ID List。",
 			},
 
 			"result": {
@@ -78,7 +78,7 @@ func DataSourceTencentCloudTsfConfigSummary() *schema.Resource {
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "配置 list。",
+							Description: "配置 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"config_id": {
@@ -129,7 +129,7 @@ func DataSourceTencentCloudTsfConfigSummary() *schema.Resource {
 									"delete_flag": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Deletion flag，true: deletable; false: not deletable.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Deletion flag，true: deletable; false: 不 deletable.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"last_update_time": {
 										Type:        schema.TypeString,

@@ -17,7 +17,7 @@ func DataSourceTencentCloudCkafkaVersion() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "CKafka instance ID。",
+				Description: "CKafka 实例 ID。",
 			},
 
 			"kafka_version": {
@@ -35,7 +35,7 @@ func DataSourceTencentCloudCkafkaVersion() *schema.Resource {
 			"latest_broker_versions": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "列表 latest broker versions supported by the platform。",
+				Description: "列表 latest broker versions 支持 通过 平台。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"kafka_version": {

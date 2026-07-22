@@ -19,48 +19,48 @@ func DataSourceTencentCloudVpcSecurityGroupLimits() *schema.Resource {
 			"security_group_limit_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "sg 限制 set。",
+				Description: "sg 限制 集合。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"security_group_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 sg can be created。",
+							Description: "数量 sg 可以 是 创建。",
 						},
 						"security_group_policy_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 sg polciy can be created。",
+							Description: "数量 sg polciy 可以 是 创建。",
 						},
 						"referred_security_group_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 sg can be referred。",
+							Description: "数量 sg 可以 是 referred。",
 						},
 						"security_group_instance_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 sg associated instances。",
+							Description: "数量 sg associated 实例。",
 						},
 						"instance_security_group_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 instances associated sg。",
+							Description: "数量 实例 associated sg。",
 						},
 						"security_group_extended_policy_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 sg extended policy。",
+							Description: "数量 sg extended 策略。",
 						},
 						"security_group_referred_cvm_and_eni_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 eni and cvm can be referred。",
+							Description: "数量 eni 和 cvm 可以 是 referred。",
 						},
 						"security_group_referred_svc_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 svc can be referred。",
+							Description: "数量 svc 可以 是 referred。",
 						},
 					},
 				},

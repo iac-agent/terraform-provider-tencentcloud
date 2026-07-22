@@ -27,34 +27,34 @@ func ResourceTencentCloudOrganizationOrgIdentity() *schema.Resource {
 			"identity_alias_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Identity 名称Supports English letters and numbers，the length cannot exceed 40 characters。",
+				Description: "Identity 名称Supports English letters 和 numbers， 长度 不能 exceed 40 字符。",
 			},
 
 			"identity_policy": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "Identity policy list。",
+				Description: "Identity 策略 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"policy_id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "CAM default policy ID. Valid and 必填 when PolicyType is the 2-preset policy。",
+							Description: "CAM 默认值 策略 ID. 有效 和 必填 当 PolicyType 是 2-preset 策略。",
 						},
 						"policy_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "CAM default policy 名称 Valid and 必填 when PolicyType is the 2-preset policy。",
+							Description: "CAM 默认值 策略 名称 有效 和 必填 当 PolicyType 是 2-preset 策略。",
 						},
 						"policy_type": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Policy 类型 值 1-custom policy 2-preset policy; 默认值 2。",
+							Description: "Policy 类型 值 1-自定义 策略 2-preset 策略; 默认值 2。",
 						},
 						"policy_document": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Customize policy 内容 and follow CAM policy syntax. Valid and 必填 when PolicyType is the 1-custom policy。",
+							Description: "Customize 策略 内容 和 follow CAM 策略 syntax. 有效 和 必填 当 PolicyType 是 1-自定义 策略。",
 						},
 					},
 				},

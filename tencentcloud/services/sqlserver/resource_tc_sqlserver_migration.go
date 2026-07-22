@@ -27,19 +27,19 @@ func ResourceTencentCloudSqlserverMigration() *schema.Resource {
 			"migrate_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Name of the migration task.",
+				Description: "Name 的 迁移 任务.",
 			},
 
 			"migrate_type": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Migration type (1 structure migration 2 data migration 3 incremental synchronization).",
+				Description: "Migration 类型 (1 structure 迁移 2 数据 迁移 3 incremental synchronization).",
 			},
 
 			"source_type": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Type of migration source 1 TencentDB for SQLServer 2 Cloud server self-built SQLServer database 4 SQLServer backup and restore 5 SQLServer backup and restore (COS mode).",
+				Description: "Type 的 迁移 source 1 TencentDB 对于 SQLServer 2 Cloud 服务器 self-built SQLServer 数据库 4 SQLServer 备份 和 恢复 5 SQLServer 备份 和 恢复 (COS 模式).",
 			},
 
 			"source": {
@@ -52,43 +52,43 @@ func ResourceTencentCloudSqlserverMigration() *schema.Resource {
 						"instance_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The ID of the migration source instance, which is used when MigrateType=1 (TencentDB for SQLServers). The format is mssql-si2823jyl.",
+							Description: "ID 的 迁移 source 实例, 其中 是 使用 当 MigrateType=1 (TencentDB 对于 SQLServers). 格式 是 mssql-si2823jyl.",
 						},
 						"cvm_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "ID of the migration source Cvm, used when MigrateType=2 (cloud server self-built SQL Server database).",
+							Description: "ID 的 迁移 source Cvm, 使用 当 MigrateType=2 (云 服务器 self-built SQL Server 数据库).",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "The Vpc network ID of the migration source Cvm is used when MigrateType=2 (cloud server self-built SQL Server database). The format is as follows vpc-6ys9ont9.",
+							Description: "Vpc 网络 ID 的 迁移 source Cvm 是 使用 当 MigrateType=2 (云 服务器 self-built SQL Server 数据库). 格式 是 作为 follows vpc-6ys9ont9.",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The subnet ID under the Vpc of the source Cvm is used when MigrateType=2 (ECS self-built SQL Server database). The format is as follows subnet-h9extioi.",
+							Description: "子网 ID under Vpc 的 source Cvm 是 使用 当 MigrateType=2 (ECS self-built SQL Server 数据库). 格式 是 作为 follows 子网-h9extioi.",
 						},
 						"user_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "User name, MigrateType=1 or MigrateType=2.",
+							Description: "User 名称, MigrateType=1 或 MigrateType=2.",
 						},
 						"password": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Password, MigrateType=1 or MigrateType=2.",
+							Description: "Password, MigrateType=1 或 MigrateType=2.",
 						},
 						"ip": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Migrate the intranet IP of the self-built database of the source Cvm, and use it when MigrateType=2 (self-built SQL Server database of the cloud server).",
+							Description: "Migrate intranet IP 的 self-built 数据库 的 source Cvm, 和 使用 它 当 MigrateType=2 (self-built SQL Server 数据库 的 云 服务器).",
 						},
 						"port": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The port number of the self-built database of the migration source Cvm, which is used when MigrateType=2 (self-built SQL Server database of the cloud server).",
+							Description: "端口 数量 的 self-built 数据库 的 迁移 source Cvm, 其中 是 使用 当 MigrateType=2 (self-built SQL Server 数据库 的 云 服务器).",
 						},
 						"url": {
 							Type: schema.TypeSet,
@@ -96,12 +96,12 @@ func ResourceTencentCloudSqlserverMigration() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "The source backup address for offline migration. MigrateType=4 or MigrateType=5.",
+							Description: "source 备份 地址 对于 offline 迁移. MigrateType=4 或 MigrateType=5.",
 						},
 						"url_password": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The source backup password for offline migration, MigrateType=4 or MigrateType=5.",
+							Description: "source 备份 密码 对于 offline 迁移, MigrateType=4 或 MigrateType=5.",
 						},
 					},
 				},
@@ -111,23 +111,23 @@ func ResourceTencentCloudSqlserverMigration() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Migration target.",
+				Description: "Migration 目标.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The ID of the migration target instance, in the format mssql-si2823jyl.",
+							Description: "ID 的 迁移 目标 实例, 在 格式 mssql-si2823jyl.",
 						},
 						"user_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "User name of the migration target instance.",
+							Description: "User 名称 的 迁移 目标 实例.",
 						},
 						"password": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Password of the migration target instance.",
+							Description: "Password 的 迁移 目标 实例.",
 						},
 					},
 				},
@@ -136,13 +136,13 @@ func ResourceTencentCloudSqlserverMigration() *schema.Resource {
 			"migrate_db_set": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Migrate DB objects. Offline migration is not used (SourceType=4 or SourceType=5).",
+				Description: "Migrate DB objects. Offline 迁移 是 不 使用 (SourceType=4 或 SourceType=5).",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"db_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Name of the migration database.",
+							Description: "Name 的 迁移 数据库.",
 						},
 					},
 				},
@@ -151,18 +151,18 @@ func ResourceTencentCloudSqlserverMigration() *schema.Resource {
 			"rename_restore": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Restore and rename the database in ReNameRestoreDatabase. If it is not filled in, the restored database will be named by default and all databases will be restored. Valid if SourceType=5.",
+				Description: "Restore 和 rename 数据库 在 ReNameRestoreDatabase. 如果 它 是 不 filled 在, restored 数据库 将 是 named 通过 默认值 和 all databases 将 是 restored. 有效 如果 SourceType=5.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"old_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The name of the library. If oldName does not exist, a failure is returned.It can be left blank when used for offline migration tasks.",
+							Description: "名称 的 库. 如果 oldName does 不 exist, failure 是 返回.It 可以 是 left blank 当 使用 对于 offline 迁移 tasks.",
 						},
 						"new_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "When the new name of the library is used for offline migration, if it is not filled in, it will be named according to OldName. OldName and NewName cannot be filled in at the same time. OldName and NewName must be filled in and cannot be duplicate when used for cloning database.",
+							Description: "当 new 名称 的 库 是 使用 对于 offline 迁移, 如果 它 是 不 filled 在, 它 将 是 named according 到 OldName. OldName 和 NewName 不能 是 filled 在 在 same 时间. OldName 和 NewName 必须 是 filled 在 和 不能 是 duplicate 当 使用 对于 cloning 数据库.",
 						},
 					},
 				},

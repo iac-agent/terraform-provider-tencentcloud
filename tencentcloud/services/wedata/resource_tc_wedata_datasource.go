@@ -83,7 +83,7 @@ func ResourceTencentCloudWedataDatasource() *schema.Resource {
 			"instance": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Instance。",
+				Description: "实例。",
 			},
 			"status": {
 				Optional:    true,

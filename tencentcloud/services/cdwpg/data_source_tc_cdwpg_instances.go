@@ -39,13 +39,13 @@ func DataSourceTencentCloudCdwpgInstances() *schema.Resource {
 			"instances_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Instances list。",
+				Description: "Instances 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "id。",
+							Description: "ID。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
@@ -70,7 +70,7 @@ func DataSourceTencentCloudCdwpgInstances() *schema.Resource {
 						"region_id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "地域 id。",
+							Description: "地域 ID。",
 						},
 						"region_desc": {
 							Type:        schema.TypeString,
@@ -105,17 +105,17 @@ func DataSourceTencentCloudCdwpgInstances() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "创建时间，such as 2022-09-05 20:00:01。",
+							Description: "创建时间，such 作为 2022-09-05 20:00:01。",
 						},
 						"expire_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Expire time，such as 2022-09-05 20:00:01。",
+							Description: "Expire 时间，such 作为 2022-09-05 20:00:01。",
 						},
 						"access_info": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Access information。",
+							Description: "Access 信息。",
 						},
 						"pay_mode": {
 							Type:        schema.TypeString,

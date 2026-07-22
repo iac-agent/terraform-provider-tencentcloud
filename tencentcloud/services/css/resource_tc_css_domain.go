@@ -33,13 +33,13 @@ func ResourceTencentCloudCssDomain() *schema.Resource {
 			"domain_type": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "域名 类型: `0`: push stream. `1`: playback。",
+				Description: "域名 类型: `0`: push 流. `1`: playback。",
 			},
 
 			"play_type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Play 类型 This parameter is valid only if `DomainType` is 1. 可用值：`1`: in Mainland China. `2`: global. `3`: outside Mainland China. 默认值为 1。",
+				Description: "Play 类型 此 参数 是 有效 仅 如果 `DomainType` 是 1. 可用值：`1`: 在 Mainland China. `2`: 全局. `3`: outside Mainland China. 默认值为 1。",
 			},
 
 			"is_delay_live": {
@@ -51,21 +51,21 @@ func ResourceTencentCloudCssDomain() *schema.Resource {
 			"is_mini_program_live": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "`0`: LVB. `1`: LVB on Mini Program. Note: this field may return null，indicating that no valid values can be obtained. 默认值为 0。",
+				Description: "`0`: LVB. `1`: LVB 在 Mini Program. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取. 默认值为 0。",
 			},
 
 			"verify_owner_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
 				Default:     CSS_VERIFY_TYPE_DB_CHECK,
-				Description: "域名 名称 attribution verification 类型 `dnsCheck`，`fileCheck`，`dbCheck`. The 默认为 `dbCheck`。",
+				Description: "域名 名称 attribution verification 类型 `dnsCheck`，`fileCheck`，`dbCheck`. 默认为 `dbCheck`。",
 			},
 
 			"enable": {
 				Optional:    true,
 				Type:        schema.TypeBool,
 				Default:     true,
-				Description: "Switch. true: enable the specified 域名，false: disable the specified 域名",
+				Description: "Switch. true: 启用 指定 域名，false: disable 指定 域名",
 			},
 		},
 	}

@@ -36,7 +36,7 @@ func ResourceTencentCloudChdfsMountPointAttachment() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "associate access group id。",
+				Description: "associate 访问 组 ID。",
 			},
 		},
 	}

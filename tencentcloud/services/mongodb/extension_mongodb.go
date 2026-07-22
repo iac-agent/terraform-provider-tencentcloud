@@ -78,24 +78,24 @@ func TencentMongodbBasicInfo() map[string]*schema.Schema {
 		"instance_name": {
 			Type:        schema.TypeString,
 			Required:    true,
-			Description: "名称 Mongodb instance。",
+			Description: "名称 Mongodb 实例。",
 		},
 		"memory": {
 			Type:         schema.TypeInt,
 			Required:     true,
 			ValidateFunc: tccommon.ValidateIntegerMin(2),
-			Description:  "Memory size. The minimum 值 is 2，and unit is GB. Memory and volume must be upgraded or degraded simultaneously。",
+			Description:  "Memory 大小. 最小 值 是 2，和 单位 是 GB. Memory 和 卷 必须 是 upgraded 或 degraded simultaneously。",
 		},
 		"volume": {
 			Type:         schema.TypeInt,
 			Required:     true,
 			ValidateFunc: tccommon.ValidateIntegerMin(25),
-			Description:  "Disk size. The minimum 值 is 25，and unit is GB. Memory and volume must be upgraded or degraded simultaneously。",
+			Description:  "Disk 大小. 最小 值 是 25，和 单位 是 GB. Memory 和 卷 必须 是 upgraded 或 degraded simultaneously。",
 		},
 		"engine_version": {
 			Type:        schema.TypeString,
 			Required:    true,
-			Description: "Refers to 版本 information. The DescribeSpecInfo API can be called to obtain detailed information about the supported versions.\n- MONGO_40_WT: 版本 of the MongoDB 4.0 WiredTiger storage engine.\n- MONGO_42_WT: 版本 of the MongoDB 4.2 WiredTiger storage engine.\n- MONGO_44_WT: 版本 of the MongoDB 4.4 WiredTiger storage engine.\n- MONGO_50_WT: 版本 of the MongoDB 5.0 WiredTiger storage engine.\n- MONGO_60_WT: 版本 of the MongoDB 6.0 WiredTiger storage engine.\n- MONGO_70_WT: 版本 of the MongoDB 7.0 WiredTiger storage engine.\n- MONGO_80_WT: 版本 of the MongoDB 8.0 WiredTiger storage engine。",
+			Description: "Refers 到 版本 信息. DescribeSpecInfo API 可以 是 called 到 obtain detailed 信息 about 支持 versions.\n- MONGO_40_WT: 版本 的 MongoDB 4.0 WiredTiger 存储 引擎.\n- MONGO_42_WT: 版本 的 MongoDB 4.2 WiredTiger 存储 引擎.\n- MONGO_44_WT: 版本 的 MongoDB 4.4 WiredTiger 存储 引擎.\n- MONGO_50_WT: 版本 的 MongoDB 5.0 WiredTiger 存储 引擎.\n- MONGO_60_WT: 版本 的 MongoDB 6.0 WiredTiger 存储 引擎.\n- MONGO_70_WT: 版本 的 MongoDB 7.0 WiredTiger 存储 引擎.\n- MONGO_80_WT: 版本 的 MongoDB 8.0 WiredTiger 存储 引擎。",
 		},
 		"machine_type": {
 			Type:     schema.TypeString,
@@ -111,12 +111,12 @@ func TencentMongodbBasicInfo() map[string]*schema.Schema {
 				}
 				return olds == news
 			},
-			Description: "类型 Mongodb instance，and available values include `HIO`(or `GIO` which will be 已弃用，represents high IO) and `HIO10G`(or `TGIO` which will be 已弃用，represents 10-gigabit high IO)。",
+			Description: "类型 Mongodb 实例，和 可用 值 include `HIO`(或 `GIO` 其中 将 是 已弃用，表示 high IO) 和 `HIO10G`(或 `TGIO` 其中 将 是 已弃用，表示 10-gigabit high IO)。",
 		},
 		"available_zone": {
 			Type:        schema.TypeString,
 			Required:    true,
-			Description: "The available 可用区 of the Mongodb。",
+			Description: "可用 可用区 的 Mongodb。",
 		},
 		"vpc_id": {
 			Type:        schema.TypeString,
@@ -129,13 +129,13 @@ func TencentMongodbBasicInfo() map[string]*schema.Schema {
 			Type:        schema.TypeString,
 			Optional:    true,
 			ForceNew:    true,
-			Description: "ID subnet within this VPC. The 值 为必填项 if `vpc_id` is set。",
+			Description: "ID 子网 within 此 VPC. 值 为必填项 如果 `vpc_id` 是 集合。",
 		},
 		"project_id": {
 			Type:        schema.TypeInt,
 			Optional:    true,
 			Default:     0,
-			Description: "ID project which the instance belongs。",
+			Description: "ID 项目 其中 实例 belongs。",
 		},
 		"security_groups": {
 			Type:     schema.TypeSet,
@@ -146,18 +146,18 @@ func TencentMongodbBasicInfo() map[string]*schema.Schema {
 			Set: func(v interface{}) int {
 				return helper.HashString(v.(string))
 			},
-			Description: "ID security group。",
+			Description: "ID 安全 组。",
 		},
 		"password": {
 			Type:        schema.TypeString,
 			Optional:    true,
 			Sensitive:   true,
-			Description: "密码 of this Mongodb 账号",
+			Description: "密码 的 此 Mongodb 账号",
 		},
 		"tags": {
 			Type:        schema.TypeMap,
 			Optional:    true,
-			Description: "The 标签 of the Mongodb. 键 名称 `project` is system reserved and can't be used。",
+			Description: "标签 的 Mongodb. 键 名称 `项目` 是 系统 reserved 和 可以't 是 使用。",
 		},
 		"mongos_cpu": {
 			Type:        schema.TypeInt,
@@ -169,7 +169,7 @@ func TencentMongodbBasicInfo() map[string]*schema.Schema {
 			Type:        schema.TypeInt,
 			Optional:    true,
 			Computed:    true,
-			Description: "Mongos memory size （GB）。",
+			Description: "Mongos 内存 大小 （GB）。",
 		},
 		"mongos_node_num": {
 			Type:        schema.TypeInt,
@@ -184,24 +184,24 @@ func TencentMongodbBasicInfo() map[string]*schema.Schema {
 			ForceNew:     true,
 			Default:      MONGODB_CHARGE_TYPE_POSTPAID,
 			ValidateFunc: tccommon.ValidateAllowedStringValue([]string{MONGODB_CHARGE_TYPE_POSTPAID, MONGODB_CHARGE_TYPE_PREPAID}),
-			Description:  "The charge 类型 instance. Valid values are `PREPAID` and `POSTPAID_BY_HOUR`. 默认值为 `POSTPAID_BY_HOUR`. Note: TencentCloud International only supports `POSTPAID_BY_HOUR`. Caution that update operation on this field will delete old instances and create new one with new 计费类型",
+			Description:  "charge 类型 实例. 有效 值 是 `PREPAID` 和 `POSTPAID_BY_HOUR`. 默认值为 `POSTPAID_BY_HOUR`. 注意: TencentCloud International 仅 支持 `POSTPAID_BY_HOUR`. Caution 该 update operation 在 此 字段 将 delete old 实例 和 create new 一个 使用 new 计费类型",
 		},
 		"prepaid_period": {
 			Type:         schema.TypeInt,
 			Optional:     true,
 			ValidateFunc: tccommon.ValidateAllowedIntValue(MONGODB_PREPAID_PERIOD),
-			Description:  "The tenancy (time unit is month) of the prepaid instance. Valid values are 1，2，3，4，5，6，7，8，9，10，11，12，24，36. NOTE: it only works when charge_type is set to `PREPAID`。",
+			Description:  "tenancy (时间 单位 是 month) 的 prepaid 实例. 有效 值 是 1，2，3，4，5，6，7，8，9，10，11，12，24，36. NOTE: 它 仅 works 当 charge_type 是 集合 到 `PREPAID`。",
 		},
 		"auto_renew_flag": {
 			Type:        schema.TypeInt,
 			Optional:    true,
 			Default:     0,
-			Description: "Auto 续费标识 Valid values are `0`(NOTIFY_AND_MANUAL_RENEW)，`1`(NOTIFY_AND_AUTO_RENEW) and `2`(DISABLE_NOTIFY_AND_MANUAL_RENEW). 默认值为 `0`. Note: only works for PREPAID instance. Only supports`0` and `1` for creation。",
+			Description: "Auto 续费标识 有效 值 是 `0`(NOTIFY_AND_MANUAL_RENEW)，`1`(NOTIFY_AND_AUTO_RENEW) 和 `2`(DISABLE_NOTIFY_AND_MANUAL_RENEW). 默认值为 `0`. 注意: 仅 works 对于 PREPAID 实例. Only 支持`0` 和 `1` 对于 creation。",
 		},
 		"in_maintenance": {
 			Type:     schema.TypeInt,
 			Optional: true,
-			Description: "Switch time for instance configuration changes.\n" +
+			Description: "Switch 时间 对于 实例 配置 changes.\n" +
 				"	- 0: When the adjustment is completed, perform the configuration task immediately. Default is 0.\n" +
 				"	- 1: Perform reconfiguration tasks within the maintenance time window.\n" +
 				"Note: Adjusting the number of nodes and slices does not support changes within the maintenance window.",
@@ -210,22 +210,22 @@ func TencentMongodbBasicInfo() map[string]*schema.Schema {
 		"status": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "状态 Mongodb instance，and available values include pending initialization(expressed with 0)， processing(expressed with 1)，running(expressed with 2) and expired(expressed with -2)。",
+			Description: "状态 Mongodb 实例，和 可用 值 include pending initialization(expressed 使用 0)， processing(expressed 使用 1)，running(expressed 使用 2) 和 expired(expressed 使用 -2)。",
 		},
 		"vip": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "IP of the Mongodb instance。",
+			Description: "IP 的 Mongodb 实例。",
 		},
 		"vport": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "IP 端口 of the Mongodb instance。",
+			Description: "IP 端口 的 Mongodb 实例。",
 		},
 		"create_time": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "创建时间 of the Mongodb instance。",
+			Description: "创建时间 的 Mongodb 实例。",
 		},
 	}
 }

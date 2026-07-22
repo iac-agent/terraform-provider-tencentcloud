@@ -19,19 +19,19 @@ func DataSourceTencentCloudSslDescribeHostTkeInstanceList() *schema.Resource {
 			"certificate_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "证书 ID to be deployed。",
+				Description: "证书 ID 到 是 deployed。",
 			},
 
 			"is_cache": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "是否query the cache，1: Yes; 0: No，the 默认为 the query cache，the cache is half an hour。",
+				Description: "是否query 缓存，1: Yes; 0: No， 默认为 查询 缓存， 缓存 是 half hour。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "列表 filtering parameters; Filterkey: domainmatch。",
+				Description: "列表 filtering 参数; Filterkey: domainmatch。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"filter_key": {
@@ -63,7 +63,7 @@ func DataSourceTencentCloudSslDescribeHostTkeInstanceList() *schema.Resource {
 			"instance_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "CLB instance listener listNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "CLB 实例 listener listNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cluster_id": {
@@ -85,12 +85,12 @@ func DataSourceTencentCloudSslDescribeHostTkeInstanceList() *schema.Resource {
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "namespace 名称",
+										Description: "命名空间 名称",
 									},
 									"secret_list": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Secret list。",
+										Description: "Secret 列表。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
@@ -106,7 +106,7 @@ func DataSourceTencentCloudSslDescribeHostTkeInstanceList() *schema.Resource {
 												"ingress_list": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "Ingress list。",
+													Description: "Ingress 列表。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"ingress_name": {
@@ -120,7 +120,7 @@ func DataSourceTencentCloudSslDescribeHostTkeInstanceList() *schema.Resource {
 																	Type: schema.TypeString,
 																},
 																Computed:    true,
-																Description: "TLS 域名 名称 list。",
+																Description: "TLS 域名 名称 列表。",
 															},
 															"domains": {
 																Type: schema.TypeSet,
@@ -128,7 +128,7 @@ func DataSourceTencentCloudSslDescribeHostTkeInstanceList() *schema.Resource {
 																	Type: schema.TypeString,
 																},
 																Computed:    true,
-																Description: "Ingress 域名 名称 list。",
+																Description: "Ingress 域名 名称 列表。",
 															},
 														},
 													},
@@ -139,7 +139,7 @@ func DataSourceTencentCloudSslDescribeHostTkeInstanceList() *schema.Resource {
 														Type: schema.TypeString,
 													},
 													Computed:    true,
-													Description: "列表 域名 names that are not matched with the new certificateNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+													Description: "列表 域名 names 该 是 不 matched 使用 new certificateNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 												},
 											},
 										},
@@ -164,19 +164,19 @@ func DataSourceTencentCloudSslDescribeHostTkeInstanceList() *schema.Resource {
 			"async_total_num": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total 数量 asynchronous refreshNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "总数 数量 asynchronous refreshNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"async_offset": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Asynchronous refresh current execution numberNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "Asynchronous refresh 当前 execution numberNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"async_cache_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Current cache read timeNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "Current 缓存 read timeNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"result_output_file": {

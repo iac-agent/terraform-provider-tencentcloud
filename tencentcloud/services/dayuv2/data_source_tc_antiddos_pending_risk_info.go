@@ -20,19 +20,19 @@ func DataSourceTencentCloudAntiddosPendingRiskInfo() *schema.Resource {
 			"is_paid_usr": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Is it a paid 用户? True: paid 用户，false: regular 用户",
+				Description: "Is 它 paid 用户? True: paid 用户，false: regular 用户",
 			},
 
 			"attacking_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "数量 resources in the attack。",
+				Description: "数量 resources 在 attack。",
 			},
 
 			"blocking_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "数量 resources in blockage。",
+				Description: "数量 resources 在 blockage。",
 			},
 
 			"expired_count": {

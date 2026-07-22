@@ -27,14 +27,14 @@ func ResourceTencentCloudCkafkaConnectResource() *schema.Resource {
 			"resource_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "connection 来源 名称",
+				Description: "连接 来源 名称",
 			},
 
 			"type": {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "connection 来源 类型",
+				Description: "连接 来源 类型",
 			},
 
 			"description": {
@@ -47,7 +47,7 @@ func ResourceTencentCloudCkafkaConnectResource() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Dts configuration，必填 when 类型 is DTS。",
+				Description: "Dts 配置，必填 当 类型 是 DTS。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"port": {
@@ -58,33 +58,33 @@ func ResourceTencentCloudCkafkaConnectResource() *schema.Resource {
 						"group_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Id of the Dts consumption group。",
+							Description: "ID 的 Dts consumption 组。",
 						},
 						"user_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The 账号 数量 the Dts consumption group。",
+							Description: "账号 数量 Dts consumption 组。",
 						},
 						"password": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The 密码 of the Dts consumption group。",
+							Description: "密码 的 Dts consumption 组。",
 						},
 						"resource": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Dts instance Id。",
+							Description: "Dts 实例 ID。",
 						},
 						"topic": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Topic subscribed by Dts。",
+							Description: "Topic subscribed 通过 Dts。",
 						},
 						"is_update": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Default:     false,
-							Description: "是否update to the associated Datahub task，默认值：false。",
+							Description: "是否update 到 associated Datahub 任务，默认值：false。",
 						},
 					},
 				},
@@ -94,7 +94,7 @@ func ResourceTencentCloudCkafkaConnectResource() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Mongo DB configuration，必填 when 类型 is MONGODB。",
+				Description: "Mongo DB 配置，必填 当 类型 是 MONGODB。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"port": {
@@ -105,38 +105,38 @@ func ResourceTencentCloudCkafkaConnectResource() *schema.Resource {
 						"user_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The 用户名 of the Mongo DB connection 来源",
+							Description: "用户名 的 Mongo DB 连接 来源",
 						},
 						"password": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "密码 for the 来源 of the Mongo DB connection。",
+							Description: "密码 对于 来源 的 Mongo DB 连接。",
 						},
 						"resource": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instance resource of Mongo DB connection 来源",
+							Description: "实例 资源 的 Mongo DB 连接 来源",
 						},
 						"self_built": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "是否Mongo DB connection 来源 is a 自建集群",
+							Description: "是否Mongo DB 连接 来源 是 自建集群",
 						},
 						"service_vip": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The instance VIP of the Mongo DB connection 来源，when it is a 腾讯云实例，it 为必填项。",
+							Description: "实例 VIP 的 Mongo DB 连接 来源，当 它 是 腾讯云实例，它 为必填项。",
 						},
 						"uniq_vpc_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The vpc Id of the Mongo DB connection 来源，which 为必填项 when it is a 腾讯云实例",
+							Description: "vpc ID 的 Mongo DB 连接 来源，其中 为必填项 当 它 是 腾讯云实例",
 						},
 						"is_update": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Default:     false,
-							Description: "是否update to the associated Datahub task，默认值：false。",
+							Description: "是否update 到 associated Datahub 任务，默认值：false。",
 						},
 					},
 				},
@@ -146,7 +146,7 @@ func ResourceTencentCloudCkafkaConnectResource() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Es configuration，必填 when 类型 is ES。",
+				Description: "Es 配置，必填 当 类型 是 ES。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"port": {
@@ -157,38 +157,38 @@ func ResourceTencentCloudCkafkaConnectResource() *schema.Resource {
 						"user_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Es The 用户名 of the connection 来源",
+							Description: "Es 用户名 的 连接 来源",
 						},
 						"password": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Es The 密码 of the connection 来源",
+							Description: "Es 密码 的 连接 来源",
 						},
 						"resource": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instance resource of Es connection 来源",
+							Description: "实例 资源 的 Es 连接 来源",
 						},
 						"self_built": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "是否Es connection 来源 is a 自建集群",
+							Description: "是否Es 连接 来源 是 自建集群",
 						},
 						"service_vip": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The 实例 VIP of the Es connection 来源，when it is a 腾讯云实例，it 为必填项。",
+							Description: "实例 VIP 的 Es 连接 来源，当 它 是 腾讯云实例，它 为必填项。",
 						},
 						"uniq_vpc_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The vpc Id of the Es connection 来源，when it is a 腾讯云实例，it 为必填项。",
+							Description: "vpc ID 的 Es 连接 来源，当 它 是 腾讯云实例，它 为必填项。",
 						},
 						"is_update": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Default:     false,
-							Description: "是否update to the associated Datahub task，默认值：false。",
+							Description: "是否update 到 associated Datahub 任务，默认值：false。",
 						},
 					},
 				},
@@ -198,49 +198,49 @@ func ResourceTencentCloudCkafkaConnectResource() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "ClickHouse configuration，必填 when 类型 is CLICKHOUSE。",
+				Description: "ClickHouse 配置，必填 当 类型 是 CLICKHOUSE。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"port": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Clickhouse connection 端口",
+							Description: "Clickhouse 连接 端口",
 						},
 						"user_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The 用户名 of the clickhouse connection 来源",
+							Description: "用户名 的 clickhouse 连接 来源",
 						},
 						"password": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "密码 for Clickhouse connection 来源",
+							Description: "密码 对于 Clickhouse 连接 来源",
 						},
 						"resource": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instance resources for Click House connection sources。",
+							Description: "实例 resources 对于 Click House 连接 sources。",
 						},
 						"self_built": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "是否Clickhouse connection 来源 is a 自建集群",
+							Description: "是否Clickhouse 连接 来源 是 自建集群",
 						},
 						"service_vip": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "实例 VIP of the ClickHouse connection 来源，when it is a 腾讯云实例，it 为必填项。",
+							Description: "实例 VIP 的 ClickHouse 连接 来源，当 它 是 腾讯云实例，它 为必填项。",
 						},
 						"uniq_vpc_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The vpc Id of the 来源 of the ClickHouse connection，when it is a 腾讯云实例，it 为必填项。",
+							Description: "vpc ID 的 来源 的 ClickHouse 连接，当 它 是 腾讯云实例，它 为必填项。",
 						},
 						"is_update": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Default:     false,
-							Description: "是否update to the associated Datahub task，默认值：false。",
+							Description: "是否update 到 associated Datahub 任务，默认值：false。",
 						},
 					},
 				},
@@ -250,7 +250,7 @@ func ResourceTencentCloudCkafkaConnectResource() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "MySQL configuration，必填 when 类型 is MYSQL or TDSQL C_MYSQL。",
+				Description: "MySQL 配置，必填 当 类型 是 MYSQL 或 TDSQL C_MYSQL。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"port": {
@@ -261,44 +261,44 @@ func ResourceTencentCloudCkafkaConnectResource() *schema.Resource {
 						"user_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "用户名 of Mysql connection 来源",
+							Description: "用户名 的 Mysql 连接 来源",
 						},
 						"password": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Mysql connection 来源 密码",
+							Description: "Mysql 连接 来源 密码",
 						},
 						"resource": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instance resource of My SQL connection 来源",
+							Description: "实例 资源 的 My SQL 连接 来源",
 						},
 						"service_vip": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The 实例 VIP of the MySQL connection 来源，when it is a 腾讯云实例，it 为必填项。",
+							Description: "实例 VIP 的 MySQL 连接 来源，当 它 是 腾讯云实例，它 为必填项。",
 						},
 						"uniq_vpc_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The vpc Id of the My SQL connection 来源，when it is a 腾讯云实例，it 为必填项。",
+							Description: "vpc ID 的 My SQL 连接 来源，当 它 是 腾讯云实例，它 为必填项。",
 						},
 						"is_update": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Default:     false,
-							Description: "是否update to the associated Datahub task，默认值：false。",
+							Description: "是否update 到 associated Datahub 任务，默认值：false。",
 						},
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "必填 when 类型 is TDSQL C_MYSQL。",
+							Description: "必填 当 类型 是 TDSQL C_MYSQL。",
 						},
 						"self_built": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Default:     false,
-							Description: "Mysql 是否connection 来源 is a 自建集群，默认值：false。",
+							Description: "Mysql 是否connection 来源 是 自建集群，默认值：false。",
 						},
 					},
 				},
@@ -308,7 +308,7 @@ func ResourceTencentCloudCkafkaConnectResource() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Postgresql configuration，必填 when 类型 is POSTGRESQL or TDSQL C POSTGRESQL。",
+				Description: "Postgresql 配置，必填 当 类型 是 POSTGRESQL 或 TDSQL C POSTGRESQL。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"port": {
@@ -319,7 +319,7 @@ func ResourceTencentCloudCkafkaConnectResource() *schema.Resource {
 						"user_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "PostgreSQL The 用户名 of the connection 来源",
+							Description: "PostgreSQL 用户名 的 连接 来源",
 						},
 						"password": {
 							Type:        schema.TypeString,
@@ -334,29 +334,29 @@ func ResourceTencentCloudCkafkaConnectResource() *schema.Resource {
 						"service_vip": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The instance VIP of the Postgresql connection 来源，when it is a 腾讯云实例，it 为必填项。",
+							Description: "实例 VIP 的 Postgresql 连接 来源，当 它 是 腾讯云实例，它 为必填项。",
 						},
 						"uniq_vpc_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The instance vpcId of the Postgresql connection 来源，when it is a 腾讯云实例，it 为必填项。",
+							Description: "实例 vpcId 的 Postgresql 连接 来源，当 它 是 腾讯云实例，它 为必填项。",
 						},
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "必填 when 类型 is TDSQL C_POSTGRESQL。",
+							Description: "必填 当 类型 是 TDSQL C_POSTGRESQL。",
 						},
 						"is_update": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Default:     false,
-							Description: "是否update to the associated Datahub task，默认值：false。",
+							Description: "是否update 到 associated Datahub 任务，默认值：false。",
 						},
 						"self_built": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Default:     false,
-							Description: "PostgreSQL 是否connection 来源 is a 自建集群，默认值：false。",
+							Description: "PostgreSQL 是否connection 来源 是 自建集群，默认值：false。",
 						},
 					},
 				},
@@ -366,7 +366,7 @@ func ResourceTencentCloudCkafkaConnectResource() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Maria DB configuration，必填 when 类型 is MARIADB。",
+				Description: "Maria DB 配置，必填 当 类型 是 MARIADB。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"port": {
@@ -377,7 +377,7 @@ func ResourceTencentCloudCkafkaConnectResource() *schema.Resource {
 						"user_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "MariaDB The 用户名 of the connection 来源",
+							Description: "MariaDB 用户名 的 连接 来源",
 						},
 						"password": {
 							Type:        schema.TypeString,
@@ -392,18 +392,18 @@ func ResourceTencentCloudCkafkaConnectResource() *schema.Resource {
 						"service_vip": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The 实例 VIP of the Maria DB connection 来源，when it is a 腾讯云实例，it 为必填项。",
+							Description: "实例 VIP 的 Maria DB 连接 来源，当 它 是 腾讯云实例，它 为必填项。",
 						},
 						"uniq_vpc_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "MariaDB vpcId，When it is a 腾讯云实例，it 为必填项。",
+							Description: "MariaDB vpcId，当 它 是 腾讯云实例，它 为必填项。",
 						},
 						"is_update": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Default:     false,
-							Description: "是否update to the associated Datahub task，默认值：false。",
+							Description: "是否update 到 associated Datahub 任务，默认值：false。",
 						},
 					},
 				},
@@ -413,7 +413,7 @@ func ResourceTencentCloudCkafkaConnectResource() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "SQLServer configuration，必填 when 类型 is SQLSERVER。",
+				Description: "SQLServer 配置，必填 当 类型 是 SQLSERVER。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"port": {
@@ -424,7 +424,7 @@ func ResourceTencentCloudCkafkaConnectResource() *schema.Resource {
 						"user_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "SQLServer The 用户名 of the connection 来源",
+							Description: "SQLServer 用户名 的 连接 来源",
 						},
 						"password": {
 							Type:        schema.TypeString,
@@ -439,18 +439,18 @@ func ResourceTencentCloudCkafkaConnectResource() *schema.Resource {
 						"service_vip": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "SQLServer 实例 VIP，When it is a 腾讯云实例，it 为必填项。",
+							Description: "SQLServer 实例 VIP，当 它 是 腾讯云实例，它 为必填项。",
 						},
 						"uniq_vpc_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "SQLServer vpcId，When it is a 腾讯云实例，it 为必填项。",
+							Description: "SQLServer vpcId，当 它 是 腾讯云实例，它 为必填项。",
 						},
 						"is_update": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Default:     false,
-							Description: "是否update to the associated Dip task，默认值：false。",
+							Description: "是否update 到 associated Dip 任务，默认值：false。",
 						},
 					},
 				},
@@ -460,55 +460,55 @@ func ResourceTencentCloudCkafkaConnectResource() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Doris configuration，必填 when 类型 is DORIS。",
+				Description: "Doris 配置，必填 当 类型 是 DORIS。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"port": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Doris jdbc CLB 端口，Usually mapped to 端口 9030 of fe。",
+							Description: "Doris jdbc CLB 端口，Usually mapped 到 端口 9030 的 fe。",
 						},
 						"user_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Doris  The 用户名 of the connection 来源",
+							Description: "Doris 用户名 的 连接 来源",
 						},
 						"password": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Doris  密码",
+							Description: "Doris 密码",
 						},
 						"resource": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Doris  instanceId。",
+							Description: "Doris instanceId。",
 						},
 						"service_vip": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Doris VIP，When it is a 腾讯云实例，it 为必填项。",
+							Description: "Doris VIP，当 它 是 腾讯云实例，它 为必填项。",
 						},
 						"uniq_vpc_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Doris vpcId，When it is a 腾讯云实例，it 为必填项。",
+							Description: "Doris vpcId，当 它 是 腾讯云实例，它 为必填项。",
 						},
 						"is_update": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Default:     false,
-							Description: "是否update to the associated Datahub task，默认值：false。",
+							Description: "是否update 到 associated Datahub 任务，默认值：false。",
 						},
 						"self_built": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Default:     false,
-							Description: "Doris 是否connection 来源 is a 自建集群，默认值：false。",
+							Description: "Doris 是否connection 来源 是 自建集群，默认值：false。",
 						},
 						"be_port": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Doris http CLB 端口，Usually mapped to 端口 8040 of be。",
+							Description: "Doris http CLB 端口，Usually mapped 到 端口 8040 的 是。",
 						},
 					},
 				},
@@ -518,13 +518,13 @@ func ResourceTencentCloudCkafkaConnectResource() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Kafka configuration，必填 when 类型 is KAFKA。",
+				Description: "Kafka 配置，必填 当 类型 是 KAFKA。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Kafka instanceId，When it is a 腾讯云实例，it 为必填项。",
+							Description: "Kafka instanceId，当 它 是 腾讯云实例，它 为必填项。",
 						},
 						"self_built": {
 							Type:        schema.TypeBool,
@@ -536,17 +536,17 @@ func ResourceTencentCloudCkafkaConnectResource() *schema.Resource {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Default:     false,
-							Description: "是否update to the associated Dip task，默认值：false。",
+							Description: "是否update 到 associated Dip 任务，默认值：false。",
 						},
 						"broker_address": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Kafka broker ip，Mandatory when self-built。",
+							Description: "Kafka broker ip，Mandatory 当 self-built。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "CKafka instanceId 地域，必填 when crossing regions。",
+							Description: "CKafka instanceId 地域，必填 当 crossing regions。",
 						},
 					},
 				},

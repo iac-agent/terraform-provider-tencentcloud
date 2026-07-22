@@ -20,17 +20,17 @@ func DataSourceTencentCloudVodImageSpriteTemplates() *schema.Resource {
 			"definition": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Unique ID filter of image sprite template。",
+				Description: "Unique ID 过滤器 的 镜像 sprite template。",
 			},
 			"type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Template 类型 filter. 有效值：`Preset`，`Custom`. `Preset`: preset template; `Custom`: custom template。",
+				Description: "模板 类型 过滤器. 有效值：`Preset`，`Custom`. `Preset`: preset template; `Custom`: 自定义 template。",
 			},
 			"sub_app_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Subapplication ID in VOD. If you need to access a resource in a subapplication，enter the subapplication ID in this field; otherwise，leave it empty。",
+				Description: "Subapplication ID 在 VOD. 如果 您 need 到 访问 资源 在 subapplication，enter subapplication ID 在 此 字段; otherwise，leave 它 空。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -40,43 +40,43 @@ func DataSourceTencentCloudVodImageSpriteTemplates() *schema.Resource {
 			"template_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A 列表 image sprite templates. Each element 包含following attributes:",
+				Description: "A 列表 镜像 sprite templates. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"definition": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Unique ID image sprite template。",
+							Description: "Unique ID 镜像 sprite template。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Template 类型 filter. 有效值：`Preset`，`Custom`. `Preset`: preset template; `Custom`: custom template。",
+							Description: "模板 类型 过滤器. 有效值：`Preset`，`Custom`. `Preset`: preset template; `Custom`: 自定义 template。",
 						},
 						"sample_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Sampling 类型 有效值：`Percent`，`Time`. `Percent`: by percent. `Time`: by 时间间隔。",
+							Description: "Sampling 类型 有效值：`Percent`，`Time`. `Percent`: 通过 percent. `Time`: 通过 时间间隔。",
 						},
 						"sample_interval": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Sampling interval. If `sample_type` is `Percent`，sampling will be performed at an interval of the specified percentage. If `sample_type` is `Time`，sampling will be performed at the specified 时间间隔 （秒）。",
+							Description: "Sampling 间隔. 如果 `sample_type` 是 `Percent`，sampling 将 是 performed 在 间隔 的 指定 percentage. 如果 `sample_type` 是 `Time`，sampling 将 是 performed 在 指定 时间间隔 （秒）。",
 						},
 						"row_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Subimage row count of an image sprite。",
+							Description: "Subimage row count 的 镜像 sprite。",
 						},
 						"column_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Subimage column count of an image sprite。",
+							Description: "Subimage 列 count 的 镜像 sprite。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 a time point screen capturing template。",
+							Description: "名称 时间 point screen capturing template。",
 						},
 						"comment": {
 							Type:        schema.TypeString,
@@ -86,32 +86,32 @@ func DataSourceTencentCloudVodImageSpriteTemplates() *schema.Resource {
 						"fill_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Fill refers to the way of processing a screenshot when its aspect ratio is different from that of the 来源 video. The following fill types are supported: `stretch`: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the 来源 video，which may make the screenshot shorter or longer; `black`: fill with black. This option retains the aspect ratio of the 来源 video for the screenshot and fills the unmatched area with black color blocks。",
+							Description: "Fill refers 到 way 的 processing screenshot 当 its aspect ratio 是 different 从 该 的 来源 视频. following fill types 是 支持: `stretch`: stretch. screenshot 将 是 stretched frame 通过 frame 到 match aspect ratio 的 来源 视频，其中 可能 make screenshot shorter 或 longer; `black`: fill 使用 black. 此 选项 retains aspect ratio 的 来源 视频 对于 screenshot 和 fills unmatched area 使用 black color blocks。",
 						},
 						"width": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum 值 of the `width` (or long side) of a screenshot （像素）。 取值范围：0 and [128，4,096]. If both `width` and `height` are `0`，the resolution will be the same as that of the 来源 video; If `width` is `0`，but `height` is not `0`，width will be proportionally scaled; If `width` is not `0`，but `height` is `0`，`height` will be proportionally scaled; If both `width` and `height` are not `0`，the custom resolution will be used。",
+							Description: "Maximum 值 的 `宽度` (或 long side) 的 screenshot （像素）。 取值范围：0 和 [128，4,096]. 如果 both `宽度` 和 `高度` 是 `0`， resolution 将 是 same 作为 该 的 来源 视频; 如果 `宽度` 是 `0`，但 `高度` 是 不 `0`，宽度 将 是 proportionally scaled; 如果 `宽度` 是 不 `0`，但 `高度` 是 `0`，`高度` 将 是 proportionally scaled; 如果 both `宽度` 和 `高度` 是 不 `0`， 自定义 resolution 将 是 使用。",
 						},
 						"height": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum 值 of the `height` (or short side) of a screenshot （像素）。 取值范围：0 and [128，4,096]. If both `width` and `height` are `0`，the resolution will be the same as that of the 来源 video; If `width` is `0`，but `height` is not `0`，`width` will be proportionally scaled; If `width` is not `0`，but `height` is `0`，`height` will be proportionally scaled; If both `width` and `height` are not `0`，the custom resolution will be used。",
+							Description: "Maximum 值 的 `高度` (或 short side) 的 screenshot （像素）。 取值范围：0 和 [128，4,096]. 如果 both `宽度` 和 `高度` 是 `0`， resolution 将 是 same 作为 该 的 来源 视频; 如果 `宽度` 是 `0`，但 `高度` 是 不 `0`，`宽度` 将 是 proportionally scaled; 如果 `宽度` 是 不 `0`，但 `高度` 是 `0`，`高度` 将 是 proportionally scaled; 如果 both `宽度` 和 `高度` 是 不 `0`， 自定义 resolution 将 是 使用。",
 						},
 						"resolution_adaptive": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Resolution adaption. 有效值：`true`: 已启用 In this case，`width` represents the long side of a video，while `height` the short side; `false`: 已禁用 In this case，`width` represents the width of a video，while `height` the height。",
+							Description: "Resolution adaption. 有效值：`true`: 已启用 In 此 case，`宽度` 表示 long side 的 视频，while `高度` short side; `false`: 已禁用 In 此 case，`宽度` 表示 宽度 的 视频，while `高度` 高度。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of template in ISO date 格式",
+							Description: "创建时间 的 template 在 ISO date 格式",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "最后修改时间 of template in ISO date 格式",
+							Description: "最后修改时间 的 template 在 ISO date 格式",
 						},
 					},
 				},

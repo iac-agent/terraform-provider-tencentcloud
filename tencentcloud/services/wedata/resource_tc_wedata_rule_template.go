@@ -36,7 +36,7 @@ func ResourceTencentCloudWedataRuleTemplate() *schema.Resource {
 			"type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Template 类型 `1` means System template，`2` means Custom template。",
+				Description: "模板 类型 `1` 表示 System template，`2` 表示 Custom template。",
 			},
 
 			"name": {
@@ -54,13 +54,13 @@ func ResourceTencentCloudWedataRuleTemplate() *schema.Resource {
 			"source_object_type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "来源 data object 类型 `1`: Constant，`2`: Offline table 级别，`3`: Offline field 级别",
+				Description: "来源 数据 对象 类型 `1`: Constant，`2`: Offline 表 级别，`3`: Offline 字段 级别",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "描述 Template。",
+				Description: "描述 模板。",
 			},
 
 			"source_engine_types": {
@@ -69,13 +69,13 @@ func ResourceTencentCloudWedataRuleTemplate() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "The engine 类型 corresponding to the 来源 `2`: hive,`4`: spark，`16`: dlc。",
+				Description: "引擎 类型 corresponding 到 来源 `2`: hive,`4`: spark，`16`: dlc。",
 			},
 
 			"multi_source_flag": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "是否associate other library tables。",
+				Description: "是否associate other 库 tables。",
 			},
 
 			"sql_expression": {
@@ -87,7 +87,7 @@ func ResourceTencentCloudWedataRuleTemplate() *schema.Resource {
 			"where_flag": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "If add where。",
+				Description: "如果 add 其中。",
 			},
 		},
 	}

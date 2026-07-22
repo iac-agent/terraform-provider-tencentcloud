@@ -28,13 +28,13 @@ func ResourceTencentCloudTemApplication() *schema.Resource {
 			"application_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "application 名称",
+				Description: "应用 名称",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "application 描述",
+				Description: "应用 描述",
 			},
 
 			"coding_language": {
@@ -47,13 +47,13 @@ func ResourceTencentCloudTemApplication() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
-				Description: "create image repo or not。",
+				Description: "create 镜像 repo 或 不。",
 			},
 
 			"repo_type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "repo 类型，0: tcr personal，1: tcr enterprise，2: public repository，3: tcr hosted by tem，4: demo image。",
+				Description: "repo 类型，0: tcr personal，1: tcr enterprise，2: 公有 repository，3: tcr hosted 通过 tem，4: demo 镜像。",
 			},
 
 			"repo_server": {
@@ -77,7 +77,7 @@ func ResourceTencentCloudTemApplication() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "application 标签列表",
+				Description: "应用 标签列表",
 			},
 		},
 	}

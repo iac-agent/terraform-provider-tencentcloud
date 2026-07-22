@@ -21,28 +21,28 @@ func DataSourceTencentCloudGaapLayer4Listeners() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"TCP", "UDP"}),
-				Description:  "协议 of the layer4 listener to be queried. 有效值：`TCP` and `UDP`。",
+				Description:  "协议 的 layer4 listener 到 是 queried. 有效值：`TCP` 和 `UDP`。",
 			},
 			"proxy_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID GAAP proxy to be queried。",
+				Description: "ID GAAP proxy 到 是 queried。",
 			},
 			"listener_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID layer4 listener to be queried。",
+				Description: "ID layer4 listener 到 是 queried。",
 			},
 			"listener_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "名称 layer4 listener to be queried。",
+				Description: "名称 layer4 listener 到 是 queried。",
 			},
 			"port": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidatePort,
-				Description:  "端口 of the layer4 listener to be queried。",
+				Description:  "端口 的 layer4 listener 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -54,13 +54,13 @@ func DataSourceTencentCloudGaapLayer4Listeners() *schema.Resource {
 			"listeners": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information 列表 layer4 listeners. Each element 包含following attributes:",
+				Description: "An 信息 列表 layer4 listeners. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "协议 of the layer4 listener。",
+							Description: "协议 的 layer4 listener。",
 						},
 						"id": {
 							Type:        schema.TypeString,
@@ -80,7 +80,7 @@ func DataSourceTencentCloudGaapLayer4Listeners() *schema.Resource {
 						"port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "端口 of the layer4 listener。",
+							Description: "端口 的 layer4 listener。",
 						},
 						"realserver_type": {
 							Type:        schema.TypeString,
@@ -95,27 +95,27 @@ func DataSourceTencentCloudGaapLayer4Listeners() *schema.Resource {
 						"scheduler": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scheduling policy of the layer4 listener。",
+							Description: "Scheduling 策略 的 layer4 listener。",
 						},
 						"health_check": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "表示是否health check is enable。",
+							Description: "表示是否health check 是 启用。",
 						},
 						"connect_timeout": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Timeout of the health check response。",
+							Description: "Timeout 的 health check response。",
 						},
 						"interval": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Interval of the health check。",
+							Description: "Interval 的 health check。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of the layer4 listener。",
+							Description: "创建时间 的 layer4 listener。",
 						},
 					},
 				},

@@ -26,30 +26,30 @@ func ResourceTencentCloudTcrToken() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID TCR instance。",
+				Description: "ID TCR 实例。",
 			},
 			"enable": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     true,
-				Description: "Indicate to enable this 令牌 or not。",
+				Description: "Indicate 到 启用 此 令牌 或 不。",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "描述 令牌 Valid length is [0~255]。",
+				Description: "描述 令牌 有效 长度 是 [0~255]。",
 			},
 			//computed
 			"token_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Sub ID TCR 令牌 The full ID 令牌 格式 like `instance_id#token_id`。",
+				Description: "Sub ID TCR 令牌 full ID 令牌 格式 like `instance_id#token_id`。",
 			},
 			"token": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The 内容 of the 令牌",
+				Description: "内容 的 令牌",
 			},
 			"user_name": {
 				Type:        schema.TypeString,

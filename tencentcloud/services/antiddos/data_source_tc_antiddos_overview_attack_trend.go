@@ -26,13 +26,13 @@ func DataSourceTencentCloudAntiddosOverviewAttackTrend() *schema.Resource {
 			"dimension": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Latitude，currently only attackcount is supported。",
+				Description: "Latitude，currently 仅 attackcount 是 支持。",
 			},
 
 			"period": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "周期，currently only 86400 is supported。",
+				Description: "周期，currently 仅 86400 是 支持。",
 			},
 
 			"start_time": {

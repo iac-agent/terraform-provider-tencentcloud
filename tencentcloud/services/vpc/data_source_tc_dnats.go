@@ -26,25 +26,25 @@ func DataSourceTencentCloudDnats() *schema.Resource {
 			"nat_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID NAT gateway。",
+				Description: "ID NAT 网关。",
 			},
 			"elastic_ip": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateIp,
-				Description:  "Network 地址 of the EIP。",
+				Description:  "Network 地址 的 EIP。",
 			},
 			"elastic_port": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidatePort,
-				Description:  "端口 of the EIP。",
+				Description:  "端口 的 EIP。",
 			},
 			"private_ip": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateIp,
-				Description:  "Network 地址 of the backend service。",
+				Description:  "Network 地址 的 backend 服务。",
 			},
 			"description": {
 				Type:        schema.TypeString,
@@ -55,7 +55,7 @@ func DataSourceTencentCloudDnats() *schema.Resource {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidatePort,
-				Description:  "端口 of intranet。",
+				Description:  "端口 的 intranet。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -67,7 +67,7 @@ func DataSourceTencentCloudDnats() *schema.Resource {
 			"dnat_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information 列表 the DNATs。",
+				Description: "Information 列表 DNATs。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
@@ -83,27 +83,27 @@ func DataSourceTencentCloudDnats() *schema.Resource {
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "类型 network 协议 有效值：`TCP` and `UDP`。",
+							Description: "类型 网络 协议 有效值：`TCP` 和 `UDP`。",
 						},
 						"elastic_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Network 地址 of the EIP。",
+							Description: "Network 地址 的 EIP。",
 						},
 						"elastic_port": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "端口 of the EIP。",
+							Description: "端口 的 EIP。",
 						},
 						"private_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Network 地址 of the backend service。",
+							Description: "Network 地址 的 backend 服务。",
 						},
 						"private_port": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "端口 of intranet。",
+							Description: "端口 的 intranet。",
 						},
 						"description": {
 							Type:        schema.TypeString,

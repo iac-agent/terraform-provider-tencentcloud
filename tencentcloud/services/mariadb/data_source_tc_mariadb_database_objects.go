@@ -23,19 +23,19 @@ func DataSourceTencentCloudMariadbDatabaseObjects() *schema.Resource {
 			"db_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "database 名称",
+				Description: "数据库 名称",
 			},
 
 			"tables": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "table list。",
+				Description: "表 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"table": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "table 名称",
+							Description: "表 名称",
 						},
 					},
 				},
@@ -44,7 +44,7 @@ func DataSourceTencentCloudMariadbDatabaseObjects() *schema.Resource {
 			"views": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "view list。",
+				Description: "view 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"view": {
@@ -59,7 +59,7 @@ func DataSourceTencentCloudMariadbDatabaseObjects() *schema.Resource {
 			"procs": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "proc list。",
+				Description: "proc 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"proc": {
@@ -74,7 +74,7 @@ func DataSourceTencentCloudMariadbDatabaseObjects() *schema.Resource {
 			"funcs": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "func list。",
+				Description: "func 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"func": {

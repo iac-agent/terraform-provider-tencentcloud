@@ -25,7 +25,7 @@ func DataSourceTencentCloudTdmqPublisherSummary() *schema.Resource {
 			"namespace": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "namespace 名称",
+				Description: "命名空间 名称",
 			},
 			"topic": {
 				Required:    true,
@@ -36,12 +36,12 @@ func DataSourceTencentCloudTdmqPublisherSummary() *schema.Resource {
 			"msg_rate_in": {
 				Computed:    true,
 				Type:        schema.TypeFloat,
-				Description: "Production rate (units per second)注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "Production 速率 (units per second)注意：此字段可能返回 null，表示无法获取有效值。",
 			},
 			"msg_throughput_in": {
 				Computed:    true,
 				Type:        schema.TypeFloat,
-				Description: "Production rate (bytes per second)注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "Production 速率 (bytes per second)注意：此字段可能返回 null，表示无法获取有效值。",
 			},
 			"publisher_count": {
 				Computed:    true,
@@ -51,7 +51,7 @@ func DataSourceTencentCloudTdmqPublisherSummary() *schema.Resource {
 			"storage_size": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "消息 store size in bytes注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "消息 store 大小 在 bytes注意：此字段可能返回 null，表示无法获取有效值。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,

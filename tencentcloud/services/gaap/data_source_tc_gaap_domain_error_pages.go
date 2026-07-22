@@ -18,19 +18,19 @@ func DataSourceTencentCloudGaapDomainErrorPageInfoList() *schema.Resource {
 			"listener_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID layer7 listener to be queried。",
+				Description: "ID layer7 listener 到 是 queried。",
 			},
 			"domain": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "HTTP 域名 to be queried。",
+				Description: "HTTP 域名 到 是 queried。",
 			},
 			"ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Set:         schema.HashString,
-				Description: "列表 the 错误 page info ID to be queried。",
+				Description: "列表 错误 页面 info ID 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -42,13 +42,13 @@ func DataSourceTencentCloudGaapDomainErrorPageInfoList() *schema.Resource {
 			"error_page_info_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information 列表 错误 page info detail. Each element 包含following attributes:",
+				Description: "An 信息 列表 错误 页面 info detail. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID 错误 page info。",
+							Description: "ID 错误 页面 info。",
 						},
 						"listener_id": {
 							Type:        schema.TypeString,
@@ -69,7 +69,7 @@ func DataSourceTencentCloudGaapDomainErrorPageInfoList() *schema.Resource {
 						"body": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "New response body。",
+							Description: "New response 正文。",
 						},
 						"new_error_codes": {
 							Type:        schema.TypeInt,
@@ -80,12 +80,12 @@ func DataSourceTencentCloudGaapDomainErrorPageInfoList() *schema.Resource {
 							Type:        schema.TypeList,
 							Computed:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Response headers to be removed。",
+							Description: "Response headers 到 是 removed。",
 						},
 						"set_headers": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "Response headers to be set。",
+							Description: "Response headers 到 是 集合。",
 						},
 					},
 				},

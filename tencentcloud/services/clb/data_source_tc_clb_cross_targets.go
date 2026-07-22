@@ -19,7 +19,7 @@ func DataSourceTencentCloudClbCrossTargets() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "查询云服务器和弹性网卡的过滤条件：vpc-id - 字符串 - 必填：否 - （过滤条件）按VPC ID过滤，例如vpc-12345678。 ip - String - 必填：否 - （过滤条件）按真实服务器IP过滤，如192.168.0.1。 listener-id - String - 必填：否 - （过滤条件）按监听器 ID 过滤，如 lbl-12345678。 location-id - String - 必填：否 - （过滤条件）按七层监听的转发规则ID过滤，如loc-12345678。",
+				Description: "查询云服务器和弹性网卡的过滤条件：vpc-ID - 字符串 - 必填：否 - （过滤条件）按VPC ID过滤，例如vpc-12345678。 ip - String - 必填：否 - （过滤条件）按真实服务器IP过滤，如192.168.0.1。 listener-ID - String - 必填：否 - （过滤条件）按监听器 ID 过滤，如 lbl-12345678。 location-ID - String - 必填：否 - （过滤条件）按七层监听的转发规则ID过滤，如loc-12345678。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {

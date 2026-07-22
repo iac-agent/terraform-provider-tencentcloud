@@ -22,24 +22,24 @@ func DataSourceTencentCloudCamRolePolicyAttachments() *schema.Resource {
 			"role_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID attached CAM 角色 to be queried。",
+				Description: "ID attached CAM 角色 到 是 queried。",
 			},
 			"policy_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID CAM policy to be queried。",
+				Description: "ID CAM 策略 到 是 queried。",
 			},
 			"create_mode": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{1, 2}),
-				Description:  "模式 of Creation of the CAM 用户 policy attachment. `1` means the cam policy attachment is created by production，and the others indicate syntax strategy ways。",
+				Description:  "模式 的 Creation 的 CAM 用户 策略 attachment. `1` 表示 cam 策略 attachment 是 创建 通过 production，和 others indicate syntax strategy ways。",
 			},
 			"policy_type": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CAM_POLICY_CREATE_STRATEGY),
-				Description:  "类型 policy strategy. Valid values are '用户'，'QCS'. '用户' means customer strategy and 'QCS' means preset strategy。",
+				Description:  "类型 策略 strategy. 有效 值 是 '用户'，'QCS'. '用户' 表示 customer strategy 和 'QCS' 表示 preset strategy。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -49,7 +49,7 @@ func DataSourceTencentCloudCamRolePolicyAttachments() *schema.Resource {
 			"role_policy_attachment_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A 列表 CAM 角色 policy attachments. Each element 包含following attributes:",
+				Description: "A 列表 CAM 角色 策略 attachments. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"role_id": {
@@ -65,22 +65,22 @@ func DataSourceTencentCloudCamRolePolicyAttachments() *schema.Resource {
 						"create_mode": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "模式 of Creation of the CAM 角色 policy attachment. `1` means the cam policy attachment is created by production，and the others indicate syntax strategy ways。",
+							Description: "模式 的 Creation 的 CAM 角色 策略 attachment. `1` 表示 cam 策略 attachment 是 创建 通过 production，和 others indicate syntax strategy ways。",
 						},
 						"policy_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "类型 policy strategy. '用户' means customer strategy and 'QCS' means preset strategy。",
+							Description: "类型 策略 strategy. '用户' 表示 customer strategy 和 'QCS' 表示 preset strategy。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of the CAM 角色 policy attachment。",
+							Description: "创建时间 的 CAM 角色 策略 attachment。",
 						},
 						"policy_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 policy。",
+							Description: "名称 策略。",
 						},
 					},
 				},

@@ -37,17 +37,17 @@ func ResourceTencentCloudWafCc() *schema.Resource {
 			"status": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Rule 状态，0 rule close，1 rule open。",
+				Description: "Rule 状态，0 规则 close，1 规则 open。",
 			},
 			"advance": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Advanced 模式 (是否use session detection). 0(已禁用) 1(已启用)。",
+				Description: "Advanced 模式 (是否use 会话 detection). 0(已禁用) 1(已启用)。",
 			},
 			"limit": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "CC detection threshold。",
+				Description: "CC detection 阈值。",
 			},
 			"interval": {
 				Required:    true,
@@ -62,12 +62,12 @@ func ResourceTencentCloudWafCc() *schema.Resource {
 			"match_func": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Match method，0(equal)，1(prefix)，2(contains)，3(not equal)，6(suffix)，7(not contains)。",
+				Description: "Match 方法，0(equal)，1(prefix)，2(contains)，3(不 equal)，6(suffix)，7(不 contains)。",
 			},
 			"action_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Rule 操作，20 means observation，21 means human-machine identification，22 means interception，23 means precise interception，26 means precise human-machine identification，and 27 means JS verification。",
+				Description: "Rule 操作，20 表示 observation，21 表示 human-machine identification，22 表示 interception，23 表示 precise interception，26 表示 precise human-machine identification，和 27 表示 JS verification。",
 			},
 			"priority": {
 				Required:    true,
@@ -77,7 +77,7 @@ func ResourceTencentCloudWafCc() *schema.Resource {
 			"valid_time": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "操作 ValidTime，minute unit. Min: 60，Max: 604800。",
+				Description: "操作 ValidTime，minute 单位. Min: 60，Max: 604800。",
 			},
 			"options_arr": {
 				Optional: true,
@@ -106,7 +106,7 @@ func ResourceTencentCloudWafCc() *schema.Resource {
 				Required:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(EDITION_TYPE),
-				Description:  "WAF edition. clb-waf means clb-waf，sparta-waf means saas-waf。",
+				Description:  "WAF edition. clb-waf 表示 clb-waf，sparta-waf 表示 saas-waf。",
 			},
 			"type": {
 				Optional:    true,
@@ -122,13 +122,13 @@ func ResourceTencentCloudWafCc() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "Session ID that needs to be 已启用 for the rule。",
+				Description: "Session ID 该 needs 到 是 已启用 对于 规则。",
 			},
 			"limit_method": {
 				Optional:    true,
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Frequency limiting method。",
+				Description: "Frequency limiting 方法。",
 			},
 			"cel_rule": {
 				Optional:    true,
@@ -139,7 +139,7 @@ func ResourceTencentCloudWafCc() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Logical 操作者 of configuration 模式，and/or。",
+				Description: "Logical 操作者 的 配置 模式，和/或。",
 			},
 			"rule_id": {
 				Computed:    true,

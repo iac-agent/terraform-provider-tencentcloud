@@ -47,7 +47,7 @@ func ResourceTencentCloudWedataSubmitTaskOperation() *schema.Resource {
 			"version_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "版本 id。",
+				Description: "版本 ID。",
 			},
 		},
 	}

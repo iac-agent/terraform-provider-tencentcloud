@@ -24,7 +24,7 @@ func ResourceTencentCloudEniIpv4Address() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The ID ENI instance，such as `eni-m6dyj72l`。",
+				Description: "ID ENI 实例，such 作为 `eni-m6dyj72l`。",
 			},
 
 			"private_ip_addresses": {
@@ -33,7 +33,7 @@ func ResourceTencentCloudEniIpv4Address() *schema.Resource {
 				Computed:      true,
 				ForceNew:      true,
 				ConflictsWith: []string{"secondary_private_ip_address_count", "qos_level"},
-				Description:   "The information on private IP addresses，of which you can 指定a maximum of 10 at a time. You should provide either this parameter or SecondaryPrivateIpAddressCount，or both。",
+				Description:   "信息 在 私有 IP addresses，的 其中 您 可以 指定a 最大 的 10 在 时间. You should provide either 此 参数 或 SecondaryPrivateIpAddressCount，或 both。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"private_ip_address": {
@@ -61,7 +61,7 @@ func ResourceTencentCloudEniIpv4Address() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							Computed:    true,
-							Description: "EIP instance ID，such as `eip-11112222`。",
+							Description: "EIP 实例 ID，such 作为 `eip-11112222`。",
 						},
 						"description": {
 							Type:        schema.TypeString,
@@ -75,7 +75,7 @@ func ResourceTencentCloudEniIpv4Address() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							Computed:    true,
-							Description: "是否public IP is blocked。",
+							Description: "是否public IP 是 blocked。",
 						},
 						"state": {
 							Type:        schema.TypeString,
@@ -89,7 +89,7 @@ func ResourceTencentCloudEniIpv4Address() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							Computed:    true,
-							Description: "IP service 级别 Values: PT` (Gold)，`AU` (Silver)，`AG `(Bronze) and DEFAULT` (Default)。",
+							Description: "IP 服务 级别 Values: PT` (Gold)，`AU` (Silver)，`AG `(Bronze) 和 DEFAULT` (Default)。",
 						},
 					},
 				},
@@ -101,7 +101,7 @@ func ResourceTencentCloudEniIpv4Address() *schema.Resource {
 				Computed:      true,
 				ForceNew:      true,
 				ConflictsWith: []string{"private_ip_addresses"},
-				Description:   "The 数量 newly-applied private IP addresses. You should provide either this parameter or PrivateIpAddresses，or both. The total 数量 private IP addresses cannot exceed the quota。",
+				Description:   "数量 newly-applied 私有 IP addresses. You should provide either 此 参数 或 PrivateIpAddresses，或 both. 总数 数量 私有 IP addresses 不能 exceed 配额。",
 			},
 
 			"qos_level": {
@@ -110,7 +110,7 @@ func ResourceTencentCloudEniIpv4Address() *schema.Resource {
 				ForceNew:      true,
 				ConflictsWith: []string{"private_ip_addresses"},
 				Type:          schema.TypeString,
-				Description:   "IP service 级别 It is used together with `SecondaryPrivateIpAddressCount`. Values: PT`(Gold)，`AU`(Silver)，`AG `(Bronze) and DEFAULT (Default)。",
+				Description:   "IP 服务 级别 It 是 使用 together 使用 `SecondaryPrivateIpAddressCount`. Values: PT`(Gold)，`AU`(Silver)，`AG `(Bronze) 和 DEFAULT (Default)。",
 			},
 		},
 	}

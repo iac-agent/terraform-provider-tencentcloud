@@ -20,20 +20,20 @@ func DataSourceTencentCloudDnspodRecordList() *schema.Resource {
 			"domain": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The 域名 to which the resolution record belongs。",
+				Description: "域名 到 其中 resolution 记录 belongs。",
 			},
 
 			"domain_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The 域名 ID to which the resolution record belongs. If DomainId is provided，the system will ignore the 域名 parameter. You can find all 域名 and DomainId through the DescribeDomainList interface。",
+				Description: "域名 ID 到 其中 resolution 记录 belongs. 如果 DomainId 是 提供， 系统 将 ignore 域名 参数. You 可以 find all 域名 和 DomainId through DescribeDomainList interface。",
 			},
 
 			"sub_domain": {
 				Optional:      true,
 				Type:          schema.TypeString,
 				ConflictsWith: []string{"sub_domains"},
-				Description:   "Retrieve resolution records based on the 主机 header of the resolution record. Fuzzy matching is used by default. You can set the IsExactSubdomain parameter to true for precise searching。",
+				Description:   "Retrieve resolution records based 在 主机 头部 的 resolution 记录. Fuzzy matching 是 使用 通过 默认值. You 可以 集合 IsExactSubdomain 参数 到 true 对于 precise searching。",
 			},
 			"sub_domains": {
 				Optional:      true,
@@ -49,7 +49,7 @@ func DataSourceTencentCloudDnspodRecordList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Retrieve certain types of resolution records，such as A，CNAME，NS，AAAA，explicit URL，implicit URL，CAA，SPF，etc。",
+				Description: "Retrieve certain types 的 resolution records，such 作为 A，CNAME，NS，AAAA，explicit URL，implicit URL，CAA，SPF，etc。",
 			},
 
 			"record_line": {
@@ -58,7 +58,7 @@ func DataSourceTencentCloudDnspodRecordList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Retrieve resolution records for certain line IDs. You can view the allowed line information for the current 域名 through the DescribeRecordLineList interface。",
+				Description: "Retrieve resolution records 对于 certain line IDs. You 可以 view allowed line 信息 对于 当前 域名 through DescribeRecordLineList interface。",
 			},
 
 			"group_id": {
@@ -67,31 +67,31 @@ func DataSourceTencentCloudDnspodRecordList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "When retrieving resolution records under certain groups，pass this 组 ID You can obtain the GroupId field through the DescribeRecordGroupList interface。",
+				Description: "当 retrieving resolution records under certain groups，pass 此 组 ID You 可以 obtain GroupId 字段 through DescribeRecordGroupList interface。",
 			},
 
 			"keyword": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Search for resolution records by keyword，currently supporting searching 主机 headers and record values。",
+				Description: "Search 对于 resolution records 通过 keyword，currently supporting searching 主机 headers 和 记录 值。",
 			},
 
 			"sort_field": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sorting field，supporting NAME，LINE，TYPE，VALUE，WEIGHT，MX，TTL，UPDATED_ON fields. NAME: The 主机 header of the resolution record LINE: The resolution record line TYPE: The resolution record 类型 VALUE: The resolution record 值 WEIGHT: The 权重 MX: MX 优先级 TTL: The resolution record cache time UPDATED_ON: The resolution record 更新时间。",
+				Description: "Sorting 字段，supporting NAME，LINE，TYPE，VALUE，WEIGHT，MX，TTL，UPDATED_ON 字段. NAME: 主机 头部 的 resolution 记录 LINE: resolution 记录 line TYPE: resolution 记录 类型 VALUE: resolution 记录 值 WEIGHT: 权重 MX: MX 优先级 TTL: resolution 记录 缓存 时间 UPDATED_ON: resolution 记录 更新时间。",
 			},
 
 			"sort_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sorting method，ascending: ASC，descending: DESC. The 默认值为 ASC。",
+				Description: "Sorting 方法，ascending: ASC，descending: DESC. 默认值为 ASC。",
 			},
 
 			"record_value": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Get the resolution record based on the resolution record 值",
+				Description: "Get resolution 记录 based 在 resolution 记录 值",
 			},
 
 			"record_status": {
@@ -100,67 +100,67 @@ func DataSourceTencentCloudDnspodRecordList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Get the resolution record based on the resolution record 状态 The possible values are ENABLE and DISABLE. ENABLE: Normal DISABLE: Paused。",
+				Description: "Get resolution 记录 based 在 resolution 记录 状态 possible 值 是 ENABLE 和 DISABLE. ENABLE: Normal DISABLE: Paused。",
 			},
 
 			"weight_begin": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The starting point of the resolution record 权重 query interval。",
+				Description: "starting point 的 resolution 记录 权重 查询 间隔。",
 			},
 
 			"weight_end": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The endpoint of the resolution record 权重 query interval。",
+				Description: "端点 的 resolution 记录 权重 查询 间隔。",
 			},
 
 			"mx_begin": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The starting point of the resolution record MX 优先级 query interval。",
+				Description: "starting point 的 resolution 记录 MX 优先级 查询 间隔。",
 			},
 
 			"mx_end": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The endpoint of the resolution record MX 优先级 query interval。",
+				Description: "端点 的 resolution 记录 MX 优先级 查询 间隔。",
 			},
 
 			"ttl_begin": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The starting point of the resolution record TTL query interval。",
+				Description: "starting point 的 resolution 记录 TTL 查询 间隔。",
 			},
 
 			"ttl_end": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The endpoint of the resolution record TTL query interval。",
+				Description: "端点 的 resolution 记录 TTL 查询 间隔。",
 			},
 
 			"updated_at_begin": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The starting point of the resolution record 更新时间 query interval。",
+				Description: "starting point 的 resolution 记录 更新时间 查询 间隔。",
 			},
 
 			"updated_at_end": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The endpoint of the resolution record 更新时间 query interval。",
+				Description: "端点 的 resolution 记录 更新时间 查询 间隔。",
 			},
 
 			"remark": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Get the resolution record based on the resolution record 备注",
+				Description: "Get resolution 记录 based 在 resolution 记录 备注",
 			},
 
 			"is_exact_sub_domain": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "是否perform an exact search based on the SubDomain parameter。",
+				Description: "是否perform exact search based 在 SubDomain 参数。",
 			},
 
 			"project_id": {
@@ -172,14 +172,14 @@ func DataSourceTencentCloudDnspodRecordList() *schema.Resource {
 			"filter_at_ns": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Filter @ 类型 NS records. 默认为 false。",
+				Description: "过滤器 @ 类型 NS records. 默认为 false。",
 				Default:     false,
 			},
 
 			"record_count_info": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Statistics of the 数量 records。",
+				Description: "Statistics 的 数量 records。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"subdomain_count": {
@@ -190,7 +190,7 @@ func DataSourceTencentCloudDnspodRecordList() *schema.Resource {
 						"list_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 records returned in the list。",
+							Description: "数量 records 返回 在 列表。",
 						},
 						"total_count": {
 							Type:        schema.TypeInt,
@@ -230,7 +230,7 @@ func DataSourceTencentCloudDnspodRecordList() *schema.Resource {
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "主机 header。",
+							Description: "主机 头部。",
 						},
 						"line": {
 							Type:        schema.TypeString,
@@ -255,7 +255,7 @@ func DataSourceTencentCloudDnspodRecordList() *schema.Resource {
 						"monitor_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Record monitoring 状态，normal: OK，alarm: WARN，downtime: DOWN，empty if monitoring is not set or paused。",
+							Description: "Record 监控 状态，normal: OK，告警: WARN，downtime: DOWN，空 如果 监控 是 不 集合 或 paused。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
@@ -265,17 +265,17 @@ func DataSourceTencentCloudDnspodRecordList() *schema.Resource {
 						"ttl": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Record cache time。",
+							Description: "Record 缓存 时间。",
 						},
 						"mx": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "MX 值，only available for MX records 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "MX 值，仅 可用 对于 MX records 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"default_ns": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否为the default NS record。",
+							Description: "是否为the 默认值 NS 记录。",
 						},
 					},
 				},
@@ -319,7 +319,7 @@ func DataSourceTencentCloudDnspodRecordList() *schema.Resource {
 						"sub_domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "主机 header。",
+							Description: "主机 头部。",
 						},
 						"record_line": {
 							Type:        schema.TypeString,
@@ -344,7 +344,7 @@ func DataSourceTencentCloudDnspodRecordList() *schema.Resource {
 						"monitor_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Record monitoring 状态，normal: OK，alarm: WARN，downtime: DOWN，empty if monitoring is not set or paused。",
+							Description: "Record 监控 状态，normal: OK，告警: WARN，downtime: DOWN，空 如果 监控 是 不 集合 或 paused。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
@@ -354,17 +354,17 @@ func DataSourceTencentCloudDnspodRecordList() *schema.Resource {
 						"ttl": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Record cache time。",
+							Description: "Record 缓存 时间。",
 						},
 						"mx": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "MX 值，only available for MX records 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "MX 值，仅 可用 对于 MX records 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"default_ns": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否为the default NS record。",
+							Description: "是否为the 默认值 NS 记录。",
 						},
 					},
 				},

@@ -18,7 +18,7 @@ func DataSourceTencentCloudPrivateDnsEndPoints() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter parameters. 有效值：EndPointName，EndPointId，EndPointServiceId，and EndPointVip。",
+				Description: "过滤器 参数. 有效值：EndPointName，EndPointId，EndPointServiceId，和 EndPointVip。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -29,7 +29,7 @@ func DataSourceTencentCloudPrivateDnsEndPoints() *schema.Resource {
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "数组 parameter values。",
+							Description: "数组 参数 值。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -41,7 +41,7 @@ func DataSourceTencentCloudPrivateDnsEndPoints() *schema.Resource {
 			"end_point_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Endpoint list.\n注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "Endpoint 列表.\n注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"end_point_id": {
@@ -62,7 +62,7 @@ func DataSourceTencentCloudPrivateDnsEndPoints() *schema.Resource {
 						"end_point_vip_set": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "VIP 列表 the endpoint。",
+							Description: "VIP 列表 端点。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},

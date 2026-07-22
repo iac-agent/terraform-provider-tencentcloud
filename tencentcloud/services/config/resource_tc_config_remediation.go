@@ -27,31 +27,31 @@ func ResourceTencentCloudConfigRemediation() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "配置 rule ID to bind the remediation setting to。",
+				Description: "配置 规则 ID 到 bind remediation setting 到。",
 			},
 
 			"remediation_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Remediation 类型 Valid 值: SCF (cloud function，custom remediation)。",
+				Description: "Remediation 类型 有效 值: SCF (云 函数，自定义 remediation)。",
 			},
 
 			"remediation_template_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Remediation 模板 ID (e.g. SCF function resource 路径: qcs::scf:ap-guangzhou:uin/functions/xxx)。",
+				Description: "Remediation 模板 ID (e.g. SCF 函数 资源 路径: qcs::scf:ap-guangzhou:uin/functions/xxx)。",
 			},
 
 			"invoke_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Remediation execution 模式 有效值：MANUAL_EXECUTION (manual)，AUTO_EXECUTION (automatic)，NON_EXECUTION (已禁用)，NOT_CONFIG (not configured)。",
+				Description: "Remediation execution 模式 有效值：MANUAL_EXECUTION (manual)，AUTO_EXECUTION (automatic)，NON_EXECUTION (已禁用)，NOT_CONFIG (不 已配置)。",
 			},
 
 			"source_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Template 来源 Valid 值: CUSTOM (custom template)。",
+				Description: "模板 来源 有效 值: CUSTOM (自定义 template)。",
 			},
 
 			// Computed
@@ -70,7 +70,7 @@ func ResourceTencentCloudConfigRemediation() *schema.Resource {
 			"remediation_source_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Remediation 来源 类型 returned from API。",
+				Description: "Remediation 来源 类型 返回 从 API。",
 			},
 		},
 	}

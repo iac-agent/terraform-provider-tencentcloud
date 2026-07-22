@@ -25,36 +25,36 @@ func ResourceTencentCloudSqlserverDB() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "SQL Server instance ID which DB belongs to.",
+				Description: "SQL Server 实例 ID 其中 DB belongs 到.",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Name of SQL Server DB. The database name must be unique and must be composed of numbers, letters and underlines, and the first one can not be underline.",
+				Description: "Name 的 SQL Server DB. 数据库 名称 必须 是 唯一 和 必须 是 composed 的 numbers, letters 和 underlines, 和 first 一个 可以 不 是 underline.",
 			},
 			"charset": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "Chinese_PRC_CI_AS",
 				ForceNew:    true,
-				Description: "Character set DB uses. Valid values: `Chinese_PRC_CI_AS`, `Chinese_PRC_CS_AS`, `Chinese_PRC_BIN`, `Chinese_Taiwan_Stroke_CI_AS`, `SQL_Latin1_General_CP1_CI_AS`, and `SQL_Latin1_General_CP1_CS_AS`. Default value is `Chinese_PRC_CI_AS`.",
+				Description: "Character 集合 DB uses. 有效 值: `Chinese_PRC_CI_AS`, `Chinese_PRC_CS_AS`, `Chinese_PRC_BIN`, `Chinese_Taiwan_Stroke_CI_AS`, `SQL_Latin1_General_CP1_CI_AS`, 和 `SQL_Latin1_General_CP1_CS_AS`. Default 值 是 `Chinese_PRC_CI_AS`.",
 			},
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Remark of the DB.",
+				Description: "Remark 的 DB.",
 			},
 			// Computed
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Database creation time.",
+				Description: "Database creation 时间.",
 			},
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Database status, could be `creating`, `running`, `modifying` which means changing the remark, and `deleting`.",
+				Description: "Database 状态, could 是 `creating`, `running`, `modifying` 其中 表示 changing remark, 和 `deleting`.",
 			},
 		},
 	}

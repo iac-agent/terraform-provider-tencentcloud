@@ -28,28 +28,28 @@ func ResourceTencentCloudSqlserverRollbackInstance() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 			"time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Target time point for rollback.",
+				Description: "Target 时间 point 对于 rollback.",
 			},
 			"rename_restore": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "Rename the databases listed in ReNameRestoreDatabase.",
+				Description: "Rename databases listed 在 ReNameRestoreDatabase.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"old_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Database name. If the OldName database does not exist, a failure will be returned. It can be left empty in offline migration tasks.",
+							Description: "Database 名称. 如果 OldName 数据库 does 不 exist, failure 将 是 返回. It 可以 是 left 空 在 offline 迁移 tasks.",
 						},
 						"new_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "New database name.",
+							Description: "New 数据库 名称.",
 						},
 					},
 				},
@@ -57,18 +57,18 @@ func ResourceTencentCloudSqlserverRollbackInstance() *schema.Resource {
 			"encryption": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "TDE encryption, `enable` encrypted, `disable` unencrypted.",
+				Description: "TDE 加密, `启用` encrypted, `disable` unencrypted.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"db_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database name.",
+							Description: "Database 名称.",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "encryption, `enable` encrypted, `disable` unencrypted.",
+							Description: "加密, `启用` encrypted, `disable` unencrypted.",
 						},
 					},
 				},

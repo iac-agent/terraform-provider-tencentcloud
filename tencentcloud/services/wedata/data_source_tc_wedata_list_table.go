@@ -48,23 +48,23 @@ func DataSourceTencentCloudWedataListTable() *schema.Resource {
 			"items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Schema record list。",
+				Description: "Schema 记录 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"guid": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data table GUID。",
+							Description: "Data 表 GUID。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data table 名称",
+							Description: "Data 表 名称",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data table 描述",
+							Description: "Data 表 描述",
 						},
 						"database_name": {
 							Type:        schema.TypeString,
@@ -94,7 +94,7 @@ func DataSourceTencentCloudWedataListTable() *schema.Resource {
 						"technical_metadata": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Technical metadata of the table。",
+							Description: "Technical metadata 的 表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"owner": {
@@ -105,12 +105,12 @@ func DataSourceTencentCloudWedataListTable() *schema.Resource {
 									"location": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Data table location。",
+										Description: "Data 表 location。",
 									},
 									"storage_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Storage size。",
+										Description: "Storage 大小。",
 									},
 								},
 							},
@@ -118,7 +118,7 @@ func DataSourceTencentCloudWedataListTable() *schema.Resource {
 						"business_metadata": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Business metadata of the table。",
+							Description: "Business metadata 的 表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_names": {

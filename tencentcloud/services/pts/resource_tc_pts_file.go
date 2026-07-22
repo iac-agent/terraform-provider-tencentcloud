@@ -29,37 +29,37 @@ func ResourceTencentCloudPtsFile() *schema.Resource {
 			"file_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "File id.",
+				Description: "File ID.",
 			},
 
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project id.",
+				Description: "Project ID.",
 			},
 
 			"kind": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "File kind, parameter file-1, protocol file-2, request file-3.",
+				Description: "File kind, 参数 文件-1, protocol 文件-2, 请求 文件-3.",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "File name.",
+				Description: "File 名称.",
 			},
 
 			"size": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "File size.",
+				Description: "File 大小.",
 			},
 
 			"type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "File type, folder-folder.",
+				Description: "File 类型, 文件夹-文件夹.",
 			},
 
 			"line_count": {
@@ -74,7 +74,7 @@ func ResourceTencentCloudPtsFile() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "The first few lines of data.",
+				Description: "first few lines 的 数据.",
 			},
 
 			"tail_lines": {
@@ -83,13 +83,13 @@ func ResourceTencentCloudPtsFile() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "The last few lines of data.",
+				Description: "last few lines 的 数据.",
 			},
 
 			"header_in_file": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether the header is in the file.",
+				Description: "Whether 头部 是 在 文件.",
 			},
 
 			"header_columns": {
@@ -104,33 +104,33 @@ func ResourceTencentCloudPtsFile() *schema.Resource {
 			"file_infos": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Files in a folder.",
+				Description: "Files 在 文件夹.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File name.",
+							Description: "File 名称.",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "File size.",
+							Description: "File 大小.",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File type.",
+							Description: "File 类型.",
 						},
 						"updated_at": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Update time.",
+							Description: "Update 时间.",
 						},
 						"file_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File id.",
+							Description: "File ID.",
 						},
 					},
 				},

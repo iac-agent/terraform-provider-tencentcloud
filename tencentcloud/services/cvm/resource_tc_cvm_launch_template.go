@@ -31,24 +31,24 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "The location of instance。",
+				Description: "location 的 实例。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"zone": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The available 可用区 ID instance。",
+							Description: "可用 可用区 ID 实例。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The project ID instance。",
+							Description: "项目 ID 实例。",
 						},
 						"host_ids": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Optional:    true,
-							Description: "The CDH ID 列表 the instance(input)。",
+							Description: "CDH ID 列表 实例(input)。",
 						},
 						"host_ips": {
 							Type:        schema.TypeSet,
@@ -72,7 +72,7 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance launch template 版本 描述",
+				Description: "实例 launch template 版本 描述",
 			},
 
 			"instance_type": {
@@ -80,7 +80,7 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The 类型 instance. If this parameter is not specified，the system will dynamically 指定default model according to the resource sales in the current 地域",
+				Description: "类型 实例. 如果 此 参数 是 不 指定， 系统 将 dynamically 指定default model according 到 资源 sales 在 当前 地域",
 			},
 
 			"system_disk": {
@@ -89,23 +89,23 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "System disk configuration information of the instance. If this parameter is not specified，it is assigned according to the system default。",
+				Description: "System 磁盘 配置 信息 的 实例. 如果 此 参数 是 不 指定，它 是 assigned according 到 系统 默认值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"disk_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "类型 system disk。",
+							Description: "类型 系统 磁盘。",
 						},
 						"disk_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "System disk ID。",
+							Description: "System 磁盘 ID。",
 						},
 						"disk_size": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The size of system disk。",
+							Description: "大小 的 系统 磁盘。",
 						},
 						"cdc_id": {
 							Type:        schema.TypeString,
@@ -120,48 +120,48 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "Data disk configuration information of the instance。",
+				Description: "Data 磁盘 配置 信息 的 实例。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"disk_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The size of the data disk。",
+							Description: "大小 的 数据 磁盘。",
 						},
 						"disk_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "类型 data disk。",
+							Description: "类型 数据 磁盘。",
 						},
 						"disk_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data disk ID。",
+							Description: "Data 磁盘 ID。",
 						},
 						"delete_with_instance": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "是否data disk is destroyed along with the instance，true or false。",
+							Description: "是否data 磁盘 是 destroyed along 使用 实例，true 或 false。",
 						},
 						"snapshot_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Data disk snapshot ID。",
+							Description: "Data 磁盘 快照 ID。",
 						},
 						"encrypt": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "是否data disk is encrypted，TRUE or FALSE。",
+							Description: "是否data 磁盘 是 encrypted，TRUE 或 FALSE。",
 						},
 						"kms_key_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The ID custom CMK。",
+							Description: "ID 自定义 CMK。",
 						},
 						"throughput_performance": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Cloud disk performance，MB/s。",
+							Description: "Cloud 磁盘 performance，MB/s。",
 						},
 						"cdc_id": {
 							Type:        schema.TypeString,
@@ -178,23 +178,23 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "The configuration information of VPC. If this parameter is not specified，the basic network is used by default。",
+				Description: "配置 信息 的 VPC. 如果 此 参数 是 不 指定， basic 网络 是 使用 通过 默认值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The ID VPC。",
+							Description: "ID VPC。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The ID subnet。",
+							Description: "ID 子网。",
 						},
 						"as_vpc_gateway": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Is it used as a Public network gateway，TRUE or FALSE。",
+							Description: "Is 它 使用 作为 Public 网络 网关，TRUE 或 FALSE。",
 						},
 						"private_ip_addresses": {
 							Type: schema.TypeSet,
@@ -202,12 +202,12 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "The 地址 of private ip。",
+							Description: "地址 的 私有 ip。",
 						},
 						"ipv6_address_count": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The 数量 ipv6 addresses for Elastic Network Interface。",
+							Description: "数量 ipv6 addresses 对于 Elastic Network Interface。",
 						},
 					},
 				},
@@ -219,7 +219,7 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "The information settings of public network bandwidth. If you do not 指定this parameter，the default Internet bandwidth is 0 Mbps。",
+				Description: "信息 settings 的 公有 网络 带宽. 如果 您 do 不 指定this 参数， 默认值 Internet 带宽 是 0 Mbps。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"internet_charge_type": {
@@ -230,17 +230,17 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 						"internet_max_bandwidth_out": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Internet outbound bandwidth upper 限制，Mbps。",
+							Description: "Internet outbound 带宽 upper 限制，Mbps。",
 						},
 						"public_ip_assigned": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "是否allocate public network IP，TRUE or FALSE。",
+							Description: "是否allocate 公有 网络 IP，TRUE 或 FALSE。",
 						},
 						"bandwidth_package_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "ID bandwidth package。",
+							Description: "ID 带宽 包。",
 						},
 					},
 				},
@@ -251,7 +251,7 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 				ForceNew:    true,
 				Default:     1,
 				Type:        schema.TypeInt,
-				Description: "The 数量 instances purchased。",
+				Description: "数量 实例 purchased。",
 			},
 
 			"instance_name": {
@@ -259,7 +259,7 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "名称 instance. If you do not 指定an instance display 名称，'Unnamed' is displayed by default。",
+				Description: "名称 实例. 如果 您 do 不 指定an 实例 display 名称，'Unnamed' 是 displayed 通过 默认值。",
 			},
 
 			"login_settings": {
@@ -268,13 +268,13 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "The login settings of instance. By default，passwords are randomly generated and notified to users via internal messages。",
+				Description: "login settings 的 实例. By 默认值，passwords 是 randomly generated 和 notified 到 users via 内部 messages。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"password": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The login 密码 of instance。",
+							Description: "login 密码 的 实例。",
 						},
 						"key_ids": {
 							Type: schema.TypeSet,
@@ -287,7 +287,7 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 						"keep_image_login": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Keep the original settings of the mirror。",
+							Description: "Keep original settings 的 mirror。",
 						},
 					},
 				},
@@ -301,7 +301,7 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The security 组 ID instance. If this parameter is not specified，the default security group is bound。",
+				Description: "安全 组 ID 实例. 如果 此 参数 是 不 指定， 默认值 安全 组 是 bound。",
 			},
 
 			"enhanced_service": {
@@ -310,20 +310,20 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Enhanced service. If this parameter is not specified，cloud monitoring and cloud security services will be 已启用 by default in public images。",
+				Description: "Enhanced 服务. 如果 此 参数 是 不 指定，云 监控 和 云 安全 services 将 是 已启用 通过 默认值 在 公有 images。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"security_service": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Enable cloud security service。",
+							Description: "Enable 云 安全 服务。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"enabled": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "是否enable cloud security service，TRUE or FALSE。",
+										Description: "是否enable 云 安全 服务，TRUE 或 FALSE。",
 									},
 								},
 							},
@@ -332,13 +332,13 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Enable cloud monitor service。",
+							Description: "Enable 云 监控 服务。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"enabled": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "是否enable cloud monitor service，TRUE or FALSE。",
+										Description: "是否enable 云 监控 服务，TRUE 或 FALSE。",
 									},
 								},
 							},
@@ -353,7 +353,7 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 									"enabled": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "是否enable TencentCloud Automation Tools(TAT)，TRUE or FALSE。",
+										Description: "是否enable TencentCloud Automation Tools(TAT)，TRUE 或 FALSE。",
 									},
 								},
 							},
@@ -366,14 +366,14 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "A string to used guarantee request idempotency。",
+				Description: "A 字符串 到 使用 guarantee 请求 idempotency。",
 			},
 
 			"host_name": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The 主机 名称 CVM。",
+				Description: "主机 名称 CVM。",
 			},
 
 			"action_timer": {
@@ -382,7 +382,7 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Timed task。",
+				Description: "Timed 任务。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"timer_action": {
@@ -399,7 +399,7 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Extended data。",
+							Description: "Extended 数据。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"release_address": {
@@ -413,29 +413,29 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Optional:    true,
-										Description: "Unsupported network 类型",
+										Description: "Unsupported 网络 类型",
 									},
 									"storage_block_attr": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "HDD local storage attributes。",
+										Description: "HDD 本地 存储 attributes。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"type": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "类型 HDD local storage。",
+													Description: "类型 HDD 本地 存储。",
 												},
 												"min_size": {
 													Type:        schema.TypeInt,
 													Required:    true,
-													Description: "The minimum capacity of HDD local storage。",
+													Description: "最小 容量 的 HDD 本地 存储。",
 												},
 												"max_size": {
 													Type:        schema.TypeInt,
 													Required:    true,
-													Description: "The maximum capacity of HDD local storage。",
+													Description: "最大 容量 的 HDD 本地 存储。",
 												},
 											},
 										},
@@ -454,7 +454,7 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "ID disaster recover group。",
+				Description: "ID disaster recover 组。",
 			},
 
 			"tag_specification": {
@@ -467,7 +467,7 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 						"resource_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "类型 resource。",
+							Description: "类型 资源。",
 						},
 						"tags": {
 							Type:        schema.TypeList,
@@ -478,12 +478,12 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 									"key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The 键 of 标签",
+										Description: "键 的 标签",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The 值 of 标签",
+										Description: "值 的 标签",
 									},
 								},
 							},
@@ -497,7 +497,7 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "The marketplace options of instance。",
+				Description: "marketplace options 的 实例。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"spot_options": {
@@ -515,7 +515,7 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 									"spot_instance_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Bidding request 类型，currently only supported 类型: one-time。",
+										Description: "Bidding 请求 类型，currently 仅 支持 类型: 一个-时间。",
 									},
 								},
 							},
@@ -523,7 +523,7 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 						"market_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Market option 类型，currently only supports 值: spot。",
+							Description: "Market 选项 类型，currently 仅 支持 值: spot。",
 						},
 					},
 				},
@@ -533,28 +533,28 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The data of users。",
+				Description: "数据 的 users。",
 			},
 
 			"dry_run": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "是否preflight only this request，true or false。",
+				Description: "是否preflight 仅 此 请求，true 或 false。",
 			},
 
 			"cam_role_name": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The 角色 名称 CAM。",
+				Description: "角色 名称 CAM。",
 			},
 
 			"hpc_cluster_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "ID HPC cluster。",
+				Description: "ID HPC 集群。",
 			},
 
 			"instance_charge_type": {
@@ -562,7 +562,7 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The charge 类型 instance. 默认值：POSTPAID_BY_HOUR。",
+				Description: "charge 类型 实例. 默认值：POSTPAID_BY_HOUR。",
 			},
 
 			"instance_charge_prepaid": {
@@ -570,13 +570,13 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "The configuration of charge prepaid。",
+				Description: "配置 的 charge prepaid。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"period": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The 周期 of purchasing instances。",
+							Description: "周期 的 purchasing 实例。",
 						},
 						"renew_flag": {
 							Type:        schema.TypeString,
@@ -591,7 +591,7 @@ func ResourceTencentCloudCvmLaunchTemplate() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Instance destruction protection flag。",
+				Description: "实例 destruction protection flag。",
 			},
 
 			"tags": {

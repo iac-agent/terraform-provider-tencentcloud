@@ -27,13 +27,13 @@ func ResourceTencentCloudSesDomain() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Your sender 域名 You are advised to use a third-级别 域名，for example，mail.qcloud.com。",
+				Description: "Your sender 域名 You 是 advised 到 使用 third-级别 域名，对于 示例，mail.qcloud.com。",
 			},
 
 			"attributes": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "DNS configuration details。",
+				Description: "DNS 配置 details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
@@ -49,7 +49,7 @@ func ResourceTencentCloudSesDomain() *schema.Resource {
 						"expected_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Values that need to be configured。",
+							Description: "Values 该 need 到 是 已配置。",
 						},
 					},
 				},

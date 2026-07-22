@@ -26,19 +26,19 @@ func ResourceTencentCloudSecurityGroupLiteRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID security group。",
+				Description: "ID 安全 组。",
 			},
 			"ingress": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Ingress rules set. A rule must match the following 格式: [操作]#[来源]#[端口]#[协议]. The available 值 of '操作' is `ACCEPT` and `DROP`. The '来源' can be an IP 地址 network，segment，security 组 ID and 地址 模板 ID The '端口' valid 格式 is `80`，`80,443`，`80-90` or `ALL`. The available 值 of '协议' is `TCP`，`UDP`，`ICMP`，`ALL` and `ppm(g?)-xxxxxxxx`. When '协议' is `ICMP` or `ALL`，the '端口' must be `ALL`。",
+				Description: "Ingress 规则 集合. A 规则 必须 match following 格式: [操作]#[来源]#[端口]#[协议]. 可用 值 的 '操作' 是 `ACCEPT` 和 `DROP`. '来源' 可以 是 IP 地址 网络，segment，安全 组 ID 和 地址 模板 ID '端口' 有效 格式 是 `80`，`80,443`，`80-90` 或 `ALL`. 可用 值 的 '协议' 是 `TCP`，`UDP`，`ICMP`，`ALL` 和 `ppm(g?)-xxxxxxxx`. 当 '协议' 是 `ICMP` 或 `ALL`， '端口' 必须 是 `ALL`。",
 			},
 			"egress": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Egress rules set. A rule must match the following 格式: [操作]#[来源]#[端口]#[协议]. The available 值 of '操作' is `ACCEPT` and `DROP`. The '来源' can be an IP 地址 network，segment，security 组 ID and 地址 模板 ID The '端口' valid 格式 is `80`，`80,443`，`80-90` or `ALL`. The available 值 of '协议' is `TCP`，`UDP`，`ICMP`，`ALL` and `ppm(g?)-xxxxxxxx`. When '协议' is `ICMP` or `ALL`，the '端口' must be `ALL`。",
+				Description: "Egress 规则 集合. A 规则 必须 match following 格式: [操作]#[来源]#[端口]#[协议]. 可用 值 的 '操作' 是 `ACCEPT` 和 `DROP`. '来源' 可以 是 IP 地址 网络，segment，安全 组 ID 和 地址 模板 ID '端口' 有效 格式 是 `80`，`80,443`，`80-90` 或 `ALL`. 可用 值 的 '协议' 是 `TCP`，`UDP`，`ICMP`，`ALL` 和 `ppm(g?)-xxxxxxxx`. 当 '协议' 是 `ICMP` 或 `ALL`， '端口' 必须 是 `ALL`。",
 			},
 		},
 	}

@@ -20,56 +20,56 @@ func DataSourceTencentCloudDbbrainRedisTopKeyPrefixList() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID.",
 			},
 
 			"date": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Query date, such as 2021-05-27, the earliest date can be the previous 30 days.",
+				Description: "Query date, such 作为 2021-05-27, earliest date 可以 是 previous 30 days.",
 			},
 
 			"product": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Service product type, supported values include `redis` - cloud database Redis.",
+				Description: "Service product 类型, 支持 值 include `redis` - 云 数据库 Redis.",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "list of top key prefixes.",
+				Description: "列表 的 top 键 prefixes.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ave_element_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Average element length.",
+							Description: "Average element 长度.",
 						},
 						"length": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total occupied memory (Byte).",
+							Description: "Total occupied 内存 (Byte).",
 						},
 						"key_pre_index": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "key prefix.",
+							Description: "键 prefix.",
 						},
 						"item_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "number of elements.",
+							Description: "数量 的 elements.",
 						},
 						"count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of keys.",
+							Description: "数量 的 keys.",
 						},
 						"max_element_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum element length.",
+							Description: "Maximum element 长度.",
 						},
 					},
 				},
@@ -78,7 +78,7 @@ func DataSourceTencentCloudDbbrainRedisTopKeyPrefixList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

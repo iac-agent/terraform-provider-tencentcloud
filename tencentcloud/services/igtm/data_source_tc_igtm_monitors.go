@@ -18,18 +18,18 @@ func DataSourceTencentCloudIgtmMonitors() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Query filter conditions。",
+				Description: "Query 过滤器 conditions。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "过滤字段名称，supported MonitorName: monitor 名称; MonitorId: monitor ID。",
+							Description: "过滤字段名称，支持 MonitorName: 监控 名称; MonitorId: 监控 ID。",
 						},
 						"value": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Filter field values。",
+							Description: "过滤器 字段 值。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -37,7 +37,7 @@ func DataSourceTencentCloudIgtmMonitors() *schema.Resource {
 						"fuzzy": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "是否enable fuzzy query，only supports 过滤字段名称 as 域名\nWhen fuzzy query is 已启用，值 maximum length is 1，otherwise 值 maximum length is 5. (Reserved field，currently unused)。",
+							Description: "是否enable fuzzy 查询，仅 支持 过滤字段名称 作为 域名\nWhen fuzzy 查询 是 已启用，值 最大 长度 是 1，otherwise 值 最大 长度 是 5. (Reserved 字段，currently unused)。",
 						},
 					},
 				},
@@ -46,19 +46,19 @@ func DataSourceTencentCloudIgtmMonitors() *schema.Resource {
 			"is_detect_num": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "是否query detection count，0 for no，1 for yes。",
+				Description: "是否query detection count，0 对于 无，1 对于 yes。",
 			},
 
 			"monitor_data_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Monitor list。",
+				Description: "Monitor 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"monitor_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Detection rule ID。",
+							Description: "Detection 规则 ID。",
 						},
 						"monitor_name": {
 							Type:        schema.TypeString,
@@ -73,7 +73,7 @@ func DataSourceTencentCloudIgtmMonitors() *schema.Resource {
 						"detector_group_ids": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "Monitoring 节点 ID group。",
+							Description: "Monitoring 节点 ID 组。",
 							Elem: &schema.Schema{
 								Type: schema.TypeInt,
 							},
@@ -111,7 +111,7 @@ func DataSourceTencentCloudIgtmMonitors() *schema.Resource {
 						"return_code_threshold": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "返回值 threshold。",
+							Description: "返回值 阈值。",
 						},
 						"enable_redirect": {
 							Type:        schema.TypeString,
@@ -126,12 +126,12 @@ func DataSourceTencentCloudIgtmMonitors() *schema.Resource {
 						"packet_loss_rate": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Packet loss rate upper 限制",
+							Description: "Packet loss 速率 upper 限制",
 						},
 						"timeout": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Detection timeout。",
+							Description: "Detection 超时。",
 						},
 						"fail_times": {
 							Type:        schema.TypeInt,
@@ -141,7 +141,7 @@ func DataSourceTencentCloudIgtmMonitors() *schema.Resource {
 						"fail_rate": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Failure rate upper 限制 100。",
+							Description: "Failure 速率 upper 限制 100。",
 						},
 						"created_on": {
 							Type:        schema.TypeString,
@@ -156,7 +156,7 @@ func DataSourceTencentCloudIgtmMonitors() *schema.Resource {
 						"detector_style": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Monitoring node 类型\nAUTO INTERNAL OVERSEAS IPV6 ALL。",
+							Description: "Monitoring 节点 类型\nAUTO INTERNAL OVERSEAS IPV6 ALL。",
 						},
 						"detect_num": {
 							Type:        schema.TypeInt,

@@ -31,13 +31,13 @@ func ResourceTencentCloudPrivateDnsZone() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "域名 名称，which must be in the 格式 of standard TLD。",
+				Description: "域名 名称，其中 必须 是 在 格式 的 standard TLD。",
 			},
 			"tag_set": {
 				Type:          schema.TypeList,
 				Optional:      true,
 				Computed:      true,
-				Description:   "标签 the private 域名 when it is created。",
+				Description:   "标签 私有 域名 当 它 是 创建。",
 				Deprecated:    "It has been deprecated from version 1.72.4. Use `tags` instead.",
 				ConflictsWith: []string{"tags"},
 				Elem: &schema.Resource{
@@ -45,12 +45,12 @@ func ResourceTencentCloudPrivateDnsZone() *schema.Resource {
 						"tag_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "键 of 标签",
+							Description: "键 的 标签",
 						},
 						"tag_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "值 of 标签",
+							Description: "值 的 标签",
 						},
 					},
 				},
@@ -58,14 +58,14 @@ func ResourceTencentCloudPrivateDnsZone() *schema.Resource {
 			"tags": {
 				Type:          schema.TypeMap,
 				Optional:      true,
-				Description:   "标签 of the private dns 可用区",
+				Description:   "标签 的 私有 dns 可用区",
 				ConflictsWith: []string{"tag_set"},
 			},
 			"vpc_set": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "Associates the private 域名 to a VPC when it is created。",
+				Description: "Associates 私有 域名 到 VPC 当 它 是 创建。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"uniq_vpc_id": {
@@ -97,13 +97,13 @@ func ResourceTencentCloudPrivateDnsZone() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "列表 authorized accounts' VPCs to associate with the private 域名",
+				Description: "列表 authorized accounts' VPCs 到 associate 使用 私有 域名",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"uin": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "UIN of the VPC 账号",
+							Description: "UIN 的 VPC 账号",
 						},
 						"uniq_vpc_id": {
 							Type:        schema.TypeString,

@@ -26,22 +26,22 @@ func DataSourceTencentCloudSsmSshKeyPairValue() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The 键 pair ID is the unique identifier of the 键 pair in the cloud server。",
+				Description: "键 pair ID 是 唯一 identifier 的 键 pair 在 云 服务器。",
 			},
 			"public_key": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Public 键 plain text，encoded using base64。",
+				Description: "Public 键 plain text，encoded 使用 base64。",
 			},
 			"private_key": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Private 键 plain text，encoded using base64。",
+				Description: "Private 键 plain text，encoded 使用 base64。",
 			},
 			"project_id": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The project ID to which this 键 pair belongs。",
+				Description: "项目 ID 到 其中 此 键 pair belongs。",
 			},
 			"ssh_key_name": {
 				Computed:    true,
@@ -51,7 +51,7 @@ func DataSourceTencentCloudSsmSshKeyPairValue() *schema.Resource {
 			"ssh_key_description": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "描述 SSH 键 pair. Users can modify the 描述 information of the 键 pair in the CVM console。",
+				Description: "描述 SSH 键 pair. Users 可以 modify 描述 信息 的 键 pair 在 CVM console。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,

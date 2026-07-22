@@ -37,7 +37,7 @@ func ResourceTencentCloudMariadbAccountPrivileges() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "账号 information。",
+				Description: "账号 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"user": {
@@ -57,12 +57,12 @@ func ResourceTencentCloudMariadbAccountPrivileges() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Global permission. Valid values of `GlobalPrivileges`: `SELECT`，`INSERT`，`UPDATE`，`DELETE`，`CREATE`，`PROCESS`，`DROP`，`REFERENCES`，`INDEX`，`ALTER`，`SHOW DATABASES`，`CREATE TEMPORARY TABLES`，`LOCK TABLES`，`EXECUTE`，`CREATE VIEW`，`SHOW VIEW`，`CREATE ROUTINE`，`ALTER ROUTINE`，`EVENT`，`TRIGGER`.Note: if the parameter is left empty，no change will be made to the granted global permissions. To clear the granted global permissions，set the parameter to an empty array。",
+				Description: "Global 权限. 有效 值 的 `GlobalPrivileges`: `SELECT`，`INSERT`，`UPDATE`，`DELETE`，`CREATE`，`PROCESS`，`DROP`，`REFERENCES`，`INDEX`，`ALTER`，`SHOW DATABASES`，`CREATE TEMPORARY TABLES`，`LOCK TABLES`，`EXECUTE`，`CREATE VIEW`，`SHOW VIEW`，`CREATE ROUTINE`，`ALTER ROUTINE`，`EVENT`，`TRIGGER`.注意: 如果 参数 是 left 空，无 change 将 是 made 到 granted 全局 permissions. To clear granted 全局 permissions，集合 参数 到 空 数组。",
 			},
 			"database_privileges": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Database permission. Valid values of `Privileges`: `SELECT`，`INSERT`，`UPDATE`，`DELETE`，`CREATE`，`DROP`，`REFERENCES`，`INDEX`，`ALTER`，`CREATE TEMPORARY TABLES`，`LOCK TABLES`，`EXECUTE`，`CREATE VIEW`，`SHOW VIEW`，`CREATE ROUTINE`，`ALTER ROUTINE`，`EVENT`，`TRIGGER`.Note: if the parameter is left empty，no change will be made to the granted database permissions. To clear the granted database permissions，set `Privileges` to an empty array。",
+				Description: "Database 权限. 有效 值 的 `Privileges`: `SELECT`，`INSERT`，`UPDATE`，`DELETE`，`CREATE`，`DROP`，`REFERENCES`，`INDEX`，`ALTER`，`CREATE TEMPORARY TABLES`，`LOCK TABLES`，`EXECUTE`，`CREATE VIEW`，`SHOW VIEW`，`CREATE ROUTINE`，`ALTER ROUTINE`，`EVENT`，`TRIGGER`.注意: 如果 参数 是 left 空，无 change 将 是 made 到 granted 数据库 permissions. To clear granted 数据库 permissions，集合 `Privileges` 到 空 数组。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"privileges": {
@@ -82,7 +82,7 @@ func ResourceTencentCloudMariadbAccountPrivileges() *schema.Resource {
 			"table_privileges": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "`SELECT`，`INSERT`，`UPDATE`，`DELETE`，`CREATE`，`DROP`，`REFERENCES`，`INDEX`，`ALTER`，`CREATE VIEW`，`SHOW VIEW`，`TRIGGER`.Note: if the parameter is not passed in，no change will be made to the granted table permissions. To clear the granted table permissions，set `Privileges` to an empty array。",
+				Description: "`SELECT`，`INSERT`，`UPDATE`，`DELETE`，`CREATE`，`DROP`，`REFERENCES`，`INDEX`，`ALTER`，`CREATE VIEW`，`SHOW VIEW`，`TRIGGER`.注意: 如果 参数 是 不 passed 在，无 change 将 是 made 到 granted 表 permissions. To clear granted 表 permissions，集合 `Privileges` 到 空 数组。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database": {
@@ -107,7 +107,7 @@ func ResourceTencentCloudMariadbAccountPrivileges() *schema.Resource {
 			"column_privileges": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Column permission. Valid values of `Privileges`: `SELECT`，`INSERT`，`UPDATE`，`REFERENCES`.Note: if the parameter is left empty，no change will be made to the granted column permissions. To clear the granted column permissions，set `Privileges` to an empty array。",
+				Description: "Column 权限. 有效 值 的 `Privileges`: `SELECT`，`INSERT`，`UPDATE`，`REFERENCES`.注意: 如果 参数 是 left 空，无 change 将 是 made 到 granted 列 permissions. To clear granted 列 permissions，集合 `Privileges` 到 空 数组。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database": {
@@ -137,7 +137,7 @@ func ResourceTencentCloudMariadbAccountPrivileges() *schema.Resource {
 			"view_privileges": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Database view permission. Valid values of `Privileges`: `SELECT`，`INSERT`，`UPDATE`，`DELETE`，`CREATE`，`DROP`，`REFERENCES`，`INDEX`，`ALTER`，`CREATE VIEW`，`SHOW VIEW`，`TRIGGER`.Note: if the parameter is not passed in，no change will be made to the granted view permissions. To clear the granted view permissions，set `Privileges` to an empty array。",
+				Description: "Database view 权限. 有效 值 的 `Privileges`: `SELECT`，`INSERT`，`UPDATE`，`DELETE`，`CREATE`，`DROP`，`REFERENCES`，`INDEX`，`ALTER`，`CREATE VIEW`，`SHOW VIEW`，`TRIGGER`.注意: 如果 参数 是 不 passed 在，无 change 将 是 made 到 granted view permissions. To clear granted view permissions，集合 `Privileges` 到 空 数组。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database": {
@@ -162,7 +162,7 @@ func ResourceTencentCloudMariadbAccountPrivileges() *schema.Resource {
 			"function_privileges": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Database function permissions. Valid values of `Privileges`: `ALTER ROUTINE`，`EXECUTE`.Note: if the parameter is not passed in，no change will be made to the granted function permissions. To clear the granted function permissions，set `Privileges` to an empty array。",
+				Description: "Database 函数 permissions. 有效 值 的 `Privileges`: `ALTER ROUTINE`，`EXECUTE`.注意: 如果 参数 是 不 passed 在，无 change 将 是 made 到 granted 函数 permissions. To clear granted 函数 permissions，集合 `Privileges` 到 空 数组。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database": {
@@ -187,7 +187,7 @@ func ResourceTencentCloudMariadbAccountPrivileges() *schema.Resource {
 			"procedure_privileges": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Database stored procedure permission. Valid values of `Privileges`: `ALTER ROUTINE`，`EXECUTE`.Note: if the parameter is not passed in，no change will be made to the granted stored procedure permissions. To clear the granted stored procedure permissions，set `Privileges` to an empty array。",
+				Description: "Database stored procedure 权限. 有效 值 的 `Privileges`: `ALTER ROUTINE`，`EXECUTE`.注意: 如果 参数 是 不 passed 在，无 change 将 是 made 到 granted stored procedure permissions. To clear granted stored procedure permissions，集合 `Privileges` 到 空 数组。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database": {

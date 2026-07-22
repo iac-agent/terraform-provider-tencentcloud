@@ -19,12 +19,12 @@ func DataSourceTencentCloudKmsWhiteBoxDeviceFingerprints() *schema.Resource {
 			"key_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Globally unique identifier for the white box 键",
+				Description: "Globally 唯一 identifier 对于 white box 键",
 			},
 			"list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Device fingerprint list。",
+				Description: "Device fingerprint 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"identity": {

@@ -21,12 +21,12 @@ func DataSourceTencentCloudHaVipEipAttachments() *schema.Resource {
 			"havip_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID attached HA VIP to be queried。",
+				Description: "ID attached HA VIP 到 是 queried。",
 			},
 			"address_ip": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "公网 IP 地址 of EIP to be queried。",
+				Description: "公网 IP 地址 的 EIP 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -47,7 +47,7 @@ func DataSourceTencentCloudHaVipEipAttachments() *schema.Resource {
 						"address_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "公网 IP 地址 of EIP。",
+							Description: "公网 IP 地址 的 EIP。",
 						},
 					},
 				},

@@ -18,13 +18,13 @@ func DataSourceTencentCloudOrganizationOrgShareArea() *schema.Resource {
 			"lang": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "语言default zh.\nValid values:\n  - `zh`: Chinese.\n  - `en`: English。",
+				Description: "语言default zh.\nValid 值:\n - `zh`: Chinese.\n - `en`: English。",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Area list。",
+				Description: "Area 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {

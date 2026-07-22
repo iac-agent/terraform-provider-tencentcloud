@@ -24,19 +24,19 @@ func DataSourceTencentCloudWedataTriggerTaskRun() *schema.Resource {
 			"task_execution_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Task execution ID。",
+				Description: "任务 execution ID。",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Workflow task execution list pagination 结果",
+				Description: "Workflow 任务 execution 列表 pagination 结果",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"execution_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task execution ID。",
+							Description: "任务 execution ID。",
 						},
 						"execution_state": {
 							Type:        schema.TypeString,
@@ -66,12 +66,12 @@ func DataSourceTencentCloudWedataTriggerTaskRun() *schema.Resource {
 						"task_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task 类型",
+							Description: "任务 类型",
 						},
 						"task_version_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task 版本 ID。",
+							Description: "任务 版本 ID。",
 						},
 						"trigger_type": {
 							Type:        schema.TypeString,
@@ -81,12 +81,12 @@ func DataSourceTencentCloudWedataTriggerTaskRun() *schema.Resource {
 						"wait_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Wait time （秒）。",
+							Description: "Wait 时间 （秒）。",
 						},
 						"resource_group": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Resource group。",
+							Description: "Resource 组。",
 						},
 						"error_code": {
 							Type:        schema.TypeString,
@@ -106,7 +106,7 @@ func DataSourceTencentCloudWedataTriggerTaskRun() *schema.Resource {
 						"job_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Execution platform job ID。",
+							Description: "Execution 平台 作业 ID。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
@@ -121,12 +121,12 @@ func DataSourceTencentCloudWedataTriggerTaskRun() *schema.Resource {
 						"dependence_finished_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Dependency task completion time。",
+							Description: "Dependency 任务 completion 时间。",
 						},
 						"queue_start_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task queue 开始时间。",
+							Description: "任务 queue 开始时间。",
 						},
 						"pending_start_time": {
 							Type:        schema.TypeString,
@@ -146,7 +146,7 @@ func DataSourceTencentCloudWedataTriggerTaskRun() *schema.Resource {
 						"queue_cost_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Queue cost time。",
+							Description: "Queue 费用 时间。",
 						},
 						"execution_time": {
 							Type:        schema.TypeString,
@@ -156,7 +156,7 @@ func DataSourceTencentCloudWedataTriggerTaskRun() *schema.Resource {
 						"all_cost_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Total cost time。",
+							Description: "Total 费用 时间。",
 						},
 						"time_zone": {
 							Type:        schema.TypeString,
@@ -166,7 +166,7 @@ func DataSourceTencentCloudWedataTriggerTaskRun() *schema.Resource {
 						"depend_on_list": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Dependent upstream task ID list。",
+							Description: "Dependent upstream 任务 ID 列表。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -174,17 +174,17 @@ func DataSourceTencentCloudWedataTriggerTaskRun() *schema.Resource {
 						"run_params": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Run parameters。",
+							Description: "Run 参数。",
 						},
 						"task_type_extensions": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task 类型 extensions including script 路径",
+							Description: "任务 类型 extensions 包括 脚本 路径",
 						},
 						"retry_times": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "重试次数 0 means first execution。",
+							Description: "重试次数 0 表示 first execution。",
 						},
 						"left_coordinate": {
 							Type:        schema.TypeFloat,
@@ -214,12 +214,12 @@ func DataSourceTencentCloudWedataTriggerTaskRun() *schema.Resource {
 						"issue_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Issue time to execution platform。",
+							Description: "Issue 时间 到 execution 平台。",
 						},
 						"task_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task 名称",
+							Description: "任务 名称",
 						},
 						"workflow_name": {
 							Type:        schema.TypeString,
@@ -244,7 +244,7 @@ func DataSourceTencentCloudWedataTriggerTaskRun() *schema.Resource {
 						"task_execution_state": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task execution state。",
+							Description: "任务 execution state。",
 						},
 						"cycle_type": {
 							Type:        schema.TypeString,
@@ -254,12 +254,12 @@ func DataSourceTencentCloudWedataTriggerTaskRun() *schema.Resource {
 						"user_name_in_charge": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "用户 名称 in charge。",
+							Description: "用户 名称 在 charge。",
 						},
 						"user_uin_in_charge": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "用户 UIN in charge。",
+							Description: "用户 UIN 在 charge。",
 						},
 						"resource_group_name": {
 							Type:        schema.TypeString,
@@ -289,12 +289,12 @@ func DataSourceTencentCloudWedataTriggerTaskRun() *schema.Resource {
 						"task_type_id": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Task 类型 ID。",
+							Description: "任务 类型 ID。",
 						},
 						"workflow_params": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Workflow parameters。",
+							Description: "Workflow 参数。",
 						},
 						"support_rerun": {
 							Type:        schema.TypeBool,
@@ -309,7 +309,7 @@ func DataSourceTencentCloudWedataTriggerTaskRun() *schema.Resource {
 						"execution_result": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task execution 结果",
+							Description: "任务 execution 结果",
 						},
 					},
 				},

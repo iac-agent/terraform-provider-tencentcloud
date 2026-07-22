@@ -29,17 +29,17 @@ func DataSourceTencentCloudSsmRotationDetail() *schema.Resource {
 			"frequency": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The rotation frequency，in days，默认为 1 day。",
+				Description: "rotation 频率，在 days，默认为 1 day。",
 			},
 			"latest_rotate_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Time of last rotation。",
+				Description: "Time 的 last rotation。",
 			},
 			"next_rotate_begin_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The time to start the next rotation。",
+				Description: "时间 到 start next rotation。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,

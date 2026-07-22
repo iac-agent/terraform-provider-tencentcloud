@@ -32,7 +32,7 @@ func ResourceTencentCloudMariadbEncryptAttributes() *schema.Resource {
 			"encrypt_enabled": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "是否enable data encryption，it is not supported to turn it off after it is turned on. The 可选 values: 0-disable，1-enable。",
+				Description: "是否enable 数据 加密，它 是 不 支持 到 turn 它 关闭 after 它 是 turned 在. 可选 值: 0-disable，1-启用。",
 			},
 		},
 	}

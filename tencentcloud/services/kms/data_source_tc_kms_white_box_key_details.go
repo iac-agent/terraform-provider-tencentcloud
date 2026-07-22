@@ -19,18 +19,18 @@ func DataSourceTencentCloudKmsWhiteBoxKeyDetails() *schema.Resource {
 			"key_status": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Filter condition: 状态 键，0: 已禁用，1: 已启用",
+				Description: "过滤器 condition: 状态 键，0: 已禁用，1: 已启用",
 			},
 			"key_infos": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "列表 white box 键 information。",
+				Description: "列表 white box 键 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"algorithm": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "类型 algorithm used by the 键",
+							Description: "类型 algorithm 使用 通过 键",
 						},
 						"create_time": {
 							Type:        schema.TypeInt,
@@ -50,7 +50,7 @@ func DataSourceTencentCloudKmsWhiteBoxKeyDetails() *schema.Resource {
 						"key_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Globally unique identifier for the white box 键",
+							Description: "Globally 唯一 identifier 对于 white box 键",
 						},
 						"creator_uin": {
 							Type:        schema.TypeInt,
@@ -60,7 +60,7 @@ func DataSourceTencentCloudKmsWhiteBoxKeyDetails() *schema.Resource {
 						"alias": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "As an alias for a 键 that is easier to identify and easier to understand，it cannot be empty and is a combination of 1-60 alphanumeric characters - _. The first character must be a letter or number. It cannot be repeated。",
+							Description: "As alias 对于 键 该 是 easier 到 identify 和 easier 到 understand，它 不能 是 空 和 是 combination 的 1-60 alphanumeric 字符 - _. first character 必须 是 letter 或 数量. It 不能 是 repeated。",
 						},
 						"description": {
 							Type:        schema.TypeString,
@@ -70,7 +70,7 @@ func DataSourceTencentCloudKmsWhiteBoxKeyDetails() *schema.Resource {
 						"encrypt_key": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "White box encryption 键，base64 encoded。",
+							Description: "White box 加密 键，base64 encoded。",
 						},
 						"owner_uin": {
 							Type:        schema.TypeInt,
@@ -80,12 +80,12 @@ func DataSourceTencentCloudKmsWhiteBoxKeyDetails() *schema.Resource {
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 状态 white box 键，the 值 is: 已启用 | 已禁用",
+							Description: "状态 white box 键， 值 是: 已启用 | 已禁用",
 						},
 						"device_fingerprint_bind": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Is there a device fingerprint bound to the current 键?。",
+							Description: "Is there device fingerprint bound 到 当前 键?。",
 						},
 					},
 				},

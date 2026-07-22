@@ -26,28 +26,28 @@ func ResourceTencentCloudScfProvisionedConcurrencyConfig() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "名称 function for which to set the provisioned 并发",
+				Description: "名称 函数 对于 其中 到 集合 provisioned 并发",
 			},
 
 			"qualifier": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Function 版本 number. Note: the $LATEST 版本 does not support provisioned 并发",
+				Description: "Function 版本 数量. 注意: $LATEST 版本 does 不 support provisioned 并发",
 			},
 
 			"version_provisioned_concurrency_num": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Provisioned 并发 amount. Note: there is an upper 限制 for the sum of provisioned 并发 amounts of all versions，which currently is the function&amp;#39;s maximum 并发 quota minus 100。",
+				Description: "Provisioned 并发 amount. 注意: there 是 upper 限制 对于 sum 的 provisioned 并发 amounts 的 all versions，其中 currently 是 函数&amp;#39;s 最大 并发 配额 minus 100。",
 			},
 
 			"namespace": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Function namespace. 默认值：default。",
+				Description: "Function 命名空间. 默认值：默认值。",
 			},
 
 			"trigger_actions": {
@@ -60,22 +60,22 @@ func ResourceTencentCloudScfProvisionedConcurrencyConfig() *schema.Resource {
 						"trigger_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Scheduled 操作 名称 Note: this field may return null，indicating that no valid values can be obtained。",
+							Description: "Scheduled 操作 名称 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"trigger_provisioned_concurrency_num": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Target provisioned 并发 of the scheduled scaling 操作 Note: this field may return null，indicating that no valid values can be obtained。",
+							Description: "Target provisioned 并发 的 scheduled scaling 操作 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"trigger_cron_config": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Trigger time of the scheduled 操作 in Cron expression. Seven fields 为必填项 and should be separated with a space. Note: this field may return null，indicating that no valid values can be obtained。",
+							Description: "Trigger 时间 的 scheduled 操作 在 Cron expression. Seven 字段 为必填项 和 should 是 separated 使用 space. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"provisioned_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The provision 类型 值: Default Note: This field may return null，indicating that no valid 值 can be found。",
+							Description: "provision 类型 值: Default 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 found。",
 						},
 					},
 				},
@@ -85,28 +85,28 @@ func ResourceTencentCloudScfProvisionedConcurrencyConfig() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "指定provisioned 并发 类型 默认值：Static provisioned 并发 ConcurrencyUtilizationTracking: Scales the 并发 automatically according to the 并发 utilization. If ConcurrencyUtilizationTracking is passed in，TrackingTarget，MinCapacity and MaxCapacity 为必填项，and VersionProvisionedConcurrencyNum must be 0。",
+				Description: "指定provisioned 并发 类型 默认值：Static provisioned 并发 ConcurrencyUtilizationTracking: Scales 并发 automatically according 到 并发 utilization. 如果 ConcurrencyUtilizationTracking 是 passed 在，TrackingTarget，MinCapacity 和 MaxCapacity 为必填项，和 VersionProvisionedConcurrencyNum 必须 是 0。",
 			},
 
 			"tracking_target": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeFloat,
-				Description: "The target 并发 utilization. Range: (0,1) (two decimal places)。",
+				Description: "目标 并发 utilization. Range: (0,1) (two decimal places)。",
 			},
 
 			"min_capacity": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "The 最小instances. It can not be smaller than 1。",
+				Description: "最小instances. It 可以 不 是 smaller 比 1。",
 			},
 
 			"max_capacity": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "The 最大instances。",
+				Description: "最大instances。",
 			},
 		},
 	}

@@ -20,49 +20,49 @@ func DataSourceTencentCloudVodSubApplications() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Application 名称 for exact match filtering。",
+				Description: "Application 名称 对于 exact match filtering。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "标签键-值 pairs for filtering applications. Applications matching all specified 标签 will be returned。",
+				Description: "标签键-值 pairs 对于 filtering applications. Applications matching all 指定 标签 将 是 返回。",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "用于保存结果 in JSON 格式",
+				Description: "用于保存结果 在 JSON 格式",
 			},
 			"sub_application_info_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "列表 sub-application information。",
+				Description: "列表 sub-应用 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"sub_app_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Sub-application ID。",
+							Description: "Sub-应用 ID。",
 						},
 						"sub_app_id_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Sub-application 名称",
+							Description: "Sub-应用 名称",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Legacy 名称 field (for backward compatibility)。",
+							Description: "Legacy 名称 字段 (对于 backward compatibility)。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Sub-application 描述",
+							Description: "Sub-应用 描述",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 in ISO 8601 格式",
+							Description: "创建时间 在 ISO 8601 格式",
 						},
 						"status": {
 							Type:        schema.TypeString,
@@ -77,13 +77,13 @@ func DataSourceTencentCloudVodSubApplications() *schema.Resource {
 						"storage_regions": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "列表 已启用 storage regions。",
+							Description: "列表 已启用 存储 regions。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "Resource 标签 bound to the sub-application。",
+							Description: "Resource 标签 bound 到 sub-应用。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 					},

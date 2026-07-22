@@ -17,19 +17,19 @@ func DataSourceTencentCloudTagKeys() *schema.Resource {
 			"create_uin": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "创建者 `Uin`. 如果未指定，`Uin` is only used as the query condition。",
+				Description: "创建者 `Uin`. 如果未指定，`Uin` 是 仅 使用 作为 查询 condition。",
 			},
 
 			"show_project": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "是否show project. Allow values: 0: no，1: yes。",
+				Description: "是否show 项目. Allow 值: 0: 无，1: yes。",
 			},
 
 			"category": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "标签 类型 有效值：Custom: custom 标签; System: system 标签; All: all 标签 默认值：All。",
+				Description: "标签 类型 有效值：Custom: 自定义 标签; System: 系统 标签; All: all 标签 默认值：All。",
 			},
 
 			"tags": {

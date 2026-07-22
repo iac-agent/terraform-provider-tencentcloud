@@ -26,13 +26,13 @@ func ResourceTencentCloudAsNotification() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID scaling group。",
+				Description: "ID scaling 组。",
 			},
 			"notification_types": {
 				Type:        schema.TypeList,
 				Required:    true,
 				MinItems:    1,
-				Description: "A 列表 Notification Types that trigger notifications. Acceptable values are `SCALE_OUT_FAILED`，`SCALE_IN_SUCCESSFUL`，`SCALE_IN_FAILED`，`REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL` and `REPLACE_UNHEALTHY_INSTANCE_FAILED`。",
+				Description: "A 列表 Notification Types 该 触发器 notifications. Acceptable 值 是 `SCALE_OUT_FAILED`，`SCALE_IN_SUCCESSFUL`，`SCALE_IN_FAILED`，`REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL` 和 `REPLACE_UNHEALTHY_INSTANCE_FAILED`。",
 				Elem: &schema.Schema{
 					Type:         schema.TypeString,
 					ValidateFunc: tccommon.ValidateAllowedStringValue(SCALING_GROUP_NOTIFICATION_TYPE),
@@ -43,7 +43,7 @@ func ResourceTencentCloudAsNotification() *schema.Resource {
 				Required:    true,
 				MinItems:    1,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "A group of 用户 IDs to be notified。",
+				Description: "A 组 的 用户 IDs 到 是 notified。",
 			},
 		},
 	}

@@ -43,7 +43,7 @@ func ResourceTencentCloudAntiddosCcPrecisionPolicy() *schema.Resource {
 			"protocol": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "协议 http or https。",
+				Description: "协议 http 或 https。",
 			},
 
 			"domain": {
@@ -55,24 +55,24 @@ func ResourceTencentCloudAntiddosCcPrecisionPolicy() *schema.Resource {
 			"policy_action": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "policy 类型，alg or drop。",
+				Description: "策略 类型，alg 或 drop。",
 			},
 
 			"policy_list": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "policy list。",
+				Description: "策略 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"field_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "field 类型",
+							Description: "字段 类型",
 						},
 						"field_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration fields can take values of cgi，ua，cookie，referer，accept，srcip。",
+							Description: "Configuration 字段 可以 take 值 的 cgi，ua，cookie，referer，accept，srcip。",
 						},
 						"value": {
 							Type:        schema.TypeString,
@@ -82,7 +82,7 @@ func ResourceTencentCloudAntiddosCcPrecisionPolicy() *schema.Resource {
 						"value_operator": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration item 值 comparison method，can take values of equal，not_ Equal，include。",
+							Description: "Configuration item 值 comparison 方法，可以 take 值 的 equal，not_ Equal，include。",
 						},
 					},
 				},

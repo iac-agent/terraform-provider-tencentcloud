@@ -68,13 +68,13 @@ func DataSourceTencentCloudEksClusterCredential() *schema.Resource {
 			"addresses": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "列表 IP 地址 information。",
+				Description: "列表 IP 地址 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "类型 IP，can be `advertise`，`public`，etc。",
+							Description: "类型 IP，可以 是 `advertise`，`公有`，etc。",
 						},
 						"ip": {
 							Type:        schema.TypeString,
@@ -97,25 +97,25 @@ func DataSourceTencentCloudEksClusterCredential() *schema.Resource {
 			"public_lb": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Cluster public access LoadBalancer info。",
+				Description: "Cluster 公有 访问 LoadBalancer info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"enabled": {
 							Type:     schema.TypeBool,
 							Computed: true,
 
-							Description: "表示weather the public access LB 已启用",
+							Description: "表示weather 公有 访问 LB 已启用",
 						},
 						"allow_from_cidrs": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "列表 CIDRs which allowed to access。",
+							Description: "列表 CIDRs 其中 allowed 到 访问。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 						"security_policies": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "列表 security allow IP or CIDRs，default deny all。",
+							Description: "列表 安全 allow IP 或 CIDRs，默认值 deny all。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 						"extra_param": {
@@ -126,7 +126,7 @@ func DataSourceTencentCloudEksClusterCredential() *schema.Resource {
 						"security_group": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Security group。",
+							Description: "Security 组。",
 						},
 					},
 				},
@@ -134,18 +134,18 @@ func DataSourceTencentCloudEksClusterCredential() *schema.Resource {
 			"internal_lb": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Cluster internal access LoadBalancer info。",
+				Description: "Cluster 内部 访问 LoadBalancer info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"enabled": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "表示weather the internal access LB 已启用",
+							Description: "表示weather 内部 访问 LB 已启用",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID subnet which related to Internal LB。",
+							Description: "ID 子网 其中 related 到 Internal LB。",
 						},
 					},
 				},
@@ -153,13 +153,13 @@ func DataSourceTencentCloudEksClusterCredential() *schema.Resource {
 			"proxy_lb": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "表示是否new internal/public network function。",
+				Description: "表示是否new 内部/公有 网络 函数。",
 			},
 			"kube_config": {
 				Type:        schema.TypeString,
 				Computed:    true,
 				Sensitive:   true,
-				Description: "EKS cluster kubeconfig。",
+				Description: "EKS 集群 kubeconfig。",
 			},
 		},
 	}

@@ -33,19 +33,19 @@ func ResourceTencentCloudCiMediaSuperResolutionTemplate() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The 模板名称 only supports `Chinese`，`English`，`numbers`，`_`，`-` and `*`。",
+				Description: "模板名称 仅 支持 `Chinese`，`English`，`numbers`，`_`，`-` 和 `*`。",
 			},
 
 			"resolution": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Resolution Options sdtohd: Standard Definition to Ultra Definition，hdto4k: HD to 4K。",
+				Description: "Resolution Options sdtohd: Standard Definition 到 Ultra Definition，hdto4k: HD 到 4K。",
 			},
 
 			"enable_scale_up": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Auto scaling switch，off by default。",
+				Description: "Auto scaling switch，关闭 通过 默认值。",
 			},
 
 			"version": {

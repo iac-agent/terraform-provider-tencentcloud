@@ -37,35 +37,35 @@ func ResourceTencentCloudCvmExportImages() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Prefix of exported file。",
+				Description: "Prefix 的 exported 文件。",
 			},
 
 			"export_format": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "格式 of the exported image file. 有效值：RAW，QCOW2，VHD and VMDK. 默认值：RAW。",
+				Description: "格式 的 exported 镜像 文件. 有效值：RAW，QCOW2，VHD 和 VMDK. 默认值：RAW。",
 			},
 
 			"only_export_root_disk": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "是否export only the system disk。",
+				Description: "是否export 仅 系统 磁盘。",
 			},
 
 			"dry_run": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Check 是否image can be exported。",
+				Description: "Check 是否image 可以 是 exported。",
 			},
 
 			"role_name": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "角色 名称 (默认值：CVM_QcsRole). Before exporting the images，make sure the 角色 exists，and it has write permission to COS。",
+				Description: "角色 名称 (默认值：CVM_QcsRole). Before exporting images，make sure 角色 exists，和 它 has write 权限 到 COS。",
 			},
 		},
 	}

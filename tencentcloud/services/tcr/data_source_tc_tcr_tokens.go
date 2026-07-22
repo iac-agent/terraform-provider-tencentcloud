@@ -20,12 +20,12 @@ func DataSourceTencentCloudTCRTokens() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID instance that the 令牌 belongs to。",
+				Description: "ID 实例 该 令牌 belongs 到。",
 			},
 			"token_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID TCR 令牌 to query。",
+				Description: "ID TCR 令牌 到 查询。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -37,18 +37,18 @@ func DataSourceTencentCloudTCRTokens() *schema.Resource {
 			"token_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information 列表 the dedicated TCR tokens。",
+				Description: "Information 列表 dedicated TCR tokens。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"token_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Id of TCR 令牌",
+							Description: "ID 的 TCR 令牌",
 						},
 						"enable": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Indicate that the 令牌 is 已启用 or not。",
+							Description: "Indicate 该 令牌 是 已启用 或 不。",
 						},
 						"description": {
 							Type:        schema.TypeString,

@@ -19,7 +19,7 @@ func DataSourceTencentCloudDbbrainSlowLogUserSqlAdvice() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID.",
 			},
 
 			"sql_text": {
@@ -32,55 +32,55 @@ func DataSourceTencentCloudDbbrainSlowLogUserSqlAdvice() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "library name.",
+				Description: "库 名称.",
 			},
 
 			"product": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Service product type, supported values: `mysql` - cloud database MySQL; `cynosdb` - cloud database TDSQL-C for MySQL; `dbbrain-mysql` - self-built MySQL, the default is `mysql`.",
+				Description: "Service product 类型, 支持 值: `mysql` - 云 数据库 MySQL; `cynosdb` - 云 数据库 TDSQL-C 对于 MySQL; `dbbrain-mysql` - self-built MySQL, 默认值 是 `mysql`.",
 			},
 
 			"advices": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "SQL optimization suggestion, which can be parsed into a JSON array, and the output is empty when no optimization is required.",
+				Description: "SQL optimization suggestion, 其中 可以 是 parsed into JSON 数组, 和 output 是 空 当 无 optimization 是 必填.",
 			},
 
 			"comments": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "SQL optimization suggestion remarks, which can be parsed into a String array, and the output is empty when optimization is not required.",
+				Description: "SQL optimization suggestion remarks, 其中 可以 是 parsed into String 数组, 和 output 是 空 当 optimization 是 不 必填.",
 			},
 
 			"tables": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The DDL information of related tables can be parsed into a JSON array.",
+				Description: "DDL 信息 的 related tables 可以 是 parsed into JSON 数组.",
 			},
 
 			"sql_plan": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The SQL execution plan can be parsed into JSON, and the output is empty when no optimization is required.",
+				Description: "SQL execution plan 可以 是 parsed into JSON, 和 output 是 空 当 无 optimization 是 必填.",
 			},
 
 			"cost": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The cost saving details after SQL optimization can be parsed as JSON, and the output is empty when no optimization is required.",
+				Description: "费用 saving details after SQL optimization 可以 是 parsed 作为 JSON, 和 output 是 空 当 无 optimization 是 必填.",
 			},
 
 			"request_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Unique request ID, returned for every request. The RequestId of the request needs to be provided when locating the problem.",
+				Description: "Unique 请求 ID, 返回 对于 every 请求. RequestId 的 请求 needs 到 是 提供 当 locating problem.",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

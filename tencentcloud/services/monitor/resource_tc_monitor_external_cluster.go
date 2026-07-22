@@ -69,7 +69,7 @@ func ResourceTencentCloudMonitorExternalCluster() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "是否enable public network access。",
+				Description: "是否enable 公有 网络 访问。",
 			},
 
 			// computed
@@ -82,7 +82,7 @@ func ResourceTencentCloudMonitorExternalCluster() *schema.Resource {
 			"cluster_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "集群类型，returned by API。",
+				Description: "集群类型，返回 通过 API。",
 			},
 
 			"status": {

@@ -21,13 +21,13 @@ func DataSourceTencentCloudSsmSecrets() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
-				Description: "The 顺序 to sort the 创建时间 of secret. `0` - desc，`1` - asc. 默认值为 `0`。",
+				Description: "顺序 到 sort 创建时间 的 secret. `0` - desc，`1` - asc. 默认值为 `0`。",
 			},
 			"state": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
-				Description: "Filter by state of secret. `0` - all secrets are queried，`1` - only 已启用 secrets are queried，`2` - only 已禁用 secrets are queried，`3` - only PendingDelete secrets are queried。",
+				Description: "过滤器 通过 state 的 secret. `0` - all secrets 是 queried，`1` - 仅 已启用 secrets 是 queried，`2` - 仅 已禁用 secrets 是 queried，`3` - 仅 PendingDelete secrets 是 queried。",
 			},
 			"secret_name": {
 				Type:        schema.TypeString,
@@ -37,18 +37,18 @@ func DataSourceTencentCloudSsmSecrets() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "标签 to filter secret。",
+				Description: "标签 到 过滤器 secret。",
 			},
 			"secret_type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
-				Description: "0- represents 用户-defined credentials，默认为 0. 1- represents the 用户's cloud product credentials. 2- represents SSH 键 pair credentials. 3- represents cloud API 键 pair credentials。",
+				Description: "0- 表示 用户-defined credentials，默认为 0. 1- 表示 用户's 云 product credentials. 2- 表示 SSH 键 pair credentials. 3- 表示 云 API 键 pair credentials。",
 			},
 			"product_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "This parameter only takes effect when the SecretType parameter 值 is 1. When the SecretType 值 is 1，if the Product 名称 值 is empty，it means to query all types of cloud product credentials. If the Product 名称 值 is MySQL，it means to query MySQL database credentials. If the Product 名称 值 is Tdsql mysql，it means to query Tdsql (MySQL 版本) credentials。",
+				Description: "此 参数 仅 takes effect 当 SecretType 参数 值 是 1. 当 SecretType 值 是 1，如果 Product 名称 值 是 空，它 表示 到 查询 all types 的 云 product credentials. 如果 Product 名称 值 是 MySQL，它 表示 到 查询 MySQL 数据库 credentials. 如果 Product 名称 值 是 Tdsql mysql，它 表示 到 查询 Tdsql (MySQL 版本) credentials。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -79,7 +79,7 @@ func DataSourceTencentCloudSsmSecrets() *schema.Resource {
 						"create_uin": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Uin of 创建者",
+							Description: "Uin 的 创建者",
 						},
 						"status": {
 							Type:        schema.TypeString,
@@ -89,22 +89,22 @@ func DataSourceTencentCloudSsmSecrets() *schema.Resource {
 						"delete_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Delete time of CMK。",
+							Description: "Delete 时间 的 CMK。",
 						},
 						"create_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "创建时间 of secret。",
+							Description: "创建时间 的 secret。",
 						},
 						"kms_key_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "KMS CMK 类型 用于encrypt credentials，DEFAULT represents the default 键 created by SecretsManager，and CUSTOMER represents the 用户 specified 键",
+							Description: "KMS CMK 类型 用于encrypt credentials，DEFAULT 表示 默认值 键 创建 通过 SecretsManager，和 CUSTOMER 表示 用户 指定 键",
 						},
 						"rotation_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "1: - Turn on the rotation; 0- No rotation 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "1: - Turn 在 rotation; 0- No rotation 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"next_rotation_time": {
 							Type:        schema.TypeInt,
@@ -119,43 +119,43 @@ func DataSourceTencentCloudSsmSecrets() *schema.Resource {
 						"product_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cloud product 名称，only effective when SecretType is 1，which means the credential 类型 is cloud product credential。",
+							Description: "Cloud product 名称，仅 effective 当 SecretType 是 1，其中 表示 credential 类型 是 云 product credential。",
 						},
 						"resource_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "When the credential 类型 is SSH 键 pair credential，this field is valid and is 用于represent the 名称 SSH 键 pair credential。",
+							Description: "当 credential 类型 是 SSH 键 pair credential，此 字段 是 有效 和 是 用于represent 名称 SSH 键 pair credential。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "When the credential 类型 is SSH 键 pair credential，this field is valid and represents the item ID to which the SSH 键 pair belongs。",
+							Description: "当 credential 类型 是 SSH 键 pair credential，此 字段 是 有效 和 表示 item ID 到 其中 SSH 键 pair belongs。",
 						},
 						"associated_instance_ids": {
 							Type:        schema.TypeList,
 							Computed:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "When the credential 类型 is SSH 键 pair credential，this field is valid and is 用于represent the CVM instance ID associated with the SSH 键 pair。",
+							Description: "当 credential 类型 是 SSH 键 pair credential，此 字段 是 有效 和 是 用于represent CVM 实例 ID associated 使用 SSH 键 pair。",
 						},
 						"target_uin": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "When the credential 类型 is a cloud API 键 pair credential，this field is valid and is 用于represent the 用户 UIN to which the cloud API 键 pair belongs。",
+							Description: "当 credential 类型 是 云 API 键 pair credential，此 字段 是 有效 和 是 用于represent 用户 UIN 到 其中 云 API 键 pair belongs。",
 						},
 						"rotation_frequency": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The frequency of rotation，in days，takes effect when rotation is on。",
+							Description: "频率 的 rotation，在 days，takes effect 当 rotation 是 在。",
 						},
 						"resource_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The cloud product instance ID number corresponding to the cloud product credentials。",
+							Description: "云 product 实例 ID 数量 corresponding 到 云 product credentials。",
 						},
 						"rotation_begin_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 用户 specified rotation 开始时间。",
+							Description: "用户 指定 rotation 开始时间。",
 						},
 					},
 				},

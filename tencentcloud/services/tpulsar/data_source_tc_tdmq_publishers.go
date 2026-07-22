@@ -25,23 +25,23 @@ func DataSourceTencentCloudTdmqPublishers() *schema.Resource {
 			"namespace": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "namespace 名称",
+				Description: "命名空间 名称",
 			},
 			"topic": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "topic 名称",
+				Description: "主题 名称",
 			},
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Parameter filter，support ProducerName，地址 field。",
+				Description: "Parameter 过滤器，support ProducerName，地址 字段。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The 名称 filter parameter。",
+							Description: "名称 过滤器 参数。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
@@ -97,32 +97,32 @@ func DataSourceTencentCloudTdmqPublishers() *schema.Resource {
 						"client_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "client version注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "客户端 version注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"msg_rate_in": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "消息 production rate (articles/second)注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "消息 production 速率 (articles/second)注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"msg_throughput_in": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "消息 production throughput rate (bytes/second)注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "消息 production 吞吐量 速率 (bytes/second)注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"average_msg_size": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Average 消息 size (bytes)注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Average 消息 大小 (bytes)注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"connected_since": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "connection time注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "连接 time注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"partition": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The topic partition 数量 the producer connection注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "主题 分区 数量 producer connection注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},

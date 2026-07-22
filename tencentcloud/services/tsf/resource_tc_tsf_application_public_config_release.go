@@ -35,7 +35,7 @@ func ResourceTencentCloudTsfApplicationPublicConfigRelease() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "namespace-id。",
+				Description: "命名空间-ID。",
 			},
 
 			"release_desc": {

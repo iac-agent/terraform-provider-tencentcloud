@@ -45,23 +45,23 @@ func ResourceTencentCloudVdbInstance() *schema.Resource {
 			"pay_mode": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Billing 模式 0: pay-as-you-go，1: monthly subscription。",
+				Description: "Billing 模式 0: pay-作为-您-go，1: monthly subscription。",
 			},
 			"instance_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "实例名称 Supports up to 60 characters。",
+				Description: "实例名称 Supports up 到 60 字符。",
 			},
 			"security_group_ids": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Security group IDs。",
+				Description: "Security 组 IDs。",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 			"pay_period": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Monthly subscription 周期 in months. 有效值：1，2，3，4，5，6，7，8，9，10，11，12，24，36. 默认为 1。",
+				Description: "Monthly subscription 周期 在 months. 有效值：1，2，3，4，5，6，7，8，9，10，11，12，24，36. 默认为 1。",
 			},
 			"auto_renew": {
 				Type:        schema.TypeInt,
@@ -71,7 +71,7 @@ func ResourceTencentCloudVdbInstance() *schema.Resource {
 			"params": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Instance extra parameters，submitted via JSON。",
+				Description: "实例 extra 参数，submitted via JSON。",
 			},
 			"resource_tags": {
 				Type:        schema.TypeList,
@@ -96,19 +96,19 @@ func ResourceTencentCloudVdbInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "实例类型 有效值：base，single，cluster。",
+				Description: "实例类型 有效值：base，单个，集群。",
 			},
 			"mode": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Availability 可用区 模式 for 集群类型 有效值：two，three。",
+				Description: "Availability 可用区 模式 对于 集群类型 有效值：two，three。",
 			},
 			"product_type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Product 版本 0: standard，1: capacity-enhanced。",
+				Description: "Product 版本 0: standard，1: 容量-enhanced。",
 			},
 			"node_type": {
 				Type:        schema.TypeString,
@@ -124,12 +124,12 @@ func ResourceTencentCloudVdbInstance() *schema.Resource {
 			"memory": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Memory size （GB）。",
+				Description: "Memory 大小 （GB）。",
 			},
 			"disk_size": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Disk size （GB）。",
+				Description: "Disk 大小 （GB）。",
 			},
 			"worker_node_num": {
 				Type:        schema.TypeInt,
@@ -140,7 +140,7 @@ func ResourceTencentCloudVdbInstance() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "是否force delete (destroy) the instance. If false，only isolate to recycle bin. If true，isolate then destroy. 默认为 false。",
+				Description: "是否force delete (destroy) 实例. 如果 false，仅 isolate 到 recycle bin. 如果 true，isolate then destroy. 默认为 false。",
 			},
 			// --- Computed fields from InstanceInfo response ---
 			"status": {
@@ -166,7 +166,7 @@ func ResourceTencentCloudVdbInstance() *schema.Resource {
 			"shard_num": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Shard number。",
+				Description: "Shard 数量。",
 			},
 			"api_version": {
 				Type:        schema.TypeString,
@@ -176,7 +176,7 @@ func ResourceTencentCloudVdbInstance() *schema.Resource {
 			"extend": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Extended information in JSON 格式",
+				Description: "Extended 信息 在 JSON 格式",
 			},
 			"expired_at": {
 				Type:        schema.TypeString,
@@ -191,22 +191,22 @@ func ResourceTencentCloudVdbInstance() *schema.Resource {
 			"wan_address": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Public network 地址",
+				Description: "Public 网络 地址",
 			},
 			"isolate_at": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Isolation time。",
+				Description: "Isolation 时间。",
 			},
 			"task_status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Task 状态 0: no task，1: pending，2-11: various operations in progress。",
+				Description: "任务 状态 0: 无 任务，1: pending，2-11: various operations 在 progress。",
 			},
 			"networks": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Network information。",
+				Description: "Network 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
@@ -232,7 +232,7 @@ func ResourceTencentCloudVdbInstance() *schema.Resource {
 						"preserve_duration": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Old IP preservation duration in days。",
+							Description: "Old IP preservation 时长 在 days。",
 						},
 						"expire_time": {
 							Type:        schema.TypeString,
@@ -245,7 +245,7 @@ func ResourceTencentCloudVdbInstance() *schema.Resource {
 			"nodes": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Instance node list。",
+				Description: "实例 节点 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {

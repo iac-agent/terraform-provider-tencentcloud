@@ -30,7 +30,7 @@ func DataSourceTencentCloudWedataTriggerWorkflows() *schema.Resource {
 			"parent_folder_path": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Folder 路径 to which the workflow belongs。",
+				Description: "Folder 路径 到 其中 工作流 belongs。",
 			},
 
 			"bundle_id": {
@@ -54,7 +54,7 @@ func DataSourceTencentCloudWedataTriggerWorkflows() *schema.Resource {
 			"modify_time": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "修改时间 range yyyy-MM-dd HH:mm:ss，two timestamps need to be filled in the array。",
+				Description: "修改时间 范围 yyyy-MM-dd HH:mm:ss，two timestamps need 到 是 filled 在 数组。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -63,7 +63,7 @@ func DataSourceTencentCloudWedataTriggerWorkflows() *schema.Resource {
 			"create_time": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "创建时间 range yyyy-MM-dd HH:mm:ss，two timestamps need to be filled in the array。",
+				Description: "创建时间 范围 yyyy-MM-dd HH:mm:ss，two timestamps need 到 是 filled 在 数组。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -72,7 +72,7 @@ func DataSourceTencentCloudWedataTriggerWorkflows() *schema.Resource {
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Paginated workflow query information。",
+				Description: "Paginated 工作流 查询 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"items": {

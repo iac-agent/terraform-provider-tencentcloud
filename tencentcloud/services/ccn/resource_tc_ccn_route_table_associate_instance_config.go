@@ -35,12 +35,12 @@ func ResourceTencentCloudCcnRouteTableAssociateInstanceConfig() *schema.Resource
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Ccn instance route table ID。",
+				Description: "Ccn 实例 路由 表 ID。",
 			},
 			"instances": {
 				Required:    true,
 				Type:        schema.TypeSet,
-				Description: "Instances list。",
+				Description: "Instances 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
@@ -51,7 +51,7 @@ func ResourceTencentCloudCcnRouteTableAssociateInstanceConfig() *schema.Resource
 						"instance_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Cloud networking supports instance types: VPC，DIRECTCONNECT，BMVPC，EDGE，EDGE_TUNNEL，EDGE_VPNGW，VPNGW。",
+							Description: "Cloud networking 支持 实例 types: VPC，DIRECTCONNECT，BMVPC，EDGE，EDGE_TUNNEL，EDGE_VPNGW，VPNGW。",
 						},
 					},
 				},

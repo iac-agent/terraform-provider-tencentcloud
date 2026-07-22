@@ -29,14 +29,14 @@ func ResourceTencentCloudDcdbAccountPrivileges() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID instance。",
+				Description: "ID 实例。",
 			},
 
 			"account": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "The 账号 of the database，including 用户名 and 主机",
+				Description: "账号 的 数据库，包括 用户名 和 主机",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"user": {
@@ -59,14 +59,14 @@ func ResourceTencentCloudDcdbAccountPrivileges() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Global permissions. Among them，the 可选 值 of the permission in GlobalPrivileges is: SELECT，INSERT，UPDATE，DELETE，CREATE，PROCESS，DROP，REFERENCES，INDEX，ALTER，SHOW DATABASES， CREATE TEMPORARY TABLES，LOCK TABLES，EXECUTE，CREATE VIEW，SHOW VIEW，CREATE ROUTINE，ALTER ROUTINE，EVENT，TRIGGER.  Note that if this parameter is not passed，it means that the existing permissions are reserved. If it needs to be cleared，pass an empty array in this field。",
+				Description: "Global permissions. Among them， 可选 值 的 权限 在 GlobalPrivileges 是: SELECT，INSERT，UPDATE，DELETE，CREATE，PROCESS，DROP，REFERENCES，INDEX，ALTER，SHOW DATABASES， CREATE TEMPORARY TABLES，LOCK TABLES，EXECUTE，CREATE VIEW，SHOW VIEW，CREATE ROUTINE，ALTER ROUTINE，EVENT，TRIGGER. 注意 该 如果 此 参数 是 不 passed，它 表示 该 existing permissions 是 reserved. 如果 它 needs 到 是 cleared，pass 空 数组 在 此 字段。",
 			},
 
 			"database_privileges": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Database permissions. 可选 values for the Privileges permission are: SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE TEMPORARY TABLES， LOCK TABLES，EXECUTE，CREATE VIEW，SHOW VIEW，CREATE ROUTINE，ALTER ROUTINE，EVENT，TRIGGER.  Note that if this parameter is not passed，the existing privileges are reserved. If you need to clear them，please pass an empty array in the complex 类型 Privileges field。",
+				Description: "Database permissions. 可选 值 对于 Privileges 权限 是: SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE TEMPORARY TABLES， LOCK TABLES，EXECUTE，CREATE VIEW，SHOW VIEW，CREATE ROUTINE，ALTER ROUTINE，EVENT，TRIGGER. 注意 该 如果 此 参数 是 不 passed， existing privileges 是 reserved. 如果 您 need 到 clear them，please pass 空 数组 在 complex 类型 Privileges 字段。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"privileges": {
@@ -80,7 +80,7 @@ func ResourceTencentCloudDcdbAccountPrivileges() *schema.Resource {
 						"database": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "名称 database。",
+							Description: "名称 数据库。",
 						},
 					},
 				},
@@ -90,18 +90,18 @@ func ResourceTencentCloudDcdbAccountPrivileges() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Permissions for tables in the database. 可选 values for the Privileges permission are: SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE VIEW，SHOW VIEW，TRIGGER. Note that if this parameter is not passed，the existing privileges are reserved. If you need to clear them，please pass an empty array in the complex 类型 Privileges field。",
+				Description: "Permissions 对于 tables 在 数据库. 可选 值 对于 Privileges 权限 是: SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE VIEW，SHOW VIEW，TRIGGER. 注意 该 如果 此 参数 是 不 passed， existing privileges 是 reserved. 如果 您 need 到 clear them，please pass 空 数组 在 complex 类型 Privileges 字段。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "名称 database。",
+							Description: "名称 数据库。",
 						},
 						"table": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Database table 名称",
+							Description: "Database 表 名称",
 						},
 						"privileges": {
 							Type: schema.TypeSet,
@@ -119,23 +119,23 @@ func ResourceTencentCloudDcdbAccountPrivileges() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Permissions for columns in database tables. 可选 values for the Privileges permission are:  SELECT，INSERT，UPDATE，REFERENCES.  Note that if this parameter is not passed，the existing privileges are reserved. If you need to clear them，please pass an empty array in the complex 类型 Privileges field。",
+				Description: "Permissions 对于 columns 在 数据库 tables. 可选 值 对于 Privileges 权限 是: SELECT，INSERT，UPDATE，REFERENCES. 注意 该 如果 此 参数 是 不 passed， existing privileges 是 reserved. 如果 您 need 到 clear them，please pass 空 数组 在 complex 类型 Privileges 字段。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "名称 database。",
+							Description: "名称 数据库。",
 						},
 						"table": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Database table 名称",
+							Description: "Database 表 名称",
 						},
 						"column": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Database column 名称",
+							Description: "Database 列 名称",
 						},
 						"privileges": {
 							Type: schema.TypeSet,
@@ -153,13 +153,13 @@ func ResourceTencentCloudDcdbAccountPrivileges() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Permissions for database views. 可选 values for the Privileges permission are:  SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE VIEW，SHOW VIEW，TRIGGER.  Note that if this parameter is not passed，the existing privileges are reserved. If you need to clear them，please pass an empty array in the complex 类型 Privileges field。",
+				Description: "Permissions 对于 数据库 views. 可选 值 对于 Privileges 权限 是: SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE VIEW，SHOW VIEW，TRIGGER. 注意 该 如果 此 参数 是 不 passed， existing privileges 是 reserved. 如果 您 need 到 clear them，please pass 空 数组 在 complex 类型 Privileges 字段。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "名称 database。",
+							Description: "名称 数据库。",
 						},
 						"view": {
 							Type:        schema.TypeString,

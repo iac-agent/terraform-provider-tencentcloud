@@ -37,7 +37,7 @@ func ResourceTencentCloudGaapGlobalDomain() *schema.Resource {
 			"default_value": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "域名 名称 default entry。",
+				Description: "域名 名称 默认值 entry。",
 			},
 
 			"alias": {
@@ -49,14 +49,14 @@ func ResourceTencentCloudGaapGlobalDomain() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Instance 标签",
+				Description: "实例 标签",
 			},
 			"status": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{GLOBAL_DOMAIN_STATUS_OPEN, GLOBAL_DOMAIN_STATUS_CLOSE}),
-				Description:  "Global 域名 statue. 可用值：open and close，默认为 open。",
+				Description:  "Global 域名 statue. 可用值：open 和 close，默认为 open。",
 			},
 		},
 	}

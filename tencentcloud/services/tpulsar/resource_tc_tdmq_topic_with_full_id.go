@@ -30,30 +30,30 @@ func ResourceTencentCloudTdmqTopicWithFullId() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "名称 tdmq namespace。",
+				Description: "名称 tdmq 命名空间。",
 			},
 			"topic_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "名称 topic to be created。",
+				Description: "名称 主题 到 是 创建。",
 			},
 			"partitions": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "The partitions of topic。",
+				Description: "partitions 的 主题。",
 			},
 			"topic_type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
 				Deprecated:  "This input will be gradually discarded and can be switched to PulsarTopicType parameter 0: Normal message; 1: Global sequential messages; 2: Local sequential messages; 3: Retrying queue; 4: Dead letter queue.",
-				Description: "类型 topic。",
+				Description: "类型 主题。",
 			},
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The Dedicated Cluster Id。",
+				Description: "Dedicated Cluster ID。",
 			},
 			"pulsar_topic_type": {
 				Type:          schema.TypeInt,
@@ -65,14 +65,14 @@ func ResourceTencentCloudTdmqTopicWithFullId() *schema.Resource {
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "描述 namespace。",
+				Description: "描述 命名空间。",
 			},
 
 			//compute
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 of resource。",
+				Description: "创建时间 的 资源。",
 			},
 		},
 	}

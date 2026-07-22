@@ -22,21 +22,21 @@ func ResourceTencentCloudPostgresqlModifyAccountRemarkOperation() *schema.Resour
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "实例 ID in the 格式 of postgres-4wdeb0zv。",
+				Description: "实例 ID 在 格式 的 postgres-4wdeb0zv。",
 			},
 
 			"user_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance 用户名",
+				Description: "实例 用户名",
 			},
 
 			"remark": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "New 备注 corresponding to 用户 `UserName`。",
+				Description: "New 备注 corresponding 到 用户 `UserName`。",
 			},
 		},
 	}

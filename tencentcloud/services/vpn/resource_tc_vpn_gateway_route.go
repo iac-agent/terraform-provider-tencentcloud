@@ -41,13 +41,13 @@ func VpnGatewayRoutePara() map[string]*schema.Schema {
 			Type:        schema.TypeString,
 			Required:    true,
 			ForceNew:    true,
-			Description: "Destination IDC IP range。",
+			Description: "Destination IDC IP 范围。",
 		},
 		"instance_type": {
 			Type:        schema.TypeString,
 			Required:    true,
 			ForceNew:    true,
-			Description: "Next hop 类型 (类型 associated instance). 有效值：VPNCONN (VPN tunnel) and CCN (CCN instance)。",
+			Description: "Next hop 类型 (类型 associated 实例). 有效值：VPNCONN (VPN tunnel) 和 CCN (CCN 实例)。",
 		},
 		"instance_id": {
 			Type:        schema.TypeString,
@@ -59,12 +59,12 @@ func VpnGatewayRoutePara() map[string]*schema.Schema {
 			Type:        schema.TypeInt,
 			Required:    true,
 			ForceNew:    true,
-			Description: "优先级 有效值：0 and 100。",
+			Description: "优先级 有效值：0 和 100。",
 		},
 		"status": {
 			Type:        schema.TypeString,
 			Required:    true,
-			Description: "状态 有效值：ENABLE and DISABLE。",
+			Description: "状态 有效值：ENABLE 和 DISABLE。",
 		},
 		"route_id": {
 			Type:        schema.TypeString,

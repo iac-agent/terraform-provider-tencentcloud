@@ -21,95 +21,95 @@ func DataSourceTencentCloudSqlserverBackups() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 			"backup_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Filter by backup name, do not filter if left blank.",
+				Description: "过滤器 通过 备份 名称, do 不 过滤器 如果 left blank.",
 			},
 			"start_time": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Start time of the instance list, like yyyy-MM-dd HH:mm:ss.",
+				Description: "Start 时间 的 实例 列表, like yyyy-MM-dd HH:mm:ss.",
 			},
 			"end_time": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "End time of the instance list, like yyyy-MM-dd HH:mm:ss.",
+				Description: "End 时间 的 实例 列表, like yyyy-MM-dd HH:mm:ss.",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to store results.",
+				Description: "Used 到 store results.",
 			},
 			// Computed values
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of SQL Server backup. Each element contains the following attributes:",
+				Description: "A 列表 的 SQL Server 备份. Each element contains following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the backup.",
+							Description: "ID 的 备份.",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID.",
 						},
 						"file_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "File name of the backup.",
+							Description: "File 名称 的 备份.",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Start time of the backup.",
+							Description: "Start 时间 的 备份.",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "End time of the backup.",
+							Description: "End 时间 的 备份.",
 						},
 						"db_list": {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Computed:    true,
-							Description: "Database name list of the backup.",
+							Description: "Database 名称 列表 的 备份.",
 						},
 						"strategy": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Strategy of the backup. `0` for instance backup, `1` for multi-databases backup.",
+							Description: "Strategy 的 备份. `0` 对于 实例 备份, `1` 对于 multi-databases 备份.",
 						},
 						"trigger_model": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The way to trigger backup. `0` for timed trigger, `1` for manual trigger.",
+							Description: "way 到 触发器 备份. `0` 对于 timed 触发器, `1` 对于 manual 触发器.",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Status of the backup. `1` for creating, `2` for successfully created, 3 for failed.",
+							Description: "Status 的 备份. `1` 对于 creating, `2` 对于 successfully 创建, 3 对于 failed.",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The size of backup file. Unit is KB.",
+							Description: "大小 的 备份 文件. Unit 是 KB.",
 						},
 						"intranet_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "URL for downloads internally.",
+							Description: "URL 对于 downloads internally.",
 						},
 						"internet_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "URL for downloads externally.",
+							Description: "URL 对于 downloads externally.",
 						},
 					},
 				},

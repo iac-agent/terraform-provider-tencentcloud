@@ -31,7 +31,7 @@ func DataSourceTencentCloudTeoConfigGroupVersionDetail() *schema.Resource {
 			"config_group_version_info": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "版本 information。",
+				Description: "版本 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"version_id": {
@@ -52,7 +52,7 @@ func DataSourceTencentCloudTeoConfigGroupVersionDetail() *schema.Resource {
 						"group_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Configuration group 类型 有效值：l7_acceleration: L7 acceleration configuration group. edge_functions: Edge function configuration group。",
+							Description: "Configuration 组 类型 有效值：l7_acceleration: L7 acceleration 配置 组. edge_functions: Edge 函数 配置 组。",
 						},
 						"description": {
 							Type:        schema.TypeString,
@@ -62,12 +62,12 @@ func DataSourceTencentCloudTeoConfigGroupVersionDetail() *schema.Resource {
 						"status": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "版本 状态 有效值：creating: Being created.inactive: Not effective.活跃: Effective。",
+							Description: "版本 状态 有效值：creating: Being 创建.inactive: Not effective.活跃: Effective。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "版本 创建时间. The 时间格式 follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC)。",
+							Description: "版本 创建时间. 时间格式 follows ISO 8601 standard 和 是 represented 在 Coordinated Universal Time (UTC)。",
 						},
 					},
 				},
@@ -76,7 +76,7 @@ func DataSourceTencentCloudTeoConfigGroupVersionDetail() *schema.Resource {
 			"content": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "版本 file 内容 It is returned in JSON 格式",
+				Description: "版本 文件 内容 It 是 返回 在 JSON 格式",
 			},
 
 			"result_output_file": {

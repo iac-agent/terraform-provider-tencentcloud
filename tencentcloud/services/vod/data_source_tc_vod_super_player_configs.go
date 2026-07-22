@@ -25,12 +25,12 @@ func DataSourceTencentCloudVodSuperPlayerConfigs() *schema.Resource {
 			"type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "配置 类型 filter. 有效值：`Preset`，`Custom`. `Preset`: preset template; `Custom`: custom template。",
+				Description: "配置 类型 过滤器. 有效值：`Preset`，`Custom`. `Preset`: preset template; `Custom`: 自定义 template。",
 			},
 			"sub_app_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Subapplication ID in VOD. If you need to access a resource in a subapplication，enter the subapplication ID in this field; otherwise，leave it empty。",
+				Description: "Subapplication ID 在 VOD. 如果 您 need 到 访问 资源 在 subapplication，enter subapplication ID 在 此 字段; otherwise，leave 它 空。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -46,33 +46,33 @@ func DataSourceTencentCloudVodSuperPlayerConfigs() *schema.Resource {
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Template 类型 filter. 有效值：`Preset`，`Custom`. `Preset`: preset template; `Custom`: custom template。",
+							Description: "模板 类型 过滤器. 有效值：`Preset`，`Custom`. `Preset`: preset template; `Custom`: 自定义 template。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Player configuration 名称，which can contain up to 64 letters，digits，underscores，and hyphens (such as test_ABC-123) and must be unique under a 用户",
+							Description: "Player 配置 名称，其中 可以 contain up 到 64 letters，digits，underscores，和 hyphens (such 作为 test_ABC-123) 和 必须 是 唯一 under 用户",
 						},
 						"drm_switch": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Switch of DRM-protected adaptive bitstream playback: `true`: 已启用，indicating to play back only output adaptive bitstreams protected by DRM; `false`: 已禁用，indicating to play back unencrypted output adaptive bitstreams。",
+							Description: "Switch 的 DRM-protected adaptive bitstream playback: `true`: 已启用，indicating 到 play back 仅 output adaptive bitstreams protected 通过 DRM; `false`: 已禁用，indicating 到 play back unencrypted output adaptive bitstreams。",
 						},
 						"adaptive_dynamic_streaming_definition": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID unencrypted adaptive bitrate streaming template that allows output，which 为必填项 if `drm_switch` is `false`。",
+							Description: "ID unencrypted adaptive bitrate streaming template 该 allows output，其中 为必填项 如果 `drm_switch` 是 `false`。",
 						},
 						"drm_streaming_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "内容 of the DRM-protected adaptive bitrate streaming template that allows output，which 为必填项 if `drm_switch` is `true`。",
+							Description: "内容 的 DRM-protected adaptive bitrate streaming template 该 allows output，其中 为必填项 如果 `drm_switch` 是 `true`。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"simple_aes_definition": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ID adaptive dynamic streaming template whose protection 类型 is `SimpleAES`。",
+										Description: "ID adaptive 动态 streaming template whose protection 类型 是 `SimpleAES`。",
 									},
 								},
 							},
@@ -80,18 +80,18 @@ func DataSourceTencentCloudVodSuperPlayerConfigs() *schema.Resource {
 						"image_sprite_definition": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID image sprite template that allows output。",
+							Description: "ID 镜像 sprite template 该 allows output。",
 						},
 						"resolution_names": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Display 名称 player for substreams with different resolutions. 如果此参数为空 or an empty array，the default configuration will be used: `min_edge_length: 240，名称: LD`; `min_edge_length: 480，名称: SD`; `min_edge_length: 720，名称: HD`; `min_edge_length: 1080，名称: FHD`; `min_edge_length: 1440，名称: 2K`; `min_edge_length: 2160，名称: 4K`; `min_edge_length: 4320，名称: 8K`。",
+							Description: "Display 名称 player 对于 substreams 使用 different resolutions. 如果此参数为空 或 空 数组， 默认值 配置 将 是 使用: `min_edge_length: 240，名称: LD`; `min_edge_length: 480，名称: SD`; `min_edge_length: 720，名称: HD`; `min_edge_length: 1080，名称: FHD`; `min_edge_length: 1440，名称: 2K`; `min_edge_length: 2160，名称: 4K`; `min_edge_length: 4320，名称: 8K`。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"min_edge_length": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Length of video short side （像素）。",
+										Description: "Length 的 视频 short side （像素）。",
 									},
 									"name": {
 										Type:        schema.TypeString,
@@ -104,12 +104,12 @@ func DataSourceTencentCloudVodSuperPlayerConfigs() *schema.Resource {
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "域名 名称 用于playback. If it is left empty or set to `Default`，the 域名 名称 configured in [Default Distribution Configuration](https://cloud.tencent.com/document/product/266/33373) will be used。",
+							Description: "域名 名称 用于playback. 如果 它 是 left 空 或 集合 到 `Default`， 域名 名称 已配置 在 [Default Distribution Configuration](https://云.tencent.com/document/product/266/33373) 将 是 使用。",
 						},
 						"scheme": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scheme 用于playback. If it is left empty or set to `Default`，the scheme configured in [Default Distribution Configuration](https://cloud.tencent.com/document/product/266/33373) will be used. Other 有效值：`HTTP`; `HTTPS`。",
+							Description: "Scheme 用于playback. 如果 它 是 left 空 或 集合 到 `Default`， scheme 已配置 在 [Default Distribution Configuration](https://云.tencent.com/document/product/266/33373) 将 是 使用. Other 有效值：`HTTP`; `HTTPS`。",
 						},
 						"comment": {
 							Type:        schema.TypeString,
@@ -119,12 +119,12 @@ func DataSourceTencentCloudVodSuperPlayerConfigs() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of template in ISO date 格式",
+							Description: "创建时间 的 template 在 ISO date 格式",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "最后修改时间 of template in ISO date 格式",
+							Description: "最后修改时间 的 template 在 ISO date 格式",
 						},
 					},
 				},

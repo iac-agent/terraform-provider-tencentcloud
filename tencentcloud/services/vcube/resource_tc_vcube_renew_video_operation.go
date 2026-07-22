@@ -22,7 +22,7 @@ func ResourceTencentCloudVcubeRenewVideoOperation() *schema.Resource {
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "License ID for video playback renewal。",
+				Description: "License ID 对于 视频 playback renewal。",
 			},
 		},
 	}

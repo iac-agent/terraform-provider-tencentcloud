@@ -26,7 +26,7 @@ func eniIpOutputResource() *schema.Resource {
 			"primary": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "表示是否IP is primary。",
+				Description: "表示是否IP 是 primary。",
 			},
 			"description": {
 				Type:        schema.TypeString,
@@ -52,7 +52,7 @@ func ResourceTencentCloudEni() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(0, 60),
-				Description:  "名称 ENI，maximum length 60。",
+				Description:  "名称 ENI，最大 长度 60。",
 			},
 			"vpc_id": {
 				Type:        schema.TypeString,
@@ -64,14 +64,14 @@ func ResourceTencentCloudEni() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID subnet within this vpc。",
+				Description: "ID 子网 within 此 vpc。",
 			},
 			"description": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Default:      "",
 				ValidateFunc: tccommon.ValidateStringLengthInRange(0, 60),
-				Description:  "描述 ENI，maximum length 60。",
+				Description:  "描述 ENI，最大 长度 60。",
 			},
 			"security_groups": {
 				Type:          schema.TypeSet,
@@ -81,7 +81,7 @@ func ResourceTencentCloudEni() *schema.Resource {
 				Set:           schema.HashString,
 				ConflictsWith: []string{"orderly_security_groups"},
 				Deprecated:    "It has been deprecated from version 1.82.15. Use `orderly_security_groups` instead.",
-				Description:   "A set of security group IDs。",
+				Description:   "A 集合 的 安全 组 IDs。",
 			},
 			"orderly_security_groups": {
 				Type:          schema.TypeList,
@@ -89,7 +89,7 @@ func ResourceTencentCloudEni() *schema.Resource {
 				Computed:      true,
 				ConflictsWith: []string{"security_groups"},
 				Elem:          &schema.Schema{Type: schema.TypeString},
-				Description:   "列表 security group IDs。",
+				Description:   "列表 安全 组 IDs。",
 			},
 			"ipv4s": {
 				Type:          schema.TypeSet,
@@ -105,31 +105,31 @@ func ResourceTencentCloudEni() *schema.Resource {
 						"primary": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "表示是否IP is primary。",
+							Description: "表示是否IP 是 primary。",
 						},
 						"description": {
 							Type:         schema.TypeString,
 							Optional:     true,
 							Default:      "",
-							Description:  "描述 IP，maximum length 25。",
+							Description:  "描述 IP，最大 长度 25。",
 							ValidateFunc: tccommon.ValidateStringLengthInRange(0, 25),
 						},
 					},
 				},
 				MaxItems:    30,
-				Description: "Applying for intranet IPv4s collection，conflict with `ipv4_count`. When there are multiple ipv4s，can only be one primary IP，and the 最大长度the array is 30. Each element 包含following attributes:",
+				Description: "Applying 对于 intranet IPv4s collection，conflict 使用 `ipv4_count`. 当 there 是 多个 ipv4s，可以 仅 是 一个 primary IP，和 最大长度the 数组 是 30. Each element 包含following attributes:",
 			},
 			"ipv4_count": {
 				Type:          schema.TypeInt,
 				Optional:      true,
 				ConflictsWith: []string{"ipv4s"},
 				ValidateFunc:  tccommon.ValidateIntegerInRange(1, 30),
-				Description:   "The 数量 intranet IPv4s. When it is greater than 1，there is only one primary intranet IP. The others are auxiliary intranet IPs，which conflict with `ipv4s`。",
+				Description:   "数量 intranet IPv4s. 当 它 是 greater 比 1，there 是 仅 一个 primary intranet IP. others 是 auxiliary intranet IPs，其中 conflict 使用 `ipv4s`。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "标签 of the ENI。",
+				Description: "标签 的 ENI。",
 			},
 
 			// computed
@@ -141,23 +141,23 @@ func ResourceTencentCloudEni() *schema.Resource {
 			"state": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "State of the ENI。",
+				Description: "State 的 ENI。",
 			},
 			"primary": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "表示是否IP is primary。",
+				Description: "表示是否IP 是 primary。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 of the ENI。",
+				Description: "创建时间 的 ENI。",
 			},
 			"ipv4_info": {
 				Type:        schema.TypeList,
 				Elem:        eniIpOutputResource(),
 				Computed:    true,
-				Description: "An information 列表 IPv4s. Each element 包含following attributes:",
+				Description: "An 信息 列表 IPv4s. Each element 包含following attributes:",
 			},
 			"cdc_id": {
 				Type:        schema.TypeString,

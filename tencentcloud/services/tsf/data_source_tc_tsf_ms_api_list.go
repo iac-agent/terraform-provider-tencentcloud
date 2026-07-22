@@ -19,19 +19,19 @@ func DataSourceTencentCloudTsfMsApiList() *schema.Resource {
 			"microservice_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Microservice Id。",
+				Description: "Microservice ID。",
 			},
 
 			"search_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "search word，support  服务名称",
+				Description: "search word，support 服务名称",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "结果 list。",
+				Description: "结果 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
@@ -42,7 +42,7 @@ func DataSourceTencentCloudTsfMsApiList() *schema.Resource {
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "api list。",
+							Description: "api 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"path": {
@@ -53,7 +53,7 @@ func DataSourceTencentCloudTsfMsApiList() *schema.Resource {
 									"method": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "api method。",
+										Description: "api 方法。",
 									},
 									"description": {
 										Type:        schema.TypeString,

@@ -33,14 +33,14 @@ func ResourceTencentCloudVcubeApplicationAndVideo() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "IOS bundle ID. Choose at least one of `bundle_id` and `package_name`。",
+				Description: "IOS bundle ID. Choose 在 least 一个 的 `bundle_id` 和 `package_name`。",
 			},
 
 			"package_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Android package 名称 Choose at least one of `bundle_id` and `package_name`。",
+				Description: "Android 包 名称 Choose 在 least 一个 的 `bundle_id` 和 `package_name`。",
 			},
 
 			// computed
@@ -59,7 +59,7 @@ func ResourceTencentCloudVcubeApplicationAndVideo() *schema.Resource {
 			"app_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Application 类型: formal: formal application，test: test application。",
+				Description: "Application 类型: formal: formal 应用，测试: 测试 应用。",
 			},
 
 			"application_id": {

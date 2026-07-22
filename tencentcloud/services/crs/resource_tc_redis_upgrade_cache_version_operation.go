@@ -28,7 +28,7 @@ func ResourceTencentCloudRedisUpgradeCacheVersionOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "ID instance。",
+				Description: "ID 实例。",
 			},
 
 			"current_redis_version": {

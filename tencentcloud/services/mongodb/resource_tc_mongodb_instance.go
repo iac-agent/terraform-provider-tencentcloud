@@ -28,18 +28,18 @@ func ResourceTencentCloudMongodbInstance() *schema.Resource {
 		"standby_instance_list": {
 			Type:        schema.TypeList,
 			Computed:    true,
-			Description: "列表 standby instances' info。",
+			Description: "列表 standby 实例' info。",
 			Elem: &schema.Resource{
 				Schema: map[string]*schema.Schema{
 					"standby_instance_id": {
 						Type:        schema.TypeString,
 						Computed:    true,
-						Description: "表示ID of standby instance。",
+						Description: "表示ID 的 standby 实例。",
 					},
 					"standby_instance_region": {
 						Type:        schema.TypeString,
 						Computed:    true,
-						Description: "表示region of standby instance。",
+						Description: "表示region 的 standby 实例。",
 					},
 				},
 			},
@@ -48,18 +48,18 @@ func ResourceTencentCloudMongodbInstance() *schema.Resource {
 			Type:        schema.TypeInt,
 			Optional:    true,
 			Computed:    true,
-			Description: "The 数量 nodes in each replica set. 默认值：3。",
+			Description: "数量 nodes 在 each 副本 集合. 默认值：3。",
 		},
 		"add_node_list": {
 			Type:        schema.TypeList,
 			Optional:    true,
-			Description: "Add node attribute list。",
+			Description: "Add 节点 attribute 列表。",
 			Elem: &schema.Resource{
 				Schema: map[string]*schema.Schema{
 					"role": {
 						Type:     schema.TypeString,
 						Required: true,
-						Description: "The node role that needs to be added.\n" +
+						Description: "节点 角色 该 needs 到 是 added.\n" +
 							"- SECONDARY: Mongod node;\n" +
 							"- READONLY: read-only node;\n" +
 							"- MONGOS: Mongos node.",
@@ -67,7 +67,7 @@ func ResourceTencentCloudMongodbInstance() *schema.Resource {
 					"zone": {
 						Type:     schema.TypeString,
 						Required: true,
-						Description: "The availability zone corresponding to the node.\n" +
+						Description: "availability zone corresponding 到 节点.\n" +
 							"- single availability zone, where all nodes are in the same availability zone;\n" +
 							"- multiple availability zones: the current standard specification is the distribution of three availability zones, and the master and slave nodes are not in the same availability zone. You should pay attention to configuring the availability zone corresponding to the new node, and the rule that the number of nodes in any two availability zones is greater than the third availability zone must be met after the addition.",
 					},
@@ -77,13 +77,13 @@ func ResourceTencentCloudMongodbInstance() *schema.Resource {
 		"remove_node_list": {
 			Type:        schema.TypeList,
 			Optional:    true,
-			Description: "Add node attribute list。",
+			Description: "Add 节点 attribute 列表。",
 			Elem: &schema.Resource{
 				Schema: map[string]*schema.Schema{
 					"role": {
 						Type:     schema.TypeString,
 						Required: true,
-						Description: "The node role that needs to be deleted.\n" +
+						Description: "节点 角色 该 needs 到 是 删除.\n" +
 							"- SECONDARY: Mongod node;\n" +
 							"- READONLY: read-only node;\n" +
 							"- MONGOS: Mongos node.",
@@ -91,12 +91,12 @@ func ResourceTencentCloudMongodbInstance() *schema.Resource {
 					"node_name": {
 						Type:        schema.TypeString,
 						Required:    true,
-						Description: "The 节点 ID to delete. The shard cluster must 指定name of the node to be deleted by a group of shards，and the rest of the shards should be grouped and aligned。",
+						Description: "节点 ID 到 delete. 分片 集群 必须 指定name 的 节点 到 是 删除 通过 组 的 shards，和 rest 的 shards should 是 grouped 和 aligned。",
 					},
 					"zone": {
 						Type:     schema.TypeString,
 						Required: true,
-						Description: "The availability zone corresponding to the node.\n" +
+						Description: "availability zone corresponding 到 节点.\n" +
 							"- single availability zone, where all nodes are in the same availability zone;\n" +
 							"- multiple availability zones: the current standard specification is the distribution of three availability zones, and the master and slave nodes are not in the same availability zone. You should pay attention to configuring the availability zone corresponding to the new node, and the rule that the number of nodes in any two availability zones is greater than the third availability zone must be met after the addition.",
 					},
@@ -111,7 +111,7 @@ func ResourceTencentCloudMongodbInstance() *schema.Resource {
 			Elem: &schema.Schema{
 				Type: schema.TypeString,
 			},
-			Description: "If cloud database instances are deployed in multiple availability zones, specify a list of multiple availability zones.\n" +
+			Description: "如果 云 数据库 实例 是 deployed 在 多个 availability zones, specify 列表 的 多个 availability zones.\n" +
 				"	- To deploy an instance with multiple availability zones, the parameter Zone specifies the primary availability zone information of the instance; Availability ZoneList specifies all availability zone information, including the primary availability zone. The input format is as follows: [ap-Guangzhou-2,ap-Guangzhou-3,ap-Guangzhou-4].\n" +
 				"	- You can obtain availability zone information planned in different regions of the cloud database through the interface DescribeSpecInfo, so as to specify effective availability zones.\n" +
 				"	- Multiple availability zone deployment nodes can only be deployed in 3 different availability zones. Deploying most nodes of a cluster in the same availability zone is not supported. For example, a 3-node cluster does not support 2 nodes deployed in the same zone.",
@@ -120,19 +120,19 @@ func ResourceTencentCloudMongodbInstance() *schema.Resource {
 			Type:        schema.TypeString,
 			Optional:    true,
 			Computed:    true,
-			Description: "The availability 可用区 to which the Hidden node belongs. This parameter 为必填项 in cross-AZ instance deployment。",
+			Description: "availability 可用区 到 其中 Hidden 节点 belongs. 此 参数 为必填项 在 cross-AZ 实例 部署。",
 		},
 		"maintenance_start": {
 			Type:        schema.TypeString,
 			Optional:    true,
 			Computed:    true,
-			Description: "Maintenance window 开始时间. The 值 range is any full point or half point from `00:00-23:00`，such as 00:00 or 00:30。",
+			Description: "Maintenance window 开始时间. 值 范围 是 any full point 或 half point 从 `00:00-23:00`，such 作为 00:00 或 00:30。",
 		},
 		"maintenance_end": {
 			Type:     schema.TypeString,
 			Optional: true,
 			Computed: true,
-			Description: "Maintenance window end time.\n" +
+			Description: "Maintenance window end 时间.\n" +
 				"	- The value range is any full point or half point from `00:00-23:00`, and the maintenance time duration is at least 30 minutes and at most 3 hours.\n" +
 				"	- The end time must be based on the start time backwards.",
 		},

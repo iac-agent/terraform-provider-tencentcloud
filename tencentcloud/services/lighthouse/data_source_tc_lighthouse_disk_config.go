@@ -19,7 +19,7 @@ func DataSourceTencentCloudLighthouseDiskConfig() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter list.zoneFilter by availability 可用区类型: StringRequired: no。",
+				Description: "过滤器 列表.zoneFilter 通过 availability 可用区类型: StringRequired: 无。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -33,7 +33,7 @@ func DataSourceTencentCloudLighthouseDiskConfig() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "过滤值 of field。",
+							Description: "过滤值 的 字段。",
 						},
 					},
 				},
@@ -42,7 +42,7 @@ func DataSourceTencentCloudLighthouseDiskConfig() *schema.Resource {
 			"disk_config_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "列表 cloud disk configurations。",
+				Description: "列表 云 磁盘 configurations。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"zone": {
@@ -53,27 +53,27 @@ func DataSourceTencentCloudLighthouseDiskConfig() *schema.Resource {
 						"disk_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cloud disk 类型",
+							Description: "Cloud 磁盘 类型",
 						},
 						"disk_sales_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cloud disk sale 状态",
+							Description: "Cloud 磁盘 sale 状态",
 						},
 						"max_disk_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum cloud disk size。",
+							Description: "Maximum 云 磁盘 大小。",
 						},
 						"min_disk_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Minimum cloud disk size。",
+							Description: "Minimum 云 磁盘 大小。",
 						},
 						"disk_step_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Cloud disk increment。",
+							Description: "Cloud 磁盘 increment。",
 						},
 					},
 				},

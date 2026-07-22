@@ -34,12 +34,12 @@ func ResourceTencentCloudWafCcSession() *schema.Resource {
 			"source": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Session matching position，可选 locations are get，post，header，cookie。",
+				Description: "Session matching position，可选 locations 是 get，post，头部，cookie。",
 			},
 			"category": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Session match pattern，可选 patterns are match，location。",
+				Description: "Session match pattern，可选 patterns 是 match，location。",
 			},
 			"key_or_start_mat": {
 				Required:    true,
@@ -49,23 +49,23 @@ func ResourceTencentCloudWafCcSession() *schema.Resource {
 			"end_mat": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Session end identifier，when Category is match。",
+				Description: "Session end identifier，当 Category 是 match。",
 			},
 			"start_offset": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Starting 偏移量 position，when Category is location。",
+				Description: "Starting 偏移量 position，当 Category 是 location。",
 			},
 			"end_offset": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "End 偏移量 position，when Category is location。",
+				Description: "End 偏移量 position，当 Category 是 location。",
 			},
 			"edition": {
 				Required:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(EDITION_TYPE),
-				Description:  "Waf edition. clb-waf means clb-waf，sparta-waf means saas-waf。",
+				Description:  "Waf edition. clb-waf 表示 clb-waf，sparta-waf 表示 saas-waf。",
 			},
 			"session_name": {
 				Required:    true,

@@ -18,7 +18,7 @@ func DataSourceTencentCloudMqttInstances() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Query criteria list，supporting the following fields: InstanceName: 集群名称，fuzzy search，实例 ID: cluster ID，precise search，InstanceStatus: cluster 状态 search (RUNNING - Running，CREATING - Creating，MODIFYING - Changing，DELETING - Deleting)。",
+				Description: "Query criteria 列表，supporting following 字段: InstanceName: 集群名称，fuzzy search，实例 ID: 集群 ID，precise search，InstanceStatus: 集群 状态 search (RUNNING - Running，CREATING - Creating，MODIFYING - Changing，DELETING - Deleting)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -52,7 +52,7 @@ func DataSourceTencentCloudMqttInstances() *schema.Resource {
 						"tag_values": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "标签 values。",
+							Description: "标签 值。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -64,7 +64,7 @@ func DataSourceTencentCloudMqttInstances() *schema.Resource {
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Instance list。",
+				Description: "实例 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
@@ -90,7 +90,7 @@ func DataSourceTencentCloudMqttInstances() *schema.Resource {
 						"instance_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "实例状态 RUNNING- In operation; MAINTAINING- Under Maintenance; ABNORMAL- abnormal; OVERDUE- Arrears of fees; DESTROYED- Deleted; CREATING- Creating in progress; MODIFYING- In the process of transformation; CREATE_FAILURE- Creation failed; MODIFY_FAILURE- Transformation failed; DELETING- deleting。",
+							Description: "实例状态 RUNNING- In operation; MAINTAINING- Under Maintenance; ABNORMAL- abnormal; OVERDUE- Arrears 的 fees; DESTROYED- Deleted; CREATING- Creating 在 progress; MODIFYING- In process 的 transformation; CREATE_FAILURE- Creation failed; MODIFY_FAILURE- Transformation failed; DELETING- deleting。",
 						},
 						"topic_num_limit": {
 							Type:        schema.TypeInt,
@@ -115,7 +115,7 @@ func DataSourceTencentCloudMqttInstances() *schema.Resource {
 						"tps_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Elastic TPS current 限制 值",
+							Description: "Elastic TPS 当前 限制 值",
 						},
 						"create_time": {
 							Type:        schema.TypeInt,
@@ -125,22 +125,22 @@ func DataSourceTencentCloudMqttInstances() *schema.Resource {
 						"max_subscription_per_client": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "最大subscriptions per client。",
+							Description: "最大subscriptions per 客户端。",
 						},
 						"client_num_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 client connections online。",
+							Description: "数量 客户端 connections online。",
 						},
 						"renew_flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否renew automatically. Only the annual and monthly package cluster is effective. 1: Automatic renewal; 0: Non automatic renewal。",
+							Description: "是否renew automatically. Only annual 和 monthly 包 集群 是 effective. 1: Automatic renewal; 0: Non automatic renewal。",
 						},
 						"pay_mode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Billing 模式，POSTPAID，pay as you go PREPAID，annual and monthly package。",
+							Description: "Billing 模式，POSTPAID，pay 作为 您 go PREPAID，annual 和 monthly 包。",
 						},
 						"expiry_time": {
 							Type:        schema.TypeInt,
@@ -150,17 +150,17 @@ func DataSourceTencentCloudMqttInstances() *schema.Resource {
 						"destroy_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Pre destruction time，millisecond 时间戳。",
+							Description: "Pre destruction 时间，millisecond 时间戳。",
 						},
 						"authorization_policy_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "限制 on the 数量 authorization rules。",
+							Description: "限制 在 数量 authorization 规则。",
 						},
 						"max_ca_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum CA quota。",
+							Description: "Maximum CA 配额。",
 						},
 						"max_subscription": {
 							Type:        schema.TypeInt,

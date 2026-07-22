@@ -31,7 +31,7 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 			"version_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "提交 版本 ID. 如果未指定，the latest 提交 版本 will be used by default。",
+				Description: "提交 版本 ID. 如果未指定， latest 提交 版本 将 是 使用 通过 默认值。",
 			},
 
 			"data": {
@@ -48,7 +48,7 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 						"version_num": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "版本 number。",
+							Description: "版本 数量。",
 						},
 						"create_user_uin": {
 							Type:        schema.TypeString,
@@ -58,7 +58,7 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 						"version_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "指定version Id to save。",
+							Description: "指定version ID 到 save。",
 						},
 						"version_remark": {
 							Type:        schema.TypeString,
@@ -68,25 +68,25 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 						"approve_status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Approval 状态 (only for 提交 版本)。",
+							Description: "Approval 状态 (仅 对于 提交 版本)。",
 						},
 						"approve_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Production 状态  (only for 提交 版本)。",
+							Description: "Production 状态 (仅 对于 提交 版本)。",
 						},
 						"task": {
 							Type:        schema.TypeList,
 							Required:    true,
 							MaxItems:    1,
-							Description: "Describes the task detail of the 版本",
+							Description: "Describes 任务 detail 的 版本",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"task_base_attribute": {
 										Type:        schema.TypeList,
 										Required:    true,
 										MaxItems:    1,
-										Description: "Describes the basic attributes of the task。",
+										Description: "Describes basic attributes 的 任务。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"task_id": {
@@ -107,17 +107,17 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 												"task_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Task 名称",
+													Description: "任务 名称",
 												},
 												"task_latest_version_no": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Last save 版本 number。",
+													Description: "Last save 版本 数量。",
 												},
 												"task_latest_submit_version_no": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Last 提交 版本 number。",
+													Description: "Last 提交 版本 数量。",
 												},
 												"workflow_name": {
 													Type:        schema.TypeString,
@@ -127,22 +127,22 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 												"status": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Task 状态:\n\n* N: New\n* Y: Scheduling\n* F: Offline\n* O: Paused\n* T: Offlining (in the process of being taken offline)\n* INVALID: Invalid。",
+													Description: "任务 状态:\n\n* N: New\n* Y: Scheduling\n* F: Offline\n* O: Paused\n* T: Offlining (在 process 的 being taken offline)\n* INVALID: Invalid。",
 												},
 												"submit": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "Latest submission 状态 task. 指定whether it has been submitted: true/false。",
+													Description: "Latest submission 状态 任务. 指定whether 它 has been submitted: true/false。",
 												},
 												"create_time": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Task 创建时间. example: 2022-02-12 11:13:41。",
+													Description: "任务 创建时间. 示例: 2022-02-12 11:13:41。",
 												},
 												"last_update_time": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Last 更新时间. example: 2025-08-13 16:34:06。",
+													Description: "Last 更新时间. 示例: 2025-08-13 16:34:06。",
 												},
 												"last_update_user_name": {
 													Type:        schema.TypeString,
@@ -152,7 +152,7 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 												"last_ops_time": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Last operation time。",
+													Description: "Last operation 时间。",
 												},
 												"last_ops_user_name": {
 													Type:        schema.TypeString,
@@ -162,12 +162,12 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 												"owner_uin": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Task 所有者 ID。",
+													Description: "任务 所有者 ID。",
 												},
 												"task_description": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Task 描述",
+													Description: "任务 描述",
 												},
 												"update_user_uin": {
 													Type:        schema.TypeString,
@@ -186,18 +186,18 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 										Type:        schema.TypeList,
 										Required:    true,
 										MaxItems:    1,
-										Description: "Task configurations。",
+										Description: "任务 configurations。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"code_content": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Base64 encoding of the 代码 内容\n注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "Base64 编码 的 代码 内容\n注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"task_ext_configuration_list": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "Extended attribute configuration 列表 the task.\n注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "Extended attribute 配置 列表 任务.\n注意：此字段可能返回 null，表示无法获取有效值。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"param_key": {
@@ -221,57 +221,57 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 												"broker_ip": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "指定specified running node.\n注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "指定specified running 节点.\n注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"yarn_queue": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Resource pool queue 名称 need to pass through DescribeProjectClusterQueues to obtain.\n注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "Resource 池 queue 名称 need 到 pass through DescribeProjectClusterQueues 到 obtain.\n注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"source_service_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "来源 数据源 ID，separated by;，obtained through DescribeDataSourceWithoutInfo.\n注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "来源 数据源 ID，separated 通过;，获取 through DescribeDataSourceWithoutInfo.\n注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"source_service_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Data 来源 类型 use semicolon to separate. need to pass through DescribeDataSourceWithoutInfo to obtain.\n注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "Data 来源 类型 使用 semicolon 到 separate. need 到 pass through DescribeDataSourceWithoutInfo 到 obtain.\n注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"source_service_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "数据源名称 use semicolons to separate. need to pass through DescribeDataSourceWithoutInfo to obtain.\n注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "数据源名称 使用 semicolons 到 separate. need 到 pass through DescribeDataSourceWithoutInfo 到 obtain.\n注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"target_service_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "TargetTarget 数据源 ID，separated by semicolons. need to pass through DescribeDataSourceWithoutInfo to obtain.\n注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "TargetTarget 数据源 ID，separated 通过 semicolons. need 到 pass through DescribeDataSourceWithoutInfo 到 obtain.\n注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"target_service_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Target data 来源 类型 uses ; for separation. needs to pass through DescribeDataSourceWithoutInfo for retrieval.\n注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "Target 数据 来源 类型 uses ; 对于 separation. needs 到 pass through DescribeDataSourceWithoutInfo 对于 retrieval.\n注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"target_service_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Target 数据源名称 use semicolon to separate. need to pass through DescribeDataSourceWithoutInfo to obtain.\n注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "Target 数据源名称 使用 semicolon 到 separate. need 到 pass through DescribeDataSourceWithoutInfo 到 obtain.\n注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"resource_group": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Resource 组 ID: need to pass through DescribeNormalSchedulerExecutorGroups to obtain ExecutorGroupId.\n注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "Resource 组 ID: need 到 pass through DescribeNormalSchedulerExecutorGroups 到 obtain ExecutorGroupId.\n注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"resource_group_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Resource 组名称: need to pass through DescribeNormalSchedulerExecutorGroups to obtain ExecutorGroupName.\n注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "Resource 组名称: need 到 pass through DescribeNormalSchedulerExecutorGroups 到 obtain ExecutorGroupName.\n注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"task_scheduling_parameter_list": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "指定scheduling parameter.\n注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "指定scheduling 参数.\n注意：此字段可能返回 null，表示无法获取有效值。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"param_key": {
@@ -290,7 +290,7 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 												"bundle_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "ID used by the Bundle.\n注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "ID 使用 通过 Bundle.\n注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"bundle_info": {
 													Type:        schema.TypeString,
@@ -304,13 +304,13 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 										Type:        schema.TypeList,
 										Required:    true,
 										MaxItems:    1,
-										Description: "指定task scheduling configuration。",
+										Description: "指定task scheduling 配置。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"cycle_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "周期 类型 Supported types:\n\nONEOFF_CYCLE: 指定a one-time cycle.\nYEAR_CYCLE: 指定year cycle.\nMONTH_CYCLE: 指定monthly cycle.\nWEEK_CYCLE: 指定week cycle.\nDAY_CYCLE: 指定day cycle.\nHOUR_CYCLE: 指定hour cycle.\nMINUTE_CYCLE: 指定minute cycle.\nCRONTAB_CYCLE: 指定crontab expression 类型",
+													Description: "周期 类型 Supported types:\n\nONEOFF_CYCLE: 指定a 一个-时间 cycle.\nYEAR_CYCLE: 指定year cycle.\nMONTH_CYCLE: 指定monthly cycle.\nWEEK_CYCLE: 指定week cycle.\nDAY_CYCLE: 指定day cycle.\nHOUR_CYCLE: 指定hour cycle.\nMINUTE_CYCLE: 指定minute cycle.\nCRONTAB_CYCLE: 指定crontab expression 类型",
 												},
 												"schedule_time_zone": {
 													Type:        schema.TypeString,
@@ -335,42 +335,42 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 												"execution_start_time": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "执行时间. the left-closed interval。",
+													Description: "执行时间. left-closed 间隔。",
 												},
 												"execution_end_time": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "执行时间. right closed interval。",
+													Description: "执行时间. right closed 间隔。",
 												},
 												"schedule_run_type": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Scheduling 类型: 0 for normal scheduling，1 for dry-run scheduling。",
+													Description: "Scheduling 类型: 0 对于 normal scheduling，1 对于 dry-run scheduling。",
 												},
 												"calendar_open": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Whether calendar scheduling is 已启用 有效值：1 (已启用)，0 (已禁用)。",
+													Description: "Whether calendar scheduling 是 已启用 有效值：1 (已启用)，0 (已禁用)。",
 												},
 												"calendar_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Calendar id。",
+													Description: "Calendar ID。",
 												},
 												"calendar_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Calendar 名称，which needs to be obtained from DescribeScheduleCalendarPageList API。",
+													Description: "Calendar 名称，其中 needs 到 是 获取 从 DescribeScheduleCalendarPageList API。",
 												},
 												"self_depend": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Self-Dependent. 有效值：parallel，serial，orderly. 默认值：serial. ",
+													Description: "Self-Dependent. 有效值：parallel，serial，orderly. 默认值：serial.",
 												},
 												"upstream_dependency_config_list": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "指定upstream dependency array。",
+													Description: "指定upstream dependency 数组。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"task_id": {
@@ -381,17 +381,17 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 															"main_cyclic_config": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Main dependency configuration. Valid values:\n\n* CRONTAB\n* DAY\n* HOUR\n* LIST_DAY\n* LIST_HOUR\n* LIST_MINUTE\n* MINUTE\n* MONTH\n* RANGE_DAY\n* RANGE_HOUR\n* RANGE_MINUTE\n* WEEK\n* YEAR",
+																Description: "Main dependency 配置. 有效 值:\n\n* CRONTAB\n* DAY\n* HOUR\n* LIST_DAY\n* LIST_HOUR\n* LIST_MINUTE\n* MINUTE\n* MONTH\n* RANGE_DAY\n* RANGE_HOUR\n* RANGE_MINUTE\n* WEEK\n* YEAR",
 															},
 															"subordinate_cyclic_config": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "配置secondary dependencies.  Valid values:\n* ALL_DAY_OF_YEAR\n* ALL_MONTH_OF_YEAR\n* CURRENT\n* CURRENT_DAY\n* CURRENT_HOUR\n* CURRENT_MINUTE\n* CURRENT_MONTH\n* CURRENT_WEEK\n* CURRENT_YEAR\n* PREVIOUS_BEGIN_OF_MONTH\n* PREVIOUS_DAY\n* PREVIOUS_DAY_LATER_OFFSET_HOUR\n* PREVIOUS_DAY_LATER_OFFSET_MINUTE\n* PREVIOUS_END_OF_MONTH\n* PREVIOUS_FRIDAY\n* PREVIOUS_HOUR\n* PREVIOUS_HOUR_CYCLE\n* PREVIOUS_HOUR_LATER_OFFSET_MINUTE\n* PREVIOUS_MINUTE_CYCLE\n* PREVIOUS_MONTH\n* PREVIOUS_WEEK\n* PREVIOUS_WEEKEND\n* RECENT_DATE",
+																Description: "配置secondary dependencies. 有效 值:\n* ALL_DAY_OF_YEAR\n* ALL_MONTH_OF_YEAR\n* CURRENT\n* CURRENT_DAY\n* CURRENT_HOUR\n* CURRENT_MINUTE\n* CURRENT_MONTH\n* CURRENT_WEEK\n* CURRENT_YEAR\n* PREVIOUS_BEGIN_OF_MONTH\n* PREVIOUS_DAY\n* PREVIOUS_DAY_LATER_OFFSET_HOUR\n* PREVIOUS_DAY_LATER_OFFSET_MINUTE\n* PREVIOUS_END_OF_MONTH\n* PREVIOUS_FRIDAY\n* PREVIOUS_HOUR\n* PREVIOUS_HOUR_CYCLE\n* PREVIOUS_HOUR_LATER_OFFSET_MINUTE\n* PREVIOUS_MINUTE_CYCLE\n* PREVIOUS_MONTH\n* PREVIOUS_WEEK\n* PREVIOUS_WEEKEND\n* RECENT_DATE",
 															},
 															"offset": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "偏移量 in Range/List 模式",
+																Description: "偏移量 在 Range/List 模式",
 															},
 															"dependency_strategy": {
 																Type:        schema.TypeList,
@@ -403,12 +403,12 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 																		"polling_null_strategy": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Wait upstream task instance policy: EXECUTING (execute); WAITING (wait)。",
+																			Description: "Wait upstream 任务 实例 策略: EXECUTING (execute); WAITING (wait)。",
 																		},
 																		"task_dependency_executing_strategies": {
 																			Type:        schema.TypeSet,
 																			Optional:    true,
-																			Description: "This field 为必填项 only when PollingNullStrategy is set to EXECUTING.\nType: List\n\nNOT_EXIST (default) - In cases where minute depends on minute / hour depends on hour，the parent instance does not fall within the scheduling time range of the downstream instance.\n\nPARENT_EXPIRED - The parent instance failed.\n\nPARENT_TIMEOUT - The parent instance timed out.\n\nIf any of the above conditions are met，the dependency check for that parent task instance is considered satisfied. In all other cases，the system must wait for the parent instance。",
+																			Description: "此 字段 为必填项 仅 当 PollingNullStrategy 是 集合 到 EXECUTING.\nType: List\n\nNOT_EXIST (默认值) - In cases 其中 minute depends 在 minute / hour depends 在 hour， parent 实例 does 不 fall within scheduling 时间 范围 的 downstream 实例.\n\nPARENT_EXPIRED - parent 实例 failed.\n\nPARENT_TIMEOUT - parent 实例 timed out.\n\nIf any 的 above conditions 是 met， dependency check 对于 该 parent 任务 实例 是 considered satisfied. In all other cases， 系统 必须 wait 对于 parent 实例。",
 																			Elem: &schema.Schema{
 																				Type: schema.TypeString,
 																			},
@@ -416,7 +416,7 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 																		"task_dependency_executing_timeout_value": {
 																			Type:        schema.TypeInt,
 																			Optional:    true,
-																			Description: "This field 为必填项 only when TaskDependencyExecutingStrategies includes PARENT_TIMEOUT.\n指定timeout duration (in minutes) for the downstream task's dependency on the parent instance execution。",
+																			Description: "此 字段 为必填项 仅 当 TaskDependencyExecutingStrategies includes PARENT_TIMEOUT.\n指定timeout 时长 (在 minutes) 对于 downstream 任务's dependency 在 parent 实例 execution。",
 																		},
 																	},
 																},
@@ -427,7 +427,7 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 												"down_stream_dependency_config_list": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "Spec指定downstream dependency array。",
+													Description: "Spec指定downstream dependency 数组。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"task_id": {
@@ -438,17 +438,17 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 															"main_cyclic_config": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Main dependency configuration. Valid values:\n\n* CRONTAB\n* DAY\n* HOUR\n* LIST_DAY\n* LIST_HOUR\n* LIST_MINUTE\n* MINUTE\n* MONTH\n* RANGE_DAY\n* RANGE_HOUR\n* RANGE_MINUTE\n* WEEK\n* YEAR",
+																Description: "Main dependency 配置. 有效 值:\n\n* CRONTAB\n* DAY\n* HOUR\n* LIST_DAY\n* LIST_HOUR\n* LIST_MINUTE\n* MINUTE\n* MONTH\n* RANGE_DAY\n* RANGE_HOUR\n* RANGE_MINUTE\n* WEEK\n* YEAR",
 															},
 															"subordinate_cyclic_config": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "配置secondary dependencies.  Valid values:\n* ALL_DAY_OF_YEAR\n* ALL_MONTH_OF_YEAR\n* CURRENT\n* CURRENT_DAY\n* CURRENT_HOUR\n* CURRENT_MINUTE\n* CURRENT_MONTH\n* CURRENT_WEEK\n* CURRENT_YEAR\n* PREVIOUS_BEGIN_OF_MONTH\n* PREVIOUS_DAY\n* PREVIOUS_DAY_LATER_OFFSET_HOUR\n* PREVIOUS_DAY_LATER_OFFSET_MINUTE\n* PREVIOUS_END_OF_MONTH\n* PREVIOUS_FRIDAY\n* PREVIOUS_HOUR\n* PREVIOUS_HOUR_CYCLE\n* PREVIOUS_HOUR_LATER_OFFSET_MINUTE\n* PREVIOUS_MINUTE_CYCLE\n* PREVIOUS_MONTH\n* PREVIOUS_WEEK\n* PREVIOUS_WEEKEND\n* RECENT_DATE",
+																Description: "配置secondary dependencies. 有效 值:\n* ALL_DAY_OF_YEAR\n* ALL_MONTH_OF_YEAR\n* CURRENT\n* CURRENT_DAY\n* CURRENT_HOUR\n* CURRENT_MINUTE\n* CURRENT_MONTH\n* CURRENT_WEEK\n* CURRENT_YEAR\n* PREVIOUS_BEGIN_OF_MONTH\n* PREVIOUS_DAY\n* PREVIOUS_DAY_LATER_OFFSET_HOUR\n* PREVIOUS_DAY_LATER_OFFSET_MINUTE\n* PREVIOUS_END_OF_MONTH\n* PREVIOUS_FRIDAY\n* PREVIOUS_HOUR\n* PREVIOUS_HOUR_CYCLE\n* PREVIOUS_HOUR_LATER_OFFSET_MINUTE\n* PREVIOUS_MINUTE_CYCLE\n* PREVIOUS_MONTH\n* PREVIOUS_WEEK\n* PREVIOUS_WEEKEND\n* RECENT_DATE",
 															},
 															"offset": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "偏移量 in Range/List 模式",
+																Description: "偏移量 在 Range/List 模式",
 															},
 															"dependency_strategy": {
 																Type:        schema.TypeList,
@@ -460,12 +460,12 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 																		"polling_null_strategy": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "Wait upstream task instance policy: EXECUTING (execute); WAITING (wait)。",
+																			Description: "Wait upstream 任务 实例 策略: EXECUTING (execute); WAITING (wait)。",
 																		},
 																		"task_dependency_executing_strategies": {
 																			Type:        schema.TypeSet,
 																			Optional:    true,
-																			Description: "This field 为必填项 only when PollingNullStrategy is set to EXECUTING.\nType: List\n\nNOT_EXIST (default) - In cases where minute depends on minute / hour depends on hour，the parent instance does not fall within the scheduling time range of the downstream instance.\n\nPARENT_EXPIRED - The parent instance failed.\n\nPARENT_TIMEOUT - The parent instance timed out.\n\nIf any of the above conditions are met，the dependency check for that parent task instance is considered satisfied. In all other cases，the system must wait for the parent instance。",
+																			Description: "此 字段 为必填项 仅 当 PollingNullStrategy 是 集合 到 EXECUTING.\nType: List\n\nNOT_EXIST (默认值) - In cases 其中 minute depends 在 minute / hour depends 在 hour， parent 实例 does 不 fall within scheduling 时间 范围 的 downstream 实例.\n\nPARENT_EXPIRED - parent 实例 failed.\n\nPARENT_TIMEOUT - parent 实例 timed out.\n\nIf any 的 above conditions 是 met， dependency check 对于 该 parent 任务 实例 是 considered satisfied. In all other cases， 系统 必须 wait 对于 parent 实例。",
 																			Elem: &schema.Schema{
 																				Type: schema.TypeString,
 																			},
@@ -473,7 +473,7 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 																		"task_dependency_executing_timeout_value": {
 																			Type:        schema.TypeInt,
 																			Optional:    true,
-																			Description: "This field 为必填项 only when TaskDependencyExecutingStrategies includes PARENT_TIMEOUT.\n指定timeout duration (in minutes) for the downstream task's dependency on the parent instance execution。",
+																			Description: "此 字段 为必填项 仅 当 TaskDependencyExecutingStrategies includes PARENT_TIMEOUT.\n指定timeout 时长 (在 minutes) 对于 downstream 任务's dependency 在 parent 实例 execution。",
 																		},
 																	},
 																},
@@ -527,37 +527,37 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 												"run_priority": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Task scheduling 优先级 有效值：4 (high)，5 (medium)，6 (low). 默认值：6。",
+													Description: "任务 scheduling 优先级 有效值：4 (high)，5 (medium)，6 (low). 默认值：6。",
 												},
 												"retry_wait": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Retry policy. retry wait time in minutes. 默认值：5。",
+													Description: "Retry 策略. retry wait 时间 在 minutes. 默认值：5。",
 												},
 												"max_retry_attempts": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "指定maximum attempts of the retry policy. 默认值：4。",
+													Description: "指定maximum attempts 的 retry 策略. 默认值：4。",
 												},
 												"execution_ttl": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Timeout Handling Policy: Execution Timeout (in minutes)，默认值：-1",
+													Description: "Timeout Handling Policy: Execution Timeout (在 minutes)，默认值：-1",
 												},
 												"wait_execution_total_ttl": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Timeout Handling Policy: Wait Duration Timeout  (in minutes)，默认值：-1",
+													Description: "Timeout Handling Policy: Wait Duration Timeout (在 minutes)，默认值：-1",
 												},
 												"allow_redo_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Rerun & Refill Configuration: 默认值：ALL;\n\n* ALL: Rerun or refill is allowed regardless of 是否task succeeds or fails.\n\n* FAILURE: Rerun or refill is allowed only if the task fails; not allowed if the task succeeds.\n\n* NONE: Rerun or refill is not allowed regardless of success or failure。",
+													Description: "Rerun & Refill Configuration: 默认值：ALL;\n\n* ALL: Rerun 或 refill 是 allowed regardless 的 是否task succeeds 或 fails.\n\n* FAILURE: Rerun 或 refill 是 allowed 仅 如果 任务 fails; 不 allowed 如果 任务 succeeds.\n\n* NONE: Rerun 或 refill 是 不 allowed regardless 的 success 或 failure。",
 												},
 												"param_task_out_list": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "Output parameter list。",
+													Description: "Output 参数 列表。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"param_key": {
@@ -576,7 +576,7 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 												"param_task_in_list": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "Input parameter list。",
+													Description: "Input 参数 列表。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"param_key": {
@@ -587,7 +587,7 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 															"param_desc": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Parameter 描述: The 格式 is ProjectIdentifier.TaskName.ParameterName\nExample: project_wedata_1.sh_250820_104107.pp_out",
+																Description: "Parameter 描述: 格式 是 ProjectIdentifier.TaskName.ParameterName\nExample: project_wedata_1.sh_250820_104107.pp_out",
 															},
 															"from_task_id": {
 																Type:        schema.TypeString,
@@ -597,7 +597,7 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 															"from_param_key": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Parent task parameter 键",
+																Description: "Parent 任务 参数 键",
 															},
 														},
 													},
@@ -631,22 +631,22 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 															"data_flow_type": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Input output table data 类型\nInput stream:\n UPSTREAM,\nOutput stream:\n  DOWNSTREAM;。",
+																Description: "Input output 表 数据 类型\nInput 流:\n UPSTREAM,\nOutput 流:\n DOWNSTREAM;。",
 															},
 															"table_physical_id": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Physical unique ID.。",
+																Description: "Physical 唯一 ID.。",
 															},
 															"db_guid": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Database unique id.。",
+																Description: "Database 唯一 ID.。",
 															},
 															"table_guid": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Unique ID table。",
+																Description: "Unique ID 表。",
 															},
 														},
 													},
@@ -654,7 +654,7 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 												"init_strategy": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "**Instance generation policy**.\nT_PLUS_0: 指定t+0 generation. default policy.\nT_PLUS_1: 指定t+1 generation。",
+													Description: "**实例 generation 策略**.\nT_PLUS_0: 指定t+0 generation. 默认值 策略.\nT_PLUS_1: 指定t+1 generation。",
 												},
 											},
 										},
@@ -665,7 +665,7 @@ func DataSourceTencentCloudWedataTaskVersion() *schema.Resource {
 						"approve_user_uin": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Approver Id。",
+							Description: "Approver ID。",
 						},
 					},
 				},

@@ -32,61 +32,61 @@ func ResourceTencentCloudMpsImageSpriteTemplate() *schema.Resource {
 			"sample_interval": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Sampling interval.When SampleType is Percent，指定percentage of the sampling interval.When SampleType is Time，指定sampling interval time （秒）。",
+				Description: "Sampling 间隔.当 SampleType 是 Percent，指定percentage 的 sampling 间隔.当 SampleType 是 Time，指定sampling 间隔 时间 （秒）。",
 			},
 
 			"row_count": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The 数量 rows in the small image in the sprite。",
+				Description: "数量 rows 在 small 镜像 在 sprite。",
 			},
 
 			"column_count": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The 数量 columns in the small image in the sprite。",
+				Description: "数量 columns 在 small 镜像 在 sprite。",
 			},
 
 			"name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Image sprite 模板名称，length 限制: 64 characters。",
+				Description: "Image sprite 模板名称，长度 限制: 64 字符。",
 			},
 
 			"width": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The maximum 值 of the width (or long side) of the small image in the sprite image，取值范围：0 and [128，4096]，unit: px.When Width and Height are both 0，the resolution is the same.When Width is 0 and Height is not 0，Width is scaled proportionally.When Width is not 0 and Height is 0，Height is scaled proportionally.When both Width and Height are not 0，the resolution is specified by the 用户默认值：0。",
+				Description: "最大 值 的 宽度 (或 long side) 的 small 镜像 在 sprite 镜像，取值范围：0 和 [128，4096]，单位: 像素.当 宽度 和 高度 是 both 0， resolution 是 same.当 宽度 是 0 和 高度 是 不 0，宽度 是 scaled proportionally.当 宽度 是 不 0 和 高度 是 0，高度 是 scaled proportionally.当 both 宽度 和 高度 是 不 0， resolution 是 指定 通过 用户默认值：0。",
 			},
 
 			"height": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The maximum 值 of the height (or short side) of the small image in the sprite image，取值范围：0 and [128，4096]，unit: px.When Width and Height are both 0，the resolution is the same.When Width is 0 and Height is not 0，Width is scaled proportionally.When Width is not 0 and Height is 0，Height is scaled proportionally.When both Width and Height are not 0，the resolution is specified by the 用户默认值：0。",
+				Description: "最大 值 的 高度 (或 short side) 的 small 镜像 在 sprite 镜像，取值范围：0 和 [128，4096]，单位: 像素.当 宽度 和 高度 是 both 0， resolution 是 same.当 宽度 是 0 和 高度 是 不 0，宽度 是 scaled proportionally.当 宽度 是 不 0 和 高度 是 0，高度 是 scaled proportionally.当 both 宽度 和 高度 是 不 0， resolution 是 指定 通过 用户默认值：0。",
 			},
 
 			"resolution_adaptive": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Adaptive resolution，可选 值:open: At this time，Width represents the long side of the video，Height represents the short side of the video.close: At this point，Width represents the width of the video，and Height represents the height of the video.默认值：open。",
+				Description: "Adaptive resolution，可选 值:open: At 此 时间，宽度 表示 long side 的 视频，高度 表示 short side 的 视频.close: At 此 point，宽度 表示 宽度 的 视频，和 高度 表示 高度 的 视频.默认值：open。",
 			},
 
 			"fill_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filling 类型，when the aspect ratio of the video stream configuration is inconsistent with the aspect ratio of the original video，the processing method for transcoding is filling. 可选 filling 类型:stretch: Stretching，stretching each frame to fill the entire screen，which may cause the transcoded video to be squashed or stretched.black: Leave black，keep the video aspect ratio unchanged，and fill the rest of the edge with black.默认值：black。",
+				Description: "Filling 类型，当 aspect ratio 的 视频 流 配置 是 inconsistent 使用 aspect ratio 的 original 视频， processing 方法 对于 transcoding 是 filling. 可选 filling 类型:stretch: Stretching，stretching each frame 到 fill entire screen，其中 可能 cause transcoded 视频 到 是 squashed 或 stretched.black: Leave black，keep 视频 aspect ratio unchanged，和 fill rest 的 edge 使用 black.默认值：black。",
 			},
 
 			"comment": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "模板描述 information，length 限制: 256 characters。",
+				Description: "模板描述 信息，长度 限制: 256 字符。",
 			},
 
 			"format": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Image 格式，the 值 can be jpg，png，webp. 默认为 jpg。",
+				Description: "Image 格式， 值 可以 是 jpg，png，webp. 默认为 jpg。",
 			},
 		},
 	}

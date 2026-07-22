@@ -31,7 +31,7 @@ func DataSourceTencentCloudCkafkaTopicProduceConnection() *schema.Resource {
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "link information return 结果 set。",
+				Description: "link 信息 返回 结果 集合。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ip_addr": {
@@ -42,12 +42,12 @@ func DataSourceTencentCloudCkafkaTopicProduceConnection() *schema.Resource {
 						"time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "connect time。",
+							Description: "connect 时间。",
 						},
 						"is_un_support_version": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Is the supported 版本",
+							Description: "Is 支持 版本",
 						},
 					},
 				},

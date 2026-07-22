@@ -36,7 +36,7 @@ func ResourceTencentCloudOrganizationOrgMemberAuthIdentityAttachment() *schema.R
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Identity Id list. Up to 5。",
+				Description: "Identity ID 列表. Up 到 5。",
 			},
 		},
 	}

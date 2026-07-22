@@ -26,7 +26,7 @@ func ResourceTencentCloudSmsSign() *schema.Resource {
 			"sign_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Sms sign 名称，unique。",
+				Description: "Sms sign 名称，唯一。",
 			},
 
 			"sign_type": {
@@ -38,7 +38,7 @@ func ResourceTencentCloudSmsSign() *schema.Resource {
 			"document_type": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "DocumentType is 用于enterprise authentication，or website，app authentication，etc. DocumentType: 0，1，2，3，4，5，6，7，8。",
+				Description: "DocumentType 是 用于enterprise authentication，或 website，app authentication，etc. DocumentType: 0，1，2，3，4，5，6，7，8。",
 			},
 
 			"international": {
@@ -50,25 +50,25 @@ func ResourceTencentCloudSmsSign() *schema.Resource {
 			"sign_purpose": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "签名 purpose: 0: for personal use; 1: for others。",
+				Description: "签名 purpose: 0: 对于 personal 使用; 1: 对于 others。",
 			},
 
 			"proof_image": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "You should Base64-encode the image of the identity certificate corresponding to the 签名 first，remove the prefix data:image/jpeg;base64，from the resulted string，and then use it as the 值 of this parameter。",
+				Description: "You should Base64-encode 镜像 的 identity 证书 corresponding 到 签名 first，remove prefix 数据:镜像/jpeg;base64，从 resulted 字符串，和 then 使用 它 作为 值 的 此 参数。",
 			},
 
 			"commission_image": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Power of attorney，which should be submitted if SignPurpose is for use by others. You should Base64-encode the image first，remove the prefix data:image/jpeg;base64，from the resulted string，and then use it as the 值 of this parameter. Note: this field will take effect only when SignPurpose is 1 (for 用户 by others)。",
+				Description: "Power 的 attorney，其中 should 是 submitted 如果 SignPurpose 是 对于 使用 通过 others. You should Base64-encode 镜像 first，remove prefix 数据:镜像/jpeg;base64，从 resulted 字符串，和 then 使用 它 作为 值 的 此 参数. 注意: 此 字段 将 take effect 仅 当 SignPurpose 是 1 (对于 用户 通过 others)。",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "签名 application 备注",
+				Description: "签名 应用 备注",
 			},
 		},
 	}

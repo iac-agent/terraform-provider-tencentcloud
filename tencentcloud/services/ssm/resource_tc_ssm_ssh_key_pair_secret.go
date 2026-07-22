@@ -29,58 +29,58 @@ func ResourceTencentCloudSsmSshKeyPairSecret() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "Secret 名称，which must be unique in the same 地域 It can contain 128 bytes of letters，digits，hyphens and underscores and must begin with a letter or digit。",
+				Description: "Secret 名称，其中 必须 是 唯一 在 same 地域 It 可以 contain 128 bytes 的 letters，digits，hyphens 和 underscores 和 必须 begin 使用 letter 或 digit。",
 			},
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "描述，such as what it is used for. It 包含up to 2,048 bytes。",
+				Description: "描述，such 作为 what 它 是 使用 对于. It 包含up 到 2,048 bytes。",
 			},
 			"kms_key_id": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "指定a KMS CMK to encrypt the secret.如果此参数为空，the CMK created by Secrets Manager by default will be 用于encryption.You can also 指定a custom KMS CMK created in the same 地域 for encryption。",
+				Description: "指定a KMS CMK 到 encrypt secret.如果此参数为空， CMK 创建 通过 Secrets Manager 通过 默认值 将 是 用于encryption.You 可以 also 指定a 自定义 KMS CMK 创建 在 same 地域 对于 加密。",
 			},
 			"project_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "ID project to which the created SSH 键 belongs。",
+				Description: "ID 项目 到 其中 创建 SSH 键 belongs。",
 			},
 			"ssh_key_name": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "名称 SSH 键 pair，which only 包含digits，letters and underscores and must start with a digit or letter. The maximum length is 25 characters。",
+				Description: "名称 SSH 键 pair，其中 仅 包含digits，letters 和 underscores 和 必须 start 使用 digit 或 letter. 最大 长度 是 25 字符。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "标签 of secret。",
+				Description: "标签 的 secret。",
 			},
 			"status": {
 				Optional:     true,
 				Type:         schema.TypeString,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"Enabled", "Disabled"}),
-				Description:  "Enable or Disable Secret. Valid values is `已启用` or `已禁用`. 默认为 `已启用`。",
+				Description:  "Enable 或 Disable Secret. 有效 值 是 `已启用` 或 `已禁用`. 默认为 `已启用`。",
 			},
 			"clean_ssh_key": {
 				Optional: true,
 				Type:     schema.TypeBool,
-				Description: "Specifies whether to delete the SSH key from both the secret and the SSH key list in the CVM console. This field is only take effect when delete SSH key secrets. Valid values: " +
+				Description: "Specifies whether 到 delete SSH 键 从 both secret 和 SSH 键 列表 在 CVM console. 此 字段 是 仅 take effect 当 delete SSH 键 secrets. 有效 值:" +
 					"`True`: deletes SSH key from both the secret and SSH key list in the CVM console. Note that the deletion will fail if the SSH key is already bound to a CVM instance." +
 					"`False`: only deletes the SSH key information in the secret.",
 			},
 			"create_time": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Credential 创建时间 in UNIX 时间戳 格式",
+				Description: "Credential 创建时间 在 UNIX 时间戳 格式",
 			},
 			"secret_type": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "`0`: 用户-defined secret. `1`: Tencent Cloud services secret. `2`: SSH 键 secret. `3`: Tencent Cloud API 键 secret. Note: this field may return `null`，indicating that no valid values can be obtained。",
+				Description: "`0`: 用户-defined secret. `1`: Tencent Cloud services secret. `2`: SSH 键 secret. `3`: Tencent Cloud API 键 secret. 注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 			},
 		},
 	}

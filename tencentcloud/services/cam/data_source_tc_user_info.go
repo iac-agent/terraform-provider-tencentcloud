@@ -44,7 +44,7 @@ func DataSourceTencentCloudUserInfo() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Current 账号 名称 NOTE: only support subaccount。",
+				Description: "Current 账号 名称 NOTE: 仅 support subaccount。",
 			},
 
 			"result_output_file": {

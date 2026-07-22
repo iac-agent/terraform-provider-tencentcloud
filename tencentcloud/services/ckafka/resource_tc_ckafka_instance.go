@@ -56,7 +56,7 @@ func ResourceTencentCloudCkafkaInstance() *schema.Resource {
 				Optional:     true,
 				Default:      "profession",
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"standard", "profession", "premium"}),
-				Description:  "Specifications 类型 instance. Allowed values are `profession`，`premium`. 默认为 `profession`。",
+				Description:  "Specifications 类型 实例. Allowed 值 是 `profession`，`premium`. 默认为 `profession`。",
 			},
 			"charge_type": {
 				Type:         schema.TypeString,
@@ -64,43 +64,43 @@ func ResourceTencentCloudCkafkaInstance() *schema.Resource {
 				ForceNew:     true,
 				Default:      CKAFKA_CHARGE_TYPE_PREPAID,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{CKAFKA_CHARGE_TYPE_POSTPAID, CKAFKA_CHARGE_TYPE_PREPAID}),
-				Description:  "The charge 类型 instance. Valid values are `PREPAID` and `POSTPAID_BY_HOUR`. 默认值为 `PREPAID`。",
+				Description:  "charge 类型 实例. 有效 值 是 `PREPAID` 和 `POSTPAID_BY_HOUR`. 默认值为 `PREPAID`。",
 			},
 			"period": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Prepaid purchase time，such as 1，is one month。",
+				Description: "Prepaid purchase 时间，such 作为 1，是 一个 month。",
 			},
 			"instance_type": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{1, 2, 3, 4, 5, 6, 7, 8, 9}),
-				Description:  "描述 实例类型 `profession`: 1，`standard`:  1(general)，2(standard)，3(advanced)，4(capacity)，5(specialized-1)，6(specialized-2)，7(specialized-3)，8(specialized-4)，9(exclusive)。",
+				Description:  "描述 实例类型 `profession`: 1，`standard`: 1(general)，2(standard)，3(advanced)，4(容量)，5(specialized-1)，6(specialized-2)，7(specialized-3)，8(specialized-4)，9(exclusive)。",
 			},
 			"upgrade_strategy": {
 				Type:     schema.TypeInt,
 				Optional: true,
 				Default:  1,
-				Description: "POSTPAID_BY_HOUR scale-down mode\n" +
+				Description: "POSTPAID_BY_HOUR scale-down 模式\n" +
 					"- 1: stable transformation;\n" +
 					"- 2: High-speed transformer.",
 			},
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "私有网络 ID，it will be basic network if not set。",
+				Description: "私有网络 ID，它 将 是 basic 网络 如果 不 集合。",
 			},
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "子网 ID，it will be basic network if not set。",
+				Description: "子网 ID，它 将 是 basic 网络 如果 不 集合。",
 			},
 			"msg_retention_time": {
 				Type:     schema.TypeInt,
 				Optional: true,
 				Computed: true,
-				Description: "The maximum retention time of instance logs, in minutes." +
+				Description: "最大 retention 时间 的 实例 logs, 在 minutes." +
 					" the default is 10080 (7 days), the maximum is 30 days, and the default 0 is not filled," +
 					" which means that the log retention time recovery policy is not enabled.",
 			},
@@ -108,7 +108,7 @@ func ResourceTencentCloudCkafkaInstance() *schema.Resource {
 				Type:     schema.TypeInt,
 				Optional: true,
 				Computed: true,
-				Description: "Prepaid automatic renewal mark, 0 means the default state, the initial state," +
+				Description: "Prepaid automatic renewal mark, 0 表示 默认值 state, initial state," +
 					" 1 means automatic renewal, 2 means clear no automatic renewal (user setting).",
 			},
 			"kafka_version": {
@@ -121,31 +121,31 @@ func ResourceTencentCloudCkafkaInstance() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Instance bandwidth in MBps。",
+				Description: "实例 带宽 在 MBps。",
 			},
 			"disk_size": {
 				Type:     schema.TypeInt,
 				Optional: true,
 				Computed: true,
-				Description: "Disk Size. Its interval varies with bandwidth, and the input must be within the interval, which can be viewed through the control. " +
+				Description: "Disk Size. Its 间隔 varies 使用 带宽, 和 input 必须 是 within 间隔, 其中 可以 是 viewed through control." +
 					"If it is not within the interval, the plan will cause a change when first created.",
 			},
 			"partition": {
 				Type:     schema.TypeInt,
 				Optional: true,
 				Computed: true,
-				Description: "Partition Size. Its interval varies with bandwidth, and the input must be within the interval, which can be viewed through the control. " +
+				Description: "Partition Size. Its 间隔 varies 使用 带宽, 和 input 必须 是 within 间隔, 其中 可以 是 viewed through control." +
 					"If it is not within the interval, the plan will cause a change when first created.",
 			},
 			"multi_zone_flag": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "表示是否instance is multi zones. NOTE: if set to `true`，`zone_ids` must set together。",
+				Description: "表示是否instance 是 multi zones. NOTE: 如果 集合 到 `true`，`zone_ids` 必须 集合 together。",
 			},
 			"zone_ids": {
 				Type:         schema.TypeSet,
 				Optional:     true,
-				Description:  "列表 available 可用区 ID NOTE: this argument must set together with `multi_zone_flag`。",
+				Description:  "列表 可用 可用区 ID NOTE: 此 argument 必须 集合 together 使用 `multi_zone_flag`。",
 				RequiredWith: []string{"multi_zone_flag"},
 				Elem:         &schema.Schema{Type: schema.TypeInt},
 			},
@@ -155,7 +155,7 @@ func ResourceTencentCloudCkafkaInstance() *schema.Resource {
 				Computed:      true,
 				Deprecated:    "It has been deprecated from version 1.78.5, because it do not support change. Use `tag_set` instead.",
 				ConflictsWith: []string{"tag_set"},
-				Description:   "标签 of instance. Partition size，the professional 版本 does not need 标签",
+				Description:   "标签 的 实例. Partition 大小， professional 版本 does 不 need 标签",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
@@ -175,14 +175,14 @@ func ResourceTencentCloudCkafkaInstance() *schema.Resource {
 				Type:          schema.TypeMap,
 				Optional:      true,
 				Computed:      true,
-				Description:   "标签 set of instance。",
+				Description:   "标签 集合 的 实例。",
 				ConflictsWith: []string{"tags"},
 			},
 			"disk_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "类型 disk。",
+				Description: "类型 磁盘。",
 			},
 			"config": {
 				Type:     schema.TypeList,
@@ -193,23 +193,23 @@ func ResourceTencentCloudCkafkaInstance() *schema.Resource {
 						"auto_create_topic_enable": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Automatic creation. true: 已启用，false: not 已启用",
+							Description: "Automatic creation. true: 已启用，false: 不 已启用",
 						},
 						"default_num_partitions": {
 							Type:     schema.TypeInt,
 							Required: true,
-							Description: "If auto.create.topic.enable is set to true and this value is not set, " +
+							Description: "如果 auto.create.主题.启用 是 集合 到 true 和 此 值 是 不 集合," +
 								"3 will be used by default.",
 						},
 						"default_replication_factor": {
 							Type:     schema.TypeInt,
 							Required: true,
-							Description: "If auto.create.topic.enable is set to true but this value is not set, " +
+							Description: "如果 auto.create.主题.启用 是 集合 到 true 但 此 值 是 不 集合," +
 								"2 will be used by default.",
 						},
 					},
 				},
-				Description: "Instance configuration。",
+				Description: "实例 配置。",
 			},
 			"dynamic_retention_config": {
 				Type:     schema.TypeList,
@@ -222,72 +222,72 @@ func ResourceTencentCloudCkafkaInstance() *schema.Resource {
 							Type:     schema.TypeInt,
 							Optional: true,
 							Computed: true,
-							Description: "Whether the dynamic message retention time configuration is " +
+							Description: "Whether 动态 消息 retention 时间 配置 是" +
 								"enabled. 0: disabled; 1: enabled.",
 						},
 						"disk_quota_percentage": {
 							Type:     schema.TypeInt,
 							Optional: true,
 							Computed: true,
-							Description: "Disk quota threshold (in percentage) for triggering " +
+							Description: "Disk 配额 阈值 (在 percentage) 对于 triggering" +
 								"the message retention time change event.",
 						},
 						"step_forward_percentage": {
 							Type:     schema.TypeInt,
 							Optional: true,
 							Computed: true,
-							Description: "Percentage by which the message retention " +
+							Description: "Percentage 通过 其中 消息 retention" +
 								"time is shortened each time.",
 						},
 						"bottom_retention": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Minimum retention time，in minutes。",
+							Description: "Minimum retention 时间，在 minutes。",
 						},
 					},
 				},
-				Description: "Dynamic 消息 retention policy configuration。",
+				Description: "Dynamic 消息 retention 策略 配置。",
 			},
 			"rebalance_time": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Deprecated:  "It has been deprecated from version 1.82.37.",
-				Description: "Modification of the rebalancing time after upgrade。",
+				Description: "Modification 的 rebalancing 时间 after upgrade。",
 			},
 			"public_network": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateIntegerMin(3),
-				Description:  "Bandwidth of the public network。",
+				Description:  "Bandwidth 的 公有 网络。",
 			},
 			"max_message_byte": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateIntegerInRange(1024, 12*1024*1024),
-				Description:  "The size of a single 消息 in bytes at the instance 级别 取值范围：`1024 - 12*1024*1024 bytes (i.e.，1KB-12MB)。",
+				Description:  "大小 的 单个 消息 在 bytes 在 实例 级别 取值范围：`1024 - 12*1024*1024 bytes (i.e.，1KB-12MB)。",
 			},
 			"elastic_bandwidth_switch": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Elastic bandwidth switch 0 not turned on 1 turned on (0 default). This takes effect only when the instance is created。",
+				Description: "Elastic 带宽 switch 0 不 turned 在 1 turned 在 (0 默认值). 此 takes effect 仅 当 实例 是 创建。",
 			},
 			"custom_ssl_cert_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Custom 证书 ID，only effective when `specifications_type` is set to `profession`，supports custom certificate capabilities。",
+				Description: "Custom 证书 ID，仅 effective 当 `specifications_type` 是 集合 到 `profession`，支持 自定义 证书 capabilities。",
 			},
 			"vip": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Vip of instance。",
+				Description: "Vip 的 实例。",
 			},
 			"vport": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "类型 instance。",
+				Description: "类型 实例。",
 			},
 		},
 	}

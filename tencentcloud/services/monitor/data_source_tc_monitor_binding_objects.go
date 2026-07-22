@@ -18,7 +18,7 @@ func DataSourceTencentCloudMonitorBindingObjects() *schema.Resource {
 			"group_id": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Policy 组 ID for query。",
+				Description: "Policy 组 ID 对于 查询。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -29,28 +29,28 @@ func DataSourceTencentCloudMonitorBindingObjects() *schema.Resource {
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list objects. Each element 包含following attributes:",
+				Description: "A 列表 objects. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"unique_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Object unique ID。",
+							Description: "Object 唯一 ID。",
 						},
 						"dimensions_json": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Represents a collection of dimensions of an object instance，json 格式",
+							Description: "Represents collection 的 dimensions 的 对象 实例，json 格式",
 						},
 						"is_shielded": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否object is shielded or not，`0` means unshielded and `1` means shielded。",
+							Description: "是否object 是 shielded 或 不，`0` 表示 unshielded 和 `1` 表示 shielded。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 地域 where the object is located。",
+							Description: "地域 其中 对象 是 located。",
 						},
 					},
 				},

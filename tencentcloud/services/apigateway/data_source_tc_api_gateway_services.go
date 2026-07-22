@@ -20,12 +20,12 @@ func DataSourceTencentCloudAPIGatewayServices() *schema.Resource {
 			"service_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "服务名称 for query。",
+				Description: "服务名称 对于 查询。",
 			},
 			"service_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "服务 ID for query。",
+				Description: "服务 ID 对于 查询。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -52,18 +52,18 @@ func DataSourceTencentCloudAPIGatewayServices() *schema.Resource {
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Service frontend request 类型 有效值：`http`，`https`，`http&https`。",
+							Description: "Service frontend 请求 类型 有效值：`http`，`https`，`http&https`。",
 						},
 						"service_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Custom service 描述",
+							Description: "Custom 服务 描述",
 						},
 						"exclusive_set_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
 							Deprecated:  "It has been deprecated from version 1.81.9.",
-							Description: "Self-deployed 集群名称，which is 用于指定self-deployed cluster where the service is to be created。",
+							Description: "Self-deployed 集群名称，其中 是 用于指定self-deployed 集群 其中 服务 是 到 是 创建。",
 						},
 						"net_type": {
 							Type:     schema.TypeSet,
@@ -76,37 +76,37 @@ func DataSourceTencentCloudAPIGatewayServices() *schema.Resource {
 						"ip_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IP 版本 number。",
+							Description: "IP 版本 数量。",
 						},
 						"internal_sub_domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Private network access sub-域名 名称",
+							Description: "Private 网络 访问 sub-域名 名称",
 						},
 						"outer_sub_domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Public network access subdomain 名称",
+							Description: "Public 网络 访问 subdomain 名称",
 						},
 						"inner_http_port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "端口 number for http access over private network。",
+							Description: "端口 数量 对于 http 访问 over 私有 网络。",
 						},
 						"inner_https_port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "端口 number for https access over private network。",
+							Description: "端口 数量 对于 https 访问 over 私有 网络。",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "最后修改时间 in the 格式 of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used。",
+							Description: "最后修改时间 在 格式 的 YYYY-MM-DDThh:mm:ssZ according 到 ISO 8601 standard. UTC 时间 是 使用。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 in the 格式 of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used。",
+							Description: "创建时间 在 格式 的 YYYY-MM-DDThh:mm:ssZ according 到 ISO 8601 standard. UTC 时间 是 使用。",
 						},
 						"usage_plan_list": {
 							Type:        schema.TypeList,

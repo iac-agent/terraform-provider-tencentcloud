@@ -24,7 +24,7 @@ func DataSourceTencentCloudKubernetesAddons() *schema.Resource {
 			"addon_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Add-on 名称 (all add-ons in the cluster are returned if this parameter is not specified)。",
+				Description: "Add-在 名称 (all add-ons 在 集群 是 返回 如果 此 参数 是 不 指定)。",
 			},
 
 			"addons": {
@@ -36,32 +36,32 @@ func DataSourceTencentCloudKubernetesAddons() *schema.Resource {
 						"addon_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Add-on 名称",
+							Description: "Add-在 名称",
 						},
 						"addon_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Add-on 版本",
+							Description: "Add-在 版本",
 						},
 						"raw_values": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Add-on parameters，which are base64-encoded strings in JSON/\nNote: This field may return `null`，indicating that no valid values can be obtained。",
+							Description: "Add-在 参数，其中 是 base64-encoded strings 在 JSON/\nNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"decode_values": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Decoded add-on parameters (base64 decoded from raw_values).\nNote: This field may return empty string if raw_values is null or invalid base64。",
+							Description: "Decoded add-在 参数 (base64 decoded 从 raw_values).\nNote: 此 字段 可能 返回 空 字符串 如果 raw_values 是 null 或 无效 base64。",
 						},
 						"phase": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Add-on 状态\nNote: This field may return `null`，indicating that no valid values can be obtained。",
+							Description: "Add-在 状态\nNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"reason": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Reason for add-on failure\nNote: This field may return `null`，indicating that no valid values can be obtained。",
+							Description: "Reason 对于 add-在 failure\nNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 					},
 				},

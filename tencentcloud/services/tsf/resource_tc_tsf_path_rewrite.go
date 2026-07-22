@@ -27,13 +27,13 @@ func ResourceTencentCloudTsfPathRewrite() *schema.Resource {
 			"path_rewrite_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "路径 rewrite rule ID。",
+				Description: "路径 rewrite 规则 ID。",
 			},
 
 			"gateway_group_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway deployment 组 ID",
+				Description: "网关 部署 组 ID",
 			},
 
 			"regex": {
@@ -45,19 +45,19 @@ func ResourceTencentCloudTsfPathRewrite() *schema.Resource {
 			"replacement": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "内容 to replace。",
+				Description: "内容 到 replace。",
 			},
 
 			"blocked": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "是否shield the mapped 路径，Y: Yes N: No。",
+				Description: "是否shield mapped 路径，Y: Yes N: No。",
 			},
 
 			"order": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "rule 顺序，the smaller the higher the 优先级",
+				Description: "规则 顺序， smaller higher 优先级",
 			},
 		},
 	}

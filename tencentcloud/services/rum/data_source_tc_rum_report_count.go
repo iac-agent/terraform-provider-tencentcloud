@@ -19,13 +19,13 @@ func DataSourceTencentCloudRumReportCount() *schema.Resource {
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Start time but is represented using a timestamp in seconds.",
+				Description: "Start 时间 但 是 represented 使用 timestamp 在 秒.",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "End time but is represented using a timestamp in seconds.",
+				Description: "End 时间 但 是 represented 使用 timestamp 在 秒.",
 			},
 
 			"project_id": {
@@ -37,25 +37,25 @@ func DataSourceTencentCloudRumReportCount() *schema.Resource {
 			"report_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Report type, empty is meaning all type count. `log`:log report count, `pv`:pv report count, `event`:event report count, `speed`:speed report count, `performance`:performance report count, `custom`:custom report count, `webvitals`:webvitals report count, `miniProgramData`:miniProgramData report count.",
+				Description: "Report 类型, 空 是 meaning all 类型 count. `日志`:日志 报告 count, `pv`:pv 报告 count, `事件`:事件 报告 count, `speed`:speed 报告 count, `performance`:performance 报告 count, `自定义`:自定义 报告 count, `webvitals`:webvitals 报告 count, `miniProgramData`:miniProgramData 报告 count.",
 			},
 
 			"instance_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Return value.",
+				Description: "Return 值.",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

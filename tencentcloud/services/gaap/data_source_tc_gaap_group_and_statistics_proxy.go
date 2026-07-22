@@ -25,7 +25,7 @@ func DataSourceTencentCloudGaapGroupAndStatisticsProxy() *schema.Resource {
 			"group_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Channel group information that can be counted。",
+				Description: "Channel 组 信息 该 可以 是 counted。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"group_id": {
@@ -41,13 +41,13 @@ func DataSourceTencentCloudGaapGroupAndStatisticsProxy() *schema.Resource {
 						"proxy_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Channel list in the proxy group。",
+							Description: "Channel 列表 在 proxy 组。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"proxy_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Channel Id。",
+										Description: "Channel ID。",
 									},
 									"proxy_name": {
 										Type:        schema.TypeString,
@@ -57,13 +57,13 @@ func DataSourceTencentCloudGaapGroupAndStatisticsProxy() *schema.Resource {
 									"listener_list": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "listener list。",
+										Description: "listener 列表。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"listener_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "listener Id。",
+													Description: "listener ID。",
 												},
 												"listener_name": {
 													Type:        schema.TypeString,

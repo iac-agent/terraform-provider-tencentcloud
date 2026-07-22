@@ -27,7 +27,7 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID cluster。",
+				Description: "ID 集群。",
 			},
 
 			"data_disk": {
@@ -43,28 +43,28 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							Default:     false,
-							Description: "Indicate 是否auto 格式 and mount or not. 默认为 `false`。",
+							Description: "Indicate 是否auto 格式 和 mount 或 不. 默认为 `false`。",
 						},
 						"disk_size": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							ForceNew:    true,
 							Default:     0,
-							Description: "Volume of disk （GB）。 默认为 `0`。",
+							Description: "Volume 的 磁盘 （GB）。 默认为 `0`。",
 						},
 						"disk_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
 							Default:     "CLOUD_PREMIUM",
-							Description: "Types of disk，可用值：`CLOUD_PREMIUM` and `CLOUD_SSD` and `CLOUD_HSSD` and `CLOUD_TSSD`。",
+							Description: "Types 的 磁盘，可用值：`CLOUD_PREMIUM` 和 `CLOUD_SSD` 和 `CLOUD_HSSD` 和 `CLOUD_TSSD`。",
 						},
 						"file_system": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
 							Default:     "",
-							Description: "File system，e.g. `ext3/ext4/xfs`。",
+							Description: "File 系统，e.g. `ext3/ext4/xfs`。",
 						},
 						"mount_target": {
 							Type:        schema.TypeString,
@@ -78,7 +78,7 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							Default:     "",
-							Description: "The 名称 device or partition to mount。",
+							Description: "名称 device 或 分区 到 mount。",
 						},
 					},
 				},
@@ -88,7 +88,7 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Indicate to set desired pod number in current node. Valid when the cluster enable customized pod cidr。",
+				Description: "Indicate 到 集合 desired pod 数量 在 当前 节点. 有效 当 集群 启用 customized pod cidr。",
 			},
 
 			"docker_graph_path": {
@@ -102,7 +102,7 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Custom parameter information related to the node。",
+				Description: "Custom 参数 信息 related 到 节点。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -113,13 +113,13 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "GPU driver parameters。",
+				Description: "GPU 驱动 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cuda": {
 							Type:        schema.TypeMap,
 							Optional:    true,
-							Description: "CUDA  版本 格式 like: `{ 版本: String，名称: String }`. `版本`: 版本 of GPU driver or CUDA; `名称`: 名称 GPU driver or CUDA。",
+							Description: "CUDA 版本 格式 like: `{ 版本: String，名称: String }`. `版本`: 版本 的 GPU 驱动 或 CUDA; `名称`: 名称 GPU 驱动 或 CUDA。",
 						},
 						"cudnn": {
 							Type:        schema.TypeMap,
@@ -129,12 +129,12 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 						"custom_driver": {
 							Type:        schema.TypeMap,
 							Optional:    true,
-							Description: "Custom GPU driver. 格式 like: `{地址: String}`. `地址`: URL of custom GPU driver 地址",
+							Description: "Custom GPU 驱动. 格式 like: `{地址: String}`. `地址`: URL 的 自定义 GPU 驱动 地址",
 						},
 						"driver": {
 							Type:        schema.TypeMap,
 							Optional:    true,
-							Description: "GPU driver 版本 格式 like: `{ 版本: String，名称: String }`. `版本`: 版本 of GPU driver or CUDA; `名称`: 名称 GPU driver or CUDA。",
+							Description: "GPU 驱动 版本 格式 like: `{ 版本: String，名称: String }`. `版本`: 版本 的 GPU 驱动 或 CUDA; `名称`: 名称 GPU 驱动 或 CUDA。",
 						},
 						"mig_enable": {
 							Type:        schema.TypeBool,
@@ -150,14 +150,14 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 				Type:        schema.TypeMap,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Labels of kubernetes scale worker created nodes。",
+				Description: "Labels 的 kubernetes scale worker 创建 nodes。",
 			},
 
 			"mount_target": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "挂载目标 默认为 not mounting。",
+				Description: "挂载目标 默认为 不 mounting。",
 			},
 
 			"unschedulable": {
@@ -165,7 +165,7 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Default:     0,
-				Description: "Set 是否added node participates in scheduling. The 默认值为 0，which means participating in scheduling; non-0 means not participating in scheduling. After the node initialization is completed，you can execute kubectl uncordon nodename to join the node in scheduling。",
+				Description: "Set 是否added 节点 participates 在 scheduling. 默认值为 0，其中 表示 participating 在 scheduling; non-0 表示 不 participating 在 scheduling. After 节点 initialization 是 completed，您 可以 execute kubectl uncordon nodename 到 join 节点 在 scheduling。",
 			},
 
 			"worker_config": {
@@ -174,19 +174,19 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 				ForceNew:    true,
 				MaxItems:    1,
 				MinItems:    1,
-				Description: "Deploy the machine configuration information of the 'WORK' service，and create <=20 units for common users。",
+				Description: "Deploy machine 配置 信息 的 'WORK' 服务，和 create <=20 units 对于 common users。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"availability_zone": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "表示which availability 可用区 will be used。",
+							Description: "表示which availability 可用区 将 是 使用。",
 						},
 						"bandwidth_package_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "bandwidth package id. if 用户 is standard 用户，then the bandwidth_package_id is needed，or default has bandwidth_package_id。",
+							Description: "带宽 包 ID. 如果 用户 是 standard 用户，then bandwidth_package_id 是 needed，或 默认值 has bandwidth_package_id。",
 						},
 						"cam_role_name": {
 							Type:        schema.TypeString,
@@ -214,14 +214,14 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 										Optional:    true,
 										ForceNew:    true,
 										Default:     false,
-										Description: "Indicate 是否auto 格式 and mount or not. 默认为 `false`。",
+										Description: "Indicate 是否auto 格式 和 mount 或 不. 默认为 `false`。",
 										Deprecated:  "This argument was deprecated, use `data_disk` instead.",
 									},
 									"disk_partition": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "The 名称 device or partition to mount。",
+										Description: "名称 device 或 分区 到 mount。",
 										Deprecated:  "This argument was deprecated, use `data_disk` instead.",
 									},
 									"disk_size": {
@@ -229,31 +229,31 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 										Optional:    true,
 										ForceNew:    true,
 										Default:     0,
-										Description: "Volume of disk （GB）。 默认为 `0`。",
+										Description: "Volume 的 磁盘 （GB）。 默认为 `0`。",
 									},
 									"disk_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
 										Default:     "CLOUD_PREMIUM",
-										Description: "Types of disk，可用值：`CLOUD_PREMIUM` and `CLOUD_SSD` and `CLOUD_HSSD` and `CLOUD_TSSD`。",
+										Description: "Types 的 磁盘，可用值：`CLOUD_PREMIUM` 和 `CLOUD_SSD` 和 `CLOUD_HSSD` 和 `CLOUD_TSSD`。",
 									},
 									"encrypt": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "表示是否encrypt data disk，default `false`。",
+										Description: "表示是否encrypt 数据 磁盘，默认值 `false`。",
 									},
 									"file_system": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "File system，e.g. `ext3/ext4/xfs`。",
+										Description: "File 系统，e.g. `ext3/ext4/xfs`。",
 										Deprecated:  "This argument was deprecated, use `data_disk` instead.",
 									},
 									"kms_key_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "ID custom CMK in the 格式 of UUID or `kms-abcd1234`. This parameter is 用于encrypt cloud disks。",
+										Description: "ID 自定义 CMK 在 格式 的 UUID 或 `kms-abcd1234`. 此 参数 是 用于encrypt 云 disks。",
 									},
 									"mount_target": {
 										Type:        schema.TypeString,
@@ -266,7 +266,7 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Data disk snapshot ID。",
+										Description: "Data 磁盘 快照 ID。",
 									},
 								},
 							},
@@ -276,13 +276,13 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							Default:     0,
-							Description: "Indicate to set desired pod number in node. valid when enable_customized_pod_cidr=true，and it override `[globe_]desired_pod_num` for current node. Either all the fields `desired_pod_num` or none。",
+							Description: "Indicate 到 集合 desired pod 数量 在 节点. 有效 当 enable_customized_pod_cidr=true，和 它 override `[globe_]desired_pod_num` 对于 当前 节点. Either all 字段 `desired_pod_num` 或 none。",
 						},
 						"disaster_recover_group_ids": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Disaster recover groups to which a CVM instance belongs. Only support maximum 1。",
+							Description: "Disaster recover groups 到 其中 CVM 实例 belongs. Only support 最大 1。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -292,51 +292,51 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							Default:     true,
-							Description: "To 指定是否enable cloud monitor service. 默认为 TRUE。",
+							Description: "To 指定是否enable 云 监控 服务. 默认为 TRUE。",
 						},
 						"enhanced_security_service": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							ForceNew:    true,
 							Default:     true,
-							Description: "To 指定是否enable cloud security service. 默认为 TRUE。",
+							Description: "To 指定是否enable 云 安全 服务. 默认为 TRUE。",
 						},
 						"hostname": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "The 主机 名称 attached instance. Dot (.) and dash (-) cannot be used as the first and last characters of HostName and cannot be used consecutively. Windows example: The length of the 名称 character is [2，15]，letters (capitalization is not restricted)，numbers and dashes (-) are allowed，dots (.) are not supported，and not all numbers are allowed. Examples of other types (Linux，etc.): The character length is [2，60]，and multiple dots are allowed. There is a segment between the dots. Each segment allows letters (with no limitation on capitalization)，numbers and dashes (-)。",
+							Description: "主机 名称 attached 实例. Dot (.) 和 dash (-) 不能 是 使用 作为 first 和 last 字符 的 HostName 和 不能 是 使用 consecutively. Windows 示例: 长度 的 名称 character 是 [2，15]，letters (capitalization 是 不 restricted)，numbers 和 dashes (-) 是 allowed，dots (.) 是 不 支持，和 不 all numbers 是 allowed. Examples 的 other types (Linux，etc.): character 长度 是 [2，60]，和 多个 dots 是 allowed. There 是 segment between dots. Each segment allows letters (使用 无 limitation 在 capitalization)，numbers 和 dashes (-)。",
 						},
 						"hpc_cluster_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Id of cvm hpc cluster。",
+							Description: "ID 的 cvm hpc 集群。",
 						},
 						"img_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The valid image id，格式 of img-xxx。",
+							Description: "有效 镜像 ID，格式 的 img-xxx。",
 						},
 						"instance_charge_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
 							Default:     "POSTPAID_BY_HOUR",
-							Description: "The charge 类型 instance. Valid values are `PREPAID`，`POSTPAID_BY_HOUR`，`SPOTPAID`，`CDCPAID`. The 默认为 `POSTPAID_BY_HOUR`. Note: TencentCloud International only supports `POSTPAID_BY_HOUR`，`PREPAID` instance will not terminated after cluster deleted，and may not allow to delete before expired。",
+							Description: "charge 类型 实例. 有效 值 是 `PREPAID`，`POSTPAID_BY_HOUR`，`SPOTPAID`，`CDCPAID`. 默认为 `POSTPAID_BY_HOUR`. 注意: TencentCloud International 仅 支持 `POSTPAID_BY_HOUR`，`PREPAID` 实例 将 不 terminated after 集群 删除，和 可能 不 allow 到 delete before expired。",
 						},
 						"instance_charge_type_prepaid_period": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							ForceNew:    true,
 							Default:     1,
-							Description: "The tenancy (time unit is month) of the prepaid instance. NOTE: it only works when instance_charge_type is set to `PREPAID`. Valid values are `1`，`2`，`3`，`4`，`5`，`6`，`7`，`8`，`9`，`10`，`11`，`12`，`24`，`36`。",
+							Description: "tenancy (时间 单位 是 month) 的 prepaid 实例. NOTE: 它 仅 works 当 instance_charge_type 是 集合 到 `PREPAID`. 有效 值 是 `1`，`2`，`3`，`4`，`5`，`6`，`7`，`8`，`9`，`10`，`11`，`12`，`24`，`36`。",
 						},
 						"instance_charge_type_prepaid_renew_flag": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
 							ForceNew:    true,
-							Description: "自动续费标识 有效值：`NOTIFY_AND_AUTO_RENEW`: notify upon expiration and renew automatically，`NOTIFY_AND_MANUAL_RENEW`: notify upon expiration but do not renew automatically，`DISABLE_NOTIFY_AND_MANUAL_RENEW`: neither notify upon expiration nor renew automatically. 默认值：`NOTIFY_AND_MANUAL_RENEW`. If this parameter is specified as `NOTIFY_AND_AUTO_RENEW`，the instance will be automatically renewed on a monthly basis if the 账号 balance is sufficient. NOTE: it only works when instance_charge_type is set to `PREPAID`。",
+							Description: "自动续费标识 有效值：`NOTIFY_AND_AUTO_RENEW`: notify upon expiration 和 renew automatically，`NOTIFY_AND_MANUAL_RENEW`: notify upon expiration 但 do 不 renew automatically，`DISABLE_NOTIFY_AND_MANUAL_RENEW`: neither notify upon expiration nor renew automatically. 默认值：`NOTIFY_AND_MANUAL_RENEW`. 如果 此 参数 是 指定 作为 `NOTIFY_AND_AUTO_RENEW`， 实例 将 是 automatically renewed 在 monthly basis 如果 账号 balance 是 sufficient. NOTE: 它 仅 works 当 instance_charge_type 是 集合 到 `PREPAID`。",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
@@ -349,27 +349,27 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Specified types of CVM instance。",
+							Description: "Specified types 的 CVM 实例。",
 						},
 						"internet_charge_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
 							Default:     "TRAFFIC_POSTPAID_BY_HOUR",
-							Description: "Charge types for network traffic. Available values include `TRAFFIC_POSTPAID_BY_HOUR`。",
+							Description: "Charge types 对于 网络 流量. Available 值 include `TRAFFIC_POSTPAID_BY_HOUR`。",
 						},
 						"internet_max_bandwidth_out": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Default:     0,
-							Description: "Max bandwidth of Internet access in Mbps. 默认为 0。",
+							Description: "Max 带宽 的 Internet 访问 在 Mbps. 默认为 0。",
 						},
 						"key_ids": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    1,
-							Description: "ID 列表 keys，should be set if `密码` not set。",
+							Description: "ID 列表 keys，should 是 集合 如果 `密码` 不 集合。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -379,19 +379,19 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 							Optional:    true,
 							ForceNew:    true,
 							Sensitive:   true,
-							Description: "密码 to access，should be set if `key_ids` not set。",
+							Description: "密码 到 访问，should 是 集合 如果 `key_ids` 不 集合。",
 						},
 						"public_ip_assigned": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "指定是否assign an 公网 IP 地址",
+							Description: "指定是否assign 公网 IP 地址",
 						},
 						"security_group_ids": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Security groups to which a CVM instance belongs。",
+							Description: "Security groups 到 其中 CVM 实例 belongs。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -400,27 +400,27 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Private network ID。",
+							Description: "Private 网络 ID。",
 						},
 						"system_disk_size": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							ForceNew:    true,
 							Default:     50,
-							Description: "Volume of system disk （GB）。 默认为 `50`。",
+							Description: "Volume 的 系统 磁盘 （GB）。 默认为 `50`。",
 						},
 						"system_disk_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
 							Default:     "CLOUD_PREMIUM",
-							Description: "System disk 类型 For more information on limits of system disk types，see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952). 有效值：`LOCAL_BASIC`: local disk，`LOCAL_SSD`: local SSD disk，`CLOUD_SSD`: SSD，`CLOUD_PREMIUM`: Premium Cloud Storage. NOTE: `CLOUD_BASIC`，`LOCAL_BASIC` and `LOCAL_SSD` are 已弃用",
+							Description: "System 磁盘 类型 For more 信息 在 limits 的 系统 磁盘 types，see [Storage Overview](https://intl.云.tencent.com/document/product/213/4952). 有效值：`LOCAL_BASIC`: 本地 磁盘，`LOCAL_SSD`: 本地 SSD 磁盘，`CLOUD_SSD`: SSD，`CLOUD_PREMIUM`: Premium Cloud Storage. NOTE: `CLOUD_BASIC`，`LOCAL_BASIC` 和 `LOCAL_SSD` 是 已弃用",
 						},
 						"user_data": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "用户 data provided to instances，needs to be encoded in base64，and the maximum supported data size is 16KB。",
+							Description: "用户 数据 提供 到 实例，needs 到 是 encoded 在 base64，和 最大 支持 数据 大小 是 16KB。",
 						},
 						"tags": {
 							Type:        schema.TypeList,
@@ -459,7 +459,7 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Base64-encoded 用户 script，executed before initializing the node，currently only effective for adding existing nodes。",
+				Description: "Base64-encoded 用户 脚本，executed before initializing 节点，currently 仅 effective 对于 adding existing nodes。",
 			},
 
 			"taints": {
@@ -473,19 +473,19 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "键 of the taint。",
+							Description: "键 的 taint。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "值 of the taint。",
+							Description: "值 的 taint。",
 						},
 						"effect": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Effect of the taint。",
+							Description: "Effect 的 taint。",
 						},
 					},
 				},
@@ -495,19 +495,19 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Base64 encoded 用户 script，this script will be executed after the k8s component is run. The 用户 needs to ensure that the script is reentrant and retry logic. The script and its generated log files can be viewed in the /data/ccs_userscript/ 路径 of the node，if 必填 The node needs to be initialized before it can be added to the schedule. It can be used with the unschedulable parameter. After the final initialization of userScript is completed，add the kubectl uncordon nodename --kubeconfig=/root/.kube/配置 command to add the node to the schedule。",
+				Description: "Base64 encoded 用户 脚本，此 脚本 将 是 executed after k8s 组件 是 run. 用户 needs 到 ensure 该 脚本 是 reentrant 和 retry logic. 脚本 和 its generated 日志 files 可以 是 viewed 在 /数据/ccs_userscript/ 路径 的 节点，如果 必填 节点 needs 到 是 initialized before 它 可以 是 added 到 调度. It 可以 是 使用 使用 unschedulable 参数. After final initialization 的 userScript 是 completed，add kubectl uncordon nodename --kubeconfig=/root/.kube/配置 command 到 add 节点 到 调度。",
 			},
 
 			"worker_instances_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information 列表 kubernetes cluster 'WORKER'. Each element 包含following attributes:",
+				Description: "An 信息 列表 kubernetes 集群 'WORKER'. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"failed_reason": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Information of the cvm when it is failed。",
+							Description: "Information 的 cvm 当 它 是 failed。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
@@ -517,17 +517,17 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 						"instance_role": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "角色 of the cvm。",
+							Description: "角色 的 cvm。",
 						},
 						"instance_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "State of the cvm。",
+							Description: "State 的 cvm。",
 						},
 						"lan_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "LAN IP of the cvm。",
+							Description: "LAN IP 的 cvm。",
 						},
 					},
 				},
@@ -537,7 +537,7 @@ func ResourceTencentCloudKubernetesScaleWorker() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "用于保存结果 of CVMs creation 错误 messages。",
+				Description: "用于保存结果 的 CVMs creation 错误 messages。",
 			},
 		},
 	}

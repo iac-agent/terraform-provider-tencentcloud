@@ -31,13 +31,13 @@ func ResourceTencentCloudCcnRouteTableSelectionPolicies() *schema.Resource {
 			"selection_policies": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "Select strategy information set。",
+				Description: "Select strategy 信息 集合。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instance 类型: Private Network: VPC，Dedicated Gateway: DIRECTCONNECT，Blackstone Private Network: BMVPC，EDGE Device: EDGE，EDGE Tunnel: EDGE_TUNNEL，EDGE Gateway: EDGE_VPNGW，VPN Gateway: VPNGW。",
+							Description: "实例 类型: Private Network: VPC，Dedicated Gateway: DIRECTCONNECT，Blackstone Private Network: BMVPC，EDGE Device: EDGE，EDGE Tunnel: EDGE_TUNNEL，EDGE Gateway: EDGE_VPNGW，VPN Gateway: VPNGW。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
@@ -52,7 +52,7 @@ func ResourceTencentCloudCcnRouteTableSelectionPolicies() *schema.Resource {
 						"route_table_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "route table ID。",
+							Description: "路由 表 ID。",
 						},
 						"description": {
 							Type:        schema.TypeString,

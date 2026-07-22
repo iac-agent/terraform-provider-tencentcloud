@@ -22,13 +22,13 @@ func DataSourceTencentCloudTatInvokerRecords() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "列表 invoker IDs. Up to 100 IDs are allowed。",
+				Description: "列表 invoker IDs. Up 到 100 IDs 是 allowed。",
 			},
 
 			"invoker_record_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Execution history of an invoker。",
+				Description: "Execution history 的 invoker。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"invoker_id": {

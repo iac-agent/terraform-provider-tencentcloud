@@ -25,13 +25,13 @@ func DataSourceTencentCloudOrganizationOrgAuthNode() *schema.Resource {
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Organization auth node list。",
+				Description: "Organization auth 节点 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"relation_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Relationship Id。",
+							Description: "Relationship ID。",
 						},
 						"auth_name": {
 							Type:        schema.TypeString,

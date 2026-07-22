@@ -37,7 +37,7 @@ func ResourceTencentCloudTrocketRocketmqConsumerGroup() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "名称 consumer group。",
+				Description: "名称 消费者 组。",
 			},
 
 			"max_retry_times": {
@@ -68,7 +68,7 @@ func ResourceTencentCloudTrocketRocketmqConsumerGroup() *schema.Resource {
 				Type:        schema.TypeMap,
 				Optional:    true,
 				Computed:    true,
-				Description: "标签 of consumer group。",
+				Description: "标签 的 消费者 组。",
 			},
 		},
 	}

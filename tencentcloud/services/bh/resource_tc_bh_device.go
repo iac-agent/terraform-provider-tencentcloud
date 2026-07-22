@@ -27,14 +27,14 @@ func ResourceTencentCloudBhDevice() *schema.Resource {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Asset parameter list。",
+				Description: "Asset 参数 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"os_name": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "The operating system 名称 can only be one of the following: 主机 (Linux，Windows)，Database (MySQL，SQL Server，MariaDB，PostgreSQL，MongoDBReplicaSet，MongoDBSharded，Redis)，or Container (TKE，EKS)。",
+							Description: "operating 系统 名称 可以 仅 是 一个 的 following: 主机 (Linux，Windows)，Database (MySQL，SQL Server，MariaDB，PostgreSQL，MongoDBReplicaSet，MongoDBSharded，Redis)，或 Container (TKE，EKS)。",
 						},
 						"ip": {
 							Type:        schema.TypeString,
@@ -51,19 +51,19 @@ func ResourceTencentCloudBhDevice() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "主机名，can be empty。",
+							Description: "主机名，可以 是 空。",
 						},
 						"department_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Department ID to which the asset belongs。",
+							Description: "Department ID 到 其中 asset belongs。",
 						},
 						"ip_port_set": {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Computed:    true,
 							ForceNew:    true,
-							Description: "Asset multi-node: IP and 端口 fields。",
+							Description: "Asset multi-节点: IP 和 端口 字段。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -73,33 +73,33 @@ func ResourceTencentCloudBhDevice() *schema.Resource {
 							Optional:    true,
 							Computed:    true,
 							ForceNew:    true,
-							Description: "是否enable SSL，1: enable，0: disable，only supports Redis assets。",
+							Description: "是否enable SSL，1: 启用，0: disable，仅 支持 Redis assets。",
 						},
 						"ssl_cert": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "SSL certificate，必填 when EnableSSL is 已启用",
+							Description: "SSL 证书，必填 当 EnableSSL 是 已启用",
 						},
 						"ssl_cert_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "SSL certificate 名称，必填 when EnableSSL is 已启用",
+							Description: "SSL 证书 名称，必填 当 EnableSSL 是 已启用",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
 							ForceNew:    true,
-							Description: "Asset instance ID。",
+							Description: "Asset 实例 ID。",
 						},
 						"ap_code": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
 							ForceNew:    true,
-							Description: "地域 to which the asset belongs。",
+							Description: "地域 到 其中 asset belongs。",
 						},
 						"ap_name": {
 							Type:        schema.TypeString,
@@ -111,13 +111,13 @@ func ResourceTencentCloudBhDevice() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "VPC to which the asset belongs。",
+							Description: "VPC 到 其中 asset belongs。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Subnet to which the asset belongs。",
+							Description: "Subnet 到 其中 asset belongs。",
 						},
 						"public_ip": {
 							Type:        schema.TypeString,
@@ -133,7 +133,7 @@ func ResourceTencentCloudBhDevice() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Cloud 账号 ID to which the asset belongs。",
+				Description: "Cloud 账号 ID 到 其中 asset belongs。",
 			},
 
 			// computed

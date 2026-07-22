@@ -19,7 +19,7 @@ func DataSourceTencentCloudTcrReplicationInstanceSyncStatus() *schema.Resource {
 			"registry_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "master registry id。",
+				Description: "master registry ID。",
 			},
 
 			"replication_registry_id": {
@@ -31,13 +31,13 @@ func DataSourceTencentCloudTcrReplicationInstanceSyncStatus() *schema.Resource {
 			"replication_region_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "synchronization instance 地域 ID",
+				Description: "synchronization 实例 地域 ID",
 			},
 
 			"show_replication_log": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "是否display the synchronization log。",
+				Description: "是否display synchronization 日志。",
 			},
 
 			"replication_status": {
@@ -49,13 +49,13 @@ func DataSourceTencentCloudTcrReplicationInstanceSyncStatus() *schema.Resource {
 			"replication_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "sync complete time。",
+				Description: "sync 完整 时间。",
 			},
 
 			"replication_log": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "sync log. 注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "sync 日志. 注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_type": {
@@ -66,12 +66,12 @@ func DataSourceTencentCloudTcrReplicationInstanceSyncStatus() *schema.Resource {
 						"source": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "来源 image. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "来源 镜像. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"destination": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "destination resource. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "destination 资源. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"status": {
 							Type:        schema.TypeString,

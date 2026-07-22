@@ -109,7 +109,7 @@ func DataSourceTencentCloudCynosdbClusterDetailDatabases() *schema.Resource {
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster Id 注意：该字段可能返回null，表示无法获取有效值。",
+							Description: "Cluster ID 注意：该字段可能返回null，表示无法获取有效值。",
 						},
 					},
 				},

@@ -29,7 +29,7 @@ func ResourceTencentCloudWedataQualityRuleGroup() *schema.Resource {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Task parameters。",
+				Description: "任务 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"monitor_type": {
@@ -40,12 +40,12 @@ func ResourceTencentCloudWedataQualityRuleGroup() *schema.Resource {
 						"executor_group_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Execution resource 组 ID",
+							Description: "Execution 资源 组 ID",
 						},
 						"rule_group_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Monitor task 名称",
+							Description: "Monitor 任务 名称",
 						},
 						"database_name": {
 							Type:        schema.TypeString,
@@ -65,48 +65,48 @@ func ResourceTencentCloudWedataQualityRuleGroup() *schema.Resource {
 						"rule_group_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Monitor task ID，必填 when editing monitor tasks。",
+							Description: "Monitor 任务 ID，必填 当 editing 监控 tasks。",
 						},
 						"exec_queue": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Compute queue，必填 when data 来源 is HIVE，ICEBERG，DLC. When data 来源 is DLC，this field should be filled with DLC data engine 名称",
+							Description: "Compute queue，必填 当 数据 来源 是 HIVE，ICEBERG，DLC. 当 数据 来源 是 DLC，此 字段 should 是 filled 使用 DLC 数据 引擎 名称",
 						},
 						"executor_group_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Execution resource 组名称",
+							Description: "Execution 资源 组名称",
 						},
 						"tasks": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Associated production scheduling task list，必填 when MonitorType=2。",
+							Description: "Associated production scheduling 任务 列表，必填 当 MonitorType=2。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"workflow_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Production scheduling task workflow ID。",
+										Description: "Production scheduling 任务 工作流 ID。",
 									},
 									"task_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Production scheduling task ID。",
+										Description: "Production scheduling 任务 ID。",
 									},
 									"task_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Production scheduling task 名称",
+										Description: "Production scheduling 任务 名称",
 									},
 									"cycle_type": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Production scheduling task cycle 类型",
+										Description: "Production scheduling 任务 cycle 类型",
 									},
 									"task_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Production task 类型",
+										Description: "Production 任务 类型",
 									},
 									"schedule_time_zone": {
 										Type:        schema.TypeString,
@@ -116,7 +116,7 @@ func ResourceTencentCloudWedataQualityRuleGroup() *schema.Resource {
 									"in_charge_id_list": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Person in charge ID。",
+										Description: "Person 在 charge ID。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -124,7 +124,7 @@ func ResourceTencentCloudWedataQualityRuleGroup() *schema.Resource {
 									"in_charge_name_list": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Person in charge 名称",
+										Description: "Person 在 charge 名称",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -135,37 +135,37 @@ func ResourceTencentCloudWedataQualityRuleGroup() *schema.Resource {
 						"start_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Cycle 开始时间，必填 when MonitorType=3。",
+							Description: "Cycle 开始时间，必填 当 MonitorType=3。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Cycle 结束时间，必填 when MonitorType=3。",
+							Description: "Cycle 结束时间，必填 当 MonitorType=3。",
 						},
 						"cycle_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Scheduling cycle 类型，必填 when MonitorType=3，specific values: `I`: Schedule by minute; `H`: Schedule by hour; `D`: Schedule by day; `W`: Schedule by week; `M`: Schedule by month。",
+							Description: "Scheduling cycle 类型，必填 当 MonitorType=3，特定 值: `I`: Schedule 通过 minute; `H`: Schedule 通过 hour; `D`: Schedule 通过 day; `W`: Schedule 通过 week; `M`: Schedule 通过 month。",
 						},
 						"delay_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Delayed scheduling time，必填 when MonitorType=3，mainly 用于day/week/month tasks，measured in minutes. For example，if a day task needs to be delayed to 02:00，this field 值 is 120，indicating a 延迟 of 2 hours (120 minutes). For hour/minute tasks，this field is meaningless，fill in fixed 值 0，otherwise field validation will fail。",
+							Description: "Delayed scheduling 时间，必填 当 MonitorType=3，mainly 用于day/week/month tasks，measured 在 minutes. For 示例，如果 day 任务 needs 到 是 delayed 到 02:00，此 字段 值 是 120，indicating 延迟 的 2 hours (120 minutes). For hour/minute tasks，此 字段 是 meaningless，fill 在 fixed 值 0，otherwise 字段 validation 将 fail。",
 						},
 						"cycle_step": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Interval，必填 when MonitorType=3，表示interval time of periodic tasks; Week/Month/Day tasks can choose: `1`; Minute tasks can choose: `10`，`20`，`30`; Hour tasks can choose: `1`，`2`，`3`，`4`，`6`，`8`，`12`。",
+							Description: "Interval，必填 当 MonitorType=3，表示interval 时间 的 periodic tasks; Week/Month/Day tasks 可以 choose: `1`; Minute tasks 可以 choose: `10`，`20`，`30`; Hour tasks 可以 choose: `1`，`2`，`3`，`4`，`6`，`8`，`12`。",
 						},
 						"task_action": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Time specification, mainly used for week/month scheduling cycle tasks. For week scheduling cycle: means specifying which day of the week to run, multiple options separated by English commas, can fill 1,2...7, representing Sunday, Monday...Saturday respectively, for example fill \"1,2\", means execute on Sunday and Monday; For month scheduling cycle: means specifying which day of the month to run, multiple options separated by English commas, can fill 1,2,...,31, representing 1st, 2nd...31st respectively, for example fill \"1,2\", means execute on 1st and 2nd of each month.",
+							Description: "Time 规格, mainly 使用 对于 week/month scheduling cycle tasks. For week scheduling cycle: 表示 specifying 其中 day 的 week 到 run, 多个 options separated 通过 English commas, 可以 fill 1,2...7, representing Sunday, Monday...Saturday respectively, 对于 示例 fill \"1,2\", 表示 execute 在 Sunday 和 Monday; For month scheduling cycle: 表示 specifying 其中 day 的 month 到 run, 多个 options separated 通过 English commas, 可以 fill 1,2,...,31, representing 1st, 2nd...31st respectively, 对于 示例 fill \"1,2\", 表示 execute 在 1st 和 2nd 的 each month.",
 						},
 						"exec_engine_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Running execution engine，如果未传入，will request the default execution engine under this data 来源",
+							Description: "Running execution 引擎，如果未传入，将 请求 默认值 execution 引擎 under 此 数据 来源",
 						},
 						"exec_plan": {
 							Type:        schema.TypeString,
@@ -185,7 +185,7 @@ func ResourceTencentCloudWedataQualityRuleGroup() *schema.Resource {
 						"trigger_types": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Trigger type, mainly used for \"Associated production scheduling\" (MonitorType=2) monitoring tasks, optional values: `CYCLE`: Periodic scheduling; `MAKE_UP`: Backfill; `RERUN`: Rerun.",
+							Description: "Trigger 类型, mainly 使用 对于 \"Associated production scheduling\" (MonitorType=2) 监控 tasks, 可选 值: `CYCLE`: Periodic scheduling; `MAKE_UP`: Backfill; `RERUN`: Rerun.",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -193,7 +193,7 @@ func ResourceTencentCloudWedataQualityRuleGroup() *schema.Resource {
 						"dlc_group_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "When data 来源 is DLC，corresponds to DLC resource group. According to the DLC engine 名称 filled in ExecQueue，select the resource group under the corresponding engine。",
+							Description: "当 数据 来源 是 DLC，corresponds 到 DLC 资源 组. According 到 DLC 引擎 名称 filled 在 ExecQueue，select 资源 组 under corresponding 引擎。",
 						},
 						"schema_name": {
 							Type:        schema.TypeString,
@@ -203,7 +203,7 @@ func ResourceTencentCloudWedataQualityRuleGroup() *schema.Resource {
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Task 描述",
+							Description: "任务 描述",
 						},
 						"schedule_time_zone": {
 							Type:        schema.TypeString,
@@ -214,58 +214,58 @@ func ResourceTencentCloudWedataQualityRuleGroup() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Task monitoring parameters。",
+							Description: "任务 监控 参数。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"analysis_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Analysis 类型，可选 values: `INFERENCE`-inference table; `TIME_SERIES`-time series table; `SNAPSHOT`-snapshot table。",
+										Description: "Analysis 类型，可选 值: `INFERENCE`-inference 表; `TIME_SERIES`-时间 series 表; `SNAPSHOT`-快照 表。",
 									},
 									"model_monitor_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Model detection 类型，必填 when analysis 类型 is inference table (INFERENCE)，可选 values: `CLAASSIFICATION`-classification; `REGRESSION`-regression。",
+										Description: "Model detection 类型，必填 当 analysis 类型 是 inference 表 (INFERENCE)，可选 值: `CLAASSIFICATION`-classification; `REGRESSION`-regression。",
 									},
 									"predict_column": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Prediction column。",
+										Description: "Prediction 列。",
 									},
 									"predict_column_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Prediction column 类型",
+										Description: "Prediction 列 类型",
 									},
 									"label_column": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "标签 column。",
+										Description: "标签 列。",
 									},
 									"label_column_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "标签 column 类型",
+										Description: "标签 列 类型",
 									},
 									"model_id_column": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Model ID column。",
+										Description: "Model ID 列。",
 									},
 									"model_id_column_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Model ID column 类型",
+										Description: "Model ID 列 类型",
 									},
 									"timestamp_column": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "时间戳 column。",
+										Description: "时间戳 列。",
 									},
 									"timestamp_column_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "时间戳 column 类型",
+										Description: "时间戳 列 类型",
 									},
 									"granularity": {
 										Type:        schema.TypeInt,
@@ -275,17 +275,17 @@ func ResourceTencentCloudWedataQualityRuleGroup() *schema.Resource {
 									"granularity_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Metric granularity unit。",
+										Description: "Metric granularity 单位。",
 									},
 									"base_table": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Base table。",
+										Description: "Base 表。",
 									},
 									"base_db": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Base database。",
+										Description: "Base 数据库。",
 									},
 									"comparison_column": {
 										Type:        schema.TypeString,
@@ -300,7 +300,7 @@ func ResourceTencentCloudWedataQualityRuleGroup() *schema.Resource {
 									"protection_value": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Protection group。",
+										Description: "Protection 组。",
 									},
 									"positive_value": {
 										Type:        schema.TypeString,
@@ -310,7 +310,7 @@ func ResourceTencentCloudWedataQualityRuleGroup() *schema.Resource {
 									"feature_column": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Feature column。",
+										Description: "Feature 列。",
 									},
 								},
 							},
@@ -318,12 +318,12 @@ func ResourceTencentCloudWedataQualityRuleGroup() *schema.Resource {
 						"engine_param": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Engine parameters。",
+							Description: "Engine 参数。",
 						},
 						"catalog_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Data catalog 名称，默认为 DataLakeCatalog 如果未填写 (this parameter is invalid when updating quality monitoring)。",
+							Description: "Data catalog 名称，默认为 DataLakeCatalog 如果未填写 (此 参数 是 无效 当 updating quality 监控)。",
 						},
 					},
 				},

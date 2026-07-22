@@ -27,19 +27,19 @@ func ResourceTencentCloudAsLoadBalancer() *schema.Resource {
 			"auto_scaling_group_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID scaling group。",
+				Description: "ID scaling 组。",
 			},
 
 			"forward_load_balancers": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "列表 application load balancers. The 最大application-类型 load balancers bound to each scaling group is 100。",
+				Description: "列表 应用 load balancers. 最大application-类型 load balancers bound 到 each scaling 组 是 100。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"load_balancer_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Application load balancer instance ID。",
+							Description: "Application load balancer 实例 ID。",
 						},
 						"listener_id": {
 							Type:        schema.TypeString,
@@ -74,7 +74,7 @@ func ResourceTencentCloudAsLoadBalancer() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Load balancer instance 地域 默认值为 the 地域 of current auto scaling group. The 格式 is the same as the public parameter 地域，for example: ap-guangzhou。",
+							Description: "Load balancer 实例 地域 默认值为 地域 的 当前 auto scaling 组. 格式 是 same 作为 公有 参数 地域，对于 示例: ap-guangzhou。",
 						},
 					},
 				},

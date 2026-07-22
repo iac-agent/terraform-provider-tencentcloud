@@ -27,20 +27,20 @@ func ResourceTencentCloudOrganizationOrgManagePolicy() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Policy 名称\nThe length is 1~128 characters，which can include Chinese characters，English letters，numbers，and underscores。",
+				Description: "Policy 名称\nThe 长度 是 1~128 字符，其中 可以 include Chinese 字符，English letters，numbers，和 underscores。",
 			},
 
 			"content": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Policy 内容 Refer to the CAM policy syntax。",
+				Description: "Policy 内容 Refer 到 CAM 策略 syntax。",
 			},
 
 			"type": {
 				Optional:    true,
 				Default:     ServiceControlPolicyType,
 				Type:        schema.TypeString,
-				Description: "Policy 类型 默认值为 SERVICE_CONTROL_POLICY.\nValid values:\n  - `SERVICE_CONTROL_POLICY`: Service control policy.\n  - `TAG_POLICY`: 标签 policy。",
+				Description: "Policy 类型 默认值为 SERVICE_CONTROL_POLICY.\nValid 值:\n - `SERVICE_CONTROL_POLICY`: Service control 策略.\n - `TAG_POLICY`: 标签 策略。",
 			},
 
 			"description": {
@@ -52,7 +52,7 @@ func ResourceTencentCloudOrganizationOrgManagePolicy() *schema.Resource {
 			"policy_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Policy Id。",
+				Description: "Policy ID。",
 			},
 		},
 	}

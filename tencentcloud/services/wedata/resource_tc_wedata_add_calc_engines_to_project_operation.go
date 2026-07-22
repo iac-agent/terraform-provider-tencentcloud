@@ -22,20 +22,20 @@ func ResourceTencentCloudWedataAddCalcEnginesToProjectOperation() *schema.Resour
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "项目 ID to be modified。",
+				Description: "项目 ID 到 是 modified。",
 			},
 
 			"dlc_info": {
 				Type:        schema.TypeList,
 				Required:    true,
 				ForceNew:    true,
-				Description: "DLC cluster information。",
+				Description: "DLC 集群 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"compute_resources": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "DLC resource names (need to add 角色 Uin to DLC，otherwise resources may not be available)。",
+							Description: "DLC 资源 names (need 到 add 角色 Uin 到 DLC，otherwise resources 可能 不 是 可用)。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -48,22 +48,22 @@ func ResourceTencentCloudWedataAddCalcEnginesToProjectOperation() *schema.Resour
 						"default_database": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "指定default database for the DLC cluster。",
+							Description: "指定default 数据库 对于 DLC 集群。",
 						},
 						"standard_mode_env_tag": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Cluster configuration 标签 (only effective for standard 模式 projects and 必填 for standard 模式). Enum values:\n- Prod  (Production environment)\n- Dev  (Development environment)。",
+							Description: "Cluster 配置 标签 (仅 effective 对于 standard 模式 projects 和 必填 对于 standard 模式). Enum 值:\n- Prod (Production 环境)\n- Dev (Development 环境)。",
 						},
 						"access_account": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Access 账号 (only effective for standard 模式 projects and 必填 for standard 模式)，用于submit DLC tasks.\nIt is recommended to use a specified sub-账号 and set corresponding database table permissions for the sub-账号; task runner 模式 may cause task failures when the responsible person leaves; main 账号 模式 is not easy for permission control when multiple projects have different permissions.\n\nEnum values:\n- TASK_RUNNER (Task Runner)\n- OWNER (Main 账号 模式)\n- SUB (Sub-账号 模式)。",
+							Description: "Access 账号 (仅 effective 对于 standard 模式 projects 和 必填 对于 standard 模式)，用于submit DLC tasks.\nIt 是 recommended 到 使用 指定 sub-账号 和 集合 corresponding 数据库 表 permissions 对于 sub-账号; 任务 runner 模式 可能 cause 任务 failures 当 responsible person leaves; main 账号 模式 是 不 easy 对于 权限 control 当 多个 projects have different permissions.\n\nEnum 值:\n- TASK_RUNNER (任务 Runner)\n- OWNER (Main 账号 模式)\n- SUB (Sub-账号 模式)。",
 						},
 						"sub_account_uin": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Sub-账号 ID (only effective for standard 模式 projects)，when AccessAccount is in sub-账号 模式，the sub-账号 ID information needs to be specified，other modes do not need to be specified。",
+							Description: "Sub-账号 ID (仅 effective 对于 standard 模式 projects)，当 AccessAccount 是 在 sub-账号 模式， sub-账号 ID 信息 needs 到 是 指定，other modes do 不 need 到 是 指定。",
 						},
 					},
 				},

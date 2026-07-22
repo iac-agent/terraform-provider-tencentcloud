@@ -36,17 +36,17 @@ func ResourceTencentCloudWafCustomRule() *schema.Resource {
 			"sort_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "优先级，值 range 0-100。",
+				Description: "优先级，值 范围 0-100。",
 			},
 			"redirect": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "If the 操作 is a Redirect，it represents the redirect 地址; Other situations can be left blank。",
+				Description: "如果 操作 是 Redirect，它 表示 redirect 地址; Other situations 可以 是 left blank。",
 			},
 			"expire_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "过期时间 in second-级别 时间戳，for example，1677254399 表示expiration time is 2023-02-24 23:59:59; 0 表示it will never expire。",
+				Description: "过期时间 在 second-级别 时间戳，对于 示例，1677254399 表示expiration 时间 是 2023-02-24 23:59:59; 0 表示it 将 never expire。",
 			},
 			"strategies": {
 				Required:    true,
@@ -130,14 +130,14 @@ func ResourceTencentCloudWafCustomRule() *schema.Resource {
 				Required:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CUSTOM_RULE_ACTION_TYPE),
-				Description:  "操作 类型，1(Block)，2(Captcha)，3(log)，4(Redirect)。",
+				Description:  "操作 类型，1(Block)，2(Captcha)，3(日志)，4(Redirect)。",
 			},
 			"status": {
 				Optional:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CUSTOM_RULE_STATUS),
 				Default:      CUSTOM_RULE_STATUS_1,
-				Description:  "The 状态 rule，1(open)，0(close)。",
+				Description:  "状态 规则，1(open)，0(close)。",
 			},
 			"job_type": {
 				Type:        schema.TypeString,
@@ -156,7 +156,7 @@ func ResourceTencentCloudWafCustomRule() *schema.Resource {
 						"timed": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Time parameters for scheduled execution. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Time 参数 对于 scheduled execution. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"start_date_time": {
@@ -175,13 +175,13 @@ func ResourceTencentCloudWafCustomRule() *schema.Resource {
 						"cron": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Time parameters for periodic execution. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Time 参数 对于 periodic execution. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"days": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Days in each month for execution. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Days 在 each month 对于 execution. 注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Schema{
 											Type: schema.TypeInt,
 										},
@@ -189,7 +189,7 @@ func ResourceTencentCloudWafCustomRule() *schema.Resource {
 									"w_days": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Days of each week for execution. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Days 的 each week 对于 execution. 注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Schema{
 											Type: schema.TypeInt,
 										},
@@ -218,7 +218,7 @@ func ResourceTencentCloudWafCustomRule() *schema.Resource {
 			"rule_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "rule ID。",
+				Description: "规则 ID。",
 			},
 		},
 	}

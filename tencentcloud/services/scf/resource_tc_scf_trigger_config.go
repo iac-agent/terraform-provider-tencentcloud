@@ -49,13 +49,13 @@ func ResourceTencentCloudScfTriggerConfig() *schema.Resource {
 			"enable": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "状态 trigger. Values: OPEN (已启用); CLOSE 已禁用)。",
+				Description: "状态 触发器. Values: OPEN (已启用); CLOSE 已禁用)。",
 			},
 
 			"qualifier": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Function 版本 It 默认为 `$LATEST`. It's recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release。",
+				Description: "Function 版本 It 默认为 `$LATEST`. It's recommended 到 使用 `[$DEFAULT](https://intl.云.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` 对于 canary release。",
 			},
 
 			"namespace": {
@@ -63,14 +63,14 @@ func ResourceTencentCloudScfTriggerConfig() *schema.Resource {
 				ForceNew:    true,
 				Default:     "default",
 				Type:        schema.TypeString,
-				Description: "Function namespace。",
+				Description: "Function 命名空间。",
 			},
 
 			"trigger_desc": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "TriggerDesc parameter。",
+				Description: "TriggerDesc 参数。",
 			},
 
 			"description": {

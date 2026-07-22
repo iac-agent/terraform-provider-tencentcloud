@@ -21,12 +21,12 @@ func DataSourceTencentCloudOceanusWorkSpaces() *schema.Resource {
 				Type:         schema.TypeInt,
 				Default:      WORK_SPACES_ORDER_TYPE_0,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(WORK_SPACES_ORDER_TYPE),
-				Description:  "1:排序方式 创建时间 in 降序 (default); 2:排序方式 创建时间 in 升序; 3:排序方式 状态 in 降序; 4:排序方式 状态 in 升序; 默认为 0。",
+				Description:  "1:排序方式 创建时间 在 降序 (默认值); 2:排序方式 创建时间 在 升序; 3:排序方式 状态 在 降序; 4:排序方式 状态 在 升序; 默认为 0。",
 			},
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter rules。",
+				Description: "过滤器 规则。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -38,7 +38,7 @@ func DataSourceTencentCloudOceanusWorkSpaces() *schema.Resource {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Required:    true,
-							Description: "Filter values for the field。",
+							Description: "过滤器 值 对于 字段。",
 						},
 					},
 				},
@@ -92,7 +92,7 @@ func DataSourceTencentCloudOceanusWorkSpaces() *schema.Resource {
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "1:uninitialized; 2:available; -1:deleted。",
+							Description: "1:uninitialized; 2:可用; -1:删除。",
 						},
 						"description": {
 							Type:        schema.TypeString,
@@ -102,13 +102,13 @@ func DataSourceTencentCloudOceanusWorkSpaces() *schema.Resource {
 						"cluster_group_set_item": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Workspace cluster information。",
+							Description: "Workspace 集群 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"cluster_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "SerialId of the clusterGroup。",
+										Description: "SerialId 的 clusterGroup。",
 									},
 									"name": {
 										Type:        schema.TypeString,
@@ -148,7 +148,7 @@ func DataSourceTencentCloudOceanusWorkSpaces() *schema.Resource {
 									"cu_mem": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "CU memory specification。",
+										Description: "CU 内存 规格。",
 									},
 									"status": {
 										Type:        schema.TypeInt,
@@ -168,7 +168,7 @@ func DataSourceTencentCloudOceanusWorkSpaces() *schema.Resource {
 									"update_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Last operation time on the cluster。",
+										Description: "Last operation 时间 在 集群。",
 									},
 									"remark": {
 										Type:        schema.TypeString,
@@ -206,7 +206,7 @@ func DataSourceTencentCloudOceanusWorkSpaces() *schema.Resource {
 						"role_auth": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Workspace 角色 information。",
+							Description: "Workspace 角色 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"app_id": {
@@ -237,7 +237,7 @@ func DataSourceTencentCloudOceanusWorkSpaces() *schema.Resource {
 									"permission": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Corresponding to the ID in the 角色 table。",
+										Description: "Corresponding 到 ID 在 角色 表。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
@@ -247,7 +247,7 @@ func DataSourceTencentCloudOceanusWorkSpaces() *schema.Resource {
 									"update_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Last operation time。",
+										Description: "Last operation 时间。",
 									},
 									"status": {
 										Type:        schema.TypeInt,

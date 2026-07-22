@@ -35,33 +35,33 @@ func ResourceTencentCloudElasticsearchLogstashPipeline() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Pipeline information。",
+				Description: "Pipeline 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"pipeline_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Pipeline id。",
+							Description: "Pipeline ID。",
 						},
 						"pipeline_desc": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Pipeline 描述 information。",
+							Description: "Pipeline 描述 信息。",
 						},
 						"config": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Pipeline configuration 内容",
+							Description: "Pipeline 配置 内容",
 						},
 						"workers": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "数量 Worker of pipe。",
+							Description: "数量 Worker 的 pipe。",
 						},
 						"batch_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Pipe batch size。",
+							Description: "Pipe batch 大小。",
 						},
 						"batch_delay": {
 							Type:        schema.TypeInt,
@@ -76,7 +76,7 @@ func ResourceTencentCloudElasticsearchLogstashPipeline() *schema.Resource {
 						"queue_max_bytes": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Pipeline buffer queue size。",
+							Description: "Pipeline buffer queue 大小。",
 						},
 						"queue_check_point_writes": {
 							Type:        schema.TypeInt,
@@ -90,7 +90,7 @@ func ResourceTencentCloudElasticsearchLogstashPipeline() *schema.Resource {
 			"op_type": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "操作类型 1: save only; 2: save and deploy。",
+				Description: "操作类型 1: save 仅; 2: save 和 deploy。",
 			},
 		},
 	}

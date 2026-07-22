@@ -31,13 +31,13 @@ func DataSourceTencentCloudTsfMicroserviceApiVersion() *schema.Resource {
 			"method": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "request method。",
+				Description: "请求 方法。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "API 版本 list。",
+				Description: "API 版本 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"application_id": {
@@ -53,7 +53,7 @@ func DataSourceTencentCloudTsfMicroserviceApiVersion() *schema.Resource {
 						"pkg_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "application pkg 版本",
+							Description: "应用 pkg 版本",
 						},
 					},
 				},

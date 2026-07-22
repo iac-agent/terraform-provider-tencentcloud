@@ -34,26 +34,26 @@ func ResourceTencentCloudMqttHttpAuthenticator() *schema.Resource {
 			"endpoint": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "JWKS endpoint。",
+				Description: "JWKS 端点。",
 			},
 
 			"concurrency": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Maximum concurrent connections，default 8，range: 1-20。",
+				Description: "Maximum concurrent connections，默认值 8，范围: 1-20。",
 			},
 
 			"method": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Network request method GET or POST，default POST。",
+				Description: "Network 请求 方法 GET 或 POST，默认值 POST。",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Is the authenticator 已启用: open enable; Close close。",
+				Description: "Is authenticator 已启用: open 启用; Close close。",
 			},
 
 			"remark": {
@@ -65,19 +65,19 @@ func ResourceTencentCloudMqttHttpAuthenticator() *schema.Resource {
 			"connect_timeout": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Connection timeout，unit: seconds，range: 1-30。",
+				Description: "Connection 超时，单位: 秒，范围: 1-30。",
 			},
 
 			"read_timeout": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Request timeout，unit: seconds，range: 1-30。",
+				Description: "Request 超时，单位: 秒，范围: 1-30。",
 			},
 
 			"header": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Forwarding request header。",
+				Description: "Forwarding 请求 头部。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
@@ -97,7 +97,7 @@ func ResourceTencentCloudMqttHttpAuthenticator() *schema.Resource {
 			"body": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Forwarding request body。",
+				Description: "Forwarding 请求 正文。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {

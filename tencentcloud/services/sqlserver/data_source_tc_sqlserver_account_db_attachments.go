@@ -19,51 +19,51 @@ func DataSourceTencentCloudSqlserverAccountDBAttachments() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "SQL Server instance ID that the account belongs to.",
+				Description: "SQL Server 实例 ID 该 account belongs 到.",
 			},
 			"account_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "",
-				Description: "Name of the SQL Server account to be queried.",
+				Description: "Name 的 SQL Server account 到 是 queried.",
 			},
 			"db_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "",
-				Description: "Name of the DB to be queried.",
+				Description: "Name 的 DB 到 是 queried.",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to store results.",
+				Description: "Used 到 store results.",
 			},
 			// Computed values
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of SQL Server account. Each element contains the following attributes:",
+				Description: "A 列表 的 SQL Server account. Each element contains following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "SQL Server instance ID that the account belongs to.",
+							Description: "SQL Server 实例 ID 该 account belongs 到.",
 						},
 						"account_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "SQL Server account name.",
+							Description: "SQL Server account 名称.",
 						},
 						"db_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "SQL Server DB name.",
+							Description: "SQL Server DB 名称.",
 						},
 						"privilege": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Privilege of the account on DB. Valid value are `ReadOnly`, `ReadWrite`.",
+							Description: "Privilege 的 account 在 DB. 有效 值 是 `ReadOnly`, `ReadWrite`.",
 						},
 					},
 				},

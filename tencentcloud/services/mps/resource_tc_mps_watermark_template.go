@@ -30,65 +30,65 @@ func ResourceTencentCloudMpsWatermarkTemplate() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "Watermark 类型，可选 值:image，text，svg。",
+				Description: "Watermark 类型，可选 值:镜像，text，svg。",
 			},
 
 			"name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Watermark 模板名称，length 限制: 64 characters。",
+				Description: "Watermark 模板名称，长度 限制: 64 字符。",
 			},
 
 			"comment": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "模板描述 information，length 限制: 256 characters。",
+				Description: "模板描述 信息，长度 限制: 256 字符。",
 			},
 
 			"coordinate_origin": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Origin position，可选 值:TopLeft: 表示that the origin of the coordinates is at the upper left corner of the video image，and the origin of the watermark is the upper left corner of the picture or text.TopRight: 表示that the origin of the coordinates is at the upper right corner of the video image，and the origin of the watermark is at the upper right corner of the picture or text.BottomLeft: 表示that the origin of the coordinates is at the lower left corner of the video image，and the origin of the watermark is the lower left corner of the picture or text.BottomRight: 表示that the origin of the coordinates is at the lower right corner of the video image，and the origin of the watermark is at the lower right corner of the picture or text.默认值：TopLeft。",
+				Description: "Origin position，可选 值:TopLeft: 表示that 源站 的 coordinates 是 在 upper left corner 的 视频 镜像，和 源站 的 水印 是 upper left corner 的 picture 或 text.TopRight: 表示that 源站 的 coordinates 是 在 upper right corner 的 视频 镜像，和 源站 的 水印 是 在 upper right corner 的 picture 或 text.BottomLeft: 表示that 源站 的 coordinates 是 在 lower left corner 的 视频 镜像，和 源站 的 水印 是 lower left corner 的 picture 或 text.BottomRight: 表示that 源站 的 coordinates 是 在 lower right corner 的 视频 镜像，和 源站 的 水印 是 在 lower right corner 的 picture 或 text.默认值：TopLeft。",
 			},
 
 			"x_pos": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The horizontal position of the origin of the watermark from the origin of the coordinates of the video image. Support %，px two formats.When the string ends with %，it means that the watermark XPos 指定a percentage for the video width，such as 10% means that XPos is 10% of the video width.When the string ends with px，it means that the watermark XPos is the specified pixel，such as 100px means that the XPos is 100 pixels.默认值：0px。",
+				Description: "horizontal position 的 源站 的 水印 从 源站 的 coordinates 的 视频 镜像. Support %，像素 two formats.当 字符串 结束 使用 %，它 表示 该 水印 XPos 指定a percentage 对于 视频 宽度，such 作为 10% 表示 该 XPos 是 10% 的 视频 宽度.当 字符串 结束 使用 像素，它 表示 该 水印 XPos 是 指定 pixel，such 作为 100px 表示 该 XPos 是 100 pixels.默认值：0px。",
 			},
 
 			"y_pos": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The vertical position of the origin of the watermark from the origin of the coordinates of the video image. Support %，px two formats.When the string ends with %，it means that the watermark YPos 指定a percentage for the video height，such as 10% means that YPos is 10% of the video height.When the string ends with px，it means that the watermark YPos is the specified pixel，such as 100px means that the YPos is 100 pixels.默认值：0px。",
+				Description: "vertical position 的 源站 的 水印 从 源站 的 coordinates 的 视频 镜像. Support %，像素 two formats.当 字符串 结束 使用 %，它 表示 该 水印 YPos 指定a percentage 对于 视频 高度，such 作为 10% 表示 该 YPos 是 10% 的 视频 高度.当 字符串 结束 使用 像素，它 表示 该 水印 YPos 是 指定 pixel，such 作为 100px 表示 该 YPos 是 100 pixels.默认值：0px。",
 			},
 
 			"image_template": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Image watermark template，only when 类型 is image，this field 为必填项 and valid。",
+				Description: "Image 水印 template，仅 当 类型 是 镜像，此 字段 为必填项 和 有效。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"image_content": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Watermark image[Base64](https://tools.ietf.org/html/rfc4648) encoded string. Support jpeg，png image 格式",
+							Description: "Watermark 镜像[Base64](https://tools.ietf.org/html/rfc4648) encoded 字符串. Support jpeg，png 镜像 格式",
 						},
 						"width": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The width of the watermark. Support %，px two formats:When the string ends with %，it means that the watermark Width is a percentage of the video width，such as 10% means that the Width is 10% of the video width.When the string ends with px，it means that the watermark Width unit is pixel，such as 100px means that the Width is 100 pixels. The 值 range is [8，4096].默认值：10%。",
+							Description: "宽度 的 水印. Support %，像素 two formats:当 字符串 结束 使用 %，它 表示 该 水印 宽度 是 percentage 的 视频 宽度，such 作为 10% 表示 该 宽度 是 10% 的 视频 宽度.当 字符串 结束 使用 像素，它 表示 该 水印 宽度 单位 是 pixel，such 作为 100px 表示 该 宽度 是 100 pixels. 值 范围 是 [8，4096].默认值：10%。",
 						},
 						"height": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The height of the watermark. Support %，px two formats:When the string ends with %，it means that the watermark Height is the percentage size of the video height，such as 10% means that the Height is 10% of the video height.When the string ends with px，it means that the watermark Height unit is pixel，such as 100px means that the Height is 100 pixels. The 值 range is 0 or [8，4096].默认值：0px. 表示that Height is scaled according to the aspect ratio of the original watermark image。",
+							Description: "高度 的 水印. Support %，像素 two formats:当 字符串 结束 使用 %，它 表示 该 水印 高度 是 percentage 大小 的 视频 高度，such 作为 10% 表示 该 高度 是 10% 的 视频 高度.当 字符串 结束 使用 像素，它 表示 该 水印 高度 单位 是 pixel，such 作为 100px 表示 该 高度 是 100 pixels. 值 范围 是 0 或 [8，4096].默认值：0px. 表示that 高度 是 scaled according 到 aspect ratio 的 original 水印 镜像。",
 						},
 						"repeat_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Watermark repeat 类型 Usage scenario: The watermark is a dynamic image. Ranges:once: After the dynamic watermark is played，it will no longer appear.repeat_last_frame: After the watermark is played，stay on the last frame.repeat: the watermark loops until the end of the video (default)。",
+							Description: "Watermark repeat 类型 Usage scenario: 水印 是 动态 镜像. Ranges:once: After 动态 水印 是 played，它 将 无 longer appear.repeat_last_frame: After 水印 是 played，stay 在 last frame.repeat: 水印 loops until end 的 视频 (默认值)。",
 						},
 					},
 				},
@@ -98,18 +98,18 @@ func ResourceTencentCloudMpsWatermarkTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Text watermark template，only when 类型 is text，this field 为必填项 and valid。",
+				Description: "Text 水印 template，仅 当 类型 是 text，此 字段 为必填项 和 有效。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"font_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Font 类型，currently supports two:simkai.ttf: can support Chinese and English.arial.ttf: English only。",
+							Description: "Font 类型，currently 支持 two:simkai.ttf: 可以 support Chinese 和 English.arial.ttf: English 仅。",
 						},
 						"font_size": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Font size，格式: Npx，N is a number。",
+							Description: "Font 大小，格式: Npx，N 是 数量。",
 						},
 						"font_color": {
 							Type:        schema.TypeString,
@@ -129,18 +129,18 @@ func ResourceTencentCloudMpsWatermarkTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "SVG watermark template，only when 类型 is svg，this field 为必填项 and valid。",
+				Description: "SVG 水印 template，仅 当 类型 是 svg，此 字段 为必填项 和 有效。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"width": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The width of the watermark，supports px，%，W%，H%，S%，L% six formats.When the string ends with px，it means that the watermark Width unit is pixels，such as 100px means that the Width is 100 pixels; when filling 0px and the Height is not 0px，it means that the width of the watermark is proportionally scaled according to the original SVG image; when both Width and Height are filled When 0px，it means that the width of the watermark takes the width of the original SVG image.When the string ends with W%，it means that the watermark Width is a percentage of the video width，such as 10W% means that the Width is 10% of the video width.When the string ends with H%，it means that the watermark Width is a percentage of the video height，such as 10H% means that the Width is 10% of the video height.When the string ends with S%，it means that the watermark Width is the percentage size of the short side of the video，such as 10S% means that the Width is 10% of the short side of the video.When the string ends with L%，it means that the watermark Width is the percentage size of the long side of the video，such as 10L% means that the Width is 10% of the long side of the video.When the string ends with %，it has the same meaning as W%.默认值：10W%。",
+							Description: "宽度 的 水印，支持 像素，%，W%，H%，S%，L% six formats.当 字符串 结束 使用 像素，它 表示 该 水印 宽度 单位 是 pixels，such 作为 100px 表示 该 宽度 是 100 pixels; 当 filling 0px 和 高度 是 不 0px，它 表示 该 宽度 的 水印 是 proportionally scaled according 到 original SVG 镜像; 当 both 宽度 和 高度 是 filled 当 0px，它 表示 该 宽度 的 水印 takes 宽度 的 original SVG 镜像.当 字符串 结束 使用 W%，它 表示 该 水印 宽度 是 percentage 的 视频 宽度，such 作为 10W% 表示 该 宽度 是 10% 的 视频 宽度.当 字符串 结束 使用 H%，它 表示 该 水印 宽度 是 percentage 的 视频 高度，such 作为 10H% 表示 该 宽度 是 10% 的 视频 高度.当 字符串 结束 使用 S%，它 表示 该 水印 宽度 是 percentage 大小 的 short side 的 视频，such 作为 10S% 表示 该 宽度 是 10% 的 short side 的 视频.当 字符串 结束 使用 L%，它 表示 该 水印 宽度 是 percentage 大小 的 long side 的 视频，such 作为 10L% 表示 该 宽度 是 10% 的 long side 的 视频.当 字符串 结束 使用 %，它 has same meaning 作为 W%.默认值：10W%。",
 						},
 						"height": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The height of the watermark，supports px，W%，H%，S%，L% six formats:When the string ends with px，it means that the watermark Height unit is pixels，such as 100px means that the Height is 100 pixels; when filling 0px and Width is not 0px，it means that the height of the watermark is proportionally scaled according to the original SVG image; when both Width and Height are filled When 0px，it means that the height of the watermark takes the height of the original SVG image.When the string ends with W%，it means that the watermark Height is a percentage of the video width，such as 10W% means that the Height is 10% of the video width.When the string ends with H%，it means that the watermark Height is the percentage size of the video height，such as 10H% means that the Height is 10% of the video height.When the string ends with S%，it means that the watermark Height is the percentage size of the short side of the video，such as 10S% means that the Height is 10% of the short side of the video.When the string ends with L%，it means that the watermark Height is the percentage size of the long side of the video，such as 10L% means that the Height is 10% of the long side of the video.When the string ends with %，the meaning is the same as H%.默认值：0px。",
+							Description: "高度 的 水印，支持 像素，W%，H%，S%，L% six formats:当 字符串 结束 使用 像素，它 表示 该 水印 高度 单位 是 pixels，such 作为 100px 表示 该 高度 是 100 pixels; 当 filling 0px 和 宽度 是 不 0px，它 表示 该 高度 的 水印 是 proportionally scaled according 到 original SVG 镜像; 当 both 宽度 和 高度 是 filled 当 0px，它 表示 该 高度 的 水印 takes 高度 的 original SVG 镜像.当 字符串 结束 使用 W%，它 表示 该 水印 高度 是 percentage 的 视频 宽度，such 作为 10W% 表示 该 高度 是 10% 的 视频 宽度.当 字符串 结束 使用 H%，它 表示 该 水印 高度 是 percentage 大小 的 视频 高度，such 作为 10H% 表示 该 高度 是 10% 的 视频 高度.当 字符串 结束 使用 S%，它 表示 该 水印 高度 是 percentage 大小 的 short side 的 视频，such 作为 10S% 表示 该 高度 是 10% 的 short side 的 视频.当 字符串 结束 使用 L%，它 表示 该 水印 高度 是 percentage 大小 的 long side 的 视频，such 作为 10L% 表示 该 高度 是 10% 的 long side 的 视频.当 字符串 结束 使用 %， meaning 是 same 作为 H%.默认值：0px。",
 						},
 					},
 				},

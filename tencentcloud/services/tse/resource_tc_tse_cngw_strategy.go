@@ -28,37 +28,37 @@ func ResourceTencentCloudTseCngwStrategy() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "gateway ID。",
+				Description: "网关 ID。",
 			},
 
 			"strategy_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "strategy 名称，up to 20 characters。",
+				Description: "strategy 名称，up 到 20 字符。",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "描述 information，up to 120 characters。",
+				Description: "描述 信息，up 到 120 字符。",
 			},
 
 			"config": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "configuration of metric scaling。",
+				Description: "配置 的 metric scaling。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"max_replicas": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "max 数量 replica for metric scaling。",
+							Description: "max 数量 副本 对于 metric scaling。",
 						},
 						"metrics": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "metric list。",
+							Description: "metric 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"type": {
@@ -69,18 +69,18 @@ func ResourceTencentCloudTseCngwStrategy() *schema.Resource {
 									"resource_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "指标名称 Reference 值:\n- cpu\n- memory\n注意：此字段可能返回 null，表示有效值不可用。",
+										Description: "指标名称 Reference 值:\n- cpu\n- 内存\n注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"target_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "target 类型 metric，currently only supports `Utilization`\n注意：此字段可能返回 null，表示有效值不可用。",
+										Description: "目标 类型 metric，currently 仅 支持 `Utilization`\n注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"target_value": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "target 值 of metric\n注意：此字段可能返回 null，表示有效值不可用。",
+										Description: "目标 值 的 metric\n注意：此字段可能返回 null，表示有效值不可用。",
 									},
 								},
 							},
@@ -104,30 +104,30 @@ func ResourceTencentCloudTseCngwStrategy() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "behavior configuration of metric\n注意：此字段可能返回 null，表示有效值不可用。",
+							Description: "behavior 配置 的 metric\n注意：此字段可能返回 null，表示有效值不可用。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"scale_up": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "configuration of up scale\n注意：此字段可能返回 null，表示有效值不可用。",
+										Description: "配置 的 up scale\n注意：此字段可能返回 null，表示有效值不可用。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"stabilization_window_seconds": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "stability window time，unit:second，default 0 when scale up\n注意：此字段可能返回 null，表示有效值不可用。",
+													Description: "stability window 时间，单位:second，默认值 0 当 scale up\n注意：此字段可能返回 null，表示有效值不可用。",
 												},
 												"select_policy": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "类型 policy，默认值：max\n注意：此字段可能返回 null，表示有效值不可用。",
+													Description: "类型 策略，默认值：max\n注意：此字段可能返回 null，表示有效值不可用。",
 												},
 												"policies": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "policies of scale up\n注意：此字段可能返回 null，表示有效值不可用。",
+													Description: "policies 的 scale up\n注意：此字段可能返回 null，表示有效值不可用。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"type": {
@@ -143,7 +143,7 @@ func ResourceTencentCloudTseCngwStrategy() *schema.Resource {
 															"period_seconds": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "周期 of scale up\n注意：此字段可能返回 null，表示有效值不可用。",
+																Description: "周期 的 scale up\n注意：此字段可能返回 null，表示有效值不可用。",
 															},
 														},
 													},
@@ -155,23 +155,23 @@ func ResourceTencentCloudTseCngwStrategy() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "configuration of down scale\n注意：此字段可能返回 null，表示有效值不可用。",
+										Description: "配置 的 down scale\n注意：此字段可能返回 null，表示有效值不可用。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"stabilization_window_seconds": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "stability window time，unit:second，default 300 when scale down\n注意：此字段可能返回 null，表示有效值不可用。",
+													Description: "stability window 时间，单位:second，默认值 300 当 scale down\n注意：此字段可能返回 null，表示有效值不可用。",
 												},
 												"select_policy": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "类型 policy，默认值：max\n注意：此字段可能返回 null，表示有效值不可用。",
+													Description: "类型 策略，默认值：max\n注意：此字段可能返回 null，表示有效值不可用。",
 												},
 												"policies": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "policies of scale down\n注意：此字段可能返回 null，表示有效值不可用。",
+													Description: "policies 的 scale down\n注意：此字段可能返回 null，表示有效值不可用。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"type": {
@@ -187,7 +187,7 @@ func ResourceTencentCloudTseCngwStrategy() *schema.Resource {
 															"period_seconds": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "周期 of scale down\n注意：此字段可能返回 null，表示有效值不可用。",
+																Description: "周期 的 scale down\n注意：此字段可能返回 null，表示有效值不可用。",
 															},
 														},
 													},
@@ -206,34 +206,34 @@ func ResourceTencentCloudTseCngwStrategy() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "configuration of timed scaling。",
+				Description: "配置 的 timed scaling。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"params": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "parameter 列表 timed scaling\n注意：此字段可能返回 null，表示有效值不可用。",
+							Description: "参数 列表 timed scaling\n注意：此字段可能返回 null，表示有效值不可用。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"period": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "周期 of timed scaling\n注意：此字段可能返回 null，表示有效值不可用。",
+										Description: "周期 的 timed scaling\n注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"start_at": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "开始时间 of timed scaling\n注意：此字段可能返回 null，表示有效值不可用。",
+										Description: "开始时间 的 timed scaling\n注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"target_replicas": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "the 数量 target nodes for the timed scaling. Do not exceed the max 数量 replica for metric scaling\n注意：此字段可能返回 null，表示有效值不可用。",
+										Description: "数量 目标 nodes 对于 timed scaling. Do 不 exceed max 数量 副本 对于 metric scaling\n注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"crontab": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "cron expression of timed scaling，no input 必填\n注意：此字段可能返回 null，表示有效值不可用。",
+										Description: "cron expression 的 timed scaling，无 input 必填\n注意：此字段可能返回 null，表示有效值不可用。",
 									},
 								},
 							},

@@ -18,114 +18,114 @@ func DataSourceTencentCloudSqlserverPublishSubscribes() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to store results.",
+				Description: "Used 到 store results.",
 			},
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of the SQL Server instance.",
+				Description: "ID 的 SQL Server 实例.",
 			},
 			"pub_or_sub_instance_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The subscribe/publish instance ID. It is related to whether the `instance_id` is a publish instance or a subscribe instance. when `instance_id` is a publish instance, this field is filtered according to the subscribe instance ID; when `instance_id` is a subscribe instance, this field is filtering according to the publish instance ID.",
+				Description: "subscribe/publish 实例 ID. It 是 related 到 whether `instance_id` 是 publish 实例 或 subscribe 实例. 当 `instance_id` 是 publish 实例, 此 字段 是 filtered according 到 subscribe 实例 ID; 当 `instance_id` 是 subscribe 实例, 此 字段 是 filtering according 到 publish 实例 ID.",
 			},
 			"pub_or_sub_instance_ip": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The intranet IP of the subscribe/publish instance. It is related to whether the `instance_id` is a publish instance or a subscribe instance. when `instance_id` is a publish instance, this field is filtered according to the intranet IP of the subscribe instance; when `instance_id` is a subscribe instance, this field is based on the publish instance intranet IP filter.",
+				Description: "intranet IP 的 subscribe/publish 实例. It 是 related 到 whether `instance_id` 是 publish 实例 或 subscribe 实例. 当 `instance_id` 是 publish 实例, 此 字段 是 filtered according 到 intranet IP 的 subscribe 实例; 当 `instance_id` 是 subscribe 实例, 此 字段 是 based 在 publish 实例 intranet IP 过滤器.",
 			},
 			"publish_subscribe_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "The id of the Publish and Subscribe.",
+				Description: "ID 的 Publish 和 Subscribe.",
 			},
 			"publish_subscribe_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The name of the Publish and Subscribe.",
+				Description: "名称 的 Publish 和 Subscribe.",
 			},
 			"publish_database": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of publish database.",
+				Description: "Name 的 publish 数据库.",
 			},
 			"subscribe_database": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of subscribe database.",
+				Description: "Name 的 subscribe 数据库.",
 			},
 			"publish_subscribe_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Publish and subscribe list. Each element contains the following attributes.",
+				Description: "Publish 和 subscribe 列表. Each element contains following attributes.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"publish_subscribe_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The id of the Publish and Subscribe.",
+							Description: "ID 的 Publish 和 Subscribe.",
 						},
 						"publish_subscribe_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The name of the Publish and Subscribe.",
+							Description: "名称 的 Publish 和 Subscribe.",
 						},
 						"publish_instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the SQL Server instance which publish.",
+							Description: "ID 的 SQL Server 实例 其中 publish.",
 						},
 						"publish_instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the SQL Server instance which publish.",
+							Description: "Name 的 SQL Server 实例 其中 publish.",
 						},
 						"publish_instance_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IP of the the SQL Server instance which publish.",
+							Description: "IP 的 SQL Server 实例 其中 publish.",
 						},
 						"subscribe_instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the SQL Server instance which subscribe.",
+							Description: "ID 的 SQL Server 实例 其中 subscribe.",
 						},
 						"subscribe_instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the SQL Server instance which subscribe.",
+							Description: "Name 的 SQL Server 实例 其中 subscribe.",
 						},
 						"subscribe_instance_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IP of the SQL Server instance which subscribe.",
+							Description: "IP 的 SQL Server 实例 其中 subscribe.",
 						},
 						"database_tuples": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "Database Publish and Publish relationship list.",
+							Description: "Database Publish 和 Publish relationship 列表.",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"publish_database": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Name of the publish SQL Server instance.",
+										Description: "Name 的 publish SQL Server 实例.",
 									},
 									"subscribe_database": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Name of the subscribe SQL Server instance.",
+										Description: "Name 的 subscribe SQL Server 实例.",
 									},
 									"last_sync_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Last sync time.",
+										Description: "Last sync 时间.",
 									},
 									"status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Publish and subscribe status between databases, valid values are `running`, `success`, `fail`, `unknow`.",
+										Description: "Publish 和 subscribe 状态 between databases, 有效 值 是 `running`, `success`, `fail`, `unknow`.",
 									},
 								},
 							},

@@ -33,17 +33,17 @@ func ResourceTencentCloudCfwVpcPolicy() *schema.Resource {
 			"source_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Access 来源 类型，the 类型 can be: net，template。",
+				Description: "Access 来源 类型， 类型 可以 是: net，template。",
 			},
 			"dest_content": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Access purpose example: net:IP/CIDR(192.168.0.2) 域名:域名 rule，for example*.qq.com。",
+				Description: "Access purpose 示例: net:IP/CIDR(192.168.0.2) 域名:域名 规则，对于 示例*.qq.com。",
 			},
 			"dest_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Access purpose 类型，the 类型 can be: net，template。",
+				Description: "Access purpose 类型， 类型 可以 是: net，template。",
 			},
 			"protocol": {
 				Type:        schema.TypeString,
@@ -54,12 +54,12 @@ func ResourceTencentCloudCfwVpcPolicy() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(POLICY_RULE_ACTION),
-				Description:  "How traffic set in the access control policy passes through the cloud firewall. 值: accept:accept，drop:drop，log:log。",
+				Description:  "How 流量 集合 在 访问 control 策略 passes through 云 firewall. 值: accept:accept，drop:drop，日志:日志。",
 			},
 			"port": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The 端口 for the access control policy. 值: -1/-1: All ports; 80: 端口 80。",
+				Description: "端口 对于 访问 control 策略. 值: -1/-1: All ports; 80: 端口 80。",
 			},
 			"description": {
 				Type:        schema.TypeString,
@@ -71,23 +71,23 @@ func ResourceTencentCloudCfwVpcPolicy() *schema.Resource {
 				Optional:     true,
 				Default:      POLICY_ENABLE_TRUE,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(POLICY_ENABLE),
-				Description:  "Rule 状态，true means 已启用，false means 已禁用 默认为 true。",
+				Description:  "Rule 状态，true 表示 已启用，false 表示 已禁用 默认为 true。",
 			},
 			"fw_group_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "ALL",
-				Description: "Firewall instance ID where the rule takes effect. 默认为 ALL。",
+				Description: "Firewall 实例 ID 其中 规则 takes effect. 默认为 ALL。",
 			},
 			"uuid": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "The unique id corresponding to the rule。",
+				Description: "唯一 ID corresponding 到 规则。",
 			},
 			"internal_uuid": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Uuid used internally，this field is generally not used。",
+				Description: "Uuid 使用 internally，此 字段 是 generally 不 使用。",
 			},
 			"fw_group_name": {
 				Type:        schema.TypeString,
@@ -103,7 +103,7 @@ func ResourceTencentCloudCfwVpcPolicy() *schema.Resource {
 						"task_id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Task id. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "任务 ID. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"task_name": {
 							Type:        schema.TypeString,
@@ -121,7 +121,7 @@ func ResourceTencentCloudCfwVpcPolicy() *schema.Resource {
 			"param_template_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Parameter template id. 注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "Parameter template ID. 注意：此字段可能返回 null，表示无法获取有效值。",
 			},
 			"param_template_name": {
 				Type:        schema.TypeString,

@@ -20,31 +20,31 @@ func DataSourceTencentCloudCvmDisasterRecoverGroupQuota() *schema.Resource {
 			"group_quota": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The 最大placement groups that can be created。",
+				Description: "最大placement groups 该 可以 是 创建。",
 			},
 
 			"current_num": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The 数量 placement groups that have been created by the current 用户",
+				Description: "数量 placement groups 该 have been 创建 通过 当前 用户",
 			},
 
 			"cvm_in_host_group_quota": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Quota on instances in a physical-machine-类型 disaster recovery group。",
+				Description: "Quota 在 实例 在 physical-machine-类型 disaster recovery 组。",
 			},
 
 			"cvm_in_sw_group_quota": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Quota on instances in a switch-类型 disaster recovery group。",
+				Description: "Quota 在 实例 在 switch-类型 disaster recovery 组。",
 			},
 
 			"cvm_in_rack_group_quota": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Quota on instances in a rack-类型 disaster recovery group。",
+				Description: "Quota 在 实例 在 rack-类型 disaster recovery 组。",
 			},
 
 			"result_output_file": {

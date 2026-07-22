@@ -31,13 +31,13 @@ func ResourceTencentCloudCvmRenewInstance() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Prepaid 模式，that is，yearly and monthly subscription related parameter settings. Through this parameter，you can 指定renewal duration of the Subscription instance，是否set automatic renewal，and other attributes. For yearly and monthly subscription instances，this parameter 为必填项。",
+				Description: "Prepaid 模式，该 是，yearly 和 monthly subscription related 参数 settings. Through 此 参数，您 可以 指定renewal 时长 的 Subscription 实例，是否set automatic renewal，和 other attributes. For yearly 和 monthly subscription 实例，此 参数 为必填项。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"period": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Subscription 周期; unit: month; 有效值：1，2，3，4，5，6，7，8，9，10，11，12，24，36，48，60. Note: This field may return null，indicating that no valid 值 is found。",
+							Description: "Subscription 周期; 单位: month; 有效值：1，2，3，4，5，6，7，8，9，10，11，12，24，36，48，60. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 found。",
 						},
 						"renew_flag": {
 							Type:     schema.TypeString,

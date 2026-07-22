@@ -20,7 +20,7 @@ func DataSourceTencentCloudCssWatermarks() *schema.Resource {
 			"watermark_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Watermark information list。",
+				Description: "Watermark 信息 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"watermark_id": {
@@ -31,7 +31,7 @@ func DataSourceTencentCloudCssWatermarks() *schema.Resource {
 						"picture_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Watermark image URL",
+							Description: "Watermark 镜像 URL",
 						},
 						"x_position": {
 							Type:        schema.TypeInt,
@@ -51,22 +51,22 @@ func DataSourceTencentCloudCssWatermarks() *schema.Resource {
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Current 状态 0: not used. 1: in use。",
+							Description: "Current 状态 0: 不 使用. 1: 在 使用。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The time when the watermark was added.Note: Beijing time (UTC+8) is used。",
+							Description: "时间 当 水印 是 added.注意: Beijing 时间 (UTC+8) 是 使用。",
 						},
 						"width": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Watermark width。",
+							Description: "Watermark 宽度。",
 						},
 						"height": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Watermark height。",
+							Description: "Watermark 高度。",
 						},
 					},
 				},

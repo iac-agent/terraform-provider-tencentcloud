@@ -32,7 +32,7 @@ func ResourceTencentCloudAddressTemplate() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Required:    true,
-				Description: "地址 list. IP(`10.0.0.1`)，CIDR(`10.0.1.0/24`)，IP range(`10.0.0.1-10.0.0.100`) 格式 are supported。",
+				Description: "地址 列表. IP(`10.0.0.1`)，CIDR(`10.0.1.0/24`)，IP 范围(`10.0.0.1-10.0.0.100`) 格式 是 支持。",
 			},
 		},
 	}

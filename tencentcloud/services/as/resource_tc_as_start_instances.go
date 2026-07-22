@@ -34,7 +34,7 @@ func ResourceTencentCloudAsStartInstances() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "列表 cvm instances to start。",
+				Description: "列表 cvm 实例 到 start。",
 			},
 		},
 	}

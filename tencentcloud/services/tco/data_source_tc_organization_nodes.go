@@ -19,7 +19,7 @@ func DataSourceTencentCloudOrganizationNodes() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Department 标签 search list，with a maximum of 10。",
+				Description: "Department 标签 search 列表，使用 最大 的 10。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {

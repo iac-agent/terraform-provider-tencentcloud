@@ -31,29 +31,29 @@ func DataSourceTencentCloudCkafkaTopicSyncReplica() *schema.Resource {
 			"out_of_sync_replica_only": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Filter only unsynced replicas。",
+				Description: "过滤器 仅 unsynced replicas。",
 			},
 
 			"topic_in_sync_replica_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Topic details and copy collection。",
+				Description: "Topic details 和 copy collection。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"partition": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "partition 名称",
+							Description: "分区 名称",
 						},
 						"leader": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Leader Id。",
+							Description: "Leader ID。",
 						},
 						"replica": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "replica set。",
+							Description: "副本 集合。",
 						},
 						"in_sync_replica": {
 							Type:        schema.TypeString,

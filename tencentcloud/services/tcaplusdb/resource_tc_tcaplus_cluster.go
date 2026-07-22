@@ -29,25 +29,25 @@ func ResourceTencentCloudTcaplusCluster() *schema.Resource {
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(TCAPLUS_IDL_TYPES),
-				Description:  "IDL 类型 TcaplusDB cluster. 有效值：`PROTO` and `TDR`。",
+				Description:  "IDL 类型 TcaplusDB 集群. 有效值：`PROTO` 和 `TDR`。",
 			},
 			"cluster_name": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 30),
-				Description:  "名称 TcaplusDB cluster. 名称 length should be between 1 and 30。",
+				Description:  "名称 TcaplusDB 集群. 名称 长度 should 是 between 1 和 30。",
 			},
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "VPC ID TcaplusDB cluster。",
+				Description: "VPC ID TcaplusDB 集群。",
 			},
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "子网 ID TcaplusDB cluster。",
+				Description: "子网 ID TcaplusDB 集群。",
 			},
 			"password": {
 				Type:      schema.TypeString,
@@ -82,51 +82,51 @@ func ResourceTencentCloudTcaplusCluster() *schema.Resource {
 					}
 					return
 				},
-				Description: "密码 of the TcaplusDB cluster. 密码 length should be between 12 and 16. The 密码 must be a *mix* of uppercase letters (A-Z)，lowercase *letters* (a-z) and *numbers* (0-9)。",
+				Description: "密码 的 TcaplusDB 集群. 密码 长度 should 是 between 12 和 16. 密码 必须 是 *mix* 的 uppercase letters (A-Z)，lowercase *letters* (-z) 和 *numbers* (0-9)。",
 			},
 			"old_password_expire_last": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Default:      3600,
 				ValidateFunc: tccommon.ValidateIntegerMin(300),
-				Description:  "过期时间 of old 密码 after 密码 update，unit: second。",
+				Description:  "过期时间 的 old 密码 after 密码 update，单位: second。",
 			},
 
 			// Computed values.
 			"network_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Network 类型 TcaplusDB cluster。",
+				Description: "Network 类型 TcaplusDB 集群。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 of the TcaplusDB cluster。",
+				Description: "创建时间 的 TcaplusDB 集群。",
 			},
 			"password_status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "密码 状态 TcaplusDB cluster. 有效值：`unmodifiable`，`modifiable`. `unmodifiable`. which means the 密码 can not be changed in this moment; `modifiable`，which means the 密码 can be changed in this moment。",
+				Description: "密码 状态 TcaplusDB 集群. 有效值：`unmodifiable`，`modifiable`. `unmodifiable`. 其中 表示 密码 可以 不 是 changed 在 此 moment; `modifiable`，其中 表示 密码 可以 是 changed 在 此 moment。",
 			},
 			"api_access_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Access ID TcaplusDB cluster.For TcaplusDB SDK connect。",
+				Description: "Access ID TcaplusDB 集群.For TcaplusDB SDK connect。",
 			},
 			"api_access_ip": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Access IP of the TcaplusDB cluster.For TcaplusDB SDK connect。",
+				Description: "Access IP 的 TcaplusDB 集群.For TcaplusDB SDK connect。",
 			},
 			"api_access_port": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Access 端口 of the TcaplusDB cluster.For TcaplusDB SDK connect。",
+				Description: "Access 端口 的 TcaplusDB 集群.For TcaplusDB SDK connect。",
 			},
 			"old_password_expire_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "过期时间 of the old 密码 If `password_status` is `unmodifiable`，it means the old 密码 has not yet expired。",
+				Description: "过期时间 的 old 密码 如果 `password_status` 是 `unmodifiable`，它 表示 old 密码 has 不 yet expired。",
 			},
 		},
 	}

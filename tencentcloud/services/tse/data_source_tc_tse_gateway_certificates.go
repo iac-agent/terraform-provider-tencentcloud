@@ -25,7 +25,7 @@ func DataSourceTencentCloudTseGatewayCertificates() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter conditions，valid 值: `BindDomain`，`名称`。",
+				Description: "过滤器 conditions，有效 值: `BindDomain`，`名称`。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
@@ -56,7 +56,7 @@ func DataSourceTencentCloudTseGatewayCertificates() *schema.Resource {
 						"certificates_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Certificate 列表 gateway. 注意：此字段可能返回 null，表示有效值不可用。",
+							Description: "Certificate 列表 网关. 注意：此字段可能返回 null，表示有效值不可用。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
@@ -75,47 +75,47 @@ func DataSourceTencentCloudTseGatewayCertificates() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Domains of the binding. 注意：此字段可能返回 null，表示有效值不可用。",
+										Description: "Domains 的 binding. 注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "状态 certificate. Reference 值:- expired- 活跃 注意：此字段可能返回 null，表示有效值不可用。",
+										Description: "状态 证书. Reference 值:- expired- 活跃 注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"crt": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Pem 格式 of certificate. 注意：此字段可能返回 null，表示有效值不可用。",
+										Description: "Pem 格式 的 证书. 注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Private 键 of certificate. 注意：此字段可能返回 null，表示有效值不可用。",
+										Description: "Private 键 的 证书. 注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"expire_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "过期时间 of certificate. 注意：此字段可能返回 null，表示有效值不可用。",
+										Description: "过期时间 的 证书. 注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Upload time of certificate. 注意：此字段可能返回 null，表示有效值不可用。",
+										Description: "Upload 时间 的 证书. 注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"issue_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Issuance time of certificate注意：此字段可能返回 null，表示有效值不可用。",
+										Description: "Issuance 时间 的 certificate注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"cert_source": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "来源 of certificate. Reference 值:- native. 来源: konga- ssl. 来源: ssl platform. 注意：此字段可能返回 null，表示有效值不可用。",
+										Description: "来源 的 证书. Reference 值:- native. 来源: konga- ssl. 来源: ssl 平台. 注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"cert_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "证书 ID ssl platform. 注意：此字段可能返回 null，表示有效值不可用。",
+										Description: "证书 ID ssl 平台. 注意：此字段可能返回 null，表示有效值不可用。",
 									},
 								},
 							},

@@ -32,7 +32,7 @@ func ResourceTencentCloudWedataTaskRerunInstanceAsync() *schema.Resource {
 				Type:        schema.TypeSet,
 				Required:    true,
 				ForceNew:    true,
-				Description: "实例 ID list，which can be obtained from ListInstances。",
+				Description: "实例 ID 列表，其中 可以 是 获取 从 ListInstances。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -42,42 +42,42 @@ func ResourceTencentCloudWedataTaskRerunInstanceAsync() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Rerun 类型，1: self; 3: children; 2: self and children，default 1。",
+				Description: "Rerun 类型，1: self; 3: children; 2: self 和 children，默认值 1。",
 			},
 
 			"check_parent_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "是否check upstream tasks: ALL，MAKE_SCOPE (selected)，NONE (do not check anything)，默认为 NONE。",
+				Description: "是否check upstream tasks: ALL，MAKE_SCOPE (selected)，NONE (do 不 check anything)，默认为 NONE。",
 			},
 
 			"son_range_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Downstream instance 范围 WORKFLOW: workflow PROJECT: project ALL: all cross-workflow dependent projects，default WORKFLOW。",
+				Description: "Downstream 实例 范围 WORKFLOW: 工作流 PROJECT: 项目 ALL: all cross-工作流 dependent projects，默认值 WORKFLOW。",
 			},
 
 			"skip_event_listening": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "是否ignore event monitoring when rerunning。",
+				Description: "是否ignore 事件 监控 当 rerunning。",
 			},
 
 			"redefine_parallel_num": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Customize the instance running 并发 If not configured，the original self-dependency of the task will be used。",
+				Description: "Customize 实例 running 并发 如果 不 已配置， original self-dependency 的 任务 将 是 使用。",
 			},
 
 			"redefine_self_workflow_dependency": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Customized workflow self-dependence: yes to enable，no to disable. If not configured，the original workflow self-dependence will be used。",
+				Description: "Customized 工作流 self-dependence: yes 到 启用，无 到 disable. 如果 不 已配置， original 工作流 self-dependence 将 是 使用。",
 			},
 
 			"redefine_param_list": {
@@ -85,7 +85,7 @@ func ResourceTencentCloudWedataTaskRerunInstanceAsync() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "Re-run instance custom parameters。",
+				Description: "Re-run 实例 自定义 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"k": {

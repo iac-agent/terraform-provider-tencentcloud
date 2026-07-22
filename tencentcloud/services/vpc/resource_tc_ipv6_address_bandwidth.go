@@ -30,26 +30,26 @@ func ResourceTencentCloudIpv6AddressBandwidth() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "IPV6 地址 that needs to be 已启用 for public network access。",
+				Description: "IPV6 地址 该 needs 到 是 已启用 对于 公有 网络 访问。",
 			},
 
 			"internet_max_bandwidth_out": {
 				Optional:    true,
 				Type:        schema.TypeInt,
 				Default:     1,
-				Description: "Bandwidth，in Mbps. The 默认为 1Mbps。",
+				Description: "Bandwidth，在 Mbps. 默认为 1Mbps。",
 			},
 
 			"internet_charge_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Network billing 模式 IPV6 currently supports: `TRAFFIC_POSTPAID_BY_HOUR`，for standard 账号 types; `BANDWIDTH_PACKAGE`，for traditional 账号 types. The default network billing 模式 is: `TRAFFIC_POSTPAID_BY_HOUR`。",
+				Description: "Network billing 模式 IPV6 currently 支持: `TRAFFIC_POSTPAID_BY_HOUR`，对于 standard 账号 types; `BANDWIDTH_PACKAGE`，对于 traditional 账号 types. 默认值 网络 billing 模式 是: `TRAFFIC_POSTPAID_BY_HOUR`。",
 			},
 
 			"bandwidth_package_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The bandwidth package id，the Legacy 账号 and the ipv6 地址 to apply for the bandwidth package 计费类型 need to be passed in。",
+				Description: "带宽 包 ID， Legacy 账号 和 ipv6 地址 到 apply 对于 带宽 包 计费类型 need 到 是 passed 在。",
 			},
 		},
 	}

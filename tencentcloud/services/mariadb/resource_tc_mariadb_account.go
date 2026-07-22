@@ -53,7 +53,7 @@ func ResourceTencentCloudMariadbAccount() *schema.Resource {
 			"read_only": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "wether 账号 is read only，0 means not a read only 账号",
+				Description: "wether 账号 是 read 仅，0 表示 不 read 仅 账号",
 			},
 
 			"description": {

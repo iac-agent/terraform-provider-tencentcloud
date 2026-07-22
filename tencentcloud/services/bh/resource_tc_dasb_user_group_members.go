@@ -37,7 +37,7 @@ func ResourceTencentCloudDasbUserGroupMembers() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "Collection of member 用户 IDs。",
+				Description: "Collection 的 member 用户 IDs。",
 			},
 		},
 	}

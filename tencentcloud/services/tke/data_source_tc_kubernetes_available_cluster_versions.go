@@ -19,13 +19,13 @@ func DataSourceTencentCloudKubernetesAvailableClusterVersions() *schema.Resource
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Cluster Id。",
+				Description: "Cluster ID。",
 			},
 
 			"cluster_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "列表 cluster IDs。",
+				Description: "列表 集群 IDs。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -34,7 +34,7 @@ func DataSourceTencentCloudKubernetesAvailableClusterVersions() *schema.Resource
 			"versions": {
 				Type:        schema.TypeSet,
 				Computed:    true,
-				Description: "Upgradable cluster 版本 number. 注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "Upgradable 集群 版本 数量. 注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -43,7 +43,7 @@ func DataSourceTencentCloudKubernetesAvailableClusterVersions() *schema.Resource
 			"clusters": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "cluster information. 注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "集群 信息. 注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cluster_id": {
@@ -54,7 +54,7 @@ func DataSourceTencentCloudKubernetesAvailableClusterVersions() *schema.Resource
 						"versions": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "列表 cluster major 版本 numbers，for example 1.18.4。",
+							Description: "列表 集群 major 版本 numbers，对于 示例 1.18.4。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},

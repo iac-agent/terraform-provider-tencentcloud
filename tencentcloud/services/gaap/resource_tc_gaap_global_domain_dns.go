@@ -30,7 +30,7 @@ func ResourceTencentCloudGaapGlobalDomainDns() *schema.Resource {
 			"domain_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "域名 Id。",
+				Description: "域名 ID。",
 			},
 
 			"proxy_id_list": {
@@ -39,7 +39,7 @@ func ResourceTencentCloudGaapGlobalDomainDns() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Proxy Id List。",
+				Description: "Proxy ID List。",
 			},
 
 			"nation_country_inner_codes": {

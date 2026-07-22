@@ -44,7 +44,7 @@ func ResourceTencentCloudAPIGatewayUsagePlan() *schema.Resource {
 					}
 					return tccommon.ValidateIntegerInRange(1, 99999999)(i, s)
 				},
-				Description: "Total 数量 requests allowed. 有效值：-1，[1,99999999]. The 默认值为 -1，which 表示no 限制",
+				Description: "Total 数量 requests allowed. 有效值：-1，[1,99999999]. 默认值为 -1，其中 表示no 限制",
 			},
 			"max_request_num_pre_sec": {
 				Type:     schema.TypeInt,
@@ -56,75 +56,75 @@ func ResourceTencentCloudAPIGatewayUsagePlan() *schema.Resource {
 					}
 					return tccommon.ValidateIntegerInRange(1, 2000)(i, s)
 				},
-				Description: "限制 of requests per second. 有效值：-1，[1,2000]. The 默认值为 -1，which 表示no 限制",
+				Description: "限制 的 requests per second. 有效值：-1，[1,2000]. 默认值为 -1，其中 表示no 限制",
 			},
 			// Computed values.
 			"modify_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "最后修改时间 in the 格式 of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used。",
+				Description: "最后修改时间 在 格式 的 YYYY-MM-DDThh:mm:ssZ according 到 ISO 8601 standard. UTC 时间 是 使用。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 in the 格式 of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used。",
+				Description: "创建时间 在 格式 的 YYYY-MM-DDThh:mm:ssZ according 到 ISO 8601 standard. UTC 时间 是 使用。",
 			},
 			"attach_api_keys": {
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Computed:    true,
-				Description: "Attach API keys list。",
+				Description: "Attach API keys 列表。",
 			},
 			"attach_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Attach service and API list。",
+				Description: "Attach 服务 和 API 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"service_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 服务 ID",
+							Description: "服务 ID",
 						},
 						"service_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 服务名称",
+							Description: "服务名称",
 						},
 						"api_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The API ID，this 值 is empty if attach service。",
+							Description: "API ID，此 值 是 空 如果 attach 服务。",
 						},
 						"api_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The API 名称，this 值 is empty if attach service。",
+							Description: "API 名称，此 值 是 空 如果 attach 服务。",
 						},
 						"path": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The API 路径，this 值 is empty if attach service。",
+							Description: "API 路径，此 值 是 空 如果 attach 服务。",
 						},
 						"method": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The API method，this 值 is empty if attach service。",
+							Description: "API 方法，此 值 是 空 如果 attach 服务。",
 						},
 						"environment": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The environment 名称",
+							Description: "环境 名称",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "最后修改时间 in the 格式 of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used。",
+							Description: "最后修改时间 在 格式 的 YYYY-MM-DDThh:mm:ssZ according 到 ISO 8601 standard. UTC 时间 是 使用。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 in the 格式 of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used。",
+							Description: "创建时间 在 格式 的 YYYY-MM-DDThh:mm:ssZ according 到 ISO 8601 standard. UTC 时间 是 使用。",
 						},
 					},
 				},

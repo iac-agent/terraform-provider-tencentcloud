@@ -29,12 +29,12 @@ func ResourceTencentCloudTeoCheckCnameStatusOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "列表 record names to check CNAME 状态",
+				Description: "列表 记录 names 到 check CNAME 状态",
 			},
 			"cname_status": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "CNAME 状态 information for each record 名称",
+				Description: "CNAME 状态 信息 对于 each 记录 名称",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"record_name": {
@@ -45,7 +45,7 @@ func ResourceTencentCloudTeoCheckCnameStatusOperation() *schema.Resource {
 						"cname": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CNAME 地址 May be null。",
+							Description: "CNAME 地址 May 是 null。",
 						},
 						"status": {
 							Type:        schema.TypeString,

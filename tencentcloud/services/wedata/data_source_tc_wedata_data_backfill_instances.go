@@ -25,7 +25,7 @@ func DataSourceTencentCloudWedataDataBackfillInstances() *schema.Resource {
 			"data_backfill_plan_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Backfill plan Id。",
+				Description: "Backfill plan ID。",
 			},
 
 			"task_id": {
@@ -37,7 +37,7 @@ func DataSourceTencentCloudWedataDataBackfillInstances() *schema.Resource {
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "All backfill  instances under one backfill  plan。",
+				Description: "All backfill 实例 under 一个 backfill plan。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"page_number": {
@@ -48,7 +48,7 @@ func DataSourceTencentCloudWedataDataBackfillInstances() *schema.Resource {
 						"page_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Pagination size。",
+							Description: "Pagination 大小。",
 						},
 						"total_page_number": {
 							Type:        schema.TypeInt,
@@ -63,13 +63,13 @@ func DataSourceTencentCloudWedataDataBackfillInstances() *schema.Resource {
 						"items": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "指定backfill instance list。",
+							Description: "指定backfill 实例 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"task_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task 名称",
+										Description: "任务 名称",
 									},
 									"task_id": {
 										Type:        schema.TypeString,
@@ -79,7 +79,7 @@ func DataSourceTencentCloudWedataDataBackfillInstances() *schema.Resource {
 									"cur_run_date": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "指定instance data time。",
+										Description: "指定instance 数据 时间。",
 									},
 									"state": {
 										Type:        schema.TypeString,
@@ -99,7 +99,7 @@ func DataSourceTencentCloudWedataDataBackfillInstances() *schema.Resource {
 									"cost_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Execution duration.\n\n",
+										Description: "Execution 时长.\n\n",
 									},
 								},
 							},

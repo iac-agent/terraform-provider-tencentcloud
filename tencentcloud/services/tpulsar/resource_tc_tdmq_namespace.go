@@ -29,42 +29,42 @@ func ResourceTencentCloudTdmqNamespace() *schema.Resource {
 			"environ_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "名称 namespace to be created。",
+				Description: "名称 命名空间 到 是 创建。",
 			},
 			"msg_ttl": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "The 过期时间 of unconsumed 消息",
+				Description: "过期时间 的 unconsumed 消息",
 			},
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The Dedicated Cluster Id。",
+				Description: "Dedicated Cluster ID。",
 			},
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "描述 namespace。",
+				Description: "描述 命名空间。",
 			},
 			"retention_policy": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "The Policy of 消息 to retain. 格式 like: `{time_in_minutes: Int，size_in_mb: Int}`. `time_in_minutes`: the time of 消息 to retain; `size_in_mb`: the size of 消息 to retain。",
+				Description: "Policy 的 消息 到 retain. 格式 like: `{time_in_minutes: Int，size_in_mb: Int}`. `time_in_minutes`: 时间 的 消息 到 retain; `size_in_mb`: 大小 的 消息 到 retain。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"time_in_minutes": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "the time of 消息 to retain。",
+							Description: "时间 的 消息 到 retain。",
 						},
 						"size_in_mb": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "the size of 消息 to retain。",
+							Description: "大小 的 消息 到 retain。",
 						},
 					},
 				},

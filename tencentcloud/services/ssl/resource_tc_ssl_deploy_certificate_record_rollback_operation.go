@@ -25,7 +25,7 @@ func ResourceTencentCloudSslDeployCertificateRecordRollbackOperation() *schema.R
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Deployment record ID to be rollback。",
+				Description: "Deployment 记录 ID 到 是 rollback。",
 			},
 		},
 	}

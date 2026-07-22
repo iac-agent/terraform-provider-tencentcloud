@@ -25,21 +25,21 @@ func ResourceTencentCloudAsExecuteScalingPolicy() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Auto-scaling policy ID. This parameter is not available to a target tracking policy。",
+				Description: "Auto-scaling 策略 ID. 此 参数 是 不 可用 到 目标 tracking 策略。",
 			},
 
 			"honor_cooldown": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "是否check if the auto scaling group is in the cooldown 周期 默认值：false。",
+				Description: "是否check 如果 auto scaling 组 是 在 cooldown 周期 默认值：false。",
 			},
 
 			"trigger_source": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "来源 that triggers the scaling policy. 有效值：API and CLOUD_MONITOR. 默认值：API. The 值 CLOUD_MONITOR is specific to the Cloud Monitor service。",
+				Description: "来源 该 triggers scaling 策略. 有效值：API 和 CLOUD_MONITOR. 默认值：API. 值 CLOUD_MONITOR 是 特定 到 Cloud Monitor 服务。",
 			},
 		},
 	}

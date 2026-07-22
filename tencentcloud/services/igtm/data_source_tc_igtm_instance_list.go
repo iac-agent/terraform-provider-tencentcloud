@@ -18,13 +18,13 @@ func DataSourceTencentCloudIgtmInstanceList() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter conditions。",
+				Description: "过滤器 conditions。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "过滤字段名称，supported list as follows:\n- 实例 ID: IGTM instance ID.\n- 域名: IGTM instance 域名\n- MonitorId: Monitor ID.\n- PoolId: Pool ID. This is a 必填 parameter，not passing it will cause interface query failure。",
+							Description: "过滤字段名称，支持 列表 作为 follows:\n- 实例 ID: IGTM 实例 ID.\n- 域名: IGTM 实例 域名\n- MonitorId: Monitor ID.\n- PoolId: Pool ID. 此 是 必填 参数，不 passing 它 将 cause interface 查询 failure。",
 						},
 						"value": {
 							Type:        schema.TypeSet,
@@ -37,7 +37,7 @@ func DataSourceTencentCloudIgtmInstanceList() *schema.Resource {
 						"fuzzy": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "是否enable fuzzy query，only supports 过滤字段名称 as 域名\nWhen fuzzy query is 已启用，maximum 值 length is 1，otherwise maximum 值 length is 5. (Reserved field，not currently used)。",
+							Description: "是否enable fuzzy 查询，仅 支持 过滤字段名称 作为 域名\nWhen fuzzy 查询 是 已启用，最大 值 长度 是 1，otherwise 最大 值 长度 是 5. (Reserved 字段，不 currently 使用)。",
 						},
 					},
 				},
@@ -46,7 +46,7 @@ func DataSourceTencentCloudIgtmInstanceList() *schema.Resource {
 			"instance_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Instance list。",
+				Description: "实例 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
@@ -72,7 +72,7 @@ func DataSourceTencentCloudIgtmInstanceList() *schema.Resource {
 						"access_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cname 域名 access method\nCUSTOM: Custom access 域名\nSYSTEM: System access 域名",
+							Description: "Cname 域名 访问 方法\nCUSTOM: Custom 访问 域名\nSYSTEM: System 访问 域名",
 						},
 						"access_domain": {
 							Type:        schema.TypeString,
@@ -87,7 +87,7 @@ func DataSourceTencentCloudIgtmInstanceList() *schema.Resource {
 						"global_ttl": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Global record 过期时间。",
+							Description: "Global 记录 过期时间。",
 						},
 						"package_type": {
 							Type:        schema.TypeString,
@@ -97,7 +97,7 @@ func DataSourceTencentCloudIgtmInstanceList() *schema.Resource {
 						"working_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance running 状态\nNORMAL: Healthy\nFAULTY: At risk\nDOWN: Down\nUNKNOWN: Unknown。",
+							Description: "实例 running 状态\nNORMAL: Healthy\nFAULTY: At risk\nDOWN: Down\nUNKNOWN: Unknown。",
 						},
 						"status": {
 							Type:        schema.TypeString,
@@ -107,7 +107,7 @@ func DataSourceTencentCloudIgtmInstanceList() *schema.Resource {
 						"is_cname_configured": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether cname access: true accessed; false not accessed。",
+							Description: "Whether cname 访问: true accessed; false 不 accessed。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
@@ -122,32 +122,32 @@ func DataSourceTencentCloudIgtmInstanceList() *schema.Resource {
 						"address_pool_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Bound 地址 pool count。",
+							Description: "Bound 地址 池 count。",
 						},
 						"monitor_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Bound monitor count。",
+							Description: "Bound 监控 count。",
 						},
 						"pool_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "地址 pool ID。",
+							Description: "地址 池 ID。",
 						},
 						"pool_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "地址 pool 名称",
+							Description: "地址 池 名称",
 						},
 						"created_on": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance 创建时间。",
+							Description: "实例 创建时间。",
 						},
 						"updated_on": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance 更新时间。",
+							Description: "实例 更新时间。",
 						},
 					},
 				},
@@ -156,7 +156,7 @@ func DataSourceTencentCloudIgtmInstanceList() *schema.Resource {
 			"system_access_enabled": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Whether system 域名 access is supported: true supported; false not supported。",
+				Description: "Whether 系统 域名 访问 是 支持: true 支持; false 不 支持。",
 			},
 
 			"result_output_file": {

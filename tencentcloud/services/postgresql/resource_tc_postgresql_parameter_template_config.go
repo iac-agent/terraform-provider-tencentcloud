@@ -27,13 +27,13 @@ func ResourceTencentCloudPostgresqlParameterTemplateConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "指定parameter 模板 ID，which uniquely identifies the parameter template and cannot be modified. it can be obtained through the api [DescribeParameterTemplates](https://www.tencentcloud.comom/document/api/409/84067?from_cn_redirect=1)。",
+				Description: "指定parameter 模板 ID，其中 uniquely identifies 参数 template 和 不能 是 modified. 它 可以 是 获取 through api [DescribeParameterTemplates](https://www.tencentcloud.comom/document/api/409/84067?from_cn_redirect=1)。",
 			},
 
 			"modify_param_entry_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "The set of parameters to be modified or added。",
+				Description: "集合 的 参数 到 是 modified 或 added。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -44,7 +44,7 @@ func ResourceTencentCloudPostgresqlParameterTemplateConfig() *schema.Resource {
 						"expected_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The 新值 to which the parameter will be modified. When this parameter is used as an input parameter，its 值 must be a string，such as `0.1` (decimal)，`1000` (integer)，and `replica` (enum)。",
+							Description: "新值 到 其中 参数 将 是 modified. 当 此 参数 是 使用 作为 input 参数，its 值 必须 是 字符串，such 作为 `0.1` (decimal)，`1000` (整数)，和 `副本` (enum)。",
 						},
 					},
 				},

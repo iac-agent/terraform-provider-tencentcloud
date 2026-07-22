@@ -21,39 +21,39 @@ func DataSourceTencentCloudClickhouseInstances() *schema.Resource {
 			"instance_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Search by instance ID，support exact matching。",
+				Description: "Search 通过 实例 ID，support exact matching。",
 			},
 			"instance_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Search by 实例名称，support fuzzy matching。",
+				Description: "Search 通过 实例名称，support fuzzy matching。",
 			},
 			"tags": {
 				Optional:    true,
 				Type:        schema.TypeMap,
-				Description: "标签 filter，multiple 标签 must be matched at the same time。",
+				Description: "标签 过滤器，多个 标签 必须 是 matched 在 same 时间。",
 			},
 			"vips": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "VIP 地址 list for filtering instances。",
+				Description: "VIP 地址 列表 对于 filtering 实例。",
 			},
 			"is_simple": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "是否return simplified information。",
+				Description: "是否return simplified 信息。",
 			},
 			"instance_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "列表 ClickHouse instances。",
+				Description: "列表 ClickHouse 实例。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "实例 ID，such as `cdwch-xxxx`。",
+							Description: "实例 ID，such 作为 `cdwch-xxxx`。",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
@@ -73,17 +73,17 @@ func DataSourceTencentCloudClickhouseInstances() *schema.Resource {
 						"version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance 版本",
+							Description: "实例 版本",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "地域，such as `ap-guangzhou`。",
+							Description: "地域，such 作为 `ap-guangzhou`。",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Availability 可用区，such as `ap-guangzhou-3`。",
+							Description: "Availability 可用区，such 作为 `ap-guangzhou-3`。",
 						},
 						"region_id": {
 							Type:        schema.TypeInt,
@@ -113,7 +113,7 @@ func DataSourceTencentCloudClickhouseInstances() *schema.Resource {
 						"access_info": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Access 地址，such as `10.0.0.1:9000`。",
+							Description: "Access 地址，such 作为 `10.0.0.1:9000`。",
 						},
 						"eip": {
 							Type:        schema.TypeString,
@@ -128,7 +128,7 @@ func DataSourceTencentCloudClickhouseInstances() *schema.Resource {
 						"pay_mode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Payment 模式: `hour` or `prepay`。",
+							Description: "Payment 模式: `hour` 或 `prepay`。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
@@ -148,7 +148,7 @@ func DataSourceTencentCloudClickhouseInstances() *schema.Resource {
 						"ha": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "High availability: `true` or `false`。",
+							Description: "High availability: `true` 或 `false`。",
 						},
 						"ha_zk": {
 							Type:        schema.TypeBool,
@@ -158,37 +158,37 @@ func DataSourceTencentCloudClickhouseInstances() *schema.Resource {
 						"is_elastic": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否为an elastic instance。",
+							Description: "是否为an elastic 实例。",
 						},
 						"kind": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "实例类型: `external`，`local`，or `yunti`。",
+							Description: "实例类型: `外部`，`本地`，或 `yunti`。",
 						},
 						"monitor": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Monitoring information。",
+							Description: "Monitoring 信息。",
 						},
 						"has_cls_topic": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether CLS topic is 已启用",
+							Description: "Whether CLS 主题 是 已启用",
 						},
 						"cls_topic_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLS topic ID。",
+							Description: "CLS 主题 ID。",
 						},
 						"cls_log_set_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLS log set ID。",
+							Description: "CLS 日志 集合 ID。",
 						},
 						"enable_xml_config": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether XML configuration is supported。",
+							Description: "Whether XML 配置 是 支持。",
 						},
 						"cos_bucket_name": {
 							Type:        schema.TypeString,
@@ -198,17 +198,17 @@ func DataSourceTencentCloudClickhouseInstances() *schema.Resource {
 						"can_attach_cbs": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether CBS can be attached。",
+							Description: "Whether CBS 可以 是 attached。",
 						},
 						"can_attach_cbs_lvm": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether CBS LVM can be attached。",
+							Description: "Whether CBS LVM 可以 是 attached。",
 						},
 						"can_attach_cos": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether COS can be attached。",
+							Description: "Whether COS 可以 是 attached。",
 						},
 						"upgrade_versions": {
 							Type:        schema.TypeString,
@@ -223,13 +223,13 @@ func DataSourceTencentCloudClickhouseInstances() *schema.Resource {
 						"master_summary": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Master node summary information。",
+							Description: "Master 节点 summary 信息。",
 							Elem:        nodesSummarySchema(),
 						},
 						"common_summary": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Common node summary information。",
+							Description: "Common 节点 summary 信息。",
 							Elem:        nodesSummarySchema(),
 						},
 						"tags": {
@@ -273,13 +273,13 @@ func DataSourceTencentCloudClickhouseInstances() *schema.Resource {
 						"instance_state_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Instance state details。",
+							Description: "实例 state details。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_state": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance state。",
+										Description: "实例 state。",
 									},
 									"flow_create_time": {
 										Type:        schema.TypeString,
@@ -299,7 +299,7 @@ func DataSourceTencentCloudClickhouseInstances() *schema.Resource {
 									"instance_state_desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance state 描述",
+										Description: "实例 state 描述",
 									},
 									"flow_msg": {
 										Type:        schema.TypeString,
@@ -347,12 +347,12 @@ func nodesSummarySchema() *schema.Resource {
 			"memory": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Memory size （GB）。",
+				Description: "Memory 大小 （GB）。",
 			},
 			"disk": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Disk size （GB）。",
+				Description: "Disk 大小 （GB）。",
 			},
 			"disk_type": {
 				Type:        schema.TypeString,
@@ -367,7 +367,7 @@ func nodesSummarySchema() *schema.Resource {
 			"attach_cbs_spec": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Attached CBS specification。",
+				Description: "Attached CBS 规格。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"disk_type": {
@@ -378,7 +378,7 @@ func nodesSummarySchema() *schema.Resource {
 						"disk_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Disk size （GB）。",
+							Description: "Disk 大小 （GB）。",
 						},
 						"disk_count": {
 							Type:        schema.TypeInt,
@@ -406,7 +406,7 @@ func nodesSummarySchema() *schema.Resource {
 			"spec_memory": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Specification memory。",
+				Description: "Specification 内存。",
 			},
 			"disk_count": {
 				Type:        schema.TypeInt,
@@ -416,7 +416,7 @@ func nodesSummarySchema() *schema.Resource {
 			"max_disk_size": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Maximum disk size。",
+				Description: "Maximum 磁盘 大小。",
 			},
 			"encrypt": {
 				Type:        schema.TypeInt,

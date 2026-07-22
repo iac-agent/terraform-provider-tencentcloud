@@ -35,7 +35,7 @@ func ResourceTencentCloudTsfApplicationReleaseConfig() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "deployment 组 ID",
+				Description: "部署 组 ID",
 			},
 
 			"release_desc": {
@@ -49,31 +49,31 @@ func ResourceTencentCloudTsfApplicationReleaseConfig() *schema.Resource {
 			"config_release_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "configuration item release ID。",
+				Description: "配置 item release ID。",
 			},
 
 			"config_name": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "configuration item 名称",
+				Description: "配置 item 名称",
 			},
 
 			"config_version": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "configuration item 版本",
+				Description: "配置 item 版本",
 			},
 
 			"release_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "release time。",
+				Description: "release 时间。",
 			},
 
 			"group_name": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "deployment 组名称",
+				Description: "部署 组名称",
 			},
 
 			"namespace_id": {
@@ -85,13 +85,13 @@ func ResourceTencentCloudTsfApplicationReleaseConfig() *schema.Resource {
 			"namespace_name": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "namespace 名称",
+				Description: "命名空间 名称",
 			},
 
 			"cluster_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "cluster ID。",
+				Description: "集群 ID。",
 			},
 
 			"cluster_name": {

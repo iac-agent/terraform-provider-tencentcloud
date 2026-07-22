@@ -34,7 +34,7 @@ func ResourceTencentCloudIgtmStrategy() *schema.Resource {
 			"strategy_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Strategy 名称，cannot be duplicated。",
+				Description: "Strategy 名称，不能 是 duplicated。",
 			},
 
 			"source": {
@@ -60,19 +60,19 @@ func ResourceTencentCloudIgtmStrategy() *schema.Resource {
 			"main_address_pool_set": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Main 地址 pool set，up to four levels allowed。",
+				Description: "Main 地址 池 集合，up 到 four levels allowed。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"address_pools": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "地址 pool IDs and weights in the set，array。",
+							Description: "地址 池 IDs 和 weights 在 集合，数组。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"pool_id": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "地址 pool ID。",
+										Description: "地址 池 ID。",
 									},
 									"weight": {
 										Type:        schema.TypeInt,
@@ -86,19 +86,19 @@ func ResourceTencentCloudIgtmStrategy() *schema.Resource {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "地址 pool set ID。",
+							Description: "地址 池 集合 ID。",
 						},
 						"min_survive_num": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Switch threshold，cannot exceed the total 数量 addresses in the main set。",
+							Description: "Switch 阈值，不能 exceed 总数 数量 addresses 在 main 集合。",
 						},
 						"traffic_strategy": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Switch strategy: ALL resolves all addresses; WEIGHT: load balancing. When ALL，the 权重 值 of resolved addresses is 1; when WEIGHT，权重 is 地址 pool 权重 * 地址 权重",
+							Description: "Switch strategy: ALL resolves all addresses; WEIGHT: load balancing. 当 ALL， 权重 值 的 resolved addresses 是 1; 当 WEIGHT，权重 是 地址 池 权重 * 地址 权重",
 						},
 					},
 				},
@@ -107,19 +107,19 @@ func ResourceTencentCloudIgtmStrategy() *schema.Resource {
 			"fallback_address_pool_set": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Fallback 地址 pool set，only one 级别 allowed and 地址 pool count must be 1。",
+				Description: "Fallback 地址 池 集合，仅 一个 级别 allowed 和 地址 池 count 必须 是 1。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"address_pools": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "地址 pool IDs and weights in the set，array。",
+							Description: "地址 池 IDs 和 weights 在 集合，数组。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"pool_id": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "地址 pool ID。",
+										Description: "地址 池 ID。",
 									},
 									"weight": {
 										Type:        schema.TypeInt,
@@ -133,19 +133,19 @@ func ResourceTencentCloudIgtmStrategy() *schema.Resource {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "地址 pool set ID。",
+							Description: "地址 池 集合 ID。",
 						},
 						"min_survive_num": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Switch threshold，cannot exceed the total 数量 addresses in the main set。",
+							Description: "Switch 阈值，不能 exceed 总数 数量 addresses 在 main 集合。",
 						},
 						"traffic_strategy": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Switch strategy: ALL resolves all addresses; WEIGHT: load balancing. When ALL，the 权重 值 of resolved addresses is 1; when WEIGHT，权重 is 地址 pool 权重 * 地址 权重",
+							Description: "Switch strategy: ALL resolves all addresses; WEIGHT: load balancing. 当 ALL， 权重 值 的 resolved addresses 是 1; 当 WEIGHT，权重 是 地址 池 权重 * 地址 权重",
 						},
 					},
 				},
@@ -154,13 +154,13 @@ func ResourceTencentCloudIgtmStrategy() *schema.Resource {
 			"keep_domain_records": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "是否enable policy forced retention of default lines 已禁用，已启用，默认为 已禁用 and only one policy can be 已启用",
+				Description: "是否enable 策略 forced retention 的 默认值 lines 已禁用，已启用，默认为 已禁用 和 仅 一个 策略 可以 是 已启用",
 			},
 
 			"switch_pool_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Policy scheduling 模式: AUTO default switching; STOP only pause without switching。",
+				Description: "Policy scheduling 模式: AUTO 默认值 switching; STOP 仅 pause without switching。",
 			},
 
 			// computed

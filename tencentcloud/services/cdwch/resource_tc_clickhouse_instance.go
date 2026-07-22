@@ -36,12 +36,12 @@ func ResourceTencentCloudClickhouseInstance() *schema.Resource {
 			"ha_flag": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "是否为highly available。",
+				Description: "是否为highly 可用。",
 			},
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Private network。",
+				Description: "Private 网络。",
 			},
 			"subnet_id": {
 				Type:        schema.TypeString,
@@ -67,12 +67,12 @@ func ResourceTencentCloudClickhouseInstance() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "PREPAID needs to be passed. 是否renew automatically. 1 means auto renewal is 已启用",
+				Description: "PREPAID needs 到 是 passed. 是否renew automatically. 1 表示 auto renewal 是 已启用",
 			},
 			"time_span": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Prepaid needs to be delivered，billing time length，how many months。",
+				Description: "Prepaid needs 到 是 delivered，billing 时间 长度，how many months。",
 			},
 			"data_spec": {
 				Required:    true,
@@ -96,7 +96,7 @@ func ResourceTencentCloudClickhouseInstance() *schema.Resource {
 						"disk_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Disk size。",
+							Description: "Disk 大小。",
 						},
 					},
 				},
@@ -105,7 +105,7 @@ func ResourceTencentCloudClickhouseInstance() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "CLS log set id。",
+				Description: "CLS 日志 集合 ID。",
 			},
 
 			"cos_bucket_name": {
@@ -119,14 +119,14 @@ func ResourceTencentCloudClickhouseInstance() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "是否为mounted on a bare disk。",
+				Description: "是否为mounted 在 bare 磁盘。",
 			},
 
 			"ha_zk": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether ZK is highly available。",
+				Description: "Whether ZK 是 highly 可用。",
 			},
 
 			"common_spec": {
@@ -134,7 +134,7 @@ func ResourceTencentCloudClickhouseInstance() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "ZK node。",
+				Description: "ZK 节点。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"spec_name": {
@@ -152,7 +152,7 @@ func ResourceTencentCloudClickhouseInstance() *schema.Resource {
 						"disk_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Disk size。",
+							Description: "Disk 大小。",
 						},
 					},
 				},
@@ -180,7 +180,7 @@ func ResourceTencentCloudClickhouseInstance() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Secondary subnet。",
+							Description: "Secondary 子网。",
 						},
 					},
 				},
@@ -189,17 +189,17 @@ func ResourceTencentCloudClickhouseInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Sensitive:   true,
-				Description: "The 密码 for the default 账号 to log in to the instance. 8-16 characters，including at least three of the following: uppercase letters，lowercase letters，numbers，and special characters `!@#%^*`. The first character cannot be a special character。",
+				Description: "密码 对于 默认值 账号 到 日志 在 到 实例. 8-16 字符，包括 在 least three 的 following: uppercase letters，lowercase letters，numbers，和 special 字符 `!@#%^*`. first character 不能 是 special character。",
 			},
 			"expire_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Expire time。",
+				Description: "Expire 时间。",
 			},
 			"access_info": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "access 地址 info。",
+				Description: "访问 地址 info。",
 			},
 		},
 	}

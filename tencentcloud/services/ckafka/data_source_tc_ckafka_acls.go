@@ -19,17 +19,17 @@ func DataSourceTencentCloudCkafkaAcls() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Id of the ckafka instance。",
+				Description: "ID 的 ckafka 实例。",
 			},
 			"resource_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ACL 资源类型 Valid values are `UNKNOWN`，`ANY`，`TOPIC`，`GROUP`，`CLUSTER`，`TRANSACTIONAL_ID`. Currently，only `TOPIC` is available，and other fields will be 用于future ACLs compatible with open-来源 Kafka。",
+				Description: "ACL 资源类型 有效 值 是 `UNKNOWN`，`ANY`，`TOPIC`，`GROUP`，`CLUSTER`，`TRANSACTIONAL_ID`. Currently，仅 `TOPIC` 是 可用，和 other 字段 将 是 用于future ACLs compatible 使用 open-来源 Kafka。",
 			},
 			"resource_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ACL 资源名称，which is related to `resource_type`. For example，if `resource_type` is `TOPIC`，this field 表示topic 名称; if `resource_type` is `GROUP`，this field 表示group 名称",
+				Description: "ACL 资源名称，其中 是 related 到 `resource_type`. For 示例，如果 `resource_type` 是 `TOPIC`，此 字段 表示topic 名称; 如果 `resource_type` 是 `GROUP`，此 字段 表示group 名称",
 			},
 			"host": {
 				Type:        schema.TypeString,
@@ -55,7 +55,7 @@ func DataSourceTencentCloudCkafkaAcls() *schema.Resource {
 						"resource_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ACL 资源名称，which is related to `resource_type`。",
+							Description: "ACL 资源名称，其中 是 related 到 `resource_type`。",
 						},
 						"operation_type": {
 							Type:        schema.TypeString,
@@ -65,17 +65,17 @@ func DataSourceTencentCloudCkafkaAcls() *schema.Resource {
 						"permission_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ACL permission 类型，valid values are `UNKNOWN`，`ANY`，`DENY`，`ALLOW`，and `ALLOW` by default. Currently，CKafka supports `ALLOW` (equivalent to allow list)，and other fields will be 用于future ACLs compatible with open-来源 Kafka。",
+							Description: "ACL 权限 类型，有效 值 是 `UNKNOWN`，`ANY`，`DENY`，`ALLOW`，和 `ALLOW` 通过 默认值. Currently，CKafka 支持 `ALLOW` (equivalent 到 allow 列表)，和 other 字段 将 是 用于future ACLs compatible 使用 open-来源 Kafka。",
 						},
 						"host": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IP 地址 allowed to access。",
+							Description: "IP 地址 allowed 到 访问。",
 						},
 						"principal": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "用户 which can access. `*` means that any 用户 can access。",
+							Description: "用户 其中 可以 访问. `*` 表示 该 any 用户 可以 访问。",
 						},
 					},
 				},

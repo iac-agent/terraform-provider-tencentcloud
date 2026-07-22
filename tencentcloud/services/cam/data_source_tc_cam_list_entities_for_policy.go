@@ -19,7 +19,7 @@ func DataSourceTencentCloudCamListEntitiesForPolicy() *schema.Resource {
 			"policy_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Policy Id。",
+				Description: "Policy ID。",
 			},
 
 			"rp": {
@@ -31,7 +31,7 @@ func DataSourceTencentCloudCamListEntitiesForPolicy() *schema.Resource {
 			"entity_filter": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Can take values of &amp;amp;#39;All&amp;amp;#39;，&amp;amp;#39;用户&amp;amp;#39;，&amp;amp;#39;Group&amp;amp;#39;，and &amp;amp;#39;角色&amp;amp;#39;. &amp;amp;#39;All&amp;amp;#39; represents obtaining all entity types，&amp;amp;#39;用户&amp;amp;#39; represents only obtaining sub accounts，&amp;amp;#39;Group&amp;amp;#39; represents only obtaining 用户 groups，and &amp;amp;#39;角色&amp;amp;#39; represents only obtaining roles. The 默认值 is&amp;amp;#39; All &amp;amp;#39;。",
+				Description: "Can take 值 的 &amp;amp;#39;All&amp;amp;#39;，&amp;amp;#39;用户&amp;amp;#39;，&amp;amp;#39;Group&amp;amp;#39;，和 &amp;amp;#39;角色&amp;amp;#39;. &amp;amp;#39;All&amp;amp;#39; 表示 obtaining all entity types，&amp;amp;#39;用户&amp;amp;#39; 表示 仅 obtaining sub accounts，&amp;amp;#39;Group&amp;amp;#39; 表示 仅 obtaining 用户 groups，和 &amp;amp;#39;角色&amp;amp;#39; 表示 仅 obtaining roles. 默认值 是&amp;amp;#39; All &amp;amp;#39;。",
 			},
 
 			"list": {

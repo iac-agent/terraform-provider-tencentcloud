@@ -38,7 +38,7 @@ func ResourceTencentCloudMonitorGrafanaWhitelistConfig() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The addresses in the whitelist。",
+				Description: "addresses 在 whitelist。",
 			},
 		},
 	}

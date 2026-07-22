@@ -26,13 +26,13 @@ func ResourceTencentCloudBhAuthModeConfig() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Double factor authentication configuration. 有效值：`0` (已禁用)，`1` (OTP)，`2` (SMS)，`3` (USB 键，only valid when ResourceType=1 and AuthModeGM is not passed). Note: At least one of AuthMode and AuthModeGM must be passed。",
+				Description: "Double factor authentication 配置. 有效值：`0` (已禁用)，`1` (OTP)，`2` (SMS)，`3` (USB 键，仅 有效 当 ResourceType=1 和 AuthModeGM 是 不 passed). 注意: At least 一个 的 AuthMode 和 AuthModeGM 必须 是 passed。",
 			},
 			"auth_mode_gm": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "National secret double factor authentication configuration. 有效值：`0` (已禁用)，`1` (OTP)，`2` (SMS)，`3` (USB 键). Note: At least one of AuthMode and AuthModeGM must be passed. AuthModeGM has higher 优先级 than ResourceType。",
+				Description: "National secret double factor authentication 配置. 有效值：`0` (已禁用)，`1` (OTP)，`2` (SMS)，`3` (USB 键). 注意: At least 一个 的 AuthMode 和 AuthModeGM 必须 是 passed. AuthModeGM has higher 优先级 比 ResourceType。",
 			},
 		},
 	}

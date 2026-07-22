@@ -24,21 +24,21 @@ func ResourceTencentCloudCsipRiskCenter() *schema.Resource {
 			"task_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Task 名称",
+				Description: "任务 名称",
 			},
 			"scan_plan_type": {
 				Required:     true,
 				ForceNew:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(SCAN_PLAN_TYPE),
-				Description:  "0- Periodic task，1- immediate scan，2- periodic scan，3- Custom; 0，2 and 3 为必填项 for scan_plan_content。",
+				Description:  "0- Periodic 任务，1- immediate scan，2- periodic scan，3- Custom; 0，2 和 3 为必填项 对于 scan_plan_content。",
 			},
 			"scan_asset_type": {
 				Required:     true,
 				ForceNew:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(SCAN_ASSET_TYPE),
-				Description:  "0- Full scan，1- 指定asset scan，2- Exclude asset scan，3- Manually fill in the scan. If 1 and 2 为必填项 while task_mode not 1，the Assets field 为必填项. If 3 为必填项，SelfDefiningAssets 为必填项。",
+				Description:  "0- Full scan，1- 指定asset scan，2- Exclude asset scan，3- Manually fill 在 scan. 如果 1 和 2 为必填项 while task_mode 不 1， Assets 字段 为必填项. 如果 3 为必填项，SelfDefiningAssets 为必填项。",
 			},
 			"scan_item": {
 				Required:    true,
@@ -52,7 +52,7 @@ func ResourceTencentCloudCsipRiskCenter() *schema.Resource {
 				ForceNew:    true,
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Scan the asset information list。",
+				Description: "Scan asset 信息 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"asset_name": {
@@ -73,7 +73,7 @@ func ResourceTencentCloudCsipRiskCenter() *schema.Resource {
 						"asset": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Ip/ 域名 名称/asset id，database id，etc。",
+							Description: "Ip/ 域名 名称/asset ID，数据库 ID，etc。",
 						},
 						"region": {
 							Type:        schema.TypeString,
@@ -83,7 +83,7 @@ func ResourceTencentCloudCsipRiskCenter() *schema.Resource {
 						"arn": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Multi-cloud asset unique id注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Multi-云 asset 唯一 id注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -99,19 +99,19 @@ func ResourceTencentCloudCsipRiskCenter() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Ip/域名/URL array。",
+				Description: "Ip/域名/URL 数组。",
 			},
 			"scan_from": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Request origin。",
+				Description: "Request 源站。",
 			},
 			"task_advance_cfg": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Advanced configuration。",
+				Description: "Advanced 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"port_risk": {
@@ -123,12 +123,12 @@ func ResourceTencentCloudCsipRiskCenter() *schema.Resource {
 									"port_sets": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "端口 collection，separated by commas。",
+										Description: "端口 collection，separated 通过 commas。",
 									},
 									"check_type": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Detection item 类型，0-system defined，1-用户-defined。",
+										Description: "Detection item 类型，0-系统 defined，1-用户-defined。",
 									},
 									"detail": {
 										Type:        schema.TypeString,
@@ -146,7 +146,7 @@ func ResourceTencentCloudCsipRiskCenter() *schema.Resource {
 						"vul_risk": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Advanced vulnerability risk configuration。",
+							Description: "Advanced vulnerability risk 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"risk_id": {
@@ -165,7 +165,7 @@ func ResourceTencentCloudCsipRiskCenter() *schema.Resource {
 						"weak_pwd_risk": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Weak 密码 risk advanced configuration。",
+							Description: "Weak 密码 risk advanced 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"check_item_id": {
@@ -214,7 +214,7 @@ func ResourceTencentCloudCsipRiskCenter() *schema.Resource {
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(SCAN_TASK_MODE),
 				Default:      SCAN_TASK_MODE_0,
-				Description:  "Physical examination 模式，0-standard 模式，1-fast 模式，2-advanced 模式，default standard 模式",
+				Description:  "Physical examination 模式，0-standard 模式，1-fast 模式，2-advanced 模式，默认值 standard 模式",
 			},
 		},
 	}

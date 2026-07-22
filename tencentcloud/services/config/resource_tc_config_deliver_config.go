@@ -43,7 +43,7 @@ func ResourceTencentCloudConfigDeliverConfig() *schema.Resource {
 			"deliver_prefix": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Log prefix for stored delivery 内容",
+				Description: "Log prefix 对于 stored delivery 内容",
 			},
 
 			"deliver_type": {
@@ -55,14 +55,14 @@ func ResourceTencentCloudConfigDeliverConfig() *schema.Resource {
 			"deliver_content_type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Delivery 内容 类型 有效值：1 (configuration change)，2 (resource list)，3 (all)。",
+				Description: "Delivery 内容 类型 有效值：1 (配置 change)，2 (资源 列表)，3 (all)。",
 			},
 
 			// Computed
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 of the delivery configuration。",
+				Description: "创建时间 的 delivery 配置。",
 			},
 		},
 	}

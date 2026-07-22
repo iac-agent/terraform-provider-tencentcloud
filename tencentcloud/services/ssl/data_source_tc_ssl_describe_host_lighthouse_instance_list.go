@@ -19,7 +19,7 @@ func DataSourceTencentCloudSslDescribeHostLighthouseInstanceList() *schema.Resou
 			"certificate_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "证书 ID to be deployed。",
+				Description: "证书 ID 到 是 deployed。",
 			},
 
 			"resource_type": {
@@ -31,13 +31,13 @@ func DataSourceTencentCloudSslDescribeHostLighthouseInstanceList() *schema.Resou
 			"is_cache": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "是否query the cache，1: Yes; 0: No，the 默认为 the query cache，the cache is half an hour。",
+				Description: "是否query 缓存，1: Yes; 0: No， 默认为 查询 缓存， 缓存 是 half hour。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "列表 filter parameters。",
+				Description: "列表 过滤器 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"filter_key": {
@@ -57,7 +57,7 @@ func DataSourceTencentCloudSslDescribeHostLighthouseInstanceList() *schema.Resou
 			"instance_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Lighthouse instance listNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "Lighthouse 实例 listNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {

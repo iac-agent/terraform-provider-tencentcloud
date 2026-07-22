@@ -19,7 +19,7 @@ func DataSourceTencentCloudPostgresqlReadonlyGroups() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter condition. The primary ID must be specified in the 格式 of db-master-instance-id to filter results，or else null will be returned。",
+				Description: "过滤器 condition. primary ID 必须 是 指定 在 格式 的 db-master-实例-ID 到 过滤器 results，或 else null 将 是 返回。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -42,40 +42,40 @@ func DataSourceTencentCloudPostgresqlReadonlyGroups() *schema.Resource {
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sorting criterion. Valid values:ROGroupId，CreateTime，名称",
+				Description: "Sorting criterion. 有效 值:ROGroupId，CreateTime，名称",
 			},
 
 			"order_by_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sorting 顺序 Valid values:desc，asc。",
+				Description: "Sorting 顺序 有效 值:desc，asc。",
 			},
 
 			"read_only_group_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "列表 read-only groups。",
+				Description: "列表 read-仅 groups。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"read_only_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "read-only group id注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "read-仅 组 id注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"read_only_group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "read-only group name注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "read-仅 组 name注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "project id注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "项目 id注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"master_db_instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "master instance id注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "master 实例 id注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"min_delay_eliminate_reserve": {
 							Type:        schema.TypeInt,
@@ -85,32 +85,32 @@ func DataSourceTencentCloudPostgresqlReadonlyGroups() *schema.Resource {
 						"max_replay_latency": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "延迟 space size threshold。",
+							Description: "延迟 space 大小 阈值。",
 						},
 						"replay_latency_eliminate": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "延迟 size switch。",
+							Description: "延迟 大小 switch。",
 						},
 						"max_replay_lag": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "延迟 time size threshold。",
+							Description: "延迟 时间 大小 阈值。",
 						},
 						"replay_lag_eliminate": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "延迟 time switch。",
+							Description: "延迟 时间 switch。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "virtual network id。",
+							Description: "virtual 网络 ID。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "subnet-id注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "子网-id注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"region": {
 							Type:        schema.TypeString,
@@ -130,38 +130,38 @@ func DataSourceTencentCloudPostgresqlReadonlyGroups() *schema.Resource {
 						"read_only_db_instance_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "instance details。",
+							Description: "实例 details。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The 地域 to which the instance belongs，such as: ap-guangzhou，corresponding to the 地域 field of the RegionSet。",
+										Description: "地域 到 其中 实例 belongs，such 作为: ap-guangzhou，corresponding 到 地域 字段 的 RegionSet。",
 									},
 									"zone": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Availability 可用区 to which the instance belongs，such as: ap-guangzhou-3，corresponding to the 可用区 field of ZoneSet。",
+										Description: "Availability 可用区 到 其中 实例 belongs，such 作为: ap-guangzhou-3，corresponding 到 可用区 字段 的 ZoneSet。",
 									},
 									"project_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "project ID。",
+										Description: "项目 ID。",
 									},
 									"vpc_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "private network ID。",
+										Description: "私有 网络 ID。",
 									},
 									"subnet_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "subnet ID。",
+										Description: "子网 ID。",
 									},
 									"db_instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "instance ID。",
+										Description: "实例 ID。",
 									},
 									"db_instance_name": {
 										Type:        schema.TypeString,
@@ -171,42 +171,42 @@ func DataSourceTencentCloudPostgresqlReadonlyGroups() *schema.Resource {
 									"db_instance_status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "实例状态，respectively: applying (applying)，init (to be initialized)，initing (initializing)，running (running)，limited run (limited run)，isolated (isolated)，recycling (recycling )，recycled (recycled)，job running (task execution)，offline (offline)，migrating (migration)，expanding (expanding)，waitSwitch (waiting for switching)，switching (switching)，readonly (read-only )，restarting (restarting)，network changing (network changing)，upgrading (kernel 版本 upgrade)。",
+										Description: "实例状态，respectively: applying (applying)，init (到 是 initialized)，initing (initializing)，running (running)，limited run (limited run)，isolated (isolated)，recycling (recycling )，recycled (recycled)，作业 running (任务 execution)，offline (offline)，migrating (迁移)，expanding (expanding)，waitSwitch (waiting 对于 switching)，switching (switching)，readonly (read-仅 )，restarting (restarting)，网络 changing (网络 changing)，upgrading (kernel 版本 upgrade)。",
 									},
 									"db_instance_memory": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "the memory size allocated by the instance，unit: GB。",
+										Description: "内存 大小 allocated 通过 实例，单位: GB。",
 									},
 									"db_instance_storage": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "the size of the storage space allocated by the instance，unit: GB。",
+										Description: "大小 的 存储 space allocated 通过 实例，单位: GB。",
 									},
 									"db_instance_cpu": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "the 数量 CPUs allocated by the instance。",
+										Description: "数量 CPUs allocated 通过 实例。",
 									},
 									"db_instance_class": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "sales specification ID。",
+										Description: "sales 规格 ID。",
 									},
 									"db_instance_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "实例类型，the types are: 1. primary (primary instance); 2. readonly (read-only instance); 3. guard (disaster recovery instance); 4. temp (temporary instance)。",
+										Description: "实例类型， types 是: 1. primary (primary 实例); 2. readonly (read-仅 实例); 3. guard (disaster recovery 实例); 4. temp (temporary 实例)。",
 									},
 									"db_instance_version": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "instance 版本，currently only supports standard (dual machine high availability 版本，one master and one slave)。",
+										Description: "实例 版本，currently 仅 支持 standard (dual machine high availability 版本，一个 master 和 一个 slave)。",
 									},
 									"db_charset": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "instance DB character set。",
+										Description: "实例 DB character 集合。",
 									},
 									"db_version": {
 										Type:        schema.TypeString,
@@ -216,37 +216,37 @@ func DataSourceTencentCloudPostgresqlReadonlyGroups() *schema.Resource {
 									"create_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "instance 创建时间。",
+										Description: "实例 创建时间。",
 									},
 									"update_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The time when the instance performed the last update。",
+										Description: "时间 当 实例 performed last update。",
 									},
 									"expire_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "instance 过期时间。",
+										Description: "实例 过期时间。",
 									},
 									"isolated_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "instance isolation time。",
+										Description: "实例 isolation 时间。",
 									},
 									"pay_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "billing 模式，1. prepaid (subscription，prepaid); 2. postpaid (billing by volume，postpaid)。",
+										Description: "billing 模式，1. prepaid (subscription，prepaid); 2. postpaid (billing 通过 卷，postpaid)。",
 									},
 									"auto_renew": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "auto-renew，1: auto-renew，0: no auto-renew。",
+										Description: "auto-renew，1: auto-renew，0: 无 auto-renew。",
 									},
 									"db_instance_net_info": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "instance network connection information。",
+										Description: "实例 网络 连接 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"address": {
@@ -262,32 +262,32 @@ func DataSourceTencentCloudPostgresqlReadonlyGroups() *schema.Resource {
 												"port": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "connection 端口 地址",
+													Description: "连接 端口 地址",
 												},
 												"net_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "network 类型，1. inner (intranet 地址 of the basic network); 2. private (intranet 地址 of the private network); 3. public (extranet 地址 of the basic network or private network);。",
+													Description: "网络 类型，1. inner (intranet 地址 的 basic 网络); 2. 私有 (intranet 地址 的 私有 网络); 3. 公有 (extranet 地址 的 basic 网络 或 私有 网络);。",
 												},
 												"status": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "network connection 状态，1. initing (unopened); 2. opened (opened); 3. closed (closed); 4. opening (opening); 5. closing (closed);。",
+													Description: "网络 连接 状态，1. initing (unopened); 2. opened (opened); 3. closed (closed); 4. opening (opening); 5. closing (closed);。",
 												},
 												"vpc_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "private network ID注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "私有 网络 ID注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"subnet_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "subnet ID注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "子网 ID注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"protocol_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 协议 类型 for connecting to the database，currently supported: postgresql，mssql (MSSQL compatible syntax)注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "协议 类型 对于 connecting 到 数据库，currently 支持: postgresql，mssql (MSSQL compatible syntax)注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -305,17 +305,17 @@ func DataSourceTencentCloudPostgresqlReadonlyGroups() *schema.Resource {
 									"uid": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Uid of the instance。",
+										Description: "Uid 的 实例。",
 									},
 									"support_ipv6": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "是否instance supports Ipv6，1: support，0: not support。",
+										Description: "是否instance 支持 Ipv6，1: support，0: 不 support。",
 									},
 									"tag_list": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "标签 information bound to the instance注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "标签 信息 bound 到 instance注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"tag_key": {
@@ -334,17 +334,17 @@ func DataSourceTencentCloudPostgresqlReadonlyGroups() *schema.Resource {
 									"master_db_instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Master instance information，only returned when the instance is read-only注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Master 实例 信息，仅 返回 当 实例 是 read-only注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"read_only_instance_num": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "数量 read-only instances注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "数量 read-仅 instances注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"status_in_readonly_group": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "状态 read-only instance in the read-only group注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "状态 read-仅 实例 在 read-仅 group注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"offline_time": {
 										Type:        schema.TypeString,
@@ -359,23 +359,23 @@ func DataSourceTencentCloudPostgresqlReadonlyGroups() *schema.Resource {
 									"network_access_list": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Instance network information list (this field is obsolete)注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "实例 网络 信息 列表 (此 字段 是 obsolete)注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"resource_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Network 资源 ID，实例 ID or RO group id注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "Network 资源 ID，实例 ID 或 RO 组 id注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"resource_type": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "资源类型，1-instance 2-RO group注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "资源类型，1-实例 2-RO group注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"vpc_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "private network ID注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "私有 网络 ID注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"vip": {
 													Type:        schema.TypeString,
@@ -390,17 +390,17 @@ func DataSourceTencentCloudPostgresqlReadonlyGroups() *schema.Resource {
 												"vport": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "access port注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "访问 port注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"subnet_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "subnet ID注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "子网 ID注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"vpc_status": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Network 状态，1-applying，2-using，3-deleting，4-deleted注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "Network 状态，1-applying，2-使用，3-deleting，4-deleted注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -413,18 +413,18 @@ func DataSourceTencentCloudPostgresqlReadonlyGroups() *schema.Resource {
 									"db_node_set": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Instance node information注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "实例 节点 information注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"role": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Node 类型，the 值 can be:Primary，representing the primary node;Standby，stands for standby node。",
+													Description: "Node 类型， 值 可以 是:Primary，representing primary 节点;Standby，stands 对于 standby 节点。",
 												},
 												"zone": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Availability 可用区 where the node is located，such as ap-guangzhou-1。",
+													Description: "Availability 可用区 其中 节点 是 located，such 作为 ap-guangzhou-1。",
 												},
 											},
 										},
@@ -432,17 +432,17 @@ func DataSourceTencentCloudPostgresqlReadonlyGroups() *schema.Resource {
 									"is_support_t_d_e": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "是否instance supports TDE data encryption 0: not supported，1: supported注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "是否instance 支持 TDE 数据 加密 0: 不 支持，1: supported注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"db_engine": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Database engine that supports:1. postgresql (cloud database PostgreSQL);2. mssql_compatible (MSSQL compatible - cloud database PostgreSQL);注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Database 引擎 该 支持:1. postgresql (云 数据库 PostgreSQL);2. mssql_compatible (MSSQL compatible - 云 数据库 PostgreSQL);注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"db_engine_config": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration information for the database engine注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Configuration 信息 对于 数据库 engine注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -455,7 +455,7 @@ func DataSourceTencentCloudPostgresqlReadonlyGroups() *schema.Resource {
 						"db_instance_net_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "network information。",
+							Description: "网络 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"address": {
@@ -471,32 +471,32 @@ func DataSourceTencentCloudPostgresqlReadonlyGroups() *schema.Resource {
 									"port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "connection 端口 地址",
+										Description: "连接 端口 地址",
 									},
 									"net_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "network 类型，1. inner (intranet 地址 of the basic network); 2. private (intranet 地址 of the private network); 3. public (extranet 地址 of the basic network or private network);。",
+										Description: "网络 类型，1. inner (intranet 地址 的 basic 网络); 2. 私有 (intranet 地址 的 私有 网络); 3. 公有 (extranet 地址 的 basic 网络 或 私有 网络);。",
 									},
 									"status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "network connection 状态，1. initing (unopened); 2. opened (opened); 3. closed (closed); 4. opening (opening); 5. closing (closed);。",
+										Description: "网络 连接 状态，1. initing (unopened); 2. opened (opened); 3. closed (closed); 4. opening (opening); 5. closing (closed);。",
 									},
 									"vpc_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "private network ID注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "私有 网络 ID注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"subnet_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "subnet ID注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "子网 ID注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"protocol_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The 协议 类型 for connecting to the database，currently supported: postgresql，mssql (MSSQL compatible syntax)注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "协议 类型 对于 connecting 到 数据库，currently 支持: postgresql，mssql (MSSQL compatible syntax)注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -504,23 +504,23 @@ func DataSourceTencentCloudPostgresqlReadonlyGroups() *schema.Resource {
 						"network_access_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Read-only 列表 group network information (this field is obsolete)注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Read-仅 列表 组 网络 信息 (此 字段 是 obsolete)注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"resource_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Network 资源 ID，实例 ID or RO group id注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Network 资源 ID，实例 ID 或 RO 组 id注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"resource_type": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "资源类型，1-instance 2-RO group注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "资源类型，1-实例 2-RO group注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"vpc_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "private network ID注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "私有 网络 ID注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"vip": {
 										Type:        schema.TypeString,
@@ -535,17 +535,17 @@ func DataSourceTencentCloudPostgresqlReadonlyGroups() *schema.Resource {
 									"vport": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "access port注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "访问 port注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"subnet_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "subnet ID注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "子网 ID注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"vpc_status": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Network 状态，1-applying，2-using，3-deleting，4-deleted注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Network 状态，1-applying，2-使用，3-deleting，4-deleted注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},

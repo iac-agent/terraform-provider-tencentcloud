@@ -30,13 +30,13 @@ func ResourceTencentCloudGaapSecurityPolicy() *schema.Resource {
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"ACCEPT", "DROP"}),
 				ForceNew:     true,
-				Description:  "Default policy. Valid 值: `ACCEPT` and `DROP`。",
+				Description:  "Default 策略. 有效 值: `ACCEPT` 和 `DROP`。",
 			},
 			"enable": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     true,
-				Description: "表示是否policy is enable，默认值为 `true`。",
+				Description: "表示是否policy 是 启用，默认值为 `true`。",
 			},
 		},
 	}

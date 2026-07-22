@@ -19,13 +19,13 @@ func DataSourceTencentCloudCkafkaTopics() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Ckafka instance ID。",
+				Description: "Ckafka 实例 ID。",
 			},
 			"topic_name": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 64),
-				Description:  "名称 CKafka topic. It must start with a letter，the rest can contain letters，numbers and dashes(-). The length range is from 1 to 64。",
+				Description:  "名称 CKafka 主题. It 必须 start 使用 letter， rest 可以 contain letters，numbers 和 dashes(-). 长度 范围 是 从 1 到 64。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -35,43 +35,43 @@ func DataSourceTencentCloudCkafkaTopics() *schema.Resource {
 			"instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A 列表 instances. Each element 包含following attributes。",
+				Description: "A 列表 实例. Each element 包含following attributes。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"topic_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID CKafka topic。",
+							Description: "ID CKafka 主题。",
 						},
 						"topic_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 CKafka topic。",
+							Description: "名称 CKafka 主题。",
 						},
 						"partition_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 数量 partition。",
+							Description: "数量 分区。",
 						},
 						"replica_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 数量 replica。",
+							Description: "数量 副本。",
 						},
 						"note": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CKafka topic note 描述",
+							Description: "CKafka 主题 note 描述",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of the CKafka topic。",
+							Description: "创建时间 的 CKafka 主题。",
 						},
 						"enable_white_list": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否open the IP Whitelist. `true`: open，`false`: close。",
+							Description: "是否open IP Whitelist. `true`: open，`false`: close。",
 						},
 						"ip_white_list_count": {
 							Type:        schema.TypeInt,
@@ -81,22 +81,22 @@ func DataSourceTencentCloudCkafkaTopics() *schema.Resource {
 						"forward_interval": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Periodic frequency of data backup to cos。",
+							Description: "Periodic 频率 的 数据 备份 到 cos。",
 						},
 						"forward_cos_bucket": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data backup COS 存储桶: the 存储桶 地址 that is dumped to cos。",
+							Description: "Data 备份 COS 存储桶: 存储桶 地址 该 是 dumped 到 cos。",
 						},
 						"forward_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Data backup cos 状态 `1`: do not open data backup，`0`: open data backup。",
+							Description: "Data 备份 cos 状态 `1`: do 不 open 数据 备份，`0`: open 数据 备份。",
 						},
 						"retention": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "消息 can be selected. Retention time(unit ms)。",
+							Description: "消息 可以 是 selected. Retention 时间(单位 ms)。",
 						},
 						"sync_replica_min_num": {
 							Type:        schema.TypeInt,
@@ -106,12 +106,12 @@ func DataSourceTencentCloudCkafkaTopics() *schema.Resource {
 						"clean_up_policy": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Clear log policy，log clear 模式 `delete`: logs are deleted according to the storage time，`compact`: logs are compressed according to the 键，`compact，delete`: logs are compressed according to the 键 and will be deleted according to the storage time。",
+							Description: "Clear 日志 策略，日志 clear 模式 `delete`: logs 是 删除 according 到 存储 时间，`compact`: logs 是 compressed according 到 键，`compact，delete`: logs 是 compressed according 到 键 和 将 是 删除 according 到 存储 时间。",
 						},
 						"unclean_leader_election_enable": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否allow unsynchronized replicas to be selected as leader，默认为 `false`，`true: `allowed，`false`: not allowed。",
+							Description: "是否allow unsynchronized replicas 到 是 selected 作为 leader，默认为 `false`，`true: `allowed，`false`: 不 allowed。",
 						},
 						"max_message_bytes": {
 							Type:        schema.TypeInt,
@@ -121,12 +121,12 @@ func DataSourceTencentCloudCkafkaTopics() *schema.Resource {
 						"segment": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Segment scrolling time，in ms。",
+							Description: "Segment scrolling 时间，在 ms。",
 						},
 						"segment_bytes": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 bytes rolled by shard。",
+							Description: "数量 bytes rolled 通过 分片。",
 						},
 					},
 				},

@@ -22,7 +22,7 @@ func ResourceTencentCloudCfsSignUpCfsService() *schema.Resource {
 			"cfs_service_status": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Current 状态 CFS service for this 用户 有效值：creating (activating); created (activated)。",
+				Description: "Current 状态 CFS 服务 对于 此 用户 有效值：creating (activating); 创建 (activated)。",
 			},
 		},
 	}

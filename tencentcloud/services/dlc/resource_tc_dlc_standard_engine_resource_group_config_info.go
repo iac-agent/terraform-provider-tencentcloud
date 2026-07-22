@@ -27,7 +27,7 @@ func ResourceTencentCloudDlcStandardEngineResourceGroupConfigInfo() *schema.Reso
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Standard engine resource 组名称",
+				Description: "Standard 引擎 资源 组名称",
 			},
 
 			"static_conf_context": {
@@ -41,7 +41,7 @@ func ResourceTencentCloudDlcStandardEngineResourceGroupConfigInfo() *schema.Reso
 						"params": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Collection of bound working groups。",
+							Description: "Collection 的 bound working groups。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"config_item": {
@@ -72,7 +72,7 @@ func ResourceTencentCloudDlcStandardEngineResourceGroupConfigInfo() *schema.Reso
 						"params": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Collection of bound working groups。",
+							Description: "Collection 的 bound working groups。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"config_item": {

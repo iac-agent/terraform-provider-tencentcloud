@@ -31,25 +31,25 @@ func DataSourceTencentCloudWedataTaskInstanceLog() *schema.Resource {
 			"life_round_num": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Instance lifecycle number，identifying a specific execution of the instance. For example: the first run of a periodic instance is 0，if manually rerun the second execution is 1; 默认为 the latest execution。",
+				Description: "实例 lifecycle 数量，identifying 特定 execution 的 实例. For 示例: first run 的 periodic 实例 是 0，如果 manually rerun second execution 是 1; 默认为 latest execution。",
 			},
 
 			"log_level": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Log 级别，default All - Info - Debug - Warn - 错误 - All。",
+				Description: "Log 级别，默认值 All - Info - Debug - Warn - 错误 - All。",
 			},
 
 			"next_cursor": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Pagination cursor for log queries，no business meaning. First query uses null，subsequent queries use NextCursor from previous response。",
+				Description: "Pagination cursor 对于 日志 queries，无 business meaning. First 查询 uses null，subsequent queries 使用 NextCursor 从 previous response。",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Scheduled instance details。",
+				Description: "Scheduled 实例 details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_key": {
@@ -75,7 +75,7 @@ func DataSourceTencentCloudWedataTaskInstanceLog() *schema.Resource {
 						"next_cursor": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Pagination cursor for log queries，no business meaning. First query uses null，subsequent queries use NextCursor from previous response。",
+							Description: "Pagination cursor 对于 日志 queries，无 business meaning. First 查询 uses null，subsequent queries 使用 NextCursor 从 previous response。",
 						},
 					},
 				},

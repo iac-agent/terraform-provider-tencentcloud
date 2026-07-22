@@ -22,28 +22,28 @@ func DataSourceTencentCloudReservedInstanceConfigs() *schema.Resource {
 			"availability_zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The available 可用区 that the reserved instance locates at。",
+				Description: "可用 可用区 该 reserved 实例 locates 在。",
 			},
 			"duration": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{31536000, 94608000}),
-				Description:  "Validity 周期 of the reserved instance. Valid values are `31536000`(1 year) and `94608000`(3 years)。",
+				Description:  "Validity 周期 的 reserved 实例. 有效 值 是 `31536000`(1 year) 和 `94608000`(3 years)。",
 			},
 			"instance_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "类型 reserved instance。",
+				Description: "类型 reserved 实例。",
 			},
 			"offering_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Filter by Payment 类型 Such as All Upfront。",
+				Description: "过滤器 通过 Payment 类型 Such 作为 All Upfront。",
 			},
 			"product_description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Filter by the Platform 描述 (that is，operating system) for Reserved Instance billing. Shaped like: linux。",
+				Description: "过滤器 通过 Platform 描述 (该 是，operating 系统) 对于 Reserved 实例 billing. Shaped like: linux。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -55,53 +55,53 @@ func DataSourceTencentCloudReservedInstanceConfigs() *schema.Resource {
 			"config_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information 列表 reserved instance configuration. Each element 包含following attributes:",
+				Description: "An 信息 列表 reserved 实例 配置. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"config_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Configuration ID purchasable reserved instance。",
+							Description: "Configuration ID purchasable reserved 实例。",
 						},
 						"availability_zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Availability 可用区 of the purchasable reserved instance。",
+							Description: "Availability 可用区 的 purchasable reserved 实例。",
 						},
 						"instance_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance 类型 reserved instance。",
+							Description: "实例 类型 reserved 实例。",
 						},
 						"duration": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Validity 周期 of the reserved instance。",
+							Description: "Validity 周期 的 reserved 实例。",
 						},
 						"price": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Purchase price of the reserved instance。",
+							Description: "Purchase 价格 的 reserved 实例。",
 						},
 						"currency_code": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Settlement currency of the reserved instance，which is a standard currency 代码 as listed in ISO 4217。",
+							Description: "Settlement currency 的 reserved 实例，其中 是 standard currency 代码 作为 listed 在 ISO 4217。",
 						},
 						"platform": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Platform of the reserved instance。",
+							Description: "Platform 的 reserved 实例。",
 						},
 						"offering_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "OfferingType of the reserved instance。",
+							Description: "OfferingType 的 reserved 实例。",
 						},
 						"usage_price": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "UsagePrice of the reserved instance。",
+							Description: "UsagePrice 的 reserved 实例。",
 						},
 					},
 				},

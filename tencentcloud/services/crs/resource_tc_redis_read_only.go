@@ -29,13 +29,13 @@ func ResourceTencentCloudRedisReadOnly() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID instance。",
+				Description: "ID 实例。",
 			},
 
 			"input_mode": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance input 模式: `0`: read-write; `1`: read-only。",
+				Description: "实例 input 模式: `0`: read-write; `1`: read-仅。",
 			},
 		},
 	}

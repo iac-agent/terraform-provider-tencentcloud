@@ -18,7 +18,7 @@ func DataSourceTencentCloudTrocketRocketmqInstances() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter query criteria list。",
+				Description: "过滤器 查询 criteria 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -29,7 +29,7 @@ func DataSourceTencentCloudTrocketRocketmqInstances() *schema.Resource {
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Filter values。",
+							Description: "过滤器 值。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -52,7 +52,7 @@ func DataSourceTencentCloudTrocketRocketmqInstances() *schema.Resource {
 						"tag_values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "标签 values。",
+							Description: "标签 值。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -64,7 +64,7 @@ func DataSourceTencentCloudTrocketRocketmqInstances() *schema.Resource {
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Instance list。",
+				Description: "实例 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
@@ -90,7 +90,7 @@ func DataSourceTencentCloudTrocketRocketmqInstances() *schema.Resource {
 						"instance_status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "实例状态 RUNNING，Running; MAINTAINING: Under maintenance; ABNORMAL: abnormal; OVERDUE: arrears; DESTROYED: Deleted; CREATING: Creating; MODIFYING: In the process of transformation; CREATE_FAILURE: Creation failed; MODIFY_FAILURE: Transformation failed; DELETING: deleting。",
+							Description: "实例状态 RUNNING，Running; MAINTAINING: Under maintenance; ABNORMAL: abnormal; OVERDUE: arrears; DESTROYED: Deleted; CREATING: Creating; MODIFYING: In process 的 transformation; CREATE_FAILURE: Creation failed; MODIFY_FAILURE: Transformation failed; DELETING: deleting。",
 						},
 						"topic_num_limit": {
 							Type:        schema.TypeInt,
@@ -100,7 +100,7 @@ func DataSourceTencentCloudTrocketRocketmqInstances() *schema.Resource {
 						"group_num_limit": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "最大instance consumer groups。",
+							Description: "最大instance 消费者 groups。",
 						},
 						"pay_mode": {
 							Type:        schema.TypeString,
@@ -110,7 +110,7 @@ func DataSourceTencentCloudTrocketRocketmqInstances() *schema.Resource {
 						"expiry_time": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Expiration 时间戳，**Unix 时间戳 (in milliseconds)**。",
+							Description: "Expiration 时间戳，**Unix 时间戳 (在 milliseconds)**。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
@@ -154,27 +154,27 @@ func DataSourceTencentCloudTrocketRocketmqInstances() *schema.Resource {
 						"tps_limit": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "TPS current 限制 值",
+							Description: "TPS 当前 限制 值",
 						},
 						"scaled_tps_limit": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Elastic TPS current 限制 值",
+							Description: "Elastic TPS 当前 限制 值",
 						},
 						"message_retention": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "消息 retention time，in hours。",
+							Description: "消息 retention 时间，在 hours。",
 						},
 						"max_message_delay": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Maximum 延迟 消息 duration in hours。",
+							Description: "Maximum 延迟 消息 时长 在 hours。",
 						},
 						"renew_flag": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "是否renew automatically，only for prepaid clusters (0: not renew automatically; 1: renew automatically)。",
+							Description: "是否renew automatically，仅 对于 prepaid clusters (0: 不 renew automatically; 1: renew automatically)。",
 						},
 					},
 				},

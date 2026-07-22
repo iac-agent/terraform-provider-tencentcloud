@@ -25,13 +25,13 @@ func ResourceTencentCloudVpcFlowLogConfig() *schema.Resource {
 			"flow_log_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Flow log ID。",
+				Description: "Flow 日志 ID。",
 			},
 
 			"enable": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "If enable snapshot policy。",
+				Description: "如果 启用 快照 策略。",
 			},
 		},
 	}

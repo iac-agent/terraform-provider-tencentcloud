@@ -27,35 +27,35 @@ func ResourceTencentCloudTsfNamespace() *schema.Resource {
 			"namespace_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "namespace 名称",
+				Description: "命名空间 名称",
 			},
 
 			"cluster_id": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "cluster ID。",
+				Description: "集群 ID。",
 			},
 
 			"namespace_desc": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "namespace 描述",
+				Description: "命名空间 描述",
 			},
 
 			"namespace_resource_type": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "namespace 资源类型 (默认为 DEF)。",
+				Description: "命名空间 资源类型 (默认为 DEF)。",
 			},
 
 			"namespace_type": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "是否为a global namespace (the 默认为 DEF，which means a common namespace; GLOBAL means a global namespace)。",
+				Description: "是否为a 全局 命名空间 ( 默认为 DEF，其中 表示 common 命名空间; GLOBAL 表示 全局 命名空间)。",
 			},
 
 			"namespace_id": {
@@ -75,7 +75,7 @@ func ResourceTencentCloudTsfNamespace() *schema.Resource {
 			"program_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "ID dataset to be bound。",
+				Description: "ID dataset 到 是 bound。",
 			},
 
 			"kube_inject_enable": {
@@ -90,25 +90,25 @@ func ResourceTencentCloudTsfNamespace() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Program id list。",
+				Description: "Program ID 列表。",
 			},
 
 			"namespace_code": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Namespace encoding。",
+				Description: "Namespace 编码。",
 			},
 
 			"is_default": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "default namespace。",
+				Description: "默认值 命名空间。",
 			},
 
 			"namespace_status": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "namespace 状态",
+				Description: "命名空间 状态",
 			},
 
 			"delete_flag": {

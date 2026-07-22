@@ -27,7 +27,7 @@ func ResourceTencentCloudWafLogPostCkafkaFlow() *schema.Resource {
 			"ckafka_region": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The 地域 where CKafka is located for delivery。",
+				Description: "地域 其中 CKafka 是 located 对于 delivery。",
 			},
 
 			"ckafka_id": {
@@ -39,46 +39,46 @@ func ResourceTencentCloudWafLogPostCkafkaFlow() *schema.Resource {
 			"brokers": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The supporting environment is IP:PORT，The external network environment is 域名:PORT。",
+				Description: "supporting 环境 是 IP:PORT， 外部 网络 环境 是 域名:PORT。",
 			},
 
 			"compression": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "默认为 none，supports snappy，gzip，and lz4 compression，recommended snappy。",
+				Description: "默认为 none，支持 snappy，gzip，和 lz4 压缩，recommended snappy。",
 			},
 
 			"vip_type": {
 				Type:         schema.TypeInt,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{1, 2}),
-				Description:  "1. External network TGW，2. Supporting environment，默认为 supporting environment。",
+				Description:  "1. External 网络 TGW，2. Supporting 环境，默认为 supporting 环境。",
 			},
 
 			"log_type": {
 				Type:         schema.TypeInt,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{1, 2}),
-				Description:  "1- Access log，2- Attack log，the 默认为 access log。",
+				Description:  "1- Access 日志，2- Attack 日志， 默认为 访问 日志。",
 			},
 
 			"topic": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Theme 名称，default not to pass or pass empty string，默认值为 waf_post_access_log。",
+				Description: "Theme 名称，默认值 不 到 pass 或 pass 空 字符串，默认值为 waf_post_access_log。",
 			},
 
 			"kafka_version": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "版本 数量 Kafka cluster。",
+				Description: "版本 数量 Kafka 集群。",
 			},
 
 			"sasl_enable": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "是否enable SASL verification，default not 已启用，0-off，1-on。",
+				Description: "是否enable SASL verification，默认值 不 已启用，0-关闭，1-在。",
 			},
 
 			"sasl_user": {
@@ -99,28 +99,28 @@ func ResourceTencentCloudWafLogPostCkafkaFlow() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Enable access to certain fields of the log and check if they have been delivered。",
+				Description: "Enable 访问 到 certain 字段 的 日志 和 check 如果 they have been delivered。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"enable_headers": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "1: Enable 0: Do not enable。",
+							Description: "1: Enable 0: Do 不 启用。",
 						},
 
 						"enable_body": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "1: Enable 0: Do not enable。",
+							Description: "1: Enable 0: Do 不 启用。",
 						},
 
 						"enable_bot": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "1: Enable 0: Do not enable。",
+							Description: "1: Enable 0: Do 不 启用。",
 						},
 					},
 				},
@@ -129,7 +129,7 @@ func ResourceTencentCloudWafLogPostCkafkaFlow() *schema.Resource {
 			"flow_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Unique ID for post cls flow。",
+				Description: "Unique ID 对于 post cls flow。",
 			},
 
 			"status": {

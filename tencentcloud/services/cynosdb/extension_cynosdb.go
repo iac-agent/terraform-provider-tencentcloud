@@ -350,7 +350,7 @@ func TencentCynosdbClusterBaseInfo() map[string]*schema.Schema {
 		"param_items": {
 			Type:        schema.TypeList,
 			Optional:    true,
-			Description: "指定数据库的参数列表。创建集群时设置 param_template_id 时有效。使用 data.tencentcloud_mysql_default_params 查询可用参数详细信息。",
+			Description: "指定数据库的参数列表。创建集群时设置 param_template_id 时有效。使用 数据.tencentcloud_mysql_default_params 查询可用参数详细信息。",
 			Elem: &schema.Resource{
 				Schema: map[string]*schema.Schema{
 					"name": {

@@ -24,7 +24,7 @@ func ResourceTencentCloudEmrDeployYarnOperation() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "EMR Instance ID.",
+				Description: "EMR 实例 ID.",
 			},
 		},
 	}

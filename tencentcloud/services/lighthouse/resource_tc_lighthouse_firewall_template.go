@@ -33,7 +33,7 @@ func ResourceTencentCloudLighthouseFirewallTemplate() *schema.Resource {
 			"template_rules": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "列表 firewall rules。",
+				Description: "列表 firewall 规则。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"protocol": {
@@ -49,17 +49,17 @@ func ResourceTencentCloudLighthouseFirewallTemplate() *schema.Resource {
 						"cidr_block": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Network segment or IP (mutually exclusive). The 默认为 `0.0.0.0`，indicating all sources。",
+							Description: "Network segment 或 IP (mutually exclusive). 默认为 `0.0.0.0`，indicating all sources。",
 						},
 						"action": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "操作 Values: ACCEPT，DROP. The 默认为 `ACCEPT`。",
+							Description: "操作 Values: ACCEPT，DROP. 默认为 `ACCEPT`。",
 						},
 						"firewall_rule_description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Firewall rule 描述",
+							Description: "Firewall 规则 描述",
 						},
 					},
 				},

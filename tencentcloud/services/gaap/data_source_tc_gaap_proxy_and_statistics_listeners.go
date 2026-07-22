@@ -25,13 +25,13 @@ func DataSourceTencentCloudGaapProxyAndStatisticsListeners() *schema.Resource {
 			"proxy_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "proxy information that can be counted。",
+				Description: "proxy 信息 该 可以 是 counted。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"proxy_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Proxy Id。",
+							Description: "Proxy ID。",
 						},
 						"proxy_name": {
 							Type:        schema.TypeString,
@@ -47,7 +47,7 @@ func DataSourceTencentCloudGaapProxyAndStatisticsListeners() *schema.Resource {
 									"listener_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Listener Id。",
+										Description: "Listener ID。",
 									},
 									"listener_name": {
 										Type:        schema.TypeString,

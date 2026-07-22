@@ -19,25 +19,25 @@ func DataSourceTencentCloudClickhouseSpec() *schema.Resource {
 			"zone": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Regional information。",
+				Description: "Regional 信息。",
 			},
 
 			"pay_mode": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Billing 类型，PREPAID means annual and monthly subscription，POSTPAID_BY_HOUR means pay-as-you-go billing。",
+				Description: "Billing 类型，PREPAID 表示 annual 和 monthly subscription，POSTPAID_BY_HOUR 表示 pay-作为-您-go billing。",
 			},
 
 			"is_elastic": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Is it elastic。",
+				Description: "Is 它 elastic。",
 			},
 
 			"common_spec": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Zookeeper node specification 描述",
+				Description: "Zookeeper 节点 规格 描述",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -53,17 +53,17 @@ func DataSourceTencentCloudClickhouseSpec() *schema.Resource {
 						"mem": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Memory size，unit G。",
+							Description: "Memory 大小，单位 G。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Classification 标签，STANDARD/BIGDATA/HIGHIO respectively represent standard/big data/high IO。",
+							Description: "Classification 标签，STANDARD/BIGDATA/HIGHIO respectively represent standard/big 数据/high IO。",
 						},
 						"system_disk": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "System disk 描述 information。",
+							Description: "System 磁盘 描述 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"disk_type": {
@@ -79,12 +79,12 @@ func DataSourceTencentCloudClickhouseSpec() *schema.Resource {
 									"min_disk_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Minimum disk size，unit G。",
+										Description: "Minimum 磁盘 大小，单位 G。",
 									},
 									"max_disk_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Maximum disk size，unit G。",
+										Description: "Maximum 磁盘 大小，单位 G。",
 									},
 									"disk_count": {
 										Type:        schema.TypeInt,
@@ -97,7 +97,7 @@ func DataSourceTencentCloudClickhouseSpec() *schema.Resource {
 						"data_disk": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Data disk 描述 information。",
+							Description: "Data 磁盘 描述 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"disk_type": {
@@ -113,12 +113,12 @@ func DataSourceTencentCloudClickhouseSpec() *schema.Resource {
 									"min_disk_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Minimum disk size，unit G。",
+										Description: "Minimum 磁盘 大小，单位 G。",
 									},
 									"max_disk_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Maximum disk size，unit G。",
+										Description: "Maximum 磁盘 大小，单位 G。",
 									},
 									"disk_count": {
 										Type:        schema.TypeInt,
@@ -136,12 +136,12 @@ func DataSourceTencentCloudClickhouseSpec() *schema.Resource {
 						"available": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否为available，false means sold out。",
+							Description: "是否为available，false 表示 sold out。",
 						},
 						"compute_spec_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Specification 描述 information。",
+							Description: "Specification 描述 信息。",
 						},
 						"display_name": {
 							Type:        schema.TypeString,
@@ -160,7 +160,7 @@ func DataSourceTencentCloudClickhouseSpec() *schema.Resource {
 			"data_spec": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Data node specification 描述",
+				Description: "Data 节点 规格 描述",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -176,17 +176,17 @@ func DataSourceTencentCloudClickhouseSpec() *schema.Resource {
 						"mem": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Memory size，unit G。",
+							Description: "Memory 大小，单位 G。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Classification 标签，STANDARD/BIGDATA/HIGHIO respectively represent standard/big data/high IO。",
+							Description: "Classification 标签，STANDARD/BIGDATA/HIGHIO respectively represent standard/big 数据/high IO。",
 						},
 						"system_disk": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "System disk 描述 information。",
+							Description: "System 磁盘 描述 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"disk_type": {
@@ -202,12 +202,12 @@ func DataSourceTencentCloudClickhouseSpec() *schema.Resource {
 									"min_disk_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Minimum disk size，unit G。",
+										Description: "Minimum 磁盘 大小，单位 G。",
 									},
 									"max_disk_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Maximum disk size，unit G。",
+										Description: "Maximum 磁盘 大小，单位 G。",
 									},
 									"disk_count": {
 										Type:        schema.TypeInt,
@@ -220,7 +220,7 @@ func DataSourceTencentCloudClickhouseSpec() *schema.Resource {
 						"data_disk": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Data disk 描述 information。",
+							Description: "Data 磁盘 描述 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"disk_type": {
@@ -236,12 +236,12 @@ func DataSourceTencentCloudClickhouseSpec() *schema.Resource {
 									"min_disk_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Minimum disk size，unit G。",
+										Description: "Minimum 磁盘 大小，单位 G。",
 									},
 									"max_disk_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Maximum disk size，unit G。",
+										Description: "Maximum 磁盘 大小，单位 G。",
 									},
 									"disk_count": {
 										Type:        schema.TypeInt,
@@ -259,12 +259,12 @@ func DataSourceTencentCloudClickhouseSpec() *schema.Resource {
 						"available": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否为available，false means sold out。",
+							Description: "是否为available，false 表示 sold out。",
 						},
 						"compute_spec_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Specification 描述 information。",
+							Description: "Specification 描述 信息。",
 						},
 						"display_name": {
 							Type:        schema.TypeString,
@@ -283,7 +283,7 @@ func DataSourceTencentCloudClickhouseSpec() *schema.Resource {
 			"attach_cbs_spec": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Cloud disk list。",
+				Description: "Cloud 磁盘 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"disk_type": {
@@ -299,12 +299,12 @@ func DataSourceTencentCloudClickhouseSpec() *schema.Resource {
 						"min_disk_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Minimum disk size，unit G。",
+							Description: "Minimum 磁盘 大小，单位 G。",
 						},
 						"max_disk_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum disk size，unit G。",
+							Description: "Maximum 磁盘 大小，单位 G。",
 						},
 						"disk_count": {
 							Type:        schema.TypeInt,

@@ -20,7 +20,7 @@ func DataSourceTencentCloudTdmqRabbitmqNodeList() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "rabbitmq cluster ID。",
+				Description: "rabbitmq 集群 ID。",
 			},
 			"node_name": {
 				Optional:    true,
@@ -30,13 +30,13 @@ func DataSourceTencentCloudTdmqRabbitmqNodeList() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "filter parameter 名称 and valueNow there is only one nodeStatusrunning/downArray 类型，compatible with adding filter parameters later。",
+				Description: "过滤器 参数 名称 和 valueNow there 是 仅 一个 nodeStatusrunning/downArray 类型，compatible 使用 adding 过滤器 参数 later。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The 名称 filter parameter。",
+							Description: "名称 过滤器 参数。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
@@ -50,7 +50,7 @@ func DataSourceTencentCloudTdmqRabbitmqNodeList() *schema.Resource {
 			"sort_element": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "排序方式 the specified element，now there are only 2cpuUsage/diskUsage。",
+				Description: "排序方式 指定 element，now there 是 仅 2cpuUsage/diskUsage。",
 			},
 			"sort_order": {
 				Optional:    true,
@@ -61,18 +61,18 @@ func DataSourceTencentCloudTdmqRabbitmqNodeList() *schema.Resource {
 			"node_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "cluster list注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "集群 list注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"node_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "node name注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "节点 name注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"node_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "node status注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "节点 status注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"cpu_usage": {
 							Type:        schema.TypeString,
@@ -82,17 +82,17 @@ func DataSourceTencentCloudTdmqRabbitmqNodeList() *schema.Resource {
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Memory usage，in MB注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Memory usage，在 MB注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"disk_usage": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "disk usage注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "磁盘 usage注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"process_number": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 Erlang processes for Rabbitmq注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "数量 Erlang processes 对于 Rabbitmq注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},

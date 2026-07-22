@@ -37,7 +37,7 @@ func ResourceTencentCloudKubernetesClusterSchedulerPolicyConfig() *schema.Resour
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "Scheduler policy configuration list。",
+				Description: "Scheduler 策略 配置 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"scheduler_name": {
@@ -50,7 +50,7 @@ func ResourceTencentCloudKubernetesClusterSchedulerPolicyConfig() *schema.Resour
 							Type:        schema.TypeList,
 							Optional:    true,
 							Computed:    true,
-							Description: "Scheduler plugin configuration list。",
+							Description: "Scheduler 插件 配置 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
@@ -66,7 +66,7 @@ func ResourceTencentCloudKubernetesClusterSchedulerPolicyConfig() *schema.Resour
 										DiffSuppressFunc: func(k, oldVal, newVal string, d *schema.ResourceData) bool {
 											return suppressJSONWhitespaceDiff(oldVal, newVal)
 										},
-										Description: "Plugin args in raw JSON 格式 Terraform will automatically base64-encode it before calling the API and decode it on read。",
+										Description: "Plugin args 在 raw JSON 格式 Terraform 将 automatically base64-encode 它 before calling API 和 decode 它 在 read。",
 									},
 								},
 							},
@@ -76,14 +76,14 @@ func ResourceTencentCloudKubernetesClusterSchedulerPolicyConfig() *schema.Resour
 							Optional:    true,
 							Computed:    true,
 							MaxItems:    1,
-							Description: "Plugin set configuration。",
+							Description: "Plugin 集合 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"enabled": {
 										Type:        schema.TypeSet,
 										Optional:    true,
 										Computed:    true,
-										Description: "列表 plugins to enable。",
+										Description: "列表 plugins 到 启用。",
 										Set: func(v interface{}) int {
 											m := v.(map[string]interface{})
 											return schema.HashString(m["name"].(string))
@@ -108,7 +108,7 @@ func ResourceTencentCloudKubernetesClusterSchedulerPolicyConfig() *schema.Resour
 										Type:        schema.TypeSet,
 										Optional:    true,
 										Computed:    true,
-										Description: "列表 plugins to disable。",
+										Description: "列表 plugins 到 disable。",
 										Set: func(v interface{}) int {
 											m := v.(map[string]interface{})
 											return schema.HashString(m["name"].(string))
@@ -140,14 +140,14 @@ func ResourceTencentCloudKubernetesClusterSchedulerPolicyConfig() *schema.Resour
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "Extender scheduler configuration list。",
+				Description: "Extender scheduler 配置 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"filter_verb": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Filter stage interface。",
+							Description: "过滤器 stage interface。",
 						},
 						"prioritize_verb": {
 							Type:        schema.TypeString,
@@ -159,7 +159,7 @@ func ResourceTencentCloudKubernetesClusterSchedulerPolicyConfig() *schema.Resour
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "权重 for prioritize stage。",
+							Description: "权重 对于 prioritize stage。",
 						},
 						"preempt_verb": {
 							Type:        schema.TypeString,
@@ -171,14 +171,14 @@ func ResourceTencentCloudKubernetesClusterSchedulerPolicyConfig() *schema.Resour
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Computed:    true,
-							Description: "Whether node cache capability is 已启用",
+							Description: "Whether 节点 缓存 capability 是 已启用",
 						},
 						"extender_client_config": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Computed:    true,
 							MaxItems:    1,
-							Description: "Extender client configuration。",
+							Description: "Extender 客户端 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"service": {
@@ -186,14 +186,14 @@ func ResourceTencentCloudKubernetesClusterSchedulerPolicyConfig() *schema.Resour
 										Optional:    true,
 										Computed:    true,
 										MaxItems:    1,
-										Description: "Service reference configuration。",
+										Description: "Service reference 配置。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"namespace": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "Service namespace。",
+													Description: "Service 命名空间。",
 												},
 												"name": {
 													Type:        schema.TypeString,
@@ -234,7 +234,7 @@ func ResourceTencentCloudKubernetesClusterSchedulerPolicyConfig() *schema.Resour
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Client connection configuration。",
+				Description: "Client 连接 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"qps": {
@@ -247,7 +247,7 @@ func ResourceTencentCloudKubernetesClusterSchedulerPolicyConfig() *schema.Resour
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Burst request 限制",
+							Description: "Burst 请求 限制",
 						},
 					},
 				},
@@ -264,7 +264,7 @@ func ResourceTencentCloudKubernetesClusterSchedulerPolicyConfig() *schema.Resour
 			"policy": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Raw scheduler policy JSON string。",
+				Description: "Raw scheduler 策略 JSON 字符串。",
 			},
 		},
 	}

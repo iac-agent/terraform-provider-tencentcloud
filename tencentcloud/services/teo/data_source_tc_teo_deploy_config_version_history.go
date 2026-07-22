@@ -30,7 +30,7 @@ func DataSourceTencentCloudTeoDeployConfigVersionHistory() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filtering condition. The maximum 值 of Filters.Values is 20. Detailed filtering conditions: record-id (Filter by release record ID)。",
+				Description: "Filtering condition. 最大 值 的 Filters.Values 是 20. Detailed filtering conditions: 记录-ID (过滤器 通过 release 记录 ID)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -41,7 +41,7 @@ func DataSourceTencentCloudTeoDeployConfigVersionHistory() *schema.Resource {
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "值 of the filtered field。",
+							Description: "值 的 filtered 字段。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -49,7 +49,7 @@ func DataSourceTencentCloudTeoDeployConfigVersionHistory() *schema.Resource {
 						"fuzzy": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "是否enable fuzzy query。",
+							Description: "是否enable fuzzy 查询。",
 						},
 					},
 				},
@@ -58,13 +58,13 @@ func DataSourceTencentCloudTeoDeployConfigVersionHistory() *schema.Resource {
 			"records": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Release record details。",
+				Description: "Release 记录 details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"config_group_version_infos": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Details about the released 版本",
+							Description: "Details about released 版本",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"version_id": {
@@ -85,7 +85,7 @@ func DataSourceTencentCloudTeoDeployConfigVersionHistory() *schema.Resource {
 									"group_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Configuration group 类型 有效值：l7_acceleration (L7 acceleration configuration group)，edge_functions (Edge function configuration group)。",
+										Description: "Configuration 组 类型 有效值：l7_acceleration (L7 acceleration 配置 组)，edge_functions (Edge 函数 配置 组)。",
 									},
 									"description": {
 										Type:        schema.TypeString,
@@ -95,12 +95,12 @@ func DataSourceTencentCloudTeoDeployConfigVersionHistory() *schema.Resource {
 									"status": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "版本 状态 有效值：creating (Being created)，inactive (Not effective)，活跃 (Effective)。",
+										Description: "版本 状态 有效值：creating (Being 创建)，inactive (Not effective)，活跃 (Effective)。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "版本 创建时间. The 时间格式 follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC)。",
+										Description: "版本 创建时间. 时间格式 follows ISO 8601 standard 和 是 represented 在 Coordinated Universal Time (UTC)。",
 									},
 								},
 							},
@@ -108,7 +108,7 @@ func DataSourceTencentCloudTeoDeployConfigVersionHistory() *schema.Resource {
 						"deploy_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Release time. The 时间格式 follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC)。",
+							Description: "Release 时间. 时间格式 follows ISO 8601 standard 和 是 represented 在 Coordinated Universal Time (UTC)。",
 						},
 						"status": {
 							Type:        schema.TypeString,
@@ -118,12 +118,12 @@ func DataSourceTencentCloudTeoDeployConfigVersionHistory() *schema.Resource {
 						"message": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Release 结果 information。",
+							Description: "Release 结果 信息。",
 						},
 						"record_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Release record ID。",
+							Description: "Release 记录 ID。",
 						},
 						"description": {
 							Type:        schema.TypeString,

@@ -20,12 +20,12 @@ func DataSourceTencentCloudTCRNamespaces() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID instance that the namespace belongs to。",
+				Description: "ID 实例 该 命名空间 belongs 到。",
 			},
 			"namespace_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID TCR namespace to query。",
+				Description: "ID TCR 命名空间 到 查询。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -36,23 +36,23 @@ func DataSourceTencentCloudTCRNamespaces() *schema.Resource {
 			"namespace_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information 列表 the dedicated TCR namespaces。",
+				Description: "Information 列表 dedicated TCR namespaces。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 TCR namespace。",
+							Description: "名称 TCR 命名空间。",
 						},
 						"is_public": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Indicate that the namespace is public or not。",
+							Description: "Indicate 该 命名空间 是 公有 或 不。",
 						},
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "ID TCR namespace。",
+							Description: "ID TCR 命名空间。",
 						},
 					},
 				},

@@ -39,7 +39,7 @@ func ResourceTencentCloudMonitorGrafanaInstance() *schema.Resource {
 			"root_url": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Grafana external URL which could be accessed by 用户",
+				Description: "Grafana 外部 URL 其中 could 是 accessed 通过 用户",
 			},
 
 			"vpc_id": {
@@ -56,34 +56,34 @@ func ResourceTencentCloudMonitorGrafanaInstance() *schema.Resource {
 				},
 				Optional:    true,
 				Computed:    true,
-				Description: "Subnet Id array。",
+				Description: "Subnet ID 数组。",
 			},
 
 			"grafana_init_password": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Grafana server admin 密码",
+				Description: "Grafana 服务器 admin 密码",
 			},
 
 			"enable_internet": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Control whether grafana could be accessed by internet。",
+				Description: "Control whether grafana could 是 accessed 通过 internet。",
 			},
 
 			"is_distroy": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Deprecated:  "It has been deprecated from version 1.81.16.",
-				Description: "是否clean up completely，the 默认为 false。",
+				Description: "是否clean up completely， 默认为 false。",
 			},
 
 			"is_destroy": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "是否clean up completely，the 默认为 false。",
+				Description: "是否clean up completely， 默认为 false。",
 			},
 
 			"instance_status": {
@@ -101,13 +101,13 @@ func ResourceTencentCloudMonitorGrafanaInstance() *schema.Resource {
 			"internal_url": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Grafana public 地址",
+				Description: "Grafana 公有 地址",
 			},
 
 			"auto_voucher": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "是否automatically use vouchers。",
+				Description: "是否automatically 使用 vouchers。",
 			},
 
 			"tags": {

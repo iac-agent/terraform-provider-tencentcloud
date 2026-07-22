@@ -17,13 +17,13 @@ func DataSourceTencentCloudConfigCompliancePacks() *schema.Resource {
 			"compliance_pack_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Compliance pack 名称 for filtering。",
+				Description: "Compliance pack 名称 对于 filtering。",
 			},
 
 			"risk_level": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "风险等级 list for filtering. 有效值：1 (high risk)，2 (medium risk)，3 (low risk)。",
+				Description: "风险等级 列表 对于 filtering. 有效值：1 (high risk)，2 (medium risk)，3 (low risk)。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -32,13 +32,13 @@ func DataSourceTencentCloudConfigCompliancePacks() *schema.Resource {
 			"status": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Compliance pack 状态 for filtering. 有效值：ACTIVE，NO_ACTIVE。",
+				Description: "Compliance pack 状态 对于 filtering. 有效值：ACTIVE，NO_ACTIVE。",
 			},
 
 			"compliance_result": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Compliance 结果 list for filtering. 有效值：COMPLIANT，NON_COMPLIANT。",
+				Description: "Compliance 结果 列表 对于 filtering. 有效值：COMPLIANT，NON_COMPLIANT。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -53,7 +53,7 @@ func DataSourceTencentCloudConfigCompliancePacks() *schema.Resource {
 			"compliance_pack_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Compliance pack list。",
+				Description: "Compliance pack 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"compliance_pack_id": {
@@ -94,12 +94,12 @@ func DataSourceTencentCloudConfigCompliancePacks() *schema.Resource {
 						"rule_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 rules in the compliance pack。",
+							Description: "数量 规则 在 compliance pack。",
 						},
 						"no_compliant_names": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "列表 non-compliant rule names。",
+							Description: "列表 non-compliant 规则 names。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},

@@ -27,43 +27,43 @@ func ResourceTencentCloudVodSampleSnapshotTemplate() *schema.Resource {
 			"sample_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Sampled screencapturing 类型 有效值：Percent: by percent. Time: by 时间间隔。",
+				Description: "Sampled screencapturing 类型 有效值：Percent: 通过 percent. Time: 通过 时间间隔。",
 			},
 
 			"sample_interval": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Sampling interval. If `SampleType` is `Percent`，sampling will be performed at an interval of the specified percentage. If `SampleType` is `Time`，sampling will be performed at the specified 时间间隔 （秒）。",
+				Description: "Sampling 间隔. 如果 `SampleType` 是 `Percent`，sampling 将 是 performed 在 间隔 的 指定 percentage. 如果 `SampleType` 是 `Time`，sampling 将 是 performed 在 指定 时间间隔 （秒）。",
 			},
 
 			"sub_app_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25，2023，if they want to access resources in a VOD application (whether it's the default application or a newly created one)，they must fill in this field with the application ID。",
+				Description: "VOD [应用](https://intl.云.tencent.com/document/product/266/14574) ID. For customers who activate VOD 服务 从 December 25，2023，如果 they want 到 访问 resources 在 VOD 应用 (whether 它's 默认值 应用 或 newly 创建 一个)，they 必须 fill 在 此 字段 使用 应用 ID。",
 			},
 
 			"name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "名称 a sampled screencapturing template. Length 限制: 64 characters。",
+				Description: "名称 sampled screencapturing template. Length 限制: 64 字符。",
 			},
 
 			"width": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Maximum 值 of the width (or long side) of a screenshot （像素）。 取值范围：0 and [128，4,096]. If both `Width` and `Height` are 0，the resolution will be the same as that of the 来源 video; If `Width` is 0，but `Height` is not 0，`Width` will be proportionally scaled; If `Width` is not 0，but `Height` is 0，`Height` will be proportionally scaled; If both `Width` and `Height` are not 0，the custom resolution will be used.默认值：0。",
+				Description: "Maximum 值 的 宽度 (或 long side) 的 screenshot （像素）。 取值范围：0 和 [128，4,096]. 如果 both `宽度` 和 `高度` 是 0， resolution 将 是 same 作为 该 的 来源 视频; 如果 `宽度` 是 0，但 `高度` 是 不 0，`宽度` 将 是 proportionally scaled; 如果 `宽度` 是 不 0，但 `高度` 是 0，`高度` 将 是 proportionally scaled; 如果 both `宽度` 和 `高度` 是 不 0， 自定义 resolution 将 是 使用.默认值：0。",
 			},
 
 			"height": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Maximum 值 of the height (or short side) of a screenshot （像素）。 取值范围：0 and [128，4,096]. If both `Width` and `Height` are 0，the resolution will be the same as that of the 来源 video; If `Width` is 0，but `Height` is not 0，`Width` will be proportionally scaled; If `Width` is not 0，but `Height` is 0，`Height` will be proportionally scaled; If both `Width` and `Height` are not 0，the custom resolution will be used.默认值：0。",
+				Description: "Maximum 值 的 高度 (或 short side) 的 screenshot （像素）。 取值范围：0 和 [128，4,096]. 如果 both `宽度` 和 `高度` 是 0， resolution 将 是 same 作为 该 的 来源 视频; 如果 `宽度` 是 0，但 `高度` 是 不 0，`宽度` 将 是 proportionally scaled; 如果 `宽度` 是 不 0，但 `高度` 是 0，`高度` 将 是 proportionally scaled; 如果 both `宽度` 和 `高度` 是 不 0， 自定义 resolution 将 是 使用.默认值：0。",
 			},
 
 			"resolution_adaptive": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Resolution adaption. 有效值：open: 已启用 In this case，`Width` represents the long side of a video，while `Height` the short side; close: 已禁用 In this case，`Width` represents the width of a video，while `Height` the height.默认值：open。",
+				Description: "Resolution adaption. 有效值：open: 已启用 In 此 case，`宽度` 表示 long side 的 视频，while `高度` short side; close: 已禁用 In 此 case，`宽度` 表示 宽度 的 视频，while `高度` 高度.默认值：open。",
 			},
 
 			"format": {
@@ -75,13 +75,13 @@ func ResourceTencentCloudVodSampleSnapshotTemplate() *schema.Resource {
 			"comment": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "模板描述 Length 限制: 256 characters。",
+				Description: "模板描述 Length 限制: 256 字符。",
 			},
 
 			"fill_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Fill 类型 Fill refers to the way of processing a screenshot when its aspect ratio is different from that of the 来源 video. The following fill types are supported:  stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the 来源 video，which may make the screenshot shorter or longer; black: fill with black. This option retains the aspect ratio of the 来源 video for the screenshot and fills the unmatched area with black color blocks. white: fill with white. This option retains the aspect ratio of the 来源 video for the screenshot and fills the unmatched area with white color blocks. gauss: fill with Gaussian blur. This option retains the aspect ratio of the 来源 video for the screenshot and fills the unmatched area with Gaussian blur.默认值：black。",
+				Description: "Fill 类型 Fill refers 到 way 的 processing screenshot 当 its aspect ratio 是 different 从 该 的 来源 视频. following fill types 是 支持: stretch: stretch. screenshot 将 是 stretched frame 通过 frame 到 match aspect ratio 的 来源 视频，其中 可能 make screenshot shorter 或 longer; black: fill 使用 black. 此 选项 retains aspect ratio 的 来源 视频 对于 screenshot 和 fills unmatched area 使用 black color blocks. white: fill 使用 white. 此 选项 retains aspect ratio 的 来源 视频 对于 screenshot 和 fills unmatched area 使用 white color blocks. gauss: fill 使用 Gaussian blur. 此 选项 retains aspect ratio 的 来源 视频 对于 screenshot 和 fills unmatched area 使用 Gaussian blur.默认值：black。",
 			},
 		},
 	}

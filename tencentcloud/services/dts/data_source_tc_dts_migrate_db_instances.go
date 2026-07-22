@@ -25,7 +25,7 @@ func DataSourceTencentCloudDtsMigrateDbInstances() *schema.Resource {
 			"migrate_role": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "是否instance is the migration 来源 or destination,src(for 来源)，dst(for destination)。",
+				Description: "是否instance 是 迁移 来源 或 destination,src(对于 来源)，dst(对于 destination)。",
 			},
 
 			"instance_id": {
@@ -55,31 +55,31 @@ func DataSourceTencentCloudDtsMigrateDbInstances() *schema.Resource {
 			"account_mode": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The owning 账号 of the resource is null or self(resources in the self 账号)，other(resources in the other 账号)。",
+				Description: "owning 账号 的 资源 是 null 或 self(resources 在 self 账号)，other(resources 在 other 账号)。",
 			},
 
 			"tmp_secret_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "temporary secret id，used across 账号",
+				Description: "temporary secret ID，使用 across 账号",
 			},
 
 			"tmp_secret_key": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "temporary secret 键，used across 账号",
+				Description: "temporary secret 键，使用 across 账号",
 			},
 
 			"tmp_token": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "temporary 令牌，used across 账号",
+				Description: "temporary 令牌，使用 across 账号",
 			},
 
 			"instances": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Instance list。",
+				Description: "实例 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
@@ -95,7 +95,7 @@ func DataSourceTencentCloudDtsMigrateDbInstances() *schema.Resource {
 						"vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance VIP",
+							Description: "实例 VIP",
 						},
 						"vport": {
 							Type:        schema.TypeInt,
@@ -105,12 +105,12 @@ func DataSourceTencentCloudDtsMigrateDbInstances() *schema.Resource {
 						"usable": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Can used in migration，1-yes，0-no。",
+							Description: "Can 使用 在 迁移，1-yes，0-无。",
 						},
 						"hint": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The reason of can&#39;t used in migration。",
+							Description: "reason 的 可以&#39;t 使用 在 迁移。",
 						},
 					},
 				},
@@ -119,7 +119,7 @@ func DataSourceTencentCloudDtsMigrateDbInstances() *schema.Resource {
 			"request_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Unique request id，provide this when encounter a problem。",
+				Description: "Unique 请求 ID，provide 此 当 encounter problem。",
 			},
 
 			"result_output_file": {

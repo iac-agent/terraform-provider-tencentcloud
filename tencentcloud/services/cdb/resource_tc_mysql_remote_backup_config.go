@@ -32,13 +32,13 @@ func ResourceTencentCloudMysqlRemoteBackupConfig() *schema.Resource {
 			"remote_backup_save": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "远程数据备份开关，off-禁用远程备份，on-启用远程备份。",
+				Description: "远程数据备份开关，关闭-禁用远程备份，在-启用远程备份。",
 			},
 
 			"remote_binlog_save": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "异地日志备份开关，off-off异地备份，on-on异地备份，只有当参数RemoteBackupSave为on时，才可以将RemoteBinlogSave参数设置为on。",
+				Description: "异地日志备份开关，关闭-off异地备份，在-on异地备份，只有当参数RemoteBackupSave为on时，才可以将RemoteBinlogSave参数设置为on。",
 			},
 
 			"remote_region": {

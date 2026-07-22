@@ -28,7 +28,7 @@ func ResourceTencentCloudEbEventTransform() *schema.Resource {
 			"event_bus_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "event bus Id。",
+				Description: "事件 bus ID。",
 			},
 
 			"rule_id": {
@@ -40,20 +40,20 @@ func ResourceTencentCloudEbEventTransform() *schema.Resource {
 			"transformations": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "A 列表 transformation rules，currently only one。",
+				Description: "A 列表 transformation 规则，currently 仅 一个。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"extraction": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Describe how to extract data。",
+							Description: "Describe how 到 extract 数据。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"extraction_input_path": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "JsonPath，如果未指定，the 默认值 $。",
+										Description: "JsonPath，如果未指定， 默认值 $。",
 									},
 									"format": {
 										Type:        schema.TypeString,
@@ -64,18 +64,18 @@ func ResourceTencentCloudEbEventTransform() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "Only Text needs to be passed。",
+										Description: "Only Text needs 到 是 passed。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"separator": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "`Comma`，`|`，`tab`，`space`，`newline`，`%`，`#`，the 限制 length is 1。",
+													Description: "`Comma`，`|`，`tab`，`space`，`newline`，`%`，`#`， 限制 长度 是 1。",
 												},
 												"regex": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Fill in the regular expression: length 128。",
+													Description: "Fill 在 regular expression: 长度 128。",
 												},
 											},
 										},
@@ -87,13 +87,13 @@ func ResourceTencentCloudEbEventTransform() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Describe how to filter data。",
+							Description: "Describe how 到 过滤器 数据。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"filter": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Grammatical Rules are consistent。",
+										Description: "Grammatical Rules 是 consistent。",
 									},
 								},
 							},
@@ -102,29 +102,29 @@ func ResourceTencentCloudEbEventTransform() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Describe how to convert data。",
+							Description: "Describe how 到 convert 数据。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"output_structs": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "Describe how the data is transformed。",
+										Description: "Describe how 数据 是 transformed。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Corresponding to the 键 in the output json。",
+													Description: "Corresponding 到 键 在 output json。",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "You can fill in the json-路径 and also support constants or built-in keyword date types。",
+													Description: "You 可以 fill 在 json-路径 和 also support constants 或 built-在 keyword date types。",
 												},
 												"value_type": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The data 类型 值，可选 values: `STRING`，`NUMBER`，`BOOLEAN`，`NULL`，`SYS_VARIABLE`，`JSONPATH`。",
+													Description: "数据 类型 值，可选 值: `STRING`，`NUMBER`，`BOOLEAN`，`NULL`，`SYS_VARIABLE`，`JSONPATH`。",
 												},
 											},
 										},

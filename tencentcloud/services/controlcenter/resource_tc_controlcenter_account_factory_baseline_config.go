@@ -25,29 +25,29 @@ func ResourceTencentCloudControlcenterAccountFactoryBaselineConfig() *schema.Res
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Baseline 名称，which must be unique. Supports only English letters，numbers，Chinese characters，and symbols @，&，_，[]，-. Combination of 1-25 Chinese or English characters。",
+				Description: "Baseline 名称，其中 必须 是 唯一. Supports 仅 English letters，numbers，Chinese 字符，和 symbols @，&，_，[]，-. Combination 的 1-25 Chinese 或 English 字符。",
 			},
 
 			"baseline_config_items": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Baseline configuration，overwrite update. You can query existing baseline configurations via controlcenter:GetAccountFactoryBaseline. You can query supported baseline lists via controlcenter:ListAccountFactoryBaselineItems。",
+				Description: "Baseline 配置，overwrite update. You 可以 查询 existing baseline configurations via controlcenter:GetAccountFactoryBaseline. You 可以 查询 支持 baseline lists via controlcenter:ListAccountFactoryBaselineItems。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"identifier": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "指定unique identifier for 账号 factory baseline item，can only contain `english letters`，`digits`，and `@,._[]-:()()[]+=.`，with a length of 2-128 characters。",
+							Description: "指定unique identifier 对于 账号 factory baseline item，可以 仅 contain `english letters`，`digits`，和 `@,._[]-:()()[]+=.`，使用 长度 的 2-128 字符。",
 						},
 						"configuration": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "账号 factory baseline item configuration，different baseline items have different configuration parameters。",
+							Description: "账号 factory baseline item 配置，different baseline items have different 配置 参数。",
 						},
 						"apply_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "指定number of accounts for baseline applications。",
+							Description: "指定number 的 accounts 对于 baseline applications。",
 						},
 					},
 				},

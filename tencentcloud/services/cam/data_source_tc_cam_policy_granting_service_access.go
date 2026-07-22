@@ -19,25 +19,25 @@ func DataSourceTencentCloudCamPolicyGrantingServiceAccess() *schema.Resource {
 			"target_uin": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Sub-账号 uin，one of the three (TargetUin，RoleId，GroupId) must be passed。",
+				Description: "Sub-账号 uin，一个 的 three (TargetUin，RoleId，GroupId) 必须 是 passed。",
 			},
 
 			"role_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "角色 Id，one of the three (TargetUin，RoleId，GroupId) must be passed。",
+				Description: "角色 ID，一个 的 three (TargetUin，RoleId，GroupId) 必须 是 passed。",
 			},
 
 			"group_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Group Id，one of the three (TargetUin，RoleId，GroupId) must be passed。",
+				Description: "Group ID，一个 的 three (TargetUin，RoleId，GroupId) 必须 是 passed。",
 			},
 
 			"service_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Service 类型，this field needs to be passed when viewing the details of the service authorization interface。",
+				Description: "Service 类型，此 字段 needs 到 是 passed 当 viewing details 的 服务 authorization interface。",
 			},
 
 			"list": {
@@ -68,7 +68,7 @@ func DataSourceTencentCloudCamPolicyGrantingServiceAccess() *schema.Resource {
 						"action": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "操作 list。",
+							Description: "操作 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
@@ -87,13 +87,13 @@ func DataSourceTencentCloudCamPolicyGrantingServiceAccess() *schema.Resource {
 						"policy": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Policy list。",
+							Description: "Policy 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"policy_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Policy Id。",
+										Description: "Policy ID。",
 									},
 									"policy_name": {
 										Type:        schema.TypeString,

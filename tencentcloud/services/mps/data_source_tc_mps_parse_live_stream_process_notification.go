@@ -19,7 +19,7 @@ func DataSourceTencentCloudMpsParseLiveStreamProcessNotification() *schema.Resou
 			"content": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Live stream event notification obtained from CMQ。",
+				Description: "Live 流 事件 通知 获取 从 CMQ。",
 			},
 
 			"result_output_file": {

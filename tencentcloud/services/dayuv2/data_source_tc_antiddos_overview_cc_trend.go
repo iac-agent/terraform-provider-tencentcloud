@@ -20,7 +20,7 @@ func DataSourceTencentCloudAntiddosOverviewCcTrend() *schema.Resource {
 			"period": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Statistical granularity，values [300 (5 minutes)，3600 (hours)，86400 (days)]。",
+				Description: "Statistical granularity，值 [300 (5 minutes)，3600 (hours)，86400 (days)]。",
 			},
 
 			"start_time": {
@@ -38,13 +38,13 @@ func DataSourceTencentCloudAntiddosOverviewCcTrend() *schema.Resource {
 			"metric_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Indicator，values [inqps (peak total requests，dropqps (peak attack requests))，incount (数量 requests)，dropcount (数量 attacks)]。",
+				Description: "Indicator，值 [inqps (peak 总数 requests，dropqps (peak attack requests))，incount (数量 requests)，dropcount (数量 attacks)]。",
 			},
 
 			"business": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Dayu sub product 代码 (bgpip represents advanced defense IP; net represents professional 版本 of advanced defense IP)。",
+				Description: "Dayu sub product 代码 (bgpip 表示 advanced defense IP; net 表示 professional 版本 的 advanced defense IP)。",
 			},
 
 			"ip_list": {
@@ -53,7 +53,7 @@ func DataSourceTencentCloudAntiddosOverviewCcTrend() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "资源 ID list。",
+				Description: "资源 ID 列表。",
 			},
 
 			"data": {

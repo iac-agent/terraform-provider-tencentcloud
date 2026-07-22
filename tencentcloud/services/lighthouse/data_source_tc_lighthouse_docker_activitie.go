@@ -57,7 +57,7 @@ func DataSourceTencentCloudLighthouseDockerActivitie() *schema.Resource {
 			"instance_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "实例 ID Can be obtained from the 实例 ID field returned by the DescribeInstances interface。",
+				Description: "实例 ID Can 是 获取 从 实例 ID 字段 返回 通过 DescribeInstances interface。",
 			},
 
 			"activity_ids": {
@@ -66,25 +66,25 @@ func DataSourceTencentCloudLighthouseDockerActivitie() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Docker activity ID list. Can be obtained from the ActivityId field returned by the DescribeDockerActivities interface。",
+				Description: "Docker activity ID 列表. Can 是 获取 从 ActivityId 字段 返回 通过 DescribeDockerActivities interface。",
 			},
 
 			"created_time_begin": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The start 值 of the activity 创建时间，时间戳 （秒）。",
+				Description: "start 值 的 activity 创建时间，时间戳 （秒）。",
 			},
 
 			"created_time_end": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The end 值 of the activity 创建时间，时间戳 （秒）。",
+				Description: "end 值 的 activity 创建时间，时间戳 （秒）。",
 			},
 
 			"docker_activity_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Docker activity list。",
+				Description: "Docker activity 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"activity_id": {
@@ -113,17 +113,17 @@ func DataSourceTencentCloudLighthouseDockerActivitie() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Container ID list。",
+							Description: "Container ID 列表。",
 						},
 						"created_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 according to ISO8601 standard. UTC time is used. 格式 is YYYY-MM-DDThh:mm:ssZ。",
+							Description: "创建时间 according 到 ISO8601 standard. UTC 时间 是 使用. 格式 是 YYYY-MM-DDThh:mm:ssZ。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "结束时间 according to ISO8601 standard. UTC time is used. 格式 is YYYY-MM-DDThh:mm:ssZ。",
+							Description: "结束时间 according 到 ISO8601 standard. UTC 时间 是 使用. 格式 是 YYYY-MM-DDThh:mm:ssZ。",
 						},
 					},
 				},

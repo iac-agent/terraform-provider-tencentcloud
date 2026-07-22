@@ -55,7 +55,7 @@ func ResourceTencentCloudAPIGatewayUpstream() *schema.Resource {
 				Optional:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(API_GATEWAY_UPSTREAM_TYPE),
-				Description:  "Backend access 类型，取值范围：IP_PORT，K8S。",
+				Description:  "Backend 访问 类型，取值范围：IP_PORT，K8S。",
 			},
 			"retries": {
 				Optional:    true,
@@ -65,7 +65,7 @@ func ResourceTencentCloudAPIGatewayUpstream() *schema.Resource {
 			"upstream_host": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "主机 request header forwarded by gateway to backend。",
+				Description: "主机 请求 头部 forwarded 通过 网关 到 backend。",
 			},
 			"nodes": {
 				Optional:    true,
@@ -76,7 +76,7 @@ func ResourceTencentCloudAPIGatewayUpstream() *schema.Resource {
 						"host": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "IP or 域名 名称",
+							Description: "IP 或 域名 名称",
 						},
 						"port": {
 							Type:        schema.TypeInt,
@@ -86,12 +86,12 @@ func ResourceTencentCloudAPIGatewayUpstream() *schema.Resource {
 						"weight": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "权重 [0，100]，0 is 已禁用",
+							Description: "权重 [0，100]，0 是 已禁用",
 						},
 						"vm_instance_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "CVM instance ID注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "CVM 实例 ID注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"tags": {
 							Type:        schema.TypeSet,
@@ -107,7 +107,7 @@ func ResourceTencentCloudAPIGatewayUpstream() *schema.Resource {
 						"service_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "K8S container service name注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "K8S 容器 服务 name注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"name_space": {
 							Type:        schema.TypeString,
@@ -117,17 +117,17 @@ func ResourceTencentCloudAPIGatewayUpstream() *schema.Resource {
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The ID TKE cluster注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "ID TKE cluster注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"source": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "来源 of Node，取值范围：K8S注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "来源 的 Node，取值范围：K8S注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"unique_service_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Unique 服务名称 recorded internally by API gateway注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Unique 服务名称 recorded internally 通过 API gateway注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -136,63 +136,63 @@ func ResourceTencentCloudAPIGatewayUpstream() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Health check configuration，currently only supports VPC channels。",
+				Description: "Health check 配置，currently 仅 支持 VPC channels。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"enable_active_check": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Identify whether 活跃 health checks are 已启用",
+							Description: "Identify whether 活跃 health checks 是 已启用",
 						},
 						"enable_passive_check": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Identify whether passive health checks are 已启用",
+							Description: "Identify whether passive health checks 是 已启用",
 						},
 						"healthy_http_status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The HTTP 状态 代码 that 决定a successful request during a health check。",
+							Description: "HTTP 状态 代码 该 决定a successful 请求 during health check。",
 						},
 						"unhealthy_http_status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The HTTP 状态 代码 that 决定a failed request during a health check。",
+							Description: "HTTP 状态 代码 该 决定a failed 请求 during health check。",
 						},
 						"tcp_failure_threshold": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "TCP continuous 错误 threshold. 0 表示disabling TCP checking. 取值范围：[0，254]。",
+							Description: "TCP continuous 错误 阈值. 0 表示disabling TCP checking. 取值范围：[0，254]。",
 						},
 						"timeout_threshold": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Continuous timeout threshold. 0 表示disabling timeout checking. 取值范围：[0，254]。",
+							Description: "Continuous 超时 阈值. 0 表示disabling 超时 checking. 取值范围：[0，254]。",
 						},
 						"http_failure_threshold": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "HTTP continuous 错误 threshold. 0 means HTTP checking is 已禁用 取值范围：[0，254]。",
+							Description: "HTTP continuous 错误 阈值. 0 表示 HTTP checking 是 已禁用 取值范围：[0，254]。",
 						},
 						"active_check_http_path": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Detect the requested 路径 during 活跃 health checks. The default is&#39;/&#39;。",
+							Description: "Detect requested 路径 during 活跃 health checks. 默认值 是&#39;/&#39;。",
 						},
 						"active_check_timeout": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The detection request for 活跃 health check timed out （秒）。 The 默认为 5 seconds。",
+							Description: "detection 请求 对于 活跃 health check timed out （秒）。 默认为 5 秒。",
 						},
 						"active_check_interval": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The 时间间隔 for 活跃 health checks is 5 seconds by default。",
+							Description: "时间间隔 对于 活跃 health checks 是 5 秒 通过 默认值。",
 						},
 						"unhealthy_timeout": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The automatic recovery time of abnormal node 状态，（秒）。 When only passive checking is 已启用，it must be set to a 值&gt;0，otherwise the passive exception node will not be able to recover. The 默认为 30 seconds。",
+							Description: "automatic recovery 时间 的 abnormal 节点 状态，（秒）。 当 仅 passive checking 是 已启用，它 必须 是 集合 到 值&gt;0，otherwise passive exception 节点 将 不 是 able 到 recover. 默认为 30 秒。",
 						},
 					},
 				},
@@ -200,7 +200,7 @@ func ResourceTencentCloudAPIGatewayUpstream() *schema.Resource {
 			"k8s_service": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Configuration of K8S container service。",
+				Description: "Configuration 的 K8S 容器 服务。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"weight": {
@@ -211,22 +211,22 @@ func ResourceTencentCloudAPIGatewayUpstream() *schema.Resource {
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "K8s cluster ID。",
+							Description: "K8s 集群 ID。",
 						},
 						"namespace": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Container namespace。",
+							Description: "Container 命名空间。",
 						},
 						"service_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The 名称 container service。",
+							Description: "名称 容器 服务。",
 						},
 						"port": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "端口 of service。",
+							Description: "端口 的 服务。",
 						},
 						"extra_labels": {
 							Type:        schema.TypeList,
@@ -237,12 +237,12 @@ func ResourceTencentCloudAPIGatewayUpstream() *schema.Resource {
 									"key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "键 of 标签",
+										Description: "键 的 标签",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "值 of 标签",
+										Description: "值 的 标签",
 									},
 								},
 							},

@@ -19,7 +19,7 @@ func DataSourceTencentCloudClbExclusiveClusters() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "过滤查询可用区资源列表，具体如下： cluster-类型 - 字符串 - 必填：否 - （过滤条件）按集群类型过滤，如TGW。 cluster-id - String - 必填：否 - （过滤条件）按集群 ID 过滤，如 tgw-xxxxxxxx。 cluster-名称 - String - 必填：否 - （过滤条件）按集群名称过滤，如test-xxxxxx。 cluster-标签 - String - 必填：否 - （过滤条件）按集群标签过滤，如 TAG-xxxxx。 VIP - String - 必填：否 - （过滤条件）按集群中的vip进行过滤，如x.x.x.x。 network - 字符串 - 必需：否 - （过滤条件）按集群网络类型过滤，例如公共或专用。 可用区 - 字符串 - 必填：否 - （过滤条件）按集群区域过滤，如 ap-guangzhou-1。 isp - 字符串 - 必需：否 - （过滤条件）按 TGW 集群 isp 类型过滤，例如 BGP。 loadblancer-id - 字符串 - 必填：否 - （过滤条件）按集群中的 loadblancer-id 进行过滤，如 lb-xxxxxxxx。",
+				Description: "过滤查询可用区资源列表，具体如下： 集群-类型 - 字符串 - 必填：否 - （过滤条件）按集群类型过滤，如TGW。 集群-ID - String - 必填：否 - （过滤条件）按集群 ID 过滤，如 tgw-xxxxxxxx。 集群-名称 - String - 必填：否 - （过滤条件）按集群名称过滤，如test-xxxxxx。 集群-标签 - String - 必填：否 - （过滤条件）按集群标签过滤，如 TAG-xxxxx。 VIP - String - 必填：否 - （过滤条件）按集群中的vip进行过滤，如x.x.x.x。 网络 - 字符串 - 必需：否 - （过滤条件）按集群网络类型过滤，例如公共或专用。 可用区 - 字符串 - 必填：否 - （过滤条件）按集群区域过滤，如 ap-guangzhou-1。 isp - 字符串 - 必需：否 - （过滤条件）按 TGW 集群 isp 类型过滤，例如 BGP。 loadblancer-ID - 字符串 - 必填：否 - （过滤条件）按集群中的 loadblancer-ID 进行过滤，如 lb-xxxxxxxx。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {

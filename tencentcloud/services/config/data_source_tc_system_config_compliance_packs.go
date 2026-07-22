@@ -17,7 +17,7 @@ func DataSourceTencentCloudSystemConfigCompliancePacks() *schema.Resource {
 			"compliance_pack_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "System compliance pack list。",
+				Description: "System compliance pack 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"compliance_pack_id": {
@@ -43,13 +43,13 @@ func DataSourceTencentCloudSystemConfigCompliancePacks() *schema.Resource {
 						"config_rules": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "配置 rules in the compliance pack。",
+							Description: "配置 规则 在 compliance pack。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"identifier": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Rule unique identifier。",
+										Description: "Rule 唯一 identifier。",
 									},
 									"rule_name": {
 										Type:        schema.TypeString,

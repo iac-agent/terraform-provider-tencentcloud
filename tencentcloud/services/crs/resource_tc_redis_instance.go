@@ -45,7 +45,7 @@ func ResourceTencentCloudRedisInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "The available 可用区 of an instance to be created，like `ap-beijing-7`，please refer to `tencentcloud_redis_zone_config.list`。",
+				Description: "可用 可用区 的 实例 到 是 创建，like `ap-beijing-7`，please refer 到 `tencentcloud_redis_zone_config.列表`。",
 			},
 			"name": {
 				Type:        schema.TypeString,
@@ -57,7 +57,7 @@ func ResourceTencentCloudRedisInstance() *schema.Resource {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateIntegerMin(2),
-				Description: "Instance type. Available values reference data source `tencentcloud_redis_zone_config` or [document](https://intl.cloud.tencent.com/document/product/239/32069), toggle immediately when modified." +
+				Description: "实例 类型. Available 值 reference 数据 source `tencentcloud_redis_zone_config` 或 [document](https://intl.云.tencent.com/document/product/239/32069), toggle immediately 当 modified." +
 					"<ul><li>2: Redis 2.8 Memory Edition (standard architecture);</li> " +
 					"<li>3: CKV 3.2 Memory Edition (standard architecture);</li> " +
 					"<li>4: CKV 3.2 Memory Edition (cluster architecture);</li> " +
@@ -76,20 +76,20 @@ func ResourceTencentCloudRedisInstance() *schema.Resource {
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{1, 3, 5, 8, 12, 16, 24, 32, 40, 48, 64, 80, 96, 128}),
-				Description:  "The 数量 instance shards; this parameter does not need to be configured for standard 版本 instances; for cluster 版本 instances，the 数量 shards ranges from: [`1`，`3`，`5`，`8`，`12`，`16`，`24 `，`32`，`40`，`48`，`64`，`80`，`96`，`128`]。",
+				Description:  "数量 实例 shards; 此 参数 does 不 need 到 是 已配置 对于 standard 版本 实例; 对于 集群 版本 实例， 数量 shards ranges 从: [`1`，`3`，`5`，`8`，`12`，`16`，`24 `，`32`，`40`，`48`，`64`，`80`，`96`，`128`]。",
 			},
 			"redis_replicas_num": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Default:      1,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{1, 2, 3, 4, 5}),
-				Description:  "The 数量 instance copies. This 不是必填项 for standalone and master slave versions and must equal to count of `replica_zone_ids`，Non-multi-AZ does not require `replica_zone_ids`; Redis memory 版本 4.0，5.0，6.2 standard architecture and cluster architecture support the 数量 copies in the range [1，2，3，4，5]; Redis 2.8 standard 版本 and CKV standard 版本 only support 1 copy。",
+				Description:  "数量 实例 copies. 此 不是必填项 对于 standalone 和 master slave versions 和 必须 equal 到 count 的 `replica_zone_ids`，Non-multi-AZ does 不 require `replica_zone_ids`; Redis 内存 版本 4.0，5.0，6.2 standard architecture 和 集群 architecture support 数量 copies 在 范围 [1，2，3，4，5]; Redis 2.8 standard 版本 和 CKV standard 版本 仅 support 1 copy。",
 			},
 			"replica_zone_ids": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "ID replica nodes available 可用区 This 不是必填项 for standalone and master slave versions. NOTE: Removing some of the same 可用区 of replicas (e.g. removing 100001 of [100001，100001，100002]) will pick the first hit to remove。",
+				Description: "ID 副本 nodes 可用 可用区 此 不是必填项 对于 standalone 和 master slave versions. NOTE: Removing some 的 same 可用区 的 replicas (e.g. removing 100001 的 [100001，100001，100002]) 将 pick first hit 到 remove。",
 				Elem:        &schema.Schema{Type: schema.TypeInt},
 			},
 			"type": {
@@ -107,44 +107,44 @@ func ResourceTencentCloudRedisInstance() *schema.Resource {
 					return
 				},
 				Deprecated:  "It has been deprecated from version 1.33.1. Please use 'type_id' instead.",
-				Description: "Instance type. Available values: " + typeStr + ", specific region support specific types, need to refer data `tencentcloud_redis_zone_config`.",
+				Description: "实例 类型. Available 值:" + typeStr + ", specific region support specific types, need to refer data `tencentcloud_redis_zone_config`.",
 			},
 			"password": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Sensitive:    true,
 				ValidateFunc: tccommon.ValidateMysqlPassword,
-				Description:  "密码 for a Redis 用户，which should be 8 to 16 characters. NOTE: Only `no_auth=true` specified can make 密码 empty。",
+				Description:  "密码 对于 Redis 用户，其中 should 是 8 到 16 字符. NOTE: Only `no_auth=true` 指定 可以 make 密码 空。",
 			},
 			"no_auth": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "表示是否redis instance support no-auth access. NOTE: Only available in private cloud environment。",
+				Description: "表示是否redis 实例 support 无-auth 访问. NOTE: Only 可用 在 私有 云 环境。",
 			},
 			"replicas_read_only": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether copy read-only is supported，Redis 2.8 Standard Edition and CKV Standard Edition do not support replica read-only，turn on replica read-only，the instance will automatically read and write separate，write requests are routed to the primary node，read requests are routed to the replica node，if you need to open replica read-only，the recommended 数量 replicas >=2。",
+				Description: "Whether copy read-仅 是 支持，Redis 2.8 Standard Edition 和 CKV Standard Edition do 不 support 副本 read-仅，turn 在 副本 read-仅， 实例 将 automatically read 和 write separate，write requests 是 routed 到 primary 节点，read requests 是 routed 到 副本 节点，如果 您 need 到 open 副本 read-仅， recommended 数量 replicas >=2。",
 			},
 			"mem_size": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "The memory volume of an available instance(in MB)，please refer to `tencentcloud_redis_zone_config.list[可用区].shard_memories`. When redis is standard 类型，it represents total memory size of the instance; when Redis is 集群类型，it represents memory size of per sharding. `512MB` is supported only in master-slave instance。",
+				Description: "内存 卷 的 可用 实例(在 MB)，please refer 到 `tencentcloud_redis_zone_config.列表[可用区].shard_memories`. 当 redis 是 standard 类型，它 表示 总数 内存 大小 的 实例; 当 Redis 是 集群类型，它 表示 内存 大小 的 per sharding. `512MB` 是 支持 仅 在 master-slave 实例。",
 			},
 			"vpc_id": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 100),
-				Description:  "ID vpc with which the instance is to be associated. When the `operation_network` is `changeVpc` or `changeBaseToVpc`，this parameter needs to be configured。",
+				Description:  "ID vpc 使用 其中 实例 是 到 是 associated. 当 `operation_network` 是 `changeVpc` 或 `changeBaseToVpc`，此 参数 needs 到 是 已配置。",
 			},
 			"subnet_id": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 100),
-				Description:  "指定which subnet the instance should belong to. When the `operation_network` is `changeVpc` or `changeBaseToVpc`，this parameter needs to be configured。",
+				Description:  "指定which 子网 实例 should belong 到. 当 `operation_network` 是 `changeVpc` 或 `changeBaseToVpc`，此 参数 needs 到 是 已配置。",
 			},
 			"security_groups": {
 				Type:     schema.TypeSet,
@@ -153,66 +153,66 @@ func ResourceTencentCloudRedisInstance() *schema.Resource {
 				Set: func(v interface{}) int {
 					return helper.HashString(v.(string))
 				},
-				Description: "ID security group. If both vpc_id and subnet_id are not set，this argument should not be set either。",
+				Description: "ID 安全 组. 如果 both vpc_id 和 subnet_id 是 不 集合，此 argument should 不 是 集合 either。",
 			},
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
-				Description: "指定which project the instance should belong to。",
+				Description: "指定which 项目 实例 should belong 到。",
 			},
 			"port": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     6379,
-				Description: "The 端口 用于access a redis instance. The 默认值为 6379. When the `operation_network` is `changeVPort` or `changeVip`，this parameter needs to be configured。",
+				Description: "端口 用于access redis 实例. 默认值为 6379. 当 `operation_network` 是 `changeVPort` 或 `changeVip`，此 参数 needs 到 是 已配置。",
 			},
 			"params_template_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "指定params template id. If not set，will use default template。",
+				Description: "指定params template ID. 如果 不 集合，将 使用 默认值 template。",
 			},
 			"operation_network": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(REDIS_MODIFY_NETWORK_CONFIG),
-				Description:  "Refers to the category of the pre-modified network，including: `changeVip`: refers to switching the private network，including its intranet IPv4 地址 and 端口; `changeVpc`: refers to switching the subnet to which the private network belongs; `changeBaseToVpc`: refers to switching the basic network to a private network; `changeVPort`: refers to only modifying the instance network 端口",
+				Description:  "Refers 到 category 的 pre-modified 网络，包括: `changeVip`: refers 到 switching 私有 网络，包括 its intranet IPv4 地址 和 端口; `changeVpc`: refers 到 switching 子网 到 其中 私有 网络 belongs; `changeBaseToVpc`: refers 到 switching basic 网络 到 私有 网络; `changeVPort`: refers 到 仅 modifying 实例 网络 端口",
 			},
 			"recycle": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(REDIS_RECYCLE_TIME),
-				Description:  "Original intranet IPv4 地址 retention time: unit: day，取值范围：`0`，`1`，`2`，`3`，`7`，`15`。",
+				Description:  "Original intranet IPv4 地址 retention 时间: 单位: day，取值范围：`0`，`1`，`2`，`3`，`7`，`15`。",
 			},
 			"ip": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "IP 地址 of an instance. When the `operation_network` is `changeVip`，this parameter needs to be configured。",
+				Description: "IP 地址 的 实例. 当 `operation_network` 是 `changeVip`，此 参数 needs 到 是 已配置。",
 			},
 			"wait_switch": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Switching 模式: `1`-maintenance time window switching，`2`-immediate switching，默认值 `2`。",
+				Description: "Switching 模式: `1`-maintenance 时间 window switching，`2`-immediate switching，默认值 `2`。",
 			},
 			"product_version": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "指定product 版本 of the instance. `local`: Local disk 版本，`cloud`: Cloud disk 版本，`cdc`: Exclusive cluster 版本 默认为 `local`。",
+				Description: "指定product 版本 的 实例. `本地`: Local 磁盘 版本，`云`: Cloud 磁盘 版本，`cdc`: Exclusive 集群 版本 默认为 `本地`。",
 			},
 			"redis_cluster_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Exclusive cluster ID. When the `product_version` is set to `cdc`，this parameter must be set。",
+				Description: "Exclusive 集群 ID. 当 `product_version` 是 集合 到 `cdc`，此 参数 必须 是 集合。",
 			},
 			"tags": {
 				Type:     schema.TypeMap,
 				Optional: true,
 				//internal version: replace tagComputed begin, please do not modify this annotation and refrain from inserting any code between the beginning and end lines of the annotation.
 				//internal version: replace tagComputed end, please do not modify this annotation and refrain from inserting any code between the beginning and end lines of the annotation.
-				Description: "Instance 标签",
+				Description: "实例 标签",
 			},
 			// Computed values
 			"dedicated_cluster_id": {
@@ -223,12 +223,12 @@ func ResourceTencentCloudRedisInstance() *schema.Resource {
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Current 状态 an instance，maybe: init，processing，online，isolate and todelete。",
+				Description: "Current 状态 实例，maybe: init，processing，online，isolate 和 todelete。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The time when the instance was created。",
+				Description: "时间 当 实例 是 创建。",
 			},
 			// payment
 			"charge_type": {
@@ -236,18 +236,18 @@ func ResourceTencentCloudRedisInstance() *schema.Resource {
 				Optional:     true,
 				Default:      REDIS_CHARGE_TYPE_POSTPAID,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{REDIS_CHARGE_TYPE_POSTPAID, REDIS_CHARGE_TYPE_PREPAID}),
-				Description:  "The charge 类型 instance. 有效值：`PREPAID` and `POSTPAID`. 默认值为 `POSTPAID`。",
+				Description:  "charge 类型 实例. 有效值：`PREPAID` 和 `POSTPAID`. 默认值为 `POSTPAID`。",
 			},
 			"prepaid_period": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(REDIS_PREPAID_PERIOD),
-				Description:  "The tenancy (time unit is month) of the prepaid instance，NOTE: it only works when charge_type is set to `PREPAID`. Valid values are `1`，`2`，`3`，`4`，`5`，`6`，`7`，`8`，`9`，`10`，`11`，`12`，`24`，`36`。",
+				Description:  "tenancy (时间 单位 是 month) 的 prepaid 实例，NOTE: 它 仅 works 当 charge_type 是 集合 到 `PREPAID`. 有效 值 是 `1`，`2`，`3`，`4`，`5`，`6`，`7`，`8`，`9`，`10`，`11`，`12`，`24`，`36`。",
 			},
 			"force_delete": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Indicate 是否delete Redis instance directly or not. 默认为 false. If set true，the instance will be deleted instead of staying recycle bin。",
+				Description: "Indicate 是否delete Redis 实例 directly 或 不. 默认为 false. 如果 集合 true， 实例 将 是 删除 instead 的 staying recycle bin。",
 			},
 			"auto_renew_flag": {
 				Type:         schema.TypeInt,
@@ -255,7 +255,7 @@ func ResourceTencentCloudRedisInstance() *schema.Resource {
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1, 2}),
 				Default:      0,
-				Description:  "Auto-续费标识 0 - default state (manual renewal); 1 - automatic renewal; 2 - explicit no automatic renewal。",
+				Description:  "Auto-续费标识 0 - 默认值 state (manual renewal); 1 - automatic renewal; 2 - explicit 无 automatic renewal。",
 			},
 			"node_info": {
 				Type:        schema.TypeList,
@@ -266,17 +266,17 @@ func ResourceTencentCloudRedisInstance() *schema.Resource {
 						"master": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "表示是否node is master。",
+							Description: "表示是否node 是 master。",
 						},
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "ID master or replica node。",
+							Description: "ID master 或 副本 节点。",
 						},
 						"zone_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "ID availability 可用区 of the master or replica node。",
+							Description: "ID availability 可用区 的 master 或 副本 节点。",
 						},
 					},
 				},
@@ -285,7 +285,7 @@ func ResourceTencentCloudRedisInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Wan 地址 switch，default `close`，values: `open`，`close`。",
+				Description: "Wan 地址 switch，默认值 `close`，值: `open`，`close`。",
 			},
 			"wan_address": {
 				Type:        schema.TypeString,

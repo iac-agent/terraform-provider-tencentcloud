@@ -28,13 +28,13 @@ func ResourceTencentCloudTdmqRocketmqTopic() *schema.Resource {
 			"topic_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Topic 名称，which can contain 3-64 letters，digits，hyphens，and underscores。",
+				Description: "Topic 名称，其中 可以 contain 3-64 letters，digits，hyphens，和 underscores。",
 			},
 
 			"namespace_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Topic namespace. Currently，you can create topics only in one single namespace。",
+				Description: "Topic 命名空间. Currently，您 可以 create topics 仅 在 一个 单个 命名空间。",
 			},
 
 			"type": {
@@ -52,7 +52,7 @@ func ResourceTencentCloudTdmqRocketmqTopic() *schema.Resource {
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Topic 备注 (up to 128 characters)。",
+				Description: "Topic 备注 (up 到 128 字符)。",
 			},
 
 			"partition_num": {

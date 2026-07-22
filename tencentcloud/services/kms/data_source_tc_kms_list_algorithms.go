@@ -19,7 +19,7 @@ func DataSourceTencentCloudKmsListAlgorithms() *schema.Resource {
 			"symmetric_algorithms": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Symmetric encryption algorithms supported in this 地域",
+				Description: "Symmetric 加密 algorithms 支持 在 此 地域",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key_usage": {
@@ -38,7 +38,7 @@ func DataSourceTencentCloudKmsListAlgorithms() *schema.Resource {
 			"asymmetric_algorithms": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Asymmetric encryption algorithms supported in this 地域",
+				Description: "Asymmetric 加密 algorithms 支持 在 此 地域",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key_usage": {
@@ -57,7 +57,7 @@ func DataSourceTencentCloudKmsListAlgorithms() *schema.Resource {
 			"asymmetric_sign_verify_algorithms": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Asymmetric 签名 verification algorithms supported in this 地域",
+				Description: "Asymmetric 签名 verification algorithms 支持 在 此 地域",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key_usage": {

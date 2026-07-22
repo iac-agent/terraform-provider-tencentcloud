@@ -21,22 +21,22 @@ func DataSourceTencentCloudScfFunctions() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "名称 SCF function to be queried。",
+				Description: "名称 SCF 函数 到 是 queried。",
 			},
 			"namespace": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Namespace of the SCF function to be queried。",
+				Description: "Namespace 的 SCF 函数 到 是 queried。",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "描述 SCF function to be queried。",
+				Description: "描述 SCF 函数 到 是 queried。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "标签 of the SCF function to be queried，can use up to 10 标签",
+				Description: "标签 的 SCF 函数 到 是 queried，可以 使用 up 到 10 标签",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -47,73 +47,73 @@ func DataSourceTencentCloudScfFunctions() *schema.Resource {
 			"functions": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information 列表 functions. Each element 包含following attributes:",
+				Description: "An 信息 列表 functions. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 SCF function。",
+							Description: "名称 SCF 函数。",
 						},
 						"handler": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Handler of the SCF function。",
+							Description: "Handler 的 SCF 函数。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "描述 SCF function。",
+							Description: "描述 SCF 函数。",
 						},
 						"mem_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Memory size of the SCF function runtime，unit is M。",
+							Description: "Memory 大小 的 SCF 函数 runtime，单位 是 M。",
 						},
 						"timeout": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Timeout of the SCF function maximum 执行时间，unit is second。",
+							Description: "Timeout 的 SCF 函数 最大 执行时间，单位 是 second。",
 						},
 						"environment": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "Environment variable of the SCF function。",
+							Description: "Environment variable 的 SCF 函数。",
 						},
 						"runtime": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Runtime of the SCF function。",
+							Description: "Runtime 的 SCF 函数。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "私有网络 ID SCF function。",
+							Description: "私有网络 ID SCF 函数。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "子网 ID SCF function。",
+							Description: "子网 ID SCF 函数。",
 						},
 						"namespace": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Namespace of the SCF function。",
+							Description: "Namespace 的 SCF 函数。",
 						},
 						"role": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CAM 角色 of the SCF function。",
+							Description: "CAM 角色 的 SCF 函数。",
 						},
 						"cls_logset_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLS logset ID SCF function。",
+							Description: "CLS logset ID SCF 函数。",
 						},
 						"cls_topic_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLS topic ID SCF function。",
+							Description: "CLS 主题 ID SCF 函数。",
 						},
 						"l5_enable": {
 							Type:        schema.TypeBool,
@@ -133,42 +133,42 @@ func DataSourceTencentCloudScfFunctions() *schema.Resource {
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "标签 of the SCF function。",
+							Description: "标签 的 SCF 函数。",
 						},
 						"async_run_enable": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Whether asynchronous attribute is 已启用",
+							Description: "Whether asynchronous attribute 是 已启用",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of the SCF function。",
+							Description: "创建时间 的 SCF 函数。",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "修改时间 of the SCF function。",
+							Description: "修改时间 的 SCF 函数。",
 						},
 						"code_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "代码 size of the SCF function。",
+							Description: "代码 大小 的 SCF 函数。",
 						},
 						"code_result": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "代码 结果 of the SCF function。",
+							Description: "代码 结果 的 SCF 函数。",
 						},
 						"code_error": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "代码 错误 of the SCF function。",
+							Description: "代码 错误 的 SCF 函数。",
 						},
 						"err_no": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Errno of the SCF function。",
+							Description: "Errno 的 SCF 函数。",
 						},
 						"install_dependency": {
 							Type:        schema.TypeBool,
@@ -178,74 +178,74 @@ func DataSourceTencentCloudScfFunctions() *schema.Resource {
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "状态 SCF function。",
+							Description: "状态 SCF 函数。",
 						},
 						"status_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "状态 描述 SCF function。",
+							Description: "状态 描述 SCF 函数。",
 						},
 						"eip_fixed": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether EIP is a fixed IP。",
+							Description: "Whether EIP 是 fixed IP。",
 						},
 						"eips": {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Computed:    true,
-							Description: "EIP 列表 the SCF function。",
+							Description: "EIP 列表 SCF 函数。",
 						},
 						"host": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "主机 of the SCF function。",
+							Description: "主机 的 SCF 函数。",
 						},
 						"vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Vip of the SCF function。",
+							Description: "Vip 的 SCF 函数。",
 						},
 						"trigger_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Trigger details list the SCF function. Each element 包含following attributes:",
+							Description: "Trigger details 列表 SCF 函数. Each element 包含following attributes:",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "名称 SCF function trigger。",
+										Description: "名称 SCF 函数 触发器。",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "类型 SCF function trigger。",
+										Description: "类型 SCF 函数 触发器。",
 									},
 									"trigger_desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "TriggerDesc of the SCF function trigger。",
+										Description: "TriggerDesc 的 SCF 函数 触发器。",
 									},
 									"enable": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "是否enable SCF function trigger。",
+										Description: "是否enable SCF 函数 触发器。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "创建时间 of the SCF function trigger。",
+										Description: "创建时间 的 SCF 函数 触发器。",
 									},
 									"modify_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "修改时间 of the SCF function trigger。",
+										Description: "修改时间 的 SCF 函数 触发器。",
 									},
 									"custom_argument": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "用户-defined parameter of the SCF function trigger。",
+										Description: "用户-defined 参数 的 SCF 函数 触发器。",
 									},
 								},
 							},
@@ -253,38 +253,38 @@ func DataSourceTencentCloudScfFunctions() *schema.Resource {
 						"image_config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Image of the SCF function，conflict with `cos_bucket_name`，`cos_object_name`，`cos_bucket_region`，`zip_file`。",
+							Description: "Image 的 SCF 函数，conflict 使用 `cos_bucket_name`，`cos_object_name`，`cos_bucket_region`，`zip_file`。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"image_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The image 类型 personal or enterprise。",
+										Description: "镜像 类型 personal 或 enterprise。",
 									},
 									"image_uri": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The uri of image。",
+										Description: "uri 的 镜像。",
 									},
 									"registry_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The registry ID TCR. When image 类型 is enterprise，it must be set。",
+										Description: "registry ID TCR. 当 镜像 类型 是 enterprise，它 必须 是 集合。",
 									},
 									"entry_point": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The entrypoint of app。",
+										Description: "entrypoint 的 app。",
 									},
 									"command": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The command of entrypoint。",
+										Description: "command 的 entrypoint。",
 									},
 									"args": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "the parameters of command。",
+										Description: "参数 的 command。",
 									},
 									"container_image_accelerate": {
 										Type:        schema.TypeBool,
@@ -294,7 +294,7 @@ func DataSourceTencentCloudScfFunctions() *schema.Resource {
 									"image_port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Image function 端口 setting. 默认为 `9000`，-1 表示no 端口 mirroring function. Other 值 ranges 0 ~ 65535。",
+										Description: "Image 函数 端口 setting. 默认为 `9000`，-1 表示no 端口 mirroring 函数. Other 值 ranges 0 ~ 65535。",
 									},
 								},
 							},
@@ -302,18 +302,18 @@ func DataSourceTencentCloudScfFunctions() *schema.Resource {
 						"dns_cache": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否enable Dns caching capability，only the EVENT function is supported. 默认为 false。",
+							Description: "是否enable Dns caching capability，仅 EVENT 函数 是 支持. 默认为 false。",
 						},
 						"intranet_config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Intranet access configuration。",
+							Description: "Intranet 访问 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"ip_fixed": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "是否enable fixed intranet IP，ENABLE is 已启用，DISABLE is 已禁用",
+										Description: "是否enable fixed intranet IP，ENABLE 是 已启用，DISABLE 是 已禁用",
 									},
 									"ip_address": {
 										Type: schema.TypeList,
@@ -321,7 +321,7 @@ func DataSourceTencentCloudScfFunctions() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "If fixed intranet IP is 已启用，this field 返回IP list used。",
+										Description: "如果 fixed intranet IP 是 已启用，此 字段 返回IP 列表 使用。",
 									},
 								},
 							},

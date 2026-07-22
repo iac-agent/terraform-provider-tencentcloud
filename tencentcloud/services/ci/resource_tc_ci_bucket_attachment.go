@@ -31,7 +31,7 @@ func ResourceTencentCloudCiBucketAttachment() *schema.Resource {
 			"ci_status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Binding object storage state，`on`: bound，`off`: unbound，`unbinding`: unbinding。",
+				Description: "Binding 对象 存储 state，`在`: bound，`关闭`: unbound，`unbinding`: unbinding。",
 			},
 		},
 	}

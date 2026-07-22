@@ -46,7 +46,7 @@ func ResourceTencentCloudClickhouseAccountPermission() *schema.Resource {
 			"all_database": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether all database tables。",
+				Description: "Whether all 数据库 tables。",
 			},
 
 			"global_privileges": {
@@ -61,7 +61,7 @@ func ResourceTencentCloudClickhouseAccountPermission() *schema.Resource {
 			"database_privilege_list": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Database privilege list。",
+				Description: "Database privilege 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database_name": {
@@ -75,12 +75,12 @@ func ResourceTencentCloudClickhouseAccountPermission() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "Database privileges. Valid valuse: SELECT，INSERT_ALL，ALTER，TRUNCATE，DROP_TABLE，CREATE_TABLE，DROP_DATABASE。",
+							Description: "Database privileges. 有效 valuse: SELECT，INSERT_ALL，ALTER，TRUNCATE，DROP_TABLE，CREATE_TABLE，DROP_DATABASE。",
 						},
 						"table_privilege_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Table privilege list。",
+							Description: "Table privilege 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"table_name": {

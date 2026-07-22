@@ -27,13 +27,13 @@ func ResourceTencentCloudCssCallbackTemplate() *schema.Resource {
 			"template_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "模板名称Maximum length: 255 bytes. Only `Chinese`，`English`，`numbers`，`_`，`-` are supported。",
+				Description: "模板名称Maximum 长度: 255 bytes. Only `Chinese`，`English`，`numbers`，`_`，`-` 是 支持。",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "描述 information.Maximum length: 1024 bytes.Only `Chinese`，`English`，`numbers`，`_`，`-` are supported。",
+				Description: "描述 信息.Maximum 长度: 1024 bytes.Only `Chinese`，`English`，`numbers`，`_`，`-` 是 支持。",
 			},
 
 			"stream_begin_notify_url": {
@@ -69,7 +69,7 @@ func ResourceTencentCloudCssCallbackTemplate() *schema.Resource {
 			"callback_key": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Callback 键，public callback URL",
+				Description: "Callback 键，公有 callback URL",
 			},
 
 			"push_exception_notify_url": {

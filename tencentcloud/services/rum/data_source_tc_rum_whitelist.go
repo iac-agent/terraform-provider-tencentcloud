@@ -20,13 +20,13 @@ func DataSourceTencentCloudRumWhitelist() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance ID, such as taw-123.",
+				Description: "实例 ID, such 作为 taw-123.",
 			},
 
 			"whitelist_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "While list.",
+				Description: "While 列表.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"remark": {
@@ -47,7 +47,7 @@ func DataSourceTencentCloudRumWhitelist() *schema.Resource {
 						"ttl": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "End time.",
+							Description: "End 时间.",
 						},
 						"wid": {
 							Type:        schema.TypeString,
@@ -62,7 +62,7 @@ func DataSourceTencentCloudRumWhitelist() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time.",
+							Description: "Creation 时间.",
 						},
 					},
 				},
@@ -71,7 +71,7 @@ func DataSourceTencentCloudRumWhitelist() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

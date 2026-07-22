@@ -31,7 +31,7 @@ func ResourceTencentCloudLighthouseDisk() *schema.Resource {
 			"disk_size": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Disk size，unit: GB。",
+				Description: "Disk 大小，单位: GB。",
 			},
 
 			"disk_type": {
@@ -44,7 +44,7 @@ func ResourceTencentCloudLighthouseDisk() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Disk subscription related parameter settings。",
+				Description: "Disk subscription related 参数 settings。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"period": {
@@ -55,12 +55,12 @@ func ResourceTencentCloudLighthouseDisk() *schema.Resource {
 						"renew_flag": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Automatic renewal flag. 值: `NOTIFY_AND_AUTO_RENEW`: Notice expires and auto-renews. `NOTIFY_AND_MANUAL_RENEW`: Notification expires without automatic renewal，users need to manually renew. `DISABLE_NOTIFY_AND_AUTO_RENEW`: No automatic renewal and no notification. 默认值：`NOTIFY_AND_MANUAL_RENEW`. If this parameter is specified as `NOTIFY_AND_AUTO_RENEW`，the disk will be automatically renewed monthly when the 账号 balance is sufficient。",
+							Description: "Automatic renewal flag. 值: `NOTIFY_AND_AUTO_RENEW`: Notice expires 和 auto-renews. `NOTIFY_AND_MANUAL_RENEW`: Notification expires without automatic renewal，users need 到 manually renew. `DISABLE_NOTIFY_AND_AUTO_RENEW`: No automatic renewal 和 无 通知. 默认值：`NOTIFY_AND_MANUAL_RENEW`. 如果 此 参数 是 指定 作为 `NOTIFY_AND_AUTO_RENEW`， 磁盘 将 是 automatically renewed monthly 当 账号 balance 是 sufficient。",
 						},
 						"time_unit": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "newly purchased unit. 默认值：m。",
+							Description: "newly purchased 单位. 默认值：m。",
 						},
 					},
 				},
@@ -70,7 +70,7 @@ func ResourceTencentCloudLighthouseDisk() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Disk 名称 Maximum length 60。",
+				Description: "Disk 名称 Maximum 长度 60。",
 			},
 
 			"disk_count": {
@@ -84,37 +84,37 @@ func ResourceTencentCloudLighthouseDisk() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "指定disk backup quota. If not uploaded，the 默认为 no backup quota. Currently，only one disk backup quota is supported。",
+				Description: "指定disk 备份 配额. 如果 不 uploaded， 默认为 无 备份 配额. Currently，仅 一个 磁盘 备份 配额 是 支持。",
 			},
 
 			"auto_voucher": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "是否automatically use the voucher. Not used by default。",
+				Description: "是否automatically 使用 voucher. Not 使用 通过 默认值。",
 			},
 
 			"auto_mount_configuration": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Automatically mount and initialize data disks。",
+				Description: "Automatically mount 和 initialize 数据 disks。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "实例 ID to be mounted. The specified instance must be in the Running state。",
+							Description: "实例 ID 到 是 mounted. 指定 实例 必须 是 在 Running state。",
 						},
 						"mount_point": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The mount point within the instance. Only instances of the Linux operating system can pass in this parameter，and if it is not passed，it will be mounted under the /data/disk 路径 by default。",
+							Description: "mount point within 实例. Only 实例 的 Linux operating 系统 可以 pass 在 此 参数，和 如果 它 是 不 passed，它 将 是 mounted under /数据/磁盘 路径 通过 默认值。",
 						},
 						"file_system_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The file system 类型 值: ext4，xfs. Only instances of the Linux operating system can pass in this parameter，and if it is not passed，it 默认为 ext4。",
+							Description: "文件 系统 类型 值: ext4，xfs. Only 实例 的 Linux operating 系统 可以 pass 在 此 参数，和 如果 它 是 不 passed，它 默认为 ext4。",
 						},
 					},
 				},

@@ -31,7 +31,7 @@ func ResourceTencentCloudElasticsearchRestartInstanceOperation() *schema.Resourc
 				Default:  false,
 				ForceNew: true,
 				Type:     schema.TypeBool,
-				Description: "Force restart. Valid values:\n" +
+				Description: "Force restart. 有效 值:\n" +
 					"- true: Forced restart;\n" +
 					"- false: No forced restart;\n" +
 					"default false.",

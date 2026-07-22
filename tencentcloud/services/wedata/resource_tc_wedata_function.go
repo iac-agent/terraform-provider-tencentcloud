@@ -56,12 +56,12 @@ func ResourceTencentCloudWedataFunction() *schema.Resource {
 			"class_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Class 名称 function entry。",
+				Description: "Class 名称 函数 entry。",
 			},
 			"resource_list": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "Resource of the function，stored in WeData COS(.jar,...)。",
+				Description: "Resource 的 函数，stored 在 WeData COS(.jar,...)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"path": {
@@ -95,12 +95,12 @@ func ResourceTencentCloudWedataFunction() *schema.Resource {
 			"description": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "描述 function。",
+				Description: "描述 函数。",
 			},
 			"usage": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Usage of the function。",
+				Description: "Usage 的 函数。",
 			},
 			"param_desc": {
 				Required:    true,
@@ -115,7 +115,7 @@ func ResourceTencentCloudWedataFunction() *schema.Resource {
 			"example": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Example of the function。",
+				Description: "Example 的 函数。",
 			},
 			"comment": {
 				Required:    true,

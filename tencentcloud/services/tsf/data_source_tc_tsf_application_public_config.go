@@ -28,25 +28,25 @@ func DataSourceTencentCloudTsfApplicationPublicConfig() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "配置 ID list. Query all items 如果未传入，low 优先级",
+				Description: "配置 ID 列表. Query all items 如果未传入，low 优先级",
 			},
 
 			"config_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "配置 名称 Exact query. Query all items 如果未传入。",
+				Description: "配置 名称 Exact 查询. Query all items 如果未传入。",
 			},
 
 			"config_version": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "配置 版本 Exact query. Query all items 如果未传入。",
+				Description: "配置 版本 Exact 查询. Query all items 如果未传入。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Paginated global configuration  list. 注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "Paginated 全局 配置 列表. 注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
@@ -57,7 +57,7 @@ func DataSourceTencentCloudTsfApplicationPublicConfig() *schema.Resource {
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "配置 list。",
+							Description: "配置 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"config_id": {
@@ -98,12 +98,12 @@ func DataSourceTencentCloudTsfApplicationPublicConfig() *schema.Resource {
 									"application_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "application Id. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "应用 ID. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"application_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "application Id. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "应用 ID. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"delete_flag": {
 										Type:        schema.TypeBool,
@@ -113,12 +113,12 @@ func DataSourceTencentCloudTsfApplicationPublicConfig() *schema.Resource {
 									"last_update_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "last 更新时间.  注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "last 更新时间. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_version_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "配置 版本 count.  注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "配置 版本 count. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},

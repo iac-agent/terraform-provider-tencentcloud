@@ -32,14 +32,14 @@ func ResourceTencentCloudElasticsearchDiagnoseInstance() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Diagnostic items that need to be triggered。",
+				Description: "Diagnostic items 该 need 到 是 triggered。",
 			},
 
 			"diagnose_indices": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Indexes that need to be diagnosed. Wildcards are supported。",
+				Description: "Indexes 该 need 到 是 diagnosed. Wildcards 是 支持。",
 			},
 		},
 	}

@@ -19,13 +19,13 @@ func DataSourceTencentCloudTsfUsableUnitNamespaces() *schema.Resource {
 			"search_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "search by namespace id or namespace 名称",
+				Description: "search 通过 命名空间 ID 或 命名空间 名称",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "namespace object list。",
+				Description: "命名空间 对象 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
@@ -36,23 +36,23 @@ func DataSourceTencentCloudTsfUsableUnitNamespaces() *schema.Resource {
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "namespace list。",
+							Description: "命名空间 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"namespace_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "namespace id。",
+										Description: "命名空间 ID。",
 									},
 									"namespace_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "namespace 名称",
+										Description: "命名空间 名称",
 									},
 									"id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Unit namespace ID. 注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Unit 命名空间 ID. 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"gateway_instance_id": {
 										Type:        schema.TypeString,

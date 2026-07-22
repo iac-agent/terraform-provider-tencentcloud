@@ -29,28 +29,28 @@ func ResourceTencentCloudScfInvokeFunction() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Fill in RequestResponse for synchronized invocations (default and recommended) and Event for asychronized invocations. Note that for synchronized invocations，the max timeout 周期 is 300s. Choose asychronized invocations if the 必填 timeout 周期 is longer than 300 seconds. You can also use InvokeFunction for synchronized invocations。",
+				Description: "Fill 在 RequestResponse 对于 synchronized invocations (默认值 和 recommended) 和 Event 对于 asychronized invocations. 注意 该 对于 synchronized invocations， max 超时 周期 是 300s. Choose asychronized invocations 如果 必填 超时 周期 是 longer 比 300 秒. You 可以 also 使用 InvokeFunction 对于 synchronized invocations。",
 			},
 
 			"qualifier": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The 版本 or alias of the triggered function. It 默认为 $LATEST。",
+				Description: "版本 或 alias 的 triggered 函数. It 默认为 $LATEST。",
 			},
 
 			"client_context": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Function running parameter，which is in the JSON 格式 The maximum parameter size is 6 MB for synchronized invocations and 128KB for asynchronized invocations. This field corresponds to event input parameter。",
+				Description: "Function running 参数，其中 是 在 JSON 格式 最大 参数 大小 是 6 MB 对于 synchronized invocations 和 128KB 对于 asynchronized invocations. 此 字段 corresponds 到 事件 input 参数。",
 			},
 
 			"log_type": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Null for async invocations。",
+				Description: "Null 对于 async invocations。",
 			},
 
 			"namespace": {
@@ -64,7 +64,7 @@ func ResourceTencentCloudScfInvokeFunction() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Traffic routing 配置 in json 格式，e.g.，{k:v}. Please note that both k and v must be strings. Up to 1024 bytes allowed。",
+				Description: "Traffic routing 配置 在 json 格式，e.g.，{k:v}. Please note 该 both k 和 v 必须 是 strings. Up 到 1024 bytes allowed。",
 			},
 		},
 	}

@@ -36,7 +36,7 @@ func ResourceTencentCloudCkafkaRoute() *schema.Resource {
 			"vip_type": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Routing network 类型 (3:vpc routing; 4: standard support routing; 7: professional support routing)。",
+				Description: "Routing 网络 类型 (3:vpc routing; 4: standard support routing; 7: professional support routing)。",
 			},
 
 			"vpc_id": {
@@ -57,7 +57,7 @@ func ResourceTencentCloudCkafkaRoute() *schema.Resource {
 				Optional: true,
 				Computed: true,
 				Type:     schema.TypeInt,
-				Description: "Access type. Valid values:\n" +
+				Description: "Access 类型. 有效 值:\n" +
 					"- 0: PLAINTEXT (in clear text, supported by both the old version and the community version without user information)\n" +
 					"- 1: SASL_PLAINTEXT (in clear text, but at the beginning of the data, authentication will be logged in through SASL, which is only supported by the community version)\n" +
 					"- 2: SSL (SSL encrypted communication without user information, supported by both older and community versions)\n" +
@@ -79,7 +79,7 @@ func ResourceTencentCloudCkafkaRoute() *schema.Resource {
 			"public_network": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Public network。",
+				Description: "Public 网络。",
 			},
 
 			"ip": {
@@ -91,7 +91,7 @@ func ResourceTencentCloudCkafkaRoute() *schema.Resource {
 			"vip_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Virtual IP list。",
+				Description: "Virtual IP 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vip": {
@@ -110,7 +110,7 @@ func ResourceTencentCloudCkafkaRoute() *schema.Resource {
 			"broker_vip_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Virtual IP list (1 to 1 broker nodes)。",
+				Description: "Virtual IP 列表 (1 到 1 broker nodes)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vip": {

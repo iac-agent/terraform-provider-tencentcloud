@@ -24,13 +24,13 @@ func DataSourceTencentCloudRumLogExportList() *schema.Resource {
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Return result.",
+				Description: "Return 结果.",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

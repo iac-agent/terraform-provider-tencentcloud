@@ -25,35 +25,35 @@ func DataSourceTencentCloudWedataOpsAlarmMessage() *schema.Resource {
 			"alarm_message_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Alarm 消息 Id。",
+				Description: "Alarm 消息 ID。",
 			},
 
 			"time_zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "指定time 可用区 of the return date. default UTC+8。",
+				Description: "指定time 可用区 的 返回 date. 默认值 UTC+8。",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Alarm information。",
+				Description: "Alarm 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"alarm_message_id": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Alarm 消息 Id。",
+							Description: "Alarm 消息 ID。",
 						},
 						"alarm_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Alarm time. the same Alarm may be sent multiple times，only the latest Alarm time is displayed。",
+							Description: "Alarm 时间. same Alarm 可能 是 sent 多个 times，仅 latest Alarm 时间 是 displayed。",
 						},
 						"task_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task 名称",
+							Description: "任务 名称",
 						},
 						"task_id": {
 							Type:        schema.TypeString,
@@ -63,7 +63,7 @@ func DataSourceTencentCloudWedataOpsAlarmMessage() *schema.Resource {
 						"cur_run_date": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instance data time of the task。",
+							Description: "实例 数据 时间 的 任务。",
 						},
 						"alarm_reason": {
 							Type:        schema.TypeString,
@@ -78,12 +78,12 @@ func DataSourceTencentCloudWedataOpsAlarmMessage() *schema.Resource {
 						"alarm_rule_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "指定Id of the Alarm rule。",
+							Description: "指定Id 的 Alarm 规则。",
 						},
 						"alarm_ways": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Alarm channel 指定notification methods: 1. mail，2. sms，3. wechat，4. voice，5. wecom，6. Http，7. wecom group，8. lark group，9. dingtalk group，10. Slack group，11. Teams group (默认值：1. mail)。",
+							Description: "Alarm channel 指定notification methods: 1. mail，2. sms，3. wechat，4. voice，5. wecom，6. Http，7. wecom 组，8. lark 组，9. dingtalk 组，10. Slack 组，11. Teams 组 (默认值：1. mail)。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},

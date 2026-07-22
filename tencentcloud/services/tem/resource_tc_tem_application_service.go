@@ -28,68 +28,68 @@ func ResourceTencentCloudTemApplicationService() *schema.Resource {
 			"environment_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "environment ID。",
+				Description: "环境 ID。",
 			},
 
 			"application_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "application ID。",
+				Description: "应用 ID。",
 			},
 
 			"service": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "service detail list。",
+				Description: "服务 detail 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:         schema.TypeString,
 							Optional:     true,
-							Description:  "application service 类型: EXTERNAL | VPC | CLUSTER。",
+							Description:  "应用 服务 类型: EXTERNAL | VPC | CLUSTER。",
 							ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"EXTERNAL", "VPC", "CLUSTER"}),
 						},
 						"service_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "application 服务名称",
+							Description: "应用 服务名称",
 						},
 						"vpc_id": {
 							Optional:    true,
 							Type:        schema.TypeString,
-							Description: "ID vpc instance，必填 when 类型 is `VPC`。",
+							Description: "ID vpc 实例，必填 当 类型 是 `VPC`。",
 						},
 						"subnet_id": {
 							Optional:    true,
 							Type:        schema.TypeString,
-							Description: "ID subnet instance，必填 when 类型 is `VPC`。",
+							Description: "ID 子网 实例，必填 当 类型 是 `VPC`。",
 						},
 						"ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ip 地址 of application service。",
+							Description: "ip 地址 的 应用 服务。",
 						},
 						"port_mapping_item_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "端口 mapping item list。",
+							Description: "端口 mapping item 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"port": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "container 端口",
+										Description: "容器 端口",
 									},
 									"target_port": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "application listen 端口",
+										Description: "应用 listen 端口",
 									},
 									"protocol": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "UDP or TCP。",
+										Description: "UDP 或 TCP。",
 									},
 								},
 							},

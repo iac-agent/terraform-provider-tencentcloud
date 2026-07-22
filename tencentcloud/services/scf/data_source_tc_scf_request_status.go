@@ -25,31 +25,31 @@ func DataSourceTencentCloudScfRequestStatus() *schema.Resource {
 			"function_request_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID request to be queried。",
+				Description: "ID 请求 到 是 queried。",
 			},
 
 			"namespace": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Function namespace。",
+				Description: "Function 命名空间。",
 			},
 
 			"start_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "开始时间 of the query，for example `2017-05-16 20:00:00`. If it's left empty，it 默认为 15 minutes before the current time。",
+				Description: "开始时间 的 查询，对于 示例 `2017-05-16 20:00:00`. 如果 它's left 空，它 默认为 15 minutes before 当前 时间。",
 			},
 
 			"end_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "结束时间 of the query. such as `2017-05-16 20:59:59`. If `StartTime` is not specified，`EndTime` 默认为 the current time. If `StartTime` is specified，`EndTime` 为必填项，and it need to be later than the `StartTime`。",
+				Description: "结束时间 的 查询. such 作为 `2017-05-16 20:59:59`. 如果 `StartTime` 是 不 指定，`EndTime` 默认为 当前 时间. 如果 `StartTime` 是 指定，`EndTime` 为必填项，和 它 need 到 是 later 比 `StartTime`。",
 			},
 
 			"data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Details of the function running statusNote: this field may return `null`，indicating that no valid values can be obtained。",
+				Description: "Details 的 函数 running statusNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"function_name": {
@@ -60,7 +60,7 @@ func DataSourceTencentCloudScfRequestStatus() *schema.Resource {
 						"ret_msg": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "返回值 after the function is executed。",
+							Description: "返回值 after 函数 是 executed。",
 						},
 						"request_id": {
 							Type:        schema.TypeString,
@@ -75,17 +75,17 @@ func DataSourceTencentCloudScfRequestStatus() *schema.Resource {
 						"ret_code": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "结果 of the request. `0`: succeeded，`1`: running，`-1`: exception。",
+							Description: "结果 的 请求. `0`: succeeded，`1`: running，`-1`: exception。",
 						},
 						"duration": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Time consumed for the request in ms。",
+							Description: "Time consumed 对于 请求 在 ms。",
 						},
 						"mem_usage": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Time consumed by the request （MB）。",
+							Description: "Time consumed 通过 请求 （MB）。",
 						},
 						"retry_num": {
 							Type:        schema.TypeInt,

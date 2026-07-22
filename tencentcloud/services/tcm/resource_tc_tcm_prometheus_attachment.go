@@ -35,32 +35,32 @@ func ResourceTencentCloudTcmPrometheusAttachment() *schema.Resource {
 				MaxItems:    1,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Prometheus configuration。",
+				Description: "Prometheus 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "私有网络 ID for TMP。",
+							Description: "私有网络 ID 对于 TMP。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "子网 ID for TMP。",
+							Description: "子网 ID 对于 TMP。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "地域 for TMP。",
+							Description: "地域 对于 TMP。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Existed TMP id，auto create TMP 如果为空。",
+							Description: "Existed TMP ID，auto create TMP 如果为空。",
 						},
 						"custom_prom": {
 							Type:        schema.TypeList,
@@ -74,7 +74,7 @@ func ResourceTencentCloudTcmPrometheusAttachment() *schema.Resource {
 										Type:        schema.TypeBool,
 										Optional:    true,
 										Computed:    true,
-										Description: "是否为public 地址，default false。",
+										Description: "是否为public 地址，默认值 false。",
 									},
 									"vpc_id": {
 										Type:        schema.TypeString,
@@ -85,7 +85,7 @@ func ResourceTencentCloudTcmPrometheusAttachment() *schema.Resource {
 									"url": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Url of the prometheus。",
+										Description: "Url 的 prometheus。",
 									},
 									"auth_type": {
 										Type:        schema.TypeString,
@@ -96,14 +96,14 @@ func ResourceTencentCloudTcmPrometheusAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "用户名 of the prometheus，used in basic authentication 类型",
+										Description: "用户名 的 prometheus，使用 在 basic authentication 类型",
 									},
 									"password": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
 										Sensitive:   true,
-										Description: "密码 of the prometheus，used in basic authentication 类型",
+										Description: "密码 的 prometheus，使用 在 basic authentication 类型",
 									},
 								},
 							},

@@ -20,7 +20,7 @@ func DataSourceTencentCloudRedisInstanceNodeInfo() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID instance。",
+				Description: "ID 实例。",
 			},
 
 			"proxy_count": {
@@ -32,7 +32,7 @@ func DataSourceTencentCloudRedisInstanceNodeInfo() *schema.Resource {
 			"proxy": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Proxy node information。",
+				Description: "Proxy 节点 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"node_id": {
@@ -58,7 +58,7 @@ func DataSourceTencentCloudRedisInstanceNodeInfo() *schema.Resource {
 			"redis": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Redis node information。",
+				Description: "Redis 节点 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"node_id": {

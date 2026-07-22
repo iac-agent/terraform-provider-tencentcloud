@@ -28,19 +28,19 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Pts Scenario name.",
+				Description: "Pts Scenario 名称.",
 			},
 
 			"type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Pressure test engine type.",
+				Description: "Pressure 测试 引擎 类型.",
 			},
 
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project id.",
+				Description: "Project ID.",
 			},
 
 			"description": {
@@ -67,24 +67,24 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "Configuration of concurrent pressure mode.",
+										Description: "Configuration 的 concurrent pressure 模式.",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"stages": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "Multi-phase configuration array.",
+													Description: "Multi-phase 配置 数组.",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"duration_seconds": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "Pressure time.",
+																Description: "Pressure 时间.",
 															},
 															"target_virtual_users": {
 																Type:        schema.TypeInt,
 																Optional:    true,
-																Description: "Number of virtual users.",
+																Description: "Number 的 virtual users.",
 															},
 														},
 													},
@@ -92,7 +92,7 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 												"iteration_count": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Number of runs.",
+													Description: "Number 的 runs.",
 												},
 												"max_requests_per_second": {
 													Type:        schema.TypeInt,
@@ -102,7 +102,7 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 												"graceful_stop_seconds": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Wait time for graceful termination of the task.",
+													Description: "Wait 时间 对于 graceful termination 的 任务.",
 												},
 											},
 										},
@@ -111,7 +111,7 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "Configuration of RPS pressure mode.",
+										Description: "Configuration 的 RPS pressure 模式.",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"max_requests_per_second": {
@@ -122,12 +122,12 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 												"duration_seconds": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Pressure time.",
+													Description: "Pressure 时间.",
 												},
 												"resources": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Number of resources.",
+													Description: "Number 的 resources.",
 												},
 												"start_requests_per_second": {
 													Type:        schema.TypeInt,
@@ -137,12 +137,12 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 												"target_requests_per_second": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Target RPS, invalid input parameter.",
+													Description: "Target RPS, 无效 input 参数.",
 												},
 												"graceful_stop_seconds": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Elegant shutdown waiting time.",
+													Description: "Elegant shutdown waiting 时间.",
 												},
 											},
 										},
@@ -151,23 +151,23 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "Built-in stress mode in script.",
+										Description: "Built-在 stress 模式 在 脚本.",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"machine_number": {
 													Type:        schema.TypeInt,
 													Required:    true,
-													Description: "Number of machines.",
+													Description: "Number 的 machines.",
 												},
 												"machine_specification": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Machine specification.",
+													Description: "Machine 规格.",
 												},
 												"duration_seconds": {
 													Type:        schema.TypeInt,
 													Required:    true,
-													Description: "Pressure testing time.",
+													Description: "Pressure testing 时间.",
 												},
 											},
 										},
@@ -179,7 +179,7 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Source of stress.",
+							Description: "Source 的 stress.",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"region_id": {
@@ -203,7 +203,7 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Optional:    true,
-										Description: "Subnet ID list.",
+										Description: "Subnet ID 列表.",
 									},
 								},
 							},
@@ -239,23 +239,23 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 			"datasets": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Test data set.",
+				Description: "Test 数据 集合.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The file name where the test dataset is located.",
+							Description: "文件 名称 其中 测试 dataset 是 located.",
 						},
 						"split": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Test whether the dataset is fragmented.",
+							Description: "Test whether dataset 是 fragmented.",
 						},
 						"header_in_file": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Whether the first line is the parameter name.",
+							Description: "Whether first line 是 参数 名称.",
 						},
 						"header_columns": {
 							Type: schema.TypeSet,
@@ -263,22 +263,22 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "Parameter name array.",
+							Description: "Parameter 名称 数组.",
 						},
 						"line_count": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Number of file lines.",
+							Description: "Number 的 文件 lines.",
 						},
 						"updated_at": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Update time.",
+							Description: "Update 时间.",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Number of file bytes.",
+							Description: "Number 的 文件 bytes.",
 						},
 						"head_lines": {
 							Type: schema.TypeSet,
@@ -286,7 +286,7 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "Header data row.",
+							Description: "Header 数据 row.",
 						},
 						"tail_lines": {
 							Type: schema.TypeSet,
@@ -294,12 +294,12 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "Trailing data row.",
+							Description: "Trailing 数据 row.",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File type.",
+							Description: "File 类型.",
 						},
 						"file_id": {
 							Type:        schema.TypeString,
@@ -322,39 +322,39 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 			"cron_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "cron job ID.",
+				Description: "cron 作业 ID.",
 			},
 
 			"test_scripts": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Test script file information.",
+				Description: "Test 脚本 文件 信息.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File name.",
+							Description: "File 名称.",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "File size.",
+							Description: "File 大小.",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File type.",
+							Description: "File 类型.",
 						},
 						"updated_at": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Update time.",
+							Description: "Update 时间.",
 						},
 						"encoded_content": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Base64 encoded file content.",
+							Description: "Base64 encoded 文件 内容.",
 						},
 						"encoded_http_archive": {
 							Type:        schema.TypeString,
@@ -364,7 +364,7 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 						"load_weight": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Script weight, range 1-100.",
+							Description: "Script 权重, 范围 1-100.",
 						},
 					},
 				},
@@ -373,28 +373,28 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 			"protocols": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Protocol file path.",
+				Description: "Protocol 文件 路径.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Protocol name.",
+							Description: "Protocol 名称.",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "File name.",
+							Description: "File 名称.",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File type.",
+							Description: "File 类型.",
 						},
 						"updated_at": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Update time.",
+							Description: "Update 时间.",
 						},
 						"file_id": {
 							Type:        schema.TypeString,
@@ -408,33 +408,33 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 			"request_files": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Request file path.",
+				Description: "Request 文件 路径.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File name.",
+							Description: "File 名称.",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "File size.",
+							Description: "File 大小.",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File type.",
+							Description: "File 类型.",
 						},
 						"updated_at": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Update time.",
+							Description: "Update 时间.",
 						},
 						"file_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File id.",
+							Description: "File ID.",
 						},
 					},
 				},
@@ -450,44 +450,44 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 						"sla_rules": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "SLA rules.",
+							Description: "SLA 规则.",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"metric": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Pressure test index.",
+										Description: "Pressure 测试 index.",
 									},
 									"aggregation": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Aggregation method of pressure test index.",
+										Description: "Aggregation 方法 的 pressure 测试 index.",
 									},
 									"condition": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Pressure test index condition judgment symbol.",
+										Description: "Pressure 测试 index condition judgment symbol.",
 									},
 									"value": {
 										Type:        schema.TypeFloat,
 										Optional:    true,
-										Description: "Threshold value.",
+										Description: "Threshold 值.",
 									},
 									"label_filter": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "tag.",
+										Description: "标签.",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"label_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Label name.",
+													Description: "Label 名称.",
 												},
 												"label_value": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Label value.",
+													Description: "Label 值.",
 												},
 											},
 										},
@@ -495,7 +495,7 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 									"abort_flag": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Whether to stop the stress test task.",
+										Description: "Whether 到 stop stress 测试 任务.",
 									},
 									"for": {
 										Type:        schema.TypeString,
@@ -509,7 +509,7 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Alarm notification channel.",
+							Description: "Alarm 通知 channel.",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"notice_id": {
@@ -520,7 +520,7 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 									"amp_consumer_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "AMP consumer ID.",
+										Description: "AMP 消费者 ID.",
 									},
 								},
 							},
@@ -538,27 +538,27 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File name.",
+							Description: "File 名称.",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "File size.",
+							Description: "File 大小.",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File type.",
+							Description: "File 类型.",
 						},
 						"updated_at": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Update time.",
+							Description: "Update 时间.",
 						},
 						"file_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "File id.",
+							Description: "File ID.",
 						},
 					},
 				},
@@ -568,13 +568,13 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "Domain name resolution configuration.",
+				Description: "Domain 名称 resolution 配置.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"host_aliases": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Domain name binding configuration.",
+							Description: "Domain 名称 binding 配置.",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"host_names": {
@@ -583,12 +583,12 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Optional:    true,
-										Description: "List of domain names to be bound.",
+										Description: "List 的 域名 names 到 是 bound.",
 									},
 									"ip": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The IP address to be bound.",
+										Description: "IP 地址 到 是 bound.",
 									},
 								},
 							},
@@ -597,7 +597,7 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "DNS configuration.",
+							Description: "DNS 配置.",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"nameservers": {
@@ -618,43 +618,43 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 			"status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Scene statu Note: this field may return null, indicating that a valid value cannot be obtained.",
+				Description: "Scene statu 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 			},
 
 			"created_at": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Scene creation time.",
+				Description: "Scene creation 时间.",
 			},
 
 			"updated_at": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Scene modification time.",
+				Description: "Scene modification 时间.",
 			},
 
 			"app_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "App ID Note: this field may return null, indicating that a valid value cannot be obtained.",
+				Description: "App ID 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 			},
 
 			"uin": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "User ID Note: this field may return null, indicating that a valid value cannot be obtained.",
+				Description: "User ID 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 			},
 
 			"sub_account_uin": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Sub-user ID Note: this field may return null, indicating that a valid value cannot be obtained.",
+				Description: "Sub-用户 ID 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 			},
 
 			// "notification_hooks": {
 			// 	Type:        schema.TypeList,
 			// 	Computed:    true,
-			// 	Description: "Notification event callback Note: this field may return null, indicating that a valid value cannot be obtained.",
+			// 	Description: "Notification 事件 callback 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 			// 	Elem: &schema.Resource{
 			// 		Schema: map[string]*schema.Schema{
 			// 			"events": {
@@ -663,12 +663,12 @@ func ResourceTencentCloudPtsScenario() *schema.Resource {
 			// 					Type: schema.TypeString,
 			// 				},
 			// 				Optional:    true,
-			// 				Description: "Notification event Note: this field may return null, indicating that a valid value cannot be obtained.",
+			// 				Description: "Notification 事件 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 			// 			},
 			// 			"url": {
 			// 				Type:        schema.TypeString,
 			// 				Optional:    true,
-			// 				Description: "Callback URL Note: this field may return null, indicating that a valid value cannot be obtained.",
+			// 				Description: "Callback URL 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 			// 			},
 			// 		},
 			// 	},

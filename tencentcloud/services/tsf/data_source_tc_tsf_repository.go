@@ -19,19 +19,19 @@ func DataSourceTencentCloudTsfRepository() *schema.Resource {
 			"search_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Query keywords (search by Repository 名称)。",
+				Description: "Query keywords (search 通过 Repository 名称)。",
 			},
 
 			"repository_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Repository 类型 (default Repository: default，private Repository: private)。",
+				Description: "Repository 类型 (默认值 Repository: 默认值，私有 Repository: 私有)。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "A 列表 Repository information that meets the query criteria。",
+				Description: "A 列表 Repository 信息 该 meets 查询 criteria。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
@@ -42,13 +42,13 @@ func DataSourceTencentCloudTsfRepository() *schema.Resource {
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Repository information list. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Repository 信息 列表. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"repository_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "repository Id。",
+										Description: "repository ID。",
 									},
 									"repository_name": {
 										Type:        schema.TypeString,
@@ -58,17 +58,17 @@ func DataSourceTencentCloudTsfRepository() *schema.Resource {
 									"repository_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Repository 类型 (default Repository: default，private Repository: private)。",
+										Description: "Repository 类型 (默认值 Repository: 默认值，私有 Repository: 私有)。",
 									},
 									"repository_desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Repository 描述 (default warehouse: default，private warehouse: private)。",
+										Description: "Repository 描述 (默认值 warehouse: 默认值，私有 warehouse: 私有)。",
 									},
 									"is_used": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "是否repository is being used. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "是否repository 是 being 使用. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,

@@ -39,12 +39,12 @@ func ResourceTencentCloudPrivateDnsRecord() *schema.Resource {
 			"sub_domain": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Subdomain，such as `www`，`m`，and `@`。",
+				Description: "Subdomain，such 作为 `www`，`m`，和 `@`。",
 			},
 			"record_value": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Record 值，such as IP: 192.168.10.2，CNAME: cname.qcloud.com，and MX: mail.qcloud.com。",
+				Description: "Record 值，such 作为 IP: 192.168.10.2，CNAME: cname.qcloud.com，和 MX: mail.qcloud.com。",
 			},
 			"weight": {
 				Type:         schema.TypeInt,
@@ -55,13 +55,13 @@ func ResourceTencentCloudPrivateDnsRecord() *schema.Resource {
 			"mx": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "MX 优先级，which 为必填项 when the record 类型 is MX. 有效值：5，10，15，20，30，40，50。",
+				Description: "MX 优先级，其中 为必填项 当 记录 类型 是 MX. 有效值：5，10，15，20，30，40，50。",
 			},
 			"ttl": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Record cache time. The smaller the 值，the faster the record will take effect. 取值范围：1~86400s。",
+				Description: "Record 缓存 时间. smaller 值， faster 记录 将 take effect. 取值范围：1~86400s。",
 			},
 			"status": {
 				Type:         schema.TypeString,

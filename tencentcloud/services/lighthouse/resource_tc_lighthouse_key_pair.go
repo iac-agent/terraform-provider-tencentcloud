@@ -27,24 +27,24 @@ func ResourceTencentCloudLighthouseKeyPair() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "键 pair 名称，which can contain up to 25 digits，letters，and underscores。",
+				Description: "键 pair 名称，其中 可以 contain up 到 25 digits，letters，和 underscores。",
 			},
 			"public_key": {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Public 键 内容 of the 键 pair，which is in the OpenSSH RSA 格式",
+				Description: "Public 键 内容 的 键 pair，其中 是 在 OpenSSH RSA 格式",
 			},
 			"private_key": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "键 to private 键",
+				Description: "键 到 私有 键",
 			},
 			"created_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "创建时间. Expressed according to the ISO8601 standard，and using UTC time. 格式: YYYY-MM-DDThh:mm:ssZ。",
+				Description: "创建时间. Expressed according 到 ISO8601 standard，和 使用 UTC 时间. 格式: YYYY-MM-DDThh:mm:ssZ。",
 			},
 		},
 	}

@@ -29,13 +29,13 @@ func ResourceTencentCloudWafIpAccessControlV2() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Specific 域名 名称，for example，test.qcloudwaf.com.\nGlobal 域名 名称，that is，global。",
+				Description: "Specific 域名 名称，对于 示例，测试.qcloudwaf.com.\nGlobal 域名 名称，该 是，全局。",
 			},
 
 			"ip_list": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "IP parameter list。",
+				Description: "IP 参数 列表。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -65,7 +65,7 @@ func ResourceTencentCloudWafIpAccessControlV2() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Scheduled configuration 类型",
+				Description: "Scheduled 配置 类型",
 			},
 
 			"job_date_time": {
@@ -73,24 +73,24 @@ func ResourceTencentCloudWafIpAccessControlV2() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Details of scheduled configuration。",
+				Description: "Details 的 scheduled 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"timed": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Time parameters for scheduled execution\n注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Time 参数 对于 scheduled execution\n注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"start_date_time": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Start 时间戳，in seconds\n注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Start 时间戳，在 秒\n注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"end_date_time": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "End 时间戳，in seconds\n注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "End 时间戳，在 秒\n注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -98,13 +98,13 @@ func ResourceTencentCloudWafIpAccessControlV2() *schema.Resource {
 						"cron": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Time parameters for periodic execution\n注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Time 参数 对于 periodic execution\n注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"days": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Days in each month for execution\n注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Days 在 each month 对于 execution\n注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Schema{
 											Type: schema.TypeInt,
 										},
@@ -112,7 +112,7 @@ func ResourceTencentCloudWafIpAccessControlV2() *schema.Resource {
 									"w_days": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Days of each week for execution\n注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Days 的 each week 对于 execution\n注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Schema{
 											Type: schema.TypeInt,
 										},

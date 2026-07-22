@@ -25,19 +25,19 @@ func DataSourceTencentCloudScfTriggers() *schema.Resource {
 			"namespace": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Namespace. 默认值：default。",
+				Description: "Namespace. 默认值：默认值。",
 			},
 
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "表示by which field to sort the returned results. 有效值：add_time，mod_time. 默认值：mod_time。",
+				Description: "表示by 其中 字段 到 sort 返回 results. 有效值：add_time，mod_time. 默认值：mod_time。",
 			},
 
 			"order": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "表示是否returned results are sorted in ascending or 降序 有效值：ASC，DESC. 默认值：DESC。",
+				Description: "表示是否returned results 是 sorted 在 ascending 或 降序 有效值：ASC，DESC. 默认值：DESC。",
 			},
 
 			"filters": {
@@ -49,7 +49,7 @@ func DataSourceTencentCloudScfTriggers() *schema.Resource {
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Fields to be filtered. Up to 10 conditions allowed.Values of 名称: VpcId，SubnetId，ClsTopicId，ClsLogsetId，角色，CfsId，CfsMountInsId，Eip. Values 限制: 1.名称 options: 状态，Runtime，FunctionType，PublicNetStatus，AsyncRunEnable，TraceEnable. Values 限制: 20.When 名称 is Runtime，CustomImage refers to the image 类型 function。",
+							Description: "Fields 到 是 filtered. Up 到 10 conditions allowed.Values 的 名称: VpcId，SubnetId，ClsTopicId，ClsLogsetId，角色，CfsId，CfsMountInsId，Eip. Values 限制: 1.名称 options: 状态，Runtime，FunctionType，PublicNetStatus，AsyncRunEnable，TraceEnable. Values 限制: 20.当 名称 是 Runtime，CustomImage refers 到 镜像 类型 函数。",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -57,7 +57,7 @@ func DataSourceTencentCloudScfTriggers() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Filter values of the field。",
+							Description: "过滤器 值 的 字段。",
 						},
 					},
 				},
@@ -66,7 +66,7 @@ func DataSourceTencentCloudScfTriggers() *schema.Resource {
 			"triggers": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Trigger list。",
+				Description: "Trigger 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"enable": {
@@ -77,7 +77,7 @@ func DataSourceTencentCloudScfTriggers() *schema.Resource {
 						"qualifier": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Function 版本 or alias。",
+							Description: "Function 版本 或 alias。",
 						},
 						"trigger_name": {
 							Type:        schema.TypeString,
@@ -92,17 +92,17 @@ func DataSourceTencentCloudScfTriggers() *schema.Resource {
 						"trigger_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Detailed configuration of trigger。",
+							Description: "Detailed 配置 的 触发器。",
 						},
 						"available_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "是否trigger is available。",
+							Description: "是否trigger 是 可用。",
 						},
 						"custom_argument": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Custom parameterNote: this field may return null，indicating that no valid values can be obtained。",
+							Description: "Custom parameterNote: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"add_time": {
 							Type:        schema.TypeString,
@@ -117,7 +117,7 @@ func DataSourceTencentCloudScfTriggers() *schema.Resource {
 						"resource_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Minimum resource ID trigger。",
+							Description: "Minimum 资源 ID 触发器。",
 						},
 						"bind_status": {
 							Type:        schema.TypeString,
@@ -127,7 +127,7 @@ func DataSourceTencentCloudScfTriggers() *schema.Resource {
 						"trigger_attribute": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Trigger 类型 Two-way means that the trigger can be manipulated in both consoles，while one-way means that the trigger can be created only in the SCF Console。",
+							Description: "Trigger 类型 Two-way 表示 该 触发器 可以 是 manipulated 在 both consoles，while 一个-way 表示 该 触发器 可以 是 创建 仅 在 SCF Console。",
 						},
 					},
 				},

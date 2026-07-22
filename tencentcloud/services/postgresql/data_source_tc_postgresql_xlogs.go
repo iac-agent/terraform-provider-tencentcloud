@@ -28,7 +28,7 @@ func DataSourceTencentCloudPostgresqlXlogs() *schema.Resource {
 			"start_time": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Xlog 开始时间，格式 `yyyy-MM-dd hh:mm:ss`，开始时间 cannot before 7 days ago。",
+				Description: "Xlog 开始时间，格式 `yyyy-MM-dd hh:mm:ss`，开始时间 不能 before 7 days ago。",
 			},
 			"end_time": {
 				Type:        schema.TypeString,
@@ -43,38 +43,38 @@ func DataSourceTencentCloudPostgresqlXlogs() *schema.Resource {
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "列表 Xlog query 结果",
+				Description: "列表 Xlog 查询 结果",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Xlog id。",
+							Description: "Xlog ID。",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Xlog file created 开始时间。",
+							Description: "Xlog 文件 创建 开始时间。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Xlog file created 结束时间。",
+							Description: "Xlog 文件 创建 结束时间。",
 						},
 						"internal_addr": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Xlog internal download 地址",
+							Description: "Xlog 内部 download 地址",
 						},
 						"external_addr": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Xlog external download 地址",
+							Description: "Xlog 外部 download 地址",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Xlog file size。",
+							Description: "Xlog 文件 大小。",
 						},
 					},
 				},

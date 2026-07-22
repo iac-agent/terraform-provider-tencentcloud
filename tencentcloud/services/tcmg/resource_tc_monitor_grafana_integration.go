@@ -33,7 +33,7 @@ func ResourceTencentCloudMonitorGrafanaIntegration() *schema.Resource {
 			"integration_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "integration id。",
+				Description: "integration ID。",
 			},
 
 			"kind": {
@@ -47,7 +47,7 @@ func ResourceTencentCloudMonitorGrafanaIntegration() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "generated json string of given integration json schema。",
+				Description: "generated json 字符串 的 given integration json schema。",
 			},
 
 			"description": {

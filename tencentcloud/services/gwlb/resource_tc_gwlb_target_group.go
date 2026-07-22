@@ -26,42 +26,42 @@ func ResourceTencentCloudGwlbTargetGroup() *schema.Resource {
 			"target_group_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Target 组名称，limited to 60 characters。",
+				Description: "Target 组名称，limited 到 60 字符。",
 			},
 
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "VPCID attribute of target group. If this parameter is left blank，the default VPC will be used。",
+				Description: "VPCID attribute 的 目标 组. 如果 此 参数 是 left blank， 默认值 VPC 将 是 使用。",
 			},
 
 			"port": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Default 端口 of the target group，which can be used when servers are added later. Either '端口' or 'TargetGroupInstances.N.端口' must be filled in。",
+				Description: "Default 端口 的 目标 组，其中 可以 是 使用 当 servers 是 added later. Either '端口' 或 'TargetGroupInstances.N.端口' 必须 是 filled 在。",
 			},
 
 			"target_group_instances": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Real server bound to a target group。",
+				Description: "Real 服务器 bound 到 目标 组。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"bind_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Private network IP of target group instance。",
+							Description: "Private 网络 IP 的 目标 组 实例。",
 						},
 						"port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "端口 of target group instance. Only 6081 is supported。",
+							Description: "端口 的 目标 组 实例. Only 6081 是 支持。",
 						},
 						"weight": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "权重 of target group instance. Only 0 or 16 is supported，and non-0 is uniformly treated as 16。",
+							Description: "权重 的 目标 组 实例. Only 0 或 16 是 支持，和 non-0 是 uniformly treated 作为 16。",
 						},
 					},
 				},
@@ -71,7 +71,7 @@ func ResourceTencentCloudGwlbTargetGroup() *schema.Resource {
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: true,
-				Description: "GWLB target group protocol.\n" +
+				Description: "GWLB 目标 组 protocol.\n" +
 					"	- TENCENT_GENEVE: GENEVE standard protocol;\n" +
 					"	- AWS_GENEVE: GENEVE compatibility protocol (a ticket is required for allowlisting).",
 			},
@@ -87,13 +87,13 @@ func ResourceTencentCloudGwlbTargetGroup() *schema.Resource {
 						"health_switch": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "是否enable the health check。",
+							Description: "是否enable health check。",
 						},
 						"protocol": {
 							Type:     schema.TypeString,
 							Optional: true,
 							Computed: true,
-							Description: "Protocol used for health check, which supports PING and TCP and is PING by default.\n" +
+							Description: "Protocol 使用 对于 health check, 其中 支持 PING 和 TCP 和 是 PING 通过 默认值.\n" +
 								"	- PING: icmp;\n" +
 								"	- TCP: tcp.",
 						},
@@ -101,31 +101,31 @@ func ResourceTencentCloudGwlbTargetGroup() *schema.Resource {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Health check 端口，which 为必填项 when the probe 协议 is TCP。",
+							Description: "Health check 端口，其中 为必填项 当 probe 协议 是 TCP。",
 						},
 						"timeout": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Health check timeout. The 默认为 2 seconds. 取值范围：2-30 seconds。",
+							Description: "Health check 超时. 默认为 2 秒. 取值范围：2-30 秒。",
 						},
 						"interval_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Detection interval time. The 默认为 5 seconds. 取值范围：2-300 seconds。",
+							Description: "Detection 间隔 时间. 默认为 5 秒. 取值范围：2-300 秒。",
 						},
 						"health_num": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Health detection threshold. The 默认为 3 times. 取值范围：2-10 times。",
+							Description: "Health detection 阈值. 默认为 3 times. 取值范围：2-10 times。",
 						},
 						"un_health_num": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Unhealth detection threshold. The 默认为 3 times. 取值范围：2-10 times。",
+							Description: "Unhealth detection 阈值. 默认为 3 times. 取值范围：2-10 times。",
 						},
 					},
 				},
@@ -143,7 +143,7 @@ func ResourceTencentCloudGwlbTargetGroup() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether \"All Dead, All Alive\" is supported. It is supported by default.",
+				Description: "Whether \"All Dead, All Alive\" 是 支持. It 是 支持 通过 默认值.",
 			},
 		},
 	}

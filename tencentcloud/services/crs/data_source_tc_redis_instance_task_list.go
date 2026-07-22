@@ -20,7 +20,7 @@ func DataSourceTencentCloudRedisInstanceTaskList() *schema.Resource {
 			"instance_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "ID instance。",
+				Description: "ID 实例。",
 			},
 
 			"instance_name": {
@@ -44,7 +44,7 @@ func DataSourceTencentCloudRedisInstanceTaskList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Task 类型",
+				Description: "任务 类型",
 			},
 
 			"begin_time": {
@@ -56,7 +56,7 @@ func DataSourceTencentCloudRedisInstanceTaskList() *schema.Resource {
 			"end_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Termination time。",
+				Description: "Termination 时间。",
 			},
 
 			"task_status": {
@@ -65,7 +65,7 @@ func DataSourceTencentCloudRedisInstanceTaskList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Task 状态",
+				Description: "任务 状态",
 			},
 
 			"result": {
@@ -74,7 +74,7 @@ func DataSourceTencentCloudRedisInstanceTaskList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Task 状态",
+				Description: "任务 状态",
 			},
 
 			"operate_uin": {
@@ -89,7 +89,7 @@ func DataSourceTencentCloudRedisInstanceTaskList() *schema.Resource {
 			"tasks": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Task details。",
+				Description: "任务 details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"task_id": {
@@ -105,37 +105,37 @@ func DataSourceTencentCloudRedisInstanceTaskList() *schema.Resource {
 						"task_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Task 类型",
+							Description: "任务 类型",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 instance。",
+							Description: "名称 实例。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID instance。",
+							Description: "ID 实例。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The project ID。",
+							Description: "项目 ID。",
 						},
 						"progress": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Task progress。",
+							Description: "任务 progress。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 结束时间。",
+							Description: "结束时间。",
 						},
 						"result": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Task 状态",
+							Description: "任务 状态",
 						},
 					},
 				},

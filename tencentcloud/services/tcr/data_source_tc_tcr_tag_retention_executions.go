@@ -25,7 +25,7 @@ func DataSourceTencentCloudTcrTagRetentionExecutions() *schema.Resource {
 			"retention_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "retention id。",
+				Description: "retention ID。",
 			},
 
 			"retention_execution_list": {
@@ -37,12 +37,12 @@ func DataSourceTencentCloudTcrTagRetentionExecutions() *schema.Resource {
 						"execution_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "execution id。",
+							Description: "execution ID。",
 						},
 						"retention_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "retention id。",
+							Description: "retention ID。",
 						},
 						"start_time": {
 							Type:        schema.TypeString,

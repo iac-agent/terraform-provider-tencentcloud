@@ -34,21 +34,21 @@ func ResourceTencentCloudTeoConfigGroupVersion() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "GroupId of the 版本 to be created。",
+				Description: "GroupId 的 版本 到 是 创建。",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "版本 描述 The maximum length allowed is 50 characters. This field can be 用于provide details about the application scenarios of this 版本",
+				Description: "版本 描述 最大 长度 allowed 是 50 字符. 此 字段 可以 是 用于provide details about 应用 scenarios 的 此 版本",
 			},
 
 			"content": {
 				Type:             schema.TypeString,
 				Required:         true,
 				ForceNew:         true,
-				Description:      "Configuration 内容 to be imported. It 为必填项 to be in JSON 格式 and encoded in UTF-8. Please refer to the example below for the configuration file 内容",
+				Description:      "Configuration 内容 到 是 imported. It 为必填项 到 是 在 JSON 格式 和 encoded 在 UTF-8. Please refer 到 示例 below 对于 配置 文件 内容",
 				DiffSuppressFunc: helper.DiffSupressJSON,
 			},
 
@@ -61,13 +61,13 @@ func ResourceTencentCloudTeoConfigGroupVersion() *schema.Resource {
 			"version_number": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "版本 number。",
+				Description: "版本 数量。",
 			},
 
 			"group_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Configuration group 类型 有效值：l7_acceleration (Layer 7 acceleration configuration group)，edge_functions (Edge function configuration group)。",
+				Description: "Configuration 组 类型 有效值：l7_acceleration (Layer 7 acceleration 配置 组)，edge_functions (Edge 函数 配置 组)。",
 			},
 
 			"status": {
@@ -79,7 +79,7 @@ func ResourceTencentCloudTeoConfigGroupVersion() *schema.Resource {
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "版本 创建时间. The time follows the ISO 8601 standard in the date and 时间格式。",
+				Description: "版本 创建时间. 时间 follows ISO 8601 standard 在 date 和 时间格式。",
 			},
 		},
 	}

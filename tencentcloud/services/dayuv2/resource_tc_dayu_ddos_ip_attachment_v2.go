@@ -28,14 +28,14 @@ func ResourceTencentCloudDayuDDosIpAttachmentV2() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Anti-DDoS instance ID。",
+				Description: "Anti-DDoS 实例 ID。",
 			},
 
 			"bound_ip_list": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "数组 IPs to bind to the Anti-DDoS instance. For Anti-DDoS Pro Single IP instance，the array 包含only one IP. If there are no IPs to bind，it is empty; however，either BoundDevList or UnBoundDevList must not be empty。",
+				Description: "数组 IPs 到 bind 到 Anti-DDoS 实例. For Anti-DDoS Pro Single IP 实例， 数组 包含only 一个 IP. 如果 there 是 无 IPs 到 bind，它 是 空; however，either BoundDevList 或 UnBoundDevList 必须 不 是 空。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ip": {
@@ -46,17 +46,17 @@ func ResourceTencentCloudDayuDDosIpAttachmentV2() *schema.Resource {
 						"biz_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Category of product that can be bound. 有效值：public (CVM and CLB)，bm (BM)，eni (ENI)，vpngw (VPN gateway)，natgw (NAT gateway)，waf (WAF)，fpc (financial products)，gaap (GAAP)，and other (hosted IP). This field 为必填项 when you perform binding。",
+							Description: "Category 的 product 该 可以 是 bound. 有效值：公有 (CVM 和 CLB)，bm (BM)，eni (ENI)，vpngw (VPN 网关)，natgw (NAT 网关)，waf (WAF)，fpc (financial products)，gaap (GAAP)，和 other (hosted IP). 此 字段 为必填项 当 您 perform binding。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Anti-DDoS instance ID IP. This field 为必填项 only when the instance is bound to an IP. For example，this field 实例 ID will be eni-* if the instance ID is bound to an ENI IP; none if there is no instance to bind to a managed IP。",
+							Description: "Anti-DDoS 实例 ID IP. 此 字段 为必填项 仅 当 实例 是 bound 到 IP. For 示例，此 字段 实例 ID 将 是 eni-* 如果 实例 ID 是 bound 到 ENI IP; none 如果 there 是 无 实例 到 bind 到 managed IP。",
 						},
 						"device_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Sub-product category. 有效值：cvm (CVM)，lb (Load balancer)，eni (ENI)，vpngw (VPN gateway)，natgw (NAT gateway)，waf (WAF)，fpc (financial products)，gaap (GAAP)，eip (BM EIP) and other (managed IP). This field 为必填项 when you perform binding。",
+							Description: "Sub-product category. 有效值：cvm (CVM)，lb (Load balancer)，eni (ENI)，vpngw (VPN 网关)，natgw (NAT 网关)，waf (WAF)，fpc (financial products)，gaap (GAAP)，eip (BM EIP) 和 other (managed IP). 此 字段 为必填项 当 您 perform binding。",
 						},
 					},
 				},

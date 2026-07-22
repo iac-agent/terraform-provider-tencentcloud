@@ -33,33 +33,33 @@ func ResourceTencentCloudIdentityCenterRoleConfiguration() *schema.Resource {
 			"role_configuration_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Access configuration 名称，which 包含up to 128 characters，including English letters，digits，and hyphens (-)。",
+				Description: "Access 配置 名称，其中 包含up 到 128 字符，包括 English letters，digits，和 hyphens (-)。",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Access configuration 描述，which 包含up to 1024 characters。",
+				Description: "Access 配置 描述，其中 包含up 到 1024 字符。",
 			},
 
 			"session_duration": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Session duration. It 表示maximum session duration when CIC users use the access configuration to access the target 账号 of the Tencent Cloud Organization. 单位：seconds. 取值范围：900-43,200 (15 minutes to 12 hours). 默认值：3600 (1 hour)。",
+				Description: "Session 时长. It 表示maximum 会话 时长 当 CIC users 使用 访问 配置 到 访问 目标 账号 的 Tencent Cloud Organization. 单位：秒. 取值范围：900-43,200 (15 minutes 到 12 hours). 默认值：3600 (1 hour)。",
 			},
 
 			"relay_state": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Initial access page. It 表示initial access page URL when CIC users use the access configuration to access the target 账号 of the Tencent Cloud Organization. This page must be the Tencent Cloud console page. The 默认为 null，which 表示navigating to the home page of the Tencent Cloud console。",
+				Description: "Initial 访问 页面. It 表示initial 访问 页面 URL 当 CIC users 使用 访问 配置 到 访问 目标 账号 的 Tencent Cloud Organization. 此 页面 必须 是 Tencent Cloud console 页面. 默认为 null，其中 表示navigating 到 home 页面 的 Tencent Cloud console。",
 			},
 			"role_configuration_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "角色 configuration id。",
+				Description: "角色 配置 ID。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,

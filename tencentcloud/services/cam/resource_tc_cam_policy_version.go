@@ -36,42 +36,42 @@ func ResourceTencentCloudCamPolicyVersion() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Strategic text information。",
+				Description: "Strategic text 信息。",
 			},
 
 			"set_as_default": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "是否set as a 版本 of the current strategy。",
+				Description: "是否set 作为 版本 的 当前 strategy。",
 			},
 
 			"policy_version": {
 				Computed:    true,
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Strategic 版本 detailsNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "Strategic 版本 detailsNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"version_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Strategic 版本 numberNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "Strategic 版本 numberNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"create_date": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Strategic 版本 creation timeNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "Strategic 版本 creation timeNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"is_default_version": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否为an effective 版本0 means not，1 means yesNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "是否为an effective 版本0 表示 不，1 表示 yesNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"document": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Strategic grammar textNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "Strategic grammar textNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 					},
 				},

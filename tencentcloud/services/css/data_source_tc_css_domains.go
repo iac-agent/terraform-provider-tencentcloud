@@ -19,7 +19,7 @@ func DataSourceTencentCloudCssDomains() *schema.Resource {
 			"domain_status": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "域名 名称 状态 filter. 0-disable，1-enable。",
+				Description: "域名 名称 状态 过滤器. 0-disable，1-启用。",
 			},
 
 			"domain_type": {
@@ -31,7 +31,7 @@ func DataSourceTencentCloudCssDomains() *schema.Resource {
 			"is_delay_live": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "0 normal live broadcast 1 slow live broadcast default 0。",
+				Description: "0 normal live broadcast 1 slow live broadcast 默认值 0。",
 			},
 
 			"domain_prefix": {
@@ -43,7 +43,7 @@ func DataSourceTencentCloudCssDomains() *schema.Resource {
 			"play_type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Playing area，this parameter is meaningful only when DomainType=1. 1: Domestic.2: Global.3: Overseas。",
+				Description: "Playing area，此 参数 是 meaningful 仅 当 DomainType=1. 1: Domestic.2: Global.3: Overseas。",
 			},
 
 			"domain_list": {
@@ -60,7 +60,7 @@ func DataSourceTencentCloudCssDomains() *schema.Resource {
 						"type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "域名 类型: 0: push stream. 1: Play。",
+							Description: "域名 类型: 0: push 流. 1: Play。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
@@ -70,22 +70,22 @@ func DataSourceTencentCloudCssDomains() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "add time.Note: This field is Beijing time (UTC+8 时区)。",
+							Description: "add 时间.注意: 此 字段 是 Beijing 时间 (UTC+8 时区)。",
 						},
 						"b_c_name": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Is there a CName to the fixed rule 域名 名称: 0: No. 1: Yes。",
+							Description: "Is there CName 到 fixed 规则 域名 名称: 0: No. 1: Yes。",
 						},
 						"target_domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 域名 名称 corresponding to the cname。",
+							Description: "域名 名称 corresponding 到 cname。",
 						},
 						"play_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Playing area，this parameter is meaningful only when 类型=1. 1: Domestic. 2: Global. 3: Overseas。",
+							Description: "Playing area，此 参数 是 meaningful 仅 当 类型=1. 1: Domestic. 2: Global. 3: Overseas。",
 						},
 						"is_delay_live": {
 							Type:        schema.TypeInt,
@@ -95,17 +95,17 @@ func DataSourceTencentCloudCssDomains() *schema.Resource {
 						"current_c_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The cname information used by the current client。",
+							Description: "cname 信息 使用 通过 当前 客户端。",
 						},
 						"rent_tag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "invalid parameter，can be ignored。",
+							Description: "无效 参数，可以 是 ignored。",
 						},
 						"rent_expire_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Failure parameter，can be ignored. Note: This field is Beijing time (UTC+8 时区)。",
+							Description: "Failure 参数，可以 是 ignored. 注意: 此 字段 是 Beijing 时间 (UTC+8 时区)。",
 						},
 						"is_mini_program_live": {
 							Type:        schema.TypeInt,

@@ -27,7 +27,7 @@ func ResourceTencentCloudGaapCustomHeader() *schema.Resource {
 			"rule_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Rule id。",
+				Description: "Rule ID。",
 			},
 
 			"headers": {

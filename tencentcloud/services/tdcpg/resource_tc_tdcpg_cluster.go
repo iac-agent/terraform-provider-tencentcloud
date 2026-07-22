@@ -27,7 +27,7 @@ func ResourceTencentCloudTdcpgCluster() *schema.Resource {
 			"zone": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "available 可用区",
+				Description: "可用 可用区",
 			},
 
 			"master_user_password": {
@@ -46,7 +46,7 @@ func ResourceTencentCloudTdcpgCluster() *schema.Resource {
 			"memory": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "memory size。",
+				Description: "内存 大小。",
 			},
 
 			"vpc_id": {
@@ -64,7 +64,7 @@ func ResourceTencentCloudTdcpgCluster() *schema.Resource {
 			"pay_mode": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "付费模式，the 值 is either PREPAID or POSTPAID_BY_HOUR。",
+				Description: "付费模式， 值 是 either PREPAID 或 POSTPAID_BY_HOUR。",
 			},
 
 			"cluster_name": {
@@ -76,33 +76,33 @@ func ResourceTencentCloudTdcpgCluster() *schema.Resource {
 			"db_version": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "community 版本 number，默认为 10.17。",
+				Description: "community 版本 数量，默认为 10.17。",
 			},
 
 			"instance_count": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "instance count。",
+				Description: "实例 count。",
 			},
 
 			"period": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "purchase time，必填 when PayMode is PREPAID，the 值 range is 1~60，默认为 1。",
+				Description: "purchase 时间，必填 当 PayMode 是 PREPAID， 值 范围 是 1~60，默认为 1。",
 			},
 
 			"storage": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "max storage，the unit is GB。",
+				Description: "max 存储， 单位 是 GB。",
 			},
 
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "项目 ID，默认为 0，means default project。",
+				Description: "项目 ID，默认为 0，表示 默认值 项目。",
 			},
 		},
 	}

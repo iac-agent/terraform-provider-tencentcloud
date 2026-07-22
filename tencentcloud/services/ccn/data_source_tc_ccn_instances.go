@@ -20,12 +20,12 @@ func DataSourceTencentCloudCcnInstances() *schema.Resource {
 			"ccn_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID CCN to be queried。",
+				Description: "ID CCN 到 是 queried。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "名称 CCN to be queried。",
+				Description: "名称 CCN 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -58,12 +58,12 @@ func DataSourceTencentCloudCcnInstances() *schema.Resource {
 						"qos": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Service quality of CCN，and the available 值 include 'PT'，'AU'，'AG'. The 默认为 'AU'。",
+							Description: "Service quality 的 CCN，和 可用 值 include 'PT'，'AU'，'AG'. 默认为 'AU'。",
 						},
 						"state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "States of instance. The available 值 include 'ISOLATED'(arrears) and 'AVAILABLE'。",
+							Description: "States 的 实例. 可用 值 include 'ISOLATED'(arrears) 和 'AVAILABLE'。",
 						},
 						"charge_type": {
 							Type:        schema.TypeString,
@@ -73,38 +73,38 @@ func DataSourceTencentCloudCcnInstances() *schema.Resource {
 						"bandwidth_limit_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The speed 限制 类型",
+							Description: "speed 限制 类型",
 						},
 						"attachment_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Information 列表 instance is attached。",
+							Description: "Information 列表 实例 是 attached。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "类型 attached instance network，and available values include VPC，DIRECTCONNECT，BMVPC and VPNGW。",
+										Description: "类型 attached 实例 网络，和 可用 值 include VPC，DIRECTCONNECT，BMVPC 和 VPNGW。",
 									},
 									"instance_region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The 地域 that the instance locates at。",
+										Description: "地域 该 实例 locates 在。",
 									},
 									"instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ID instance is attached。",
+										Description: "ID 实例 是 attached。",
 									},
 									"state": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "States of instance is attached，and available values include PENDING，ACTIVE，EXPIRED，REJECTED，DELETED，FAILED(asynchronous forced disassociation after 2 hours)，ATTACHING，DETACHING and DETACHFAILED(asynchronous forced disassociation after 2 hours)。",
+										Description: "States 的 实例 是 attached，和 可用 值 include PENDING，ACTIVE，EXPIRED，REJECTED，DELETED，FAILED(asynchronous forced disassociation after 2 hours)，ATTACHING，DETACHING 和 DETACHFAILED(asynchronous forced disassociation after 2 hours)。",
 									},
 									"attached_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Time of attaching。",
+										Description: "Time 的 attaching。",
 									},
 									"cidr_block": {
 										Type:     schema.TypeList,
@@ -112,7 +112,7 @@ func DataSourceTencentCloudCcnInstances() *schema.Resource {
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
-										Description: "A network 地址 block of the instance that is attached。",
+										Description: "A 网络 地址 block 的 实例 该 是 attached。",
 									},
 								},
 							},
@@ -120,7 +120,7 @@ func DataSourceTencentCloudCcnInstances() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of resource。",
+							Description: "创建时间 的 资源。",
 						},
 					},
 				},

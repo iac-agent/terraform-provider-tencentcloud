@@ -25,7 +25,7 @@ func ResourceTencentCloudSqlserverRestartDBInstance() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 		},
 	}

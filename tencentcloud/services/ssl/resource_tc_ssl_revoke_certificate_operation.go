@@ -33,7 +33,7 @@ func ResourceTencentCloudSslRevokeCertificateOperation() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Reasons for revoking certificate。",
+				Description: "Reasons 对于 revoking 证书。",
 			},
 		},
 	}

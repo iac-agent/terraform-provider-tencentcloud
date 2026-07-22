@@ -24,7 +24,7 @@ func DataSourceTencentCloudPrivateDnsRecords() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter parameters (值 and RecordType filtering are supported)。",
+				Description: "过滤器 参数 (值 和 RecordType filtering 是 支持)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -38,7 +38,7 @@ func DataSourceTencentCloudPrivateDnsRecords() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Parameter values。",
+							Description: "Parameter 值。",
 						},
 					},
 				},
@@ -47,7 +47,7 @@ func DataSourceTencentCloudPrivateDnsRecords() *schema.Resource {
 			"record_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Parse record list。",
+				Description: "Parse 记录 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"record_id": {
@@ -68,7 +68,7 @@ func DataSourceTencentCloudPrivateDnsRecords() *schema.Resource {
 						"record_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Record 类型，可选 record 类型 are: A，AAAA，CNAME，MX，TXT，PTR。",
+							Description: "Record 类型，可选 记录 类型 是: A，AAAA，CNAME，MX，TXT，PTR。",
 						},
 						"record_value": {
 							Type:        schema.TypeString,
@@ -78,12 +78,12 @@ func DataSourceTencentCloudPrivateDnsRecords() *schema.Resource {
 						"ttl": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Record cache time，the smaller the 值，the faster it takes effect. The 值 is 1-86400s. The 默认为 600。",
+							Description: "Record 缓存 时间， smaller 值， faster 它 takes effect. 值 是 1-86400s. 默认为 600。",
 						},
 						"mx": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "MX 优先级: 必填 if the record 类型 is MX. 取值范围：5,10,15,20,30,40,50。",
+							Description: "MX 优先级: 必填 如果 记录 类型 是 MX. 取值范围：5,10,15,20,30,40,50。",
 						},
 						"status": {
 							Type:        schema.TypeString,
@@ -93,7 +93,7 @@ func DataSourceTencentCloudPrivateDnsRecords() *schema.Resource {
 						"weight": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Record 权重，值 is 1-100。",
+							Description: "Record 权重，值 是 1-100。",
 						},
 						"created_on": {
 							Type:        schema.TypeString,
@@ -108,7 +108,7 @@ func DataSourceTencentCloudPrivateDnsRecords() *schema.Resource {
 						"extra": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Additional information。",
+							Description: "Additional 信息。",
 						},
 						"enabled": {
 							Type:        schema.TypeInt,

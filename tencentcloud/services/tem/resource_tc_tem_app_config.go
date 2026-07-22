@@ -29,7 +29,7 @@ func ResourceTencentCloudTemAppConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "environment ID。",
+				Description: "环境 ID。",
 			},
 
 			"name": {

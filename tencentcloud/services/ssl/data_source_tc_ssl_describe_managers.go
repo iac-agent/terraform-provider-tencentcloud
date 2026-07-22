@@ -25,19 +25,19 @@ func DataSourceTencentCloudSslDescribeManagers() *schema.Resource {
 			"manager_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Manager&amp;#39;s 名称 (will be abandoned)，please use Searchkey。",
+				Description: "Manager&amp;#39;s 名称 (将 是 abandoned)，please 使用 Searchkey。",
 			},
 
 			"manager_mail": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Vague query manager email (will be abandoned)，please use Searchkey。",
+				Description: "Vague 查询 manager email (将 是 abandoned)，please 使用 Searchkey。",
 			},
 
 			"status": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filter according to the 状态 manager，and the 值 is available&amp;#39;None&amp;#39; Unable to 提交 review&amp;#39;Audit&amp;#39;，Asian Credit Review&amp;#39;Caaudit&amp;#39; CA review&amp;#39;OK&amp;#39; has been reviewed&amp;#39;Invalid&amp;#39; review failed&amp;#39;Expiring&amp;#39; is about to expire&amp;#39;Expired&amp;#39; expired。",
+				Description: "过滤器 according 到 状态 manager，和 值 是 可用&amp;#39;None&amp;#39; Unable 到 提交 review&amp;#39;Audit&amp;#39;，Asian Credit Review&amp;#39;Caaudit&amp;#39; CA review&amp;#39;OK&amp;#39; has been reviewed&amp;#39;Invalid&amp;#39; review failed&amp;#39;Expiring&amp;#39; 是 about 到 expire&amp;#39;Expired&amp;#39; expired。",
 			},
 
 			"search_key": {
@@ -55,7 +55,7 @@ func DataSourceTencentCloudSslDescribeManagers() *schema.Resource {
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "状态: Audit: OK during the review: review passed inValid: expired expiRing: is about to expire Expired: expired。",
+							Description: "状态: Audit: OK during review: review passed inValid: expired expiRing: 是 about 到 expire Expired: expired。",
 						},
 						"manager_first_name": {
 							Type:        schema.TypeString,
@@ -90,7 +90,7 @@ func DataSourceTencentCloudSslDescribeManagers() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation timeNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "Creation timeNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"domain_count": {
 							Type:        schema.TypeInt,
@@ -110,17 +110,17 @@ func DataSourceTencentCloudSslDescribeManagers() *schema.Resource {
 						"expire_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Examine the validity expiration timeNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "Examine validity expiration timeNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"submit_audit_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The last time the review timeNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "last 时间 review timeNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"verify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Examination timeNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "Examination timeNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 					},
 				},

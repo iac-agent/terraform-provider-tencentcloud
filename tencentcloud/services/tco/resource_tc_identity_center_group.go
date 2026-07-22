@@ -33,29 +33,29 @@ func ResourceTencentCloudIdentityCenterGroup() *schema.Resource {
 			"group_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The 名称 用户 group. 格式: Allow English letters，numbers and special characters-. Length: Maximum 128 characters。",
+				Description: "名称 用户 组. 格式: Allow English letters，numbers 和 special 字符-. Length: Maximum 128 字符。",
 			},
 
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 of the 用户 group。",
+				Description: "创建时间 的 用户 组。",
 			},
 			"group_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "类型 用户 group. `Manual`: manual creation，`Synchronized`: external import。",
+				Description: "类型 用户 组. `Manual`: manual creation，`Synchronized`: 外部 import。",
 			},
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "修改时间 for the 用户 group。",
+				Description: "修改时间 对于 用户 组。",
 			},
 			"group_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "ID 用户 group。",
+				Description: "ID 用户 组。",
 			},
 			"member_count": {
 				Type:        schema.TypeInt,
@@ -66,7 +66,7 @@ func ResourceTencentCloudIdentityCenterGroup() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "A 描述 用户 group. Length: Maximum 1024 characters。",
+				Description: "A 描述 用户 组. Length: Maximum 1024 字符。",
 			},
 		},
 	}

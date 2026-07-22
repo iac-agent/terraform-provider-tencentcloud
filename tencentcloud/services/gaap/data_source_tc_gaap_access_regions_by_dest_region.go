@@ -25,30 +25,30 @@ func DataSourceTencentCloudGaapAccessRegionsByDestRegion() *schema.Resource {
 			"ip_address_version": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "IP 版本，can be taken as IPv4 or IPv6，with a 默认值 of IPv4。",
+				Description: "IP 版本，可以 是 taken 作为 IPv4 或 IPv6，使用 默认值 的 IPv4。",
 			},
 
 			"package_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Channel package 类型，where Thunder represents a standard proxy group，Accelerator represents a game accelerator proxy，and CrossBorder represents a cross-border proxy。",
+				Description: "Channel 包 类型，其中 Thunder 表示 standard proxy 组，Accelerator 表示 game accelerator proxy，和 CrossBorder 表示 cross-border proxy。",
 			},
 
 			"access_region_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "列表 available acceleration 可用区 information。",
+				Description: "列表 可用 acceleration 可用区 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "地域 id。",
+							Description: "地域 ID。",
 						},
 						"region_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Chinese or English 名称 地域",
+							Description: "Chinese 或 English 名称 地域",
 						},
 						"concurrent_list": {
 							Type: schema.TypeSet,
@@ -56,7 +56,7 @@ func DataSourceTencentCloudGaapAccessRegionsByDestRegion() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "可选 并发 值 array。",
+							Description: "可选 并发 值 数组。",
 						},
 						"bandwidth_list": {
 							Type: schema.TypeSet,
@@ -64,27 +64,27 @@ func DataSourceTencentCloudGaapAccessRegionsByDestRegion() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "可选 bandwidth 值 array。",
+							Description: "可选 带宽 值 数组。",
 						},
 						"region_area": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "地域 of the computer room。",
+							Description: "地域 的 computer room。",
 						},
 						"region_area_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "地域名称 of the computer room。",
+							Description: "地域名称 的 computer room。",
 						},
 						"idc_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "类型 computer room，where dc represents the DataCenter data center and ec represents the EdgeComputing edge node。",
+							Description: "类型 computer room，其中 dc 表示 DataCenter 数据 center 和 ec 表示 EdgeComputing edge 节点。",
 						},
 						"feature_bitmap": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "类型 computer room，where dc represents the DataCenter data center，ec represents the feature bitmap，and each bit represents a feature，where:0，表示that the feature is not supported;1，表示support for this feature.The meaning of the feature bitmap is as follows (from right to left):The first bit supports 4-layer acceleration;The second bit supports 7-layer acceleration;The third bit supports Http3 access;The fourth bit supports IPv6;The fifth bit supports high-quality BGP access;The 6th bit supports three network access;The 7th bit supports QoS acceleration in the access segment.注意：此字段可能返回 null，表示无法获取有效值。 Edge nodes。",
+							Description: "类型 computer room，其中 dc 表示 DataCenter 数据 center，ec 表示 功能 bitmap，和 each bit 表示 功能，其中:0，表示that 功能 是 不 支持;1，表示support 对于 此 功能. meaning 的 功能 bitmap 是 作为 follows (从 right 到 left): first bit 支持 4-layer acceleration; second bit 支持 7-layer acceleration; third bit 支持 Http3 访问; fourth bit 支持 IPv6; fifth bit 支持 high-quality BGP 访问; 6th bit 支持 three 网络 访问; 7th bit 支持 QoS acceleration 在 访问 segment.注意：此字段可能返回 null，表示无法获取有效值。 Edge nodes。",
 						},
 					},
 				},

@@ -27,7 +27,7 @@ func ResourceTencentCloudTsfLane() *schema.Resource {
 			"lane_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Lane id。",
+				Description: "Lane ID。",
 			},
 
 			"lane_name": {
@@ -67,12 +67,12 @@ func ResourceTencentCloudTsfLane() *schema.Resource {
 						"entrance": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "是否enter the application。",
+							Description: "是否enter 应用。",
 						},
 						"lane_group_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Swimlane deployment 组 ID",
+							Description: "Swimlane 部署 组 ID",
 						},
 						"lane_id": {
 							Type:        schema.TypeString,
@@ -82,17 +82,17 @@ func ResourceTencentCloudTsfLane() *schema.Resource {
 						"group_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "deployment 组名称",
+							Description: "部署 组名称",
 						},
 						"application_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "application ID。",
+							Description: "应用 ID。",
 						},
 						"application_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "application 名称",
+							Description: "应用 名称",
 						},
 						"namespace_id": {
 							Type:        schema.TypeString,
@@ -102,7 +102,7 @@ func ResourceTencentCloudTsfLane() *schema.Resource {
 						"namespace_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "namespace 名称",
+							Description: "命名空间 名称",
 						},
 						"create_time": {
 							Type:        schema.TypeInt,
@@ -129,13 +129,13 @@ func ResourceTencentCloudTsfLane() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Program id list。",
+				Description: "Program ID 列表。",
 			},
 
 			"entrance": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "是否enter the application。",
+				Description: "是否enter 应用。",
 			},
 			"namespace_id_list": {
 				Type: schema.TypeSet,
@@ -143,7 +143,7 @@ func ResourceTencentCloudTsfLane() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Computed:    true,
-				Description: "A 列表 namespaces to which the swimlane has associated deployment groups。",
+				Description: "A 列表 namespaces 到 其中 swimlane has associated 部署 groups。",
 			},
 		},
 	}

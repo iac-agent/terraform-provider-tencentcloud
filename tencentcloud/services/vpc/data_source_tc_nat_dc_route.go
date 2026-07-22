@@ -19,45 +19,45 @@ func DataSourceTencentCloudNatDcRoute() *schema.Resource {
 			"nat_gateway_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Unique identifier of Nat Gateway。",
+				Description: "Unique identifier 的 Nat Gateway。",
 			},
 
 			"vpc_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Unique identifier of Vpc。",
+				Description: "Unique identifier 的 Vpc。",
 			},
 
 			"nat_direct_connect_gateway_route_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Data of route。",
+				Description: "Data 的 路由。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"destination_cidr_block": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IPv4 CIDR of subnet。",
+							Description: "IPv4 CIDR 的 子网。",
 						},
 						"gateway_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "类型 next-hop gateway，有效值：DIRECTCONNECT。",
+							Description: "类型 next-hop 网关，有效值：DIRECTCONNECT。",
 						},
 						"gateway_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Id of next-hop gateway。",
+							Description: "ID 的 next-hop 网关。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of route。",
+							Description: "创建时间 的 路由。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "更新时间 of route。",
+							Description: "更新时间 的 路由。",
 						},
 					},
 				},

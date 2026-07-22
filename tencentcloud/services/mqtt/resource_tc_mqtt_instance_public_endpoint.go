@@ -28,13 +28,13 @@ func ResourceTencentCloudMqttInstancePublicEndpoint() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "MQTT instance ID。",
+				Description: "MQTT 实例 ID。",
 			},
 
 			"bandwidth": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Bandwidth，unit: Mbps。",
+				Description: "Bandwidth，单位: Mbps。",
 			},
 
 			"rules": {
@@ -46,7 +46,7 @@ func ResourceTencentCloudMqttInstancePublicEndpoint() *schema.Resource {
 						"ip_rule": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "IP network segment information。",
+							Description: "IP 网络 segment 信息。",
 						},
 						"remark": {
 							Type:        schema.TypeString,

@@ -35,12 +35,12 @@ func ResourceTencentCloudWafCustomWhiteRule() *schema.Resource {
 			"sort_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "优先级，值 range 1-100，The smaller the number，the higher the execution 优先级 of this rule。",
+				Description: "优先级，值 范围 1-100， smaller 数量， higher execution 优先级 的 此 规则。",
 			},
 			"expire_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "过期时间 in second-级别 时间戳，for example，1677254399 表示expiration time is 2023-02-24 23:59:59; 0 表示it will never expire。",
+				Description: "过期时间 在 second-级别 时间戳，对于 示例，1677254399 表示expiration 时间 是 2023-02-24 23:59:59; 0 表示it 将 never expire。",
 			},
 			"strategies": {
 				Required:    true,
@@ -118,19 +118,19 @@ func ResourceTencentCloudWafCustomWhiteRule() *schema.Resource {
 			"domain": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "域名 名称 that needs to add policy。",
+				Description: "域名 名称 该 needs 到 add 策略。",
 			},
 			"bypass": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The bypass modules are connected by commas between multiple modules. Supported modules ACL (Custom Rules)，OWASP (Rule Engine)，Webshell (Malicious File Detection)，GeoIP (Geographic Block)，BWIP (IP Black and White List)，CC，BotRPC (BOT Protection)，AntiLeakage (Information Leakage Prevention)，API (API Security)，AI (AI Engine)，ip_outo_deny (IP Block)，Applet (Mini Program Traffic Risk Control)。",
+				Description: "bypass modules 是 connected 通过 commas between 多个 modules. Supported modules ACL (Custom Rules)，OWASP (Rule Engine)，Webshell (Malicious File Detection)，GeoIP (Geographic Block)，BWIP (IP Black 和 White List)，CC，BotRPC (BOT Protection)，AntiLeakage (Information Leakage Prevention)，API (API Security)，AI (AI Engine)，ip_outo_deny (IP Block)，Applet (Mini Program Traffic Risk Control)。",
 			},
 			"status": {
 				Optional:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CUSTOM_WHITE_RULE_STATUS),
 				Default:      CUSTOM_WHITE_RULE_STATUS_1,
-				Description:  "The 状态 switch，1 is on，0 is off，default 1。",
+				Description:  "状态 switch，1 是 在，0 是 关闭，默认值 1。",
 			},
 			"job_type": {
 				Type:        schema.TypeString,
@@ -149,7 +149,7 @@ func ResourceTencentCloudWafCustomWhiteRule() *schema.Resource {
 						"timed": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Time parameters for scheduled execution. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Time 参数 对于 scheduled execution. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"start_date_time": {
@@ -168,13 +168,13 @@ func ResourceTencentCloudWafCustomWhiteRule() *schema.Resource {
 						"cron": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Time parameters for periodic execution. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Time 参数 对于 periodic execution. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"days": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Days in each month for execution. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Days 在 each month 对于 execution. 注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Schema{
 											Type: schema.TypeInt,
 										},
@@ -182,7 +182,7 @@ func ResourceTencentCloudWafCustomWhiteRule() *schema.Resource {
 									"w_days": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Days of each week for execution. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Days 的 each week 对于 execution. 注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Schema{
 											Type: schema.TypeInt,
 										},
@@ -212,12 +212,12 @@ func ResourceTencentCloudWafCustomWhiteRule() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Logical 操作者 of configuration 模式，and/or。",
+				Description: "Logical 操作者 的 配置 模式，和/或。",
 			},
 			"rule_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "rule ID。",
+				Description: "规则 ID。",
 			},
 		},
 	}

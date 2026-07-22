@@ -39,7 +39,7 @@ func ResourceTencentCloudAuditTrack() *schema.Resource {
 			"resource_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Track product，可选:- `*`: All product- Single product，such as `cos`。",
+				Description: "Track product，可选:- `*`: All product- Single product，such 作为 `cos`。",
 			},
 
 			"status": {
@@ -54,14 +54,14 @@ func ResourceTencentCloudAuditTrack() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Required:    true,
-				Description: "Track interface 名称 list:- when ResourceType is `*`，EventNames is must `[&amp;quot;*&amp;quot;]`- when ResourceType is a single product，EventNames support all interface:`[&amp;quot;*&amp;quot;]`- when ResourceType is a single product，EventNames support some interface，up to 10。",
+				Description: "Track interface 名称 列表:- 当 ResourceType 是 `*`，EventNames 是 必须 `[&amp;quot;*&amp;quot;]`- 当 ResourceType 是 单个 product，EventNames support all interface:`[&amp;quot;*&amp;quot;]`- 当 ResourceType 是 单个 product，EventNames support some interface，up 到 10。",
 			},
 
 			"storage": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Required:    true,
-				Description: "Track Storage，support `cos`，`cls` and `ckafka`。",
+				Description: "Track Storage，support `cos`，`cls` 和 `ckafka`。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"storage_type": {
@@ -77,7 +77,7 @@ func ResourceTencentCloudAuditTrack() *schema.Resource {
 						"storage_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Track Storage 名称:- when StorageType is `cls`，StorageName is cls topicId- when StorageType is `cos`，StorageName is cos 存储桶名称 that does not contain `-APPID`。",
+							Description: "Track Storage 名称:- 当 StorageType 是 `cls`，StorageName 是 cls topicId- 当 StorageType 是 `cos`，StorageName 是 cos 存储桶名称 该 does 不 contain `-APPID`。",
 						},
 						"storage_prefix": {
 							Type:        schema.TypeString,
@@ -87,12 +87,12 @@ func ResourceTencentCloudAuditTrack() *schema.Resource {
 						"storage_account_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Designated to store 用户 ID。",
+							Description: "Designated 到 store 用户 ID。",
 						},
 						"storage_app_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Designated to store 用户 appid。",
+							Description: "Designated 到 store 用户 appid。",
 						},
 					},
 				},
@@ -101,7 +101,7 @@ func ResourceTencentCloudAuditTrack() *schema.Resource {
 			"track_for_all_members": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "是否enable the delivery of group member operation logs to the group management 账号 or trusted service management 账号，可选:- `0`: Close- `1`: Open。",
+				Description: "是否enable delivery 的 组 member operation logs 到 组 management 账号 或 trusted 服务 management 账号，可选:- `0`: Close- `1`: Open。",
 			},
 
 			"create_time": {

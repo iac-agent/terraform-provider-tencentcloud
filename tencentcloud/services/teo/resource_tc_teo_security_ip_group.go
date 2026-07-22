@@ -35,7 +35,7 @@ func ResourceTencentCloudTeoSecurityIpGroup() *schema.Resource {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "IP group information，replace all when modifying。",
+				Description: "IP 组 信息，replace all 当 modifying。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"group_id": {
@@ -51,7 +51,7 @@ func ResourceTencentCloudTeoSecurityIpGroup() *schema.Resource {
 						"content": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "IP group 内容 Only supports IP and IP mask。",
+							Description: "IP 组 内容 Only 支持 IP 和 IP mask。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},

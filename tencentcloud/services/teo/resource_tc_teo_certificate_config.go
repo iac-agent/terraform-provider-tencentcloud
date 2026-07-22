@@ -38,44 +38,44 @@ func ResourceTencentCloudTeoCertificateConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Acceleration 域名 名称 that needs to modify the certificate configuration。",
+				Description: "Acceleration 域名 名称 该 needs 到 modify 证书 配置。",
 			},
 
 			"server_cert_info": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "SSL certificate configuration，this parameter takes effect only when 模式 = sslcert，just enter the corresponding CertId. You can go to the SSL certificate list to view the CertId。",
+				Description: "SSL 证书 配置，此 参数 takes effect 仅 当 模式 = sslcert，just enter corresponding CertId. You 可以 go 到 SSL 证书 列表 到 view CertId。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cert_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "ID server certificate.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "ID 服务器 证书.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"alias": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Alias of the certificate.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Alias 的 证书.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "类型 certificate. Values: `default`: Default certificate; `upload`: Specified certificate; `managed`: Tencent Cloud-managed certificate. Note: This field may return `null`，indicating that no valid 值 can be obtained。",
+							Description: "类型 证书. Values: `默认值`: Default 证书; `upload`: Specified 证书; `managed`: Tencent Cloud-managed 证书. 注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"expire_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Time when the certificate expires. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Time 当 证书 expires. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"deploy_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Time when the certificate is deployed. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Time 当 证书 是 deployed. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"sign_algo": {
 							Type:        schema.TypeString,
@@ -87,7 +87,7 @@ func ResourceTencentCloudTeoCertificateConfig() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "域名 名称 certificate. Note: This field may return `null`，indicating that no valid 值 can be obtained。",
+							Description: "域名 名称 证书. 注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 					},
 				},
@@ -98,7 +98,7 @@ func ResourceTencentCloudTeoCertificateConfig() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "配置certificate presented by the EO node during origin-pull for mutual TLS authentication. 已禁用 by default; leaving the field blank will retain the current configuration. This feature is currently in beta testing. please [contact us](https://cloud.tencent.com/online-service) to request access。",
+				Description: "配置certificate presented 通过 EO 节点 during 源站-pull 对于 mutual TLS authentication. 已禁用 通过 默认值; leaving 字段 blank 将 retain 当前 配置. 此 功能 是 currently 在 beta testing. please [contact us](https://云.tencent.com/online-服务) 到 请求 访问。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"upstream_mutual_tls": {
@@ -106,45 +106,45 @@ func ResourceTencentCloudTeoCertificateConfig() *schema.Resource {
 							Optional:    true,
 							Computed:    true,
 							MaxItems:    1,
-							Description: "In the origin-pull mutual authentication scenario，this field represents the certificate (including the public and private keys) carried during EO node origin-pull，which is deployed in the EO node for the origin server to authenticate the EO node. When used as an input parameter，it is left blank to indicate retaining the original configuration。",
+							Description: "In 源站-pull mutual authentication scenario，此 字段 表示 证书 (包括 公有 和 私有 keys) carried during EO 节点 源站-pull，其中 是 deployed 在 EO 节点 对于 源站 服务器 到 authenticate EO 节点. 当 使用 作为 input 参数，它 是 left blank 到 indicate retaining original 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Mutual authentication configuration switch，the values are: `on`: enable; `off`: disable。",
+										Description: "Mutual authentication 配置 switch， 值 是: `在`: 启用; `关闭`: disable。",
 									},
 									"cert_infos": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										Computed:    true,
-										Description: "Mutual authentication certificate list.\nNote: When using MutualTLS as an input parameter in ModifyHostsCertificate，you only need to provide the CertId of the corresponding certificate. You can check the CertId from the [SSL Certificate List](https://console.cloud.tencent.com/ssl)。",
+										Description: "Mutual authentication 证书 列表.\nNote: 当 使用 MutualTLS 作为 input 参数 在 ModifyHostsCertificate，您 仅 need 到 provide CertId 的 corresponding 证书. You 可以 check CertId 从 [SSL Certificate List](https://console.云.tencent.com/ssl)。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"cert_id": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "证书 ID，which originates from the SSL side. You can check the CertId from the [SSL Certificate List](https://console.cloud.tencent.com/ssl)。",
+													Description: "证书 ID，其中 originates 从 SSL side. You 可以 check CertId 从 [SSL Certificate List](https://console.云.tencent.com/ssl)。",
 												},
 												"alias": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Alias of the certificate。",
+													Description: "Alias 的 证书。",
 												},
 												"type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "类型 certificate. Values: `default`: Default certificate `upload`: Specified certificate `managed`: Tencent Cloud-managed certificate。",
+													Description: "类型 证书. Values: `默认值`: Default 证书 `upload`: Specified 证书 `managed`: Tencent Cloud-managed 证书。",
 												},
 												"expire_time": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The certificate 过期时间。",
+													Description: "证书 过期时间。",
 												},
 												"deploy_time": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Time when the certificate is deployed。",
+													Description: "Time 当 证书 是 deployed。",
 												},
 												"sign_algo": {
 													Type:        schema.TypeString,
@@ -165,7 +165,7 @@ func ResourceTencentCloudTeoCertificateConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "模式 of configuring the certificate，the values are: `disable`: Do not configure the certificate; `eofreecert`: Configure EdgeOne free certificate; `sslcert`: Configure SSL certificate. 如果未填写 in，the 默认值为 `disable`。",
+				Description: "模式 的 configuring 证书， 值 是: `disable`: Do 不 configure 证书; `eofreecert`: Configure EdgeOne free 证书; `sslcert`: Configure SSL 证书. 如果未填写 在， 默认值为 `disable`。",
 			},
 		},
 	}

@@ -21,7 +21,7 @@ func DataSourceTencentCloudWafAttackLogHistogram() *schema.Resource {
 			"domain": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "域名 for query，all 域名 use all。",
+				Description: "域名 对于 查询，all 域名 使用 all。",
 			},
 			"start_time": {
 				Required:    true,
@@ -41,13 +41,13 @@ func DataSourceTencentCloudWafAttackLogHistogram() *schema.Resource {
 			"data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The statistics detail。",
+				Description: "统计 detail。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The count of logs。",
+							Description: "count 的 logs。",
 						},
 						"time_stamp": {
 							Type:        schema.TypeInt,

@@ -34,26 +34,26 @@ func ResourceTencentCloudSslCertificate() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "",
-				Description: "名称 SSL certificate。",
+				Description: "名称 SSL 证书。",
 			},
 			"type": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(SSL_CERT_TYPE),
 				ForceNew:     true,
-				Description:  "类型 SSL certificate. 有效值：`CA` and `SVR`。",
+				Description:  "类型 SSL 证书. 有效值：`CA` 和 `SVR`。",
 			},
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
-				Description: "项目 ID SSL certificate. 默认为 `0`。",
+				Description: "项目 ID SSL 证书. 默认为 `0`。",
 			},
 			"cert": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "内容 of the SSL certificate. Not allowed newline at the start and end。",
+				Description: "内容 的 SSL 证书. Not allowed newline 在 start 和 end。",
 				ValidateFunc: func(v interface{}, k string) (wss []string, errs []error) {
 					value := v.(string)
 					if strings.HasPrefix(value, "\n") {
@@ -72,7 +72,7 @@ func ResourceTencentCloudSslCertificate() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Sensitive:   true,
-				Description: "键 of the SSL certificate and 必填 when certificate 类型 is `SVR`. Not allowed newline at the start and end。",
+				Description: "键 的 SSL 证书 和 必填 当 证书 类型 是 `SVR`. Not allowed newline 在 start 和 end。",
 				ValidateFunc: func(v interface{}, k string) (wss []string, errs []error) {
 					value := v.(string)
 					if strings.HasPrefix(value, "\n") {
@@ -90,7 +90,7 @@ func ResourceTencentCloudSslCertificate() *schema.Resource {
 				Type:        schema.TypeMap,
 				Optional:    true,
 				Computed:    true,
-				Description: "标签 of the SSL certificate。",
+				Description: "标签 的 SSL 证书。",
 			},
 			// computed
 			"product_zh_name": {
@@ -101,33 +101,33 @@ func ResourceTencentCloudSslCertificate() *schema.Resource {
 			"domain": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Primary 域名 of the SSL certificate。",
+				Description: "Primary 域名 的 SSL 证书。",
 			},
 			"status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "状态 SSL certificate。",
+				Description: "状态 SSL 证书。",
 			},
 			"begin_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Beginning time of the SSL certificate。",
+				Description: "Beginning 时间 的 SSL 证书。",
 			},
 			"end_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Ending time of the SSL certificate。",
+				Description: "Ending 时间 的 SSL 证书。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 of the SSL certificate。",
+				Description: "创建时间 的 SSL 证书。",
 			},
 			"subject_names": {
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Computed:    true,
-				Description: "ALL domains included in the SSL certificate. Including the primary 域名 名称",
+				Description: "ALL domains included 在 SSL 证书. Including primary 域名 名称",
 			},
 		},
 	}

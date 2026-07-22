@@ -20,19 +20,19 @@ func DataSourceTencentCloudVpcAcls() *schema.Resource {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateNotEmpty,
-				Description:  "ID VPC instance。",
+				Description:  "ID VPC 实例。",
 			},
 			"name": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(0, 60),
-				Description:  "名称 network ACL。",
+				Description:  "名称 网络 ACL。",
 			},
 			"id": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateNotEmpty,
-				Description:  "ID network ACL instance。",
+				Description:  "ID 网络 ACL 实例。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -42,23 +42,23 @@ func DataSourceTencentCloudVpcAcls() *schema.Resource {
 			"acl_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "The information 列表 the VPC. Each element 包含following attributes:",
+				Description: "信息 列表 VPC. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID VPC instance。",
+							Description: "ID VPC 实例。",
 						},
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID network ACL instance。",
+							Description: "ID 网络 ACL 实例。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 network ACL。",
+							Description: "名称 网络 ACL。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
@@ -68,13 +68,13 @@ func DataSourceTencentCloudVpcAcls() *schema.Resource {
 						"subnets": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Subnets associated with the network ACL。",
+							Description: "Subnets associated 使用 网络 ACL。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"vpc_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ID VPC instance。",
+										Description: "ID VPC 实例。",
 									},
 									"subnet_id": {
 										Type:        schema.TypeString,
@@ -89,12 +89,12 @@ func DataSourceTencentCloudVpcAcls() *schema.Resource {
 									"cidr_block": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The IPv4 CIDR of the subnet。",
+										Description: "IPv4 CIDR 的 子网。",
 									},
 									"tags": {
 										Type:        schema.TypeMap,
 										Computed:    true,
-										Description: "标签 of the subnet。",
+										Description: "标签 的 子网。",
 									},
 								},
 							},
@@ -102,7 +102,7 @@ func DataSourceTencentCloudVpcAcls() *schema.Resource {
 						"ingress": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Inbound rules of the network ACL。",
+							Description: "Inbound 规则 的 网络 ACL。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"protocol": {
@@ -113,17 +113,17 @@ func DataSourceTencentCloudVpcAcls() *schema.Resource {
 									"port": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Range of the 端口",
+										Description: "Range 的 端口",
 									},
 									"policy": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Rule policy of Network ACL。",
+										Description: "Rule 策略 的 Network ACL。",
 									},
 									"cidr_block": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "An IP 地址 network or segment。",
+										Description: "An IP 地址 网络 或 segment。",
 									},
 									"description": {
 										Type:        schema.TypeString,
@@ -136,7 +136,7 @@ func DataSourceTencentCloudVpcAcls() *schema.Resource {
 						"egress": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Outbound rules of the network ACL。",
+							Description: "Outbound 规则 的 网络 ACL。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"protocol": {
@@ -147,17 +147,17 @@ func DataSourceTencentCloudVpcAcls() *schema.Resource {
 									"port": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Range of the 端口",
+										Description: "Range 的 端口",
 									},
 									"policy": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Rule policy of Network ACL。",
+										Description: "Rule 策略 的 Network ACL。",
 									},
 									"cidr_block": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "An IP 地址 network or segment。",
+										Description: "An IP 地址 网络 或 segment。",
 									},
 									"description": {
 										Type:        schema.TypeString,

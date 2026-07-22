@@ -38,14 +38,14 @@ func ResourceTencentCloudTcrCustomizedDomain() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "custom 域名 名称",
+				Description: "自定义 域名 名称",
 			},
 
 			"certificate_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "certificate id。",
+				Description: "证书 ID。",
 			},
 
 			"tags": {

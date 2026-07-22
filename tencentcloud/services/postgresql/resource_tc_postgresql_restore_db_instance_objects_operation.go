@@ -27,14 +27,14 @@ func ResourceTencentCloudPostgresqlRestoreDbInstanceObjectsOperation() *schema.R
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "PostgreSQL instance ID，e.g. `postgres-6bwgamo3`。",
+				Description: "PostgreSQL 实例 ID，e.g. `postgres-6bwgamo3`。",
 			},
 
 			"restore_objects": {
 				Type:        schema.TypeList,
 				Required:    true,
 				ForceNew:    true,
-				Description: "列表 database objects to restore. The restored object 名称 格式 will be `${original}_bak_${时间戳}`。",
+				Description: "列表 数据库 objects 到 恢复. restored 对象 名称 格式 将 是 `${original}_bak_${时间戳}`。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -44,14 +44,14 @@ func ResourceTencentCloudPostgresqlRestoreDbInstanceObjectsOperation() *schema.R
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Backup set ID 用于restoration. Exactly one of `backup_set_id` or `restore_target_time` must be specified。",
+				Description: "Backup 集合 ID 用于restoration. Exactly 一个 的 `backup_set_id` 或 `restore_target_time` 必须 是 指定。",
 			},
 
 			"restore_target_time": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Point-in-time target for restoration (Beijing time)，e.g. `2024-04-30 00:20:27`. Exactly one of `backup_set_id` or `restore_target_time` must be specified。",
+				Description: "Point-在-时间 目标 对于 restoration (Beijing 时间)，e.g. `2024-04-30 00:20:27`. Exactly 一个 的 `backup_set_id` 或 `restore_target_time` 必须 是 指定。",
 			},
 		},
 	}

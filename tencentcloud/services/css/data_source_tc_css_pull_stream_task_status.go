@@ -25,28 +25,28 @@ func DataSourceTencentCloudCssPullStreamTaskStatus() *schema.Resource {
 			"task_status_info": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Task 状态 info。",
+				Description: "任务 状态 info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"file_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Current use 来源 URL",
+							Description: "Current 使用 来源 URL",
 						},
 						"looped_times": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 数量 times a VOD 来源 task is played in a loop。",
+							Description: "数量 times VOD 来源 任务 是 played 在 loop。",
 						},
 						"offset_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The playback 偏移量 of the VOD 来源，（秒）。",
+							Description: "playback 偏移量 的 VOD 来源，（秒）。",
 						},
 						"report_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The latest heartbeat reporting time in UTC 格式，for example: 2022-02-11T10:00:00Z.Note: UTC time is 8 hours ahead of Beijing time。",
+							Description: "latest heartbeat 报告 时间 在 UTC 格式，对于 示例: 2022-02-11T10:00:00Z.注意: UTC 时间 是 8 hours ahead 的 Beijing 时间。",
 						},
 						"run_status": {
 							Type:        schema.TypeString,
@@ -56,12 +56,12 @@ func DataSourceTencentCloudCssPullStreamTaskStatus() *schema.Resource {
 						"file_duration": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The duration of the VOD 来源 file，（秒）。",
+							Description: "时长 的 VOD 来源 文件，（秒）。",
 						},
 						"next_file_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The URL of the next progress VOD file。",
+							Description: "URL 的 next progress VOD 文件。",
 						},
 					},
 				},

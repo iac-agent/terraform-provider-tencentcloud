@@ -32,7 +32,7 @@ func ResourceTencentCloudOrganizationExternalSamlIdentityProvider() *schema.Reso
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"x509_certificate"},
-				Description:   "IdP metadata document (Base64 encoded). Provided by an IdP that supports the SAML 2.0 协议",
+				Description:   "IdP metadata document (Base64 encoded). Provided 通过 IdP 该 支持 SAML 2.0 协议",
 			},
 
 			"sso_status": {
@@ -40,7 +40,7 @@ func ResourceTencentCloudOrganizationExternalSamlIdentityProvider() *schema.Reso
 				Optional:    true,
 				ForceNew:    true,
 				Computed:    true,
-				Description: "SSO enabling 状态 有效值：已启用，已禁用 (default)。",
+				Description: "SSO enabling 状态 有效值：已启用，已禁用 (默认值)。",
 			},
 
 			"entity_id": {
@@ -63,13 +63,13 @@ func ResourceTencentCloudOrganizationExternalSamlIdentityProvider() *schema.Reso
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"encoded_metadata_document"},
-				Description:   "X509 certificate in PEM 格式 If this parameter is specified，all existing certificates will be replaced。",
+				Description:   "X509 证书 在 PEM 格式 如果 此 参数 是 指定，all existing certificates 将 是 replaced。",
 			},
 
 			"another_x509_certificate": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Another X509 certificate in PEM 格式 If this parameter is specified，all existing certificates will be replaced。",
+				Description: "Another X509 证书 在 PEM 格式 如果 此 参数 是 指定，all existing certificates 将 是 replaced。",
 			},
 
 			// computed

@@ -19,33 +19,33 @@ func DataSourceTencentCloudPostgresqlDbInstanceVersions() *schema.Resource {
 			"storage_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Storage 类型 filter. 有效值：`PHYSICAL_LOCAL_SSD` (local SSD)，`CLOUD_PREMIUM` (premium cloud disk)，`CLOUD_SSD` (cloud SSD)，`CLOUD_HSSD` (enhanced cloud SSD)。",
+				Description: "Storage 类型 过滤器. 有效值：`PHYSICAL_LOCAL_SSD` (本地 SSD)，`CLOUD_PREMIUM` (premium 云 磁盘)，`CLOUD_SSD` (云 SSD)，`CLOUD_HSSD` (enhanced 云 SSD)。",
 			},
 			"version_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "列表 database versions。",
+				Description: "列表 数据库 versions。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"db_engine": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database engines. Valid values:1. `postgresql` (TencentDB for PostgreSQL)2. `mssql_compatible` (MSSQL compatible-TencentDB for PostgreSQL)。",
+							Description: "Database engines. 有效 值:1. `postgresql` (TencentDB 对于 PostgreSQL)2. `mssql_compatible` (MSSQL compatible-TencentDB 对于 PostgreSQL)。",
 						},
 						"db_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database 版本，such as 12.4。",
+							Description: "Database 版本，such 作为 12.4。",
 						},
 						"db_major_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database major 版本，such as 12。",
+							Description: "Database major 版本，such 作为 12。",
 						},
 						"db_kernel_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database kernel 版本，such as v12.4_r1.3。",
+							Description: "Database kernel 版本，such 作为 v12.4_r1.3。",
 						},
 						"supported_feature_names": {
 							Type: schema.TypeSet,
@@ -53,12 +53,12 @@ func DataSourceTencentCloudPostgresqlDbInstanceVersions() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "列表 features supported by the database kernel，such as:TDE: Supports data encryption。",
+							Description: "列表 features 支持 通过 数据库 kernel，such 作为:TDE: Supports 数据 加密。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database 版本 状态 Valid values:`AVAILABLE`.`DEPRECATED`。",
+							Description: "Database 版本 状态 有效 值:`AVAILABLE`.`DEPRECATED`。",
 						},
 						"available_upgrade_target": {
 							Type: schema.TypeSet,
@@ -66,7 +66,7 @@ func DataSourceTencentCloudPostgresqlDbInstanceVersions() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "列表 versions to which this database 版本 (`DBKernelVersion`) can be upgraded。",
+							Description: "列表 versions 到 其中 此 数据库 版本 (`DBKernelVersion`) 可以 是 upgraded。",
 						},
 					},
 				},

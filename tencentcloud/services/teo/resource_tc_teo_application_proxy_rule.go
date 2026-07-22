@@ -52,7 +52,7 @@ func ResourceTencentCloudTeoApplicationProxyRule() *schema.Resource {
 			"port": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "有效值：`80` means 端口 80; `81-90` means 端口 range 81-90。",
+				Description: "有效值：`80` 表示 端口 80; `81-90` 表示 端口 范围 81-90。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -61,19 +61,19 @@ func ResourceTencentCloudTeoApplicationProxyRule() *schema.Resource {
 			"origin_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Origin server 类型 有效值：`custom`: Specified origins; `origins`: An origin group。",
+				Description: "Origin 服务器 类型 有效值：`自定义`: Specified origins; `origins`: An 源站 组。",
 			},
 
 			"origin_port": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Origin 端口，supported formats: single 端口: 80; 端口 segment: 81-90，81 to 90 ports。",
+				Description: "Origin 端口，支持 formats: 单个 端口: 80; 端口 segment: 81-90，81 到 90 ports。",
 			},
 
 			"origin_value": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Origin site information: When `OriginType` is `custom`，it 表示one or more origin sites，such as `['8.8.8.8'，'9.9.9.9']` or `OriginValue=['test.com']`; When `OriginType` is `origins`，there 为必填项 to be one and only one element，representing the origin site 组 ID，such as `['origin-537f5b41-162a-11ed-abaa-525400c5da15']`。",
+				Description: "Origin site 信息: 当 `OriginType` 是 `自定义`，它 表示one 或 more 源站 sites，such 作为 `['8.8.8.8'，'9.9.9.9']` 或 `OriginValue=['测试.com']`; 当 `OriginType` 是 `origins`，there 为必填项 到 是 一个 和 仅 一个 element，representing 源站 site 组 ID，such 作为 `['源站-537f5b41-162a-11ed-abaa-525400c5da15']`。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -83,21 +83,21 @@ func ResourceTencentCloudTeoApplicationProxyRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "状态，the values are: `online`: 已启用; `offline`: deactivated; `progress`: being deployed; `stopping`: being deactivated; `fail`: deployment failure/deactivation failure。",
+				Description: "状态， 值 是: `online`: 已启用; `offline`: deactivated; `progress`: being deployed; `stopping`: being deactivated; `fail`: 部署 failure/deactivation failure。",
 			},
 
 			"forward_client_ip": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Passes the 客户端 IP 默认值为 `OFF`. When Proto is TCP，有效值：`TOA`: Pass the 客户端 IP via TOA; `PPV1`: Pass the 客户端 IP via Proxy 协议 V1; `PPV2`: Pass the 客户端 IP via Proxy 协议 V2; `OFF`: Do not pass the 客户端 IP When Proto=UDP，有效值：`PPV2`: Pass the 客户端 IP via Proxy 协议 V2; `OFF`: Do not pass the 客户端 IP",
+				Description: "Passes 客户端 IP 默认值为 `OFF`. 当 Proto 是 TCP，有效值：`TOA`: Pass 客户端 IP via TOA; `PPV1`: Pass 客户端 IP via Proxy 协议 V1; `PPV2`: Pass 客户端 IP via Proxy 协议 V2; `OFF`: Do 不 pass 客户端 IP 当 Proto=UDP，有效值：`PPV2`: Pass 客户端 IP via Proxy 协议 V2; `OFF`: Do 不 pass 客户端 IP",
 			},
 
 			"session_persist": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "指定是否enable session persistence. 默认值为 false。",
+				Description: "指定是否enable 会话 persistence. 默认值为 false。",
 			},
 		},
 	}

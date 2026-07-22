@@ -20,20 +20,20 @@ func DataSourceTencentCloudTcmqTopic() *schema.Resource {
 				Default:     0,
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Starting position of the 列表 topics to be returned on the current page in case of paginated return. If a 值 is entered，限制 为必填项. 如果此参数为空，0 will be used by default。",
+				Description: "Starting position 的 列表 topics 到 是 返回 在 当前 页面 在 case 的 paginated 返回. 如果 值 是 entered，限制 为必填项. 如果此参数为空，0 将 是 使用 通过 默认值。",
 			},
 
 			"limit": {
 				Default:     20,
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "数量 topics to be returned per page in case of paginated return. If this parameter is not passed in，20 will be used by default. Maximum 值: 50。",
+				Description: "数量 topics 到 是 返回 per 页面 在 case 的 paginated 返回. 如果 此 参数 是 不 passed 在，20 将 是 使用 通过 默认值. Maximum 值: 50。",
 			},
 
 			"topic_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Fuzzy search by TopicName。",
+				Description: "Fuzzy search 通过 TopicName。",
 			},
 
 			"topic_name_list": {
@@ -42,25 +42,25 @@ func DataSourceTencentCloudTcmqTopic() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Filter by CMQ topic 名称",
+				Description: "过滤器 通过 CMQ 主题 名称",
 			},
 
 			"is_tag_filter": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "For filtering by 标签，this parameter must be set to `true`。",
+				Description: "For filtering 通过 标签，此 参数 必须 是 集合 到 `true`。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter. Currently，you can filter by 标签 The 标签 名称 must be prefixed with `标签:`，such as `标签: 所有者`，`标签: environment`，or `标签: business`。",
+				Description: "过滤器. Currently，您 可以 过滤器 通过 标签 标签 名称 必须 是 prefixed 使用 `标签:`，such 作为 `标签: 所有者`，`标签: 环境`，或 `标签: business`。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Filter parameter 名称",
+							Description: "过滤器 参数 名称",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -77,7 +77,7 @@ func DataSourceTencentCloudTcmqTopic() *schema.Resource {
 			"topic_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Topic list。",
+				Description: "Topic 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"topic_id": {
@@ -93,12 +93,12 @@ func DataSourceTencentCloudTcmqTopic() *schema.Resource {
 						"msg_retention_seconds": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Maximum lifecycle of 消息 in topic. After the 周期 specified by this parameter has elapsed since a 消息 is sent to the topic，the 消息 will be deleted no matter whether it has been successfully pushed to the 用户 This parameter is measured （秒） and defaulted to one day (86,400 seconds)，which cannot be modified。",
+							Description: "Maximum lifecycle 的 消息 在 主题. After 周期 指定 通过 此 参数 has elapsed since 消息 是 sent 到 主题， 消息 将 是 删除 无 matter whether 它 has been successfully pushed 到 用户 此 参数 是 measured （秒） 和 defaulted 到 一个 day (86,400 秒)，其中 不能 是 modified。",
 						},
 						"max_msg_size": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Maximum 消息 size，which ranges from 1,024 to 1,048,576 bytes (i.e.，1-1,024 KB). The 默认值为 65,536。",
+							Description: "Maximum 消息 大小，其中 ranges 从 1,024 到 1,048,576 bytes (i.e.，1-1,024 KB). 默认值为 65,536。",
 						},
 						"qps": {
 							Computed:    true,
@@ -108,27 +108,27 @@ func DataSourceTencentCloudTcmqTopic() *schema.Resource {
 						"filter_type": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Filtering policy selected when a subscription is created: If `filterType` is 1，`FilterTag` will be 用于filtering. If `filterType` is 2，`BindingKey` will be 用于filtering。",
+							Description: "Filtering 策略 selected 当 subscription 是 创建: 如果 `filterType` 是 1，`FilterTag` 将 是 用于filtering. 如果 `filterType` 是 2，`BindingKey` 将 是 用于filtering。",
 						},
 						"create_time": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Topic 创建时间. A Unix 时间戳 accurate down to the millisecond will be returned。",
+							Description: "Topic 创建时间. A Unix 时间戳 accurate down 到 millisecond 将 是 返回。",
 						},
 						"last_modify_time": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Time when the topic attribute is last modified. A Unix 时间戳 accurate down to the millisecond will be returned。",
+							Description: "Time 当 主题 attribute 是 last modified. A Unix 时间戳 accurate down 到 millisecond 将 是 返回。",
 						},
 						"msg_count": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "数量 current messages in the topic (数量 retained messages)。",
+							Description: "数量 当前 messages 在 主题 (数量 retained messages)。",
 						},
 						"create_uin": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "创建者 `Uin`. The `resource` field for CAM authentication is composed of this field。",
+							Description: "创建者 `Uin`. `资源` 字段 对于 CAM authentication 是 composed 的 此 字段。",
 						},
 						"tags": {
 							Computed:    true,
@@ -139,12 +139,12 @@ func DataSourceTencentCloudTcmqTopic() *schema.Resource {
 									"tag_key": {
 										Computed:    true,
 										Type:        schema.TypeString,
-										Description: "值 of the 标签键",
+										Description: "值 的 标签键",
 									},
 									"tag_value": {
 										Computed:    true,
 										Type:        schema.TypeString,
-										Description: "值 of the 标签值",
+										Description: "值 的 标签值",
 									},
 								},
 							},
@@ -152,7 +152,7 @@ func DataSourceTencentCloudTcmqTopic() *schema.Resource {
 						"trace": {
 							Computed:    true,
 							Type:        schema.TypeBool,
-							Description: "消息 trace. true: 已启用; false: not 已启用",
+							Description: "消息 trace. true: 已启用; false: 不 已启用",
 						},
 						"tenant_id": {
 							Computed:    true,
@@ -167,7 +167,7 @@ func DataSourceTencentCloudTcmqTopic() *schema.Resource {
 						"status": {
 							Computed:    true,
 							Type:        schema.TypeInt,
-							Description: "Cluster 状态 `0`: creating; `1`: normal; `2`: terminating; `3`: deleted; `4`: isolated; `5`: creation failed; `6`: deletion failed。",
+							Description: "Cluster 状态 `0`: creating; `1`: normal; `2`: terminating; `3`: 删除; `4`: isolated; `5`: creation failed; `6`: deletion failed。",
 						},
 						"broker_type": {
 							Computed:    true,

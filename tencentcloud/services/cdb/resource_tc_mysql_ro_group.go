@@ -65,7 +65,7 @@ func ResourceTencentCloudMysqlRoGroup() *schema.Resource {
 						"weight_mode": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "重量模式。支持的值包括： `system` - 由系统自动分配； `custom` - 用户定义的设置。请注意，如果设置了“自定义”模式，则必须设置RO实例权重配置（RoWeightValues）参数。",
+							Description: "重量模式。支持的值包括： `系统` - 由系统自动分配； `自定义` - 用户定义的设置。请注意，如果设置了“自定义”模式，则必须设置RO实例权重配置（RoWeightValues）参数。",
 						},
 						"replication_delay_time": {
 							Type:        schema.TypeInt,

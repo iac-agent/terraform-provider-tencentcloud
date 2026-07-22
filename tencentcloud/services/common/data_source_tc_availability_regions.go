@@ -22,12 +22,12 @@ func DataSourceTencentCloudAvailabilityRegions() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "When specified，only the 地域 with the exactly 名称 match will be returned. `default` 值 means it consistent with the provider 地域",
+				Description: "当 指定，仅 地域 使用 exactly 名称 match 将 是 返回. `默认值` 值 表示 它 consistent 使用 provider 地域",
 			},
 			"include_unavailable": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "A bool variable 表示that the query will include `UNAVAILABLE` regions。",
+				Description: "A bool variable 表示that 查询 将 include `UNAVAILABLE` regions。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -39,23 +39,23 @@ func DataSourceTencentCloudAvailabilityRegions() *schema.Resource {
 			"regions": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A 列表 regions will be exported and its every element 包含following attributes:",
+				Description: "A 列表 regions 将 是 exported 和 its every element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 名称 地域，like `ap-guangzhou`。",
+							Description: "名称 地域，like `ap-guangzhou`。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 描述 地域，like `Guangzhou 地域`。",
+							Description: "描述 地域，like `Guangzhou 地域`。",
 						},
 						"state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The state of the 地域，indicate availability using `AVAILABLE` and `UNAVAILABLE` values。",
+							Description: "state 的 地域，indicate availability 使用 `AVAILABLE` 和 `UNAVAILABLE` 值。",
 						},
 					},
 				},

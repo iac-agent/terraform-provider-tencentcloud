@@ -27,7 +27,7 @@ func DataSourceTencentCloudAPIGatewayThrottlingApis() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Environment list。",
+				Description: "Environment 列表。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -38,7 +38,7 @@ func DataSourceTencentCloudAPIGatewayThrottlingApis() *schema.Resource {
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A 列表 policies bound to API。",
+				Description: "A 列表 policies bound 到 API。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"service_id": {
@@ -49,7 +49,7 @@ func DataSourceTencentCloudAPIGatewayThrottlingApis() *schema.Resource {
 						"api_environment_strategies": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "列表 throttling policies bound to API。",
+							Description: "列表 throttling policies bound 到 API。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"api_id": {
@@ -70,12 +70,12 @@ func DataSourceTencentCloudAPIGatewayThrottlingApis() *schema.Resource {
 									"method": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "API method。",
+										Description: "API 方法。",
 									},
 									"strategy_list": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Environment throttling information。",
+										Description: "Environment throttling 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"environment_name": {

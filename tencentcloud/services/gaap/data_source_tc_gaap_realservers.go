@@ -21,29 +21,29 @@ func DataSourceTencentCloudGaapRealservers() *schema.Resource {
 				Type:        schema.TypeInt,
 				Default:     -1,
 				Optional:    true,
-				Description: "ID project within the GAAP realserver to be queried，默认值为 `-1`，no set means all projects。",
+				Description: "ID 项目 within GAAP realserver 到 是 queried，默认值为 `-1`，无 集合 表示 all projects。",
 			},
 			"domain": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"ip"},
-				Description:   "域名 of the GAAP realserver to be queried，conflict with `ip`。",
+				Description:   "域名 的 GAAP realserver 到 是 queried，conflict 使用 `ip`。",
 			},
 			"ip": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"domain"},
-				Description:   "IP of the GAAP realserver to be queried，conflict with `域名`。",
+				Description:   "IP 的 GAAP realserver 到 是 queried，conflict 使用 `域名`。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "名称 GAAP realserver to be queried，the maximum length is 30。",
+				Description: "名称 GAAP realserver 到 是 queried， 最大 长度 是 30。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "标签 of the GAAP proxy to be queried. Support up to 5，display the information as long as it matches one。",
+				Description: "标签 的 GAAP proxy 到 是 queried. Support up 到 5，display 信息 作为 long 作为 它 matches 一个。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -55,7 +55,7 @@ func DataSourceTencentCloudGaapRealservers() *schema.Resource {
 			"realservers": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information 列表 GAAP realserver. Each element 包含following attributes:",
+				Description: "An 信息 列表 GAAP realserver. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
@@ -71,22 +71,22 @@ func DataSourceTencentCloudGaapRealservers() *schema.Resource {
 						"ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IP of the GAAP realserver。",
+							Description: "IP 的 GAAP realserver。",
 						},
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "域名 of the GAAP realserver。",
+							Description: "域名 的 GAAP realserver。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "ID project within the GAAP realserver。",
+							Description: "ID 项目 within GAAP realserver。",
 						},
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "标签 of the GAAP realserver。",
+							Description: "标签 的 GAAP realserver。",
 						},
 					},
 				},

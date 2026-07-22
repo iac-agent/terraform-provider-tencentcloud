@@ -27,27 +27,27 @@ func ResourceTencentCloudIgtmPackageInstance() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"STANDARD", "ULTIMATE"}),
-				Description:  "Package 类型: STANDARD for standard edition; ULTIMATE for flagship edition。",
+				Description:  "Package 类型: STANDARD 对于 standard edition; ULTIMATE 对于 flagship edition。",
 			},
 
 			"auto_renew": {
 				Type:         schema.TypeInt,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{1, 2}),
-				Description:  "Auto renewal: 1 enable auto renewal; 2 disable auto renewal。",
+				Description:  "Auto renewal: 1 启用 auto renewal; 2 disable auto renewal。",
 			},
 
 			"time_span": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Package duration in months，必填 for creation and renewal. 取值范围：1~120。",
+				Description: "Package 时长 在 months，必填 对于 creation 和 renewal. 取值范围：1~120。",
 			},
 
 			"auto_voucher": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
-				Description:  "是否automatically select vouchers，1 yes; 0 no，默认为 0。",
+				Description:  "是否automatically select vouchers，1 yes; 0 无，默认为 0。",
 			},
 
 			// computed

@@ -29,13 +29,13 @@ func ResourceTencentCloudSmsTemplate() *schema.Resource {
 			"template_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "消息 模板名称，which must be unique。",
+				Description: "消息 模板名称，其中 必须 是 唯一。",
 			},
 
 			"template_content": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "消息 Template 内容",
+				Description: "消息 模板 内容",
 			},
 
 			"international": {
@@ -53,7 +53,7 @@ func ResourceTencentCloudSmsTemplate() *schema.Resource {
 			"remark": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Template 备注，such as reason for application and use case。",
+				Description: "模板 备注，such 作为 reason 对于 应用 和 使用 case。",
 			},
 		},
 	}

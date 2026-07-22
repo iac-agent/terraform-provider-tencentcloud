@@ -26,7 +26,7 @@ func ResourceTencentCloudMonitorTmpTkeTemplateAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The ID template，which is 用于the outgoing reference。",
+				Description: "ID template，其中 是 用于the outgoing reference。",
 			},
 
 			"targets": {
@@ -34,13 +34,13 @@ func ResourceTencentCloudMonitorTmpTkeTemplateAttachment() *schema.Resource {
 				MaxItems:    1,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Sync target details。",
+				Description: "Sync 目标 details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "target area。",
+							Description: "目标 area。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
@@ -50,17 +50,17 @@ func ResourceTencentCloudMonitorTmpTkeTemplateAttachment() *schema.Resource {
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "ID cluster。",
+							Description: "ID 集群。",
 						},
 						"sync_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Last sync template time。",
+							Description: "Last sync template 时间。",
 						},
 						"version": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Template 版本 currently in use。",
+							Description: "模板 版本 currently 在 使用。",
 						},
 						"cluster_type": {
 							Type:        schema.TypeString,
@@ -70,12 +70,12 @@ func ResourceTencentCloudMonitorTmpTkeTemplateAttachment() *schema.Resource {
 						"instance_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "名称 prometheus instance。",
+							Description: "名称 prometheus 实例。",
 						},
 						"cluster_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "名称 the cluster。",
+							Description: "名称 集群。",
 						},
 					},
 				},

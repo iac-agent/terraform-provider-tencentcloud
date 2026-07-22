@@ -19,13 +19,13 @@ func DataSourceTencentCloudCssBackupStream() *schema.Resource {
 			"stream_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Stream id。",
+				Description: "Stream ID。",
 			},
 
 			"stream_info_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Backup stream group info。",
+				Description: "Backup 流 组 info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"stream_name": {
@@ -36,7 +36,7 @@ func DataSourceTencentCloudCssBackupStream() *schema.Resource {
 						"backup_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Backup stream info。",
+							Description: "Backup 流 info。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"domain_name": {
@@ -52,22 +52,22 @@ func DataSourceTencentCloudCssBackupStream() *schema.Resource {
 									"publish_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "UTC time，eg，2018-06-29T19:00:00Z。",
+										Description: "UTC 时间，eg，2018-06-29T19:00:00Z。",
 									},
 									"upstream_sequence": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Push stream sequence。",
+										Description: "Push 流 sequence。",
 									},
 									"source_from": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "来源 from。",
+										Description: "来源 从。",
 									},
 									"master_flag": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Master stream flag。",
+										Description: "Master 流 flag。",
 									},
 								},
 							},
@@ -75,7 +75,7 @@ func DataSourceTencentCloudCssBackupStream() *schema.Resource {
 						"optimal_enable": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Optimal switch，1-enable，0-disable。",
+							Description: "Optimal switch，1-启用，0-disable。",
 						},
 						"host_group_name": {
 							Type:        schema.TypeString,

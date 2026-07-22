@@ -25,12 +25,12 @@ func ResourceTencentCloudDayuCCPolicyV2() *schema.Resource {
 			"resource_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The ID resource instance。",
+				Description: "ID 资源 实例。",
 			},
 			"business": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Business of resource instance. bgpip 表示anti-anti-ip ip; bgp means exclusive package; bgp-multip means shared packet; net 表示anti-anti-ip pro 版本",
+				Description: "Business 的 资源 实例. bgpip 表示anti-anti-ip ip; bgp 表示 exclusive 包; bgp-multip 表示 shared packet; net 表示anti-anti-ip pro 版本",
 			},
 			"thresholds": {
 				Type:     schema.TypeList,
@@ -40,7 +40,7 @@ func ResourceTencentCloudDayuCCPolicyV2() *schema.Resource {
 						"threshold": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Cleaning threshold，-1 表示that the `default` 模式 is turned on。",
+							Description: "Cleaning 阈值，-1 表示that `默认值` 模式 是 turned 在。",
 						},
 						"domain": {
 							Type:        schema.TypeString,
@@ -49,7 +49,7 @@ func ResourceTencentCloudDayuCCPolicyV2() *schema.Resource {
 						},
 					},
 				},
-				Description: "列表 protection threshold configurations。",
+				Description: "列表 protection 阈值 configurations。",
 			},
 			"cc_geo_ip_policys": {
 				Type:     schema.TypeList,
@@ -59,19 +59,19 @@ func ResourceTencentCloudDayuCCPolicyV2() *schema.Resource {
 						"action": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "用户 操作，drop or arg。",
+							Description: "用户 操作，drop 或 arg。",
 						},
 						"area_list": {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeInt},
 							Optional:    true,
 							Computed:    true,
-							Description: "The 列表 地域 IDs that the 用户 selects to block。",
+							Description: "列表 地域 IDs 该 用户 selects 到 block。",
 						},
 						"region_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Regional types，divided into china，oversea and customized。",
+							Description: "Regional types，divided into china，oversea 和 customized。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
@@ -97,7 +97,7 @@ func ResourceTencentCloudDayuCCPolicyV2() *schema.Resource {
 						},
 					},
 				},
-				Description: "Details of the CC 地域 blocking policy list。",
+				Description: "Details 的 CC 地域 blocking 策略 列表。",
 			},
 			"cc_black_white_ips": {
 				Type:     schema.TypeList,
@@ -107,7 +107,7 @@ func ResourceTencentCloudDayuCCPolicyV2() *schema.Resource {
 						"black_white_ip": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Blacklist and whitelist IP addresses。",
+							Description: "Blacklist 和 whitelist IP addresses。",
 						},
 						"domain": {
 							Type:        schema.TypeString,
@@ -138,7 +138,7 @@ func ResourceTencentCloudDayuCCPolicyV2() *schema.Resource {
 						},
 					},
 				},
-				Description: "Blacklist and whitelist。",
+				Description: "Blacklist 和 whitelist。",
 			},
 			"cc_precision_policys": {
 				Type:     schema.TypeList,
@@ -148,7 +148,7 @@ func ResourceTencentCloudDayuCCPolicyV2() *schema.Resource {
 						"policy_action": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Policy 模式 (discard or captcha)。",
+							Description: "Policy 模式 (discard 或 captcha)。",
 						},
 						"domain": {
 							Type:        schema.TypeString,
@@ -168,7 +168,7 @@ func ResourceTencentCloudDayuCCPolicyV2() *schema.Resource {
 						"policy_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Policy Id。",
+							Description: "Policy ID。",
 						},
 						"policys": {
 							Type: schema.TypeList,
@@ -177,22 +177,22 @@ func ResourceTencentCloudDayuCCPolicyV2() *schema.Resource {
 									"field_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Configuration item types，currently only support 值",
+										Description: "Configuration item types，currently 仅 support 值",
 									},
 									"field_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Configuration fields with the desirable values cgi，ua，cookie，referer，accept，srcip。",
+										Description: "Configuration 字段 使用 desirable 值 cgi，ua，cookie，referer，accept，srcip。",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Configure the 值",
+										Description: "Configure 值",
 									},
 									"value_operator": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Configure the item-值 comparison 模式，which can be taken as the 值 of evaluate，not_equal，include。",
+										Description: "Configure item-值 comparison 模式，其中 可以 是 taken 作为 值 的 evaluate，not_equal，include。",
 									},
 								},
 							},
@@ -226,7 +226,7 @@ func ResourceTencentCloudDayuCCPolicyV2() *schema.Resource {
 						"level": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Protection rating，the 可选 值 of default means default policy，loose means loose，and strict means strict。",
+							Description: "Protection rating， 可选 值 的 默认值 表示 默认值 策略，loose 表示 loose，和 strict 表示 strict。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
@@ -240,54 +240,54 @@ func ResourceTencentCloudDayuCCPolicyV2() *schema.Resource {
 									"action": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The frequency 限制 policy 模式，the 可选 值 of arg 表示verification 代码，and drop 表示discard。",
+										Description: "频率 限制 策略 模式， 可选 值 的 arg 表示verification 代码，和 drop 表示discard。",
 									},
 									"cookie": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Default:     "",
-										Description: "Cookies，one of the three policy entries can only be filled in。",
+										Description: "Cookies，一个 的 three 策略 entries 可以 仅 是 filled 在。",
 									},
 									"execute_duration": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "The duration of the frequency 限制 policy can be taken from 1 to 86400 per second。",
+										Description: "时长 的 频率 限制 策略 可以 是 taken 从 1 到 86400 per second。",
 									},
 									"mode": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The policy item is compared，and the 可选 值 include 表示inclusion，and equal means equal。",
+										Description: "策略 item 是 compared，和 可选 值 include 表示inclusion，和 equal 表示 equal。",
 									},
 									"period": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Statistical 周期，take values 1，10，30，60，（秒）。",
+										Description: "Statistical 周期，take 值 1，10，30，60，（秒）。",
 									},
 									"request_num": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "The 数量 requests，the 值 is 1 to 20000。",
+										Description: "数量 requests， 值 是 1 到 20000。",
 									},
 									"uri": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Default:     "",
-										Description: "Uri，one of the three policy entries can only be filled in。",
+										Description: "Uri，一个 的 three 策略 entries 可以 仅 是 filled 在。",
 									},
 									"user_agent": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Default:     "",
-										Description: "用户-Agent，only one of the three policy entries can be filled in。",
+										Description: "用户-Agent，仅 一个 的 three 策略 entries 可以 是 filled 在。",
 									},
 								},
 							},
 							Required:    true,
-							Description: "The CC Frequency 限制 Policy Item field。",
+							Description: "CC Frequency 限制 Policy Item 字段。",
 						},
 					},
 				},
-				Description: "CC frequency throttling policy。",
+				Description: "CC 频率 throttling 策略。",
 			},
 		},
 	}

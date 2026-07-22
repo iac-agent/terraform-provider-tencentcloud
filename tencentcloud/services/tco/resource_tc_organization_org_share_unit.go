@@ -27,25 +27,25 @@ func ResourceTencentCloudOrganizationOrgShareUnit() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Shared unit 名称 It only supports a combination of uppercase and lowercase letters，numbers，-，and _，with a length of 3-128 characters。",
+				Description: "Shared 单位 名称 It 仅 支持 combination 的 uppercase 和 lowercase letters，numbers，-，和 _，使用 长度 的 3-128 字符。",
 			},
 
 			"area": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Shared unit 地域 The regions that support sharing can be obtained through the DescribeShareAreas interface。",
+				Description: "Shared 单位 地域 regions 该 support sharing 可以 是 获取 through DescribeShareAreas interface。",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Shared unit 描述 Up to 128 characters。",
+				Description: "Shared 单位 描述 Up 到 128 字符。",
 			},
 
 			"unit_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Shared unit 地域 The regions that support sharing can be obtained through the DescribeShareAreas interface。",
+				Description: "Shared 单位 地域 regions 该 support sharing 可以 是 获取 through DescribeShareAreas interface。",
 			},
 		},
 	}

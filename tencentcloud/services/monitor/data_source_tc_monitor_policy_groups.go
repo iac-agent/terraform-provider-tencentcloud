@@ -21,13 +21,13 @@ func DataSourceTencentCloudMonitorPolicyGroups() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Policy 组名称 for query。",
+				Description: "Policy 组名称 对于 查询。",
 			},
 			"policy_view_names": {
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Optional:    true,
-				Description: "The policy view for query。",
+				Description: "策略 view 对于 查询。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -38,28 +38,28 @@ func DataSourceTencentCloudMonitorPolicyGroups() *schema.Resource {
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list policy groups. Each element 包含following attributes:",
+				Description: "A 列表 策略 groups. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"group_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The policy group id。",
+							Description: "策略 组 ID。",
 						},
 						"group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The policy 组名称",
+							Description: "策略 组名称",
 						},
 						"is_open": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether open or not。",
+							Description: "Whether open 或 不。",
 						},
 						"policy_view_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The policy group view 名称",
+							Description: "策略 组 view 名称",
 						},
 						"last_edit_uin": {
 							Type:        schema.TypeString,
@@ -69,63 +69,63 @@ func DataSourceTencentCloudMonitorPolicyGroups() *schema.Resource {
 						"use_sum": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 instances of policy group bindings。",
+							Description: "数量 实例 的 策略 组 bindings。",
 						},
 						"no_shielded_sum": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 unmasked instances of policy group bindings。",
+							Description: "数量 unmasked 实例 的 策略 组 bindings。",
 						},
 						"is_default": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "If is default policy group or not，`0` represents the non-default policy，and `1` represents the default policy。",
+							Description: "如果 是 默认值 策略 组 或 不，`0` 表示 non-默认值 策略，和 `1` 表示 默认值 策略。",
 						},
 						"conditions": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "A 列表 threshold rules. Each element 包含following attributes:",
+							Description: "A 列表 阈值 规则. Each element 包含following attributes:",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"metric_show_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "名称 this metric。",
+										Description: "名称 此 metric。",
 									},
 									"period": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Data aggregation cycle (unit second)。",
+										Description: "Data aggregation cycle (单位 second)。",
 									},
 									"metric_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "ID this metric。",
+										Description: "ID 此 metric。",
 									},
 									"rule_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Threshold rule ID。",
+										Description: "Threshold 规则 ID。",
 									},
 									"metric_unit": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The unit of this metric。",
+										Description: "单位 的 此 metric。",
 									},
 									"alarm_notify_type": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Alarm sending convergence 类型 `0` continuous alarm，`1` 索引 alarm。",
+										Description: "Alarm sending convergence 类型 `0` continuous 告警，`1` 索引 告警。",
 									},
 									"alarm_notify_period": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Alarm sending cycle per second. `<0` does not fire，`0` only fires once，and `>0` fires every triggerTime second。",
+										Description: "Alarm sending cycle per second. `<0` does 不 fire，`0` 仅 fires once，和 `>0` fires every triggerTime second。",
 									},
 									"calc_type": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Compare 类型，`1` means more than，`2`  means greater than or equal，`3` means less than，`4` means less than or equal to，`5` means equal，`6` means not equal，`7` means days rose，`8` means days fell，`9` means weeks rose，`10` means weeks fell，`11` means 周期 rise，`12` means 周期 fell。",
+										Description: "Compare 类型，`1` 表示 more 比，`2` 表示 greater 比 或 equal，`3` 表示 less 比，`4` 表示 less 比 或 equal 到，`5` 表示 equal，`6` 表示 不 equal，`7` 表示 days rose，`8` 表示 days fell，`9` 表示 weeks rose，`10` 表示 weeks fell，`11` 表示 周期 rise，`12` 表示 周期 fell。",
 									},
 									"calc_value": {
 										Type:        schema.TypeString,
@@ -135,7 +135,7 @@ func DataSourceTencentCloudMonitorPolicyGroups() *schema.Resource {
 									"continue_time": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "How long does the triggering rule last (per second)。",
+										Description: "How long does triggering 规则 last (per second)。",
 									},
 								},
 							},
@@ -143,33 +143,33 @@ func DataSourceTencentCloudMonitorPolicyGroups() *schema.Resource {
 						"event_conditions": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "A 列表 event rules. Each element 包含following attributes:",
+							Description: "A 列表 事件 规则. Each element 包含following attributes:",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"event_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "ID this event metric。",
+										Description: "ID 此 事件 metric。",
 									},
 									"event_show_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "名称 this event metric。",
+										Description: "名称 此 事件 metric。",
 									},
 									"rule_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Threshold rule ID。",
+										Description: "Threshold 规则 ID。",
 									},
 									"alarm_notify_type": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Alarm sending convergence 类型 `0` continuous alarm，`1` 索引 alarm。",
+										Description: "Alarm sending convergence 类型 `0` continuous 告警，`1` 索引 告警。",
 									},
 									"alarm_notify_period": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Alarm sending cycle per second. `<0` does not fire，`0` only fires once，and `>0` fires every triggerTime second。",
+										Description: "Alarm sending cycle per second. `<0` does 不 fire，`0` 仅 fires once，和 `>0` fires every triggerTime second。",
 									},
 								},
 							},
@@ -184,29 +184,29 @@ func DataSourceTencentCloudMonitorPolicyGroups() *schema.Resource {
 										Type:        schema.TypeList,
 										Elem:        &schema.Schema{Type: schema.TypeInt},
 										Computed:    true,
-										Description: "Alarm receive 组 ID list。",
+										Description: "Alarm receive 组 ID 列表。",
 									},
 									"receiver_user_list": {
 										Type:        schema.TypeList,
 										Elem:        &schema.Schema{Type: schema.TypeInt},
 										Computed:    true,
-										Description: "Alarm receiver ID list。",
+										Description: "Alarm receiver ID 列表。",
 									},
 									"uid_list": {
 										Type:        schema.TypeList,
 										Elem:        &schema.Schema{Type: schema.TypeInt},
 										Computed:    true,
-										Description: "The phone alerts the receiver uid。",
+										Description: "phone alerts receiver uid。",
 									},
 									"start_time": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Alarm 周期 开始时间.Range [0,86399]，which removes the date after it is converted to Beijing time as a Unix 时间戳，for example 7200 means '10:0:0'。",
+										Description: "Alarm 周期 开始时间.Range [0,86399]，其中 removes date after 它 是 converted 到 Beijing 时间 作为 Unix 时间戳，对于 示例 7200 表示 '10:0:0'。",
 									},
 									"end_time": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "End of alarm 周期 Meaning with `start_time`。",
+										Description: "End 的 告警 周期 Meaning 使用 `start_time`。",
 									},
 									"notify_way": {
 										Type:        schema.TypeList,
@@ -217,27 +217,27 @@ func DataSourceTencentCloudMonitorPolicyGroups() *schema.Resource {
 									"receiver_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Receive 类型 可选 'group' or '用户'。",
+										Description: "Receive 类型 可选 '组' 或 '用户'。",
 									},
 									"round_number": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Telephone alarm number。",
+										Description: "Telephone 告警 数量。",
 									},
 									"round_interval": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Telephone alarm interval per round (seconds)。",
+										Description: "Telephone 告警 间隔 per round (秒)。",
 									},
 									"person_interval": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Telephone 警告 to individual interval (seconds)。",
+										Description: "Telephone 警告 到 individual 间隔 (秒)。",
 									},
 									"need_send_notice": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Do need a telephone alarm contact prompt.You don't need 0，you need 1。",
+										Description: "Do need telephone 告警 contact prompt.You don't need 0，您 need 1。",
 									},
 									"send_for": {
 										Type:        schema.TypeList,
@@ -262,32 +262,32 @@ func DataSourceTencentCloudMonitorPolicyGroups() *schema.Resource {
 						"can_set_default": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether it can be set as the default policy。",
+							Description: "Whether 它 可以 是 集合 作为 默认值 策略。",
 						},
 						"parent_group_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Parent policy 组 ID",
+							Description: "Parent 策略 组 ID",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Policy group 备注",
+							Description: "Policy 组 备注",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The project ID to which the policy group belongs。",
+							Description: "项目 ID 到 其中 策略 组 belongs。",
 						},
 						"update_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The policy group update 时间戳。",
+							Description: "策略 组 update 时间戳。",
 						},
 						"insert_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The policy group create 时间戳。",
+							Description: "策略 组 create 时间戳。",
 						},
 					},
 				},

@@ -33,49 +33,49 @@ func ResourceTencentCloudIdentityCenterUser() *schema.Resource {
 			"user_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "用户 名称 It must be unique in space. Modifications are not supported. 格式: 包含numbers，English letters and special symbols(`+`，`=`，`,`，`.`，`@`，`-`，`_`). Length: Maximum 64 characters。",
+				Description: "用户 名称 It 必须 是 唯一 在 space. Modifications 是 不 支持. 格式: 包含numbers，English letters 和 special symbols(`+`，`=`，`,`，`.`，`@`，`-`，`_`). Length: Maximum 64 字符。",
 			},
 
 			"first_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The 用户's last 名称 Length: Maximum 64 characters。",
+				Description: "用户's last 名称 Length: Maximum 64 字符。",
 			},
 
 			"last_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The 用户's 名称 Length: Maximum 64 characters。",
+				Description: "用户's 名称 Length: Maximum 64 字符。",
 			},
 
 			"display_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The display 名称 用户 Length: Maximum 256 characters。",
+				Description: "display 名称 用户 Length: Maximum 256 字符。",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "用户's 描述 Length: Maximum 1024 characters。",
+				Description: "用户's 描述 Length: Maximum 1024 字符。",
 			},
 
 			"email": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The 用户's email 地址 Must be unique within the catalog. Length: Maximum 128 characters。",
+				Description: "用户's email 地址 Must 是 唯一 within catalog. Length: Maximum 128 字符。",
 			},
 
 			"user_status": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The 状态 用户 值: 已启用 (default): 已启用 已禁用: 已禁用",
+				Description: "状态 用户 值: 已启用 (默认值): 已启用 已禁用: 已禁用",
 			},
 			"user_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "用户 id。",
+				Description: "用户 ID。",
 			},
 			"user_type": {
 				Type:        schema.TypeString,

@@ -29,19 +29,19 @@ func ResourceTencentCloudMariadbDedicatedclusterDbInstance() *schema.Resource {
 			"goods_num": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "数量 instance。",
+				Description: "数量 实例。",
 			},
 
 			"memory": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "instance memory。",
+				Description: "实例 内存。",
 			},
 
 			"storage": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "instance disk storage。",
+				Description: "实例 磁盘 存储。",
 			},
 
 			"cluster_id": {
@@ -73,20 +73,20 @@ func ResourceTencentCloudMariadbDedicatedclusterDbInstance() *schema.Resource {
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "子网 ID，it&amp;#39;s 必填 when vpcId is set。",
+				Description: "子网 ID，它&amp;#39;s 必填 当 vpcId 是 集合。",
 			},
 
 			"db_version_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "db engine 版本，默认为 0。",
+				Description: "db 引擎 版本，默认为 0。",
 			},
 
 			"instance_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "名称 this instance。",
+				Description: "名称 此 实例。",
 			},
 
 			"tags": {

@@ -72,7 +72,7 @@ func ResourceTencentCloudBiDatasource() *schema.Resource {
 			"source_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Datasource 名称 in BI。",
+				Description: "Datasource 名称 在 BI。",
 			},
 
 			"project_id": {
@@ -85,7 +85,7 @@ func ResourceTencentCloudBiDatasource() *schema.Resource {
 				Optional:    true,
 				Default:     "{\"Type\":\"Own\"}",
 				Type:        schema.TypeString,
-				Description: "Own or Cloud，默认值：`Own`。",
+				Description: "Own 或 Cloud，默认值：`Own`。",
 			},
 
 			"catalog": {
@@ -97,31 +97,31 @@ func ResourceTencentCloudBiDatasource() *schema.Resource {
 			"data_origin": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Third-party datasource identification，this parameter can be ignored。",
+				Description: "Third-party datasource identification，此 参数 可以 是 ignored。",
 			},
 
 			"data_origin_project_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Third-party datasource 项目 ID，this parameter can be ignored。",
+				Description: "Third-party datasource 项目 ID，此 参数 可以 是 ignored。",
 			},
 
 			"data_origin_datasource_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Third-party datasource 项目 ID，this parameter can be ignored。",
+				Description: "Third-party datasource 项目 ID，此 参数 可以 是 ignored。",
 			},
 
 			"uniq_vpc_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Tencent cloud private network unified identity。",
+				Description: "Tencent 云 私有 网络 unified identity。",
 			},
 
 			"vpc_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Tencent cloud private network identity。",
+				Description: "Tencent 云 私有 网络 identity。",
 			},
 		},
 	}

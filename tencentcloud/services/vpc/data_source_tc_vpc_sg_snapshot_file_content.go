@@ -19,13 +19,13 @@ func DataSourceTencentCloudVpcSgSnapshotFileContent() *schema.Resource {
 			"snapshot_policy_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Snapshot policy IDs。",
+				Description: "Snapshot 策略 IDs。",
 			},
 
 			"snapshot_file_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Snapshot file ID。",
+				Description: "Snapshot 文件 ID。",
 			},
 
 			"security_group_id": {
@@ -43,7 +43,7 @@ func DataSourceTencentCloudVpcSgSnapshotFileContent() *schema.Resource {
 			"backup_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Backup time。",
+				Description: "Backup 时间。",
 			},
 
 			"operator": {
@@ -55,13 +55,13 @@ func DataSourceTencentCloudVpcSgSnapshotFileContent() *schema.Resource {
 			"original_data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Original data。",
+				Description: "Original 数据。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"policy_index": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 索引 数量 security group rules，which dynamically changes with the rules. This parameter can be obtained via the `DescribeSecurityGroupPolicies` API and used with the `版本` field in the returned 值 of the API。",
+							Description: "索引 数量 安全 组 规则，其中 dynamically changes 使用 规则. 此 参数 可以 是 获取 via `DescribeSecurityGroupPolicies` API 和 使用 使用 `版本` 字段 在 返回 值 的 API。",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
@@ -71,23 +71,23 @@ func DataSourceTencentCloudVpcSgSnapshotFileContent() *schema.Resource {
 						"port": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "端口 (`all`，a single 端口，or a 端口 range).Note: If the `协议` 值 is set to `ALL`，the `端口` 值 also needs to be set to `all`。",
+							Description: "端口 (`all`， 单个 端口，或 端口 范围).注意: 如果 `协议` 值 是 集合 到 `ALL`， `端口` 值 also needs 到 是 集合 到 `all`。",
 						},
 						"service_template": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "协议 端口 ID or 协议 端口 组 ID ServiceTemplate and 协议+端口 are mutually exclusive。",
+							Description: "协议 端口 ID 或 协议 端口 组 ID ServiceTemplate 和 协议+端口 是 mutually exclusive。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"service_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "协议 端口 ID，such as `ppm-f5n1f8da`。",
+										Description: "协议 端口 ID，such 作为 `ppm-f5n1f8da`。",
 									},
 									"service_group_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "协议 端口 组 ID，such as `ppmg-f5n1f8da`。",
+										Description: "协议 端口 组 ID，such 作为 `ppmg-f5n1f8da`。",
 									},
 								},
 							},
@@ -95,33 +95,33 @@ func DataSourceTencentCloudVpcSgSnapshotFileContent() *schema.Resource {
 						"cidr_block": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Either `CidrBlock` or `Ipv6CidrBlock can be specified. Note that if `0.0.0.0/n` is entered，it is mapped to 0.0.0.0/0。",
+							Description: "Either `CidrBlock` 或 `Ipv6CidrBlock 可以 是 指定. 注意 该 如果 `0.0.0.0/n` 是 entered，它 是 mapped 到 0.0.0.0/0。",
 						},
 						"ipv6_cidr_block": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The CIDR block or IPv6 (mutually exclusive)。",
+							Description: "CIDR block 或 IPv6 (mutually exclusive)。",
 						},
 						"security_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The security group instance ID，such as `sg-ohuuioma`。",
+							Description: "安全 组 实例 ID，such 作为 `sg-ohuuioma`。",
 						},
 						"address_template": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "IP 地址 ID or IP 地址 组 ID",
+							Description: "IP 地址 ID 或 IP 地址 组 ID",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"address_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The ID IP 地址，such as `ipm-2uw6ujo6`。",
+										Description: "ID IP 地址，such 作为 `ipm-2uw6ujo6`。",
 									},
 									"address_group_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The ID IP 地址 group，such as `ipmg-2uw6ujo6`。",
+										Description: "ID IP 地址 组，such 作为 `ipmg-2uw6ujo6`。",
 									},
 								},
 							},
@@ -129,17 +129,17 @@ func DataSourceTencentCloudVpcSgSnapshotFileContent() *schema.Resource {
 						"action": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ACCEPT or DROP。",
+							Description: "ACCEPT 或 DROP。",
 						},
 						"policy_description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Security group policy 描述",
+							Description: "Security 组 策略 描述",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The last 修改时间 of the security group。",
+							Description: "last 修改时间 的 安全 组。",
 						},
 					},
 				},
@@ -148,13 +148,13 @@ func DataSourceTencentCloudVpcSgSnapshotFileContent() *schema.Resource {
 			"backup_data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Backup data。",
+				Description: "Backup 数据。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"policy_index": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 索引 数量 security group rules，which dynamically changes with the rules. This parameter can be obtained via the `DescribeSecurityGroupPolicies` API and used with the `版本` field in the returned 值 of the API。",
+							Description: "索引 数量 安全 组 规则，其中 dynamically changes 使用 规则. 此 参数 可以 是 获取 via `DescribeSecurityGroupPolicies` API 和 使用 使用 `版本` 字段 在 返回 值 的 API。",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
@@ -164,23 +164,23 @@ func DataSourceTencentCloudVpcSgSnapshotFileContent() *schema.Resource {
 						"port": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "端口 (`all`，a single 端口，or a 端口 range).Note: If the `协议` 值 is set to `ALL`，the `端口` 值 also needs to be set to `all`。",
+							Description: "端口 (`all`， 单个 端口，或 端口 范围).注意: 如果 `协议` 值 是 集合 到 `ALL`， `端口` 值 also needs 到 是 集合 到 `all`。",
 						},
 						"service_template": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "协议 端口 ID or 协议 端口 组 ID ServiceTemplate and 协议+端口 are mutually exclusive。",
+							Description: "协议 端口 ID 或 协议 端口 组 ID ServiceTemplate 和 协议+端口 是 mutually exclusive。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"service_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "协议 端口 ID，such as `ppm-f5n1f8da`。",
+										Description: "协议 端口 ID，such 作为 `ppm-f5n1f8da`。",
 									},
 									"service_group_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "协议 端口 组 ID，such as `ppmg-f5n1f8da`。",
+										Description: "协议 端口 组 ID，such 作为 `ppmg-f5n1f8da`。",
 									},
 								},
 							},
@@ -188,33 +188,33 @@ func DataSourceTencentCloudVpcSgSnapshotFileContent() *schema.Resource {
 						"cidr_block": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Either `CidrBlock` or `Ipv6CidrBlock can be specified. Note that if `0.0.0.0/n` is entered，it is mapped to 0.0.0.0/0。",
+							Description: "Either `CidrBlock` 或 `Ipv6CidrBlock 可以 是 指定. 注意 该 如果 `0.0.0.0/n` 是 entered，它 是 mapped 到 0.0.0.0/0。",
 						},
 						"ipv6_cidr_block": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The CIDR block or IPv6 (mutually exclusive)。",
+							Description: "CIDR block 或 IPv6 (mutually exclusive)。",
 						},
 						"security_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The security group instance ID，such as `sg-ohuuioma`。",
+							Description: "安全 组 实例 ID，such 作为 `sg-ohuuioma`。",
 						},
 						"address_template": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "IP 地址 ID or IP 地址 组 ID",
+							Description: "IP 地址 ID 或 IP 地址 组 ID",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"address_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The ID IP 地址，such as `ipm-2uw6ujo6`。",
+										Description: "ID IP 地址，such 作为 `ipm-2uw6ujo6`。",
 									},
 									"address_group_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The ID IP 地址 group，such as `ipmg-2uw6ujo6`。",
+										Description: "ID IP 地址 组，such 作为 `ipmg-2uw6ujo6`。",
 									},
 								},
 							},
@@ -222,17 +222,17 @@ func DataSourceTencentCloudVpcSgSnapshotFileContent() *schema.Resource {
 						"action": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ACCEPT or DROP。",
+							Description: "ACCEPT 或 DROP。",
 						},
 						"policy_description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Security group policy 描述",
+							Description: "Security 组 策略 描述",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The last 修改时间 of the security group。",
+							Description: "last 修改时间 的 安全 组。",
 						},
 					},
 				},

@@ -20,49 +20,49 @@ func DataSourceTencentCloudCssStreamMonitorList() *schema.Resource {
 			"live_stream_monitors": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The 列表 live stream monitoring tasks.Note: This field may return null，indicating that no valid 值 is available。",
+				Description: "列表 live 流 监控 tasks.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"monitor_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Monitoring task ID.Note: This field may return null，indicating that no valid 值 is available。",
+							Description: "Monitoring 任务 ID.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 						},
 						"monitor_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Monitoring task 名称 Up to 128 bytes.Note: This field may return null，indicating that no valid 值 is available。",
+							Description: "Monitoring 任务 名称 Up 到 128 bytes.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 						},
 						"output_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Monitoring task output information.Note: This field may return null，indicating that no valid 值 is available。",
+							Description: "Monitoring 任务 output 信息.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"output_stream_width": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The width of the output stream in pixels for the monitoring task. The range is [1，1920]. It is recommended to be at least 100 pixels.Note: This field may return null，indicating that no valid 值 is available。",
+										Description: "宽度 的 output 流 在 pixels 对于 监控 任务. 范围 是 [1，1920]. It 是 recommended 到 是 在 least 100 pixels.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 									},
 									"output_stream_height": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The height of the output stream in pixels for the monitoring task. The range is [1，1080]. It is recommended to be at least 100 pixels.Note: This field may return null，indicating that no valid 值 is available。",
+										Description: "高度 的 output 流 在 pixels 对于 监控 任务. 范围 是 [1，1080]. It 是 recommended 到 是 在 least 100 pixels.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 									},
 									"output_stream_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The 名称 output stream for the monitoring task.如果未指定，the system will generate a 名称 automatically.The 名称 should be within 256 bytes and can only contain letters，numbers，`-`，`_`，and `.` characters.Note: This field may return null，indicating that no valid 值 is available。",
+										Description: "名称 output 流 对于 监控 任务.如果未指定， 系统 将 generate 名称 automatically. 名称 should 是 within 256 bytes 和 可以 仅 contain letters，numbers，`-`，`_`，和 `.` 字符.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 									},
 									"output_domain": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The playback 域名 for the monitoring task.It should be within 128 bytes and can only be filled with an 已启用 playback 域名Note: This field may return null，indicating that no valid 值 is available。",
+										Description: "playback 域名 对于 监控 任务.It should 是 within 128 bytes 和 可以 仅 是 filled 使用 已启用 playback 域名Note: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 									},
 									"output_app": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The playback 路径 for the monitoring task.It should be within 32 bytes and can only contain letters，numbers，`-`，`_`，and `.` characters.Note: This field may return null，indicating that no valid 值 is available。",
+										Description: "playback 路径 对于 监控 任务.It should 是 within 32 bytes 和 可以 仅 contain letters，numbers，`-`，`_`，和 `.` 字符.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 									},
 								},
 							},
@@ -70,33 +70,33 @@ func DataSourceTencentCloudCssStreamMonitorList() *schema.Resource {
 						"input_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "The input stream information for the monitoring task.Note: This field may return null，indicating that no valid 值 is available。",
+							Description: "input 流 信息 对于 监控 任务.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"input_stream_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The 名称 input stream for the monitoring task.It should be within 256 bytes and can only contain letters，numbers，`-`，`_`，and `.` characters.Note: This field may return null，indicating that no valid 值 is available。",
+										Description: "名称 input 流 对于 监控 任务.It should 是 within 256 bytes 和 可以 仅 contain letters，numbers，`-`，`_`，和 `.` 字符.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 									},
 									"input_domain": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The push 域名 for the input stream to be monitored.It should be within 128 bytes and can only be filled with an 已启用 push 域名Note: This field may return null，indicating that no valid 值 is available。",
+										Description: "push 域名 对于 input 流 到 是 monitored.It should 是 within 128 bytes 和 可以 仅 是 filled 使用 已启用 push 域名Note: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 									},
 									"input_app": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The push 路径 for the input stream to be monitored.It should be within 32 bytes and can only contain letters，numbers，`-`，`_`，and `.` characters.Note: This field may return null，indicating that no valid 值 is available。",
+										Description: "push 路径 对于 input 流 到 是 monitored.It should 是 within 32 bytes 和 可以 仅 contain letters，numbers，`-`，`_`，和 `.` 字符.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 									},
 									"input_url": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The push URL for the input stream to be monitored. In most cases，this parameter 不是必填项.Note: This field may return null，indicating that no valid 值 is available。",
+										Description: "push URL 对于 input 流 到 是 monitored. In most cases，此 参数 不是必填项.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "描述 monitoring task.It should be within 256 bytes.Note: This field may return null，indicating that no valid 值 is available。",
+										Description: "描述 监控 任务.It should 是 within 256 bytes.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 									},
 								},
 							},
@@ -104,43 +104,43 @@ func DataSourceTencentCloudCssStreamMonitorList() *schema.Resource {
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 状态 monitoring task.  0: Represents idle.  1: Represents monitoring in progress.Note: This field may return null，indicating that no valid 值 is available。",
+							Description: "状态 监控 任务. 0: Represents idle. 1: Represents 监控 在 progress.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 						},
 						"start_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The last 开始时间 of the monitoring task，in Unix 时间戳 格式Note: This field may return null，indicating that no valid 值 is available。",
+							Description: "last 开始时间 的 监控 任务，在 Unix 时间戳 格式Note: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 						},
 						"stop_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The last stop time of the monitoring task，in Unix 时间戳 格式Note: This field may return null，indicating that no valid 值 is available。",
+							Description: "last stop 时间 的 监控 任务，在 Unix 时间戳 格式Note: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 						},
 						"create_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 创建时间 of the monitoring task，in Unix 时间戳 格式Note: This field may return null，indicating that no valid 值 is available。",
+							Description: "创建时间 的 监控 任务，在 Unix 时间戳 格式Note: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 						},
 						"update_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 更新时间 of the monitoring task，in Unix 时间戳 格式Note: This field may return null，indicating that no valid 值 is available。",
+							Description: "更新时间 的 监控 任务，在 Unix 时间戳 格式Note: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 						},
 						"notify_policy": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "The notification policy for monitoring events.Note: This field may return null，indicating that no valid 值 is available。",
+							Description: "通知 策略 对于 监控 events.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"notify_policy_type": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "类型 notification policy: Range [0,1]  0: Represents no notification policy is used.  1: Represents the use of a global callback policy，where all events are notified to the CallbackUrl.Note: This field may return null，indicating that no valid 值 is available。",
+										Description: "类型 通知 策略: Range [0,1] 0: Represents 无 通知 策略 是 使用. 1: Represents 使用 的 全局 callback 策略，其中 all events 是 notified 到 CallbackUrl.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 									},
 									"callback_url": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The callback URL for notifications. It should be of length [0,512] and only support URLs with the http and https types.Note: This field may return null，indicating that no valid 值 is available。",
+										Description: "callback URL 对于 notifications. It should 是 的 长度 [0,512] 和 仅 support URLs 使用 http 和 https types.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 									},
 								},
 							},
@@ -151,7 +151,7 @@ func DataSourceTencentCloudCssStreamMonitorList() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "The 列表 input indices for the output audio.Note: This field may return null，indicating that no valid 值 is available。",
+							Description: "列表 input indices 对于 output 音频.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 						},
 						"ai_asr_input_index_list": {
 							Type: schema.TypeSet,
@@ -159,27 +159,27 @@ func DataSourceTencentCloudCssStreamMonitorList() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "The 列表 input indices for enabling intelligent speech recognition.Note: This field may return null，indicating that no valid 值 is available。",
+							Description: "列表 input indices 对于 enabling intelligent speech recognition.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 						},
 						"check_stream_broken": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否enable stream disconnection detection.Note: This field may return null，indicating that no valid 值 is available。",
+							Description: "是否enable 流 disconnection detection.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 						},
 						"check_stream_low_frame_rate": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否enable low frame rate detection.Note: This field may return null，indicating that no valid 值 is available。",
+							Description: "是否enable low frame 速率 detection.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 						},
 						"asr_language": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 语言 for intelligent speech recognition:0: Disabled1: Chinese2: English3: Japanese4: KoreanNote: This field may return null，indicating that no valid 值 is available。",
+							Description: "语言 对于 intelligent speech recognition:0: Disabled1: Chinese2: English3: Japanese4: KoreanNote: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 						},
 						"ocr_language": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 语言 for intelligent text recognition:0: Disabled1: Chinese and EnglishNote: This field may return null，indicating that no valid 值 is available。",
+							Description: "语言 对于 intelligent text recognition:0: Disabled1: Chinese 和 EnglishNote: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 						},
 						"ai_ocr_input_index_list": {
 							Type: schema.TypeSet,
@@ -187,17 +187,17 @@ func DataSourceTencentCloudCssStreamMonitorList() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "The 列表 input indices for enabling intelligent text recognition.Note: This field may return null，indicating that no valid 值 is available。",
+							Description: "列表 input indices 对于 enabling intelligent text recognition.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 						},
 						"allow_monitor_report": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否store monitoring events in the monitoring report and allow querying of the monitoring report.Note: This field may return null，indicating that no valid 值 is available。",
+							Description: "是否store 监控 events 在 监控 报告 和 allow querying 的 监控 报告.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 						},
 						"ai_format_diagnose": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否enable 格式 diagnosis. Note: This field may return null，indicating that no valid 值 is available。",
+							Description: "是否enable 格式 diagnosis. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 						},
 					},
 				},

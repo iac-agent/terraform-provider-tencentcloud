@@ -23,13 +23,13 @@ func DataSourceTencentCloudOrganizationOrgShareUnitNodes() *schema.Resource {
 			"search_key": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Search 键，supports searching by department ID。",
+				Description: "Search 键，支持 searching 通过 department ID。",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "列表 share unit nodes。",
+				Description: "列表 share 单位 nodes。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"share_node_id": {

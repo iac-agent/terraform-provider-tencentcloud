@@ -22,14 +22,14 @@ func ResourceTencentCloudDlcSuspendResumeDataEngine() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "名称 a virtual cluster。",
+				Description: "名称 virtual 集群。",
 			},
 
 			"operate": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The 操作类型: `suspend` or `resume`。",
+				Description: "操作类型: `suspend` 或 `resume`。",
 			},
 		},
 	}

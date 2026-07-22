@@ -58,7 +58,7 @@ func ResourceTencentCloudMysqlBackupPolicy() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "off",
-				Description: "是否启用日志备份标准存储策略，“off”-关闭，“on”-打开，默认关闭。",
+				Description: "是否启用日志备份标准存储策略，“关闭”-关闭，“在”-打开，默认关闭。",
 			},
 
 			"binlog_standby_days": {

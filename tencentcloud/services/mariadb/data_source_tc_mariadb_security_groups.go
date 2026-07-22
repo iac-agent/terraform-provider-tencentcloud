@@ -26,13 +26,13 @@ func DataSourceTencentCloudMariadbSecurityGroups() *schema.Resource {
 			"product": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "product 名称，fixed to mariadb。",
+				Description: "product 名称，fixed 到 mariadb。",
 			},
 
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "SecurityGroup list。",
+				Description: "SecurityGroup 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"project_id": {
@@ -53,7 +53,7 @@ func DataSourceTencentCloudMariadbSecurityGroups() *schema.Resource {
 						"security_group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "security 组名称",
+							Description: "安全 组名称",
 						},
 						"security_group_remark": {
 							Type:        schema.TypeString,
@@ -63,18 +63,18 @@ func DataSourceTencentCloudMariadbSecurityGroups() *schema.Resource {
 						"inbound": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Inbound rules。",
+							Description: "Inbound 规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"action": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Policy，ACCEPT or DROP。",
+										Description: "Policy，ACCEPT 或 DROP。",
 									},
 									"cidr_ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "来源 IP or IP range，such as 192.168.0.0/16。",
+										Description: "来源 IP 或 IP 范围，such 作为 192.168.0.0/16。",
 									},
 									"port_range": {
 										Type:        schema.TypeString,
@@ -98,12 +98,12 @@ func DataSourceTencentCloudMariadbSecurityGroups() *schema.Resource {
 									"action": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Policy，ACCEPT or DROP。",
+										Description: "Policy，ACCEPT 或 DROP。",
 									},
 									"cidr_ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "来源 IP or IP range，such as 192.168.0.0/16。",
+										Description: "来源 IP 或 IP 范围，such 作为 192.168.0.0/16。",
 									},
 									"port_range": {
 										Type:        schema.TypeString,

@@ -33,7 +33,7 @@ func ResourceTencentCloudDasbAcl() *schema.Resource {
 			"allow_disk_redirect": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "Allow disk redirect。",
+				Description: "Allow 磁盘 redirect。",
 			},
 			"allow_any_account": {
 				Required:    true,
@@ -43,12 +43,12 @@ func ResourceTencentCloudDasbAcl() *schema.Resource {
 			"allow_clip_file_up": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Allow clip file up。",
+				Description: "Allow clip 文件 up。",
 			},
 			"allow_clip_file_down": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Allow clip file down。",
+				Description: "Allow clip 文件 down。",
 			},
 			"allow_clip_text_up": {
 				Optional:    true,
@@ -63,28 +63,28 @@ func ResourceTencentCloudDasbAcl() *schema.Resource {
 			"allow_file_up": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Allow sftp up file。",
+				Description: "Allow sftp up 文件。",
 			},
 			"max_file_up_size": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "File upload transfer size 限制 (artifact parameter，currently unused)。",
+				Description: "File upload transfer 大小 限制 (artifact 参数，currently unused)。",
 			},
 			"allow_file_down": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Allow sftp file download。",
+				Description: "Allow sftp 文件 download。",
 			},
 			"max_file_down_size": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "File transfer download size 限制 (reserved parameter，currently unused)。",
+				Description: "File transfer download 大小 限制 (reserved 参数，currently unused)。",
 			},
 			"user_id_set": {
 				Optional:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "Associated set of 用户 IDs。",
+				Description: "Associated 集合 的 用户 IDs。",
 			},
 			"user_group_id_set": {
 				Optional:    true,
@@ -96,7 +96,7 @@ func ResourceTencentCloudDasbAcl() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "Associated collection of device IDs。",
+				Description: "Associated collection 的 device IDs。",
 			},
 			"device_group_id_set": {
 				Optional:    true,
@@ -125,49 +125,49 @@ func ResourceTencentCloudDasbAcl() *schema.Resource {
 			"allow_disk_file_up": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Allow disk file upload。",
+				Description: "Allow 磁盘 文件 upload。",
 			},
 			"allow_disk_file_down": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Allow disk file download。",
+				Description: "Allow 磁盘 文件 download。",
 			},
 			"allow_shell_file_up": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Allow shell file upload。",
+				Description: "Allow shell 文件 upload。",
 			},
 			"allow_shell_file_down": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Allow shell file download。",
+				Description: "Allow shell 文件 download。",
 			},
 			"allow_file_del": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Allow sftp file delete。",
+				Description: "Allow sftp 文件 delete。",
 			},
 			"validate_from": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Access permission effective time，such as: 2021-09-22T00:00:00+08:00If the effective and expiry time are not filled in，the access rights will be valid for a long time。",
+				Description: "Access 权限 effective 时间，such 作为: 2021-09-22T00:00:00+08:00If effective 和 expiry 时间 是 不 filled 在， 访问 rights 将 是 有效 对于 long 时间。",
 			},
 			"validate_to": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Access permission 过期时间，such as: 2021-09-23T00:00:00+08:00If the effective and expiry time are not filled in，the access rights will be valid for a long time。",
+				Description: "Access 权限 过期时间，such 作为: 2021-09-23T00:00:00+08:00If effective 和 expiry 时间 是 不 filled 在， 访问 rights 将 是 有效 对于 long 时间。",
 			},
 			"department_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Department id。",
+				Description: "Department ID。",
 			},
 			"allow_access_credential": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Allow access credential,default allow。",
+				Description: "Allow 访问 credential,默认值 allow。",
 			},
 		},
 	}

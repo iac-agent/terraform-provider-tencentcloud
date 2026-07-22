@@ -19,13 +19,13 @@ func DataSourceTencentCloudTseGroups() *schema.Resource {
 			"gateway_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway ID。",
+				Description: "网关 ID。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "filter conditions，valid 值:名称,GroupId。",
+				Description: "过滤器 conditions，有效 值:名称,GroupId。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -39,7 +39,7 @@ func DataSourceTencentCloudTseGroups() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "filter values。",
+							Description: "过滤器 值。",
 						},
 					},
 				},
@@ -48,7 +48,7 @@ func DataSourceTencentCloudTseGroups() *schema.Resource {
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "groups information。",
+				Description: "groups 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
@@ -59,13 +59,13 @@ func DataSourceTencentCloudTseGroups() *schema.Resource {
 						"gateway_group_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "group 列表 gateway。",
+							Description: "组 列表 网关。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"group_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "group Id。",
+										Description: "组 ID。",
 									},
 									"name": {
 										Type:        schema.TypeString,
@@ -75,23 +75,23 @@ func DataSourceTencentCloudTseGroups() *schema.Resource {
 									"description": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "group 描述",
+										Description: "组 描述",
 									},
 									"node_config": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "group node configration。",
+										Description: "组 节点 configration。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"specification": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "group specification，1c2g|2c4g|4c8g|8c16g。",
+													Description: "组 规格，1c2g|2c4g|4c8g|8c16g。",
 												},
 												"number": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "group node number，2-50。",
+													Description: "组 节点 数量，2-50。",
 												},
 											},
 										},
@@ -99,17 +99,17 @@ func DataSourceTencentCloudTseGroups() *schema.Resource {
 									"status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "group 状态",
+										Description: "组 状态",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "group 创建时间。",
+										Description: "组 创建时间。",
 									},
 									"is_first_group": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "whether it is the default group- 0: false.- 1: yes。",
+										Description: "whether 它 是 默认值 组- 0: false.- 1: yes。",
 									},
 									"binding_strategy": {
 										Type:        schema.TypeList,
@@ -167,17 +167,17 @@ func DataSourceTencentCloudTseGroups() *schema.Resource {
 																		"resource_name": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "metric resource name注意：此字段可能返回 null，表示有效值不可用。",
+																			Description: "metric 资源 name注意：此字段可能返回 null，表示有效值不可用。",
 																		},
 																		"target_type": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "metric target type注意：此字段可能返回 null，表示有效值不可用。",
+																			Description: "metric 目标 type注意：此字段可能返回 null，表示有效值不可用。",
 																		},
 																		"target_value": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "metric target value注意：此字段可能返回 null，表示有效值不可用。",
+																			Description: "metric 目标 value注意：此字段可能返回 null，表示有效值不可用。",
 																		},
 																	},
 																},
@@ -213,7 +213,7 @@ func DataSourceTencentCloudTseGroups() *schema.Resource {
 												"gateway_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "gateway ID注意：此字段可能返回 null，表示有效值不可用。",
+													Description: "网关 ID注意：此字段可能返回 null，表示有效值不可用。",
 												},
 												"cron_config": {
 													Type:        schema.TypeList,
@@ -229,13 +229,13 @@ func DataSourceTencentCloudTseGroups() *schema.Resource {
 															"params": {
 																Type:        schema.TypeList,
 																Computed:    true,
-																Description: "params of timing auto scaling。",
+																Description: "params 的 timing auto scaling。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"period": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "周期 of timing auto scaling。",
+																			Description: "周期 的 timing auto scaling。",
 																		},
 																		"start_at": {
 																			Type:        schema.TypeString,
@@ -245,7 +245,7 @@ func DataSourceTencentCloudTseGroups() *schema.Resource {
 																		"target_replicas": {
 																			Type:        schema.TypeInt,
 																			Computed:    true,
-																			Description: "target replicas。",
+																			Description: "目标 replicas。",
 																		},
 																		"crontab": {
 																			Type:        schema.TypeString,
@@ -284,12 +284,12 @@ func DataSourceTencentCloudTseGroups() *schema.Resource {
 									"gateway_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "gateway ID。",
+										Description: "网关 ID。",
 									},
 									"internet_max_bandwidth_out": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "public network outbound traffic bandwidth。",
+										Description: "公有 网络 outbound 流量 带宽。",
 									},
 									"modify_time": {
 										Type:        schema.TypeString,
@@ -299,7 +299,7 @@ func DataSourceTencentCloudTseGroups() *schema.Resource {
 									"subnet_ids": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "subnet IDs。",
+										Description: "子网 IDs。",
 									},
 								},
 							},

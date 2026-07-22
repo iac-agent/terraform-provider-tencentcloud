@@ -42,38 +42,38 @@ func ResourceTencentCloudElasticsearchInstance() *schema.Resource {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 50),
-				Description:  "名称 instance，which can contain 1 to 50 English letters，Chinese characters，digits，dashes(-)，or underscores(_)。",
+				Description:  "名称 实例，其中 可以 contain 1 到 50 English letters，Chinese 字符，digits，dashes(-)，或 underscores(_)。",
 			},
 			"availability_zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "-",
 				ForceNew:    true,
-				Description: "Availability 可用区 When create multi-az es，this parameter must be the primary availability 可用区",
+				Description: "Availability 可用区 当 create multi-az es，此 参数 必须 是 primary availability 可用区",
 			},
 			"version": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "版本 of the instance. Valid values are `5.6.4`，`6.4.3`，`6.8.2`，`7.5.1` and `7.10.1`。",
+				Description: "版本 的 实例. 有效 值 是 `5.6.4`，`6.4.3`，`6.8.2`，`7.5.1` 和 `7.10.1`。",
 			},
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID a VPC network。",
+				Description: "ID VPC 网络。",
 			},
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "-",
 				ForceNew:    true,
-				Description: "ID a VPC subnetwork. When create multi-az es，this parameter must be the subnet in the primary availability 可用区",
+				Description: "ID VPC subnetwork. 当 create multi-az es，此 参数 必须 是 子网 在 primary availability 可用区",
 			},
 			"password": {
 				Type:        schema.TypeString,
 				Required:    true,
 				Sensitive:   true,
-				Description: "密码 to an instance，the 密码 needs to be 8 to 16 characters，including at least two items ([a-z,A-Z]，[0-9] and [-!@#$%&^*+=_:;,.?] special symbols。",
+				Description: "密码 到 实例， 密码 needs 到 是 8 到 16 字符，包括 在 least two items ([-z,A-Z]，[0-9] 和 [-!@#$%&^*+=_:;,.?] special symbols。",
 			},
 			"charge_type": {
 				Type:         schema.TypeString,
@@ -81,34 +81,34 @@ func ResourceTencentCloudElasticsearchInstance() *schema.Resource {
 				ForceNew:     true,
 				Default:      ES_CHARGE_TYPE_POSTPAID_BY_HOUR,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(ES_CHARGE_TYPE),
-				Description:  "The charge 类型 instance. Valid values are `PREPAID` and `POSTPAID_BY_HOUR`。",
+				Description:  "charge 类型 实例. 有效 值 是 `PREPAID` 和 `POSTPAID_BY_HOUR`。",
 			},
 			"charge_period": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				ForceNew:    true,
 				Default:     0,
-				Description: "The tenancy of the prepaid instance，and uint is month. NOTE: it only works when charge_type is set to `PREPAID`。",
+				Description: "tenancy 的 prepaid 实例，和 uint 是 month. NOTE: 它 仅 works 当 charge_type 是 集合 到 `PREPAID`。",
 			},
 			"renew_flag": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(ES_RENEW_FLAG),
-				Description:  "When 已启用，the instance will be renew automatically when it reach the end of the prepaid tenancy. Valid values are `RENEW_FLAG_AUTO` and `RENEW_FLAG_MANUAL`. NOTE: it only works when charge_type is set to `PREPAID`。",
+				Description:  "当 已启用， 实例 将 是 renew automatically 当 它 reach end 的 prepaid tenancy. 有效 值 是 `RENEW_FLAG_AUTO` 和 `RENEW_FLAG_MANUAL`. NOTE: 它 仅 works 当 charge_type 是 集合 到 `PREPAID`。",
 			},
 			"deploy_mode": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Default:      ES_DEPLOY_MODE_SINGLE_REGION,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(ES_DEPLOY_MODE),
-				Description:  "Cluster deployment 模式 Valid values are `0` and `1`. `0` is single-AZ deployment，and `1` is multi-AZ deployment. 默认值为 `0`。",
+				Description:  "Cluster 部署 模式 有效 值 是 `0` 和 `1`. `0` 是 单个-AZ 部署，和 `1` 是 multi-AZ 部署. 默认值为 `0`。",
 			},
 			"multi_zone_infos": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "Details of AZs in multi-AZ deployment 模式 (which 为必填项 when deploy_mode is `1`)。",
+				Description: "Details 的 AZs 在 multi-AZ 部署 模式 (其中 为必填项 当 deploy_mode 是 `1`)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"availability_zone": {
@@ -119,7 +119,7 @@ func ResourceTencentCloudElasticsearchInstance() *schema.Resource {
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "ID a VPC subnetwork。",
+							Description: "ID VPC subnetwork。",
 						},
 					},
 				},
@@ -128,18 +128,18 @@ func ResourceTencentCloudElasticsearchInstance() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "Visual node configuration。",
+				Description: "Visual 节点 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"node_num": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Visual node number。",
+							Description: "Visual 节点 数量。",
 						},
 						"node_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Visual node specifications。",
+							Description: "Visual 节点 specifications。",
 						},
 					},
 				},
@@ -156,7 +156,7 @@ func ResourceTencentCloudElasticsearchInstance() *schema.Resource {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Computed:    true,
-							Description: "Blacklist of kibana access。",
+							Description: "Blacklist 的 kibana 访问。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -165,7 +165,7 @@ func ResourceTencentCloudElasticsearchInstance() *schema.Resource {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Computed:    true,
-							Description: "Whitelist of kibana access。",
+							Description: "Whitelist 的 kibana 访问。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 					},
@@ -176,14 +176,14 @@ func ResourceTencentCloudElasticsearchInstance() *schema.Resource {
 				Optional:     true,
 				Default:      ES_LICENSE_TYPE_PLATINUM,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(ES_LICENSE_TYPE),
-				Description:  "License 类型 Valid values are `oss`，`basic` and `platinum`. The 默认值为 `platinum`。",
+				Description:  "License 类型 有效 值 是 `oss`，`basic` 和 `platinum`. 默认值为 `platinum`。",
 			},
 			"node_info_list": {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				Computed:    true,
 				MinItems:    1,
-				Description: "Node information list，which is 用于describe the specification information of various types of nodes in the cluster，such as node 类型，node quantity，node specification，disk 类型，and disk size。",
+				Description: "Node 信息 列表，其中 是 用于describe 规格 信息 的 various types 的 nodes 在 集群，such 作为 节点 类型，节点 quantity，节点 规格，磁盘 类型，和 磁盘 大小。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"node_num": {
@@ -194,33 +194,33 @@ func ResourceTencentCloudElasticsearchInstance() *schema.Resource {
 						"node_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Node specification，and valid values refer to [document of tencentcloud](https://intl.cloud.tencent.com/document/product/845/18376)。",
+							Description: "Node 规格，和 有效 值 refer 到 [document 的 tencentcloud](https://intl.云.tencent.com/document/product/845/18376)。",
 						},
 						"type": {
 							Type:         schema.TypeString,
 							Optional:     true,
 							Default:      ES_NODE_TYPE_HOT_DATA,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(ES_NODE_TYPE),
-							Description:  "Node 类型 Valid values are `hotData`，`warmData` and `dedicatedMaster`. The 默认值为 'hotData`。",
+							Description:  "Node 类型 有效 值 是 `hotData`，`warmData` 和 `dedicatedMaster`. 默认值为 'hotData`。",
 						},
 						"disk_type": {
 							Type:         schema.TypeString,
 							Optional:     true,
 							Computed:     true,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(ES_NODE_DISK_TYPE),
-							Description:  "Node disk 类型 Valid values are `CLOUD_SSD`，`CLOUD_PREMIUM`，`CLOUD_HSSD`，`CLOUD_BSSD`，`CLOUD_BIGDATA` and `CLOUD_HIGHIO`. The 默认值为 `CLOUD_SSD`. Big Data and High IO models do not support the specified disk 类型 and have no default values。",
+							Description:  "Node 磁盘 类型 有效 值 是 `CLOUD_SSD`，`CLOUD_PREMIUM`，`CLOUD_HSSD`，`CLOUD_BSSD`，`CLOUD_BIGDATA` 和 `CLOUD_HIGHIO`. 默认值为 `CLOUD_SSD`. Big Data 和 High IO models do 不 support 指定 磁盘 类型 和 have 无 默认值 值。",
 						},
 						"disk_size": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Node disk size. Unit is GB，and 默认值为 `100`. Big Data and High IO models do not support the specified disk size and have no default values。",
+							Description: "Node 磁盘 大小. Unit 是 GB，和 默认值为 `100`. Big Data 和 High IO models do 不 support 指定 磁盘 大小 和 have 无 默认值 值。",
 						},
 						"encrypt": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Default:     false,
-							Description: "Decides to encrypt this disk or not。",
+							Description: "Decides 到 encrypt 此 磁盘 或 不。",
 						},
 					},
 				},
@@ -230,7 +230,7 @@ func ResourceTencentCloudElasticsearchInstance() *schema.Resource {
 				Optional:     true,
 				Default:      ES_BASIC_SECURITY_TYPE_OFF,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(ES_BASIC_SECURITY_TYPE),
-				Description:  "是否enable X-Pack security authentication in Basic Edition 6.8 and above. Valid values are `1` and `2`. `1` is 已禁用，`2` is 已启用，and 默认值为 `1`. Notice: this parameter is only take effect on `basic` license。",
+				Description:  "是否enable X-Pack 安全 authentication 在 Basic Edition 6.8 和 above. 有效 值 是 `1` 和 `2`. `1` 是 已禁用，`2` 是 已启用，和 默认值为 `1`. Notice: 此 参数 是 仅 take effect 在 `basic` license。",
 			},
 			"scene_type": {
 				Type:        schema.TypeInt,
@@ -241,39 +241,39 @@ func ResourceTencentCloudElasticsearchInstance() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "A mapping of 标签 to assign to the instance. For 标签 limits，please refer to [Use Limits](https://intl.cloud.tencent.com/document/product/651/13354)。",
+				Description: "A mapping 的 标签 到 assign 到 实例. For 标签 limits，please refer 到 [Use Limits](https://intl.云.tencent.com/document/product/651/13354)。",
 			},
 			"kibana_public_access": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(ES_KIBANA_PUBLIC_ACCESS),
-				Description:  "Kibana public network access 状态 Valid values are `OPEN` and `CLOSE`。",
+				Description:  "Kibana 公有 网络 访问 状态 有效 值 是 `OPEN` 和 `CLOSE`。",
 			},
 			"kibana_private_access": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(ES_PRIVATE_ACCESS),
-				Description:  "Kibana private network access 状态 Valid values are `OPEN` and `CLOSE`。",
+				Description:  "Kibana 私有 网络 访问 状态 有效 值 是 `OPEN` 和 `CLOSE`。",
 			},
 			"cos_backup": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "COS automatic backup information。",
+				Description: "COS automatic 备份 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"is_auto_backup": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "是否enable automatic backup of cos。",
+							Description: "是否enable automatic 备份 的 cos。",
 						},
 						"backup_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Automatic backup 执行时间 (accurate to the hour)，e.g. `22:00`。",
+							Description: "Automatic 备份 执行时间 (accurate 到 hour)，e.g. `22:00`。",
 						},
 					},
 				},
@@ -283,7 +283,7 @@ func ResourceTencentCloudElasticsearchInstance() *schema.Resource {
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(ES_PUBLIC_ACCESS),
-				Description:  "ES cluster public network access 状态 Valid values are `OPEN` and `CLOSE`. Cannot be changed at the same time as `es_acl`。",
+				Description:  "ES 集群 公有 网络 访问 状态 有效 值 是 `OPEN` 和 `CLOSE`. Cannot 是 changed 在 same 时间 作为 `es_acl`。",
 			},
 			"es_public_acl": {
 				Type:         schema.TypeList,
@@ -291,7 +291,7 @@ func ResourceTencentCloudElasticsearchInstance() *schema.Resource {
 				Computed:     true,
 				MaxItems:     1,
 				RequiredWith: []string{"public_access"},
-				Description:  "Public network access control list。",
+				Description:  "Public 网络 访问 control 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						// "black_ip_list": {
@@ -315,7 +315,7 @@ func ResourceTencentCloudElasticsearchInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Create an https cluster，默认为 http。",
+				Description: "Create https 集群，默认为 http。",
 			},
 			// computed
 			"elasticsearch_domain": {
@@ -336,22 +336,22 @@ func ResourceTencentCloudElasticsearchInstance() *schema.Resource {
 			"kibana_url": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Kibana access URL",
+				Description: "Kibana 访问 URL",
 			},
 			"kibana_private_url": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Kibana private URL",
+				Description: "Kibana 私有 URL",
 			},
 			"es_public_url": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Es public network 地址",
+				Description: "Es 公有 网络 地址",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Instance 创建时间。",
+				Description: "实例 创建时间。",
 			},
 		},
 		CustomizeDiff: customdiff.All(

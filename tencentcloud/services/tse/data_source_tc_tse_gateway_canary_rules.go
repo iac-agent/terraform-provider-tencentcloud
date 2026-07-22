@@ -19,7 +19,7 @@ func DataSourceTencentCloudTseGatewayCanaryRules() *schema.Resource {
 			"gateway_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway ID。",
+				Description: "网关 ID。",
 			},
 
 			"service_id": {
@@ -31,65 +31,65 @@ func DataSourceTencentCloudTseGatewayCanaryRules() *schema.Resource {
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "canary rule configuration。",
+				Description: "canary 规则 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"canary_rule_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "canary rule list。",
+							Description: "canary 规则 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"priority": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "优先级 The 值 ranges from 0 to 100; the larger the 值，the higher the 优先级; the 优先级 cannot be repeated between different rules。",
+										Description: "优先级 值 ranges 从 0 到 100; larger 值， higher 优先级; 优先级 不能 是 repeated between different 规则。",
 									},
 									"enabled": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "状态 canary rule。",
+										Description: "状态 canary 规则。",
 									},
 									"condition_list": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "parameter matching condition list。",
+										Description: "参数 matching condition 列表。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "类型Reference 值:- 路径- method- query- header- cookie- body- system。",
+													Description: "类型Reference 值:- 路径- 方法- 查询- 头部- cookie- 正文- 系统。",
 												},
 												"key": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "parameter 名称",
+													Description: "参数 名称",
 												},
 												"operator": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "操作者Reference 值:`le`，`eq`，`lt`，`ne`，`ge`，`gt`，`regex`，`exists`，`in`，`not in`， `prefix`，`exact`，`regex`。",
+													Description: "操作者Reference 值:`le`，`eq`，`lt`，`ne`，`ge`，`gt`，`regex`，`exists`，`在`，`不 在`， `prefix`，`exact`，`regex`。",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "parameter 值",
+													Description: "参数 值",
 												},
 												"delimiter": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "delimiter. valid when 操作者 is in or not in，reference 值:`,`，`;`,`\\n`。",
+													Description: "delimiter. 有效 当 操作者 是 在 或 不 在，reference 值:`,`，`;`,`\\n`。",
 												},
 												"global_config_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "global configuration ID。",
+													Description: "全局 配置 ID。",
 												},
 												"global_config_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "global configuration 名称",
+													Description: "全局 配置 名称",
 												},
 											},
 										},
@@ -97,7 +97,7 @@ func DataSourceTencentCloudTseGatewayCanaryRules() *schema.Resource {
 									"balanced_service_list": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "service 权重 configuration。",
+										Description: "服务 权重 配置。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"service_id": {
@@ -118,7 +118,7 @@ func DataSourceTencentCloudTseGatewayCanaryRules() *schema.Resource {
 												"percent": {
 													Type:        schema.TypeFloat,
 													Computed:    true,
-													Description: "percent，10 is 10%，有效值：0 to 100。",
+													Description: "percent，10 是 10%，有效值：0 到 100。",
 												},
 											},
 										},

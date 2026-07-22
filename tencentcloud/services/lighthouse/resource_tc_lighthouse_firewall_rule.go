@@ -33,33 +33,33 @@ func ResourceTencentCloudLighthouseFirewallRule() *schema.Resource {
 			"firewall_rules": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "Firewall rule list。",
+				Description: "Firewall 规则 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"protocol": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "协议 Valid values are TCP，UDP，ICMP，ALL。",
+							Description: "协议 有效 值 是 TCP，UDP，ICMP，ALL。",
 						},
 						"port": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "端口 Valid values are ALL，one single 端口，multiple ports separated by commas，or 端口 range indicated by a minus sign。",
+							Description: "端口 有效 值 是 ALL，一个 单个 端口，多个 ports separated 通过 commas，或 端口 范围 indicated 通过 minus sign。",
 						},
 						"cidr_block": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "IP range or IP (mutually exclusive). 默认值为 0.0.0.0/0，which 表示all sources。",
+							Description: "IP 范围 或 IP (mutually exclusive). 默认值为 0.0.0.0/0，其中 表示all sources。",
 						},
 						"action": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Valid values are ACCEPT，DROP. 默认值为 ACCEPT。",
+							Description: "有效 值 是 ACCEPT，DROP. 默认值为 ACCEPT。",
 						},
 						"firewall_rule_description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Firewall rule 描述",
+							Description: "Firewall 规则 描述",
 						},
 					},
 				},

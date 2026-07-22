@@ -31,7 +31,7 @@ func ResourceTencentCloudVpcAclAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The 子网实例 ID",
+				Description: "子网实例 ID",
 			},
 		},
 	}

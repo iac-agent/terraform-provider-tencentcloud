@@ -20,33 +20,33 @@ func DataSourceTencentCloudCbsSnapshots() *schema.Resource {
 			"snapshot_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID snapshot to be queried。",
+				Description: "ID 快照 到 是 queried。",
 			},
 			"snapshot_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "名称 snapshot to be queried。",
+				Description: "名称 快照 到 是 queried。",
 			},
 			"storage_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID the CBS which this snapshot created from。",
+				Description: "ID CBS 其中 此 快照 创建 从。",
 			},
 			"storage_usage": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CBS_STORAGE_USAGE),
-				Description:  "Types of CBS which this snapshot created from，and available values include `SYSTEM_DISK` and `DATA_DISK`。",
+				Description:  "Types 的 CBS 其中 此 快照 创建 从，和 可用 值 include `SYSTEM_DISK` 和 `DATA_DISK`。",
 			},
 			"project_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID project within the snapshot。",
+				Description: "ID 项目 within 快照。",
 			},
 			"availability_zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The available 可用区 that the CBS instance locates at。",
+				Description: "可用 可用区 该 CBS 实例 locates 在。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -56,43 +56,43 @@ func DataSourceTencentCloudCbsSnapshots() *schema.Resource {
 			"snapshot_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A 列表 snapshot. Each element 包含following attributes:",
+				Description: "A 列表 快照. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"snapshot_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID snapshot。",
+							Description: "ID 快照。",
 						},
 						"snapshot_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 snapshot。",
+							Description: "名称 快照。",
 						},
 						"storage_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID the CBS which this snapshot created from。",
+							Description: "ID CBS 其中 此 快照 创建 从。",
 						},
 						"storage_usage": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Types of CBS which this snapshot created from。",
+							Description: "Types 的 CBS 其中 此 快照 创建 从。",
 						},
 						"storage_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Volume of storage which this snapshot created from。",
+							Description: "Volume 的 存储 其中 此 快照 创建 从。",
 						},
 						"availability_zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The available 可用区 that the CBS instance locates at。",
+							Description: "可用 可用区 该 CBS 实例 locates 在。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "ID project within the snapshot。",
+							Description: "ID 项目 within 快照。",
 						},
 						"percent": {
 							Type:        schema.TypeInt,
@@ -102,12 +102,12 @@ func DataSourceTencentCloudCbsSnapshots() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of snapshot。",
+							Description: "创建时间 的 快照。",
 						},
 						"encrypt": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "表示是否snapshot is encrypted。",
+							Description: "表示是否snapshot 是 encrypted。",
 						},
 					},
 				},

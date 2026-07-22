@@ -28,32 +28,32 @@ func ResourceTencentCloudUrlPurge() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "列表 URL to purge. NOTE: urls need include 协议 prefix `http://` or `https://`。",
+				Description: "列表 URL 到 purge. NOTE: urls need include 协议 prefix `http://` 或 `https://`。",
 			},
 			"redo": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Change to purge again. NOTE: this argument only works while resource update，if set to `0` or null will not be triggered。",
+				Description: "Change 到 purge again. NOTE: 此 argument 仅 works while 资源 update，如果 集合 到 `0` 或 null 将 不 是 triggered。",
 			},
 			"area": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "指定purge area. NOTE: only purge same area cache contents。",
+				Description: "指定purge area. NOTE: 仅 purge same area 缓存 contents。",
 			},
 			"url_encode": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "是否encode urls，if set to `true` will auto encode instead of manual process。",
+				Description: "是否encode urls，如果 集合 到 `true` 将 auto encode instead 的 manual process。",
 			},
 			"task_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Task ID last operation。",
+				Description: "任务 ID last operation。",
 			},
 			"purge_history": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "logs of latest purge task。",
+				Description: "logs 的 latest purge 任务。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"task_id": {
@@ -74,17 +74,17 @@ func ResourceTencentCloudUrlPurge() *schema.Resource {
 						"purge_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Purge category in of `URL` or `路径`。",
+							Description: "Purge category 在 的 `URL` 或 `路径`。",
 						},
 						"flush_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Purge flush 类型 `flush` or `delete`。",
+							Description: "Purge flush 类型 `flush` 或 `delete`。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Purge task 创建时间。",
+							Description: "Purge 任务 创建时间。",
 						},
 					},
 				},

@@ -24,13 +24,13 @@ func DataSourceTencentCloudWedataWorkflowFolders() *schema.Resource {
 			"parent_folder_path": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Parent folder absolute 路径，for example /abc/de，if it is root directory，pass /。",
+				Description: "Parent 文件夹 absolute 路径，对于 示例 /abc/de，如果 它 是 root directory，pass /。",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Paginated folder query 结果",
+				Description: "Paginated 文件夹 查询 结果",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"project_id": {
@@ -46,7 +46,7 @@ func DataSourceTencentCloudWedataWorkflowFolders() *schema.Resource {
 						"folder_path": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "指定absolute 路径 of the folder。",
+							Description: "指定absolute 路径 的 文件夹。",
 						},
 						"create_user_uin": {
 							Type:        schema.TypeString,

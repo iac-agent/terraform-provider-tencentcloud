@@ -19,61 +19,61 @@ func DataSourceTencentCloudDlcDescribeUserRoles() *schema.Resource {
 			"fuzzy": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Fuzzy enumeration by arn。",
+				Description: "Fuzzy enumeration 通过 arn。",
 			},
 
 			"sort_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The field for sorting the returned results。",
+				Description: "字段 对于 sorting 返回 results。",
 			},
 
 			"sorting": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The sorting 顺序，descending or ascending，such as `desc`。",
+				Description: "sorting 顺序，descending 或 ascending，such 作为 `desc`。",
 			},
 
 			"user_roles": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The 用户 roles。",
+				Description: "用户 roles。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"role_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 角色 ID。",
+							Description: "角色 ID。",
 						},
 						"app_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 用户's app ID。",
+							Description: "用户's app ID。",
 						},
 						"uin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 用户 ID。",
+							Description: "用户 ID。",
 						},
 						"arn": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 角色 permission。",
+							Description: "角色 权限。",
 						},
 						"modify_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The last modified 时间戳。",
+							Description: "last modified 时间戳。",
 						},
 						"desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 角色 描述",
+							Description: "角色 描述",
 						},
 						"role_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 角色 名称",
+							Description: "角色 名称",
 						},
 						"creator": {
 							Type:        schema.TypeString,
@@ -83,7 +83,7 @@ func DataSourceTencentCloudDlcDescribeUserRoles() *schema.Resource {
 						"cos_permission_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "COS authorization 路径 list。",
+							Description: "COS authorization 路径 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"cos_path": {

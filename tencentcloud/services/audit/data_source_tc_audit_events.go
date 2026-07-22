@@ -17,36 +17,36 @@ func DataSourceTencentCloudAuditEvents() *schema.Resource {
 			"start_time": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Start 时间戳 （秒） (cannot be 90 days after the current time)。",
+				Description: "Start 时间戳 （秒） (不能 是 90 days after 当前 时间)。",
 			},
 
 			"end_time": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "End 时间戳 （秒） (the time range for query is less than 30 days)。",
+				Description: "End 时间戳 （秒） ( 时间 范围 对于 查询 是 less 比 30 days)。",
 			},
 
 			"max_results": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Max 数量 returned logs (up to 50)。",
+				Description: "Max 数量 返回 logs (up 到 50)。",
 			},
 
 			"lookup_attributes": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Search condition. Valid values: `RequestId`, `EventName`, `ActionType` (write/read), `PrincipalId` (sub-account), `ResourceType`, `ResourceName`, `AccessKeyId`, `SensitiveAction`, `ApiErrorCode`, `CamErrorCode`, and `Tags` (Format of AttributeValue: [{\"key\":\"*\",\"value\":\"*\"}]).",
+				Description: "Search condition. 有效 值: `RequestId`, `EventName`, `ActionType` (write/read), `PrincipalId` (sub-account), `ResourceType`, `ResourceName`, `AccessKeyId`, `SensitiveAction`, `ApiErrorCode`, `CamErrorCode`, 和 `Tags` (Format 的 AttributeValue: [{\"键\":\"*\",\"值\":\"*\"}]).",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"attribute_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "有效值：RequestId，EventName，ReadOnly，用户名，ResourceType，ResourceName，AccessKeyId，and EventId\nNote: `null` may be returned for this field，indicating that no valid values can be obtained。",
+							Description: "有效值：RequestId，EventName，ReadOnly，用户名，ResourceType，ResourceName，AccessKeyId，和 EventId\nNote: `null` 可能 是 返回 对于 此 字段，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"attribute_value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "值 of `AttributeValue`\nNote: `null` may be returned for this field，indicating that no valid values can be obtained。",
+							Description: "值 的 `AttributeValue`\nNote: `null` 可能 是 返回 对于 此 字段，indicating 该 无 有效 值 可以 是 获取。",
 						},
 					},
 				},
@@ -55,13 +55,13 @@ func DataSourceTencentCloudAuditEvents() *schema.Resource {
 			"is_return_location": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "是否return the IP location. `1`: yes，`0`: no。",
+				Description: "是否return IP location. `1`: yes，`0`: 无。",
 			},
 
 			"events": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Logset. Note: `null` may be returned for this field，indicating that no valid values can be obtained。",
+				Description: "Logset. 注意: `null` 可能 是 返回 对于 此 字段，indicating 该 无 有效 值 可以 是 获取。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"event_id": {
@@ -87,7 +87,7 @@ func DataSourceTencentCloudAuditEvents() *schema.Resource {
 						"resource_type_cn": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "描述 资源类型 in Chinese (please use this field as 必填; if you are using other languages，ignore this field)。",
+							Description: "描述 资源类型 在 Chinese (please 使用 此 字段 作为 必填; 如果 您 是 使用 other languages，ignore 此 字段)。",
 						},
 						"error_code": {
 							Type:        schema.TypeInt,
@@ -102,7 +102,7 @@ func DataSourceTencentCloudAuditEvents() *schema.Resource {
 						"secret_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "证书 ID\nNote: `null` may be returned for this field，indicating that no valid values can be obtained。",
+							Description: "证书 ID\nNote: `null` 可能 是 返回 对于 此 字段，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"event_source": {
 							Type:        schema.TypeString,
@@ -127,12 +127,12 @@ func DataSourceTencentCloudAuditEvents() *schema.Resource {
 						"source_ip_address": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "来源 IP\nNote: `null` may be returned for this field，indicating that no valid values can be obtained。",
+							Description: "来源 IP\nNote: `null` 可能 是 返回 对于 此 字段，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"event_name_cn": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "描述 事件名称 in Chinese (please use this field as 必填; if you are using other languages，ignore this field)。",
+							Description: "描述 事件名称 在 Chinese (please 使用 此 字段 作为 必填; 如果 您 是 使用 other languages，ignore 此 字段)。",
 						},
 						"resources": {
 							Type:        schema.TypeList,
@@ -149,7 +149,7 @@ func DataSourceTencentCloudAuditEvents() *schema.Resource {
 									"resource_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "资源名称\nNote: `null` may be returned for this field，indicating that no valid values can be obtained。",
+										Description: "资源名称\nNote: `null` 可能 是 返回 对于 此 字段，indicating 该 无 有效 值 可以 是 获取。",
 									},
 								},
 							},

@@ -33,7 +33,7 @@ func ResourceTencentCloudCdwpgUserhba() *schema.Resource {
 			"hba_configs": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "HBA configuration array。",
+				Description: "HBA 配置 数组。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {

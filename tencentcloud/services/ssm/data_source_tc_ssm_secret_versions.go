@@ -36,23 +36,23 @@ func DataSourceTencentCloudSsmSecretVersions() *schema.Resource {
 			"secret_version_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A 列表 SSM secret versions. When secret 状态 is `已禁用`，this field will not update anymore。",
+				Description: "A 列表 SSM secret versions. 当 secret 状态 是 `已禁用`，此 字段 将 不 update anymore。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"version_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "版本 of secret。",
+							Description: "版本 的 secret。",
 						},
 						"secret_binary": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The base64-encoded binary secret。",
+							Description: "base64-encoded binary secret。",
 						},
 						"secret_string": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The string text of secret。",
+							Description: "字符串 text 的 secret。",
 						},
 					},
 				},

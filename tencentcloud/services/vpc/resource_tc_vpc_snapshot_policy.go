@@ -27,27 +27,27 @@ func ResourceTencentCloudVpcSnapshotPolicy() *schema.Resource {
 			"snapshot_policy_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Snapshot policy 名称",
+				Description: "Snapshot 策略 名称",
 			},
 			"backup_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Backup strategy 类型，`operate`: operate backup，`time`: schedule backup。",
+				Description: "Backup strategy 类型，`operate`: operate 备份，`时间`: 调度 备份。",
 			},
 			"keep_time": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "The retention time supports 1 to 365 days。",
+				Description: "retention 时间 支持 1 到 365 days。",
 			},
 			"create_new_cos": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "是否create a new COS 存储桶，the 默认为 False.注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "是否create new COS 存储桶， 默认为 False.注意：此字段可能返回 null，表示无法获取有效值。",
 			},
 			"cos_region": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The 地域 where the COS 存储桶 is located。",
+				Description: "地域 其中 COS 存储桶 是 located。",
 			},
 			"cos_bucket": {
 				Type:        schema.TypeString,
@@ -57,18 +57,18 @@ func ResourceTencentCloudVpcSnapshotPolicy() *schema.Resource {
 			"backup_policies": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Time backup strategy. 注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "Time 备份 strategy. 注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"backup_day": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Backup cycle time，the 值 can be monday，tuesday，wednesday，thursday，friday，saturday，sunday。",
+							Description: "Backup cycle 时间， 值 可以 是 monday，tuesday，wednesday，thursday，friday，saturday，sunday。",
 						},
 						"backup_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Backup time point，格式:HH:mm:ss。",
+							Description: "Backup 时间 point，格式:HH:mm:ss。",
 						},
 					},
 				},
@@ -76,12 +76,12 @@ func ResourceTencentCloudVpcSnapshotPolicy() *schema.Resource {
 			"enable": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "已启用 state，True-已启用，False-已禁用，the 默认为 True。",
+				Description: "已启用 state，True-已启用，False-已禁用， 默认为 True。",
 			},
 			"snapshot_policy_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Snapshot policy Id。",
+				Description: "Snapshot 策略 ID。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,

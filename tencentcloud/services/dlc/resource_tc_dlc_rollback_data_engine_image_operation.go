@@ -29,14 +29,14 @@ func ResourceTencentCloudDlcRollbackDataEngineImageOperation() *schema.Resource 
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "FromRecordId parameters returned by the API for checking the availability of rolling back。",
+				Description: "FromRecordId 参数 返回 通过 API 对于 checking availability 的 rolling back。",
 			},
 
 			"to_record_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "ToRecordId parameters returned by the API for checking the availability of rolling back。",
+				Description: "ToRecordId 参数 返回 通过 API 对于 checking availability 的 rolling back。",
 			},
 		},
 	}

@@ -19,13 +19,13 @@ func DataSourceTencentCloudEbPlatformEventNames() *schema.Resource {
 			"product_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Platform product event 类型",
+				Description: "Platform product 事件 类型",
 			},
 
 			"event_names": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Platform product list。",
+				Description: "Platform product 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"event_name": {

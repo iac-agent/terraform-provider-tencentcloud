@@ -28,18 +28,18 @@ func ResourceTencentCloudSqlserverDatabaseTDE() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 			"db_names": {
 				Required:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Database name list.",
+				Description: "Database 名称 列表.",
 			},
 			"encryption": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "`enable` - enable encryption, `disable` - disable encryption.",
+				Description: "`启用` - 启用 加密, `disable` - disable 加密.",
 			},
 		},
 	}

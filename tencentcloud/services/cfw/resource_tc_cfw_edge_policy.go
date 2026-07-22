@@ -30,38 +30,38 @@ func ResourceTencentCloudCfwEdgePolicy() *schema.Resource {
 			"source_content": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Access 来源 example: net:IP/CIDR(192.168.0.2)。",
+				Description: "Access 来源 示例: net:IP/CIDR(192.168.0.2)。",
 			},
 			"source_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Access 来源 类型: for inbound rules，the 类型 can be net，location，vendor，template; for outbound rules，it can be net，instance，标签，template，group。",
+				Description: "Access 来源 类型: 对于 inbound 规则， 类型 可以 是 net，location，vendor，template; 对于 outbound 规则，它 可以 是 net，实例，标签，template，组。",
 			},
 			"target_content": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Example of access purpose: net: IP/CIDR(192.168.0.2) 域名: 域名 名称 rules，such as *.qq.com。",
+				Description: "Example 的 访问 purpose: net: IP/CIDR(192.168.0.2) 域名: 域名 名称 规则，such 作为 *.qq.com。",
 			},
 			"target_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Access purpose 类型: For inbound rules，the 类型 can be net，instance，标签，template，group; for outbound rules，it can be net，location，vendor，template。",
+				Description: "Access purpose 类型: For inbound 规则， 类型 可以 是 net，实例，标签，template，组; 对于 outbound 规则，它 可以 是 net，location，vendor，template。",
 			},
 			"protocol": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "协议 If Direction=1 && 范围=serial，可选 values: TCP UDP ICMP ANY HTTP HTTPS HTTP/HTTPS SMTP SMTPS SMTP/SMTPS FTP DNS; If Direction=1 && 范围!=serial，可选 values: TCP; If Direction=0 && 范围=serial，可选 values: TCP UDP ICMP ANY HTTP HTTPS HTTP/HTTPS SMTP SMTPS SMTP/SMTPS FTP DNS; If Direction=0 && 范围!=serial，可选 values: TCP HTTP/HTTPS TLS/SSL。",
+				Description: "协议 如果 Direction=1 && 范围=serial，可选 值: TCP UDP ICMP ANY HTTP HTTPS HTTP/HTTPS SMTP SMTPS SMTP/SMTPS FTP DNS; 如果 Direction=1 && 范围!=serial，可选 值: TCP; 如果 Direction=0 && 范围=serial，可选 值: TCP UDP ICMP ANY HTTP HTTPS HTTP/HTTPS SMTP SMTPS SMTP/SMTPS FTP DNS; 如果 Direction=0 && 范围!=serial，可选 值: TCP HTTP/HTTPS TLS/SSL。",
 			},
 			"rule_action": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(POLICY_RULE_ACTION),
-				Description:  "How the traffic set in the access control policy passes through the cloud firewall. Values: accept: allow; drop: reject; log: observe。",
+				Description:  "How 流量 集合 在 访问 control 策略 passes through 云 firewall. Values: accept: allow; drop: reject; 日志: observe。",
 			},
 			"port": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The 端口 for the access control policy. 值: -1/-1: All ports 80: 端口 80。",
+				Description: "端口 对于 访问 control 策略. 值: -1/-1: All ports 80: 端口 80。",
 			},
 			"direction": {
 				Type:        schema.TypeInt,
@@ -73,7 +73,7 @@ func ResourceTencentCloudCfwEdgePolicy() *schema.Resource {
 				Optional:     true,
 				Default:      POLICY_ENABLE_TRUE,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(POLICY_ENABLE),
-				Description:  "Rule 状态，true means 已启用，false means 已禁用 默认为 true。",
+				Description:  "Rule 状态，true 表示 已启用，false 表示 已禁用 默认为 true。",
 			},
 			"description": {
 				Type:        schema.TypeString,
@@ -85,19 +85,19 @@ func ResourceTencentCloudCfwEdgePolicy() *schema.Resource {
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(POLICY_SCOPE),
-				Description:  "Effective range. serial: serial; side: bypass; all: global，默认为 all。",
+				Description:  "Effective 范围. serial: serial; side: bypass; all: 全局，默认为 all。",
 			},
 			"param_template_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Parameter template id。",
+				Description: "Parameter template ID。",
 			},
 			// computed
 			"uuid": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "The unique id corresponding to the rule，no need to fill in when creating the rule。",
+				Description: "唯一 ID corresponding 到 规则，无 need 到 fill 在 当 creating 规则。",
 			},
 			"order_index": {
 				Type:        schema.TypeInt,

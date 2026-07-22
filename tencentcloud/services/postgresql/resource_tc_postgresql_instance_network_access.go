@@ -28,7 +28,7 @@ func ResourceTencentCloudPostgresqlInstanceNetworkAccess() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "实例 ID in the 格式 of postgres-6bwgamo3。",
+				Description: "实例 ID 在 格式 的 postgres-6bwgamo3。",
 			},
 
 			"vpc_id": {

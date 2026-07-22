@@ -21,7 +21,7 @@ func DataSourceTencentCloudWafAttackLogList() *schema.Resource {
 			"domain": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "域名 for query，all 域名 use all。",
+				Description: "域名 对于 查询，all 域名 使用 all。",
 			},
 			"start_time": {
 				Required:    true,
@@ -37,13 +37,13 @@ func DataSourceTencentCloudWafAttackLogList() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeInt,
 				Default:     10,
-				Description: "数量 queries，默认为 10，maximum of 100。",
+				Description: "数量 queries，默认为 10，最大 的 100。",
 			},
 			"page": {
 				Optional:    true,
 				Type:        schema.TypeInt,
 				Default:     0,
-				Description: "数量 pages，starting from 0 by default。",
+				Description: "数量 pages，starting 从 0 通过 默认值。",
 			},
 			"query_string": {
 				Required:    true,
@@ -59,13 +59,13 @@ func DataSourceTencentCloudWafAttackLogList() *schema.Resource {
 			"data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Attack log array。",
+				Description: "Attack 日志 数组。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"content": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The detail of attack log。",
+							Description: "detail 的 attack 日志。",
 						},
 						"file_name": {
 							Type:        schema.TypeString,
@@ -80,7 +80,7 @@ func DataSourceTencentCloudWafAttackLogList() *schema.Resource {
 						"time_stamp": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Time string。",
+							Description: "Time 字符串。",
 						},
 					},
 				},

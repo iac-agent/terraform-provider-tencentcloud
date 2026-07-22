@@ -66,13 +66,13 @@ func ResourceTencentCloudVpnCustomerGatewayConfigurationDownload() *schema.Resou
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "VPN connection access device physical interface 名称",
+				Description: "VPN 连接 访问 device physical interface 名称",
 			},
 
 			"customer_gateway_configuration": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "xml configuration。",
+				Description: "xml 配置。",
 			},
 		},
 	}

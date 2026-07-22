@@ -41,26 +41,26 @@ func ResourceTencentCloudIdentityCenterRoleConfigurationPermissionCustomPolicyAt
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "角色 policy document。",
+				Description: "角色 策略 document。",
 			},
 
 			"role_policy_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "角色 policy 名称",
+				Description: "角色 策略 名称",
 			},
 
 			"role_policy_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "角色 policy 类型",
+				Description: "角色 策略 类型",
 			},
 
 			"add_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "角色 policy add time。",
+				Description: "角色 策略 add 时间。",
 			},
 		},
 	}

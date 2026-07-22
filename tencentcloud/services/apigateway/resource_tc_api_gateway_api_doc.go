@@ -43,7 +43,7 @@ func ResourceTencentCloudAPIGatewayAPIDoc() *schema.Resource {
 				Type:        schema.TypeSet,
 				Required:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "列表 APIs for generating documents。",
+				Description: "列表 APIs 对于 generating documents。",
 			},
 			"api_doc_id": {
 				Type:        schema.TypeString,
@@ -94,7 +94,7 @@ func ResourceTencentCloudAPIGatewayAPIDoc() *schema.Resource {
 				Type:        schema.TypeSet,
 				Computed:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "列表 names for generating documents。",
+				Description: "列表 names 对于 generating documents。",
 			},
 		},
 	}

@@ -28,23 +28,23 @@ func ResourceTencentCloudSqlserverConfigInstanceParam() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 			"param_list": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "List of modified parameters. Each list element has two fields: Name and CurrentValue. Set Name to the parameter name and CurrentValue to the new value after modification. Note: if the instance needs to be restarted for the modified parameter to take effect, it will be restarted immediately or during the maintenance time. Before you modify a parameter, you can use the DescribeInstanceParams API to query whether the instance needs to be restarted.",
+				Description: "List 的 modified 参数. Each 列表 element has two 字段: Name 和 CurrentValue. Set Name 到 参数 名称 和 CurrentValue 到 new 值 after modification. 注意: 如果 实例 needs 到 是 restarted 对于 modified 参数 到 take effect, 它 将 是 restarted immediately 或 during maintenance 时间. Before 您 modify 参数, 您 可以 使用 DescribeInstanceParams API 到 查询 whether 实例 needs 到 是 restarted.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Parameter name.",
+							Description: "Parameter 名称.",
 						},
 						"current_value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Parameter value.",
+							Description: "Parameter 值.",
 						},
 					},
 				},

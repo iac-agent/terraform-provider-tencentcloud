@@ -20,53 +20,53 @@ func DataSourceTencentCloudMariadbPrice() *schema.Resource {
 			"zone": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "AZ ID purchased instance。",
+				Description: "AZ ID purchased 实例。",
 			},
 			"node_count": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "数量 instance nodes，which can be obtained by querying the instance specification through the `DescribeDBInstanceSpecs` API。",
+				Description: "数量 实例 nodes，其中 可以 是 获取 通过 querying 实例 规格 through `DescribeDBInstanceSpecs` API。",
 			},
 			"memory": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Memory size （GB）， which can be obtained by querying the instance specification through the `DescribeDBInstanceSpecs` API。",
+				Description: "Memory 大小 （GB）， 其中 可以 是 获取 通过 querying 实例 规格 through `DescribeDBInstanceSpecs` API。",
 			},
 			"storage": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Storage capacity （GB）。 The maximum and minimum storage space can be obtained by querying instance specification through the `DescribeDBInstanceSpecs` API。",
+				Description: "Storage 容量 （GB）。 最大 和 最小 存储 space 可以 是 获取 通过 querying 实例 规格 through `DescribeDBInstanceSpecs` API。",
 			},
 			"buy_count": {
 				Required:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateIntegerMin(1),
-				Description:  "The quantity you want to purchase is queried by default for the price of purchasing 1 instance。",
+				Description:  "quantity 您 want 到 purchase 是 queried 通过 默认值 对于 价格 的 purchasing 1 实例。",
 			},
 			"period": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Purchase 周期 in months。",
+				Description: "Purchase 周期 在 months。",
 			},
 			"paymode": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Billing 类型 有效值：`postpaid` (pay-as-you-go)，`prepaid` (monthly subscription)。",
+				Description: "Billing 类型 有效值：`postpaid` (pay-作为-您-go)，`prepaid` (monthly subscription)。",
 			},
 			"amount_unit": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Price unit. 有效值：`* pent` (cent)，`* microPent` (microcent)。",
+				Description: "Price 单位. 有效值：`* pent` (cent)，`* microPent` (microcent)。",
 			},
 			"original_price": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Original price * 单位：Cent (default). If the request parameter 包含`AmountUnit`，see `AmountUnit` 描述 * Currency: CNY (Chinese site)，USD (international site)。",
+				Description: "Original 价格 * 单位：Cent (默认值). 如果 请求 参数 包含`AmountUnit`，see `AmountUnit` 描述 * Currency: CNY (Chinese site)，USD (international site)。",
 			},
 			"price": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The actual price may be different from the original price due to discounts. * 单位：Cent (default). If the request parameter 包含`AmountUnit`，see `AmountUnit` 描述 * Currency: CNY (Chinese site)，USD (international site)。",
+				Description: "actual 价格 可能 是 different 从 original 价格 due 到 discounts. * 单位：Cent (默认值). 如果 请求 参数 包含`AmountUnit`，see `AmountUnit` 描述 * Currency: CNY (Chinese site)，USD (international site)。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,

@@ -25,7 +25,7 @@ func DataSourceTencentCloudCamListAttachedUserPolicy() *schema.Resource {
 			"attach_type": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "0: Return direct association and group association policies，1: Only return direct association policies，2: Only return group association policies。",
+				Description: "0: Return direct association 和 组 association policies，1: Only 返回 direct association policies，2: Only 返回 组 association policies。",
 			},
 
 			"strategy_type": {
@@ -69,17 +69,17 @@ func DataSourceTencentCloudCamListAttachedUserPolicy() *schema.Resource {
 						"strategy_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Policy 类型 (1 represents custom policy，2 represents preset policy)。",
+							Description: "Policy 类型 (1 表示 自定义 策略，2 表示 preset 策略)。",
 						},
 						"create_mode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation 模式 (1 represents policies created by product or project permissions，others represent policies created by policy syntax)。",
+							Description: "Creation 模式 (1 表示 policies 创建 通过 product 或 项目 permissions，others represent policies 创建 通过 策略 syntax)。",
 						},
 						"groups": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Associated information with group注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Associated 信息 使用 group注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"group_id": {
@@ -98,7 +98,7 @@ func DataSourceTencentCloudCamListAttachedUserPolicy() *schema.Resource {
 						"deactived": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Has it been taken offline (0: No 1: Yes)注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Has 它 been taken offline (0: No 1: Yes)注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"deactived_detail": {
 							Type: schema.TypeSet,

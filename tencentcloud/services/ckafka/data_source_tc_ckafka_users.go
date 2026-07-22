@@ -18,12 +18,12 @@ func DataSourceTencentCloudCkafkaUsers() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Id of the ckafka instance。",
+				Description: "ID 的 ckafka 实例。",
 			},
 			"account_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "账号 名称 used when query ckafka users' infos. Could be a substr of 用户 名称",
+				Description: "账号 名称 使用 当 查询 ckafka users' infos. Could 是 substr 的 用户 名称",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -44,12 +44,12 @@ func DataSourceTencentCloudCkafkaUsers() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of the 账号",
+							Description: "创建时间 的 账号",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The last 更新时间 of the 账号",
+							Description: "last 更新时间 的 账号",
 						},
 					},
 				},

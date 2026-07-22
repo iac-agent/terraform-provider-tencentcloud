@@ -27,25 +27,25 @@ func ResourceTencentCloudGwlbInstance() *schema.Resource {
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID VPC to which the backend target device of the GWLB belongs，such as vpc-12345678. It can be obtained through the DescribeVpcEx interface. If left blank，it 默认为 DefaultVPC. This parameter 为必填项 when a private network CLB instance is created。",
+				Description: "ID VPC 到 其中 backend 目标 device 的 GWLB belongs，such 作为 vpc-12345678. It 可以 是 获取 through DescribeVpcEx interface. 如果 left blank，它 默认为 DefaultVPC. 此 参数 为必填项 当 私有 网络 CLB 实例 是 创建。",
 			},
 
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "子网 ID VPC to which the backend target device of the GWLB belongs。",
+				Description: "子网 ID VPC 到 其中 backend 目标 device 的 GWLB belongs。",
 			},
 
 			"load_balancer_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "GWLB 实例名称 It supports input of 1 to 60 characters. 如果未填写 in，it will be generated automatically by default。",
+				Description: "GWLB 实例名称 It 支持 input 的 1 到 60 字符. 如果未填写 在，它 将 是 generated automatically 通过 默认值。",
 			},
 
 			"tags": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "While the GWLB is purchased，it is tagged，with a maximum of 20 标签键-值 pairs。",
+				Description: "While GWLB 是 purchased，它 是 tagged，使用 最大 的 20 标签键-值 pairs。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
@@ -66,7 +66,7 @@ func ResourceTencentCloudGwlbInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "GWLB instance billing 类型，which currently supports POSTPAID_BY_HOUR only. The 默认为 POSTPAID_BY_HOUR。",
+				Description: "GWLB 实例 billing 类型，其中 currently 支持 POSTPAID_BY_HOUR 仅. 默认为 POSTPAID_BY_HOUR。",
 			},
 			"vips": {
 				Computed: true,
@@ -84,12 +84,12 @@ func ResourceTencentCloudGwlbInstance() *schema.Resource {
 			"target_group_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Unique ID associated target group。",
+				Description: "Unique ID associated 目标 组。",
 			},
 			"delete_protect": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "是否turn on the 删除保护 function。",
+				Description: "是否turn 在 删除保护 函数。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
@@ -99,17 +99,17 @@ func ResourceTencentCloudGwlbInstance() *schema.Resource {
 			"isolation": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "0: means not quarantined，1: means quarantined。",
+				Description: "0: 表示 不 quarantined，1: 表示 quarantined。",
 			},
 			"isolated_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Time when the Gateway Load Balancer instance was isolated。",
+				Description: "Time 当 Gateway Load Balancer 实例 是 isolated。",
 			},
 			"operate_protect": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "是否enable the configuration modification protection function。",
+				Description: "是否enable 配置 modification protection 函数。",
 			},
 		},
 	}

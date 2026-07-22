@@ -30,19 +30,19 @@ func DataSourceTencentCloudIdentityCenterUsers() *schema.Resource {
 			"user_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "用户 类型 Manual: manually created; Synchronized: externally imported。",
+				Description: "用户 类型 Manual: manually 创建; Synchronized: externally imported。",
 			},
 
 			"filter": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Filter criterion，which currently only supports 用户名，email 地址，userId，and 描述",
+				Description: "过滤器 criterion，其中 currently 仅 支持 用户名，email 地址，userId，和 描述",
 			},
 
 			"filter_groups": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Filtered 用户 group. IsSelected=1 will be returned for the sub-用户 associated with this 用户 group。",
+				Description: "Filtered 用户 组. IsSelected=1 将 是 返回 对于 sub-用户 associated 使用 此 用户 组。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -51,19 +51,19 @@ func DataSourceTencentCloudIdentityCenterUsers() *schema.Resource {
 			"sort_field": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sorting field，which currently only supports CreateTime. The 默认为 the CreateTime field。",
+				Description: "Sorting 字段，其中 currently 仅 支持 CreateTime. 默认为 CreateTime 字段。",
 			},
 
 			"sort_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sorting 类型 Desc: 降序; Asc: 升序 It should be set along with SortField。",
+				Description: "Sorting 类型 Desc: 降序; Asc: 升序 It should 是 集合 along 使用 SortField。",
 			},
 
 			"users": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "用户 list。",
+				Description: "用户 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"user_name": {
@@ -94,7 +94,7 @@ func DataSourceTencentCloudIdentityCenterUsers() *schema.Resource {
 						"email": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Email 地址 of the 用户，which must be unique within the directory。",
+							Description: "Email 地址 的 用户，其中 必须 是 唯一 within directory。",
 						},
 						"user_status": {
 							Type:        schema.TypeString,
@@ -104,7 +104,7 @@ func DataSourceTencentCloudIdentityCenterUsers() *schema.Resource {
 						"user_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "用户 类型 Manual: manually created; Synchronized: externally imported。",
+							Description: "用户 类型 Manual: manually 创建; Synchronized: externally imported。",
 						},
 						"user_id": {
 							Type:        schema.TypeString,
@@ -114,12 +114,12 @@ func DataSourceTencentCloudIdentityCenterUsers() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "创建时间 of the 用户",
+							Description: "创建时间 的 用户",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "修改时间 of the 用户",
+							Description: "修改时间 的 用户",
 						},
 						"is_selected": {
 							Type:        schema.TypeBool,

@@ -18,31 +18,31 @@ func DataSourceTencentCloudBhAccountGroups() *schema.Resource {
 			"deep_in": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "是否recursively query，0 for non-recursive，1 for recursive。",
+				Description: "是否recursively 查询，0 对于 non-recursive，1 对于 recursive。",
 			},
 
 			"parent_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Parent 账号 组 ID，default 0，query all groups under the root 账号 group。",
+				Description: "Parent 账号 组 ID，默认值 0，查询 all groups under root 账号 组。",
 			},
 
 			"group_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "账号 组名称，fuzzy query。",
+				Description: "账号 组名称，fuzzy 查询。",
 			},
 
 			"page_num": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Get data from which page。",
+				Description: "Get 数据 从 其中 页面。",
 			},
 
 			"account_group_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "账号 group information。",
+				Description: "账号 组 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
@@ -73,42 +73,42 @@ func DataSourceTencentCloudBhAccountGroups() *schema.Resource {
 						"source": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "账号 group 来源",
+							Description: "账号 组 来源",
 						},
 						"user_total": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total 数量 users under the 账号 group。",
+							Description: "Total 数量 users under 账号 组。",
 						},
 						"is_leaf": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否为a leaf node。",
+							Description: "是否为a leaf 节点。",
 						},
 						"import_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "账号 group import 类型",
+							Description: "账号 组 import 类型",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "账号 group 描述",
+							Description: "账号 组 描述",
 						},
 						"parent_org_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Parent 来源 账号 organization ID. When using third-party import 用户 sources，record the 组 ID this group in the 来源 organization structure。",
+							Description: "Parent 来源 账号 organization ID. 当 使用 third-party import 用户 sources，记录 组 ID 此 组 在 来源 organization structure。",
 						},
 						"org_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "来源 账号 organization ID. When using third-party import 用户 sources，record the 组 ID this group in the 来源 organization structure。",
+							Description: "来源 账号 organization ID. 当 使用 third-party import 用户 sources，记录 组 ID 此 组 在 来源 organization structure。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否account group has been connected，0 means not connected，1 means connected。",
+							Description: "是否account 组 has been connected，0 表示 不 connected，1 表示 connected。",
 						},
 					},
 				},

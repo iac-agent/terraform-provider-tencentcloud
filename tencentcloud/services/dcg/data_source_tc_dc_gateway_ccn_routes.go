@@ -16,17 +16,17 @@ func DataSourceTencentCloudDcGatewayCCNRoutes() *schema.Resource {
 			"dcg_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID DCG to be queried。",
+				Description: "ID DCG 到 是 queried。",
 			},
 			"ccn_route_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Cloud networking routing learning 类型，可选 values: BGP - Automatic Learning; STATIC - 用户 configured. 默认为 STATIC。",
+				Description: "Cloud networking routing learning 类型，可选 值: BGP - Automatic Learning; STATIC - 用户 已配置. 默认为 STATIC。",
 			},
 			"address_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "地址 类型，supports: IPv4，IPv6. 默认为 IPv4。",
+				Description: "地址 类型，支持: IPv4，IPv6. 默认为 IPv4。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -37,7 +37,7 @@ func DataSourceTencentCloudDcGatewayCCNRoutes() *schema.Resource {
 			"instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information 列表 the DCG route entries。",
+				Description: "Information 列表 DCG 路由 entries。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"dcg_id": {
@@ -48,12 +48,12 @@ func DataSourceTencentCloudDcGatewayCCNRoutes() *schema.Resource {
 						"route_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID DCG route。",
+							Description: "ID DCG 路由。",
 						},
 						"cidr_block": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "A network 地址 segment of IDC。",
+							Description: "A 网络 地址 segment 的 IDC。",
 						},
 						"as_path": {
 							Type:     schema.TypeList,
@@ -61,7 +61,7 @@ func DataSourceTencentCloudDcGatewayCCNRoutes() *schema.Resource {
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
-							Description: "As 路径 列表 the BGP。",
+							Description: "As 路径 列表 BGP。",
 						},
 					},
 				},

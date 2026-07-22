@@ -33,7 +33,7 @@ func ResourceTencentCloudVodSubApplication() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 40),
-				Description:  "Sub application 名称，which can contain up to 64 letters，digits，underscores，and hyphens (such as test_ABC-123) and must be unique under a 用户",
+				Description:  "Sub 应用 名称，其中 可以 contain up 到 64 letters，digits，underscores，和 hyphens (such 作为 test_ABC-123) 和 必须 是 唯一 under 用户",
 			},
 			"status": {
 				Type:         schema.TypeString,
@@ -44,19 +44,19 @@ func ResourceTencentCloudVodSubApplication() *schema.Resource {
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sub application 描述",
+				Description: "Sub 应用 描述",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "标签键-值 pairs for resource management. Maximum 10 标签",
+				Description: "标签键-值 pairs 对于 资源 management. Maximum 10 标签",
 			},
 			//computed
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The time when the sub application was created。",
+				Description: "时间 当 sub 应用 是 创建。",
 			},
 		},
 	}

@@ -24,7 +24,7 @@ func ResourceTencentCloudDasbResetUser() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "用户 Id。",
+				Description: "用户 ID。",
 			},
 		},
 	}

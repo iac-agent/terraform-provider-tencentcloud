@@ -36,7 +36,7 @@ func ResourceTencentCloudMonitorGrafanaSsoConfig() *schema.Resource {
 			"enable_sso": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "是否enable SSO: `true` for enabling; `false` for disabling。",
+				Description: "是否enable SSO: `true` 对于 enabling; `false` 对于 disabling。",
 			},
 		},
 	}

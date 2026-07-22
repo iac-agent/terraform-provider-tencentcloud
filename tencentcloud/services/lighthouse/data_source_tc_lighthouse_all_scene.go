@@ -36,7 +36,7 @@ func DataSourceTencentCloudLighthouseAllScene() *schema.Resource {
 				Optional:    true,
 				Default:     20,
 				Type:        schema.TypeInt,
-				Description: "数量 returned results. 默认值为 20. Maximum 值 is 100。",
+				Description: "数量 返回 results. 默认值为 20. Maximum 值 是 100。",
 			},
 
 			"scene_set": {
@@ -48,12 +48,12 @@ func DataSourceTencentCloudLighthouseAllScene() *schema.Resource {
 						"scene_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Use scene Id。",
+							Description: "Use scene ID。",
 						},
 						"display_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Use the scene presentation 名称",
+							Description: "Use scene presentation 名称",
 						},
 						"description": {
 							Type:        schema.TypeString,

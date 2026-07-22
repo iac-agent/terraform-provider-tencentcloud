@@ -25,7 +25,7 @@ func DataSourceTencentCloudCssMonitorReport() *schema.Resource {
 			"mps_result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The information about the media processing 结果注意：此字段可能返回 null，表示未找到有效值。",
+				Description: "信息 about media processing 结果注意：此字段可能返回 null，表示未找到有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ai_asr_results": {
@@ -34,7 +34,7 @@ func DataSourceTencentCloudCssMonitorReport() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "The 结果 of intelligent speech recognition.注意：此字段可能返回 null，表示未找到有效值。",
+							Description: "结果 的 intelligent speech recognition.注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"ai_ocr_results": {
 							Type: schema.TypeSet,
@@ -42,7 +42,7 @@ func DataSourceTencentCloudCssMonitorReport() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "The 结果 of intelligent text recognition.注意：此字段可能返回 null，表示未找到有效值。",
+							Description: "结果 的 intelligent text recognition.注意：此字段可能返回 null，表示未找到有效值。",
 						},
 					},
 				},
@@ -51,7 +51,7 @@ func DataSourceTencentCloudCssMonitorReport() *schema.Resource {
 			"diagnose_result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The information about the media diagnostic 结果注意：此字段可能返回 null，表示未找到有效值。",
+				Description: "信息 about media diagnostic 结果注意：此字段可能返回 null，表示未找到有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"stream_broken_results": {
@@ -60,7 +60,7 @@ func DataSourceTencentCloudCssMonitorReport() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "The information about the stream interruption.注意：此字段可能返回 null，表示未找到有效值。",
+							Description: "信息 about 流 interruption.注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"low_frame_rate_results": {
 							Type: schema.TypeSet,
@@ -68,7 +68,7 @@ func DataSourceTencentCloudCssMonitorReport() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "The information about low frame rate.注意：此字段可能返回 null，表示未找到有效值。",
+							Description: "信息 about low frame 速率.注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"stream_format_results": {
 							Type: schema.TypeSet,
@@ -76,7 +76,7 @@ func DataSourceTencentCloudCssMonitorReport() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "The information about the stream 格式 diagnosis.注意：此字段可能返回 null，表示未找到有效值。",
+							Description: "信息 about 流 格式 diagnosis.注意：此字段可能返回 null，表示未找到有效值。",
 						},
 					},
 				},

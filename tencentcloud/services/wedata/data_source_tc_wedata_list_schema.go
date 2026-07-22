@@ -42,7 +42,7 @@ func DataSourceTencentCloudWedataListSchema() *schema.Resource {
 			"items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Schema record list。",
+				Description: "Schema 记录 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"guid": {

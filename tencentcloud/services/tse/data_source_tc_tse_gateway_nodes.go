@@ -19,30 +19,30 @@ func DataSourceTencentCloudTseGatewayNodes() *schema.Resource {
 			"gateway_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway ID。",
+				Description: "网关 ID。",
 			},
 
 			"group_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "gateway 组 ID",
+				Description: "网关 组 ID",
 			},
 
 			"node_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "nodes information。",
+				Description: "nodes 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"node_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "gateway node id。",
+							Description: "网关 节点 ID。",
 						},
 						"node_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "gateway node ip。",
+							Description: "网关 节点 ip。",
 						},
 						"zone_id": {
 							Type:        schema.TypeString,

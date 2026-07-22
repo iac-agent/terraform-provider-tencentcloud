@@ -27,25 +27,25 @@ func ResourceTencentCloudVpcIpv6EniAddress() *schema.Resource {
 			"vpc_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "VPC `ID`，in the form of `vpc-m6dyj72l`。",
+				Description: "VPC `ID`，在 form 的 `vpc-m6dyj72l`。",
 			},
 
 			"network_interface_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ENI instance `ID`，in the form of `eni-m6dyj72l`。",
+				Description: "ENI 实例 `ID`，在 form 的 `eni-m6dyj72l`。",
 			},
 
 			"ipv6_addresses": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "The specified `IPv6` 地址 list，up to 10 can be specified at a time. Combined with the input parameter `Ipv6AddressCount` to calculate the quota. Mandatory one with Ipv6AddressCount。",
+				Description: "指定 `IPv6` 地址 列表，up 到 10 可以 是 指定 在 时间. Combined 使用 input 参数 `Ipv6AddressCount` 到 calculate 配额. Mandatory 一个 使用 Ipv6AddressCount。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"address": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "`IPv6` 地址，in the form of: `3402:4e00:20:100:0:8cd9:2a67:71f3`。",
+							Description: "`IPv6` 地址，在 form 的: `3402:4e00:20:100:0:8cd9:2a67:71f3`。",
 						},
 						"primary": {
 							Type:        schema.TypeBool,
@@ -55,7 +55,7 @@ func ResourceTencentCloudVpcIpv6EniAddress() *schema.Resource {
 						"address_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "`EIP` instance `ID`，such as:`eip-hxlqja90`。",
+							Description: "`EIP` 实例 `ID`，such 作为:`eip-hxlqja90`。",
 						},
 						"description": {
 							Type:        schema.TypeString,
@@ -65,12 +65,12 @@ func ResourceTencentCloudVpcIpv6EniAddress() *schema.Resource {
 						"is_wan_ip_blocked": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "是否public network IP is blocked。",
+							Description: "是否public 网络 IP 是 blocked。",
 						},
 						"state": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "`IPv6` 地址 状态: `PENDING`: pending，`MIGRATING`: migrating，`DELETING`: deleting，`AVAILABLE`: available。",
+							Description: "`IPv6` 地址 状态: `PENDING`: pending，`MIGRATING`: migrating，`DELETING`: deleting，`AVAILABLE`: 可用。",
 						},
 					},
 				},

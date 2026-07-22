@@ -25,7 +25,7 @@ func DataSourceTencentCloudCkafkaGroup() *schema.Resource {
 			"search_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "search for the keyword。",
+				Description: "search 对于 keyword。",
 			},
 
 			"group_list": {
@@ -42,7 +42,7 @@ func DataSourceTencentCloudCkafkaGroup() *schema.Resource {
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 协议 used by this group。",
+							Description: "协议 使用 通过 此 组。",
 						},
 					},
 				},

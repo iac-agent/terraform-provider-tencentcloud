@@ -32,7 +32,7 @@ func ResourceTencentCloudAsRemoveInstances() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "列表 cvm instances to remove。",
+				Description: "列表 cvm 实例 到 remove。",
 			},
 		},
 	}

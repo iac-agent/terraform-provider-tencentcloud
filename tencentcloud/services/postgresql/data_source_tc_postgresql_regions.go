@@ -19,7 +19,7 @@ func DataSourceTencentCloudPostgresqlRegions() *schema.Resource {
 			"region_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "地域 information set。",
+				Description: "地域 信息 集合。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
@@ -35,17 +35,17 @@ func DataSourceTencentCloudPostgresqlRegions() *schema.Resource {
 						"region_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "地域 number。",
+							Description: "地域 数量。",
 						},
 						"region_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Availability 状态 UNAVAILABLE: unavailable，AVAILABLE: available。",
+							Description: "Availability 状态 UNAVAILABLE: unavailable，AVAILABLE: 可用。",
 						},
 						"support_international": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否resource can be purchased in this 地域 有效值：`0` (no)，`1` (yes).Note: this field may return `null`，indicating that no valid values can be obtained。",
+							Description: "是否resource 可以 是 purchased 在 此 地域 有效值：`0` (无)，`1` (yes).注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 					},
 				},

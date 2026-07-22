@@ -32,7 +32,7 @@ func ResourceTencentCloudWafWebShell() *schema.Resource {
 				Type:         schema.TypeInt,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1, 2}),
-				Description:  "Webshell 状态，1: open; 0: closed; 2: log。",
+				Description:  "Webshell 状态，1: open; 0: closed; 2: 日志。",
 			},
 		},
 	}

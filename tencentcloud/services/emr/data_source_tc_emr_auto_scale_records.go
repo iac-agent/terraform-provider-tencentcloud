@@ -19,24 +19,24 @@ func DataSourceTencentCloudEmrAutoScaleRecords() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "EMR cluster ID.",
+				Description: "EMR 集群 ID.",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Record filtering parameters, currently only `StartTime`, `EndTime` and `StrategyName` are supported. `StartTime` and `EndTime` support the time format of 2006-01-02 15:04:05 or 2006/01/02 15:04:05.",
+				Description: "Record filtering 参数, currently 仅 `StartTime`, `EndTime` 和 `StrategyName` 是 支持. `StartTime` 和 `EndTime` support 时间 格式 的 2006-01-02 15:04:05 或 2006/01/02 15:04:05.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Key. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Key. 注意: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Value. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Value. 注意: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 						},
 					},
 				},
@@ -45,18 +45,18 @@ func DataSourceTencentCloudEmrAutoScaleRecords() *schema.Resource {
 			"record_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Record list.",
+				Description: "Record 列表.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"strategy_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Rule name of expanding and shrinking capacity.",
+							Description: "Rule 名称 的 expanding 和 shrinking 容量.",
 						},
 						"scale_action": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "`SCALE_OUT` and `SCALE_IN` respectively represent expanding and shrinking capacity.",
+							Description: "`SCALE_OUT` 和 `SCALE_IN` respectively represent expanding 和 shrinking 容量.",
 						},
 						"action_status": {
 							Type:        schema.TypeString,
@@ -76,7 +76,7 @@ func DataSourceTencentCloudEmrAutoScaleRecords() *schema.Resource {
 						"expect_scale_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Effective only when ScaleAction is SCALE_OUT.",
+							Description: "Effective 仅 当 ScaleAction 是 SCALE_OUT.",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
@@ -86,22 +86,22 @@ func DataSourceTencentCloudEmrAutoScaleRecords() *schema.Resource {
 						"strategy_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Strategy Type, 1 for Load scaling, 2 for Time scaling.",
+							Description: "Strategy Type, 1 对于 Load scaling, 2 对于 Time scaling.",
 						},
 						"spec_info": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Specification information used when expanding capacity.",
+							Description: "Specification 信息 使用 当 expanding 容量.",
 						},
 						"compensate_flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Compensation and expansion, 0 represents no start, 1 represents start. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Compensation 和 expansion, 0 表示 无 start, 1 表示 start. 注意: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 						},
 						"compensate_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Compensation Times Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Compensation Times 注意: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 						},
 					},
 				},
@@ -110,7 +110,7 @@ func DataSourceTencentCloudEmrAutoScaleRecords() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

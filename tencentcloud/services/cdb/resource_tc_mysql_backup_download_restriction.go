@@ -40,7 +40,7 @@ func ResourceTencentCloudMysqlBackupDownloadRestriction() *schema.Resource {
 			"ip_comparison_symbol": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "in：指定ip可以下载； NotIn：指定ip无法下载。默认为输入。",
+				Description: "在：指定ip可以下载； NotIn：指定ip无法下载。默认为输入。",
 			},
 
 			"limit_vpc": {

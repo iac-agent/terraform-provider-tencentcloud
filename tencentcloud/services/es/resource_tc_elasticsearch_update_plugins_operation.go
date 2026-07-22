@@ -33,7 +33,7 @@ func ResourceTencentCloudElasticsearchUpdatePluginsOperation() *schema.Resource 
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "列表 plugins that need to be installed。",
+				Description: "列表 plugins 该 need 到 是 installed。",
 			},
 
 			"remove_plugin_list": {
@@ -43,14 +43,14 @@ func ResourceTencentCloudElasticsearchUpdatePluginsOperation() *schema.Resource 
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "列表 plugins that need to be uninstalled。",
+				Description: "列表 plugins 该 need 到 是 uninstalled。",
 			},
 
 			"force_restart": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "是否force a restart. 默认为 false。",
+				Description: "是否force restart. 默认为 false。",
 			},
 
 			"force_update": {
@@ -64,7 +64,7 @@ func ResourceTencentCloudElasticsearchUpdatePluginsOperation() *schema.Resource 
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Plugin 类型 0: system plugin。",
+				Description: "Plugin 类型 0: 系统 插件。",
 			},
 		},
 	}

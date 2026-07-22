@@ -18,12 +18,12 @@ func DataSourceTencentCloudGaapHttpDomains() *schema.Resource {
 			"listener_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID layer7 listener to be queried。",
+				Description: "ID layer7 listener 到 是 queried。",
 			},
 			"domain": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Forward 域名 of the layer7 listener to be queried。",
+				Description: "Forward 域名 的 layer7 listener 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -35,35 +35,35 @@ func DataSourceTencentCloudGaapHttpDomains() *schema.Resource {
 			"domains": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information 列表 forward 域名 of the layer7 listeners. Each element 包含following attributes:",
+				Description: "An 信息 列表 forward 域名 的 layer7 listeners. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Forward 域名 of the layer7 listener。",
+							Description: "Forward 域名 的 layer7 listener。",
 						},
 						"certificate_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID server certificate。",
+							Description: "ID 服务器 证书。",
 						},
 						"client_certificate_id": {
 							Deprecated:  "It has been deprecated from version 1.26.0. Use `client_certificate_ids` instead.",
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID client certificate。",
+							Description: "ID 客户端 证书。",
 						},
 						"client_certificate_ids": {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Computed:    true,
-							Description: "ID 列表 the client certificate。",
+							Description: "ID 列表 客户端 证书。",
 						},
 						"realserver_auth": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "表示是否realserver authentication is enable。",
+							Description: "表示是否realserver authentication 是 启用。",
 						},
 						"realserver_certificate_id": {
 							Deprecated:  "It has been deprecated from version 1.28.0. Use `realserver_certificate_ids` instead.",
@@ -75,17 +75,17 @@ func DataSourceTencentCloudGaapHttpDomains() *schema.Resource {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Computed:    true,
-							Description: "CA 证书 ID 列表 the realserver。",
+							Description: "CA 证书 ID 列表 realserver。",
 						},
 						"realserver_certificate_domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CA certificate 域名 of the realserver。",
+							Description: "CA 证书 域名 的 realserver。",
 						},
 						"basic_auth": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "表示是否basic authentication is enable。",
+							Description: "表示是否basic authentication 是 启用。",
 						},
 						"basic_auth_id": {
 							Type:        schema.TypeString,
@@ -95,17 +95,17 @@ func DataSourceTencentCloudGaapHttpDomains() *schema.Resource {
 						"gaap_auth": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "表示是否SSL certificate authentication is enable。",
+							Description: "表示是否SSL 证书 authentication 是 启用。",
 						},
 						"gaap_auth_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID SSL certificate。",
+							Description: "ID SSL 证书。",
 						},
 						"is_default_server": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否use as the default 域名 名称",
+							Description: "是否use 作为 默认值 域名 名称",
 						},
 					},
 				},

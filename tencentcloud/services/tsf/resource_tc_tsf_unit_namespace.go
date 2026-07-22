@@ -28,19 +28,19 @@ func ResourceTencentCloudTsfUnitNamespace() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "gateway instance Id。",
+				Description: "网关 实例 ID。",
 			},
 			"namespace_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "namespace id。",
+				Description: "命名空间 ID。",
 			},
 			"namespace_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "namespace 名称",
+				Description: "命名空间 名称",
 			},
 			"created_time": {
 				Type:        schema.TypeString,

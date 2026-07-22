@@ -25,13 +25,13 @@ func DataSourceTencentCloudScfAsyncEventManagement() *schema.Resource {
 			"namespace": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Function namespace。",
+				Description: "Function 命名空间。",
 			},
 
 			"qualifier": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filter (function 版本)。",
+				Description: "过滤器 (函数 版本)。",
 			},
 
 			"invoke_type": {
@@ -40,7 +40,7 @@ func DataSourceTencentCloudScfAsyncEventManagement() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Filter (invocation 类型 list)，Values: CMQ，CKAFKA_TRIGGER，APIGW，COS，TRIGGER_TIMER，MPS_TRIGGER，CLS_TRIGGER，OTHERS。",
+				Description: "过滤器 (invocation 类型 列表)，Values: CMQ，CKAFKA_TRIGGER，APIGW，COS，TRIGGER_TIMER，MPS_TRIGGER，CLS_TRIGGER，OTHERS。",
 			},
 
 			"status": {
@@ -49,7 +49,7 @@ func DataSourceTencentCloudScfAsyncEventManagement() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Filter (event 状态 list)，Values: RUNNING，FINISHED，ABORTED，FAILED。",
+				Description: "过滤器 (事件 状态 列表)，Values: RUNNING，FINISHED，ABORTED，FAILED。",
 			},
 
 			"order": {
@@ -67,13 +67,13 @@ func DataSourceTencentCloudScfAsyncEventManagement() *schema.Resource {
 			"invoke_request_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filter (event invocation 请求 ID)。",
+				Description: "过滤器 (事件 invocation 请求 ID)。",
 			},
 
 			"event_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Async event list。",
+				Description: "Async 事件 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"invoke_request_id": {
@@ -99,12 +99,12 @@ func DataSourceTencentCloudScfAsyncEventManagement() *schema.Resource {
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Invocation 开始时间 in the 格式 of %Y-%m-%d %H:%M:%S.%f。",
+							Description: "Invocation 开始时间 在 格式 的 %Y-%m-%d %H:%M:%S.%f。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Invocation 结束时间 in the 格式 of %Y-%m-%d %H:%M:%S.%f。",
+							Description: "Invocation 结束时间 在 格式 的 %Y-%m-%d %H:%M:%S.%f。",
 						},
 					},
 				},

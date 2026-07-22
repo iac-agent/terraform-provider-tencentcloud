@@ -24,7 +24,7 @@ func DataSourceTencentCloudOrganizationResourceToShareMember() *schema.Resource 
 			"search_key": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search keywords，support business resource ID search。",
+				Description: "Search keywords，support business 资源 ID search。",
 			},
 
 			"type": {
@@ -36,7 +36,7 @@ func DataSourceTencentCloudOrganizationResourceToShareMember() *schema.Resource 
 			"product_resource_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Business resource ID. Maximum 50。",
+				Description: "Business 资源 ID. Maximum 50。",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 
@@ -64,7 +64,7 @@ func DataSourceTencentCloudOrganizationResourceToShareMember() *schema.Resource 
 						"unit_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Shared unit 名称",
+							Description: "Shared 单位 名称",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
@@ -74,7 +74,7 @@ func DataSourceTencentCloudOrganizationResourceToShareMember() *schema.Resource 
 						"product_resource_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Business resource ID。",
+							Description: "Business 资源 ID。",
 						},
 						"share_manager_uin": {
 							Type:        schema.TypeInt,

@@ -31,31 +31,31 @@ func ResourceTencentCloudDcdbHourdbInstance() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "available 可用区",
+				Description: "可用 可用区",
 			},
 
 			"shard_memory": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "memory(GB) for each shard. It can be obtained by querying api DescribeShardSpec。",
+				Description: "内存(GB) 对于 each 分片. It 可以 是 获取 通过 querying api DescribeShardSpec。",
 			},
 
 			"shard_storage": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "storage(GB) for each shard. It can be obtained by querying api DescribeShardSpec。",
+				Description: "存储(GB) 对于 each 分片. It 可以 是 获取 通过 querying api DescribeShardSpec。",
 			},
 
 			"shard_node_count": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "node count for each shard. It can be obtained by querying api DescribeShardSpec。",
+				Description: "节点 count 对于 each 分片. It 可以 是 获取 通过 querying api DescribeShardSpec。",
 			},
 
 			"shard_count": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "instance 分片数",
+				Description: "实例 分片数",
 			},
 
 			"vpc_id": {
@@ -67,13 +67,13 @@ func ResourceTencentCloudDcdbHourdbInstance() *schema.Resource {
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "子网 ID，its 必填 when vpcId is set。",
+				Description: "子网 ID，its 必填 当 vpcId 是 集合。",
 			},
 
 			"db_version_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "db engine 版本，默认为 Percona 5.7.17。",
+				Description: "db 引擎 版本，默认为 Percona 5.7.17。",
 			},
 
 			"security_group_id": {
@@ -91,7 +91,7 @@ func ResourceTencentCloudDcdbHourdbInstance() *schema.Resource {
 			"instance_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "名称 this instance。",
+				Description: "名称 此 实例。",
 			},
 
 			"dcn_region": {
@@ -103,7 +103,7 @@ func ResourceTencentCloudDcdbHourdbInstance() *schema.Resource {
 			"dcn_instance_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "DCN 来源 instance ID。",
+				Description: "DCN 来源 实例 ID。",
 			},
 
 			"ipv6_flag": {
@@ -115,21 +115,21 @@ func ResourceTencentCloudDcdbHourdbInstance() *schema.Resource {
 			"extranet_access": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "是否open the extranet access。",
+				Description: "是否open extranet 访问。",
 			},
 
 			"vip": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The field 为必填项 to 指定VIP。",
+				Description: "字段 为必填项 到 指定VIP。",
 			},
 
 			"vipv6": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The field 为必填项 to 指定VIPv6。",
+				Description: "字段 为必填项 到 指定VIPv6。",
 			},
 
 			"vport": {
@@ -141,7 +141,7 @@ func ResourceTencentCloudDcdbHourdbInstance() *schema.Resource {
 			"resource_tags": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "resource 标签",
+				Description: "资源 标签",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {

@@ -22,17 +22,17 @@ func DataSourceTencentCloudCamGroups() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "名称 CAM group to be queried。",
+				Description: "名称 CAM 组 到 是 queried。",
 			},
 			"group_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID CAM group to be queried。",
+				Description: "ID CAM 组 到 是 queried。",
 			},
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "描述 cam group to be queried。",
+				Description: "描述 cam 组 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -48,22 +48,22 @@ func DataSourceTencentCloudCamGroups() *schema.Resource {
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 CAM group。",
+							Description: "名称 CAM 组。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "描述 CAM group。",
+							Description: "描述 CAM 组。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of the CAM group。",
+							Description: "创建时间 的 CAM 组。",
 						},
 						"group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID CAM group。",
+							Description: "ID CAM 组。",
 						},
 					},
 				},

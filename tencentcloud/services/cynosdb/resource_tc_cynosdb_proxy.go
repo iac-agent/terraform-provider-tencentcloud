@@ -72,7 +72,7 @@ func ResourceTencentCloudCynosdbProxy() *schema.Resource {
 			"open_connection_pool": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "是否启用连接池，yes-启用，no-不启用。",
+				Description: "是否启用连接池，yes-启用，无-不启用。",
 			},
 			"connection_pool_time_out": {
 				Optional:    true,

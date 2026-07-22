@@ -41,7 +41,7 @@ func ResourceTencentCloudTsfMicroservice() *schema.Resource {
 			"microservice_desc": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Microservice 描述 information。",
+				Description: "Microservice 描述 信息。",
 			},
 
 			"tags": {

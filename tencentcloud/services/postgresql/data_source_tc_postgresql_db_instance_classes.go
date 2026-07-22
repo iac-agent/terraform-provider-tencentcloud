@@ -19,31 +19,31 @@ func DataSourceTencentCloudPostgresqlDbInstanceClasses() *schema.Resource {
 			"zone": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "AZ ID，which can be obtained through the `DescribeZones` API。",
+				Description: "AZ ID，其中 可以 是 获取 through `DescribeZones` API。",
 			},
 
 			"db_engine": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Database engines. 有效值：1. `postgresql` (TencentDB for PostgreSQL) 2. `mssql_compatible` (MSSQL compatible-TencentDB for PostgreSQL)。",
+				Description: "Database engines. 有效值：1. `postgresql` (TencentDB 对于 PostgreSQL) 2. `mssql_compatible` (MSSQL compatible-TencentDB 对于 PostgreSQL)。",
 			},
 
 			"db_major_version": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Major 版本 of a database，such as 12 or 13，which can be obtained through the `DescribeDBVersions` API。",
+				Description: "Major 版本 的 数据库，such 作为 12 或 13，其中 可以 是 获取 through `DescribeDBVersions` API。",
 			},
 
 			"storage_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Storage 类型 filter. 有效值：`PHYSICAL_LOCAL_SSD` (local SSD)，`CLOUD_PREMIUM` (premium cloud disk)，`CLOUD_SSD` (cloud SSD)，`CLOUD_HSSD` (enhanced cloud SSD)。",
+				Description: "Storage 类型 过滤器. 有效值：`PHYSICAL_LOCAL_SSD` (本地 SSD)，`CLOUD_PREMIUM` (premium 云 磁盘)，`CLOUD_SSD` (云 SSD)，`CLOUD_HSSD` (enhanced 云 SSD)。",
 			},
 
 			"class_info_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "列表 database specifications。",
+				Description: "列表 数据库 specifications。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"spec_code": {
@@ -59,22 +59,22 @@ func DataSourceTencentCloudPostgresqlDbInstanceClasses() *schema.Resource {
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Memory size （MB）。",
+							Description: "Memory 大小 （MB）。",
 						},
 						"max_storage": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum storage capacity in GB supported by this specification。",
+							Description: "Maximum 存储 容量 在 GB 支持 通过 此 规格。",
 						},
 						"min_storage": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Minimum storage capacity in GB supported by this specification。",
+							Description: "Minimum 存储 容量 在 GB 支持 通过 此 规格。",
 						},
 						"qps": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Estimated QPS for this specification。",
+							Description: "Estimated QPS 对于 此 规格。",
 						},
 					},
 				},

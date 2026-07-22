@@ -27,19 +27,19 @@ func ResourceTencentCloudTsfApplicationConfig() *schema.Resource {
 			"config_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "configuration item 名称",
+				Description: "配置 item 名称",
 			},
 
 			"config_version": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "configuration item 版本",
+				Description: "配置 item 版本",
 			},
 
 			"config_value": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "configuration item 值",
+				Description: "配置 item 值",
 			},
 
 			"application_id": {
@@ -51,19 +51,19 @@ func ResourceTencentCloudTsfApplicationConfig() *schema.Resource {
 			"config_version_desc": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "configuration item 版本 描述",
+				Description: "配置 item 版本 描述",
 			},
 
 			"config_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "configuration item 值 类型",
+				Description: "配置 item 值 类型",
 			},
 
 			"encode_with_base64": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Base64 encoded configuration items。",
+				Description: "Base64 encoded 配置 items。",
 			},
 
 			"program_id_list": {
@@ -72,13 +72,13 @@ func ResourceTencentCloudTsfApplicationConfig() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Program id list。",
+				Description: "Program ID 列表。",
 			},
 
 			// "tags": {
 			// 	Type:        schema.TypeMap,
 			// 	Optional:    true,
-			// 	Description: "Tag description list.",
+			// 	Description: "Tag 描述 列表.",
 			// },
 		},
 	}

@@ -21,7 +21,7 @@ func DataSourceTencentCloudGaapBlackHeader() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "已禁用 custom header list注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "已禁用 自定义 头部 list注意：此字段可能返回 null，表示无法获取有效值。",
 			},
 
 			"result_output_file": {

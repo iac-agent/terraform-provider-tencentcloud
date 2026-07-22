@@ -30,17 +30,17 @@ func DataSourceTencentCloudVpcTemplateLimits() *schema.Resource {
 						"address_template_group_member_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "地址 template group member 限制",
+							Description: "地址 template 组 member 限制",
 						},
 						"service_template_member_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "service template member 限制",
+							Description: "服务 template member 限制",
 						},
 						"service_template_group_member_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "service template group member 限制",
+							Description: "服务 template 组 member 限制",
 						},
 					},
 				},

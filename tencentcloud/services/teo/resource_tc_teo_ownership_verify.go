@@ -34,7 +34,7 @@ func ResourceTencentCloudTeoOwnershipVerify() *schema.Resource {
 			"result": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "When the verification 结果 is failed，this field will return the reason。",
+				Description: "当 verification 结果 是 failed，此 字段 将 返回 reason。",
 			},
 		},
 	}

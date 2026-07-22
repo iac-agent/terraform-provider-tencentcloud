@@ -32,19 +32,19 @@ func ResourceTencentCloudTcrTagRetentionExecutionConfig() *schema.Resource {
 			"retention_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "retention id。",
+				Description: "retention ID。",
 			},
 
 			"execution_id": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "execution id。",
+				Description: "execution ID。",
 			},
 
 			"dry_run": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "是否simulate execution，the 默认值为 false，that is，non-simulation execution。",
+				Description: "是否simulate execution， 默认值为 false，该 是，non-simulation execution。",
 			},
 		},
 	}

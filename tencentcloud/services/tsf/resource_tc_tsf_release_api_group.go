@@ -25,7 +25,7 @@ func ResourceTencentCloudTsfReleaseApiGroup() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "api group Id。",
+				Description: "api 组 ID。",
 			},
 		},
 	}

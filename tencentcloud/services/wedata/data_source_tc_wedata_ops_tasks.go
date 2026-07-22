@@ -25,7 +25,7 @@ func DataSourceTencentCloudWedataOpsTasks() *schema.Resource {
 			"task_type_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Task 类型 Id. -20: common data sync，- 25:ETLTaskType，- 26:ETLTaskType，- 30:python，- 31:pyspark，- 34:HiveSQLTaskType，- 35:shell，- 36:SparkSQLTaskType，- 21:JDBCSQLTaskType，- 32:DLCTaskType，- 33:ImpalaTaskType，- 40:CDWTaskType，- 41:kettle，- 46:DLCSparkTaskType，-47: TiOne machine learning，- 48:TrinoTaskType，- 50:DLCPyspark39:spark，- 92:mr，-38: shell script，-70: hivesql script，-1000: common custom business。",
+				Description: "任务 类型 ID. -20: common 数据 sync，- 25:ETLTaskType，- 26:ETLTaskType，- 30:python，- 31:pyspark，- 34:HiveSQLTaskType，- 35:shell，- 36:SparkSQLTaskType，- 21:JDBCSQLTaskType，- 32:DLCTaskType，- 33:ImpalaTaskType，- 40:CDWTaskType，- 41:kettle，- 46:DLCSparkTaskType，-47: TiOne machine learning，- 48:TrinoTaskType，- 50:DLCPyspark39:spark，- 92:mr，-38: shell 脚本，-70: hivesql 脚本，-1000: common 自定义 business。",
 			},
 
 			"workflow_id": {
@@ -43,7 +43,7 @@ func DataSourceTencentCloudWedataOpsTasks() *schema.Resource {
 			"owner_uin": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "所有者 id。",
+				Description: "所有者 ID。",
 			},
 
 			"folder_id": {
@@ -61,7 +61,7 @@ func DataSourceTencentCloudWedataOpsTasks() *schema.Resource {
 			"target_service_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Target data 来源 id。",
+				Description: "Target 数据 来源 ID。",
 			},
 
 			"executor_group_id": {
@@ -73,13 +73,13 @@ func DataSourceTencentCloudWedataOpsTasks() *schema.Resource {
 			"cycle_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Task Cycle 类型: ONEOFF_CYCLE: One-time，YEAR_CYCLE: Yearly，MONTH_CYCLE: Monthly，WEEK_CYCLE: Weekly，DAY_CYCLE: Daily，HOUR_CYCLE: Hourly，MINUTE_CYCLE: Minute-级别，CRONTAB_CYCLE: Crontab expression-based。",
+				Description: "任务 Cycle 类型: ONEOFF_CYCLE: One-时间，YEAR_CYCLE: Yearly，MONTH_CYCLE: Monthly，WEEK_CYCLE: Weekly，DAY_CYCLE: Daily，HOUR_CYCLE: Hourly，MINUTE_CYCLE: Minute-级别，CRONTAB_CYCLE: Crontab expression-based。",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Task 状态: -Y: Running，-F: Stopped，-O: Frozen，-T: Stopping，-INVALID: Invalid。",
+				Description: "任务 状态: -Y: Running，-F: Stopped，-O: Frozen，-T: Stopping，-INVALID: Invalid。",
 			},
 
 			"time_zone": {
@@ -91,7 +91,7 @@ func DataSourceTencentCloudWedataOpsTasks() *schema.Resource {
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Task list。",
+				Description: "任务 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
@@ -107,7 +107,7 @@ func DataSourceTencentCloudWedataOpsTasks() *schema.Resource {
 						"items": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Record list。",
+							Description: "Record 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"task_id": {
@@ -118,17 +118,17 @@ func DataSourceTencentCloudWedataOpsTasks() *schema.Resource {
 									"task_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task 名称",
+										Description: "任务 名称",
 									},
 									"owner_uin": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "所有者 id。",
+										Description: "所有者 ID。",
 									},
 									"status": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task 状态: -N: New，-Y: Scheduling，-F: Offline，-O: Paused，-T: Offlining，-INVALID: Invalid.。",
+										Description: "任务 状态: -N: New，-Y: Scheduling，-F: Offline，-O: Paused，-T: Offlining，-INVALID: Invalid.。",
 									},
 									"folder_id": {
 										Type:        schema.TypeString,
@@ -143,7 +143,7 @@ func DataSourceTencentCloudWedataOpsTasks() *schema.Resource {
 									"workflow_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Workflow id。",
+										Description: "Workflow ID。",
 									},
 									"workflow_name": {
 										Type:        schema.TypeString,
@@ -163,22 +163,22 @@ func DataSourceTencentCloudWedataOpsTasks() *schema.Resource {
 									"update_user_uin": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "指定name of the updater。",
+										Description: "指定name 的 updater。",
 									},
 									"task_type_id": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Task 类型 Id. 21:JDBC SQL，23:TDSQL-PostgreSQL，26:OfflineSynchronization，30:Python，31:PySpark，33:Impala，34:Hive SQL，35:Shell，36:Spark SQL，38:Shell Form 模式，39:Spark，40:TCHouse-P，41:Kettle，42:Tchouse-X，43:TCHouse-X SQL，46:DLC Spark，47:TiOne，48:Trino，50:DLC PySpark，92:MapReduce，130:Branch Node，131:Merged Node，132:Notebook，133:SSH，134:StarRocks，137:For-each，138:Setats SQL。",
+										Description: "任务 类型 ID. 21:JDBC SQL，23:TDSQL-PostgreSQL，26:OfflineSynchronization，30:Python，31:PySpark，33:Impala，34:Hive SQL，35:Shell，36:Spark SQL，38:Shell Form 模式，39:Spark，40:TCHouse-P，41:Kettle，42:Tchouse-X，43:TCHouse-X SQL，46:DLC Spark，47:TiOne，48:Trino，50:DLC PySpark，92:MapReduce，130:Branch Node，131:Merged Node，132:Notebook，133:SSH，134:StarRocks，137:For-each，138:Setats SQL。",
 									},
 									"task_type_desc": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task 类型 描述 -Universal data synchronization，- ETLTaskType，- ETLTaskType，- python，- pyspark，- HiveSQLTaskType，- shell，- SparkSQLTaskType，- JDBCSQLTaskType，- DLCTaskType，- ImpalaTaskType，- CDWTaskType，- kettle，- DLCSparkTaskType，-TiOne machine learning，- TrinoTaskType，- DLCPyspark，- spark，- mr，-指定shell script，-hivesql script，-指定common custom business。",
+										Description: "任务 类型 描述 -Universal 数据 synchronization，- ETLTaskType，- ETLTaskType，- python，- pyspark，- HiveSQLTaskType，- shell，- SparkSQLTaskType，- JDBCSQLTaskType，- DLCTaskType，- ImpalaTaskType，- CDWTaskType，- kettle，- DLCSparkTaskType，-TiOne machine learning，- TrinoTaskType，- DLCPyspark，- spark，- mr，-指定shell 脚本，-hivesql 脚本，-指定common 自定义 business。",
 									},
 									"cycle_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task Cycle 类型: ONEOFF_CYCLE: One-time，YEAR_CYCLE: Yearly，MONTH_CYCLE: Monthly，WEEK_CYCLE: Weekly，DAY_CYCLE: Daily，HOUR_CYCLE: Hourly，MINUTE_CYCLE: Minute-级别，CRONTAB_CYCLE: Crontab expression-based。",
+										Description: "任务 Cycle 类型: ONEOFF_CYCLE: One-时间，YEAR_CYCLE: Yearly，MONTH_CYCLE: Monthly，WEEK_CYCLE: Weekly，DAY_CYCLE: Daily，HOUR_CYCLE: Hourly，MINUTE_CYCLE: Minute-级别，CRONTAB_CYCLE: Crontab expression-based。",
 									},
 									"executor_group_id": {
 										Type:        schema.TypeString,
@@ -198,7 +198,7 @@ func DataSourceTencentCloudWedataOpsTasks() *schema.Resource {
 									"last_scheduler_commit_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Latest scheduling submission time。",
+										Description: "Latest scheduling submission 时间。",
 									},
 									"first_run_time": {
 										Type:        schema.TypeString,
@@ -208,7 +208,7 @@ func DataSourceTencentCloudWedataOpsTasks() *schema.Resource {
 									"first_submit_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Most recent submission time。",
+										Description: "Most recent submission 时间。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
@@ -231,7 +231,7 @@ func DataSourceTencentCloudWedataOpsTasks() *schema.Resource {
 						"page_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Pagination size。",
+							Description: "Pagination 大小。",
 						},
 					},
 				},

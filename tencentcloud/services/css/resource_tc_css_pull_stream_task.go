@@ -36,7 +36,7 @@ func ResourceTencentCloudCssPullStreamTask() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Required:    true,
-				Description: "Pull 来源 media，SourceType=PullLivePushLive only 1 值，SourceType=PullLivePushLive can input multi values。",
+				Description: "Pull 来源 media，SourceType=PullLivePushLive 仅 1 值，SourceType=PullLivePushLive 可以 input multi 值。",
 			},
 
 			"domain_name": {
@@ -54,19 +54,19 @@ func ResourceTencentCloudCssPullStreamTask() *schema.Resource {
 			"stream_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "push stream 名称",
+				Description: "push 流 名称",
 			},
 
 			"start_time": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "task 开始时间。",
+				Description: "任务 开始时间。",
 			},
 
 			"end_time": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "task 结束时间。",
+				Description: "任务 结束时间。",
 			},
 
 			"operator": {
@@ -88,69 +88,69 @@ func ResourceTencentCloudCssPullStreamTask() *schema.Resource {
 				},
 				Optional:    true,
 				Computed:    true,
-				Description: "defind the callback event you need，null for all. TaskStart，TaskExit，VodSourceFileStart，VodSourceFileFinish，ResetTaskConfig，PullFileUnstable，PushStreamUnstable，PullFileFailed，PushStreamFailed，FileEndEarly。",
+				Description: "defind callback 事件 您 need，null 对于 all. TaskStart，TaskExit，VodSourceFileStart，VodSourceFileFinish，ResetTaskConfig，PullFileUnstable，PushStreamUnstable，PullFileFailed，PushStreamFailed，FileEndEarly。",
 			},
 
 			"vod_loop_times": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "loop time for vod。",
+				Description: "loop 时间 对于 vod。",
 			},
 
 			"vod_refresh_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "vod refresh method. `ImmediateNewSource`: switch to new 来源 at once，`ContinueBreakPoint`: switch to new 来源 while old 来源 finish。",
+				Description: "vod refresh 方法. `ImmediateNewSource`: switch 到 new 来源 在 once，`ContinueBreakPoint`: switch 到 new 来源 while old 来源 finish。",
 			},
 
 			"callback_url": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "task event callback URL",
+				Description: "任务 事件 callback URL",
 			},
 
 			"extra_cmd": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ignore_region for ignore the input 地域 and reblance inside the server。",
+				Description: "ignore_region 对于 ignore input 地域 和 reblance inside 服务器。",
 			},
 
 			"comment": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "desc for pull task。",
+				Description: "desc 对于 pull 任务。",
 			},
 
 			"to_url": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "full target push URL，DomainName，AppName，StreamName field must be empty。",
+				Description: "full 目标 push URL，DomainName，AppName，StreamName 字段 必须 是 空。",
 			},
 
 			"backup_source_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "backup pull 来源 类型",
+				Description: "备份 pull 来源 类型",
 			},
 
 			"backup_source_url": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "backup pull 来源",
+				Description: "备份 pull 来源",
 			},
 
 			"watermark_list": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "watermark list，max 4 setting。",
+				Description: "水印 列表，max 4 setting。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"picture_url": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "watermark picture URL",
+							Description: "水印 picture URL",
 						},
 						"x_position": {
 							Type:        schema.TypeInt,
@@ -165,12 +165,12 @@ func ResourceTencentCloudCssPullStreamTask() *schema.Resource {
 						"width": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "pic width。",
+							Description: "pic 宽度。",
 						},
 						"height": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "pic height。",
+							Description: "pic 高度。",
 						},
 						"location": {
 							Type:        schema.TypeInt,
@@ -185,13 +185,13 @@ func ResourceTencentCloudCssPullStreamTask() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "task enable or disable。",
+				Description: "任务 启用 或 disable。",
 			},
 
 			"create_by": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "desc who create the task。",
+				Description: "desc who create 任务。",
 			},
 
 			"create_time": {
@@ -203,7 +203,7 @@ func ResourceTencentCloudCssPullStreamTask() *schema.Resource {
 			"update_by": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "desc who update the task。",
+				Description: "desc who update 任务。",
 			},
 
 			"update_time": {
@@ -215,19 +215,19 @@ func ResourceTencentCloudCssPullStreamTask() *schema.Resource {
 			"file_index": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "task enable or disable。",
+				Description: "任务 启用 或 disable。",
 			},
 
 			"offset_time": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "task enable or disable。",
+				Description: "任务 启用 或 disable。",
 			},
 
 			"region": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "task run 地域",
+				Description: "任务 run 地域",
 			},
 		},
 	}

@@ -30,7 +30,7 @@ func DataSourceTencentCloudDcInternetAddressStatistics() *schema.Resource {
 						"subnet_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 Internet public network addresses。",
+							Description: "数量 Internet 公有 网络 addresses。",
 						},
 					},
 				},

@@ -37,19 +37,19 @@ func DataSourceTencentCloudSesStatisticsReport() *schema.Resource {
 			"receiving_mailbox_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Recipient 地址 类型，for example，gmail.com。",
+				Description: "Recipient 地址 类型，对于 示例，gmail.com。",
 			},
 
 			"daily_volumes": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Daily email sending statistics。",
+				Description: "Daily email sending 统计。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"send_date": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Date Note: this field may return null，indicating that no valid values can be obtained。",
+							Description: "Date 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"request_count": {
 							Type:        schema.TypeInt,
@@ -59,7 +59,7 @@ func DataSourceTencentCloudSesStatisticsReport() *schema.Resource {
 						"accepted_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 email requests accepted by Tencent Cloud。",
+							Description: "数量 email requests accepted 通过 Tencent Cloud。",
 						},
 						"delivered_count": {
 							Type:        schema.TypeInt,
@@ -74,7 +74,7 @@ func DataSourceTencentCloudSesStatisticsReport() *schema.Resource {
 						"clicked_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 recipients who clicked on links in emails。",
+							Description: "数量 recipients who clicked 在 links 在 emails。",
 						},
 						"bounce_count": {
 							Type:        schema.TypeInt,
@@ -84,7 +84,7 @@ func DataSourceTencentCloudSesStatisticsReport() *schema.Resource {
 						"unsubscribe_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 users who canceled subscriptions. Note: this field may return null，indicating that no valid values can be obtained。",
+							Description: "数量 users who canceled subscriptions. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 					},
 				},
@@ -93,13 +93,13 @@ func DataSourceTencentCloudSesStatisticsReport() *schema.Resource {
 			"overall_volume": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Overall email sending statistics。",
+				Description: "Overall email sending 统计。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"send_date": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Date Note: this field may return null，indicating that no valid values can be obtained。",
+							Description: "Date 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"request_count": {
 							Type:        schema.TypeInt,
@@ -109,7 +109,7 @@ func DataSourceTencentCloudSesStatisticsReport() *schema.Resource {
 						"accepted_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 email requests accepted by Tencent Cloud。",
+							Description: "数量 email requests accepted 通过 Tencent Cloud。",
 						},
 						"delivered_count": {
 							Type:        schema.TypeInt,
@@ -124,7 +124,7 @@ func DataSourceTencentCloudSesStatisticsReport() *schema.Resource {
 						"clicked_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 recipients who clicked on links in emails。",
+							Description: "数量 recipients who clicked 在 links 在 emails。",
 						},
 						"bounce_count": {
 							Type:        schema.TypeInt,
@@ -134,7 +134,7 @@ func DataSourceTencentCloudSesStatisticsReport() *schema.Resource {
 						"unsubscribe_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 users who canceled subscriptions. Note: this field may return null，indicating that no valid values can be obtained。",
+							Description: "数量 users who canceled subscriptions. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 					},
 				},

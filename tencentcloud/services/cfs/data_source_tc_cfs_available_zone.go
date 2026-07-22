@@ -19,23 +19,23 @@ func DataSourceTencentCloudCfsAvailableZone() *schema.Resource {
 			"region_zones": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Information such as resource availability in each AZ and the supported storage classes and protocols。",
+				Description: "Information such 作为 资源 availability 在 each AZ 和 支持 存储 classes 和 protocols。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "地域名称，such as `ap-beijing`。",
+							Description: "地域名称，such 作为 `ap-beijing`。",
 						},
 						"region_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "地域名称，such as `bj`。",
+							Description: "地域名称，such 作为 `bj`。",
 						},
 						"region_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "地域 availability. If a 地域 has at least one AZ where resources are purchasable，this 值 will be AVAILABLE; otherwise，it will be UNAVAILABLE。",
+							Description: "地域 availability. 如果 地域 has 在 least 一个 AZ 其中 resources 是 purchasable，此 值 将 是 AVAILABLE; otherwise，它 将 是 UNAVAILABLE。",
 						},
 						"zones": {
 							Type:        schema.TypeList,
@@ -56,7 +56,7 @@ func DataSourceTencentCloudCfsAvailableZone() *schema.Resource {
 									"zone_cn_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Chinese 名称 an AZ。",
+										Description: "Chinese 名称 AZ。",
 									},
 									"types": {
 										Type:        schema.TypeList,
@@ -67,13 +67,13 @@ func DataSourceTencentCloudCfsAvailableZone() *schema.Resource {
 												"protocols": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "协议 and sale details。",
+													Description: "协议 和 sale details。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"sale_status": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "	Sale 状态 有效值：sale_out (sold out)，saling (purchasable)，no_saling (non-purchasable)。",
+																Description: "Sale 状态 有效值：sale_out (sold out)，saling (purchasable)，no_saling (non-purchasable)。",
 															},
 															"protocol": {
 																Type:        schema.TypeString,
@@ -86,12 +86,12 @@ func DataSourceTencentCloudCfsAvailableZone() *schema.Resource {
 												"type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Storage class. 有效值：SD (standard storage) and HP (high-performance storage)。",
+													Description: "Storage class. 有效值：SD (standard 存储) 和 HP (high-performance 存储)。",
 												},
 												"prepayment": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "表示是否prepaid is supported. true: yes; false: no。",
+													Description: "表示是否prepaid 是 支持. true: yes; false: 无。",
 												},
 											},
 										},
@@ -99,7 +99,7 @@ func DataSourceTencentCloudCfsAvailableZone() *schema.Resource {
 									"zone_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Chinese and English names of an AZ。",
+										Description: "Chinese 和 English names 的 AZ。",
 									},
 								},
 							},
@@ -107,7 +107,7 @@ func DataSourceTencentCloudCfsAvailableZone() *schema.Resource {
 						"region_cn_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "地域 chinese 名称，such as `Guangzhou`。",
+							Description: "地域 chinese 名称，such 作为 `Guangzhou`。",
 						},
 					},
 				},

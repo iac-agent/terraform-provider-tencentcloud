@@ -29,12 +29,12 @@ func ResourceTencentCloudMonitorTmpRecordingRule() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Recording rule 名称",
+				Description: "Recording 规则 名称",
 			},
 			"group": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Recording rule group。",
+				Description: "Recording 规则 组。",
 			},
 			"instance_id": {
 				Type:        schema.TypeString,

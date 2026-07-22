@@ -25,28 +25,28 @@ func DataSourceTencentCloudKubernetesClusterAuthenticationOptions() *schema.Reso
 			"service_accounts": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "ServiceAccount authentication configuration. Note: this field may return `null`，indicating that no valid values can be obtained。",
+				Description: "ServiceAccount authentication 配置. 注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"use_tke_default": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Use TKE default issuer and jwksuri. Note: This field may return `null`，indicating that no valid values can be obtained。",
+							Description: "Use TKE 默认值 issuer 和 jwksuri. 注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"issuer": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "service-账号-issuer. Note: this field may return `null`，indicating that no valid values can be obtained。",
+							Description: "服务-账号-issuer. 注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"jwks_uri": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "service-账号-jwks-uri. Note: this field may return `null`，indicating that no valid values can be obtained。",
+							Description: "服务-账号-jwks-uri. 注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"auto_create_discovery_anonymous_auth": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "If it is set to `true`，a RABC rule is automatically created to allow anonymous users to access `/.well-known/openid-configuration` and `/openid/v1/jwks`. Note: this field may return `null`，indicating that no valid values can be obtained。",
+							Description: "如果 它 是 集合 到 `true`， RABC 规则 是 automatically 创建 到 allow anonymous users 到 访问 `/.well-known/openid-配置` 和 `/openid/v1/jwks`. 注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 					},
 				},
@@ -55,24 +55,24 @@ func DataSourceTencentCloudKubernetesClusterAuthenticationOptions() *schema.Reso
 			"latest_operation_state": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "结果 of the last modification. Values: `Updating`，`Success`，`Failed` or `TimeOut`. Note: this field may return `null`，indicating that no valid values can be obtained。",
+				Description: "结果 的 last modification. Values: `Updating`，`Success`，`Failed` 或 `TimeOut`. 注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 			},
 
 			"oidc_config": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "OIDC authentication configurations. Note: This field may return `null`，indicating that no valid 值 can be obtained。",
+				Description: "OIDC authentication configurations. 注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"auto_create_oidc_config": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Creating an identity provider. Note: This field may return `null`，indicating that no valid 值 can be obtained。",
+							Description: "Creating identity provider. 注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"auto_create_client_id": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "Creating ClientId of the identity provider. Note: This field may return `null`，indicating that no valid 值 can be obtained。",
+							Description: "Creating ClientId 的 identity provider. 注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -80,7 +80,7 @@ func DataSourceTencentCloudKubernetesClusterAuthenticationOptions() *schema.Reso
 						"auto_install_pod_identity_webhook_addon": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Creating the PodIdentityWebhook component. Note: This field may return `null`，indicating that no valid 值 can be obtained。",
+							Description: "Creating PodIdentityWebhook 组件. 注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 					},
 				},

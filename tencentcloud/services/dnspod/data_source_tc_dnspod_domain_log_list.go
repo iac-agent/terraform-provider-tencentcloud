@@ -25,7 +25,7 @@ func DataSourceTencentCloudDnspodDomainLogList() *schema.Resource {
 			"domain_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "域名 ID. The parameter DomainId has a higher 优先级 than the parameter 域名 If the parameter DomainId is passed，the parameter 域名 will be ignored. You can find all Domains and DomainIds through the DescribeDomainList interface。",
+				Description: "域名 ID. 参数 DomainId has higher 优先级 比 参数 域名 如果 参数 DomainId 是 passed， 参数 域名 将 是 ignored. You 可以 find all Domains 和 DomainIds through DescribeDomainList interface。",
 			},
 
 			"log_list": {

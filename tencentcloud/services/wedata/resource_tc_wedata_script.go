@@ -29,7 +29,7 @@ func ResourceTencentCloudWedataScript() *schema.Resource {
 			"file_path": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Cos file 路径:/datastudio/project/projectId/。",
+				Description: "Cos 文件 路径:/datastudio/项目/projectId/。",
 			},
 			"project_id": {
 				Type:        schema.TypeString,

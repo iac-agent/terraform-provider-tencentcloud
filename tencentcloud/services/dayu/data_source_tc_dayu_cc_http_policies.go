@@ -21,23 +21,23 @@ func DataSourceTencentCloudDayuCCHttpPolicies() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(DAYU_RESOURCE_TYPE),
-				Description:  "类型 resource that the CC http policy works for，valid values are `bgpip`，`bgp`，`bgp-multip` and `net`。",
+				Description:  "类型 资源 该 CC http 策略 works 对于，有效 值 是 `bgpip`，`bgp`，`bgp-multip` 和 `net`。",
 			},
 			"resource_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID resource that the CC http policy works for。",
+				Description: "ID 资源 该 CC http 策略 works 对于。",
 			},
 			"policy_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Id of the CC http policy to be queried。",
+				Description: "ID 的 CC http 策略 到 是 queried。",
 			},
 			"name": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 20),
-				Description:  "名称 CC http policy to be queried。",
+				Description:  "名称 CC http 策略 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -53,17 +53,17 @@ func DataSourceTencentCloudDayuCCHttpPolicies() *schema.Resource {
 						"resource_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID resource that the CC self-define http policy works for。",
+							Description: "ID 资源 该 CC self-define http 策略 works 对于。",
 						},
 						"resource_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "类型 resource that the CC self-define http policy works for。",
+							Description: "类型 资源 该 CC self-define http 策略 works 对于。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 CC self-define http policy。",
+							Description: "名称 CC self-define http 策略。",
 						},
 						"smode": {
 							Type:        schema.TypeString,
@@ -73,7 +73,7 @@ func DataSourceTencentCloudDayuCCHttpPolicies() *schema.Resource {
 						"frequency": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Max frequency per minute。",
+							Description: "Max 频率 per minute。",
 						},
 						"action": {
 							Type:        schema.TypeString,
@@ -83,7 +83,7 @@ func DataSourceTencentCloudDayuCCHttpPolicies() *schema.Resource {
 						"switch": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Indicate the CC self-define http policy takes effect or not。",
+							Description: "Indicate CC self-define http 策略 takes effect 或 不。",
 						},
 						"rule_list": {
 							Type:     schema.TypeList,
@@ -93,12 +93,12 @@ func DataSourceTencentCloudDayuCCHttpPolicies() *schema.Resource {
 									"skey": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "键 of the rule。",
+										Description: "键 的 规则。",
 									},
 									"operator": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "操作者 of the rule。",
+										Description: "操作者 的 规则。",
 									},
 									"value": {
 										Type:        schema.TypeString,
@@ -107,23 +107,23 @@ func DataSourceTencentCloudDayuCCHttpPolicies() *schema.Resource {
 									},
 								},
 							},
-							Description: "Rule 列表 the CC self-define http policy。",
+							Description: "Rule 列表 CC self-define http 策略。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of the CC self-define http policy。",
+							Description: "创建时间 的 CC self-define http 策略。",
 						},
 						"policy_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID CC self-define http policy。",
+							Description: "ID CC self-define http 策略。",
 						},
 						"ip_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "IP of the CC self-define http policy。",
+							Description: "IP 的 CC self-define http 策略。",
 						},
 					},
 				},

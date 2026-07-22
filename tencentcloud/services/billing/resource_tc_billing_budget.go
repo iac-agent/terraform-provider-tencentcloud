@@ -37,7 +37,7 @@ func ResourceTencentCloudBillingBudget() *schema.Resource {
 			"period_begin": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Valid 周期 starting time 2025-01-01(cycle: days) / 2025-01 (cycle: months)。",
+				Description: "有效 周期 starting 时间 2025-01-01(cycle: days) / 2025-01 (cycle: months)。",
 			},
 
 			"period_end": {
@@ -55,19 +55,19 @@ func ResourceTencentCloudBillingBudget() *schema.Resource {
 			"budget_quota": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Budget value limit. Transfer fixed value when the budget plan type is FIX(Fixed Budget); Passed when the budget plan type is CYCLE(Planned Budget)[{\"dateDesc\":\"2025-07\",\"quota\":\"1000\"},{\"dateDesc\":\"2025-08\",\"quota\":\"2000\"}].",
+				Description: "Budget 值 限制. Transfer fixed 值 当 budget plan 类型 是 FIX(Fixed Budget); Passed 当 budget plan 类型 是 CYCLE(Planned Budget)[{\"dateDesc\":\"2025-07\",\"配额\":\"1000\"},{\"dateDesc\":\"2025-08\",\"配额\":\"2000\"}].",
 			},
 
 			"bill_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "BILL: system bill，CONSUMPTION: consumption bill。",
+				Description: "BILL: 系统 bill，CONSUMPTION: consumption bill。",
 			},
 
 			"fee_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "COST original price，REAL_COST actual cost，CASH cash，INCENTIVE gift，VOUCHER voucher，TRANSFER share，TAX tax，AMOUNT_BEFORE_TAX cash payment (before tax)。",
+				Description: "COST original 价格，REAL_COST actual 费用，CASH cash，INCENTIVE gift，VOUCHER voucher，TRANSFER share，TAX tax，AMOUNT_BEFORE_TAX cash payment (before tax)。",
 			},
 
 			"warn_json": {
@@ -84,12 +84,12 @@ func ResourceTencentCloudBillingBudget() *schema.Resource {
 						"cal_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "PERCENTAGE: Percentage of budget amount，ABS: fixed 值",
+							Description: "PERCENTAGE: Percentage 的 budget amount，ABS: fixed 值",
 						},
 						"threshold_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Threshold (greater than or equal to 0)。",
+							Description: "Threshold (greater 比 或 equal 到 0)。",
 						},
 					},
 				},
@@ -105,7 +105,7 @@ func ResourceTencentCloudBillingBudget() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Budget dimension range conditions。",
+				Description: "Budget dimension 范围 conditions。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"business": {
@@ -221,7 +221,7 @@ func ResourceTencentCloudBillingBudget() *schema.Resource {
 						"tree_node_uniq_keys": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Unique 键 for end-级别 ledger unit。",
+							Description: "Unique 键 对于 end-级别 ledger 单位。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -244,17 +244,17 @@ func ResourceTencentCloudBillingBudget() *schema.Resource {
 						"threshold": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Volatility threshold (greater than or equal to 0)。",
+							Description: "Volatility 阈值 (greater 比 或 equal 到 0)。",
 						},
 						"meta_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Alarm 类型: chain month-on-month，yoy year-on-year，fix fixed 值\n (Supported types: daily month-on-month chain day，daily month-on-year chain weekday，daily month-on-year monthly month-on-year fixed 值 fix day，month-on-month chain month，monthly fixed 值 fix month)。",
+							Description: "Alarm 类型: chain month-在-month，yoy year-在-year，fix fixed 值\n (Supported types: daily month-在-month chain day，daily month-在-year chain weekday，daily month-在-year monthly month-在-year fixed 值 fix day，month-在-month chain month，monthly fixed 值 fix month)。",
 						},
 						"period_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Alarm dimension: day day，month month，weekday week\n (Support types: day-to-day chain day，day-to-year weekly dimension chain weekday，day-to-year monthly dimension yoy day，daily fixed 值 fix day，month-to-month chain month，monthly fixed 值 fix month)。",
+							Description: "Alarm dimension: day day，month month，weekday week\n (Support types: day-到-day chain day，day-到-year weekly dimension chain weekday，day-到-year monthly dimension yoy day，daily fixed 值 fix day，month-到-month chain month，monthly fixed 值 fix month)。",
 						},
 					},
 				},

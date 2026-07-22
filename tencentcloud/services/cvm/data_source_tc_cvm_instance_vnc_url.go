@@ -19,13 +19,13 @@ func DataSourceTencentCloudCvmInstanceVncUrl() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "实例 ID To obtain the instance IDs，you can call `DescribeInstances` and look for `实例 ID` in the response。",
+				Description: "实例 ID To obtain 实例 IDs，您 可以 call `DescribeInstances` 和 look 对于 `实例 ID` 在 response。",
 			},
 
 			"instance_vnc_url": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Instance VNC URL",
+				Description: "实例 VNC URL",
 			},
 
 			"result_output_file": {

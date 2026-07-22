@@ -36,7 +36,7 @@ func ResourceTencentCloudCssCallbackRuleAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The streaming 路径 is consistent with the AppName in the streaming and playback addresses. The 默认为 live。",
+				Description: "streaming 路径 是 consistent 使用 AppName 在 streaming 和 playback addresses. 默认为 live。",
 			},
 
 			"template_id": {

@@ -28,7 +28,7 @@ func ResourceTencentCloudApmAssociationConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Associated product 名称 currently only supports Prometheus。",
+				Description: "Associated product 名称 currently 仅 支持 Prometheus。",
 			},
 
 			"status": {
@@ -42,19 +42,19 @@ func ResourceTencentCloudApmAssociationConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Business system ID。",
+				Description: "Business 系统 ID。",
 			},
 
 			"peer_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Associated product instance ID。",
+				Description: "Associated product 实例 ID。",
 			},
 
 			"topic": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "指定CKafka 消息 topic。",
+				Description: "指定CKafka 消息 主题。",
 			},
 		},
 	}

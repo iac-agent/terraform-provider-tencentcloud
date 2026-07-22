@@ -31,13 +31,13 @@ func DataSourceTencentCloudLighthouseResetInstanceBlueprint() *schema.Resource {
 			"limit": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "数量 returned results. 默认值为 20. Maximum 值 is 100。",
+				Description: "数量 返回 results. 默认值为 20. Maximum 值 是 100。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter listblueprint-idFilter by image ID.类型: StringRequired: noblueprint-typeFilter by image 类型有效值：APP_OS: application image; PURE_OS: system image; PRIVATE: custom imageType: StringRequired: noplatform-typeFilter by image platform 类型有效值：LINUX_UNIX: Linux or Unix; WINDOWS: WindowsType: StringRequired: noblueprint-nameFilter by image 名称Type: StringRequired: noblueprint-stateFilter by image 状态Type: StringRequired: noEach request can contain up to 10 Filters and 5 Filter.Values. BlueprintIds and Filters cannot be specified at the same time。",
+				Description: "过滤器 listblueprint-idFilter 通过 镜像 ID.类型: StringRequired: noblueprint-typeFilter 通过 镜像 类型有效值：APP_OS: 应用 镜像; PURE_OS: 系统 镜像; PRIVATE: 自定义 imageType: StringRequired: noplatform-typeFilter 通过 镜像 平台 类型有效值：LINUX_UNIX: Linux 或 Unix; WINDOWS: WindowsType: StringRequired: noblueprint-nameFilter 通过 镜像 名称Type: StringRequired: noblueprint-stateFilter 通过 镜像 状态Type: StringRequired: noEach 请求 可以 contain up 到 10 Filters 和 5 过滤器.Values. BlueprintIds 和 Filters 不能 是 指定 在 same 时间。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -51,7 +51,7 @@ func DataSourceTencentCloudLighthouseResetInstanceBlueprint() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "过滤值 of field。",
+							Description: "过滤值 的 字段。",
 						},
 					},
 				},
@@ -72,52 +72,52 @@ func DataSourceTencentCloudLighthouseResetInstanceBlueprint() *schema.Resource {
 									"blueprint_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Image ID，which is the unique identity of Blueprint。",
+										Description: "Image ID，其中 是 唯一 identity 的 Blueprint。",
 									},
 									"display_title": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The mirror image shows the title to the public。",
+										Description: "mirror 镜像 shows title 到 公有。",
 									},
 									"display_version": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The image shows the 版本 to the public。",
+										Description: "镜像 shows 版本 到 公有。",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Mirror 描述 information。",
+										Description: "Mirror 描述 信息。",
 									},
 									"os_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Operating system 名称",
+										Description: "Operating 系统 名称",
 									},
 									"platform": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Operating system platform。",
+										Description: "Operating 系统 平台。",
 									},
 									"platform_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Operating system platform 类型，such as LINUX_UNIX，WINDOWS。",
+										Description: "Operating 系统 平台 类型，such 作为 LINUX_UNIX，WINDOWS。",
 									},
 									"blueprint_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Image 类型，such as APP_OS，PURE_OS，PRIVATE。",
+										Description: "Image 类型，such 作为 APP_OS，PURE_OS，PRIVATE。",
 									},
 									"image_url": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Mirror image URL",
+										Description: "Mirror 镜像 URL",
 									},
 									"required_system_disk_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The size of the system disk 必填 for image (in GB)。",
+										Description: "大小 的 系统 磁盘 必填 对于 镜像 (在 GB)。",
 									},
 									"blueprint_state": {
 										Type:        schema.TypeString,
@@ -127,7 +127,7 @@ func DataSourceTencentCloudLighthouseResetInstanceBlueprint() *schema.Resource {
 									"created_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "创建时间. Expressed according to the ISO8601 standard，and using UTC time. The 格式 is YYYY-MM-DDThh:mm:ssZ。",
+										Description: "创建时间. Expressed according 到 ISO8601 standard，和 使用 UTC 时间. 格式 是 YYYY-MM-DDThh:mm:ssZ。",
 									},
 									"blueprint_name": {
 										Type:        schema.TypeString,
@@ -137,22 +137,22 @@ func DataSourceTencentCloudLighthouseResetInstanceBlueprint() *schema.Resource {
 									"support_automation_tools": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "是否image supports automation helper。",
+										Description: "是否image 支持 automation helper。",
 									},
 									"required_memory_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Memory 必填 for mirroring (in GB)。",
+										Description: "Memory 必填 对于 mirroring (在 GB)。",
 									},
 									"image_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "CVM image ID after sharing the CVM image to the lightweight application server。",
+										Description: "CVM 镜像 ID after sharing CVM 镜像 到 lightweight 应用 服务器。",
 									},
 									"community_url": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The official website Url。",
+										Description: "official website Url。",
 									},
 									"guide_url": {
 										Type:        schema.TypeString,
@@ -163,12 +163,12 @@ func DataSourceTencentCloudLighthouseResetInstanceBlueprint() *schema.Resource {
 										Type:        schema.TypeList,
 										Computed:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "The mirror association uses the scene Id list。",
+										Description: "mirror association uses scene ID 列表。",
 									},
 									"docker_version": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Docker 版本 number。",
+										Description: "Docker 版本 数量。",
 									},
 								},
 							},
@@ -176,12 +176,12 @@ func DataSourceTencentCloudLighthouseResetInstanceBlueprint() *schema.Resource {
 						"is_resettable": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否instance image can be reset to the target image。",
+							Description: "是否instance 镜像 可以 是 reset 到 目标 镜像。",
 						},
 						"non_resettable_message": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The information cannot be reset. when the mirror can be reset ''。",
+							Description: "信息 不能 是 reset. 当 mirror 可以 是 reset ''。",
 						},
 					},
 				},

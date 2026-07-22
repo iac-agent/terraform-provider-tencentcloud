@@ -30,13 +30,13 @@ func ResourceTencentCloudAPIGatewayCustomDomain() *schema.Resource {
 			"sub_domain": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Custom 域名 名称 to be bound。",
+				Description: "Custom 域名 名称 到 是 bound。",
 			},
 			"protocol": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateNotEmpty,
-				Description:  "协议 supported by service. 有效值：`http`，`https`，`http&https`。",
+				Description:  "协议 支持 通过 服务. 有效值：`http`，`https`，`http&https`。",
 			},
 			"net_type": {
 				Type:         schema.TypeString,
@@ -48,7 +48,7 @@ func ResourceTencentCloudAPIGatewayCustomDomain() *schema.Resource {
 				Type:        schema.TypeBool,
 				Default:     true,
 				Optional:    true,
-				Description: "是否default 路径 mapping is used. The 默认值为 `true`. When it is `false`，it means custom 路径 mapping. In this case，the `path_mappings` attribute 为必填项。",
+				Description: "是否default 路径 mapping 是 使用. 默认值为 `true`. 当 它 是 `false`，它 表示 自定义 路径 mapping. In 此 case， `path_mappings` attribute 为必填项。",
 			},
 			"default_domain": {
 				Type:         schema.TypeString,
@@ -60,26 +60,26 @@ func ResourceTencentCloudAPIGatewayCustomDomain() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Unique 证书 ID custom 域名 名称 to be bound. You can choose to upload for the `协议` attribute 值 `https` or `http&https`。",
+				Description: "Unique 证书 ID 自定义 域名 名称 到 是 bound. You 可以 choose 到 upload 对于 `协议` attribute 值 `https` 或 `http&https`。",
 			},
 			"path_mappings": {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				Computed:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Custom 域名 名称 路径 mapping. The data 格式 is: `路径#environment`. 可选 values for the environment are `test`，`prepub`，and `release`。",
+				Description: "Custom 域名 名称 路径 mapping. 数据 格式 是: `路径#环境`. 可选 值 对于 环境 是 `测试`，`prepub`，和 `release`。",
 			},
 			"is_forced_https": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "是否force HTTP requests to jump to HTTPS，默认为 false. When the parameter is true，the API gateway will redirect all HTTP 协议 requests using the custom 域名 名称 to the HTTPS 协议 for forwarding。",
+				Description: "是否force HTTP requests 到 jump 到 HTTPS，默认为 false. 当 参数 是 true， API 网关 将 redirect all HTTP 协议 requests 使用 自定义 域名 名称 到 HTTPS 协议 对于 forwarding。",
 			},
 			//compute
 			"status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "域名 名称 resolution 状态 `1` means normal analysis，`0` means parsing failed。",
+				Description: "域名 名称 resolution 状态 `1` 表示 normal analysis，`0` 表示 parsing failed。",
 			},
 		},
 	}

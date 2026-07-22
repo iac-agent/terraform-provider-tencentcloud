@@ -31,19 +31,19 @@ func DataSourceTencentCloudEbSearch() *schema.Resource {
 			"event_bus_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "event bus Id。",
+				Description: "事件 bus ID。",
 			},
 
 			"group_field": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "aggregate field，When querying the log 索引 dimension 值，you must enter。",
+				Description: "aggregate 字段，当 querying 日志 索引 dimension 值，您 必须 enter。",
 			},
 
 			"filter": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "filter criteria。",
+				Description: "过滤器 criteria。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
@@ -54,22 +54,22 @@ func DataSourceTencentCloudEbSearch() *schema.Resource {
 						"operator": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "操作者，congruent eq，not equal neq，similar like，exclude similar not like，less than lt，less than and equal to lte，greater than gt，greater than and equal to gte，in range range，not in range norange。",
+							Description: "操作者，congruent eq，不 equal neq，similar like，exclude similar 不 like，less 比 lt，less 比 和 equal 到 lte，greater 比 gt，greater 比 和 equal 到 gte，在 范围 范围，不 在 范围 norange。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "过滤值，range operation needs to enter two values at the same time，separated by commas。",
+							Description: "过滤值，范围 operation needs 到 enter two 值 在 same 时间，separated 通过 commas。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The logical relationship of the 级别 filters，the 值 AND or OR。",
+							Description: "logical relationship 的 级别 filters， 值 AND 或 OR。",
 						},
 						"filters": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "LogFilters array。",
+							Description: "LogFilters 数组。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
@@ -80,12 +80,12 @@ func DataSourceTencentCloudEbSearch() *schema.Resource {
 									"operator": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "操作者，congruent eq，not equal neq，similar like，exclude similar not like，less than lt，less than and equal to lte，greater than gt，greater than and equal to gte，within range range，not within range norange。",
+										Description: "操作者，congruent eq，不 equal neq，similar like，exclude similar 不 like，less 比 lt，less 比 和 equal 到 lte，greater 比 gt，greater 比 和 equal 到 gte，within 范围 范围，不 within 范围 norange。",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Filter values，range operations need to enter two values at the same time，separated by commas。",
+										Description: "过滤器 值，范围 operations need 到 enter two 值 在 same 时间，separated 通过 commas。",
 									},
 								},
 							},
@@ -100,13 +100,13 @@ func DataSourceTencentCloudEbSearch() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "sort array，take effect when the log is retrieved。",
+				Description: "sort 数组，take effect 当 日志 是 retrieved。",
 			},
 
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "排序方式，asc from old to new，desc from new to old，take effect when the log is retrieved。",
+				Description: "排序方式，asc 从 old 到 new，desc 从 new 到 old，take effect 当 日志 是 retrieved。",
 			},
 
 			"dimension_values": {
@@ -115,44 +115,44 @@ func DataSourceTencentCloudEbSearch() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "索引 retrieves dimension values。",
+				Description: "索引 retrieves dimension 值。",
 			},
 
 			"results": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Log search results，note: this field may return null，indicating that no valid 值 can be obtained。",
+				Description: "Log search results，note: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"timestamp": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The reporting time of a single log，note: this field may return null，indicating that no valid 值 can be obtained。",
+							Description: "报告 时间 的 单个 日志，note: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"message": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Log 内容 details，note: this field may return null，indicating that no valid 值 can be obtained。",
+							Description: "Log 内容 details，note: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"source": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Event 来源，note: this field may return null，indicating that no valid 值 can be obtained。",
+							Description: "Event 来源，note: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Event 类型，note: this field may return null，indicating that no valid 值 can be obtained。",
+							Description: "Event 类型，note: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"rule_ids": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Event matching rules，note: this field may return null，indicating that no valid 值 can be obtained。",
+							Description: "Event matching 规则，note: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"subject": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "实例 ID，note: this field may return null，indicating that no valid 值 can be obtained。",
+							Description: "实例 ID，note: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"region": {
 							Type:        schema.TypeString,
@@ -162,7 +162,7 @@ func DataSourceTencentCloudEbSearch() *schema.Resource {
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Event 状态，note: this field may return null，indicating that no valid 值 can be obtained。",
+							Description: "Event 状态，note: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 					},
 				},

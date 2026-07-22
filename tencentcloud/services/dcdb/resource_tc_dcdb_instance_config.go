@@ -28,7 +28,7 @@ func ResourceTencentCloudDcdbInstanceConfig() *schema.Resource {
 			"rs_access_strategy": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "RS nearest access 模式，0-no policy，1-nearest access。",
+				Description: "RS nearest 访问 模式，0-无 策略，1-nearest 访问。",
 			},
 		},
 	}

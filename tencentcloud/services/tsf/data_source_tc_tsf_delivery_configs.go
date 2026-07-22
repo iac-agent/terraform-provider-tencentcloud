@@ -25,7 +25,7 @@ func DataSourceTencentCloudTsfDeliveryConfigs() *schema.Resource {
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "deploy group information about the deployment group associated with a delivery item.注意：此字段可能返回 null，表示未获取到有效值。",
+				Description: "deploy 组 信息 about 部署 组 associated 使用 delivery item.注意：此字段可能返回 null，表示未获取到有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
@@ -42,7 +42,7 @@ func DataSourceTencentCloudTsfDeliveryConfigs() *schema.Resource {
 									"config_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "配置 id。",
+										Description: "配置 ID。",
 									},
 									"config_name": {
 										Type:        schema.TypeString,
@@ -55,18 +55,18 @@ func DataSourceTencentCloudTsfDeliveryConfigs() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "harvest log 路径 注意：此字段可能返回 null，表示未获取到有效值。",
+										Description: "harvest 日志 路径 注意：此字段可能返回 null，表示未获取到有效值。",
 									},
 									"groups": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Associated deployment group information.注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Associated 部署 组 信息.注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"group_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Group Id。",
+													Description: "Group ID。",
 												},
 												"group_name": {
 													Type:        schema.TypeString,
@@ -114,7 +114,7 @@ func DataSourceTencentCloudTsfDeliveryConfigs() *schema.Resource {
 									"kafka_address": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "KafkaAddress refers to the 地址 of a Kafka server.注意：此字段可能返回 null，表示未获取到有效值。",
+										Description: "KafkaAddress refers 到 地址 的 Kafka 服务器.注意：此字段可能返回 null，表示未获取到有效值。",
 									},
 									"kafka_v_port": {
 										Type:        schema.TypeString,
@@ -129,22 +129,22 @@ func DataSourceTencentCloudTsfDeliveryConfigs() *schema.Resource {
 									"line_rule": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Line Rule for log. 注意：此字段可能返回 null，表示未获取到有效值。",
+										Description: "Line Rule 对于 日志. 注意：此字段可能返回 null，表示未获取到有效值。",
 									},
 									"custom_rule": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "CustomRule 指定a custom line separator rule.注意：此字段可能返回 null，表示未获取到有效值。",
+										Description: "CustomRule 指定a 自定义 line separator 规则.注意：此字段可能返回 null，表示未获取到有效值。",
 									},
 									"enable_global_line_rule": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "表示是否a single row rule should be applied.注意：此字段可能返回 null，表示未获取到有效值。",
+										Description: "表示是否a 单个 row 规则 should 是 applied.注意：此字段可能返回 null，表示未获取到有效值。",
 									},
 									"enable_auth": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "whether use auth for kafka. 注意：此字段可能返回 null，表示未获取到有效值。",
+										Description: "whether 使用 auth 对于 kafka. 注意：此字段可能返回 null，表示未获取到有效值。",
 									},
 									"username": {
 										Type:        schema.TypeString,
@@ -165,7 +165,7 @@ func DataSourceTencentCloudTsfDeliveryConfigs() *schema.Resource {
 												"topic": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Kafka topic. 注意：此字段可能返回 null，表示未获取到有效值。",
+													Description: "Kafka 主题. 注意：此字段可能返回 null，表示未获取到有效值。",
 												},
 												"path": {
 													Type: schema.TypeSet,
@@ -173,12 +173,12 @@ func DataSourceTencentCloudTsfDeliveryConfigs() *schema.Resource {
 														Type: schema.TypeString,
 													},
 													Computed:    true,
-													Description: "harvest log 路径 注意：此字段可能返回 null，表示未获取到有效值。",
+													Description: "harvest 日志 路径 注意：此字段可能返回 null，表示未获取到有效值。",
 												},
 												"line_rule": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Line rule 指定type of line separator used in a file. It can have one of the following values: 默认值：The default line separator is 用于separate lines in the file. time: The lines in the file are separated based on time. custom: A custom line separator is used. In this case，the CustomRule field should be filled with the specific custom 值 注意：此字段可能返回 null，表示未获取到有效值。",
+													Description: "Line 规则 指定type 的 line separator 使用 在 文件. It 可以 have 一个 的 following 值: 默认值： 默认值 line separator 是 用于separate lines 在 文件. 时间: lines 在 文件 是 separated based 在 时间. 自定义: A 自定义 line separator 是 使用. In 此 case， CustomRule 字段 should 是 filled 使用 特定 自定义 值 注意：此字段可能返回 null，表示未获取到有效值。",
 												},
 												"custom_rule": {
 													Type:        schema.TypeString,

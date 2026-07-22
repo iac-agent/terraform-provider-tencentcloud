@@ -25,38 +25,38 @@ func DataSourceTencentCloudPostgresqlAccountPrivileges() *schema.Resource {
 			"user_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance 用户名",
+				Description: "实例 用户名",
 			},
 			"database_object_set": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "Instance database object info。",
+				Description: "实例 数据库 对象 info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"object_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Supported database object types: 账号，database，schema，sequence，procedure，类型，function，table，view，matview，column. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Supported 数据库 对象 types: 账号，数据库，schema，sequence，procedure，类型，函数，表，view，matview，列. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"object_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Database object 名称注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Database 对象 名称注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"database_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Database 名称 to which the database object belongs. This parameter is mandatory when ObjectType is not database.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Database 名称 到 其中 数据库 对象 belongs. 此 参数 是 mandatory 当 ObjectType 是 不 数据库.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"schema_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Schema 名称 to which the database object belongs. This parameter is mandatory when ObjectType is not database or schema.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Schema 名称 到 其中 数据库 对象 belongs. 此 参数 是 mandatory 当 ObjectType 是 不 数据库 或 schema.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"table_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Table 名称 to which the database object belongs. This parameter is mandatory when ObjectType is column.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Table 名称 到 其中 数据库 对象 belongs. 此 参数 是 mandatory 当 ObjectType 是 列.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -65,39 +65,39 @@ func DataSourceTencentCloudPostgresqlAccountPrivileges() *schema.Resource {
 			"privilege_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Privilege list。",
+				Description: "Privilege 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"object": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Database object.If ObjectType is database，DatabaseName/SchemaName/TableName can be null.If ObjectType is schema，SchemaName/TableName can be null.If ObjectType is table，TableName can be null.If ObjectType is column，DatabaseName/SchemaName/TableName can&amp;#39;t be null.In all other cases，DatabaseName/SchemaName/TableName can be null. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Database 对象.如果 ObjectType 是 数据库，DatabaseName/SchemaName/TableName 可以 是 null.如果 ObjectType 是 schema，SchemaName/TableName 可以 是 null.如果 ObjectType 是 表，TableName 可以 是 null.如果 ObjectType 是 列，DatabaseName/SchemaName/TableName 可以&amp;#39;t 是 null.In all other cases，DatabaseName/SchemaName/TableName 可以 是 null. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"object_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Supported database object types: 账号，database，schema，sequence，procedure，类型，function，table，view，matview，column. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Supported 数据库 对象 types: 账号，数据库，schema，sequence，procedure，类型，函数，表，view，matview，列. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"object_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Database object 名称 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Database 对象 名称 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"database_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Database 名称 to which the database object belongs. This parameter is mandatory when ObjectType is not database. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Database 名称 到 其中 数据库 对象 belongs. 此 参数 是 mandatory 当 ObjectType 是 不 数据库. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"schema_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Schema 名称 to which the database object belongs. This parameter is mandatory when ObjectType is not database or schema. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Schema 名称 到 其中 数据库 对象 belongs. 此 参数 是 mandatory 当 ObjectType 是 不 数据库 或 schema. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"table_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Table 名称 to which the database object belongs. This parameter is mandatory when ObjectType is column. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Table 名称 到 其中 数据库 对象 belongs. 此 参数 是 mandatory 当 ObjectType 是 列. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -106,7 +106,7 @@ func DataSourceTencentCloudPostgresqlAccountPrivileges() *schema.Resource {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Computed:    true,
-							Description: "Privileges the specific 账号 has on database object. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Privileges 特定 账号 has 在 数据库 对象. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},

@@ -31,19 +31,19 @@ func DataSourceTencentCloudWedataWorkflowMaxPermission() *schema.Resource {
 			"entity_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Authorization entity 类型，folder/workflow。",
+				Description: "Authorization entity 类型，文件夹/工作流。",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Current 用户's recursive maximum permission 类型 for entity resources。",
+				Description: "Current 用户's recursive 最大 权限 类型 对于 entity resources。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"permission_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Authorization permission 类型 (CAN_VIEW/CAN_RUN/CAN_EDIT/CAN_MANAGE，currently only supports CAN_MANAGE)。",
+							Description: "Authorization 权限 类型 (CAN_VIEW/CAN_RUN/CAN_EDIT/CAN_MANAGE，currently 仅 支持 CAN_MANAGE)。",
 						},
 					},
 				},

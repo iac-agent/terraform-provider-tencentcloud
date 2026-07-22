@@ -18,7 +18,7 @@ func DataSourceTencentCloudWafOwaspRules() *schema.Resource {
 			"domain": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "域名 to be queried。",
+				Description: "域名 到 是 queried。",
 			},
 
 			"by": {
@@ -30,19 +30,19 @@ func DataSourceTencentCloudWafOwaspRules() *schema.Resource {
 			"order": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sorting method. supports asc，desc。",
+				Description: "Sorting 方法. 支持 asc，desc。",
 			},
 
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "指定criteria，support RuleId，TypeId，Desc，CveID，状态，and VulLevel。",
+				Description: "指定criteria，support RuleId，TypeId，Desc，CveID，状态，和 VulLevel。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Field 名称，用于filtering\nFilter the sub-顺序 number (值) by DealName。",
+							Description: "Field 名称，用于filtering\nFilter sub-顺序 数量 (值) 通过 DealName。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
@@ -55,7 +55,7 @@ func DataSourceTencentCloudWafOwaspRules() *schema.Resource {
 						"exact_match": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Exact search or not。",
+							Description: "Exact search 或 不。",
 						},
 					},
 				},
@@ -64,7 +64,7 @@ func DataSourceTencentCloudWafOwaspRules() *schema.Resource {
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "列表 rules。",
+				Description: "列表 规则。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"rule_id": {
@@ -80,12 +80,12 @@ func DataSourceTencentCloudWafOwaspRules() *schema.Resource {
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Rule switch. 有效值：0 (已禁用)，1 (已启用)，2 (observation only)。",
+							Description: "Rule switch. 有效值：0 (已禁用)，1 (已启用)，2 (observation 仅)。",
 						},
 						"level": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Protection 级别 of the rule. 有效值：100 (loose)，200 (normal)，300 (strict)，400 (ultra-strict)。",
+							Description: "Protection 级别 的 规则. 有效值：100 (loose)，200 (normal)，300 (strict)，400 (ultra-strict)。",
 						},
 						"vul_level": {
 							Type:        schema.TypeInt,
@@ -115,12 +115,12 @@ func DataSourceTencentCloudWafOwaspRules() *schema.Resource {
 						"locked": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否user is locked。",
+							Description: "是否user 是 locked。",
 						},
 						"reason": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Reason for modification\n\n0: none (compatibility records are empty).\n1: avoid false positives due to business characteristics.\n2: reporting of rule-based false positives.\n3: gray release of core business rules.\n4: others。",
+							Description: "Reason 对于 modification\n\n0: none (compatibility records 是 空).\n1: avoid false positives due 到 business characteristics.\n2: 报告 的 规则-based false positives.\n3: gray release 的 core business 规则.\n4: others。",
 						},
 					},
 				},

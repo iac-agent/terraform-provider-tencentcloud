@@ -22,7 +22,7 @@ func DataSourceTencentCloudLighthouseInstanceTrafficPackage() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "实例 ID list。",
+				Description: "实例 ID 列表。",
 			},
 
 			"offset": {
@@ -36,13 +36,13 @@ func DataSourceTencentCloudLighthouseInstanceTrafficPackage() *schema.Resource {
 				Optional:    true,
 				Default:     20,
 				Type:        schema.TypeInt,
-				Description: "数量 returned results. 默认值为 20. Maximum 值 is 100。",
+				Description: "数量 返回 results. 默认值为 20. Maximum 值 是 100。",
 			},
 
 			"instance_traffic_package_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "列表 details of instance traffic packages。",
+				Description: "列表 details 的 实例 流量 packages。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
@@ -53,7 +53,7 @@ func DataSourceTencentCloudLighthouseInstanceTrafficPackage() *schema.Resource {
 						"traffic_package_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "列表 traffic package details。",
+							Description: "列表 流量 包 details。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"traffic_package_id": {
@@ -64,42 +64,42 @@ func DataSourceTencentCloudLighthouseInstanceTrafficPackage() *schema.Resource {
 									"traffic_used": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Traffic has been used during the effective 周期 of the traffic packet，in bytes。",
+										Description: "Traffic has been 使用 during effective 周期 的 流量 packet，在 bytes。",
 									},
 									"traffic_package_total": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The total traffic in bytes during the effective 周期 of the traffic packet。",
+										Description: "总数 流量 在 bytes during effective 周期 的 流量 packet。",
 									},
 									"traffic_package_remaining": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The remaining traffic during the effective 周期 of the traffic packet，in bytes。",
+										Description: "remaining 流量 during effective 周期 的 流量 packet，在 bytes。",
 									},
 									"traffic_overflow": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The amount of traffic that exceeds the quota of the traffic packet during the effective 周期 of the traffic packet，in bytes。",
+										Description: "amount 的 流量 该 exceeds 配额 的 流量 packet during effective 周期 的 流量 packet，在 bytes。",
 									},
 									"start_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The 开始时间 of the effective cycle of the traffic packet. Expressed according to the ISO8601 standard，and using UTC time. The 格式 is YYYY-MM-DDThh:mm:ssZ。",
+										Description: "开始时间 的 effective cycle 的 流量 packet. Expressed according 到 ISO8601 standard，和 使用 UTC 时间. 格式 是 YYYY-MM-DDThh:mm:ssZ。",
 									},
 									"end_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The 结束时间 of the effective 周期 of the traffic packet. Expressed according to the ISO8601 standard，and using UTC time. The 格式 is YYYY-MM-DDThh:mm:ssZ。",
+										Description: "结束时间 的 effective 周期 的 流量 packet. Expressed according 到 ISO8601 standard，和 使用 UTC 时间. 格式 是 YYYY-MM-DDThh:mm:ssZ。",
 									},
 									"deadline": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The 过期时间 of the traffic package. Expressed according to the ISO8601 standard，and using UTC time. The 格式 is YYYY-MM-DDThh:mm:ssZ.。",
+										Description: "过期时间 的 流量 包. Expressed according 到 ISO8601 standard，和 使用 UTC 时间. 格式 是 YYYY-MM-DDThh:mm:ssZ.。",
 									},
 									"status": {
 										Type:     schema.TypeString,
 										Computed: true,
-										Description: "Traffic packet status:" +
+										Description: "Traffic packet 状态:" +
 											"- `NETWORK_NORMAL`: normal." +
 											"- `OVERDUE_NETWORK_DISABLED`: network disconnection due to arrears.",
 									},

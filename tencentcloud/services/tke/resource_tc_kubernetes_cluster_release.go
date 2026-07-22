@@ -37,38 +37,38 @@ func ResourceTencentCloudKubernetesClusterRelease() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Application name, maximum 63 characters, can only contain lowercase letters, numbers, and the separator \"-\", and must start with a lowercase letter and end with a number or lowercase letter.",
+				Description: "Application 名称, 最大 63 字符, 可以 仅 contain lowercase letters, numbers, 和 separator \"-\", 和 必须 start 使用 lowercase letter 和 end 使用 数量 或 lowercase letter.",
 			},
 
 			"namespace": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Application namespace，obtained from the cluster details namespace。",
+				Description: "Application 命名空间，获取 从 集群 details 命名空间。",
 			},
 
 			"chart": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Chart 名称 (obtained from the application market) or the download URL of the chart package when installing from a third-party repo，redirect-类型 chart URLs are not supported，must end with *.tgz。",
+				Description: "Chart 名称 (获取 从 应用 market) 或 download URL 的 chart 包 当 installing 从 third-party repo，redirect-类型 chart URLs 是 不 支持，必须 end 使用 *.tgz。",
 			},
 
 			"values": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Custom parameters。",
+				Description: "Custom 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"raw_original": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Custom parameter original 值",
+							Description: "Custom 参数 original 值",
 						},
 						"values_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Custom parameter 值 类型",
+							Description: "Custom 参数 值 类型",
 						},
 					},
 				},
@@ -77,7 +77,7 @@ func ResourceTencentCloudKubernetesClusterRelease() *schema.Resource {
 			"chart_from": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Chart 来源，range: tke-market or other，默认值：tke-market。",
+				Description: "Chart 来源，范围: tke-market 或 other，默认值：tke-market。",
 			},
 
 			"chart_version": {
@@ -95,26 +95,26 @@ func ResourceTencentCloudKubernetesClusterRelease() *schema.Resource {
 			"username": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Chart access 用户名",
+				Description: "Chart 访问 用户名",
 			},
 
 			"password": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Sensitive:   true,
-				Description: "Chart access 密码",
+				Description: "Chart 访问 密码",
 			},
 
 			"chart_namespace": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Chart namespace，when ChartFrom is tke-market，ChartNamespace is not empty，值 is the Namespace returned by the DescribeProducts interface。",
+				Description: "Chart 命名空间，当 ChartFrom 是 tke-market，ChartNamespace 是 不 空，值 是 Namespace 返回 通过 DescribeProducts interface。",
 			},
 
 			"cluster_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "集群类型，supports tke，eks，tkeedge，external (registered cluster)。",
+				Description: "集群类型，支持 tke，eks，tkeedge，外部 (registered 集群)。",
 			},
 
 			// computed

@@ -31,13 +31,13 @@ func DataSourceTencentCloudPostgresqlBackupDownloadUrls() *schema.Resource {
 			"backup_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Unique backup ID。",
+				Description: "Unique 备份 ID。",
 			},
 
 			"url_expire_time": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Validity 周期 of a URL，which is 12 hours by default。",
+				Description: "Validity 周期 的 URL，其中 是 12 hours 通过 默认值。",
 			},
 
 			"backup_download_restriction": {
@@ -50,12 +50,12 @@ func DataSourceTencentCloudPostgresqlBackupDownloadUrls() *schema.Resource {
 						"restriction_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "类型 network restrictions for downloading backup files. 有效值：`NONE` (backups can be downloaded over both private and public networks)，`INTRANET` (backups can only be downloaded over the private network)，`CUSTOMIZE` (backups can be downloaded over specified VPCs or at specified IPs)。",
+							Description: "类型 网络 restrictions 对于 downloading 备份 files. 有效值：`NONE` (backups 可以 是 downloaded over both 私有 和 公有 networks)，`INTRANET` (backups 可以 仅 是 downloaded over 私有 网络)，`CUSTOMIZE` (backups 可以 是 downloaded over 指定 VPCs 或 在 指定 IPs)。",
 						},
 						"vpc_restriction_effect": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether VPC is allowed. 有效值：`ALLOW` (allow)，`DENY` (deny)。",
+							Description: "Whether VPC 是 allowed. 有效值：`ALLOW` (allow)，`DENY` (deny)。",
 						},
 						"vpc_id_set": {
 							Type: schema.TypeSet,
@@ -63,12 +63,12 @@ func DataSourceTencentCloudPostgresqlBackupDownloadUrls() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "是否为allowed to download the 私有网络 ID 列表 the backup files。",
+							Description: "是否为allowed 到 download 私有网络 ID 列表 备份 files。",
 						},
 						"ip_restriction_effect": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether IP is allowed. 有效值：`ALLOW` (allow)，`DENY` (deny)。",
+							Description: "Whether IP 是 allowed. 有效值：`ALLOW` (allow)，`DENY` (deny)。",
 						},
 						"ip_set": {
 							Type: schema.TypeSet,
@@ -76,7 +76,7 @@ func DataSourceTencentCloudPostgresqlBackupDownloadUrls() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "是否为allowed to download IP 列表 the backup files。",
+							Description: "是否为allowed 到 download IP 列表 备份 files。",
 						},
 					},
 				},

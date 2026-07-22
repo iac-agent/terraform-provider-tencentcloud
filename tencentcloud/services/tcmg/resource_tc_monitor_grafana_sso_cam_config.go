@@ -34,7 +34,7 @@ func ResourceTencentCloudMonitorGrafanaSsoCamConfig() *schema.Resource {
 			"enable_sso_cam_check": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "是否enable the CAM authorization: `true` for enabling; `false` for disabling。",
+				Description: "是否enable CAM authorization: `true` 对于 enabling; `false` 对于 disabling。",
 			},
 		},
 	}

@@ -35,14 +35,14 @@ func ResourceTencentCloudCiMediaTranscodeProTemplate() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The 模板名称 only supports `Chinese`，`English`，`numbers`，`_`，`-` and `*`。",
+				Description: "模板名称 仅 支持 `Chinese`，`English`，`numbers`，`_`，`-` 和 `*`。",
 			},
 
 			"container": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "container 格式",
+				Description: "容器 格式",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"format": {
@@ -54,13 +54,13 @@ func ResourceTencentCloudCiMediaTranscodeProTemplate() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Fragment configuration，valid when 格式 is hls and dash。",
+							Description: "Fragment 配置，有效 当 格式 是 hls 和 dash。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"duration": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Fragmentation duration，default 5s。",
+										Description: "Fragmentation 时长，默认值 5s。",
 									},
 								},
 							},
@@ -73,43 +73,43 @@ func ResourceTencentCloudCiMediaTranscodeProTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "video information，do not upload Video，which is equivalent to deleting video information。",
+				Description: "视频 信息，do 不 upload Video，其中 是 equivalent 到 deleting 视频 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"codec": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Codec 格式，默认值：`H.264`，when 格式 is WebM，it is VP8，取值范围：`H.264`，`H.265`，`VP8`，`VP9`，`AV1`。",
+							Description: "Codec 格式，默认值：`H.264`，当 格式 是 WebM，它 是 VP8，取值范围：`H.264`，`H.265`，`VP8`，`VP9`，`AV1`。",
 						},
 						"profile": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "encoding 级别，Support baseline，main，high，auto- When Pixfmt is auto，this parameter can only be set to auto，when it is set to other options，the parameter 值 will be set to auto- baseline: suitable for mobile devices- main: suitable for standard resolution devices- high: suitable for high-resolution devices- Only H.264 supports this parameter。",
+							Description: "编码 级别，Support baseline，main，high，auto- 当 Pixfmt 是 auto，此 参数 可以 仅 是 集合 到 auto，当 它 是 集合 到 other options， 参数 值 将 是 集合 到 auto- baseline: suitable 对于 mobile devices- main: suitable 对于 standard resolution devices- high: suitable 对于 high-resolution devices- Only H.264 支持 此 参数。",
 						},
 						"width": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "width，取值范围：[128，4096]，单位：px，If only Width is set，Height is calculated according to the original ratio of the video，must be even。",
+							Description: "宽度，取值范围：[128，4096]，单位：像素，如果 仅 宽度 是 集合，高度 是 calculated according 到 original ratio 的 视频，必须 是 even。",
 						},
 						"height": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "High，取值范围：[128，4096]，单位：px，If only Height is set，Width is calculated according to the original ratio of the video，must be even。",
+							Description: "High，取值范围：[128，4096]，单位：像素，如果 仅 高度 是 集合，宽度 是 calculated according 到 original ratio 的 视频，必须 是 even。",
 						},
 						"interlaced": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "field pattern。",
+							Description: "字段 pattern。",
 						},
 						"fps": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Frame rate，取值范围：(0，60]，单位：fps。",
+							Description: "Frame 速率，取值范围：(0，60]，单位：fps。",
 						},
 						"bitrate": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Bit rate of video 输出文件，取值范围：[10，50000]，unit: Kbps，auto means adaptive bit rate。",
+							Description: "Bit 速率 的 视频 输出文件，取值范围：[10，50000]，单位: Kbps，auto 表示 adaptive bit 速率。",
 						},
 						"rotate": {
 							Type:        schema.TypeString,
@@ -130,12 +130,12 @@ func ResourceTencentCloudCiMediaTranscodeProTemplate() *schema.Resource {
 						"start": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Starting time，[0 video duration]，（秒）， Support float 格式，the execution accuracy is accurate to milliseconds。",
+							Description: "Starting 时间，[0 视频 时长]，（秒）， Support float 格式， execution accuracy 是 accurate 到 milliseconds。",
 						},
 						"duration": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "duration，[0 video duration]，（秒）， Support float 格式，the execution accuracy is accurate to milliseconds。",
+							Description: "时长，[0 视频 时长]，（秒）， Support float 格式， execution accuracy 是 accurate 到 milliseconds。",
 						},
 					},
 				},
@@ -145,7 +145,7 @@ func ResourceTencentCloudCiMediaTranscodeProTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Audio information，do not transmit Audio，which is equivalent to deleting audio information。",
+				Description: "Audio 信息，do 不 transmit Audio，其中 是 equivalent 到 deleting 音频 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"codec": {
@@ -156,7 +156,7 @@ func ResourceTencentCloudCiMediaTranscodeProTemplate() *schema.Resource {
 						"remove": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "是否delete the 来源 audio stream，the 值 is true，false。",
+							Description: "是否delete 来源 音频 流， 值 是 true，false。",
 						},
 					},
 				},
@@ -166,53 +166,53 @@ func ResourceTencentCloudCiMediaTranscodeProTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "transcoding configuration。",
+				Description: "transcoding 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"adj_dar_method": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Resolution adjustment method，值 scale，crop，pad，none，When the aspect ratio of the output video is different from the original video，adjust the resolution accordingly according to this parameter。",
+							Description: "Resolution adjustment 方法，值 scale，crop，pad，none，当 aspect ratio 的 output 视频 是 different 从 original 视频，adjust resolution accordingly according 到 此 参数。",
 						},
 						"is_check_reso": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "是否check the resolution，when it is false，transcode according to the configuration parameters。",
+							Description: "是否check resolution，当 它 是 false，transcode according 到 配置 参数。",
 						},
 						"reso_adj_method": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Resolution adjustment 模式，值 0，1; 0 means use the original video resolution; 1 means return transcoding failed，Take effect when IsCheckReso is true。",
+							Description: "Resolution adjustment 模式，值 0，1; 0 表示 使用 original 视频 resolution; 1 表示 返回 transcoding failed，Take effect 当 IsCheckReso 是 true。",
 						},
 						"is_check_video_bitrate": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "是否check the video 代码 rate，when it is false，transcode according to the configuration parameters。",
+							Description: "是否check 视频 代码 速率，当 它 是 false，transcode according 到 配置 参数。",
 						},
 						"video_bitrate_adj_method": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Video bit rate adjustment method，值 0，1; when the output video bit rate is greater than the original video bit rate，0 means use the original video bit rate; 1 means return transcoding failed，Take effect when IsCheckVideoBitrate is true。",
+							Description: "Video bit 速率 adjustment 方法，值 0，1; 当 output 视频 bit 速率 是 greater 比 original 视频 bit 速率，0 表示 使用 original 视频 bit 速率; 1 表示 返回 transcoding failed，Take effect 当 IsCheckVideoBitrate 是 true。",
 						},
 						"is_check_audio_bitrate": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "是否check the audio 代码 rate，true，false，When false，transcode according to configuration parameters。",
+							Description: "是否check 音频 代码 速率，true，false，当 false，transcode according 到 配置 参数。",
 						},
 						"audio_bitrate_adj_method": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Audio bit rate adjustment 模式，值 0，1; when the output audio bit rate is greater than the original audio bit rate，0 means use the original audio bit rate; 1 means return transcoding failed，Take effect when IsCheckAudioBitrate is true。",
+							Description: "Audio bit 速率 adjustment 模式，值 0，1; 当 output 音频 bit 速率 是 greater 比 original 音频 bit 速率，0 表示 使用 original 音频 bit 速率; 1 表示 返回 transcoding failed，Take effect 当 IsCheckAudioBitrate 是 true。",
 						},
 						"delete_metadata": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "是否delete the MetaData information in the file，true，false，When false，keep 来源 file information。",
+							Description: "是否delete MetaData 信息 在 文件，true，false，当 false，keep 来源 文件 信息。",
 						},
 						"is_hdr2_sdr": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "是否enable HDR to SDR true，false。",
+							Description: "是否enable HDR 到 SDR true，false。",
 						},
 					},
 				},

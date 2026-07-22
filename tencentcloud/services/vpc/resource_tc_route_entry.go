@@ -60,20 +60,20 @@ func ResourceTencentCloudRouteEntry() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The 私有网络 ID",
+				Description: "私有网络 ID",
 			},
 			"route_table_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The ID route table。",
+				Description: "ID 路由 表。",
 			},
 			"cidr_block": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateCIDRNetworkAddress,
-				Description:  "The RouteEntry's target network segment。",
+				Description:  "RouteEntry's 目标 网络 segment。",
 			},
 			"next_type": {
 				Type:     schema.TypeString,
@@ -91,13 +91,13 @@ func ResourceTencentCloudRouteEntry() *schema.Resource {
 					}
 					return
 				},
-				Description: "The next hop 类型 有效值：`public_gateway`,`vpn_gateway`,`sslvpn_gateway`,`dc_gateway`,`peering_connection`,`nat_gateway`,`havip`,`local_gateway`，`intranat`，`user_ccn`，`gwlb_endpoint` and `instance`. `instance` points to CVM Instance。",
+				Description: "next hop 类型 有效值：`public_gateway`,`vpn_gateway`,`sslvpn_gateway`,`dc_gateway`,`peering_connection`,`nat_gateway`,`havip`,`local_gateway`，`intranat`，`user_ccn`，`gwlb_endpoint` 和 `实例`. `实例` points 到 CVM 实例。",
 			},
 			"next_hub": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The route entry's next hub. CVM instance ID or VPC router interface ID。",
+				Description: "路由 entry's next hub. CVM 实例 ID 或 VPC router interface ID。",
 			},
 		},
 	}

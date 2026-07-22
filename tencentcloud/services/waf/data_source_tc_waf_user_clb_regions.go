@@ -20,12 +20,12 @@ func DataSourceTencentCloudWafUserClbRegions() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "地域 list(ap-xxx 格式)。",
+				Description: "地域 列表(ap-xxx 格式)。",
 			},
 			"rich_datas": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Detail info for 地域",
+				Description: "Detail info 对于 地域",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
@@ -36,12 +36,12 @@ func DataSourceTencentCloudWafUserClbRegions() *schema.Resource {
 						"text": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Chinese 描述 for 地域",
+							Description: "Chinese 描述 对于 地域",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "English 描述 for 地域",
+							Description: "English 描述 对于 地域",
 						},
 						"code": {
 							Type:        schema.TypeString,

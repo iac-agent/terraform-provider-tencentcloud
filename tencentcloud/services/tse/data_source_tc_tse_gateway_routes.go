@@ -19,7 +19,7 @@ func DataSourceTencentCloudTseGatewayRoutes() *schema.Resource {
 			"gateway_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway ID。",
+				Description: "网关 ID。",
 			},
 
 			"service_name": {
@@ -31,7 +31,7 @@ func DataSourceTencentCloudTseGatewayRoutes() *schema.Resource {
 			"route_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "route 名称",
+				Description: "路由 名称",
 			},
 
 			"result": {
@@ -43,7 +43,7 @@ func DataSourceTencentCloudTseGatewayRoutes() *schema.Resource {
 						"route_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "route list。",
+							Description: "路由 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"id": {
@@ -62,7 +62,7 @@ func DataSourceTencentCloudTseGatewayRoutes() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "method list。",
+										Description: "方法 列表。",
 									},
 									"paths": {
 										Type: schema.TypeSet,
@@ -70,7 +70,7 @@ func DataSourceTencentCloudTseGatewayRoutes() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "路径 list。",
+										Description: "路径 列表。",
 									},
 									"hosts": {
 										Type: schema.TypeSet,
@@ -78,7 +78,7 @@ func DataSourceTencentCloudTseGatewayRoutes() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "主机 list。",
+										Description: "主机 列表。",
 									},
 									"protocols": {
 										Type: schema.TypeSet,
@@ -86,12 +86,12 @@ func DataSourceTencentCloudTseGatewayRoutes() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "协议 list。",
+										Description: "协议 列表。",
 									},
 									"preserve_host": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "是否keep the 主机 when forwarding to the backend。",
+										Description: "是否keep 主机 当 forwarding 到 backend。",
 									},
 									"https_redirect_status_code": {
 										Type:        schema.TypeInt,
@@ -101,17 +101,17 @@ func DataSourceTencentCloudTseGatewayRoutes() *schema.Resource {
 									"strip_path": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "是否strip 路径 when forwarding to the backend。",
+										Description: "是否strip 路径 当 forwarding 到 backend。",
 									},
 									"created_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "created time。",
+										Description: "创建 时间。",
 									},
 									"force_https": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "是否enable forced HTTPS，no longer use。",
+										Description: "是否enable forced HTTPS，无 longer 使用。",
 									},
 									"service_name": {
 										Type:        schema.TypeString,
@@ -129,23 +129,23 @@ func DataSourceTencentCloudTseGatewayRoutes() *schema.Resource {
 											Type: schema.TypeInt,
 										},
 										Computed:    true,
-										Description: "destination 端口 for Layer 4 matching。",
+										Description: "destination 端口 对于 Layer 4 matching。",
 									},
 									"headers": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "the headers of route。",
+										Description: "headers 的 路由。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "键 of header。",
+													Description: "键 的 头部。",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "值 of header。",
+													Description: "值 的 头部。",
 												},
 											},
 										},

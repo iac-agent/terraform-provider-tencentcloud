@@ -20,36 +20,36 @@ func DataSourceTencentCloudDayuL7RulesV2() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(svcdayu.DAYU_RESOURCE_TYPE),
-				Description:  "类型 resource that the layer 4 rule works for，valid values are `bgpip`，`bgp`，`bgp-multip` and `net`。",
+				Description:  "类型 资源 该 layer 4 规则 works 对于，有效 值 是 `bgpip`，`bgp`，`bgp-multip` 和 `net`。",
 			},
 			"domain": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "域名 of resource。",
+				Description: "域名 的 资源。",
 			},
 			"protocol": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "协议 of resource，值 range [`http`，`https`]。",
+				Description: "协议 的 资源，值 范围 [`http`，`https`]。",
 			},
 			"ip": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Ip of the resource。",
+				Description: "Ip 的 资源。",
 			},
 			"offset": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
 				Deprecated:  "It has been deprecated from version 1.81.21.",
-				Description: "The page start 偏移量，默认为 `0`。",
+				Description: "页面 start 偏移量，默认为 `0`。",
 			},
 			"limit": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     10,
 				Deprecated:  "It has been deprecated from version 1.81.21.",
-				Description: "The 数量 pages，默认为 `10`。",
+				Description: "数量 pages，默认为 `10`。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -59,18 +59,18 @@ func DataSourceTencentCloudDayuL7RulesV2() *schema.Resource {
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A 列表 layer 4 rules. Each element 包含following attributes:",
+				Description: "A 列表 layer 4 规则. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"keep_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Session hold time，（秒）。",
+							Description: "Session hold 时间，（秒）。",
 						},
 						"lb_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Load balancing 模式，the 值 is [1 (weighted round-robin)]。",
+							Description: "Load balancing 模式， 值 是 [1 (weighted round-robin)]。",
 						},
 						"source_list": {
 							Type:     schema.TypeList,
@@ -80,7 +80,7 @@ func DataSourceTencentCloudDayuL7RulesV2() *schema.Resource {
 									"source": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Back-to-来源 IP or 域名 名称",
+										Description: "Back-到-来源 IP 或 域名 名称",
 									},
 									"weight": {
 										Type:        schema.TypeInt,
@@ -89,57 +89,57 @@ func DataSourceTencentCloudDayuL7RulesV2() *schema.Resource {
 									},
 								},
 							},
-							Description: "来源 列表 the rule。",
+							Description: "来源 列表 规则。",
 						},
 						"keep_enable": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Session keep switch，值 [0 (session keep closed)，1 (session keep open)]。",
+							Description: "Session keep switch，值 [0 (会话 keep closed)，1 (会话 keep open)]。",
 						},
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "域名 of resource。",
+							Description: "域名 的 资源。",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "协议 of resource，值 range [`http`，`https`]。",
+							Description: "协议 的 资源，值 范围 [`http`，`https`]。",
 						},
 						"source_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Back-to-origin method，值 [1 (域名 名称 back-to-来源)，2 (IP back-to-来源)]。",
+							Description: "Back-到-源站 方法，值 [1 (域名 名称 back-到-来源)，2 (IP back-到-来源)]。",
 						},
 						"https_to_http_enable": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否enable the Https 协议 to use Http back-to-来源，take the 值 [0 (off)，1 (on)]，默认为 off。",
+							Description: "是否enable Https 协议 到 使用 Http back-到-来源，take 值 [0 (关闭)，1 (在)]，默认为 关闭。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Rule 状态，值 [0 (rule configuration is successful)，1 (rule configuration is in effect)，2 (rule configuration fails)，3 (rule deletion is in effect)，5 (rule deletion fails)，6 (rule is waiting to be configured)，7 (rule pending deletion)，8 (rule pending configuration certificate)]。",
+							Description: "Rule 状态，值 [0 (规则 配置 是 successful)，1 (规则 配置 是 在 effect)，2 (规则 配置 fails)，3 (规则 deletion 是 在 effect)，5 (规则 deletion fails)，6 (规则 是 waiting 到 是 已配置)，7 (规则 pending deletion)，8 (规则 pending 配置 证书)]。",
 						},
 						"cc_level": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CC protection 级别 of HTTPS 协议",
+							Description: "CC protection 级别 的 HTTPS 协议",
 						},
 						"cc_enable": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "CC protection 状态 HTTPS 协议，the 值 is [0 (off)，1 (on)]。",
+							Description: "CC protection 状态 HTTPS 协议， 值 是 [0 (关闭)，1 (在)]。",
 						},
 						"cc_threshold": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "CC protection threshold of HTTPS 协议",
+							Description: "CC protection 阈值 的 HTTPS 协议",
 						},
 						"region": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The area 代码",
+							Description: "area 代码",
 						},
 						"rule_name": {
 							Type:        schema.TypeString,
@@ -149,37 +149,37 @@ func DataSourceTencentCloudDayuL7RulesV2() *schema.Resource {
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "修改时间 of resource。",
+							Description: "修改时间 的 资源。",
 						},
 						"virtual_port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Virtual 端口 of resource。",
+							Description: "Virtual 端口 的 资源。",
 						},
 						"cc_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "CC protection 状态，值 [0(off)，1(on)]。",
+							Description: "CC protection 状态，值 [0(关闭)，1(在)]。",
 						},
 						"ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Ip of the resource。",
+							Description: "Ip 的 资源。",
 						},
 						"ssl_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "SSL ID resource。",
+							Description: "SSL ID 资源。",
 						},
 						"cert_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 来源 of the certificate。",
+							Description: "来源 的 证书。",
 						},
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Id of the resource。",
+							Description: "ID 的 资源。",
 						},
 					},
 				},

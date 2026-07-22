@@ -34,7 +34,7 @@ func ResourceTencentCloudOrganizationOrgMember() *schema.Resource {
 			"policy_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Organization policy 类型- `Financial`: Financial management policy。",
+				Description: "Organization 策略 类型- `Financial`: Financial management 策略。",
 			},
 
 			"permission_ids": {
@@ -43,7 +43,7 @@ func ResourceTencentCloudOrganizationOrgMember() *schema.Resource {
 					Type: schema.TypeInt,
 				},
 				Required:    true,
-				Description: "Financial management permission IDs.Valid values:- `1`: View bill.- `2`: Check balance.- `3`: Fund transfer.- `4`: Combine bill.- `5`: Issue an invoice.- `6`: Inherit discount.- `7`: Pay on behalf.值 1,2 为必填项。",
+				Description: "Financial management 权限 IDs.有效 值:- `1`: View bill.- `2`: Check balance.- `3`: Fund transfer.- `4`: Combine bill.- `5`: Issue invoice.- `6`: Inherit discount.- `7`: Pay 在 behalf.值 1,2 为必填项。",
 			},
 
 			"node_id": {
@@ -61,13 +61,13 @@ func ResourceTencentCloudOrganizationOrgMember() *schema.Resource {
 			"record_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Create member record ID.When create failed and needs to be recreated，为必填项。",
+				Description: "Create member 记录 ID.当 create failed 和 needs 到 是 recreated，为必填项。",
 			},
 
 			"pay_uin": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The uin which is payment 账号 on behalf.When `PermissionIds` 包含7，为必填项。",
+				Description: "uin 其中 是 payment 账号 在 behalf.当 `PermissionIds` 包含7，为必填项。",
 			},
 
 			"tags": {
@@ -80,13 +80,13 @@ func ResourceTencentCloudOrganizationOrgMember() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "是否force delete the member 账号 when deleting the organization member. It is only applicable to member accounts of the creation 类型，not to member accounts of the invitation 类型 默认为 false。",
+				Description: "是否force delete member 账号 当 deleting organization member. It 是 仅 applicable 到 member accounts 的 creation 类型，不 到 member accounts 的 invitation 类型 默认为 false。",
 			},
 
 			"is_modify_nick_name": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "是否synchronize organization member names to their 账号 nicknames. Values: 1 - Sync，0 - Do not sync. This parameter takes effect only when the 名称 field is being modified。",
+				Description: "是否synchronize organization member names 到 their 账号 nicknames. Values: 1 - Sync，0 - Do 不 sync. 此 参数 takes effect 仅 当 名称 字段 是 being modified。",
 			},
 
 			// computed
@@ -99,13 +99,13 @@ func ResourceTencentCloudOrganizationOrgMember() *schema.Resource {
 			"member_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Member 类型Valid values:- `Invite`: The member is invited.- `Create`: The member is created。",
+				Description: "Member 类型Valid 值:- `Invite`: member 是 invited.- `Create`: member 是 创建。",
 			},
 
 			"org_policy_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Organization policy 名称",
+				Description: "Organization 策略 名称",
 			},
 
 			"org_permission": {
@@ -131,7 +131,7 @@ func ResourceTencentCloudOrganizationOrgMember() *schema.Resource {
 			"is_allow_quit": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "是否allow member to leave the organization.Valid values:- `Allow`.- `Denied`。",
+				Description: "是否allow member 到 leave organization.有效 值:- `Allow`.- `Denied`。",
 			},
 
 			"create_time": {
@@ -149,7 +149,7 @@ func ResourceTencentCloudOrganizationOrgMember() *schema.Resource {
 			"pay_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The member 名称 which is payment 账号 on behalf。",
+				Description: "member 名称 其中 是 payment 账号 在 behalf。",
 			},
 		},
 	}

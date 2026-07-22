@@ -28,14 +28,14 @@ func ResourceTencentCloudRedisUpgradeMultiZoneOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "ID instance。",
+				Description: "ID 实例。",
 			},
 
 			"upgrade_proxy_and_redis_server": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "After you upgrade Multi-AZ，是否nearby access feature is supported.true: Supports nearby access.The upgrade process，which requires upgrading both the proxy 版本 and the Redis kernel minor 版本，involves data migration and can take several hours.false: No need to support nearby access.Upgrading Multi-AZ only involves managing metadata migration，with no service impact，and the upgrade process typically completes within 3 minutes。",
+				Description: "After 您 upgrade Multi-AZ，是否nearby 访问 功能 是 支持.true: Supports nearby 访问. upgrade process，其中 requires upgrading both proxy 版本 和 Redis kernel minor 版本，involves 数据 迁移 和 可以 take several hours.false: No need 到 support nearby 访问.Upgrading Multi-AZ 仅 involves managing metadata 迁移，使用 无 服务 impact，和 upgrade process typically completes within 3 minutes。",
 			},
 		},
 	}

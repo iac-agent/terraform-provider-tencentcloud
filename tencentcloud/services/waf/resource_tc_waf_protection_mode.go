@@ -32,20 +32,20 @@ func ResourceTencentCloudWafProtectionMode() *schema.Resource {
 			"mode": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Protection 状态:10: Rule observation; AI off 模式，11: Rule observation; AI observation 模式，12: Rule observation; AI interception mode20: Rule interception; AI off 模式，21: Rule interception; AI observation 模式，22: Rule interception; AI interception 模式",
+				Description: "Protection 状态:10: Rule observation; AI 关闭 模式，11: Rule observation; AI observation 模式，12: Rule observation; AI interception mode20: Rule interception; AI 关闭 模式，21: Rule interception; AI observation 模式，22: Rule interception; AI interception 模式",
 			},
 			"edition": {
 				Optional:     true,
 				Type:         schema.TypeString,
 				Default:      "sparta-waf",
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"clb-waf", "sparta-waf"}),
-				Description:  "WAF edition. clb-waf means clb-waf，sparta-waf means saas-waf，默认为 sparta-waf。",
+				Description:  "WAF edition. clb-waf 表示 clb-waf，sparta-waf 表示 saas-waf，默认为 sparta-waf。",
 			},
 			"type": {
 				Optional:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
-				Description:  "0 is to modify the rule engine 状态，1 is to modify the AI 状态",
+				Description:  "0 是 到 modify 规则 引擎 状态，1 是 到 modify AI 状态",
 			},
 		},
 	}

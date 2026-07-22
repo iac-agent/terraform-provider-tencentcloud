@@ -18,27 +18,27 @@ func DataSourceTencentCloudRedisInstances() *schema.Resource {
 			"zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID an available 可用区",
+				Description: "ID 可用 可用区",
 			},
 			"search_key": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "键 words 用于match the results，and the 键 words can be: instance ID，实例名称 and IP 地址",
+				Description: "键 words 用于match results，和 键 words 可以 是: 实例 ID，实例名称 和 IP 地址",
 			},
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "ID project to which redis instance belongs。",
+				Description: "ID 项目 到 其中 redis 实例 belongs。",
 			},
 			"limit": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "The number limitation of results for a query。",
+				Description: "数量 limitation 的 results 对于 查询。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "标签 of redis instance。",
+				Description: "标签 的 redis 实例。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -50,116 +50,116 @@ func DataSourceTencentCloudRedisInstances() *schema.Resource {
 			"instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A 列表 redis instance. Each element 包含following attributes:",
+				Description: "A 列表 redis 实例. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"redis_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID redis instance。",
+							Description: "ID redis 实例。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 a redis instance。",
+							Description: "名称 redis 实例。",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Available 可用区 to which a redis instance belongs。",
+							Description: "Available 可用区 到 其中 redis 实例 belongs。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "ID project to which a redis instance belongs。",
+							Description: "ID 项目 到 其中 redis 实例 belongs。",
 						},
 						"type_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "实例类型 Refer to `data.tencentcloud_redis_zone_config.list.type_id` get available values。",
+							Description: "实例类型 Refer 到 `数据.tencentcloud_redis_zone_config.列表.type_id` get 可用 值。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
 							Deprecated:  "It has been deprecated from version 1.33.1. Please use 'type_id' instead.",
-							Description: "实例类型 可用值：`master_slave_redis`，`master_slave_ckv`，`cluster_ckv`，`cluster_redis` and `standalone_redis`。",
+							Description: "实例类型 可用值：`master_slave_redis`，`master_slave_ckv`，`cluster_ckv`，`cluster_redis` 和 `standalone_redis`。",
 						},
 						"redis_shard_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 数量 instance shard。",
+							Description: "数量 实例 分片。",
 						},
 						"redis_replicas_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 数量 instance copies。",
+							Description: "数量 实例 copies。",
 						},
 						"mem_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Memory size （MB）。",
+							Description: "Memory 大小 （MB）。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Current 状态 an instance，maybe: `init`，`processing`，`online`，`isolate` and `todelete`。",
+							Description: "Current 状态 实例，maybe: `init`，`processing`，`online`，`isolate` 和 `todelete`。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID vpc with which the instance is associated。",
+							Description: "ID vpc 使用 其中 实例 是 associated。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID vpc subnet。",
+							Description: "ID vpc 子网。",
 						},
 						"ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IP 地址 of an instance。",
+							Description: "IP 地址 的 实例。",
 						},
 						"port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 端口 用于access a redis instance。",
+							Description: "端口 用于access redis 实例。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The time when the instance is created。",
+							Description: "时间 当 实例 是 创建。",
 						},
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "标签 of an instance。",
+							Description: "标签 的 实例。",
 						},
 						// payment
 						"charge_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The charge 类型 instance. Valid values are `POSTPAID` and `PREPAID`。",
+							Description: "charge 类型 实例. 有效 值 是 `POSTPAID` 和 `PREPAID`。",
 						},
 						"node_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "列表 instance node information. Currently，information about the node 类型 (master or replica) and node availability 可用区 can be passed in。",
+							Description: "列表 实例 节点 信息. Currently，信息 about 节点 类型 (master 或 副本) 和 节点 availability 可用区 可以 是 passed 在。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"master": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "表示是否node is master。",
+										Description: "表示是否node 是 master。",
 									},
 									"id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "ID master or replica node。",
+										Description: "ID master 或 副本 节点。",
 									},
 									"zone_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "ID availability 可用区 of the master or replica node。",
+										Description: "ID availability 可用区 的 master 或 副本 节点。",
 									},
 								},
 							},

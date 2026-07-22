@@ -19,51 +19,51 @@ func DataSourceTencentCloudDlcDescribeDataEngineImageVersions() *schema.Resource
 			"engine_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Engine 类型 only support: SparkSQL/PrestoSQL/SparkBatch。",
+				Description: "Engine 类型 仅 support: SparkSQL/PrestoSQL/SparkBatch。",
 			},
 
 			"sort": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sort fields: InsertTime (insert time，default)，UpdateTime (更新时间)。",
+				Description: "Sort 字段: InsertTime (insert 时间，默认值)，UpdateTime (更新时间)。",
 			},
 
 			"asc": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "排序方式: false (descending，default)，true (ascending)。",
+				Description: "排序方式: false (descending，默认值)，true (ascending)。",
 			},
 
 			"image_parent_versions": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Major 版本 of the image information 列表 clusters。",
+				Description: "Major 版本 的 镜像 信息 列表 clusters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"image_version_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID major 版本 of the image。",
+							Description: "ID major 版本 的 镜像。",
 						},
 						"image_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 major 版本 of the image。",
+							Description: "名称 major 版本 的 镜像。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "描述 major 版本 of the image。",
+							Description: "描述 major 版本 的 镜像。",
 						},
 						"is_public": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否为a public 版本: 1: public 版本; 2: private 版本",
+							Description: "是否为a 公有 版本: 1: 公有 版本; 2: 私有 版本",
 						},
 						"engine_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster types: SparkSQL，PrestoSQL，and SparkBatch。",
+							Description: "Cluster types: SparkSQL，PrestoSQL，和 SparkBatch。",
 						},
 						"is_shared_engine": {
 							Type:        schema.TypeInt,
@@ -78,7 +78,7 @@ func DataSourceTencentCloudDlcDescribeDataEngineImageVersions() *schema.Resource
 						"insert_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Insert time。",
+							Description: "Insert 时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,

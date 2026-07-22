@@ -25,7 +25,7 @@ func DataSourceTencentCloudCamGroupUserAccount() *schema.Resource {
 			"rp": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Number per page. The 默认为 20。",
+				Description: "Number per 页面. 默认为 20。",
 			},
 
 			"sub_uin": {
@@ -37,13 +37,13 @@ func DataSourceTencentCloudCamGroupUserAccount() *schema.Resource {
 			"total_num": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total 数量 用户 groups the sub-用户 has joined。",
+				Description: "总数 数量 用户 groups sub-用户 has joined。",
 			},
 
 			"group_info": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "用户 group information。",
+				Description: "用户 组 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"group_id": {

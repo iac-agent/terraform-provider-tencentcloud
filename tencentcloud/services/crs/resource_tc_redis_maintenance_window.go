@@ -26,7 +26,7 @@ func ResourceTencentCloudRedisMaintenanceWindow() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID instance。",
+				Description: "ID 实例。",
 			},
 
 			"start_time": {
@@ -38,7 +38,7 @@ func ResourceTencentCloudRedisMaintenanceWindow() *schema.Resource {
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The 结束时间 of the maintenance window，e.g. 19:00。",
+				Description: "结束时间 的 maintenance window，e.g. 19:00。",
 			},
 		},
 	}

@@ -35,7 +35,7 @@ func ResourceTencentCloudCcnRouteTableBroadcastPolicies() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "CCN Route table ID。",
+				Description: "CCN Route 表 ID。",
 			},
 			"policies": {
 				Required:    true,
@@ -68,7 +68,7 @@ func ResourceTencentCloudCcnRouteTableBroadcastPolicies() *schema.Resource {
 										Type:        schema.TypeList,
 										Required:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "列表 conditional values。",
+										Description: "列表 conditional 值。",
 									},
 									"match_pattern": {
 										Type:        schema.TypeInt,
@@ -93,7 +93,7 @@ func ResourceTencentCloudCcnRouteTableBroadcastPolicies() *schema.Resource {
 										Type:        schema.TypeList,
 										Required:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "列表 conditional values。",
+										Description: "列表 conditional 值。",
 									},
 									"match_pattern": {
 										Type:        schema.TypeInt,

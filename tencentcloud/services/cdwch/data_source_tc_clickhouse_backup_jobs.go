@@ -59,7 +59,7 @@ func DataSourceTencentCloudClickhouseBackupJobs() *schema.Resource {
 						"back_up_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Back up size。",
+							Description: "Back up 大小。",
 						},
 						"back_up_time": {
 							Type:        schema.TypeString,
@@ -69,7 +69,7 @@ func DataSourceTencentCloudClickhouseBackupJobs() *schema.Resource {
 						"expire_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Back up expire time。",
+							Description: "Back up expire 时间。",
 						},
 						"job_status": {
 							Type:        schema.TypeString,

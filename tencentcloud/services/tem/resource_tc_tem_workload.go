@@ -29,14 +29,14 @@ func ResourceTencentCloudTemWorkload() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "application ID。",
+				Description: "应用 ID。",
 			},
 
 			"environment_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "environment ID。",
+				Description: "环境 ID。",
 			},
 
 			"deploy_version": {
@@ -60,7 +60,7 @@ func ResourceTencentCloudTemWorkload() *schema.Resource {
 			"init_pod_num": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "initial pod number。",
+				Description: "initial pod 数量。",
 			},
 
 			"cpu_spec": {
@@ -93,25 +93,25 @@ func ResourceTencentCloudTemWorkload() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "security groups。",
+				Description: "安全 groups。",
 			},
 
 			"repo_type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "repo 类型 when deploy: 0: tcr personal; 1: tcr enterprise; 2: public repository; 3: tem 主机 tcr; 4: demo repo。",
+				Description: "repo 类型 当 deploy: 0: tcr personal; 1: tcr enterprise; 2: 公有 repository; 3: tem 主机 tcr; 4: demo repo。",
 			},
 
 			"repo_server": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "repo server addr when deploy by image。",
+				Description: "repo 服务器 addr 当 deploy 通过 镜像。",
 			},
 
 			"tcr_instance_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "tcr 实例 ID when deploy by image。",
+				Description: "tcr 实例 ID 当 deploy 通过 镜像。",
 			},
 
 			"env_conf": {
@@ -134,17 +134,17 @@ func ResourceTencentCloudTemWorkload() *schema.Resource {
 						"type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "env 类型，support default，referenced。",
+							Description: "env 类型，support 默认值，referenced。",
 						},
 						"config": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "referenced 配置 名称 when 类型=referenced。",
+							Description: "referenced 配置 名称 当 类型=referenced。",
 						},
 						"secret": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "referenced secret 名称 when 类型=referenced。",
+							Description: "referenced secret 名称 当 类型=referenced。",
 						},
 					},
 				},
@@ -153,23 +153,23 @@ func ResourceTencentCloudTemWorkload() *schema.Resource {
 			"storage_confs": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "storage configuration。",
+				Description: "存储 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"storage_vol_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "volume 名称",
+							Description: "卷 名称",
 						},
 						"storage_vol_ip": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "volume ip。",
+							Description: "卷 ip。",
 						},
 						"storage_vol_path": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "volume 路径",
+							Description: "卷 路径",
 						},
 					},
 				},
@@ -178,13 +178,13 @@ func ResourceTencentCloudTemWorkload() *schema.Resource {
 			"storage_mount_confs": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "storage mount configuration。",
+				Description: "存储 mount 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"volume_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "volume 名称",
+							Description: "卷 名称",
 						},
 						"mount_path": {
 							Type:        schema.TypeString,
@@ -205,7 +205,7 @@ func ResourceTencentCloudTemWorkload() *schema.Resource {
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "check 类型，support HttpGet，TcpSocket and Exec。",
+							Description: "check 类型，support HttpGet，TcpSocket 和 Exec。",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
@@ -220,7 +220,7 @@ func ResourceTencentCloudTemWorkload() *schema.Resource {
 						"exec": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "script。",
+							Description: "脚本。",
 						},
 						"port": {
 							Type:        schema.TypeInt,
@@ -230,17 +230,17 @@ func ResourceTencentCloudTemWorkload() *schema.Resource {
 						"initial_delay_seconds": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "initial 延迟 seconds for liveness check。",
+							Description: "initial 延迟 秒 对于 liveness check。",
 						},
 						"timeout_seconds": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "timeout seconds for liveness check。",
+							Description: "超时 秒 对于 liveness check。",
 						},
 						"period_seconds": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "周期 seconds for liveness check。",
+							Description: "周期 秒 对于 liveness check。",
 						},
 					},
 				},
@@ -256,7 +256,7 @@ func ResourceTencentCloudTemWorkload() *schema.Resource {
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "check 类型，support HttpGet，TcpSocket and Exec。",
+							Description: "check 类型，support HttpGet，TcpSocket 和 Exec。",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
@@ -271,7 +271,7 @@ func ResourceTencentCloudTemWorkload() *schema.Resource {
 						"exec": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "script。",
+							Description: "脚本。",
 						},
 						"port": {
 							Type:        schema.TypeInt,
@@ -281,17 +281,17 @@ func ResourceTencentCloudTemWorkload() *schema.Resource {
 						"initial_delay_seconds": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "initial 延迟 seconds for readiness check。",
+							Description: "initial 延迟 秒 对于 readiness check。",
 						},
 						"timeout_seconds": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "timeout seconds for readiness check。",
+							Description: "超时 秒 对于 readiness check。",
 						},
 						"period_seconds": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "周期 seconds for readiness check。",
+							Description: "周期 秒 对于 readiness check。",
 						},
 					},
 				},
@@ -307,7 +307,7 @@ func ResourceTencentCloudTemWorkload() *schema.Resource {
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "check 类型，support HttpGet，TcpSocket and Exec。",
+							Description: "check 类型，support HttpGet，TcpSocket 和 Exec。",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
@@ -322,7 +322,7 @@ func ResourceTencentCloudTemWorkload() *schema.Resource {
 						"exec": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "script。",
+							Description: "脚本。",
 						},
 						"port": {
 							Type:        schema.TypeInt,
@@ -332,17 +332,17 @@ func ResourceTencentCloudTemWorkload() *schema.Resource {
 						"initial_delay_seconds": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "initial 延迟 seconds for startup check。",
+							Description: "initial 延迟 秒 对于 startup check。",
 						},
 						"timeout_seconds": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "timeout seconds for startup check。",
+							Description: "超时 秒 对于 startup check。",
 						},
 						"period_seconds": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "周期 seconds for startup check。",
+							Description: "周期 秒 对于 startup check。",
 						},
 					},
 				},
@@ -358,27 +358,27 @@ func ResourceTencentCloudTemWorkload() *schema.Resource {
 						"deploy_strategy_type": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "strategy 类型，0 means auto，1 means manual，2 means manual with beta batch。",
+							Description: "strategy 类型，0 表示 auto，1 表示 manual，2 表示 manual 使用 beta batch。",
 						},
 						"beta_batch_num": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "beta batch number。",
+							Description: "beta batch 数量。",
 						},
 						"total_batch_count": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "total batch number。",
+							Description: "总数 batch 数量。",
 						},
 						"batch_interval": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "interval between batches。",
+							Description: "间隔 between batches。",
 						},
 						"min_available": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "minimal available instances duration deployment。",
+							Description: "minimal 可用 实例 时长 部署。",
 						},
 						"force": {
 							Type:        schema.TypeBool,

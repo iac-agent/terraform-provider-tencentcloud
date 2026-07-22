@@ -19,7 +19,7 @@ func DataSourceTencentCloudAsScalingPolicies() *schema.Resource {
 			"scaling_policy_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Scaling policy ID。",
+				Description: "Scaling 策略 ID。",
 			},
 			"scaling_group_id": {
 				Type:        schema.TypeString,
@@ -29,7 +29,7 @@ func DataSourceTencentCloudAsScalingPolicies() *schema.Resource {
 			"policy_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Scaling policy 名称",
+				Description: "Scaling 策略 名称",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -39,28 +39,28 @@ func DataSourceTencentCloudAsScalingPolicies() *schema.Resource {
 			"scaling_policy_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A 列表 scaling policy. Each element 包含following attributes:",
+				Description: "A 列表 scaling 策略. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"scaling_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scaling policy ID。",
+							Description: "Scaling 策略 ID。",
 						},
 						"policy_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scaling policy 名称",
+							Description: "Scaling 策略 名称",
 						},
 						"adjustment_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Adjustment 类型 scaling rule。",
+							Description: "Adjustment 类型 scaling 规则。",
 						},
 						"adjustment_value": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Adjustment 值 of the scaling rule。",
+							Description: "Adjustment 值 的 scaling 规则。",
 						},
 						"comparison_operator": {
 							Type:        schema.TypeString,
@@ -70,17 +70,17 @@ func DataSourceTencentCloudAsScalingPolicies() *schema.Resource {
 						"metric_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 an indicator。",
+							Description: "名称 indicator。",
 						},
 						"threshold": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Alarm threshold。",
+							Description: "Alarm 阈值。",
 						},
 						"period": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Time 周期 in second。",
+							Description: "Time 周期 在 second。",
 						},
 						"continuous_time": {
 							Type:        schema.TypeInt,
@@ -95,12 +95,12 @@ func DataSourceTencentCloudAsScalingPolicies() *schema.Resource {
 						"cooldown": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Cool down time of the scaling rule。",
+							Description: "Cool down 时间 的 scaling 规则。",
 						},
 						"notification_user_group_ids": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Users need to be notified when an alarm is triggered。",
+							Description: "Users need 到 是 notified 当 告警 是 triggered。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 					},

@@ -28,17 +28,17 @@ func DataSourceTencentCloudDomains() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     20,
-				Description: "指定data 限制 in range [1，100]. 默认值：20。",
+				Description: "指定data 限制 在 范围 [1，100]. 默认值：20。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "用于save response as file locally。",
+				Description: "用于save response 作为 文件 locally。",
 			},
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "域名 结果 list。",
+				Description: "域名 结果 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"auto_renew": {
@@ -49,7 +49,7 @@ func DataSourceTencentCloudDomains() *schema.Resource {
 						"is_premium": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否domain is premium。",
+							Description: "是否domain 是 premium。",
 						},
 						"domain_id": {
 							Type:        schema.TypeString,

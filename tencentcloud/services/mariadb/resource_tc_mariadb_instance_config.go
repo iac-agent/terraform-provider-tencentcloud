@@ -33,14 +33,14 @@ func ResourceTencentCloudMariadbInstanceConfig() *schema.Resource {
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
-				Description:  "RS proximity 模式，0- no strategy，1- access to the nearest available 可用区",
+				Description:  "RS proximity 模式，0- 无 strategy，1- 访问 到 nearest 可用 可用区",
 			},
 			"extranet_access": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
-				Description:  "External network 状态，0-closed; 1- Opening; Default not 已启用",
+				Description:  "External 网络 状态，0-closed; 1- Opening; Default 不 已启用",
 			},
 		},
 	}

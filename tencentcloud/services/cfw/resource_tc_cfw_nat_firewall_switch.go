@@ -41,7 +41,7 @@ func ResourceTencentCloudCfwNatFirewallSwitch() *schema.Resource {
 			"enable": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Switch，0: off，1: on。",
+				Description: "Switch，0: 关闭，1: 在。",
 			},
 		},
 	}

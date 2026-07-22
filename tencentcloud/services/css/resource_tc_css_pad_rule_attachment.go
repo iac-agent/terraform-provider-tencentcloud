@@ -36,14 +36,14 @@ func ResourceTencentCloudCssPadRuleAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Template id。",
+				Description: "模板 ID。",
 			},
 
 			"app_name": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Push 路径，must same with play 路径，默认为 live。",
+				Description: "Push 路径，必须 same 使用 play 路径，默认为 live。",
 			},
 
 			"stream_name": {

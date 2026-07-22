@@ -28,7 +28,7 @@ func ResourceTencentCloudSesEmailAddress() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Your sender 地址(You can create up to 10 sender addresses for each 域名)。",
+				Description: "Your sender 地址(You 可以 create up 到 10 sender addresses 对于 each 域名)。",
 			},
 
 			"email_sender_name": {
@@ -42,7 +42,7 @@ func ResourceTencentCloudSesEmailAddress() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Sensitive:   true,
-				Description: "密码 for SMTP，Length 限制 64。",
+				Description: "密码 对于 SMTP，Length 限制 64。",
 			},
 		},
 	}

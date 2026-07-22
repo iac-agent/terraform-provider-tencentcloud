@@ -50,7 +50,7 @@ func ResourceTencentCloudCamTagRoleAttachment() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Character 名称，at least one input with the character ID。",
+				Description: "Character 名称，在 least 一个 input 使用 character ID。",
 			},
 
 			"role_id": {
@@ -58,7 +58,7 @@ func ResourceTencentCloudCamTagRoleAttachment() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Character ID，at least one input with the character 名称",
+				Description: "Character ID，在 least 一个 input 使用 character 名称",
 			},
 		},
 	}

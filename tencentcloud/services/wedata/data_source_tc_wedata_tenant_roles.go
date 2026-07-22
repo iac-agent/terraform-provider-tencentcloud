@@ -18,13 +18,13 @@ func DataSourceTencentCloudWedataTenantRoles() *schema.Resource {
 			"role_display_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "角色 Chinese display 名称 fuzzy search，can only pass one 值",
+				Description: "角色 Chinese display 名称 fuzzy search，可以 仅 pass 一个 值",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Main 账号 角色 list。",
+				Description: "Main 账号 角色 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"role_id": {

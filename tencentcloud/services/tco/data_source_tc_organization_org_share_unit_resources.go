@@ -24,13 +24,13 @@ func DataSourceTencentCloudOrganizationOrgShareUnitResources() *schema.Resource 
 			"area": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Shared unit area。",
+				Description: "Shared 单位 area。",
 			},
 
 			"search_key": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search for keywords. Support product resource ID search。",
+				Description: "Search 对于 keywords. Support product 资源 ID search。",
 			},
 
 			"type": {
@@ -42,13 +42,13 @@ func DataSourceTencentCloudOrganizationOrgShareUnitResources() *schema.Resource 
 			"items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Shared unit resource list。",
+				Description: "Shared 单位 资源 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Shared resource ID。",
+							Description: "Shared 资源 ID。",
 						},
 						"type": {
 							Type:        schema.TypeString,
@@ -63,17 +63,17 @@ func DataSourceTencentCloudOrganizationOrgShareUnitResources() *schema.Resource 
 						"product_resource_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Product resource ID。",
+							Description: "Product 资源 ID。",
 						},
 						"shared_member_num": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "数量 shared unit members。",
+							Description: "数量 shared 单位 members。",
 						},
 						"shared_member_use_num": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "数量 shared unit members in use。",
+							Description: "数量 shared 单位 members 在 使用。",
 						},
 						"share_manager_uin": {
 							Type:        schema.TypeInt,

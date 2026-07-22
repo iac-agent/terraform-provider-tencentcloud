@@ -37,27 +37,27 @@ func ResourceTencentCloudCamSAMLProvider() *schema.Resource {
 			"description": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The 描述 CAM SAML provider。",
+				Description: "描述 CAM SAML provider。",
 			},
 			"meta_data": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The meta data document of the CAM SAML provider。",
+				Description: "meta 数据 document 的 CAM SAML provider。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The 创建时间 of the CAM SAML provider。",
+				Description: "创建时间 的 CAM SAML provider。",
 			},
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The last 更新时间 of the CAM SAML provider。",
+				Description: "last 更新时间 的 CAM SAML provider。",
 			},
 			"provider_arn": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The ARN of the CAM SAML provider。",
+				Description: "ARN 的 CAM SAML provider。",
 			},
 		},
 	}

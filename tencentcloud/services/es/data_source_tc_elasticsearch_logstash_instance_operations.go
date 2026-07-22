@@ -43,7 +43,7 @@ func DataSourceTencentCloudElasticsearchLogstashInstanceOperations() *schema.Res
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Id。",
+							Description: "ID。",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
@@ -64,7 +64,7 @@ func DataSourceTencentCloudElasticsearchLogstashInstanceOperations() *schema.Res
 									"old_info": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Instance original configuration information。",
+										Description: "实例 original 配置 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
@@ -83,7 +83,7 @@ func DataSourceTencentCloudElasticsearchLogstashInstanceOperations() *schema.Res
 									"new_info": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Configuration information after instance update。",
+										Description: "Configuration 信息 after 实例 update。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
@@ -110,23 +110,23 @@ func DataSourceTencentCloudElasticsearchLogstashInstanceOperations() *schema.Res
 						"tasks": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Task information。",
+							Description: "任务 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Task 名称",
+										Description: "任务 名称",
 									},
 									"progress": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Task progress。",
+										Description: "任务 progress。",
 									},
 									"finish_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Task completion time。",
+										Description: "任务 completion 时间。",
 									},
 									"sub_tasks": {
 										Type:        schema.TypeList,
@@ -165,7 +165,7 @@ func DataSourceTencentCloudElasticsearchLogstashInstanceOperations() *schema.Res
 														Type: schema.TypeString,
 													},
 													Computed:    true,
-													Description: "The 索引 名称 failed upgrade check。",
+													Description: "索引 名称 failed upgrade check。",
 												},
 												"finish_time": {
 													Type:        schema.TypeString,
@@ -183,7 +183,7 @@ func DataSourceTencentCloudElasticsearchLogstashInstanceOperations() *schema.Res
 									"elapsed_time": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Elapsed time。",
+										Description: "Elapsed 时间。",
 									},
 									"process_info": {
 										Type:        schema.TypeList,
@@ -209,7 +209,7 @@ func DataSourceTencentCloudElasticsearchLogstashInstanceOperations() *schema.Res
 												"task_type": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Task 类型 60: restart task 70: fragment migration task 80: node modification task。",
+													Description: "任务 类型 60: restart 任务 70: fragment 迁移 任务 80: 节点 modification 任务。",
 												},
 											},
 										},

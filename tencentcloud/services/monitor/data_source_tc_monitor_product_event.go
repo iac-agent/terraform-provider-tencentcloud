@@ -27,19 +27,19 @@ func DataSourceTencentCloudMonitorProductEvent() *schema.Resource {
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Optional:    true,
-				Description: "产品类型 filtering，such as `cvm` for cloud server。",
+				Description: "产品类型 filtering，such 作为 `cvm` 对于 云 服务器。",
 			},
 			"event_name": {
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Optional:    true,
-				Description: "事件名称 filtering，such as `guest_reboot` 表示that the machine restart。",
+				Description: "事件名称 filtering，such 作为 `guest_reboot` 表示that machine restart。",
 			},
 			"instance_id": {
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Optional:    true,
-				Description: "Affect objects，such as `ins-19708ino`。",
+				Description: "Affect objects，such 作为 `ins-19708ino`。",
 			},
 			"dimensions": {
 				Type:     schema.TypeList,
@@ -49,58 +49,58 @@ func DataSourceTencentCloudMonitorProductEvent() *schema.Resource {
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Instance dimension 名称，eg: `deviceWanIp` for internet ip。",
+							Description: "实例 dimension 名称，eg: `deviceWanIp` 对于 internet ip。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Instance dimension 值，eg: `119.119.119.119` for internet ip。",
+							Description: "实例 dimension 值，eg: `119.119.119.119` 对于 internet ip。",
 						},
 					},
 				},
-				Description: "Dimensional composition of instance objects。",
+				Description: "Dimensional composition 的 实例 objects。",
 			},
 			"region_list": {
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Optional:    true,
-				Description: "地域 filter，such as `gz`。",
+				Description: "地域 过滤器，such 作为 `gz`。",
 			},
 			"type": {
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Optional:    true,
-				Description: "Event type filtering, with value range " + helper.SliceFieldSerialize(monitorEventTypes) + ", indicating state change and abnormal events.",
+				Description: "Event 类型 filtering, 使用 值 范围" + helper.SliceFieldSerialize(monitorEventTypes) + ", indicating state change and abnormal events.",
 			},
 			"status": {
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Optional:    true,
-				Description: "Event status filter, value range " + helper.SliceFieldSerialize(monitorEventStatus) + ", indicating recovered, unrecovered and stateless.",
+				Description: "Event 状态 过滤器, 值 范围" + helper.SliceFieldSerialize(monitorEventStatus) + ", indicating recovered, unrecovered and stateless.",
 			},
 			"project_id": {
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Optional:    true,
-				Description: "项目 ID filter。",
+				Description: "项目 ID 过滤器。",
 			},
 			"is_alarm_config": {
 				Type:        schema.TypeInt,
 				Default:     0,
 				Optional:    true,
-				Description: "告警状态 configuration filter，1means configured，0(default) means not configured。",
+				Description: "告警状态 配置 过滤器，1means 已配置，0(默认值) 表示 不 已配置。",
 			},
 			"start_time": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     defaultStartTime,
-				Description: "Start 时间戳 for this query，eg:`1588230000`. Default 开始时间 is `now-3600`。",
+				Description: "Start 时间戳 对于 此 查询，eg:`1588230000`. Default 开始时间 是 `now-3600`。",
 			},
 			"end_time": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     defaultStartTime + 600,
-				Description: "End 时间戳 for this query，eg:`1588232111`. Default 开始时间 is `now-3000`。",
+				Description: "End 时间戳 对于 此 查询，eg:`1588232111`. Default 开始时间 是 `now-3000`。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -111,7 +111,7 @@ func DataSourceTencentCloudMonitorProductEvent() *schema.Resource {
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list events. Each element 包含following attributes:",
+				Description: "A 列表 events. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"event_id": {
@@ -152,73 +152,73 @@ func DataSourceTencentCloudMonitorProductEvent() *schema.Resource {
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The instance ID this event。",
+							Description: "实例 ID 此 事件。",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 this instance。",
+							Description: "名称 此 实例。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 地域 of this instance。",
+							Description: "地域 的 此 实例。",
 						},
 						"project_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "项目 ID this instance。",
+							Description: "项目 ID 此 实例。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "状态 this event。",
+							Description: "状态 此 事件。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "类型 this event。",
+							Description: "类型 此 事件。",
 						},
 						"start_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The start 时间戳 of this event。",
+							Description: "start 时间戳 的 此 事件。",
 						},
 						"update_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The update 时间戳 of this event。",
+							Description: "update 时间戳 的 此 事件。",
 						},
 						"support_alarm": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否support alarm。",
+							Description: "是否support 告警。",
 						},
 						"is_alarm_config": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否configure alarm。",
+							Description: "是否configure 告警。",
 						},
 						"dimensions": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "A 列表 event dimensions. Each element 包含following attributes:",
+							Description: "A 列表 事件 dimensions. Each element 包含following attributes:",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The 键 of this dimension。",
+										Description: "键 的 此 dimension。",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "名称 this dimension。",
+										Description: "名称 此 dimension。",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The 值 of this dimension。",
+										Description: "值 的 此 dimension。",
 									},
 								},
 							},
@@ -232,17 +232,17 @@ func DataSourceTencentCloudMonitorProductEvent() *schema.Resource {
 									"key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The 键 of this addition 消息",
+										Description: "键 的 此 addition 消息",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "名称 this addition 消息",
+										Description: "名称 此 addition 消息",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The 值 of this addition 消息",
+										Description: "值 的 此 addition 消息",
 									},
 								},
 							},
@@ -250,7 +250,7 @@ func DataSourceTencentCloudMonitorProductEvent() *schema.Resource {
 						"group_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "A 列表 group info. Each element 包含following attributes:",
+							Description: "A 列表 组 info. Each element 包含following attributes:",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"group_id": {

@@ -24,19 +24,19 @@ func DataSourceTencentCloudAPIGatewayUpstreams() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "ServiceId and ApiId filtering queries。",
+				Description: "ServiceId 和 ApiId filtering queries。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Fields that need to be filtered。",
+							Description: "Fields 该 need 到 是 filtered。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Required:    true,
-							Description: "The filtering 值 of the field。",
+							Description: "filtering 值 的 字段。",
 						},
 					},
 				},
@@ -70,7 +70,7 @@ func DataSourceTencentCloudAPIGatewayUpstreams() *schema.Resource {
 						"bind_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "binding time。",
+							Description: "binding 时间。",
 						},
 					},
 				},

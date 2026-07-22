@@ -25,35 +25,35 @@ func ResourceTencentCloudDbbrainTdsqlAuditLog() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Service product type, supported values include: dcdb - cloud database Tdsql, mariadb - cloud database MariaDB for MariaDB..",
+				Description: "Service product 类型, 支持 值 include: dcdb - 云 数据库 Tdsql, mariadb - 云 数据库 MariaDB 对于 MariaDB..",
 			},
 
 			"node_request_type": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Consistent with Product. For example: dcdb, mariadb.",
+				Description: "Consistent 使用 Product. For 示例: dcdb, mariadb.",
 			},
 
 			"instance_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 
 			"start_time": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Start time, such as `2019-09-10 12:13:14`.",
+				Description: "Start 时间, such 作为 `2019-09-10 12:13:14`.",
 			},
 
 			"end_time": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Deadline time, such as `2019-09-11 10:13:14`.",
+				Description: "Deadline 时间, such 作为 `2019-09-11 10:13:14`.",
 			},
 
 			"filter": {
@@ -61,7 +61,7 @@ func ResourceTencentCloudDbbrainTdsqlAuditLog() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Filter conditions. Logs can be filtered according to the filter conditions set.",
+				Description: "过滤器 conditions. Logs 可以 是 filtered according 到 过滤器 conditions 集合.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"host": {
@@ -80,7 +80,7 @@ func ResourceTencentCloudDbbrainTdsqlAuditLog() *schema.Resource {
 							},
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Database name.",
+							Description: "Database 名称.",
 						},
 						"user": {
 							Type: schema.TypeSet,
@@ -95,19 +95,19 @@ func ResourceTencentCloudDbbrainTdsqlAuditLog() *schema.Resource {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Return the number of rows. It means to filter the audit log with the number of returned rows greater than this value.",
+							Description: "Return 数量 的 rows. It 表示 到 过滤器 audit 日志 使用 数量 的 返回 rows greater 比 此 值.",
 						},
 						"affect_rows": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Number of affected rows. Indicates filtering audit logs whose affected rows are greater than this value.",
+							Description: "Number 的 affected rows. Indicates filtering audit logs whose affected rows 是 greater 比 此 值.",
 						},
 						"exec_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Execution time. The unit is: us. It means to filter the audit logs whose execution time is greater than this value.",
+							Description: "Execution 时间. 单位 是: us. It 表示 到 过滤器 audit logs whose execution 时间 是 greater 比 此 值.",
 						},
 					},
 				},

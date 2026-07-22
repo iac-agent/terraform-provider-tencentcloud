@@ -17,7 +17,7 @@ func DataSourceTencentCloudCcnBandwidthLimits() *schema.Resource {
 			"ccn_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID CCN to be queried。",
+				Description: "ID CCN 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -28,18 +28,18 @@ func DataSourceTencentCloudCcnBandwidthLimits() *schema.Resource {
 			"limits": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "The bandwidth limits of regions:",
+				Description: "带宽 limits 的 regions:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Limitation of 地域",
+							Description: "Limitation 的 地域",
 						},
 						"bandwidth_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Limitation of bandwidth。",
+							Description: "Limitation 的 带宽。",
 						},
 						"dst_region": {
 							Type:        schema.TypeString,

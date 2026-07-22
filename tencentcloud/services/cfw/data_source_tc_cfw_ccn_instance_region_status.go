@@ -24,7 +24,7 @@ func DataSourceTencentCloudCfwCcnInstanceRegionStatus() *schema.Resource {
 			"instance_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "列表 instance IDs associated with CCN for querying traffic steering network deployment 状态",
+				Description: "列表 实例 IDs associated 使用 CCN 对于 querying 流量 steering 网络 部署 状态",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -33,13 +33,13 @@ func DataSourceTencentCloudCfwCcnInstanceRegionStatus() *schema.Resource {
 			"routing_mode": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Traffic steering routing method，0: multi-route table，1: policy routing。",
+				Description: "Traffic steering routing 方法，0: multi-路由 表，1: 策略 routing。",
 			},
 
 			"region_fw_status": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "列表 regional firewall traffic steering network 状态",
+				Description: "列表 regional firewall 流量 steering 网络 状态",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
@@ -50,12 +50,12 @@ func DataSourceTencentCloudCfwCcnInstanceRegionStatus() *schema.Resource {
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Traffic steering network deployment 状态\n1. `NotDeployed` Firewall cluster not deployed.\n2. `Deployed` Firewall cluster deployed，but traffic steering network not created.\n3. `Auto` Firewall cluster deployed，and traffic steering network created with automatically selected network segment.\n4. `Custom` Firewall cluster deployed，and traffic steering network created with 用户-defined network segment。",
+							Description: "Traffic steering 网络 部署 状态\n1. `NotDeployed` Firewall 集群 不 deployed.\n2. `Deployed` Firewall 集群 deployed，但 流量 steering 网络 不 创建.\n3. `Auto` Firewall 集群 deployed，和 流量 steering 网络 创建 使用 automatically selected 网络 segment.\n4. `Custom` Firewall 集群 deployed，和 流量 steering 网络 创建 使用 用户-defined 网络 segment。",
 						},
 						"cidr": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CIDR of the traffic steering network，empty if traffic steering network is not deployed。",
+							Description: "CIDR 的 流量 steering 网络，空 如果 流量 steering 网络 是 不 deployed。",
 						},
 					},
 				},

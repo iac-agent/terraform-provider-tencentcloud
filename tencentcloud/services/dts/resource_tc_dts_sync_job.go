@@ -28,14 +28,14 @@ func ResourceTencentCloudDtsSyncJob() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "付费模式，可选 值 is PrePay or PostPay。",
+				Description: "付费模式，可选 值 是 PrePay 或 PostPay。",
 			},
 
 			"src_database_type": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "来源 database 类型",
+				Description: "来源 数据库 类型",
 			},
 
 			"src_region": {
@@ -49,7 +49,7 @@ func ResourceTencentCloudDtsSyncJob() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "destination database 类型",
+				Description: "destination 数据库 类型",
 			},
 
 			"dst_region": {
@@ -64,7 +64,7 @@ func ResourceTencentCloudDtsSyncJob() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "specification。",
+				Description: "规格。",
 			},
 
 			"tags": {
@@ -102,7 +102,7 @@ func ResourceTencentCloudDtsSyncJob() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "instance class。",
+				Description: "实例 class。",
 			},
 
 			"job_name": {

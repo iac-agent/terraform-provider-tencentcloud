@@ -30,62 +30,62 @@ func ResourceTencentCloudVpcFlowLog() *schema.Resource {
 			"flow_log_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The 名称 flow log instance。",
+				Description: "名称 flow 日志 实例。",
 			},
 			"resource_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "类型 resource associated with the flow log. 有效值：`VPC`，`SUBNET`，`NETWORKINTERFACE`，`CCN`，`NAT`，and `DCG`。",
+				Description: "类型 资源 associated 使用 flow 日志. 有效值：`VPC`，`SUBNET`，`NETWORKINTERFACE`，`CCN`，`NAT`，和 `DCG`。",
 			},
 			"resource_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The unique ID resource。",
+				Description: "唯一 ID 资源。",
 			},
 			"traffic_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "类型 flow logs to be collected. 有效值：`ACCEPT`，`REJECT` and `ALL`。",
+				Description: "类型 flow logs 到 是 collected. 有效值：`ACCEPT`，`REJECT` 和 `ALL`。",
 			},
 			"vpc_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The 私有网络 ID or unique ID resource. We recommend using the unique ID. This parameter 为必填项 unless the `ResourceType` is set to `CCN`。",
+				Description: "私有网络 ID 或 唯一 ID 资源. We recommend 使用 唯一 ID. 此 参数 为必填项 unless `ResourceType` 是 集合 到 `CCN`。",
 			},
 			"flow_log_description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The 描述 flow log。",
+				Description: "描述 flow 日志。",
 			},
 			"cloud_log_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The storage ID flow log。",
+				Description: "存储 ID flow 日志。",
 			},
 			"storage_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Consumer types: `cls` and `ckafka`。",
+				Description: "Consumer types: `cls` 和 `ckafka`。",
 			},
 			"flow_log_storage": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Information of the flow log consumer，必填 while `storage_type` is `ckafka`。",
+				Description: "Information 的 flow 日志 消费者，必填 while `storage_type` 是 `ckafka`。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"storage_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Storage instance ID，必填 while `storage_type` is `ckafka`。",
+							Description: "Storage 实例 ID，必填 while `storage_type` 是 `ckafka`。",
 						},
 						"storage_topic": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Topic ID，必填 while `storage_type` is `ckafka`。",
+							Description: "Topic ID，必填 while `storage_type` 是 `ckafka`。",
 						},
 					},
 				},
@@ -94,7 +94,7 @@ func ResourceTencentCloudVpcFlowLog() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The 地域 corresponding to the flow log storage ID. 如果未传入 in，this field 默认为 the current 地域",
+				Description: "地域 corresponding 到 flow 日志 存储 ID. 如果未传入 在，此 字段 默认为 当前 地域",
 			},
 			"tags": {
 				Type:        schema.TypeMap,

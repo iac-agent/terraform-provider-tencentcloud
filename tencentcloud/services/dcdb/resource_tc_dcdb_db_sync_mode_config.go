@@ -27,7 +27,7 @@ func ResourceTencentCloudDcdbDbSyncModeConfig() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID instance for which to modify the sync 模式 The ID is in the 格式 of `tdsql-ow728lmc`。",
+				Description: "ID 实例 对于 其中 到 modify sync 模式 ID 是 在 格式 的 `tdsql-ow728lmc`。",
 			},
 
 			"sync_mode": {

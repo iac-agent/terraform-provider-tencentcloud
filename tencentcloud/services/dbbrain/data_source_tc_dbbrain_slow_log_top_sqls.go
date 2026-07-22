@@ -19,43 +19,43 @@ func DataSourceTencentCloudDbbrainSlowLogTopSqls() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID.",
 			},
 
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Start time, such as `2019-09-10 12:13:14`.",
+				Description: "Start 时间, such 作为 `2019-09-10 12:13:14`.",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The deadline, such as `2019-09-11 10:13:14`, the interval between the deadline and the start time is less than 7 days.",
+				Description: "deadline, such 作为 `2019-09-11 10:13:14`, 间隔 between deadline 和 start 时间 是 less 比 7 days.",
 			},
 
 			"sort_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sort key, currently supports sort keys such as QueryTime, ExecTimes, RowsSent, LockTime and RowsExamined, the default is QueryTime.",
+				Description: "Sort 键, currently 支持 sort keys such 作为 QueryTime, ExecTimes, RowsSent, LockTime 和 RowsExamined, 默认值 是 QueryTime.",
 			},
 
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The sorting method supports ASC (ascending) and DESC (descending). The default is DESC.",
+				Description: "sorting 方法 支持 ASC (ascending) 和 DESC (descending). 默认值 是 DESC.",
 			},
 
 			"schema_list": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Array of database names.",
+				Description: "Array 的 数据库 names.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"schema": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "DB name.",
+							Description: "DB 名称.",
 						},
 					},
 				},
@@ -64,74 +64,74 @@ func DataSourceTencentCloudDbbrainSlowLogTopSqls() *schema.Resource {
 			"product": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Service product type, supported values include: `mysql` - cloud database MySQL, `cynosdb` - cloud database CynosDB for MySQL, the default is `mysql`.",
+				Description: "Service product 类型, 支持 值 include: `mysql` - 云 数据库 MySQL, `cynosdb` - 云 数据库 CynosDB 对于 MySQL, 默认值 是 `mysql`.",
 			},
 
 			"rows": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Slow log top sql list.",
+				Description: "Slow 日志 top sql 列表.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"lock_time": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "SQL total lock waiting time, in seconds.",
+							Description: "SQL 总数 lock waiting 时间, 在 秒.",
 						},
 						"lock_time_max": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Maximum lock waiting time, in seconds.",
+							Description: "Maximum lock waiting 时间, 在 秒.",
 						},
 						"lock_time_min": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Minimum lock waiting time, in seconds.",
+							Description: "Minimum lock waiting 时间, 在 秒.",
 						},
 						"rows_examined": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "total scan lines.",
+							Description: "总数 scan lines.",
 						},
 						"rows_examined_max": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum number of scan lines.",
+							Description: "Maximum 数量 的 scan lines.",
 						},
 						"rows_examined_min": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Minimum number of scan lines.",
+							Description: "Minimum 数量 的 scan lines.",
 						},
 						"query_time": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Total time, in seconds.",
+							Description: "Total 时间, 在 秒.",
 						},
 						"query_time_max": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "The maximum execution time, in seconds.",
+							Description: "最大 execution 时间, 在 秒.",
 						},
 						"query_time_min": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "The minimum execution time, in seconds.",
+							Description: "最小 execution 时间, 在 秒.",
 						},
 						"rows_sent": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "total number of rows returned.",
+							Description: "总数 数量 的 rows 返回.",
 						},
 						"rows_sent_max": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum number of rows returned.",
+							Description: "Maximum 数量 的 rows 返回.",
 						},
 						"rows_sent_min": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Minimum number of rows returned.",
+							Description: "Minimum 数量 的 rows 返回.",
 						},
 						"exec_times": {
 							Type:        schema.TypeInt,
@@ -146,57 +146,57 @@ func DataSourceTencentCloudDbbrainSlowLogTopSqls() *schema.Resource {
 						"sql_text": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "SQL with parameters (random).",
+							Description: "SQL 使用 参数 (random).",
 						},
 						"schema": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database name.",
+							Description: "Database 名称.",
 						},
 						"query_time_ratio": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Total time-consuming ratio, unit %.",
+							Description: "Total 时间-consuming ratio, 单位 %.",
 						},
 						"lock_time_ratio": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "The ratio of the total lock waiting time of SQL, in %.",
+							Description: "ratio 的 总数 lock waiting 时间 的 SQL, 在 %.",
 						},
 						"rows_examined_ratio": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "The proportion of the total number of scanned lines, unit %.",
+							Description: "proportion 的 总数 数量 的 scanned lines, 单位 %.",
 						},
 						"rows_sent_ratio": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "The proportion of the total number of rows returned, in %.",
+							Description: "proportion 的 总数 数量 的 rows 返回, 在 %.",
 						},
 						"query_time_avg": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Average execution time, in seconds.",
+							Description: "Average execution 时间, 在 秒.",
 						},
 						"rows_sent_avg": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "average number of rows returned.",
+							Description: "average 数量 的 rows 返回.",
 						},
 						"lock_time_avg": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Average lock waiting time, in seconds.",
+							Description: "Average lock waiting 时间, 在 秒.",
 						},
 						"rows_examined_avg": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "average number of lines scanned.",
+							Description: "average 数量 的 lines scanned.",
 						},
 						"md5": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "MD5 value of SOL template.",
+							Description: "MD5 值 的 SOL template.",
 						},
 					},
 				},
@@ -205,7 +205,7 @@ func DataSourceTencentCloudDbbrainSlowLogTopSqls() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

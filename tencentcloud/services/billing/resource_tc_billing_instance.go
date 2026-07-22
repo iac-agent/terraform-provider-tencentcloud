@@ -59,7 +59,7 @@ func ResourceTencentCloudBillingInstance() *schema.Resource {
 			"parameter": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Product detailed information。",
+				Description: "Product detailed 信息。",
 			},
 
 			"project_id": {
@@ -71,19 +71,19 @@ func ResourceTencentCloudBillingInstance() *schema.Resource {
 			"period": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Purchase duration，max number is 36，默认值为 1。",
+				Description: "Purchase 时长，max 数量 是 36，默认值为 1。",
 			},
 
 			"period_unit": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Purchase duration unit. 有效值：\nm: month,\ny: year. \ndefault 值 is: m。",
+				Description: "Purchase 时长 单位. 有效值：\nm: month,\ny: year. \ndefault 值 是: m。",
 			},
 
 			"renew_flag": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Auto-renewal flag. 有效值：NOTIFY_AND_MANUAL_RENEW: manually renew，NOTIFY_AND_AUTO_RENEW: automatically renew，DISABLE_NOTIFY_AND_MANUAL_RENEW: renewal is 已禁用 \n默认值为 NOTIFY_AND_MANUAL_RENEW。",
+				Description: "Auto-renewal flag. 有效值：NOTIFY_AND_MANUAL_RENEW: manually renew，NOTIFY_AND_AUTO_RENEW: automatically renew，DISABLE_NOTIFY_AND_MANUAL_RENEW: renewal 是 已禁用 \n默认值为 NOTIFY_AND_MANUAL_RENEW。",
 			},
 
 			// computed

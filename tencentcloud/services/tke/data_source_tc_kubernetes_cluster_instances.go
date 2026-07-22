@@ -19,13 +19,13 @@ func DataSourceTencentCloudKubernetesClusterInstances() *schema.Resource {
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID cluster。",
+				Description: "ID 集群。",
 			},
 
 			"instance_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "列表 node instance IDs to be obtained. If it is empty，it means pulling all node instances in the cluster。",
+				Description: "列表 节点 实例 IDs 到 是 获取. 如果 它 是 空，它 表示 pulling all 节点 实例 在 集群。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -40,18 +40,18 @@ func DataSourceTencentCloudKubernetesClusterInstances() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "列表 filter conditions. The 可选 values of 名称 are `nodepool-id` and `nodepool-instance-类型`. 名称 is `nodepool-id`，which means filtering machines based on node pool id，and 值 is the specific node pool id. 名称 is `nodepool-instance-类型`，which 表示how the node is added to the node pool. 值 is MANUALLY_ADDED (manually added to the node pool)，AUTOSCALING_ADDED (joined by scaling group expansion method)，ALL (manually join the node pool and join the node pool through scaling group expansion)。",
+				Description: "列表 过滤器 conditions. 可选 值 的 名称 是 `nodepool-ID` 和 `nodepool-实例-类型`. 名称 是 `nodepool-ID`，其中 表示 filtering machines based 在 节点 池 ID，和 值 是 特定 节点 池 ID. 名称 是 `nodepool-实例-类型`，其中 表示how 节点 是 added 到 节点 池. 值 是 MANUALLY_ADDED (manually added 到 节点 池)，AUTOSCALING_ADDED (joined 通过 scaling 组 expansion 方法)，ALL (manually join 节点 池 和 join 节点 池 through scaling 组 expansion)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The attribute 名称，if there are multiple filters，the relationship between the filters is a logical AND relationship。",
+							Description: "attribute 名称，如果 there 是 多个 filters， relationship between filters 是 logical AND relationship。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Attribute values，if there are multiple values in the same filter，the relationship between values under the same filter is a logical OR relationship。",
+							Description: "Attribute 值，如果 there 是 多个 值 在 same 过滤器， relationship between 值 under same 过滤器 是 logical OR relationship。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -63,7 +63,7 @@ func DataSourceTencentCloudKubernetesClusterInstances() *schema.Resource {
 			"instance_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "列表 instances in the cluster。",
+				Description: "列表 实例 在 集群。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
@@ -79,33 +79,33 @@ func DataSourceTencentCloudKubernetesClusterInstances() *schema.Resource {
 						"failed_reason": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Reasons for instance exception (or being initialized)。",
+							Description: "Reasons 对于 实例 exception (或 being initialized)。",
 						},
 						"instance_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 状态 instance (running，initializing，failed)。",
+							Description: "状态 实例 (running，initializing，failed)。",
 						},
 						"drain_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "是否instance is blocked。",
+							Description: "是否instance 是 blocked。",
 						},
 						"instance_advanced_settings": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Node configuration。",
+							Description: "Node 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"desired_pod_number": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "When the node belongs to the podCIDR size customization 模式，you can 指定upper 限制 of the 数量 pods running on the node。",
+										Description: "当 节点 belongs 到 podCIDR 大小 customization 模式，您 可以 指定upper 限制 的 数量 pods running 在 节点。",
 									},
 									"gpu_args": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "GPU driver related parameters，obtain related GPU parameters: https://cloud.tencent.com/document/api/213/15715。",
+										Description: "GPU 驱动 related 参数，obtain related GPU 参数: https://云.tencent.com/document/api/213/15715。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"mig_enable": {
@@ -116,18 +116,18 @@ func DataSourceTencentCloudKubernetesClusterInstances() *schema.Resource {
 												"driver": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "GPU driver 版本 information。",
+													Description: "GPU 驱动 版本 信息。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"version": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "GPU driver or CUDA 版本",
+																Description: "GPU 驱动 或 CUDA 版本",
 															},
 															"name": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "The 名称 GPU driver or CUDA。",
+																Description: "名称 GPU 驱动 或 CUDA。",
 															},
 														},
 													},
@@ -135,18 +135,18 @@ func DataSourceTencentCloudKubernetesClusterInstances() *schema.Resource {
 												"cuda": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "CUDA 版本 information。",
+													Description: "CUDA 版本 信息。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"version": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "GPU driver or CUDA 版本",
+																Description: "GPU 驱动 或 CUDA 版本",
 															},
 															"name": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "The 名称 GPU driver or CUDA。",
+																Description: "名称 GPU 驱动 或 CUDA。",
 															},
 														},
 													},
@@ -154,13 +154,13 @@ func DataSourceTencentCloudKubernetesClusterInstances() *schema.Resource {
 												"cudnn": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "CuDNN 版本 information。",
+													Description: "CuDNN 版本 信息。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"version": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "版本 of cuDNN。",
+																Description: "版本 的 cuDNN。",
 															},
 															"name": {
 																Type:        schema.TypeString,
@@ -183,13 +183,13 @@ func DataSourceTencentCloudKubernetesClusterInstances() *schema.Resource {
 												"custom_driver": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "Custom GPU driver information。",
+													Description: "Custom GPU 驱动 信息。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"address": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Custom GPU driver 地址 link。",
+																Description: "Custom GPU 驱动 地址 link。",
 															},
 														},
 													},
@@ -200,7 +200,7 @@ func DataSourceTencentCloudKubernetesClusterInstances() *schema.Resource {
 									"pre_start_user_script": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Base64 encoded 用户 script，executed before initializing the node，currently only effective for adding existing nodes。",
+										Description: "Base64 encoded 用户 脚本，executed before initializing 节点，currently 仅 effective 对于 adding existing nodes。",
 									},
 									"taints": {
 										Type:        schema.TypeList,
@@ -211,17 +211,17 @@ func DataSourceTencentCloudKubernetesClusterInstances() *schema.Resource {
 												"key": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "键 of taints mark。",
+													Description: "键 的 taints mark。",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "值 of taints mark。",
+													Description: "值 的 taints mark。",
 												},
 												"effect": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Effect of taints mark。",
+													Description: "Effect 的 taints mark。",
 												},
 											},
 										},
@@ -229,12 +229,12 @@ func DataSourceTencentCloudKubernetesClusterInstances() *schema.Resource {
 									"mount_target": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Data disk mount point，the data disk is not mounted by default. Formatted ext3，ext4，xfs file system data disks will be mounted directly. Other file systems or unformatted data disks will be automatically formatted as ext4 (tlinux system formatted as xfs) and mounted. Please pay attention to backing up the data. This setting does not take effect for cloud hosts that have no data disks or multiple data disks。",
+										Description: "Data 磁盘 mount point， 数据 磁盘 是 不 mounted 通过 默认值. Formatted ext3，ext4，xfs 文件 系统 数据 disks 将 是 mounted directly. Other 文件 systems 或 unformatted 数据 disks 将 是 automatically formatted 作为 ext4 (tlinux 系统 formatted 作为 xfs) 和 mounted. Please pay attention 到 backing up 数据. 此 setting does 不 take effect 对于 云 hosts 该 have 无 数据 disks 或 多个 数据 disks。",
 									},
 									"docker_graph_path": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Dockerd --graph 指定value，the 默认为 /var/lib/docker。",
+										Description: "Dockerd --graph 指定value， 默认为 /var/lib/docker。",
 									},
 									"user_script": {
 										Type:        schema.TypeString,
@@ -244,23 +244,23 @@ func DataSourceTencentCloudKubernetesClusterInstances() *schema.Resource {
 									"unschedulable": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Set 是否added node participates in scheduling. The 默认值为 0，which means participating in scheduling; non-0 means not participating in scheduling. After the node initialization is completed，you can execute kubectl uncordon nodename to join the node in scheduling。",
+										Description: "Set 是否added 节点 participates 在 scheduling. 默认值为 0，其中 表示 participating 在 scheduling; non-0 表示 不 participating 在 scheduling. After 节点 initialization 是 completed，您 可以 execute kubectl uncordon nodename 到 join 节点 在 scheduling。",
 									},
 									"labels": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Node 标签 array。",
+										Description: "Node 标签 数组。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "名称 in the map table。",
+													Description: "名称 在 map 表。",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "值 in map table。",
+													Description: "值 在 map 表。",
 												},
 											},
 										},
@@ -268,28 +268,28 @@ func DataSourceTencentCloudKubernetesClusterInstances() *schema.Resource {
 									"data_disks": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Multi-disk data disk mounting information。",
+										Description: "Multi-磁盘 数据 磁盘 mounting 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"disk_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Cloud disk 类型",
+													Description: "Cloud 磁盘 类型",
 												},
 												"file_system": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "File system (ext3/ext4/xfs)。",
+													Description: "File 系统 (ext3/ext4/xfs)。",
 												},
 												"disk_size": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Cloud disk size (G)。",
+													Description: "Cloud 磁盘 大小 (G)。",
 												},
 												"auto_format_and_mount": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "是否automatically 格式 the disk and mount it。",
+													Description: "是否automatically 格式 磁盘 和 mount 它。",
 												},
 												"mount_target": {
 													Type:        schema.TypeString,
@@ -299,7 +299,7 @@ func DataSourceTencentCloudKubernetesClusterInstances() *schema.Resource {
 												"disk_partition": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Mount device 名称 or partition 名称，必填 when and only when adding an existing node。",
+													Description: "Mount device 名称 或 分区 名称，必填 当 和 仅 当 adding existing 节点。",
 												},
 											},
 										},
@@ -307,13 +307,13 @@ func DataSourceTencentCloudKubernetesClusterInstances() *schema.Resource {
 									"extra_args": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Node-related custom parameter information。",
+										Description: "Node-related 自定义 参数 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"kubelet": {
 													Type:        schema.TypeSet,
 													Computed:    true,
-													Description: "Kubelet custom parameters。",
+													Description: "Kubelet 自定义 参数。",
 													Elem: &schema.Schema{
 														Type: schema.TypeString,
 													},
@@ -327,7 +327,7 @@ func DataSourceTencentCloudKubernetesClusterInstances() *schema.Resource {
 						"created_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Add time。",
+							Description: "Add 时间。",
 						},
 						"lan_ip": {
 							Type:        schema.TypeString,
@@ -337,7 +337,7 @@ func DataSourceTencentCloudKubernetesClusterInstances() *schema.Resource {
 						"node_pool_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource pool ID。",
+							Description: "Resource 池 ID。",
 						},
 						"autoscaling_group_id": {
 							Type:        schema.TypeString,

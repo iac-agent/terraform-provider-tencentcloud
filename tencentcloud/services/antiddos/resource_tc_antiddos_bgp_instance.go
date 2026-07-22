@@ -35,7 +35,7 @@ func ResourceTencentCloudAntiddosBgpInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "High-defense package types: Enterprise，Standard，StandardPlus (Standard Edition 2.0)。",
+				Description: "High-defense 包 types: Enterprise，Standard，StandardPlus (Standard Edition 2.0)。",
 			},
 
 			"instance_charge_prepaid": {
@@ -43,20 +43,20 @@ func ResourceTencentCloudAntiddosBgpInstance() *schema.Resource {
 				Optional:    true,
 				MaxItems:    1,
 				ForceNew:    true,
-				Description: "Prepaid configuration。",
+				Description: "Prepaid 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"period": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Purchase 周期 in months。",
+							Description: "Purchase 周期 在 months。",
 						},
 						"renew_flag": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "OTIFY_AND_MANUAL_RENEW: Notify the 用户 of the expiration date and do not automatically renew. NOTIFY_AND_AUTO_RENEW: Notify the 用户 of the expiration date and automatically renew. DISABLE_NOTIFY_AND_MANUAL_RENEW: Do not notify the 用户 of the expiration date and do not automatically renew. The default is: Notify the 用户 of the expiration date and do not automatically renew。",
+							Description: "OTIFY_AND_MANUAL_RENEW: Notify 用户 的 expiration date 和 do 不 automatically renew. NOTIFY_AND_AUTO_RENEW: Notify 用户 的 expiration date 和 automatically renew. DISABLE_NOTIFY_AND_MANUAL_RENEW: Do 不 notify 用户 的 expiration date 和 do 不 automatically renew. 默认值 是: Notify 用户 的 expiration date 和 do 不 automatically renew。",
 						},
 					},
 				},
@@ -67,14 +67,14 @@ func ResourceTencentCloudAntiddosBgpInstance() *schema.Resource {
 				Optional:    true,
 				MaxItems:    1,
 				ForceNew:    true,
-				Description: "Enterprise package configuration。",
+				Description: "Enterprise 包 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "The 地域 where the high-defense package was purchased。",
+							Description: "地域 其中 high-defense 包 是 purchased。",
 						},
 						"protect_ip_count": {
 							Type:        schema.TypeInt,
@@ -86,27 +86,27 @@ func ResourceTencentCloudAntiddosBgpInstance() *schema.Resource {
 							Type:        schema.TypeInt,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Guaranteed protection bandwidth。",
+							Description: "Guaranteed protection 带宽。",
 						},
 						"bandwidth": {
 							Type:        schema.TypeInt,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Service bandwidth scale。",
+							Description: "Service 带宽 scale。",
 						},
 						"elastic_protect_bandwidth": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							ForceNew:    true,
 							Computed:    true,
-							Description: "Elastic bandwidth (Gbps)，selectable elastic bandwidth [0，400，500，600，800，1000]，默认为 0。",
+							Description: "Elastic 带宽 (Gbps)，selectable elastic 带宽 [0，400，500，600，800，1000]，默认为 0。",
 						},
 						"elastic_bandwidth_flag": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							ForceNew:    true,
 							Computed:    true,
-							Description: "是否enable elastic service bandwidth. The 默认值为 false。",
+							Description: "是否enable elastic 服务 带宽. 默认值为 false。",
 						},
 					},
 				},
@@ -117,14 +117,14 @@ func ResourceTencentCloudAntiddosBgpInstance() *schema.Resource {
 				Optional:    true,
 				MaxItems:    1,
 				ForceNew:    true,
-				Description: "Standard package configuration。",
+				Description: "Standard 包 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "The 地域 where the high-defense package was purchased。",
+							Description: "地域 其中 high-defense 包 是 purchased。",
 						},
 						"protect_ip_count": {
 							Type:        schema.TypeInt,
@@ -136,14 +136,14 @@ func ResourceTencentCloudAntiddosBgpInstance() *schema.Resource {
 							Type:        schema.TypeInt,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Protected service bandwidth 50Mbps。",
+							Description: "Protected 服务 带宽 50Mbps。",
 						},
 						"elastic_bandwidth_flag": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							ForceNew:    true,
 							Computed:    true,
-							Description: "是否enable elastic service bandwidth. The 默认值为 false。",
+							Description: "是否enable elastic 服务 带宽. 默认值为 false。",
 						},
 					},
 				},
@@ -154,14 +154,14 @@ func ResourceTencentCloudAntiddosBgpInstance() *schema.Resource {
 				Optional:    true,
 				MaxItems:    1,
 				ForceNew:    true,
-				Description: "Standard Plus package configuration。",
+				Description: "Standard Plus 包 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "The 地域 where the high-defense package was purchased。",
+							Description: "地域 其中 high-defense 包 是 purchased。",
 						},
 						"protect_count": {
 							Type:        schema.TypeString,
@@ -179,14 +179,14 @@ func ResourceTencentCloudAntiddosBgpInstance() *schema.Resource {
 							Type:        schema.TypeInt,
 							Required:    true,
 							ForceNew:    true,
-							Description: "50Mbps protected bandwidth。",
+							Description: "50Mbps protected 带宽。",
 						},
 						"elastic_bandwidth_flag": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							ForceNew:    true,
 							Computed:    true,
-							Description: "是否enable elastic service bandwidth. The 默认值为 false。",
+							Description: "是否enable elastic 服务 带宽. 默认值为 false。",
 						},
 					},
 				},
@@ -196,7 +196,7 @@ func ResourceTencentCloudAntiddosBgpInstance() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Prepaid configuration。",
+				Description: "Prepaid 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
@@ -219,7 +219,7 @@ func ResourceTencentCloudAntiddosBgpInstance() *schema.Resource {
 			"resource_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Bgp instance ID。",
+				Description: "Bgp 实例 ID。",
 			},
 		},
 	}

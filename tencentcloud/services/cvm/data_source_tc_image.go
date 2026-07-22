@@ -24,19 +24,19 @@ func DataSourceTencentCloudImage() *schema.Resource {
 			"filter": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "One or more 名称/值 pairs to filter。",
+				Description: "One 或 more 名称/值 pairs 到 过滤器。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "键 of the filter，valid keys: `image-id`，`image-类型`，`image-名称`。",
+							Description: "键 的 过滤器，有效 keys: `镜像-ID`，`镜像-类型`，`镜像-名称`。",
 						},
 						"values": {
 							Type:        schema.TypeList,
 							Required:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Values of the filter。",
+							Description: "Values 的 过滤器。",
 						},
 					},
 				},
@@ -51,7 +51,7 @@ func DataSourceTencentCloudImage() *schema.Resource {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateNotEmpty,
-				Description:  "A string to apply with fuzzy match to the os_name attribute on the image list returned by TencentCloud. **NOTE**: when os_name is provided，highest 优先级 is applied in this field instead of `image_name_regex`。",
+				Description:  "A 字符串 到 apply 使用 fuzzy match 到 os_name attribute 在 镜像 列表 返回 通过 TencentCloud. **NOTE**: 当 os_name 是 提供，highest 优先级 是 applied 在 此 字段 instead 的 `image_name_regex`。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -61,12 +61,12 @@ func DataSourceTencentCloudImage() *schema.Resource {
 			"image_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "An image id indicate the uniqueness of a certain image， which can be 用于instance creation or resetting。",
+				Description: "An 镜像 ID indicate uniqueness 的 certain 镜像， 其中 可以 是 用于instance creation 或 resetting。",
 			},
 			"image_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "名称 this image。",
+				Description: "名称 此 镜像。",
 			},
 		},
 	}

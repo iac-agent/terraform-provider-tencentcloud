@@ -34,13 +34,13 @@ func ResourceTencentCloudOceanusResource() *schema.Resource {
 						"storage_type": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The available storage types for resource location are currently limited to 1:COS。",
+							Description: "可用 存储 types 对于 资源 location 是 currently limited 到 1:COS。",
 						},
 						"param": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Required:    true,
-							Description: "Json to describe resource location。",
+							Description: "Json 到 describe 资源 location。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"bucket": {
@@ -56,7 +56,7 @@ func ResourceTencentCloudOceanusResource() *schema.Resource {
 									"region": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Resource 地域，if not set，use resource 地域，note: this field may return null，indicating that no valid values can be obtained。",
+										Description: "Resource 地域，如果 不 集合，使用 资源 地域，note: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 									},
 								},
 							},
@@ -67,7 +67,7 @@ func ResourceTencentCloudOceanusResource() *schema.Resource {
 			"resource_type": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "资源类型，only support JAR now，值 is 1。",
+				Description: "资源类型，仅 support JAR now，值 是 1。",
 			},
 			"remark": {
 				Optional:    true,
@@ -87,7 +87,7 @@ func ResourceTencentCloudOceanusResource() *schema.Resource {
 			"folder_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Folder id。",
+				Description: "Folder ID。",
 			},
 			"work_space_id": {
 				Optional:    true,

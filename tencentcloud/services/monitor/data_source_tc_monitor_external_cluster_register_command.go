@@ -17,19 +17,19 @@ func DataSourceTencentCloudMonitorExternalClusterRegisterCommand() *schema.Resou
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "TMP instance ID。",
+				Description: "TMP 实例 ID。",
 			},
 
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "External cluster ID。",
+				Description: "External 集群 ID。",
 			},
 
 			"command": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Register command，包含YAML configuration for Kubernetes cluster installation。",
+				Description: "Register command，包含YAML 配置 对于 Kubernetes 集群 installation。",
 			},
 
 			"result_output_file": {

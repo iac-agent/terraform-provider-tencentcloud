@@ -29,7 +29,7 @@ func ResourceTencentCloudCamServiceLinkedRole() *schema.Resource {
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Required:    true,
 				ForceNew:    true,
-				Description: "Authorization service，the Tencent Cloud service principal with this 角色 attached。",
+				Description: "Authorization 服务， Tencent Cloud 服务 principal 使用 此 角色 attached。",
 			},
 
 			"custom_suffix": {
@@ -37,7 +37,7 @@ func ResourceTencentCloudCamServiceLinkedRole() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Computed:    true,
-				Description: "The custom suffix，based on the string you provide，is combined with the prefix provided by the service to form the full 角色 名称 This field is not allowed to contain the character `_`。",
+				Description: "自定义 suffix，based 在 字符串 您 provide，是 combined 使用 prefix 提供 通过 服务 到 form full 角色 名称 此 字段 是 不 allowed 到 contain character `_`。",
 			},
 
 			"description": {

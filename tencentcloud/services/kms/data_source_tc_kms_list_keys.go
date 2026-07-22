@@ -19,12 +19,12 @@ func DataSourceTencentCloudKmsListKeys() *schema.Resource {
 			"role": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Filter based on the 创建者 角色 The 默认值为 0，which 表示cmk created by the 用户 himself，and 1，which 表示cmk automatically created by authorizing other cloud products。",
+				Description: "过滤器 based 在 创建者 角色 默认值为 0，其中 表示cmk 创建 通过 用户 himself，和 1，其中 表示cmk automatically 创建 通过 authorizing other 云 products。",
 			},
 			"hsm_cluster_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "HSM cluster ID (only valid for KMS exclusive/managed service instances)。",
+				Description: "HSM 集群 ID (仅 有效 对于 KMS exclusive/managed 服务 实例)。",
 			},
 			"keys": {
 				Type:        schema.TypeList,

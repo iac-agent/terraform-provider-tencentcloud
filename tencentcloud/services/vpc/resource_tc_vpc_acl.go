@@ -31,36 +31,36 @@ func ResourceTencentCloudVpcACL() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateNotEmpty,
-				Description:  "ID VPC instance。",
+				Description:  "ID VPC 实例。",
 			},
 			"name": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(0, 60),
-				Description:  "名称 network ACL。",
+				Description:  "名称 网络 ACL。",
 			},
 			"ingress": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Ingress rules. A rule must match the following 格式: [操作]#[cidr_ip]#[端口]#[协议]#[描述]. The available 值 of `操作` is `ACCEPT` and `DROP`. The `cidr_ip` must be an IP 地址 network or segment. The `端口` valid 格式 is `80`，`80-90` or `ALL`. The available 值 of '协议' is `TCP`，`UDP`，`ICMP` and `ALL`. When `协议` is `ICMP` or `ALL`，the '端口' must be `ALL`. The `描述` 内容 must be in uppercase。",
+				Description: "Ingress 规则. A 规则 必须 match following 格式: [操作]#[cidr_ip]#[端口]#[协议]#[描述]. 可用 值 的 `操作` 是 `ACCEPT` 和 `DROP`. `cidr_ip` 必须 是 IP 地址 网络 或 segment. `端口` 有效 格式 是 `80`，`80-90` 或 `ALL`. 可用 值 的 '协议' 是 `TCP`，`UDP`，`ICMP` 和 `ALL`. 当 `协议` 是 `ICMP` 或 `ALL`， '端口' 必须 是 `ALL`. `描述` 内容 必须 是 在 uppercase。",
 			},
 			"egress": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Egress rules. A rule must match the following 格式: [操作]#[cidr_ip]#[端口]#[协议]#[描述]. The available 值 of `操作` is `ACCEPT` and `DROP`. The `cidr_ip` must be an IP 地址 network or segment. The `端口` valid 格式 is `80`，`80-90` or `ALL`. The available 值 of `协议` is `TCP`，`UDP`，`ICMP` and `ALL`. When `协议` is `ICMP` or `ALL`，the `端口` must be `ALL`. The `描述` 内容 must be in uppercase。",
+				Description: "Egress 规则. A 规则 必须 match following 格式: [操作]#[cidr_ip]#[端口]#[协议]#[描述]. 可用 值 的 `操作` 是 `ACCEPT` 和 `DROP`. `cidr_ip` 必须 是 IP 地址 网络 或 segment. `端口` 有效 格式 是 `80`，`80-90` 或 `ALL`. 可用 值 的 `协议` 是 `TCP`，`UDP`，`ICMP` 和 `ALL`. 当 `协议` 是 `ICMP` 或 `ALL`， `端口` 必须 是 `ALL`. `描述` 内容 必须 是 在 uppercase。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "标签 of the vpc acl。",
+				Description: "标签 的 vpc acl。",
 			},
 			//compute
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 of ACL。",
+				Description: "创建时间 的 ACL。",
 			},
 		},
 	}

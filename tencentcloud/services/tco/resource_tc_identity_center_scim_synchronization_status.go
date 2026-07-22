@@ -26,7 +26,7 @@ func ResourceTencentCloudIdentityCenterScimSynchronizationStatus() *schema.Resou
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Space ID. z-prefix starts with 12 random digits/lowercase letters。",
+				Description: "Space ID. z-prefix starts 使用 12 random digits/lowercase letters。",
 			},
 
 			"scim_synchronization_status": {

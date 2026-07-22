@@ -26,7 +26,7 @@ func DataSourceTencentCloudDcdbSecurityGroups() *schema.Resource {
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "security group list。",
+				Description: "安全 组 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"project_id": {
@@ -47,12 +47,12 @@ func DataSourceTencentCloudDcdbSecurityGroups() *schema.Resource {
 						"security_group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "security 组名称",
+							Description: "安全 组名称",
 						},
 						"inbound": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "inbound rules。",
+							Description: "inbound 规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"cidr_ip": {
@@ -63,12 +63,12 @@ func DataSourceTencentCloudDcdbSecurityGroups() *schema.Resource {
 									"action": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "policy 操作",
+										Description: "策略 操作",
 									},
 									"port_range": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "端口 range。",
+										Description: "端口 范围。",
 									},
 									"ip_protocol": {
 										Type:        schema.TypeString,
@@ -81,7 +81,7 @@ func DataSourceTencentCloudDcdbSecurityGroups() *schema.Resource {
 						"outbound": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "outbound rules。",
+							Description: "outbound 规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"cidr_ip": {
@@ -92,12 +92,12 @@ func DataSourceTencentCloudDcdbSecurityGroups() *schema.Resource {
 									"action": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "policy 操作",
+										Description: "策略 操作",
 									},
 									"port_range": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "端口 range。",
+										Description: "端口 范围。",
 									},
 									"ip_protocol": {
 										Type:        schema.TypeString,

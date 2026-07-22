@@ -28,7 +28,7 @@ func ResourceTencentCloudVpcLocalGateway() *schema.Resource {
 			"local_gateway_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Local gateway 名称",
+				Description: "Local 网关 名称",
 			},
 
 			"vpc_id": {

@@ -27,26 +27,26 @@ func ResourceTencentCloudProject() *schema.Resource {
 			"project_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "名称 project。",
+				Description: "名称 项目。",
 			},
 
 			"info": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "描述 project。",
+				Description: "描述 项目。",
 			},
 
 			"disable": {
 				Optional:    true,
 				Default:     0,
 				Type:        schema.TypeInt,
-				Description: "If disable project. 1 means disable，0 means enable. Default 0。",
+				Description: "如果 disable 项目. 1 表示 disable，0 表示 启用. Default 0。",
 			},
 
 			"creator_uin": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Uin of 创建者",
+				Description: "Uin 的 创建者",
 			},
 
 			"create_time": {

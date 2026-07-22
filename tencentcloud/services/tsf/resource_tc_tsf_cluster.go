@@ -53,25 +53,25 @@ func ResourceTencentCloudTsfCluster() *schema.Resource {
 			"cluster_cidr": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "CIDR assigned to cluster containers and service IP。",
+				Description: "CIDR assigned 到 集群 containers 和 服务 IP。",
 			},
 
 			"cluster_desc": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "cluster notes。",
+				Description: "集群 notes。",
 			},
 
 			"tsf_region_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The TSF 地域 to which the cluster belongs。",
+				Description: "TSF 地域 到 其中 集群 belongs。",
 			},
 
 			"tsf_zone_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The TSF availability 可用区 to which the cluster belongs。",
+				Description: "TSF availability 可用区 到 其中 集群 belongs。",
 			},
 
 			"subnet_id": {
@@ -83,25 +83,25 @@ func ResourceTencentCloudTsfCluster() *schema.Resource {
 			"cluster_version": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "cluster 版本",
+				Description: "集群 版本",
 			},
 
 			"max_node_pod_num": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The 最大Pods on each Node in the cluster. The 值 ranges from 4 to 256. When the 值 is not a power of 2，the nearest power of 2 will be taken up。",
+				Description: "最大Pods 在 each Node 在 集群. 值 ranges 从 4 到 256. 当 值 是 不 power 的 2， nearest power 的 2 将 是 taken up。",
 			},
 
 			"max_cluster_service_num": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The 最大services in the cluster. The 值 ranges from 32 to 32768. If it is not a power of 2，the nearest power of 2 will be taken up。",
+				Description: "最大services 在 集群. 值 ranges 从 32 到 32768. 如果 它 是 不 power 的 2， nearest power 的 2 将 是 taken up。",
 			},
 
 			"program_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The dataset ID to be bound。",
+				Description: "dataset ID 到 是 bound。",
 			},
 
 			"kubernete_api_server": {
@@ -113,7 +113,7 @@ func ResourceTencentCloudTsfCluster() *schema.Resource {
 			"kubernete_native_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "`K`:kubeconfig，`S`:service 账号",
+				Description: "`K`:kubeconfig，`S`:服务 账号",
 			},
 
 			"kubernete_native_secret": {
@@ -128,61 +128,61 @@ func ResourceTencentCloudTsfCluster() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Program id list。",
+				Description: "Program ID 列表。",
 			},
 
 			"cluster_status": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "cluster 状态",
+				Description: "集群 状态",
 			},
 
 			"cluster_total_cpu": {
 				Computed:    true,
 				Type:        schema.TypeFloat,
-				Description: "The total CPU of the cluster，unit: core。",
+				Description: "总数 CPU 的 集群，单位: core。",
 			},
 
 			"cluster_total_mem": {
 				Computed:    true,
 				Type:        schema.TypeFloat,
-				Description: "The total memory of the cluster，unit: G。",
+				Description: "总数 内存 的 集群，单位: G。",
 			},
 
 			"cluster_used_cpu": {
 				Computed:    true,
 				Type:        schema.TypeFloat,
-				Description: "CPU used by the cluster，unit: core。",
+				Description: "CPU 使用 通过 集群，单位: core。",
 			},
 
 			"cluster_used_mem": {
 				Computed:    true,
 				Type:        schema.TypeFloat,
-				Description: "The memory used by the cluster，unit: G。",
+				Description: "内存 使用 通过 集群，单位: G。",
 			},
 
 			"instance_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "数量 cluster machine instances。",
+				Description: "数量 集群 machine 实例。",
 			},
 
 			"run_instance_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "数量 machine instances running in the cluster。",
+				Description: "数量 machine 实例 running 在 集群。",
 			},
 
 			"normal_instance_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The 数量 machine instances in the normal state of the cluster。",
+				Description: "数量 machine 实例 在 normal state 的 集群。",
 			},
 
 			"delete_flag": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Delete flag: `true`: can be deleted; `false`: can not be deleted。",
+				Description: "Delete flag: `true`: 可以 是 删除; `false`: 可以 不 是 删除。",
 			},
 
 			"create_time": {
@@ -200,19 +200,19 @@ func ResourceTencentCloudTsfCluster() *schema.Resource {
 			"tsf_region_name": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "名称 TSF 地域 to which the cluster belongs。",
+				Description: "名称 TSF 地域 到 其中 集群 belongs。",
 			},
 
 			"tsf_zone_name": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The 名称 TSF availability 可用区 to which the cluster belongs。",
+				Description: "名称 TSF availability 可用区 到 其中 集群 belongs。",
 			},
 
 			"delete_flag_reason": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Reasons why clusters cannot be deleted。",
+				Description: "Reasons why clusters 不能 是 删除。",
 			},
 
 			"cluster_limit_cpu": {
@@ -224,41 +224,41 @@ func ResourceTencentCloudTsfCluster() *schema.Resource {
 			"cluster_limit_mem": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster remaining memory 限制",
+				Description: "Cluster remaining 内存 限制",
 			},
 
 			"run_service_instance_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "数量 running service instances。",
+				Description: "数量 running 服务 实例。",
 			},
 
 			"operation_info": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Control information for buttons on the front end。",
+				Description: "Control 信息 对于 buttons 在 front end。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"init": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Initialize the control information of the button。",
+							Description: "Initialize control 信息 的 button。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"disabled_reason": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Reason for not showing。",
+										Description: "Reason 对于 不 showing。",
 									},
 									"enabled": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Is the button clickable。",
+										Description: "Is button clickable。",
 									},
 									"supported": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "是否show the button。",
+										Description: "是否show button。",
 									},
 								},
 							},
@@ -266,23 +266,23 @@ func ResourceTencentCloudTsfCluster() *schema.Resource {
 						"add_instance": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Add the control information of the instance button。",
+							Description: "Add control 信息 的 实例 button。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"disabled_reason": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Reason for not showing。",
+										Description: "Reason 对于 不 showing。",
 									},
 									"enabled": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Is the button clickable。",
+										Description: "Is button clickable。",
 									},
 									"supported": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "是否show the button。",
+										Description: "是否show button。",
 									},
 								},
 							},
@@ -290,23 +290,23 @@ func ResourceTencentCloudTsfCluster() *schema.Resource {
 						"destroy": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Destroy the control information of the machine。",
+							Description: "Destroy control 信息 的 machine。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"disabled_reason": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Reason for not showing。",
+										Description: "Reason 对于 不 showing。",
 									},
 									"enabled": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Is the button clickable。",
+										Description: "Is button clickable。",
 									},
 									"supported": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "是否show the button。",
+										Description: "是否show button。",
 									},
 								},
 							},
@@ -318,32 +318,32 @@ func ResourceTencentCloudTsfCluster() *schema.Resource {
 			"group_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Total 数量 deployment groups。",
+				Description: "Total 数量 部署 groups。",
 			},
 
 			"run_group_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "数量 Deployment Groups in progress。",
+				Description: "数量 Deployment Groups 在 progress。",
 			},
 
 			"stop_group_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "数量 deployment groups in stop。",
+				Description: "数量 部署 groups 在 stop。",
 			},
 
 			"abnormal_group_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Abnormal 数量 deployment groups。",
+				Description: "Abnormal 数量 部署 groups。",
 			},
 
 			"cluster_remark_name": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "cluster 备注 名称",
+				Description: "集群 备注 名称",
 			},
 
 			"tags": {

@@ -41,13 +41,13 @@ func ResourceTencentCloudMonitorTmpInstance() *schema.Resource {
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Subnet Id。",
+				Description: "Subnet ID。",
 			},
 
 			"data_retention_time": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Data retention time(in days). 取值范围：15，30，45，90，180，365，730。",
+				Description: "Data retention 时间(在 days). 取值范围：15，30，45，90，180，365，730。",
 			},
 
 			"zone": {
@@ -65,13 +65,13 @@ func ResourceTencentCloudMonitorTmpInstance() *schema.Resource {
 			"ipv4_address": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Instance IPv4 地址",
+				Description: "实例 IPv4 地址",
 			},
 
 			"remote_write": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Prometheus remote write 地址",
+				Description: "Prometheus 远程 write 地址",
 			},
 
 			"api_root_path": {

@@ -17,13 +17,13 @@ func DataSourceTencentCloudSubdomainValidateStatus() *schema.Resource {
 			"domain_zone": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "可用区 域名 for which to view the verification 状态 TXT records。",
+				Description: "可用区 域名 对于 其中 到 view verification 状态 TXT records。",
 			},
 
 			"status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "状态 0: not ready; 1: ready。",
+				Description: "状态 0: 不 ready; 1: ready。",
 			},
 
 			"result_output_file": {

@@ -45,54 +45,54 @@ func ResourceTencentCloudCosBatch() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "是否confirm before performing the task. The 默认为 false。",
+				Description: "是否confirm before performing 任务. 默认为 false。",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Mission 描述 If you configured this information when you created the task，the 内容 is returned. The 描述 length ranges from 0 to 256 bytes。",
+				Description: "Mission 描述 如果 您 已配置 此 信息 当 您 创建 任务， 内容 是 返回. 描述 长度 ranges 从 0 到 256 bytes。",
 			},
 			"priority": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Mission 优先级 The higher the 值，the higher the 优先级 of the task. 优先级 values range from 0 to 2147483647。",
+				Description: "Mission 优先级 higher 值， higher 优先级 的 任务. 优先级 值 范围 从 0 到 2147483647。",
 			},
 			"role_arn": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "COS resource identifier，which is 用于identify the 角色 you created. You need this resource identifier to verify your identity。",
+				Description: "COS 资源 identifier，其中 是 用于identify 角色 您 创建. You need 此 资源 identifier 到 verify your identity。",
 			},
 			"manifest": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "列表 objects to be processed。",
+				Description: "列表 objects 到 是 processed。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"location": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Required:    true,
-							Description: "The location information of the 列表 objects。",
+							Description: "location 信息 的 列表 objects。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"etag": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "指定etag of the object list. Length 1-1024 bytes。",
+										Description: "指定etag 的 对象 列表. Length 1-1024 bytes。",
 									},
 									"object_arn": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "指定unique resource identifier of the object manifest，which is 1-1024 bytes long。",
+										Description: "指定unique 资源 identifier 的 对象 manifest，其中 是 1-1024 bytes long。",
 									},
 									"object_version_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "指定version of the object manifest ID，which is 1-1024 bytes long。",
+										Description: "指定version 的 对象 manifest ID，其中 是 1-1024 bytes long。",
 									},
 								},
 							},
@@ -101,19 +101,19 @@ func ResourceTencentCloudCosBatch() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Required:    true,
-							Description: "格式 information that describes the 列表 objects. If it is a CSV file，this element describes the fields contained in the manifest。",
+							Description: "格式 信息 该 describes 列表 objects. 如果 它 是 CSV 文件，此 element describes 字段 contained 在 manifest。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"fields": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "Describes the fields contained in the listing，which you need to use to 指定CSV file fields when 格式 is COSBatchOperations_CSV_V1. Legal fields are: Ignore，存储桶，键，VersionId。",
+										Description: "Describes 字段 contained 在 listing，其中 您 need 到 使用 到 指定CSV 文件 字段 当 格式 是 COSBatchOperations_CSV_V1. Legal 字段 是: Ignore，存储桶，键，VersionId。",
 									},
 									"format": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "指定format information for the 列表 objects. Legal fields are: COSBatchOperations_CSV_V1，COSInventoryReport_CSV_V1。",
+										Description: "指定format 信息 对于 列表 objects. Legal 字段 是: COSBatchOperations_CSV_V1，COSInventoryReport_CSV_V1。",
 									},
 								},
 							},
@@ -126,20 +126,20 @@ func ResourceTencentCloudCosBatch() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Select the 操作 to be performed on the objects in the manifest file。",
+				Description: "Select 操作 到 是 performed 在 objects 在 manifest 文件。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cos_put_object_copy": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "指定specific parameters for the batch copy operation on the objects in the list。",
+							Description: "指定specific 参数 对于 batch copy operation 在 objects 在 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"access_control_directive": {
 										Type:     schema.TypeString,
 										Optional: true,
-										Description: "This element specifies how ACL is copied. Valid values:\n" +
+										Description: "此 element specifies how ACL 是 copied. 有效 值:\n" +
 											"- Copy: inherits the source object ACL\n" +
 											"- Replaced: replace source ACL\n" +
 											"- Add: add a new ACL based on the source ACL.",
@@ -148,7 +148,7 @@ func ResourceTencentCloudCosBatch() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "Controls the specific access to the object。",
+										Description: "Controls 特定 访问 到 对象。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"display_name": {
@@ -159,17 +159,17 @@ func ResourceTencentCloudCosBatch() *schema.Resource {
 												"identifier": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "用户 ID (UIN) in qcs 格式 For example: qcs::cam::uin/100000000001:uin/100000000001。",
+													Description: "用户 ID (UIN) 在 qcs 格式 For 示例: qcs::cam::uin/100000000001:uin/100000000001。",
 												},
 												"type_identifier": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "指定type of Identifier. Currently，only 用户 ID is supported. Enumerated 值: ID。",
+													Description: "指定type 的 Identifier. Currently，仅 用户 ID 是 支持. Enumerated 值: ID。",
 												},
 												"permission": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "指定a permission to be granted. Enumerated 值: READ,WRITE,FULL_CONTROL。",
+													Description: "指定a 权限 到 是 granted. Enumerated 值: READ,WRITE,FULL_CONTROL。",
 												},
 											},
 										},
@@ -177,74 +177,74 @@ func ResourceTencentCloudCosBatch() *schema.Resource {
 									"canned_access_control_list": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Defines the ACL property of the object. 有效值：private，public-read。",
+										Description: "Defines ACL 属性 的 对象. 有效值：私有，公有-read。",
 									},
 									"prefix_replace": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "指定是否prefix of the 来源 object needs to be replaced. A 值 of true 表示replacement object prefix，which needs to be used with <ResourcesPrefix> and <TargetKeyPrefix>. 默认值：false。",
+										Description: "指定是否prefix 的 来源 对象 needs 到 是 replaced. A 值 的 true 表示replacement 对象 prefix，其中 needs 到 是 使用 使用 <ResourcesPrefix> 和 <TargetKeyPrefix>. 默认值：false。",
 									},
 									"resources_prefix": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "This field is valid only when the < PrefixReplace > 值 is true. 指定source object prefix to be replaced，and the replacement directory should end with `/`. Can be empty with a 最大长度1024 bytes。",
+										Description: "此 字段 是 有效 仅 当 < PrefixReplace > 值 是 true. 指定source 对象 prefix 到 是 replaced，和 replacement directory should end 使用 `/`. Can 是 空 使用 最大长度1024 bytes。",
 									},
 									"target_key_prefix": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "This field is valid only when the <PrefixReplace> 值 is true. This 值 represents the replaced prefix，and the replacement directory should end with /. Can be empty with a 最大长度1024 bytes。",
+										Description: "此 字段 是 有效 仅 当 <PrefixReplace> 值 是 true. 此 值 表示 replaced prefix，和 replacement directory should end 使用 /. Can 是 空 使用 最大长度1024 bytes。",
 									},
 									"modified_since_constraint": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "When the object is modified after the specified time，the operation is performed，otherwise 412 is returned。",
+										Description: "当 对象 是 modified after 指定 时间， operation 是 performed，otherwise 412 是 返回。",
 									},
 									"unmodified_since_constraint": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "When the object has not been modified after the specified time，the operation is performed，otherwise 412 is returned。",
+										Description: "当 对象 has 不 been modified after 指定 时间， operation 是 performed，otherwise 412 是 返回。",
 									},
 									"metadata_directive": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "This element 指定是否copy object metadata from the 来源 object or replace it with metadata in the < NewObjectMetadata > element. 有效值：Copy，Replaced，Add. Copy: inherit 来源 object metadata; Replaced: replace 来源 metadata; Add: add new metadata based on 来源 metadata。",
+										Description: "此 element 指定是否copy 对象 metadata 从 来源 对象 或 replace 它 使用 metadata 在 < NewObjectMetadata > element. 有效值：Copy，Replaced，Add. Copy: inherit 来源 对象 metadata; Replaced: replace 来源 metadata; Add: add new metadata based 在 来源 metadata。",
 									},
 									"new_object_metadata": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "Configure the metadata for the object。",
+										Description: "Configure metadata 对于 对象。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"cache_control": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The caching instructions defined in RFC 2616 are saved as object metadata。",
+													Description: "caching instructions defined 在 RFC 2616 是 saved 作为 对象 metadata。",
 												},
 												"content_disposition": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The file 名称 defined in RFC 2616 is saved as object metadata。",
+													Description: "文件 名称 defined 在 RFC 2616 是 saved 作为 对象 metadata。",
 												},
 												"content_encoding": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The encoding 格式 defined in RFC 2616 is saved as object metadata。",
+													Description: "编码 格式 defined 在 RFC 2616 是 saved 作为 对象 metadata。",
 												},
 												"content_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The 内容 types defined in RFC 2616 are saved as object metadata。",
+													Description: "内容 types defined 在 RFC 2616 是 saved 作为 对象 metadata。",
 												},
 												"http_expires_date": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The cache 过期时间 defined in RFC 2616 is saved as object metadata。",
+													Description: "缓存 过期时间 defined 在 RFC 2616 是 saved 作为 对象 metadata。",
 												},
 												"sse_algorithm": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Server encryption algorithm. Currently，only AES256 is supported。",
+													Description: "Server 加密 algorithm. Currently，仅 AES256 是 支持。",
 												},
 												"user_metadata": {
 													Type:        schema.TypeList,
@@ -271,12 +271,12 @@ func ResourceTencentCloudCosBatch() *schema.Resource {
 									"tagging_directive": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "This element 指定是否copy the object 标签 from the 来源 object or replace it with the 标签 in the < NewObjectTagging > element. 有效值：Copy，Replaced，Add. Copy: inherits the 来源 object 标签; Replaced: replaces the 来源 标签; Add: adds a new 标签 based on the 来源 标签",
+										Description: "此 element 指定是否copy 对象 标签 从 来源 对象 或 replace 它 使用 标签 在 < NewObjectTagging > element. 有效值：Copy，Replaced，Add. Copy: inherits 来源 对象 标签; Replaced: replaces 来源 标签; Add: adds new 标签 based 在 来源 标签",
 									},
 									"new_object_tagging": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "The 标签 of the configuration object，which must be specified when the < TaggingDirective > 值 is Replace or Add。",
+										Description: "标签 的 配置 对象，其中 必须 是 指定 当 < TaggingDirective > 值 是 Replace 或 Add。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
@@ -295,12 +295,12 @@ func ResourceTencentCloudCosBatch() *schema.Resource {
 									"storage_class": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Sets the storage 级别 of the object. Enumerated 值: STANDARD,STANDARD_IA. 默认值：STANDARD。",
+										Description: "Sets 存储 级别 的 对象. Enumerated 值: STANDARD,STANDARD_IA. 默认值：STANDARD。",
 									},
 									"target_resource": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Sets the target 存储桶 for the Copy. Use qcs to specify，for example，qcs::cos:ap-chengdu:uid/1250000000:examplebucket-1250000000。",
+										Description: "Sets 目标 存储桶 对于 Copy. Use qcs 到 specify，对于 示例，qcs::cos:ap-chengdu:uid/1250000000:examplebucket-1250000000。",
 									},
 								},
 							},
@@ -309,13 +309,13 @@ func ResourceTencentCloudCosBatch() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "指定specific parameters for the batch restore operation for archive storage 类型 objects in the inventory。",
+							Description: "指定specific 参数 对于 batch 恢复 operation 对于 archive 存储 类型 objects 在 inventory。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"expiration_in_days": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Sets the 数量 days after which the copy will be automatically expired and deleted，an integer in the range of 1-365。",
+										Description: "Sets 数量 days after 其中 copy 将 是 automatically expired 和 删除， 整数 在 范围 的 1-365。",
 									},
 									"job_tier": {
 										Type:        schema.TypeString,
@@ -333,33 +333,33 @@ func ResourceTencentCloudCosBatch() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Task completion report。",
+				Description: "任务 completion 报告。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"bucket": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Delivery 存储桶 for task completion reports。",
+							Description: "Delivery 存储桶 对于 任务 completion reports。",
 						},
 						"enabled": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "是否output the task completion report。",
+							Description: "是否output 任务 completion 报告。",
 						},
 						"format": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task completion report 格式 information. Legal 值: Report_CSV_V1。",
+							Description: "任务 completion 报告 格式 信息. Legal 值: Report_CSV_V1。",
 						},
 						"prefix": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Prefix information for the task completion report. Length 0-256 bytes。",
+							Description: "Prefix 信息 对于 任务 completion 报告. Length 0-256 bytes。",
 						},
 						"report_scope": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task completion report the task information that needs to be recorded to determine 是否record the execution information of all operations or the information of failed operations. Legal values: AllTasks，FailedTasksOnly。",
+							Description: "任务 completion 报告 任务 信息 该 needs 到 是 recorded 到 determine 是否record execution 信息 的 all operations 或 信息 的 failed operations. Legal 值: AllTasks，FailedTasksOnly。",
 						},
 					},
 				},
@@ -368,14 +368,14 @@ func ResourceTencentCloudCosBatch() *schema.Resource {
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: true,
-				Description: "Current status of the task.\n" +
+				Description: "Current 状态 的 任务.\n" +
 					"Legal parameter values include Active, Cancelled, Cancelling, Complete, Completing, Failed, Failing, New, Paused, Pausing, Preparing, Ready, Suspended.\n" +
 					"For Update status, when you move a task to the Ready state, COS will assume that you have confirmed the task and will perform it. When you move a task to the Cancelled state, COS cancels the task. Optional parameters include: Ready, Cancelled.",
 			},
 			"job_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Job id。",
+				Description: "Job ID。",
 			},
 		},
 	}

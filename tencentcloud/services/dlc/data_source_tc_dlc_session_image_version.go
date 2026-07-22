@@ -18,7 +18,7 @@ func DataSourceTencentCloudDlcSessionImageVersion() *schema.Resource {
 			"data_engine_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Data engine ID。",
+				Description: "Data 引擎 ID。",
 			},
 
 			"framework_type": {
@@ -30,28 +30,28 @@ func DataSourceTencentCloudDlcSessionImageVersion() *schema.Resource {
 			"engine_session_images": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Engine session image information。",
+				Description: "Engine 会话 镜像 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"spark_image_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Spark image ID。",
+							Description: "Spark 镜像 ID。",
 						},
 						"spark_image_version": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Spark image 版本",
+							Description: "Spark 镜像 版本",
 						},
 						"spark_image_type": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Small 版本 image 类型 1: TensorFlow，2: Pytorch，3: SK-learn。",
+							Description: "Small 版本 镜像 类型 1: TensorFlow，2: Pytorch，3: SK-learn。",
 						},
 						"spark_image_tag": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Spark image 标签",
+							Description: "Spark 镜像 标签",
 						},
 					},
 				},

@@ -21,46 +21,46 @@ func DataSourceTencentCloudKmsKeys() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
-				Description: "Filter by 角色 of the CMK 创建者 `0` - created by 用户，`1` - created by cloud product. 默认值为 `0`。",
+				Description: "过滤器 通过 角色 的 CMK 创建者 `0` - 创建 通过 用户，`1` - 创建 通过 云 product. 默认值为 `0`。",
 			},
 			"order_type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
-				Description: "顺序 to sort the CMK 创建时间. `0` - desc，`1` - asc. 默认值为 `0`。",
+				Description: "顺序 到 sort CMK 创建时间. `0` - desc，`1` - asc. 默认值为 `0`。",
 			},
 			"key_state": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
-				Description: "Filter by state of CMK. `0` - all CMKs are queried，`1` - only 已启用 CMKs are queried，`2` - only 已禁用 CMKs are queried，`3` - only PendingDelete CMKs are queried，`4` - only PendingImport CMKs are queried，`5` - only Archived CMKs are queried。",
+				Description: "过滤器 通过 state 的 CMK. `0` - all CMKs 是 queried，`1` - 仅 已启用 CMKs 是 queried，`2` - 仅 已禁用 CMKs 是 queried，`3` - 仅 PendingDelete CMKs 是 queried，`4` - 仅 PendingImport CMKs 是 queried，`5` - 仅 Archived CMKs 是 queried。",
 			},
 			"search_key_alias": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Words 用于match the results，and the words can be: key_id and alias。",
+				Description: "Words 用于match results，和 words 可以 是: key_id 和 alias。",
 			},
 			"origin": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     KMS_ORIGIN_ALL,
-				Description: "Filter by origin of CMK. `TENCENT_KMS` - CMK created by KMS，`EXTERNAL` - CMK imported by 用户，`ALL` - all CMKs. 默认值为 `ALL`。",
+				Description: "过滤器 通过 源站 的 CMK. `TENCENT_KMS` - CMK 创建 通过 KMS，`EXTERNAL` - CMK imported 通过 用户，`ALL` - all CMKs. 默认值为 `ALL`。",
 			},
 			"key_usage": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     KMS_KEY_USAGE_ENCRYPT_DECRYPT,
-				Description: "Filter by usage of CMK. Available values include `ALL`，`ENCRYPT_DECRYPT`，`ASYMMETRIC_DECRYPT_RSA_2048`，`ASYMMETRIC_DECRYPT_SM2`，`ASYMMETRIC_SIGN_VERIFY_SM2`，`ASYMMETRIC_SIGN_VERIFY_RSA_2048`，`ASYMMETRIC_SIGN_VERIFY_ECC`. 默认值为 `ENCRYPT_DECRYPT`。",
+				Description: "过滤器 通过 usage 的 CMK. Available 值 include `ALL`，`ENCRYPT_DECRYPT`，`ASYMMETRIC_DECRYPT_RSA_2048`，`ASYMMETRIC_DECRYPT_SM2`，`ASYMMETRIC_SIGN_VERIFY_SM2`，`ASYMMETRIC_SIGN_VERIFY_RSA_2048`，`ASYMMETRIC_SIGN_VERIFY_ECC`. 默认值为 `ENCRYPT_DECRYPT`。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "标签 to filter CMK。",
+				Description: "标签 到 过滤器 CMK。",
 			},
 			"hsm_cluster_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The HSM cluster ID corresponding to KMS Advanced Edition (only valid for KMS Exclusive/Managed Edition service instances)。",
+				Description: "HSM 集群 ID corresponding 到 KMS Advanced Edition (仅 有效 对于 KMS Exclusive/Managed Edition 服务 实例)。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -86,7 +86,7 @@ func DataSourceTencentCloudKmsKeys() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "创建时间 of CMK。",
+							Description: "创建时间 的 CMK。",
 						},
 						"description": {
 							Type:        schema.TypeString,
@@ -96,17 +96,17 @@ func DataSourceTencentCloudKmsKeys() *schema.Resource {
 						"key_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "State of CMK。",
+							Description: "State 的 CMK。",
 						},
 						"key_usage": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Usage of CMK。",
+							Description: "Usage 的 CMK。",
 						},
 						"creator_uin": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Uin of CMK 创建者",
+							Description: "Uin 的 CMK 创建者",
 						},
 						"key_rotation_enabled": {
 							Type:        schema.TypeBool,
@@ -116,32 +116,32 @@ func DataSourceTencentCloudKmsKeys() *schema.Resource {
 						"owner": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建者 of CMK。",
+							Description: "创建者 的 CMK。",
 						},
 						"next_rotate_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Next rotate time of CMK when key_rotation_enabled is true。",
+							Description: "Next rotate 时间 的 CMK 当 key_rotation_enabled 是 true。",
 						},
 						"deletion_date": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Delete time of CMK。",
+							Description: "Delete 时间 的 CMK。",
 						},
 						"origin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Origin of CMK. `TENCENT_KMS` - CMK created by KMS，`EXTERNAL` - CMK imported by 用户",
+							Description: "Origin 的 CMK. `TENCENT_KMS` - CMK 创建 通过 KMS，`EXTERNAL` - CMK imported 通过 用户",
 						},
 						"valid_to": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Valid when origin is `EXTERNAL`，it means the effective date of the 键 material。",
+							Description: "有效 当 源站 是 `EXTERNAL`，它 表示 effective date 的 键 material。",
 						},
 						"hsm_cluster_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The HSM cluster ID corresponding to KMS Advanced Edition (only valid for KMS Exclusive/Managed Edition service instances)。",
+							Description: "HSM 集群 ID corresponding 到 KMS Advanced Edition (仅 有效 对于 KMS Exclusive/Managed Edition 服务 实例)。",
 						},
 					},
 				},

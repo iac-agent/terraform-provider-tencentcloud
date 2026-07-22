@@ -32,7 +32,7 @@ func ResourceTencentCloudDnspodPackageOrder() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Valid options for the package 版本 are as follows: `DPG_PROFESSIONAL`; `DPG_ENTERPRISE`; `DPG_ULTIMATE`。",
+				Description: "有效 options 对于 包 版本 是 作为 follows: `DPG_PROFESSIONAL`; `DPG_ENTERPRISE`; `DPG_ULTIMATE`。",
 			},
 
 			// computed

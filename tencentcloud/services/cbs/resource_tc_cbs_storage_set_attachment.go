@@ -35,7 +35,7 @@ func ResourceTencentCloudCbsStorageSetAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID CVM instance。",
+				Description: "ID CVM 实例。",
 			},
 		},
 	}

@@ -36,7 +36,7 @@ func ResourceTencentCloudDasbDeviceGroupMembers() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "A collection of device IDs that need to be added to the device group。",
+				Description: "A collection 的 device IDs 该 need 到 是 added 到 device 组。",
 			},
 		},
 	}

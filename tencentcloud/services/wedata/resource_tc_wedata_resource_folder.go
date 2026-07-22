@@ -31,7 +31,7 @@ func ResourceTencentCloudWedataResourceFolder() *schema.Resource {
 			"parent_folder_path": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Absolute 路径 of parent folder，值 example/wedata/test，root directory，please use/。",
+				Description: "Absolute 路径 的 parent 文件夹，值 示例/wedata/测试，root directory，please 使用/。",
 			},
 
 			"folder_name": {

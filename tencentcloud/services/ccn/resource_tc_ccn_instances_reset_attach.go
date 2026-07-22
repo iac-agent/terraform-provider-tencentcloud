@@ -48,7 +48,7 @@ func ResourceTencentCloudCcnInstancesResetAttach() *schema.Resource {
 						"instance_region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instance 地域",
+							Description: "实例 地域",
 						},
 						"instance_type": {
 							Type:        schema.TypeString,
@@ -63,7 +63,7 @@ func ResourceTencentCloudCcnInstancesResetAttach() *schema.Resource {
 						"route_table_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "ID routing table associated with the instance. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "ID routing 表 associated 使用 实例. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},

@@ -27,7 +27,7 @@ func ResourceTencentCloudCssStartStreamMonitor() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Monitor id。",
+				Description: "Monitor ID。",
 			},
 
 			"audible_input_index_list": {
@@ -37,7 +37,7 @@ func ResourceTencentCloudCssStartStreamMonitor() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "The input 索引 for monitoring the screen audio，supports multiple input audio sources.The valid range for InputIndex is that it must already exist.If left blank，there will be no audio output by default。",
+				Description: "input 索引 对于 监控 screen 音频，支持 多个 input 音频 sources. 有效 范围 对于 InputIndex 是 该 它 必须 already exist.如果 left blank，there 将 是 无 音频 output 通过 默认值。",
 			},
 		},
 	}

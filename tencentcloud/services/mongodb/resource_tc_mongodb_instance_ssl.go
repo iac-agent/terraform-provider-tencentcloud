@@ -25,31 +25,31 @@ func ResourceTencentCloudMongodbInstanceSsl() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "实例 ID，for example: cmgo-p8vnipr5。",
+				Description: "实例 ID，对于 示例: cmgo-p8vnipr5。",
 			},
 
 			"enable": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "是否enable SSL. 有效值：`true` - enable SSL，`false` - disable SSL。",
+				Description: "是否enable SSL. 有效值：`true` - 启用 SSL，`false` - disable SSL。",
 			},
 
 			"status": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "SSL 状态 有效值：`0` - SSL is 已禁用，`1` - SSL is 已启用",
+				Description: "SSL 状态 有效值：`0` - SSL 是 已禁用，`1` - SSL 是 已启用",
 			},
 
 			"expired_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Certificate 过期时间，格式: 2023-05-01 12:00:00. This field is only available when SSL is 已启用",
+				Description: "Certificate 过期时间，格式: 2023-05-01 12:00:00. 此 字段 是 仅 可用 当 SSL 是 已启用",
 			},
 
 			"cert_url": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Certificate download link. This field is only available when SSL is 已启用",
+				Description: "Certificate download link. 此 字段 是 仅 可用 当 SSL 是 已启用",
 			},
 		},
 	}

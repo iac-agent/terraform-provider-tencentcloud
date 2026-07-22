@@ -24,19 +24,19 @@ func DataSourceTencentCloudOrganizationOrgShareUnitMembers() *schema.Resource {
 			"area": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Shared unit area。",
+				Description: "Shared 单位 area。",
 			},
 
 			"search_key": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search for keywords. Support member Uin searches。",
+				Description: "Search 对于 keywords. Support member Uin searches。",
 			},
 
 			"items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Shared unit member list。",
+				Description: "Shared 单位 member 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"share_member_uin": {

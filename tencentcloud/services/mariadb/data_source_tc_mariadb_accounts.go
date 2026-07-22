@@ -26,7 +26,7 @@ func DataSourceTencentCloudMariadbAccounts() *schema.Resource {
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "账号 list。",
+				Description: "账号 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"user_name": {
@@ -37,7 +37,7 @@ func DataSourceTencentCloudMariadbAccounts() *schema.Resource {
 						"host": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 主机 from which the 用户 can log in (corresponding to the 主机 field of MySQL users，UserName + 主机 uniquely identifies a 用户，in the form of IP，and the IP segment ends with %; supports filling in %; if it is empty，it 默认为 %)。",
+							Description: "主机 从 其中 用户 可以 日志 在 (corresponding 到 主机 字段 的 MySQL users，UserName + 主机 uniquely identifies 用户，在 form 的 IP，和 IP segment 结束 使用 %; 支持 filling 在 %; 如果 它 是 空，它 默认为 %)。",
 						},
 						"description": {
 							Type:        schema.TypeString,
@@ -57,17 +57,17 @@ func DataSourceTencentCloudMariadbAccounts() *schema.Resource {
 						"read_only": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Read-only flag，`0`: No，`1`: The SQL request of this 账号 is preferentially executed on the standby machine，and the 主机 machine is selected for execution when the standby machine is unavailable，`2`: The standby machine is preferentially selected for execution，and the operation fails when the standby machine is unavailable。",
+							Description: "Read-仅 flag，`0`: No，`1`: SQL 请求 的 此 账号 是 preferentially executed 在 standby machine，和 主机 machine 是 selected 对于 execution 当 standby machine 是 unavailable，`2`: standby machine 是 preferentially selected 对于 execution，和 operation fails 当 standby machine 是 unavailable。",
 						},
 						"delay_thresh": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "This field is meaningful for read-only accounts，indicating that the standby machine with the 活跃-standby 延迟 less than this 值 is selected。",
+							Description: "此 字段 是 meaningful 对于 read-仅 accounts，indicating 该 standby machine 使用 活跃-standby 延迟 less 比 此 值 是 selected。",
 						},
 						"slave_const": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "For read-only accounts，set 是否policy is to fix the standby machine，`0`: The standby machine is not fixed，that is，the standby machine does not meet the conditions and will not disconnect from the client，and the Proxy selects other available standby machines，`1`: The standby machine does not meet the conditions Disconnect，make sure one connection secures the standby。",
+							Description: "For read-仅 accounts，集合 是否policy 是 到 fix standby machine，`0`: standby machine 是 不 fixed，该 是， standby machine does 不 meet conditions 和 将 不 disconnect 从 客户端，和 Proxy selects other 可用 standby machines，`1`: standby machine does 不 meet conditions Disconnect，make sure 一个 连接 secures standby。",
 						},
 					},
 				},

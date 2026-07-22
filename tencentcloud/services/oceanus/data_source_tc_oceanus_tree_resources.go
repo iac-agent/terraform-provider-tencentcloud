@@ -25,7 +25,7 @@ func DataSourceTencentCloudOceanusTreeResources() *schema.Resource {
 			"tree_info": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Tree structure information。",
+				Description: "Tree structure 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
@@ -41,7 +41,7 @@ func DataSourceTencentCloudOceanusTreeResources() *schema.Resource {
 						"parent_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Parent Id。",
+							Description: "Parent ID。",
 						},
 						"items": {
 							Type:        schema.TypeList,
@@ -57,12 +57,12 @@ func DataSourceTencentCloudOceanusTreeResources() *schema.Resource {
 									"folder_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Folder id。",
+										Description: "Folder ID。",
 									},
 									"ref_job_status_count_set": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Counting the 数量 associated tasks by state。",
+										Description: "Counting 数量 associated tasks 通过 state。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"job_status": {
@@ -91,7 +91,7 @@ func DataSourceTencentCloudOceanusTreeResources() *schema.Resource {
 									"resource_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Resource Id。",
+										Description: "Resource ID。",
 									},
 									"resource_type": {
 										Type:        schema.TypeInt,

@@ -20,13 +20,13 @@ func DataSourceTencentCloudTdmqProInstances() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "query condition filter。",
+				Description: "查询 condition 过滤器。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The 名称 filter parameter。",
+							Description: "名称 过滤器 参数。",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -42,7 +42,7 @@ func DataSourceTencentCloudTdmqProInstances() *schema.Resource {
 			"instances": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Instance information list。",
+				Description: "实例 信息 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
@@ -58,7 +58,7 @@ func DataSourceTencentCloudTdmqProInstances() *schema.Resource {
 						"instance_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance 版本",
+							Description: "实例 版本",
 						},
 						"status": {
 							Type:        schema.TypeInt,
@@ -68,7 +68,7 @@ func DataSourceTencentCloudTdmqProInstances() *schema.Resource {
 						"config_display": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance configuration 规格名称",
+							Description: "实例 配置 规格名称",
 						},
 						"max_tps": {
 							Type:        schema.TypeInt,
@@ -78,17 +78,17 @@ func DataSourceTencentCloudTdmqProInstances() *schema.Resource {
 						"max_storage": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Storage capacity，（GB）。",
+							Description: "Storage 容量，（GB）。",
 						},
 						"expire_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance 过期时间，（毫秒）。",
+							Description: "实例 过期时间，（毫秒）。",
 						},
 						"auto_renew_flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Automatic renewal mark，0 表示default state (the 用户 has not set it，that is，the initial state is manual renewal)，1 表示automatic renewal，2 表示that the automatic renewal is not specified (用户 setting)。",
+							Description: "Automatic renewal mark，0 表示default state ( 用户 has 不 集合 它，该 是， initial state 是 manual renewal)，1 表示automatic renewal，2 表示that automatic renewal 是 不 指定 (用户 setting)。",
 						},
 						"pay_mode": {
 							Type:        schema.TypeInt,
@@ -103,7 +103,7 @@ func DataSourceTencentCloudTdmqProInstances() *schema.Resource {
 						"spec_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance Configuration ID。",
+							Description: "实例 Configuration ID。",
 						},
 						"scalable_tps": {
 							Type:        schema.TypeInt,
@@ -113,7 +113,7 @@ func DataSourceTencentCloudTdmqProInstances() *schema.Resource {
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Id of the VPC注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "ID 的 VPC注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
@@ -123,7 +123,7 @@ func DataSourceTencentCloudTdmqProInstances() *schema.Resource {
 						"max_band_width": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Peak bandwidth. 单位：mbps。",
+							Description: "Peak 带宽. 单位：mbps。",
 						},
 						"tags": {
 							Type:        schema.TypeList,

@@ -26,32 +26,32 @@ func ResourceTencentCloudWafObject() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Modifies the object identifier。",
+				Description: "Modifies 对象 identifier。",
 			},
 
 			"instance_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "New instance ID: considered a successful modification if identical to an already bound instance。",
+				Description: "New 实例 ID: considered successful modification 如果 identical 到 already bound 实例。",
 			},
 
 			"status": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "New WAF switch 状态，considered successful if identical to existing 状态",
+				Description: "New WAF switch 状态，considered successful 如果 identical 到 existing 状态",
 			},
 
 			"proxy": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "是否enable proxy. 0: do not enable; 1: use the first IP 地址 in XFF as the 客户端 IP 地址; 2: use remote_addr as the 客户端 IP 地址; 3: obtain the 客户端 IP 地址 from the specified header field that is given in `ip_headers`。",
+				Description: "是否enable proxy. 0: do 不 启用; 1: 使用 first IP 地址 在 XFF 作为 客户端 IP 地址; 2: 使用 remote_addr 作为 客户端 IP 地址; 3: obtain 客户端 IP 地址 从 指定 头部 字段 该 是 given 在 `ip_headers`。",
 			},
 
 			"ip_headers": {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				Computed:    true,
-				Description: "This parameter 表示a custom header and 为必填项 when `proxy` is set to 3。",
+				Description: "此 参数 表示a 自定义 头部 和 为必填项 当 `proxy` 是 集合 到 3。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -62,7 +62,7 @@ func ResourceTencentCloudWafObject() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Computed:    true,
-				Description: "The ID member to whom the listener belongs。",
+				Description: "ID member 到 whom listener belongs。",
 			},
 
 			"member_uin": {
@@ -70,7 +70,7 @@ func ResourceTencentCloudWafObject() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Computed:    true,
-				Description: "Uin of the listener member。",
+				Description: "Uin 的 listener member。",
 			},
 		},
 	}

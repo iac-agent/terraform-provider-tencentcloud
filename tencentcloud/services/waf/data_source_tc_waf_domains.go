@@ -19,7 +19,7 @@ func DataSourceTencentCloudWafDomains() *schema.Resource {
 			"instance_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Unique ID Instance。",
+				Description: "Unique ID 实例。",
 			},
 			"domain": {
 				Optional:    true,
@@ -29,7 +29,7 @@ func DataSourceTencentCloudWafDomains() *schema.Resource {
 			"domains": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "域名 info list。",
+				Description: "域名 info 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"domain": {
@@ -40,22 +40,22 @@ func DataSourceTencentCloudWafDomains() *schema.Resource {
 						"domain_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "域名 unique ID。",
+							Description: "域名 唯一 ID。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance unique ID。",
+							Description: "实例 唯一 ID。",
 						},
 						"cname": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cname 地址，用于dns access。",
+							Description: "Cname 地址，用于dns 访问。",
 						},
 						"edition": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "实例类型，sparta-waf represents SAAS WAF，clb-waf represents CLB WAF。",
+							Description: "实例类型，sparta-waf 表示 SAAS WAF，clb-waf 表示 CLB WAF。",
 						},
 						"region": {
 							Type:        schema.TypeString,
@@ -70,17 +70,17 @@ func DataSourceTencentCloudWafDomains() *schema.Resource {
 						"cls_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否enable access logs，1 enable，0 disable。",
+							Description: "是否enable 访问 logs，1 启用，0 disable。",
 						},
 						"flow_mode": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "CLBWAF traffic 模式，1 cleaning 模式，0 mirroring 模式",
+							Description: "CLBWAF 流量 模式，1 cleaning 模式，0 mirroring 模式",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Waf switch,0 off 1 on。",
+							Description: "Waf switch,0 关闭 1 在。",
 						},
 						"mode": {
 							Type:        schema.TypeInt,
@@ -90,7 +90,7 @@ func DataSourceTencentCloudWafDomains() *schema.Resource {
 						"engine": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Rule and AI Defense 模式，10 Rule Engine Observation&amp;amp;&amp;amp;AI Engine Shutdown 模式 11 Rule Engine Observation&amp;amp;&amp;amp;AI Engine Observation 模式 12 Rule Engine Observation&amp;amp;&amp;amp;AI Engine Interception 模式 20 Rule Engine Interception&amp;amp;&amp;amp;AI Engine Shutdown 模式 21 Rule Engine Interception&amp;amp;&amp;amp;AI Engine Observation 模式 22 Rule Engine Interception&amp;amp;&amp;amp;AI Engine Interception 模式",
+							Description: "Rule 和 AI Defense 模式，10 Rule Engine Observation&amp;amp;&amp;amp;AI Engine Shutdown 模式 11 Rule Engine Observation&amp;amp;&amp;amp;AI Engine Observation 模式 12 Rule Engine Observation&amp;amp;&amp;amp;AI Engine Interception 模式 20 Rule Engine Interception&amp;amp;&amp;amp;AI Engine Shutdown 模式 21 Rule Engine Interception&amp;amp;&amp;amp;AI Engine Observation 模式 22 Rule Engine Interception&amp;amp;&amp;amp;AI Engine Interception 模式",
 						},
 						"cc_list": {
 							Type: schema.TypeSet,
@@ -98,7 +98,7 @@ func DataSourceTencentCloudWafDomains() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Waf sandbox export addresses，should be added to the whitelist by the upstreams。",
+							Description: "Waf sandbox export addresses，should 是 added 到 whitelist 通过 upstreams。",
 						},
 						"rs_list": {
 							Type: schema.TypeSet,
@@ -106,7 +106,7 @@ func DataSourceTencentCloudWafDomains() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Waf engine export addresses，should be added to the whitelist by the upstreams。",
+							Description: "Waf 引擎 export addresses，should 是 added 到 whitelist 通过 upstreams。",
 						},
 						"ports": {
 							Type:        schema.TypeList,
@@ -117,7 +117,7 @@ func DataSourceTencentCloudWafDomains() *schema.Resource {
 									"nginx_server_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Nginx server ID。",
+										Description: "Nginx 服务器 ID。",
 									},
 									"port": {
 										Type:        schema.TypeString,
@@ -127,17 +127,17 @@ func DataSourceTencentCloudWafDomains() *schema.Resource {
 									"protocol": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The listening 协议 of listening 端口",
+										Description: "listening 协议 的 listening 端口",
 									},
 									"upstream_port": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The upstream 端口 for listening 端口",
+										Description: "upstream 端口 对于 listening 端口",
 									},
 									"upstream_protocol": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The upstream 协议 for listening 端口",
+										Description: "upstream 协议 对于 listening 端口",
 									},
 								},
 							},
@@ -151,7 +151,7 @@ func DataSourceTencentCloudWafDomains() *schema.Resource {
 									"listener_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Listener unique ID注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Listener 唯一 ID注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"listener_name": {
 										Type:        schema.TypeString,
@@ -196,7 +196,7 @@ func DataSourceTencentCloudWafDomains() *schema.Resource {
 									"numerical_vpc_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "VPCID for load balancer，public network is -1，and internal network is filled in according to actual conditions注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "VPCID 对于 load balancer，公有 网络 是 -1，和 内部 网络 是 filled 在 according 到 actual conditions注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"load_balancer_type": {
 										Type:        schema.TypeString,
@@ -214,7 +214,7 @@ func DataSourceTencentCloudWafDomains() *schema.Resource {
 						"state": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Clbwaf 域名 名称 listener 状态，0 operation successful，4 binding LB，6 unbinding LB，7 unbinding LB failed，8 binding LB failed，10 internal 错误",
+							Description: "Clbwaf 域名 名称 listener 状态，0 operation successful，4 binding LB，6 unbinding LB，7 unbinding LB failed，8 binding LB failed，10 内部 错误",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
@@ -224,27 +224,27 @@ func DataSourceTencentCloudWafDomains() *schema.Resource {
 						"ipv6_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Ipv6 switch 状态，0 off，1 on。",
+							Description: "Ipv6 switch 状态，0 关闭，1 在。",
 						},
 						"bot_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "BOT switch 状态，0 off，1 on。",
+							Description: "BOT switch 状态，0 关闭，1 在。",
 						},
 						"level": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance 级别",
+							Description: "实例 级别",
 						},
 						"post_cls_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否enable the delivery CLS function，0 off，1 on。",
+							Description: "是否enable delivery CLS 函数，0 关闭，1 在。",
 						},
 						"post_ckafka_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否enable the delivery of CKafka function，0 off，1 on。",
+							Description: "是否enable delivery 的 CKafka 函数，0 关闭，1 在。",
 						},
 						"cdc_clusters": {
 							Type:        schema.TypeString,
@@ -254,22 +254,22 @@ func DataSourceTencentCloudWafDomains() *schema.Resource {
 						"api_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "API security switch 状态，0 off，1 on注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "API 安全 switch 状态，0 关闭，1 on注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"alb_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Traffic 来源: clb represents Tencent Cloud clb，apisix represents apisix gateway，tsegw represents Tencent Cloud API gateway，default clb注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Traffic 来源: clb 表示 Tencent Cloud clb，apisix 表示 apisix 网关，tsegw 表示 Tencent Cloud API 网关，默认值 clb注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"sg_state": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Security group 状态，0 does not display，1 non Tencent cloud 来源 site，2 security group binding failed，3 security group changed注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Security 组 状态，0 does 不 display，1 non Tencent 云 来源 site，2 安全 组 binding failed，3 安全 组 changed注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"sg_detail": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Detailed explanation of security group status注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Detailed explanation 的 安全 组 status注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},

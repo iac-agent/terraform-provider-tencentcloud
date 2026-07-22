@@ -21,12 +21,12 @@ func DataSourceTencentCloudDayuDdosPolicies() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(DAYU_RESOURCE_TYPE),
-				Description:  "类型 resource that the DDoS policy works for，valid values are `bgpip`，`bgp`，`bgp-multip` and `net`。",
+				Description:  "类型 资源 该 DDoS 策略 works 对于，有效 值 是 `bgpip`，`bgp`，`bgp-multip` 和 `net`。",
 			},
 			"policy_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID DDoS policy to be query。",
+				Description: "ID DDoS 策略 到 是 查询。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -42,7 +42,7 @@ func DataSourceTencentCloudDayuDdosPolicies() *schema.Resource {
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 DDoS policy。",
+							Description: "名称 DDoS 策略。",
 						},
 						"drop_options": {
 							Type:     schema.TypeList,
@@ -52,101 +52,101 @@ func DataSourceTencentCloudDayuDdosPolicies() *schema.Resource {
 									"drop_tcp": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Indicate 是否drop TCP 协议 or not。",
+										Description: "Indicate 是否drop TCP 协议 或 不。",
 									},
 									"drop_udp": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Indicate to drop UDP 协议 or not。",
+										Description: "Indicate 到 drop UDP 协议 或 不。",
 									},
 									"drop_icmp": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Indicate 是否drop ICMP 协议 or not。",
+										Description: "Indicate 是否drop ICMP 协议 或 不。",
 									},
 									"drop_other": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Indicate 是否drop other protocols(exclude TCP/UDP/ICMP) or not。",
+										Description: "Indicate 是否drop other protocols(exclude TCP/UDP/ICMP) 或 不。",
 									},
 									"drop_abroad": {
 										Type:        schema.TypeBool,
 										Required:    true,
-										Description: "Indicate 是否drop abroad traffic or not。",
+										Description: "Indicate 是否drop abroad 流量 或 不。",
 									},
 									"check_sync_conn": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Indicate 是否check null connection or not。",
+										Description: "Indicate 是否check null 连接 或 不。",
 									},
 									"d_new_limit": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The 限制 of new connections based on destination IP。",
+										Description: "限制 的 new connections based 在 destination IP。",
 									},
 									"d_conn_limit": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The limit of concurrent connections based on destination IP.", //?
+										Description: "限制 的 concurrent connections based 在 destination IP.", //?
 									},
 									"s_conn_limit": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The 限制 of concurrent connections based on 来源 IP。",
+										Description: "限制 的 concurrent connections based 在 来源 IP。",
 									},
 									"s_new_limit": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The 限制 of new connections based on 来源 IP。",
+										Description: "限制 的 new connections based 在 来源 IP。",
 									},
 									"bad_conn_threshold": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The 数量 new connections based on destination IP that trigger suppression of connections。",
+										Description: "数量 new connections based 在 destination IP 该 触发器 suppression 的 connections。",
 									},
 									"null_conn_enable": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Indicate to enable null connection or not。",
+										Description: "Indicate 到 启用 null 连接 或 不。",
 									},
 									"conn_timeout": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Connection timeout of abnormal connection check。",
+										Description: "Connection 超时 的 abnormal 连接 check。",
 									},
 									"syn_rate": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The percentage of syn in ack of abnormal connection check。",
+										Description: "percentage 的 syn 在 ack 的 abnormal 连接 check。",
 									},
 									"syn_limit": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The 限制 of syn of abnormal connection check。",
+										Description: "限制 的 syn 的 abnormal 连接 check。",
 									},
 									"tcp_mbps_limit": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The 限制 of TCP traffic。",
+										Description: "限制 的 TCP 流量。",
 									},
 									"udp_mbps_limit": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The 限制 of UDP traffic rate。",
+										Description: "限制 的 UDP 流量 速率。",
 									},
 									"icmp_mbps_limit": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The 限制 of ICMP traffic rate。",
+										Description: "限制 的 ICMP 流量 速率。",
 									},
 									"other_mbps_limit": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The 限制 of other protocols(exclude TCP/UDP/ICMP) traffic rate。",
+										Description: "限制 的 other protocols(exclude TCP/UDP/ICMP) 流量 速率。",
 									},
 								},
 							},
-							Description: "Option 列表 abnormal check of the DDoS policy。",
+							Description: "Option 列表 abnormal check 的 DDoS 策略。",
 						},
 						"port_filters": {
 							Type:     schema.TypeList,
@@ -171,16 +171,16 @@ func DataSourceTencentCloudDayuDdosPolicies() *schema.Resource {
 									"action": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "操作 of 端口 to take。",
+										Description: "操作 的 端口 到 take。",
 									},
 									"kind": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "类型 forbidden 端口，and valid values are 0，1，2. 0 for destination 端口，1 for 来源 端口 and 2 for both destination and 来源 posts。",
+										Description: "类型 forbidden 端口，和 有效 值 是 0，1，2. 0 对于 destination 端口，1 对于 来源 端口 和 2 对于 both destination 和 来源 posts。",
 									},
 								},
 							},
-							Description: "端口 limits of abnormal check of the DDoS policy。",
+							Description: "端口 limits 的 abnormal check 的 DDoS 策略。",
 						},
 						"black_ips": {
 							Type: schema.TypeSet,
@@ -189,7 +189,7 @@ func DataSourceTencentCloudDayuDdosPolicies() *schema.Resource {
 								ValidateFunc: tccommon.ValidateIp,
 							},
 							Optional:    true,
-							Description: "Black ip list。",
+							Description: "Black ip 列表。",
 						},
 						"white_ips": {
 							Type: schema.TypeSet,
@@ -198,7 +198,7 @@ func DataSourceTencentCloudDayuDdosPolicies() *schema.Resource {
 								ValidateFunc: tccommon.ValidateIp,
 							},
 							Optional:    true,
-							Description: "White ip list。",
+							Description: "White ip 列表。",
 						},
 						"packet_filters": {
 							Type:     schema.TypeList,
@@ -213,37 +213,37 @@ func DataSourceTencentCloudDayuDdosPolicies() *schema.Resource {
 									"d_start_port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Start 端口 of the destination。",
+										Description: "Start 端口 的 destination。",
 									},
 									"d_end_port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "End 端口 of the destination。",
+										Description: "End 端口 的 destination。",
 									},
 									"s_start_port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Start 端口 of the 来源",
+										Description: "Start 端口 的 来源",
 									},
 									"s_end_port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "End 端口 of the 来源",
+										Description: "End 端口 的 来源",
 									},
 									"pkt_length_min": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The 最小长度the packet。",
+										Description: "最小长度the packet。",
 									},
 									"pkt_length_max": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The max length of the packet。",
+										Description: "max 长度 的 packet。",
 									},
 									"match_begin": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Indicate 是否check load or not。",
+										Description: "Indicate 是否check load 或 不。",
 									},
 									"match_type": {
 										Type:        schema.TypeString,
@@ -253,31 +253,31 @@ func DataSourceTencentCloudDayuDdosPolicies() *schema.Resource {
 									"match_str": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The 键 word or regular expression。",
+										Description: "键 word 或 regular expression。",
 									},
 									"depth": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The depth of match。",
+										Description: "depth 的 match。",
 									},
 									"offset": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The 偏移量 of match。",
+										Description: "偏移量 的 match。",
 									},
 									"is_include": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Indicate 是否include the 键 word/regular expression or not。",
+										Description: "Indicate 是否include 键 word/regular expression 或 不。",
 									},
 									"action": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "操作 of 端口 to take。",
+										Description: "操作 的 端口 到 take。",
 									},
 								},
 							},
-							Description: "消息 filter options list。",
+							Description: "消息 过滤器 options 列表。",
 						},
 						"watermark_filters": {
 							Type:     schema.TypeList,
@@ -290,7 +290,7 @@ func DataSourceTencentCloudDayuDdosPolicies() *schema.Resource {
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
-										Description: "端口 range of TCP。",
+										Description: "端口 范围 的 TCP。",
 									},
 									"udp_port_list": {
 										Type:     schema.TypeList,
@@ -298,41 +298,41 @@ func DataSourceTencentCloudDayuDdosPolicies() *schema.Resource {
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
-										Description: "端口 range of TCP。",
+										Description: "端口 范围 的 TCP。",
 									},
 									"offset": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The 偏移量 of watermark。",
+										Description: "偏移量 的 水印。",
 									},
 									"auto_remove": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Indicate 是否auto-remove the watermark or not。",
+										Description: "Indicate 是否auto-remove 水印 或 不。",
 									},
 									"open_switch": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Indicate 是否open watermark or not。",
+										Description: "Indicate 是否open 水印 或 不。",
 									},
 								},
 							},
-							Description: "Watermark policy options，and only support one watermark policy at most。",
+							Description: "Watermark 策略 options，和 仅 support 一个 水印 策略 在 most。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of the DDoS policy。",
+							Description: "创建时间 的 DDoS 策略。",
 						},
 						"scene_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Id of policy case that the DDoS policy works for。",
+							Description: "ID 的 策略 case 该 DDoS 策略 works 对于。",
 						},
 						"policy_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Id of policy。",
+							Description: "ID 的 策略。",
 						},
 						"watermark_key": {
 							Type:     schema.TypeList,
@@ -342,22 +342,22 @@ func DataSourceTencentCloudDayuDdosPolicies() *schema.Resource {
 									"id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Id of the watermark。",
+										Description: "ID 的 水印。",
 									},
 									"content": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "内容 of the watermark。",
+										Description: "内容 的 水印。",
 									},
 									"open_switch": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Indicate 是否auto-remove the watermark or not。",
+										Description: "Indicate 是否auto-remove 水印 或 不。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "创建时间 of the watermark。",
+										Description: "创建时间 的 水印。",
 									},
 								},
 							},

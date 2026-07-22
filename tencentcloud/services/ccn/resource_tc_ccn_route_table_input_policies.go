@@ -35,7 +35,7 @@ func ResourceTencentCloudCcnRouteTableInputPolicies() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "CCN Route table ID。",
+				Description: "CCN Route 表 ID。",
 			},
 			"policies": {
 				Optional:    true,
@@ -62,13 +62,13 @@ func ResourceTencentCloudCcnRouteTableInputPolicies() *schema.Resource {
 									"name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "条件类型 Example 值: `instance-类型`，`instance-地域`，`instance-id`，`cidr-block`。",
+										Description: "条件类型 Example 值: `实例-类型`，`实例-地域`，`实例-ID`，`cidr-block`。",
 									},
 									"values": {
 										Type:        schema.TypeList,
 										Required:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "列表 conditional values. Example 值:\n `instance-类型`: `VPC`，`VPNGW`，`DIRECTCONNECT`\n `instance-地域`: `ap-guangzhou`\n `instance-id`: `vpc-axrsmmrv`，`dcg-oxad32f7`，`vpngw-33p5vnwd`\n `cidr-block`: `172.0.0.0/8`。",
+										Description: "列表 conditional 值. Example 值:\n `实例-类型`: `VPC`，`VPNGW`，`DIRECTCONNECT`\n `实例-地域`: `ap-guangzhou`\n `实例-ID`: `vpc-axrsmmrv`，`dcg-oxad32f7`，`vpngw-33p5vnwd`\n `cidr-block`: `172.0.0.0/8`。",
 									},
 									"match_pattern": {
 										Type:        schema.TypeInt,

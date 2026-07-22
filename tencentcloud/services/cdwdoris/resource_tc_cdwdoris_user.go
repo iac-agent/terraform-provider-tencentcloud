@@ -48,7 +48,7 @@ func ResourceTencentCloudCdwdorisUser() *schema.Resource {
 						"white_host": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The IP the 用户 linked from。",
+							Description: "IP 用户 linked 从。",
 						},
 						"describe": {
 							Type:        schema.TypeString,
@@ -58,13 +58,13 @@ func ResourceTencentCloudCdwdorisUser() *schema.Resource {
 						"cam_uin": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The bound sub 用户 uin。",
+							Description: "bound sub 用户 uin。",
 						},
 						"cam_ranger_group_ids": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Elem:        &schema.Schema{Type: schema.TypeInt},
-							Description: "Ranger group id list。",
+							Description: "Ranger 组 ID 列表。",
 						},
 					},
 				},
@@ -79,7 +79,7 @@ func ResourceTencentCloudCdwdorisUser() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "用户 permission 类型 0: Ordinary 用户; 1: Administrator。",
+				Description: "用户 权限 类型 0: Ordinary 用户; 1: Administrator。",
 			},
 		},
 	}

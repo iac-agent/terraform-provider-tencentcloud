@@ -107,7 +107,7 @@ func ResourceTencentCloudVpcClassicLinkAttachment() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "CVM instance ID. It only support set one instance now。",
+				Description: "CVM 实例 ID. It 仅 support 集合 一个 实例 now。",
 			},
 		},
 	}

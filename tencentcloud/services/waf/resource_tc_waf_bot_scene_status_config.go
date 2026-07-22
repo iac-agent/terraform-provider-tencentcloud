@@ -41,13 +41,13 @@ func ResourceTencentCloudWafBotSceneStatusConfig() *schema.Resource {
 			"status": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "Bot 状态 true - enable; false - disable。",
+				Description: "Bot 状态 true - 启用; false - disable。",
 			},
 
 			"type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Scene 类型，默认值：Default scenario，custom: Non default scenario。",
+				Description: "Scene 类型，默认值：Default scenario，自定义: Non 默认值 scenario。",
 			},
 
 			"scene_name": {

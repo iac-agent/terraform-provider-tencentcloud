@@ -27,13 +27,13 @@ func ResourceTencentCloudTdmqRocketmqCluster() *schema.Resource {
 			"cluster_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "集群名称，which can contain 3-64 letters，digits，hyphens，and underscores。",
+				Description: "集群名称，其中 可以 contain 3-64 letters，digits，hyphens，和 underscores。",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Cluster 描述 (up to 128 characters)。",
+				Description: "Cluster 描述 (up 到 128 字符)。",
 			},
 
 			"cluster_id": {
@@ -45,7 +45,7 @@ func ResourceTencentCloudTdmqRocketmqCluster() *schema.Resource {
 			"region": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "地域 information。",
+				Description: "地域 信息。",
 			},
 
 			"create_time": {
@@ -57,25 +57,25 @@ func ResourceTencentCloudTdmqRocketmqCluster() *schema.Resource {
 			"public_end_point": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Public network access 地址",
+				Description: "Public 网络 访问 地址",
 			},
 
 			"vpc_end_point": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "VPC access 地址",
+				Description: "VPC 访问 地址",
 			},
 
 			"support_namespace_endpoint": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "是否namespace access point is supported。",
+				Description: "是否namespace 访问 point 是 支持。",
 			},
 
 			"vpcs": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Vpc list。",
+				Description: "Vpc 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
@@ -95,13 +95,13 @@ func ResourceTencentCloudTdmqRocketmqCluster() *schema.Resource {
 			"is_vip": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "是否为an exclusive instance。",
+				Description: "是否为an exclusive 实例。",
 			},
 
 			"rocket_m_q_flag": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Rocketmq cluster identification。",
+				Description: "Rocketmq 集群 identification。",
 			},
 		},
 	}

@@ -25,7 +25,7 @@ func ResourceTencentCloudEipAddressTransform() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "the instance ID normal public network IP to be operated. eg:ins-23mk45jn。",
+				Description: "实例 ID normal 公有 网络 IP 到 是 operated. eg:ins-23mk45jn。",
 			},
 		},
 	}

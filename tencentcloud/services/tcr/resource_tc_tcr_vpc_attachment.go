@@ -32,7 +32,7 @@ func ResourceTencentCloudTcrVpcAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID TCR instance。",
+				Description: "ID TCR 实例。",
 			},
 			"vpc_id": {
 				Type:        schema.TypeString,
@@ -44,26 +44,26 @@ func ResourceTencentCloudTcrVpcAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID subnet。",
+				Description: "ID 子网。",
 			},
 			"region_id": {
 				Type:          schema.TypeInt,
 				Optional:      true,
 				ConflictsWith: []string{"region_name"},
 				Deprecated:    "this argument was deprecated, use `region_name` instead.",
-				Description:   "ID 地域 Conflict with region_name，can not be set at the same time。",
+				Description:   "ID 地域 Conflict 使用 region_name，可以 不 是 集合 在 same 时间。",
 			},
 			"region_name": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"region_id"},
-				Description:   "名称 地域 Conflict with region_id，can not be set at the same time。",
+				Description:   "名称 地域 Conflict 使用 region_id，可以 不 是 集合 在 same 时间。",
 			},
 			"enable_public_domain_dns": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "是否enable public 域名 dns. 默认值为 `false`。",
+				Description: "是否enable 公有 域名 dns. 默认值为 `false`。",
 			},
 			"enable_vpc_domain_dns": {
 				Type:        schema.TypeBool,
@@ -75,12 +75,12 @@ func ResourceTencentCloudTcrVpcAttachment() *schema.Resource {
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "状态 internal access。",
+				Description: "状态 内部 访问。",
 			},
 			"access_ip": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "IP 地址 of the internal access。",
+				Description: "IP 地址 的 内部 访问。",
 			},
 		},
 	}

@@ -39,40 +39,40 @@ func ResourceTencentCloudPostgresqlReadonlyInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "PostgreSQL kernel 版本，which must be the same as that of the primary instance。",
+				Description: "PostgreSQL kernel 版本，其中 必须 是 same 作为 该 的 primary 实例。",
 			},
 			"storage": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Instance storage capacity （GB）。",
+				Description: "实例 存储 容量 （GB）。",
 			},
 			"memory": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Memory size(in GB). Allowed 值 must be larger than `memory` that data 来源 `tencentcloud_postgresql_specinfos` provides。",
+				Description: "Memory 大小(在 GB). Allowed 值 必须 是 larger 比 `内存` 该 数据 来源 `tencentcloud_postgresql_specinfos` provides。",
 			},
 			"cpu": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "CPU 核数 Allowed 值 must be equal `cpu` that data 来源 `tencentcloud_postgresql_specinfos` provides。",
+				Description: "CPU 核数 Allowed 值 必须 是 equal `cpu` 该 数据 来源 `tencentcloud_postgresql_specinfos` provides。",
 			},
 			"master_db_instance_id": {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "ID primary instance to which the read-only replica belongs。",
+				Description: "ID primary 实例 到 其中 read-仅 副本 belongs。",
 			},
 			"instance_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The instance ID this readonly resource。",
+				Description: "实例 ID 此 readonly 资源。",
 			},
 			"zone": {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "Availability 可用区 ID，which can be obtained through the 可用区 field in the returned 值 of the DescribeZones API。",
+				Description: "Availability 可用区 ID，其中 可以 是 获取 through 可用区 字段 在 返回 值 的 DescribeZones API。",
 			},
 			"project_id": {
 				Type:        schema.TypeInt,
@@ -88,7 +88,7 @@ func ResourceTencentCloudPostgresqlReadonlyInstance() *schema.Resource {
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "VPC subnet ID。",
+				Description: "VPC 子网 ID。",
 			},
 			"name": {
 				Type:        schema.TypeString,
@@ -99,7 +99,7 @@ func ResourceTencentCloudPostgresqlReadonlyInstance() *schema.Resource {
 				Type:        schema.TypeSet,
 				Required:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "ID security group。",
+				Description: "ID 安全 组。",
 			},
 			"instance_charge_type": {
 				Type:         schema.TypeString,
@@ -107,36 +107,36 @@ func ResourceTencentCloudPostgresqlReadonlyInstance() *schema.Resource {
 				Default:      COMMON_PAYTYPE_POSTPAID,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(POSTGRESQL_PAYTYPE),
-				Description:  "instance billing 模式 有效值：PREPAID (monthly subscription)，POSTPAID_BY_HOUR (pay-as-you-go)。",
+				Description:  "实例 billing 模式 有效值：PREPAID (monthly subscription)，POSTPAID_BY_HOUR (pay-作为-您-go)。",
 			},
 			"period": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "指定Prepaid 周期 in month. Default `1`. Values: `1`，`2`，`3`，`4`，`5`，`6`，`7`，`8`，`9`，`10`，`11`，`12`，`24`，`36`。",
+				Description: "指定Prepaid 周期 在 month. Default `1`. Values: `1`，`2`，`3`，`4`，`5`，`6`，`7`，`8`，`9`，`10`，`11`，`12`，`24`，`36`。",
 			},
 			"auto_renew_flag": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
-				Description: "Auto 续费标识，`1` for 已启用 NOTES: Only support prepaid instance。",
+				Description: "Auto 续费标识，`1` 对于 已启用 NOTES: Only support prepaid 实例。",
 			},
 			"auto_voucher": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "是否use voucher，`1` for 已启用",
+				Description: "是否use voucher，`1` 对于 已启用",
 			},
 			"voucher_ids": {
 				Type:         schema.TypeList,
 				Optional:     true,
 				RequiredWith: []string{"auto_voucher"},
-				Description:  "指定Voucher Ids if `auto_voucher` was `1`，only support using 1 vouchers for now。",
+				Description:  "指定Voucher Ids 如果 `auto_voucher` 是 `1`，仅 support 使用 1 vouchers 对于 now。",
 				Elem:         &schema.Schema{Type: schema.TypeString},
 			},
 			"need_support_ipv6": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "是否support IPv6 地址 access. 有效值：1 (yes)，0 (no)。",
+				Description: "是否support IPv6 地址 访问. 有效值：1 (yes)，0 (无)。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
@@ -152,29 +152,29 @@ func ResourceTencentCloudPostgresqlReadonlyInstance() *schema.Resource {
 			"dedicated_cluster_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Dedicated cluster ID。",
+				Description: "Dedicated 集群 ID。",
 			},
 			"wait_switch": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{POSTGRESQL_KERNEL_UPGRADE_IMMEDIATELY, POSTGRESQL_KERNEL_UPGRADE_MAINTAIN_WINDOW}),
-				Description:  "Switch time after instance configurations are modified. `0`: Switch immediately; `2`: Switch during maintenance time window. 默认值：`0`. Note: This only takes effect when updating the `memory`，`storage`，`cpu` fields。",
+				Description:  "Switch 时间 after 实例 configurations 是 modified. `0`: Switch immediately; `2`: Switch during maintenance 时间 window. 默认值：`0`. 注意: 此 仅 takes effect 当 updating `内存`，`存储`，`cpu` 字段。",
 			},
 			// Computed values
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 of the postgresql instance。",
+				Description: "创建时间 的 postgresql 实例。",
 			},
 			"private_access_ip": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "IP for private access。",
+				Description: "IP 对于 私有 访问。",
 			},
 			"private_access_port": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "端口 for private access。",
+				Description: "端口 对于 私有 访问。",
 			},
 		},
 	}

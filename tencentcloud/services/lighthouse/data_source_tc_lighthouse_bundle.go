@@ -22,7 +22,7 @@ func DataSourceTencentCloudLighthouseBundle() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Bundle ID list。",
+				Description: "Bundle ID 列表。",
 			},
 
 			"offset": {
@@ -34,7 +34,7 @@ func DataSourceTencentCloudLighthouseBundle() *schema.Resource {
 			"limit": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "数量 returned results. 默认值为 20. Maximum 值 is 100。",
+				Description: "数量 返回 results. 默认值为 20. Maximum 值 是 100。",
 			},
 
 			"zones": {
@@ -43,13 +43,13 @@ func DataSourceTencentCloudLighthouseBundle() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "可用区 list，which 包含all zones by default。",
+				Description: "可用区 列表，其中 包含all zones 通过 默认值。",
 			},
 
 			"filters": {
 				Optional: true,
 				Type:     schema.TypeList,
-				Description: "Filter list.\n" +
+				Description: "过滤器 列表.\n" +
 					"- `bundle-id`: filter by the bundle ID.\n" +
 					"- `support-platform-type`: filter by system type, valid values: `LINUX_UNIX`, `WINDOWS`.\n" +
 					"- `bundle-type`: filter according to package type, valid values: `GENERAL_BUNDLE`, `STORAGE_BUNDLE`, `ENTERPRISE_BUNDLE`, `EXCLUSIVE_BUNDLE`, `BEFAST_BUNDLE`.\n" +
@@ -68,7 +68,7 @@ func DataSourceTencentCloudLighthouseBundle() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "过滤值 of field。",
+							Description: "过滤值 的 字段。",
 						},
 					},
 				},
@@ -88,54 +88,54 @@ func DataSourceTencentCloudLighthouseBundle() *schema.Resource {
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Memory size （GB）。",
+							Description: "Memory 大小 （GB）。",
 						},
 						"system_disk_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "System disk 类型",
+							Description: "System 磁盘 类型",
 						},
 						"system_disk_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "System disk size。",
+							Description: "System 磁盘 大小。",
 						},
 						"monthly_traffic": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Monthly network traffic in Gb。",
+							Description: "Monthly 网络 流量 在 Gb。",
 						},
 						"support_linux_unix_platform": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether Linux/Unix is supported。",
+							Description: "Whether Linux/Unix 是 支持。",
 						},
 						"support_windows_platform": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether Windows is supported。",
+							Description: "Whether Windows 是 支持。",
 						},
 						"price": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Current package unit price information。",
+							Description: "Current 包 单位 价格 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_price": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Instance price。",
+										Description: "实例 价格。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"original_bundle_price": {
 													Type:        schema.TypeFloat,
 													Computed:    true,
-													Description: "Original package unit price。",
+													Description: "Original 包 单位 价格。",
 												},
 												"original_price": {
 													Type:        schema.TypeFloat,
 													Computed:    true,
-													Description: "Original price。",
+													Description: "Original 价格。",
 												},
 												"discount": {
 													Type:        schema.TypeFloat,
@@ -145,12 +145,12 @@ func DataSourceTencentCloudLighthouseBundle() *schema.Resource {
 												"discount_price": {
 													Type:        schema.TypeFloat,
 													Computed:    true,
-													Description: "Discounted price。",
+													Description: "Discounted 价格。",
 												},
 												"currency": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Currency unit. 有效值：CNY and USD。",
+													Description: "Currency 单位. 有效值：CNY 和 USD。",
 												},
 											},
 										},
@@ -166,7 +166,7 @@ func DataSourceTencentCloudLighthouseBundle() *schema.Resource {
 						"internet_max_bandwidth_out": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Peak bandwidth in Mbps。",
+							Description: "Peak 带宽 在 Mbps。",
 						},
 						"internet_charge_type": {
 							Type:        schema.TypeString,
@@ -176,17 +176,17 @@ func DataSourceTencentCloudLighthouseBundle() *schema.Resource {
 						"bundle_sales_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Package sale 状态 Valid values are AVAILABLE，SOLD_OUT。",
+							Description: "Package sale 状态 有效 值 是 AVAILABLE，SOLD_OUT。",
 						},
 						"bundle_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Package 类型Valid values:GENERAL_BUNDLE: generalSTORAGE_BUNDLE: Storage。",
+							Description: "Package 类型Valid 值:GENERAL_BUNDLE: generalSTORAGE_BUNDLE: Storage。",
 						},
 						"bundle_display_label": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Package 标签Valid values:ACTIVITY: promotional packageNORMAL: regular packageCAREFREE: carefree package。",
+							Description: "Package 标签Valid 值:ACTIVITY: promotional packageNORMAL: regular packageCAREFREE: carefree 包。",
 						},
 					},
 				},

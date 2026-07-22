@@ -20,13 +20,13 @@ func DataSourceTencentCloudMonitorTmpRegions() *schema.Resource {
 			"pay_mode": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "付费模式 `1`-Prepaid，`2`-Postpaid，`3`-All regions (默认为 all regions 如果未填写 in)。",
+				Description: "付费模式 `1`-Prepaid，`2`-Postpaid，`3`-All regions (默认为 all regions 如果未填写 在)。",
 			},
 
 			"region_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "地域 set。",
+				Description: "地域 集合。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
@@ -42,7 +42,7 @@ func DataSourceTencentCloudMonitorTmpRegions() *schema.Resource {
 						"region_state": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "地域 状态 (0-unavailable; 1-available)。",
+							Description: "地域 状态 (0-unavailable; 1-可用)。",
 						},
 						"region_name": {
 							Type:        schema.TypeString,

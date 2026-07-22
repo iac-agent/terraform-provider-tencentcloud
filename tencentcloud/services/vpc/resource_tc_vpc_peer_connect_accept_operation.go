@@ -21,7 +21,7 @@ func ResourceTencentCloudVpcPeerConnectAcceptOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Peer connection unique ID。",
+				Description: "Peer 连接 唯一 ID。",
 			},
 		},
 	}

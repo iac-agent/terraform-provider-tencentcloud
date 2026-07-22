@@ -32,7 +32,7 @@ func ResourceTencentCloudMysqlBackupEncryptionStatus() *schema.Resource {
 			"encryption_status": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "实例是否启用物理备份加密。可能的值为“on”、“off”。",
+				Description: "实例是否启用物理备份加密。可能的值为“在”、“关闭”。",
 			},
 		},
 	}

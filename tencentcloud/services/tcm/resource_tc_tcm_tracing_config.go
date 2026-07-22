@@ -33,7 +33,7 @@ func ResourceTencentCloudTcmTracingConfig() *schema.Resource {
 			"enable": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether enable tracing。",
+				Description: "Whether 启用 追踪。",
 			},
 
 			"apm": {
@@ -46,7 +46,7 @@ func ResourceTencentCloudTcmTracingConfig() *schema.Resource {
 						"enable": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether enable APM。",
+							Description: "Whether 启用 APM。",
 						},
 						"region": {
 							Type:        schema.TypeString,

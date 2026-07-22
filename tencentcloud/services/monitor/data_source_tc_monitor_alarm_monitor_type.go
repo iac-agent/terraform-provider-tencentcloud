@@ -22,7 +22,7 @@ func DataSourceTencentCloudMonitorAlarmMonitorType() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Monitoring 类型，cloud product monitoring is MT_ QCE。",
+				Description: "Monitoring 类型，云 product 监控 是 MT_ QCE。",
 			},
 
 			"monitor_type_infos": {

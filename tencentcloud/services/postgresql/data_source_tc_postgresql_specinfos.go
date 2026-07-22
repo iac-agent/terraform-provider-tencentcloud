@@ -16,12 +16,12 @@ func DataSourceTencentCloudPostgresqlSpecinfos() *schema.Resource {
 			"availability_zone": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The 可用区 of the postgresql instance to query。",
+				Description: "可用区 的 postgresql 实例 到 查询。",
 			},
 			"storage_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Storage 类型 filter. 有效值：`PHYSICAL_LOCAL_SSD` (local SSD)，`CLOUD_PREMIUM` (premium cloud disk)，`CLOUD_SSD` (cloud SSD)，`CLOUD_HSSD` (enhanced cloud SSD)。",
+				Description: "Storage 类型 过滤器. 有效值：`PHYSICAL_LOCAL_SSD` (本地 SSD)，`CLOUD_PREMIUM` (premium 云 磁盘)，`CLOUD_SSD` (云 SSD)，`CLOUD_HSSD` (enhanced 云 SSD)。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -31,48 +31,48 @@ func DataSourceTencentCloudPostgresqlSpecinfos() *schema.Resource {
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A 列表 zones will be exported and its every element 包含following attributes:",
+				Description: "A 列表 zones 将 是 exported 和 its every element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID postgresql instance speccode。",
+							Description: "ID postgresql 实例 speccode。",
 						},
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Memory size(in GB)。",
+							Description: "Memory 大小(在 GB)。",
 						},
 						"storage_min": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The minimum volume size(in GB)。",
+							Description: "最小 卷 大小(在 GB)。",
 						},
 						"storage_max": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The maximum volume size(in GB)。",
+							Description: "最大 卷 大小(在 GB)。",
 						},
 						"cpu": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The CPU 数量 the postgresql instance。",
+							Description: "CPU 数量 postgresql 实例。",
 						},
 						"qps": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The QPS of the postgresql instance。",
+							Description: "QPS 的 postgresql 实例。",
 						},
 						"engine_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "版本 of the postgresql database engine。",
+							Description: "版本 的 postgresql 数据库 引擎。",
 						},
 						"engine_version_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "版本 名称 postgresql database engine。",
+							Description: "版本 名称 postgresql 数据库 引擎。",
 						},
 					},
 				},

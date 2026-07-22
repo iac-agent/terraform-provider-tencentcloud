@@ -32,7 +32,7 @@ func ResourceTencentCloudVpcRouteEntry() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID routing table to which this entry belongs。",
+				Description: "ID routing 表 到 其中 此 entry belongs。",
 			},
 			"destination_cidr_block": {
 				Type:         schema.TypeString,
@@ -46,36 +46,36 @@ func ResourceTencentCloudVpcRouteEntry() *schema.Resource {
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(ALL_GATE_WAY_TYPES),
-				Description:  "类型 next-hop. 有效值：`CVM`，`VPN`，`DIRECTCONNECT`，`PEERCONNECTION`，`HAVIP`，`NAT`，`NORMAL_CVM`，`EIP`，`LOCAL_GATEWAY`，`INTRANAT`，`USER_CCN` and `GWLB_ENDPOINT`。",
+				Description:  "类型 next-hop. 有效值：`CVM`，`VPN`，`DIRECTCONNECT`，`PEERCONNECTION`，`HAVIP`，`NAT`，`NORMAL_CVM`，`EIP`，`LOCAL_GATEWAY`，`INTRANAT`，`USER_CCN` 和 `GWLB_ENDPOINT`。",
 			},
 			"next_hub": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID next-hop gateway. Note: when `next_type` is EIP，`next_hub` should be `0`。",
+				Description: "ID next-hop 网关. 注意: 当 `next_type` 是 EIP，`next_hub` should 是 `0`。",
 			},
 			// Name enabled will lead to exist route table diff fail (null -> false cannot diff).
 			"disabled": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "是否entry is 已禁用，默认为 `false`。",
+				Description: "是否entry 是 已禁用，默认为 `false`。",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "描述 routing table entry。",
+				Description: "描述 routing 表 entry。",
 			},
 			"route_item_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "ID route table entry。",
+				Description: "ID 路由 表 entry。",
 			},
 			"route_entry_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "ID route entry。",
+				Description: "ID 路由 entry。",
 			},
 		},
 	}

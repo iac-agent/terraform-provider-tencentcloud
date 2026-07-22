@@ -28,7 +28,7 @@ func ResourceTencentCloudCamUserSamlConfig() *schema.Resource {
 			"saml_metadata_document": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "SAML metadata document，xml 格式，support string 内容 or file 路径",
+				Description: "SAML metadata document，xml 格式，support 字符串 内容 或 文件 路径",
 				StateFunc: func(v interface{}) string {
 					saml := v.(string)
 					if saml != "" {
@@ -52,13 +52,13 @@ func ResourceTencentCloudCamUserSamlConfig() *schema.Resource {
 			"status": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "状态: `0`: not set，`11`: 已启用，`2`: 已禁用",
+				Description: "状态: `0`: 不 集合，`11`: 已启用，`2`: 已禁用",
 			},
 
 			"metadata_document_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The 路径 用于save the saml Metadata file。",
+				Description: "路径 用于save saml Metadata 文件。",
 			},
 		},
 	}

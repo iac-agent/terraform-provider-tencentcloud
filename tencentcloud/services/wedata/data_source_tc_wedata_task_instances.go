@@ -25,103 +25,103 @@ func DataSourceTencentCloudWedataTaskInstances() *schema.Resource {
 			"keyword": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Task 名称 or 任务 ID Supports fuzzy search filtering. Multiple values separated by commas。",
+				Description: "任务 名称 或 任务 ID Supports fuzzy search filtering. Multiple 值 separated 通过 commas。",
 			},
 
 			"time_zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "时区. The 时区 of the input time string，default UTC+8。",
+				Description: "时区. 时区 的 input 时间 字符串，默认值 UTC+8。",
 			},
 
 			"instance_type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "实例类型 - 0: Backfill 类型 - 1: Periodic instance - 2: Non-periodic instance。",
+				Description: "实例类型 - 0: Backfill 类型 - 1: Periodic 实例 - 2: Non-periodic 实例。",
 			},
 
 			"instance_state": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "实例状态 - WAIT_EVENT: Waiting for event - WAIT_UPSTREAM: Waiting for upstream - WAIT_RUN: Waiting to run - RUNNING: Running - SKIP_RUNNING: Skipped running - FAILED_RETRY: Failed retry - EXPIRED: Failed - COMPLETED: Success。",
+				Description: "实例状态 - WAIT_EVENT: Waiting 对于 事件 - WAIT_UPSTREAM: Waiting 对于 upstream - WAIT_RUN: Waiting 到 run - RUNNING: Running - SKIP_RUNNING: Skipped running - FAILED_RETRY: Failed retry - EXPIRED: Failed - COMPLETED: Success。",
 			},
 
 			"task_type_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Task 类型 ID。",
+				Description: "任务 类型 ID。",
 			},
 
 			"cycle_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Task cycle 类型 * ONEOFF_CYCLE: One-time * YEAR_CYCLE: Year * MONTH_CYCLE: Month * WEEK_CYCLE: Week * DAY_CYCLE: Day * HOUR_CYCLE: Hour * MINUTE_CYCLE: Minute * CRONTAB_CYCLE: Crontab expression 类型",
+				Description: "任务 cycle 类型 * ONEOFF_CYCLE: One-时间 * YEAR_CYCLE: Year * MONTH_CYCLE: Month * WEEK_CYCLE: Week * DAY_CYCLE: Day * HOUR_CYCLE: Hour * MINUTE_CYCLE: Minute * CRONTAB_CYCLE: Crontab expression 类型",
 			},
 
 			"owner_uin": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Task 所有者 ID。",
+				Description: "任务 所有者 ID。",
 			},
 
 			"folder_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Task folder ID。",
+				Description: "任务 文件夹 ID。",
 			},
 
 			"workflow_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Task workflow ID。",
+				Description: "任务 工作流 ID。",
 			},
 
 			"executor_group_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Executor resource 组 ID",
+				Description: "Executor 资源 组 ID",
 			},
 
 			"schedule_time_from": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Instance scheduled time filter condition 开始时间，格式 yyyy-MM-dd HH:mm:ss。",
+				Description: "实例 scheduled 时间 过滤器 condition 开始时间，格式 yyyy-MM-dd HH:mm:ss。",
 			},
 
 			"schedule_time_to": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Instance scheduled time filter condition 结束时间，格式 yyyy-MM-dd HH:mm:ss。",
+				Description: "实例 scheduled 时间 过滤器 condition 结束时间，格式 yyyy-MM-dd HH:mm:ss。",
 			},
 
 			"start_time_from": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Instance execution 开始时间 filter condition 开始时间，格式 yyyy-MM-dd HH:mm:ss。",
+				Description: "实例 execution 开始时间 过滤器 condition 开始时间，格式 yyyy-MM-dd HH:mm:ss。",
 			},
 
 			"start_time_to": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Instance execution 开始时间 filter condition.结束时间，格式 yyyy-MM-dd HH:mm:ss。",
+				Description: "实例 execution 开始时间 过滤器 condition.结束时间，格式 yyyy-MM-dd HH:mm:ss。",
 			},
 
 			"last_update_time_from": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Instance last 更新时间 filter condition.开始时间，格式 yyyy-MM-dd HH:mm:ss。",
+				Description: "实例 last 更新时间 过滤器 condition.开始时间，格式 yyyy-MM-dd HH:mm:ss。",
 			},
 
 			"last_update_time_to": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Instance last 更新时间 filter condition.结束时间，格式 yyyy-MM-dd HH:mm:ss。",
+				Description: "实例 last 更新时间 过滤器 condition.结束时间，格式 yyyy-MM-dd HH:mm:ss。",
 			},
 
 			"sort_column": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "结果 sorting field- SCHEDULE_DATE: 排序方式 scheduled time- START_TIME: 排序方式 execution 开始时间- END_TIME: 排序方式 execution 结束时间- COST_TIME: 排序方式 execution duration。",
+				Description: "结果 sorting 字段- SCHEDULE_DATE: 排序方式 scheduled 时间- START_TIME: 排序方式 execution 开始时间- END_TIME: 排序方式 execution 结束时间- COST_TIME: 排序方式 execution 时长。",
 			},
 
 			"sort_type": {
@@ -133,7 +133,7 @@ func DataSourceTencentCloudWedataTaskInstances() *schema.Resource {
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Instance 结果 set。",
+				Description: "实例 结果 集合。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
@@ -159,7 +159,7 @@ func DataSourceTencentCloudWedataTaskInstances() *schema.Resource {
 						"items": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Data list。",
+							Description: "Data 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"project_id": {
@@ -200,27 +200,27 @@ func DataSourceTencentCloudWedataTaskInstances() *schema.Resource {
 									"task_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task 名称",
+										Description: "任务 名称",
 									},
 									"cur_run_date": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Instance data time。",
+										Description: "实例 数据 时间。",
 									},
 									"instance_state": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "实例状态- WAIT_EVENT: Waiting for even: - WAIT_UPSTREAM: Waiting for upstream; - WAIT_RUN: Waiting to run; - RUNNING: Running; - SKIP_RUNNING: Skipped running; - FAILED_RETRY: Failed retry; - EXPIRED: Failed; - COMPLETED: Success。",
+										Description: "实例状态- WAIT_EVENT: Waiting 对于 even: - WAIT_UPSTREAM: Waiting 对于 upstream; - WAIT_RUN: Waiting 到 run; - RUNNING: Running; - SKIP_RUNNING: Skipped running; - FAILED_RETRY: Failed retry; - EXPIRED: Failed; - COMPLETED: Success。",
 									},
 									"instance_type": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "实例类型 - 0: Backfill 类型; - 1: Periodic instance; - 2: Non-periodic instance。",
+										Description: "实例类型 - 0: Backfill 类型; - 1: Periodic 实例; - 2: Non-periodic 实例。",
 									},
 									"owner_uin_list": {
 										Type:        schema.TypeSet,
 										Required:    true,
-										Description: "所有者 list。",
+										Description: "所有者 列表。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -233,17 +233,17 @@ func DataSourceTencentCloudWedataTaskInstances() *schema.Resource {
 									"task_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task 类型 描述",
+										Description: "任务 类型 描述",
 									},
 									"task_type_id": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Task 类型 ID。",
+										Description: "任务 类型 ID。",
 									},
 									"cycle_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task cycle 类型Supports filtering multiple types with OR relationship. O: ONEOFF_CYCLE;  Y: YEAR_CYCLE;  M: MONTH_CYCLE;  W: WEEK_CYCLE;  D: DAY_CYCLE;  H: HOUR_CYCLE;  I: MINUTE_CYCLE;  C: CRONTAB_CYCLE。",
+										Description: "任务 cycle 类型Supports filtering 多个 types 使用 OR relationship. O: ONEOFF_CYCLE; Y: YEAR_CYCLE; M: MONTH_CYCLE; W: WEEK_CYCLE; D: DAY_CYCLE; H: HOUR_CYCLE; I: MINUTE_CYCLE; C: CRONTAB_CYCLE。",
 									},
 									"try_limit": {
 										Type:        schema.TypeInt,
@@ -253,7 +253,7 @@ func DataSourceTencentCloudWedataTaskInstances() *schema.Resource {
 									"tries": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Failed retry count. Reset to 0 when manually rerun or backfilled。",
+										Description: "Failed retry count. Reset 到 0 当 manually rerun 或 backfilled。",
 									},
 									"start_time": {
 										Type:        schema.TypeString,
@@ -268,12 +268,12 @@ func DataSourceTencentCloudWedataTaskInstances() *schema.Resource {
 									"cost_time": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Execution duration，in ms。",
+										Description: "Execution 时长，在 ms。",
 									},
 									"scheduler_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Scheduled time。",
+										Description: "Scheduled 时间。",
 									},
 									"last_update_time": {
 										Type:        schema.TypeString,
@@ -283,7 +283,7 @@ func DataSourceTencentCloudWedataTaskInstances() *schema.Resource {
 									"executor_group_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Executor resource 组 ID",
+										Description: "Executor 资源 组 ID",
 									},
 									"executor_group_name": {
 										Type:        schema.TypeString,

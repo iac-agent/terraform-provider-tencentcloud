@@ -21,19 +21,19 @@ func DataSourceTencentCloudLighthouseInstanceDisks() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "列表 disk ids。",
+				Description: "列表 磁盘 ids。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter list。",
+				Description: "过滤器 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Fields to be filtered. Valid names: `disk-id`: Filters by disk id; `instance-id`: Filter by 实例 ID; `disk-名称`: Filter by disk 名称; `可用区`: Filter by 可用区; `disk-usage`: Filter by disk usage(Values: `SYSTEM_DISK` or `DATA_DISK`); `disk-state`: Filter by disk state。",
+							Description: "Fields 到 是 filtered. 有效 names: `磁盘-ID`: Filters 通过 磁盘 ID; `实例-ID`: 过滤器 通过 实例 ID; `磁盘-名称`: 过滤器 通过 磁盘 名称; `可用区`: 过滤器 通过 可用区; `磁盘-usage`: 过滤器 通过 磁盘 usage(Values: `SYSTEM_DISK` 或 `DATA_DISK`); `磁盘-state`: 过滤器 通过 磁盘 state。",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -41,7 +41,7 @@ func DataSourceTencentCloudLighthouseInstanceDisks() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "值 of the field。",
+							Description: "值 的 字段。",
 						},
 					},
 				},
@@ -50,13 +50,13 @@ func DataSourceTencentCloudLighthouseInstanceDisks() *schema.Resource {
 			"disk_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Cloud disk information list。",
+				Description: "Cloud 磁盘 信息 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"disk_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Disk id。",
+							Description: "Disk ID。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
@@ -91,7 +91,7 @@ func DataSourceTencentCloudLighthouseInstanceDisks() *schema.Resource {
 						"disk_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Disk size。",
+							Description: "Disk 大小。",
 						},
 						"renew_flag": {
 							Type:        schema.TypeString,
@@ -101,7 +101,7 @@ func DataSourceTencentCloudLighthouseInstanceDisks() *schema.Resource {
 						"disk_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Disk state. Valid values:`PENDING`，`UNATTACHED`，`ATTACHING`，`ATTACHED`，`DETACHING`，`SHUTDOWN`，`CREATED_FAILED`，`TERMINATING`，`DELETING`，`FREEZING`。",
+							Description: "Disk state. 有效 值:`PENDING`，`UNATTACHED`，`ATTACHING`，`ATTACHED`，`DETACHING`，`SHUTDOWN`，`CREATED_FAILED`，`TERMINATING`，`DELETING`，`FREEZING`。",
 						},
 						"attached": {
 							Type:        schema.TypeBool,
@@ -111,7 +111,7 @@ func DataSourceTencentCloudLighthouseInstanceDisks() *schema.Resource {
 						"delete_with_instance": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否release with the instance。",
+							Description: "是否release 使用 实例。",
 						},
 						"latest_operation": {
 							Type:        schema.TypeString,
@@ -126,32 +126,32 @@ func DataSourceTencentCloudLighthouseInstanceDisks() *schema.Resource {
 						"latest_operation_request_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Latest operation request id。",
+							Description: "Latest operation 请求 ID。",
 						},
 						"created_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Created time. Expressed according to the ISO8601 standard，and using UTC time. The 格式 is `YYYY-MM-DDThh:mm:ssZ`。",
+							Description: "Created 时间. Expressed according 到 ISO8601 standard，和 使用 UTC 时间. 格式 是 `YYYY-MM-DDThh:mm:ssZ`。",
 						},
 						"expired_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "过期时间. Expressed according to the ISO8601 standard，and using UTC time. The 格式 is `YYYY-MM-DDThh:mm:ssZ`。",
+							Description: "过期时间. Expressed according 到 ISO8601 standard，和 使用 UTC 时间. 格式 是 `YYYY-MM-DDThh:mm:ssZ`。",
 						},
 						"isolated_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Isolated time. Expressed according to the ISO8601 standard，and using UTC time. The 格式 is `YYYY-MM-DDThh:mm:ssZ`。",
+							Description: "Isolated 时间. Expressed according 到 ISO8601 standard，和 使用 UTC 时间. 格式 是 `YYYY-MM-DDThh:mm:ssZ`。",
 						},
 						"disk_backup_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 existing backup points of cloud disk。",
+							Description: "数量 existing 备份 points 的 云 磁盘。",
 						},
 						"disk_backup_quota": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 backup points quota for cloud disk。",
+							Description: "数量 备份 points 配额 对于 云 磁盘。",
 						},
 					},
 				},

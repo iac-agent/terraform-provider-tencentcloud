@@ -39,7 +39,7 @@ func ResourceTencentCloudVpcEnableEndPointConnect() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "是否accept endpoint connection requests. `true`: Accept automatically. `false`: Do not automatically accept。",
+				Description: "是否accept 端点 连接 requests. `true`: Accept automatically. `false`: Do 不 automatically accept。",
 			},
 		},
 	}

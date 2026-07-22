@@ -29,20 +29,20 @@ func ResourceTencentCloudGaapLayer7Listener() *schema.Resource {
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"HTTP", "HTTPS"}),
 				ForceNew:     true,
-				Description:  "协议 of the layer7 listener. Valid 值: `HTTP` and `HTTPS`。",
+				Description:  "协议 的 layer7 listener. 有效 值: `HTTP` 和 `HTTPS`。",
 			},
 			"name": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 30),
-				Description:  "名称 layer7 listener，the maximum length is 30。",
+				Description:  "名称 layer7 listener， 最大 长度 是 30。",
 			},
 			"port": {
 				Type:         schema.TypeInt,
 				Required:     true,
 				ValidateFunc: tccommon.ValidatePort,
 				ForceNew:     true,
-				Description:  "端口 of the layer7 listener。",
+				Description:  "端口 的 layer7 listener。",
 			},
 			"proxy_id": {
 				Type:          schema.TypeString,
@@ -64,21 +64,21 @@ func ResourceTencentCloudGaapLayer7Listener() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "",
-				Description: "证书 ID layer7 listener. NOTES: Only supports listeners of `HTTPS` 协议",
+				Description: "证书 ID layer7 listener. NOTES: Only 支持 listeners 的 `HTTPS` 协议",
 			},
 			"forward_protocol": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"HTTP", "HTTPS"}),
 				ForceNew:     true,
-				Description:  "协议 类型 forwarding. Valid 值: `HTTP` and `HTTPS`. NOTES: Only supports listeners of `HTTPS` 协议",
+				Description:  "协议 类型 forwarding. 有效 值: `HTTP` 和 `HTTPS`. NOTES: Only 支持 listeners 的 `HTTPS` 协议",
 			},
 			"auth_type": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
 				ForceNew:     true,
-				Description:  "Authentication 类型 layer7 listener. `0` is one-way authentication and `1` is mutual authentication. NOTES: Only supports listeners of `HTTPS` 协议",
+				Description:  "Authentication 类型 layer7 listener. `0` 是 一个-way authentication 和 `1` 是 mutual authentication. NOTES: Only 支持 listeners 的 `HTTPS` 协议",
 			},
 			"client_certificate_id": {
 				Deprecated:    "It has been deprecated from version 1.26.0. Set `client_certificate_ids` instead.",
@@ -86,7 +86,7 @@ func ResourceTencentCloudGaapLayer7Listener() *schema.Resource {
 				Optional:      true,
 				Computed:      true,
 				ConflictsWith: []string{"client_certificate_ids"},
-				Description:   "ID client certificate. Set only when `auth_type` is specified as mutual authentication. NOTES: Only supports listeners of `HTTPS` 协议",
+				Description:   "ID 客户端 证书. Set 仅 当 `auth_type` 是 指定 作为 mutual authentication. NOTES: Only 支持 listeners 的 `HTTPS` 协议",
 			},
 			"client_certificate_ids": {
 				Type:          schema.TypeSet,
@@ -95,7 +95,7 @@ func ResourceTencentCloudGaapLayer7Listener() *schema.Resource {
 				Elem:          &schema.Schema{Type: schema.TypeString},
 				Set:           schema.HashString,
 				ConflictsWith: []string{"client_certificate_id"},
-				Description:   "ID 列表 the client certificate. Set only when `auth_type` is specified as mutual authentication. NOTES: Only supports listeners of `HTTPS` 协议",
+				Description:   "ID 列表 客户端 证书. Set 仅 当 `auth_type` 是 指定 作为 mutual authentication. NOTES: Only 支持 listeners 的 `HTTPS` 协议",
 			},
 			"tls_support_versions": {
 				Type:        schema.TypeSet,
@@ -109,7 +109,7 @@ func ResourceTencentCloudGaapLayer7Listener() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "密码 Suite，可选 GAAP_TLS_CIPHERS_STRICT，GAAP_TLS_CIPHERS_GENERAL，GAAP_TLS_CIPHERS_WIDE(default)。",
+				Description: "密码 Suite，可选 GAAP_TLS_CIPHERS_STRICT，GAAP_TLS_CIPHERS_GENERAL，GAAP_TLS_CIPHERS_WIDE(默认值)。",
 			},
 
 			// computed
@@ -121,7 +121,7 @@ func ResourceTencentCloudGaapLayer7Listener() *schema.Resource {
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 of the layer7 listener。",
+				Description: "创建时间 的 layer7 listener。",
 			},
 		},
 	}

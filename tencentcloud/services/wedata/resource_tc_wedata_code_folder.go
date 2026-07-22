@@ -41,7 +41,7 @@ func ResourceTencentCloudWedataCodeFolder() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Parent folder 路径，for example /aaa/bbb/ccc，路径 header must start with a slash，root directory pass /。",
+				Description: "Parent 文件夹 路径，对于 示例 /aaa/bbb/ccc，路径 头部 必须 start 使用 slash，root directory pass /。",
 			},
 
 			// computed
@@ -54,13 +54,13 @@ func ResourceTencentCloudWedataCodeFolder() *schema.Resource {
 			"access_scope": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Permission range: SHARED，PRIVATE。",
+				Description: "Permission 范围: SHARED，PRIVATE。",
 			},
 
 			"type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "类型 folder，script。",
+				Description: "类型 文件夹，脚本。",
 			},
 
 			"path": {

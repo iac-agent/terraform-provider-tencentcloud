@@ -35,33 +35,33 @@ func ResourceTencentCloudWedataCodeFile() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "代码 file 名称",
+				Description: "代码 文件 名称",
 			},
 
 			"parent_folder_path": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Parent folder 路径，for example /aaa/bbb/ccc，路径 header must start with a slash，root directory pass /。",
+				Description: "Parent 文件夹 路径，对于 示例 /aaa/bbb/ccc，路径 头部 必须 start 使用 slash，root directory pass /。",
 			},
 
 			"code_file_config": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "代码 file configuration。",
+				Description: "代码 文件 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"params": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Advanced runtime parameters，variable substitution，map-json String,String。",
+							Description: "Advanced runtime 参数，variable substitution，map-json String,String。",
 						},
 						"notebook_session_info": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Notebook kernel session information。",
+							Description: "Notebook kernel 会话 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"notebook_session_id": {
@@ -84,26 +84,26 @@ func ResourceTencentCloudWedataCodeFile() *schema.Resource {
 			"code_file_content": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "代码 file 内容",
+				Description: "代码 文件 内容",
 			},
 
 			// computed
 			"code_file_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "代码 file ID。",
+				Description: "代码 文件 ID。",
 			},
 
 			"access_scope": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Permission range: SHARED，PRIVATE。",
+				Description: "Permission 范围: SHARED，PRIVATE。",
 			},
 
 			"path": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The full 路径 of the node，/aaa/bbb/ccc.ipynb，consists of the names of each node。",
+				Description: "full 路径 的 节点，/aaa/bbb/ccc.ipynb，consists 的 names 的 each 节点。",
 			},
 		},
 	}

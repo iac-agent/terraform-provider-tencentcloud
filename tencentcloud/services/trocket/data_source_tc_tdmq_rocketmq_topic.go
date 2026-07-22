@@ -35,19 +35,19 @@ func DataSourceTencentCloudTdmqRocketmqTopic() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "Filter by topic 类型 有效值：`Normal`，`GlobalOrder`，`PartitionedOrder`，`Transaction`。",
+				Description: "过滤器 通过 主题 类型 有效值：`Normal`，`GlobalOrder`，`PartitionedOrder`，`Transaction`。",
 			},
 
 			"filter_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search by topic 名称 Fuzzy query is supported。",
+				Description: "Search 通过 主题 名称 Fuzzy 查询 是 支持。",
 			},
 
 			"topics": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "列表 topic information。",
+				Description: "列表 主题 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -63,7 +63,7 @@ func DataSourceTencentCloudTdmqRocketmqTopic() *schema.Resource {
 						"partition_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 数量 read/write partitions。",
+							Description: "数量 read/write partitions。",
 						},
 						"create_time": {
 							Type:        schema.TypeInt,

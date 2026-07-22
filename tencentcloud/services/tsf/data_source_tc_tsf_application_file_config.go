@@ -28,7 +28,7 @@ func DataSourceTencentCloudTsfApplicationFileConfig() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "列表 configuration item ID。",
+				Description: "列表 配置 item ID。",
 			},
 
 			"config_name": {
@@ -52,7 +52,7 @@ func DataSourceTencentCloudTsfApplicationFileConfig() *schema.Resource {
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "File configuration item list. 注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "File 配置 item 列表. 注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
@@ -63,7 +63,7 @@ func DataSourceTencentCloudTsfApplicationFileConfig() *schema.Resource {
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "File configuration array. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "File 配置 数组. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"config_id": {
@@ -89,17 +89,17 @@ func DataSourceTencentCloudTsfApplicationFileConfig() *schema.Resource {
 									"config_file_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item file 名称 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Configuration item 文件 名称 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_file_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration file 内容 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Configuration 文件 内容 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_file_code": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration file 代码 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Configuration 文件 代码 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"creation_time": {
 										Type:        schema.TypeString,
@@ -109,12 +109,12 @@ func DataSourceTencentCloudTsfApplicationFileConfig() *schema.Resource {
 									"application_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "application Id. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "应用 ID. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"application_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "application 名称 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "应用 名称 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"delete_flag": {
 										Type:        schema.TypeBool,
@@ -124,27 +124,27 @@ func DataSourceTencentCloudTsfApplicationFileConfig() *schema.Resource {
 									"config_version_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "配置 版本 count.  注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "配置 版本 count. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"last_update_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "last 更新时间.  注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "last 更新时间. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_file_path": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "file 配置 路径 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "文件 配置 路径 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_post_cmd": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "last 更新时间.  注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "last 更新时间. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_file_value_length": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "配置 item 内容 length.  注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "配置 item 内容 长度. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},

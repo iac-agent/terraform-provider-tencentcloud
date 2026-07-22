@@ -19,7 +19,7 @@ func DataSourceTencentCloudWafInstanceQpsLimit() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Unique ID Instance。",
+				Description: "Unique ID 实例。",
 			},
 			"type": {
 				Optional:    true,
@@ -50,12 +50,12 @@ func DataSourceTencentCloudWafInstanceQpsLimit() *schema.Resource {
 						"qps_extend_max": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum qps of extend package。",
+							Description: "Maximum qps 的 extend 包。",
 						},
 						"qps_extend_intl_max": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum qps of extend package for overseas。",
+							Description: "Maximum qps 的 extend 包 对于 overseas。",
 						},
 					},
 				},

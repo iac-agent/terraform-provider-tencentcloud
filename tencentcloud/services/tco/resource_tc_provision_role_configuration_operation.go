@@ -39,14 +39,14 @@ func ResourceTencentCloudProvisionRoleConfigurationOperation() *schema.Resource 
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "类型 synchronized target 账号 of the Tencent Cloud Organization. ManagerUin: admin 账号; MemberUin: member 账号",
+				Description: "类型 synchronized 目标 账号 的 Tencent Cloud Organization. ManagerUin: admin 账号; MemberUin: member 账号",
 			},
 
 			"target_uin": {
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "UIN of the target 账号 of the Tencent Cloud Organization。",
+				Description: "UIN 的 目标 账号 的 Tencent Cloud Organization。",
 			},
 		},
 	}

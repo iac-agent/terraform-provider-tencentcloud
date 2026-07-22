@@ -19,7 +19,7 @@ func DataSourceTencentCloudSqlserverInstanceParamRecords() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID in the format of mssql-dj5i29c5n. It is the same as the instance ID displayed in the TencentDB console and the response parameter InstanceId of the DescribeDBInstances API.",
+				Description: "实例 ID 在 格式 的 mssql-dj5i29c5n. It 是 same 作为 实例 ID displayed 在 TencentDB console 和 response 参数 InstanceId 的 DescribeDBInstances API.",
 			},
 			"items": {
 				Computed:    true,
@@ -30,32 +30,32 @@ func DataSourceTencentCloudSqlserverInstanceParamRecords() *schema.Resource {
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID.",
 						},
 						"param_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Parameter name.",
+							Description: "Parameter 名称.",
 						},
 						"old_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Parameter value before modification.",
+							Description: "Parameter 值 before modification.",
 						},
 						"new_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Parameter value after modification.",
+							Description: "Parameter 值 after modification.",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Parameter modification status. Valid values: 1 (initializing and waiting for modification), 2 (modification succeed), 3 (modification failed), 4 (modifying).",
+							Description: "Parameter modification 状态. 有效 值: 1 (initializing 和 waiting 对于 modification), 2 (modification succeed), 3 (modification failed), 4 (modifying).",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Modification time.",
+							Description: "Modification 时间.",
 						},
 					},
 				},
@@ -63,7 +63,7 @@ func DataSourceTencentCloudSqlserverInstanceParamRecords() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

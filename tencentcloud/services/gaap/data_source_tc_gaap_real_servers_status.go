@@ -34,22 +34,22 @@ func DataSourceTencentCloudGaapRealServersStatus() *schema.Resource {
 						"real_server_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Real Server Id。",
+							Description: "Real Server ID。",
 						},
 						"bind_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Bind 状态，0 表示unbound，1 表示bound by rules or listeners。",
+							Description: "Bind 状态，0 表示unbound，1 表示bound 通过 规则 或 listeners。",
 						},
 						"proxy_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Bind the proxy ID this real server，which is an empty string when not bound。",
+							Description: "Bind proxy ID 此 real 服务器，其中 是 空 字符串 当 不 bound。",
 						},
 						"group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Bind the 组 ID this real server，which is an empty string when not bound.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Bind 组 ID 此 real 服务器，其中 是 空 字符串 当 不 bound.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},

@@ -25,7 +25,7 @@ func ResourceTencentCloudMqttInstance() *schema.Resource {
 			"instance_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "实例类型 PRO for Professional Edition; PLATINUM for Platinum Edition。",
+				Description: "实例类型 PRO 对于 Professional Edition; PLATINUM 对于 Platinum Edition。",
 			},
 
 			"name": {
@@ -37,7 +37,7 @@ func ResourceTencentCloudMqttInstance() *schema.Resource {
 			"sku_code": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Product SKU，available SKUs can be queried via the DescribeProductSKUList API。",
+				Description: "Product SKU，可用 SKUs 可以 是 queried via DescribeProductSKUList API。",
 			},
 
 			"remark": {
@@ -49,14 +49,14 @@ func ResourceTencentCloudMqttInstance() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "标签 of the MQTT instance。",
+				Description: "标签 的 MQTT 实例。",
 			},
 
 			"vpc_list": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "VPC information bound to the instance。",
+				Description: "VPC 信息 bound 到 实例。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
@@ -83,7 +83,7 @@ func ResourceTencentCloudMqttInstance() *schema.Resource {
 			"time_span": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Purchase duration (unit: months)。",
+				Description: "Purchase 时长 (单位: months)。",
 			},
 
 			"pay_mode": {
@@ -96,28 +96,28 @@ func ResourceTencentCloudMqttInstance() *schema.Resource {
 			"device_certificate_provision_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Client certificate registration method: JITP: Automatic registration; API: Manually register through the API。",
+				Description: "Client 证书 registration 方法: JITP: Automatic registration; API: Manually register through API。",
 			},
 
 			"automatic_activation": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Is the automatic registration certificate automatically activated. 默认为 false。",
+				Description: "Is automatic registration 证书 automatically activated. 默认为 false。",
 			},
 
 			"authorization_policy": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Authorization policy switch. 默认为 false。",
+				Description: "Authorization 策略 switch. 默认为 false。",
 			},
 
 			"force_delete": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Indicate 是否force delete the instance. 默认为 `false`. If set true，the instance will be permanently deleted instead of being moved into the recycle bin. Note: only works for `PREPAID` instance。",
+				Description: "Indicate 是否force delete 实例. 默认为 `false`. 如果 集合 true， 实例 将 是 permanently 删除 instead 的 being moved into recycle bin. 注意: 仅 works 对于 `PREPAID` 实例。",
 			},
 		},
 	}

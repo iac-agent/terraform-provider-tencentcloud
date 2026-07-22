@@ -35,7 +35,7 @@ func ResourceTencentCloudTseCngwStrategyBindGroup() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "gateway ID。",
+				Description: "网关 ID。",
 			},
 
 			"strategy_id": {
@@ -54,7 +54,7 @@ func ResourceTencentCloudTseCngwStrategyBindGroup() *schema.Resource {
 			"option": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "`bind` or `unbind`。",
+				Description: "`bind` 或 `unbind`。",
 			},
 
 			"status": {

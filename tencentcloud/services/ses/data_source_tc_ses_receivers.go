@@ -20,19 +20,19 @@ func DataSourceTencentCloudSesReceivers() *schema.Resource {
 			"status": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Group 状态 (`1`: to be uploaded; `2`: uploading; `3`: uploaded). To query groups in all states，do not pass in this parameter。",
+				Description: "Group 状态 (`1`: 到 是 uploaded; `2`: uploading; `3`: uploaded). To 查询 groups 在 all states，do 不 pass 在 此 参数。",
 			},
 
 			"key_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "组名称 keyword for fuzzy query。",
+				Description: "组名称 keyword 对于 fuzzy 查询。",
 			},
 
 			"data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Data record。",
+				Description: "Data 记录。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"receiver_id": {
@@ -53,17 +53,17 @@ func DataSourceTencentCloudSesReceivers() *schema.Resource {
 						"desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Recipient group descriptionNote: This field may return `null`，indicating that no valid 值 can be found。",
+							Description: "Recipient 组 descriptionNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 found。",
 						},
 						"receivers_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Group 状态 (`1`: to be uploaded; `2` uploading; `3` uploaded)Note: This field may return `null`，indicating that no valid 值 can be found。",
+							Description: "Group 状态 (`1`: 到 是 uploaded; `2` uploading; `3` uploaded)注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 found。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间，such as 2021-09-28 16:40:35。",
+							Description: "创建时间，such 作为 2021-09-28 16:40:35。",
 						},
 					},
 				},

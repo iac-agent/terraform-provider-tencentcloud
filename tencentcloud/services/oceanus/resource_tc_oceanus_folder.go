@@ -29,19 +29,19 @@ func ResourceTencentCloudOceanusFolder() *schema.Resource {
 			"folder_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "New file 名称",
+				Description: "New 文件 名称",
 			},
 			"parent_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Parent folder id。",
+				Description: "Parent 文件夹 ID。",
 			},
 			"folder_type": {
 				Optional:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
 				Default:      0,
-				Description:  "Folder 类型，0: job folder，1: resource folder. 默认为 0。",
+				Description:  "Folder 类型，0: 作业 文件夹，1: 资源 文件夹. 默认为 0。",
 			},
 			"work_space_id": {
 				Required:    true,

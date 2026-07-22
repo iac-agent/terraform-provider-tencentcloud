@@ -35,7 +35,7 @@ func ResourceTencentCloudVpnGatewaySslClientCert() *schema.Resource {
 				Type:         schema.TypeString,
 				Default:      "on",
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"on", "off"}),
-				Description:  "`on`: Enable，`off`: Disable。",
+				Description:  "`在`: Enable，`关闭`: Disable。",
 			},
 		},
 	}

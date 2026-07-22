@@ -26,50 +26,50 @@ func DataSourceTencentCloudCosBucketInventorys() *schema.Resource {
 			"inventorys": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Multiple batch processing task information。",
+				Description: "Multiple batch processing 任务 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "是否enable the inventory. true or false。",
+							Description: "是否enable inventory. true 或 false。",
 						},
 						"is_enabled": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "是否enable the inventory. true or false。",
+							Description: "是否enable inventory. true 或 false。",
 						},
 						"included_object_versions": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "是否include object versions in the inventory. All or No。",
+							Description: "是否include 对象 versions 在 inventory. All 或 No。",
 						},
 						"filter": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Filters objects prefixed with the specified 值 to analyze。",
+							Description: "Filters objects prefixed 使用 指定 值 到 analyze。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"prefix": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Prefix of the objects to analyze。",
+										Description: "Prefix 的 objects 到 analyze。",
 									},
 									"period": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "创建时间 range of the objects to analyze。",
+										Description: "创建时间 范围 的 objects 到 analyze。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"start_time": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Creation 开始时间 of the objects to analyze. The parameter is a 时间戳 （秒）， for example，1568688761。",
+													Description: "Creation 开始时间 的 objects 到 analyze. 参数 是 时间戳 （秒）， 对于 示例，1568688761。",
 												},
 												"end_time": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Creation 结束时间 of the objects to analyze. The parameter is a 时间戳 （秒）， for example，1568688762。",
+													Description: "Creation 结束时间 的 objects 到 analyze. 参数 是 时间戳 （秒）， 对于 示例，1568688762。",
 												},
 											},
 										},
@@ -80,7 +80,7 @@ func DataSourceTencentCloudCosBucketInventorys() *schema.Resource {
 						"optional_fields": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Analysis items to include in the inventory 结果	。",
+							Description: "Analysis items 到 include 在 inventory 结果	。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"fields": {
@@ -89,7 +89,7 @@ func DataSourceTencentCloudCosBucketInventorys() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "可选 analysis items to include in the inventory 结果 The 可选 fields include Size，LastModifiedDate，StorageClass，ETag，IsMultipartUploaded，ReplicationStatus，标签，Crc64，and x-cos-meta-*。",
+										Description: "可选 analysis items 到 include 在 inventory 结果 可选 字段 include Size，LastModifiedDate，StorageClass，ETag，IsMultipartUploaded，ReplicationStatus，标签，Crc64，和 x-cos-meta-*。",
 									},
 								},
 							},
@@ -97,13 +97,13 @@ func DataSourceTencentCloudCosBucketInventorys() *schema.Resource {
 						"schedule": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Inventory job cycle。",
+							Description: "Inventory 作业 cycle。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"frequency": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Frequency of the inventory job. Enumerated values: Daily，Weekly。",
+										Description: "Frequency 的 inventory 作业. Enumerated 值: Daily，Weekly。",
 									},
 								},
 							},
@@ -111,7 +111,7 @@ func DataSourceTencentCloudCosBucketInventorys() *schema.Resource {
 						"destination": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Information about the inventory 结果 destination。",
+							Description: "Information about inventory 结果 destination。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"bucket": {
@@ -127,23 +127,23 @@ func DataSourceTencentCloudCosBucketInventorys() *schema.Resource {
 									"prefix": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Prefix of the inventory 结果",
+										Description: "Prefix 的 inventory 结果",
 									},
 									"format": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "格式 of the inventory 结果 Valid 值: CSV。",
+										Description: "格式 的 inventory 结果 有效 值: CSV。",
 									},
 									"encryption": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Server-side encryption for the inventory 结果",
+										Description: "Server-side 加密 对于 inventory 结果",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"sse_cos": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Encryption with COS-managed 键 This field can be left empty。",
+													Description: "Encryption 使用 COS-managed 键 此 字段 可以 是 left 空。",
 												},
 											},
 										},

@@ -25,19 +25,19 @@ func DataSourceTencentCloudBiUserProject() *schema.Resource {
 			"all_page": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "是否display all，if true，ignore paging。",
+				Description: "是否display all，如果 true，ignore paging。",
 			},
 
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Array(Note: This field may return null，indicating that no valid 值 can be obtained)。",
+				Description: "Array(注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"user_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "用户 id。",
+							Description: "用户 ID。",
 						},
 						"user_name": {
 							Type:        schema.TypeString,
@@ -47,67 +47,67 @@ func DataSourceTencentCloudBiUserProject() *schema.Resource {
 						"corp_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Enterprise id(Note: This field may return null，indicating that no valid 值 can be obtained)。",
+							Description: "Enterprise ID(注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取)。",
 						},
 						"email": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "E-mail(Note: This field may return null，indicating that no valid 值 can be obtained)。",
+							Description: "E-mail(注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取)。",
 						},
 						"last_login": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last login time，public cloud unrelated fields(Note: This field may return null，indicating that no valid 值 can be obtained)。",
+							Description: "Last login 时间，公有 云 unrelated 字段(注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取)。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "已禁用 state(Note: This field may return null，indicating that no valid 值 can be obtained)。",
+							Description: "已禁用 state(注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取)。",
 						},
 						"first_modify": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "First login to change 密码，public cloud unrelated fields(Note: This field may return null，indicating that no valid 值 can be obtained)。",
+							Description: "First login 到 change 密码，公有 云 unrelated 字段(注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取)。",
 						},
 						"phone_number": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Phone number(Note: This field may return null，indicating that no valid 值 can be obtained)。",
+							Description: "Phone 数量(注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取)。",
 						},
 						"area_code": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Mobile area 代码(Note: This field may return null，indicating that no valid 值 can be obtained)。",
+							Description: "Mobile area 代码(注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取)。",
 						},
 						"created_user": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Created by(Note: This field may return null，indicating that no valid 值 can be obtained)。",
+							Description: "Created 通过(注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取)。",
 						},
 						"created_at": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Created at(Note: This field may return null，indicating that no valid 值 can be obtained)。",
+							Description: "Created 在(注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取)。",
 						},
 						"updated_user": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Updated by(Note: This field may return null，indicating that no valid 值 can be obtained)。",
+							Description: "Updated 通过(注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取)。",
 						},
 						"updated_at": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Updated at(Note: This field may return null，indicating that no valid 值 can be obtained)。",
+							Description: "Updated 在(注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取)。",
 						},
 						"global_user_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Global 角色 名称(Note: This field may return null，indicating that no valid 值 can be obtained)。",
+							Description: "Global 角色 名称(注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取)。",
 						},
 						"mobile": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Mobile number，public cloud unrelated fields(Note: This field may return null，indicating that no valid 值 can be obtained)。",
+							Description: "Mobile 数量，公有 云 unrelated 字段(注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取)。",
 						},
 					},
 				},

@@ -44,7 +44,7 @@ func ResourceTencentCloudPrivateDnsInboundEndpoint() *schema.Resource {
 				Type:        schema.TypeList,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Subnet information。",
+				Description: "Subnet 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"subnet_id": {

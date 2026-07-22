@@ -47,7 +47,7 @@ func ResourceTencentCloudWafAntiFake() *schema.Resource {
 				Type:         schema.TypeInt,
 				Default:      ANTI_FAKE_URL_STATUS_1,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(ANTI_FAKE_URL_STATUS),
-				Description:  "状态 0: Turn off rules and log switches，1: Turn on the rule switch and Turn off the log switch; 2: Turn off the rule switch and turn on the log switch; 3: Turn on the rule switch and turn on the log switch。",
+				Description:  "状态 0: Turn 关闭 规则 和 日志 switches，1: Turn 在 规则 switch 和 Turn 关闭 日志 switch; 2: Turn 关闭 规则 switch 和 turn 在 日志 switch; 3: Turn 在 规则 switch 和 turn 在 日志 switch。",
 			},
 			"rule_id": {
 				Computed:    true,

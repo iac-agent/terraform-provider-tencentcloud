@@ -31,7 +31,7 @@ func ResourceTencentCloudMysqlRoInstanceIp() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "子网描述符，例如：subnet-1typ0s7d。",
+				Description: "子网描述符，例如：子网-1typ0s7d。",
 			},
 
 			"uniq_vpc_id": {

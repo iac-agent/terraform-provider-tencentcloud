@@ -54,13 +54,13 @@ func ResourceTencentCloudDcdbAccount() *schema.Resource {
 			"read_only": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "是否account is readonly. 0 means not a readonly 账号",
+				Description: "是否account 是 readonly. 0 表示 不 readonly 账号",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "描述 for 账号",
+				Description: "描述 对于 账号",
 			},
 
 			"max_user_connections": {

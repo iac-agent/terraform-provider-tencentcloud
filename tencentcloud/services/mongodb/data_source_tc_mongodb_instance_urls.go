@@ -23,13 +23,13 @@ func DataSourceTencentCloudMongodbInstanceUrls() *schema.Resource {
 			"urls": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Example connection string access 地址 in the form of an instance URI. Contains: URI 类型 and connection string 地址",
+				Description: "Example 连接 字符串 访问 地址 在 form 的 实例 URI. Contains: URI 类型 和 连接 字符串 地址",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"url_type": {
 							Type:     schema.TypeString,
 							Required: true,
-							Description: "Refers to the URI category, including:\n" +
+							Description: "Refers 到 URI category, 包括:\n" +
 								"	- CLUSTER_ALL: Refers to the main node connected to the library instance through this URI, which can be read and write;\n" +
 								"	- CLUSTER_READ_READONLY: Refers to the read-only node connected to the instance through this URI;\n" +
 								"	- CLUSTER_READ_SECONDARY: Refers to connecting the instance slave node through this URI;\n" +
@@ -44,7 +44,7 @@ func DataSourceTencentCloudMongodbInstanceUrls() *schema.Resource {
 						"address": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Example connection string access 地址 in the form of an instance URI。",
+							Description: "Example 连接 字符串 访问 地址 在 form 的 实例 URI。",
 						},
 					},
 				},

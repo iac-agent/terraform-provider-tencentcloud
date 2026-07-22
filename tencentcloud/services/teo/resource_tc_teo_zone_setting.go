@@ -34,7 +34,7 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 			"area": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Acceleration area of the 可用区 有效值：`mainland`，`overseas`。",
+				Description: "Acceleration area 的 可用区 有效值：`mainland`，`overseas`。",
 			},
 
 			"cache": {
@@ -42,7 +42,7 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Cache 过期时间 configuration。",
+				Description: "Cache 过期时间 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cache": {
@@ -50,20 +50,20 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 							Optional:    true,
 							Computed:    true,
 							MaxItems:    1,
-							Description: "Cache configuration. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Cache 配置. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Cache configuration switch.\n- `on`: Enable.\n- `off`: Disable. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Cache 配置 switch.\n- `在`: Enable.\n- `关闭`: Disable. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"cache_time": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "Cache 过期时间 settings.\n单位：second. The maximum 值 is 365 days. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Cache 过期时间 settings.\n单位：second. 最大 值 是 365 days. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -73,14 +73,14 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 							Optional:    true,
 							Computed:    true,
 							MaxItems:    1,
-							Description: "No-cache configuration. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "No-缓存 配置. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "是否cache the configuration.\n- `on`: Do not cache.\n- `off`: Cache. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "是否cache 配置.\n- `在`: Do 不 缓存.\n- `关闭`: Cache. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -90,14 +90,14 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 							Optional:    true,
 							Computed:    true,
 							MaxItems:    1,
-							Description: "Follows the origin server configuration. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Follows 源站 服务器 配置. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "指定是否follow the origin server configuration.\n- `on`: Enable.\n- `off`: Disable. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "指定是否follow 源站 服务器 配置.\n- `在`: Enable.\n- `关闭`: Disable. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -111,40 +111,40 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Node cache 键 configuration。",
+				Description: "Node 缓存 键 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"full_url_cache": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "指定是否enable full-路径 cache.\n- `on`: Enable full-路径 cache (i.e.，disable Ignore Query String).\n- `off`: Disable full-路径 cache (i.e.，enable Ignore Query String). 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "指定是否enable full-路径 缓存.\n- `在`: Enable full-路径 缓存 (i.e.，disable Ignore Query String).\n- `关闭`: Disable full-路径 缓存 (i.e.，启用 Ignore Query String). 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"ignore_case": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "指定是否cache 键 is case-sensitive. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "指定是否cache 键 是 case-sensitive. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"query_string": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Request parameter contained in CacheKey. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Request 参数 contained 在 CacheKey. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "是否use QueryString as part of CacheKey.\n- `on`: Enable.\n- `off`: Disable. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "是否use QueryString 作为 part 的 CacheKey.\n- `在`: Enable.\n- `关闭`: Disable. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"action": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "- `includeCustom`: Include the specified query strings.\n- `excludeCustom`: Exclude the specified query strings. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "- `includeCustom`: Include 指定 查询 strings.\n- `excludeCustom`: Exclude 指定 查询 strings. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"value": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "数组 query strings used/excluded. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "数组 查询 strings 使用/excluded. 注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -161,18 +161,18 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Browser cache configuration。",
+				Description: "Browser 缓存 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"max_age_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "指定max age of the cache (in seconds). The maximum 值 is 365 days. Note: the 值 0 means not to cache. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "指定max age 的 缓存 (在 秒). 最大 值 是 365 days. 注意: 值 0 表示 不 到 缓存. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"follow_origin": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "指定是否follow the max cache age of the origin server.\n- `on`: Enable.\n- `off`: Disable.\nIf it's on，MaxAgeTime is ignored. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "指定是否follow max 缓存 age 的 源站 服务器.\n- `在`: Enable.\n- `关闭`: Disable.\nIf 它's 在，MaxAgeTime 是 ignored. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -183,13 +183,13 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Offline cache configuration。",
+				Description: "Offline 缓存 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "是否enable offline cache.\n- `on`: Enable.\n- `off`: Disable. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "是否enable offline 缓存.\n- `在`: Enable.\n- `关闭`: Disable. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -200,13 +200,13 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "QUIC access configuration。",
+				Description: "QUIC 访问 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "是否enable QUIC.\n- `on`: Enable.\n- `off`: Disable。",
+							Description: "是否enable QUIC.\n- `在`: Enable.\n- `关闭`: Disable。",
 						},
 					},
 				},
@@ -217,18 +217,18 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Maximum size of files transferred over POST request。",
+				Description: "Maximum 大小 的 files transferred over POST 请求。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "指定是否enable custom setting of the maximum file size.\n- `on`: Enable. You can set a custom max size.\n- `off`: Disable. In this case，the max size 默认为 32 MB。",
+							Description: "指定是否enable 自定义 setting 的 最大 文件 大小.\n- `在`: Enable. You 可以 集合 自定义 max 大小.\n- `关闭`: Disable. In 此 case， max 大小 默认为 32 MB。",
 						},
 						"max_size": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Maximum size. 取值范围：1-500 MB. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Maximum 大小. 取值范围：1-500 MB. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -239,19 +239,19 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Smart compression configuration。",
+				Description: "Smart 压缩 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "是否enable Smart compression.\n- `on`: Enable.\n- `off`: Disable。",
+							Description: "是否enable Smart 压缩.\n- `在`: Enable.\n- `关闭`: Disable。",
 						},
 						"algorithms": {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Computed:    true,
-							Description: "Compression algorithms to select. 有效值：`brotli`，`gzip`。",
+							Description: "Compression algorithms 到 select. 有效值：`brotli`，`gzip`。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -265,13 +265,13 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "HTTP2 origin-pull configuration。",
+				Description: "HTTP2 源站-pull 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "是否enable HTTP2 origin-pull.\n- `on`: Enable.\n- `off`: Disable。",
+							Description: "是否enable HTTP2 源站-pull.\n- `在`: Enable.\n- `关闭`: Disable。",
 						},
 					},
 				},
@@ -282,13 +282,13 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Force HTTPS redirect configuration。",
+				Description: "Force HTTPS redirect 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "是否enable force redirect.\n- `on`: Enable.\n- `off`: Disable。",
+							Description: "是否enable force redirect.\n- `在`: Enable.\n- `关闭`: Disable。",
 						},
 						"redirect_status_code": {
 							Type:        schema.TypeInt,
@@ -304,23 +304,23 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "HTTPS acceleration configuration。",
+				Description: "HTTPS acceleration 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"http2": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "HTTP2 configuration switch.\n- `on`: Enable.\n- `off`: Disable. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "HTTP2 配置 switch.\n- `在`: Enable.\n- `关闭`: Disable. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"ocsp_stapling": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "OCSP configuration switch.\n- `on`: Enable.\n- `off`: Disable.\nIt is 已禁用 by default. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "OCSP 配置 switch.\n- `在`: Enable.\n- `关闭`: Disable.\nIt 是 已禁用 通过 默认值. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"tls_version": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "TLS 版本 settings. 有效值：`TLSv1`，`TLSV1.1`，`TLSV1.2`，and `TLSv1.3`.\nOnly consecutive versions can be 已启用 at the same time. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "TLS 版本 settings. 有效值：`TLSv1`，`TLSV1.1`，`TLSV1.2`，和 `TLSv1.3`.\nOnly consecutive versions 可以 是 已启用 在 same 时间. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -335,22 +335,22 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 									"switch": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "- `on`: Enable.\n- `off`: Disable。",
+										Description: "- `在`: Enable.\n- `关闭`: Disable。",
 									},
 									"max_age": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "MaxAge 值 （秒）， should be no more than 1 day. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "MaxAge 值 （秒）， should 是 无 more 比 1 day. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"include_sub_domains": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "指定是否include subdomain names. 有效值：`on` and `off`. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "指定是否include subdomain names. 有效值：`在` 和 `关闭`. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"preload": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "指定是否preload. 有效值：`on` and `off`. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "指定是否preload. 有效值：`在` 和 `关闭`. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -364,14 +364,14 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Origin server configuration。",
+				Description: "Origin 服务器 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"origins": {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Computed:    true,
-							Description: "Origin sites list. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Origin sites 列表. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -380,7 +380,7 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Computed:    true,
-							Description: "Backup origin sites list. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Backup 源站 sites 列表. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -389,7 +389,7 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Origin-pull 协议\n- `http`: Switch HTTPS requests to HTTP.\n- `follow`: Follow the 协议 of the request.\n- `https`: Switch HTTP requests to HTTPS. This only supports 端口 443 on the origin server. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Origin-pull 协议\n- `http`: Switch HTTPS requests 到 HTTP.\n- `follow`: Follow 协议 的 请求.\n- `https`: Switch HTTP requests 到 HTTPS. 此 仅 支持 端口 443 在 源站 服务器. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -400,13 +400,13 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Smart acceleration configuration。",
+				Description: "Smart acceleration 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "是否enable smart acceleration.\n- `on`: Enable.\n- `off`: Disable。",
+							Description: "是否enable smart acceleration.\n- `在`: Enable.\n- `关闭`: Disable。",
 						},
 					},
 				},
@@ -417,18 +417,18 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "WebSocket configuration。",
+				Description: "WebSocket 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "是否enable custom WebSocket timeout setting. When it's off: it means to keep the default WebSocket connection timeout 周期，which is 15 seconds. To change the timeout 周期，please set it to on。",
+							Description: "是否enable 自定义 WebSocket 超时 setting. 当 它's 关闭: 它 表示 到 keep 默认值 WebSocket 连接 超时 周期，其中 是 15 秒. To change 超时 周期，please 集合 它 到 在。",
 						},
 						"timeout": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Sets timeout 周期 （秒）。 Maximum 值: 120。",
+							Description: "Sets 超时 周期 （秒）。 Maximum 值: 120。",
 						},
 					},
 				},
@@ -439,18 +439,18 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Origin-pull 客户端 IP header configuration。",
+				Description: "Origin-pull 客户端 IP 头部 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "指定是否enable 客户端 IP header.\n- `on`: Enable.\n- `off`: Disable. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "指定是否enable 客户端 IP 头部.\n- `在`: Enable.\n- `关闭`: Disable. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"header_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "名称 origin-pull 客户端 IP request header. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "名称 源站-pull 客户端 IP 请求 头部. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -461,18 +461,18 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Cache pre-refresh configuration。",
+				Description: "Cache pre-refresh 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "指定是否enable cache prefresh.\n- `on`: Enable.\n- `off`: Disable。",
+							Description: "指定是否enable 缓存 prefresh.\n- `在`: Enable.\n- `关闭`: Disable。",
 						},
 						"percent": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Percentage of cache time before try to prefresh. Valid 取值范围：1-99。",
+							Description: "Percentage 的 缓存 时间 before try 到 prefresh. 有效 取值范围：1-99。",
 						},
 					},
 				},
@@ -483,13 +483,13 @@ func ResourceTencentCloudTeoZoneSetting() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "IPv6 access configuration。",
+				Description: "IPv6 访问 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"switch": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "- `on`: Enable.\n- `off`: Disable。",
+							Description: "- `在`: Enable.\n- `关闭`: Disable。",
 						},
 					},
 				},

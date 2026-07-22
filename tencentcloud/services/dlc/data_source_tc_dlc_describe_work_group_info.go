@@ -25,19 +25,19 @@ func DataSourceTencentCloudDlcDescribeWorkGroupInfo() *schema.Resource {
 			"type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Types of queried information. 用户: 用户 information; DataAuth: data permissions; EngineAuth: engine permissions。",
+				Description: "Types 的 queried 信息. 用户: 用户 信息; DataAuth: 数据 permissions; EngineAuth: 引擎 permissions。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter criteria that are queriedWhen the 类型 is 用户，the fuzzy search is supported as the 键 is 用户-名称When the 类型 is DataAuth，the keys supported are:policy-类型: types of permissions;policy-来源: data sources;data-名称: fuzzy search of the database and table.When the 类型 is EngineAuth，the keys supported are:policy-类型: types of permissions;policy-来源: data sources;engine-名称: fuzzy search of the database and table。",
+				Description: "过滤器 criteria 该 是 queriedWhen 类型 是 用户， fuzzy search 是 支持 作为 键 是 用户-名称When 类型 是 DataAuth， keys 支持 是:策略-类型: types 的 permissions;策略-来源: 数据 sources;数据-名称: fuzzy search 的 数据库 和 表.当 类型 是 EngineAuth， keys 支持 是:策略-类型: types 的 permissions;策略-来源: 数据 sources;引擎-名称: fuzzy search 的 数据库 和 表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Attribute 名称 If more than one filter exists，the logical relationship between these filters is `OR`。",
+							Description: "Attribute 名称 如果 more 比 一个 过滤器 exists， logical relationship between these filters 是 `OR`。",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -45,7 +45,7 @@ func DataSourceTencentCloudDlcDescribeWorkGroupInfo() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Attribute 值 If multiple values exist in one filter，the logical relationship between these values is `OR`。",
+							Description: "Attribute 值 如果 多个 值 exist 在 一个 过滤器， logical relationship between these 值 是 `OR`。",
 						},
 					},
 				},
@@ -54,13 +54,13 @@ func DataSourceTencentCloudDlcDescribeWorkGroupInfo() *schema.Resource {
 			"sort_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sort fields.When the 类型 is 用户，create-time and 用户-名称 are supported.When the 类型 is DataAuth，create-time is supported.When the 类型 is EngineAuth，create-time is supported。",
+				Description: "Sort 字段.当 类型 是 用户，create-时间 和 用户-名称 是 支持.当 类型 是 DataAuth，create-时间 是 支持.当 类型 是 EngineAuth，create-时间 是 支持。",
 			},
 
 			"sorting": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sorting methods: desc means in 顺序; asc means in reverse 顺序; it is asc by default。",
+				Description: "Sorting methods: desc 表示 在 顺序; asc 表示 在 reverse 顺序; 它 是 asc 通过 默认值。",
 			},
 
 			"work_group_info": {
@@ -72,49 +72,49 @@ func DataSourceTencentCloudDlcDescribeWorkGroupInfo() *schema.Resource {
 						"work_group_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Working group ID注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Working 组 ID注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"work_group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Working group name注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Working 组 name注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Types of information included. 用户: 用户 information; DataAuth: data permissions; EngineAuth: engine permissions注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Types 的 信息 included. 用户: 用户 信息; DataAuth: 数据 permissions; EngineAuth: 引擎 permissions注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"user_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Collection of users bound to working groups注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Collection 的 users bound 到 working groups注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"user_set": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Collection of 用户 information注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Collection 的 用户 information注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"user_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "用户 Id which matches the sub-用户 UIN on the CAM side。",
+													Description: "用户 ID 其中 matches sub-用户 UIN 在 CAM side。",
 												},
 												"user_description": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "用户 descriptionNote: The returned 值 of this field may be null，indicating that no valid 值 is obtained。",
+													Description: "用户 descriptionNote: 返回 值 的 此 字段 可能 是 null，indicating 该 无 有效 值 是 获取。",
 												},
 												"creator": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 创建者 of the current 用户",
+													Description: "创建者 的 当前 用户",
 												},
 												"create_time": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 创建时间 of the current 用户，e.g. 16:19:32，July 28，2021。",
+													Description: "创建时间 的 当前 用户，e.g. 16:19:32，July 28，2021。",
 												},
 												"user_alias": {
 													Type:        schema.TypeString,
@@ -135,99 +135,99 @@ func DataSourceTencentCloudDlcDescribeWorkGroupInfo() *schema.Resource {
 						"data_policy_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Collection of data permissions注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Collection 的 数据 permissions注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"policy_set": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Collection of policies注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Collection 的 policies注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"database": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 target database. `*` represents all databases in the current catalog. To grant admin permissions，it must be `*`; to grant data connection permissions，it must be null; to grant other permissions，it can be any database。",
+													Description: "名称 目标 数据库. `*` 表示 all databases 在 当前 catalog. To grant admin permissions，它 必须 是 `*`; 到 grant 数据 连接 permissions，它 必须 是 null; 到 grant other permissions，它 可以 是 any 数据库。",
 												},
 												"catalog": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 target data 来源 To grant admin permission，it must be `*` (all resources at this 级别); to grant data 来源 and database permissions，it must be `COSDataCatalog` or `*`; to grant table permissions，it can be a custom data 来源; if it is left empty，`DataLakeCatalog` is used. Note: To grant permissions on a custom data 来源，the permissions that can be managed in the Data Lake Compute console are subsets of the 账号 permissions granted when you connect the data 来源 to the console。",
+													Description: "名称 目标 数据 来源 To grant admin 权限，它 必须 是 `*` (all resources 在 此 级别); 到 grant 数据 来源 和 数据库 permissions，它 必须 是 `COSDataCatalog` 或 `*`; 到 grant 表 permissions，它 可以 是 自定义 数据 来源; 如果 它 是 left 空，`DataLakeCatalog` 是 使用. 注意: To grant permissions 在 自定义 数据 来源， permissions 该 可以 是 managed 在 Data Lake Compute console 是 subsets 的 账号 permissions granted 当 您 connect 数据 来源 到 console。",
 												},
 												"table": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 target table. `*` represents all tables in the current database. To grant admin permissions，it must be `*`; to grant data connection and database permissions，it must be null; to grant other permissions，it can be any table。",
+													Description: "名称 目标 表. `*` 表示 all tables 在 当前 数据库. To grant admin permissions，它 必须 是 `*`; 到 grant 数据 连接 和 数据库 permissions，它 必须 是 null; 到 grant other permissions，它 可以 是 any 表。",
 												},
 												"operation": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The target permissions，which vary by permission 级别 Admin: `ALL` (default); data connection: `CREATE`; database: `ALL`，`CREATE`，`ALTER`，and `DROP`; table: `ALL`，`SELECT`，`INSERT`，`ALTER`，`DELETE`，`DROP`，and `UPDATE`. Note: For table permissions，if a data 来源 other than `COSDataCatalog` is specified，only the `SELECT` permission can be granted here。",
+													Description: "目标 permissions，其中 vary 通过 权限 级别 Admin: `ALL` (默认值); 数据 连接: `CREATE`; 数据库: `ALL`，`CREATE`，`ALTER`，和 `DROP`; 表: `ALL`，`SELECT`，`INSERT`，`ALTER`，`DELETE`，`DROP`，和 `UPDATE`. 注意: For 表 permissions，如果 数据 来源 other 比 `COSDataCatalog` 是 指定，仅 `SELECT` 权限 可以 是 granted here。",
 												},
 												"policy_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The permission 类型 有效值：`ADMIN`，`DATASOURCE`，`DATABASE`，`TABLE`，`VIEW`，`FUNCTION`，`COLUMN`，and `ENGINE`. Note: If it is left empty，`ADMIN` is used。",
+													Description: "权限 类型 有效值：`ADMIN`，`DATASOURCE`，`DATABASE`，`TABLE`，`VIEW`，`FUNCTION`，`COLUMN`，和 `ENGINE`. 注意: 如果 它 是 left 空，`ADMIN` 是 使用。",
 												},
 												"function": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 target function. `*` represents all functions in the current catalog. To grant admin permissions，it must be `*`; to grant data connection permissions，it must be null; to grant other permissions，it can be any function.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "名称 目标 函数. `*` 表示 all functions 在 当前 catalog. To grant admin permissions，它 必须 是 `*`; 到 grant 数据 连接 permissions，它 必须 是 null; 到 grant other permissions，它 可以 是 any 函数.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"view": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 target view. `*` represents all views in the current database. To grant admin permissions，it must be `*`; to grant data connection and database permissions，it must be null; to grant other permissions，it can be any view.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "名称 目标 view. `*` 表示 all views 在 当前 数据库. To grant admin permissions，它 必须 是 `*`; 到 grant 数据 连接 和 数据库 permissions，它 必须 是 null; 到 grant other permissions，它 可以 是 any view.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"column": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 target column. `*` represents all columns. To grant admin permissions，it must be `*`.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "名称 目标 列. `*` 表示 all columns. To grant admin permissions，它 必须 是 `*`.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"data_engine": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 target data engine. `*` represents all engines. To grant admin permissions，it must be `*`.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "名称 目标 数据 引擎. `*` 表示 all engines. To grant admin permissions，它 必须 是 `*`.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"re_auth": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "是否grantee is allowed to further grant the permissions. 有效值：`false` (default) and `true` (the grantee can grant permissions gained here to other sub-users).注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "是否grantee 是 allowed 到 further grant permissions. 有效值：`false` (默认值) 和 `true` ( grantee 可以 grant permissions gained here 到 other sub-users).注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"source": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The permission 来源，which 不是必填项 when input parameters are passed in. 有效值：`USER` (from the 用户) and `WORKGROUP` (from one or more associated work groups).注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "权限 来源，其中 不是必填项 当 input 参数 是 passed 在. 有效值：`USER` (从 用户) 和 `WORKGROUP` (从 一个 或 more associated work groups).注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"mode": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The grant 模式，which 不是必填项 as an input parameter. 有效值：`COMMON` and `SENIOR`.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "grant 模式，其中 不是必填项 作为 input 参数. 有效值：`COMMON` 和 `SENIOR`.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"operator": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 操作者，which 不是必填项 as an input parameter.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "操作者，其中 不是必填项 作为 input 参数.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"create_time": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The permission policy 创建时间，which 不是必填项 as an input parameter.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "权限 策略 创建时间，其中 不是必填项 作为 input 参数.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"source_id": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "The ID work group，which applies only when the 值 of the `来源` field is `WORKGROUP`.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "ID work 组，其中 applies 仅 当 值 的 `来源` 字段 是 `WORKGROUP`.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"source_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 work group，which applies only when the 值 of the `来源` field is `WORKGROUP`.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "名称 work 组，其中 applies 仅 当 值 的 `来源` 字段 是 `WORKGROUP`.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"id": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "The policy ID.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "策略 ID.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -243,99 +243,99 @@ func DataSourceTencentCloudDlcDescribeWorkGroupInfo() *schema.Resource {
 						"engine_policy_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Collection of engine permissions注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Collection 的 引擎 permissions注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"policy_set": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Collection of policies注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Collection 的 policies注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"database": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 target database. `*` represents all databases in the current catalog. To grant admin permissions，it must be `*`; to grant data connection permissions，it must be null; to grant other permissions，it can be any database。",
+													Description: "名称 目标 数据库. `*` 表示 all databases 在 当前 catalog. To grant admin permissions，它 必须 是 `*`; 到 grant 数据 连接 permissions，它 必须 是 null; 到 grant other permissions，它 可以 是 any 数据库。",
 												},
 												"catalog": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 target data 来源 To grant admin permission，it must be `*` (all resources at this 级别); to grant data 来源 and database permissions，it must be `COSDataCatalog` or `*`; to grant table permissions，it can be a custom data 来源; if it is left empty，`DataLakeCatalog` is used. Note: To grant permissions on a custom data 来源，the permissions that can be managed in the Data Lake Compute console are subsets of the 账号 permissions granted when you connect the data 来源 to the console。",
+													Description: "名称 目标 数据 来源 To grant admin 权限，它 必须 是 `*` (all resources 在 此 级别); 到 grant 数据 来源 和 数据库 permissions，它 必须 是 `COSDataCatalog` 或 `*`; 到 grant 表 permissions，它 可以 是 自定义 数据 来源; 如果 它 是 left 空，`DataLakeCatalog` 是 使用. 注意: To grant permissions 在 自定义 数据 来源， permissions 该 可以 是 managed 在 Data Lake Compute console 是 subsets 的 账号 permissions granted 当 您 connect 数据 来源 到 console。",
 												},
 												"table": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 target table. `*` represents all tables in the current database. To grant admin permissions，it must be `*`; to grant data connection and database permissions，it must be null; to grant other permissions，it can be any table。",
+													Description: "名称 目标 表. `*` 表示 all tables 在 当前 数据库. To grant admin permissions，它 必须 是 `*`; 到 grant 数据 连接 和 数据库 permissions，它 必须 是 null; 到 grant other permissions，它 可以 是 any 表。",
 												},
 												"operation": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The target permissions，which vary by permission 级别 Admin: `ALL` (default); data connection: `CREATE`; database: `ALL`，`CREATE`，`ALTER`，and `DROP`; table: `ALL`，`SELECT`，`INSERT`，`ALTER`，`DELETE`，`DROP`，and `UPDATE`. Note: For table permissions，if a data 来源 other than `COSDataCatalog` is specified，only the `SELECT` permission can be granted here。",
+													Description: "目标 permissions，其中 vary 通过 权限 级别 Admin: `ALL` (默认值); 数据 连接: `CREATE`; 数据库: `ALL`，`CREATE`，`ALTER`，和 `DROP`; 表: `ALL`，`SELECT`，`INSERT`，`ALTER`，`DELETE`，`DROP`，和 `UPDATE`. 注意: For 表 permissions，如果 数据 来源 other 比 `COSDataCatalog` 是 指定，仅 `SELECT` 权限 可以 是 granted here。",
 												},
 												"policy_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The permission 类型 有效值：`ADMIN`，`DATASOURCE`，`DATABASE`，`TABLE`，`VIEW`，`FUNCTION`，`COLUMN`，and `ENGINE`. Note: If it is left empty，`ADMIN` is used。",
+													Description: "权限 类型 有效值：`ADMIN`，`DATASOURCE`，`DATABASE`，`TABLE`，`VIEW`，`FUNCTION`，`COLUMN`，和 `ENGINE`. 注意: 如果 它 是 left 空，`ADMIN` 是 使用。",
 												},
 												"function": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 target function. `*` represents all functions in the current catalog. To grant admin permissions，it must be `*`; to grant data connection permissions，it must be null; to grant other permissions，it can be any function.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "名称 目标 函数. `*` 表示 all functions 在 当前 catalog. To grant admin permissions，它 必须 是 `*`; 到 grant 数据 连接 permissions，它 必须 是 null; 到 grant other permissions，它 可以 是 any 函数.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"view": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 target view. `*` represents all views in the current database. To grant admin permissions，it must be `*`; to grant data connection and database permissions，it must be null; to grant other permissions，it can be any view.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "名称 目标 view. `*` 表示 all views 在 当前 数据库. To grant admin permissions，它 必须 是 `*`; 到 grant 数据 连接 和 数据库 permissions，它 必须 是 null; 到 grant other permissions，它 可以 是 any view.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"column": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 target column. `*` represents all columns. To grant admin permissions，it must be `*`.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "名称 目标 列. `*` 表示 all columns. To grant admin permissions，它 必须 是 `*`.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"data_engine": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 target data engine. `*` represents all engines. To grant admin permissions，it must be `*`.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "名称 目标 数据 引擎. `*` 表示 all engines. To grant admin permissions，它 必须 是 `*`.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"re_auth": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "是否grantee is allowed to further grant the permissions. 有效值：`false` (default) and `true` (the grantee can grant permissions gained here to other sub-users).注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "是否grantee 是 allowed 到 further grant permissions. 有效值：`false` (默认值) 和 `true` ( grantee 可以 grant permissions gained here 到 other sub-users).注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"source": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The permission 来源，which 不是必填项 when input parameters are passed in. 有效值：`USER` (from the 用户) and `WORKGROUP` (from one or more associated work groups).注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "权限 来源，其中 不是必填项 当 input 参数 是 passed 在. 有效值：`USER` (从 用户) 和 `WORKGROUP` (从 一个 或 more associated work groups).注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"mode": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The grant 模式，which 不是必填项 as an input parameter. 有效值：`COMMON` and `SENIOR`.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "grant 模式，其中 不是必填项 作为 input 参数. 有效值：`COMMON` 和 `SENIOR`.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"operator": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 操作者，which 不是必填项 as an input parameter.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "操作者，其中 不是必填项 作为 input 参数.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"create_time": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The permission policy 创建时间，which 不是必填项 as an input parameter.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "权限 策略 创建时间，其中 不是必填项 作为 input 参数.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"source_id": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "The ID work group，which applies only when the 值 of the `来源` field is `WORKGROUP`.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "ID work 组，其中 applies 仅 当 值 的 `来源` 字段 是 `WORKGROUP`.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"source_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 work group，which applies only when the 值 of the `来源` field is `WORKGROUP`.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "名称 work 组，其中 applies 仅 当 值 的 `来源` 字段 是 `WORKGROUP`.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"id": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "The policy ID.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "策略 ID.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -351,104 +351,104 @@ func DataSourceTencentCloudDlcDescribeWorkGroupInfo() *schema.Resource {
 						"work_group_description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Working group description注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Working 组 description注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"row_filter_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Collection of information about filtered rows注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Collection 的 信息 about filtered rows注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"policy_set": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Collection of policies注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Collection 的 policies注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"database": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 target database. `*` represents all databases in the current catalog. To grant admin permissions，it must be `*`; to grant data connection permissions，it must be null; to grant other permissions，it can be any database。",
+													Description: "名称 目标 数据库. `*` 表示 all databases 在 当前 catalog. To grant admin permissions，它 必须 是 `*`; 到 grant 数据 连接 permissions，它 必须 是 null; 到 grant other permissions，它 可以 是 any 数据库。",
 												},
 												"catalog": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 target data 来源 To grant admin permission，it must be `*` (all resources at this 级别); to grant data 来源 and database permissions，it must be `COSDataCatalog` or `*`; to grant table permissions，it can be a custom data 来源; if it is left empty，`DataLakeCatalog` is used. Note: To grant permissions on a custom data 来源，the permissions that can be managed in the Data Lake Compute console are subsets of the 账号 permissions granted when you connect the data 来源 to the console。",
+													Description: "名称 目标 数据 来源 To grant admin 权限，它 必须 是 `*` (all resources 在 此 级别); 到 grant 数据 来源 和 数据库 permissions，它 必须 是 `COSDataCatalog` 或 `*`; 到 grant 表 permissions，它 可以 是 自定义 数据 来源; 如果 它 是 left 空，`DataLakeCatalog` 是 使用. 注意: To grant permissions 在 自定义 数据 来源， permissions 该 可以 是 managed 在 Data Lake Compute console 是 subsets 的 账号 permissions granted 当 您 connect 数据 来源 到 console。",
 												},
 												"table": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 target table. `*` represents all tables in the current database. To grant admin permissions，it must be `*`; to grant data connection and database permissions，it must be null; to grant other permissions，it can be any table。",
+													Description: "名称 目标 表. `*` 表示 all tables 在 当前 数据库. To grant admin permissions，它 必须 是 `*`; 到 grant 数据 连接 和 数据库 permissions，它 必须 是 null; 到 grant other permissions，它 可以 是 any 表。",
 												},
 												"operation": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The target permissions，which vary by permission 级别 Admin: `ALL` (default); data connection: `CREATE`; database: `ALL`，`CREATE`，`ALTER`，and `DROP`; table: `ALL`，`SELECT`，`INSERT`，`ALTER`，`DELETE`，`DROP`，and `UPDATE`. Note: For table permissions，if a data 来源 other than `COSDataCatalog` is specified，only the `SELECT` permission can be granted here。",
+													Description: "目标 permissions，其中 vary 通过 权限 级别 Admin: `ALL` (默认值); 数据 连接: `CREATE`; 数据库: `ALL`，`CREATE`，`ALTER`，和 `DROP`; 表: `ALL`，`SELECT`，`INSERT`，`ALTER`，`DELETE`，`DROP`，和 `UPDATE`. 注意: For 表 permissions，如果 数据 来源 other 比 `COSDataCatalog` 是 指定，仅 `SELECT` 权限 可以 是 granted here。",
 												},
 												"policy_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The permission 类型 有效值：`ADMIN`，`DATASOURCE`，`DATABASE`，`TABLE`，`VIEW`，`FUNCTION`，`COLUMN`，and `ENGINE`. Note: If it is left empty，`ADMIN` is used。",
+													Description: "权限 类型 有效值：`ADMIN`，`DATASOURCE`，`DATABASE`，`TABLE`，`VIEW`，`FUNCTION`，`COLUMN`，和 `ENGINE`. 注意: 如果 它 是 left 空，`ADMIN` 是 使用。",
 												},
 												"function": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 target function. `*` represents all functions in the current catalog. To grant admin permissions，it must be `*`; to grant data connection permissions，it must be null; to grant other permissions，it can be any function.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "名称 目标 函数. `*` 表示 all functions 在 当前 catalog. To grant admin permissions，它 必须 是 `*`; 到 grant 数据 连接 permissions，它 必须 是 null; 到 grant other permissions，它 可以 是 any 函数.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"view": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 target view. `*` represents all views in the current database. To grant admin permissions，it must be `*`; to grant data connection and database permissions，it must be null; to grant other permissions，it can be any view.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "名称 目标 view. `*` 表示 all views 在 当前 数据库. To grant admin permissions，它 必须 是 `*`; 到 grant 数据 连接 和 数据库 permissions，它 必须 是 null; 到 grant other permissions，它 可以 是 any view.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"column": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 target column. `*` represents all columns. To grant admin permissions，it must be `*`.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "名称 目标 列. `*` 表示 all columns. To grant admin permissions，它 必须 是 `*`.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"data_engine": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 target data engine. `*` represents all engines. To grant admin permissions，it must be `*`.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "名称 目标 数据 引擎. `*` 表示 all engines. To grant admin permissions，它 必须 是 `*`.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"re_auth": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "是否grantee is allowed to further grant the permissions. 有效值：`false` (default) and `true` (the grantee can grant permissions gained here to other sub-users).注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "是否grantee 是 allowed 到 further grant permissions. 有效值：`false` (默认值) 和 `true` ( grantee 可以 grant permissions gained here 到 other sub-users).注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"source": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The permission 来源，which 不是必填项 when input parameters are passed in. 有效值：`USER` (from the 用户) and `WORKGROUP` (from one or more associated work groups).注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "权限 来源，其中 不是必填项 当 input 参数 是 passed 在. 有效值：`USER` (从 用户) 和 `WORKGROUP` (从 一个 或 more associated work groups).注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"mode": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The grant 模式，which 不是必填项 as an input parameter. 有效值：`COMMON` and `SENIOR`.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "grant 模式，其中 不是必填项 作为 input 参数. 有效值：`COMMON` 和 `SENIOR`.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"operator": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 操作者，which 不是必填项 as an input parameter.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "操作者，其中 不是必填项 作为 input 参数.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"create_time": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The permission policy 创建时间，which 不是必填项 as an input parameter.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "权限 策略 创建时间，其中 不是必填项 作为 input 参数.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"source_id": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "The ID work group，which applies only when the 值 of the `来源` field is `WORKGROUP`.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "ID work 组，其中 applies 仅 当 值 的 `来源` 字段 是 `WORKGROUP`.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"source_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "The 名称 work group，which applies only when the 值 of the `来源` field is `WORKGROUP`.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "名称 work 组，其中 applies 仅 当 值 的 `来源` 字段 是 `WORKGROUP`.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"id": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "The policy ID.注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "策略 ID.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},

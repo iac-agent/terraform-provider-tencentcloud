@@ -23,7 +23,7 @@ func DataSourceTencentCloudDlcDescribeDataEngine() *schema.Resource {
 			"data_engine": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Data engine details。",
+				Description: "Data 引擎 details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"data_engine_name": {
@@ -49,7 +49,7 @@ func DataSourceTencentCloudDlcDescribeDataEngine() *schema.Resource {
 						"state": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Data engine 状态 -2 deleted，-1 failed，0 initializing，1 suspended，2 running，3 ready to delete，and 4 deleting。",
+							Description: "Data 引擎 状态 -2 删除，-1 failed，0 initializing，1 suspended，2 running，3 ready 到 delete，和 4 deleting。",
 						},
 						"create_time": {
 							Type:        schema.TypeInt,
@@ -69,7 +69,7 @@ func DataSourceTencentCloudDlcDescribeDataEngine() *schema.Resource {
 						"mode": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Billing 模式: 0 shared 模式，1 pay-as-you-go，and 2 monthly subscription。",
+							Description: "Billing 模式: 0 shared 模式，1 pay-作为-您-go，和 2 monthly subscription。",
 						},
 						"min_clusters": {
 							Type:        schema.TypeInt,
@@ -89,17 +89,17 @@ func DataSourceTencentCloudDlcDescribeDataEngine() *schema.Resource {
 						"spend_after": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Automatic recovery time。",
+							Description: "Automatic recovery 时间。",
 						},
 						"cidr_block": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster IP range。",
+							Description: "Cluster IP 范围。",
 						},
 						"default_data_engine": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否为the default engine。",
+							Description: "是否为the 默认值 引擎。",
 						},
 						"message": {
 							Type:        schema.TypeString,
@@ -109,7 +109,7 @@ func DataSourceTencentCloudDlcDescribeDataEngine() *schema.Resource {
 						"data_engine_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Engine unique ID。",
+							Description: "Engine 唯一 ID。",
 						},
 						"sub_account_uin": {
 							Type:        schema.TypeString,
@@ -124,12 +124,12 @@ func DataSourceTencentCloudDlcDescribeDataEngine() *schema.Resource {
 						"isolated_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Isolation time。",
+							Description: "Isolation 时间。",
 						},
 						"reversal_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Rectification time。",
+							Description: "Rectification 时间。",
 						},
 						"user_alias": {
 							Type:        schema.TypeString,
@@ -166,33 +166,33 @@ func DataSourceTencentCloudDlcDescribeDataEngine() *schema.Resource {
 						"auto_suspend": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否automatically suspend the cluster，prepay not support。",
+							Description: "是否automatically suspend 集群，prepay 不 support。",
 						},
 						"crontab_resume_suspend": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Engine crontab resume or suspend strategy，only support: 0: Wait(default)，1: Kill。",
+							Description: "Engine crontab resume 或 suspend strategy，仅 support: 0: Wait(默认值)，1: Kill。",
 						},
 						"crontab_resume_suspend_strategy": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Engine auto suspend strategy，when AutoSuspend is true，CrontabResumeSuspend must stop。",
+							Description: "Engine auto suspend strategy，当 AutoSuspend 是 true，CrontabResumeSuspend 必须 stop。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"resume_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Scheduled pull-up time: For example: 8 o&amp;#39;clock on Monday is expressed as 1000000-08:00:00。",
+										Description: "Scheduled pull-up 时间: For 示例: 8 o&amp;#39;clock 在 Monday 是 expressed 作为 1000000-08:00:00。",
 									},
 									"suspend_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Scheduled suspension time: For example: 20 o&amp;#39;clock on Monday is expressed as 1000000-20:00:00。",
+										Description: "Scheduled suspension 时间: For 示例: 20 o&amp;#39;clock 在 Monday 是 expressed 作为 1000000-20:00:00。",
 									},
 									"suspend_strategy": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Suspend configuration: 0 (default): wait for the task to end before suspending，1: force suspend。",
+										Description: "Suspend 配置: 0 (默认值): wait 对于 任务 到 end before suspending，1: force suspend。",
 									},
 								},
 							},
@@ -200,48 +200,48 @@ func DataSourceTencentCloudDlcDescribeDataEngine() *schema.Resource {
 						"engine_exec_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Engine exec 类型，only support SQL(default) or BATCH。",
+							Description: "Engine exec 类型，仅 support SQL(默认值) 或 BATCH。",
 						},
 						"renew_flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Automatic renewal flag，0，initial state，automatic renewal is not performed by default. If the 用户 has prepaid non-stop service privileges，automatic renewal will occur. 1: Automatic renewal. 2: Make it clear that there will be no automatic renewal。",
+							Description: "Automatic renewal flag，0，initial state，automatic renewal 是 不 performed 通过 默认值. 如果 用户 has prepaid non-stop 服务 privileges，automatic renewal 将 occur. 1: Automatic renewal. 2: Make 它 clear 该 there 将 是 无 automatic renewal。",
 						},
 						"auto_suspend_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Cluster automatic suspension time，default 10 minutes。",
+							Description: "Cluster automatic suspension 时间，默认值 10 minutes。",
 						},
 						"network_connection_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Network connection configuration。",
+							Description: "Network 连接 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Network configuration id。",
+										Description: "Network 配置 ID。",
 									},
 									"associate_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Network configuration unique identifier。",
+										Description: "Network 配置 唯一 identifier。",
 									},
 									"house_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Data engine id。",
+										Description: "Data 引擎 ID。",
 									},
 									"datasource_connection_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Data 来源 id (obsolete)。",
+										Description: "Data 来源 ID (obsolete)。",
 									},
 									"state": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Network configuration 状态 (0-initialization，1-normal)。",
+										Description: "Network 配置 状态 (0-initialization，1-normal)。",
 									},
 									"create_time": {
 										Type:        schema.TypeInt,
@@ -261,17 +261,17 @@ func DataSourceTencentCloudDlcDescribeDataEngine() *schema.Resource {
 									"house_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Data engine 名称",
+										Description: "Data 引擎 名称",
 									},
 									"datasource_connection_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Network configuration 名称",
+										Description: "Network 配置 名称",
 									},
 									"network_connection_type": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Network configuration 类型",
+										Description: "Network 配置 类型",
 									},
 									"uin": {
 										Type:        schema.TypeString,
@@ -286,7 +286,7 @@ func DataSourceTencentCloudDlcDescribeDataEngine() *schema.Resource {
 									"network_connection_desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Network configuration 描述",
+										Description: "Network 配置 描述",
 									},
 									"datasource_connection_vpc_id": {
 										Type:        schema.TypeString,
@@ -301,12 +301,12 @@ func DataSourceTencentCloudDlcDescribeDataEngine() *schema.Resource {
 									"datasource_connection_cidr_block": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Datasource connection cidr block。",
+										Description: "Datasource 连接 cidr block。",
 									},
 									"datasource_connection_subnet_cidr_block": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Datasource connection subnet cidr block。",
+										Description: "Datasource 连接 子网 cidr block。",
 									},
 								},
 							},
@@ -315,62 +315,62 @@ func DataSourceTencentCloudDlcDescribeDataEngine() *schema.Resource {
 							Type:        schema.TypeString,
 							Computed:    true,
 							Deprecated:  "It has been deprecated. Use `ui_url` instead.",
-							Description: "Jump 地址 of ui。",
+							Description: "Jump 地址 的 ui。",
 						},
 						"ui_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Jump 地址 of ui。",
+							Description: "Jump 地址 的 ui。",
 						},
 						"resource_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Engine 资源类型 not match，only support: Standard_CU/Memory_CU(only BATCH ExecType)。",
+							Description: "Engine 资源类型 不 match，仅 support: Standard_CU/Memory_CU(仅 BATCH ExecType)。",
 						},
 						"image_version_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Engine major 版本 id。",
+							Description: "Engine major 版本 ID。",
 						},
 						"child_image_version_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Engine Image 版本 id。",
+							Description: "Engine Image 版本 ID。",
 						},
 						"image_version_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Engine image 版本 名称",
+							Description: "Engine 镜像 版本 名称",
 						},
 						"start_standby_cluster": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否enable the backup cluster。",
+							Description: "是否enable 备份 集群。",
 						},
 						"elastic_switch": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "For spark Batch ExecType，yearly and monthly cluster 是否enable elasticity。",
+							Description: "For spark Batch ExecType，yearly 和 monthly 集群 是否enable elasticity。",
 						},
 						"elastic_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "For spark Batch ExecType，yearly and monthly cluster elastic 限制",
+							Description: "For spark Batch ExecType，yearly 和 monthly 集群 elastic 限制",
 						},
 						"default_house": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Is it the default engine?。",
+							Description: "Is 它 默认值 引擎?。",
 						},
 						"max_concurrency": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "最大concurrent tasks in a single cluster，default 5。",
+							Description: "最大concurrent tasks 在 单个 集群，默认值 5。",
 						},
 						"tolerable_queue_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Tolerable queuing time，default 0. scaling may be triggered when tasks are queued for longer than the tolerable time. if this parameter is 0，it means that capacity expansion may be triggered immediately once a task is queued。",
+							Description: "Tolerable queuing 时间，默认值 0. scaling 可能 是 triggered 当 tasks 是 queued 对于 longer 比 tolerable 时间. 如果 此 参数 是 0，它 表示 该 容量 expansion 可能 是 triggered immediately once 任务 是 queued。",
 						},
 						"user_app_id": {
 							Type:        schema.TypeInt,
@@ -385,28 +385,28 @@ func DataSourceTencentCloudDlcDescribeDataEngine() *schema.Resource {
 						"session_resource_template": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "For spark Batch ExecType，cluster session resource configuration template。",
+							Description: "For spark Batch ExecType，集群 会话 资源 配置 template。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"driver_size": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Engine driver size specification only supports: small/medium/large/xlarge/m.small/m.medium/m.large/m.xlarge。",
+										Description: "Engine 驱动 大小 规格 仅 支持: small/medium/large/xlarge/m.small/m.medium/m.large/m.xlarge。",
 									},
 									"executor_size": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Engine executor size specification only supports: small/medium/large/xlarge/m.small/m.medium/m.large/m.xlarge。",
+										Description: "Engine executor 大小 规格 仅 支持: small/medium/large/xlarge/m.small/m.medium/m.large/m.xlarge。",
 									},
 									"executor_nums": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "指定number of executors. The minimum 值 is 1 and the maximum 值 is less than the cluster specification。",
+										Description: "指定number 的 executors. 最小 值 是 1 和 最大 值 是 less 比 集群 规格。",
 									},
 									"executor_max_numbers": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "指定executor max number (in a dynamic configuration scenario)，the minimum 值 is 1，and the maximum 值 is less than the cluster specification (when ExecutorMaxNumbers is less than ExecutorNums，the 值 is set to ExecutorNums)。",
+										Description: "指定executor max 数量 (在 动态 配置 scenario)， 最小 值 是 1，和 最大 值 是 less 比 集群 规格 (当 ExecutorMaxNumbers 是 less 比 ExecutorNums， 值 是 集合 到 ExecutorNums)。",
 									},
 								},
 							},

@@ -27,13 +27,13 @@ func ResourceTencentCloudApmPrometheusRule() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Metric match rule 名称",
+				Description: "Metric match 规则 名称",
 			},
 
 			"service_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Applications where the rule takes effect. input an empty string for all applications。",
+				Description: "Applications 其中 规则 takes effect. input 空 字符串 对于 all applications。",
 			},
 
 			"metric_match_type": {
@@ -45,14 +45,14 @@ func ResourceTencentCloudApmPrometheusRule() *schema.Resource {
 			"metric_name_rule": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "指定rule for customer-defined metric names with cache hit。",
+				Description: "指定rule 对于 customer-defined metric names 使用 缓存 hit。",
 			},
 
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Business system ID。",
+				Description: "Business 系统 ID。",
 			},
 
 			"status": {
@@ -67,7 +67,7 @@ func ResourceTencentCloudApmPrometheusRule() *schema.Resource {
 			"rule_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "ID indicator matching rule。",
+				Description: "ID indicator matching 规则。",
 			},
 		},
 	}

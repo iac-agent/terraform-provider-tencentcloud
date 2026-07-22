@@ -37,14 +37,14 @@ func ResourceTencentCloudDnspodModifyRecordGroupOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Record ID，multiple IDs are separated by a vertical line |。",
+				Description: "Record ID，多个 IDs 是 separated 通过 vertical line |。",
 			},
 
 			"domain_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "域名 ID. The parameter DomainId has a higher 优先级 than the parameter 域名 If the parameter DomainId is passed，the parameter 域名 will be ignored. You can find all Domains and DomainIds through the DescribeDomainList interface。",
+				Description: "域名 ID. 参数 DomainId has higher 优先级 比 参数 域名 如果 参数 DomainId 是 passed， 参数 域名 将 是 ignored. You 可以 find all Domains 和 DomainIds through DescribeDomainList interface。",
 			},
 		},
 	}

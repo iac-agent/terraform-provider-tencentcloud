@@ -32,13 +32,13 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 			"order": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "顺序 field。",
+				Description: "顺序 字段。",
 			},
 
 			"order_seq": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "顺序 way，可选 值 is DESC or ASC。",
+				Description: "顺序 way，可选 值 是 DESC 或 ASC。",
 			},
 
 			"status": {
@@ -53,19 +53,19 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 			"run_mode": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "run 模式，可选 值 is mmediate or Timed。",
+				Description: "run 模式，可选 值 是 mmediate 或 Timed。",
 			},
 
 			"job_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "job 类型",
+				Description: "作业 类型",
 			},
 
 			"pay_mode": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "付费模式，可选 值 is PrePay or PostPay。",
+				Description: "付费模式，可选 值 是 PrePay 或 PostPay。",
 			},
 
 			"tag_filters": {
@@ -91,7 +91,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "sync job list。",
+				Description: "sync 作业 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"job_id": {
@@ -117,7 +117,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 						"expect_run_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "expected run time。",
+							Description: "expected run 时间。",
 						},
 						"all_actions": {
 							Type: schema.TypeSet,
@@ -125,7 +125,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "all 操作 list。",
+							Description: "all 操作 列表。",
 						},
 						"actions": {
 							Type: schema.TypeSet,
@@ -133,7 +133,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "support 操作 list for current 状态",
+							Description: "support 操作 列表 对于 当前 状态",
 						},
 						"options": {
 							Type:        schema.TypeList,
@@ -149,7 +149,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 									"deal_of_exist_same_table": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "deal of exist same table。",
+										Description: "deal 的 exist same 表。",
 									},
 									"conflict_handle_type": {
 										Type:        schema.TypeString,
@@ -159,7 +159,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 									"add_additional_column": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "add additional column。",
+										Description: "add additional 列。",
 									},
 									"op_types": {
 										Type: schema.TypeSet,
@@ -172,7 +172,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 									"conflict_handle_option": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "conflict handle option。",
+										Description: "conflict handle 选项。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"condition_column": {
@@ -188,7 +188,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 												"condition_order_in_src_and_dst": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "condition 顺序 in 来源 and destination。",
+													Description: "condition 顺序 在 来源 和 destination。",
 												},
 											},
 										},
@@ -202,7 +202,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 												"ddl_object": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "ddl object。",
+													Description: "ddl 对象。",
 												},
 												"ddl_value": {
 													Type: schema.TypeSet,
@@ -227,28 +227,28 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 									"mode": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "object 模式",
+										Description: "对象 模式",
 									},
 									"databases": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "database list。",
+										Description: "数据库 列表。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"db_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "database 名称",
+													Description: "数据库 名称",
 												},
 												"new_db_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "new database 名称",
+													Description: "new 数据库 名称",
 												},
 												"db_mode": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "database 模式",
+													Description: "数据库 模式",
 												},
 												"schema_name": {
 													Type:        schema.TypeString,
@@ -263,28 +263,28 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 												"table_mode": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "table 模式",
+													Description: "表 模式",
 												},
 												"tables": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "table list。",
+													Description: "表 列表。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"table_name": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "table 名称",
+																Description: "表 名称",
 															},
 															"new_table_name": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "new table 名称",
+																Description: "new 表 名称",
 															},
 															"filter_condition": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "filter condition。",
+																Description: "过滤器 condition。",
 															},
 														},
 													},
@@ -297,7 +297,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 												"views": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "view list。",
+													Description: "view 列表。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"view_name": {
@@ -316,7 +316,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 												"function_mode": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "function 模式",
+													Description: "函数 模式",
 												},
 												"functions": {
 													Type: schema.TypeSet,
@@ -356,12 +356,12 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 						"specification": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "specification。",
+							Description: "规格。",
 						},
 						"expire_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "expire time。",
+							Description: "expire 时间。",
 						},
 						"src_region": {
 							Type:        schema.TypeString,
@@ -371,12 +371,12 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 						"src_database_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "来源 database 类型",
+							Description: "来源 数据库 类型",
 						},
 						"src_access_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "来源 access 类型",
+							Description: "来源 访问 类型",
 						},
 						"src_info": {
 							Type:        schema.TypeList,
@@ -392,7 +392,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 									"db_kernel": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "database kernel。",
+										Description: "数据库 kernel。",
 									},
 									"instance_id": {
 										Type:        schema.TypeString,
@@ -422,7 +422,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 									"db_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "database 名称",
+										Description: "数据库 名称",
 									},
 									"vpc_id": {
 										Type:        schema.TypeString,
@@ -452,7 +452,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 									"ccn_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ccn id。",
+										Description: "ccn ID。",
 									},
 									"supplier": {
 										Type:        schema.TypeString,
@@ -462,7 +462,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 									"engine_version": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "engine 版本",
+										Description: "引擎 版本",
 									},
 									"account_mode": {
 										Type:        schema.TypeString,
@@ -482,7 +482,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 									"tmp_secret_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "temporary secret id。",
+										Description: "temporary secret ID。",
 									},
 									"tmp_secret_key": {
 										Type:        schema.TypeString,
@@ -505,12 +505,12 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 						"dst_database_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "destination database 类型",
+							Description: "destination 数据库 类型",
 						},
 						"dst_access_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "destination access 类型",
+							Description: "destination 访问 类型",
 						},
 						"dst_info": {
 							Type:        schema.TypeList,
@@ -526,7 +526,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 									"db_kernel": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "database kernel。",
+										Description: "数据库 kernel。",
 									},
 									"instance_id": {
 										Type:        schema.TypeString,
@@ -556,7 +556,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 									"db_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "database 名称",
+										Description: "数据库 名称",
 									},
 									"vpc_id": {
 										Type:        schema.TypeString,
@@ -586,7 +586,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 									"ccn_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ccn id。",
+										Description: "ccn ID。",
 									},
 									"supplier": {
 										Type:        schema.TypeString,
@@ -596,7 +596,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 									"engine_version": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "engine 版本",
+										Description: "引擎 版本",
 									},
 									"account_mode": {
 										Type:        schema.TypeString,
@@ -616,7 +616,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 									"tmp_secret_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "temporary secret id。",
+										Description: "temporary secret ID。",
 									},
 									"tmp_secret_key": {
 										Type:        schema.TypeString,
@@ -679,12 +679,12 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 									"step_all": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "total step numbers。",
+										Description: "总数 step numbers。",
 									},
 									"step_now": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "current step number。",
+										Description: "当前 step 数量。",
 									},
 									"progress": {
 										Type:        schema.TypeInt,
@@ -694,7 +694,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 									"current_step_progress": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "current step progress。",
+										Description: "当前 step progress。",
 									},
 									"master_slave_distance": {
 										Type:        schema.TypeInt,
@@ -704,7 +704,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 									"seconds_behind_master": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "seconds behind master。",
+										Description: "秒 behind master。",
 									},
 									"message": {
 										Type:        schema.TypeString,
@@ -720,7 +720,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 												"step_no": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "step number。",
+													Description: "step 数量。",
 												},
 												"step_name": {
 													Type:        schema.TypeString,
@@ -730,12 +730,12 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 												"step_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "step id。",
+													Description: "step ID。",
 												},
 												"status": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "current 状态",
+													Description: "当前 状态",
 												},
 												"start_time": {
 													Type:        schema.TypeString,
@@ -745,7 +745,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 												"errors": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "错误 list。",
+													Description: "错误 列表。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"code": {
@@ -774,7 +774,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 												"warnings": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "waring list。",
+													Description: "waring 列表。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"code": {
@@ -803,7 +803,7 @@ func DataSourceTencentCloudDtsSyncJobs() *schema.Resource {
 												"progress": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "current step progress。",
+													Description: "当前 step progress。",
 												},
 											},
 										},

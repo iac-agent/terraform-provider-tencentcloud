@@ -34,14 +34,14 @@ func ResourceTencentCloudDlcWorkGroup() *schema.Resource {
 			"work_group_description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Working group 描述",
+				Description: "Working 组 描述",
 			},
 
 			"user_ids": {
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Collection of IDs of users to be bound to working groups。",
+				Description: "Collection 的 IDs 的 users 到 是 bound 到 working groups。",
 			},
 
 			// computed

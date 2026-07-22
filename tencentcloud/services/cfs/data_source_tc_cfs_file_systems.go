@@ -21,27 +21,27 @@ func DataSourceTencentCloudCfsFileSystems() *schema.Resource {
 			"file_system_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "A specified file system ID 用于query。",
+				Description: "A 指定 文件 系统 ID 用于query。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "A file system 名称 用于query。",
+				Description: "A 文件 系统 名称 用于query。",
 			},
 			"availability_zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The available 可用区 that the file system locates at。",
+				Description: "可用 可用区 该 文件 系统 locates 在。",
 			},
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID vpc to be queried。",
+				Description: "ID vpc 到 是 queried。",
 			},
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID vpc subnet。",
+				Description: "ID vpc 子网。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -52,63 +52,63 @@ func DataSourceTencentCloudCfsFileSystems() *schema.Resource {
 			"file_system_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information 列表 cloud file system. Each element 包含following attributes:",
+				Description: "An 信息 列表 云 文件 系统. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"file_system_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID file system。",
+							Description: "ID 文件 系统。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 file system。",
+							Description: "名称 文件 系统。",
 						},
 						"availability_zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The available 可用区 that the file system locates at。",
+							Description: "可用 可用区 该 文件 系统 locates 在。",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "协议 of the file system。",
+							Description: "协议 的 文件 系统。",
 						},
 						"access_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID access group。",
+							Description: "ID 访问 组。",
 						},
 						"storage_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Storage 类型 file system。",
+							Description: "Storage 类型 文件 系统。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "状态 file system。",
+							Description: "状态 文件 系统。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of the file system。",
+							Description: "创建时间 的 文件 系统。",
 						},
 						"size_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Size 限制 of the file system。",
+							Description: "Size 限制 的 文件 系统。",
 						},
 						"size_used": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Size used of the file system。",
+							Description: "Size 使用 的 文件 系统。",
 						},
 						"mount_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IP of the file system。",
+							Description: "IP 的 文件 系统。",
 						},
 						"fs_id": {
 							Type:        schema.TypeString,

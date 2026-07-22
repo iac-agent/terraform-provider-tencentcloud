@@ -50,7 +50,7 @@ func DataSourceTencentCloudClickhouseBackupJobDetail() *schema.Resource {
 						"v_cluster": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Virtual cluster。",
+							Description: "Virtual 集群。",
 						},
 						"ips": {
 							Type:        schema.TypeString,
@@ -65,7 +65,7 @@ func DataSourceTencentCloudClickhouseBackupJobDetail() *schema.Resource {
 						"rip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Ip 地址 of cvm。",
+							Description: "Ip 地址 的 cvm。",
 						},
 					},
 				},

@@ -22,7 +22,7 @@ func DataSourceTencentCloudAntiddosBasicDeviceStatus() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Ip resource list。",
+				Description: "Ip 资源 列表。",
 			},
 
 			"id_list": {
@@ -31,7 +31,7 @@ func DataSourceTencentCloudAntiddosBasicDeviceStatus() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Named resource transfer ID。",
+				Description: "Named 资源 transfer ID。",
 			},
 
 			"filter_region": {
@@ -43,7 +43,7 @@ func DataSourceTencentCloudAntiddosBasicDeviceStatus() *schema.Resource {
 			"data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Return resources and 状态，状态 代码: 1- Blocking 状态 2- Normal 状态 3- Attack 状态",
+				Description: "Return resources 和 状态，状态 代码: 1- Blocking 状态 2- Normal 状态 3- Attack 状态",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {

@@ -20,7 +20,7 @@ func DataSourceTencentCloudCkafkaRegion() *schema.Resource {
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Return a 列表 地域 enumeration results。",
+				Description: "Return 列表 地域 enumeration results。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region_id": {
@@ -51,17 +51,17 @@ func DataSourceTencentCloudCkafkaRegion() *schema.Resource {
 						"support": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "NONE: The 默认值 does not support any special models CVM: Supports CVM types。",
+							Description: "NONE: 默认值 does 不 support any special models CVM: Supports CVM types。",
 						},
 						"ipv6": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否support ipv6，0: means not supported，1: means supported。",
+							Description: "是否support ipv6，0: 表示 不 支持，1: 表示 支持。",
 						},
 						"multi_zone": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否support cross-availability zones，0: means not supported，1: means supported。",
+							Description: "是否support cross-availability zones，0: 表示 不 支持，1: 表示 支持。",
 						},
 					},
 				},

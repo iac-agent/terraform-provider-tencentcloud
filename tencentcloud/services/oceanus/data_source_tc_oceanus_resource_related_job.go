@@ -26,12 +26,12 @@ func DataSourceTencentCloudOceanusResourceRelatedJob() *schema.Resource {
 				Type:         schema.TypeInt,
 				Default:      DESC_BY_JOB_CONFIG_CREATETIME_0,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(DESC_BY_JOB_CONFIG_CREATETIME),
-				Description:  "Default:0; 1:排序方式 job 版本 创建时间 in 降序",
+				Description:  "Default:0; 1:排序方式 作业 版本 创建时间 在 降序",
 			},
 			"resource_config_version": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Resource 版本 number。",
+				Description: "Resource 版本 数量。",
 			},
 			"work_space_id": {
 				Optional:    true,
@@ -41,7 +41,7 @@ func DataSourceTencentCloudOceanusResourceRelatedJob() *schema.Resource {
 			"ref_job_infos": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Associated job information。",
+				Description: "Associated 作业 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"job_id": {
@@ -52,7 +52,7 @@ func DataSourceTencentCloudOceanusResourceRelatedJob() *schema.Resource {
 						"job_config_version": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Job configuration 版本",
+							Description: "Job 配置 版本",
 						},
 						"resource_version": {
 							Type:        schema.TypeInt,

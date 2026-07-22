@@ -25,25 +25,25 @@ func DataSourceTencentCloudScfFunctionVersions() *schema.Resource {
 			"namespace": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The namespace where the function locates。",
+				Description: "命名空间 其中 函数 locates。",
 			},
 
 			"order": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "It 指定是否return the results in ascending or 降序 The 值 is `ASC` or `DESC`。",
+				Description: "It 指定是否return results 在 ascending 或 降序 值 是 `ASC` 或 `DESC`。",
 			},
 
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "It 指定sorting 顺序 of the results according to a specified field，such as `AddTime`，`ModTime`。",
+				Description: "It 指定sorting 顺序 的 results according 到 指定 字段，such 作为 `AddTime`，`ModTime`。",
 			},
 
 			"versions": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Function 版本 listNote: This field may return null，indicating that no valid values is found。",
+				Description: "Function 版本 listNote: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 found。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"version": {
@@ -54,12 +54,12 @@ func DataSourceTencentCloudScfFunctionVersions() *schema.Resource {
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "版本 descriptionNote: This field may return null，indicating that no valid values is found。",
+							Description: "版本 descriptionNote: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 found。",
 						},
 						"add_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The creation time注意：此字段可能返回 null，表示未找到有效值。",
+							Description: "creation time注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"mod_time": {
 							Type:        schema.TypeString,
@@ -69,7 +69,7 @@ func DataSourceTencentCloudScfFunctionVersions() *schema.Resource {
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "版本 statusNote: this field may return `null`，indicating that no valid values can be obtained。",
+							Description: "版本 statusNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 					},
 				},

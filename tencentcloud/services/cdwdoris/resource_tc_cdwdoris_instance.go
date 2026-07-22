@@ -46,7 +46,7 @@ func ResourceTencentCloudCdwdorisInstance() *schema.Resource {
 						"disk_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Cloud disk size。",
+							Description: "Cloud 磁盘 大小。",
 						},
 					},
 				},
@@ -71,7 +71,7 @@ func ResourceTencentCloudCdwdorisInstance() *schema.Resource {
 						"disk_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Cloud disk size。",
+							Description: "Cloud 磁盘 大小。",
 						},
 					},
 				},
@@ -79,7 +79,7 @@ func ResourceTencentCloudCdwdorisInstance() *schema.Resource {
 			"ha_flag": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "是否为highly available。",
+				Description: "是否为highly 可用。",
 			},
 			"user_vpc_id": {
 				Type:        schema.TypeString,
@@ -89,12 +89,12 @@ func ResourceTencentCloudCdwdorisInstance() *schema.Resource {
 			"user_subnet_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "用户 subnet ID。",
+				Description: "用户 子网 ID。",
 			},
 			"product_version": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Product 版本 number。",
+				Description: "Product 版本 数量。",
 			},
 			"charge_properties": {
 				Type:        schema.TypeList,
@@ -107,22 +107,22 @@ func ResourceTencentCloudCdwdorisInstance() *schema.Resource {
 							Type:         schema.TypeString,
 							Optional:     true,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CHARGE_TYPE),
-							Description:  "Billing 类型: `PREPAID` for prepayment，and `POSTPAID_BY_HOUR` for postpayment. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description:  "Billing 类型: `PREPAID` 对于 prepayment，和 `POSTPAID_BY_HOUR` 对于 postpayment. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"renew_flag": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "是否automatically renew. 1 means automatic renewal is 已启用 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "是否automatically renew. 1 表示 automatic renewal 是 已启用 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"time_span": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Billing duration 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Billing 时长 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"time_unit": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Billing time unit，and `m` means month，etc. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Billing 时间 单位，和 `m` 表示 month，etc. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -160,12 +160,12 @@ func ResourceTencentCloudCdwdorisInstance() *schema.Resource {
 			"ha_type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "High availability 类型: 0 表示non-high availability (only one FE，FeSpec.CreateInstanceSpec.Count=1)，1 表示read high availability (at least 3 FEs must be deployed，FeSpec.CreateInstanceSpec.Count>=3，and it must be an odd number)，2 表示read and write high availability (at least 5 FEs must be deployed，FeSpec.CreateInstanceSpec.Count>=5，and it must be an odd number)。",
+				Description: "High availability 类型: 0 表示non-high availability (仅 一个 FE，FeSpec.CreateInstanceSpec.Count=1)，1 表示read high availability (在 least 3 FEs 必须 是 deployed，FeSpec.CreateInstanceSpec.Count>=3，和 它 必须 是 odd 数量)，2 表示read 和 write high availability (在 least 5 FEs 必须 是 deployed，FeSpec.CreateInstanceSpec.Count>=5，和 它 必须 是 odd 数量)。",
 			},
 			"case_sensitive": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "是否table 名称 is case sensitive，0 refers to sensitive，1 refers to insensitive，compared in lowercase; 2 refers to insensitive，and the table 名称 is changed to lowercase for storage。",
+				Description: "是否table 名称 是 case sensitive，0 refers 到 sensitive，1 refers 到 insensitive，compared 在 lowercase; 2 refers 到 insensitive，和 表 名称 是 changed 到 lowercase 对于 存储。",
 			},
 			"enable_multi_zones": {
 				Type:        schema.TypeBool,
@@ -176,7 +176,7 @@ func ResourceTencentCloudCdwdorisInstance() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "After the Multi-AZ is 已启用，all 用户's Availability Zones and Subnets information are shown。",
+				Description: "After Multi-AZ 是 已启用，all 用户's Availability Zones 和 Subnets 信息 是 shown。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"zone": {
@@ -192,7 +192,7 @@ func ResourceTencentCloudCdwdorisInstance() *schema.Resource {
 						"subnet_ip_num": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The 数量 available IP addresses in the current subnet 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "数量 可用 IP addresses 在 当前 子网 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -201,13 +201,13 @@ func ResourceTencentCloudCdwdorisInstance() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Security Group Id list。",
+				Description: "Security Group ID 列表。",
 			},
 			"workload_group_status": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(WORKLOAD_GROUP_STATUS),
-				Description:  "是否enable resource group. `open` - enable，`close` - disable。",
+				Description:  "是否enable 资源 组. `open` - 启用，`close` - disable。",
 			},
 		},
 	}

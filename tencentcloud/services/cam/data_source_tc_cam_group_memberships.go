@@ -20,7 +20,7 @@ func DataSourceTencentCloudCamGroupMemberships() *schema.Resource {
 			"group_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID CAM group to be queried。",
+				Description: "ID CAM 组 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -30,13 +30,13 @@ func DataSourceTencentCloudCamGroupMemberships() *schema.Resource {
 			"membership_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A 列表 CAM group membership. Each element 包含following attributes:",
+				Description: "A 列表 CAM 组 membership. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID CAM group。",
+							Description: "ID CAM 组。",
 						},
 						"user_ids": {
 							Type:     schema.TypeSet,
@@ -45,7 +45,7 @@ func DataSourceTencentCloudCamGroupMemberships() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Deprecated:  "It has been deprecated from version 1.59.5. Use `user_names` instead.",
-							Description: "ID set of the CAM group members。",
+							Description: "ID 集合 的 CAM 组 members。",
 						},
 						"user_names": {
 							Type:     schema.TypeSet,
@@ -53,7 +53,7 @@ func DataSourceTencentCloudCamGroupMemberships() *schema.Resource {
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
-							Description: "ID set of the CAM group members。",
+							Description: "ID 集合 的 CAM 组 members。",
 						},
 					},
 				},

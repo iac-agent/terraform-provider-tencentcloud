@@ -37,54 +37,54 @@ func ResourceTencentCloudIdentityCenterUserSyncProvisioning() *schema.Resource {
 			"principal_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Identity ID for the CAM 用户 synchronization. Valid values:\nWhen the PrincipalType 值 is Group，it is the CIC 用户 组 ID (g-********).\nWhen the PrincipalType 值 is 用户，it is the CIC 用户 ID (u-********)。",
+				Description: "Identity ID 对于 CAM 用户 synchronization. 有效 值:\nWhen PrincipalType 值 是 Group，它 是 CIC 用户 组 ID (g-********).\nWhen PrincipalType 值 是 用户，它 是 CIC 用户 ID (u-********)。",
 			},
 			"principal_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Identity 类型 for the CAM 用户 synchronization. Valid values:\n\nUser: 表示that the identity for the CAM 用户 synchronization is a CIC 用户\nGroup: 表示that the identity for the CAM 用户 synchronization is a CIC 用户 group。",
+				Description: "Identity 类型 对于 CAM 用户 synchronization. 有效 值:\n\nUser: 表示that identity 对于 CAM 用户 synchronization 是 CIC 用户\nGroup: 表示that identity 对于 CAM 用户 synchronization 是 CIC 用户 组。",
 			},
 			"target_uin": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "UIN of the synchronized target 账号 of the Tencent Cloud Organization。",
+				Description: "UIN 的 synchronized 目标 账号 的 Tencent Cloud Organization。",
 			},
 			"duplication_strategy": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Conflict policy. It 表示handling policy for existence of a 用户 with the same 用户名 when CIC users are synchronized to CAM. 有效值：KeepBoth: Keep both，that is，add the _cic suffix to the CIC 用户's 用户名 and then try to create a CAM 用户 with the 用户名 when CIC users are synchronized to CAM and a 用户 with the same 用户名 already exists in CAM; TakeOver: Replace，that is，directly replace the existing CAM 用户 with the synchronized CIC 用户 when CIC users are synchronized to CAM and a 用户 with the same 用户名 already exists in CAM。",
+				Description: "Conflict 策略. It 表示handling 策略 对于 existence 的 用户 使用 same 用户名 当 CIC users 是 synchronized 到 CAM. 有效值：KeepBoth: Keep both，该 是，add _cic suffix 到 CIC 用户's 用户名 和 then try 到 create CAM 用户 使用 用户名 当 CIC users 是 synchronized 到 CAM 和 用户 使用 same 用户名 already exists 在 CAM; TakeOver: Replace，该 是，directly replace existing CAM 用户 使用 synchronized CIC 用户 当 CIC users 是 synchronized 到 CAM 和 用户 使用 same 用户名 already exists 在 CAM。",
 			},
 			"deletion_strategy": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Deletion policy. It 表示handling policy for CAM users already synchronized when the CAM 用户 synchronization is deleted. 有效值：Delete: Delete the CAM users already synchronized from CIC to CAM when the CAM 用户 synchronization is deleted; Keep: Keep the CAM users already synchronized from CIC to CAM when the CAM 用户 synchronization is deleted。",
+				Description: "Deletion 策略. It 表示handling 策略 对于 CAM users already synchronized 当 CAM 用户 synchronization 是 删除. 有效值：Delete: Delete CAM users already synchronized 从 CIC 到 CAM 当 CAM 用户 synchronization 是 删除; Keep: Keep CAM users already synchronized 从 CIC 到 CAM 当 CAM 用户 synchronization 是 删除。",
 			},
 			"target_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "类型 synchronized target 账号 of the Tencent Cloud Organization. ManagerUin: admin 账号; MemberUin: member 账号",
+				Description: "类型 synchronized 目标 账号 的 Tencent Cloud Organization. ManagerUin: admin 账号; MemberUin: member 账号",
 			},
 			"user_provisioning_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "用户 provisioning id。",
+				Description: "用户 provisioning ID。",
 			},
 			"status": {
 				Type:     schema.TypeString,
 				Computed: true,
-				Description: "Status of CAM user synchronization. Value:\n" +
+				Description: "Status 的 CAM 用户 synchronization. Value:\n" +
 					"	* Enabled: CAM user synchronization is enabled;\n" +
 					"	* Disabled: CAM user synchronization is not enabled.",
 			},
 			"principal_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The identity 名称 CAM 用户 synchronization. 值: When PrincipalType is Group，the 值 is the CIC 用户 组名称; When PrincipalType takes the 值 to 用户，the 值 is the CIC 用户 名称",
+				Description: "identity 名称 CAM 用户 synchronization. 值: 当 PrincipalType 是 Group， 值 是 CIC 用户 组名称; 当 PrincipalType takes 值 到 用户， 值 是 CIC 用户 名称",
 			},
 			"target_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Group 账号 The 名称 target 账号。",
+				Description: "Group 账号 名称 目标 账号。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,

@@ -20,47 +20,47 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 		"actions": {
 			Type:        schema.TypeList,
 			Optional:    true,
-			Description: "Sub-Rule branch. this list currently supports filling in only one rule; multiple entries are invalid。",
+			Description: "Sub-Rule branch. 此 列表 currently 支持 filling 在 仅 一个 规则; 多个 entries 是 无效。",
 			Elem: &schema.Resource{
 				Schema: map[string]*schema.Schema{
 					"name": {
 						Type:        schema.TypeString,
 						Required:    true,
-						Description: "Operation 名称 The 名称 needs to correspond to the parameter structure，for example，if 名称=Cache，CacheParameters 为必填项.\n- `Cache`: Node cache TTL;\n- `CacheKey`: Custom Cache 键;\n- `CachePrefresh`: Cache pre-refresh;\n- `AccessURLRedirect`: Access URL redirection;\n- `UpstreamURLRewrite`: Back-to-origin URL rewrite;\n- `QUIC`: QUIC;\n- `WebSocket`: WebSocket;\n- `Authentication`: 令牌 authentication;\n- `MaxAge`: Browser cache TTL;\n- `StatusCodeCache`: 状态 代码 cache TTL;\n- `OfflineCache`: Offline cache;\n- `SmartRouting`: Smart acceleration;\n- `RangeOriginPull`: Segment back-to-origin;\n- `UpstreamHTTP2`: HTTP2 back-to-origin;\n- `HostHeader`: 主机 Header rewrite;\n- `ForceRedirectHTTPS`: Access 协议 forced HTTPS jump configuration;\n- `OriginPullProtocol`: Back-to-origin HTTPS;\n- `Compression`: Smart compression configuration;\n- `HSTS`: HSTS;\n- `ClientIPHeader`: Header information configuration for storing client request IP;\n- `OCSPStapling`: OCSP stapling;\n- `HTTP2`: HTTP2 Access;\n- `PostMaxSize`: POST request upload file streaming maximum 限制 configuration;\n- `ClientIPCountry`: Carry 客户端 IP 地域 information when returning to the 来源;\n- `UpstreamFollowRedirect`: Return to the 来源 follow redirection parameter configuration;\n- `UpstreamRequest`: Return to the 来源 request parameters;\n- `TLSConfig`: SSL/TLS security;\n- `ModifyOrigin`: Modify the 来源 station;\n- `HTTPUpstreamTimeout`: Seven-layer return to the 来源 timeout configuration;\n- `HttpResponse`: HTTP response;\n- `ErrorPage`: Custom 错误 page;\n- `ModifyResponseHeader`: Modify HTTP node response header;\n- `ModifyRequestHeader`: Modify HTTP node request header;\n- `ResponseSpeedLimit`: Single connection download speed 限制\n- `SetContentIdentifierParameters`: Set 内容 identifier。",
+						Description: "Operation 名称 名称 needs 到 correspond 到 参数 structure，对于 示例，如果 名称=Cache，CacheParameters 为必填项.\n- `Cache`: Node 缓存 TTL;\n- `CacheKey`: Custom Cache 键;\n- `CachePrefresh`: Cache pre-refresh;\n- `AccessURLRedirect`: Access URL redirection;\n- `UpstreamURLRewrite`: Back-到-源站 URL rewrite;\n- `QUIC`: QUIC;\n- `WebSocket`: WebSocket;\n- `Authentication`: 令牌 authentication;\n- `MaxAge`: Browser 缓存 TTL;\n- `StatusCodeCache`: 状态 代码 缓存 TTL;\n- `OfflineCache`: Offline 缓存;\n- `SmartRouting`: Smart acceleration;\n- `RangeOriginPull`: Segment back-到-源站;\n- `UpstreamHTTP2`: HTTP2 back-到-源站;\n- `HostHeader`: 主机 Header rewrite;\n- `ForceRedirectHTTPS`: Access 协议 forced HTTPS jump 配置;\n- `OriginPullProtocol`: Back-到-源站 HTTPS;\n- `Compression`: Smart 压缩 配置;\n- `HSTS`: HSTS;\n- `ClientIPHeader`: Header 信息 配置 对于 storing 客户端 请求 IP;\n- `OCSPStapling`: OCSP stapling;\n- `HTTP2`: HTTP2 Access;\n- `PostMaxSize`: POST 请求 upload 文件 streaming 最大 限制 配置;\n- `ClientIPCountry`: Carry 客户端 IP 地域 信息 当 returning 到 来源;\n- `UpstreamFollowRedirect`: Return 到 来源 follow redirection 参数 配置;\n- `UpstreamRequest`: Return 到 来源 请求 参数;\n- `TLSConfig`: SSL/TLS 安全;\n- `ModifyOrigin`: Modify 来源 station;\n- `HTTPUpstreamTimeout`: Seven-layer 返回 到 来源 超时 配置;\n- `HttpResponse`: HTTP response;\n- `ErrorPage`: Custom 错误 页面;\n- `ModifyResponseHeader`: Modify HTTP 节点 response 头部;\n- `ModifyRequestHeader`: Modify HTTP 节点 请求 头部;\n- `ResponseSpeedLimit`: Single 连接 download speed 限制\n- `SetContentIdentifierParameters`: Set 内容 identifier。",
 					},
 					"cache_parameters": {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "Node cache ttl configuration parameter. when 名称 is cache，this parameter 为必填项。",
+						Description: "Node 缓存 ttl 配置 参数. 当 名称 是 缓存，此 参数 为必填项。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"follow_origin": {
 									Type:        schema.TypeList,
 									Optional:    true,
 									MaxItems:    1,
-									Description: "Cache follows origin server. 如果未指定，this configuration is not set. only one of followorigin，nocache，or customtime can have switch set to on。",
+									Description: "Cache follows 源站 服务器. 如果未指定，此 配置 是 不 集合. 仅 一个 的 followorigin，nocache，或 customtime 可以 have switch 集合 到 在。",
 									Elem: &schema.Resource{
 										Schema: map[string]*schema.Schema{
 											"switch": {
 												Type:        schema.TypeString,
 												Required:    true,
-												Description: "是否enable the configuration of following the origin server. 有效值：`on`: Enable; `off`: Disable。",
+												Description: "是否enable 配置 的 following 源站 服务器. 有效值：`在`: Enable; `关闭`: Disable。",
 											},
 											"default_cache": {
 												Type:        schema.TypeString,
 												Optional:    true,
-												Description: "是否cache when an origin server does not return the cache-control header. this field 为必填项 when switch is on; when switch is off，this field 不是必填项 and will be ineffective if filled. 有效值：On: cache; Off: do not cache。",
+												Description: "是否cache 当 源站 服务器 does 不 返回 缓存-control 头部. 此 字段 为必填项 当 switch 是 在; 当 switch 是 关闭，此 字段 不是必填项 和 将 是 ineffective 如果 filled. 有效值：On: 缓存; Off: do 不 缓存。",
 											},
 											"default_cache_strategy": {
 												Type:        schema.TypeString,
 												Optional:    true,
-												Description: "是否use the default caching policy when an origin server does not return the cache-control header. this field 为必填项 when defaultcache is set to on; otherwise，it is ineffective. when defaultcachetime is not 0，this field should be off. 有效值：on: use the default caching policy. off: do not use the default caching policy。",
+												Description: "是否use 默认值 caching 策略 当 源站 服务器 does 不 返回 缓存-control 头部. 此 字段 为必填项 当 defaultcache 是 集合 到 在; otherwise，它 是 ineffective. 当 defaultcachetime 是 不 0，此 字段 should 是 关闭. 有效值：在: 使用 默认值 caching 策略. 关闭: do 不 使用 默认值 caching 策略。",
 											},
 											"default_cache_time": {
 												Type:        schema.TypeInt,
 												Optional:    true,
-												Description: "The default cache time （秒） when an origin server does not return the cache-control header. the 值 ranges from 0 to 315360000. this field 为必填项 when defaultcache is set to on; otherwise，it is ineffective. when defaultcachestrategy is on，this field should be 0。",
+												Description: "默认值 缓存 时间 （秒） 当 源站 服务器 does 不 返回 缓存-control 头部. 值 ranges 从 0 到 315360000. 此 字段 为必填项 当 defaultcache 是 集合 到 在; otherwise，它 是 ineffective. 当 defaultcachestrategy 是 在，此 字段 should 是 0。",
 											},
 										},
 									},
@@ -69,13 +69,13 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 									Type:        schema.TypeList,
 									Optional:    true,
 									MaxItems:    1,
-									Description: "No cache. 如果未指定，this configuration is not set. only one of followorigin，nocache，or customtime can have switch set to on。",
+									Description: "No 缓存. 如果未指定，此 配置 是 不 集合. 仅 一个 的 followorigin，nocache，或 customtime 可以 have switch 集合 到 在。",
 									Elem: &schema.Resource{
 										Schema: map[string]*schema.Schema{
 											"switch": {
 												Type:        schema.TypeString,
 												Required:    true,
-												Description: "是否enable no-cache configuration. 有效值：`on`: Enable; `off`: Disable。",
+												Description: "是否enable 无-缓存 配置. 有效值：`在`: Enable; `关闭`: Disable。",
 											},
 										},
 									},
@@ -84,23 +84,23 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 									Type:        schema.TypeList,
 									Optional:    true,
 									MaxItems:    1,
-									Description: "Custom cache time. 如果未指定，this configuration is not set. only one of followorigin，nocache，or customtime can have switch set to on。",
+									Description: "Custom 缓存 时间. 如果未指定，此 配置 是 不 集合. 仅 一个 的 followorigin，nocache，或 customtime 可以 have switch 集合 到 在。",
 									Elem: &schema.Resource{
 										Schema: map[string]*schema.Schema{
 											"switch": {
 												Type:        schema.TypeString,
 												Optional:    true,
-												Description: "Custom cache time switch. values: `on`: Enable; `off`: Disable。",
+												Description: "Custom 缓存 时间 switch. 值: `在`: Enable; `关闭`: Disable。",
 											},
 											"ignore_cache_control": {
 												Type:        schema.TypeString,
 												Optional:    true,
-												Description: "Ignore origin server cachecontrol switch. values: `on`: Enable; `off`: Disable。",
+												Description: "Ignore 源站 服务器 cachecontrol switch. 值: `在`: Enable; `关闭`: Disable。",
 											},
 											"cache_time": {
 												Type:        schema.TypeInt,
 												Optional:    true,
-												Description: "Custom cache time 值，unit: seconds. 取值范围：0-315360000。",
+												Description: "Custom 缓存 时间 值，单位: 秒. 取值范围：0-315360000。",
 											},
 										},
 									},
@@ -112,35 +112,35 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "Custom cache 键 configuration parameter. when 名称 is cachekey，this parameter 为必填项。",
+						Description: "Custom 缓存 键 配置 参数. 当 名称 是 cachekey，此 参数 为必填项。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"full_url_cache": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "Switch for retaining the complete query string. values: on: enable; off: disable。",
+									Description: "Switch 对于 retaining 完整 查询 字符串. 值: 在: 启用; 关闭: disable。",
 								},
 								"query_string": {
 									Type:        schema.TypeList,
 									Optional:    true,
 									MaxItems:    1,
-									Description: "Configuration parameter for retaining the query string. this field and fullurlcache must be set simultaneously，but cannot both be on。",
+									Description: "Configuration 参数 对于 retaining 查询 字符串. 此 字段 和 fullurlcache 必须 是 集合 simultaneously，但 不能 both 是 在。",
 									Elem: &schema.Resource{
 										Schema: map[string]*schema.Schema{
 											"switch": {
 												Type:        schema.TypeString,
 												Optional:    true,
-												Description: "Query string retain/ignore specified parameter switch. 有效值：on: enable; off: disable。",
+												Description: "Query 字符串 retain/ignore 指定 参数 switch. 有效值：在: 启用; 关闭: disable。",
 											},
 											"action": {
 												Type:        schema.TypeString,
 												Optional:    true,
-												Description: "Actions to retain/ignore specified parameters in the query string. values: `includeCustom`: retain partial parameters. `excludeCustom`: ignore partial parameters.note: this field 为必填项 when switch is on. when switch is off，this field 不是必填项 and will not take effect if filled。",
+												Description: "Actions 到 retain/ignore 指定 参数 在 查询 字符串. 值: `includeCustom`: retain partial 参数. `excludeCustom`: ignore partial 参数.note: 此 字段 为必填项 当 switch 是 在. 当 switch 是 关闭，此 字段 不是必填项 和 将 不 take effect 如果 filled。",
 											},
 											"values": {
 												Type:        schema.TypeList,
 												Optional:    true,
-												Description: "A 列表 parameter names to keep/ignore in the query string。",
+												Description: "A 列表 参数 names 到 keep/ignore 在 查询 字符串。",
 												Elem: &schema.Schema{
 													Type: schema.TypeString,
 												},
@@ -151,24 +151,24 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 								"ignore_case": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "Switch for ignoring case. values: enable; off: disable.note: at least one of fullurlcache，ignorecase，header，scheme，or cookie must be configured。",
+									Description: "Switch 对于 ignoring case. 值: 启用; 关闭: disable.note: 在 least 一个 的 fullurlcache，ignorecase，头部，scheme，或 cookie 必须 是 已配置。",
 								},
 								"header": {
 									Type:        schema.TypeList,
 									Optional:    true,
 									MaxItems:    1,
-									Description: "HTTP request header configuration parameters. at least one of the following configurations must be set: fullurlcache，ignorecase，header，scheme，cookie。",
+									Description: "HTTP 请求 头部 配置 参数. 在 least 一个 的 following configurations 必须 是 集合: fullurlcache，ignorecase，头部，scheme，cookie。",
 									Elem: &schema.Resource{
 										Schema: map[string]*schema.Schema{
 											"switch": {
 												Type:        schema.TypeString,
 												Optional:    true,
-												Description: "是否enable feature. values: on: enable; off: disable。",
+												Description: "是否enable 功能. 值: 在: 启用; 关闭: disable。",
 											},
 											"values": {
 												Type:        schema.TypeList,
 												Optional:    true,
-												Description: "Custom cache 键 http request header list. note: this field 为必填项 when switch is on; when switch is off，this field 不是必填项 and will not take effect if filled。",
+												Description: "Custom 缓存 键 http 请求 头部 列表. note: 此 字段 为必填项 当 switch 是 在; 当 switch 是 关闭，此 字段 不是必填项 和 将 不 take effect 如果 filled。",
 												Elem: &schema.Schema{
 													Type: schema.TypeString,
 												},
@@ -179,29 +179,29 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 								"scheme": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "Request 协议 switch. 有效值：on: enable; off: disable。",
+									Description: "Request 协议 switch. 有效值：在: 启用; 关闭: disable。",
 								},
 								"cookie": {
 									Type:        schema.TypeList,
 									Optional:    true,
 									MaxItems:    1,
-									Description: "Cookie configuration parameters. at least one of the following configurations must be set: fullurlcache，ignorecase，header，scheme，cookie。",
+									Description: "Cookie 配置 参数. 在 least 一个 的 following configurations 必须 是 集合: fullurlcache，ignorecase，头部，scheme，cookie。",
 									Elem: &schema.Resource{
 										Schema: map[string]*schema.Schema{
 											"switch": {
 												Type:        schema.TypeString,
 												Optional:    true,
-												Description: "是否enable feature. values: on: enable; off: disable。",
+												Description: "是否enable 功能. 值: 在: 启用; 关闭: disable。",
 											},
 											"action": {
 												Type:        schema.TypeString,
 												Optional:    true,
-												Description: "Cache 操作 values: full: retain all; ignore: ignore all; includeCustom: retain partial parameters; excludeCustom: ignore partial parameters. note: when switch is on，this field 为必填项. when switch is off，this field 不是必填项 and will not take effect if filled。",
+												Description: "Cache 操作 值: full: retain all; ignore: ignore all; includeCustom: retain partial 参数; excludeCustom: ignore partial 参数. note: 当 switch 是 在，此 字段 为必填项. 当 switch 是 关闭，此 字段 不是必填项 和 将 不 take effect 如果 filled。",
 											},
 											"values": {
 												Type:        schema.TypeList,
 												Optional:    true,
-												Description: "Custom cache 键 cookie 名称 list。",
+												Description: "Custom 缓存 键 cookie 名称 列表。",
 												Elem: &schema.Schema{
 													Type: schema.TypeString,
 												},
@@ -216,18 +216,18 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "The cache prefresh configuration parameter. this parameter 为必填项 when 名称 is cacheprefresh。",
+						Description: "缓存 prefresh 配置 参数. 此 参数 为必填项 当 名称 是 cacheprefresh。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"switch": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "是否enable cache prefresh. values: enable; off: disable。",
+									Description: "是否enable 缓存 prefresh. 值: 启用; 关闭: disable。",
 								},
 								"cache_time_percent": {
 									Type:        schema.TypeInt,
 									Optional:    true,
-									Description: "Prefresh interval set as a percentage of the node cache time. 取值范围：1-99. note: this field 为必填项 when switch is on; when switch is off，this field 不是必填项 and will not take effect if filled。",
+									Description: "Prefresh 间隔 集合 作为 percentage 的 节点 缓存 时间. 取值范围：1-99. note: 此 字段 为必填项 当 switch 是 在; 当 switch 是 关闭，此 字段 不是必填项 和 将 不 take effect 如果 filled。",
 								},
 							},
 						},
@@ -236,7 +236,7 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "The access URL redirection configuration parameter. this parameter 为必填项 when 名称 is accessurlredirect。",
+						Description: "访问 URL redirection 配置 参数. 此 参数 为必填项 当 名称 是 accessurlredirect。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"status_code": {
@@ -247,7 +247,7 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 								"protocol": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "Target request 协议 有效值：http: target request 协议 http; https: target request 协议 https; follow: follow the request。",
+									Description: "Target 请求 协议 有效值：http: 目标 请求 协议 http; https: 目标 请求 协议 https; follow: follow 请求。",
 								},
 								"host_name": {
 									Type:        schema.TypeList,
@@ -259,12 +259,12 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 											"action": {
 												Type:        schema.TypeString,
 												Optional:    true,
-												Description: "Target hostname configuration，有效值：follow: follow the request; custom: custom。",
+												Description: "Target hostname 配置，有效值：follow: follow 请求; 自定义: 自定义。",
 											},
 											"value": {
 												Type:        schema.TypeString,
 												Optional:    true,
-												Description: "Custom 值 for target hostname，maximum length is 1024。",
+												Description: "Custom 值 对于 目标 hostname，最大 长度 是 1024。",
 											},
 										},
 									},
@@ -279,17 +279,17 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 											"action": {
 												Type:        schema.TypeString,
 												Optional:    true,
-												Description: "操作 to be executed. values: follow: follow the request; custom: custom; regex: regular expression matching。",
+												Description: "操作 到 是 executed. 值: follow: follow 请求; 自定义: 自定义; regex: regular expression matching。",
 											},
 											"regex": {
 												Type:        schema.TypeString,
 												Optional:    true,
-												Description: "Regular expression matching expression，length range is 1-1024. note: when 操作 is regex，this field 为必填项; when 操作 is follow or custom，this field 不是必填项 and will not take effect if filled。",
+												Description: "Regular expression matching expression，长度 范围 是 1-1024. note: 当 操作 是 regex，此 字段 为必填项; 当 操作 是 follow 或 自定义，此 字段 不是必填项 和 将 不 take effect 如果 filled。",
 											},
 											"value": {
 												Type:        schema.TypeString,
 												Optional:    true,
-												Description: "Redirect target URL，length range is 1-1024.note: when 操作 is regex or custom，this field 为必填项; when 操作 is follow，this field 不是必填项 and will not take effect if filled。",
+												Description: "Redirect 目标 URL，长度 范围 是 1-1024.note: 当 操作 是 regex 或 自定义，此 字段 为必填项; 当 操作 是 follow，此 字段 不是必填项 和 将 不 take effect 如果 filled。",
 											},
 										},
 									},
@@ -298,13 +298,13 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 									Type:        schema.TypeList,
 									Optional:    true,
 									MaxItems:    1,
-									Description: "Carry query parameters。",
+									Description: "Carry 查询 参数。",
 									Elem: &schema.Resource{
 										Schema: map[string]*schema.Schema{
 											"action": {
 												Type:        schema.TypeString,
 												Optional:    true,
-												Description: "操作 to be executed. values: full: retain all; ignore: ignore all。",
+												Description: "操作 到 是 executed. 值: full: retain all; ignore: ignore all。",
 											},
 										},
 									},
@@ -316,28 +316,28 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "The origin-pull URL rewrite configuration parameter. this parameter 为必填项 when 名称 is upstreamurlrewrite。",
+						Description: "源站-pull URL rewrite 配置 参数. 此 参数 为必填项 当 名称 是 upstreamurlrewrite。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"type": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "Origin-Pull URL rewriting 类型，only 路径 is supported。",
+									Description: "Origin-Pull URL rewriting 类型，仅 路径 是 支持。",
 								},
 								"action": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "Origin-Pull URL rewrite 操作 有效值：replace: replace the 路径 prefix; addPrefix: add the 路径 prefix; rmvPrefix: remove the 路径 prefix。",
+									Description: "Origin-Pull URL rewrite 操作 有效值：replace: replace 路径 prefix; addPrefix: add 路径 prefix; rmvPrefix: remove 路径 prefix。",
 								},
 								"value": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "Origin-Pull URL rewrite 值，maximum length 1024，must start with /.note: when 操作 is addprefix，it cannot end with /; when 操作 is rmvprefix，* cannot be present。",
+									Description: "Origin-Pull URL rewrite 值，最大 长度 1024，必须 start 使用 /.note: 当 操作 是 addprefix，它 不能 end 使用 /; 当 操作 是 rmvprefix，* 不能 是 present。",
 								},
 								"regex": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "Origin URL Rewrite uses a regular expression for matching the complete 路径 It must conform to the Google RE2 specification and have a length range of 1 to 1024. This field 为必填项 when the 操作 is regexReplace; otherwise，it 为可选项。",
+									Description: "Origin URL Rewrite uses regular expression 对于 matching 完整 路径 It 必须 conform 到 Google RE2 规格 和 have 长度 范围 的 1 到 1024. 此 字段 为必填项 当 操作 是 regexReplace; otherwise，它 为可选项。",
 								},
 							},
 						},
@@ -346,13 +346,13 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "The quic configuration parameter. this parameter 为必填项 when 名称 is quic。",
+						Description: "quic 配置 参数. 此 参数 为必填项 当 名称 是 quic。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"switch": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "是否enable quic. values: on: enable; off: disable。",
+									Description: "是否enable quic. 值: 在: 启用; 关闭: disable。",
 								},
 							},
 						},
@@ -361,18 +361,18 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "The websocket configuration parameter. this parameter 为必填项 when 名称 is websocket。",
+						Description: "websocket 配置 参数. 此 参数 为必填项 当 名称 是 websocket。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"switch": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "是否enable websocket connection timeout. values: on: use timeout as the websocket timeout;; off: the platform still supports websocket connections，using the system default timeout of 15 seconds。",
+									Description: "是否enable websocket 连接 超时. 值: 在: 使用 超时 作为 websocket 超时;; 关闭: 平台 still 支持 websocket connections，使用 系统 默认值 超时 的 15 秒。",
 								},
 								"timeout": {
 									Type:        schema.TypeInt,
 									Optional:    true,
-									Description: "Timeout，unit: seconds. maximum timeout is 120 seconds。",
+									Description: "Timeout，单位: 秒. 最大 超时 是 120 秒。",
 								},
 							},
 						},
@@ -381,43 +381,43 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "令牌 authentication configuration parameter. this parameter 为必填项 when 名称 is authentication。",
+						Description: "令牌 authentication 配置 参数. 此 参数 为必填项 当 名称 是 authentication。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"auth_type": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "Authentication 类型 valid values:\n- `TypeA`: authentication method a 类型，for specific meaning please refer to authentication method a. https://www.tencentcloud.com/document/product/1145/62475;\n- `TypeB`: authentication method b 类型，for specific meaning please refer to authentication method b. https://www.tencentcloud.com/document/product/1145/62476;\n- `TypeC`: authentication method c 类型，for specific meaning please refer to authentication method c. https://www.tencentcloud.com/document/product/1145/62477;\n- `TypeD`: authentication method d 类型，for specific meaning please refer to authentication method d. https://www.tencentcloud.com/document/product/1145/62478;\n- `TypeVOD`: authentication method v 类型，for specific meaning please refer to authentication method v. https://www.tencentcloud.com/document/product/1145/62479。",
+									Description: "Authentication 类型 有效 值:\n- `TypeA`: authentication 方法 类型，对于 特定 meaning please refer 到 authentication 方法 . https://www.tencentcloud.com/document/product/1145/62475;\n- `TypeB`: authentication 方法 b 类型，对于 特定 meaning please refer 到 authentication 方法 b. https://www.tencentcloud.com/document/product/1145/62476;\n- `TypeC`: authentication 方法 c 类型，对于 特定 meaning please refer 到 authentication 方法 c. https://www.tencentcloud.com/document/product/1145/62477;\n- `TypeD`: authentication 方法 d 类型，对于 特定 meaning please refer 到 authentication 方法 d. https://www.tencentcloud.com/document/product/1145/62478;\n- `TypeVOD`: authentication 方法 v 类型，对于 特定 meaning please refer 到 authentication 方法 v. https://www.tencentcloud.com/document/product/1145/62479。",
 								},
 								"secret_key": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "The primary authentication key consists of 6-40 uppercase and lowercase english letters or digits, and cannot contain \" and $.",
+									Description: "primary authentication 键 consists 的 6-40 uppercase 和 lowercase english letters 或 digits, 和 不能 contain \" 和 $.",
 								},
 								"timeout": {
 									Type:        schema.TypeInt,
 									Optional:    true,
-									Description: "Validity period of the authentication url, in seconds, value range: 1-630720000. used to determine if the client access request has expired: If the current time exceeds \"timestamp + validity period\", it is an expired request, and a 403 is returned directly. If the current time does not exceed \"timestamp + validity period\", the request is not expired, and the md5 string is further validated. note: when authtype is one of typea, typeb, typec, or typed, this field is required.",
+									Description: "Validity 周期 的 authentication url, 在 秒, 值 范围: 1-630720000. 使用 到 determine 如果 客户端 访问 请求 has expired: 如果 当前 时间 exceeds \"timestamp + validity 周期\", 它 是 expired 请求, 和 403 是 返回 directly. 如果 当前 时间 does 不 exceed \"timestamp + validity 周期\", 请求 是 不 expired, 和 md5 字符串 是 further validated. note: 当 authtype 是 一个 的 typea, typeb, typec, 或 typed, 此 字段 是 必填.",
 								},
 								"backup_secret_key": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "The backup authentication key consists of 6-40 uppercase and lowercase english letters or digits, and cannot contain \" and $.",
+									Description: "备份 authentication 键 consists 的 6-40 uppercase 和 lowercase english letters 或 digits, 和 不能 contain \" 和 $.",
 								},
 								"auth_param": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "Authentication parameters 名称 the node will validate the 值 corresponding to this parameter 名称 consists of 1-100 uppercase and lowercase letters，numbers，or underscores.note: this field 为必填项 when authtype is either typea or typed。",
+									Description: "Authentication 参数 名称 节点 将 validate 值 corresponding 到 此 参数 名称 consists 的 1-100 uppercase 和 lowercase letters，numbers，或 underscores.note: 此 字段 为必填项 当 authtype 是 either typea 或 typed。",
 								},
 								"time_param": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "Authentication 时间戳. it cannot be the same as the 值 of the authparam field.note: this field 为必填项 when authtype is typed。",
+									Description: "Authentication 时间戳. 它 不能 是 same 作为 值 的 authparam 字段.note: 此 字段 为必填项 当 authtype 是 typed。",
 								},
 								"time_format": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "Authentication 时间格式. values: dec: decimal; hex: hexadecimal。",
+									Description: "Authentication 时间格式. 值: dec: decimal; hex: hexadecimal。",
 								},
 							},
 						},
@@ -426,18 +426,18 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "Browser cache ttl configuration parameter. this parameter 为必填项 when 名称 is maxage。",
+						Description: "Browser 缓存 ttl 配置 参数. 此 参数 为必填项 当 名称 是 maxage。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"follow_origin": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "指定是否follow the origin server cache-control configuration，with the following values: on: follow the origin server and ignore the field cachetime; off: do not follow the origin server and apply the field cachetime。",
+									Description: "指定是否follow 源站 服务器 缓存-control 配置，使用 following 值: 在: follow 源站 服务器 和 ignore 字段 cachetime; 关闭: do 不 follow 源站 服务器 和 apply 字段 cachetime。",
 								},
 								"cache_time": {
 									Type:        schema.TypeInt,
 									Optional:    true,
-									Description: "Custom cache time 值，unit: seconds. 取值范围：0-315360000. note: when followorigin is off，it means not following the origin server and using cachetime to set the cache time; otherwise，this field will not take effect。",
+									Description: "Custom 缓存 时间 值，单位: 秒. 取值范围：0-315360000. note: 当 followorigin 是 关闭，它 表示 不 following 源站 服务器 和 使用 cachetime 到 集合 缓存 时间; otherwise，此 字段 将 不 take effect。",
 								},
 							},
 						},
@@ -446,13 +446,13 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "状态 代码 cache ttl configuration parameter. this parameter 为必填项 when 名称 is statuscodecache。",
+						Description: "状态 代码 缓存 ttl 配置 参数. 此 参数 为必填项 当 名称 是 statuscodecache。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"status_code_cache_params": {
 									Type:        schema.TypeList,
 									Optional:    true,
-									Description: "状态 代码 cache ttl。",
+									Description: "状态 代码 缓存 ttl。",
 									Elem: &schema.Resource{
 										Schema: map[string]*schema.Schema{
 											"status_code": {
@@ -463,7 +463,7 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 											"cache_time": {
 												Type:        schema.TypeInt,
 												Optional:    true,
-												Description: "Cache time 值 （秒）。 取值范围：0-31536000。",
+												Description: "Cache 时间 值 （秒）。 取值范围：0-31536000。",
 											},
 										},
 									},
@@ -475,13 +475,13 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "Offline cache configuration parameter. this parameter 为必填项 when 名称 is offlinecache。",
+						Description: "Offline 缓存 配置 参数. 此 参数 为必填项 当 名称 是 offlinecache。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"switch": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "是否enable offline caching. values: on: enable; Off: disable。",
+									Description: "是否enable offline caching. 值: 在: 启用; Off: disable。",
 								},
 							},
 						},
@@ -490,13 +490,13 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "Smart acceleration configuration parameter. this parameter 为必填项 when 名称 is smartrouting。",
+						Description: "Smart acceleration 配置 参数. 此 参数 为必填项 当 名称 是 smartrouting。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"switch": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "是否enable smart acceleration. values: on: enable; Off: disable。",
+									Description: "是否enable smart acceleration. 值: 在: 启用; Off: disable。",
 								},
 							},
 						},
@@ -505,13 +505,13 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "Shard 来源 retrieval configuration parameter. this parameter 为必填项 when 名称 is set to rangeoriginpull。",
+						Description: "Shard 来源 retrieval 配置 参数. 此 参数 为必填项 当 名称 是 集合 到 rangeoriginpull。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"switch": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "是否enable range gets. values are: on: enable; Off: disable。",
+									Description: "是否enable 范围 gets. 值 是: 在: 启用; Off: disable。",
 								},
 							},
 						},
@@ -520,13 +520,13 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "HTTP2 origin-pull configuration parameter. this parameter 为必填项 when 名称 is set to upstreamhttp2。",
+						Description: "HTTP2 源站-pull 配置 参数. 此 参数 为必填项 当 名称 是 集合 到 upstreamhttp2。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"switch": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "是否enable http2 origin-pull. 有效值：on: enable; off: disable。",
+									Description: "是否enable http2 源站-pull. 有效值：在: 启用; 关闭: disable。",
 								},
 							},
 						},
@@ -535,18 +535,18 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "主机 header rewrite configuration parameter. this parameter 为必填项 when 名称 is set to hostheader。",
+						Description: "主机 头部 rewrite 配置 参数. 此 参数 为必填项 当 名称 是 集合 到 hostheader。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"action": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "操作 to be executed. values: followOrigin: follow origin server 域名 名称; custom: custom。",
+									Description: "操作 到 是 executed. 值: followOrigin: follow 源站 服务器 域名 名称; 自定义: 自定义。",
 								},
 								"server_name": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "主机 header rewrite requires a complete 域名 名称 note: this field 为必填项 when switch is on; when switch is off，this field 不是必填项 and any 值 will be ignored。",
+									Description: "主机 头部 rewrite requires 完整 域名 名称 note: 此 字段 为必填项 当 switch 是 在; 当 switch 是 关闭，此 字段 不是必填项 和 any 值 将 是 ignored。",
 								},
 							},
 						},
@@ -555,18 +555,18 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "Force https redirect configuration parameter. this parameter 为必填项 when the 名称 is set to forceredirecthttps。",
+						Description: "Force https redirect 配置 参数. 此 参数 为必填项 当 名称 是 集合 到 forceredirecthttps。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"switch": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "是否enable forced redirect configuration switch. values: on: enable; off: disable。",
+									Description: "是否enable forced redirect 配置 switch. 值: 在: 启用; 关闭: disable。",
 								},
 								"redirect_status_code": {
 									Type:        schema.TypeInt,
 									Optional:    true,
-									Description: "Redirection 状态 代码 this field 为必填项 when switch is on; otherwise，it is not effective. 有效值：301: 301 redirect; 302: 302 redirect。",
+									Description: "Redirection 状态 代码 此 字段 为必填项 当 switch 是 在; otherwise，它 是 不 effective. 有效值：301: 301 redirect; 302: 302 redirect。",
 								},
 							},
 						},
@@ -575,13 +575,13 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "Back-to-origin HTTPS configuration parameter. This parameter 为必填项 when the 名称 值 is `OriginPullProtocol`。",
+						Description: "Back-到-源站 HTTPS 配置 参数. 此 参数 为必填项 当 名称 值 是 `OriginPullProtocol`。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"protocol": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "Back-to-origin 协议 configuration. Possible values are: `http`: use HTTP 协议 for back-to-origin; `https`: use HTTPS 协议 for back-to-origin; `follow`: follow the 协议",
+									Description: "Back-到-源站 协议 配置. Possible 值 是: `http`: 使用 HTTP 协议 对于 back-到-源站; `https`: 使用 HTTPS 协议 对于 back-到-源站; `follow`: follow 协议",
 								},
 							},
 						},
@@ -590,18 +590,18 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "Intelligent compression configuration. this parameter 为必填项 when 名称 is set to compression。",
+						Description: "Intelligent 压缩 配置. 此 参数 为必填项 当 名称 是 集合 到 压缩。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"switch": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "是否enable smart compression. values: on: enable; off: disable。",
+									Description: "是否enable smart 压缩. 值: 在: 启用; 关闭: disable。",
 								},
 								"algorithms": {
 									Type:        schema.TypeList,
 									Optional:    true,
-									Description: "Supported compression algorithm list. this field 为必填项 when switch is on; otherwise，it is not effective. 有效值：brotli: brotli algorithm; gzip: gzip algorithm。",
+									Description: "Supported 压缩 algorithm 列表. 此 字段 为必填项 当 switch 是 在; otherwise，它 是 不 effective. 有效值：brotli: brotli algorithm; gzip: gzip algorithm。",
 									Elem: &schema.Schema{
 										Type: schema.TypeString,
 									},
@@ -613,28 +613,28 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "HSTS configuration parameter. this parameter 为必填项 when 名称 is hsts。",
+						Description: "HSTS 配置 参数. 此 参数 为必填项 当 名称 是 hsts。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"switch": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "是否enable hsts. values: on: enable; off: disable。",
+									Description: "是否enable hsts. 值: 在: 启用; 关闭: disable。",
 								},
 								"timeout": {
 									Type:        schema.TypeInt,
 									Optional:    true,
-									Description: "Cache hsts header time，unit: seconds. 取值范围：1-31536000. note: this field 为必填项 when switch is on; when switch is off，this field 不是必填项 and will not take effect if filled。",
+									Description: "Cache hsts 头部 时间，单位: 秒. 取值范围：1-31536000. note: 此 字段 为必填项 当 switch 是 在; 当 switch 是 关闭，此 字段 不是必填项 和 将 不 take effect 如果 filled。",
 								},
 								"include_sub_domains": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "是否allow other subdomains to inherit the same hsts header. values: on: allows other subdomains to inherit the same hsts header; off: does not allow other subdomains to inherit the same hsts header. note: when switch is on，this field 为必填项; when switch is off，this field 不是必填项 and will not take effect if filled。",
+									Description: "是否allow other subdomains 到 inherit same hsts 头部. 值: 在: allows other subdomains 到 inherit same hsts 头部; 关闭: does 不 allow other subdomains 到 inherit same hsts 头部. note: 当 switch 是 在，此 字段 为必填项; 当 switch 是 关闭，此 字段 不是必填项 和 将 不 take effect 如果 filled。",
 								},
 								"preload": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "是否allow the browser to preload the hsts header. 有效值：on: allows the browser to preload the hsts header; off: does not allow the browser to preload the hsts header. note: when switch is on，this field 为必填项; when switch is off，this field 不是必填项 and will not take effect if filled。",
+									Description: "是否allow browser 到 preload hsts 头部. 有效值：在: allows browser 到 preload hsts 头部; 关闭: does 不 allow browser 到 preload hsts 头部. note: 当 switch 是 在，此 字段 为必填项; 当 switch 是 关闭，此 字段 不是必填项 和 将 不 take effect 如果 filled。",
 								},
 							},
 						},
@@ -643,18 +643,18 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "Client ip header configuration for storing client request ip information. this parameter 为必填项 when 名称 is clientipheader。",
+						Description: "Client ip 头部 配置 对于 storing 客户端 请求 ip 信息. 此 参数 为必填项 当 名称 是 clientipheader。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"switch": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "是否enable configuration. values: on: enable; off: disable。",
+									Description: "是否enable 配置. 值: 在: 启用; 关闭: disable。",
 								},
 								"header_name": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "名称 request header containing the client ip 地址 for origin-pull. when switch is on，this parameter 为必填项. x-forwarded-for is not allowed for this parameter。",
+									Description: "名称 请求 头部 containing 客户端 ip 地址 对于 源站-pull. 当 switch 是 在，此 参数 为必填项. x-forwarded-对于 是 不 allowed 对于 此 参数。",
 								},
 							},
 						},
@@ -663,13 +663,13 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "OCSP stapling configuration parameter. this parameter 为必填项 when the 名称 is set to ocspstapling。",
+						Description: "OCSP stapling 配置 参数. 此 参数 为必填项 当 名称 是 集合 到 ocspstapling。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"switch": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "是否enable ocsp stapling configuration switch. values: on: enable; off: disable。",
+									Description: "是否enable ocsp stapling 配置 switch. 值: 在: 启用; 关闭: disable。",
 								},
 							},
 						},
@@ -678,13 +678,13 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "HTTP2 access configuration parameter. this parameter 为必填项 when 名称 is http2。",
+						Description: "HTTP2 访问 配置 参数. 此 参数 为必填项 当 名称 是 http2。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"switch": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "是否enable http2 access. values: on: enable; off: disable。",
+									Description: "是否enable http2 访问. 值: 在: 启用; 关闭: disable。",
 								},
 							},
 						},
@@ -693,18 +693,18 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "Maximum size configuration for file streaming upload via a post request. this parameter 为必填项 when 名称 is postmaxsize。",
+						Description: "Maximum 大小 配置 对于 文件 streaming upload via post 请求. 此 参数 为必填项 当 名称 是 postmaxsize。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"switch": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "是否enable post request file upload 限制，in bytes (default 限制: 32 * 2^20 bytes). 有效值：on: enable 限制; off: disable 限制",
+									Description: "是否enable post 请求 文件 upload 限制，在 bytes (默认值 限制: 32 * 2^20 bytes). 有效值：在: 启用 限制; 关闭: disable 限制",
 								},
 								"max_size": {
 									Type:        schema.TypeInt,
 									Optional:    true,
-									Description: "Maximum size of the file uploaded for streaming via a post request，in bytes. 取值范围：1 * 2^20 bytes to 500 * 2^20 bytes。",
+									Description: "Maximum 大小 的 文件 uploaded 对于 streaming via post 请求，在 bytes. 取值范围：1 * 2^20 bytes 到 500 * 2^20 bytes。",
 								},
 							},
 						},
@@ -713,18 +713,18 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "Configuration parameter for carrying the 地域 information of the client ip during origin-pull. this parameter 为必填项 when the 名称 is set to clientipcountry。",
+						Description: "Configuration 参数 对于 carrying 地域 信息 的 客户端 ip during 源站-pull. 此 参数 为必填项 当 名称 是 集合 到 clientipcountry。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"switch": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "是否enable configuration. values: on: enable; off: disable。",
+									Description: "是否enable 配置. 值: 在: 启用; 关闭: disable。",
 								},
 								"header_name": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "名称 request header that 包含client ip 地域 it is valid when switch=on. the 默认值 eo-client-ipcountry is used when it is not specified。",
+									Description: "名称 请求 头部 该 包含client ip 地域 它 是 有效 当 switch=在. 默认值 eo-客户端-ipcountry 是 使用 当 它 是 不 指定。",
 								},
 							},
 						},
@@ -733,18 +733,18 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "Configuration parameter for following redirects during origin-pull. this parameter 为必填项 when the 名称 is set to upstreamfollowredirect。",
+						Description: "Configuration 参数 对于 following redirects during 源站-pull. 此 参数 为必填项 当 名称 是 集合 到 upstreamfollowredirect。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"switch": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "是否enable origin-pull to follow the redirection configuration. values: on: enable; off: disable。",
+									Description: "是否enable 源站-pull 到 follow redirection 配置. 值: 在: 启用; 关闭: disable。",
 								},
 								"max_times": {
 									Type:        schema.TypeInt,
 									Optional:    true,
-									Description: "The 最大redirects. 取值范围：1-5. Note: this field 为必填项 when switch is on; when switch is off，this field 不是必填项 and will not take effect if filled。",
+									Description: "最大redirects. 取值范围：1-5. 注意: 此 字段 为必填项 当 switch 是 在; 当 switch 是 关闭，此 字段 不是必填项 和 将 不 take effect 如果 filled。",
 								},
 							},
 						},
@@ -753,30 +753,30 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "Configuration parameter for origin-pull request. this parameter 为必填项 when the 名称 is set to upstreamrequest。",
+						Description: "Configuration 参数 对于 源站-pull 请求. 此 参数 为必填项 当 名称 是 集合 到 upstreamrequest。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"query_string": {
 									Type:        schema.TypeList,
 									Optional:    true,
 									MaxItems:    1,
-									Description: "Query string configuration. 可选 if not provided，it will not be configured。",
+									Description: "Query 字符串 配置. 可选 如果 不 提供，它 将 不 是 已配置。",
 									Elem: &schema.Resource{
 										Schema: map[string]*schema.Schema{
 											"switch": {
 												Type:        schema.TypeString,
 												Optional:    true,
-												Description: "是否enable origin-pull request parameter query string. values: on: enable; off: disable。",
+												Description: "是否enable 源站-pull 请求 参数 查询 字符串. 值: 在: 启用; 关闭: disable。",
 											},
 											"action": {
 												Type:        schema.TypeString,
 												Optional:    true,
-												Description: "Query string 模式 this parameter 为必填项 when switch is on. values: full: retain all; ignore: ignore all; includeCustom: retain partial parameters; excludeCustom: ignore partial parameters。",
+												Description: "Query 字符串 模式 此 参数 为必填项 当 switch 是 在. 值: full: retain all; ignore: ignore all; includeCustom: retain partial 参数; excludeCustom: ignore partial 参数。",
 											},
 											"values": {
 												Type:        schema.TypeList,
 												Optional:    true,
-												Description: "指定parameter values. this parameter takes effect only when the query string 模式 操作 is includecustom or excludecustom，and is 用于指定parameters to be reserved or ignored. up to 10 parameters are supported。",
+												Description: "指定parameter 值. 此 参数 takes effect 仅 当 查询 字符串 模式 操作 是 includecustom 或 excludecustom，和 是 用于指定parameters 到 是 reserved 或 ignored. up 到 10 参数 是 支持。",
 												Elem: &schema.Schema{
 													Type: schema.TypeString,
 												},
@@ -788,23 +788,23 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 									Type:        schema.TypeList,
 									Optional:    true,
 									MaxItems:    1,
-									Description: "Cookie configuration. 可选 if not provided，it will not be configured。",
+									Description: "Cookie 配置. 可选 如果 不 提供，它 将 不 是 已配置。",
 									Elem: &schema.Resource{
 										Schema: map[string]*schema.Schema{
 											"switch": {
 												Type:        schema.TypeString,
 												Optional:    true,
-												Description: "是否enable the origin-pull request parameter cookie. 有效值：on: enable; off: disable。",
+												Description: "是否enable 源站-pull 请求 参数 cookie. 有效值：在: 启用; 关闭: disable。",
 											},
 											"action": {
 												Type:        schema.TypeString,
 												Optional:    true,
-												Description: "Origin-Pull request parameter cookie 模式 this parameter 为必填项 when switch is on. 有效值：full: retain all; ignore: ignore all; includeCustom: retain partial parameters; excludeCustom: ignore partial parameters。",
+												Description: "Origin-Pull 请求 参数 cookie 模式 此 参数 为必填项 当 switch 是 在. 有效值：full: retain all; ignore: ignore all; includeCustom: retain partial 参数; excludeCustom: ignore partial 参数。",
 											},
 											"values": {
 												Type:        schema.TypeList,
 												Optional:    true,
-												Description: "指定parameter values. this parameter takes effect only when the query string 模式 操作 is includecustom or excludecustom，and is 用于指定parameters to be reserved or ignored. up to 10 parameters are supported。",
+												Description: "指定parameter 值. 此 参数 takes effect 仅 当 查询 字符串 模式 操作 是 includecustom 或 excludecustom，和 是 用于指定parameters 到 是 reserved 或 ignored. up 到 10 参数 是 支持。",
 												Elem: &schema.Schema{
 													Type: schema.TypeString,
 												},
@@ -819,13 +819,13 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "SSL/TLS security configuration parameter. this parameter 为必填项 when the 名称 is set to tlsconfig。",
+						Description: "SSL/TLS 安全 配置 参数. 此 参数 为必填项 当 名称 是 集合 到 tlsconfig。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"version": {
 									Type:        schema.TypeList,
 									Optional:    true,
-									Description: "TLS 版本 at least one must be specified. if multiple versions are specified，they must be consecutive，e.g.，enable tls1，1.1，1.2，and 1.3. it is not allowed to enable only 1 and 1.2 while disabling 1.1. 有效值：tlsv1: tlsv1 版本; `tlsv1.1`: tlsv1.1 版本; `tlsv1.2`: tlsv1.2 版本; `tlsv1.3`: tlsv1.3 版本",
+									Description: "TLS 版本 在 least 一个 必须 是 指定. 如果 多个 versions 是 指定，they 必须 是 consecutive，e.g.，启用 tls1，1.1，1.2，和 1.3. 它 是 不 allowed 到 启用 仅 1 和 1.2 while disabling 1.1. 有效值：tlsv1: tlsv1 版本; `tlsv1.1`: tlsv1.1 版本; `tlsv1.2`: tlsv1.2 版本; `tlsv1.3`: tlsv1.3 版本",
 									Elem: &schema.Schema{
 										Type: schema.TypeString,
 									},
@@ -833,7 +833,7 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 								"cipher_suite": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "Cipher suite. for detailed information，please refer to tls versions and cipher suites 描述，https://www.tencentcloud.com/document/product/1145/54154?has_map=1. 有效值：loose-v2023: loose-v2023 cipher suite; general-v2023: general-v2023 cipher suite; strict-v2023: strict-v2023 cipher suite。",
+									Description: "Cipher suite. 对于 detailed 信息，please refer 到 tls versions 和 cipher suites 描述，https://www.tencentcloud.com/document/product/1145/54154?has_map=1. 有效值：loose-v2023: loose-v2023 cipher suite; general-v2023: general-v2023 cipher suite; strict-v2023: strict-v2023 cipher suite。",
 								},
 							},
 						},
@@ -842,67 +842,67 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "Configuration parameter for modifying the origin server. this parameter 为必填项 when the 名称 is set to modifyorigin。",
+						Description: "Configuration 参数 对于 modifying 源站 服务器. 此 参数 为必填项 当 名称 是 集合 到 modifyorigin。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"origin_type": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "The origin 类型 values: IPDomain: ipv4，ipv6，or 域名 名称 类型 origin server; OriginGroup: origin server group 类型 origin server; LoadBalance: cloud load balancer (clb)，this feature is in beta test. to use it，please 提交 a ticket or contact smart customer service; COS: tencent cloud COS origin server; AWSS3: all object storage origin servers that support the aws s3 协议",
+									Description: "源站 类型 值: IPDomain: ipv4，ipv6，或 域名 名称 类型 源站 服务器; OriginGroup: 源站 服务器 组 类型 源站 服务器; LoadBalance: 云 load balancer (clb)，此 功能 是 在 beta 测试. 到 使用 它，please 提交 ticket 或 contact smart customer 服务; COS: tencent 云 COS 源站 服务器; AWSS3: all 对象 存储 源站 servers 该 support aws s3 协议",
 								},
 								"origin": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "Origin server 地址，which varies according to the 值 of origintype: When origintype = ipdomain，fill in an ipv4 地址，an ipv6 地址，or a 域名 名称; When origintype = cos，please fill in the access 域名 名称 COS 存储桶; When origintype = awss3，fill in the access 域名 名称 s3 存储桶; When origintype = origingroup，fill in the origin server group id; When origintype = loadbalance，fill in the cloud load balancer 实例 ID this feature is currently only available to the allowlist。",
+									Description: "Origin 服务器 地址，其中 varies according 到 值 的 origintype: 当 origintype = ipdomain，fill 在 ipv4 地址， ipv6 地址，或 域名 名称; 当 origintype = cos，please fill 在 访问 域名 名称 COS 存储桶; 当 origintype = awss3，fill 在 访问 域名 名称 s3 存储桶; 当 origintype = origingroup，fill 在 源站 服务器 组 ID; 当 origintype = loadbalance，fill 在 云 load balancer 实例 ID 此 功能 是 currently 仅 可用 到 allowlist。",
 								},
 								"origin_protocol": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "Origin-Pull 协议 configuration. this parameter 为必填项 when origintype is ipdomain，origingroup，or loadbalance. 有效值：Http: use http 协议; Https: use https 协议; Follow: follow the 协议",
+									Description: "Origin-Pull 协议 配置. 此 参数 为必填项 当 origintype 是 ipdomain，origingroup，或 loadbalance. 有效值：Http: 使用 http 协议; Https: 使用 https 协议; Follow: follow 协议",
 								},
 								"http_origin_port": {
 									Type:         schema.TypeInt,
 									Optional:     true,
 									ValidateFunc: tccommon.ValidateIntegerInRange(1, 65535),
-									Description:  "Ports for http origin-pull requests. 取值范围：1-65535. this parameter takes effect only when the origin-pull 协议 originprotocol is http or follow。",
+									Description:  "Ports 对于 http 源站-pull requests. 取值范围：1-65535. 此 参数 takes effect 仅 当 源站-pull 协议 originprotocol 是 http 或 follow。",
 								},
 								"https_origin_port": {
 									Type:         schema.TypeInt,
 									Optional:     true,
 									ValidateFunc: tccommon.ValidateIntegerInRange(1, 65535),
-									Description:  "Ports for https origin-pull requests. 取值范围：1-65535. this parameter takes effect only when the origin-pull 协议 originprotocol is https or follow。",
+									Description:  "Ports 对于 https 源站-pull requests. 取值范围：1-65535. 此 参数 takes effect 仅 当 源站-pull 协议 originprotocol 是 https 或 follow。",
 								},
 								"private_access": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "Whether access to the private object storage origin server is allowed. this parameter is valid only when the origin server 类型 origintype is COS or awss3. 有效值：on: enable private authentication; off: disable private authentication. 如果未指定，the 默认值为 off。",
+									Description: "Whether 访问 到 私有 对象 存储 源站 服务器 是 allowed. 此 参数 是 有效 仅 当 源站 服务器 类型 origintype 是 COS 或 awss3. 有效值：在: 启用 私有 authentication; 关闭: disable 私有 authentication. 如果未指定， 默认值为 关闭。",
 								},
 								"private_parameters": {
 									Type:        schema.TypeList,
 									Optional:    true,
 									MaxItems:    1,
-									Description: "Private authentication parameter. this parameter is valid only when origintype = awss3 and privateaccess = on。",
+									Description: "Private authentication 参数. 此 参数 是 有效 仅 当 origintype = awss3 和 privateaccess = 在。",
 									Elem: &schema.Resource{
 										Schema: map[string]*schema.Schema{
 											"access_key_id": {
 												Type:        schema.TypeString,
 												Required:    true,
-												Description: "Authentication parameter access 键 id。",
+												Description: "Authentication 参数 访问 键 ID。",
 											},
 											"secret_access_key": {
 												Type:        schema.TypeString,
 												Required:    true,
-												Description: "Authentication parameter secret access 键",
+												Description: "Authentication 参数 secret 访问 键",
 											},
 											"signature_version": {
 												Type:        schema.TypeString,
 												Required:    true,
-												Description: "Authentication 版本 values: v2: v2 版本; v4: v4 版本",
+												Description: "Authentication 版本 值: v2: v2 版本; v4: v4 版本",
 											},
 											"region": {
 												Type:        schema.TypeString,
 												Optional:    true,
-												Description: "地域 of the 存储桶",
+												Description: "地域 的 存储桶",
 											},
 										},
 									},
@@ -914,13 +914,13 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "Configuration of layer 7 origin timeout. this parameter 为必填项 when 名称 is httpupstreamtimeout。",
+						Description: "Configuration 的 layer 7 源站 超时. 此 参数 为必填项 当 名称 是 httpupstreamtimeout。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"response_timeout": {
 									Type:        schema.TypeInt,
 									Optional:    true,
-									Description: "HTTP response timeout （秒）。 取值范围：5-600。",
+									Description: "HTTP response 超时 （秒）。 取值范围：5-600。",
 								},
 							},
 						},
@@ -929,18 +929,18 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "HTTP response configuration parameters. this parameter 为必填项 when 名称 is httpresponse。",
+						Description: "HTTP response 配置 参数. 此 参数 为必填项 当 名称 是 httpresponse。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"status_code": {
 									Type:        schema.TypeInt,
 									Optional:    true,
-									Description: "Response 状态 代码 supports 2xx，4xx，5xx，excluding 499，514，101，301，302，303，509，520-599。",
+									Description: "Response 状态 代码 支持 2xx，4xx，5xx，excluding 499，514，101，301，302，303，509，520-599。",
 								},
 								"response_page": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "Response page id。",
+									Description: "Response 页面 ID。",
 								},
 							},
 						},
@@ -949,24 +949,24 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "Custom 错误 page configuration parameters. this parameter 为必填项 when 名称 is errorpage。",
+						Description: "Custom 错误 页面 配置 参数. 此 参数 为必填项 当 名称 是 errorpage。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"error_page_params": {
 									Type:        schema.TypeList,
 									Optional:    true,
-									Description: "Custom 错误 page configuration list。",
+									Description: "Custom 错误 页面 配置 列表。",
 									Elem: &schema.Resource{
 										Schema: map[string]*schema.Schema{
 											"status_code": {
 												Type:        schema.TypeInt,
 												Required:    true,
-												Description: "状态 代码 supported values are 400，403，404，405，414，416，451，500，501，502，503，504。",
+												Description: "状态 代码 支持 值 是 400，403，404，405，414，416，451，500，501，502，503，504。",
 											},
 											"redirect_url": {
 												Type:        schema.TypeString,
 												Required:    true,
-												Description: "Redirect URL requires a full redirect 路径，such as https://www.test.com/错误html。",
+												Description: "Redirect URL requires full redirect 路径，such 作为 https://www.测试.com/错误html。",
 											},
 										},
 									},
@@ -978,29 +978,29 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "Modify http node response header configuration parameters. this parameter 为必填项 when 名称 is modifyresponseheader。",
+						Description: "Modify http 节点 response 头部 配置 参数. 此 参数 为必填项 当 名称 是 modifyresponseheader。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"header_actions": {
 									Type:        schema.TypeList,
 									Optional:    true,
-									Description: "HTTP origin-pull header rules list。",
+									Description: "HTTP 源站-pull 头部 规则 列表。",
 									Elem: &schema.Resource{
 										Schema: map[string]*schema.Schema{
 											"action": {
 												Type:        schema.TypeString,
 												Required:    true,
-												Description: "HTTP header setting methods. 有效值：set: sets a 值 for an existing header parameter; del: deletes a header parameter; add: adds a header parameter。",
+												Description: "HTTP 头部 setting methods. 有效值：集合: sets 值 对于 existing 头部 参数; del: deletes 头部 参数; add: adds 头部 参数。",
 											},
 											"name": {
 												Type:        schema.TypeString,
 												Required:    true,
-												Description: "HTTP header 名称",
+												Description: "HTTP 头部 名称",
 											},
 											"value": {
 												Type:        schema.TypeString,
 												Optional:    true,
-												Description: "HTTP header 值 this parameter 为必填项 when the 操作 is set to set or add; it 为可选项 when the 操作 is set to del。",
+												Description: "HTTP 头部 值 此 参数 为必填项 当 操作 是 集合 到 集合 或 add; 它 为可选项 当 操作 是 集合 到 del。",
 											},
 										},
 									},
@@ -1012,29 +1012,29 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "Modify http node request header configuration parameters. this parameter 为必填项 when 名称 is modifyrequestheader。",
+						Description: "Modify http 节点 请求 头部 配置 参数. 此 参数 为必填项 当 名称 是 modifyrequestheader。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"header_actions": {
 									Type:        schema.TypeList,
 									Optional:    true,
-									Description: "列表 http header setting rules。",
+									Description: "列表 http 头部 setting 规则。",
 									Elem: &schema.Resource{
 										Schema: map[string]*schema.Schema{
 											"action": {
 												Type:        schema.TypeString,
 												Required:    true,
-												Description: "HTTP header setting methods. 有效值：set: sets a 值 for an existing header parameter; del: deletes a header parameter; add: adds a header parameter。",
+												Description: "HTTP 头部 setting methods. 有效值：集合: sets 值 对于 existing 头部 参数; del: deletes 头部 参数; add: adds 头部 参数。",
 											},
 											"name": {
 												Type:        schema.TypeString,
 												Required:    true,
-												Description: "HTTP header 名称",
+												Description: "HTTP 头部 名称",
 											},
 											"value": {
 												Type:        schema.TypeString,
 												Optional:    true,
-												Description: "HTTP header 值 this parameter 为必填项 when the 操作 is set to set or add; it 为可选项 when the 操作 is set to del。",
+												Description: "HTTP 头部 值 此 参数 为必填项 当 操作 是 集合 到 集合 或 add; 它 为可选项 当 操作 是 集合 到 del。",
 											},
 										},
 									},
@@ -1046,23 +1046,23 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "Single connection download speed 限制 configuration parameter. this parameter 为必填项 when 名称 is responsespeedlimit。",
+						Description: "Single 连接 download speed 限制 配置 参数. 此 参数 为必填项 当 名称 是 responsespeedlimit。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"mode": {
 									Type:        schema.TypeString,
 									Required:    true,
-									Description: "Download rate 限制 模式 有效值：LimitUponDownload: rate 限制 throughout the download process; LimitAfterSpecificBytesDownloaded: rate 限制 after downloading specific bytes at full speed; LimitAfterSpecificSecondsDownloaded: start speed 限制 after downloading at full speed for a specific duration。",
+									Description: "Download 速率 限制 模式 有效值：LimitUponDownload: 速率 限制 throughout download process; LimitAfterSpecificBytesDownloaded: 速率 限制 after downloading 特定 bytes 在 full speed; LimitAfterSpecificSecondsDownloaded: start speed 限制 after downloading 在 full speed 对于 特定 时长。",
 								},
 								"max_speed": {
 									Type:        schema.TypeString,
 									Required:    true,
-									Description: "Rate-Limiting 值，in kb/s. enter a numerical 值 to 指定rate 限制",
+									Description: "Rate-Limiting 值，在 kb/s. enter numerical 值 到 指定rate 限制",
 								},
 								"start_at": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "Rate-Limiting start 值，which can be the download size or specified duration，in kb or s. this parameter 为必填项 when 模式 is set to limitafterspecificbytesdownloaded or limitafterspecificsecondsdownloaded. enter a numerical 值 to 指定download size or duration。",
+									Description: "Rate-Limiting start 值，其中 可以 是 download 大小 或 指定 时长，在 kb 或 s. 此 参数 为必填项 当 模式 是 集合 到 limitafterspecificbytesdownloaded 或 limitafterspecificsecondsdownloaded. enter numerical 值 到 指定download 大小 或 时长。",
 								},
 							},
 						},
@@ -1071,13 +1071,13 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "内容 identification configuration parameter. this parameter 为必填项 when 名称 is httpresponse。",
+						Description: "内容 identification 配置 参数. 此 参数 为必填项 当 名称 是 httpresponse。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"content_identifier": {
 									Type:        schema.TypeString,
 									Optional:    true,
-									Description: "内容 identifier id。",
+									Description: "内容 identifier ID。",
 								},
 							},
 						},
@@ -1086,13 +1086,13 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 						Type:        schema.TypeList,
 						Optional:    true,
 						MaxItems:    1,
-						Description: "内容 compression configuration parameters. This parameter 为必填项 when the `名称` parameter is set to `ContentCompression`. This parameter uses a whitelist function; please contact Tencent Cloud engineers if needed。",
+						Description: "内容 压缩 配置 参数. 此 参数 为必填项 当 `名称` 参数 是 集合 到 `ContentCompression`. 此 参数 uses whitelist 函数; please contact Tencent Cloud engineers 如果 needed。",
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
 								"switch": {
 									Type:        schema.TypeString,
 									Required:    true,
-									Description: "内容 compression configuration switch，possible values are: on: 已启用; off: 已禁用 When the Switch is set to `on`，both Brotli and gzip compression algorithms will be supported。",
+									Description: "内容 压缩 配置 switch，possible 值 是: 在: 已启用; 关闭: 已禁用 当 Switch 是 集合 到 `在`，both Brotli 和 gzip 压缩 algorithms 将 是 支持。",
 								},
 							},
 						},
@@ -1106,13 +1106,13 @@ func TencentTeoL7RuleBranchBasicInfo(depth int) map[string]*schema.Schema {
 		schemaMap["sub_rules"] = &schema.Schema{
 			Type:        schema.TypeList,
 			Optional:    true,
-			Description: "列表 sub-rules. multiple rules exist in this list and are executed sequentially from top to bottom. note: subrules and actions cannot both be empty. currently，only one layer of subrules is supported。",
+			Description: "列表 sub-规则. 多个 规则 exist 在 此 列表 和 是 executed sequentially 从 top 到 bottom. note: subrules 和 actions 不能 both 是 空. currently，仅 一个 layer 的 subrules 是 支持。",
 			Elem: &schema.Resource{
 				Schema: map[string]*schema.Schema{
 					"branches": {
 						Type:        schema.TypeList,
 						Optional:    true,
-						Description: "Sub-rule branch。",
+						Description: "Sub-规则 branch。",
 						Elem: &schema.Resource{
 							Schema: TencentTeoL7RuleBranchBasicInfo(depth + 1),
 						},

@@ -31,13 +31,13 @@ func ResourceTencentCloudClickhouseBackupStrategy() *schema.Resource {
 				Required:    true,
 				MinItems:    1,
 				Type:        schema.TypeList,
-				Description: "Data backup strategy。",
+				Description: "Data 备份 strategy。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"week_days": {
 							Required:    true,
 							Type:        schema.TypeString,
-							Description: "The day of the week is separated by commas. For example: 2 represents Tuesday。",
+							Description: "day 的 week 是 separated 通过 commas. For 示例: 2 表示 Tuesday。",
 						},
 
 						"execute_hour": {
@@ -54,7 +54,7 @@ func ResourceTencentCloudClickhouseBackupStrategy() *schema.Resource {
 						"back_up_tables": {
 							Required:    true,
 							Type:        schema.TypeList,
-							Description: "Back up the 列表 tables。",
+							Description: "Back up 列表 tables。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"database": {
@@ -70,7 +70,7 @@ func ResourceTencentCloudClickhouseBackupStrategy() *schema.Resource {
 									"total_bytes": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Back up the 列表 tables。",
+										Description: "Back up 列表 tables。",
 									},
 									"v_cluster": {
 										Type:        schema.TypeString,
@@ -94,7 +94,7 @@ func ResourceTencentCloudClickhouseBackupStrategy() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Ip 地址 of cvm。",
+										Description: "Ip 地址 的 cvm。",
 									},
 								},
 							},
@@ -108,13 +108,13 @@ func ResourceTencentCloudClickhouseBackupStrategy() *schema.Resource {
 				Computed:    true,
 				MinItems:    1,
 				Type:        schema.TypeList,
-				Description: "Metadata backup strategy。",
+				Description: "Metadata 备份 strategy。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"week_days": {
 							Optional:    true,
 							Type:        schema.TypeString,
-							Description: "The day of the week is separated by commas. For example: 2 represents Tuesday。",
+							Description: "day 的 week 是 separated 通过 commas. For 示例: 2 表示 Tuesday。",
 						},
 
 						"execute_hour": {

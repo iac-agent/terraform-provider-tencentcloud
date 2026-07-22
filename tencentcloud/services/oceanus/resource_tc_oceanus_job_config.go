@@ -37,7 +37,7 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 			"program_args": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Main class parameters。",
+				Description: "Main class 参数。",
 			},
 			"remark": {
 				Optional:    true,
@@ -47,7 +47,7 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 			"resource_refs": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Resource reference array。",
+				Description: "Resource reference 数组。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_id": {
@@ -63,7 +63,7 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 						"type": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Reference 资源类型，for example，setting the main resource to 1 represents the jar package where the main class is located。",
+							Description: "Reference 资源类型，对于 示例，setting main 资源 到 1 表示 jar 包 其中 main class 是 located。",
 						},
 					},
 				},
@@ -71,23 +71,23 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 			"default_parallelism": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Job default parallelism。",
+				Description: "Job 默认值 parallelism。",
 			},
 			"properties": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "System parameters。",
+				Description: "System 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "System configuration 键",
+							Description: "System 配置 键",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "System configuration 值",
+							Description: "System 配置 值",
 						},
 					},
 				},
@@ -96,22 +96,22 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "COS storage 存储桶名称 used by the job。",
+				Description: "COS 存储 存储桶名称 使用 通过 作业。",
 			},
 			"log_collect": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "是否collect job logs。",
+				Description: "是否collect 作业 logs。",
 			},
 			"job_manager_spec": {
 				Optional:    true,
 				Type:        schema.TypeFloat,
-				Description: "JobManager specification。",
+				Description: "JobManager 规格。",
 			},
 			"task_manager_spec": {
 				Optional:    true,
 				Type:        schema.TypeFloat,
-				Description: "TaskManager specification。",
+				Description: "TaskManager 规格。",
 			},
 			"cls_logset_id": {
 				Optional:    true,
@@ -131,7 +131,7 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 			"python_version": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Python 版本 used by the pyflink job at runtime。",
+				Description: "Python 版本 使用 通过 pyflink 作业 在 runtime。",
 			},
 			"work_space_id": {
 				Optional:    true,
@@ -146,12 +146,12 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 			"auto_recover": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Oceanus platform job recovery switch 1: on -1: off。",
+				Description: "Oceanus 平台 作业 recovery switch 1: 在 -1: 关闭。",
 			},
 			"clazz_levels": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Class log 级别",
+				Description: "Class 日志 级别",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"clazz": {
@@ -176,7 +176,7 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Expert 模式 configuration。",
+				Description: "Expert 模式 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"job_graph": {
@@ -189,7 +189,7 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 									"nodes": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Point set of the running graph注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Point 集合 的 running graph注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"id": {
@@ -218,7 +218,7 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 									"edges": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Edge set of the running graph注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Edge 集合 的 running graph注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"source": {
@@ -267,12 +267,12 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 												"key": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "System configuration 键",
+													Description: "System 配置 键",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "System configuration 值",
+													Description: "System 配置 值",
 												},
 											},
 										},
@@ -280,7 +280,7 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 									"state_ttl": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "State TTL configuration of the node，separated by semicolons注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "State TTL 配置 的 节点，separated 通过 semicolons注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -300,7 +300,7 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Required:    true,
-										Description: "Specification of the SlotSharingGroup注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Specification 的 SlotSharingGroup注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"cpu": {
@@ -311,17 +311,17 @@ func ResourceTencentCloudOceanusJobConfig() *schema.Resource {
 												"heap_memory": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "默认为 b，supporting units are b，kb，mb，gb注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "默认为 b，supporting units 是 b，kb，mb，gb注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"off_heap_memory": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "默认为 b，supporting units are b，kb，mb，gb注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "默认为 b，supporting units 是 b，kb，mb，gb注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"managed_memory": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "默认为 b，supporting units are b，kb，mb，gb注意：此字段可能返回 null，表示无法获取有效值。",
+													Description: "默认为 b，supporting units 是 b，kb，mb，gb注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},

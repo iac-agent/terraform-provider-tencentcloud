@@ -35,13 +35,13 @@ func ResourceTencentCloudVpcEndPointServiceWhiteList() *schema.Resource {
 			"end_point_service_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID endpoint service。",
+				Description: "ID 端点 服务。",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "描述 white list。",
+				Description: "描述 white 列表。",
 			},
 
 			"owner": {

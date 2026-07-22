@@ -33,7 +33,7 @@ func ResourceTencentCloudDlcRestartDataEngineOperation() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "是否restart by force and ignore tasks。",
+				Description: "是否restart 通过 force 和 ignore tasks。",
 			},
 		},
 	}

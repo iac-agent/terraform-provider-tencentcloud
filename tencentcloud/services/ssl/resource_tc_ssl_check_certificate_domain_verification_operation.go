@@ -28,7 +28,7 @@ func ResourceTencentCloudSslCheckCertificateDomainVerificationOperation() *schem
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The 证书 ID",
+				Description: "证书 ID",
 			},
 
 			"verification_results": {
@@ -60,12 +60,12 @@ func ResourceTencentCloudSslCheckCertificateDomainVerificationOperation() *schem
 						"local_check_fail_reason": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Check the reason for the failure。",
+							Description: "Check reason 对于 failure。",
 						},
 						"check_value": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "Detected values。",
+							Description: "Detected 值。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},

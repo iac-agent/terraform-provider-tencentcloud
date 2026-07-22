@@ -19,22 +19,22 @@ func DataSourceTencentCloudAPIGatewayPlugins() *schema.Resource {
 			"service_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The 服务 ID to query。",
+				Description: "服务 ID 到 查询。",
 			},
 			"plugin_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The plugin ID to query。",
+				Description: "插件 ID 到 查询。",
 			},
 			"environment_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Environmental information。",
+				Description: "Environmental 信息。",
 			},
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "列表 plugin related APIs。",
+				Description: "列表 插件 related APIs。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"api_id": {
@@ -60,17 +60,17 @@ func DataSourceTencentCloudAPIGatewayPlugins() *schema.Resource {
 						"method": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "API method。",
+							Description: "API 方法。",
 						},
 						"attached_other_plugin": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否API is bound to other plugins.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "是否API 是 bound 到 other plugins.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"is_attached": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否API is bound to the current plugin.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "是否API 是 bound 到 当前 插件.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},

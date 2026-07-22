@@ -79,7 +79,7 @@ func ResourceTencentCloudPrivateDnsZoneVpcAttachment() *schema.Resource {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Vpc 所有者 uin. To grant 角色 authorization to this 账号",
+							Description: "Vpc 所有者 uin. To grant 角色 authorization 到 此 账号",
 						},
 					},
 				},

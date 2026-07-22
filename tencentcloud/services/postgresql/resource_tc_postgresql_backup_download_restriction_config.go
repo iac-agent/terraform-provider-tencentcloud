@@ -26,7 +26,7 @@ func ResourceTencentCloudPostgresqlBackupDownloadRestrictionConfig() *schema.Res
 			"restriction_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Backup file download restriction 类型: NONE:Unlimited，both internal and external networks can be downloaded. INTRANET:Only intranet downloads are allowed. CUSTOMIZE:Customize the vpc or ip that limits downloads。",
+				Description: "Backup 文件 download restriction 类型: NONE:Unlimited，both 内部 和 外部 networks 可以 是 downloaded. INTRANET:Only intranet downloads 是 allowed. CUSTOMIZE:Customize vpc 或 ip 该 limits downloads。",
 			},
 
 			"vpc_restriction_effect": {
@@ -41,7 +41,7 @@ func ResourceTencentCloudPostgresqlBackupDownloadRestrictionConfig() *schema.Res
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The 列表 vpcIds that allow or deny downloading of backup files。",
+				Description: "列表 vpcIds 该 allow 或 deny downloading 的 备份 files。",
 			},
 
 			"ip_restriction_effect": {
@@ -56,7 +56,7 @@ func ResourceTencentCloudPostgresqlBackupDownloadRestrictionConfig() *schema.Res
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The 列表 ips that are allowed or denied to download backup files。",
+				Description: "列表 ips 该 是 allowed 或 denied 到 download 备份 files。",
 			},
 		},
 	}

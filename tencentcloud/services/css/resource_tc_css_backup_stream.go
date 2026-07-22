@@ -43,7 +43,7 @@ func ResourceTencentCloudCssBackupStream() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Stream id。",
+				Description: "Stream ID。",
 			},
 
 			"upstream_sequence": {

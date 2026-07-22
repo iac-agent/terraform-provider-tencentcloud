@@ -28,13 +28,13 @@ func DataSourceTencentCloudCvmChcDeniedActions() *schema.Resource {
 			"chc_host_denied_action_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Actions not allowed for the CHC instance。",
+				Description: "Actions 不 allowed 对于 CHC 实例。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"chc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CHC instance ID。",
+							Description: "CHC 实例 ID。",
 						},
 						"state": {
 							Type:        schema.TypeString,
@@ -47,7 +47,7 @@ func DataSourceTencentCloudCvmChcDeniedActions() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Actions not allowed for the current CHC instance。",
+							Description: "Actions 不 allowed 对于 当前 CHC 实例。",
 						},
 					},
 				},

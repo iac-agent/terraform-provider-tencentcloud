@@ -36,12 +36,12 @@ func ResourceTencentCloudVpnGatewayCcnRoutes() *schema.Resource {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "Route Id。",
+				Description: "Route ID。",
 			},
 			"status": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Whether routing information is 已启用 `ENABLE`: Enable Route，`DISABLE`: Disable Route。",
+				Description: "Whether routing 信息 是 已启用 `ENABLE`: Enable Route，`DISABLE`: Disable Route。",
 			},
 			"destination_cidr_block": {
 				Type:        schema.TypeString,

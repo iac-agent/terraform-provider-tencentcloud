@@ -29,7 +29,7 @@ func ResourceTencentCloudCssPlayDomainCertAttachment() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "The playback domains to bind and 是否enable HTTPS for them. If `CloudCertId` is unspecified，and a 域名 is already bound with a certificate，this API will only update the HTTPS configuration of the 域名",
+				Description: "playback domains 到 bind 和 是否enable HTTPS 对于 them. 如果 `CloudCertId` 是 unspecified，和 域名 是 already bound 使用 证书，此 API 将 仅 update HTTPS 配置 的 域名",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"domain_name": {
@@ -40,7 +40,7 @@ func ResourceTencentCloudCssPlayDomainCertAttachment() *schema.Resource {
 						"status": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "是否enable the https rule for the 域名 名称 1: enable，0: 已禁用，-1: remain unchanged。",
+							Description: "是否enable https 规则 对于 域名 名称 1: 启用，0: 已禁用，-1: remain unchanged。",
 						},
 					},
 				},
@@ -49,22 +49,22 @@ func ResourceTencentCloudCssPlayDomainCertAttachment() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Tencent cloud ssl certificate Id. Refer to `tencentcloud_ssl_certificate` to create or obtain the resource ID。",
+				Description: "Tencent 云 ssl 证书 ID. Refer 到 `tencentcloud_ssl_certificate` 到 create 或 obtain 资源 ID。",
 			},
 			"certificate_alias": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "certificate 备注 Synonymous with CertName。",
+				Description: "证书 备注 Synonymous 使用 CertName。",
 			},
 			"cert_type": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "certificate 类型 0: Self-owned certificate，1: Tencent Cloud ssl managed certificate。",
+				Description: "证书 类型 0: Self-owned 证书，1: Tencent Cloud ssl managed 证书。",
 			},
 			"cert_expire_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "certificate 过期时间。",
+				Description: "证书 过期时间。",
 			},
 			"cert_id": {
 				Type:        schema.TypeInt,
@@ -74,7 +74,7 @@ func ResourceTencentCloudCssPlayDomainCertAttachment() *schema.Resource {
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The time when the rule was last updated。",
+				Description: "时间 当 规则 是 last 更新。",
 			},
 		},
 	}

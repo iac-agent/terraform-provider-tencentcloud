@@ -26,20 +26,20 @@ func ResourceTencentCloudBhAccessWhiteListRule() *schema.Resource {
 			"source": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "IP 地址 10.10.10.1 or network segment 10.10.10.0/24，minimum length 4 bytes，maximum length 40 bytes。",
+				Description: "IP 地址 10.10.10.1 或 网络 segment 10.10.10.0/24，最小 长度 4 bytes，最大 长度 40 bytes。",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "备注 information，minimum length 0 characters，maximum length 40 characters。",
+				Description: "备注 信息，最小 长度 0 字符，最大 长度 40 字符。",
 			},
 
 			// computed
 			"rule_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "ID access white list rule。",
+				Description: "ID 访问 white 列表 规则。",
 			},
 		},
 	}

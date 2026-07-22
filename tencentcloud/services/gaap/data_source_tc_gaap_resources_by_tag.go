@@ -31,24 +31,24 @@ func DataSourceTencentCloudGaapResourcesByTag() *schema.Resource {
 			"resource_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "资源类型，where:Proxy represents the proxy;ProxyGroup represents a proxy group;RealServer represents the Real Server.If this field is not specified，all resources under the 标签 will be queried。",
+				Description: "资源类型，其中:Proxy 表示 proxy;ProxyGroup 表示 proxy 组;RealServer 表示 Real Server.如果 此 字段 是 不 指定，all resources under 标签 将 是 queried。",
 			},
 
 			"resource_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "列表 resources corresponding to labels。",
+				Description: "列表 resources corresponding 到 labels。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "资源类型，where:Proxy represents the proxy,ProxyGroup represents a proxy group,RealServer represents the real server。",
+							Description: "资源类型，其中:Proxy 表示 proxy,ProxyGroup 表示 proxy 组,RealServer 表示 real 服务器。",
 						},
 						"resource_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource Id。",
+							Description: "Resource ID。",
 						},
 					},
 				},

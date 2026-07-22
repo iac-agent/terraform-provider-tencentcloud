@@ -34,14 +34,14 @@ func ResourceTencentCloudClbClsLogAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "云日志服务（CLS）的日志集ID。<li>添加或更新日志主题时，调用[DescribeLogsets](https://intl.cloud.tencent.com/document/product/614/58624?from_cn_redirect=1) API获取日志集ID。</li><li>删除日志主题时，将此参数设置为空。</li>。",
+				Description: "云日志服务（CLS）的日志集ID。<li>添加或更新日志主题时，调用[DescribeLogsets](https://intl.云.tencent.com/document/product/614/58624?from_cn_redirect=1) API获取日志集ID。</li><li>删除日志主题时，将此参数设置为空。</li>。",
 			},
 
 			"log_topic_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "CLS的日志主题ID。<li>添加或更新日志主题时，调用[DescribeTopics](https://intl.cloud.tencent.com/document/product/614/56454?from_cn_redirect=1)接口获取日志主题ID。</li><li>删除日志主题时，将此参数设置为空。</li>。",
+				Description: "CLS的日志主题ID。<li>添加或更新日志主题时，调用[DescribeTopics](https://intl.云.tencent.com/document/product/614/56454?from_cn_redirect=1)接口获取日志主题ID。</li><li>删除日志主题时，将此参数设置为空。</li>。",
 			},
 
 			// "log_type": {

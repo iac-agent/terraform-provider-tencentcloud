@@ -32,7 +32,7 @@ func DataSourceTencentCloudTdcpgClusters() *schema.Resource {
 			"status": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "cluster 状态",
+				Description: "集群 状态",
 			},
 
 			"pay_mode": {
@@ -44,13 +44,13 @@ func DataSourceTencentCloudTdcpgClusters() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "项目 ID，默认为 0，means default project。",
+				Description: "项目 ID，默认为 0，表示 默认值 项目。",
 			},
 
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "cluster list。",
+				Description: "集群 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cluster_id": {
@@ -101,12 +101,12 @@ func DataSourceTencentCloudTdcpgClusters() *schema.Resource {
 						"storage_used": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "storage used，unit is GB。",
+							Description: "存储 使用，单位 是 GB。",
 						},
 						"storage_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "storage 限制，unit is GB。",
+							Description: "存储 限制，单位 是 GB。",
 						},
 						"pay_mode": {
 							Type:        schema.TypeString,
@@ -126,23 +126,23 @@ func DataSourceTencentCloudTdcpgClusters() *schema.Resource {
 						"db_charset": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "db charset。",
+							Description: "db 字符集。",
 						},
 						"instance_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "instance count。",
+							Description: "实例 count。",
 						},
 						"endpoint_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "endpoint set。",
+							Description: "端点 集合。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"endpoint_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "endpoint id。",
+										Description: "端点 ID。",
 									},
 									"cluster_id": {
 										Type:        schema.TypeString,
@@ -152,12 +152,12 @@ func DataSourceTencentCloudTdcpgClusters() *schema.Resource {
 									"endpoint_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "endpoint 名称",
+										Description: "端点 名称",
 									},
 									"endpoint_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "endpoint 类型",
+										Description: "端点 类型",
 									},
 									"vpc_id": {
 										Type:        schema.TypeString,
@@ -172,12 +172,12 @@ func DataSourceTencentCloudTdcpgClusters() *schema.Resource {
 									"private_ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "private ip。",
+										Description: "私有 ip。",
 									},
 									"private_port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "private 端口",
+										Description: "私有 端口",
 									},
 									"wan_ip": {
 										Type:        schema.TypeString,
@@ -210,7 +210,7 @@ func DataSourceTencentCloudTdcpgClusters() *schema.Resource {
 						"storage_pay_mode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "storage 付费模式，可选 值 is PREPAID or POSTPAID_BY_HOUR。",
+							Description: "存储 付费模式，可选 值 是 PREPAID 或 POSTPAID_BY_HOUR。",
 						},
 					},
 				},

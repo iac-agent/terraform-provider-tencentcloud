@@ -19,7 +19,7 @@ func DataSourceTencentCloudVpcGatewayFlowQos() *schema.Resource {
 			"gateway_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Network instance ID，the network instance types we currently support are:Private line gateway instance ID，in the form of `dcg-ltjahce6`;Nat gateway instance ID，in the form of `nat-ltjahce6`;VPN gateway instance ID，in the form of `vpn-ltjahce6`。",
+				Description: "Network 实例 ID， 网络 实例 types we currently support 是:Private line 网关 实例 ID，在 form 的 `dcg-ltjahce6`;Nat 网关 实例 ID，在 form 的 `nat-ltjahce6`;VPN 网关 实例 ID，在 form 的 `vpn-ltjahce6`。",
 			},
 
 			"ip_addresses": {
@@ -28,13 +28,13 @@ func DataSourceTencentCloudVpcGatewayFlowQos() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Intranet IP of the cloud server with traffic limitation。",
+				Description: "Intranet IP 的 云 服务器 使用 流量 limitation。",
 			},
 
 			"gateway_qos_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "instance detail list。",
+				Description: "实例 detail 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
@@ -50,7 +50,7 @@ func DataSourceTencentCloudVpcGatewayFlowQos() *schema.Resource {
 						"bandwidth": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "bandwidth 值",
+							Description: "带宽 值",
 						},
 						"create_time": {
 							Type:        schema.TypeString,

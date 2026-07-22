@@ -26,42 +26,42 @@ func ResourceTencentCloudTcrRepository() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID TCR instance。",
+				Description: "ID TCR 实例。",
 			},
 			"namespace_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "名称 TCR namespace。",
+				Description: "名称 TCR 命名空间。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "名称 TCR repository. Valid length is [2~200]. It can only contain lowercase letters，numbers and separators (`.`，`_`，`-`，`/`)，and cannot start，end or continue with separators. Support the use of multi-级别 地址 formats，such as `sub1/sub2/repo`。",
+				Description: "名称 TCR repository. 有效 长度 是 [2~200]. It 可以 仅 contain lowercase letters，numbers 和 separators (`.`，`_`，`-`，`/`)，和 不能 start，end 或 continue 使用 separators. Support 使用 的 multi-级别 地址 formats，such 作为 `sub1/sub2/repo`。",
 			},
 			"brief_desc": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 100),
-				Description:  "Brief 描述 repository. Valid length is [1~100]。",
+				Description:  "Brief 描述 repository. 有效 长度 是 [1~100]。",
 			},
 			"description": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 1000),
-				Description:  "描述 repository. Valid length is [1~1000]。",
+				Description:  "描述 repository. 有效 长度 是 [1~1000]。",
 			},
 			"force_delete": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "The 默认值为 true，meaning that the repository will be deleted directly regardless of whether it 包含any images; false means that the existence of images will be checked before deleting the repository。",
+				Description: "默认值为 true，meaning 该 repository 将 是 删除 directly regardless 的 whether 它 包含any images; false 表示 该 existence 的 images 将 是 checked before deleting repository。",
 			},
 			//computed
 			"is_public": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Indicate the repository is public or not。",
+				Description: "Indicate repository 是 公有 或 不。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
@@ -71,12 +71,12 @@ func ResourceTencentCloudTcrRepository() *schema.Resource {
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Last updated time。",
+				Description: "Last 更新 时间。",
 			},
 			"url": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "URL of the repository。",
+				Description: "URL 的 repository。",
 			},
 		},
 	}

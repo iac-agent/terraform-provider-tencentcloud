@@ -25,19 +25,19 @@ func DataSourceTencentCloudDnspodRecordLineList() *schema.Resource {
 			"domain_grade": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "域名 级别 + Old packages: D_FREE，D_PLUS，D_EXTRA，D_EXPERT，D_ULTRA correspond to free package，personal luxury，enterprise 1，enterprise 2，enterprise 3. + New packages: DP_FREE，DP_PLUS，DP_EXTRA，DP_EXPERT，DP_ULTRA correspond to new free，personal professional，enterprise basic，enterprise standard，enterprise flagship。",
+				Description: "域名 级别 + Old packages: D_FREE，D_PLUS，D_EXTRA，D_EXPERT，D_ULTRA correspond 到 free 包，personal luxury，enterprise 1，enterprise 2，enterprise 3. + New packages: DP_FREE，DP_PLUS，DP_EXTRA，DP_EXPERT，DP_ULTRA correspond 到 new free，personal professional，enterprise basic，enterprise standard，enterprise flagship。",
 			},
 
 			"domain_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "域名 ID. The parameter DomainId has a higher 优先级 than the parameter 域名 If the parameter DomainId is passed，the parameter 域名 will be ignored. You can find all Domains and DomainIds through the DescribeDomainList interface。",
+				Description: "域名 ID. 参数 DomainId has higher 优先级 比 参数 域名 如果 参数 DomainId 是 passed， 参数 域名 将 是 ignored. You 可以 find all Domains 和 DomainIds through DescribeDomainList interface。",
 			},
 
 			"line_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Line list。",
+				Description: "Line 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -57,7 +57,7 @@ func DataSourceTencentCloudDnspodRecordLineList() *schema.Resource {
 			"line_group_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Line group list。",
+				Description: "Line 组 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"line_id": {
@@ -81,7 +81,7 @@ func DataSourceTencentCloudDnspodRecordLineList() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "列表 lines included in the line group。",
+							Description: "列表 lines included 在 line 组。",
 						},
 					},
 				},

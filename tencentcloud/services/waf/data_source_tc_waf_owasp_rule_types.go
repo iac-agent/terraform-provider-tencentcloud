@@ -18,19 +18,19 @@ func DataSourceTencentCloudWafOwaspRuleTypes() *schema.Resource {
 			"domain": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "域名 names to be queried。",
+				Description: "域名 names 到 是 queried。",
 			},
 
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter conditions. supports RuleId，CveID，and Desc。",
+				Description: "过滤器 conditions. 支持 RuleId，CveID，和 Desc。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Field 名称，用于filtering\nFilter the sub-顺序 number (值) by DealName。",
+							Description: "Field 名称，用于filtering\nFilter sub-顺序 数量 (值) 通过 DealName。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
@@ -43,7 +43,7 @@ func DataSourceTencentCloudWafOwaspRuleTypes() *schema.Resource {
 						"exact_match": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Exact search or not。",
+							Description: "Exact search 或 不。",
 						},
 					},
 				},
@@ -52,7 +52,7 @@ func DataSourceTencentCloudWafOwaspRuleTypes() *schema.Resource {
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Rule 类型 list and information。",
+				Description: "Rule 类型 列表 和 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type_id": {
@@ -78,27 +78,27 @@ func DataSourceTencentCloudWafOwaspRuleTypes() *schema.Resource {
 						"action": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Protection 模式 of the rule 类型 有效值：0 (observation)，1 (intercept)。",
+							Description: "Protection 模式 的 规则 类型 有效值：0 (observation)，1 (intercept)。",
 						},
 						"level": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Protection 级别 of the rule 类型 有效值：100 (loose)，200 (normal)，300 (strict)，400 (ultra-strict)。",
+							Description: "Protection 级别 的 规则 类型 有效值：100 (loose)，200 (normal)，300 (strict)，400 (ultra-strict)。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The switch 状态 rule 类型 有效值：0 (已禁用)，1 (已启用)。",
+							Description: "switch 状态 规则 类型 有效值：0 (已禁用)，1 (已启用)。",
 						},
 						"total_rule": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "指定all rules under the rule 类型 always。",
+							Description: "指定all 规则 under 规则 类型 always。",
 						},
 						"active_rule": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "表示total 数量 rules 已启用 under the rule 类型",
+							Description: "表示total 数量 规则 已启用 under 规则 类型",
 						},
 					},
 				},

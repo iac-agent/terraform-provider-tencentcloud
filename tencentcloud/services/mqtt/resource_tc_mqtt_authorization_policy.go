@@ -29,25 +29,25 @@ func ResourceTencentCloudMqttAuthorizationPolicy() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "MQTT instance ID。",
+				Description: "MQTT 实例 ID。",
 			},
 
 			"policy_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Policy name, cannot be empty, 3-64 characters, supports Chinese characters, letters, numbers, \"-\" and \"_\".",
+				Description: "Policy 名称, 不能 是 空, 3-64 字符, 支持 Chinese 字符, letters, numbers, \"-\" 和 \"_\".",
 			},
 
 			"policy_version": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Policy 版本，默认为 1，currently only 1 is supported。",
+				Description: "Policy 版本，默认为 1，currently 仅 1 是 支持。",
 			},
 
 			"priority": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "The strategy 优先级，the smaller the higher the 优先级，cannot be repeated。",
+				Description: "strategy 优先级， smaller higher 优先级，不能 是 repeated。",
 			},
 
 			"effect": {
@@ -65,13 +65,13 @@ func ResourceTencentCloudMqttAuthorizationPolicy() *schema.Resource {
 			"retain": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Condition - Reserved 消息 1，match reserved 消息; 2，match unreserved 消息，3. match reserved and unreserved 消息",
+				Description: "Condition - Reserved 消息 1，match reserved 消息; 2，match unreserved 消息，3. match reserved 和 unreserved 消息",
 			},
 
 			"qos": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Condition: Quality of Service 0: At most once 1: At least once 2: Exactly once。",
+				Description: "Condition: Quality 的 Service 0: At most once 1: At least once 2: Exactly once。",
 			},
 
 			"resources": {
@@ -89,26 +89,26 @@ func ResourceTencentCloudMqttAuthorizationPolicy() *schema.Resource {
 			"client_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Condition - Client ID，supports regular expressions。",
+				Description: "Condition - Client ID，支持 regular expressions。",
 			},
 
 			"ip": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Condition - 客户端 IP 地址，supports IP or CIDR。",
+				Description: "Condition - 客户端 IP 地址，支持 IP 或 CIDR。",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "备注，up to 128 characters。",
+				Description: "备注，up 到 128 字符。",
 			},
 
 			// computed
 			"policy_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Authorization policy rule id。",
+				Description: "Authorization 策略 规则 ID。",
 			},
 		},
 	}

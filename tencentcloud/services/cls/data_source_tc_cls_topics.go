@@ -18,7 +18,7 @@ func DataSourceTencentCloudClsTopics() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "<li>topicName：按**日志主题名称**过滤。默认实现模糊匹配。您可以使用“PreciseSearch”参数来设置精确匹配。类型：字符串。必需的。否。<br><li>logsetName：按**日志集名称**过滤。默认实现模糊匹配。您可以使用“PreciseSearch”参数来设置精确匹配。类型：字符串。必填：否。<br><li>topicId：按**日志主题 ID** 过滤。类型：字符串。必需：否。<br><li>logsetId：按 **日志集 ID** 过滤。您可以调用“DescribeLogsets”查询已创建的日志集列表或登录控制台查看。您还可以调用 CreateLogset 创建日志集。类型：字符串。必填：否。 <br><li>tagKey：按**标签键**过滤。类型：字符串。必填：否。<br><li>标签:tagKey：按**标签键值对**过滤。 `tagKey` 应替换为指定的标签键，例如 `标签:exampleKey`。类型：字符串。必需：否。<br><li>存储类型：按**日志主题存储类型**过滤。有效值：“热”（标准存储）和“冷”（IA 存储）。类型：字符串。必需：否。每个请求最多可以有 10 个“Filters”和 100 个“Filter.Values”。",
+				Description: "<li>topicName：按**日志主题名称**过滤。默认实现模糊匹配。您可以使用“PreciseSearch”参数来设置精确匹配。类型：字符串。必需的。否。<br><li>logsetName：按**日志集名称**过滤。默认实现模糊匹配。您可以使用“PreciseSearch”参数来设置精确匹配。类型：字符串。必填：否。<br><li>topicId：按**日志主题 ID** 过滤。类型：字符串。必需：否。<br><li>logsetId：按 **日志集 ID** 过滤。您可以调用“DescribeLogsets”查询已创建的日志集列表或登录控制台查看。您还可以调用 CreateLogset 创建日志集。类型：字符串。必填：否。 <br><li>tagKey：按**标签键**过滤。类型：字符串。必填：否。<br><li>标签:tagKey：按**标签键值对**过滤。 `tagKey` 应替换为指定的标签键，例如 `标签:exampleKey`。类型：字符串。必需：否。<br><li>存储类型：按**日志主题存储类型**过滤。有效值：“热”（标准存储）和“冷”（IA 存储）。类型：字符串。必需：否。每个请求最多可以有 10 个“Filters”和 100 个“过滤器.Values”。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
@@ -153,12 +153,12 @@ func DataSourceTencentCloudClsTopics() *schema.Resource {
 						"biz_type": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Topic类型。\n- 0：log Topic \n- 1：Metric Topic\n注意：该字段可能返回null，表示取不到有效值。",
+							Description: "Topic类型。\n- 0：日志 Topic \n- 1：Metric Topic\n注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"is_web_tracking": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "免费认证开关。 false：禁用； true：启用。启用后，指定操作将支持匿名访问日志主题。具体请参见日志主题（https://intl.cloud.tencent.com/document/product/614/41035?from_cn_redirect=1）。注意：该字段可能返回null，表示取不到有效值。",
+							Description: "免费认证开关。 false：禁用； true：启用。启用后，指定操作将支持匿名访问日志主题。具体请参见日志主题（https://intl.云.tencent.com/document/product/614/41035?from_cn_redirect=1）。注意：该字段可能返回null，表示取不到有效值。",
 						},
 					},
 				},

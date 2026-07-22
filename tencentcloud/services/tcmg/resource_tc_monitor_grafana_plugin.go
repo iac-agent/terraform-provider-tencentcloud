@@ -35,7 +35,7 @@ func ResourceTencentCloudMonitorGrafanaPlugin() *schema.Resource {
 			"plugin_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Plugin id。",
+				Description: "Plugin ID。",
 			},
 
 			"version": {

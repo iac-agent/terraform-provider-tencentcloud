@@ -22,19 +22,19 @@ func DataSourceTencentCloudDcdbOrders() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "列表 long 顺序 numbers to be queried，which are returned for the APIs for creating，renewing，or scaling instances。",
+				Description: "列表 long 顺序 numbers 到 是 queried，其中 是 返回 对于 APIs 对于 creating，renewing，或 scaling 实例。",
 			},
 
 			"deals": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "顺序 information list。",
+				Description: "顺序 信息 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"deal_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "顺序 number。",
+							Description: "顺序 数量。",
 						},
 						"owner_uin": {
 							Type:        schema.TypeString,
@@ -49,7 +49,7 @@ func DataSourceTencentCloudDcdbOrders() *schema.Resource {
 						"flow_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "ID associated process，which can be 用于query the process execution 状态",
+							Description: "ID associated process，其中 可以 是 用于query process execution 状态",
 						},
 						"instance_ids": {
 							Type: schema.TypeSet,
@@ -57,7 +57,7 @@ func DataSourceTencentCloudDcdbOrders() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "The ID created instance，which 为必填项 only for the 顺序 that creates an instance.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "ID 创建 实例，其中 为必填项 仅 对于 顺序 该 creates 实例.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"pay_mode": {
 							Type:        schema.TypeInt,

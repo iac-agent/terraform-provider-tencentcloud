@@ -18,13 +18,13 @@ func DataSourceTencentCloudIgtmInstancePackageList() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter conditions。",
+				Description: "过滤器 conditions。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "过滤字段名称，supported list as follows:\n- 实例 ID: instance ID.\n- InstanceName: 实例名称\n- ResourceId: package ID.\n- PackageType: package 类型 This is a 必填 parameter，not passing it will cause interface query failure。",
+							Description: "过滤字段名称，支持 列表 作为 follows:\n- 实例 ID: 实例 ID.\n- InstanceName: 实例名称\n- ResourceId: 包 ID.\n- PackageType: 包 类型 此 是 必填 参数，不 passing 它 将 cause interface 查询 failure。",
 						},
 						"value": {
 							Type:        schema.TypeSet,
@@ -37,7 +37,7 @@ func DataSourceTencentCloudIgtmInstancePackageList() *schema.Resource {
 						"fuzzy": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "是否enable fuzzy query，only supports 过滤字段名称 as 域名\nWhen fuzzy query is 已启用，maximum 值 length is 1，otherwise maximum 值 length is 5. (Reserved field，not currently used)。",
+							Description: "是否enable fuzzy 查询，仅 支持 过滤字段名称 作为 域名\nWhen fuzzy 查询 是 已启用，最大 值 长度 是 1，otherwise 最大 值 长度 是 5. (Reserved 字段，不 currently 使用)。",
 						},
 					},
 				},
@@ -46,19 +46,19 @@ func DataSourceTencentCloudIgtmInstancePackageList() *schema.Resource {
 			"is_used": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Whether used: 0 not used 1 used。",
+				Description: "Whether 使用: 0 不 使用 1 使用。",
 			},
 
 			"instance_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Instance package list。",
+				Description: "实例 包 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance package resource ID。",
+							Description: "实例 包 资源 ID。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
@@ -88,7 +88,7 @@ func DataSourceTencentCloudIgtmInstancePackageList() *schema.Resource {
 						"is_expire": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether expired 0 no 1 yes。",
+							Description: "Whether expired 0 无 1 yes。",
 						},
 						"status": {
 							Type:        schema.TypeString,
@@ -98,7 +98,7 @@ func DataSourceTencentCloudIgtmInstancePackageList() *schema.Resource {
 						"auto_renew_flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether auto-renew 0 no 1 yes。",
+							Description: "Whether auto-renew 0 无 1 yes。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
@@ -127,7 +127,7 @@ func DataSourceTencentCloudIgtmInstancePackageList() *schema.Resource {
 						"min_check_interval": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Minimum check interval time s。",
+							Description: "Minimum check 间隔 时间 s。",
 						},
 						"min_global_ttl": {
 							Type:        schema.TypeInt,
@@ -137,7 +137,7 @@ func DataSourceTencentCloudIgtmInstancePackageList() *schema.Resource {
 						"traffic_strategy": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "Traffic strategy 类型: ALL return all，WEIGHT 权重",
+							Description: "Traffic strategy 类型: ALL 返回 all，WEIGHT 权重",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -145,7 +145,7 @@ func DataSourceTencentCloudIgtmInstancePackageList() *schema.Resource {
 						"schedule_strategy": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "Strategy 类型: LOCATION schedule by geographic location，DELAY schedule by 延迟",
+							Description: "Strategy 类型: LOCATION 调度 通过 geographic location，DELAY 调度 通过 延迟",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},

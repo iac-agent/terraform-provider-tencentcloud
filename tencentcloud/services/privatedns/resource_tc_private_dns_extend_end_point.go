@@ -26,34 +26,34 @@ func ResourceTencentCloudPrivateDnsExtendEndPoint() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Outbound endpoint 名称",
+				Description: "Outbound 端点 名称",
 			},
 			"end_point_region": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The 地域 of the outbound endpoint must be consistent with the 地域 of the forwarding target VIP",
+				Description: "地域 的 outbound 端点 必须 是 consistent 使用 地域 的 forwarding 目标 VIP",
 			},
 			"forward_ip": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "Forwarding target。",
+				Description: "Forwarding 目标。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"access_type": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Forwarding target IP network access 类型 CLB: The forwarding IP is the internal CLB VIP CCN: Forwarding IP through CCN routing。",
+							Description: "Forwarding 目标 IP 网络 访问 类型 CLB: forwarding IP 是 内部 CLB VIP CCN: Forwarding IP through CCN routing。",
 						},
 						"host": {
 							Type:          schema.TypeString,
 							Optional:      true,
 							ForceNew:      true,
 							ConflictsWith: []string{"forward_ip.0.hosts"},
-							Description:   "Forwarding target IP 地址",
+							Description:   "Forwarding 目标 IP 地址",
 						},
 						"hosts": {
 							Type:          schema.TypeSet,
@@ -61,7 +61,7 @@ func ResourceTencentCloudPrivateDnsExtendEndPoint() *schema.Resource {
 							ForceNew:      true,
 							MinItems:      2,
 							ConflictsWith: []string{"forward_ip.0.host"},
-							Description:   "Forwarding target IPs 地址",
+							Description:   "Forwarding 目标 IPs 地址",
 							Elem:          &schema.Schema{Type: schema.TypeString},
 						},
 						"port": {
@@ -81,7 +81,7 @@ func ResourceTencentCloudPrivateDnsExtendEndPoint() *schema.Resource {
 
 								return false
 							},
-							Description: "指定forwarding IP 端口 number. This only applies when configuring `主机`; if using `hosts`，you can choose any 端口 值 from `hosts`。",
+							Description: "指定forwarding IP 端口 数量. 此 仅 applies 当 configuring `主机`; 如果 使用 `hosts`，您 可以 choose any 端口 值 从 `hosts`。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
@@ -92,39 +92,39 @@ func ResourceTencentCloudPrivateDnsExtendEndPoint() *schema.Resource {
 						// "subnet_id": {
 						// 	Type:        schema.TypeString,
 						// 	Optional:    true,
-						// 	Description: "Unique subnet ID. Required when the access type is CCN.",
+						// 	Description: "Unique 子网 ID. Required 当 访问 类型 是 CCN.",
 						// },
 						"access_gateway_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "CCN id. 必填 when the access 类型 is CCN。",
+							Description: "CCN ID. 必填 当 访问 类型 是 CCN。",
 						},
 						// computed
 						"vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "指定forwarding target IP proxy IP。",
+							Description: "指定forwarding 目标 IP proxy IP。",
 						},
 						"vport": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "指定forwarding target IP proxy 端口",
+							Description: "指定forwarding 目标 IP proxy 端口",
 						},
 						"proto": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "指定forwarding target IP 协议",
+							Description: "指定forwarding 目标 IP 协议",
 						},
 						"snat_vip_cidr": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The SNAT CIDR block of the outbound endpoint。",
+							Description: "SNAT CIDR block 的 outbound 端点。",
 						},
 						"snat_vip_set": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The SNAT IP 列表 the outbound endpoint。",
+							Description: "SNAT IP 列表 outbound 端点。",
 						},
 					},
 				},

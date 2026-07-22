@@ -19,7 +19,7 @@ func DataSourceTencentCloudTsfGroupGateways() *schema.Resource {
 			"gateway_deploy_group_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway group Id。",
+				Description: "网关 组 ID。",
 			},
 
 			"search_word": {
@@ -31,7 +31,7 @@ func DataSourceTencentCloudTsfGroupGateways() *schema.Resource {
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "api group information。",
+				Description: "api 组 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
@@ -42,13 +42,13 @@ func DataSourceTencentCloudTsfGroupGateways() *schema.Resource {
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "api group Info。",
+							Description: "api 组 Info。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"group_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "api group id.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "api 组 ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"group_name": {
 										Type:        schema.TypeString,
@@ -58,68 +58,68 @@ func DataSourceTencentCloudTsfGroupGateways() *schema.Resource {
 									"group_context": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "api group context.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "api 组 context.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"auth_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Authentication 类型 secret: 键 authentication; none: no authentication.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Authentication 类型 secret: 键 authentication; none: 无 authentication.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Release 状态 drafted: not released. released: released.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Release 状态 drafted: 不 released. released: released.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"created_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Group 创建时间，such as: 2019-06-20 15:51:28.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Group 创建时间，such 作为: 2019-06-20 15:51:28.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"updated_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Group 更新时间，such as: 2019-06-20 15:51:28.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Group 更新时间，such 作为: 2019-06-20 15:51:28.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"binded_gateway_deploy_groups": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Gateway deployment group bound to the API group.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Gateway 部署 组 bound 到 API 组.注意：此字段可能返回 null，表示未找到有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"deploy_group_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Gateway deployment 组 ID注意：此字段可能返回 null，表示未找到有效值。",
+													Description: "Gateway 部署 组 ID注意：此字段可能返回 null，表示未找到有效值。",
 												},
 												"deploy_group_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Gateway deployment 组名称注意：此字段可能返回 null，表示未找到有效值。",
+													Description: "Gateway 部署 组名称注意：此字段可能返回 null，表示未找到有效值。",
 												},
 												"application_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "application ID.注意：此字段可能返回 null，表示未找到有效值。",
+													Description: "应用 ID.注意：此字段可能返回 null，表示未找到有效值。",
 												},
 												"application_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "application 名称注意：此字段可能返回 null，表示未找到有效值。",
+													Description: "应用 名称注意：此字段可能返回 null，表示未找到有效值。",
 												},
 												"application_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Application category: V: virtual machine application，C: container application.注意：此字段可能返回 null，表示未找到有效值。",
+													Description: "Application category: V: virtual machine 应用，C: 容器 应用.注意：此字段可能返回 null，表示未找到有效值。",
 												},
 												"group_status": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Application 状态 deployment group，with possible values: Running，Waiting，Paused，Updating，RollingBack，Abnormal，Unknown.注意：此字段可能返回 null，表示未找到有效值。",
+													Description: "Application 状态 部署 组，使用 possible 值: Running，Waiting，Paused，Updating，RollingBack，Abnormal，Unknown.注意：此字段可能返回 null，表示未找到有效值。",
 												},
 												"cluster_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "集群类型，with possible values: C: container，V: virtual machine.注意：此字段可能返回 null，表示未找到有效值。",
+													Description: "集群类型，使用 possible 值: C: 容器，V: virtual machine.注意：此字段可能返回 null，表示未找到有效值。",
 												},
 											},
 										},
@@ -132,7 +132,7 @@ func DataSourceTencentCloudTsfGroupGateways() *schema.Resource {
 									"acl_mode": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ACL 类型 for accessing the group.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "ACL 类型 对于 accessing 组.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"description": {
 										Type:        schema.TypeString,
@@ -142,7 +142,7 @@ func DataSourceTencentCloudTsfGroupGateways() *schema.Resource {
 									"group_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Group 类型 ms: microservice group; external: external API group.This field may return null，which means no valid 值 was found。",
+										Description: "Group 类型 ms: microservice 组; 外部: 外部 API 组.此 字段 可能 返回 null，其中 表示 无 有效 值 是 found。",
 									},
 									"gateway_instance_type": {
 										Type:        schema.TypeString,
@@ -152,27 +152,27 @@ func DataSourceTencentCloudTsfGroupGateways() *schema.Resource {
 									"gateway_instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Gateway instance ID.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Gateway 实例 ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"namespace_name_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Namespace parameter 键注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Namespace 参数 键注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"service_name_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Microservice 名称 parameter 键注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Microservice 名称 参数 键注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"namespace_name_key_position": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Namespace parameter location，路径，header，or query. The 默认为 路径注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Namespace 参数 location，路径，头部，或 查询. 默认为 路径注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"service_name_key_position": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Microservice 名称 parameter location，路径，header，or query. The 默认为 路径注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Microservice 名称 参数 location，路径，头部，或 查询. 默认为 路径注意：此字段可能返回 null，表示未找到有效值。",
 									},
 								},
 							},

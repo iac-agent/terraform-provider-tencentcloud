@@ -17,7 +17,7 @@ func DataSourceTencentCloudConfigResourceTypes() *schema.Resource {
 			"resource_type_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Supported 资源类型 list。",
+				Description: "Supported 资源类型 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"product": {

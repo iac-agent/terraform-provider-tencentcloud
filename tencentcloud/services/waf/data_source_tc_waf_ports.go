@@ -19,24 +19,24 @@ func DataSourceTencentCloudWafPorts() *schema.Resource {
 			"edition": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "实例类型，sparta-waf represents SAAS WAF，clb-waf represents CLB WAF。",
+				Description: "实例类型，sparta-waf 表示 SAAS WAF，clb-waf 表示 CLB WAF。",
 			},
 			"instance_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Instance unique ID。",
+				Description: "实例 唯一 ID。",
 			},
 			"http_ports": {
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Http 端口 list for instance。",
+				Description: "Http 端口 列表 对于 实例。",
 			},
 			"https_ports": {
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Https 端口 list for instance。",
+				Description: "Https 端口 列表 对于 实例。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,

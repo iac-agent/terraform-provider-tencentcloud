@@ -27,14 +27,14 @@ func ResourceTencentCloudTcrManageReplicationOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "copy 来源 instance Id。",
+				Description: "copy 来源 实例 ID。",
 			},
 
 			"destination_registry_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "copy destination instance Id。",
+				Description: "copy destination 实例 ID。",
 			},
 
 			"rule": {
@@ -42,18 +42,18 @@ func ResourceTencentCloudTcrManageReplicationOperation() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "synchronization rules。",
+				Description: "synchronization 规则。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "synchronization rule names。",
+							Description: "synchronization 规则 names。",
 						},
 						"dest_namespace": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "target namespace。",
+							Description: "目标 命名空间。",
 						},
 						"override": {
 							Type:        schema.TypeBool,
@@ -69,12 +69,12 @@ func ResourceTencentCloudTcrManageReplicationOperation() *schema.Resource {
 									"type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "类型 (名称，标签，and resource)。",
+										Description: "类型 (名称，标签，和 资源)。",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "empty by default。",
+										Description: "空 通过 默认值。",
 									},
 								},
 							},
@@ -87,14 +87,14 @@ func ResourceTencentCloudTcrManageReplicationOperation() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "rule 描述",
+				Description: "规则 描述",
 			},
 
 			"destination_region_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "the 地域 ID target instance，such as Guangzhou is 1。",
+				Description: "地域 ID 目标 实例，such 作为 Guangzhou 是 1。",
 			},
 
 			"peer_replication_option": {
@@ -102,23 +102,23 @@ func ResourceTencentCloudTcrManageReplicationOperation() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "enable synchronization of configuration items across master 账号 instances。",
+				Description: "启用 synchronization 的 配置 items across master 账号 实例。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"peer_registry_uin": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "uin of the instance to be synchronized。",
+							Description: "uin 的 实例 到 是 synchronized。",
 						},
 						"peer_registry_token": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "access permanent 令牌 of the instance to be synchronized。",
+							Description: "访问 permanent 令牌 的 实例 到 是 synchronized。",
 						},
 						"enable_peer_replication": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "是否enable cross-master 账号 instance synchronization。",
+							Description: "是否enable cross-master 账号 实例 synchronization。",
 						},
 					},
 				},

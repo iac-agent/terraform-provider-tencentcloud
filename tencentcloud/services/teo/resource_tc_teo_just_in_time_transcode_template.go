@@ -33,31 +33,31 @@ func ResourceTencentCloudTeoJustInTimeTranscodeTemplate() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Transcode 模板名称 Max length: 64 characters。",
+				Description: "Transcode 模板名称 Max 长度: 64 字符。",
 			},
 			"comment": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "模板描述 Max length: 256 characters。",
+				Description: "模板描述 Max 长度: 256 字符。",
 			},
 			"video_stream_switch": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"on", "off"}),
-				Description:  "Video stream switch. 有效值：on，off. 默认值：on。",
+				Description:  "Video 流 switch. 有效值：在，关闭. 默认值：在。",
 			},
 			"audio_stream_switch": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"on", "off"}),
-				Description:  "Audio stream switch. 有效值：on，off. 默认值：on。",
+				Description:  "Audio 流 switch. 有效值：在，关闭. 默认值：在。",
 			},
 			"video_template": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
 				Computed:    true,
-				Description: "Video stream configuration parameters. 必填 when video_stream_switch is on。",
+				Description: "Video 流 配置 参数. 必填 当 video_stream_switch 是 在。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"video_codec": {
@@ -68,12 +68,12 @@ func ResourceTencentCloudTeoJustInTimeTranscodeTemplate() *schema.Resource {
 						"fps": {
 							Type:        schema.TypeFloat,
 							Optional:    true,
-							Description: "Video frame rate. Range: [0，30]. 默认值：0。",
+							Description: "Video frame 速率. Range: [0，30]. 默认值：0。",
 						},
 						"bitrate": {
 							Type:         schema.TypeInt,
 							Optional:     true,
-							Description:  "Video bitrate in kbps. Range: 0 or [128，10000]. 默认值：0。",
+							Description:  "Video bitrate 在 kbps. Range: 0 或 [128，10000]. 默认值：0。",
 							ValidateFunc: tccommon.ValidateIntegerInRange(128, 10000),
 						},
 						"resolution_adaptive": {
@@ -84,13 +84,13 @@ func ResourceTencentCloudTeoJustInTimeTranscodeTemplate() *schema.Resource {
 						"width": {
 							Type:         schema.TypeInt,
 							Optional:     true,
-							Description:  "Video width/long-edge in pixels. Range: 0 or [128，1920]. 默认值：0。",
+							Description:  "Video 宽度/long-edge 在 pixels. Range: 0 或 [128，1920]. 默认值：0。",
 							ValidateFunc: tccommon.ValidateIntegerInRange(128, 1920),
 						},
 						"height": {
 							Type:         schema.TypeInt,
 							Optional:     true,
-							Description:  "Video height/short-edge in pixels. Range: 0 or [128，1080]. 默认值：0。",
+							Description:  "Video 高度/short-edge 在 pixels. Range: 0 或 [128，1080]. 默认值：0。",
 							ValidateFunc: tccommon.ValidateIntegerInRange(128, 1080),
 						},
 						"fill_type": {
@@ -106,7 +106,7 @@ func ResourceTencentCloudTeoJustInTimeTranscodeTemplate() *schema.Resource {
 				Optional:    true,
 				MaxItems:    1,
 				Computed:    true,
-				Description: "Audio stream configuration parameters. 必填 when audio_stream_switch is on。",
+				Description: "Audio 流 配置 参数. 必填 当 audio_stream_switch 是 在。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"codec": {
@@ -127,22 +127,22 @@ func ResourceTencentCloudTeoJustInTimeTranscodeTemplate() *schema.Resource {
 			"template_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "模板 ID returned after creation。",
+				Description: "模板 ID 返回 after creation。",
 			},
 			"type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Template 类型 Values: preset，custom。",
+				Description: "模板 类型 Values: preset，自定义。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Template 创建时间 in ISO 8601 格式",
+				Description: "模板 创建时间 在 ISO 8601 格式",
 			},
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Template last 更新时间 in ISO 8601 格式",
+				Description: "模板 last 更新时间 在 ISO 8601 格式",
 			},
 		},
 	}

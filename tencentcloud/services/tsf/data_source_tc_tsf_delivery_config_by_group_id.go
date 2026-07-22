@@ -25,7 +25,7 @@ func DataSourceTencentCloudTsfDeliveryConfigByGroupId() *schema.Resource {
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "configuration item for deliver to a Kafka。",
+				Description: "配置 item 对于 deliver 到 Kafka。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"config_id": {

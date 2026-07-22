@@ -31,7 +31,7 @@ func DataSourceTencentCloudWafAttackOverview() *schema.Resource {
 			"appid": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "App id。",
+				Description: "App ID。",
 			},
 			"domain": {
 				Optional:    true,
@@ -42,12 +42,12 @@ func DataSourceTencentCloudWafAttackOverview() *schema.Resource {
 				Optional:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(EDITION_TYPE),
-				Description:  "support `sparta-waf`，`clb-waf`，otherwise not filter。",
+				Description:  "support `sparta-waf`，`clb-waf`，otherwise 不 过滤器。",
 			},
 			"instance_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Waf instanceId，otherwise not filter。",
+				Description: "Waf instanceId，otherwise 不 过滤器。",
 			},
 			"access_count": {
 				Computed:    true,

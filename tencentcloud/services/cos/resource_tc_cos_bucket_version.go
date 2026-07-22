@@ -24,7 +24,7 @@ func ResourceTencentCloudCosBucketVersion() *schema.Resource {
 			"bucket": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "存储桶 格式 should be [custom 名称]-[appid]，for example `mycos-1258798060`。",
+				Description: "存储桶 格式 should 是 [自定义 名称]-[appid]，对于 示例 `mycos-1258798060`。",
 			},
 
 			"status": {

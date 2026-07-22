@@ -19,25 +19,25 @@ func DataSourceTencentCloudAsLimits() *schema.Resource {
 			"max_number_of_launch_configurations": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "最大launch configurations allowed for creation by the 用户 账号",
+				Description: "最大launch configurations allowed 对于 creation 通过 用户 账号",
 			},
 
 			"number_of_launch_configurations": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Current 数量 launch configurations under the 用户 账号",
+				Description: "Current 数量 launch configurations under 用户 账号",
 			},
 
 			"max_number_of_auto_scaling_groups": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "最大auto scaling groups allowed for creation by the 用户 账号",
+				Description: "最大auto scaling groups allowed 对于 creation 通过 用户 账号",
 			},
 
 			"number_of_auto_scaling_groups": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Current 数量 auto scaling groups under the 用户 账号",
+				Description: "Current 数量 auto scaling groups under 用户 账号",
 			},
 
 			"result_output_file": {

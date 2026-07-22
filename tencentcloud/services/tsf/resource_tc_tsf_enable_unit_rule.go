@@ -30,7 +30,7 @@ func ResourceTencentCloudTsfEnableUnitRule() *schema.Resource {
 			"switch": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "switch，on: `已启用`，off: `已禁用`。",
+				Description: "switch，在: `已启用`，关闭: `已禁用`。",
 			},
 		},
 	}

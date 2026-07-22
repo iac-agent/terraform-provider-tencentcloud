@@ -33,7 +33,7 @@ func ResourceTencentCloudMysqlRollback() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "回滚策略。可用值有：table、db、full；默认值是满的。 table- 极速回滚模式，仅导入所选表级别的备份和binlog，如果存在跨表操作，且未同时选择关联表，则回滚将失败。该模式下，参数Databases必须为空； db- Quick模式，只导入所选库级别的备份和binlog，如果有跨库操作，且没有同时选择关联库，则回滚会失败； full-普通回滚模式，会导入整个实例的备份和binlog，速度较慢。",
+				Description: "回滚策略。可用值有：表、db、full；默认值是满的。 表- 极速回滚模式，仅导入所选表级别的备份和binlog，如果存在跨表操作，且未同时选择关联表，则回滚将失败。该模式下，参数Databases必须为空； db- Quick模式，只导入所选库级别的备份和binlog，如果有跨库操作，且没有同时选择关联库，则回滚会失败； full-普通回滚模式，会导入整个实例的备份和binlog，速度较慢。",
 			},
 
 			"rollback_time": {

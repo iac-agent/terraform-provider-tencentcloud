@@ -33,7 +33,7 @@ func ResourceTencentCloudMonitorTmpGrafanaConfig() *schema.Resource {
 			"config": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "JSON encoded string。",
+				Description: "JSON encoded 字符串。",
 			},
 		},
 	}

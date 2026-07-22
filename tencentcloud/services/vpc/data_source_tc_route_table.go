@@ -19,7 +19,7 @@ func DataSourceTencentCloudRouteTable() *schema.Resource {
 			"route_table_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The Route Table ID。",
+				Description: "Route Table ID。",
 			},
 			"name": {
 				Type:     schema.TypeString,
@@ -31,12 +31,12 @@ func DataSourceTencentCloudRouteTable() *schema.Resource {
 					}
 					return
 				},
-				Description: "The Route Table 名称",
+				Description: "Route Table 名称",
 			},
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The 私有网络 ID",
+				Description: "私有网络 ID",
 			},
 			"subnet_num": {
 				Type:        schema.TypeInt,
@@ -46,28 +46,28 @@ func DataSourceTencentCloudRouteTable() *schema.Resource {
 			"routes": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "The information 列表 the VPC route table。",
+				Description: "信息 列表 VPC 路由 表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cidr_block": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The RouteEntry's target network segment。",
+							Description: "RouteEntry's 目标 网络 segment。",
 						},
 						"next_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The `next_hub` 类型",
+							Description: "`next_hub` 类型",
 						},
 						"next_hub": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The RouteEntry's next hub。",
+							Description: "RouteEntry's next hub。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The RouteEntry's 描述",
+							Description: "RouteEntry's 描述",
 						},
 					},
 				},
@@ -75,7 +75,7 @@ func DataSourceTencentCloudRouteTable() *schema.Resource {
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 of routing table。",
+				Description: "创建时间 的 routing 表。",
 			},
 		},
 	}

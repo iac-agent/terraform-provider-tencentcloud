@@ -23,14 +23,14 @@ func ResourceTencentCloudDcdbSwitchDbInstanceHaOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "实例 ID in the 格式 of tdsqlshard-ow728lmc。",
+				Description: "实例 ID 在 格式 的 tdsqlshard-ow728lmc。",
 			},
 
 			"zone": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Target AZ. The node with the lowest 延迟 in the target AZ will be automatically promoted to primary node。",
+				Description: "Target AZ. 节点 使用 lowest 延迟 在 目标 AZ 将 是 automatically promoted 到 primary 节点。",
 			},
 		},
 	}

@@ -20,31 +20,31 @@ func DataSourceTencentCloudDcdbDatabaseTables() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID instance。",
+				Description: "ID 实例。",
 			},
 
 			"db_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Database 名称，obtained through the DescribeDatabases api。",
+				Description: "Database 名称，获取 through DescribeDatabases api。",
 			},
 
 			"table": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Table 名称，obtained through the DescribeDatabaseObjects api。",
+				Description: "Table 名称，获取 through DescribeDatabaseObjects api。",
 			},
 
 			"cols": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Column information。",
+				Description: "Column 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"col": {
 							Computed:    true,
 							Type:        schema.TypeString,
-							Description: "名称 column。",
+							Description: "名称 列。",
 						},
 						"type": {
 							Computed:    true,

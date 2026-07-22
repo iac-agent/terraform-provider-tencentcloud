@@ -29,28 +29,28 @@ func ResourceTencentCloudDlcRenewDataEngineOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Renewal 周期 in months，which is at least one month。",
+				Description: "Renewal 周期 在 months，其中 是 在 least 一个 month。",
 			},
 
 			"pay_mode": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Payment 类型 It is 1 by default and is prepaid。",
+				Description: "Payment 类型 It 是 1 通过 默认值 和 是 prepaid。",
 			},
 
 			"time_unit": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Unit. It is m by default，and only m can be filled in。",
+				Description: "Unit. It 是 m 通过 默认值，和 仅 m 可以 是 filled 在。",
 			},
 
 			"renew_flag": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Auto-renewal flag: 0 means the initial 状态，and there is no automatic renewal by default. If the 用户 has the privilege to retain services with prepayment，there will be an automatic renewal. 1 means that there is an automatic renewal. 2 means that there is surely no automatic renewal. If it is not specified，the parameter is 0 by default。",
+				Description: "Auto-renewal flag: 0 表示 initial 状态，和 there 是 无 automatic renewal 通过 默认值. 如果 用户 has privilege 到 retain services 使用 prepayment，there 将 是 automatic renewal. 1 表示 该 there 是 automatic renewal. 2 表示 该 there 是 surely 无 automatic renewal. 如果 它 是 不 指定， 参数 是 0 通过 默认值。",
 			},
 		},
 	}

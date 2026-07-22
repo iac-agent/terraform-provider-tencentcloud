@@ -27,28 +27,28 @@ func ResourceTencentCloudTeoIdentifyZoneOperation() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Subdomain under the 可用区 必填 only when verifying a subdomain。",
+				Description: "Subdomain under 可用区 必填 仅 当 verifying subdomain。",
 			},
 			"ascription": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "DNS verification information。",
+				Description: "DNS verification 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"subdomain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DNS record 主机",
+							Description: "DNS 记录 主机",
 						},
 						"record_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DNS record 类型",
+							Description: "DNS 记录 类型",
 						},
 						"record_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DNS record 值",
+							Description: "DNS 记录 值",
 						},
 					},
 				},
@@ -56,7 +56,7 @@ func ResourceTencentCloudTeoIdentifyZoneOperation() *schema.Resource {
 			"file_ascription": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "File verification information。",
+				Description: "File verification 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"identify_path": {

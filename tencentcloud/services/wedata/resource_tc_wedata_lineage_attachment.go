@@ -25,7 +25,7 @@ func ResourceTencentCloudWedataLineageAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "列表 lineage relationships to be registered。",
+				Description: "列表 lineage relationships 到 是 registered。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"source": {
@@ -40,7 +40,7 @@ func ResourceTencentCloudWedataLineageAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Required:    true,
 										ForceNew:    true,
-										Description: "Entity original unique ID.\\n\nNote: When lineage is for table columns，the unique ID should be passed as TableResourceUniqueId::FieldName。",
+										Description: "Entity original 唯一 ID.\\n\nNote: 当 lineage 是 对于 表 columns， 唯一 ID should 是 passed 作为 TableResourceUniqueId::FieldName。",
 									},
 									"resource_type": {
 										Type:        schema.TypeString,
@@ -58,13 +58,13 @@ func ResourceTencentCloudWedataLineageAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Business 名称: database.table | 指标名称 | model 名称 | field 名称",
+										Description: "Business 名称: 数据库.表 | 指标名称 | model 名称 | 字段 名称",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "描述: table 类型 | metric 描述 | model 描述 | field 描述",
+										Description: "描述: 表 类型 | metric 描述 | model 描述 | 字段 描述",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
@@ -82,7 +82,7 @@ func ResourceTencentCloudWedataLineageAttachment() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Resource additional extension parameters。",
+										Description: "Resource additional extension 参数。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
@@ -104,7 +104,7 @@ func ResourceTencentCloudWedataLineageAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Lineage node unique identifier。",
+										Description: "Lineage 节点 唯一 identifier。",
 									},
 								},
 							},
@@ -121,7 +121,7 @@ func ResourceTencentCloudWedataLineageAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Required:    true,
 										ForceNew:    true,
-										Description: "Entity original unique ID.\\n\nNote: When lineage is for table columns，the unique ID should be passed as TableResourceUniqueId::FieldName。",
+										Description: "Entity original 唯一 ID.\\n\nNote: 当 lineage 是 对于 表 columns， 唯一 ID should 是 passed 作为 TableResourceUniqueId::FieldName。",
 									},
 									"resource_type": {
 										Type:        schema.TypeString,
@@ -139,13 +139,13 @@ func ResourceTencentCloudWedataLineageAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Business 名称: database.table | 指标名称 | model 名称 | field 名称",
+										Description: "Business 名称: 数据库.表 | 指标名称 | model 名称 | 字段 名称",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "描述: table 类型 | metric 描述 | model 描述 | field 描述",
+										Description: "描述: 表 类型 | metric 描述 | model 描述 | 字段 描述",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
@@ -163,7 +163,7 @@ func ResourceTencentCloudWedataLineageAttachment() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Resource additional extension parameters。",
+										Description: "Resource additional extension 参数。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
@@ -185,7 +185,7 @@ func ResourceTencentCloudWedataLineageAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Lineage node unique identifier。",
+										Description: "Lineage 节点 唯一 identifier。",
 									},
 								},
 							},
@@ -202,13 +202,13 @@ func ResourceTencentCloudWedataLineageAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Required:    true,
 										ForceNew:    true,
-										Description: "Original unique ID。",
+										Description: "Original 唯一 ID。",
 									},
 									"process_type": {
 										Type:        schema.TypeString,
 										Required:    true,
 										ForceNew:    true,
-										Description: "Task 类型\n    //Scheduled task\n    SCHEDULE_TASK,\n    //Integration task\n    INTEGRATION_TASK,\n    //Third-party reporting\n    THIRD_REPORT,\n    //Data modeling\n    TABLE_MODEL,\n    //Model creates metric\n    MODEL_METRIC,\n    //Atomic metric creates derived metric\n    METRIC_METRIC,\n    //Data service\n    DATA_SERVICE。",
+										Description: "任务 类型\n //Scheduled 任务\n SCHEDULE_TASK,\n //Integration 任务\n INTEGRATION_TASK,\n //Third-party 报告\n THIRD_REPORT,\n //Data modeling\n TABLE_MODEL,\n //Model creates metric\n MODEL_METRIC,\n //Atomic metric creates derived metric\n METRIC_METRIC,\n //Data 服务\n DATA_SERVICE。",
 									},
 									"platform": {
 										Type:        schema.TypeString,
@@ -220,13 +220,13 @@ func ResourceTencentCloudWedataLineageAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Task subtype.\n SQL_TASK,\n    //Integrated real-time task lineage\n    INTEGRATED_STREAM,\n    //Integrated offline task lineage\n    INTEGRATED_OFFLINE。",
+										Description: "任务 subtype.\n SQL_TASK,\n //Integrated real-时间 任务 lineage\n INTEGRATED_STREAM,\n //Integrated offline 任务 lineage\n INTEGRATED_OFFLINE。",
 									},
 									"process_properties": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Additional extension parameters。",
+										Description: "Additional extension 参数。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
@@ -248,7 +248,7 @@ func ResourceTencentCloudWedataLineageAttachment() *schema.Resource {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Lineage task unique 节点 ID",
+										Description: "Lineage 任务 唯一 节点 ID",
 									},
 								},
 							},

@@ -35,14 +35,14 @@ func ResourceTencentCloudMqttCaCertificate() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "CA certificate。",
+				Description: "CA 证书。",
 			},
 
 			"verification_certificate": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Verification certificate。",
+				Description: "Verification 证书。",
 			},
 
 			"format": {
@@ -58,13 +58,13 @@ func ResourceTencentCloudMqttCaCertificate() *schema.Resource {
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"ACTIVE", "INACTIVE"}),
-				Description:  "Certificate 状态，默认为 ACTIVE.\n  ACTIVE activation;\n  INACTIVE not 活跃",
+				Description:  "Certificate 状态，默认为 ACTIVE.\n ACTIVE activation;\n INACTIVE 不 活跃",
 			},
 
 			"ca_sn": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Certificate serial number。",
+				Description: "Certificate serial 数量。",
 			},
 
 			"ca_cn": {

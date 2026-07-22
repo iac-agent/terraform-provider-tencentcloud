@@ -23,22 +23,22 @@ func DataSourceTencentCloudEips() *schema.Resource {
 			"eip_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID EIP to be queried。",
+				Description: "ID EIP 到 是 queried。",
 			},
 			"eip_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "名称 EIP to be queried。",
+				Description: "名称 EIP 到 是 queried。",
 			},
 			"public_ip": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The elastic ip 地址",
+				Description: "elastic ip 地址",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "The 标签 of EIP。",
+				Description: "标签 的 EIP。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -49,7 +49,7 @@ func DataSourceTencentCloudEips() *schema.Resource {
 			"eip_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information 列表 EIP. Each element 包含following attributes:",
+				Description: "An 信息 列表 EIP. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"eip_id": {
@@ -70,32 +70,32 @@ func DataSourceTencentCloudEips() *schema.Resource {
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The EIP current 状态",
+							Description: "EIP 当前 状态",
 						},
 						"public_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The elastic ip 地址",
+							Description: "elastic ip 地址",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 实例 ID to bind with the EIP。",
+							Description: "实例 ID 到 bind 使用 EIP。",
 						},
 						"eni_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The eni id to bind with the EIP。",
+							Description: "eni ID 到 bind 使用 EIP。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of the EIP。",
+							Description: "创建时间 的 EIP。",
 						},
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "标签 of the EIP。",
+							Description: "标签 的 EIP。",
 						},
 					},
 				},

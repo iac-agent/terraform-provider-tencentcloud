@@ -22,19 +22,19 @@ func DataSourceTencentCloudAsLastActivity() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "ID 列表 an auto scaling group。",
+				Description: "ID 列表 auto scaling 组。",
 			},
 
 			"exclude_cancelled_activity": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Exclude cancellation 类型 activities when querying. The 默认值为 false，indicating that cancellation 类型 activities are not excluded。",
+				Description: "Exclude cancellation 类型 activities 当 querying. 默认值为 false，indicating 该 cancellation 类型 activities 是 不 excluded。",
 			},
 
 			"activity_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Information set of eligible scaling activities. Scaling groups without scaling activities are not returned. For example，if there are 50 auto scaling group IDs but only 45 records are returned，it 表示that 5 of the auto scaling groups do not have scaling activities。",
+				Description: "Information 集合 的 eligible scaling activities. Scaling groups without scaling activities 是 不 返回. For 示例，如果 there 是 50 auto scaling 组 IDs 但 仅 45 records 是 返回，它 表示that 5 的 auto scaling groups do 不 have scaling activities。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"auto_scaling_group_id": {
@@ -65,7 +65,7 @@ func DataSourceTencentCloudAsLastActivity() *schema.Resource {
 						"cause": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cause of the scaling activity。",
+							Description: "Cause 的 scaling activity。",
 						},
 						"description": {
 							Type:        schema.TypeString,
@@ -75,22 +75,22 @@ func DataSourceTencentCloudAsLastActivity() *schema.Resource {
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "开始时间 of the scaling activity。",
+							Description: "开始时间 的 scaling activity。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "结束时间 of the scaling activity。",
+							Description: "结束时间 的 scaling activity。",
 						},
 						"created_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of the scaling activity。",
+							Description: "创建时间 的 scaling activity。",
 						},
 						"activity_related_instance_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Information set of the instances related to the scaling activity。",
+							Description: "Information 集合 的 实例 related 到 scaling activity。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_id": {
@@ -101,7 +101,7 @@ func DataSourceTencentCloudAsLastActivity() *schema.Resource {
 									"instance_status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "状态 instance in the scaling activity. 取值范围：INIT，RUNNING，SUCCESSFUL，FAILED。",
+										Description: "状态 实例 在 scaling activity. 取值范围：INIT，RUNNING，SUCCESSFUL，FAILED。",
 									},
 								},
 							},
@@ -114,7 +114,7 @@ func DataSourceTencentCloudAsLastActivity() *schema.Resource {
 						"lifecycle_action_result_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "结果 of the lifecycle hook 操作 in the scaling activity。",
+							Description: "结果 的 lifecycle hook 操作 在 scaling activity。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"lifecycle_hook_id": {
@@ -125,32 +125,32 @@ func DataSourceTencentCloudAsLastActivity() *schema.Resource {
 									"instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ID instance。",
+										Description: "ID 实例。",
 									},
 									"invocation_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Execution task ID. You can query the 结果 by using the DescribeInvocations API of TAT。",
+										Description: "Execution 任务 ID. You 可以 查询 结果 通过 使用 DescribeInvocations API 的 TAT。",
 									},
 									"invoke_command_result": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "结果 of command invocation，取值范围：SUCCESSFUL，FAILED，NONE。",
+										Description: "结果 的 command invocation，取值范围：SUCCESSFUL，FAILED，NONE。",
 									},
 									"notification_result": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Notification 结果，which 表示whether it is successful to notify CMQ/TDMQ，取值范围：SUCCESSFUL，FAILED，NONE。",
+										Description: "Notification 结果，其中 表示whether 它 是 successful 到 notify CMQ/TDMQ，取值范围：SUCCESSFUL，FAILED，NONE。",
 									},
 									"lifecycle_action_result": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "结果 of the lifecycle hook 操作，取值范围：CONTINUE，ABANDON。",
+										Description: "结果 的 lifecycle hook 操作，取值范围：CONTINUE，ABANDON。",
 									},
 									"result_reason": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Reason of the 结果，取值范围：HEARTBEAT_TIMEOUT: Heartbeat timed out. The setting of DefaultResult is used. NOTIFICATION_FAILURE: Failed to send the notification. The setting of DefaultResult is used. CALL_INTERFACE: Calls the CompleteLifecycleAction to set the 结果 ANOTHER_ACTION_ABANDON: It has been set to ABANDON by another operation. COMMAND_CALL_FAILURE: Failed to call the command. The DefaultResult is applied. COMMAND_EXEC_FINISH: Command completed COMMAND_CALL_FAILURE: Failed to execute the command. The DefaultResult is applied. COMMAND_EXEC_RESULT_CHECK_FAILURE: Failed to check the command 结果 The DefaultResult is applied。",
+										Description: "Reason 的 结果，取值范围：HEARTBEAT_TIMEOUT: Heartbeat timed out. setting 的 DefaultResult 是 使用. NOTIFICATION_FAILURE: Failed 到 send 通知. setting 的 DefaultResult 是 使用. CALL_INTERFACE: Calls CompleteLifecycleAction 到 集合 结果 ANOTHER_ACTION_ABANDON: It has been 集合 到 ABANDON 通过 another operation. COMMAND_CALL_FAILURE: Failed 到 call command. DefaultResult 是 applied. COMMAND_EXEC_FINISH: Command completed COMMAND_CALL_FAILURE: Failed 到 execute command. DefaultResult 是 applied. COMMAND_EXEC_RESULT_CHECK_FAILURE: Failed 到 check command 结果 DefaultResult 是 applied。",
 									},
 								},
 							},
@@ -169,7 +169,7 @@ func DataSourceTencentCloudAsLastActivity() *schema.Resource {
 									"zone": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "AZ information。",
+										Description: "AZ 信息。",
 									},
 									"instance_id": {
 										Type:        schema.TypeString,
@@ -179,7 +179,7 @@ func DataSourceTencentCloudAsLastActivity() *schema.Resource {
 									"instance_charge_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance billing 模式",
+										Description: "实例 billing 模式",
 									},
 									"subnet_id": {
 										Type:        schema.TypeString,
@@ -202,7 +202,7 @@ func DataSourceTencentCloudAsLastActivity() *schema.Resource {
 						"invocation_result_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "结果 of the command execution。",
+							Description: "结果 的 command execution。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_id": {
@@ -218,7 +218,7 @@ func DataSourceTencentCloudAsLastActivity() *schema.Resource {
 									"invocation_task_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Execution task ID. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Execution 任务 ID. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"command_id": {
 										Type:        schema.TypeString,
@@ -233,7 +233,7 @@ func DataSourceTencentCloudAsLastActivity() *schema.Resource {
 									"error_message": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Execution exception information. 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Execution exception 信息. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},

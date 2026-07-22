@@ -27,12 +27,12 @@ func ResourceTencentCloudTsfApiGroup() *schema.Resource {
 			"group_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Api Group Id。",
+				Description: "Api Group ID。",
 			},
 			"group_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "组名称，cannot contain Chinese。",
+				Description: "组名称，不能 contain Chinese。",
 			},
 
 			"group_context": {
@@ -45,7 +45,7 @@ func ResourceTencentCloudTsfApiGroup() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "authentication 类型 secret: 键 authentication; none: no authentication。",
+				Description: "authentication 类型 secret: 键 authentication; none: 无 authentication。",
 			},
 
 			"description": {
@@ -59,42 +59,42 @@ func ResourceTencentCloudTsfApiGroup() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "grouping 类型，default ms. ms: microservice grouping; external: external Api grouping。",
+				Description: "grouping 类型，默认值 ms. ms: microservice grouping; 外部: 外部 Api grouping。",
 			},
 
 			"gateway_instance_id": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "gateway entity ID。",
+				Description: "网关 entity ID。",
 			},
 
 			"namespace_name_key": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "namespace parameter 键 值",
+				Description: "命名空间 参数 键 值",
 			},
 
 			"service_name_key": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "microservice 名称 parameter 键 值",
+				Description: "microservice 名称 参数 键 值",
 			},
 
 			"namespace_name_key_position": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "namespace parameter position，路径，header or query，the 默认为 路径",
+				Description: "命名空间 参数 position，路径，头部 或 查询， 默认为 路径",
 			},
 
 			"service_name_key_position": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "microservice 名称 parameter position，路径，header or query，the 默认为 路径",
+				Description: "microservice 名称 参数 position，路径，头部 或 查询， 默认为 路径",
 			},
 
 			"status": {
@@ -106,33 +106,33 @@ func ResourceTencentCloudTsfApiGroup() *schema.Resource {
 			"created_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Group 创建时间 such as: 2019-06-20 15:51:28。",
+				Description: "Group 创建时间 such 作为: 2019-06-20 15:51:28。",
 			},
 			"updated_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Group 更新时间 such as: 2019-06-20 15:51:28。",
+				Description: "Group 更新时间 such 作为: 2019-06-20 15:51:28。",
 			},
 			"binded_gateway_deploy_groups": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "api group bound gateway deployment group。",
+				Description: "api 组 bound 网关 部署 组。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"deploy_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Gateway deployment 组 ID",
+							Description: "Gateway 部署 组 ID",
 						},
 						"deploy_group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Gateway deployment 组名称",
+							Description: "Gateway 部署 组名称",
 						},
 						"application_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "application ID。",
+							Description: "应用 ID。",
 						},
 						"application_name": {
 							Type:        schema.TypeString,
@@ -142,17 +142,17 @@ func ResourceTencentCloudTsfApiGroup() *schema.Resource {
 						"application_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Application classification: V: virtual machine application，C: container application。",
+							Description: "Application classification: V: virtual machine 应用，C: 容器 应用。",
 						},
 						"group_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Deployment group application 状态，values: Running，Waiting，Paused，Updating，RollingBack，Abnormal，Unknown。",
+							Description: "Deployment 组 应用 状态，值: Running，Waiting，Paused，Updating，RollingBack，Abnormal，Unknown。",
 						},
 						"cluster_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "集群类型，C: container，V: virtual machine。",
+							Description: "集群类型，C: 容器，V: virtual machine。",
 						},
 					},
 				},
@@ -165,12 +165,12 @@ func ResourceTencentCloudTsfApiGroup() *schema.Resource {
 			"acl_mode": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Access group ACL 类型",
+				Description: "Access 组 ACL 类型",
 			},
 			"gateway_instance_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "类型 gateway instance。",
+				Description: "类型 网关 实例。",
 			},
 		},
 	}

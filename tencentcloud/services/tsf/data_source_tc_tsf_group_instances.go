@@ -19,7 +19,7 @@ func DataSourceTencentCloudTsfGroupInstances() *schema.Resource {
 			"group_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "group id。",
+				Description: "组 ID。",
 			},
 
 			"search_word": {
@@ -43,24 +43,24 @@ func DataSourceTencentCloudTsfGroupInstances() *schema.Resource {
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Machine information of the deployment group.注意：此字段可能返回 null，表示未找到有效值。",
+				Description: "Machine 信息 的 部署 组.注意：此字段可能返回 null，表示未找到有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total 数量 machine instances.注意：此字段可能返回 null，表示未找到有效值。",
+							Description: "Total 数量 machine 实例.注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "列表 machine instances.注意：此字段可能返回 null，表示未找到有效值。",
+							Description: "列表 machine 实例.注意：此字段可能返回 null，表示未找到有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Machine instance ID.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Machine 实例 ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_name": {
 										Type:        schema.TypeString,
@@ -95,32 +95,32 @@ func DataSourceTencentCloudTsfGroupInstances() *schema.Resource {
 									"instance_status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "VM 状态 For virtual machines，it 表示status of the virtual machine. For containers，it 表示status of the virtual machine where the pod is located.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "VM 状态 For virtual machines，它 表示status 的 virtual machine. For containers，它 表示status 的 virtual machine 其中 pod 是 located.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_available_status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "VM availability 状态 For virtual machines，it 表示是否virtual machine can be used as a resource. For containers，it 表示是否virtual machine can be 用于deploy pods.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "VM availability 状态 For virtual machines，它 表示是否virtual machine 可以 是 使用 作为 资源. For containers，它 表示是否virtual machine 可以 是 用于deploy pods.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"service_instance_status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "状态 service instances under the service. For virtual machines，it 表示是否application is available and the agent 状态 For containers，it 表示status of the pod.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "状态 服务 实例 under 服务. For virtual machines，它 表示是否application 是 可用 和 agent 状态 For containers，它 表示status 的 pod.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"count_in_tsf": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "表示是否this instance has been added to the TSF.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "表示是否this 实例 has been added 到 TSF.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"group_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Group id.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Group ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"application_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Application id.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Application ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"application_name": {
 										Type:        schema.TypeString,
@@ -130,12 +130,12 @@ func DataSourceTencentCloudTsfGroupInstances() *schema.Resource {
 									"instance_created_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "创建时间 of the machine instance in CVM.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "创建时间 的 machine 实例 在 CVM.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_expired_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Expire time of the machine instance in CVM.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Expire 时间 的 machine 实例 在 CVM.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_charge_type": {
 										Type:        schema.TypeString,
@@ -145,37 +145,37 @@ func DataSourceTencentCloudTsfGroupInstances() *schema.Resource {
 									"instance_total_cpu": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Total CPU information of the machine instance.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Total CPU 信息 的 machine 实例.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_total_mem": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Total memory information of the machine instance.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Total 内存 信息 的 machine 实例.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_used_cpu": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "CPU information used by the machine instance.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "CPU 信息 使用 通过 machine 实例.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_used_mem": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Memory information used by the machine instance.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Memory 信息 使用 通过 machine 实例.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_limit_cpu": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "限制 CPU information of the machine instance.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "限制 CPU 信息 的 machine 实例.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_limit_mem": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "限制 memory information of the machine instance.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "限制 内存 信息 的 machine 实例.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_pkg_version": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "instance pkg 版本注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "实例 pkg 版本注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"cluster_type": {
 										Type:        schema.TypeString,
@@ -185,7 +185,7 @@ func DataSourceTencentCloudTsfGroupInstances() *schema.Resource {
 									"restrict_state": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Business 状态 machine instance.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Business 状态 machine 实例.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"update_time": {
 										Type:        schema.TypeString,
@@ -195,17 +195,17 @@ func DataSourceTencentCloudTsfGroupInstances() *schema.Resource {
 									"operation_state": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Execution 状态 instance.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Execution 状态 实例.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"namespace_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Namespace id.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Namespace ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_zone_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance 可用区 ID注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "实例 可用区 ID注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_import_mode": {
 										Type:        schema.TypeString,
@@ -215,12 +215,12 @@ func DataSourceTencentCloudTsfGroupInstances() *schema.Resource {
 									"application_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Application id.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Application ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"application_resource_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "application 资源 ID注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "应用 资源 ID注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"service_sidecar_status": {
 										Type:        schema.TypeString,
@@ -250,7 +250,7 @@ func DataSourceTencentCloudTsfGroupInstances() *schema.Resource {
 									"node_instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Container 主机 instance ID.注意：此字段可能返回 null，表示未找到有效值。",
+										Description: "Container 主机 实例 ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 								},
 							},

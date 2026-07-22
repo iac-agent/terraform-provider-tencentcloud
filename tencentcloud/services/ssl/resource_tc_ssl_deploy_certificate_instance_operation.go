@@ -25,7 +25,7 @@ func ResourceTencentCloudSslDeployCertificateInstanceOperation() *schema.Resourc
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "ID certificate to be deployed。",
+				Description: "ID 证书 到 是 deployed。",
 			},
 
 			"instance_id_list": {
@@ -35,21 +35,21 @@ func ResourceTencentCloudSslDeployCertificateInstanceOperation() *schema.Resourc
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Need to deploy instance list。",
+				Description: "Need 到 deploy 实例 列表。",
 			},
 
 			"resource_type": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Deployed cloud 资源类型",
+				Description: "Deployed 云 资源类型",
 			},
 
 			"status": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Deployment cloud resource 状态: Live: -1: The 域名 名称 is not associated with a certificate.1:  域名 名称 https is 已启用0:  域名 名称 https is closed。",
+				Description: "Deployment 云 资源 状态: Live: -1: 域名 名称 是 不 associated 使用 证书.1: 域名 名称 https 是 已启用0: 域名 名称 https 是 closed。",
 			},
 		},
 	}

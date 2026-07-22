@@ -28,7 +28,7 @@ func ResourceTencentCloudBiDatasourceCloud() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Service 类型，Own or Cloud。",
+				Description: "Service 类型，Own 或 Cloud。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
@@ -84,7 +84,7 @@ func ResourceTencentCloudBiDatasourceCloud() *schema.Resource {
 			"source_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Datasource 名称 in BI。",
+				Description: "Datasource 名称 在 BI。",
 			},
 
 			"project_id": {
@@ -96,13 +96,13 @@ func ResourceTencentCloudBiDatasourceCloud() *schema.Resource {
 			"vip": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Public cloud intranet ip。",
+				Description: "Public 云 intranet ip。",
 			},
 
 			"vport": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Public cloud intranet 端口",
+				Description: "Public 云 intranet 端口",
 			},
 
 			"vpc_id": {
@@ -127,25 +127,25 @@ func ResourceTencentCloudBiDatasourceCloud() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Extended parameters。",
+				Description: "Extended 参数。",
 			},
 
 			"data_origin": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Third-party datasource identification，this parameter can be ignored。",
+				Description: "Third-party datasource identification，此 参数 可以 是 ignored。",
 			},
 
 			"data_origin_project_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Third-party datasource 项目 ID，this parameter can be ignored。",
+				Description: "Third-party datasource 项目 ID，此 参数 可以 是 ignored。",
 			},
 
 			"data_origin_datasource_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Third-party datasource 项目 ID，this parameter can be ignored。",
+				Description: "Third-party datasource 项目 ID，此 参数 可以 是 ignored。",
 			},
 
 			"cluster_id": {

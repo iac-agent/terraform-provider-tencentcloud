@@ -37,29 +37,29 @@ func ResourceTencentCloudRedisParamTemplate() *schema.Resource {
 				Type:          schema.TypeInt,
 				Optional:      true,
 				ConflictsWith: []string{"template_id"},
-				Description:   "指定product 类型 有效值：1 (Redis 2.8 Memory Edition in cluster architecture)，2 (Redis 2.8 Memory Edition in standard architecture)，3 (CKV 3.2 Memory Edition in standard architecture)，4 (CKV 3.2 Memory Edition in cluster architecture)，5 (Redis 2.8 Memory Edition in standalone architecture)，6 (Redis 4.0 Memory Edition in standard architecture)，7 (Redis 4.0 Memory Edition in cluster architecture)，8 (Redis 5.0 Memory Edition in standard architecture)，9 (Redis 5.0 Memory Edition in cluster architecture). If `template_id` is specified，this parameter can be left blank; otherwise，it 为必填项。",
+				Description:   "指定product 类型 有效值：1 (Redis 2.8 Memory Edition 在 集群 architecture)，2 (Redis 2.8 Memory Edition 在 standard architecture)，3 (CKV 3.2 Memory Edition 在 standard architecture)，4 (CKV 3.2 Memory Edition 在 集群 architecture)，5 (Redis 2.8 Memory Edition 在 standalone architecture)，6 (Redis 4.0 Memory Edition 在 standard architecture)，7 (Redis 4.0 Memory Edition 在 集群 architecture)，8 (Redis 5.0 Memory Edition 在 standard architecture)，9 (Redis 5.0 Memory Edition 在 集群 architecture). 如果 `template_id` 是 指定，此 参数 可以 是 left blank; otherwise，它 为必填项。",
 			},
 			"template_id": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"product_type"},
-				Description:   "指定which existed template import from。",
+				Description:   "指定which existed template import 从。",
 			},
 			"params_override": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "指定override parameter list，NOTE: Do not remove override params once set，removing will not take effects to 当前值",
+				Description: "指定override 参数 列表，NOTE: Do 不 remove override params once 集合，removing 将 不 take effects 到 当前值",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Parameter 键 e.g. `timeout`，check https://www.tencentcloud.com/document/product/239/39796 for more reference。",
+							Description: "Parameter 键 e.g. `超时`，check https://www.tencentcloud.com/document/product/239/39796 对于 more reference。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Parameter 值，check https://www.tencentcloud.com/document/product/239/39796 for more reference。",
+							Description: "Parameter 值，check https://www.tencentcloud.com/document/product/239/39796 对于 more reference。",
 						},
 					},
 				},
@@ -67,7 +67,7 @@ func ResourceTencentCloudRedisParamTemplate() *schema.Resource {
 			"param_details": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Readonly full parameter list details。",
+				Description: "Readonly full 参数 列表 details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -98,7 +98,7 @@ func ResourceTencentCloudRedisParamTemplate() *schema.Resource {
 						"need_reboot": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "表示是否reboot redis instance if modified。",
+							Description: "表示是否reboot redis 实例 如果 modified。",
 						},
 						"max": {
 							Type:        schema.TypeString,
@@ -113,7 +113,7 @@ func ResourceTencentCloudRedisParamTemplate() *schema.Resource {
 						"enum_value": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Enum values。",
+							Description: "Enum 值。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 					},

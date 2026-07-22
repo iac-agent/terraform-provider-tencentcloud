@@ -19,7 +19,7 @@ func DataSourceTencentCloudSesEmailIdentities() *schema.Resource {
 			"email_identities": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Sending 域名 名称 list。",
+				Description: "Sending 域名 名称 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"identity_name": {
@@ -30,12 +30,12 @@ func DataSourceTencentCloudSesEmailIdentities() *schema.Resource {
 						"identity_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Authentication 类型，fixed as DOMAIN。",
+							Description: "Authentication 类型，fixed 作为 DOMAIN。",
 						},
 						"sending_enabled": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Is it verified。",
+							Description: "Is 它 verified。",
 						},
 						"current_reputation_level": {
 							Type:        schema.TypeInt,
@@ -45,7 +45,7 @@ func DataSourceTencentCloudSesEmailIdentities() *schema.Resource {
 						"daily_quota": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Highest 数量 letters of the day。",
+							Description: "Highest 数量 letters 的 day。",
 						},
 					},
 				},
@@ -60,7 +60,7 @@ func DataSourceTencentCloudSesEmailIdentities() *schema.Resource {
 			"max_daily_quota": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Maximum daily sending volume for a single 域名 名称",
+				Description: "Maximum daily sending 卷 对于 单个 域名 名称",
 			},
 
 			"result_output_file": {

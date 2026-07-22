@@ -35,19 +35,19 @@ func ResourceTencentCloudScfFunctionEventInvokeConfig() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeString,
 				Default:     "default",
-				Description: "Function namespace. 默认值：default。",
+				Description: "Function 命名空间. 默认值：默认值。",
 			},
 			"async_trigger_config": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Async retry configuration information。",
+				Description: "Async retry 配置 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"retry_config": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Async retry configuration of function upon 用户 错误",
+							Description: "Async retry 配置 的 函数 upon 用户 错误",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"retry_num": {

@@ -35,19 +35,19 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 			"task_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The 名称 real-time log delivery task. The 格式 is a combination of numbers，English，-，and _. The maximum length is 200 characters。",
+				Description: "名称 real-时间 日志 delivery 任务. 格式 是 combination 的 numbers，English，-，和 _. 最大 长度 是 200 字符。",
 			},
 
 			"task_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The real-time log delivery task 类型 The possible values are: `cls`: push to Tencent Cloud CLS; `custom_endpoint`: push to a custom HTTP(S) 地址; `s3`: push to an AWS S3 compatible storage 存储桶 地址",
+				Description: "real-时间 日志 delivery 任务 类型 possible 值 是: `cls`: push 到 Tencent Cloud CLS; `custom_endpoint`: push 到 自定义 HTTP(S) 地址; `s3`: push 到 AWS S3 compatible 存储 存储桶 地址",
 			},
 
 			"entity_list": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "列表 entities (seven-layer 域名 names or four-layer proxy instances) corresponding to real-time log delivery tasks. Example values are as follows: Seven-layer 域名 名称: `域名example.com`; four-layer proxy instance: sid-2s69eb5wcms7. For values，refer to: `https://cloud.tencent.com/document/api/1552/80690`，`https://cloud.tencent.com/document/api/1552/86336`。",
+				Description: "列表 entities (seven-layer 域名 names 或 four-layer proxy 实例) corresponding 到 real-时间 日志 delivery tasks. Example 值 是 作为 follows: Seven-layer 域名 名称: `域名example.com`; four-layer proxy 实例: sid-2s69eb5wcms7. For 值，refer 到: `https://云.tencent.com/document/api/1552/80690`，`https://云.tencent.com/document/api/1552/86336`。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -56,19 +56,19 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 			"log_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Data delivery 类型，the values are: `域名`: site acceleration log; `application`: four-layer proxy log; `web-rateLiming`: rate 限制 and CC attack protection log; `web-attack`: managed rule log; `web-rule`: custom rule log; `web-bot`: Bot management log。",
+				Description: "Data delivery 类型， 值 是: `域名`: site acceleration 日志; `应用`: four-layer proxy 日志; `web-rateLiming`: 速率 限制 和 CC attack protection 日志; `web-attack`: managed 规则 日志; `web-规则`: 自定义 规则 日志; `web-bot`: Bot management 日志。",
 			},
 
 			"area": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Data delivery area，possible values are: `mainland`: within mainland China; `overseas`: worldwide (excluding mainland China)。",
+				Description: "Data delivery area，possible 值 是: `mainland`: within mainland China; `overseas`: worldwide (excluding mainland China)。",
 			},
 
 			"fields": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "A 列表 preset fields for delivery。",
+				Description: "A 列表 preset 字段 对于 delivery。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -78,23 +78,23 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "The 列表 custom fields delivered supports extracting specified field values from HTTP request headers，response headers，and cookies. Custom field names cannot be repeated and cannot exceed 200 fields。",
+				Description: "列表 自定义 字段 delivered 支持 extracting 指定 字段 值 从 HTTP 请求 headers，response headers，和 cookies. Custom 字段 names 不能 是 repeated 和 不能 exceed 200 字段。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Extract data from the specified location in the HTTP request and response. The values are: `ReqHeader`: extract the specified field 值 from the HTTP request header; `RspHeader`: extract the specified field 值 from the HTTP response header; `Cookie`: extract the specified field 值 from the Cookie。",
+							Description: "Extract 数据 从 指定 location 在 HTTP 请求 和 response. 值 是: `ReqHeader`: extract 指定 字段 值 从 HTTP 请求 头部; `RspHeader`: extract 指定 字段 值 从 HTTP response 头部; `Cookie`: extract 指定 字段 值 从 Cookie。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The 名称 parameter whose 值 needs to be extracted，for example: Accept-语言",
+							Description: "名称 参数 whose 值 needs 到 是 extracted，对于 示例: Accept-语言",
 						},
 						"enabled": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "是否deliver this field. If left blank，this field will not be delivered。",
+							Description: "是否deliver 此 字段. 如果 left blank，此 字段 将 不 是 delivered。",
 						},
 					},
 				},
@@ -104,29 +104,29 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "The filter condition for log delivery. If it is not filled，all logs will be delivered。",
+				Description: "过滤器 condition 对于 日志 delivery. 如果 它 是 不 filled，all logs 将 是 delivered。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"conditions": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Log filtering conditions，the detailed filtering conditions are as follows: - `EdgeResponseStatusCode`: filter according to the 状态 代码 returned by the EdgeOne node to the client. Supported operators: `equal`，`great`，`less`，`great_equal`，`less_equal`; 取值范围：any integer greater than or equal to 0; - `OriginResponseStatusCode`: filter according to the origin response 状态 代码 Supported operators: `equal`，`great`，`less`，`great_equal`，`less_equal`; 取值范围：any integer greater than or equal to -1; - `SecurityAction`: filter according to the final disposal 操作 after the request hits the security rule. Supported operators: `equal`; 可选 options are as follows: `-`: unknown/miss; `Monitor`: observe; `JSChallenge`: JavaScript challenge; `Deny`: intercept; `Allow`: allow; `BlockIP`: IP ban; `Redirect`: redirect; `ReturnCustomPage`: return to a custom page; `ManagedChallenge`: managed challenge; `Silence`: silent; `LongDelay`: respond after a long wait; `ShortDelay`: respond after a short wait; -`SecurityModule`: filter according to the 名称 security 模块 that finally handles the request. Supported operators: `equal`; 可选 options: `-`: unknown/missed; `CustomRule`: Web Protection - Custom Rules; `RateLimitingCustomRule`: Web Protection - Rate Limiting Rules; `ManagedRule`: Web Protection - Managed Rules; `L7DDoS`: Web Protection - CC Attack Protection; `BotManagement`: Bot Management - Bot Basic Management; `BotClientReputation`: Bot Management - Client Profile Analysis; `BotBehaviorAnalysis`: Bot Management - Bot Intelligent Analysis; `BotCustomRule`: Bot Management - Custom Bot Rules; `BotActiveDetection`: Bot Management - 活跃 Feature Recognition。",
+							Description: "Log filtering conditions， detailed filtering conditions 是 作为 follows: - `EdgeResponseStatusCode`: 过滤器 according 到 状态 代码 返回 通过 EdgeOne 节点 到 客户端. Supported operators: `equal`，`great`，`less`，`great_equal`，`less_equal`; 取值范围：any 整数 greater 比 或 equal 到 0; - `OriginResponseStatusCode`: 过滤器 according 到 源站 response 状态 代码 Supported operators: `equal`，`great`，`less`，`great_equal`，`less_equal`; 取值范围：any 整数 greater 比 或 equal 到 -1; - `SecurityAction`: 过滤器 according 到 final disposal 操作 after 请求 hits 安全 规则. Supported operators: `equal`; 可选 options 是 作为 follows: `-`: unknown/miss; `Monitor`: observe; `JSChallenge`: JavaScript challenge; `Deny`: intercept; `Allow`: allow; `BlockIP`: IP ban; `Redirect`: redirect; `ReturnCustomPage`: 返回 到 自定义 页面; `ManagedChallenge`: managed challenge; `Silence`: silent; `LongDelay`: respond after long wait; `ShortDelay`: respond after short wait; -`SecurityModule`: 过滤器 according 到 名称 安全 模块 该 finally handles 请求. Supported operators: `equal`; 可选 options: `-`: unknown/missed; `CustomRule`: Web Protection - Custom Rules; `RateLimitingCustomRule`: Web Protection - Rate Limiting Rules; `ManagedRule`: Web Protection - Managed Rules; `L7DDoS`: Web Protection - CC Attack Protection; `BotManagement`: Bot Management - Bot Basic Management; `BotClientReputation`: Bot Management - Client Profile Analysis; `BotBehaviorAnalysis`: Bot Management - Bot Intelligent Analysis; `BotCustomRule`: Bot Management - Custom Bot Rules; `BotActiveDetection`: Bot Management - 活跃 Feature Recognition。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The 键 of the filter condition。",
+										Description: "键 的 过滤器 condition。",
 									},
 									"operator": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Query condition 操作者，operation types are: `equals`: equal; `notEquals`: not equal; `include`: include; `notInclude`: not include; `startWith`: start with 值; `notStartWith`: not start with 值; `endWith`: end with 值; `notEndWith`: not end with 值",
+										Description: "Query condition 操作者，operation types 是: `equals`: equal; `notEquals`: 不 equal; `include`: include; `notInclude`: 不 include; `startWith`: start 使用 值; `notStartWith`: 不 start 使用 值; `endWith`: end 使用 值; `notEndWith`: 不 end 使用 值",
 									},
 									"value": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "The 值 of the filter condition。",
+										Description: "值 的 过滤器 condition。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -141,7 +141,7 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 			"sample": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "The sampling ratio is in thousandths，with a 值 range of 1-1000. For example，filling in 605 means the sampling ratio is 60.5%. Leaving it blank means the sampling ratio is 100%。",
+				Description: "sampling ratio 是 在 thousandths，使用 值 范围 的 1-1000. For 示例，filling 在 605 表示 sampling ratio 是 60.5%. Leaving 它 blank 表示 sampling ratio 是 100%。",
 			},
 
 			"log_format": {
@@ -149,43 +149,43 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "The output 格式 of log delivery. If it is not filled，it means the default 格式 The default 格式 logic is as follows: when TaskType is `custom_endpoint`，the default 格式 is an 数组 multiple JSON objects，each JSON object is a log; when TaskType is `s3`，the default 格式 is JSON Lines; in particular，when TaskType is `cls`，the 值 of LogFormat.FormatType can only be json，and other parameters in LogFormat will be ignored. It is recommended not to pass LogFormat。",
+				Description: "output 格式 的 日志 delivery. 如果 它 是 不 filled，它 表示 默认值 格式 默认值 格式 logic 是 作为 follows: 当 TaskType 是 `custom_endpoint`， 默认值 格式 是 数组 多个 JSON objects，each JSON 对象 是 日志; 当 TaskType 是 `s3`， 默认值 格式 是 JSON Lines; 在 particular，当 TaskType 是 `cls`， 值 的 LogFormat.FormatType 可以 仅 是 json，和 other 参数 在 LogFormat 将 是 ignored. It 是 recommended 不 到 pass LogFormat。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"format_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The default output 格式 类型 for log delivery. The possible values are: `json`: Use the default log output 格式 JSON Lines. The fields in a single log are presented as 键-值 pairs; `csv`: Use the default log output 格式 csv. Only field values are presented in a single log，without field names。",
+							Description: "默认值 output 格式 类型 对于 日志 delivery. possible 值 是: `json`: Use 默认值 日志 output 格式 JSON Lines. 字段 在 单个 日志 是 presented 作为 键-值 pairs; `csv`: Use 默认值 日志 output 格式 csv. Only 字段 值 是 presented 在 单个 日志，without 字段 names。",
 						},
 						"batch_prefix": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "A string to be added before each log delivery batch. Each log delivery batch may contain multiple log records。",
+							Description: "A 字符串 到 是 added before each 日志 delivery batch. Each 日志 delivery batch 可能 contain 多个 日志 records。",
 						},
 						"batch_suffix": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "A string to append after each log delivery batch。",
+							Description: "A 字符串 到 append after each 日志 delivery batch。",
 						},
 						"record_prefix": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "A string to prepend to each log record。",
+							Description: "A 字符串 到 prepend 到 each 日志 记录。",
 						},
 						"record_suffix": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "A string to append to each log record。",
+							Description: "A 字符串 到 append 到 each 日志 记录。",
 						},
 						"record_delimiter": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The string inserted between log records as a separator. The possible values are: `\n`: newline character; `\t`: tab character; `,`: comma。",
+							Description: "字符串 inserted between 日志 records 作为 separator. possible 值 是: `\n`: newline character; `\t`: tab character; `,`: comma。",
 						},
 						"field_delimiter": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "In a single log record，a string is inserted between fields as a separator. The possible values are: `\t`: tab character; `,`: comma; `;`: semicolon。",
+							Description: "In 单个 日志 记录， 字符串 是 inserted between 字段 作为 separator. possible 值 是: `\t`: tab character; `,`: comma; `;`: semicolon。",
 						},
 					},
 				},
@@ -196,13 +196,13 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "CLS configuration information. This parameter 为必填项 when TaskType is cls。",
+				Description: "CLS 配置 信息. 此 参数 为必填项 当 TaskType 是 cls。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"log_set_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tencent Cloud CLS log set ID。",
+							Description: "Tencent Cloud CLS 日志 集合 ID。",
 						},
 						"topic_id": {
 							Type:        schema.TypeString,
@@ -212,7 +212,7 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 						"log_set_region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The 地域 where the Tencent Cloud CLS log set is located。",
+							Description: "地域 其中 Tencent Cloud CLS 日志 集合 是 located。",
 						},
 					},
 				},
@@ -223,49 +223,49 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Customize the configuration information of the HTTP service. This parameter 为必填项 when TaskType is set to custom_endpoint。",
+				Description: "Customize 配置 信息 的 HTTP 服务. 此 参数 为必填项 当 TaskType 是 集合 到 custom_endpoint。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"url": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The custom HTTP interface 地址 for real-time log delivery. Currently，only HTTP/HTTPS protocols are supported。",
+							Description: "自定义 HTTP interface 地址 对于 real-时间 日志 delivery. Currently，仅 HTTP/HTTPS protocols 是 支持。",
 						},
 						"access_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Fill in a custom SecretId to generate an encrypted 签名 This parameter 为必填项 if the 来源 site requires authentication。",
+							Description: "Fill 在 自定义 SecretId 到 generate encrypted 签名 此 参数 为必填项 如果 来源 site requires authentication。",
 						},
 						"access_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Fill in the custom SecretKey to generate the encrypted 签名 This parameter 为必填项 if the 来源 site requires authentication。",
+							Description: "Fill 在 自定义 SecretKey 到 generate encrypted 签名 此 参数 为必填项 如果 来源 site requires authentication。",
 						},
 						"compress_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Data compression 类型，the possible values are: `gzip`: use gzip compression. If it is not filled in，compression is not 已启用",
+							Description: "Data 压缩 类型， possible 值 是: `gzip`: 使用 gzip 压缩. 如果 它 是 不 filled 在，压缩 是 不 已启用",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "When sending logs via POST request，the application layer 协议 类型 used can be: `http`: HTTP 协议; `https`: HTTPS 协议 如果未填写 in，the 协议 类型 will be parsed according to the filled in URL 地址",
+							Description: "当 sending logs via POST 请求， 应用 layer 协议 类型 使用 可以 是: `http`: HTTP 协议; `https`: HTTPS 协议 如果未填写 在， 协议 类型 将 是 parsed according 到 filled 在 URL 地址",
 						},
 						"headers": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "The custom request header carried when delivering logs. If the header 名称 you fill in is the default header carried by EdgeOne log push，such as 内容-类型，then the header 值 you fill in will overwrite the 默认值 The header 值 references a single variable ${batchSize} to obtain the 数量 logs included in each POST request。",
+							Description: "自定义 请求 头部 carried 当 delivering logs. 如果 头部 名称 您 fill 在 是 默认值 头部 carried 通过 EdgeOne 日志 push，such 作为 内容-类型，then 头部 值 您 fill 在 将 overwrite 默认值 头部 值 references 单个 variable ${batchSize} 到 obtain 数量 logs included 在 each POST 请求。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "HTTP header 名称",
+										Description: "HTTP 头部 名称",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "HTTP header 值",
+										Description: "HTTP 头部 值",
 									},
 								},
 							},
@@ -279,39 +279,39 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Configuration information of AWS S3 compatible storage 存储桶 This parameter 为必填项 when TaskType is s3。",
+				Description: "Configuration 信息 的 AWS S3 compatible 存储 存储桶 此 参数 为必填项 当 TaskType 是 s3。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"endpoint": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "URLs that do not include 存储桶 names or paths，for example: `https://storage.googleapis.com`，`https://s3.ap-northeast-2.amazonaws.com`，`https://cos.ap-nanjing.myqcloud.com`。",
+							Description: "URLs 该 do 不 include 存储桶 names 或 paths，对于 示例: `https://存储.googleapis.com`，`https://s3.ap-northeast-2.amazonaws.com`，`https://cos.ap-nanjing.myqcloud.com`。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The 地域 where the 存储桶 is located，for example: ap-northeast-2。",
+							Description: "地域 其中 存储桶 是 located，对于 示例: ap-northeast-2。",
 						},
 						"bucket": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "存储桶名称 and log storage directory，for example: `your_bucket_name/EO-logs/`. If this directory does not exist in the 存储桶，it will be created automatically。",
+							Description: "存储桶名称 和 日志 存储 directory，对于 示例: `your_bucket_name/EO-logs/`. 如果 此 directory does 不 exist 在 存储桶，它 将 是 创建 automatically。",
 						},
 						"access_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The Access 键 ID 用于access the 存储桶",
+							Description: "Access 键 ID 用于access 存储桶",
 						},
 						"access_key": {
 							Type:        schema.TypeString,
 							Required:    true,
 							Sensitive:   true,
-							Description: "The secret 键 用于access the 存储桶",
+							Description: "secret 键 用于access 存储桶",
 						},
 						"compress_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Data compression 类型，the values are: gzip: gzip compression. If it is not filled in，compression is not 已启用",
+							Description: "Data 压缩 类型， 值 是: gzip: gzip 压缩. 如果 它 是 不 filled 在，压缩 是 不 已启用",
 						},
 					},
 				},
@@ -321,13 +321,13 @@ func ResourceTencentCloudTeoRealtimeLogDelivery() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The 状态 real-time log delivery task. The values are: `已启用`: 已启用; `已禁用`: 已禁用 Leave it blank to keep the original configuration. Not 必填 when creating。",
+				Description: "状态 real-时间 日志 delivery 任务. 值 是: `已启用`: 已启用; `已禁用`: 已禁用 Leave 它 blank 到 keep original 配置. Not 必填 当 creating。",
 			},
 
 			"task_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Real-time log delivery task ID。",
+				Description: "Real-时间 日志 delivery 任务 ID。",
 			},
 		},
 	}

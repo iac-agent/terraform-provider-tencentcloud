@@ -25,7 +25,7 @@ func DataSourceTencentCloudElasticsearchLogstashInstanceLogs() *schema.Resource 
 			"log_type": {
 				Required: true,
 				Type:     schema.TypeInt,
-				Description: "Log type. Default 1, Valid values:\n" +
+				Description: "Log 类型. Default 1, 有效 值:\n" +
 					" - 1: Main Log\n" +
 					" - 2: Slow log\n" +
 					" - 3: GC Log.",
@@ -34,37 +34,37 @@ func DataSourceTencentCloudElasticsearchLogstashInstanceLogs() *schema.Resource 
 			"search_key": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Search terms，support LUCENE syntax，such as 级别:WARN，ip:1.1.1.1，消息:test-索引，etc。",
+				Description: "Search terms，support LUCENE syntax，such 作为 级别:WARN，ip:1.1.1.1，消息:测试-索引，etc。",
 			},
 
 			"start_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Log 开始时间，in YYYY-MM-DD HH:MM:SS 格式，such as 2019-01-22 20:15:53。",
+				Description: "Log 开始时间，在 YYYY-MM-DD HH:MM:SS 格式，such 作为 2019-01-22 20:15:53。",
 			},
 
 			"end_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Log 结束时间，in YYYY-MM-DD HH:MM:SS 格式，such as 2019-01-22 20:15:53。",
+				Description: "Log 结束时间，在 YYYY-MM-DD HH:MM:SS 格式，such 作为 2019-01-22 20:15:53。",
 			},
 
 			"order_by_type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Time sort method. 默认为 0. 0: descending; 1: 升序",
+				Description: "Time sort 方法. 默认为 0. 0: descending; 1: 升序",
 			},
 
 			"instance_log_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "列表 log details。",
+				Description: "列表 日志 details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Log time。",
+							Description: "Log 时间。",
 						},
 						"level": {
 							Type:        schema.TypeString,
@@ -74,7 +74,7 @@ func DataSourceTencentCloudElasticsearchLogstashInstanceLogs() *schema.Resource 
 						"ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster node ip。",
+							Description: "Cluster 节点 ip。",
 						},
 						"message": {
 							Type:        schema.TypeString,
@@ -84,7 +84,7 @@ func DataSourceTencentCloudElasticsearchLogstashInstanceLogs() *schema.Resource 
 						"node_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster node id。",
+							Description: "Cluster 节点 ID。",
 						},
 					},
 				},

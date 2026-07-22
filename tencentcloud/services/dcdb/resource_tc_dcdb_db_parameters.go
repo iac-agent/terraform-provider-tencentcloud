@@ -28,25 +28,25 @@ func ResourceTencentCloudDcdbDbParameters() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID instance。",
+				Description: "ID 实例。",
 			},
 
 			"params": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Parameter list，each element is a combination of Param and 值",
+				Description: "Parameter 列表，each element 是 combination 的 Param 和 值",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"param": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "名称 parameter。",
+							Description: "名称 参数。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The 值 of parameter。",
+							Description: "值 的 参数。",
 						},
 					},
 				},

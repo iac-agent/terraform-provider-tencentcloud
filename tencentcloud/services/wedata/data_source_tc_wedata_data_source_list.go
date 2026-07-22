@@ -31,7 +31,7 @@ func DataSourceTencentCloudWedataDataSourceList() *schema.Resource {
 						"direction": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "OrderFields rule。",
+							Description: "OrderFields 规则。",
 						},
 					},
 				},
@@ -80,7 +80,7 @@ func DataSourceTencentCloudWedataDataSourceList() *schema.Resource {
 						"instance": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance。",
+							Description: "实例。",
 						},
 						"name": {
 							Type:        schema.TypeString,
@@ -90,7 +90,7 @@ func DataSourceTencentCloudWedataDataSourceList() *schema.Resource {
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Datasource engin cluster 地域",
+							Description: "Datasource engin 集群 地域",
 						},
 						"type": {
 							Type:        schema.TypeString,
@@ -175,7 +175,7 @@ func DataSourceTencentCloudWedataDataSourceList() *schema.Resource {
 						"edit": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Datasource can Edit。",
+							Description: "Datasource 可以 Edit。",
 						},
 						"author": {
 							Type:        schema.TypeBool,
@@ -200,12 +200,12 @@ func DataSourceTencentCloudWedataDataSourceList() *schema.Resource {
 						"params_string": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Params json string。",
+							Description: "Params json 字符串。",
 						},
 						"biz_params_string": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Biz params json string。",
+							Description: "Biz params json 字符串。",
 						},
 						"modified_time": {
 							Type:        schema.TypeInt,

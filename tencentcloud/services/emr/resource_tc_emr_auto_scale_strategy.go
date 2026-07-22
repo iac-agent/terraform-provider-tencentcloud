@@ -27,13 +27,13 @@ func ResourceTencentCloudEmrAutoScaleStrategy() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 
 			"strategy_type": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "1 means expansion and contraction according to load rules, 2 means expansion and contraction according to time rules. Must be filled in and match the following rule policy.",
+				Description: "1 表示 expansion 和 contraction according 到 load 规则, 2 表示 expansion 和 contraction according 到 时间 规则. Must 是 filled 在 和 match following 规则 策略.",
 			},
 
 			"load_auto_scale_strategy": {
@@ -41,7 +41,7 @@ func ResourceTencentCloudEmrAutoScaleStrategy() *schema.Resource {
 				ConflictsWith: []string{"time_auto_scale_strategy"},
 				Optional:      true,
 				Computed:      true,
-				Description:   "Expansion rules based on load.",
+				Description:   "Expansion 规则 based 在 load.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"strategy_id": {
@@ -53,47 +53,47 @@ func ResourceTencentCloudEmrAutoScaleStrategy() *schema.Resource {
 						"strategy_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Rule name.",
+							Description: "Rule 名称.",
 						},
 						"calm_down_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Cooling time for rules to take effect.",
+							Description: "Cooling 时间 对于 规则 到 take effect.",
 						},
 						"scale_action": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Expansion and contraction actions, 1 means expansion, 2 means shrinkage.",
+							Description: "Expansion 和 contraction actions, 1 表示 expansion, 2 表示 shrinkage.",
 						},
 						"scale_num": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The amount of expansion and contraction each time the rule takes effect.",
+							Description: "amount 的 expansion 和 contraction each 时间 规则 takes effect.",
 						},
 						"process_method": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Indicator processing method, 1 represents MAX, 2 represents MIN, and 3 represents AVG.",
+							Description: "Indicator processing 方法, 1 表示 MAX, 2 表示 MIN, 和 3 表示 AVG.",
 						},
 						"priority": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Rule priority, invalid when added, defaults to auto-increment.",
+							Description: "Rule 优先级, 无效 当 added, defaults 到 auto-increment.",
 						},
 						"strategy_status": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Rule status, 1 means enabled, 3 means disabled.",
+							Description: "Rule 状态, 1 表示 已启用, 3 表示 已禁用.",
 						},
 						"yarn_node_label": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Rule expansion specifies yarn node label.",
+							Description: "Rule expansion specifies yarn 节点 label.",
 						},
 						"period_valid": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Effective time for the rule to take effect.",
+							Description: "Effective 时间 对于 规则 到 take effect.",
 						},
 						"grace_down_flag": {
 							Type:        schema.TypeBool,
@@ -103,23 +103,23 @@ func ResourceTencentCloudEmrAutoScaleStrategy() *schema.Resource {
 						"grace_down_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Graceful downsizing waiting time.",
+							Description: "Graceful downsizing waiting 时间.",
 						},
 						"tags": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Binding tag list.",
+							Description: "Binding 标签 列表.",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "tag key.",
+										Description: "标签 键.",
 									},
 									"tag_value": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "tag value.",
+										Description: "标签 值.",
 									},
 								},
 							},
@@ -127,45 +127,45 @@ func ResourceTencentCloudEmrAutoScaleStrategy() *schema.Resource {
 						"config_group_assigned": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Default configuration group.",
+							Description: "Default 配置 组.",
 						},
 						"measure_method": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Expansion resource calculation methods, \"DEFAULT\", \"INSTANCE\", \"CPU\", \"MEMORYGB\".\r\n\"DEFAULT\" means the default mode, which has the same meaning as \"INSTANCE\".\r\n\"INSTANCE\" means calculation based on nodes, the default method.\r\n\"CPU\" means calculated based on the number of cores of the machine.\r\n\"MEMORYGB\" means calculated based on the number of machine memory.",
+							Description: "Expansion 资源 calculation methods, \"DEFAULT\", \"INSTANCE\", \"CPU\", \"MEMORYGB\".\r\n\"DEFAULT\" 表示 默认值 模式, 其中 has same meaning 作为 \"INSTANCE\".\r\n\"INSTANCE\" 表示 calculation based 在 nodes, 默认值 方法.\r\n\"CPU\" 表示 calculated based 在 数量 的 cores 的 machine.\r\n\"MEMORYGB\" 表示 calculated based 在 数量 的 machine 内存.",
 						},
 						"load_metrics_conditions": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Multiple indicator trigger conditions.",
+							Description: "Multiple indicator 触发器 conditions.",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"load_metrics": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Trigger rule conditions.",
+										Description: "Trigger 规则 conditions.",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"statistic_period": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "The regular statistical period provides 1min, 3min, and 5min.",
+													Description: "regular statistical 周期 provides 1min, 3min, 和 5min.",
 												},
 												"trigger_threshold": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "The number of triggers. When the number of consecutive triggers exceeds TriggerThreshold, the expansion and contraction will begin.",
+													Description: "数量 的 triggers. 当 数量 的 consecutive triggers exceeds TriggerThreshold, expansion 和 contraction 将 begin.",
 												},
 												"load_metrics": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Expansion and contraction load indicators.",
+													Description: "Expansion 和 contraction load indicators.",
 												},
 												"metric_id": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Rule metadata record ID.",
+													Description: "Rule metadata 记录 ID.",
 												},
 												"conditions": {
 													Type:        schema.TypeList,
@@ -176,12 +176,12 @@ func ResourceTencentCloudEmrAutoScaleStrategy() *schema.Resource {
 															"compare_method": {
 																Type:        schema.TypeInt,
 																Required:    true,
-																Description: "Conditional comparison method, 1 means greater than, 2 means less than, 3 means greater than or equal to, 4 means less than or equal to.",
+																Description: "Conditional comparison 方法, 1 表示 greater 比, 2 表示 less 比, 3 表示 greater 比 或 equal 到, 4 表示 less 比 或 equal 到.",
 															},
 															"threshold": {
 																Type:        schema.TypeFloat,
 																Optional:    true,
-																Description: "Conditional threshold.",
+																Description: "Conditional 阈值.",
 															},
 														},
 													},
@@ -200,67 +200,67 @@ func ResourceTencentCloudEmrAutoScaleStrategy() *schema.Resource {
 				Type:          schema.TypeList,
 				ConflictsWith: []string{"load_auto_scale_strategy"},
 				Optional:      true,
-				Description:   "Rules for scaling up and down over time.",
+				Description:   "Rules 对于 scaling up 和 down over 时间.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"strategy_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Policy name, unique within the cluster.",
+							Description: "Policy 名称, 唯一 within 集群.",
 						},
 						"interval_time": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The cooling time after the policy is triggered. During this period, elastic expansion and contraction will not be triggered.",
+							Description: "cooling 时间 after 策略 是 triggered. During 此 周期, elastic expansion 和 contraction 将 不 是 triggered.",
 						},
 						"scale_action": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Expansion and contraction actions, 1 means expansion, 2 means shrinkage.",
+							Description: "Expansion 和 contraction actions, 1 表示 expansion, 2 表示 shrinkage.",
 						},
 						"scale_num": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The number of expansions and contractions.",
+							Description: "数量 的 expansions 和 contractions.",
 						},
 						"strategy_status": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Rule status, 1 means valid, 2 means invalid, and 3 means suspended. Required.",
+							Description: "Rule 状态, 1 表示 有效, 2 表示 无效, 和 3 表示 suspended. Required.",
 						},
 						"priority": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Rule priority, the smaller it is, the higher it is.",
+							Description: "Rule 优先级, smaller 它 是, higher 它 是.",
 						},
 						"retry_valid_time": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "When multiple rules are triggered at the same time and some of them are not actually executed, retries will be made within this time range.",
+							Description: "当 多个 规则 是 triggered 在 same 时间 和 some 的 them 是 不 actually executed, retries 将 是 made within 此 时间 范围.",
 						},
 						"repeat_strategy": {
 							Type:        schema.TypeList,
 							Required:    true,
 							MaxItems:    1,
-							Description: "Time expansion and contraction repetition strategy.",
+							Description: "Time expansion 和 contraction repetition strategy.",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"repeat_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The value range is \"DAY\", \"DOW\", \"DOM\", and \"NONE\", which respectively represent daily repetition, weekly repetition, monthly repetition and one-time execution. Required.",
+										Description: "值 范围 是 \"DAY\", \"DOW\", \"DOM\", 和 \"NONE\", 其中 respectively represent daily repetition, weekly repetition, monthly repetition 和 一个-时间 execution. Required.",
 									},
 									"day_repeat": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Repeat rules by day, valid when RepeatType is \"DAY\".",
+										Description: "Repeat 规则 通过 day, 有效 当 RepeatType 是 \"DAY\".",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"execute_at_time_of_day": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Repeat the specific time when the task is executed, such as \"01:02:00\".",
+													Description: "Repeat 特定 时间 当 任务 是 executed, such 作为 \"01:02:00\".",
 												},
 												"step": {
 													Type:        schema.TypeInt,
@@ -274,18 +274,18 @@ func ResourceTencentCloudEmrAutoScaleStrategy() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Repeat rules by week, valid when RepeatType is \"DOW\".",
+										Description: "Repeat 规则 通过 week, 有效 当 RepeatType 是 \"DOW\".",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"execute_at_time_of_day": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Repeat the specific time when the task is executed, such as \"01:02:00\".",
+													Description: "Repeat 特定 时间 当 任务 是 executed, such 作为 \"01:02:00\".",
 												},
 												"days_of_week": {
 													Type:        schema.TypeSet,
 													Required:    true,
-													Description: "The numerical description of the days of the week, for example, [1,3,4] means Monday, Wednesday, and Thursday every week.",
+													Description: "numerical 描述 的 days 的 week, 对于 示例, [1,3,4] 表示 Monday, Wednesday, 和 Thursday every week.",
 													Elem: &schema.Schema{
 														Type: schema.TypeInt,
 													},
@@ -297,18 +297,18 @@ func ResourceTencentCloudEmrAutoScaleStrategy() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Repeat rules by month, valid when RepeatType is \"DOM\".",
+										Description: "Repeat 规则 通过 month, 有效 当 RepeatType 是 \"DOM\".",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"execute_at_time_of_day": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Repeat the specific time when the task is executed, such as \"01:02:00\".",
+													Description: "Repeat 特定 时间 当 任务 是 executed, such 作为 \"01:02:00\".",
 												},
 												"days_of_month_range": {
 													Type:        schema.TypeSet,
 													Required:    true,
-													Description: "The description of the day period in each month, the length can only be 2, for example, [2,10] means the 2-10th of each month.",
+													Description: "描述 的 day 周期 在 each month, 长度 可以 仅 是 2, 对于 示例, [2,10] 表示 2-10th 的 each month.",
 													Elem: &schema.Schema{
 														Type: schema.TypeInt,
 													},
@@ -320,13 +320,13 @@ func ResourceTencentCloudEmrAutoScaleStrategy() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Execute the rule once, effective when RepeatType is \"NONE\".",
+										Description: "Execute 规则 once, effective 当 RepeatType 是 \"NONE\".",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"execute_at": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The specific and complete time of the task execution, the format is \"2020-07-13 00:00:00\".",
+													Description: "特定 和 完整 时间 的 任务 execution, 格式 是 \"2020-07-13 00:00:00\".",
 												},
 											},
 										},
@@ -334,7 +334,7 @@ func ResourceTencentCloudEmrAutoScaleStrategy() *schema.Resource {
 									"expire": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Rule expiration time. After this time, the rule will automatically be placed in a suspended state, in the form of \"2020-07-23 00:00:00\". Required.",
+										Description: "Rule expiration 时间. After 此 时间, 规则 将 automatically 是 placed 在 suspended state, 在 form 的 \"2020-07-23 00:00:00\". Required.",
 									},
 								},
 							},
@@ -342,7 +342,7 @@ func ResourceTencentCloudEmrAutoScaleStrategy() *schema.Resource {
 						"strategy_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Policy unique ID.",
+							Description: "Policy 唯一 ID.",
 						},
 						"grace_down_flag": {
 							Type:        schema.TypeBool,
@@ -352,23 +352,23 @@ func ResourceTencentCloudEmrAutoScaleStrategy() *schema.Resource {
 						"grace_down_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Graceful downsizing waiting time.",
+							Description: "Graceful downsizing waiting 时间.",
 						},
 						"tags": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Binding tag list.",
+							Description: "Binding 标签 列表.",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "tag key.",
+										Description: "标签 键.",
 									},
 									"tag_value": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "tag value.",
+										Description: "标签 值.",
 									},
 								},
 							},
@@ -376,27 +376,27 @@ func ResourceTencentCloudEmrAutoScaleStrategy() *schema.Resource {
 						"config_group_assigned": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Default configuration group.",
+							Description: "Default 配置 组.",
 						},
 						"measure_method": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Expansion resource calculation methods, \"DEFAULT\", \"INSTANCE\", \"CPU\", \"MEMORYGB\".\r\n\"DEFAULT\" means the default mode, which has the same meaning as \"INSTANCE\".\r\n\"INSTANCE\" means calculation based on nodes, the default method.\r\n\"CPU\" means calculated based on the number of cores of the machine.\r\n\"MEMORYGB\" means calculated based on the number of machine memory.",
+							Description: "Expansion 资源 calculation methods, \"DEFAULT\", \"INSTANCE\", \"CPU\", \"MEMORYGB\".\r\n\"DEFAULT\" 表示 默认值 模式, 其中 has same meaning 作为 \"INSTANCE\".\r\n\"INSTANCE\" 表示 calculation based 在 nodes, 默认值 方法.\r\n\"CPU\" 表示 calculated based 在 数量 的 cores 的 machine.\r\n\"MEMORYGB\" 表示 calculated based 在 数量 的 machine 内存.",
 						},
 						"terminate_policy": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Destruction strategy, \"DEFAULT\", the default destruction strategy, shrinkage is triggered by shrinkage rules, \"TIMING\" means scheduled destruction.",
+							Description: "Destruction strategy, \"DEFAULT\", 默认值 destruction strategy, shrinkage 是 triggered 通过 shrinkage 规则, \"TIMING\" 表示 scheduled destruction.",
 						},
 						"max_use": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Maximum usage time, seconds, minimum 1 hour, maximum 24 hours.",
+							Description: "Maximum usage 时间, 秒, 最小 1 hour, 最大 24 hours.",
 						},
 						"soft_deploy_info": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Node deployment service list. Only fill in HDFS and YARN for deployment services. [Mapping relationship table corresponding to component names](https://cloud.tencent.com/document/product/589/98760).",
+							Description: "Node 部署 服务 列表. Only fill 在 HDFS 和 YARN 对于 部署 services. [Mapping relationship 表 corresponding 到 组件 names](https://云.tencent.com/document/product/589/98760).",
 							Elem: &schema.Schema{
 								Type: schema.TypeInt,
 							},
@@ -404,7 +404,7 @@ func ResourceTencentCloudEmrAutoScaleStrategy() *schema.Resource {
 						"service_node_info": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Start process list.",
+							Description: "Start process 列表.",
 							Elem: &schema.Schema{
 								Type: schema.TypeInt,
 							},
@@ -412,12 +412,12 @@ func ResourceTencentCloudEmrAutoScaleStrategy() *schema.Resource {
 						"compensate_flag": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Compensation expansion, 0 means not enabled, 1 means enabled.",
+							Description: "Compensation expansion, 0 表示 不 已启用, 1 表示 已启用.",
 						},
 						"group_id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "scaling group id.",
+							Description: "scaling 组 ID.",
 						},
 					},
 				},

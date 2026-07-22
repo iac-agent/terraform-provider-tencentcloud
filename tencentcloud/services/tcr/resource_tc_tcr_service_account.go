@@ -41,13 +41,13 @@ func ResourceTencentCloudTcrServiceAccount() *schema.Resource {
 			"permissions": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "strategy list。",
+				Description: "strategy 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "resource 路径，currently only supports Namespace. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "资源 路径，currently 仅 支持 Namespace. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"actions": {
 							Type: schema.TypeSet,
@@ -70,14 +70,14 @@ func ResourceTencentCloudTcrServiceAccount() *schema.Resource {
 			"duration": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "expiration date (unit: day)，calculated from the current time，优先级 is higher than ExpiresAt Service 账号 描述",
+				Description: "expiration date (单位: day)，calculated 从 当前 时间，优先级 是 higher 比 ExpiresAt Service 账号 描述",
 			},
 
 			"expires_at": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Service 账号 过期时间 (time stamp，unit: milliseconds)。",
+				Description: "Service 账号 过期时间 (时间 stamp，单位: milliseconds)。",
 			},
 
 			"disable": {
@@ -91,7 +91,7 @@ func ResourceTencentCloudTcrServiceAccount() *schema.Resource {
 				Computed:    true,
 				Sensitive:   true,
 				Type:        schema.TypeString,
-				Description: "密码 of the service 账号",
+				Description: "密码 的 服务 账号",
 			},
 
 			"tags": {

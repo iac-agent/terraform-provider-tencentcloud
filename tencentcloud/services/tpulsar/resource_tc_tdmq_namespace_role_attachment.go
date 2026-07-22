@@ -27,7 +27,7 @@ func ResourceTencentCloudTdmqNamespaceRoleAttachment() *schema.Resource {
 			"environ_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "名称 tdmq namespace。",
+				Description: "名称 tdmq 命名空间。",
 			},
 			"role_name": {
 				Type:        schema.TypeString,
@@ -38,18 +38,18 @@ func ResourceTencentCloudTdmqNamespaceRoleAttachment() *schema.Resource {
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Required:    true,
-				Description: "The permissions of tdmq 角色",
+				Description: "permissions 的 tdmq 角色",
 			},
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The ID tdmq cluster。",
+				Description: "ID tdmq 集群。",
 			},
 			//compute
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "创建时间 of resource。",
+				Description: "创建时间 的 资源。",
 			},
 		},
 	}

@@ -26,13 +26,13 @@ func ResourceTencentCloudRumInstanceStatusConfig() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 
 			"instance_status": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Instance status (`1`=creating, `2`=running, `3`=abnormal, `4`=restarting, `5`=stopping, `6`=stopped, `7`=deleted).",
+				Description: "实例 状态 (`1`=creating, `2`=running, `3`=abnormal, `4`=restarting, `5`=stopping, `6`=stopped, `7`=删除).",
 			},
 
 			"operate": {

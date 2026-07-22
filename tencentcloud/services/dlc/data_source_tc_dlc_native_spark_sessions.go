@@ -18,30 +18,30 @@ func DataSourceTencentCloudDlcNativeSparkSessions() *schema.Resource {
 			"data_engine_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Data engine id。",
+				Description: "Data 引擎 ID。",
 			},
 
 			"resource_group_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Resource group id。",
+				Description: "Resource 组 ID。",
 			},
 
 			"spark_sessions_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Spark sessions list。",
+				Description: "Spark sessions 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"spark_session_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Spark session id。",
+							Description: "Spark 会话 ID。",
 						},
 						"spark_session_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Spark session 名称",
+							Description: "Spark 会话 名称",
 						},
 						"resource_group_id": {
 							Type:        schema.TypeString,
@@ -51,17 +51,17 @@ func DataSourceTencentCloudDlcNativeSparkSessions() *schema.Resource {
 						"engine_session_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Engine session id。",
+							Description: "Engine 会话 ID。",
 						},
 						"engine_session_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Engine session 名称",
+							Description: "Engine 会话 名称",
 						},
 						"idle_timeout_min": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Idle timeout min。",
+							Description: "Idle 超时 min。",
 						},
 						"driver_spec": {
 							Type:        schema.TypeString,

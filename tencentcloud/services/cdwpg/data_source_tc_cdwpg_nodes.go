@@ -24,13 +24,13 @@ func DataSourceTencentCloudCdwpgNodes() *schema.Resource {
 			"instance_nodes": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Node list。",
+				Description: "Node 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"node_id": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Node id。",
+							Description: "Node ID。",
 						},
 						"node_type": {
 							Type:        schema.TypeString,

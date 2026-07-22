@@ -32,7 +32,7 @@ func ResourceTencentCloudCosObjectAbortMultipartUploadOperation() *schema.Resour
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Multipart uploaded id。",
+				Description: "Multipart uploaded ID。",
 			},
 		},
 	}

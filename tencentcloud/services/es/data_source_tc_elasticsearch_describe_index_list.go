@@ -31,25 +31,25 @@ func DataSourceTencentCloudElasticsearchDescribeIndexList() *schema.Resource {
 			"index_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "索引 名称 If you fill in the blanks，get all indexes。",
+				Description: "索引 名称 如果 您 fill 在 blanks，get all indexes。",
 			},
 
 			"username": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster access 用户 名称",
+				Description: "Cluster 访问 用户 名称",
 			},
 
 			"password": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster access 密码",
+				Description: "Cluster 访问 密码",
 			},
 
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "排序字段 Support 索引 名称: IndexName，索引 storage: IndexStorage，索引 创建时间: IndexCreateTime。",
+				Description: "排序字段 Support 索引 名称: IndexName，索引 存储: IndexStorage，索引 创建时间: IndexCreateTime。",
 			},
 
 			"index_status_list": {
@@ -58,19 +58,19 @@ func DataSourceTencentCloudElasticsearchDescribeIndexList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "索引 状态 list。",
+				Description: "索引 状态 列表。",
 			},
 
 			"order": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "排序顺序，which supports asc and desc. The 默认为 desc data 格式 asc,desc。",
+				Description: "排序顺序，其中 支持 asc 和 desc. 默认为 desc 数据 格式 asc,desc。",
 			},
 
 			"index_meta_fields": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "索引 metadata field。",
+				Description: "索引 metadata 字段。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"index_type": {
@@ -96,7 +96,7 @@ func DataSourceTencentCloudElasticsearchDescribeIndexList() *schema.Resource {
 						"index_storage": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "索引 storage。",
+							Description: "索引 存储。",
 						},
 						"index_create_time": {
 							Type:        schema.TypeString,
@@ -122,7 +122,7 @@ func DataSourceTencentCloudElasticsearchDescribeIndexList() *schema.Resource {
 									"index_storage": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "索引 storage。",
+										Description: "索引 存储。",
 									},
 									"index_phrase": {
 										Type:        schema.TypeString,
@@ -155,7 +155,7 @@ func DataSourceTencentCloudElasticsearchDescribeIndexList() *schema.Resource {
 						"index_policy_field": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "索引 lifecycle field。",
+							Description: "索引 lifecycle 字段。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"warm_enable": {
@@ -166,17 +166,17 @@ func DataSourceTencentCloudElasticsearchDescribeIndexList() *schema.Resource {
 									"warm_min_age": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Warm phase transition time。",
+										Description: "Warm phase transition 时间。",
 									},
 									"cold_enable": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "是否enable the cold phase。",
+										Description: "是否enable cold phase。",
 									},
 									"cold_min_age": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cold phase transition time。",
+										Description: "Cold phase transition 时间。",
 									},
 									"frozen_enable": {
 										Type:        schema.TypeString,
@@ -186,7 +186,7 @@ func DataSourceTencentCloudElasticsearchDescribeIndexList() *schema.Resource {
 									"frozen_min_age": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Frozen phase transition time。",
+										Description: "Frozen phase transition 时间。",
 									},
 									"cold_action": {
 										Type:        schema.TypeString,
@@ -199,7 +199,7 @@ func DataSourceTencentCloudElasticsearchDescribeIndexList() *schema.Resource {
 						"index_options_field": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "索引 options field。",
+							Description: "索引 options 字段。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"expire_max_age": {
@@ -210,7 +210,7 @@ func DataSourceTencentCloudElasticsearchDescribeIndexList() *schema.Resource {
 									"expire_max_size": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Expire max size。",
+										Description: "Expire max 大小。",
 									},
 									"rollover_max_age": {
 										Type:        schema.TypeString,
@@ -220,17 +220,17 @@ func DataSourceTencentCloudElasticsearchDescribeIndexList() *schema.Resource {
 									"rollover_dynamic": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "是否turn on dynamic scrolling。",
+										Description: "是否turn 在 动态 scrolling。",
 									},
 									"shard_num_dynamic": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "是否enable dynamic slicing。",
+										Description: "是否enable 动态 slicing。",
 									},
 									"timestamp_field": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Time partition field。",
+										Description: "Time 分区 字段。",
 									},
 									"write_mode": {
 										Type:        schema.TypeString,
@@ -243,7 +243,7 @@ func DataSourceTencentCloudElasticsearchDescribeIndexList() *schema.Resource {
 						"index_settings_field": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "索引 settings field。",
+							Description: "索引 settings 字段。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"number_of_shards": {
@@ -259,7 +259,7 @@ func DataSourceTencentCloudElasticsearchDescribeIndexList() *schema.Resource {
 									"refresh_interval": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "索引 refresh frequency。",
+										Description: "索引 refresh 频率。",
 									},
 								},
 							},
@@ -267,7 +267,7 @@ func DataSourceTencentCloudElasticsearchDescribeIndexList() *schema.Resource {
 						"app_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "App id。",
+							Description: "App ID。",
 						},
 						"index_docs": {
 							Type:        schema.TypeInt,

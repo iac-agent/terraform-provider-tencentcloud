@@ -19,19 +19,19 @@ func DataSourceTencentCloudSslDescribeHostDeployRecordDetail() *schema.Resource 
 			"deploy_record_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Deployment record ID。",
+				Description: "Deployment 记录 ID。",
 			},
 
 			"deploy_record_detail_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Certificate deployment record listNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "Certificate 部署 记录 listNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Deployment record details ID。",
+							Description: "Deployment 记录 details ID。",
 						},
 						"cert_id": {
 							Type:        schema.TypeString,
@@ -41,22 +41,22 @@ func DataSourceTencentCloudSslDescribeHostDeployRecordDetail() *schema.Resource 
 						"old_cert_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Original binding certificate IDNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "Original binding 证书 IDNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Deployment instance ID。",
+							Description: "Deployment 实例 ID。",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Deployment example 名称",
+							Description: "Deployment 示例 名称",
 						},
 						"listener_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Deployment monitor IDNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "Deployment 监控 IDNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"domains": {
 							Type: schema.TypeSet,
@@ -64,12 +64,12 @@ func DataSourceTencentCloudSslDescribeHostDeployRecordDetail() *schema.Resource 
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "列表 deployment 域名",
+							Description: "列表 部署 域名",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Deployment monitoring protocolNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "Deployment 监控 protocolNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
@@ -79,62 +79,62 @@ func DataSourceTencentCloudSslDescribeHostDeployRecordDetail() *schema.Resource 
 						"error_msg": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Deployment 错误 messageNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "Deployment 错误 messageNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Deployment record details 创建时间。",
+							Description: "Deployment 记录 details 创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Deployment record details last 更新时间。",
+							Description: "Deployment 记录 details last 更新时间。",
 						},
 						"listener_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Delicate monitor 名称",
+							Description: "Delicate 监控 名称",
 						},
 						"sni_switch": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否turn on SNI。",
+							Description: "是否turn 在 SNI。",
 						},
 						"bucket": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "COS storage barrel nameNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "COS 存储 barrel nameNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"namespace": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Named space nameNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "Named space nameNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"secret_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Secret nameNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "Secret nameNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "portNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "portNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"env_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "TCB environment IDNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "TCB 环境 IDNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"tcb_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Deployed TCB typeNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "Deployed TCB typeNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Deployed TCB regionNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "Deployed TCB regionNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 					},
 				},
@@ -143,19 +143,19 @@ func DataSourceTencentCloudSslDescribeHostDeployRecordDetail() *schema.Resource 
 			"success_total_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Total successNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "Total successNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"failed_total_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Total 数量 failuresNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "Total 数量 failuresNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"running_total_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Total 数量 deploymentNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "Total 数量 deploymentNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"result_output_file": {

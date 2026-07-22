@@ -30,12 +30,12 @@ func DataSourceTencentCloudVpcBandwidthPackageQuota() *schema.Resource {
 						"quota_current": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "current amount。",
+							Description: "当前 amount。",
 						},
 						"quota_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "quota amount。",
+							Description: "配额 amount。",
 						},
 					},
 				},

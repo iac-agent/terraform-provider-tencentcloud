@@ -34,14 +34,14 @@ func ResourceTencentCloudAsStopInstances() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "列表 cvm instances to stop。",
+				Description: "列表 cvm 实例 到 stop。",
 			},
 
 			"stopped_mode": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Billing method of a pay-as-you-go instance after shutdown. 可用值：`KEEP_CHARGING`,`STOP_CHARGING`. Default `KEEP_CHARGING`。",
+				Description: "Billing 方法 的 pay-作为-您-go 实例 after shutdown. 可用值：`KEEP_CHARGING`,`STOP_CHARGING`. Default `KEEP_CHARGING`。",
 			},
 		},
 	}

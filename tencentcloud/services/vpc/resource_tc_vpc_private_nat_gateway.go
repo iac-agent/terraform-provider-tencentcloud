@@ -25,35 +25,35 @@ func ResourceTencentCloudVpcPrivateNatGateway() *schema.Resource {
 			"nat_gateway_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Private network gateway 名称",
+				Description: "Private 网络 网关 名称",
 			},
 
 			"vpc_id": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Private Cloud instance ID. This parameter 为必填项 when creating a VPC 类型 private network NAT gateway or a private network NAT gateway of private network gateway。",
+				Description: "Private Cloud 实例 ID. 此 参数 为必填项 当 creating VPC 类型 私有 网络 NAT 网关 或 私有 网络 NAT 网关 的 私有 网络 网关。",
 			},
 
 			"cross_domain": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Cross-域名 parameters. Cross-域名 binding of VPCs is supported only when the 值 is True。",
+				Description: "Cross-域名 参数. Cross-域名 binding 的 VPCs 是 支持 仅 当 值 是 True。",
 			},
 
 			"vpc_type": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "VPC 类型 private network NAT gateway. Only when the 值 is True will a VPC 类型 private network NAT gateway be created。",
+				Description: "VPC 类型 私有 网络 NAT 网关. Only 当 值 是 True 将 VPC 类型 私有 网络 NAT 网关 是 创建。",
 			},
 
 			"ccn_id": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Cloud Connect Network 类型 The Cloud Connect Network instance ID 必填 to be bound to the private network NAT gateway。",
+				Description: "Cloud Connect Network 类型 Cloud Connect Network 实例 ID 必填 到 是 bound 到 私有 网络 NAT 网关。",
 			},
 		},
 	}

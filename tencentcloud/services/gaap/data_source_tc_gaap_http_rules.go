@@ -21,23 +21,23 @@ func DataSourceTencentCloudGaapHttpRules() *schema.Resource {
 			"listener_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID layer7 listener to be queried。",
+				Description: "ID layer7 listener 到 是 queried。",
 			},
 			"domain": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Forward 域名 of the layer7 listener to be queried。",
+				Description: "Forward 域名 的 layer7 listener 到 是 queried。",
 			},
 			"path": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringPrefix("/"),
-				Description:  "路径 of the forward rule to be queried。",
+				Description:  "路径 的 forward 规则 到 是 queried。",
 			},
 			"forward_host": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Requested 主机 which is forwarded to the realserver by the listener to be queried。",
+				Description: "Requested 主机 其中 是 forwarded 到 realserver 通过 listener 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -49,13 +49,13 @@ func DataSourceTencentCloudGaapHttpRules() *schema.Resource {
 			"rules": {
 				Type:        schema.TypeSet,
 				Computed:    true,
-				Description: "An information 列表 forward rule of the layer7 listeners. Each element 包含following attributes:",
+				Description: "An 信息 列表 forward 规则 的 layer7 listeners. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID forward rule。",
+							Description: "ID forward 规则。",
 						},
 						"listener_id": {
 							Type:        schema.TypeString,
@@ -65,12 +65,12 @@ func DataSourceTencentCloudGaapHttpRules() *schema.Resource {
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Forward 域名 of the forward rule。",
+							Description: "Forward 域名 的 forward 规则。",
 						},
 						"path": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "路径 of the forward rule。",
+							Description: "路径 的 forward 规则。",
 						},
 						"realserver_type": {
 							Type:        schema.TypeString,
@@ -80,43 +80,43 @@ func DataSourceTencentCloudGaapHttpRules() *schema.Resource {
 						"scheduler": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scheduling policy of the forward rule。",
+							Description: "Scheduling 策略 的 forward 规则。",
 						},
 						"health_check": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "表示是否health check is enable。",
+							Description: "表示是否health check 是 启用。",
 						},
 						"interval": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Interval of the health check。",
+							Description: "Interval 的 health check。",
 						},
 						"connect_timeout": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Timeout of the health check response。",
+							Description: "Timeout 的 health check response。",
 						},
 						"health_check_path": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "路径 of health check。",
+							Description: "路径 的 health check。",
 						},
 						"health_check_method": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Method of the health check。",
+							Description: "Method 的 health check。",
 						},
 						"health_check_status_codes": {
 							Type:        schema.TypeList,
 							Computed:    true,
 							Elem:        &schema.Schema{Type: schema.TypeInt},
-							Description: "Return 代码 of confirmed normal。",
+							Description: "Return 代码 的 confirmed normal。",
 						},
 						"forward_host": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Requested 主机 which is forwarded to the realserver by the listener。",
+							Description: "Requested 主机 其中 是 forwarded 到 realserver 通过 listener。",
 						},
 						"sni_switch": {
 							Type:        schema.TypeString,
@@ -131,7 +131,7 @@ func DataSourceTencentCloudGaapHttpRules() *schema.Resource {
 						"realservers": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "An information 列表 GAAP realserver. Each element 包含following attributes:",
+							Description: "An 信息 列表 GAAP realserver. Each element 包含following attributes:",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"id": {
@@ -142,17 +142,17 @@ func DataSourceTencentCloudGaapHttpRules() *schema.Resource {
 									"ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "IP of the GAAP realserver。",
+										Description: "IP 的 GAAP realserver。",
 									},
 									"domain": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "域名 of the GAAP realserver。",
+										Description: "域名 的 GAAP realserver。",
 									},
 									"port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "端口 of the GAAP realserver。",
+										Description: "端口 的 GAAP realserver。",
 									},
 									"weight": {
 										Type:        schema.TypeInt,

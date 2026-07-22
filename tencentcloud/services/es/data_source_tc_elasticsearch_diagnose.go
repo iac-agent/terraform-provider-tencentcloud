@@ -32,7 +32,7 @@ func DataSourceTencentCloudElasticsearchDiagnose() *schema.Resource {
 				Optional:    true,
 				Default:     10,
 				Type:        schema.TypeInt,
-				Description: "数量 copies returned in the report. 默认值 1。",
+				Description: "数量 copies 返回 在 报告. 默认值 1。",
 			},
 
 			"diagnose_results": {
@@ -49,7 +49,7 @@ func DataSourceTencentCloudElasticsearchDiagnose() *schema.Resource {
 						"request_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Request id。",
+							Description: "Request ID。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
@@ -59,7 +59,7 @@ func DataSourceTencentCloudElasticsearchDiagnose() *schema.Resource {
 						"completed": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "是否diagnosis is complete or not。",
+							Description: "是否diagnosis 是 完整 或 不。",
 						},
 						"score": {
 							Type:        schema.TypeInt,
@@ -69,12 +69,12 @@ func DataSourceTencentCloudElasticsearchDiagnose() *schema.Resource {
 						"job_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Diagnosis 类型，2 timing diagnosis，3 customer manual trigger diagnosis。",
+							Description: "Diagnosis 类型，2 timing diagnosis，3 customer manual 触发器 diagnosis。",
 						},
 						"job_param": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Diagnostic parameters such as diagnostic time，diagnostic 索引，etc。",
+							Description: "Diagnostic 参数 such 作为 diagnostic 时间，diagnostic 索引，etc。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"jobs": {
@@ -83,7 +83,7 @@ func DataSourceTencentCloudElasticsearchDiagnose() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Diagnostic item list。",
+										Description: "Diagnostic item 列表。",
 									},
 									"indices": {
 										Type:        schema.TypeString,
@@ -93,7 +93,7 @@ func DataSourceTencentCloudElasticsearchDiagnose() *schema.Resource {
 									"interval": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Historical diagnosis time。",
+										Description: "Historical diagnosis 时间。",
 									},
 								},
 							},
@@ -101,7 +101,7 @@ func DataSourceTencentCloudElasticsearchDiagnose() *schema.Resource {
 						"job_results": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Diagnostic item 结果 list。",
+							Description: "Diagnostic item 结果 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"job_name": {
@@ -112,7 +112,7 @@ func DataSourceTencentCloudElasticsearchDiagnose() *schema.Resource {
 									"status": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Diagnostic item 状态:-2 failed,-1 to be retried，0 running，1 successful。",
+										Description: "Diagnostic item 状态:-2 failed,-1 到 是 retried，0 running，1 successful。",
 									},
 									"score": {
 										Type:        schema.TypeInt,
@@ -137,7 +137,7 @@ func DataSourceTencentCloudElasticsearchDiagnose() *schema.Resource {
 									"metric_details": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Details of diagnostic metrics。",
+										Description: "Details 的 diagnostic metrics。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
@@ -160,12 +160,12 @@ func DataSourceTencentCloudElasticsearchDiagnose() *schema.Resource {
 																		"key": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Intelligent operation and maintenance 索引 dimension 键",
+																			Description: "Intelligent operation 和 maintenance 索引 dimension 键",
 																		},
 																		"value": {
 																			Type:        schema.TypeString,
 																			Computed:    true,
-																			Description: "Dimension 值 of intelligent operation and maintenance 索引",
+																			Description: "Dimension 值 的 intelligent operation 和 maintenance 索引",
 																		},
 																	},
 																},
@@ -184,7 +184,7 @@ func DataSourceTencentCloudElasticsearchDiagnose() *schema.Resource {
 									"log_details": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Diagnostic log details。",
+										Description: "Diagnostic 日志 details。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
@@ -200,7 +200,7 @@ func DataSourceTencentCloudElasticsearchDiagnose() *schema.Resource {
 												"count": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "数量 occurrences of log exception names。",
+													Description: "数量 occurrences 的 日志 exception names。",
 												},
 											},
 										},
@@ -208,7 +208,7 @@ func DataSourceTencentCloudElasticsearchDiagnose() *schema.Resource {
 									"setting_details": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Diagnostic configuration detail。",
+										Description: "Diagnostic 配置 detail。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {

@@ -34,13 +34,13 @@ func DataSourceTencentCloudVpcUsedIpAddress() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "IPs to query。",
+				Description: "IPs 到 查询。",
 			},
 
 			"ip_address_states": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Information of resources bound with the queried IPs Note: This parameter may return null，indicating that no valid values can be obtained。",
+				Description: "Information 的 resources bound 使用 queried IPs 注意: 此 参数 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {

@@ -41,7 +41,7 @@ func ResourceTencentCloudCiHotLink() *schema.Resource {
 			"type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Anti-leech 类型，`white` is whitelist，`black` is blacklist。",
+				Description: "Anti-leech 类型，`white` 是 whitelist，`black` 是 blacklist。",
 			},
 		},
 	}

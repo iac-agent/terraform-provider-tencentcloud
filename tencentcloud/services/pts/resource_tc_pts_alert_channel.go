@@ -47,37 +47,37 @@ func ResourceTencentCloudPtsAlertChannel() *schema.Resource {
 			"status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Status Note: this field may return null, indicating that a valid value cannot be obtained.",
+				Description: "Status 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 			},
 
 			"created_at": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time Note: this field may return null, indicating that a valid value cannot be obtained.",
+				Description: "Creation 时间 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 			},
 
 			"updated_at": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Update time Note: this field may return null, indicating that a valid value cannot be obtained.",
+				Description: "Update 时间 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 			},
 
 			"app_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "App ID Note: this field may return null, indicating that a valid value cannot be obtained.",
+				Description: "App ID 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 			},
 
 			"uin": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "User ID Note: this field may return null, indicating that a valid value cannot be obtained.",
+				Description: "User ID 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 			},
 
 			"sub_account_uin": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Sub-user ID Note: this field may return null, indicating that a valid value cannot be obtained.",
+				Description: "Sub-用户 ID 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 			},
 		},
 	}

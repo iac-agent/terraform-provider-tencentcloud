@@ -19,25 +19,25 @@ func DataSourceTencentCloudEbEventRules() *schema.Resource {
 			"event_bus_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "event bus Id。",
+				Description: "事件 bus ID。",
 			},
 
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "According to which field to sort the returned results，the following fields are supported: AddTime (创建时间)，ModTime (修改时间)。",
+				Description: "According 到 其中 字段 到 sort 返回 results， following 字段 是 支持: AddTime (创建时间)，ModTime (修改时间)。",
 			},
 
 			"order": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Return results in ascending or 降序，可选 values ASC (ascending) and DESC (descending)。",
+				Description: "Return results 在 ascending 或 降序，可选 值 ASC (ascending) 和 DESC (descending)。",
 			},
 
 			"rules": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Event rule information。",
+				Description: "Event 规则 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"status": {
@@ -53,7 +53,7 @@ func DataSourceTencentCloudEbEventRules() *schema.Resource {
 						"enable": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "enable switch。",
+							Description: "启用 switch。",
 						},
 						"description": {
 							Type:        schema.TypeString,
@@ -63,7 +63,7 @@ func DataSourceTencentCloudEbEventRules() *schema.Resource {
 						"rule_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "rule Id。",
+							Description: "规则 ID。",
 						},
 						"add_time": {
 							Type:        schema.TypeString,
@@ -73,28 +73,28 @@ func DataSourceTencentCloudEbEventRules() *schema.Resource {
 						"event_bus_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "event bus Id。",
+							Description: "事件 bus ID。",
 						},
 						"rule_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "rule 名称",
+							Description: "规则 名称",
 						},
 						"targets": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Target brief information，note: this field may return null，indicating that no valid 值 can be obtained。",
+							Description: "Target brief 信息，note: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"target_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "target Id。",
+										Description: "目标 ID。",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "target 类型",
+										Description: "目标 类型",
 									},
 								},
 							},
@@ -102,29 +102,29 @@ func DataSourceTencentCloudEbEventRules() *schema.Resource {
 						"dead_letter_config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "The dlq rule set by rule. It may be null. Note: this field may return null，indicating that no valid 值 can be obtained。",
+							Description: "dlq 规则 集合 通过 规则. It 可能 是 null. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"dispose_method": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Support three modes of dlq，discarding，ignoring errors and continuing to pass，corresponding to: DLQ，DROP，IGNORE_ERROR。",
+										Description: "Support three modes 的 dlq，discarding，ignoring errors 和 continuing 到 pass，corresponding 到: DLQ，DROP，IGNORE_ERROR。",
 									},
 									"ckafka_delivery_params": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "After setting the DLQ 模式，this option 为必填项. The 错误信息 will be delivered to the corresponding kafka topic 注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "After setting DLQ 模式，此 选项 为必填项. 错误信息 将 是 delivered 到 corresponding kafka 主题 注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"topic_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "ckafka topic 名称",
+													Description: "ckafka 主题 名称",
 												},
 												"resource_description": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "ckafka resource qcs six-segment。",
+													Description: "ckafka 资源 qcs six-segment。",
 												},
 											},
 										},

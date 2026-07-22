@@ -18,19 +18,19 @@ func DataSourceTencentCloudOrganizationOrgShareUnits() *schema.Resource {
 			"area": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Shared unit area。",
+				Description: "Shared 单位 area。",
 			},
 
 			"search_key": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search for keywords. Support UnitId and 名称 searches。",
+				Description: "Search 对于 keywords. Support UnitId 和 名称 searches。",
 			},
 
 			"items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Shared unit list。",
+				Description: "Shared 单位 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"unit_id": {
@@ -41,22 +41,22 @@ func DataSourceTencentCloudOrganizationOrgShareUnits() *schema.Resource {
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Shared unit 名称",
+							Description: "Shared 单位 名称",
 						},
 						"uin": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Shared unit manager Uin。",
+							Description: "Shared 单位 manager Uin。",
 						},
 						"owner_uin": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Shared unit manager OwnerUin。",
+							Description: "Shared 单位 manager OwnerUin。",
 						},
 						"area": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Shared unit area。",
+							Description: "Shared 单位 area。",
 						},
 						"description": {
 							Type:        schema.TypeString,
@@ -71,17 +71,17 @@ func DataSourceTencentCloudOrganizationOrgShareUnits() *schema.Resource {
 						"share_resource_num": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "数量 shared unit resources。",
+							Description: "数量 shared 单位 resources。",
 						},
 						"share_member_num": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "数量 shared unit members。",
+							Description: "数量 shared 单位 members。",
 						},
 						"share_scope": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Shared 范围 值: 1-Only allowed to share within the group organization 2-allowed to share to any 账号",
+							Description: "Shared 范围 值: 1-Only allowed 到 share within 组 organization 2-allowed 到 share 到 any 账号",
 						},
 					},
 				},

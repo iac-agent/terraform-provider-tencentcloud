@@ -25,7 +25,7 @@ func DataSourceTencentCloudSslDescribeManagerDetail() *schema.Resource {
 			"status": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "状态: Audit: OK during the review: review passed inValid: expired expiRing: is about to expire Expired: expired。",
+				Description: "状态: Audit: OK during review: review passed inValid: expired expiRing: 是 about 到 expire Expired: expired。",
 			},
 
 			"manager_first_name": {
@@ -67,7 +67,7 @@ func DataSourceTencentCloudSslDescribeManagerDetail() *schema.Resource {
 			"verify_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Verify timeNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "Verify timeNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"create_time": {
@@ -79,7 +79,7 @@ func DataSourceTencentCloudSslDescribeManagerDetail() *schema.Resource {
 			"expire_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Verify expiration timeNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "Verify expiration timeNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"contact_last_name": {
@@ -97,7 +97,7 @@ func DataSourceTencentCloudSslDescribeManagerDetail() *schema.Resource {
 			"contact_phone": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "contact number。",
+				Description: "contact 数量。",
 			},
 
 			"contact_mail": {
@@ -115,7 +115,7 @@ func DataSourceTencentCloudSslDescribeManagerDetail() *schema.Resource {
 			"company_info": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Manager&amp;#39;s company information。",
+				Description: "Manager&amp;#39;s company 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"company_name": {
@@ -136,17 +136,17 @@ func DataSourceTencentCloudSslDescribeManagerDetail() *schema.Resource {
 						"company_province": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Province where the company is located。",
+							Description: "Province 其中 company 是 located。",
 						},
 						"company_city": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The city where the company is。",
+							Description: "city 其中 company 是。",
 						},
 						"company_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Detailed 地址 where the company is located。",
+							Description: "Detailed 地址 其中 company 是 located。",
 						},
 						"company_phone": {
 							Type:        schema.TypeString,
@@ -156,12 +156,12 @@ func DataSourceTencentCloudSslDescribeManagerDetail() *schema.Resource {
 						"id_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "typeNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "typeNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"id_number": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID numberNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "ID numberNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 					},
 				},

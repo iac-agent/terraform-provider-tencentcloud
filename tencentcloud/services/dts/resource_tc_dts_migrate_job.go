@@ -29,13 +29,13 @@ func ResourceTencentCloudDtsMigrateJob() *schema.Resource {
 			"service_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Migrate service Id from `tencentcloud_dts_migrate_service`。",
+				Description: "Migrate 服务 ID 从 `tencentcloud_dts_migrate_service`。",
 			},
 
 			"status": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Task 状态 有效值：created(Created)，checking (Checking)，checkPass (Check passed)，checkNotPass (Check not passed)，readyRun (Ready for running)，running (Running)，readyComplete (Preparation completed)，success (Successful)，failed (Failed)，stopping (Stopping)，completing (Completing)，pausing (Pausing)，manualPaused (Paused)。",
+				Description: "任务 状态 有效值：创建(Created)，checking (Checking)，checkPass (Check passed)，checkNotPass (Check 不 passed)，readyRun (Ready 对于 running)，running (Running)，readyComplete (Preparation completed)，success (Successful)，failed (Failed)，stopping (Stopping)，completing (Completing)，pausing (Pausing)，manualPaused (Paused)。",
 			},
 
 			// for modify operation
@@ -49,51 +49,51 @@ func ResourceTencentCloudDtsMigrateJob() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Migration job configuration options，用于describe how the task performs migration。",
+				Description: "Migration 作业 配置 options，用于describe how 任务 performs 迁移。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database_table": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Required:    true,
-							Description: "Migration object option，you need to tell the migration service which library table objects to migrate。",
+							Description: "Migration 对象 选项，您 need 到 tell 迁移 服务 其中 库 表 objects 到 migrate。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"object_mode": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Migration object 类型 有效值：all，partial。",
+										Description: "Migration 对象 类型 有效值：all，partial。",
 									},
 									"databases": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Migration object，which 为必填项 if ObjectMode is partial。",
+										Description: "Migration 对象，其中 为必填项 如果 ObjectMode 是 partial。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"db_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "名称 database to be migrated or synced，which 为必填项 if ObjectMode is partial。",
+													Description: "名称 数据库 到 是 migrated 或 synced，其中 为必填项 如果 ObjectMode 是 partial。",
 												},
 												"new_db_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "名称 database after migration or sync，which is the same as the 来源 database 名称 by default。",
+													Description: "名称 数据库 after 迁移 或 sync，其中 是 same 作为 来源 数据库 名称 通过 默认值。",
 												},
 												"schema_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The schema to be migrated or synced。",
+													Description: "schema 到 是 migrated 或 synced。",
 												},
 												"new_schema_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "名称 schema after migration or sync。",
+													Description: "名称 schema after 迁移 或 sync。",
 												},
 												"db_mode": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Database selection 模式，which 为必填项 if ObjectMode is partial. 有效值：all，partial。",
+													Description: "Database selection 模式，其中 为必填项 如果 ObjectMode 是 partial. 有效值：all，partial。",
 												},
 												"schema_mode": {
 													Type:        schema.TypeString,
@@ -103,23 +103,23 @@ func ResourceTencentCloudDtsMigrateJob() *schema.Resource {
 												"table_mode": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Table selection 模式，which 为必填项 if DBMode is partial. 有效值：all，partial。",
+													Description: "Table selection 模式，其中 为必填项 如果 DBMode 是 partial. 有效值：all，partial。",
 												},
 												"tables": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "The set of table objects，which 为必填项 if TableMode is partial。",
+													Description: "集合 的 表 objects，其中 为必填项 如果 TableMode 是 partial。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"table_name": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "名称 migrated table，which is case-sensitive。",
+																Description: "名称 migrated 表，其中 是 case-sensitive。",
 															},
 															"new_table_name": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "New 名称 migrated table. This parameter 为必填项 when TableEditMode is rename. It is mutually exclusive with TmpTables.。",
+																Description: "New 名称 migrated 表. 此 参数 为必填项 当 TableEditMode 是 rename. It 是 mutually exclusive 使用 TmpTables.。",
 															},
 															"tmp_tables": {
 																Type: schema.TypeSet,
@@ -128,12 +128,12 @@ func ResourceTencentCloudDtsMigrateJob() *schema.Resource {
 																},
 																Optional:    true,
 																Computed:    true,
-																Description: "The temp tables to be migrated. This parameter is mutually exclusive with NewTableName. It is valid only when the configured migration objects are table-级别 ones and TableEditMode is pt. To migrate temp tables generated when pt-osc or other tools are used during the migration process，you must configure this parameter first. For example，if you want to perform the pt-osc operation on a table named 't1'，configure this parameter as ['_t1_new','_t1_old']; to perform the gh-ost operation on t1，configure it as ['_t1_ghc','_t1_gho','_t1_del']. Temp tables generated by pt-osc and gh-ost operations can be configured at the same time。",
+																Description: "temp tables 到 是 migrated. 此 参数 是 mutually exclusive 使用 NewTableName. It 是 有效 仅 当 已配置 迁移 objects 是 表-级别 ones 和 TableEditMode 是 pt. To migrate temp tables generated 当 pt-osc 或 other tools 是 使用 during 迁移 process，您 必须 configure 此 参数 first. For 示例，如果 您 want 到 perform pt-osc operation 在 表 named 't1'，configure 此 参数 作为 ['_t1_new','_t1_old']; 到 perform gh-ost operation 在 t1，configure 它 作为 ['_t1_ghc','_t1_gho','_t1_del']. Temp tables generated 通过 pt-osc 和 gh-ost operations 可以 是 已配置 在 same 时间。",
 															},
 															"table_edit_mode": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Table editing 类型 有效值：rename (table mapping); pt (additional table sync)。",
+																Description: "Table editing 类型 有效值：rename (表 mapping); pt (additional 表 sync)。",
 															},
 														},
 													},
@@ -146,7 +146,7 @@ func ResourceTencentCloudDtsMigrateJob() *schema.Resource {
 												"views": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "The set of view objects，which 为必填项 if ViewMode is partial。",
+													Description: "集合 的 view objects，其中 为必填项 如果 ViewMode 是 partial。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"view_name": {
@@ -157,7 +157,7 @@ func ResourceTencentCloudDtsMigrateJob() *schema.Resource {
 															"new_view_name": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "View 名称 after migration。",
+																Description: "View 名称 after 迁移。",
 															},
 														},
 													},
@@ -165,12 +165,12 @@ func ResourceTencentCloudDtsMigrateJob() *schema.Resource {
 												"role_mode": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "角色 selection 模式，which is exclusive to PostgreSQL. 有效值：all，partial。",
+													Description: "角色 selection 模式，其中 是 exclusive 到 PostgreSQL. 有效值：all，partial。",
 												},
 												"roles": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "角色，which is exclusive to PostgreSQL and 必填 if RoleMode is partial。",
+													Description: "角色，其中 是 exclusive 到 PostgreSQL 和 必填 如果 RoleMode 是 partial。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"role_name": {
@@ -181,7 +181,7 @@ func ResourceTencentCloudDtsMigrateJob() *schema.Resource {
 															"new_role_name": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "角色 名称 after migration。",
+																Description: "角色 名称 after 迁移。",
 															},
 														},
 													},
@@ -213,7 +213,7 @@ func ResourceTencentCloudDtsMigrateJob() *schema.Resource {
 													},
 													Optional:    true,
 													Computed:    true,
-													Description: "This parameter 为必填项 if FunctionMode is partial。",
+													Description: "此 参数 为必填项 如果 FunctionMode 是 partial。",
 												},
 												"procedures": {
 													Type: schema.TypeSet,
@@ -222,7 +222,7 @@ func ResourceTencentCloudDtsMigrateJob() *schema.Resource {
 													},
 													Optional:    true,
 													Computed:    true,
-													Description: "This parameter 为必填项 if ProcedureMode is partial。",
+													Description: "此 参数 为必填项 如果 ProcedureMode 是 partial。",
 												},
 												"events": {
 													Type: schema.TypeSet,
@@ -231,7 +231,7 @@ func ResourceTencentCloudDtsMigrateJob() *schema.Resource {
 													},
 													Optional:    true,
 													Computed:    true,
-													Description: "This parameter 为必填项 if EventMode is partial。",
+													Description: "此 参数 为必填项 如果 EventMode 是 partial。",
 												},
 												"triggers": {
 													Type: schema.TypeSet,
@@ -240,7 +240,7 @@ func ResourceTencentCloudDtsMigrateJob() *schema.Resource {
 													},
 													Optional:    true,
 													Computed:    true,
-													Description: "This parameter 为必填项 if TriggerMode is partial。",
+													Description: "此 参数 为必填项 如果 TriggerMode 是 partial。",
 												},
 											},
 										},
@@ -252,7 +252,7 @@ func ResourceTencentCloudDtsMigrateJob() *schema.Resource {
 										},
 										Optional:    true,
 										Computed:    true,
-										Description: "Advanced object types，such as trigger，function，procedure，event. Note: If you want to migrate and synchronize advanced objects，the corresponding advanced object 类型 should be included in this configuration。",
+										Description: "Advanced 对象 types，such 作为 触发器，函数，procedure，事件. 注意: 如果 您 want 到 migrate 和 synchronize advanced objects， corresponding advanced 对象 类型 should 是 included 在 此 配置。",
 									},
 								},
 							},
@@ -268,7 +268,7 @@ func ResourceTencentCloudDtsMigrateJob() *schema.Resource {
 							MaxItems:    1,
 							Optional:    true,
 							Computed:    true,
-							Description: "Data consistency check option. Data consistency check is 已禁用 by default。",
+							Description: "Data consistency check 选项. Data consistency check 是 已禁用 通过 默认值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"mode": {
@@ -287,17 +287,17 @@ func ResourceTencentCloudDtsMigrateJob() *schema.Resource {
 						"is_override_root": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "是否use the Root 账号 in the 来源 database to overwrite that in the target database. 有效值：false，true. For database/table or structural migration，you should 指定false. Note that this parameter takes effect only for OldDTS。",
+							Description: "是否use Root 账号 在 来源 数据库 到 overwrite 该 在 目标 数据库. 有效值：false，true. For 数据库/表 或 structural 迁移，您 should 指定false. 注意 该 此 参数 takes effect 仅 对于 OldDTS。",
 						},
 						"is_dst_read_only": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "是否set the target database to read-only during migration，which takes effect only for MySQL databases. 有效值：true，false. 默认值：false。",
+							Description: "是否set 目标 数据库 到 read-仅 during 迁移，其中 takes effect 仅 对于 MySQL databases. 有效值：true，false. 默认值：false。",
 						},
 						"extra_attr": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Additional information. You can set additional parameters for certain database types。",
+							Description: "Additional 信息. You 可以 集合 additional 参数 对于 certain 数据库 types。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
@@ -321,136 +321,136 @@ func ResourceTencentCloudDtsMigrateJob() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "来源 instance information。",
+				Description: "来源 实例 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instance 地域",
+							Description: "实例 地域",
 						},
 						"access_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instances network access 类型 有效值：extranet (public network); ipv6 (public IPv6); cvm (self-build on CVM); dcg (Direct Connect); vpncloud (VPN access); cdb (database); ccn (CCN); intranet (intranet); vpc (VPC). Note that the valid values are subject to the current link。",
+							Description: "Instances 网络 访问 类型 有效值：extranet (公有 网络); ipv6 (公有 IPv6); cvm (self-build 在 CVM); dcg (Direct Connect); vpncloud (VPN 访问); cdb (数据库); ccn (CCN); intranet (intranet); vpc (VPC). 注意 该 有效 值 是 subject 到 当前 link。",
 						},
 						"database_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Database 类型，such as mysql，redis，mongodb，postgresql，mariadb，and percona。",
+							Description: "Database 类型，such 作为 mysql，redis，mongodb，postgresql，mariadb，和 percona。",
 						},
 						"node_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Node 类型，empty or simple 表示a general node，cluster 表示a cluster node; for mongo services，有效值：replicaset (mongodb replica set)，standalone (mongodb single node)，cluster (mongodb cluster); for redis instances，有效值：empty or simple (single node)，cluster (cluster)，cluster-cache (cache cluster)，cluster-proxy (proxy cluster)。",
+							Description: "Node 类型，空 或 simple 表示a general 节点，集群 表示a 集群 节点; 对于 mongo services，有效值：replicaset (mongodb 副本 集合)，standalone (mongodb 单个 节点)，集群 (mongodb 集群); 对于 redis 实例，有效值：空 或 simple (单个 节点)，集群 (集群)，集群-缓存 (缓存 集群)，集群-proxy (proxy 集群)。",
 						},
 						"info": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Database information。",
+							Description: "Database 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"role": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Node 角色 in a distributed database，such as the mongos node in MongoDB。",
+										Description: "Node 角色 在 distributed 数据库，such 作为 mongos 节点 在 MongoDB。",
 									},
 									"db_kernel": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Kernel 版本，such as the different kernel versions of MariaDB。",
+										Description: "Kernel 版本，such 作为 different kernel versions 的 MariaDB。",
 									},
 									"host": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Instance IP 地址，which 为必填项 for the following access types: public network，Direct Connect，VPN，CCN，intranet，and VPC。",
+										Description: "实例 IP 地址，其中 为必填项 对于 following 访问 types: 公有 网络，Direct Connect，VPN，CCN，intranet，和 VPC。",
 									},
 									"port": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "实例端口，which 为必填项 for the following access types: public network，self-build on CVM，Direct Connect，VPN，CCN，intranet，and VPC。",
+										Description: "实例端口，其中 为必填项 对于 following 访问 types: 公有 网络，self-build 在 CVM，Direct Connect，VPN，CCN，intranet，和 VPC。",
 									},
 									"user": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Instance 用户名",
+										Description: "实例 用户名",
 									},
 									"password": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Sensitive:   true,
-										Description: "Instance 密码",
+										Description: "实例 密码",
 									},
 									"cvm_instance_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Short CVM instance ID in the 格式 of ins-olgl39y8，which 为必填项 if the access 类型 is cvm. It is the same as the instance ID displayed in the CVM console。",
+										Description: "Short CVM 实例 ID 在 格式 的 ins-olgl39y8，其中 为必填项 如果 访问 类型 是 cvm. It 是 same 作为 实例 ID displayed 在 CVM console。",
 									},
 									"uniq_vpn_gw_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "VPN 网关 ID in the 格式 of vpngw-9ghexg7q，which 为必填项 if the access 类型 is vpncloud。",
+										Description: "VPN 网关 ID 在 格式 的 vpngw-9ghexg7q，其中 为必填项 如果 访问 类型 是 vpncloud。",
 									},
 									"uniq_dcg_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Direct Connect gateway ID in the 格式 of dcg-0rxtqqxb，which 为必填项 if the access 类型 is dcg。",
+										Description: "Direct Connect 网关 ID 在 格式 的 dcg-0rxtqqxb，其中 为必填项 如果 访问 类型 是 dcg。",
 									},
 									"instance_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Database instance ID in the 格式 of cdb-powiqx8q，which 为必填项 if the access 类型 is cdb。",
+										Description: "Database 实例 ID 在 格式 的 cdb-powiqx8q，其中 为必填项 如果 访问 类型 是 cdb。",
 									},
 									"ccn_gw_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "CCN 实例 ID such as ccn-afp6kltc。",
+										Description: "CCN 实例 ID such 作为 ccn-afp6kltc。",
 									},
 									"vpc_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "私有网络 ID in the 格式 of vpc-92jblxto，which 为必填项 if the access 类型 is vpc，vpncloud，ccn，or dcg。",
+										Description: "私有网络 ID 在 格式 的 vpc-92jblxto，其中 为必填项 如果 访问 类型 是 vpc，vpncloud，ccn，或 dcg。",
 									},
 									"subnet_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "ID subnet in the VPC in the 格式 of subnet-3paxmkdz，which 为必填项 if the access 类型 is vpc，vpncloud，ccn，or dcg。",
+										Description: "ID 子网 在 VPC 在 格式 的 子网-3paxmkdz，其中 为必填项 如果 访问 类型 是 vpc，vpncloud，ccn，或 dcg。",
 									},
 									"engine_version": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Database 版本 in the 格式 of 5.6 or 5.7，which takes effect only if the instance is an RDS instance. 默认值：5.6。",
+										Description: "Database 版本 在 格式 的 5.6 或 5.7，其中 takes effect 仅 如果 实例 是 RDS 实例. 默认值：5.6。",
 									},
 									"account": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Instance 账号",
+										Description: "实例 账号",
 									},
 									"account_role": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The 角色 用于cross-账号 migration，which can contain [a-zA-Z0-9-_]+。",
+										Description: "角色 用于cross-账号 迁移，其中 可以 contain [-zA-Z0-9-_]+。",
 									},
 									"account_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The 账号 to which the resource belongs. 有效值：empty or self (the current 账号); other (another 账号)。",
+										Description: "账号 到 其中 资源 belongs. 有效值：空 或 self ( 当前 账号); other (another 账号)。",
 									},
 									"tmp_secret_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Temporary SecretId，you can obtain the temporary 键 by GetFederationToken。",
+										Description: "Temporary SecretId，您 可以 obtain temporary 键 通过 GetFederationToken。",
 									},
 									"tmp_secret_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Temporary SecretKey，you can obtain the temporary 键 by GetFederationToken。",
+										Description: "Temporary SecretKey，您 可以 obtain temporary 键 通过 GetFederationToken。",
 									},
 									"tmp_token": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Temporary 令牌，you can obtain the temporary 键 by GetFederationToken。",
+										Description: "Temporary 令牌，您 可以 obtain temporary 键 通过 GetFederationToken。",
 									},
 								},
 							},
@@ -458,12 +458,12 @@ func ResourceTencentCloudDtsMigrateJob() *schema.Resource {
 						"supplier": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Instance service provider，such as `aliyun` and `others`。",
+							Description: "实例 服务 provider，such 作为 `aliyun` 和 `others`。",
 						},
 						"extra_attr": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "For MongoDB，you can define the following parameters: ['AuthDatabase':'admin'，'AuthFlag': '1'，'AuthMechanism':'SCRAM-SHA-1']。",
+							Description: "For MongoDB，您 可以 define following 参数: ['AuthDatabase':'admin'，'AuthFlag': '1'，'AuthMechanism':'SCRAM-SHA-1']。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
@@ -487,136 +487,136 @@ func ResourceTencentCloudDtsMigrateJob() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Target database information。",
+				Description: "Target 数据库 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instance 地域",
+							Description: "实例 地域",
 						},
 						"access_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instances network access 类型 有效值：extranet (public network); ipv6 (public IPv6); cvm (self-build on CVM); dcg (Direct Connect); vpncloud (VPN access); cdb (database); ccn (CCN); intranet (intranet); vpc (VPC). Note that the valid values are subject to the current link。",
+							Description: "Instances 网络 访问 类型 有效值：extranet (公有 网络); ipv6 (公有 IPv6); cvm (self-build 在 CVM); dcg (Direct Connect); vpncloud (VPN 访问); cdb (数据库); ccn (CCN); intranet (intranet); vpc (VPC). 注意 该 有效 值 是 subject 到 当前 link。",
 						},
 						"database_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Database 类型，such as mysql，redis，mongodb，postgresql，mariadb，and percona。",
+							Description: "Database 类型，such 作为 mysql，redis，mongodb，postgresql，mariadb，和 percona。",
 						},
 						"node_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Node 类型，empty or simple 表示a general node，cluster 表示a cluster node; for mongo services，有效值：replicaset (mongodb replica set)，standalone (mongodb single node)，cluster (mongodb cluster); for redis instances，有效值：empty or simple (single node)，cluster (cluster)，cluster-cache (cache cluster)，cluster-proxy (proxy cluster)。",
+							Description: "Node 类型，空 或 simple 表示a general 节点，集群 表示a 集群 节点; 对于 mongo services，有效值：replicaset (mongodb 副本 集合)，standalone (mongodb 单个 节点)，集群 (mongodb 集群); 对于 redis 实例，有效值：空 或 simple (单个 节点)，集群 (集群)，集群-缓存 (缓存 集群)，集群-proxy (proxy 集群)。",
 						},
 						"info": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Database information。",
+							Description: "Database 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"role": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Node 角色 in a distributed database，such as the mongos node in MongoDB。",
+										Description: "Node 角色 在 distributed 数据库，such 作为 mongos 节点 在 MongoDB。",
 									},
 									"db_kernel": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Kernel 版本，such as the different kernel versions of MariaDB。",
+										Description: "Kernel 版本，such 作为 different kernel versions 的 MariaDB。",
 									},
 									"host": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Instance IP 地址，which 为必填项 for the following access types: public network，Direct Connect，VPN，CCN，intranet，and VPC。",
+										Description: "实例 IP 地址，其中 为必填项 对于 following 访问 types: 公有 网络，Direct Connect，VPN，CCN，intranet，和 VPC。",
 									},
 									"port": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "实例端口，which 为必填项 for the following access types: public network，self-build on CVM，Direct Connect，VPN，CCN，intranet，and VPC。",
+										Description: "实例端口，其中 为必填项 对于 following 访问 types: 公有 网络，self-build 在 CVM，Direct Connect，VPN，CCN，intranet，和 VPC。",
 									},
 									"user": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Instance 用户名",
+										Description: "实例 用户名",
 									},
 									"password": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Sensitive:   true,
-										Description: "Instance 密码",
+										Description: "实例 密码",
 									},
 									"cvm_instance_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Short CVM instance ID in the 格式 of ins-olgl39y8，which 为必填项 if the access 类型 is cvm. It is the same as the instance ID displayed in the CVM console。",
+										Description: "Short CVM 实例 ID 在 格式 的 ins-olgl39y8，其中 为必填项 如果 访问 类型 是 cvm. It 是 same 作为 实例 ID displayed 在 CVM console。",
 									},
 									"uniq_vpn_gw_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "VPN 网关 ID in the 格式 of vpngw-9ghexg7q，which 为必填项 if the access 类型 is vpncloud。",
+										Description: "VPN 网关 ID 在 格式 的 vpngw-9ghexg7q，其中 为必填项 如果 访问 类型 是 vpncloud。",
 									},
 									"uniq_dcg_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Direct Connect gateway ID in the 格式 of dcg-0rxtqqxb，which 为必填项 if the access 类型 is dcg。",
+										Description: "Direct Connect 网关 ID 在 格式 的 dcg-0rxtqqxb，其中 为必填项 如果 访问 类型 是 dcg。",
 									},
 									"instance_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Database instance ID in the 格式 of cdb-powiqx8q，which 为必填项 if the access 类型 is cdb。",
+										Description: "Database 实例 ID 在 格式 的 cdb-powiqx8q，其中 为必填项 如果 访问 类型 是 cdb。",
 									},
 									"ccn_gw_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "CCN 实例 ID such as ccn-afp6kltc。",
+										Description: "CCN 实例 ID such 作为 ccn-afp6kltc。",
 									},
 									"vpc_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "私有网络 ID in the 格式 of vpc-92jblxto，which 为必填项 if the access 类型 is vpc，vpncloud，ccn，or dcg。",
+										Description: "私有网络 ID 在 格式 的 vpc-92jblxto，其中 为必填项 如果 访问 类型 是 vpc，vpncloud，ccn，或 dcg。",
 									},
 									"subnet_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "ID subnet in the VPC in the 格式 of subnet-3paxmkdz，which 为必填项 if the access 类型 is vpc，vpncloud，ccn，or dcg。",
+										Description: "ID 子网 在 VPC 在 格式 的 子网-3paxmkdz，其中 为必填项 如果 访问 类型 是 vpc，vpncloud，ccn，或 dcg。",
 									},
 									"engine_version": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Database 版本 in the 格式 of 5.6 or 5.7，which takes effect only if the instance is an RDS instance. 默认值：5.6。",
+										Description: "Database 版本 在 格式 的 5.6 或 5.7，其中 takes effect 仅 如果 实例 是 RDS 实例. 默认值：5.6。",
 									},
 									"account": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Instance 账号",
+										Description: "实例 账号",
 									},
 									"account_role": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The 角色 用于cross-账号 migration，which can contain [a-zA-Z0-9-_]+。",
+										Description: "角色 用于cross-账号 迁移，其中 可以 contain [-zA-Z0-9-_]+。",
 									},
 									"account_mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The 账号 to which the resource belongs. 有效值：empty or self (the current 账号); other (another 账号)。",
+										Description: "账号 到 其中 资源 belongs. 有效值：空 或 self ( 当前 账号); other (another 账号)。",
 									},
 									"tmp_secret_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Temporary SecretId，you can obtain the temporary 键 by GetFederationToken。",
+										Description: "Temporary SecretId，您 可以 obtain temporary 键 通过 GetFederationToken。",
 									},
 									"tmp_secret_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Temporary SecretKey，you can obtain the temporary 键 by GetFederationToken。",
+										Description: "Temporary SecretKey，您 可以 obtain temporary 键 通过 GetFederationToken。",
 									},
 									"tmp_token": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Temporary 令牌，you can obtain the temporary 键 by GetFederationToken。",
+										Description: "Temporary 令牌，您 可以 obtain temporary 键 通过 GetFederationToken。",
 									},
 								},
 							},
@@ -624,12 +624,12 @@ func ResourceTencentCloudDtsMigrateJob() *schema.Resource {
 						"supplier": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Instance service provider，such as `aliyun` and `others`。",
+							Description: "实例 服务 provider，such 作为 `aliyun` 和 `others`。",
 						},
 						"extra_attr": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "For MongoDB，you can define the following parameters: ['AuthDatabase':'admin','AuthFlag': '1'，'AuthMechanism':'SCRAM-SHA-1']。",
+							Description: "For MongoDB，您 可以 define following 参数: ['AuthDatabase':'admin','AuthFlag': '1'，'AuthMechanism':'SCRAM-SHA-1']。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
@@ -653,13 +653,13 @@ func ResourceTencentCloudDtsMigrateJob() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Expected 开始时间 in the 格式 of `2006-01-02 15:04:05`，which 为必填项 if RunMode is timed。",
+				Description: "Expected 开始时间 在 格式 的 `2006-01-02 15:04:05`，其中 为必填项 如果 RunMode 是 timed。",
 			},
 
 			"auto_retry_time_range_minutes": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The automatic retry time 周期 can be set from 5 to 720 minutes，with 0 indicating no retry。",
+				Description: "automatic retry 时间 周期 可以 是 集合 从 5 到 720 minutes，使用 0 indicating 无 retry。",
 			},
 		},
 	}

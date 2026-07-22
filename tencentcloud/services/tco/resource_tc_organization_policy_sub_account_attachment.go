@@ -36,7 +36,7 @@ func ResourceTencentCloudOrganizationPolicySubAccountAttachment() *schema.Resour
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Organization administrator sub 账号 uin list。",
+				Description: "Organization administrator sub 账号 uin 列表。",
 			},
 
 			"member_uin": {

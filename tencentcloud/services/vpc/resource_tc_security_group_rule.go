@@ -29,14 +29,14 @@ func ResourceTencentCloudSecurityGroupRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID security group to be queried。",
+				Description: "ID 安全 组 到 是 queried。",
 			},
 			"type": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValueIgnoreCase([]string{"ingress", "egress"}),
-				Description:  "类型 security group rule. 有效值：`ingress` and `egress`。",
+				Description:  "类型 安全 组 规则. 有效值：`ingress` 和 `egress`。",
 			},
 			"cidr_ip": {
 				Type:     schema.TypeString,
@@ -56,7 +56,7 @@ func ResourceTencentCloudSecurityGroupRule() *schema.Resource {
 				//	}
 				//	return
 				//},
-				Description: "An IP 地址 network or segment，and conflict with `source_sgid` and `address_template`。",
+				Description: "An IP 地址 网络 或 segment，和 conflict 使用 `source_sgid` 和 `address_template`。",
 			},
 			"ip_protocol": {
 				Type:     schema.TypeString,
@@ -66,7 +66,7 @@ func ResourceTencentCloudSecurityGroupRule() *schema.Resource {
 				},
 				ForceNew:    true,
 				Computed:    true,
-				Description: "类型 IP 协议 有效值：`TCP`，`UDP`，`ICMP`，`ICMPv6` and `ALL`. 默认为 all types 协议，and conflicts with `protocol_template`。",
+				Description: "类型 IP 协议 有效值：`TCP`，`UDP`，`ICMP`，`ICMPv6` 和 `ALL`. 默认为 all types 协议，和 conflicts 使用 `protocol_template`。",
 			},
 			"port_range": {
 				Type:     schema.TypeString,
@@ -76,7 +76,7 @@ func ResourceTencentCloudSecurityGroupRule() *schema.Resource {
 				},
 				ForceNew:    true,
 				Computed:    true,
-				Description: "Range of the 端口 The available 值 can be one，multiple or one segment. E.g. `80`，`80,90` and `80-90`. 默认为 all ports，and confilicts with `protocol_template`。",
+				Description: "Range 的 端口 可用 值 可以 是 一个，多个 或 一个 segment. E.g. `80`，`80,90` 和 `80-90`. 默认为 all ports，和 confilicts 使用 `protocol_template`。",
 				ValidateFunc: func(v interface{}, k string) (ws []string, errors []error) {
 					value := v.(string)
 					match, _ := regexp.MatchString("^(\\d{1,5},)*\\d{1,5}$|^\\d{1,5}-\\d{1,5}$", value)
@@ -91,13 +91,13 @@ func ResourceTencentCloudSecurityGroupRule() *schema.Resource {
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValueIgnoreCase([]string{"ACCEPT", "DROP"}),
-				Description:  "Rule policy of security group. 有效值：`ACCEPT` and `DROP`。",
+				Description:  "Rule 策略 的 安全 组. 有效值：`ACCEPT` 和 `DROP`。",
 			},
 			"policy_index": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "The security group rule 索引 number，the 值 of which dynamically changes as the security group rule changes。",
+				Description: "安全 组 规则 索引 数量， 值 的 其中 dynamically changes 作为 安全 组 规则 changes。",
 			},
 			"source_sgid": {
 				Type:     schema.TypeString,
@@ -107,7 +107,7 @@ func ResourceTencentCloudSecurityGroupRule() *schema.Resource {
 					"cidr_ip", "address_template",
 				},
 				Computed:    true,
-				Description: "ID nested security group，and conflicts with `cidr_ip` and `address_template`。",
+				Description: "ID nested 安全 组，和 conflicts 使用 `cidr_ip` 和 `address_template`。",
 			},
 			"address_template": {
 				Type:     schema.TypeList,
@@ -118,13 +118,13 @@ func ResourceTencentCloudSecurityGroupRule() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "地址 模板 ID，conflicts with `group_id`。",
+							Description: "地址 模板 ID，conflicts 使用 `group_id`。",
 						},
 						"group_id": {
 							Type:        schema.TypeString,
 							ForceNew:    true,
 							Optional:    true,
-							Description: "地址 template 组 ID，conflicts with `template_id`。",
+							Description: "地址 template 组 ID，conflicts 使用 `template_id`。",
 						},
 					},
 				},
@@ -134,7 +134,7 @@ func ResourceTencentCloudSecurityGroupRule() *schema.Resource {
 					"cidr_ip", "source_sgid",
 				},
 				Computed:    true,
-				Description: "ID 地址 template，and confilicts with `source_sgid` and `cidr_ip`。",
+				Description: "ID 地址 template，和 confilicts 使用 `source_sgid` 和 `cidr_ip`。",
 			},
 			"protocol_template": {
 				Type:     schema.TypeList,
@@ -145,13 +145,13 @@ func ResourceTencentCloudSecurityGroupRule() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "地址 模板 ID，conflicts with `group_id`。",
+							Description: "地址 模板 ID，conflicts 使用 `group_id`。",
 						},
 						"group_id": {
 							Type:        schema.TypeString,
 							ForceNew:    true,
 							Optional:    true,
-							Description: "地址 template 组 ID，conflicts with `template_id`。",
+							Description: "地址 template 组 ID，conflicts 使用 `template_id`。",
 						},
 					},
 				},
@@ -161,14 +161,14 @@ func ResourceTencentCloudSecurityGroupRule() *schema.Resource {
 					"ip_protocol", "port_range",
 				},
 				Computed:    true,
-				Description: "ID 地址 template，and conflict with `ip_protocol`，`port_range`。",
+				Description: "ID 地址 template，和 conflict 使用 `ip_protocol`，`port_range`。",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
 				Computed:    true,
-				Description: "描述 security group rule。",
+				Description: "描述 安全 组 规则。",
 			},
 		},
 	}

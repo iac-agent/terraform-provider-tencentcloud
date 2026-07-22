@@ -31,7 +31,7 @@ func ResourceTencentCloudBhReconnectionSettingConfig() *schema.Resource {
 			"enable": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "true: 限制 reconnection count，false: do not 限制 reconnection count。",
+				Description: "true: 限制 reconnection count，false: do 不 限制 reconnection count。",
 			},
 		},
 	}

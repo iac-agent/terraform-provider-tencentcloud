@@ -23,12 +23,12 @@ func DataSourceTencentCloudContainerClusters() *schema.Resource {
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "An id identify the cluster，like `cls-xxxxxx`。",
+				Description: "An ID identify 集群，like `cls-xxxxxx`。",
 			},
 			"limit": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "An int variable describe how many cluster in return at most。",
+				Description: "An int variable describe how many 集群 在 返回 在 most。",
 			},
 			"total_count": {
 				Type:        schema.TypeInt,
@@ -38,68 +38,68 @@ func DataSourceTencentCloudContainerClusters() *schema.Resource {
 			"clusters": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information 列表 kubernetes clusters。",
+				Description: "An 信息 列表 kubernetes clusters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "An id identify the cluster，like `cls-xxxxxx`。",
+							Description: "An ID identify 集群，like `cls-xxxxxx`。",
 						},
 						"cluster_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 the cluster。",
+							Description: "名称 集群。",
 						},
 						"security_certification_authority": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Describe the certificate string needed for using kubectl to access to kubernetes。",
+							Description: "Describe 证书 字符串 needed 对于 使用 kubectl 到 访问 到 kubernetes。",
 						},
 						"security_cluster_external_endpoint": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Describe the 地址 needed for using kubectl to access to kubernetes。",
+							Description: "Describe 地址 needed 对于 使用 kubectl 到 访问 到 kubernetes。",
 						},
 						"security_username": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Describe the 用户名 needed for using kubectl to access to kubernetes。",
+							Description: "Describe 用户名 needed 对于 使用 kubectl 到 访问 到 kubernetes。",
 						},
 						"security_password": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Describe the 密码 needed for using kubectl to access to kubernetes。",
+							Description: "Describe 密码 needed 对于 使用 kubectl 到 访问 到 kubernetes。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 描述 cluster。",
+							Description: "描述 集群。",
 						},
 						"kubernetes_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Describe the running kubernetes 版本 on the cluster。",
+							Description: "Describe running kubernetes 版本 在 集群。",
 						},
 						"nodes_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Describe how many cluster instances in the cluster。",
+							Description: "Describe how many 集群 实例 在 集群。",
 						},
 						"nodes_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Describe the current 状态 instances in the cluster。",
+							Description: "Describe 当前 状态 实例 在 集群。",
 						},
 						"total_cpu": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Describe the total cpu of each instance in the cluster。",
+							Description: "Describe 总数 cpu 的 each 实例 在 集群。",
 						},
 						"total_mem": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Describe the total memory of each instance in the cluster。",
+							Description: "Describe 总数 内存 的 each 实例 在 集群。",
 						},
 					},
 				},

@@ -31,7 +31,7 @@ func DataSourceTencentCloudWafAttackTotalCount() *schema.Resource {
 			"domain": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Query 域名 名称，all 域名 use all。",
+				Description: "Query 域名 名称，all 域名 使用 all。",
 			},
 			"query_string": {
 				Optional:    true,

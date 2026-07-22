@@ -19,7 +19,7 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 			"layer4_listeners": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "L4 listener list。",
+				Description: "L4 listener 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"backend_port": {
@@ -35,18 +35,18 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "TCP or UDP。",
+							Description: "TCP 或 UDP。",
 						},
 						"real_servers": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "来源 server list。",
+							Description: "来源 服务器 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"real_server": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "来源 server addr，ip or 域名",
+										Description: "来源 服务器 addr，ip 或 域名",
 									},
 									"rs_type": {
 										Type:        schema.TypeInt,
@@ -56,7 +56,7 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 									"weight": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The return 权重 of the 来源 station，ranging from 1 to 100。",
+										Description: "返回 权重 的 来源 station，ranging 从 1 到 100。",
 									},
 									"port": {
 										Type:        schema.TypeInt,
@@ -69,7 +69,7 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 						"instance_details": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Resource instance。",
+							Description: "Resource 实例。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"eip_list": {
@@ -78,7 +78,7 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Instance ip。",
+										Description: "实例 ip。",
 									},
 									"instance_id": {
 										Type:        schema.TypeString,
@@ -91,7 +91,7 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 						"instance_detail_rule": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Resource instance to which the rule belongs。",
+							Description: "Resource 实例 到 其中 规则 belongs。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"eip_list": {
@@ -100,7 +100,7 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Resource instance ip。",
+										Description: "Resource 实例 ip。",
 									},
 									"instance_id": {
 										Type:        schema.TypeString,
@@ -110,7 +110,7 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 									"cname": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance cname。",
+										Description: "实例 cname。",
 									},
 								},
 							},
@@ -122,7 +122,7 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 			"layer7_listeners": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Layer 7 forwarding listener list。",
+				Description: "Layer 7 forwarding listener 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"domain": {
@@ -142,7 +142,7 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 											Type: schema.TypeInt,
 										},
 										Computed:    true,
-										Description: "Forwarding listening 端口 list，端口 值 is 1~65535。",
+										Description: "Forwarding listening 端口 列表，端口 值 是 1~65535。",
 									},
 									"proxy_type": {
 										Type:        schema.TypeString,
@@ -155,13 +155,13 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 						"real_servers": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "来源 server list。",
+							Description: "来源 服务器 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"real_server": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "来源 server list。",
+										Description: "来源 服务器 列表。",
 									},
 									"rs_type": {
 										Type:        schema.TypeInt,
@@ -193,7 +193,7 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Instance ip list。",
+										Description: "实例 ip 列表。",
 									},
 									"instance_id": {
 										Type:        schema.TypeString,
@@ -206,7 +206,7 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 						"instance_detail_rule": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Resource instance to which the rule belongs。",
+							Description: "Resource 实例 到 其中 规则 belongs。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"eip_list": {
@@ -215,7 +215,7 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Instance ip list。",
+										Description: "实例 ip 列表。",
 									},
 									"instance_id": {
 										Type:        schema.TypeString,

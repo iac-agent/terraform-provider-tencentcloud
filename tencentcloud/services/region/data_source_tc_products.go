@@ -18,7 +18,7 @@ func DataSourceTencentCloudProducts() *schema.Resource {
 			"product_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Product list。",
+				Description: "Product 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {

@@ -28,7 +28,7 @@ func ResourceTencentCloudApmApplicationConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Business system ID。",
+				Description: "Business 系统 ID。",
 			},
 
 			"service_name": {
@@ -48,35 +48,35 @@ func ResourceTencentCloudApmApplicationConfig() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "URL convergence threshold。",
+				Description: "URL convergence 阈值。",
 			},
 
 			"exception_filter": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Regex rules for exception filtering，separated by commas。",
+				Description: "Regex 规则 对于 exception filtering，separated 通过 commas。",
 			},
 
 			"url_convergence": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Regex rules for URL convergence，separated by commas。",
+				Description: "Regex 规则 对于 URL convergence，separated 通过 commas。",
 			},
 
 			"error_code_filter": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "错误码 filtering，separated by commas。",
+				Description: "错误码 filtering，separated 通过 commas。",
 			},
 
 			"url_exclude": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Regex rules for URL exclusion，separated by commas。",
+				Description: "Regex 规则 对于 URL exclusion，separated 通过 commas。",
 			},
 
 			"is_related_log": {
@@ -104,56 +104,56 @@ func ResourceTencentCloudApmApplicationConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "CLS log set/ES cluster ID。",
+				Description: "CLS 日志 集合/ES 集群 ID。",
 			},
 
 			"log_source": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Log 来源: CLS or ES。",
+				Description: "Log 来源: CLS 或 ES。",
 			},
 
 			"ignore_operation_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "APIs to be filtered。",
+				Description: "APIs 到 是 filtered。",
 			},
 
 			"enable_snapshot": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether thread profiling is 已启用",
+				Description: "Whether thread profiling 是 已启用",
 			},
 
 			"snapshot_timeout": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Timeout threshold for thread profiling。",
+				Description: "Timeout 阈值 对于 thread profiling。",
 			},
 
 			"agent_enable": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether agent is 已启用",
+				Description: "Whether agent 是 已启用",
 			},
 
 			"trace_squash": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether link compression is 已启用",
+				Description: "Whether link 压缩 是 已启用",
 			},
 
 			"event_enable": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Switch for enabling application diagnosis。",
+				Description: "Switch 对于 enabling 应用 diagnosis。",
 			},
 
 			"instrument_list": {
@@ -184,26 +184,26 @@ func ResourceTencentCloudApmApplicationConfig() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Related configurations of the probe APIs。",
+				Description: "Related configurations 的 probe APIs。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"retention_valid": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Computed:    true,
-							Description: "Whether allowlist configuration is 已启用 for the current API.\n注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Whether allowlist 配置 是 已启用 对于 当前 API.\n注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"ignore_operation": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Effective when RetentionValid is false. It 表示blocklist configuration in API settings. The APIs specified in the configuration do not support collection.\n注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Effective 当 RetentionValid 是 false. It 表示blocklist 配置 在 API settings. APIs 指定 在 配置 do 不 support collection.\n注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"retention_operation": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Effective when RetentionValid is true. It 表示allowlist configuration in API settings. Only the APIs specified in the configuration support collection.\n注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Effective 当 RetentionValid 是 true. It 表示allowlist 配置 在 API settings. Only APIs 指定 在 配置 support collection.\n注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -213,28 +213,28 @@ func ResourceTencentCloudApmApplicationConfig() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "是否enable application log configuration。",
+				Description: "是否enable 应用 日志 配置。",
 			},
 
 			"enable_dashboard_config": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "是否enable the dashboard configuration for applications. false: 已禁用 (consistent with the business system configuration); true: 已启用 (application-级别 configuration)。",
+				Description: "是否enable 仪表盘 配置 对于 applications. false: 已禁用 (consistent 使用 business 系统 配置); true: 已启用 (应用-级别 配置)。",
 			},
 
 			"is_related_dashboard": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "是否associate with Dashboard. 0: 已禁用; 1: 已启用",
+				Description: "是否associate 使用 Dashboard. 0: 已禁用; 1: 已启用",
 			},
 
 			"dashboard_topic_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "dashboard ID。",
+				Description: "仪表盘 ID。",
 			},
 
 			"log_index_type": {
@@ -248,14 +248,14 @@ func ResourceTencentCloudApmApplicationConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "索引 键 of traceId. It is valid when the CLS 索引 类型 is 键-值 索引",
+				Description: "索引 键 的 traceId. It 是 有效 当 CLS 索引 类型 是 键-值 索引",
 			},
 
 			"enable_security_config": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "是否enable application security configuration。",
+				Description: "是否enable 应用 安全 配置。",
 			},
 			"is_sql_injection_analysis": {
 				Type:        schema.TypeInt,
@@ -268,70 +268,70 @@ func ResourceTencentCloudApmApplicationConfig() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "是否enable detection of component vulnerability。",
+				Description: "是否enable detection 的 组件 vulnerability。",
 			},
 
 			"is_remote_command_execution_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether remote command detection is 已启用",
+				Description: "Whether 远程 command detection 是 已启用",
 			},
 
 			"is_memory_hijacking_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "是否enable detection of Java webshell。",
+				Description: "是否enable detection 的 Java webshell。",
 			},
 
 			"is_delete_any_file_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "是否enable the detection of deleting arbitrary files. (0 - 已禁用; 1: 已启用)。",
+				Description: "是否enable detection 的 deleting arbitrary files. (0 - 已禁用; 1: 已启用)。",
 			},
 
 			"is_read_any_file_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "是否enable the detection of reading arbitrary files. (0 - 已禁用; 1 - 已启用)。",
+				Description: "是否enable detection 的 reading arbitrary files. (0 - 已禁用; 1 - 已启用)。",
 			},
 
 			"is_upload_any_file_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "是否enable the detection of uploading arbitrary files. (0 - 已禁用; 1 - 已启用)。",
+				Description: "是否enable detection 的 uploading arbitrary files. (0 - 已禁用; 1 - 已启用)。",
 			},
 
 			"is_include_any_file_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "是否enable the detection of the inclusion of arbitrary files. (0: 已禁用，1: 已启用)。",
+				Description: "是否enable detection 的 inclusion 的 arbitrary files. (0: 已禁用，1: 已启用)。",
 			},
 
 			"is_directory_traversal_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "是否enable traversal detection of the directory. (0 - 已禁用; 1 - 已启用)。",
+				Description: "是否enable traversal detection 的 directory. (0 - 已禁用; 1 - 已启用)。",
 			},
 
 			"is_template_engine_injection_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "是否enable template engine injection detection. (0: 已禁用; 1: 已启用)。",
+				Description: "是否enable template 引擎 injection detection. (0: 已禁用; 1: 已启用)。",
 			},
 
 			"is_script_engine_injection_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "是否enable script engine injection detection. (0 - 已禁用; 1 - 已启用)。",
+				Description: "是否enable 脚本 引擎 injection detection. (0 - 已禁用; 1 - 已启用)。",
 			},
 
 			"is_expression_injection_analysis": {
@@ -373,35 +373,35 @@ func ResourceTencentCloudApmApplicationConfig() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Automatic convergence switch for APIs. 0: 已禁用 | 1: 已启用",
+				Description: "Automatic convergence switch 对于 APIs. 0: 已禁用 | 1: 已启用",
 			},
 
 			"url_long_segment_threshold": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Convergence threshold for URL long segments。",
+				Description: "Convergence 阈值 对于 URL long segments。",
 			},
 
 			"url_number_segment_threshold": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Convergence threshold for URL numerical segments。",
+				Description: "Convergence 阈值 对于 URL numerical segments。",
 			},
 
 			"disable_memory_used": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "指定memory threshold for probe fusing。",
+				Description: "指定memory 阈值 对于 probe fusing。",
 			},
 
 			"disable_cpu_used": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "指定CPU threshold for probe fusing。",
+				Description: "指定CPU 阈值 对于 probe fusing。",
 			},
 		},
 	}

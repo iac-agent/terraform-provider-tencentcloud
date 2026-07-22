@@ -17,7 +17,7 @@ func DataSourceTencentCloudGaapProxyDetail() *schema.Resource {
 			"proxy_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Proxy Id。",
+				Description: "Proxy ID。",
 			},
 
 			"proxy_detail": {
@@ -29,12 +29,12 @@ func DataSourceTencentCloudGaapProxyDetail() *schema.Resource {
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "(Old parameter，please use ProxyId) Proxy instance ID.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "(Old 参数，please 使用 ProxyId) Proxy 实例 ID.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"create_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The 创建时间，using a Unix 时间戳，represents the 数量 seconds that have passed since January 1，1970 (midnight UTC/GMT)。",
+							Description: "创建时间，使用 Unix 时间戳，表示 数量 秒 该 have passed since January 1，1970 (midnight UTC/GMT)。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
@@ -59,17 +59,17 @@ func DataSourceTencentCloudGaapProxyDetail() *schema.Resource {
 						"bandwidth": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Band width，in Mbps。",
+							Description: "Band 宽度，在 Mbps。",
 						},
 						"concurrent": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Concurrent，in 10000 pieces/second。",
+							Description: "Concurrent，在 10000 pieces/second。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "proxy 状态 Among them:RUNNING 表示running;CREATING 表示being created;DESTROYING 表示being destroyed;OPENING 表示being opened;CLOSING 表示being closed;Closed 表示that it has been closed;ADJUSTING represents a configuration change in progress;ISOLATING 表示being isolated;ISOLATED 表示that it has been isolated;CLONING 表示copying;RECOVERING 表示that the proxy is being maintained;MOVING 表示that migration is in progress。",
+							Description: "proxy 状态 Among them:RUNNING 表示running;CREATING 表示being 创建;DESTROYING 表示being destroyed;OPENING 表示being opened;CLOSING 表示being closed;Closed 表示that 它 has been closed;ADJUSTING 表示 配置 change 在 progress;ISOLATING 表示being isolated;ISOLATED 表示that 它 has been isolated;CLONING 表示copying;RECOVERING 表示that proxy 是 being maintained;MOVING 表示that 迁移 是 在 progress。",
 						},
 						"domain": {
 							Type:        schema.TypeString,
@@ -89,12 +89,12 @@ func DataSourceTencentCloudGaapProxyDetail() *schema.Resource {
 						"proxy_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "(New parameter) proxy instance ID.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "(New 参数) proxy 实例 ID.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"scalarable": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "1. This proxy can be scaled and expanded; 0，this proxy cannot be scaled or expanded。",
+							Description: "1. 此 proxy 可以 是 scaled 和 expanded; 0，此 proxy 不能 是 scaled 或 expanded。",
 						},
 						"support_protocols": {
 							Type: schema.TypeSet,
@@ -107,17 +107,17 @@ func DataSourceTencentCloudGaapProxyDetail() *schema.Resource {
 						"group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "proxy 组 ID，which exists when a proxy belongs to a certain proxy group.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "proxy 组 ID，其中 exists 当 proxy belongs 到 certain proxy 组.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"policy_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Security policy ID，which exists when a security policy is set.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Security 策略 ID，其中 exists 当 安全 策略 是 集合.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"access_region_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Detailed information about the access 地域，including the 地域 ID and 域名 名称注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Detailed 信息 about 访问 地域，包括 地域 ID 和 域名 名称注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"region_id": {
@@ -133,27 +133,27 @@ func DataSourceTencentCloudGaapProxyDetail() *schema.Resource {
 									"region_area": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "地域 of the computer room。",
+										Description: "地域 的 computer room。",
 									},
 									"region_area_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "地域名称 of the computer room。",
+										Description: "地域名称 的 computer room。",
 									},
 									"idc_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "类型 computer room，where dc represents the DataCenter data center and ec represents the EdgeComputing edge node。",
+										Description: "类型 computer room，其中 dc 表示 DataCenter 数据 center 和 ec 表示 EdgeComputing edge 节点。",
 									},
 									"feature_bitmap": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Property bitmap，where each bit represents a property，where:0 表示that the feature is not supported;1，表示support for this feature.The meaning of the feature bitmap is as follows (from right to left):The first bit supports 4-layer acceleration;The second bit supports 7-layer acceleration;The third bit supports Http3 access;The fourth bit supports IPv6;The fifth bit supports high-quality BGP access;The 6th bit supports three network access;The 7th bit supports QoS acceleration in the access segment.注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Property bitmap，其中 each bit 表示 属性，其中:0 表示that 功能 是 不 支持;1，表示support 对于 此 功能. meaning 的 功能 bitmap 是 作为 follows (从 right 到 left): first bit 支持 4-layer acceleration; second bit 支持 7-layer acceleration; third bit 支持 Http3 访问; fourth bit 支持 IPv6; fifth bit 支持 high-quality BGP 访问; 6th bit 支持 three 网络 访问; 7th bit 支持 QoS acceleration 在 访问 segment.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"support_feature": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Ability to access regional support注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Ability 到 访问 regional support注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"network_type": {
@@ -162,7 +162,7 @@ func DataSourceTencentCloudGaapProxyDetail() *schema.Resource {
 														Type: schema.TypeString,
 													},
 													Computed:    true,
-													Description: "A 列表 network types supported by the access area，with normal indicating support for regular BGP，cn2 indicating premium BGP，triple indicating three networks，and secure_EIP represents a custom secure EIP。",
+													Description: "A 列表 网络 types 支持 通过 访问 area，使用 normal indicating support 对于 regular BGP，cn2 indicating premium BGP，triple indicating three networks，和 secure_EIP 表示 自定义 secure EIP。",
 												},
 											},
 										},
@@ -173,7 +173,7 @@ func DataSourceTencentCloudGaapProxyDetail() *schema.Resource {
 						"real_server_region_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Detailed information of the real server 地域，including the 地域 ID and 域名 名称注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Detailed 信息 的 real 服务器 地域，包括 地域 ID 和 域名 名称注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"region_id": {
@@ -189,27 +189,27 @@ func DataSourceTencentCloudGaapProxyDetail() *schema.Resource {
 									"region_area": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "地域 of the computer room。",
+										Description: "地域 的 computer room。",
 									},
 									"region_area_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "地域名称 of the computer room。",
+										Description: "地域名称 的 computer room。",
 									},
 									"idc_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "类型 computer room，where dc represents the DataCenter data center and ec represents the EdgeComputing edge node。",
+										Description: "类型 computer room，其中 dc 表示 DataCenter 数据 center 和 ec 表示 EdgeComputing edge 节点。",
 									},
 									"feature_bitmap": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Property bitmap，where each bit represents a property，where:0 表示that the feature is not supported;1，表示support for this feature.The meaning of the feature bitmap is as follows (from right to left):The first bit supports 4-layer acceleration;The second bit supports 7-layer acceleration;The third bit supports Http3 access;The fourth bit supports IPv6;The fifth bit supports high-quality BGP access;The 6th bit supports three network access;The 7th bit supports QoS acceleration in the access segment.注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Property bitmap，其中 each bit 表示 属性，其中:0 表示that 功能 是 不 支持;1，表示support 对于 此 功能. meaning 的 功能 bitmap 是 作为 follows (从 right 到 left): first bit 支持 4-layer acceleration; second bit 支持 7-layer acceleration; third bit 支持 Http3 访问; fourth bit 支持 IPv6; fifth bit 支持 high-quality BGP 访问; 6th bit 支持 three 网络 访问; 7th bit 支持 QoS acceleration 在 访问 segment.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"support_feature": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Ability to access regional support注意：此字段可能返回 null，表示无法获取有效值。",
+										Description: "Ability 到 访问 regional support注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"network_type": {
@@ -218,7 +218,7 @@ func DataSourceTencentCloudGaapProxyDetail() *schema.Resource {
 														Type: schema.TypeString,
 													},
 													Computed:    true,
-													Description: "A 列表 network types supported by the access area，with normal indicating support for regular BGP，cn2 indicating premium BGP，triple indicating three networks，and secure_EIP represents a custom secure EIP。",
+													Description: "A 列表 网络 types 支持 通过 访问 area，使用 normal indicating support 对于 regular BGP，cn2 indicating premium BGP，triple indicating three networks，和 secure_EIP 表示 自定义 secure EIP。",
 												},
 											},
 										},
@@ -234,7 +234,7 @@ func DataSourceTencentCloudGaapProxyDetail() *schema.Resource {
 						"tag_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "标签列表，when there are no labels，this field is an empty list.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "标签列表，当 there 是 无 labels，此 字段 是 空 列表.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
@@ -253,12 +253,12 @@ func DataSourceTencentCloudGaapProxyDetail() *schema.Resource {
 						"support_security": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Does it support security group configuration注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Does 它 support 安全 组 configuration注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"billing_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Billing 类型: 0 represents bandwidth based billing，and 1 represents traffic based billing.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Billing 类型: 0 表示 带宽 based billing，和 1 表示 流量 based billing.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"related_global_domains": {
 							Type: schema.TypeSet,
@@ -266,7 +266,7 @@ func DataSourceTencentCloudGaapProxyDetail() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "列表 域名 names associated with resolution注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "列表 域名 names associated 使用 resolution注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"modify_config_time": {
 							Type:        schema.TypeInt,
@@ -276,7 +276,7 @@ func DataSourceTencentCloudGaapProxyDetail() *schema.Resource {
 						"proxy_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "proxy 类型，100 represents THUNDER proxy，103 represents Microsoft cooperation proxy注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "proxy 类型，100 表示 THUNDER proxy，103 表示 Microsoft cooperation proxy注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"client_ip_method": {
 							Type: schema.TypeSet,
@@ -284,7 +284,7 @@ func DataSourceTencentCloudGaapProxyDetail() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "The method of obtaining 客户端 IP through proxys，where 0 represents TOA and 1 represents Proxy Protocol注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "方法 的 obtaining 客户端 IP through proxys，其中 0 表示 TOA 和 1 表示 Proxy Protocol注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"ip_address_version": {
 							Type:        schema.TypeString,
@@ -294,17 +294,17 @@ func DataSourceTencentCloudGaapProxyDetail() *schema.Resource {
 						"network_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Network 类型: normal represents regular BGP，cn2 represents premium BGP，triple represents triple network，secure_EIP represents customized security EIP注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Network 类型: normal 表示 regular BGP，cn2 表示 premium BGP，triple 表示 triple 网络，secure_EIP 表示 customized 安全 EIP注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"package_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "proxy package 类型: Thunder represents standard proxy，Accelerator represents silver acceleration proxy,CrossBorder represents a cross-border proxy.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "proxy 包 类型: Thunder 表示 standard proxy，Accelerator 表示 silver acceleration proxy,CrossBorder 表示 cross-border proxy.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"ban_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Blocking and Unblocking 状态: BANNED 表示that the ban has been lifted，RECOVER 表示that the ban has been lifted or not，BANNING 表示that the ban is in progress，RECOVERING 表示that the ban is being lifted，BAN_FAILED 表示that the ban has failed，RECOVER_FAILED 表示that the unblocking has failed.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Blocking 和 Unblocking 状态: BANNED 表示that ban has been lifted，RECOVER 表示that ban has been lifted 或 不，BANNING 表示that ban 是 在 progress，RECOVERING 表示that ban 是 being lifted，BAN_FAILED 表示that ban has failed，RECOVER_FAILED 表示that unblocking has failed.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"ip_list": {
 							Type:        schema.TypeList,
@@ -320,12 +320,12 @@ func DataSourceTencentCloudGaapProxyDetail() *schema.Resource {
 									"provider": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Supplier，BGP represents default，CMCC represents China Mobile，CUCC represents China Unicom，and CTCC represents China Telecom。",
+										Description: "Supplier，BGP 表示 默认值，CMCC 表示 China Mobile，CUCC 表示 China Unicom，和 CTCC 表示 China Telecom。",
 									},
 									"bandwidth": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Band width。",
+										Description: "Band 宽度。",
 									},
 								},
 							},
@@ -333,27 +333,27 @@ func DataSourceTencentCloudGaapProxyDetail() *schema.Resource {
 						"http3_supported": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Identification that supports the Http3 协议，where:0 表示shutdown;1 表示enabled.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Identification 该 支持 Http3 协议，其中:0 表示shutdown;1 表示enabled.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"in_ban_blacklist": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Is it on the banned blacklist? 0 表示not on the blacklist，and 1 表示on the blacklist.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Is 它 在 banned blacklist? 0 表示not 在 blacklist，和 1 表示on blacklist.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"feature_bitmap": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Property bitmap，where each bit represents a property，where:0 表示that the feature is not supported;1，表示support for this feature.The meaning of the feature bitmap is as follows (from right to left):The first bit supports 4-layer acceleration;The second bit supports 7-layer acceleration;The third bit supports Http3 access;The fourth bit supports IPv6;The fifth bit supports high-quality BGP access;The 6th bit supports three network access;The 7th bit supports QoS acceleration in the access segment.注意：此字段可能返回 null，表示无法获取有效值。注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Property bitmap，其中 each bit 表示 属性，其中:0 表示that 功能 是 不 支持;1，表示support 对于 此 功能. meaning 的 功能 bitmap 是 作为 follows (从 right 到 left): first bit 支持 4-layer acceleration; second bit 支持 7-layer acceleration; third bit 支持 Http3 访问; fourth bit 支持 IPv6; fifth bit 支持 high-quality BGP 访问; 6th bit 支持 three 网络 访问; 7th bit 支持 QoS acceleration 在 访问 segment.注意：此字段可能返回 null，表示无法获取有效值。注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"is_support_tls_choice": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否allow TLS configuration.0-no support，1-expressed support。",
+							Description: "是否allow TLS 配置.0-无 support，1-expressed support。",
 						},
 						"is_auto_scale_proxy": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "表示是否auto scale channel is 已启用，with 0 for no and 1 for yes。",
+							Description: "表示是否auto scale channel 是 已启用，使用 0 对于 无 和 1 对于 yes。",
 						},
 					},
 				},

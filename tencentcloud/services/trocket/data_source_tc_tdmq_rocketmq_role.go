@@ -20,7 +20,7 @@ func DataSourceTencentCloudTdmqRocketmqRole() *schema.Resource {
 			"role_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Fuzzy query by 角色 名称",
+				Description: "Fuzzy 查询 通过 角色 名称",
 			},
 
 			"cluster_id": {
@@ -43,7 +43,7 @@ func DataSourceTencentCloudTdmqRocketmqRole() *schema.Resource {
 						"token": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "值 of the 角色 令牌",
+							Description: "值 的 角色 令牌",
 						},
 						"remark": {
 							Type:        schema.TypeString,

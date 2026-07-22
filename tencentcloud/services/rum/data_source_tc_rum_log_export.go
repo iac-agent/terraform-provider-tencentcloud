@@ -18,13 +18,13 @@ func DataSourceTencentCloudRumLogExport() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Export flag name.",
+				Description: "Export flag 名称.",
 			},
 
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Start timestamp, in milliseconds.",
+				Description: "Start timestamp, 在 milliseconds.",
 			},
 
 			"query": {
@@ -36,7 +36,7 @@ func DataSourceTencentCloudRumLogExport() *schema.Resource {
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "End timestamp, in milliseconds.",
+				Description: "End timestamp, 在 milliseconds.",
 			},
 
 			"project_id": {
@@ -51,19 +51,19 @@ func DataSourceTencentCloudRumLogExport() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Log fields.",
+				Description: "Log 字段.",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Return result.",
+				Description: "Return 结果.",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

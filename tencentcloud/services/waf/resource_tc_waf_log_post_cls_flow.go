@@ -28,14 +28,14 @@ func ResourceTencentCloudWafLogPostClsFlow() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The 地域 where the CLS is delivered. The 默认值为 ap-shanghai。",
+				Description: "地域 其中 CLS 是 delivered. 默认值为 ap-shanghai。",
 			},
 
 			"logset_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The 名称 log set where the delivered CLS is located. The 默认值为 waf_post_logset。",
+				Description: "名称 日志 集合 其中 delivered CLS 是 located. 默认值为 waf_post_logset。",
 			},
 
 			"log_type": {
@@ -43,20 +43,20 @@ func ResourceTencentCloudWafLogPostClsFlow() *schema.Resource {
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{1, 2}),
-				Description:  "1- Access log，2- Attack log，the 默认为 access log。",
+				Description:  "1- Access 日志，2- Attack 日志， 默认为 访问 日志。",
 			},
 
 			"log_topic_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The 名称 log subject where the submitted CLS is located. The 默认值为 waf_post_logtopic。",
+				Description: "名称 日志 subject 其中 submitted CLS 是 located. 默认值为 waf_post_logtopic。",
 			},
 
 			"flow_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Unique ID for post cls flow。",
+				Description: "Unique ID 对于 post cls flow。",
 			},
 
 			"logset_id": {

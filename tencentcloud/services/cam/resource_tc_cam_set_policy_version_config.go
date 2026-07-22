@@ -34,7 +34,7 @@ func ResourceTencentCloudCamSetPolicyVersionConfig() *schema.Resource {
 			"version_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The policy 版本 number，which can be obtained from ListPolicyVersions。",
+				Description: "策略 版本 数量，其中 可以 是 获取 从 ListPolicyVersions。",
 			},
 		},
 	}

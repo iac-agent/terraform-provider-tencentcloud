@@ -28,38 +28,38 @@ func ResourceTencentCloudTcrNamespace() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID TCR instance。",
+				Description: "ID TCR 实例。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "名称 TCR namespace. Valid length is [2~30]. It can only contain lowercase letters，numbers and separators (`.`，`_`，`-`)，and cannot start，end or continue with separators。",
+				Description: "名称 TCR 命名空间. 有效 长度 是 [2~30]. It 可以 仅 contain lowercase letters，numbers 和 separators (`.`，`_`，`-`)，和 不能 start，end 或 continue 使用 separators。",
 			},
 			"is_public": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Indicate that the namespace is public or not. 默认为 `false`。",
+				Description: "Indicate 该 命名空间 是 公有 或 不. 默认为 `false`。",
 			},
 			"is_auto_scan": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Scanning 级别，`True` is automatic，`False` is manual. 默认为 `false`。",
+				Description: "Scanning 级别，`True` 是 automatic，`False` 是 manual. 默认为 `false`。",
 			},
 
 			"is_prevent_vul": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Blocking switch，`True` is open，`False` is closed. 默认为 `false`。",
+				Description: "Blocking switch，`True` 是 open，`False` 是 closed. 默认为 `false`。",
 			},
 
 			"severity": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Block vulnerability 级别，currently only supports `low`，`medium`，`high`。",
+				Description: "Block vulnerability 级别，currently 仅 支持 `low`，`medium`，`high`。",
 			},
 
 			"cve_whitelist_items": {
@@ -80,7 +80,7 @@ func ResourceTencentCloudTcrNamespace() *schema.Resource {
 				Type:        schema.TypeMap,
 				Optional:    true,
 				Computed:    true,
-				Description: "标签键-值 pairs for the TCR namespace。",
+				Description: "标签键-值 pairs 对于 TCR 命名空间。",
 			},
 		},
 	}

@@ -19,18 +19,18 @@ func DataSourceTencentCloudAPIGatewayApiUsagePlans() *schema.Resource {
 			"service_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The unique ID service to be queried。",
+				Description: "唯一 ID 服务 到 是 queried。",
 			},
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "API binding usage plan list.注意：此字段可能返回 null，表示无法获取有效值。",
+				Description: "API binding usage plan 列表.注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"service_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Service unique ID.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Service 唯一 ID.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"service_name": {
 							Type:        schema.TypeString,
@@ -40,7 +40,7 @@ func DataSourceTencentCloudAPIGatewayApiUsagePlans() *schema.Resource {
 						"api_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "API unique ID.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "API 唯一 ID.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"api_name": {
 							Type:        schema.TypeString,
@@ -55,17 +55,17 @@ func DataSourceTencentCloudAPIGatewayApiUsagePlans() *schema.Resource {
 						"method": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "API method.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "API 方法.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"usage_plan_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Use the unique ID plan.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Use 唯一 ID plan.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"usage_plan_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Use the 名称 plan.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Use 名称 plan.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"usage_plan_desc": {
 							Type:        schema.TypeString,
@@ -75,17 +75,17 @@ func DataSourceTencentCloudAPIGatewayApiUsagePlans() *schema.Resource {
 						"environment": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Use the service environment bound by the plan.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Use 服务 环境 bound 通过 plan.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"in_use_request_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The quota that has already been used.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "配额 该 has already been 使用.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"max_request_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Request total quota，-1 表示no 限制注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Request 总数 配额，-1 表示no 限制注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"max_request_num_pre_sec": {
 							Type:        schema.TypeInt,
@@ -95,12 +95,12 @@ func DataSourceTencentCloudAPIGatewayApiUsagePlans() *schema.Resource {
 						"created_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create a time using a schedule.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Create 时间 使用 调度.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"modified_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Use the last 修改时间 of the plan.注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Use last 修改时间 的 plan.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},

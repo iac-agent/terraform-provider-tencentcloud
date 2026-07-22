@@ -19,7 +19,7 @@ func DataSourceTencentCloudGaapProxyGroupStatistics() *schema.Resource {
 			"group_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Group Id。",
+				Description: "Group ID。",
 			},
 
 			"start_time": {
@@ -46,7 +46,7 @@ func DataSourceTencentCloudGaapProxyGroupStatistics() *schema.Resource {
 			"granularity": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Monitoring granularity，currently supporting 60 300 3600 86400，（秒）。When the time range does not exceed 1 day，support a minimum granularity of 60 seconds;When the time range does not exceed 7 days，support a minimum granularity of 3600 seconds;When the time range does not exceed 30 days，the minimum granularity supported is 86400 seconds。",
+				Description: "Monitoring granularity，currently supporting 60 300 3600 86400，（秒）。当 时间 范围 does 不 exceed 1 day，support 最小 granularity 的 60 秒;当 时间 范围 does 不 exceed 7 days，support 最小 granularity 的 3600 秒;当 时间 范围 does 不 exceed 30 days， 最小 granularity 支持 是 86400 秒。",
 			},
 
 			"statistics_data": {

@@ -31,7 +31,7 @@ func ResourceTencentCloudPostgresqlParameters() *schema.Resource {
 			"param_list": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Parameters to be modified and expected values。",
+				Description: "Parameters 到 是 modified 和 expected 值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -42,12 +42,12 @@ func ResourceTencentCloudPostgresqlParameters() *schema.Resource {
 						"expected_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The 新值 to which the parameter will be modified. When this parameter is used as an input parameter，its 值 must be a string，such as `0.1` (decimal)，`1000` (integer)，and `replica` (enum)。",
+							Description: "新值 到 其中 参数 将 是 modified. 当 此 参数 是 使用 作为 input 参数，its 值 必须 是 字符串，such 作为 `0.1` (decimal)，`1000` (整数)，和 `副本` (enum)。",
 						},
 						"default_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The 默认值 of the parameter. Returned as a string。",
+							Description: "默认值 的 参数. Returned 作为 字符串。",
 						},
 						"param_description_ch": {
 							Type:        schema.TypeString,

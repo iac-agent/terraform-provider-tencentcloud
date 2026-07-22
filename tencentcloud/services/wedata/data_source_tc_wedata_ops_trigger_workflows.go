@@ -24,7 +24,7 @@ func DataSourceTencentCloudWedataOpsTriggerWorkflows() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter parameters. Workflow 名称 or ID query 名称: `Keyword`; workflow ID query 名称: `WorkflowId`; folder query 名称: `FolderId`; 所有者 query 名称: `InChargeUin`。",
+				Description: "过滤器 参数. Workflow 名称 或 ID 查询 名称: `Keyword`; 工作流 ID 查询 名称: `WorkflowId`; 文件夹 查询 名称: `FolderId`; 所有者 查询 名称: `InChargeUin`。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -35,7 +35,7 @@ func DataSourceTencentCloudWedataOpsTriggerWorkflows() *schema.Resource {
 						"values": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "列表 filter values。",
+							Description: "列表 过滤器 值。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -47,7 +47,7 @@ func DataSourceTencentCloudWedataOpsTriggerWorkflows() *schema.Resource {
 			"order_fields": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Sort fields. 排序字段 names include，for example，task count: TaskCount。",
+				Description: "Sort 字段. 排序字段 names include，对于 示例，任务 count: TaskCount。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -67,13 +67,13 @@ func DataSourceTencentCloudWedataOpsTriggerWorkflows() *schema.Resource {
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Workflow query results。",
+				Description: "Workflow 查询 results。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Total record count。",
+							Description: "Total 记录 count。",
 						},
 						"total_page_number": {
 							Type:        schema.TypeInt,
@@ -93,7 +93,7 @@ func DataSourceTencentCloudWedataOpsTriggerWorkflows() *schema.Resource {
 						"items": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Collection of workflow information。",
+							Description: "Collection 的 工作流 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"project_id": {
@@ -130,18 +130,18 @@ func DataSourceTencentCloudWedataOpsTriggerWorkflows() *schema.Resource {
 										Type:        schema.TypeList,
 										Required:    true,
 										MaxItems:    1,
-										Description: "Scheduling configuration。",
+										Description: "Scheduling 配置。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"trigger_mode": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Trigger 模式 Scheduled trigger: `TIME_TRIGGER`; Continuous run: `CONTINUE_RUN`; File arrival: `FILE_ARRIVAL`. In TIME_TRIGGER and CONTINUE_RUN modes，SchedulerStatus，SchedulerTimeZone，StartTime，EndTime，ConfigMode，CycleType，and CrontabExpression 为必填项. In FILE_ARRIVAL 模式，FileArrivalPath，TriggerMinimumIntervalSecond，and TriggerWaitTimeSecond 为必填项。",
+													Description: "Trigger 模式 Scheduled 触发器: `TIME_TRIGGER`; Continuous run: `CONTINUE_RUN`; File arrival: `FILE_ARRIVAL`. In TIME_TRIGGER 和 CONTINUE_RUN modes，SchedulerStatus，SchedulerTimeZone，StartTime，EndTime，ConfigMode，CycleType，和 CrontabExpression 为必填项. In FILE_ARRIVAL 模式，FileArrivalPath，TriggerMinimumIntervalSecond，和 TriggerWaitTimeSecond 为必填项。",
 												},
 												"extra_info": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "WorkflowTriggerConfig converted to JSON 格式，用于reconciliation。",
+													Description: "WorkflowTriggerConfig converted 到 JSON 格式，用于reconciliation。",
 												},
 												"schedule_time_zone": {
 													Type:        schema.TypeString,
@@ -166,7 +166,7 @@ func DataSourceTencentCloudWedataOpsTriggerWorkflows() *schema.Resource {
 												"cycle_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Cycle 类型 Supported types: `ONEOFF_CYCLE`: one-time; `YEAR_CYCLE`: year; `MONTH_CYCLE`: month; `WEEK_CYCLE`: week; `DAY_CYCLE`: day; `HOUR_CYCLE`: hour; `MINUTE_CYCLE`: minute; `CRONTAB_CYCLE`: crontab expression 类型",
+													Description: "Cycle 类型 Supported types: `ONEOFF_CYCLE`: 一个-时间; `YEAR_CYCLE`: year; `MONTH_CYCLE`: month; `WEEK_CYCLE`: week; `DAY_CYCLE`: day; `HOUR_CYCLE`: hour; `MINUTE_CYCLE`: minute; `CRONTAB_CYCLE`: crontab expression 类型",
 												},
 												"crontab_expression": {
 													Type:        schema.TypeString,
@@ -181,17 +181,17 @@ func DataSourceTencentCloudWedataOpsTriggerWorkflows() *schema.Resource {
 												"file_arrival_path": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "In file arrival 模式，the listening 路径 in the storage system。",
+													Description: "In 文件 arrival 模式， listening 路径 在 存储 系统。",
 												},
 												"trigger_minimum_interval_second": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "In file arrival 模式，minimum trigger interval (seconds)。",
+													Description: "In 文件 arrival 模式，最小 触发器 间隔 (秒)。",
 												},
 												"trigger_wait_time_second": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "In file arrival 模式，trigger wait time (seconds)。",
+													Description: "In 文件 arrival 模式，触发器 wait 时间 (秒)。",
 												},
 												"scheduler_status": {
 													Type:        schema.TypeString,
@@ -204,17 +204,17 @@ func DataSourceTencentCloudWedataOpsTriggerWorkflows() *schema.Resource {
 									"user_name_in_charge": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Person in charge。",
+										Description: "Person 在 charge。",
 									},
 									"user_uin_in_charge": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Person in charge ID。",
+										Description: "Person 在 charge ID。",
 									},
 									"workflow_params": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Workflow parameters。",
+										Description: "Workflow 参数。",
 									},
 								},
 							},

@@ -33,7 +33,7 @@ func DataSourceTencentCloudAudits() *schema.Resource {
 			"audit_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information 列表 the dedicated audits。",
+				Description: "Information 列表 dedicated audits。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
@@ -49,17 +49,17 @@ func DataSourceTencentCloudAudits() *schema.Resource {
 						"cos_bucket": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cos 存储桶名称 where audit save logs。",
+							Description: "Cos 存储桶名称 其中 audit save logs。",
 						},
 						"log_file_prefix": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Prefix of the log file of the audit。",
+							Description: "Prefix 的 日志 文件 的 audit。",
 						},
 						"audit_switch": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Indicate whether audit start logging or not。",
+							Description: "Indicate whether audit start 日志记录 或 不。",
 						},
 					},
 				},

@@ -31,7 +31,7 @@ func DataSourceTencentCloudSslDescribeHostUpdateRecord() *schema.Resource {
 			"deploy_record_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Certificate deployment record listNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+				Description: "Certificate 部署 记录 listNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
@@ -55,7 +55,7 @@ func DataSourceTencentCloudSslDescribeHostUpdateRecord() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "列表 resource types。",
+							Description: "列表 资源 types。",
 						},
 						"regions": {
 							Type: schema.TypeSet,
@@ -63,7 +63,7 @@ func DataSourceTencentCloudSslDescribeHostUpdateRecord() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "列表 regional deploymentNote: This field may return NULL，indicating that the valid 值 cannot be obtained。",
+							Description: "列表 regional deploymentNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
@@ -73,7 +73,7 @@ func DataSourceTencentCloudSslDescribeHostUpdateRecord() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Deployment time。",
+							Description: "Deployment 时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,

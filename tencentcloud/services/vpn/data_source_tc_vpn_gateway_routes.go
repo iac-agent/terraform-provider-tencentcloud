@@ -26,12 +26,12 @@ func DataSourceTencentCloudVpnGatewayRoutes() *schema.Resource {
 			"destination_cidr": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Destination IDC IP range。",
+				Description: "Destination IDC IP 范围。",
 			},
 			"instance_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Next hop 类型 (类型 associated instance). 有效值：VPNCONN (VPN tunnel) and CCN (CCN instance)。",
+				Description: "Next hop 类型 (类型 associated 实例). 有效值：VPNCONN (VPN tunnel) 和 CCN (CCN 实例)。",
 			},
 			"instance_id": {
 				Type:        schema.TypeString,
@@ -48,7 +48,7 @@ func DataSourceTencentCloudVpnGatewayRoutes() *schema.Resource {
 			"vpn_gateway_route_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information 列表 the vpn gateway routes。",
+				Description: "Information 列表 vpn 网关 routes。",
 				Elem: &schema.Resource{
 					Schema: VpnGatewayRoutePara(),
 				},

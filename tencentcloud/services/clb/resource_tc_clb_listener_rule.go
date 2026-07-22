@@ -86,7 +86,7 @@ func ResourceTencentCloudClbListenerRule() *schema.Resource {
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateIntegerInRange(2, 10),
-				Description: "健康检查不健康阈值，默认为`3`。如果连续3次返回不健康结果，则表明转发异常。取值范围为[2-10]。  注意：TCP/UDP/TCP_SSL监听可以直接配置，HTTP/HTTPS监听需要在tencentcloud_clb_listener_rule中配置。",
+				Description: "健康检查不健康阈值，默认为`3`。如果连续3次返回不健康结果，则表明转发异常。取值范围为[2-10]。 注意：TCP/UDP/TCP_SSL监听可以直接配置，HTTP/HTTPS监听需要在tencentcloud_clb_listener_rule中配置。",
 			},
 			"health_check_port": {
 				Type:        schema.TypeInt,
@@ -188,7 +188,7 @@ func ResourceTencentCloudClbListenerRule() *schema.Resource {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateIntegerInRange(30, 3600),
-				Description: "CLB 侦听器中的会话持续时间。注意：当调度程序指定为“WRR”时可用，当侦听器协议为“TCP_SSL”时不可用。  注意：TCP/UDP/TCP_SSL监听可以直接配置，HTTP/HTTPS监听需要在tencentcloud_clb_listener_rule中配置。",
+				Description: "CLB 侦听器中的会话持续时间。注意：当调度程序指定为“WRR”时可用，当侦听器协议为“TCP_SSL”时不可用。 注意：TCP/UDP/TCP_SSL监听可以直接配置，HTTP/HTTPS监听需要在tencentcloud_clb_listener_rule中配置。",
 			},
 			"http2_switch": {
 				Type:        schema.TypeBool,
@@ -201,7 +201,7 @@ func ResourceTencentCloudClbListenerRule() *schema.Resource {
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CLB_LISTENER_SCHEDULER),
-				Description: "CLB监听规则的调度方法。有效值：“WRR”、“IP HASH”、“LEAST_CONN”。当“target_type”不是“TARGETGROUP-V2”时，默认值为“WRR”。  注意：TCP/UDP/TCP_SSL监听可以直接配置，HTTP/HTTPS监听需要在tencentcloud_clb_listener_rule中配置。",
+				Description: "CLB监听规则的调度方法。有效值：“WRR”、“IP HASH”、“LEAST_CONN”。当“target_type”不是“TARGETGROUP-V2”时，默认值为“WRR”。 注意：TCP/UDP/TCP_SSL监听可以直接配置，HTTP/HTTPS监听需要在tencentcloud_clb_listener_rule中配置。",
 			},
 			"target_type": {
 				Type:         schema.TypeString,

@@ -21,23 +21,23 @@ func DataSourceTencentCloudDayuCCHttpsPolicies() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(DAYU_RESOURCE_TYPE),
-				Description:  "类型 resource that the CC https policy works for，valid 值 is `bgpip`。",
+				Description:  "类型 资源 该 CC https 策略 works 对于，有效 值 是 `bgpip`。",
 			},
 			"resource_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Id of the resource that the CC https policy works for。",
+				Description: "ID 的 资源 该 CC https 策略 works 对于。",
 			},
 			"policy_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Id of the CC https policy to be queried。",
+				Description: "ID 的 CC https 策略 到 是 queried。",
 			},
 			"name": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 20),
-				Description:  "名称 CC https policy to be queried。",
+				Description:  "名称 CC https 策略 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -53,17 +53,17 @@ func DataSourceTencentCloudDayuCCHttpsPolicies() *schema.Resource {
 						"resource_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID resource that the CC self-define https policy works for。",
+							Description: "ID 资源 该 CC self-define https 策略 works 对于。",
 						},
 						"resource_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "类型 resource that the CC self-define https policy works for。",
+							Description: "类型 资源 该 CC self-define https 策略 works 对于。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "名称 CC self-define https policy。",
+							Description: "名称 CC self-define https 策略。",
 						},
 						"action": {
 							Type:        schema.TypeString,
@@ -73,17 +73,17 @@ func DataSourceTencentCloudDayuCCHttpsPolicies() *schema.Resource {
 						"switch": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Indicate the CC self-define https policy takes effect or not。",
+							Description: "Indicate CC self-define https 策略 takes effect 或 不。",
 						},
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "域名 that the CC self-define https policy works for。",
+							Description: "域名 该 CC self-define https 策略 works 对于。",
 						},
 						"rule_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Rule ID 域名 that the CC self-define https policy works for。",
+							Description: "Rule ID 域名 该 CC self-define https 策略 works 对于。",
 						},
 						"rule_list": {
 							Type:     schema.TypeList,
@@ -93,12 +93,12 @@ func DataSourceTencentCloudDayuCCHttpsPolicies() *schema.Resource {
 									"skey": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "键 of the rule。",
+										Description: "键 的 规则。",
 									},
 									"operator": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "操作者 of the rule。",
+										Description: "操作者 的 规则。",
 									},
 									"value": {
 										Type:        schema.TypeString,
@@ -107,23 +107,23 @@ func DataSourceTencentCloudDayuCCHttpsPolicies() *schema.Resource {
 									},
 								},
 							},
-							Description: "Rule 列表 the CC self-define https policy。",
+							Description: "Rule 列表 CC self-define https 策略。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of the CC self-define https policy。",
+							Description: "创建时间 的 CC self-define https 策略。",
 						},
 						"policy_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Id of the CC self-define https policy。",
+							Description: "ID 的 CC self-define https 策略。",
 						},
 						"ip_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Ip of the CC self-define https policy。",
+							Description: "Ip 的 CC self-define https 策略。",
 						},
 					},
 				},

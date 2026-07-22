@@ -21,42 +21,42 @@ func DataSourceTencentCloudCamUsers() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "名称 CAM 用户 to be queried。",
+				Description: "名称 CAM 用户 到 是 queried。",
 			},
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "备注 of the CAM 用户 to be queried。",
+				Description: "备注 的 CAM 用户 到 是 queried。",
 			},
 			"phone_num": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Phone num of the CAM 用户 to be queried。",
+				Description: "Phone num 的 CAM 用户 到 是 queried。",
 			},
 			"country_code": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Country 代码 of the CAM 用户 to be queried。",
+				Description: "Country 代码 的 CAM 用户 到 是 queried。",
 			},
 			"email": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Email of the CAM 用户 to be queried。",
+				Description: "Email 的 CAM 用户 到 是 queried。",
 			},
 			"uin": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Uin of the CAM 用户 to be queried。",
+				Description: "Uin 的 CAM 用户 到 是 queried。",
 			},
 			"uid": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Uid of the CAM 用户 to be queried。",
+				Description: "Uid 的 CAM 用户 到 是 queried。",
 			},
 			"console_login": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Indicate 是否user can login in。",
+				Description: "Indicate 是否user 可以 login 在。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -72,7 +72,7 @@ func DataSourceTencentCloudCamUsers() *schema.Resource {
 						"user_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID CAM 用户 Its 值 equals to `名称` argument。",
+							Description: "ID CAM 用户 Its 值 equals 到 `名称` argument。",
 						},
 						"name": {
 							Type:        schema.TypeString,
@@ -82,37 +82,37 @@ func DataSourceTencentCloudCamUsers() *schema.Resource {
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "备注 of the CAM 用户",
+							Description: "备注 的 CAM 用户",
 						},
 						"phone_num": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Phone num of the CAM 用户",
+							Description: "Phone num 的 CAM 用户",
 						},
 						"country_code": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Country 代码 of the CAM 用户",
+							Description: "Country 代码 的 CAM 用户",
 						},
 						"email": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Email of the CAM 用户",
+							Description: "Email 的 CAM 用户",
 						},
 						"uin": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Uin of the CAM 用户",
+							Description: "Uin 的 CAM 用户",
 						},
 						"uid": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Uid of the CAM 用户",
+							Description: "Uid 的 CAM 用户",
 						},
 						"console_login": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Indicate 是否user can login in。",
+							Description: "Indicate 是否user 可以 login 在。",
 						},
 					},
 				},

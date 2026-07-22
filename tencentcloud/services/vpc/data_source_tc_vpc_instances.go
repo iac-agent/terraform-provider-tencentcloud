@@ -24,32 +24,32 @@ func DataSourceTencentCloudVpcInstances() *schema.Resource {
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID VPC to be queried。",
+				Description: "ID VPC 到 是 queried。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "名称 VPC to be queried。",
+				Description: "名称 VPC 到 是 queried。",
 			},
 			"is_default": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Filter default or no default VPC。",
+				Description: "过滤器 默认值 或 无 默认值 VPC。",
 			},
 			"tag_key": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Filter if VPC has this 标签",
+				Description: "过滤器 如果 VPC has 此 标签",
 			},
 			"cidr_block": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Filter VPC with this CIDR。",
+				Description: "过滤器 VPC 使用 此 CIDR。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "标签 of the VPC to be queried。",
+				Description: "标签 的 VPC 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
@@ -60,7 +60,7 @@ func DataSourceTencentCloudVpcInstances() *schema.Resource {
 			// Computed values
 			"instance_list": {Type: schema.TypeList,
 				Computed:    true,
-				Description: "The information 列表 the VPC。",
+				Description: "信息 列表 VPC。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
@@ -76,7 +76,7 @@ func DataSourceTencentCloudVpcInstances() *schema.Resource {
 						"cidr_block": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "A network 地址 block of a VPC CIDR。",
+							Description: "A 网络 地址 block 的 VPC CIDR。",
 						},
 						"common_assistant_cidr": {
 							Type:     schema.TypeList,
@@ -92,17 +92,17 @@ func DataSourceTencentCloudVpcInstances() *schema.Resource {
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
-							Description: "container assistant CIDR block。",
+							Description: "容器 assistant CIDR block。",
 						},
 						"is_default": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "表示是否it is the default VPC for this 地域",
+							Description: "表示是否it 是 默认值 VPC 对于 此 地域",
 						},
 						"is_multicast": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "表示是否VPC multicast is 已启用",
+							Description: "表示是否VPC multicast 是 已启用",
 						},
 						"dns_servers": {
 							Type:     schema.TypeList,
@@ -110,7 +110,7 @@ func DataSourceTencentCloudVpcInstances() *schema.Resource {
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
-							Description: "A 列表 DNS servers which can be used within the VPC。",
+							Description: "A 列表 DNS servers 其中 可以 是 使用 within VPC。",
 						},
 						"subnet_ids": {
 							Type:     schema.TypeList,
@@ -118,17 +118,17 @@ func DataSourceTencentCloudVpcInstances() *schema.Resource {
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
-							Description: "A ID 列表 subnets within this VPC。",
+							Description: "A ID 列表 subnets within 此 VPC。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "创建时间 of VPC。",
+							Description: "创建时间 的 VPC。",
 						},
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "标签 of the VPC。",
+							Description: "标签 的 VPC。",
 						},
 					},
 				},

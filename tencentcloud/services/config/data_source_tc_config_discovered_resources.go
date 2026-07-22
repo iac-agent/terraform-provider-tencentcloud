@@ -17,7 +17,7 @@ func DataSourceTencentCloudConfigDiscoveredResources() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter conditions. Supported filter names: resourceName (资源名称)，resourceId (resource ID)。",
+				Description: "过滤器 conditions. Supported 过滤器 names: resourceName (资源名称)，resourceId (资源 ID)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -28,7 +28,7 @@ func DataSourceTencentCloudConfigDiscoveredResources() *schema.Resource {
 						"values": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Filter field values。",
+							Description: "过滤器 字段 值。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -40,7 +40,7 @@ func DataSourceTencentCloudConfigDiscoveredResources() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "标签 filter conditions。",
+				Description: "标签 过滤器 conditions。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
@@ -66,7 +66,7 @@ func DataSourceTencentCloudConfigDiscoveredResources() *schema.Resource {
 			"resource_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Discovered resource list。",
+				Description: "Discovered 资源 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_type": {
@@ -97,7 +97,7 @@ func DataSourceTencentCloudConfigDiscoveredResources() *schema.Resource {
 						"resource_delete": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Resource deletion mark. 有效值：1 (deleted)，2 (not deleted)。",
+							Description: "Resource deletion mark. 有效值：1 (删除)，2 (不 删除)。",
 						},
 						"resource_create_time": {
 							Type:        schema.TypeString,

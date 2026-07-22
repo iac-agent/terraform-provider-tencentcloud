@@ -35,25 +35,25 @@ func ResourceTencentCloudIdentityCenterRoleAssignment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Identity ID for the CAM 用户 synchronization. Valid values:\nWhen the PrincipalType 值 is Group，it is the CIC 用户 组 ID (g-********).\nWhen the PrincipalType 值 is 用户，it is the CIC 用户 ID (u-********)。",
+				Description: "Identity ID 对于 CAM 用户 synchronization. 有效 值:\nWhen PrincipalType 值 是 Group，它 是 CIC 用户 组 ID (g-********).\nWhen PrincipalType 值 是 用户，它 是 CIC 用户 ID (u-********)。",
 			},
 			"principal_type": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Identity 类型 for the CAM 用户 synchronization. Valid values:\n\nUser: 表示that the identity for the CAM 用户 synchronization is a CIC 用户\nGroup: 表示that the identity for the CAM 用户 synchronization is a CIC 用户 group。",
+				Description: "Identity 类型 对于 CAM 用户 synchronization. 有效 值:\n\nUser: 表示that identity 对于 CAM 用户 synchronization 是 CIC 用户\nGroup: 表示that identity 对于 CAM 用户 synchronization 是 CIC 用户 组。",
 			},
 			"target_uin": {
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "UIN of the synchronized target 账号 of the Tencent Cloud Organization。",
+				Description: "UIN 的 synchronized 目标 账号 的 Tencent Cloud Organization。",
 			},
 			"target_type": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "类型 synchronized target 账号 of the Tencent Cloud Organization. ManagerUin: admin 账号; MemberUin: member 账号",
+				Description: "类型 synchronized 目标 账号 的 Tencent Cloud Organization. ManagerUin: admin 账号; MemberUin: member 账号",
 			},
 			"role_configuration_id": {
 				Type:        schema.TypeString,
@@ -66,7 +66,7 @@ func ResourceTencentCloudIdentityCenterRoleAssignment() *schema.Resource {
 				Optional:    true,
 				Default:     "None",
 				ForceNew:    true,
-				Description: "When you remove the last authorization configured with a certain privilege on a group 账号 target 账号，是否cancel the privilege configuration deployment at the same time. 值: DeprovisionForLastRoleAssignmentOnAccount: Remove privileges to configure deployment. None (default): Configure deployment without delegating privileges。",
+				Description: "当 您 remove last authorization 已配置 使用 certain privilege 在 组 账号 目标 账号，是否cancel privilege 配置 部署 在 same 时间. 值: DeprovisionForLastRoleAssignmentOnAccount: Remove privileges 到 configure 部署. None (默认值): Configure 部署 without delegating privileges。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
@@ -81,7 +81,7 @@ func ResourceTencentCloudIdentityCenterRoleAssignment() *schema.Resource {
 			"role_configuration_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "角色 configuration 名称",
+				Description: "角色 配置 名称",
 			},
 			"target_name": {
 				Type:        schema.TypeString,

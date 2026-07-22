@@ -35,7 +35,7 @@ func ResourceTencentCloudKubernetesControlPlaneLog() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "集群类型 currently only support tke。",
+				Description: "集群类型 currently 仅 support tke。",
 			},
 
 			"components": {
@@ -43,7 +43,7 @@ func ResourceTencentCloudKubernetesControlPlaneLog() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "组件名称 list. currently supports cluster-autoscaler，kapenter。",
+				Description: "组件名称 列表. currently 支持 集群-autoscaler，kapenter。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
@@ -56,7 +56,7 @@ func ResourceTencentCloudKubernetesControlPlaneLog() *schema.Resource {
 							Optional:    true,
 							Computed:    true,
 							Deprecated:  "It has been deprecated from version 1.82.54.",
-							Description: "Log 级别 for components that support dynamic adjustment，you can 指定this parameter when enabling logs。",
+							Description: "Log 级别 对于 components 该 support 动态 adjustment，您 可以 指定this 参数 当 enabling logs。",
 						},
 						"log_set_id": {
 							Type:        schema.TypeString,
@@ -74,7 +74,7 @@ func ResourceTencentCloudKubernetesControlPlaneLog() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "topic 地域 this parameter enables cross-地域 shipping of logs。",
+							Description: "主题 地域 此 参数 enables cross-地域 shipping 的 logs。",
 						},
 					},
 				},
@@ -83,7 +83,7 @@ func ResourceTencentCloudKubernetesControlPlaneLog() *schema.Resource {
 			"delete_log_set_and_topic": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "是否simultaneously delete the log set and topic. If the log set and topic are used by other collection rules，they will not be deleted. 默认为 false。",
+				Description: "是否simultaneously delete 日志 集合 和 主题. 如果 日志 集合 和 主题 是 使用 通过 other collection 规则，they 将 不 是 删除. 默认为 false。",
 			},
 		},
 	}

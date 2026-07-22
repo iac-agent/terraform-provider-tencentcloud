@@ -20,13 +20,13 @@ func DataSourceTencentCloudOrganizationServices() *schema.Resource {
 			"search_key": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Keyword for search by 名称",
+				Description: "Keyword 对于 search 通过 名称",
 			},
 			// computed
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Organization service list。",
+				Description: "Organization 服务 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"service_id": {
@@ -37,22 +37,22 @@ func DataSourceTencentCloudOrganizationServices() *schema.Resource {
 						"product_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Organization service product 名称 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Organization 服务 product 名称 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"is_assign": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否support delegation. 有效值：1 (yes)，2 (no). 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "是否support delegation. 有效值：1 (yes)，2 (无). 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Organization service 描述 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Organization 服务 描述 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"member_num": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "数量 the current delegated admins. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "数量 当前 delegated admins. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"document": {
 							Type:        schema.TypeString,
@@ -62,37 +62,37 @@ func DataSourceTencentCloudOrganizationServices() *schema.Resource {
 						"console_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Console 路径 of the organization service product. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Console 路径 的 organization 服务 product. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"is_usage_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否access the usage 状态 有效值：1 (yes)，2 (no). 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "是否access usage 状态 有效值：1 (yes)，2 (无). 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"can_assign_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "限制 for the 数量 delegated admins. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "限制 对于 数量 delegated admins. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"product": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Organization service product identifier. 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Organization 服务 product identifier. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"service_grant": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否support organization service authorization. 有效值：1 (yes)，2 (no). 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "是否support organization 服务 authorization. 有效值：1 (yes)，2 (无). 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"grant_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Enabling 状态 organization service authorization. This field is valid when ServiceGrant is 1. 有效值：已启用，已禁用 注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "Enabling 状态 organization 服务 authorization. 此 字段 是 有效 当 ServiceGrant 是 1. 有效值：已启用，已禁用 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"is_set_management_scope": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "是否support setting the delegated management 范围 有效值：1 (yes)，2 (no).\n注意：此字段可能返回 null，表示无法获取有效值。",
+							Description: "是否support setting delegated management 范围 有效值：1 (yes)，2 (无).\n注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},

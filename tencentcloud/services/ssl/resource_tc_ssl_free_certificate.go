@@ -27,7 +27,7 @@ func ResourceTencentCloudSSLFreeCertificate() *schema.Resource {
 			"dv_auth_method": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "指定DV authorize method. 可用值：`DNS_AUTO` - automatic DNS auth，`DNS` - manual DNS auth，`FILE` - auth by file。",
+				Description: "指定DV authorize 方法. 可用值：`DNS_AUTO` - automatic DNS auth，`DNS` - manual DNS auth，`FILE` - auth 通过 文件。",
 			},
 			"domain": {
 				Type:        schema.TypeString,
@@ -38,7 +38,7 @@ func ResourceTencentCloudSSLFreeCertificate() *schema.Resource {
 			"package_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Type of package. Only support `\"83\"` (TrustAsia TLS RSA CA).",
+				Description: "Type 的 包. Only support `\"83\"` (TrustAsia TLS RSA CA).",
 			},
 			"contact_email": {
 				Type:        schema.TypeString,
@@ -48,22 +48,22 @@ func ResourceTencentCloudSSLFreeCertificate() *schema.Resource {
 			"contact_phone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Phone number。",
+				Description: "Phone 数量。",
 			},
 			"validity_period": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Specify validity period in month, only support `\"3\"` months for now.",
+				Description: "Specify validity 周期 在 month, 仅 support `\"3\"` months 对于 now.",
 			},
 			"csr_encrypt_algo": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "指定CSR encrypt algorithm，only support `RSA` for now。",
+				Description: "指定CSR encrypt algorithm，仅 support `RSA` 对于 now。",
 			},
 			"csr_key_parameter": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Specify CSR key parameter, only support `\"2048\"` for now.",
+				Description: "Specify CSR 键 参数, 仅 support `\"2048\"` 对于 now.",
 			},
 			"csr_key_password": {
 				Type:        schema.TypeString,
@@ -74,12 +74,12 @@ func ResourceTencentCloudSSLFreeCertificate() *schema.Resource {
 			"alias": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "指定alias for 备注",
+				Description: "指定alias 对于 备注",
 			},
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "ID projects which this certification belong to。",
+				Description: "ID projects 其中 此 certification belong 到。",
 			},
 			"old_certificate_id": {
 				Type:        schema.TypeString,
@@ -90,7 +90,7 @@ func ResourceTencentCloudSSLFreeCertificate() *schema.Resource {
 			"status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Certificate 状态 0 = Approving，1 = Approved，2 = Approve failed，3 = expired，4 = DNS record added，5 = OV/EV Certificate and confirm letter needed，6 = 顺序 canceling，7 = 顺序 canceled，8 = Submitted and confirm letter needed，9 = Revoking，10 = Revoked，11 = re-applying，12 = Revoke and confirm letter needed，13 = Free SSL and confirm letter needed。",
+				Description: "Certificate 状态 0 = Approving，1 = Approved，2 = Approve failed，3 = expired，4 = DNS 记录 added，5 = OV/EV Certificate 和 confirm letter needed，6 = 顺序 canceling，7 = 顺序 canceled，8 = Submitted 和 confirm letter needed，9 = Revoking，10 = Revoked，11 = re-applying，12 = Revoke 和 confirm letter needed，13 = Free SSL 和 confirm letter needed。",
 			},
 			"status_name": {
 				Type:        schema.TypeString,
@@ -125,17 +125,17 @@ func ResourceTencentCloudSSLFreeCertificate() *schema.Resource {
 			"insert_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Certificate insert time。",
+				Description: "Certificate insert 时间。",
 			},
 			"certificate_private_key": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Certificate private 键",
+				Description: "Certificate 私有 键",
 			},
 			"certificate_public_key": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Certificate public 键",
+				Description: "Certificate 公有 键",
 			},
 			"renewable": {
 				Type:        schema.TypeBool,
@@ -150,7 +150,7 @@ func ResourceTencentCloudSSLFreeCertificate() *schema.Resource {
 			"dv_auths": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "DV certification information。",
+				Description: "DV certification 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"dv_auth_key": {

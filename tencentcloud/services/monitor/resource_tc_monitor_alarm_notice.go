@@ -31,7 +31,7 @@ func ResourceTencentCloudMonitorAlarmNotice() *schema.Resource {
 			"notice_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Alarm notification 类型 ALARM=Notification not restored OK=Notification restored ALL。",
+				Description: "Alarm 通知 类型 ALARM=Notification 不 restored OK=Notification restored ALL。",
 			},
 			"notice_language": {
 				Type:        schema.TypeString,
@@ -41,7 +41,7 @@ func ResourceTencentCloudMonitorAlarmNotice() *schema.Resource {
 			"user_notices": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Alarm notification template list.(At most five)。",
+				Description: "Alarm 通知 template 列表.(At most five)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"receiver_type": {
@@ -52,12 +52,12 @@ func ResourceTencentCloudMonitorAlarmNotice() *schema.Resource {
 						"start_time": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The 数量 seconds since the notification 开始时间 00:00:00 (值 range 0-86399)。",
+							Description: "数量 秒 since 通知 开始时间 00:00:00 (值 范围 0-86399)。",
 						},
 						"end_time": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The 数量 seconds since the notification 结束时间 00:00:00 (值 range 0-86399)。",
+							Description: "数量 秒 since 通知 结束时间 00:00:00 (值 范围 0-86399)。",
 						},
 						"notice_way": {
 							Type:        schema.TypeSet,
@@ -74,13 +74,13 @@ func ResourceTencentCloudMonitorAlarmNotice() *schema.Resource {
 						"group_ids": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "用户 组 ID list。",
+							Description: "用户 组 ID 列表。",
 							Elem:        &schema.Schema{Type: schema.TypeInt},
 						},
 						"phone_order": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Telephone polling list。",
+							Description: "Telephone polling 列表。",
 							Elem:        &schema.Schema{Type: schema.TypeInt},
 						},
 						"phone_circle_times": {
@@ -91,27 +91,27 @@ func ResourceTencentCloudMonitorAlarmNotice() *schema.Resource {
 						"phone_inner_interval": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "数量 seconds between calls in a polling session (取值范围：60-900)。",
+							Description: "数量 秒 between calls 在 polling 会话 (取值范围：60-900)。",
 						},
 						"phone_circle_interval": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "数量 seconds between polls (取值范围：60-900)。",
+							Description: "数量 秒 between polls (取值范围：60-900)。",
 						},
 						"need_phone_arrive_notice": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Contact notification 必填 0= No 1= Yes。",
+							Description: "Contact 通知 必填 0= No 1= Yes。",
 						},
 						"phone_call_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Call 类型 SYNC= Simultaneous call CIRCLE= Round call If this parameter is not specified，the 默认值为 round call。",
+							Description: "Call 类型 SYNC= Simultaneous call CIRCLE= Round call 如果 此 参数 是 不 指定， 默认值为 round call。",
 						},
 						"weekday": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Notification 周期 1-7 表示Monday to Sunday。",
+							Description: "Notification 周期 1-7 表示Monday 到 Sunday。",
 							Elem:        &schema.Schema{Type: schema.TypeInt},
 						},
 					},
@@ -120,19 +120,19 @@ func ResourceTencentCloudMonitorAlarmNotice() *schema.Resource {
 			"url_notices": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "The 最大callback notifications is 3。",
+				Description: "最大callback notifications 是 3。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"url": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Callback URL (limited to 256 characters)。",
+							Description: "Callback URL (limited 到 256 字符)。",
 						},
 						"is_valid": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "If passed verification `0` is no，`1` is yes. Default `0`。",
+							Description: "如果 passed verification `0` 是 无，`1` 是 yes. Default `0`。",
 						},
 						"validation_code": {
 							Type:        schema.TypeString,
@@ -142,17 +142,17 @@ func ResourceTencentCloudMonitorAlarmNotice() *schema.Resource {
 						"start_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Notification Start Time 数量 seconds at the start of a day。",
+							Description: "Notification Start Time 数量 秒 在 start 的 day。",
 						},
 						"end_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Notification End Time Seconds at the start of a day。",
+							Description: "Notification End Time Seconds 在 start 的 day。",
 						},
 						"weekday": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Notification 周期 1-7 表示Monday to Sunday。",
+							Description: "Notification 周期 1-7 表示Monday 到 Sunday。",
 							Elem:        &schema.Schema{Type: schema.TypeInt},
 						},
 					},
@@ -161,7 +161,7 @@ func ResourceTencentCloudMonitorAlarmNotice() *schema.Resource {
 			"cls_notices": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "A maximum of one alarm notification can be pushed to the CLS service。",
+				Description: "A 最大 的 一个 告警 通知 可以 是 pushed 到 CLS 服务。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
@@ -172,18 +172,18 @@ func ResourceTencentCloudMonitorAlarmNotice() *schema.Resource {
 						"log_set_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Log collection Id。",
+							Description: "Log collection ID。",
 						},
 						"topic_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Theme Id。",
+							Description: "Theme ID。",
 						},
 						"enable": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Default:     1,
-							Description: "Start-stop 状态，can not be transmitted，default 已启用 0= 已禁用，1= 已启用",
+							Description: "Start-stop 状态，可以 不 是 transmitted，默认值 已启用 0= 已禁用，1= 已启用",
 						},
 					},
 				},
@@ -201,17 +201,17 @@ func ResourceTencentCloudMonitorAlarmNotice() *schema.Resource {
 			"is_preset": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "是否为the system default notification template 0=No 1=Yes。",
+				Description: "是否为the 系统 默认值 通知 template 0=No 1=Yes。",
 			},
 			"amp_consumer_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Amp consumer ID。",
+				Description: "Amp 消费者 ID。",
 			},
 			"policy_ids": {
 				Type:        schema.TypeSet,
 				Computed:    true,
-				Description: "列表 alarm policy IDs bound to the alarm notification template。",
+				Description: "列表 告警 策略 IDs bound 到 告警 通知 template。",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 		},

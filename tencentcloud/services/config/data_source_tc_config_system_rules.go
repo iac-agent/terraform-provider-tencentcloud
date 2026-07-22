@@ -23,19 +23,19 @@ func DataSourceTencentCloudConfigSystemRules() *schema.Resource {
 			"risk_level": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "风险等级 for filtering. 有效值：1 (high risk)，2 (medium risk)，3 (low risk)。",
+				Description: "风险等级 对于 filtering. 有效值：1 (high risk)，2 (medium risk)，3 (low risk)。",
 			},
 
 			"rule_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "System preset rule list。",
+				Description: "System preset 规则 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"identifier": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Rule unique identifier。",
+							Description: "Rule 唯一 identifier。",
 						},
 						"rule_name": {
 							Type:        schema.TypeString,
@@ -55,7 +55,7 @@ func DataSourceTencentCloudConfigSystemRules() *schema.Resource {
 						"service_function": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Corresponding service function。",
+							Description: "Corresponding 服务 函数。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
@@ -70,7 +70,7 @@ func DataSourceTencentCloudConfigSystemRules() *schema.Resource {
 						"trigger_type": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Trigger 类型 list。",
+							Description: "Trigger 类型 列表。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -78,7 +78,7 @@ func DataSourceTencentCloudConfigSystemRules() *schema.Resource {
 						"resource_type": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Supported 资源类型 list。",
+							Description: "Supported 资源类型 列表。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -86,7 +86,7 @@ func DataSourceTencentCloudConfigSystemRules() *schema.Resource {
 						"label": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Rule 标签 list。",
+							Description: "Rule 标签 列表。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -94,7 +94,7 @@ func DataSourceTencentCloudConfigSystemRules() *schema.Resource {
 						"reference_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "数量 times this rule is referenced。",
+							Description: "数量 times 此 规则 是 referenced。",
 						},
 						"identifier_type": {
 							Type:        schema.TypeString,
