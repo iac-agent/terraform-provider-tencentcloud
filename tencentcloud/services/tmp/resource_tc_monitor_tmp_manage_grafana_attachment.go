@@ -27,14 +27,14 @@ func ResourceTencentCloudMonitorTmpManageGrafanaAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Prometheus instance ID.",
+				Description: "Prometheus 实例 ID。",
 			},
 
 			"grafana_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Grafana instance ID.",
+				Description: "Grafana 实例 ID",
 			},
 		},
 	}

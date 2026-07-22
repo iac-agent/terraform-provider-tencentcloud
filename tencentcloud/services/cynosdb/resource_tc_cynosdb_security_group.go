@@ -29,13 +29,13 @@ func ResourceTencentCloudCynosdbSecurityGroup() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster id.",
+				Description: "集群 ID。",
 			},
 			"instance_group_type": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance group type. Available values: \n-`HA` - HA group; \n-`RO` - Read-only group;\n-`ALL` - HA and RO group.",
+				Description: "实例组类型。可用值：\n-`HA` - HA 组； \n-`RO` - 只读组；\n-`ALL` - HA 和 RO 组。",
 			},
 			"security_group_ids": {
 				Required: true,
@@ -43,7 +43,7 @@ func ResourceTencentCloudCynosdbSecurityGroup() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "A list of security group IDs to be modified, an array of one or more security group IDs.",
+				Description: "需要修改的安全组ID列表，一个或多个安全组ID的数组。",
 			},
 		},
 	}

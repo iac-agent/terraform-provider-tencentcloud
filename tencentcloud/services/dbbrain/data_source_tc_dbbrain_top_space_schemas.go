@@ -20,43 +20,43 @@ func DataSourceTencentCloudDbbrainTopSpaceSchemas() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID.",
 			},
 
 			"limit": {
 				Optional:    true,
 				Type:        schema.TypeInt,
 				Default:     20,
-				Description: "The number of Top libraries to return, the maximum value is 100, and the default is 20.",
+				Description: "数量 的 Top libraries 到 返回, 最大 值 是 100, 和 默认值 是 20.",
 			},
 
 			"sort_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The sorting field used to filter the Top library. The optional fields include DataLength, IndexLength, TotalLength, DataFree, FragRatio, TableRows, and PhysicalFileSize (only supported by ApsaraDB for MySQL instances). The default for ApsaraDB for MySQL instances is PhysicalFileSize, and the default for other product instances is TotalLength.",
+				Description: "sorting 字段 使用 到 过滤器 Top 库. 可选 字段 include DataLength, IndexLength, TotalLength, DataFree, FragRatio, TableRows, 和 PhysicalFileSize (仅 支持 通过 ApsaraDB 对于 MySQL 实例). 默认值 对于 ApsaraDB 对于 MySQL 实例 是 PhysicalFileSize, 和 默认值 对于 other product 实例 是 TotalLength.",
 			},
 
 			"product": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Service product type, supported values include: mysql - cloud database MySQL, cynosdb - cloud database CynosDB for MySQL, the default is mysql.",
+				Description: "Service product 类型, 支持 值 include: mysql - 云 数据库 MySQL, cynosdb - 云 数据库 CynosDB 对于 MySQL, 默认值 是 mysql.",
 			},
 
 			"top_space_schemas": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The returned list of top library space statistics.",
+				Description: "返回 列表 的 top 库 space 统计.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"table_schema": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "library name.",
+							Description: "库 名称.",
 						},
 						"data_length": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "data space (MB).",
+							Description: "数据 space (MB).",
 						},
 						"index_length": {
 							Type:        schema.TypeFloat,
@@ -71,22 +71,22 @@ func DataSourceTencentCloudDbbrainTopSpaceSchemas() *schema.Resource {
 						"total_length": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Total space used (MB).",
+							Description: "Total space 使用 (MB).",
 						},
 						"frag_ratio": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Fragmentation rate (%).",
+							Description: "Fragmentation 速率 (%).",
 						},
 						"table_rows": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of lines.",
+							Description: "Number 的 lines.",
 						},
 						"physical_file_size": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "The sum (MB) of the independent physical file sizes corresponding to all tables in the library. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "sum (MB) 的 independent physical 文件 sizes corresponding 到 all tables 在 库. 注意: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 						},
 					},
 				},
@@ -95,13 +95,13 @@ func DataSourceTencentCloudDbbrainTopSpaceSchemas() *schema.Resource {
 			"timestamp": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Timestamp (in seconds) when library space data is collected.",
+				Description: "Timestamp (在 秒) 当 库 space 数据 是 collected.",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

@@ -28,33 +28,33 @@ func ResourceTencentCloudSqlserverFullBackupMigration() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID of imported target instance.",
+				Description: "ID 的 imported 目标 实例.",
 			},
 			"recovery_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Migration task restoration type. FULL: full backup restoration, FULL_LOG: full backup and transaction log restoration, FULL_DIFF: full backup and differential backup restoration.",
+				Description: "Migration 任务 restoration 类型. FULL: full 备份 restoration, FULL_LOG: full 备份 和 事务 日志 restoration, FULL_DIFF: full 备份 和 differential 备份 restoration.",
 			},
 			"upload_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Backup upload type. COS_URL: the backup is stored in users Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the applications Cloud Object Storage and needs to be uploaded by the user.",
+				Description: "Backup upload 类型. COS_URL: 备份 是 stored 在 users Cloud Object Storage, 使用 URL 提供. COS_UPLOAD: 备份 是 stored 在 applications Cloud Object Storage 和 needs 到 是 uploaded 通过 用户.",
 			},
 			"migration_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Task name.",
+				Description: "任务 名称.",
 			},
 			"backup_files": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "If the UploadType is COS_URL, fill in the URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.",
+				Description: "如果 UploadType 是 COS_URL, fill 在 URL here. 如果 UploadType 是 COS_UPLOAD, fill 在 名称 的 备份 文件 here. Only 1 备份 文件 是 支持, 但 备份 文件 可以 involve 多个 databases.",
 			},
 			"backup_migration_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Backup import task ID.",
+				Description: "Backup import 任务 ID.",
 			},
 		},
 	}

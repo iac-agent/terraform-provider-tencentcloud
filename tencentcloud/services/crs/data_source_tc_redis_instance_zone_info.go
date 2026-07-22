@@ -20,65 +20,65 @@ func DataSourceTencentCloudRedisInstanceZoneInfo() *schema.Resource {
 			"instance_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of instance.",
+				Description: "ID 实例。",
 			},
 
 			"replica_groups": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of instance node groups.",
+				Description: "列表 实例 节点 groups。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"group_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Node group ID.",
+							Description: "Node 组 ID",
 						},
 						"group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Node group Name.",
+							Description: "Node 组 名称",
 						},
 						"zone_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "he availability zone ID of the node, such as ap-guangzhou-1.",
+							Description: "he availability 可用区 ID 节点，such 作为 ap-guangzhou-1。",
 						},
 						"role": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The node group type, master is the primary node, and replica is the replica node.",
+							Description: "节点 组 类型，master 是 primary 节点，和 副本 是 副本 节点。",
 						},
 						"redis_nodes": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Node group node list.",
+							Description: "Node 组 节点 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"keys": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The number of node keys.",
+										Description: "数量 节点 keys。",
 									},
 									"slot": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Node slot distribution.",
+										Description: "Node slot distribution。",
 									},
 									"node_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Node ID.",
+										Description: "节点 ID",
 									},
 									"status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Node status.",
+										Description: "Node 状态",
 									},
 									"role": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Node role.",
+										Description: "Node 角色",
 									},
 								},
 							},
@@ -90,7 +90,7 @@ func DataSourceTencentCloudRedisInstanceZoneInfo() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

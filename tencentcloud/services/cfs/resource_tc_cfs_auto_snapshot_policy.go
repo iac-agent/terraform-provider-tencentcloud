@@ -27,38 +27,38 @@ func ResourceTencentCloudCfsAutoSnapshotPolicy() *schema.Resource {
 			"hour": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The time point when to repeat the snapshot operation.",
+				Description: "时间 point 当 到 repeat 快照 operation。",
 			},
 
 			"policy_name": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Policy name.",
+				Description: "Policy 名称",
 			},
 
 			"day_of_week": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The day of the week on which to repeat the snapshot operation.",
+				Description: "day 的 week 在 其中 到 repeat 快照 operation。",
 			},
 
 			"alive_days": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Snapshot retention period.",
+				Description: "Snapshot retention 周期",
 			},
 
 			"day_of_month": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The specific day (day 1 to day 31) of the month on which to create a snapshot.",
+				Description: "特定 day (day 1 到 day 31) 的 month 在 其中 到 create 快照。",
 			},
 
 			"interval_days": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The snapshot interval, in days.",
+				Description: "快照 间隔，在 days。",
 			},
 		},
 	}

@@ -18,31 +18,31 @@ func DataSourceTencentCloudIdentityCenterUsers() *schema.Resource {
 			"zone_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Space ID.",
+				Description: "Space ID。",
 			},
 
 			"user_status": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "User status: Enabled, Disabled.",
+				Description: "用户 状态: 已启用，已禁用",
 			},
 
 			"user_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "User type. Manual: manually created; Synchronized: externally imported.",
+				Description: "用户 类型 Manual: manually 创建; Synchronized: externally imported。",
 			},
 
 			"filter": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Filter criterion, which currently only supports username, email address, userId, and description.",
+				Description: "过滤器 criterion，其中 currently 仅 支持 用户名，email 地址，userId，和 描述",
 			},
 
 			"filter_groups": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Filtered user group. IsSelected=1 will be returned for the sub-user associated with this user group.",
+				Description: "Filtered 用户 组. IsSelected=1 将 是 返回 对于 sub-用户 associated 使用 此 用户 组。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -51,80 +51,80 @@ func DataSourceTencentCloudIdentityCenterUsers() *schema.Resource {
 			"sort_field": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sorting field, which currently only supports CreateTime. The default is the CreateTime field.",
+				Description: "Sorting 字段，其中 currently 仅 支持 CreateTime. 默认为 CreateTime 字段。",
 			},
 
 			"sort_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sorting type. Desc: descending order; Asc: ascending order. It should be set along with SortField.",
+				Description: "Sorting 类型 Desc: 降序; Asc: 升序 It should 是 集合 along 使用 SortField。",
 			},
 
 			"users": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "User list.",
+				Description: "用户 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"user_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Queried username.",
+							Description: "Queried 用户名",
 						},
 						"first_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "First name of the user.",
+							Description: "First 名称 用户",
 						},
 						"last_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Last name of the user.",
+							Description: "Last 名称 用户",
 						},
 						"display_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Display name of the user.",
+							Description: "Display 名称 用户",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "User description.",
+							Description: "用户 描述",
 						},
 						"email": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Email address of the user, which must be unique within the directory.",
+							Description: "Email 地址 的 用户，其中 必须 是 唯一 within directory。",
 						},
 						"user_status": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "User status. Valid values: Enabled, Disabled.",
+							Description: "用户 状态 有效值：已启用，已禁用",
 						},
 						"user_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "User type. Manual: manually created; Synchronized: externally imported.",
+							Description: "用户 类型 Manual: manually 创建; Synchronized: externally imported。",
 						},
 						"user_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "User ID.",
+							Description: "用户 ID。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Creation time of the user.",
+							Description: "创建时间 的 用户",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Modification time of the user.",
+							Description: "修改时间 的 用户",
 						},
 						"is_selected": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether selected.",
+							Description: "Whether selected。",
 						},
 					},
 				},
@@ -133,7 +133,7 @@ func DataSourceTencentCloudIdentityCenterUsers() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -24,28 +24,28 @@ func ResourceTencentCloudBiEmbedIntervalApply() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Sharing project id, required.",
+				Description: "Sharing 项目 ID，必填",
 			},
 
 			"page_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Sharing page id, this is empty value 0 when embedding the board.",
+				Description: "Sharing 页面 ID，此 是 空 值 0 当 embedding board。",
 			},
 
 			"bi_token": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Token that needs to be applied for extension.",
+				Description: "令牌 该 needs 到 是 applied 对于 extension。",
 			},
 
 			"scope": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Choose panel or page.",
+				Description: "Choose panel 或 页面。",
 			},
 		},
 	}

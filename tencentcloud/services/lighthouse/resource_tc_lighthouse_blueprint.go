@@ -27,19 +27,19 @@ func ResourceTencentCloudLighthouseBlueprint() *schema.Resource {
 			"blueprint_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Blueprint name, which can contain up to 60 characters.",
+				Description: "Blueprint 名称，其中 可以 contain up 到 60 字符。",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Blueprint description, which can contain up to 60 characters.",
+				Description: "Blueprint 描述，其中 可以 contain up 到 60 字符。",
 			},
 
 			"instance_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "ID of the instance for which to make a blueprint.",
+				Description: "ID 实例 对于 其中 到 make blueprint。",
 			},
 		},
 	}

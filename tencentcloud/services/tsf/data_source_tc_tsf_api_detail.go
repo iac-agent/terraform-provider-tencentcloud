@@ -20,74 +20,74 @@ func DataSourceTencentCloudTsfApiDetail() *schema.Resource {
 			"microservice_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "microservice id.",
+				Description: "microservice ID。",
 			},
 
 			"path": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "api path.",
+				Description: "api 路径",
 			},
 
 			"method": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "request method.",
+				Description: "请求 方法。",
 			},
 
 			"pkg_version": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "pkg version.",
+				Description: "pkg 版本",
 			},
 
 			"application_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "application id.",
+				Description: "应用 ID。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "api detail.",
+				Description: "api detail。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"request": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "api request description.",
+							Description: "api 请求 描述",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "param name.",
+										Description: "param 名称",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "type.",
+										Description: "类型",
 									},
 									"in": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "param position.",
+										Description: "param position。",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "param description.",
+										Description: "param 描述",
 									},
 									"required": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "require or not.",
+										Description: "require 或 不。",
 									},
 									"default_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "default value.",
+										Description: "默认值",
 									},
 								},
 							},
@@ -95,23 +95,23 @@ func DataSourceTencentCloudTsfApiDetail() *schema.Resource {
 						"response": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "api response.",
+							Description: "api response。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "param description.",
+										Description: "param 描述",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "param type.",
+										Description: "param 类型",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "param description.",
+										Description: "param 描述",
 									},
 								},
 							},
@@ -119,34 +119,34 @@ func DataSourceTencentCloudTsfApiDetail() *schema.Resource {
 						"definitions": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "api data struct.",
+							Description: "api 数据 struct。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "object name.",
+										Description: "对象 名称",
 									},
 									"properties": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "object property list.",
+										Description: "对象 属性 列表。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "property name.",
+													Description: "属性名称",
 												},
 												"type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "property type.",
+													Description: "属性 类型",
 												},
 												"description": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "property description.",
+													Description: "属性 描述",
 												},
 											},
 										},
@@ -157,22 +157,22 @@ func DataSourceTencentCloudTsfApiDetail() *schema.Resource {
 						"request_content_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "api content type.",
+							Description: "api 内容 类型",
 						},
 						"can_run": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "can debug or not.",
+							Description: "可以 调试 或 不。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "API status 0: offline 1: online, default 0. Note: This section may return null, indicating that no valid value can be obtained.",
+							Description: "API 状态 0: offline 1: online，默认值 0. 注意: 此 section 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "API description. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "API 描述 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -181,7 +181,7 @@ func DataSourceTencentCloudTsfApiDetail() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

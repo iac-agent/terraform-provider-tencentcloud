@@ -25,7 +25,7 @@ func ResourceTencentCloudOrganizationQuitOrganizationOperation() *schema.Resourc
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Organization ID.",
+				Description: "Organization ID。",
 			},
 		},
 	}

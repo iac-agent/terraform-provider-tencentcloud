@@ -22,200 +22,200 @@ func DataSourceTencentCloudTsfCluster() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Cluster ID list to be queried, if not filled in or passed, all content will be queried.",
+				Description: "集群 ID 列表 到 是 queried，如果未填写 在 或 passed，all 内容 将 是 queried。",
 			},
 
 			"cluster_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The type of cluster to be queried, if left blank or not passed, all content will be queried. C: container, V: virtual machine.",
+				Description: "类型 集群 到 是 queried，如果 left blank 或 不 passed，all 内容 将 是 queried. C: 容器，V: virtual machine。",
 			},
 
 			"search_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filter by keywords for Cluster Id or name.",
+				Description: "过滤器 通过 keywords 对于 Cluster ID 或 名称",
 			},
 
 			"disable_program_auth_check": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to disable dataset authentication.",
+				Description: "是否disable dataset authentication。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "TSF cluster pagination object. Note: This field may return null, indicating no valid value.",
+				Description: "TSF 集群 pagination 对象. 注意: 此 字段 可能 返回 null，indicating 无 有效 值",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total number of items. Note: This field may return null, indicating that no valid value was found.",
+							Description: "Total 数量 items. 注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Cluster list. Note: This field may return null, indicating no valid values.",
+							Description: "Cluster 列表. 注意: 此 字段 可能 返回 null，indicating 无 有效 值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"cluster_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cluster ID. Note: This field may return null, indicating no valid value.",
+										Description: "集群 ID 注意: 此 字段 可能 返回 null，indicating 无 有效 值",
 									},
 									"cluster_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cluster name. Note: This field may return null, indicating no valid value.",
+										Description: "集群名称 注意: 此 字段 可能 返回 null，indicating 无 有效 值",
 									},
 									"cluster_desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cluster description. Note: This field may return null, indicating no valid value.",
+										Description: "Cluster 描述 注意: 此 字段 可能 返回 null，indicating 无 有效 值",
 									},
 									"cluster_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cluster type. Note: This field may return null, indicating no valid value.",
+										Description: "集群类型 注意: 此 字段 可能 返回 null，indicating 无 有效 值",
 									},
 									"vpc_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Private network ID of the cluster. Note: This field may return null, indicating no valid value.",
+										Description: "Private 网络 ID 集群. 注意: 此 字段 可能 返回 null，indicating 无 有效 值",
 									},
 									"cluster_status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "cluster status. Note: This field may return null, indicating no valid value.",
+										Description: "集群 状态 注意: 此 字段 可能 返回 null，indicating 无 有效 值",
 									},
 									"cluster_cidr": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "cluster CIDR. Note: This field may return null, indicating no valid value.",
+										Description: "集群 CIDR. 注意: 此 字段 可能 返回 null，indicating 无 有效 值",
 									},
 									"cluster_total_cpu": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Total CPU of the cluster, unit: cores. Note: This field may return null, indicating that no valid value was found.",
+										Description: "Total CPU 的 集群，单位: cores. 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"cluster_total_mem": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Total memory of the cluster, unit: G. Note: This field may return null, indicating that no valid value is obtained.",
+										Description: "Total 内存 的 集群，单位: G. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 获取。",
 									},
 									"cluster_used_cpu": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Used CPU of the cluster, in cores. This field may return null, indicating no valid value.",
+										Description: "Used CPU 的 集群，在 cores. 此 字段 可能 返回 null，indicating 无 有效 值",
 									},
 									"cluster_used_mem": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Cluster used memory in GB. This field may return null, indicating no valid value.",
+										Description: "Cluster 使用 内存 （GB）。 此 字段 可能 返回 null，indicating 无 有效 值",
 									},
 									"instance_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Cluster instance number. This field may return null, indicating no valid value.",
+										Description: "Cluster 实例 数量. 此 字段 可能 返回 null，indicating 无 有效 值",
 									},
 									"run_instance_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Cluster running instance number. This field may return null, indicating no valid value.",
+										Description: "Cluster running 实例 数量. 此 字段 可能 返回 null，indicating 无 有效 值",
 									},
 									"normal_instance_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Cluster normal instance number. This field may return null, indicating no valid value.",
+										Description: "Cluster normal 实例 数量. 此 字段 可能 返回 null，indicating 无 有效 值",
 									},
 									"delete_flag": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Deletion tag: true means it can be deleted, false means it cannot be deleted. Note: This field may return null, indicating no valid value.",
+										Description: "Deletion 标签: true 表示 它 可以 是 删除，false 表示 它 不能 是 删除. 注意: 此 字段 可能 返回 null，indicating 无 有效 值",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "CreationTime. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "CreationTime. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"update_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "last update time.  Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "last 更新时间. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"tsf_region_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "region ID of TSF.  Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "地域 ID TSF. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"tsf_region_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "region name of TSF.  Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "地域名称 的 TSF. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"tsf_zone_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Zone Id of TSF.  Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "可用区 ID 的 TSF. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"tsf_zone_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Zone name of TSF.  Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "可用区 名称 TSF. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"delete_flag_reason": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Reason why the cluster cannot be deleted.  Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Reason why 集群 不能 是 删除. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"cluster_limit_cpu": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Maximum CPU limit of the cluster, in cores. This field may return null, indicating that no valid value was found.",
+										Description: "Maximum CPU 限制 的 集群，在 cores. 此 字段 可能 返回 null，indicating 该 无 有效 值 是 found。",
 									},
 									"cluster_limit_mem": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Cluster maximum memory limit in GB. This field may return null, indicating that no valid value was found.",
+										Description: "Cluster 最大 内存 限制 （GB）。 此 字段 可能 返回 null，indicating 该 无 有效 值 是 found。",
 									},
 									"run_service_instance_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of available service instances in the cluster. Note: This field may return null, indicating no valid value.",
+										Description: "数量 可用 服务 实例 在 集群. 注意: 此 字段 可能 返回 null，indicating 无 有效 值",
 									},
 									"subnet_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cluster subnet ID. Note: This field may return null, indicating no valid values.",
+										Description: "Cluster 子网 ID. 注意: 此 字段 可能 返回 null，indicating 无 有效 值。",
 									},
 									"operation_info": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Control information returned to the frontend. This field may return null, indicating no valid value.",
+										Description: "Control 信息 返回 到 frontend. 此 字段 可能 返回 null，indicating 无 有效 值",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"init": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "Control information of the initialization button returned to the front end. Note: This field may return null, indicating no valid value.",
+													Description: "Control 信息 的 initialization button 返回 到 front end. 注意: 此 字段 可能 返回 null，indicating 无 有效 值",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"disabled_reason": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Reason for not displaying. Note: This field may return null, indicating no valid value.",
+																Description: "Reason 对于 不 displaying. 注意: 此 字段 可能 返回 null，indicating 无 有效 值",
 															},
 															"enabled": {
 																Type:        schema.TypeBool,
 																Computed:    true,
-																Description: "The availability of the button (whether it is clickable) may return null indicating that the information is not available.",
+																Description: "availability 的 button (whether 它 是 clickable) 可能 返回 null indicating 该 信息 是 不 可用。",
 															},
 															"supported": {
 																Type:        schema.TypeBool,
 																Computed:    true,
-																Description: "Whether to display the button. Note: This field may return null, indicating that no valid value was found.",
+																Description: "是否display button. 注意：此字段可能返回 null，表示未找到有效值。",
 															},
 														},
 													},
@@ -223,23 +223,23 @@ func DataSourceTencentCloudTsfCluster() *schema.Resource {
 												"add_instance": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "Add instance button control information, Note: This field may return null, indicating that no valid value is obtained.",
+													Description: "Add 实例 button control 信息，注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 获取。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"disabled_reason": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "The reason why this button is not displayed, may return null if not applicable.",
+																Description: "reason why 此 button 是 不 displayed，可能 返回 null 如果 不 applicable。",
 															},
 															"enabled": {
 																Type:        schema.TypeBool,
 																Computed:    true,
-																Description: "Whether the button is clickable. Note: This field may return null, indicating that no valid value is obtained.",
+																Description: "是否button 是 clickable. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 获取。",
 															},
 															"supported": {
 																Type:        schema.TypeBool,
 																Computed:    true,
-																Description: "Whether the button is clickable. Note: This field may return null, indicating that no valid value was found.",
+																Description: "是否button 是 clickable. 注意：此字段可能返回 null，表示未找到有效值。",
 															},
 														},
 													},
@@ -247,23 +247,23 @@ func DataSourceTencentCloudTsfCluster() *schema.Resource {
 												"destroy": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "Control information for destroying machine, may return null if no valid value is obtained.",
+													Description: "Control 信息 对于 destroying machine，可能 返回 null 如果 无 有效 值 是 获取。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"disabled_reason": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "The reason why this button is not displayed, may return null if not applicable.",
+																Description: "reason why 此 button 是 不 displayed，可能 返回 null 如果 不 applicable。",
 															},
 															"enabled": {
 																Type:        schema.TypeBool,
 																Computed:    true,
-																Description: "Whether the button is clickable. Note: This field may return null, indicating that no valid value is obtained.",
+																Description: "是否button 是 clickable. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 获取。",
 															},
 															"supported": {
 																Type:        schema.TypeBool,
 																Computed:    true,
-																Description: "Whether the button is clickable. Note: This field may return null, indicating that no valid value was found.",
+																Description: "是否button 是 clickable. 注意：此字段可能返回 null，表示未找到有效值。",
 															},
 														},
 													},
@@ -274,7 +274,7 @@ func DataSourceTencentCloudTsfCluster() *schema.Resource {
 									"cluster_version": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The cluster version, may return null if not applicable.",
+										Description: "集群 版本，可能 返回 null 如果 不 applicable。",
 									},
 								},
 							},
@@ -286,7 +286,7 @@ func DataSourceTencentCloudTsfCluster() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

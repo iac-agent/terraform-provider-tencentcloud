@@ -29,31 +29,31 @@ func ResourceTencentCloudVpcEndPointServiceWhiteList() *schema.Resource {
 			"user_uin": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "UIN.",
+				Description: "UIN。",
 			},
 
 			"end_point_service_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID of endpoint service.",
+				Description: "ID 端点 服务。",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Description of white list.",
+				Description: "描述 white 列表。",
 			},
 
 			"owner": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "APPID.",
+				Description: "APPID。",
 			},
 
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create Time.",
+				Description: "Create Time。",
 			},
 		},
 	}

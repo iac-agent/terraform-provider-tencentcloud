@@ -18,33 +18,33 @@ func DataSourceTencentCloudIgtmDetectors() *schema.Resource {
 			"detector_group_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Detector group list.",
+				Description: "Detector 组 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"gid": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Line group ID GroupLineId.",
+							Description: "Line 组 ID GroupLineId。",
 						},
 						"group_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "bgp, international, isp.",
+							Description: "bgp，international，isp。",
 						},
 						"group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Group name.",
+							Description: "组名称",
 						},
 						"internet_family": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ipv4, ipv6.",
+							Description: "ipv4，ipv6。",
 						},
 						"package_set": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "Supported package types.",
+							Description: "Supported 包 types。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -56,7 +56,7 @@ func DataSourceTencentCloudIgtmDetectors() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

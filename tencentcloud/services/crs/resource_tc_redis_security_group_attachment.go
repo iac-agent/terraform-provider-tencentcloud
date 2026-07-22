@@ -30,14 +30,14 @@ func ResourceTencentCloudRedisSecurityGroupAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"security_group_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Security group ID.",
+				Description: "安全组 ID",
 			},
 		},
 	}

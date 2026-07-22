@@ -34,7 +34,7 @@ func ResourceTencentCloudSSLInstance() *schema.Resource {
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateIntegerInRange(3, 56),
-				Description: "Certificate commodity ID. Valid value ranges: (3~42). `3` means SecureSite enhanced Enterprise Edition (EV Pro), " +
+				Description: "Certificate commodity ID. 有效 值 ranges: (3~42). `3` 表示 SecureSite enhanced Enterprise Edition (EV Pro)," +
 					"`4` means SecureSite enhanced (EV), `5` means SecureSite Enterprise Professional Edition (OV Pro), " +
 					"`6` means SecureSite Enterprise (OV), `7` means SecureSite Enterprise Type (OV) wildcard, " +
 					"`8` means Geotrust enhanced (EV), `9` means Geotrust enterprise (OV), " +
@@ -66,37 +66,37 @@ func ResourceTencentCloudSSLInstance() *schema.Resource {
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Number of domain names included in the certificate.",
+				Description: "数量 域名 names included 在 证书。",
 			},
 			"time_span": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     1,
-				Description: "Certificate period, currently only supports 1 year certificate purchase.",
+				Description: "Certificate 周期，currently 仅 支持 1 year 证书 purchase。",
 			},
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "The ID of project.",
+				Description: "ID 项目。",
 			},
 			"alias": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Remark name.",
+				Description: "备注 名称",
 			},
 			"confirm_letter": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The base64-encoded certificate confirmation file should be in jpg, jpeg, png, pdf, and the size should be between 1kb and 1.4M. Note: it only works when product_id is set to 8, 9 or 10.",
+				Description: "base64-encoded 证书 confirmation 文件 should 是 在 jpg，jpeg，png，pdf，和 大小 should 是 between 1kb 和 1.4M. 注意: 它 仅 works 当 product_id 是 集合 到 8，9 或 10。",
 			},
 			// ssl information
 			"information": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Required:    true,
-				Description: "Certificate information.",
+				Description: "Certificate 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"csr_type": {
@@ -104,64 +104,64 @@ func ResourceTencentCloudSSLInstance() *schema.Resource {
 							Optional:     true,
 							Default:      CsrTypeOnline,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CsrTypeArr),
-							Description: "CSR generation method. Valid values: `online`, `parse`. " +
+							Description: "CSR generation 方法. 有效 值: `online`, `parse`." +
 								"`online` means online generation, `parse` means manual upload.",
 						},
 						"certificate_domain": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Domain name for binding certificate.",
+							Description: "域名 名称 对于 binding 证书。",
 						},
 						"organization_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Company name.",
+							Description: "公司名称",
 						},
 						"organization_division": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Department name.",
+							Description: "Department 名称",
 						},
 						"organization_address": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Company address.",
+							Description: "公司地址",
 						},
 						"organization_country": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Country name, such as China: CN.",
+							Description: "Country 名称，such 作为 China: CN。",
 						},
 						"organization_city": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Company city.",
+							Description: "公司城市",
 						},
 						"organization_region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The province where the company is located.",
+							Description: "province 其中 company 是 located。",
 						},
 						"postal_code": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Company postal code.",
+							Description: "公司邮政编码",
 						},
 						"phone_area_code": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Company landline area code.",
+							Description: "公司座机 area 代码",
 						},
 						"phone_number": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Company landline number.",
+							Description: "Company landline 数量。",
 						},
 						"verify_type": {
 							Type:         schema.TypeString,
 							Required:     true,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(VerifyType),
-							Description: "Certificate verification method. Valid values: `DNS_AUTO`, `DNS`, `FILE`. " +
+							Description: "Certificate verification 方法. 有效 值: `DNS_AUTO`, `DNS`, `FILE`." +
 								"`DNS_AUTO` means automatic DNS verification, this verification type is only supported for " +
 								"domain names resolved by Tencent Cloud and the resolution status is normal, " +
 								"`DNS` means manual DNS verification, `FILE` means file verification.",
@@ -169,68 +169,68 @@ func ResourceTencentCloudSSLInstance() *schema.Resource {
 						"admin_first_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The first name of the administrator.",
+							Description: "first 名称 administrator。",
 						},
 						"admin_last_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The last name of the administrator.",
+							Description: "last 名称 administrator。",
 						},
 						"admin_phone_num": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Manager mobile phone number.",
+							Description: "Manager mobile phone 数量。",
 						},
 						"admin_email": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The administrator's email address.",
+							Description: "administrator's email 地址",
 						},
 						"admin_position": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Manager position.",
+							Description: "Manager position。",
 						},
 						"contact_first_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Contact first name.",
+							Description: "Contact first 名称",
 						},
 						"contact_last_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Contact last name.",
+							Description: "Contact last 名称",
 						},
 						"contact_email": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Contact email address.",
+							Description: "Contact email 地址",
 						},
 						"contact_number": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Contact phone number.",
+							Description: "Contact phone 数量。",
 						},
 						"contact_position": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Contact position.",
+							Description: "Contact position。",
 						},
 						"csr_content": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "CSR content uploaded.",
+							Description: "CSR 内容 uploaded。",
 						},
 						"domain_list": {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Array of uploaded domain names, multi-domain certificates can be uploaded.",
+							Description: "数组 uploaded 域名 names，multi-域名 certificates 可以 是 uploaded。",
 						},
 						"key_password": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Private key password.",
+							Description: "Private 键 密码",
 						},
 					},
 				},
@@ -239,38 +239,38 @@ func ResourceTencentCloudSSLInstance() *schema.Resource {
 			"certificate_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Returned certificate ID.",
+				Description: "Returned 证书 ID",
 			},
 			"order_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Order ID returned.",
+				Description: "顺序 ID 返回。",
 			},
 			"status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "SSL certificate status.",
+				Description: "SSL 证书 状态",
 			},
 			"dv_auths": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "DV certification information.",
+				Description: "DV certification 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"dv_auth_key": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DV authentication key.",
+							Description: "DV authentication 键",
 						},
 						"dv_auth_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DV authentication value.",
+							Description: "DV authentication 值",
 						},
 						"dv_auth_verify_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DV authentication type.",
+							Description: "DV authentication 类型",
 						},
 					},
 				},

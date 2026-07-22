@@ -33,31 +33,31 @@ func ResourceTencentCloudTdmqProfessionalCluster() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Multi-AZ deployment select three Availability Zones, like: [200002,200003,200004]. Single availability zone deployment selects an availability zone, like [200002].",
+				Description: "Multi-AZ 部署 select three Availability Zones，like: [200002,200003,200004]. Single availability 可用区 部署 selects availability 可用区，like [200002]。",
 			},
 
 			"product_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster specification code. Reference[Professional Cluster Specifications](https://cloud.tencent.com/document/product/1179/83705).",
+				Description: "Cluster 规格 代码 Reference[Professional Cluster Specifications](https://云.tencent.com/document/product/1179/83705)。",
 			},
 
 			"storage_size": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Storage specifications. Reference[Professional Cluster Specifications](https://cloud.tencent.com/document/product/1179/83705).",
+				Description: "Storage specifications. Reference[Professional Cluster Specifications](https://云.tencent.com/document/product/1179/83705)。",
 			},
 
 			"auto_renew_flag": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to turn on automatic monthly renewal. `1`: turn on, `0`: turn off.",
+				Description: "是否turn 在 automatic monthly renewal. `1`: turn 在，`0`: turn 关闭。",
 			},
 
 			"time_span": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Purchase duration, value range: 1~50. Default: 1.",
+				Description: "Purchase 时长，取值范围：1~50. 默认值：1。",
 				ForceNew:    true,
 				Computed:    true,
 			},
@@ -65,13 +65,13 @@ func ResourceTencentCloudTdmqProfessionalCluster() *schema.Resource {
 			"cluster_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Name of cluster. It does not support Chinese characters and special characters except dashes and underscores and cannot exceed 64 characters.",
+				Description: "名称 集群. It does 不 support Chinese 字符 和 special 字符 except dashes 和 underscores 和 不能 exceed 64 字符。",
 			},
 
 			"auto_voucher": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to automatically select vouchers. `1`: Yes, `0`: No. Default is `0`.",
+				Description: "是否automatically select vouchers. `1`: Yes，`0`: No. 默认为 `0`。",
 				ForceNew:    true,
 				Computed:    true,
 			},
@@ -80,18 +80,18 @@ func ResourceTencentCloudTdmqProfessionalCluster() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Label of VPC network.",
+				Description: "标签 的 VPC 网络。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Id of VPC.",
+							Description: "ID 的 VPC。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Id of Subnet.",
+							Description: "ID 的 Subnet。",
 						},
 					},
 				},
@@ -100,7 +100,7 @@ func ResourceTencentCloudTdmqProfessionalCluster() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 		},
 	}

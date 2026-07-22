@@ -24,17 +24,17 @@ func ResourceTencentCloudNatGatewayFlowMonitor() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "ID of Gateway.",
+				Description: "ID Gateway。",
 			},
 			"enable": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to enable flow monitor.",
+				Description: "是否enable flow 监控。",
 			},
 			"bandwidth": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Bandwidth of flow monitor.",
+				Description: "Bandwidth 的 flow 监控。",
 			},
 		},
 	}

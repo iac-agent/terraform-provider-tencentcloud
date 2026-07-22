@@ -27,27 +27,27 @@ func ResourceTencentCloudMonitorGrafanaNotificationChannel() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "grafana instance id.",
+				Description: "grafana 实例 ID",
 			},
 
 			"channel_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "plugin id.",
+				Description: "插件 ID。",
 			},
 
 			"channel_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "channel name.",
+				Description: "channel 名称",
 			},
 
 			"org_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Grafana organization which channel will be installed, default to 1 representing Main Org.",
+				Description: "Grafana organization 其中 channel 将 是 installed，默认为 1 representing Main Org。",
 			},
 
 			"receivers": {
@@ -57,7 +57,7 @@ func ResourceTencentCloudMonitorGrafanaNotificationChannel() *schema.Resource {
 				},
 				Optional:    true,
 				Computed:    true,
-				Description: "cloud monitor notification template notice-id list.",
+				Description: "云 监控 通知 template notice-ID 列表。",
 			},
 
 			"extra_org_ids": {
@@ -66,7 +66,7 @@ func ResourceTencentCloudMonitorGrafanaNotificationChannel() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "extra grafana organization id list, default to 1 representing Main Org.",
+				Description: "extra grafana organization ID 列表，默认为 1 representing Main Org。",
 			},
 		},
 	}

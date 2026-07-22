@@ -19,13 +19,13 @@ func DataSourceTencentCloudTseGateways() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "filter conditions, valid value:Type,Name,GatewayId,Tag,TradeType,InternetPaymode,Region.",
+				Description: "过滤器 conditions，有效 值:类型,名称,GatewayId,标签,TradeType,InternetPaymode,地域",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "filter name.",
+							Description: "过滤名称",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -33,7 +33,7 @@ func DataSourceTencentCloudTseGateways() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "filter value.",
+							Description: "过滤值",
 						},
 					},
 				},
@@ -42,60 +42,60 @@ func DataSourceTencentCloudTseGateways() *schema.Resource {
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "gateways information.",
+				Description: "gateways 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "total count.",
+							Description: "总数",
 						},
 						"gateway_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "gateway list.",
+							Description: "网关 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"gateway_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "gateway ID.",
+										Description: "网关 ID。",
 									},
 									"status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "status of gateway. May return values: `Creating`, `CreateFailed`, `Running`, `Modifying`, `UpdatingSpec`, `UpdateFailed`, `Deleting`, `DeleteFailed`, `Isolating`.",
+										Description: "状态 网关. May 返回 值: `Creating`，`CreateFailed`，`Running`，`Modifying`，`UpdatingSpec`，`UpdateFailed`，`Deleting`，`DeleteFailed`，`Isolating`。",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "gateway name.",
+										Description: "网关 名称",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "gateway type.",
+										Description: "网关 类型",
 									},
 									"gateway_version": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "gateway version. Reference value: `2.4.1`, `2.5.1`.",
+										Description: "网关 版本 Reference 值: `2.4.1`，`2.5.1`。",
 									},
 									"node_config": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "original node config.",
+										Description: "original 节点 配置",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"specification": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "specification, 1c2g|2c4g|4c8g|8c16g.",
+													Description: "规格，1c2g|2c4g|4c8g|8c16g。",
 												},
 												"number": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "node number, 2-50.",
+													Description: "节点 数量，2-50。",
 												},
 											},
 										},
@@ -103,18 +103,18 @@ func DataSourceTencentCloudTseGateways() *schema.Resource {
 									"vpc_config": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "vpc information.",
+										Description: "vpc 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"vpc_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "subnet ID. Assign an IP address to the engine in the VPC subnet.",
+													Description: "子网 ID. Assign IP 地址 到 引擎 在 VPC 子网。",
 												},
 												"subnet_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "subnet ID. Assign an IP address to the engine in the VPC subnet.",
+													Description: "子网 ID. Assign IP 地址 到 引擎 在 VPC 子网。",
 												},
 											},
 										},
@@ -122,28 +122,28 @@ func DataSourceTencentCloudTseGateways() *schema.Resource {
 									"description": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "description of gateway.",
+										Description: "描述 网关。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "create time.",
+										Description: "创建时间。",
 									},
 									"tags": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "tags information of gatewayNote: This field may return null, indicating that a valid value is not available.",
+										Description: "标签 信息 的 gateway注意：此字段可能返回 null，表示有效值不可用。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"tag_key": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "tag key.",
+													Description: "标签键",
 												},
 												"tag_value": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "tag value.",
+													Description: "标签值",
 												},
 											},
 										},
@@ -151,78 +151,78 @@ func DataSourceTencentCloudTseGateways() *schema.Resource {
 									"enable_cls": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "whether to enable CLS log.",
+										Description: "是否enable CLS 日志。",
 									},
 									"trade_type": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "trade type. `0`: postpaid, `1`: Prepaid.",
+										Description: "trade 类型 `0`: postpaid，`1`: Prepaid。",
 									},
 									"feature_version": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "product version. `TRIAL`, `STANDARD`(default value), `PROFESSIONAL`.",
+										Description: "product 版本 `TRIAL`，`STANDARD`(默认值)，`PROFESSIONAL`。",
 									},
 									"internet_max_bandwidth_out": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "public network outbound traffic bandwidth.",
+										Description: "公有 网络 outbound 流量 带宽。",
 									},
 									"auto_renew_flag": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "auto renew flag, `0`: default status, `1`: auto renew, `2`: auto not renew.",
+										Description: "auto 续费标识，`0`: 默认值 状态，`1`: auto renew，`2`: auto 不 renew。",
 									},
 									"cur_deadline": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "expire date, for prepaid type.Note: This field may return null, indicating that a valid value is not available.",
+										Description: "expire date，对于 prepaid 类型注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"isolate_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "isolation time, used when the gateway is isolated.",
+										Description: "isolation 时间，使用 当 网关 是 isolated。",
 									},
 									"enable_internet": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "whether to open the public network of client.Note: This field may return null, indicating that a valid value is not available.",
+										Description: "是否open 公有 网络 的 客户端.注意：此字段可能返回 null，表示有效值不可用。",
 									},
 									"engine_region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "engine region of gateway.",
+										Description: "引擎 地域 的 网关。",
 									},
 									"ingress_class_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ingress class name.",
+										Description: "ingress class 名称",
 									},
 									"internet_pay_mode": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "trade type of internet. `BANDWIDTH`, `TRAFFIC`.",
+										Description: "trade 类型 internet. `BANDWIDTH`，`TRAFFIC`。",
 									},
 									"gateway_minor_version": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "minor version of gateway.",
+										Description: "minor 版本 的 网关。",
 									},
 									"instance_port": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "the port information that the instance monitors.",
+										Description: "端口 信息 该 实例 monitors。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"http_port": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "http port.",
+													Description: "http 端口",
 												},
 												"https_port": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "https port.",
+													Description: "https 端口",
 												},
 											},
 										},
@@ -230,7 +230,7 @@ func DataSourceTencentCloudTseGateways() *schema.Resource {
 									"load_balancer_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "load balance type of public internet.",
+										Description: "load balance 类型 公有 internet。",
 									},
 									"public_ip_addresses": {
 										Type: schema.TypeSet,
@@ -238,7 +238,7 @@ func DataSourceTencentCloudTseGateways() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "addresses of public internet.",
+										Description: "addresses 的 公有 internet。",
 									},
 								},
 							},
@@ -250,7 +250,7 @@ func DataSourceTencentCloudTseGateways() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

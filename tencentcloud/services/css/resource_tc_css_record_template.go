@@ -27,61 +27,61 @@ func ResourceTencentCloudCssRecordTemplate() *schema.Resource {
 			"template_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Template name. Only `Chinese`, `English`, `numbers`, `_`, `-` are supported.",
+				Description: "模板名称 Only `Chinese`，`English`，`numbers`，`_`，`-` 是 支持。",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Description.",
+				Description: "描述",
 			},
 
 			"flv_param": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Flv recording parameters are set when Flv recording is enabled.",
+				Description: "Flv recording 参数 是 集合 当 Flv recording 是 已启用",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"record_interval": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Recording interval.  Unit: second, default: 1800.  Value range: 30-7200.  This parameter is invalid for HLS. When recording HLS, a file is generated from streaming to streaming.",
+							Description: "Recording 间隔. 单位：second，默认值：1800. 取值范围：30-7200. 此 参数 是 无效 对于 HLS. 当 recording HLS， 文件 是 generated 从 streaming 到 streaming。",
 						},
 						"storage_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Recording storage duration.  Unit: second. Value range: 0 - 1500 days.  0: indicates permanent storage.",
+							Description: "Recording 存储 时长. 单位：second. 取值范围：0 - 1500 days. 0: 表示permanent 存储。",
 						},
 						"enable": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Whether to enable recording in the current format. The default value is 0. 0: No, 1: Yes.",
+							Description: "是否enable recording 在 当前 格式 默认值为 0. 0: No，1: Yes。",
 						},
 						"vod_sub_app_id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: " The ID of the vodSub app.",
+							Description: "ID vodSub app。",
 						},
 						"vod_file_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Record file name.Special placeholders supported are: `StreamID`: Stream ID,`StartYear`: Start time - year,`StartMonth`: Start time - month,`StartDay`: Start time - day,`StartHour`: Start time - hour,`StartMinute`: Start time - minutes,`StartSecond`: Start time - seconds,`StartMillisecond`: Start time - milliseconds,`EndYear`: End time - year,`EndMonth`: End time - month,`EndDay`: End time - day,`EndHour`: End time - hour,`EndMinute`: End time - minutes,`EndSecond`: End time - seconds,`EndMillisecond`: End time - millisecondsIf the default recording file name is not set as ,`StreamID`_ ,`StartYear`-,`StartMonth`-,`StartDay`-,`StartHour`-,`StartMinute`-,`StartSecond`_ ,`EndYear`-,`EndMonth`-,`EndDay`-,`EndHour`-,`EndMinute`-,`EndSecond`.",
+							Description: "Record 文件 名称Special placeholders 支持 是: `StreamID`: Stream ID,`StartYear`: 开始时间 - year,`StartMonth`: 开始时间 - month,`StartDay`: 开始时间 - day,`StartHour`: 开始时间 - hour,`StartMinute`: 开始时间 - minutes,`StartSecond`: 开始时间 - 秒,`StartMillisecond`: 开始时间 - milliseconds,`EndYear`: 结束时间 - year,`EndMonth`: 结束时间 - month,`EndDay`: 结束时间 - day,`EndHour`: 结束时间 - hour,`EndMinute`: 结束时间 - minutes,`EndSecond`: 结束时间 - 秒,`EndMillisecond`: 结束时间 - millisecondsIf 默认值 recording 文件 名称 是 不 集合 作为 ,`StreamID`_ ,`StartYear`-,`StartMonth`-,`StartDay`-,`StartHour`-,`StartMinute`-,`StartSecond`_ ,`EndYear`-,`EndMonth`-,`EndDay`-,`EndHour`-,`EndMinute`-,`EndSecond`。",
 						},
 						"procedure": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Task flow. This field may return null, indicating that no valid value can be obtained.",
+							Description: "任务 flow. 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"storage_mode": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Video storage strategy. Normal: standard storage. Cold: low frequency storage. This field may return null, indicating that no valid value can be obtained.",
+							Description: "Video 存储 strategy. Normal: standard 存储. Cold: low 频率 存储. 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"class_id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Classification of on-demand applications. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Classification 的 在-demand applications. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -91,48 +91,48 @@ func ResourceTencentCloudCssRecordTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Hls recording parameters, which are set when hls recording is enabled.",
+				Description: "Hls recording 参数，其中 是 集合 当 hls recording 是 已启用",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"record_interval": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Recording interval. Unit: second, default: 1800. Value range: 30-7200. This parameter is invalid for HLS. When recording HLS, a file is generated from streaming to streaming.",
+							Description: "Recording 间隔. 单位：second，默认值：1800. 取值范围：30-7200. 此 参数 是 无效 对于 HLS. 当 recording HLS， 文件 是 generated 从 streaming 到 streaming。",
 						},
 						"storage_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Recording storage duration. Unit: second. Value range: 0 - 1500 days. 0: indicates permanent storage.",
+							Description: "Recording 存储 时长. 单位：second. 取值范围：0 - 1500 days. 0: 表示permanent 存储。",
 						},
 						"enable": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Whether to enable recording in the current format. The default value is 0. 0: No, 1: Yes.",
+							Description: "是否enable recording 在 当前 格式 默认值为 0. 0: No，1: Yes。",
 						},
 						"vod_sub_app_id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The ID of the vodSub app.",
+							Description: "ID vodSub app。",
 						},
 						"vod_file_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Record file name.Special placeholders supported are: `StreamID`: Stream ID,`StartYear`: Start time - year,`StartMonth`: Start time - month,`StartDay`: Start time - day,`StartHour`: Start time - hour,`StartMinute`: Start time - minutes,`StartSecond`: Start time - seconds,`StartMillisecond`: Start time - milliseconds,`EndYear`: End time - year,`EndMonth`: End time - month,`EndDay`: End time - day,`EndHour`: End time - hour,`EndMinute`: End time - minutes,`EndSecond`: End time - seconds,`EndMillisecond`: End time - millisecondsIf the default recording file name is not set as ,`StreamID`,`StartYear`,`StartMonth`,`StartDay`,`StartHour`,`StartMinute`,`StartSecond`,`EndYear`,`EndMonth`,`EndDay`,`EndHour`,`EndMinute`,`EndSecond`.",
+							Description: "Record 文件 名称Special placeholders 支持 是: `StreamID`: Stream ID,`StartYear`: 开始时间 - year,`StartMonth`: 开始时间 - month,`StartDay`: 开始时间 - day,`StartHour`: 开始时间 - hour,`StartMinute`: 开始时间 - minutes,`StartSecond`: 开始时间 - 秒,`StartMillisecond`: 开始时间 - milliseconds,`EndYear`: 结束时间 - year,`EndMonth`: 结束时间 - month,`EndDay`: 结束时间 - day,`EndHour`: 结束时间 - hour,`EndMinute`: 结束时间 - minutes,`EndSecond`: 结束时间 - 秒,`EndMillisecond`: 结束时间 - millisecondsIf 默认值 recording 文件 名称 是 不 集合 作为 ,`StreamID`,`StartYear`,`StartMonth`,`StartDay`,`StartHour`,`StartMinute`,`StartSecond`,`EndYear`,`EndMonth`,`EndDay`,`EndHour`,`EndMinute`,`EndSecond`。",
 						},
 						"procedure": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Task flow. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "任务 flow. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"storage_mode": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Video storage strategy. Normal: standard storage. Cold: low frequency storage. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Video 存储 strategy. Normal: standard 存储. Cold: low 频率 存储. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"class_id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Classification of on-demand applications. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Classification 的 在-demand applications. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -142,48 +142,48 @@ func ResourceTencentCloudCssRecordTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Mp4 recording parameters are set when Mp4 recording is enabled.",
+				Description: "Mp4 recording 参数 是 集合 当 Mp4 recording 是 已启用",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"record_interval": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Recording interval. Unit: second, default: 1800. Value range: 30-7200. This parameter is invalid for HLS. When recording HLS, a file is generated from streaming to streaming.",
+							Description: "Recording 间隔. 单位：second，默认值：1800. 取值范围：30-7200. 此 参数 是 无效 对于 HLS. 当 recording HLS， 文件 是 generated 从 streaming 到 streaming。",
 						},
 						"storage_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Recording storage duration. Unit: second. Value range: 0 - 1500 days. 0: indicates permanent storage.",
+							Description: "Recording 存储 时长. 单位：second. 取值范围：0 - 1500 days. 0: 表示permanent 存储。",
 						},
 						"enable": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Whether to enable recording in the current format. The default value is 0. 0: No, 1: Yes.",
+							Description: "是否enable recording 在 当前 格式 默认值为 0. 0: No，1: Yes。",
 						},
 						"vod_sub_app_id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The ID of the on-demand sub app.",
+							Description: "ID 在-demand sub app。",
 						},
 						"vod_file_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Record file name.Special placeholders supported are: `StreamID`: Stream ID,`StartYear`: Start time - year,`StartMonth`: Start time - month,`StartDay`: Start time - day,`StartHour`: Start time - hour,`StartMinute`: Start time - minutes,`StartSecond`: Start time - seconds,`StartMillisecond`: Start time - milliseconds,`EndYear`: End time - year,`EndMonth`: End time - month,`EndDay`: End time - day,`EndHour`: End time - hour,`EndMinute`: End time - minutes,`EndSecond`: End time - seconds,`EndMillisecond`: End time - millisecondsIf the default recording file name is not set as ,`StreamID`,`StartYear`,`StartMonth`,`StartDay`,`StartHour`,`StartMinute`,`StartSecond`,`EndYear`,`EndMonth`,`EndDay`,`EndHour`,`EndMinute`,`EndSecond`.",
+							Description: "Record 文件 名称Special placeholders 支持 是: `StreamID`: Stream ID,`StartYear`: 开始时间 - year,`StartMonth`: 开始时间 - month,`StartDay`: 开始时间 - day,`StartHour`: 开始时间 - hour,`StartMinute`: 开始时间 - minutes,`StartSecond`: 开始时间 - 秒,`StartMillisecond`: 开始时间 - milliseconds,`EndYear`: 结束时间 - year,`EndMonth`: 结束时间 - month,`EndDay`: 结束时间 - day,`EndHour`: 结束时间 - hour,`EndMinute`: 结束时间 - minutes,`EndSecond`: 结束时间 - 秒,`EndMillisecond`: 结束时间 - millisecondsIf 默认值 recording 文件 名称 是 不 集合 作为 ,`StreamID`,`StartYear`,`StartMonth`,`StartDay`,`StartHour`,`StartMinute`,`StartSecond`,`EndYear`,`EndMonth`,`EndDay`,`EndHour`,`EndMinute`,`EndSecond`。",
 						},
 						"procedure": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Task flow. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "任务 flow. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"storage_mode": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Video storage strategy. Normal: standard storage. Cold: low frequency storage. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Video 存储 strategy. Normal: standard 存储. Cold: low 频率 存储. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"class_id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Classification of on-demand applications. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Classification 的 在-demand applications. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -193,48 +193,48 @@ func ResourceTencentCloudCssRecordTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Aac recording parameters are set when Aac recording is enabled.",
+				Description: "Aac recording 参数 是 集合 当 Aac recording 是 已启用",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"record_interval": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Recording interval. Unit: second, default: 1800. Value range: 30-7200. This parameter is invalid for HLS. When recording HLS, a file is generated from streaming to streaming.",
+							Description: "Recording 间隔. 单位：second，默认值：1800. 取值范围：30-7200. 此 参数 是 无效 对于 HLS. 当 recording HLS， 文件 是 generated 从 streaming 到 streaming。",
 						},
 						"storage_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Recording storage duration. Unit: second. Value range: 0 - 1500 days. 0: indicates permanent storage.",
+							Description: "Recording 存储 时长. 单位：second. 取值范围：0 - 1500 days. 0: 表示permanent 存储。",
 						},
 						"enable": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Whether to enable recording in the current format. The default value is 0. 0: No, 1: Yes.",
+							Description: "是否enable recording 在 当前 格式 默认值为 0. 0: No，1: Yes。",
 						},
 						"vod_sub_app_id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The ID of the on-demand sub app.",
+							Description: "ID 在-demand sub app。",
 						},
 						"vod_file_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Record file name.Special placeholders supported are: `StreamID`: Stream ID,`StartYear`: Start time - year,`StartMonth`: Start time - month,`StartDay`: Start time - day,`StartHour`: Start time - hour,`StartMinute`: Start time - minutes,`StartSecond`: Start time - seconds,`StartMillisecond`: Start time - milliseconds,`EndYear`: End time - year,`EndMonth`: End time - month,`EndDay`: End time - day,`EndHour`: End time - hour,`EndMinute`: End time - minutes,`EndSecond`: End time - seconds,`EndMillisecond`: End time - millisecondsIf the default recording file name is not set as ,`StreamID`,`StartYear`,`StartMonth`,`StartDay`,`StartHour`,`StartMinute`,`StartSecond`,`EndYear`,`EndMonth`,`EndDay`,`EndHour`,`EndMinute`,`EndSecond`.",
+							Description: "Record 文件 名称Special placeholders 支持 是: `StreamID`: Stream ID,`StartYear`: 开始时间 - year,`StartMonth`: 开始时间 - month,`StartDay`: 开始时间 - day,`StartHour`: 开始时间 - hour,`StartMinute`: 开始时间 - minutes,`StartSecond`: 开始时间 - 秒,`StartMillisecond`: 开始时间 - milliseconds,`EndYear`: 结束时间 - year,`EndMonth`: 结束时间 - month,`EndDay`: 结束时间 - day,`EndHour`: 结束时间 - hour,`EndMinute`: 结束时间 - minutes,`EndSecond`: 结束时间 - 秒,`EndMillisecond`: 结束时间 - millisecondsIf 默认值 recording 文件 名称 是 不 集合 作为 ,`StreamID`,`StartYear`,`StartMonth`,`StartDay`,`StartHour`,`StartMinute`,`StartSecond`,`EndYear`,`EndMonth`,`EndDay`,`EndHour`,`EndMinute`,`EndSecond`。",
 						},
 						"procedure": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Task flow. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "任务 flow. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"storage_mode": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Video storage strategy. Normal: standard storage. Cold: low frequency storage. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Video 存储 strategy. Normal: standard 存储. Cold: low 频率 存储. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"class_id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Classification of on-demand applications. This field may return null, indicating that no valid value can be obtained.",
+							Description: "Classification 的 在-demand applications. 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 					},
 				},
@@ -243,20 +243,20 @@ func ResourceTencentCloudCssRecordTemplate() *schema.Resource {
 			"is_delay_live": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Live broadcast type, 0 by default. 0: Ordinary live broadcast, 1: Slow broadcast.",
+				Description: "Live broadcast 类型，0 通过 默认值. 0: Ordinary live broadcast，1: Slow broadcast。",
 			},
 
 			"hls_special_param": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "HLS specific recording parameters.",
+				Description: "HLS 特定 recording 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"flow_continue_duration": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "HLS freewheeling timeout. Value range [0, 1800].",
+							Description: "HLS freewheeling 超时. 值 范围 [0，1800]。",
 						},
 					},
 				},
@@ -266,48 +266,48 @@ func ResourceTencentCloudCssRecordTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Mp3 recording parameters are set when Mp3 recording is turned on.",
+				Description: "Mp3 recording 参数 是 集合 当 Mp3 recording 是 turned 在。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"record_interval": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Recording interval. Unit: second, default: 1800. Value range: 30-7200. This parameter is invalid for HLS. When recording HLS, a file is generated from streaming to streaming.",
+							Description: "Recording 间隔. 单位：second，默认值：1800. 取值范围：30-7200. 此 参数 是 无效 对于 HLS. 当 recording HLS， 文件 是 generated 从 streaming 到 streaming。",
 						},
 						"storage_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Recording storage duration. Unit: second. Value range: 0 - 1500 days. 0: indicates permanent storage.",
+							Description: "Recording 存储 时长. 单位：second. 取值范围：0 - 1500 days. 0: 表示permanent 存储。",
 						},
 						"enable": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Whether to enable recording in the current format. The default value is 0. 0: No, 1: Yes.",
+							Description: "是否enable recording 在 当前 格式 默认值为 0. 0: No，1: Yes。",
 						},
 						"vod_sub_app_id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The ID of the on-demand sub app.",
+							Description: "ID 在-demand sub app。",
 						},
 						"vod_file_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Record file name.Special placeholders supported are: `StreamID`: Stream ID,`StartYear`: Start time - year,`StartMonth`: Start time - month,`StartDay`: Start time - day,`StartHour`: Start time - hour,`StartMinute`: Start time - minutes,`StartSecond`: Start time - seconds,`StartMillisecond`: Start time - milliseconds,`EndYear`: End time - year,`EndMonth`: End time - month,`EndDay`: End time - day,`EndHour`: End time - hour,`EndMinute`: End time - minutes,`EndSecond`: End time - seconds,`EndMillisecond`: End time - millisecondsIf the default recording file name is not set as ,`StreamID`,`StartYear`,`StartMonth`,`StartDay`,`StartHour`,`StartMinute`, `StartSecond`,`EndYear`,`EndMonth`,`EndDay`,`EndHour`,`EndMinute`,`EndSecond`.",
+							Description: "Record 文件 名称Special placeholders 支持 是: `StreamID`: Stream ID,`StartYear`: 开始时间 - year,`StartMonth`: 开始时间 - month,`StartDay`: 开始时间 - day,`StartHour`: 开始时间 - hour,`StartMinute`: 开始时间 - minutes,`StartSecond`: 开始时间 - 秒,`StartMillisecond`: 开始时间 - milliseconds,`EndYear`: 结束时间 - year,`EndMonth`: 结束时间 - month,`EndDay`: 结束时间 - day,`EndHour`: 结束时间 - hour,`EndMinute`: 结束时间 - minutes,`EndSecond`: 结束时间 - 秒,`EndMillisecond`: 结束时间 - millisecondsIf 默认值 recording 文件 名称 是 不 集合 作为 ,`StreamID`,`StartYear`,`StartMonth`,`StartDay`,`StartHour`,`StartMinute`，`StartSecond`,`EndYear`,`EndMonth`,`EndDay`,`EndHour`,`EndMinute`,`EndSecond`。",
 						},
 						"procedure": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Task flow. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "任务 flow. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"storage_mode": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Video storage strategy. Normal: standard storage. Cold: low frequency storage. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Video 存储 strategy. Normal: standard 存储. Cold: low 频率 存储. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"class_id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Classification of vod applications. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Classification 的 vod applications. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -316,20 +316,20 @@ func ResourceTencentCloudCssRecordTemplate() *schema.Resource {
 			"remove_watermark": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to remove the watermark. This parameter is invalid when the type is slow live broadcast.",
+				Description: "是否remove 水印. 此 参数 是 无效 当 类型 是 slow live broadcast。",
 			},
 
 			"flv_special_param": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "FLV records special parameters.",
+				Description: "FLV records special 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"upload_in_recording": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether to enable the transfer while recording is valid only in the flv format.",
+							Description: "是否enable transfer while recording 是 有效 仅 在 flv 格式",
 						},
 					},
 				},

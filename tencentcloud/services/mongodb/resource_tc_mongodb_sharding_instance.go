@@ -28,13 +28,13 @@ func ResourceTencentCloudMongodbShardingInstance() *schema.Resource {
 			Required:     true,
 			ForceNew:     true,
 			ValidateFunc: tccommon.ValidateIntegerInRange(2, 20),
-			Description:  "Number of sharding.",
+			Description:  "数量 sharding。",
 		},
 		"nodes_per_shard": {
 			Type:        schema.TypeInt,
 			Required:    true,
 			ForceNew:    true,
-			Description: "Number of nodes per shard, at least 3(one master and two slaves). Allow value[3, 5, 7].",
+			Description: "节点数量 per 分片，在 least 3(一个 master 和 two slaves). Allow 值[3，5，7]。",
 		},
 		"availability_zone_list": {
 			Type:             schema.TypeList,
@@ -54,7 +54,7 @@ func ResourceTencentCloudMongodbShardingInstance() *schema.Resource {
 			Type:        schema.TypeString,
 			Optional:    true,
 			Computed:    true,
-			Description: "The availability zone to which the Hidden node belongs. This parameter is required in cross-AZ instance deployment.",
+			Description: "availability 可用区 到 其中 Hidden 节点 belongs. 此 参数 为必填项 在 cross-AZ 实例 部署。",
 		},
 	}
 	basic := TencentMongodbBasicInfo()

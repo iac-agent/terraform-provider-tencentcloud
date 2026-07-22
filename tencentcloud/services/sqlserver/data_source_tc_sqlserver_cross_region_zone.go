@@ -19,22 +19,22 @@ func DataSourceTencentCloudSqlserverCrossRegionZone() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID in the format of mssql-j8kv137v.",
+				Description: "实例 ID 在 格式 的 mssql-j8kv137v.",
 			},
 			"region": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The string ID of the region where the standby machine is located, such as: ap-guangzhou.",
+				Description: "字符串 ID 的 地域 其中 standby machine 是 located, such 作为: ap-guangzhou.",
 			},
 			"zone": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The string ID of the availability zone where the standby machine is located, such as: ap-guangzhou-1.",
+				Description: "字符串 ID 的 availability zone 其中 standby machine 是 located, such 作为: ap-guangzhou-1.",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

@@ -18,19 +18,19 @@ func DataSourceTencentCloudPrivateDnsRecords() *schema.Resource {
 			"zone_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Private zone id: zone-xxxxxx.",
+				Description: "Private 可用区 ID: 可用区-xxxxxx。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter parameters (Value and RecordType filtering are supported).",
+				Description: "过滤器 参数 (值 和 RecordType filtering 是 支持)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Parameter name.",
+							Description: "Parameter 名称",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -38,7 +38,7 @@ func DataSourceTencentCloudPrivateDnsRecords() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Parameter values.",
+							Description: "Parameter 值。",
 						},
 					},
 				},
@@ -47,73 +47,73 @@ func DataSourceTencentCloudPrivateDnsRecords() *schema.Resource {
 			"record_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Parse record list.",
+				Description: "Parse 记录 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"record_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Record sid.",
+							Description: "Record sid。",
 						},
 						"zone_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Private zone id: zone-xxxxxx.",
+							Description: "Private 可用区 ID: 可用区-xxxxxx。",
 						},
 						"sub_domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Subdomain name.",
+							Description: "Subdomain 名称",
 						},
 						"record_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Record type, optional record type are: A, AAAA, CNAME, MX, TXT, PTR.",
+							Description: "Record 类型，可选 记录 类型 是: A，AAAA，CNAME，MX，TXT，PTR。",
 						},
 						"record_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Record value.",
+							Description: "Record 值",
 						},
 						"ttl": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Record cache time, the smaller the value, the faster it takes effect. The value is 1-86400s. The default is 600.",
+							Description: "Record 缓存 时间， smaller 值， faster 它 takes effect. 值 是 1-86400s. 默认为 600。",
 						},
 						"mx": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "MX priority: required if the record type is MX. Value range: 5,10,15,20,30,40,50.",
+							Description: "MX 优先级: 必填 如果 记录 类型 是 MX. 取值范围：5,10,15,20,30,40,50。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Record status.",
+							Description: "Record 状态",
 						},
 						"weight": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Record weight, value is 1-100.",
+							Description: "Record 权重，值 是 1-100。",
 						},
 						"created_on": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Record creation time.",
+							Description: "Record 创建时间。",
 						},
 						"updated_on": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Record update time.",
+							Description: "Record 更新时间。",
 						},
 						"extra": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Additional information.",
+							Description: "Additional 信息。",
 						},
 						"enabled": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Enabled. 0 meaning paused, 1 meaning senabled.",
+							Description: "已启用 0 meaning paused，1 meaning senabled。",
 						},
 					},
 				},
@@ -122,7 +122,7 @@ func DataSourceTencentCloudPrivateDnsRecords() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

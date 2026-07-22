@@ -30,7 +30,7 @@ func ResourceTencentCloudMonitorGrafanaDnsConfig() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Grafana instance ID.",
+				Description: "Grafana 实例 ID",
 			},
 
 			"name_servers": {
@@ -39,7 +39,7 @@ func ResourceTencentCloudMonitorGrafanaDnsConfig() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "DNS nameserver list.",
+				Description: "DNS nameserver 列表。",
 			},
 		},
 	}

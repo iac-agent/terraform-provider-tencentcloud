@@ -23,67 +23,67 @@ func ResourceTencentCloudBiEmbedTokenApply() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Share project id.",
+				Description: "Share 项目 ID",
 			},
 
 			"page_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Sharing page id, this is empty value 0 when embedding the board.",
+				Description: "Sharing 页面 ID，此 是 空 值 0 当 embedding board。",
 			},
 
 			"scope": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Page means embedding the page, and panel means embedding the entire board.",
+				Description: "Page 表示 embedding 页面，和 panel 表示 embedding entire board。",
 			},
 
 			"expire_time": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Expiration. Unit: Minutes Maximum value: 240. i.e. 4 hours Default: 240.",
+				Description: "Expiration. 单位：Minutes Maximum 值: 240. i.e. 4 hours 默认值：240。",
 			},
 
 			"user_corp_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "User enterprise ID (for multi-user only).",
+				Description: "用户 enterprise ID (对于 multi-用户 仅)。",
 			},
 
 			"user_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "UserId (for multi-user only).",
+				Description: "UserId (对于 multi-用户 仅)。",
 			},
 
 			"ticket_num": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Access limit, the limit range is 1-99999, if it is empty, no access limit will be set.",
+				Description: "Access 限制， 限制 范围 是 1-99999，如果 它 是 空，无 访问 限制 将 是 集合。",
 			},
 
 			"bi_token": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Create the generated token.",
+				Description: "Create generated 令牌",
 			},
 
 			"create_at": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Create time.",
+				Description: "创建时间。",
 			},
 
 			"udpate_at": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Upadte time.",
+				Description: "Upadte 时间。",
 			},
 		},
 	}

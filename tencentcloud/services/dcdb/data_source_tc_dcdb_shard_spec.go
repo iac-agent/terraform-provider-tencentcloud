@@ -19,59 +19,59 @@ func DataSourceTencentCloudDcdbShardSpec() *schema.Resource {
 			"spec_config": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "list of instance specifications.",
+				Description: "列表 实例 specifications。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"machine": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "machine type.",
+							Description: "machine 类型",
 						},
 						"spec_config_infos": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "list of machine specifications.",
+							Description: "列表 machine specifications。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"node_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "node count.",
+										Description: "节点 count。",
 									},
 									"memory": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "memory, in GB.",
+										Description: "内存，（GB）。",
 									},
 									"min_storage": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "minimum storage size, in GB.",
+										Description: "最小 存储 大小，（GB）。",
 									},
 									"max_storage": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "maximum storage size, inGB.",
+										Description: "最大 存储 大小，inGB。",
 									},
 									"suit_info": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "recommended usage scenarios.",
+										Description: "recommended usage scenarios。",
 									},
 									"pid": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "product price id.",
+										Description: "product 价格 ID。",
 									},
 									"qps": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "maximum QPS.",
+										Description: "最大 QPS。",
 									},
 									"cpu": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "CPU cores.",
+										Description: "CPU 核数",
 									},
 								},
 							},
@@ -83,7 +83,7 @@ func DataSourceTencentCloudDcdbShardSpec() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

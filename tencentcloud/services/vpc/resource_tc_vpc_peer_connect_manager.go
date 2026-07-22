@@ -27,58 +27,58 @@ func ResourceTencentCloudVpcPeerConnectManager() *schema.Resource {
 			"source_vpc_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The unique ID of the local VPC.",
+				Description: "唯一 ID 本地 VPC。",
 			},
 
 			"peering_connection_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Peer connection name.",
+				Description: "Peer 连接 名称",
 			},
 
 			"destination_vpc_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The unique ID of the peer VPC.",
+				Description: "唯一 ID peer VPC。",
 			},
 
 			"destination_uin": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Peer user UIN.",
+				Description: "Peer 用户 UIN。",
 			},
 
 			"destination_region": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Peer region.",
+				Description: "Peer 地域",
 			},
 
 			"bandwidth": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Bandwidth upper limit, unit Mbps.",
+				Description: "Bandwidth upper 限制，单位 Mbps。",
 			},
 
 			"type": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Interworking type, VPC_PEER interworking between VPCs; VPC_BM_PEER interworking between VPC and BM Network.",
+				Description: "Interworking 类型，VPC_PEER interworking between VPCs; VPC_BM_PEER interworking between VPC 和 BM Network。",
 			},
 
 			"charge_type": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Billing mode, daily peak value POSTPAID_BY_DAY_MAX, monthly value 95 POSTPAID_BY_MONTH_95.",
+				Description: "Billing 模式，daily peak 值 POSTPAID_BY_DAY_MAX，monthly 值 95 POSTPAID_BY_MONTH_95。",
 			},
 
 			"qos_level": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Service classification PT, AU, AG.",
+				Description: "Service classification PT，AU，AG。",
 			},
 		},
 	}

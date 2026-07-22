@@ -28,49 +28,49 @@ func ResourceTencentCloudClsExport() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "topic id.",
+				Description: "主题 ID。",
 			},
 
 			"query": {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "export query rules.",
+				Description: "导出查询规则。",
 			},
 
 			"log_count": {
 				Required:    true,
 				Type:        schema.TypeInt,
 				ForceNew:    true,
-				Description: "export amount of log.",
+				Description: "导出日志量。",
 			},
 
 			"from": {
 				Required:    true,
 				Type:        schema.TypeInt,
 				ForceNew:    true,
-				Description: "export start time.",
+				Description: "导出开始时间。",
 			},
 
 			"to": {
 				Required:    true,
 				Type:        schema.TypeInt,
 				ForceNew:    true,
-				Description: "export end time.",
+				Description: "导出结束时间。",
 			},
 
 			"order": {
 				Optional:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "log export time sorting. desc or asc.",
+				Description: "日志导出时间排序。降序或升序。",
 			},
 
 			"format": {
 				Optional:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "log export format.",
+				Description: "日志导出格式。",
 			},
 		},
 	}

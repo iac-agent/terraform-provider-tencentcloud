@@ -26,14 +26,14 @@ func ResourceTencentCloudVcubeApplicationAndWebPlayerLicense() *schema.Resource 
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Application name.",
+				Description: "Application 名称",
 			},
 
 			"domain_list": {
 				Type:        schema.TypeSet,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Domain list.",
+				Description: "域名 列表。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -43,37 +43,37 @@ func ResourceTencentCloudVcubeApplicationAndWebPlayerLicense() *schema.Resource 
 			"license_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "License ID.",
+				Description: "License ID。",
 			},
 
 			"app_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Account App ID.",
+				Description: "账号 App ID。",
 			},
 
 			"app_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Application type: formal: formal application, test: test application.",
+				Description: "Application 类型: formal: formal 应用，测试: 测试 应用。",
 			},
 
 			"application_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "User Application ID.",
+				Description: "用户 Application ID。",
 			},
 
 			"license_key": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "License key.",
+				Description: "License 键",
 			},
 
 			"license_url": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "License url.",
+				Description: "License URL",
 			},
 		},
 	}

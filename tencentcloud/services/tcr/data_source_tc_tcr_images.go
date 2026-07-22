@@ -20,74 +20,74 @@ func DataSourceTencentCloudTcrImages() *schema.Resource {
 			"registry_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"namespace_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "namespace name.",
+				Description: "命名空间 名称",
 			},
 
 			"repository_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "repository name.",
+				Description: "repository 名称",
 			},
 
 			"image_version": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "image version name, default is fuzzy match.",
+				Description: "镜像 版本 名称，默认为 fuzzy match。",
 			},
 
 			"digest": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "specify image digest for lookup.",
+				Description: "指定image digest 对于 lookup。",
 			},
 
 			"exact_match": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "specifies whether it is an exact match, true is an exact match, and not filled is a fuzzy match.",
+				Description: "指定whether 它 是 exact match，true 是 exact match，和 不 filled 是 fuzzy match。",
 			},
 
 			"image_info_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "container image information list.",
+				Description: "容器 镜像 信息 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"digest": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "hash value.",
+							Description: "hash 值",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "image size (unit: byte).",
+							Description: "镜像 大小 (单位: byte)。",
 						},
 						"image_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "tag name.",
+							Description: "标签 名称",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "update time.",
+							Description: "更新时间。",
 						},
 						"kind": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "product type,note: this field may return null, indicating that no valid value can be obtained.",
+							Description: "产品类型,note: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"kms_signature": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "kms signature information,note: this field may return null, indicating that no valid value can be obtained.",
+							Description: "kms 签名 信息,note: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 					},
 				},
@@ -96,7 +96,7 @@ func DataSourceTencentCloudTcrImages() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

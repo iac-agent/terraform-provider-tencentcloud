@@ -18,84 +18,84 @@ func DataSourceTencentCloudKmsServiceStatus() *schema.Resource {
 			"service_enabled": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Whether the KMS service has been activated. true: activated.",
+				Description: "是否KMS 服务 has been activated. true: activated。",
 			},
 
 			"invalid_type": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Service unavailability type. 0: not purchased; 1: normal; 2: suspended due to arrears; 3: resource released.",
+				Description: "Service unavailability 类型 0: 不 purchased; 1: normal; 2: suspended due 到 arrears; 3: 资源 released。",
 			},
 
 			"user_level": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "0: Basic Edition, 1: Ultimate Edition.",
+				Description: "0: Basic Edition，1: Ultimate Edition。",
 			},
 
 			"pro_expire_time": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Expiration time of the KMS Ultimate edition. It's represented in a Unix Epoch timestamp.\nNote: This field may return null, indicating that no valid values can be obtained.",
+				Description: "过期时间 的 KMS Ultimate edition. It's represented 在 Unix Epoch 时间戳.\n注意：此字段可能返回 null，表示无法获取有效值。",
 			},
 
 			"pro_renew_flag": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Whether to automatically renew Ultimate Edition. 0: no, 1: yes\nNote: this field may return null, indicating that no valid values can be obtained.",
+				Description: "是否automatically renew Ultimate Edition. 0: 无，1: yes\nNote: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 			},
 
 			"pro_resource_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Unique ID of the Ultimate Edition purchase record. If the Ultimate Edition is not activated, the returned value will be null.\nNote: this field may return null, indicating that no valid values can be obtained.",
+				Description: "Unique ID Ultimate Edition purchase 记录. 如果 Ultimate Edition 是 不 activated， 返回 值 将 是 null.\nNote: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 			},
 
 			"exclusive_vsm_enabled": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Whether to activate Managed KMS\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+				Description: "是否activate Managed KMS\nNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 			},
 
 			"exclusive_hsm_enabled": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Whether to activate Exclusive KMS\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+				Description: "是否activate Exclusive KMS\nNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 			},
 
 			"subscription_info": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "KMS subscription information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+				Description: "KMS subscription 信息.\n注意：此字段可能返回 null，表示无法获取有效值。",
 			},
 
 			"cmk_user_count": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Return the number of KMS user key usage.",
+				Description: "Return 数量 KMS 用户 键 usage。",
 			},
 
 			"cmk_limit": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Return KMS user key specification quantity.",
+				Description: "Return KMS 用户 键 规格 quantity。",
 			},
 
 			"exclusive_hsm_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Return to Exclusive Cluster Group.",
+				Description: "Return 到 Exclusive Cluster Group。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"hsm_cluster_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Exclusive cluster ID.",
+							Description: "Exclusive 集群 ID。",
 						},
 						"hsm_cluster_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Exclusive cluster name.",
+							Description: "Exclusive 集群名称",
 						},
 					},
 				},
@@ -104,7 +104,7 @@ func DataSourceTencentCloudKmsServiceStatus() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

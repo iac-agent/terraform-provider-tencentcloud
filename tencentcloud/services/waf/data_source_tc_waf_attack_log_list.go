@@ -21,66 +21,66 @@ func DataSourceTencentCloudWafAttackLogList() *schema.Resource {
 			"domain": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Domain for query, all domain use all.",
+				Description: "域名 对于 查询，all 域名 使用 all。",
 			},
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Begin time.",
+				Description: "开始时间。",
 			},
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "End time.",
+				Description: "结束时间。",
 			},
 			"query_count": {
 				Optional:    true,
 				Type:        schema.TypeInt,
 				Default:     10,
-				Description: "Number of queries, default to 10, maximum of 100.",
+				Description: "数量 queries，默认为 10，最大 的 100。",
 			},
 			"page": {
 				Optional:    true,
 				Type:        schema.TypeInt,
 				Default:     0,
-				Description: "Number of pages, starting from 0 by default.",
+				Description: "数量 pages，starting 从 0 通过 默认值。",
 			},
 			"query_string": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Lucene grammar.",
+				Description: "Lucene grammar。",
 			},
 			"sort": {
 				Optional:    true,
 				Type:        schema.TypeString,
 				Default:     "desc",
-				Description: "Default desc, support desc, asc.",
+				Description: "Default desc，support desc，asc。",
 			},
 			"data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Attack log array.",
+				Description: "Attack 日志 数组。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"content": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The detail of attack log.",
+							Description: "detail 的 attack 日志。",
 						},
 						"file_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Useless.",
+							Description: "Useless。",
 						},
 						"source": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Useless.",
+							Description: "Useless。",
 						},
 						"time_stamp": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Time string.",
+							Description: "Time 字符串。",
 						},
 					},
 				},
@@ -88,7 +88,7 @@ func DataSourceTencentCloudWafAttackLogList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

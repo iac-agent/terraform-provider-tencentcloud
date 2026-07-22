@@ -22,48 +22,48 @@ func DataSourceTencentCloudCamGroups() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of the CAM group to be queried.",
+				Description: "名称 CAM 组 到 是 queried。",
 			},
 			"group_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of CAM group to be queried.",
+				Description: "ID CAM 组 到 是 queried。",
 			},
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Description of the cam group to be queried.",
+				Description: "描述 cam 组 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			"group_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of CAM groups. Each element contains the following attributes:",
+				Description: "A 列表 CAM groups. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of CAM group.",
+							Description: "名称 CAM 组。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description of CAM group.",
+							Description: "描述 CAM 组。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create time of the CAM group.",
+							Description: "创建时间 的 CAM 组。",
 						},
 						"group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the CAM group.",
+							Description: "ID CAM 组。",
 						},
 					},
 				},

@@ -23,58 +23,58 @@ func ResourceTencentCloudPostgresqlAccountPrivilegesOperation() *schema.Resource
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID in the format of postgres-4wdeb0zv.",
+				Description: "实例 ID 在 格式 的 postgres-4wdeb0zv。",
 			},
 			"user_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance username.",
+				Description: "实例 用户名",
 			},
 			"modify_privilege_set": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "Privileges to modify. Batch modification supported, up to 50 entries at a time.",
+				Description: "Privileges 到 modify. Batch modification 支持，up 到 50 entries 在 时间。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database_privilege": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Database objects and the user permissions on these objects. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Database objects 和 用户 permissions 在 these objects. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"object": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "Database object.If ObjectType is database, DatabaseName/SchemaName/TableName can be null.If ObjectType is schema, SchemaName/TableName can be null.If ObjectType is table, TableName can be null.If ObjectType is column, DatabaseName/SchemaName/TableName can&amp;#39;t be null.In all other cases, DatabaseName/SchemaName/TableName can be null. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Database 对象.如果 ObjectType 是 数据库，DatabaseName/SchemaName/TableName 可以 是 null.如果 ObjectType 是 schema，SchemaName/TableName 可以 是 null.如果 ObjectType 是 表，TableName 可以 是 null.如果 ObjectType 是 列，DatabaseName/SchemaName/TableName 可以&amp;#39;t 是 null.In all other cases，DatabaseName/SchemaName/TableName 可以 是 null. 注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"object_type": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Supported database object types: account, database, schema, sequence, procedure, type, function, table, view, matview, column. Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "Supported 数据库 对象 types: 账号，数据库，schema，sequence，procedure，类型，函数，表，view，matview，列. 注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"object_name": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Database object Name. Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "Database 对象 名称 注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"database_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Database name to which the database object belongs. This parameter is mandatory when ObjectType is not database. Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "Database 名称 到 其中 数据库 对象 belongs. 此 参数 是 mandatory 当 ObjectType 是 不 数据库. 注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"schema_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Schema name to which the database object belongs. This parameter is mandatory when ObjectType is not database or schema. Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "Schema 名称 到 其中 数据库 对象 belongs. 此 参数 是 mandatory 当 ObjectType 是 不 数据库 或 schema. 注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"table_name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Table name to which the database object belongs. This parameter is mandatory when ObjectType is column. Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "Table 名称 到 其中 数据库 对象 belongs. 此 参数 是 mandatory 当 ObjectType 是 列. 注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -83,7 +83,7 @@ func ResourceTencentCloudPostgresqlAccountPrivilegesOperation() *schema.Resource
 										Type:        schema.TypeSet,
 										Elem:        &schema.Schema{Type: schema.TypeString},
 										Optional:    true,
-										Description: "Privileges the specific account has on database object. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Privileges 特定 账号 has 在 数据库 对象. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -91,12 +91,12 @@ func ResourceTencentCloudPostgresqlAccountPrivilegesOperation() *schema.Resource
 						"modify_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Supported modification method: grantObject, revokeObject, alterRole. grantObject represents granting permissions on object, revokeObject represents revoking permissions on object, and alterRole represents modifying the account type.",
+							Description: "Supported modification 方法: grantObject，revokeObject，alterRole. grantObject 表示 granting permissions 在 对象，revokeObject 表示 revoking permissions 在 对象，和 alterRole 表示 modifying 账号 类型",
 						},
 						"is_cascade": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Required only when ModifyType is revokeObject. When the parameter is true, revoking permissions will cascade. The default value is false.",
+							Description: "必填 仅 当 ModifyType 是 revokeObject. 当 参数 是 true，revoking permissions 将 cascade. 默认值为 false。",
 						},
 					},
 				},

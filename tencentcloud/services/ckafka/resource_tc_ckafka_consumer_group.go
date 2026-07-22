@@ -28,14 +28,14 @@ func ResourceTencentCloudCkafkaConsumerGroup() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "InstanceId.",
+				Description: "实例 ID",
 			},
 
 			"group_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "GroupName.",
+				Description: "GroupName。",
 			},
 
 			"topic_name_list": {
@@ -45,7 +45,7 @@ func ResourceTencentCloudCkafkaConsumerGroup() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "array of topic names.",
+				Description: "数组 主题 names。",
 			},
 		},
 	}

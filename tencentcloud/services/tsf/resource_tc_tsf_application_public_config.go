@@ -26,42 +26,42 @@ func ResourceTencentCloudTsfApplicationPublicConfig() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Config Name.",
+				Description: "配置 名称",
 			},
 
 			"config_version": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "config version.",
+				Description: "配置 版本",
 			},
 
 			"config_value": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "config value, only yaml file allowed.",
+				Description: "配置 值，仅 yaml 文件 allowed。",
 			},
 
 			"config_version_desc": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Config version description.",
+				Description: "配置 版本 描述",
 			},
 
 			"config_type": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Config type.",
+				Description: "配置 类型",
 			},
 
 			"encode_with_base64": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "the config value is encoded with base64 or not.",
+				Description: "配置 值 是 encoded 使用 base64 或 不。",
 			},
 
 			"program_id_list": {
@@ -71,7 +71,7 @@ func ResourceTencentCloudTsfApplicationPublicConfig() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "datasource for auth.",
+				Description: "datasource 对于 auth。",
 			},
 		},
 	}

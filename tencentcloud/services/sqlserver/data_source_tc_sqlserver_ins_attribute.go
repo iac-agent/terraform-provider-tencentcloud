@@ -19,42 +19,42 @@ func DataSourceTencentCloudSqlserverInsAttribute() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 			"regular_backup_enable": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Archive backup status. Valid values: enable (enabled), disable (disabled).",
+				Description: "Archive 备份 状态. 有效 值: 启用 (已启用), disable (已禁用).",
 			},
 			"regular_backup_save_days": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Archive backup retention period: [90-3650] days.",
+				Description: "Archive 备份 retention 周期: [90-3650] days.",
 			},
 			"regular_backup_strategy": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Archive backup policy. Valid values: years (yearly); quarters (quarterly);months` (monthly).",
+				Description: "Archive 备份 策略. 有效 值: years (yearly); quarters (quarterly);months` (monthly).",
 			},
 			"regular_backup_counts": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The number of retained archive backups.",
+				Description: "数量 的 retained archive backups.",
 			},
 			"regular_backup_start_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Archive backup start date in YYYY-MM-DD format, which is the current time by default.",
+				Description: "Archive 备份 start date 在 YYYY-MM-DD 格式, 其中 是 当前 时间 通过 默认值.",
 			},
 			"blocked_threshold": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Block process threshold in milliseconds.",
+				Description: "Block process 阈值 在 milliseconds.",
 			},
 			"event_save_days": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Retention period for the files of slow SQL, blocking, deadlock, and extended events.",
+				Description: "Retention 周期 对于 files 的 slow SQL, blocking, deadlock, 和 extended events.",
 			},
 			"tde_config": {
 				Computed:    true,
@@ -65,17 +65,17 @@ func DataSourceTencentCloudSqlserverInsAttribute() *schema.Resource {
 						"certificate_attribution": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Certificate ownership. Self - indicates using the account's own certificate, others - indicates referencing certificates from other accounts, and none - indicates no certificate.",
+							Description: "Certificate ownership. Self - indicates 使用 account's own 证书, others - indicates referencing certificates 从 other accounts, 和 none - indicates 无 证书.",
 						},
 						"encryption": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "TDE encryption, 'enable' - enabled, 'disable' - not enabled.",
+							Description: "TDE 加密, '启用' - 已启用, 'disable' - 不 已启用.",
 						},
 						"quote_uin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Other primary account IDs referenced when activating TDE encryption\nNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Other primary account IDs referenced 当 activating TDE 加密\nNote: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 						},
 					},
 				},
@@ -83,23 +83,23 @@ func DataSourceTencentCloudSqlserverInsAttribute() *schema.Resource {
 			"ssl_config": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "SSL encryption.",
+				Description: "SSL 加密.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"encryption": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "SSL encryption status, enable - turned on, disable-not turned on, enable_doing - enabling, disable_doing-closing, renew_doing-updating, wait_doing-wait for execution within maintenance time Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "SSL 加密 状态, 启用 - turned 在, disable-不 turned 在, enable_doing - enabling, disable_doing-closing, renew_doing-updating, wait_doing-wait 对于 execution within maintenance 时间 注意: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 						},
 						"ssl_validity_period": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "SSL certificate validity period, time format YYYY-MM-DD HH:MM:SS Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "SSL 证书 validity 周期, 时间 格式 YYYY-MM-DD HH:MM:SS 注意: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 						},
 						"ssl_validity": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "SSL certificate validity, 0-invalid, 1-valid Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "SSL 证书 validity, 0-无效, 1-有效 注意: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 						},
 					},
 				},
@@ -107,7 +107,7 @@ func DataSourceTencentCloudSqlserverInsAttribute() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

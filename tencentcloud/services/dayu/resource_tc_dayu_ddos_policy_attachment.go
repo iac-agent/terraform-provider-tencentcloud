@@ -24,20 +24,20 @@ func ResourceTencentCloudDayuDdosPolicyAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the attached resource.",
+				Description: "ID attached 资源。",
 			},
 			"policy_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the policy.",
+				Description: "ID 策略。",
 			},
 			"resource_type": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(DAYU_RESOURCE_TYPE),
-				Description:  "Type of the resource that the DDoS policy works for. Valid values are `bgpip`, `bgp`, `bgp-multip`, `net`.",
+				Description:  "类型 资源 该 DDoS 策略 works 对于. 有效 值 是 `bgpip`，`bgp`，`bgp-multip`，`net`。",
 			},
 		},
 	}

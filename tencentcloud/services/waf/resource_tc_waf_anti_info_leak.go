@@ -29,30 +29,30 @@ func ResourceTencentCloudWafAntiInfoLeak() *schema.Resource {
 			"domain": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Domain.",
+				Description: "域名",
 			},
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Rule Name.",
+				Description: "Rule 名称",
 			},
 			"action_type": {
 				Required:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(ANTI_INFO_LEAK_ACTION_TYPE),
-				Description:  "Rule Action, 0 (log), 1 (replace), 2 (only display the first four digits), 3 (only display the last four digits), 4 (deny).",
+				Description:  "Rule 操作，0 (日志)，1 (replace)，2 (仅 display first four digits)，3 (仅 display last four digits)，4 (deny)。",
 			},
 			"strategies": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "Strategies detail.",
+				Description: "Strategies detail。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"field": {
 							Type:         schema.TypeString,
 							Required:     true,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(STRATEGIES_FIELD),
-							Description:  "Matching Criteria, returncode (Response Code), keywords (Keywords), information (Sensitive Information).",
+							Description:  "Matching Criteria，returncode (Response 代码)，keywords (Keywords)，信息 (Sensitive Information)。",
 						},
 						"content": {
 							Type:     schema.TypeString,
@@ -70,14 +70,14 @@ func ResourceTencentCloudWafAntiInfoLeak() *schema.Resource {
 			"uri": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Uri.",
+				Description: "Uri。",
 			},
 			"status": {
 				Optional:     true,
 				Type:         schema.TypeInt,
 				Default:      ANTI_INFO_LEAK_RULE_STATUS_1,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(ANTI_INFO_LEAK_RULE_STATUS),
-				Description:  "status.",
+				Description:  "状态",
 			},
 		},
 	}

@@ -22,25 +22,25 @@ func DataSourceTencentCloudClbInstanceDetail() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of fields. Only fields specified will be returned. If it's left blank, `null` is returned. The fields `LoadBalancerId` and `LoadBalancerName` are added by default. For details about fields.",
+				Description: "字段列表。仅返回指定的字段。如果留空，则返回“null”。默认添加字段“LoadBalancerId”和“LoadBalancerName”。有关字段的详细信息。",
 			},
 
 			"target_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Target type. Valid values: NODE and GROUP. If the list of fields contains `TargetId`, `TargetAddress`, `TargetPort`, `TargetWeight` and other fields, `Target` of the target group or non-target group must be exported.",
+				Description: "目标类型。有效值：NODE 和 GROUP。如果字段列表中包含“TargetId”、“TargetAddress”、“TargetPort”、“TargetWeight”等字段，则必须导出目标组或非目标组的“Target”。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter condition of querying lists describing CLB instance details:loadbalancer-id - String - Required: no - (Filter condition) CLB instance ID, such as lb-12345678; project-id - String - Required: no - (Filter condition) Project ID, such as 0 and 123; network - String - Required: no - (Filter condition) Network type of the CLB instance, such as Public and Private.&amp;lt;/li&amp;gt;&amp;lt;li&amp;gt; vip - String - Required: no - (Filter condition) CLB instance VIP, such as 1.1.1.1 and 2204::22:3; target-ip - String - Required: no - (Filter condition) Private IP of the target real servers, such as1.1.1.1 and 2203::214:4; vpcid - String - Required: no - (Filter condition) Identifier of the VPC instance to which the CLB instance belongs, such as vpc-12345678; zone - String - Required: no - (Filter condition) Availability zone where the CLB instance resides, such as ap-guangzhou-1; tag-key - String - Required: no - (Filter condition) Tag key of the CLB instance, such as name; tag:* - String - Required: no - (Filter condition) CLB instance tag, followed by tag key after the colon. For example, use {Name: tag:name,Values: [zhangsan, lisi]} to filter the tag key `name` with the tag value `zhangsan` and `lisi`; fuzzy-search - String - Required: no - (Filter condition) Fuzzy search for CLB instance VIP and CLB instance name, such as 1.",
+				Description: "描述 CLB 实例详细信息的查询列表过滤条件：loadbalancer-ID - String - 必填：否 - （过滤条件）CLB 实例 ID，如 lb-12345678； 项目-ID - String - 必填：否 - （过滤条件）项目ID，如0、123； 网络 - String - 必填：否 - （过滤条件）CLB实例的网络类型，例如Public、Private等。&amp;lt;/li&gt;&amp;lt;li&gt; VIP - String - 必填：否 - （过滤条件）CLB实例VIP，如1.1.1.1、2204::22:3； 目标-ip - String - 必填：否 - （过滤条件）目标真实服务器的私有IP，例如1.1.1.1和2203::214:4； vpcid - String - 必填：否 - （过滤条件）CLB实例所属VPC实例标识符，如vpc-12345678； 可用区 - String - 必填：否 - （过滤条件）CLB实例所在可用区，如ap-guangzhou-1； 标签-键 - String - 必填：否 - （过滤条件）CLB实例的Tag 键，例如名称； 标签:* - 字符串 - 必填：否 - （过滤条件）CLB 实例标记，冒号后跟标记键。例如，使用 {名称: 标签:名称,Values: [zhangsan，lisi]} 过滤标签键“名称”，标签值“zhangsan”和“lisi”； fuzzy-search - 字符串 - 必填：否 - （过滤条件）对 CLB 实例 VIP 和 CLB 实例名称进行模糊搜索，如 1。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter name.",
+							Description: "过滤器名称。",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -48,7 +48,7 @@ func DataSourceTencentCloudClbInstanceDetail() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Filter value array.",
+							Description: "过滤值数组。",
 						},
 					},
 				},
@@ -57,99 +57,99 @@ func DataSourceTencentCloudClbInstanceDetail() *schema.Resource {
 			"load_balancer_detail_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of CLB instance details.Note: this field may return null, indicating that no valid values can be obtained.",
+				Description: "CLB实例详细信息列表。注意：该字段可能返回null，表示取不到有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"load_balancer_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLB instance ID.",
+							Description: "CLB实例ID。",
 						},
 						"load_balancer_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLB instance name.",
+							Description: "CLB 实例名称。",
 						},
 						"load_balancer_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLB instance network type:Public: public network; Private: private network.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "CLB实例网络类型：Public：公网； 私有：私有网络。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "CLB instance status, including:0: creating; 1: running.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "CLB实例状态，包括：0：正在创建； 1：正在运行。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLB instance VIP.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "CLB实例VIP。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"address_ipv6": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IPv6 VIP address of the CLB instance.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "CLB实例的IPv6 VIP地址。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"address_ip_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IP version of the CLB instance. Valid values: IPv4, IPv6.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "CLB实例的IP版本。有效值：IPv4、IPv6。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"ipv6_mode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IPv6 address type of the CLB instance. Valid values: IPv6Nat64, IPv6FullChain.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "CLB实例的IPv6地址类型。有效值：IPv6Nat64、IPv6FullChain。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Availability zone where the CLB instance resides.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "CLB实例所在的可用区。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"address_isp": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ISP to which the CLB IP address belongs.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "CLB IP地址所属的ISP。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the VPC instance to which the CLB instance belongs.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "CLB实例所属VPC实例ID。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "ID of the project to which the CLB instance belongs. 0: default project.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "CLB实例所属项目ID。 0：默认项目。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLB instance creation time.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "CLB实例创建时间。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"charge_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLB instance billing mode.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "CLB实例计费方式。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"network_attributes": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "CLB instance network attribute.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "CLB实例网络属性。注意：该字段可能返回null，表示取不到有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"internet_charge_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "TRAFFIC_POSTPAID_BY_HOUR: hourly pay-as-you-go by traffic; BANDWIDTH_POSTPAID_BY_HOUR: hourly pay-as-you-go by bandwidth;BANDWIDTH_PACKAGE: billed by bandwidth package (currently, this method is supported only if the ISP is specified).",
+										Description: "TRAFFIC_POSTPAID_BY_HOUR：按小时按流量按量付费； BANDWIDTH_POSTPAID_BY_HOUR：按小时按带宽按量付费；BANDWIDTH_PACKAGE：按带宽套餐计费（目前只有指定ISP才支持此方式）。",
 									},
 									"internet_max_bandwidth_out": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Maximum outbound bandwidth in Mbps, which applies only to public network CLB. Value range: 0-65,535. Default value: 10.",
+										Description: "最大出方向带宽（Mbps），仅适用于公网CLB。值范围：0-65,535。默认值：10。",
 									},
 									"bandwidth_pkg_sub_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Bandwidth package type, such as SINGLEISPNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "带宽套餐类型，如SINGLEISP 注：该字段可能返回null，表示取不到有效值。",
 									},
 								},
 							},
@@ -157,18 +157,18 @@ func DataSourceTencentCloudClbInstanceDetail() *schema.Resource {
 						"prepaid_attributes": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Pay-as-you-go attribute of the CLB instance.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "CLB实例按量付费属性。注意：该字段可能返回null，表示取不到有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"renew_flag": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Renewal type. AUTO_RENEW: automatic renewal; MANUAL_RENEW: manual renewalNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "续订类型。 AUTO_RENEW：自动续订； MANUAL_RENEW：手动续订注意：该字段可能返回null，表示取不到有效值。",
 									},
 									"period": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Cycle, indicating the number of months (reserved field)Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "周期，表示月数（保留字段）注意：该字段可能返回null，表示取不到有效值。",
 									},
 								},
 							},
@@ -176,18 +176,18 @@ func DataSourceTencentCloudClbInstanceDetail() *schema.Resource {
 						"extra_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Reserved field, which can be ignored generally.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "保留字段，一般可以忽略。注意：该字段可能返回null，表示取不到有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"zhi_tong": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether to enable VIP direct connectionNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "是否开启VIP直连注：该字段可能返回null，表示取不到有效值。",
 									},
 									"tgw_group_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "TgwGroup nameNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "TgwGroup 名称 注：该字段可能返回null，表示取不到有效值。",
 									},
 								},
 							},
@@ -195,23 +195,23 @@ func DataSourceTencentCloudClbInstanceDetail() *schema.Resource {
 						"config_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Custom configuration IDs of CLB instances. Multiple IDs must be separated by commas (,).Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "CLB实例的自定义配置ID。多个ID之间必须用逗号（,）分隔。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"tags": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "CLB instance tag information.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "CLB实例标签信息。注意：该字段可能返回null，表示取不到有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag key.",
+										Description: "标签键。",
 									},
 									"tag_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag value.",
+										Description: "标签值。",
 									},
 								},
 							},
@@ -219,57 +219,57 @@ func DataSourceTencentCloudClbInstanceDetail() *schema.Resource {
 						"listener_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLB listener ID.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "CLB监听ID。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Listener protocol.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "监听协议。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Listener port.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "监听端口。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"location_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Forwarding rule ID.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "转发规则ID。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain name of the forwarding rule.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "转发规则的域名。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Forwarding rule path.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "转发规则路径。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"target_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of target real servers.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "目标真实服务器ID。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"target_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Address of target real servers.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "目标真实服务器地址。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"target_port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Listening port of target real servers.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "目标真实服务器的监听端口。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"target_weight": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Forwarding weight of target real servers.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "目标真实服务器的转发权重。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"isolation": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "0: not isolated; 1: isolated.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "0：不隔离； 1：isolated。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"security_group": {
 							Type: schema.TypeSet,
@@ -277,22 +277,22 @@ func DataSourceTencentCloudClbInstanceDetail() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "List of the security groups bound to the CLB instance.Note: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "CLB实例绑定的安全组列表。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"load_balancer_pass_to_target": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether the CLB instance is billed by IP.Note: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "CLB实例是否按IP计费。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"target_health": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Health status of the target real server.Note: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "目标真实服务器的健康状态。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"domains": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "List o domain names associated with the forwarding ruleNote: This field may return `null`, indicating that no valid values can be obtained.",
+							Description: "转发规则关联的域名列表 注：该字段可能返回null，表示取不到有效值。",
 						},
 						"slave_zone": {
 							Type: schema.TypeSet,
@@ -300,7 +300,7 @@ func DataSourceTencentCloudClbInstanceDetail() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "The secondary zone of multi-AZ CLB instanceNote: This field may return `null`, indicating that no valid values can be obtained.",
+							Description: "多AZ CLB实例次可用区注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"zones": {
 							Type: schema.TypeSet,
@@ -308,17 +308,17 @@ func DataSourceTencentCloudClbInstanceDetail() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "The AZ of private CLB instance. This is only available for beta users.Note: This field may return `null`, indicating that no valid values can be obtained.",
+							Description: "私有CLB实例的AZ。仅测试版用户可用。注意：该字段可能返回“null”，表示无法获取有效值。",
 						},
 						"sni_switch": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether SNI is enabled. This parameter is only meaningful for HTTPS listeners.Note: This field may return `null`, indicating that no valid values can be obtained.",
+							Description: "是否启用SNI。该参数仅对HTTPS监听有意义。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"load_balancer_domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain name of the CLB instance.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "CLB实例的域名。注意：该字段可能返回null，表示取不到有效值。",
 						},
 					},
 				},
@@ -327,7 +327,7 @@ func DataSourceTencentCloudClbInstanceDetail() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

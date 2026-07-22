@@ -29,41 +29,41 @@ func ResourceTencentCloudCamAccessKey() *schema.Resource {
 			"target_uin": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Specify user Uin, if not filled, the access key is created for the current user by default.",
+				Description: "指定user Uin，如果未填写， 访问 键 是 创建 对于 当前 用户 通过 默认值。",
 			},
 			"access_key": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Access_key is the access key identification, required when updating.",
+				Description: "Access_key 是 访问 键 identification，必填 当 updating。",
 			},
 			"pgp_key": {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Optional:    true,
-				Description: "Either a base-64 encoded PGP public key, or a keybase username in the form keybase:some_person_that_exists, for use in the encrypted_secret output attribute. If providing a base-64 encoded PGP public key, make sure to provide the \"raw\" version and not the \"armored\" one (e.g. avoid passing the -a option to gpg --export).",
+				Description: "Either base-64 encoded PGP 公有 键, 或 keybase username 在 form keybase:some_person_that_exists, 对于 使用 在 encrypted_secret output attribute. 如果 providing base-64 encoded PGP 公有 键, make sure 到 provide \"raw\" 版本 和 不 \"armored\" 一个 (e.g. avoid passing - 选项 到 gpg --export).",
 			},
 			"secret_access_key": {
 				Computed:    true,
 				Sensitive:   true,
 				Type:        schema.TypeString,
-				Description: "Access key (key is only visible when created, please keep it properly).",
+				Description: "Access 键 (键 是 仅 visible 当 创建，please keep 它 properly)。",
 			},
 			"encrypted_secret_access_key": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Encrypted secret, base64 encoded, if pgp_key was specified. This attribute is not available for imported resources. The encrypted secret may be decrypted using the command line, for example: terraform output -raw encrypted_secret | base64 --decode | keybase pgp decrypt.",
+				Description: "Encrypted secret，base64 encoded，如果 pgp_key 是 指定. 此 attribute 是 不 可用 对于 imported resources. encrypted secret 可能 是 decrypted 使用 command line，对于 示例: terraform output -raw encrypted_secret | base64 --decode | keybase pgp decrypt。",
 			},
 			"key_fingerprint": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Fingerprint of the PGP key used to encrypt the secret. This attribute is not available for imported resources.",
+				Description: "Fingerprint 的 PGP 键 用于encrypt secret. 此 attribute 是 不 可用 对于 imported resources。",
 			},
 			"status": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Key status, activated (Active) or inactive (Inactive), required when updating.",
+				Description: "键 状态，activated (活跃) 或 inactive (Inactive)，必填 当 updating。",
 			},
 		},
 	}

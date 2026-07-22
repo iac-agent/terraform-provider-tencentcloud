@@ -21,86 +21,86 @@ func DataSourceTencentCloudElasticsearchInstances() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the instance to be queried.",
+				Description: "ID 实例 到 是 queried。",
 			},
 			"instance_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of the instance to be queried.",
+				Description: "名称 实例 到 是 queried。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag of the instance to be queried.",
+				Description: "标签 的 实例 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// computed
 			"instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information list of elasticsearch instance. Each element contains the following attributes:",
+				Description: "An 信息 列表 elasticsearch 实例. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the instance.",
+							Description: "ID 实例。",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the instance.",
+							Description: "名称 实例。",
 						},
 						"availability_zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Availability zone.",
+							Description: "Availability 可用区",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The ID of a VPC network.",
+							Description: "ID VPC 网络。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The ID of a VPC subnet.",
+							Description: "ID VPC 子网。",
 						},
 						"version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Version of the instance.",
+							Description: "版本 的 实例。",
 						},
 						"charge_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The charge type of instance.",
+							Description: "charge 类型 实例。",
 						},
 						"deploy_mode": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Cluster deployment mode.",
+							Description: "Cluster 部署 模式",
 						},
 						"multi_zone_infos": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Details of AZs in multi-AZ deployment mode.",
+							Description: "Details 的 AZs 在 multi-AZ 部署 模式",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"availability_zone": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Availability zone.",
+										Description: "Availability 可用区",
 									},
 									"subnet_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The id of a VPC subnet.",
+										Description: "ID VPC 子网。",
 									},
 								},
 							},
@@ -108,43 +108,43 @@ func DataSourceTencentCloudElasticsearchInstances() *schema.Resource {
 						"license_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "License type.",
+							Description: "License 类型",
 						},
 						"node_info_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Node information list, which describe the specification information of various types of nodes in the cluster.",
+							Description: "Node 信息 列表，其中 describe 规格 信息 的 various types 的 nodes 在 集群。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"node_num": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of nodes.",
+										Description: "节点数量",
 									},
 									"node_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Node specification.",
+										Description: "Node 规格。",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Node type.",
+										Description: "Node 类型",
 									},
 									"disk_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Node disk type.",
+										Description: "Node 磁盘 类型",
 									},
 									"disk_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Node disk size.",
+										Description: "Node 磁盘 大小。",
 									},
 									"encrypt": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Decides this disk encrypted or not.",
+										Description: "Decides 此 磁盘 encrypted 或 不。",
 									},
 								},
 							},
@@ -152,42 +152,42 @@ func DataSourceTencentCloudElasticsearchInstances() *schema.Resource {
 						"basic_security_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether to enable X-Pack security authentication in Basic Edition 6.8 and above.",
+							Description: "是否enable X-Pack 安全 authentication 在 Basic Edition 6.8 和 above。",
 						},
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "A mapping of tags to assign to the instance.",
+							Description: "A mapping 的 标签 到 assign 到 实例。",
 						},
 						"elasticsearch_domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Elasticsearch domain name.",
+							Description: "Elasticsearch 域名 名称",
 						},
 						"elasticsearch_vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Elasticsearch VIP.",
+							Description: "Elasticsearch VIP",
 						},
 						"elasticsearch_port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Elasticsearch port.",
+							Description: "Elasticsearch 端口",
 						},
 						"elasticsearch_public_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Elasticsearch public url.",
+							Description: "Elasticsearch 公有 URL",
 						},
 						"kibana_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Kibana access URL.",
+							Description: "Kibana 访问 URL",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance creation time.",
+							Description: "实例 创建时间。",
 						},
 					},
 				},

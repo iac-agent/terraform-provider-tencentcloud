@@ -28,21 +28,21 @@ func ResourceTencentCloudTsfApplicationFileConfigRelease() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "File config id.",
+				Description: "File 配置 ID。",
 			},
 
 			"group_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Group Id.",
+				Description: "Group ID。",
 			},
 
 			"release_desc": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "release Description.",
+				Description: "release 描述",
 			},
 		},
 	}

@@ -20,94 +20,94 @@ func DataSourceTencentCloudCatNode() *schema.Resource {
 			"node_type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Node type 1:IDC,2:LastMile,3:Mobile.",
+				Description: "Node 类型 1:IDC,2:LastMile,3:Mobile。",
 			},
 
 			"location": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Node area:1=Chinese Mainland,2=Hong Kong, Macao and Taiwan,3=Overseas.",
+				Description: "Node area:1=Chinese Mainland,2=Hong Kong，Macao 和 Taiwan,3=Overseas。",
 			},
 
 			"is_ipv6": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "is IPv6.",
+				Description: "是 IPv6。",
 			},
 
 			"node_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Node name.",
+				Description: "节点名称",
 			},
 
 			"pay_mode": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Payment mode:1=Trial version,2=Paid version.",
+				Description: "Payment 模式:1=Trial 版本,2=Paid 版本",
 			},
 
 			"node_define": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Probe node list.",
+				Description: "Probe 节点 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Node name.",
+							Description: "节点名称",
 						},
 						"code": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Node ID.",
+							Description: "节点 ID",
 						},
 						"type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Node Type;1 = IDC,2 = LastMile,3 = Mobile.",
+							Description: "Node 类型;1 = IDC,2 = LastMile,3 = Mobile。",
 						},
 						"net_service": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Network service provider.",
+							Description: "Network 服务 provider。",
 						},
 						"district": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "District.",
+							Description: "District。",
 						},
 						"city": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "City.",
+							Description: "City。",
 						},
 						"ip_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "IP type:1 = IPv4,2 = IPv6.",
+							Description: "IP 类型:1 = IPv4,2 = IPv6。",
 						},
 						"location": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Node area:1=Chinese Mainland,2=Hong Kong, Macao and Taiwan,3=Overseas.",
+							Description: "Node area:1=Chinese Mainland,2=Hong Kong，Macao 和 Taiwan,3=Overseas。",
 						},
 						"code_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "If the node type is base, it is an availability dial test point; if it is blank, it is an advanced dial test point.",
+							Description: "如果 节点 类型 是 base，它 是 availability dial 测试 point; 如果 它 是 blank，它 是 advanced dial 测试 point。",
 						},
 						"node_define_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Node status: 1=running, 2=offline.",
+							Description: "Node 状态: 1=running，2=offline。",
 						},
 						"task_types": {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeInt},
 							Computed:    true,
-							Description: "The task types supported by the node. `1`: page performance, `2`: file upload, `3`: file download, `4`: port performance, `5`: network quality, `6`: audio and video experience.",
+							Description: "任务 types 支持 通过 节点. `1`: 页面 performance，`2`: 文件 upload，`3`: 文件 download，`4`: 端口 performance，`5`: 网络 quality，`6`: 音频 和 视频 experience。",
 						},
 					},
 				},
@@ -116,7 +116,7 @@ func DataSourceTencentCloudCatNode() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

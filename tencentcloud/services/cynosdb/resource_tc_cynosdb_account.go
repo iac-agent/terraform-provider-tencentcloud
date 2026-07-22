@@ -28,34 +28,34 @@ func ResourceTencentCloudCynosdbAccount() *schema.Resource {
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 
 			"account_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Account name, including alphanumeric _, Start with a letter, end with a letter or number, length 1-16.",
+				Description: "账户名称，包括字母数字_，以字母开头，以字母或数字结尾，长度1-16。",
 			},
 			"account_password": {
 				Type:        schema.TypeString,
 				Required:    true,
 				Sensitive:   true,
-				Description: "Password, with a length range of 8 to 64 characters.",
+				Description: "密码，长度范围8～64个字符。",
 			},
 			"host": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "main engine.",
+				Description: "主机。",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "describe.",
+				Description: "描述。",
 			},
 			"max_user_connections": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "The maximum number of user connections cannot be greater than 10240.",
+				Description: "最大用户连接数不能大于10240。",
 			},
 		},
 	}

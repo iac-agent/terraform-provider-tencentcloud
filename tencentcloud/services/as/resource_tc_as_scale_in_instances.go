@@ -22,14 +22,14 @@ func ResourceTencentCloudAsScaleInInstances() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Scaling group ID.",
+				Description: "Scaling 组 ID",
 			},
 
 			"scale_in_number": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Number of instances to be reduced.",
+				Description: "数量 实例 到 是 reduced。",
 			},
 		},
 	}

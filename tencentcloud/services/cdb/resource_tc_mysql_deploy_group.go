@@ -27,19 +27,19 @@ func ResourceTencentCloudMysqlDeployGroup() *schema.Resource {
 			"deploy_group_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The name of deploy group. the maximum length cannot exceed 60 characters.",
+				Description: "部署组的名称。最大长度不能超过 60 个字符。",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The description of deploy group. the maximum length cannot exceed 200 characters.",
+				Description: "部署组的描述。最大长度不能超过 200 个字符。",
 			},
 
 			"limit_num": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The limit on the number of instances on the same physical machine in deploy group affinity policy 1.",
+				Description: "部署组亲和策略1中对同一物理机上的实例数量的限制。",
 			},
 
 			"dev_class": {
@@ -48,7 +48,7 @@ func ResourceTencentCloudMysqlDeployGroup() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The device class of deploy group. optional value is SH12+SH02, TS85, etc.",
+				Description: "部署组的设备类别。可选值为SH12+SH02、TS85等。",
 			},
 		},
 	}

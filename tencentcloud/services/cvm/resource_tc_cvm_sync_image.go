@@ -25,7 +25,7 @@ func ResourceTencentCloudCvmSyncImage() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Image ID. The specified image must meet the following requirement: the images must be in the `NORMAL` state.",
+				Description: "Image ID. 指定 镜像 必须 meet following requirement: images 必须 是 在 `NORMAL` state。",
 			},
 
 			"destination_regions": {
@@ -35,42 +35,42 @@ func ResourceTencentCloudCvmSyncImage() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of destination regions for synchronization. Limits: It must be a valid region. For a custom image, the destination region cannot be the source region. For a shared image, the destination region must be the source region, which indicates to create a copy of the image as a custom image in the same region.",
+				Description: "列表 destination regions 对于 synchronization. Limits: It 必须 是 有效 地域 For 自定义 镜像， destination 地域 不能 是 来源 地域 For shared 镜像， destination 地域 必须 是 来源 地域，其中 表示to create copy 的 镜像 作为 自定义 镜像 在 same 地域",
 			},
 
 			"dry_run": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Checks whether image synchronization can be initiated.",
+				Description: "Checks whether 镜像 synchronization 可以 是 initiated。",
 			},
 
 			"image_name": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Destination image name.",
+				Description: "Destination 镜像 名称",
 			},
 
 			"image_set_required": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to return the ID of image created in the destination region.",
+				Description: "是否return ID 镜像 创建 在 destination 地域",
 			},
 
 			"encrypt": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to synchronize as an encrypted custom image. Default value is `false`. Synchronization to an encrypted custom image is only supported within the same region.",
+				Description: "是否synchronize 作为 encrypted 自定义 镜像. 默认值为 `false`. Synchronization 到 encrypted 自定义 镜像 是 仅 支持 within same 地域",
 			},
 
 			"kms_key_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "KMS key ID used when synchronizing to an encrypted custom image. This parameter is valid only synchronizing to an encrypted image. If KmsKeyId is not specified, the default CBS cloud product KMS key is used.",
+				Description: "KMS 键 ID 使用 当 synchronizing 到 encrypted 自定义 镜像. 此 参数 是 有效 仅 synchronizing 到 encrypted 镜像. 如果 KmsKeyId 是 不 指定， 默认值 CBS 云 product KMS 键 是 使用。",
 			},
 
 			"image_set": {
@@ -81,16 +81,16 @@ func ResourceTencentCloudCvmSyncImage() *schema.Resource {
 						"image_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Image ID.",
+							Description: "Image ID。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region of the image.",
+							Description: "地域 的 镜像。",
 						},
 					},
 				},
-				Description: "ID of the image created in the destination region.",
+				Description: "ID 镜像 创建 在 destination 地域",
 			},
 		},
 	}

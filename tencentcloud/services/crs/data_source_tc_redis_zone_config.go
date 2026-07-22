@@ -19,57 +19,57 @@ func DataSourceTencentCloudRedisZoneConfig() *schema.Resource {
 			"region": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of a region. If this value is not set, the current region getting from provider's configuration will be used.",
+				Description: "名称 地域 如果 此 值 是 不 集合， 当前 地域 getting 从 provider's 配置 将 是 使用。",
 			},
 			"type_id": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateIntegerMin(2),
-				Description:  "Instance type ID.",
+				Description:  "实例类型 ID。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// Computed values
 			"list": {Type: schema.TypeList,
-				Description: "A list of zone. Each element contains the following attributes:",
+				Description: "A 列表 可用区 Each element 包含following attributes:",
 				Computed:    true,
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of available zone.",
+							Description: "ID 可用 可用区",
 						},
 						"type_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance type. Which redis type supports in this zone.",
+							Description: "实例类型 Which redis 类型 支持 在 此 可用区",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
 							Deprecated:  "It has been deprecated from version 1.33.1. Please use 'type_id' instead.",
-							Description: "Instance type. Available values: `master_slave_redis`, `master_slave_ckv`, `cluster_ckv`, `cluster_redis` and `standalone_redis`.",
+							Description: "实例类型 可用值：`master_slave_redis`，`master_slave_ckv`，`cluster_ckv`，`cluster_redis` 和 `standalone_redis`。",
 						},
 						"version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Version description of an available instance. Possible values: `Redis 3.2`, `Redis 4.0`.",
+							Description: "版本 描述 可用 实例. 可能的值：`Redis 3.2`，`Redis 4.0`。",
 						},
 						"mem_sizes": {
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeInt},
 							Computed:    true,
 							Deprecated:  "It has been deprecated from version 1.26.0. Use `shard_memories` instead.",
-							Description: "The memory volume of an available instance(in MB).",
+							Description: "内存 卷 的 可用 实例(在 MB)。",
 						},
 						"shard_memories": {
 							Type:        schema.TypeList,
-							Description: "The memory volume list of an available instance shard(in MB).",
+							Description: "内存 卷 列表 可用 实例 分片(在 MB)。",
 							Computed:    true,
 							Elem:        &schema.Schema{Type: schema.TypeInt},
 						},
@@ -77,13 +77,13 @@ func DataSourceTencentCloudRedisZoneConfig() *schema.Resource {
 							Type:        schema.TypeList,
 							Computed:    true,
 							Elem:        &schema.Schema{Type: schema.TypeInt},
-							Description: "The support numbers of instance shard.",
+							Description: "support numbers 的 实例 分片。",
 						},
 						"redis_replicas_nums": {
 							Type:        schema.TypeList,
 							Computed:    true,
 							Elem:        &schema.Schema{Type: schema.TypeInt},
-							Description: "The support numbers of instance copies.",
+							Description: "support numbers 的 实例 copies。",
 						},
 					},
 				},

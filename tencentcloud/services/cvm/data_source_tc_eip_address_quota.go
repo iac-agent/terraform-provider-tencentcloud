@@ -20,23 +20,23 @@ func DataSourceTencentCloudEipAddressQuota() *schema.Resource {
 			"quota_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The specified account EIP quota information.",
+				Description: "指定 账号 EIP 配额 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"quota_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Quota name: TOTAL_EIP_QUOTA,DAILY_EIP_APPLY,DAILY_PUBLIC_IP_ASSIGN.",
+							Description: "Quota 名称: TOTAL_EIP_QUOTA,DAILY_EIP_APPLY,DAILY_PUBLIC_IP_ASSIGN。",
 						},
 						"quota_current": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Current count.",
+							Description: "Current count。",
 						},
 						"quota_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "quota count.",
+							Description: "配额 count。",
 						},
 					},
 				},
@@ -45,7 +45,7 @@ func DataSourceTencentCloudEipAddressQuota() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

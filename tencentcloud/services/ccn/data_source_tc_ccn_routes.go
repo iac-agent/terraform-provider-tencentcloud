@@ -18,24 +18,24 @@ func DataSourceTencentCloudCcnRoutes() *schema.Resource {
 			"ccn_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of the CCN to be queried.",
+				Description: "ID CCN 到 是 queried。",
 			},
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter conditions.",
+				Description: "过滤器 conditions。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Field to be filtered. Support `route-id`, `cidr-block`, `instance-type`, `instance-region`, `instance-id`, `route-table-id`.",
+							Description: "待过滤字段 Support `路由-ID`，`cidr-block`，`实例-类型`，`实例-地域`，`实例-ID`，`路由-表-ID`。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Required:    true,
-							Description: "Filter value of the field.",
+							Description: "过滤值 的 字段。",
 						},
 					},
 				},
@@ -44,73 +44,73 @@ func DataSourceTencentCloudCcnRoutes() *schema.Resource {
 			"route_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "CCN route list.",
+				Description: "CCN 路由 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"route_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "route ID.",
+							Description: "路由 ID。",
 						},
 						"destination_cidr_block": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Destination.",
+							Description: "Destination。",
 						},
 						"instance_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Next hop type (associated instance type), all types: VPC, DIRECTCONNECT.",
+							Description: "Next hop 类型 (associated 实例类型)，all types: VPC，DIRECTCONNECT。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Next jump (associated instance ID).",
+							Description: "Next jump (associated 实例 ID)。",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Next jump (associated instance name).",
+							Description: "Next jump (associated 实例名称)。",
 						},
 						"instance_region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Next jump (associated instance region).",
+							Description: "Next jump (associated 实例 地域)。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "update time.",
+							Description: "更新时间。",
 						},
 						"enabled": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Is routing enabled.",
+							Description: "Is routing 已启用",
 						},
 						"instance_uin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The UIN (root account) to which the associated instance belongs.",
+							Description: "UIN (root 账号) 到 其中 associated 实例 belongs。",
 						},
 						"extra_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Extension status of routing.",
+							Description: "Extension 状态 routing。",
 						},
 						"is_bgp": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Is it dynamic routing.",
+							Description: "Is 它 动态 routing。",
 						},
 						"route_priority": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Routing priority.",
+							Description: "Routing 优先级",
 						},
 						"instance_extra_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Next hop extension name (associated instance extension name).",
+							Description: "Next hop extension 名称 (associated 实例 extension 名称)。",
 						},
 					},
 				},
@@ -118,7 +118,7 @@ func DataSourceTencentCloudCcnRoutes() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

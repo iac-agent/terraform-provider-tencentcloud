@@ -28,18 +28,18 @@ func ResourceTencentCloudAntiddosDefaultAlarmThreshold() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Alarm threshold configuration.",
+				Description: "Alarm 阈值 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"alarm_type": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Alarm threshold type, value [1 (incoming traffic alarm threshold) 2 (attack cleaning traffic alarm threshold)].",
+							Description: "Alarm 阈值 类型，值 [1 (incoming 流量 告警 阈值) 2 (attack cleaning 流量 告警 阈值)]。",
 						},
 						"alarm_threshold": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Alarm threshold, in Mbps, with a value of&gt;=0; When used as an input parameter, setting 0 will delete the alarm threshold configuration;.",
+							Description: "Alarm 阈值，在 Mbps，使用 值 的&gt;=0; 当 使用 作为 input 参数，setting 0 将 delete 告警 阈值 配置;。",
 						},
 					},
 				},
@@ -49,7 +49,7 @@ func ResourceTencentCloudAntiddosDefaultAlarmThreshold() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Product type, value [bgp (represents advanced defense package product) bgpip (represents advanced defense IP product)].",
+				Description: "产品类型，值 [bgp (表示 advanced defense 包 product) bgpip (表示 advanced defense IP product)]。",
 			},
 		},
 	}

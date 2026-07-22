@@ -19,18 +19,18 @@ func DataSourceTencentCloudKmsListAlgorithms() *schema.Resource {
 			"symmetric_algorithms": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Symmetric encryption algorithms supported in this region.",
+				Description: "Symmetric 加密 algorithms 支持 在 此 地域",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key_usage": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Key usage.",
+							Description: "键 usage。",
 						},
 						"algorithm": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Algorithm.",
+							Description: "Algorithm。",
 						},
 					},
 				},
@@ -38,18 +38,18 @@ func DataSourceTencentCloudKmsListAlgorithms() *schema.Resource {
 			"asymmetric_algorithms": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Asymmetric encryption algorithms supported in this region.",
+				Description: "Asymmetric 加密 algorithms 支持 在 此 地域",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key_usage": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Key usage.",
+							Description: "键 usage。",
 						},
 						"algorithm": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Algorithm.",
+							Description: "Algorithm。",
 						},
 					},
 				},
@@ -57,18 +57,18 @@ func DataSourceTencentCloudKmsListAlgorithms() *schema.Resource {
 			"asymmetric_sign_verify_algorithms": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Asymmetric signature verification algorithms supported in this region.",
+				Description: "Asymmetric 签名 verification algorithms 支持 在 此 地域",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key_usage": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Key usage.",
+							Description: "键 usage。",
 						},
 						"algorithm": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Algorithm.",
+							Description: "Algorithm。",
 						},
 					},
 				},
@@ -76,7 +76,7 @@ func DataSourceTencentCloudKmsListAlgorithms() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

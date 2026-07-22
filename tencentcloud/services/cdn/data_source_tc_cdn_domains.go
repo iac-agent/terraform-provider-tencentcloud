@@ -20,139 +20,139 @@ func DataSourceTencentCloudCdnDomains() *schema.Resource {
 			"domain": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Acceleration domain name.",
+				Description: "Acceleration 域名 名称",
 			},
 			"service_type": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_SERVICE_TYPE),
-				Description:  "Service type of acceleration domain name. The available value include `web`, `download` and `media`.",
+				Description:  "Service 类型 acceleration 域名 名称 可用 值 include `web`，`download` 和 `media`。",
 			},
 			"full_url_cache": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable full-path cache.",
+				Description: "是否enable full-路径 缓存。",
 			},
 			"origin_pull_protocol": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_ORIGIN_PULL_PROTOCOL),
-				Description:  "Origin-pull protocol configuration. Valid values: `http`, `https` and `follow`.",
+				Description:  "Origin-pull 协议 配置. 有效值：`http`，`https` 和 `follow`。",
 			},
 			"https_switch": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CDN_HTTPS_SWITCH),
-				Description:  "HTTPS configuration. Valid values: `on`, `off` and `processing`.",
+				Description:  "HTTPS 配置. 有效值：`在`，`关闭` 和 `processing`。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			"domain_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information list of cdn domain. Each element contains the following attributes:",
+				Description: "An 信息 列表 cdn 域名 Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain name ID.",
+							Description: "域名 名称 ID。",
 						},
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Acceleration domain name.",
+							Description: "Acceleration 域名 名称",
 						},
 						"cname": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CNAME address of domain name.",
+							Description: "CNAME 地址 的 域名 名称",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Acceleration service status.",
+							Description: "Acceleration 服务 状态",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain name creation time.",
+							Description: "域名 名称 创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last modified time of domain name.",
+							Description: "最后修改时间 的 域名 名称",
 						},
 						"service_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Service type of acceleration domain name.",
+							Description: "Service 类型 acceleration 域名 名称",
 						},
 						"area": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Acceleration region.",
+							Description: "Acceleration 地域",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The project CDN belongs to.",
+							Description: "项目 CDN belongs 到。",
 						},
 						"full_url_cache": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether to enable full-path cache.",
+							Description: "是否enable full-路径 缓存。",
 						},
 						"range_origin_switch": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Sharding back to source configuration switch.",
+							Description: "Sharding back 到 来源 配置 switch。",
 						},
 						"request_header": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Request header configuration.",
+							Description: "Request 头部 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Custom request header configuration switch.",
+										Description: "Custom 请求 头部 配置 switch。",
 									},
 									"header_rules": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Custom request header configuration rules.",
+										Description: "Custom 请求 头部 配置 规则。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"header_mode": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Http header setting method.",
+													Description: "Http 头部 setting 方法。",
 												},
 												"header_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Http header name.",
+													Description: "Http 头部 名称",
 												},
 												"header_value": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Http header value.",
+													Description: "Http 头部 值",
 												},
 												"rule_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Rule type.",
+													Description: "Rule 类型",
 												},
 												"rule_paths": {
 													Type:        schema.TypeList,
 													Computed:    true,
 													Elem:        &schema.Schema{Type: schema.TypeString},
-													Description: "Rule paths.",
+													Description: "Rule paths。",
 												},
 											},
 										},
@@ -163,7 +163,7 @@ func DataSourceTencentCloudCdnDomains() *schema.Resource {
 						"rule_cache": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Advanced path cache configuration.",
+							Description: "Advanced 路径 缓存 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"rule_paths": {
@@ -172,52 +172,52 @@ func DataSourceTencentCloudCdnDomains() *schema.Resource {
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
-										Description: "Rule paths.",
+										Description: "Rule paths。",
 									},
 									"rule_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Rule type.",
+										Description: "Rule 类型",
 									},
 									"switch": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cache configuration switch.",
+										Description: "Cache 配置 switch。",
 									},
 									"cache_time": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Cache expiration time setting, the unit is second.",
+										Description: "Cache 过期时间 setting， 单位 是 second。",
 									},
 									"compare_max_age": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Advanced cache expiration configuration.",
+										Description: "Advanced 缓存 expiration 配置。",
 									},
 									"ignore_cache_control": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Force caching. After opening, the no-store and no-cache resources returned by the origin site will also be cached in accordance with the CacheRules rules.",
+										Description: "Force caching. After opening， 无-store 和 无-缓存 resources 返回 通过 源站 site 将 also 是 cached 在 accordance 使用 CacheRules 规则。",
 									},
 									"ignore_set_cookie": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Ignore the Set-Cookie header of the origin site.",
+										Description: "Ignore Set-Cookie 头部 的 源站 site。",
 									},
 									"no_cache_switch": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cache configuration switch.",
+										Description: "Cache 配置 switch。",
 									},
 									"re_validate": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Always check back to origin.",
+										Description: "Always check back 到 源站。",
 									},
 									"follow_origin_switch": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Follow the source station configuration switch.",
+										Description: "Follow 来源 station 配置 switch。",
 									},
 								},
 							},
@@ -225,50 +225,50 @@ func DataSourceTencentCloudCdnDomains() *schema.Resource {
 						"origin": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Origin server configuration.",
+							Description: "Origin 服务器 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"origin_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Master origin server type.",
+										Description: "Master 源站 服务器 类型",
 									},
 									"origin_list": {
 										Type:        schema.TypeList,
 										Computed:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "Master origin server list.",
+										Description: "Master 源站 服务器 列表。",
 									},
 									"backup_origin_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Backup origin server type.",
+										Description: "Backup 源站 服务器 类型",
 									},
 									"backup_origin_list": {
 										Type:        schema.TypeList,
 										Computed:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "Backup origin server list.",
+										Description: "Backup 源站 服务器 列表。",
 									},
 									"backup_server_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Host header used when accessing the backup origin server. If left empty, the ServerName of master origin server will be used by default.",
+										Description: "主机 头部 使用 当 accessing 备份 源站 服务器. 如果为空， ServerName 的 master 源站 服务器 将 是 使用 通过 默认值。",
 									},
 									"server_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Host header used when accessing the master origin server. If left empty, the acceleration domain name will be used by default.",
+										Description: "主机 头部 使用 当 accessing master 源站 服务器. 如果为空， acceleration 域名 名称 将 是 使用 通过 默认值。",
 									},
 									"cos_private_access": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "When OriginType is COS, you can specify if access to private buckets is allowed.",
+										Description: "当 OriginType 是 COS，您 可以 指定if 访问 到 私有 buckets 是 allowed。",
 									},
 									"origin_pull_protocol": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Origin-pull protocol configuration.",
+										Description: "Origin-pull 协议 配置。",
 									},
 								},
 							},
@@ -276,33 +276,33 @@ func DataSourceTencentCloudCdnDomains() *schema.Resource {
 						"https_config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "HTTPS acceleration configuration. It's a list and consist of at most one item.",
+							Description: "HTTPS acceleration 配置. It's 列表 和 consist 的 在 most 一个 item。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"https_switch": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "HTTPS configuration switch.",
+										Description: "HTTPS 配置 switch。",
 									},
 									"http2_switch": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "HTTP2 configuration switch.",
+										Description: "HTTP2 配置 switch。",
 									},
 									"ocsp_stapling_switch": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "OCSP configuration switch.",
+										Description: "OCSP 配置 switch。",
 									},
 									"spdy_switch": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Spdy configuration switch.",
+										Description: "Spdy 配置 switch。",
 									},
 									"verify_client": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Client certificate authentication feature.",
+										Description: "Client 证书 authentication 功能。",
 									},
 								},
 							},
@@ -310,7 +310,7 @@ func DataSourceTencentCloudCdnDomains() *schema.Resource {
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "Tags of cdn domain.",
+							Description: "标签 的 cdn 域名",
 						},
 					},
 				},

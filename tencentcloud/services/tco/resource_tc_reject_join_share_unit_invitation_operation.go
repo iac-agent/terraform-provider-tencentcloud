@@ -22,7 +22,7 @@ func ResourceTencentCloudRejectJoinShareUnitInvitationOperation() *schema.Resour
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Shared unit ID.",
+				Description: "共享单元 ID",
 			},
 		},
 	}

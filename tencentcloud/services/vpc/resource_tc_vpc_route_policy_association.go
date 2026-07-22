@@ -28,18 +28,18 @@ func ResourceTencentCloudVpcRoutePolicyAssociation() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Unique route table ID.",
+				Description: "Unique 路由 表 ID。",
 			},
 			"route_policy_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Specifies the unique ID of the route reception policy.",
+				Description: "指定unique ID 路由 reception 策略。",
 			},
 			"priority": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Priority.",
+				Description: "优先级",
 			},
 		},
 	}

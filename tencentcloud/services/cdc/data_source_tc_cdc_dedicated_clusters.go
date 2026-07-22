@@ -19,7 +19,7 @@ func DataSourceTencentCloudCdcDedicatedClusters() *schema.Resource {
 			"dedicated_cluster_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Query by one or more instance IDs. Example of instance ID: cluster-xxxxxxxx.",
+				Description: "Query 通过 一个 或 more 实例 IDs. Example 的 实例 ID: 集群-xxxxxxxx。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -28,7 +28,7 @@ func DataSourceTencentCloudCdcDedicatedClusters() *schema.Resource {
 			"zones": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Filter by AZ name.",
+				Description: "过滤器 通过 AZ 名称",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -37,7 +37,7 @@ func DataSourceTencentCloudCdcDedicatedClusters() *schema.Resource {
 			"site_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Filter by site id.",
+				Description: "过滤器 通过 站点 ID",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -46,7 +46,7 @@ func DataSourceTencentCloudCdcDedicatedClusters() *schema.Resource {
 			"lifecycle_statuses": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Filter by CDC life cycle.",
+				Description: "过滤器 通过 CDC life cycle。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -55,49 +55,49 @@ func DataSourceTencentCloudCdcDedicatedClusters() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of fuzzy matching CDC.",
+				Description: "名称 fuzzy matching CDC。",
 			},
 
 			"dedicated_cluster_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of CDCs that meet the conditions.",
+				Description: "列表 CDCs 该 meet conditions。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"dedicated_cluster_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "CDC id, e.g., cluster-xxxxx.",
+							Description: "CDC ID，e.g.，集群-xxxxx。",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Name of AZ to which the CDC belongs.",
+							Description: "名称 AZ 到 其中 CDC belongs。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "CDC description \nNote: The returned value of this field may be null, indicating that no valid value is obtained.",
+							Description: "CDC 描述 \nNote: 返回 值 的 此 字段 可能 是 null，indicating 该 无 有效 值 是 获取。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "CDC name.",
+							Description: "CDC 名称",
 						},
 						"lifecycle_status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Life cycle of the CDC, e.g., PENDING.",
+							Description: "Life cycle 的 CDC，e.g.，PENDING。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Creation time of the CDC.",
+							Description: "创建时间 的 CDC。",
 						},
 						"site_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Site id to which the CDC belongs.",
+							Description: "Site ID 到 其中 CDC belongs。",
 						},
 					},
 				},
@@ -106,7 +106,7 @@ func DataSourceTencentCloudCdcDedicatedClusters() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

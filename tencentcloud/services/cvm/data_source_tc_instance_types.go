@@ -22,42 +22,42 @@ func DataSourceTencentCloudInstanceTypes() *schema.Resource {
 			"cpu_core_count": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "The number of CPU cores of the instance.",
+				Description: "数量 CPU 核数 的 实例。",
 			},
 			"gpu_core_count": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "The number of GPU cores of the instance.",
+				Description: "数量 GPU cores 的 实例。",
 			},
 			"memory_size": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Instance memory capacity, unit in GB.",
+				Description: "实例 内存 容量，单位 （GB）。",
 			},
 			"availability_zone": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"filter"},
-				Description:   "The available zone that the CVM instance locates at. This field is conflict with `filter`.",
+				Description:   "可用 可用区 该 CVM 实例 locates 在. 此 字段 是 conflict 使用 `过滤器`。",
 			},
 			"filter": {
 				Type:          schema.TypeSet,
 				Optional:      true,
 				MaxItems:      10,
 				ConflictsWith: []string{"availability_zone"},
-				Description:   "One or more name/value pairs to filter. This field is conflict with `availability_zone`.",
+				Description:   "One 或 more 名称/值 pairs 到 过滤器. 此 字段 是 conflict 使用 `availability_zone`。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The filter name. Valid values: `zone`, `instance-family`, `instance-type`, `instance-charge-type` and `sort-keys`.",
+							Description: "过滤名称 有效值：`可用区`，`实例-family`，`实例-类型`，`实例-charge-类型` 和 `sort-keys`。",
 						},
 						"values": {
 							Type:        schema.TypeList,
 							Required:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "The filter values.",
+							Description: "过滤器 值。",
 						},
 					},
 				},
@@ -65,7 +65,7 @@ func DataSourceTencentCloudInstanceTypes() *schema.Resource {
 			"cbs_filter": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Cbs filter.",
+				Description: "Cbs 过滤器。",
 				MaxItems:    1,
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
@@ -73,7 +73,7 @@ func DataSourceTencentCloudInstanceTypes() *schema.Resource {
 							Type:     schema.TypeList,
 							Optional: true,
 							Elem:     &schema.Schema{Type: schema.TypeString},
-							Description: "Hard disk media type. Value range:\n" +
+							Description: "硬盘介质类型。值范围:\n" +
 								"	- CLOUD_BASIC: Represents ordinary Cloud Block Storage;\n" +
 								"	- CLOUD_PREMIUM: Represents high-performance Cloud Block Storage;\n" +
 								"	- CLOUD_SSD: Represents SSD Cloud Block Storage;\n" +
@@ -82,14 +82,14 @@ func DataSourceTencentCloudInstanceTypes() *schema.Resource {
 						"disk_charge_type": {
 							Type:     schema.TypeString,
 							Optional: true,
-							Description: "Payment model. Value range:\n" +
+							Description: "支付模式。值范围:\n" +
 								"	- PREPAID: Prepaid;\n" +
 								"	- POSTPAID_BY_HOUR: Post-payment.",
 						},
 						"disk_usage": {
 							Type:     schema.TypeString,
 							Optional: true,
-							Description: "System disk or data disk. Value range:\n" +
+							Description: "系统盘或数据盘。值范围:\n" +
 								"	- SYSTEM_DISK: Represents the system disk;\n" +
 								"	- DATA_DISK: Represents the data disk.",
 						},
@@ -100,153 +100,153 @@ func DataSourceTencentCloudInstanceTypes() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Indicate to filter instances types that is sold out or not, default is false.",
+				Description: "Indicate 到 过滤器 实例 types 该 是 sold out 或 不，默认为 false。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// Computed values.
 			"instance_types": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information list of cvm instance. Each element contains the following attributes:",
+				Description: "An 信息 列表 cvm 实例. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"availability_zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The available zone that the CVM instance locates at.",
+							Description: "可用 可用区 该 CVM 实例 locates 在。",
 						},
 						"instance_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type of the instance.",
+							Description: "类型 实例。",
 						},
 						"cpu_core_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of CPU cores of the instance.",
+							Description: "数量 CPU 核数 的 实例。",
 						},
 						"gpu_core_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of GPU cores of the instance.",
+							Description: "数量 GPU cores 的 实例。",
 						},
 						"memory_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance memory capacity, unit in GB.",
+							Description: "实例 内存 容量，单位 （GB）。",
 						},
 						"family": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type series of the instance.",
+							Description: "类型 series 的 实例。",
 						},
 						"instance_charge_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Charge type of the instance.",
+							Description: "Charge 类型 实例。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Sell status of the instance.",
+							Description: "Sell 状态 实例。",
 						},
 						"network_card": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Network card type, for example: 25 represents 25G network card.",
+							Description: "Network card 类型，对于 示例: 25 表示 25G 网络 card。",
 						},
 						"type_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance type display name.",
+							Description: "实例类型 display 名称",
 						},
 						"sold_out_reason": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Reason for sold out status.",
+							Description: "Reason 对于 sold out 状态",
 						},
 						"instance_bandwidth": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Internal network bandwidth, unit: Gbps.",
+							Description: "Internal 网络 带宽，单位: Gbps。",
 						},
 						"instance_pps": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Network packet forwarding capacity, unit: 10K PPS.",
+							Description: "Network packet forwarding 容量，单位: 10K PPS。",
 						},
 						"storage_block_amount": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of local storage blocks.",
+							Description: "数量 本地 存储 blocks。",
 						},
 						"cpu_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Processor model.",
+							Description: "Processor model。",
 						},
 						"fpga": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of FPGA cores.",
+							Description: "数量 FPGA cores。",
 						},
 						"gpu_count": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Physical GPU card count mapped to instance. vGPU type is less than 1, direct-attach GPU type is greater than or equal to 1.",
+							Description: "Physical GPU card count mapped 到 实例. vGPU 类型 是 less 比 1，direct-attach GPU 类型 是 greater 比 或 equal 到 1。",
 						},
 						"frequency": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CPU frequency information.",
+							Description: "CPU 频率 信息。",
 						},
 						"status_category": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Stock status category. Valid values: EnoughStock, NormalStock, UnderStock, WithoutStock.",
+							Description: "Stock 状态 category. 有效值：EnoughStock，NormalStock，UnderStock，WithoutStock。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance remark information.",
+							Description: "实例 备注 信息。",
 						},
 						"cbs_configs": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "CBS config. The cbs_configs is populated when the cbs_filter is added.",
+							Description: "CBS 配置 cbs_configs 是 populated 当 cbs_filter 是 added。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"available": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether the configuration is available.",
+										Description: "是否configuration 是 可用。",
 									},
 									"disk_charge_type": {
 										Type:     schema.TypeString,
 										Computed: true,
-										Description: "Payment model. Value range:\n" +
+										Description: "支付模式。值范围:\n" +
 											"	- PREPAID: Prepaid;\n" +
 											"	- POSTPAID_BY_HOUR: Post-payment.",
 									},
 									"zone": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The availability zone to which the Cloud Block Storage belongs.",
+										Description: "availability 可用区 到 其中 Cloud Block Storage belongs。",
 									},
 									"instance_family": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance family.",
+										Description: "实例 family。",
 									},
 									"disk_type": {
 										Type:     schema.TypeString,
 										Computed: true,
-										Description: "Hard disk media type. Value range:\n" +
+										Description: "硬盘介质类型。值范围:\n" +
 											"	- CLOUD_BASIC: Represents ordinary Cloud Block Storage;\n" +
 											"	- CLOUD_PREMIUM: Represents high-performance Cloud Block Storage;\n" +
 											"	- CLOUD_SSD: Represents SSD Cloud Block Storage;\n" +
@@ -255,35 +255,35 @@ func DataSourceTencentCloudInstanceTypes() *schema.Resource {
 									"step_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Minimum step size change in cloud disk size, in GB.",
+										Description: "Minimum step 大小 change 在 云 磁盘 大小，（GB）。",
 									},
 									"extra_performance_range": {
 										Computed:    true,
 										Type:        schema.TypeList,
 										Elem:        &schema.Schema{Type: schema.TypeInt},
-										Description: "Extra performance range.",
+										Description: "Extra performance 范围。",
 									},
 									"device_class": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Device class.",
+										Description: "Device class。",
 									},
 									"disk_usage": {
 										Type:     schema.TypeString,
 										Computed: true,
-										Description: "Cloud disk type. Value range:\n" +
+										Description: "云盘类型。值范围:\n" +
 											"	- SYSTEM_DISK: Represents the system disk;\n" +
 											"	- DATA_DISK: Represents the data disk.",
 									},
 									"min_disk_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The minimum configurable cloud disk size, in GB.",
+										Description: "最小 configurable 云 磁盘 大小，（GB）。",
 									},
 									"max_disk_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The maximum configurable cloud disk size, in GB.",
+										Description: "最大 configurable 云 磁盘 大小，（GB）。",
 									},
 								},
 							},
@@ -291,33 +291,33 @@ func DataSourceTencentCloudInstanceTypes() *schema.Resource {
 						"local_disk_type_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of local disk specifications. Empty if instance type does not support local disks.",
+							Description: "列表 本地 磁盘 specifications. Empty 如果 实例类型 does 不 support 本地 disks。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Local disk type.",
+										Description: "Local 磁盘 类型",
 									},
 									"partition_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Local disk partition type.",
+										Description: "Local 磁盘 分区 类型",
 									},
 									"min_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Minimum size of local disk, in GB.",
+										Description: "Minimum 大小 的 本地 磁盘，（GB）。",
 									},
 									"max_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Maximum size of local disk, in GB.",
+										Description: "Maximum 大小 的 本地 磁盘，（GB）。",
 									},
 									"required": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Whether local disk is required when purchasing. Valid values: REQUIRED, OPTIONAL.",
+										Description: "Whether 本地 磁盘 为必填项 当 purchasing. 有效值：REQUIRED，OPTIONAL。",
 									},
 								},
 							},
@@ -325,58 +325,58 @@ func DataSourceTencentCloudInstanceTypes() *schema.Resource {
 						"price": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Instance pricing information.",
+							Description: "实例 pricing 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"unit_price": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Subsequent unit price, used in postpaid mode, unit: CNY.",
+										Description: "Subsequent 单位 价格，使用 在 postpaid 模式，单位: CNY。",
 									},
 									"charge_unit": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Subsequent billing unit. Valid values: HOUR, GB.",
+										Description: "Subsequent billing 单位. 有效值：HOUR，GB。",
 									},
 									"original_price": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Original price for prepaid mode, unit: CNY.",
+										Description: "Original 价格 对于 prepaid 模式，单位: CNY。",
 									},
 									"discount_price": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Discount price for prepaid mode, unit: CNY.",
+										Description: "Discount 价格 对于 prepaid 模式，单位: CNY。",
 									},
 									"discount": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Discount rate. For example, 20.0 means 20% off.",
+										Description: "Discount 速率. For 示例，20.0 表示 20% 关闭。",
 									},
 									"unit_price_discount": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Subsequent discount unit price, used in postpaid mode, unit: CNY.",
+										Description: "Subsequent discount 单位 价格，使用 在 postpaid 模式，单位: CNY。",
 									},
 									"unit_price_second_step": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Subsequent unit price for time range (96, 360) hours in postpaid mode, unit: CNY.",
+										Description: "Subsequent 单位 价格 对于 时间 范围 (96，360) hours 在 postpaid 模式，单位: CNY。",
 									},
 									"unit_price_discount_second_step": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Subsequent discount unit price for time range (96, 360) hours in postpaid mode, unit: CNY.",
+										Description: "Subsequent discount 单位 价格 对于 时间 范围 (96，360) hours 在 postpaid 模式，单位: CNY。",
 									},
 									"unit_price_third_step": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Specifies the original price of subsequent total costs with a usage time interval exceeding 360 hr in postpaid billing mode. measurement unit: usd.",
+										Description: "指定original 价格 的 subsequent 总数 costs 使用 usage 时间间隔 exceeding 360 hr 在 postpaid billing 模式 measurement 单位: usd。",
 									},
 									"unit_price_discount_third_step": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Discounted price of subsequent total cost for usage time interval exceeding 360 hr in postpaid billing mode. measurement unit: usd.",
+										Description: "Discounted 价格 的 subsequent 总数 费用 对于 usage 时间间隔 exceeding 360 hr 在 postpaid billing 模式 measurement 单位: usd。",
 									},
 								},
 							},
@@ -384,40 +384,40 @@ func DataSourceTencentCloudInstanceTypes() *schema.Resource {
 						"externals": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Extended attributes.",
+							Description: "Extended attributes。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"release_address": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether to release address.",
+										Description: "是否release 地址",
 									},
 									"unsupport_networks": {
 										Type:        schema.TypeList,
 										Computed:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "Unsupported network types. Valid values: BASIC (basic network), VPC1.0 (VPC 1.0).",
+										Description: "Unsupported 网络 types. 有效值：BASIC (basic 网络)，VPC1.0 (VPC 1.0)。",
 									},
 									"storage_block_attr": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "HDD local storage attributes.",
+										Description: "HDD 本地 存储 attributes。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Storage block type.",
+													Description: "Storage block 类型",
 												},
 												"min_size": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Minimum size of storage block, in GB.",
+													Description: "Minimum 大小 的 存储 block，（GB）。",
 												},
 												"max_size": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Maximum size of storage block, in GB.",
+													Description: "Maximum 大小 的 存储 block，（GB）。",
 												},
 											},
 										},

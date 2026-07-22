@@ -18,30 +18,30 @@ func DataSourceTencentCloudMqttTopics() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			// computed
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Topic list.",
+				Description: "Topic 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID",
 						},
 						"topic": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Topic.",
+							Description: "Topic。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Remark.",
+							Description: "备注",
 						},
 					},
 				},
@@ -50,7 +50,7 @@ func DataSourceTencentCloudMqttTopics() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

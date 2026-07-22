@@ -19,86 +19,86 @@ func DataSourceTencentCloudCamRoleDetail() *schema.Resource {
 			"role_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Role ID, used to specify role. Input either `RoleId` or `RoleName`.",
+				Description: "角色 ID，用于指定role. Input either `RoleId` 或 `RoleName`。",
 			},
 
 			"role_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Role name, used to specify role. Input either `RoleId` or `RoleName`.",
+				Description: "角色 名称，用于指定role. Input either `RoleId` 或 `RoleName`。",
 			},
 
 			"role_info": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Role details.",
+				Description: "角色 details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"role_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Role ID.",
+							Description: "角色 ID。",
 						},
 						"role_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Role name.",
+							Description: "角色 名称",
 						},
 						"policy_document": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Role policy document.",
+							Description: "角色 策略 document。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Role description.",
+							Description: "角色 描述",
 						},
 						"add_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Time role created.",
+							Description: "Time 角色 创建。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Time role last updated.",
+							Description: "Time 角色 last 更新。",
 						},
 						"console_login": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "If login is allowed for the role.",
+							Description: "如果 login 是 allowed 对于 角色",
 						},
 						"role_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "User role. Valid values: `user`, `system`, `service_linked`\nNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "用户 角色 有效值：`用户`，`系统`，`service_linked`\nNote: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"session_duration": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Valid period\nNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "有效 周期\nNote: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"deletion_task_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task identifier for deleting a service-linked role \nNote: this field may return null, indicating that no valid values can be obtained.",
+							Description: "任务 identifier 对于 deleting 服务-linked 角色 \nNote: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"tags": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Tags.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+							Description: "标签\nNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Tag key.",
+										Description: "标签键",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Tag value.",
+										Description: "标签值",
 									},
 								},
 							},
@@ -110,7 +110,7 @@ func DataSourceTencentCloudCamRoleDetail() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

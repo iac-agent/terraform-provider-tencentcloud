@@ -28,37 +28,37 @@ func ResourceTencentCloudCssTimeshiftTemplate() *schema.Resource {
 			"template_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The template name.Maximum length: 255 bytes.Only letters, numbers, underscores, and hyphens are supported.",
+				Description: "模板名称Maximum 长度: 255 bytes.Only letters，numbers，underscores，和 hyphens 是 支持。",
 			},
 
 			"duration": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The time shifting duration.Unit: Second.",
+				Description: "时间 shifting 时长.单位：Second。",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The template description.Only letters, numbers, underscores, and hyphens are supported.",
+				Description: "模板描述Only letters，numbers，underscores，和 hyphens 是 支持。",
 			},
 
 			"area": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The region.`Mainland`: The Chinese mainland.`Overseas`: Outside the Chinese mainland.Default value: `Mainland`.",
+				Description: "地域`Mainland`: Chinese mainland.`Overseas`: Outside Chinese mainland.默认值：`Mainland`。",
 			},
 
 			"item_duration": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The segment size.Value range: 3-10.Unit: Second.Default value: 5.",
+				Description: "segment 大小.取值范围：3-10.单位：Second.默认值：5。",
 			},
 
 			"remove_watermark": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to remove watermarks.If you pass in `true`, the original stream will be recorded.Default value: `false`.",
+				Description: "是否remove watermarks.如果 您 pass 在 `true`， original 流 将 是 recorded.默认值：`false`。",
 			},
 
 			"transcode_template_ids": {
@@ -67,7 +67,7 @@ func ResourceTencentCloudCssTimeshiftTemplate() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "The transcoding template IDs.This API works only if `RemoveWatermark` is `false`.",
+				Description: "transcoding template IDs.此 API works 仅 如果 `RemoveWatermark` 是 `false`。",
 			},
 		},
 	}

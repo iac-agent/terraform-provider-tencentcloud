@@ -26,14 +26,14 @@ func ResourceTencentCloudCvmSecurityGroupAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Security group id.",
+				Description: "安全组 ID",
 			},
 
 			"instance_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 		},
 	}

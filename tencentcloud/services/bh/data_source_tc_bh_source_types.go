@@ -18,28 +18,28 @@ func DataSourceTencentCloudBhSourceTypes() *schema.Resource {
 			"source_type_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Authentication source information.",
+				Description: "Authentication 来源 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"source": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Account group source.",
+							Description: "账号 组 来源",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Account group source type.",
+							Description: "账号 组 来源 类型",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Account group source name.",
+							Description: "账号 组 来源 名称",
 						},
 						"target": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Distinguish between ioa original and iam-mini.",
+							Description: "Distinguish between ioa original 和 iam-mini。",
 						},
 					},
 				},
@@ -48,7 +48,7 @@ func DataSourceTencentCloudBhSourceTypes() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

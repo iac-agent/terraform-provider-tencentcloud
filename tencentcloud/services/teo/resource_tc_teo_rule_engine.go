@@ -28,37 +28,37 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the site.",
+				Description: "ID site。",
 			},
 
 			"rule_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Rule ID.",
+				Description: "Rule ID。",
 			},
 
 			"rule_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The rule name (1 to 255 characters).",
+				Description: "规则 名称 (1 到 255 字符)。",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Rule status. Values:\n  - `enable`: Enabled.\n  - `disable`: Disabled.",
+				Description: "Rule 状态 Values:\n - `启用`: 已启用\n - `disable`: 已禁用",
 			},
 
 			"rule_priority": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Rule priority, the larger the value, the higher the priority, the minimum is 1.",
+				Description: "Rule 优先级， larger 值， higher 优先级， 最小 是 1。",
 			},
 
 			"tags": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "rule tag list.",
+				Description: "规则 标签列表",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -67,35 +67,35 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 			"rules": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Rule items list.",
+				Description: "Rule items 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"or": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "OR Conditions list of the rule. Rule would be triggered if any of the condition is true.",
+							Description: "OR Conditions 列表 规则. Rule would 是 triggered 如果 any 的 condition 是 true。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"and": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "AND Conditions list of the rule. Rule would be triggered if all conditions are true.",
+										Description: "AND Conditions 列表 规则. Rule would 是 triggered 如果 all conditions 是 true。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"operator": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Operator. Valid values:\n  - `equal`: Equal.\n  - `notEqual`: Does not equal.\n  - `exist`: Exists.\n  - `notexist`: Does not exist.",
+													Description: "操作者 有效 值:\n - `equal`: Equal.\n - `notEqual`: Does 不 equal.\n - `exist`: Exists.\n - `notexist`: Does 不 exist。",
 												},
 												"target": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The match type. Values:\n  - `filename`: File name.\n  - `extension`: File extension.\n  - `host`: Host.\n  - `full_url`: Full URL, which indicates the complete URL path under the current site and must contain the HTTP protocol, host, and path.\n  - `url`: Partial URL under the current site.\n  - `client_country`: Country/Region of the client.\n  - `query_string`: Query string in the request URL.\n  - `request_header`: HTTP request header.\n  - `client_ip`: Client IP.",
+													Description: "match 类型 Values:\n - `filename`: File 名称\n - `extension`: File extension.\n - `主机`: 主机\n - `full_url`: Full URL，其中 表示complete URL 路径 under 当前 site 和 必须 contain HTTP 协议，主机，和 路径\n - `URL`: Partial URL under 当前 site.\n - `client_country`: Country/地域 的 客户端.\n - `query_string`: Query 字符串 在 请求 URL\n - `request_header`: HTTP 请求 头部.\n - `client_ip`: 客户端 IP",
 												},
 												"values": {
 													Type:        schema.TypeSet,
 													Optional:    true,
-													Description: "The parameter value of the match type. It can be an empty string only when `Target=query string/request header` and `Operator=exist/notexist`.\n  - When `Target=extension`, enter the file extension, such as \"jpg\" and \"txt\".\n  - When `Target=filename`, enter the file name, such as \"foo\" in \"foo.jpg\".\n  - When `Target=all`, it indicates any site request.\n  - When `Target=host`, enter the host under the current site, such as \"www.maxx55.com\".\n  - When `Target=url`, enter the partial URL path under the current site, such as \"/example\".\n  - When `Target=full_url`, enter the complete URL under the current site. It must contain the HTTP protocol, host, and path, such as \"https://www.maxx55.cn/example\".\n  - When `Target=client_country`, enter the ISO-3166 country/region code.\n  - When `Target=query_string`, enter the value of the query string, such as \"cn\" and \"1\" in \"lang=cn&version=1\".\n  - When `Target=request_header`, enter the HTTP request header value, such as \"zh-CN,zh;q=0.9\" in the \"Accept-Language:zh-CN,zh;q=0.9\" header.",
+													Description: "参数 值 的 match 类型. It 可以 是 空 字符串 仅 当 `Target=查询 字符串/请求 头部` 和 `Operator=exist/notexist`.\n - 当 `Target=extension`, enter 文件 extension, such 作为 \"jpg\" 和 \"txt\".\n - 当 `Target=filename`, enter 文件 名称, such 作为 \"foo\" 在 \"foo.jpg\".\n - 当 `Target=all`, 它 indicates any site 请求.\n - 当 `Target=主机`, enter 主机 under 当前 site, such 作为 \"www.maxx55.com\".\n - 当 `Target=url`, enter partial URL 路径 under 当前 site, such 作为 \"/示例\".\n - 当 `Target=full_url`, enter 完整 URL under 当前 site. It 必须 contain HTTP protocol, 主机, 和 路径, such 作为 \"https://www.maxx55.cn/示例\".\n - 当 `Target=client_country`, enter ISO-3166 country/地域 代码.\n - 当 `Target=query_string`, enter 值 的 查询 字符串, such 作为 \"cn\" 和 \"1\" 在 \"lang=cn&版本=1\".\n - 当 `Target=request_header`, enter HTTP 请求 头部 值, such 作为 \"zh-CN,zh;q=0.9\" 在 \"Accept-Language:zh-CN,zh;q=0.9\" 头部.",
 													Elem: &schema.Schema{
 														Type: schema.TypeString,
 													},
@@ -103,12 +103,12 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 												"ignore_case": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "Whether the parameter value is case insensitive. Default value: false.",
+													Description: "是否parameter 值 是 case insensitive. 默认值：false。",
 												},
 												"name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The parameter name of the match type. This field is required only when `Target=query_string/request_header`.\n  - `query_string`: Name of the query string, such as \"lang\" and \"version\" in \"lang=cn&version=1\".\n  - `request_header`: Name of the HTTP request header, such as \"Accept-Language\" in the \"Accept-Language:zh-CN,zh;q=0.9\" header.",
+													Description: "参数 名称 的 match 类型. 此 字段 是 必填 仅 当 `Target=query_string/request_header`.\n - `query_string`: Name 的 查询 字符串, such 作为 \"lang\" 和 \"版本\" 在 \"lang=cn&版本=1\".\n - `request_header`: Name 的 HTTP 请求 头部, such 作为 \"Accept-Language\" 在 \"Accept-Language:zh-CN,zh;q=0.9\" 头部.",
 												},
 											},
 										},
@@ -119,36 +119,36 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 						"actions": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Feature to be executed.",
+							Description: "Feature 到 是 executed。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"normal_action": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Common operation. Values:\n  - `AccessUrlRedirect`: Access URL rewrite.\n  - `UpstreamUrlRedirect`: Origin-pull URL rewrite.\n  - `QUIC`: QUIC.\n  - `WebSocket`: WebSocket.\n  - `VideoSeek`: Video dragging.\n  - `Authentication`: Token authentication.\n  - `CacheKey`: Custom cache key.\n  - `Cache`: Node cache TTL.\n  - `MaxAge`: Browser cache TTL.\n  - `OfflineCache`: Offline cache.\n  - `SmartRouting`: Smart acceleration.\n  - `RangeOriginPull`: Range GETs.\n  - `UpstreamHttp2`: HTTP/2 forwarding.\n  - `HostHeader`: Host header rewrite.\n  - `ForceRedirect`: Force HTTPS.\n  - `OriginPullProtocol`: Origin-pull HTTPS.\n  - `CachePrefresh`: Cache prefresh.\n  - `Compression`: Smart compression.\n  - `Hsts`.\n  - `ClientIpHeader`.\n  - `SslTlsSecureConf`.\n  - `OcspStapling`.\n  - `Http2`: HTTP/2 access.\n  - `UpstreamFollowRedirect`: Follow origin redirect.\n  - `Origin`: Origin.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+										Description: "Common operation. Values:\n - `AccessUrlRedirect`: Access URL rewrite.\n - `UpstreamUrlRedirect`: Origin-pull URL rewrite.\n - `QUIC`: QUIC.\n - `WebSocket`: WebSocket.\n - `VideoSeek`: Video dragging.\n - `Authentication`: 令牌 authentication.\n - `CacheKey`: Custom 缓存 键\n - `Cache`: Node 缓存 TTL.\n - `MaxAge`: Browser 缓存 TTL.\n - `OfflineCache`: Offline 缓存.\n - `SmartRouting`: Smart acceleration.\n - `RangeOriginPull`: Range GETs.\n - `UpstreamHttp2`: HTTP/2 forwarding.\n - `HostHeader`: 主机 头部 rewrite.\n - `ForceRedirect`: Force HTTPS.\n - `OriginPullProtocol`: Origin-pull HTTPS.\n - `CachePrefresh`: Cache prefresh.\n - `Compression`: Smart 压缩.\n - `Hsts`.\n - `ClientIpHeader`.\n - `SslTlsSecureConf`.\n - `OcspStapling`.\n - `Http2`: HTTP/2 访问.\n - `UpstreamFollowRedirect`: Follow 源站 redirect.\n - `Origin`: Origin.\nNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"action": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.",
+													Description: "Feature 名称 You 可以 call [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API 到 view requirements 对于 entering 功能 名称",
 												},
 												"parameters": {
 													Type:        schema.TypeList,
 													Required:    true,
-													Description: "Parameter.",
+													Description: "Parameter。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"name": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Parameter name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter name.",
+																Description: "Parameter 名称 You 可以 call [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API 到 view requirements 对于 entering 参数 名称",
 															},
 															"values": {
 																Type:        schema.TypeSet,
 																Required:    true,
-																Description: "The parameter value.",
+																Description: "参数 值",
 																Elem: &schema.Schema{
 																	Type: schema.TypeString,
 																},
@@ -163,34 +163,34 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Feature operation with a request/response header. Features of this type include:\n  - `RequestHeader`: HTTP request header modification.\n  - `ResponseHeader`: HTTP response header modification.\nNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Feature operation 使用 请求/response 头部. Features 的 此 类型 include:\n - `RequestHeader`: HTTP 请求 头部 modification.\n - `ResponseHeader`: HTTP response 头部 modification.\n注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"action": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.",
+													Description: "Feature 名称 You 可以 call [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API 到 view requirements 对于 entering 功能 名称",
 												},
 												"parameters": {
 													Type:        schema.TypeList,
 													Required:    true,
-													Description: "Parameter.",
+													Description: "Parameter。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"action": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Feature parameter name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter name, which has three values:\n  - add: Add the HTTP header.\n  - set: Rewrite the HTTP header.\n  - del: Delete the HTTP header.",
+																Description: "Feature 参数 名称 You 可以 call [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API 到 view requirements 对于 entering 参数 名称，其中 has three 值:\n - add: Add HTTP 头部.\n - 集合: Rewrite HTTP 头部.\n - del: Delete HTTP 头部。",
 															},
 															"name": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Parameter name.",
+																Description: "Parameter 名称",
 															},
 															"values": {
 																Type:        schema.TypeSet,
 																Required:    true,
-																Description: "Parameter value.",
+																Description: "Parameter 值",
 																Elem: &schema.Schema{
 																	Type: schema.TypeString,
 																},
@@ -205,34 +205,34 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Feature operation with a status code. Features of this type include:\n  - `ErrorPage`: Custom error page.\n  - `StatusCodeCache`: Status code cache TTL.\nNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Feature operation 使用 状态 代码 Features 的 此 类型 include:\n - `ErrorPage`: Custom 错误 页面.\n - `StatusCodeCache`: 状态 代码 缓存 TTL.\n注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"action": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.",
+													Description: "Feature 名称 You 可以 call [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API 到 view requirements 对于 entering 功能 名称",
 												},
 												"parameters": {
 													Type:        schema.TypeList,
 													Required:    true,
-													Description: "Operation parameter.",
+													Description: "Operation 参数。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"status_code": {
 																Type:        schema.TypeInt,
 																Required:    true,
-																Description: "The status code.",
+																Description: "状态 代码",
 															},
 															"name": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "The parameter name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter name.",
+																Description: "参数 名称 You 可以 call [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API 到 view requirements 对于 entering 参数 名称",
 															},
 															"values": {
 																Type:        schema.TypeSet,
 																Required:    true,
-																Description: "The parameter value.",
+																Description: "参数 值",
 																Elem: &schema.Schema{
 																	Type: schema.TypeString,
 																},
@@ -249,13 +249,13 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 						"sub_rules": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "The nested rule.",
+							Description: "nested 规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tags": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Tag of the rule.",
+										Description: "标签 的 规则。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -263,35 +263,35 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 									"rules": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "Nested rule settings.",
+										Description: "Nested 规则 settings。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"or": {
 													Type:        schema.TypeList,
 													Required:    true,
-													Description: "The condition that determines if a feature should run.\nNote: If any condition in the array is met, the feature will run.",
+													Description: "condition 该 决定if 功能 should run.\nNote: 如果 any condition 在 数组 是 met， 功能 将 run。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"and": {
 																Type:        schema.TypeList,
 																Required:    true,
-																Description: "Rule engine condition. This condition will be considered met if all items in the array are met.",
+																Description: "Rule 引擎 condition. 此 condition 将 是 considered met 如果 all items 在 数组 是 met。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"operator": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Operator. Valid values:\n  - `equal`: Equal.\n  - `notEqual`: Does not equal.\n  - `exist`: Exists.\n  - `notexist`: Does not exist.",
+																			Description: "操作者 有效 值:\n - `equal`: Equal.\n - `notEqual`: Does 不 equal.\n - `exist`: Exists.\n - `notexist`: Does 不 exist。",
 																		},
 																		"target": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "The match type. Values:\n  - `filename`: File name.\n  - `extension`: File extension.\n  - `host`: Host.\n  - `full_url`: Full URL, which indicates the complete URL path under the current site and must contain the HTTP protocol, host, and path.\n  - `url`: Partial URL under the current site.  - `client_country`: Country/Region of the client.\n  - `query_string`: Query string in the request URL.\n  - `request_header`: HTTP request header.\n  - `client_ip`: Client IP.",
+																			Description: "match 类型 Values:\n - `filename`: File 名称\n - `extension`: File extension.\n - `主机`: 主机\n - `full_url`: Full URL，其中 表示complete URL 路径 under 当前 site 和 必须 contain HTTP 协议，主机，和 路径\n - `URL`: Partial URL under 当前 site. - `client_country`: Country/地域 的 客户端.\n - `query_string`: Query 字符串 在 请求 URL\n - `request_header`: HTTP 请求 头部.\n - `client_ip`: 客户端 IP",
 																		},
 																		"values": {
 																			Type:        schema.TypeSet,
 																			Optional:    true,
-																			Description: "The parameter value of the match type. It can be an empty string only when `Target=query string/request header` and `Operator=exist/notexist`.\n  - When `Target=extension`, enter the file extension, such as \"jpg\" and \"txt\".\n  - When `Target=filename`, enter the file name, such as \"foo\" in \"foo.jpg\".\n  - When `Target=all`, it indicates any site request.\n  - When `Target=host`, enter the host under the current site, such as \"www.maxx55.com\".\n  - When `Target=url`, enter the partial URL path under the current site, such as \"/example\".\n  - When `Target=full_url`, enter the complete URL under the current site. It must contain the HTTP protocol, host, and path, such as \"https://www.maxx55.cn/example\".\n  - When `Target=client_country`, enter the ISO-3166 country/region code.\n  - When `Target=query_string`, enter the value of the query string, such as \"cn\" and \"1\" in \"lang=cn&version=1\".\n  - When `Target=request_header`, enter the HTTP request header value, such as \"zh-CN,zh;q=0.9\" in the \"Accept-Language:zh-CN,zh;q=0.9\" header.",
+																			Description: "参数 值 的 match 类型. It 可以 是 空 字符串 仅 当 `Target=查询 字符串/请求 头部` 和 `Operator=exist/notexist`.\n - 当 `Target=extension`, enter 文件 extension, such 作为 \"jpg\" 和 \"txt\".\n - 当 `Target=filename`, enter 文件 名称, such 作为 \"foo\" 在 \"foo.jpg\".\n - 当 `Target=all`, 它 indicates any site 请求.\n - 当 `Target=主机`, enter 主机 under 当前 site, such 作为 \"www.maxx55.com\".\n - 当 `Target=url`, enter partial URL 路径 under 当前 site, such 作为 \"/示例\".\n - 当 `Target=full_url`, enter 完整 URL under 当前 site. It 必须 contain HTTP protocol, 主机, 和 路径, such 作为 \"https://www.maxx55.cn/示例\".\n - 当 `Target=client_country`, enter ISO-3166 country/地域 代码.\n - 当 `Target=query_string`, enter 值 的 查询 字符串, such 作为 \"cn\" 和 \"1\" 在 \"lang=cn&版本=1\".\n - 当 `Target=request_header`, enter HTTP 请求 头部 值, such 作为 \"zh-CN,zh;q=0.9\" 在 \"Accept-Language:zh-CN,zh;q=0.9\" 头部.",
 																			Elem: &schema.Schema{
 																				Type: schema.TypeString,
 																			},
@@ -299,12 +299,12 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 																		"ignore_case": {
 																			Type:        schema.TypeBool,
 																			Optional:    true,
-																			Description: "Whether the parameter value is case insensitive. Default value: false.",
+																			Description: "是否parameter 值 是 case insensitive. 默认值：false。",
 																		},
 																		"name": {
 																			Type:        schema.TypeString,
 																			Optional:    true,
-																			Description: "The parameter name of the match type. This field is required only when `Target=query_string/request_header`.\n  - `query_string`: Name of the query string, such as \"lang\" and \"version\" in \"lang=cn&version=1\".\n  - `request_header`: Name of the HTTP request header, such as \"Accept-Language\" in the \"Accept-Language:zh-CN,zh;q=0.9\" header.",
+																			Description: "参数 名称 的 match 类型. 此 字段 是 必填 仅 当 `Target=query_string/request_header`.\n - `query_string`: Name 的 查询 字符串, such 作为 \"lang\" 和 \"版本\" 在 \"lang=cn&版本=1\".\n - `request_header`: Name 的 HTTP 请求 头部, such 作为 \"Accept-Language\" 在 \"Accept-Language:zh-CN,zh;q=0.9\" 头部.",
 																		},
 																	},
 																},
@@ -315,36 +315,36 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 												"actions": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "The feature to be executed.",
+													Description: "功能 到 是 executed。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"normal_action": {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Common operation. Values:\n  - `AccessUrlRedirect`: Access URL rewrite.\n  - `UpstreamUrlRedirect`: Origin-pull URL rewrite.\n  - `QUIC`: QUIC.\n  - `WebSocket`: WebSocket.\n  - `VideoSeek`: Video dragging.\n  - `Authentication`: Token authentication.\n  - `CacheKey`: Custom cache key.\n  - `Cache`: Node cache TTL.\n  - `MaxAge`: Browser cache TTL.\n  - `OfflineCache`: Offline cache.\n  - `SmartRouting`: Smart acceleration.\n  - `RangeOriginPull`: Range GETs.\n  - `UpstreamHttp2`: HTTP/2 forwarding.\n  - `HostHeader`: Host header rewrite.\n  - `ForceRedirect`: Force HTTPS.\n  - `OriginPullProtocol`: Origin-pull HTTPS.\n  - `CachePrefresh`: Cache prefresh.\n  - `Compression`: Smart compression.\n  - `Hsts`.\n  - `ClientIpHeader`.\n  - `SslTlsSecureConf`.\n  - `OcspStapling`.\n  - `Http2`: HTTP/2 access.\n  - `UpstreamFollowRedirect`: Follow origin redirect.\n  - `Origin`: Origin.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+																Description: "Common operation. Values:\n - `AccessUrlRedirect`: Access URL rewrite.\n - `UpstreamUrlRedirect`: Origin-pull URL rewrite.\n - `QUIC`: QUIC.\n - `WebSocket`: WebSocket.\n - `VideoSeek`: Video dragging.\n - `Authentication`: 令牌 authentication.\n - `CacheKey`: Custom 缓存 键\n - `Cache`: Node 缓存 TTL.\n - `MaxAge`: Browser 缓存 TTL.\n - `OfflineCache`: Offline 缓存.\n - `SmartRouting`: Smart acceleration.\n - `RangeOriginPull`: Range GETs.\n - `UpstreamHttp2`: HTTP/2 forwarding.\n - `HostHeader`: 主机 头部 rewrite.\n - `ForceRedirect`: Force HTTPS.\n - `OriginPullProtocol`: Origin-pull HTTPS.\n - `CachePrefresh`: Cache prefresh.\n - `Compression`: Smart 压缩.\n - `Hsts`.\n - `ClientIpHeader`.\n - `SslTlsSecureConf`.\n - `OcspStapling`.\n - `Http2`: HTTP/2 访问.\n - `UpstreamFollowRedirect`: Follow 源站 redirect.\n - `Origin`: Origin.\nNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"action": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.",
+																			Description: "Feature 名称 You 可以 call [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API 到 view requirements 对于 entering 功能 名称",
 																		},
 																		"parameters": {
 																			Type:        schema.TypeList,
 																			Required:    true,
-																			Description: "Parameter.",
+																			Description: "Parameter。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"name": {
 																						Type:        schema.TypeString,
 																						Required:    true,
-																						Description: "Parameter name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter name.",
+																						Description: "Parameter 名称 You 可以 call [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API 到 view requirements 对于 entering 参数 名称",
 																					},
 																					"values": {
 																						Type:        schema.TypeSet,
 																						Required:    true,
-																						Description: "The parameter value.",
+																						Description: "参数 值",
 																						Elem: &schema.Schema{
 																							Type: schema.TypeString,
 																						},
@@ -359,34 +359,34 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Feature operation with a request/response header. Features of this type include:\n  - `RequestHeader`: HTTP request header modification.\n  - `ResponseHeader`: HTTP response header modification.\nNote: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Feature operation 使用 请求/response 头部. Features 的 此 类型 include:\n - `RequestHeader`: HTTP 请求 头部 modification.\n - `ResponseHeader`: HTTP response 头部 modification.\n注意：此字段可能返回 null，表示无法获取有效值。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"action": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.",
+																			Description: "Feature 名称 You 可以 call [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API 到 view requirements 对于 entering 功能 名称",
 																		},
 																		"parameters": {
 																			Type:        schema.TypeList,
 																			Required:    true,
-																			Description: "Parameter.",
+																			Description: "Parameter。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"action": {
 																						Type:        schema.TypeString,
 																						Required:    true,
-																						Description: "Feature parameter name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter name, which has three values:\n  - add: Add the HTTP header.\n  - set: Rewrite the HTTP header.\n  - del: Delete the HTTP header.",
+																						Description: "Feature 参数 名称 You 可以 call [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API 到 view requirements 对于 entering 参数 名称，其中 has three 值:\n - add: Add HTTP 头部.\n - 集合: Rewrite HTTP 头部.\n - del: Delete HTTP 头部。",
 																					},
 																					"name": {
 																						Type:        schema.TypeString,
 																						Required:    true,
-																						Description: "Parameter name.",
+																						Description: "Parameter 名称",
 																					},
 																					"values": {
 																						Type:        schema.TypeSet,
 																						Required:    true,
-																						Description: "Parameter value.",
+																						Description: "Parameter 值",
 																						Elem: &schema.Schema{
 																							Type: schema.TypeString,
 																						},
@@ -401,29 +401,29 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 																Type:        schema.TypeList,
 																Optional:    true,
 																MaxItems:    1,
-																Description: "Feature operation with a status code. Features of this type include:\n  - `ErrorPage`: Custom error page.\n  - `StatusCodeCache`: Status code cache TTL.\nNote: This field may return null, indicating that no valid values can be obtained.",
+																Description: "Feature operation 使用 状态 代码 Features 的 此 类型 include:\n - `ErrorPage`: Custom 错误 页面.\n - `StatusCodeCache`: 状态 代码 缓存 TTL.\n注意：此字段可能返回 null，表示无法获取有效值。",
 																Elem: &schema.Resource{
 																	Schema: map[string]*schema.Schema{
 																		"action": {
 																			Type:        schema.TypeString,
 																			Required:    true,
-																			Description: "Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.",
+																			Description: "Feature 名称 You 可以 call [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API 到 view requirements 对于 entering 功能 名称",
 																		},
 																		"parameters": {
 																			Type:        schema.TypeList,
 																			Required:    true,
-																			Description: "Operation parameter.",
+																			Description: "Operation 参数。",
 																			Elem: &schema.Resource{
 																				Schema: map[string]*schema.Schema{
 																					"name": {
 																						Type:        schema.TypeString,
 																						Required:    true,
-																						Description: "The parameter name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter name.",
+																						Description: "参数 名称 You 可以 call [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API 到 view requirements 对于 entering 参数 名称",
 																					},
 																					"values": {
 																						Type:        schema.TypeSet,
 																						Required:    true,
-																						Description: "The parameter value.",
+																						Description: "参数 值",
 																						Elem: &schema.Schema{
 																							Type: schema.TypeString,
 																						},
@@ -431,7 +431,7 @@ func ResourceTencentCloudTeoRuleEngine() *schema.Resource {
 																					"status_code": {
 																						Type:        schema.TypeInt,
 																						Required:    true,
-																						Description: "The status code.",
+																						Description: "状态 代码",
 																					},
 																				},
 																			},

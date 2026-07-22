@@ -22,27 +22,27 @@ func ResourceTencentCloudSubdomainValidateTxtValueOperation() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The subdomain to add Zone domain.",
+				Description: "subdomain 到 add 可用区 域名",
 			},
 			"domain": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The domain name for which TXT records need to be added.",
+				Description: "域名 名称 对于 其中 TXT records need 到 是 added。",
 			},
 			"subdomain": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Host records that need to be added to TXT records.",
+				Description: "主机 records 该 need 到 是 added 到 TXT records。",
 			},
 			"record_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Record types need to be added.",
+				Description: "Record types need 到 是 added。",
 			},
 			"value": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The record value of the TXT record needs to be added.",
+				Description: "记录 值 的 TXT 记录 needs 到 是 added。",
 			},
 		},
 	}

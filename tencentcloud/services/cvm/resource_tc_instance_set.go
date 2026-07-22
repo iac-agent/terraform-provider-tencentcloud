@@ -37,18 +37,18 @@ func ResourceTencentCloudInstanceSet() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The image to use for the instance. Changing `image_id` will cause the instance reset.",
+				Description: "镜像 到 使用 对于 实例. Changing `image_id` 将 cause 实例 reset。",
 			},
 			"availability_zone": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The available zone for the CVM instance.",
+				Description: "可用 可用区 对于 CVM 实例。",
 			},
 			"instance_count": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "The number of instances to be purchased. Value range:[1,100]; default value: 1.",
+				Description: "数量 实例 到 是 purchased. 值 范围:[1,100]; 默认值：1。",
 			},
 			"exclude_instance_ids": {
 				Type:     schema.TypeSet,
@@ -56,38 +56,38 @@ func ResourceTencentCloudInstanceSet() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "instance ids list to exclude.",
+				Description: "实例 ids 列表 到 exclude。",
 			},
 			"instance_name": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Default:      "Terraform-CVM-Instance",
 				ValidateFunc: tccommon.ValidateStringLengthInRange(2, 128),
-				Description:  "The name of the instance. The max length of instance_name is 128, and default value is `Terraform-CVM-Instance`.",
+				Description:  "名称 实例. max 长度 的 instance_name 是 128，和 默认值为 `Terraform-CVM-实例`。",
 			},
 			"instance_type": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateInstanceType,
-				Description:  "The type of the instance.",
+				Description:  "类型 实例。",
 			},
 			"hostname": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The hostname of the instance. Windows instance: The name should be a combination of 2 to 15 characters comprised of letters (case insensitive), numbers, and hyphens (-). Period (.) is not supported, and the name cannot be a string of pure numbers. Other types (such as Linux) of instances: The name should be a combination of 2 to 60 characters, supporting multiple periods (.). The piece between two periods is composed of letters (case insensitive), numbers, and hyphens (-). Modifications may lead to the reinstallation of the instance's operating system..",
+				Description: "hostname 的 实例. Windows 实例: 名称 should 是 combination 的 2 到 15 字符 comprised 的 letters (case insensitive)，numbers，和 hyphens (-). 周期 (.) 是 不 支持，和 名称 不能 是 字符串 的 pure numbers. Other types (such 作为 Linux) 的 实例: 名称 should 是 combination 的 2 到 60 字符，supporting 多个 periods (.). piece between two periods 是 composed 的 letters (case insensitive)，numbers，和 hyphens (-). Modifications 可能 lead 到 reinstallation 的 实例's operating 系统.。",
 			},
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
-				Description: "The project the instance belongs to, default to 0.",
+				Description: "项目 实例 belongs 到，默认为 0。",
 			},
 			"placement_group_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "The ID of a placement group.",
+				Description: "ID placement 组。",
 			},
 			// payment
 			"instance_charge_type": {
@@ -95,7 +95,7 @@ func ResourceTencentCloudInstanceSet() *schema.Resource {
 				Optional:     true,
 				Default:      CVM_CHARGE_TYPE_POSTPAID,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CVM_CHARGE_TYPE),
-				Description:  "The charge type of instance. Only support `POSTPAID_BY_HOUR`.",
+				Description:  "charge 类型 实例. Only support `POSTPAID_BY_HOUR`。",
 			},
 			// network
 			"internet_charge_type": {
@@ -104,44 +104,44 @@ func ResourceTencentCloudInstanceSet() *schema.Resource {
 				Computed:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CVM_INTERNET_CHARGE_TYPE),
-				Description:  "Internet charge type of the instance, Valid values are `BANDWIDTH_PREPAID`, `TRAFFIC_POSTPAID_BY_HOUR`, `BANDWIDTH_POSTPAID_BY_HOUR` and `BANDWIDTH_PACKAGE`. This value does not need to be set when `allocate_public_ip` is false.",
+				Description:  "Internet charge 类型 实例，有效 值 是 `BANDWIDTH_PREPAID`，`TRAFFIC_POSTPAID_BY_HOUR`，`BANDWIDTH_POSTPAID_BY_HOUR` 和 `BANDWIDTH_PACKAGE`. 此 值 does 不 need 到 是 集合 当 `allocate_public_ip` 是 false。",
 			},
 			"bandwidth_package_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "bandwidth package id. if user is standard user, then the bandwidth_package_id is needed, or default has bandwidth_package_id.",
+				Description: "带宽 包 ID. 如果 用户 是 standard 用户，then bandwidth_package_id 是 needed，或 默认值 has bandwidth_package_id。",
 			},
 			"internet_max_bandwidth_out": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bits per second). This value does not need to be set when `allocate_public_ip` is false.",
+				Description: "Maximum outgoing 带宽 到 公有 网络，measured 在 Mbps (Mega bits per second). 此 值 does 不 need 到 是 集合 当 `allocate_public_ip` 是 false。",
 			},
 			"allocate_public_ip": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
 				ForceNew:    true,
-				Description: "Associate a public IP address with an instance in a VPC or Classic. Boolean value, Default is false.",
+				Description: "Associate 公网 IP 地址 使用 实例 在 VPC 或 Classic. Boolean 值，默认为 false。",
 			},
 			// vpc
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The ID of a VPC network. If you want to create instances in a VPC network, this parameter must be set.",
+				Description: "ID VPC 网络. 如果 您 want 到 create 实例 在 VPC 网络，此 参数 必须 是 集合。",
 			},
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The ID of a VPC subnet. If you want to create instances in a VPC network, this parameter must be set.",
+				Description: "ID VPC 子网. 如果 您 want 到 create 实例 在 VPC 网络，此 参数 必须 是 集合。",
 			},
 			"private_ip": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The private IP to be assigned to this instance, must be in the provided subnet and available.",
+				Description: "私有 IP 到 是 assigned 到 此 实例，必须 是 在 提供 子网 和 可用。",
 			},
 			// security group
 			"security_groups": {
@@ -149,7 +149,7 @@ func ResourceTencentCloudInstanceSet() *schema.Resource {
 				Elem:        &schema.Schema{Type: schema.TypeString},
 				Optional:    true,
 				Computed:    true,
-				Description: "A list of security group IDs to associate with.",
+				Description: "A 列表 安全 组 IDs 到 associate 使用。",
 			},
 			// storage
 			"system_disk_type": {
@@ -157,46 +157,46 @@ func ResourceTencentCloudInstanceSet() *schema.Resource {
 				Optional:     true,
 				Default:      CVM_DISK_TYPE_CLOUD_PREMIUM,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CVM_DISK_TYPE),
-				Description:  "System disk type. For more information on limits of system disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952). Valid values: `LOCAL_BASIC`: local disk, `LOCAL_SSD`: local SSD disk, `CLOUD_SSD`: SSD, `CLOUD_PREMIUM`: Premium Cloud Storage, `CLOUD_BSSD`: Basic SSD. NOTE: If modified, the instance may force stop.",
+				Description:  "System 磁盘 类型 For more 信息 在 limits 的 系统 磁盘 types，see [Storage Overview](https://intl.云.tencent.com/document/product/213/4952). 有效值：`LOCAL_BASIC`: 本地 磁盘，`LOCAL_SSD`: 本地 SSD 磁盘，`CLOUD_SSD`: SSD，`CLOUD_PREMIUM`: Premium Cloud Storage，`CLOUD_BSSD`: Basic SSD. NOTE: 如果 modified， 实例 可能 强制停止",
 			},
 			"system_disk_size": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Default:      50,
 				ValidateFunc: tccommon.ValidateIntegerInRange(50, 1000),
-				Description:  "Size of the system disk. Valid value ranges: (50~1000). and unit is GB. Default is 50GB. If modified, the instance may force stop.",
+				Description:  "Size 的 系统 磁盘. 有效 值 ranges: (50~1000). 和 单位 是 GB. 默认为 50GB. 如果 modified， 实例 可能 强制停止",
 			},
 			"system_disk_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "System disk snapshot ID used to initialize the system disk. When system disk type is `LOCAL_BASIC` and `LOCAL_SSD`, disk id is not supported.",
+				Description: "System 磁盘 快照 ID 用于initialize 系统 磁盘. 当 系统 磁盘 类型 是 `LOCAL_BASIC` 和 `LOCAL_SSD`，磁盘 ID 是 不 支持。",
 			},
 			// enhance services
 			"disable_security_service": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Disable enhance service for security, it is enabled by default. When this options is set, security agent won't be installed. Modifications may lead to the reinstallation of the instance's operating system.",
+				Description: "Disable enhance 服务 对于 安全，它 是 已启用 通过 默认值. 当 此 options 是 集合，安全 agent won't 是 installed. Modifications 可能 lead 到 reinstallation 的 实例's operating 系统。",
 			},
 			"disable_monitor_service": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Disable enhance service for monitor, it is enabled by default. When this options is set, monitor agent won't be installed. Modifications may lead to the reinstallation of the instance's operating system.",
+				Description: "Disable enhance 服务 对于 监控，它 是 已启用 通过 默认值. 当 此 options 是 集合，监控 agent won't 是 installed. Modifications 可能 lead 到 reinstallation 的 实例's operating 系统。",
 			},
 			// login
 			"key_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The key pair to use for the instance, it looks like `skey-16jig7tx`. Modifications may lead to the reinstallation of the instance's operating system.",
+				Description: "键 pair 到 使用 对于 实例，它 looks like `skey-16jig7tx`. Modifications 可能 lead 到 reinstallation 的 实例's operating 系统。",
 			},
 			"password": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Sensitive:   true,
-				Description: "Password for the instance. In order for the new password to take effect, the instance will be restarted after the password change. Modifications may lead to the reinstallation of the instance's operating system.",
+				Description: "密码 对于 实例. In 顺序 对于 new 密码 到 take effect， 实例 将 是 restarted after 密码 change. Modifications 可能 lead 到 reinstallation 的 实例's operating 系统。",
 			},
 			"keep_image_login": {
 				Type:     schema.TypeBool,
@@ -210,49 +210,49 @@ func ResourceTencentCloudInstanceSet() *schema.Resource {
 					}
 				},
 				ConflictsWith: []string{"key_name", "password"},
-				Description:   "Whether to keep image login or not, default is `false`. When the image type is private or shared or imported, this parameter can be set `true`. Modifications may lead to the reinstallation of the instance's operating system.",
+				Description:   "是否keep 镜像 login 或 不，默认为 `false`. 当 镜像 类型 是 私有 或 shared 或 imported，此 参数 可以 是 集合 `true`. Modifications 可能 lead 到 reinstallation 的 实例's operating 系统。",
 			},
 			"user_data": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ForceNew:      true,
 				ConflictsWith: []string{"user_data_raw"},
-				Description:   "The user data to be injected into this instance. Must be base64 encoded and up to 16 KB.",
+				Description:   "用户 数据 到 是 injected into 此 实例. Must 是 base64 encoded 和 up 到 16 KB。",
 			},
 			"user_data_raw": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ForceNew:      true,
 				ConflictsWith: []string{"user_data"},
-				Description:   "The user data to be injected into this instance, in plain text. Conflicts with `user_data`. Up to 16 KB after base64 encoded.",
+				Description:   "用户 数据 到 是 injected into 此 实例，在 plain text. Conflicts 使用 `user_data`. Up 到 16 KB after base64 encoded。",
 			},
 			// role
 			"cam_role_name": {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Optional:    true,
-				Description: "CAM role name authorized to access.",
+				Description: "被授权访问的 CAM 角色名称",
 			},
 			// Computed values.
 			"instance_status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Current status of the instance.",
+				Description: "Current 状态 实例。",
 			},
 			"public_ip": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Public IP of the instance.",
+				Description: "Public IP 的 实例。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create time of the instance.",
+				Description: "创建时间 的 实例。",
 			},
 			"expired_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Expired time of the instance.",
+				Description: "过期时间 的 实例。",
 			},
 			"instance_ids": {
 				Type:     schema.TypeList,
@@ -260,7 +260,7 @@ func ResourceTencentCloudInstanceSet() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "instance id list.",
+				Description: "实例 ID 列表。",
 			},
 		},
 	}

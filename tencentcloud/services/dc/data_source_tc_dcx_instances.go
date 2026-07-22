@@ -20,75 +20,75 @@ func DataSourceTencentCloudDcxInstances() *schema.Resource {
 			"dcx_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the dedicated tunnels to be queried.",
+				Description: "ID dedicated tunnels 到 是 queried。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of the dedicated tunnels to be queried.",
+				Description: "名称 dedicated tunnels 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// Computed values
 			"instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information list of the dedicated tunnels.",
+				Description: "Information 列表 dedicated tunnels。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"dcx_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the dedicated tunnel.",
+							Description: "ID dedicated tunnel。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the dedicated tunnel.",
+							Description: "名称 dedicated tunnel。",
 						},
 						"network_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type of the network. Valid values: `VPC`, `BMVPC` and `CCN`. The default value is `VPC`.",
+							Description: "类型 网络. 有效值：`VPC`，`BMVPC` 和 `CCN`. 默认值为 `VPC`。",
 						},
 						"dcg_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the DC Gateway. Currently only new in the console.",
+							Description: "ID DC Gateway. Currently 仅 new 在 console。",
 						},
 						"network_region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The region of the dedicated tunnel.",
+							Description: "地域 的 dedicated tunnel。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the VPC or BMVPC.",
+							Description: "ID VPC 或 BMVPC。",
 						},
 						"bandwidth": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Bandwidth of the DC.",
+							Description: "Bandwidth 的 DC。",
 						},
 						"route_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type of the route. Valid values: `BGP` and `STATIC`. The default value is `BGP`.",
+							Description: "类型 路由. 有效值：`BGP` 和 `STATIC`. 默认值为 `BGP`。",
 						},
 						"bgp_asn": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "BGP ASN of the user.",
+							Description: "BGP ASN 的 用户",
 						},
 						"bgp_auth_key": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "BGP key of the user.",
+							Description: "BGP 键 的 用户",
 						},
 						"route_filter_prefixes": {
 							Type:     schema.TypeList,
@@ -96,37 +96,37 @@ func DataSourceTencentCloudDcxInstances() *schema.Resource {
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
-							Description: "Static route, the network address of the user IDC.",
+							Description: "Static 路由， 网络 地址 的 用户 IDC。",
 						},
 						"vlan": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Vlan of the dedicated tunnels.  Valid value ranges: [0-3000]. `0` means that only one tunnel can be created for the physical connect.",
+							Description: "Vlan 的 dedicated tunnels. 有效 值 ranges: [0-3000]. `0` 表示 该 仅 一个 tunnel 可以 是 创建 对于 physical connect。",
 						},
 						"tencent_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Interconnect IP of the DC within Tencent.",
+							Description: "Interconnect IP 的 DC within Tencent。",
 						},
 						"customer_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Interconnect IP of the DC within client.",
+							Description: "Interconnect IP 的 DC within 客户端。",
 						},
 						"dc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the DC.",
+							Description: "ID DC。",
 						},
 						"state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "State of the dedicated tunnels. Valid values: `PENDING`, `ALLOCATING`, `ALLOCATED`, `ALTERING`, `DELETING`, `DELETED`, `COMFIRMING` and `REJECTED`.",
+							Description: "State 的 dedicated tunnels. 有效值：`PENDING`，`ALLOCATING`，`ALLOCATED`，`ALTERING`，`DELETING`，`DELETED`，`COMFIRMING` 和 `REJECTED`。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time of resource.",
+							Description: "创建时间 的 资源。",
 						},
 					},
 				},

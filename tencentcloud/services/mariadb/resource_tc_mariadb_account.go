@@ -28,38 +28,38 @@ func ResourceTencentCloudMariadbAccount() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"user_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "user name.",
+				Description: "用户 名称",
 			},
 
 			"host": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "host.",
+				Description: "主机",
 			},
 
 			"password": {
 				Type:        schema.TypeString,
 				Required:    true,
 				Sensitive:   true,
-				Description: "account password.",
+				Description: "账号 密码",
 			},
 
 			"read_only": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "wether account is read only, 0 means not a read only account.",
+				Description: "wether 账号 是 read 仅，0 表示 不 read 仅 账号",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "account description.",
+				Description: "账号 描述",
 			},
 		},
 	}

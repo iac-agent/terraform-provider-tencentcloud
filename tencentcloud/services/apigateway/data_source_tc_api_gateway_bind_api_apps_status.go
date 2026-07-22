@@ -19,30 +19,30 @@ func DataSourceTencentCloudApiGatewayBindApiAppsStatus() *schema.Resource {
 			"service_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Service ID.",
+				Description: "服务 ID",
 			},
 			"api_ids": {
 				Required:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Array of API IDs.",
+				Description: "数组 API IDs。",
 			},
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter conditions. Supports ApiAppId, Environment, KeyWord (can match name or ID).",
+				Description: "过滤器 conditions. Supports ApiAppId，Environment，KeyWord (可以 match 名称 或 ID)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Field to be filtered.",
+							Description: "待过滤字段",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Required:    true,
-							Description: "Filter value of the field.",
+							Description: "过滤值 的 字段。",
 						},
 					},
 				},
@@ -50,54 +50,54 @@ func DataSourceTencentCloudApiGatewayBindApiAppsStatus() *schema.Resource {
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of APIs bound by the application.",
+				Description: "列表 APIs bound 通过 应用。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"api_app_api_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Application bound API information array.",
+							Description: "Application bound API 信息 数组。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"api_app_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Application Name.",
+										Description: "Application 名称",
 									},
 									"api_app_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Application ID.",
+										Description: "Application ID。",
 									},
 									"api_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "API ID.",
+										Description: "API ID。",
 									},
 									"api_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "API name.",
+										Description: "API 名称",
 									},
 									"service_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Service ID.",
+										Description: "服务 ID",
 									},
 									"authorized_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Authorization binding time, expressed in accordance with the ISO8601 standard and using UTC time. The format is: YYYY-MM-DDThh:mm:ssZ.",
+										Description: "Authorization binding 时间，expressed 在 accordance 使用 ISO8601 standard 和 使用 UTC 时间. 格式 是: YYYY-MM-DDThh:mm:ssZ。",
 									},
 									"api_region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Apis region.",
+										Description: "Apis 地域",
 									},
 									"environment_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Authorization binding environment.",
+										Description: "Authorization binding 环境。",
 									},
 								},
 							},
@@ -108,7 +108,7 @@ func DataSourceTencentCloudApiGatewayBindApiAppsStatus() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

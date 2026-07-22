@@ -19,94 +19,94 @@ func DataSourceTencentCloudOceanusSavepointList() *schema.Resource {
 			"job_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Job SerialId.",
+				Description: "Job SerialId。",
 			},
 			"work_space_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Workspace SerialId.",
+				Description: "Workspace SerialId。",
 			},
 			//"record_types": {
 			//	Optional:    true,
 			//	Type:        schema.TypeList,
 			//	Elem:        &schema.Schema{Type: schema.TypeInt},
-			//	Description: "RecordTypes. 1 is triggering the savepoint, 2 is the checkpoint, and 3 is stopping the triggered savepoint",
+			//	Description: "RecordTypes. 1 是 triggering savepoint, 2 是 checkpoint, 和 3 是 stopping triggered savepoint",
 			//},
 			"savepoint": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Snapshot listNote: This field may return null, indicating that no valid value was found.",
+				Description: "Snapshot list注意：此字段可能返回 null，表示未找到有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Primary keyNote: This field may return null, indicating that no valid value was found.",
+							Description: "Primary key注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"version_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Version numberNote: This field may return null, indicating that no valid value was found.",
+							Description: "版本 number注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Status: 1=Active; 2=Expired; 3=InProgress; 4=Failed; 5=TimeoutNote: This field may return null, indicating that no valid value was found.",
+							Description: "状态: 1=活跃; 2=Expired; 3=InProgress; 4=Failed; 5=Timeout注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"create_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Creation timeNote: This field may return null, indicating that no valid value was found.",
+							Description: "Creation time注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"update_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Update timeNote: This field may return null, indicating that no valid value was found.",
+							Description: "Update time注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"path": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "PathNote: This field may return null, indicating that no valid value was found.",
+							Description: "Path注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "SizeNote: This field may return null, indicating that no valid value was found.",
+							Description: "Size注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"record_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Snapshot type: 1=savepoint; 2=checkpoint; 3=cancelWithSavepointNote: This field may return null, indicating that no valid value was found.",
+							Description: "Snapshot 类型: 1=savepoint; 2=checkpoint; 3=cancelWithSavepoint注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"job_runtime_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Sequential ID of the running job instanceNote: This field may return null, indicating that no valid value was found.",
+							Description: "Sequential ID running 作业 instance注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DescriptionNote: This field may return null, indicating that no valid value was found.",
+							Description: "Description注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"timeout": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Fixed timeoutNote: This field may return null, indicating that no valid value was found.",
+							Description: "Fixed timeout注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"serial_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Snapshot SerialIdNote: This field may return null, indicating that no valid value was found.",
+							Description: "Snapshot SerialId注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"time_consuming": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Time consumptionNote: This field may return null, indicating that no valid value was found.",
+							Description: "Time consumption注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"path_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Snapshot path status: 1=available; 2=unavailable;Note: This field may return null, indicating that no valid value was found.",
+							Description: "Snapshot 路径 状态: 1=可用; 2=unavailable;注意：此字段可能返回 null，表示未找到有效值。",
 						},
 					},
 				},
@@ -114,7 +114,7 @@ func DataSourceTencentCloudOceanusSavepointList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

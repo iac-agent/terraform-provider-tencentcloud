@@ -25,7 +25,7 @@ func ResourceTencentCloudSslCompleteCertificateOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Certificate ID.",
+				Description: "证书 ID",
 			},
 		},
 	}

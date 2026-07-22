@@ -30,13 +30,13 @@ func ResourceTencentCloudMonitorGrafanaSsoConfig() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Grafana instance ID.",
+				Description: "Grafana 实例 ID",
 			},
 
 			"enable_sso": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to enable SSO: `true` for enabling; `false` for disabling.",
+				Description: "是否enable SSO: `true` 对于 enabling; `false` 对于 disabling。",
 			},
 		},
 	}

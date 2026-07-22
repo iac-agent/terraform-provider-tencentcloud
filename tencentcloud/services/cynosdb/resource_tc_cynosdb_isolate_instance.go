@@ -26,20 +26,20 @@ func ResourceTencentCloudCynosdbIsolateInstance() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 
 			"instance_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例ID。",
 			},
 
 			"operate": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "isolate, activate.",
+				Description: "隔离，激活。",
 			},
 		},
 	}

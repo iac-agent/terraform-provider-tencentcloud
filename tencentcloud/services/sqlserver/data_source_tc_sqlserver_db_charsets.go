@@ -18,18 +18,18 @@ func DataSourceTencentCloudSqlserverDBCharsets() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID in the format of mssql-j8kv137v.",
+				Description: "实例 ID 在 格式 的 mssql-j8kv137v.",
 			},
 			"database_charsets": {
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Database character set list.",
+				Description: "Database character 集合 列表.",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

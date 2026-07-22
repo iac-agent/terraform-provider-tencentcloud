@@ -17,25 +17,25 @@ func DataSourceTencentCloudMariadbDatabaseObjects() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"db_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "database name.",
+				Description: "数据库 名称",
 			},
 
 			"tables": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "table list.",
+				Description: "表 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"table": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "table name.",
+							Description: "表 名称",
 						},
 					},
 				},
@@ -44,13 +44,13 @@ func DataSourceTencentCloudMariadbDatabaseObjects() *schema.Resource {
 			"views": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "view list.",
+				Description: "view 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"view": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "view name.",
+							Description: "view 名称",
 						},
 					},
 				},
@@ -59,13 +59,13 @@ func DataSourceTencentCloudMariadbDatabaseObjects() *schema.Resource {
 			"procs": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "proc list.",
+				Description: "proc 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"proc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "proc name.",
+							Description: "proc 名称",
 						},
 					},
 				},
@@ -74,13 +74,13 @@ func DataSourceTencentCloudMariadbDatabaseObjects() *schema.Resource {
 			"funcs": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "func list.",
+				Description: "func 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"func": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "func name.",
+							Description: "func 名称",
 						},
 					},
 				},
@@ -89,7 +89,7 @@ func DataSourceTencentCloudMariadbDatabaseObjects() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

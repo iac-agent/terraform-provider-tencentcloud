@@ -29,25 +29,25 @@ func ResourceTencentCloudDcdbAccountPrivileges() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of instance.",
+				Description: "ID 实例。",
 			},
 
 			"account": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "The account of the database, including username and host.",
+				Description: "账号 的 数据库，包括 用户名 和 主机",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"user": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "account name.",
+							Description: "账号 名称",
 						},
 						"host": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "account host.",
+							Description: "账号 主机",
 						},
 					},
 				},
@@ -59,14 +59,14 @@ func ResourceTencentCloudDcdbAccountPrivileges() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Global permissions. Among them, the optional value of the permission in GlobalPrivileges is: SELECT, INSERT, UPDATE, DELETE, CREATE, PROCESS, DROP, REFERENCES, INDEX, ALTER, SHOW DATABASES,  CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, EVENT, TRIGGER.  Note that if this parameter is not passed, it means that the existing permissions are reserved. If it needs to be cleared, pass an empty array in this field.",
+				Description: "Global permissions. Among them， 可选 值 的 权限 在 GlobalPrivileges 是: SELECT，INSERT，UPDATE，DELETE，CREATE，PROCESS，DROP，REFERENCES，INDEX，ALTER，SHOW DATABASES， CREATE TEMPORARY TABLES，LOCK TABLES，EXECUTE，CREATE VIEW，SHOW VIEW，CREATE ROUTINE，ALTER ROUTINE，EVENT，TRIGGER. 注意 该 如果 此 参数 是 不 passed，它 表示 该 existing permissions 是 reserved. 如果 它 needs 到 是 cleared，pass 空 数组 在 此 字段。",
 			},
 
 			"database_privileges": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Database permissions. Optional values for the Privileges permission are: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, CREATE TEMPORARY TABLES,  LOCK TABLES, EXECUTE, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, EVENT, TRIGGER.  Note that if this parameter is not passed, the existing privileges are reserved. If you need to clear them, please pass an empty array in the complex type Privileges field.",
+				Description: "Database permissions. 可选 值 对于 Privileges 权限 是: SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE TEMPORARY TABLES， LOCK TABLES，EXECUTE，CREATE VIEW，SHOW VIEW，CREATE ROUTINE，ALTER ROUTINE，EVENT，TRIGGER. 注意 该 如果 此 参数 是 不 passed， existing privileges 是 reserved. 如果 您 need 到 clear them，please pass 空 数组 在 complex 类型 Privileges 字段。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"privileges": {
@@ -75,12 +75,12 @@ func ResourceTencentCloudDcdbAccountPrivileges() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Permission information.",
+							Description: "权限信息",
 						},
 						"database": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The name of database.",
+							Description: "名称 数据库。",
 						},
 					},
 				},
@@ -90,18 +90,18 @@ func ResourceTencentCloudDcdbAccountPrivileges() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Permissions for tables in the database. Optional values for the Privileges permission are: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, CREATE VIEW, SHOW VIEW, TRIGGER. Note that if this parameter is not passed, the existing privileges are reserved. If you need to clear them, please pass an empty array in the complex type Privileges field.",
+				Description: "Permissions 对于 tables 在 数据库. 可选 值 对于 Privileges 权限 是: SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE VIEW，SHOW VIEW，TRIGGER. 注意 该 如果 此 参数 是 不 passed， existing privileges 是 reserved. 如果 您 need 到 clear them，please pass 空 数组 在 complex 类型 Privileges 字段。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The name of database.",
+							Description: "名称 数据库。",
 						},
 						"table": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Database table name.",
+							Description: "Database 表 名称",
 						},
 						"privileges": {
 							Type: schema.TypeSet,
@@ -109,7 +109,7 @@ func ResourceTencentCloudDcdbAccountPrivileges() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Permission information.",
+							Description: "权限信息",
 						},
 					},
 				},
@@ -119,23 +119,23 @@ func ResourceTencentCloudDcdbAccountPrivileges() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Permissions for columns in database tables. Optional values for the Privileges permission are:  SELECT, INSERT, UPDATE, REFERENCES.  Note that if this parameter is not passed, the existing privileges are reserved. If you need to clear them, please pass an empty array in the complex type Privileges field.",
+				Description: "Permissions 对于 columns 在 数据库 tables. 可选 值 对于 Privileges 权限 是: SELECT，INSERT，UPDATE，REFERENCES. 注意 该 如果 此 参数 是 不 passed， existing privileges 是 reserved. 如果 您 need 到 clear them，please pass 空 数组 在 complex 类型 Privileges 字段。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The name of database.",
+							Description: "名称 数据库。",
 						},
 						"table": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Database table name.",
+							Description: "Database 表 名称",
 						},
 						"column": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Database column name.",
+							Description: "Database 列 名称",
 						},
 						"privileges": {
 							Type: schema.TypeSet,
@@ -143,7 +143,7 @@ func ResourceTencentCloudDcdbAccountPrivileges() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Permission information.",
+							Description: "权限信息",
 						},
 					},
 				},
@@ -153,18 +153,18 @@ func ResourceTencentCloudDcdbAccountPrivileges() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Permissions for database views. Optional values for the Privileges permission are:  SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, CREATE VIEW, SHOW VIEW, TRIGGER.  Note that if this parameter is not passed, the existing privileges are reserved. If you need to clear them, please pass an empty array in the complex type Privileges field.",
+				Description: "Permissions 对于 数据库 views. 可选 值 对于 Privileges 权限 是: SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE VIEW，SHOW VIEW，TRIGGER. 注意 该 如果 此 参数 是 不 passed， existing privileges 是 reserved. 如果 您 need 到 clear them，please pass 空 数组 在 complex 类型 Privileges 字段。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The name of database.",
+							Description: "名称 数据库。",
 						},
 						"view": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Database view name.",
+							Description: "Database view 名称",
 						},
 						"privileges": {
 							Type: schema.TypeSet,
@@ -172,7 +172,7 @@ func ResourceTencentCloudDcdbAccountPrivileges() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Permission information.",
+							Description: "权限信息",
 						},
 					},
 				},

@@ -29,70 +29,70 @@ func ResourceTencentCloudWafBotSceneUCBRule() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Domain.",
+				Description: "域名",
 			},
 
 			"scene_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "When calling at the BOT global whitelist, pass `global`; When configuring BOT scenarios, transmit the specific scenario ID.",
+				Description: "当 calling 在 BOT 全局 whitelist，pass `全局`; 当 configuring BOT scenarios，transmit 特定 scenario ID。",
 			},
 
 			"rule": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Rule content, add encoding SceneId information. When calling at the BOT global whitelist, SceneId is set to `global` and RuleType is passed as 10, Action is `permit`; When configuring BOT scenarios, SceneId is the scenario ID.",
+				Description: "Rule 内容，add 编码 SceneId 信息. 当 calling 在 BOT 全局 whitelist，SceneId 是 集合 到 `全局` 和 RuleType 是 passed 作为 10，操作 是 `permit`; 当 configuring BOT scenarios，SceneId 是 scenario ID。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"domain": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Domain.",
+							Description: "域名",
 						},
 
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Rule name.",
+							Description: "Rule 名称",
 						},
 
 						"rule": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Specific rule items of UCB.",
+							Description: "Specific 规则 items 的 UCB。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Key.",
+										Description: "键",
 									},
 
 									"op": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Operator.",
+										Description: "操作者",
 									},
 
 									"value": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "Value.",
+										Description: "值",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"basic_value": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "String type value.",
+													Description: "String 类型 值",
 												},
 
 												"logic_value": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "Bool type value.",
+													Description: "Bool 类型 值",
 												},
 
 												"belong_value": {
@@ -101,14 +101,14 @@ func ResourceTencentCloudWafBotSceneUCBRule() *schema.Resource {
 														Type: schema.TypeString,
 													},
 													Optional:    true,
-													Description: "String array type value.",
+													Description: "String 数组 类型 值",
 												},
 
 												"valid_key": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "Indicate valid fields.",
+													Description: "Indicate 有效 字段。",
 												},
 
 												"multi_value": {
@@ -117,7 +117,7 @@ func ResourceTencentCloudWafBotSceneUCBRule() *schema.Resource {
 														Type: schema.TypeString,
 													},
 													Optional:    true,
-													Description: "String array type value.",
+													Description: "String 数组 类型 值",
 												},
 											},
 										},
@@ -126,7 +126,7 @@ func ResourceTencentCloudWafBotSceneUCBRule() *schema.Resource {
 									"op_op": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Optional Supplementary Operators.",
+										Description: "可选 Supplementary Operators。",
 									},
 
 									"op_arg": {
@@ -135,43 +135,43 @@ func ResourceTencentCloudWafBotSceneUCBRule() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Optional:    true,
-										Description: "Optional supplementary parameters.",
+										Description: "可选 supplementary 参数。",
 									},
 
 									"op_value": {
 										Type:        schema.TypeFloat,
 										Optional:    true,
-										Description: "Optional supplementary values.",
+										Description: "可选 supplementary 值。",
 									},
 
 									"name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "When using header parameter values.",
+										Description: "当 使用 头部 参数 值。",
 									},
 
 									"areas": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Regional selection.",
+										Description: "Regional selection。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"country": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "In addition to standard countries, the country also supports two special identifiers: domestic and foreign.",
+													Description: "In addition 到 standard countries， country also 支持 two special identifiers: domestic 和 foreign。",
 												},
 
 												"region": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Province.",
+													Description: "Province。",
 												},
 
 												"city": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "City.",
+													Description: "City。",
 												},
 											},
 										},
@@ -180,7 +180,7 @@ func ResourceTencentCloudWafBotSceneUCBRule() *schema.Resource {
 									"lang": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Language environment.",
+										Description: "语言 环境。",
 									},
 								},
 							},
@@ -189,108 +189,108 @@ func ResourceTencentCloudWafBotSceneUCBRule() *schema.Resource {
 						"action": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Disposal action.",
+							Description: "Disposal 操作",
 						},
 
 						"on_off": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Rule switch.",
+							Description: "Rule switch。",
 						},
 
 						"rule_type": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Rule type.",
+							Description: "Rule 类型",
 						},
 
 						"prior": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Rule priority.",
+							Description: "Rule 优先级",
 						},
 
 						"label": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Label.",
+							Description: "标签",
 						},
 
 						"id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Entry ID.",
+							Description: "Entry ID。",
 						},
 
 						"scene_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Scene ID.",
+							Description: "Scene ID。",
 						},
 
 						"valid_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Valid time.",
+							Description: "有效 时间。",
 						},
 
 						"appid": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Appid.",
+							Description: "Appid。",
 						},
 
 						"addition_arg": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Additional parameters.",
+							Description: "Additional 参数。",
 						},
 
 						"desc": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Rule description.",
+							Description: "Rule 描述",
 						},
 
 						"pre_define": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "True - System preset rules False - Custom rules.",
+							Description: "True - System preset 规则 False - Custom 规则。",
 						},
 
 						"job_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Scheduled task type.",
+							Description: "Scheduled 任务 类型",
 						},
 
 						"job_date_time": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Scheduled task configuration.",
+							Description: "Scheduled 任务 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"timed": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										Computed:    true,
-										Description: "Time parameter for timed execution.",
+										Description: "Time 参数 对于 timed execution。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"start_date_time": {
 													Type:        schema.TypeInt,
 													Optional:    true,
 													Computed:    true,
-													Description: "Start timestamp, in seconds.",
+													Description: "Start 时间戳，（秒）。",
 												},
 
 												"end_date_time": {
 													Type:        schema.TypeInt,
 													Optional:    true,
 													Computed:    true,
-													Description: "End timestamp, in seconds.",
+													Description: "End 时间戳，（秒）。",
 												},
 											},
 										},
@@ -300,7 +300,7 @@ func ResourceTencentCloudWafBotSceneUCBRule() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										Computed:    true,
-										Description: "Time parameter for cycle execution.",
+										Description: "Time 参数 对于 cycle execution。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"days": {
@@ -310,7 +310,7 @@ func ResourceTencentCloudWafBotSceneUCBRule() *schema.Resource {
 													},
 													Optional:    true,
 													Computed:    true,
-													Description: "On what day of each month is it executed.",
+													Description: "On what day 的 each month 是 它 executed。",
 												},
 
 												"w_days": {
@@ -320,21 +320,21 @@ func ResourceTencentCloudWafBotSceneUCBRule() *schema.Resource {
 													},
 													Optional:    true,
 													Computed:    true,
-													Description: "What day of the week is executed each week.",
+													Description: "What day 的 week 是 executed each week。",
 												},
 
 												"start_time": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "Start time.",
+													Description: "开始时间。",
 												},
 
 												"end_time": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "End time.",
+													Description: "结束时间。",
 												},
 											},
 										},
@@ -343,7 +343,7 @@ func ResourceTencentCloudWafBotSceneUCBRule() *schema.Resource {
 									"time_t_zone": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Time zone.",
+										Description: "时区。",
 									},
 								},
 							},
@@ -352,38 +352,38 @@ func ResourceTencentCloudWafBotSceneUCBRule() *schema.Resource {
 						"expire_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Effective deadline.",
+							Description: "Effective deadline。",
 						},
 
 						"valid_status": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Effective -1, Invalid -0.",
+							Description: "Effective -1，Invalid -0。",
 						},
 
 						"block_page_id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Customize interception page ID.",
+							Description: "Customize interception 页面 ID。",
 						},
 
 						"action_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "When Action=intercept, this field is mandatory.",
+							Description: "当 操作=intercept，此 字段 是 mandatory。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"action": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Action.",
+										Description: "操作",
 									},
 
 									"proportion": {
 										Type:        schema.TypeFloat,
 										Optional:    true,
-										Description: "Proportion.",
+										Description: "Proportion。",
 									},
 								},
 							},
@@ -396,7 +396,7 @@ func ResourceTencentCloudWafBotSceneUCBRule() *schema.Resource {
 			"rule_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Rule ID.",
+				Description: "Rule ID。",
 			},
 		},
 	}

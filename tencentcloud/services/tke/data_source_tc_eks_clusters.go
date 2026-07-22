@@ -36,87 +36,87 @@ func DataSourceTencentCloudEKSClusters() *schema.Resource {
 			"cluster_id": {
 				Type:          schema.TypeString,
 				ConflictsWith: []string{"cluster_name"},
-				Description:   "ID of the cluster. Conflict with cluster_name, can not be set at the same time.",
+				Description:   "ID 集群. Conflict 使用 cluster_name，可以 不 是 集合 在 same 时间。",
 				Optional:      true,
 			},
 			"cluster_name": {
 				Type:          schema.TypeString,
 				ConflictsWith: []string{"cluster_id"},
 				Optional:      true,
-				Description:   "Name of the cluster. Conflict with cluster_id, can not be set at the same time.",
+				Description:   "名称 集群. Conflict 使用 cluster_id，可以 不 是 集合 在 same 时间。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "EKS cluster list.",
+				Description: "EKS 集群 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the cluster.",
+							Description: "ID 集群。",
 						},
 						"cluster_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the cluster.",
+							Description: "名称 集群。",
 						},
 						"cluster_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description of the cluster.",
+							Description: "描述 集群。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Vpc id.",
+							Description: "私有网络 ID",
 						},
 						"subnet_ids": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Subnet id list.",
+							Description: "子网 ID 列表。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 						"k8s_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "EKS cluster kubernetes version.",
+							Description: "EKS 集群 kubernetes 版本",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "EKS status.",
+							Description: "EKS 状态",
 						},
 						"created_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create time of the clusters.",
+							Description: "创建时间 的 clusters。",
 						},
 						"service_subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Subnet id of service.",
+							Description: "子网 ID 服务。",
 						},
 						"dns_servers": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of cluster custom DNS Server info.",
+							Description: "列表 集群 自定义 DNS Server info。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"domain": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "DNS Server domain. Empty indicates all domain.",
+										Description: "DNS Server 域名 Empty 表示all 域名",
 									},
 									"servers": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "List of DNS Server IP address.",
+										Description: "列表 DNS Server IP 地址",
 										Elem:        &schema.Schema{Type: schema.TypeString},
 									},
 								},
@@ -125,17 +125,17 @@ func DataSourceTencentCloudEKSClusters() *schema.Resource {
 						"need_delete_cbs": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Indicates whether to delete CBS after EKS cluster remove.",
+							Description: "表示是否delete CBS after EKS 集群 remove。",
 						},
 						"enable_vpc_core_dns": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Indicates whether to enable dns in user cluster, default value is `true`.",
+							Description: "表示是否enable dns 在 用户 集群，默认值为 `true`。",
 						},
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "Tags of EKS cluster.",
+							Description: "标签 的 EKS 集群。",
 						},
 					},
 				},

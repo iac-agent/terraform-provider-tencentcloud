@@ -29,93 +29,93 @@ func ResourceTencentCloudTdmqRocketmqGroup() *schema.Resource {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "Group name (8-64 characters).",
+				Description: "组名称 (8-64 字符)。",
 			},
 
 			"namespace": {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "Namespace. Currently, only one namespace is supported.",
+				Description: "Namespace. Currently，仅 一个 命名空间 是 支持。",
 			},
 
 			"read_enable": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "Whether to enable consumption.",
+				Description: "是否enable consumption。",
 			},
 
 			"broadcast_enable": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "Whether to enable broadcast consumption.",
+				Description: "是否enable broadcast consumption。",
 			},
 
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Remarks (up to 128 characters).",
+				Description: "备注 (up 到 128 字符)。",
 			},
 
 			"consumer_num": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "The number of online consumers.",
+				Description: "数量 online consumers。",
 			},
 
 			"tps": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Consumption TPS.",
+				Description: "Consumption TPS。",
 			},
 
 			"total_accumulative": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "The total number of heaped messages.",
+				Description: "总数 数量 heaped messages。",
 			},
 
 			"consumption_mode": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "`0`: Cluster consumption mode; `1`: Broadcast consumption mode; `-1`: Unknown.",
+				Description: "`0`: Cluster consumption 模式; `1`: Broadcast consumption 模式; `-1`: Unknown。",
 			},
 
 			"retry_partition_num": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "The number of partitions in a retry topic.",
+				Description: "数量 partitions 在 retry 主题。",
 			},
 
 			"create_time": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Creation time in milliseconds.",
+				Description: "创建时间 （毫秒）。",
 			},
 
 			"update_time": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Modification time in milliseconds.",
+				Description: "修改时间 （毫秒）。",
 			},
 
 			"client_protocol": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Client protocol.",
+				Description: "Client 协议",
 			},
 
 			"consumer_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Consumer type. Enumerated values: ACTIVELY or PASSIVELY.",
+				Description: "Consumer 类型 Enumerated 值: ACTIVELY 或 PASSIVELY。",
 			},
 		},
 	}

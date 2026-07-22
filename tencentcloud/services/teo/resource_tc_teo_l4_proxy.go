@@ -29,60 +29,60 @@ func ResourceTencentCloudTeoL4Proxy() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Site ID.",
+				Description: "站点 ID",
 			},
 
 			"proxy_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Layer 4 proxy instance name. You can enter 1-50 characters. Valid characters are a-z, 0-9, and hyphens (-). However, hyphens (-) cannot be used individually or consecutively and should not be placed at the beginning or end of the name. Modifications are not allowed after creation.",
+				Description: "Layer 4 proxy 实例名称 You 可以 enter 1-50 字符. 有效 字符 是 -z，0-9，和 hyphens (-). However，hyphens (-) 不能 是 使用 individually 或 consecutively 和 should 不 是 placed 在 beginning 或 end 的 名称 Modifications 是 不 allowed after creation。",
 			},
 
 			"area": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Acceleration zone of the Layer 4 proxy instance. `mainland`: Availability zone in the Chinese mainland; `overseas`: Global availability zone (excluding the Chinese mainland); `global`: Global availability zone.",
+				Description: "Acceleration 可用区 的 Layer 4 proxy 实例. `mainland`: Availability 可用区 在 Chinese mainland; `overseas`: Global availability 可用区 (excluding Chinese mainland); `全局`: Global availability 可用区",
 			},
 
 			"ipv6": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Specifies whether to enable IPv6 access. The default value off is used if left empty. This configuration can only be enabled in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance](https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values: `on`: Enable; `off`: Disable.",
+				Description: "指定是否enable IPv6 访问. 默认值 关闭 是 使用 如果为空. 此 配置 可以 仅 是 已启用 在 certain acceleration zones 和 安全 protection configurations. For details，see [Creating L4 Proxy 实例](https://intl.云.tencent.com/document/product/1552/90025?from_cn_redirect=1). 有效值：`在`: Enable; `关闭`: Disable。",
 			},
 
 			"static_ip": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Specifies whether to enable the fixed IP address. The default value off is used if left empty. This configuration can only be enabled in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance](https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values: `on`: Enable; `off`: Disable.",
+				Description: "指定是否enable fixed IP 地址 默认值 关闭 是 使用 如果为空. 此 配置 可以 仅 是 已启用 在 certain acceleration zones 和 安全 protection configurations. For details，see [Creating L4 Proxy 实例](https://intl.云.tencent.com/document/product/1552/90025?from_cn_redirect=1). 有效值：`在`: Enable; `关闭`: Disable。",
 			},
 
 			"accelerate_mainland": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Specifies whether to enable network optimization in the Chinese mainland. The default value off is used if left empty. This configuration can only be enabled in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance](https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values: `on`: Enable; `off`: Disable.",
+				Description: "指定是否enable 网络 optimization 在 Chinese mainland. 默认值 关闭 是 使用 如果为空. 此 配置 可以 仅 是 已启用 在 certain acceleration zones 和 安全 protection configurations. For details，see [Creating L4 Proxy 实例](https://intl.云.tencent.com/document/product/1552/90025?from_cn_redirect=1). 有效值：`在`: Enable; `关闭`: Disable。",
 			},
 
 			"ddos_protection_config": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Layer 3/Layer 4 DDoS protection. The default protection option of the platform will be used if it is left empty. For details, see [Exclusive DDoS Protection Usage](https://intl.cloud.tencent.com/document/product/1552/95994?from_cn_redirect=1).",
+				Description: "Layer 3/Layer 4 DDoS protection. 默认值 protection 选项 的 平台 将 是 使用 如果 它 是 left 空. For details，see [Exclusive DDoS Protection Usage](https://intl.云.tencent.com/document/product/1552/95994?from_cn_redirect=1)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"level_mainland": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Exclusive DDoS protection specifications in the Chinese mainland. For details, see [Dedicated DDoS Mitigation Fee (Pay-as-You-Go)] (https://intl.cloud.tencent.com/document/product/1552/94162?from_cn_redirect=1). `PLATFORM`: Default protection of the platform, i.e., Exclusive DDoS protection is not enabled; `BASE30_MAX300`: Exclusive DDoS protection enabled, providing a baseline protection bandwidth of 30 Gbps and an elastic protection bandwidth of up to 300 Gbps; `BASE60_MAX600`: Exclusive DDoS protection enabled, providing a baseline protection bandwidth of 60 Gbps and an elastic protection bandwidth of up to 600 Gbps. If no parameters are filled, the default value PLATFORM is used.",
+							Description: "Exclusive DDoS protection specifications 在 Chinese mainland. For details，see [Dedicated DDoS Mitigation Fee (Pay-作为-You-Go)] (https://intl.云.tencent.com/document/product/1552/94162?from_cn_redirect=1). `PLATFORM`: Default protection 的 平台，i.e.，Exclusive DDoS protection 是 不 已启用; `BASE30_MAX300`: Exclusive DDoS protection 已启用，providing baseline protection 带宽 的 30 Gbps 和 elastic protection 带宽 的 up 到 300 Gbps; `BASE60_MAX600`: Exclusive DDoS protection 已启用，providing baseline protection 带宽 的 60 Gbps 和 elastic protection 带宽 的 up 到 600 Gbps. 如果 无 参数 是 filled， 默认值 PLATFORM 是 使用。",
 						},
 						"max_bandwidth_mainland": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Configuration of elastic protection bandwidth for exclusive DDoS protection in the Chinese mainland.Valid only when exclusive DDoS protection in the Chinese mainland is enabled (refer to the LevelMainland parameter configuration), and the value has the following limitations: When exclusive DDoS protection is enabled in the Chinese mainland and the 30 Gbps baseline protection bandwidth is used (the LevelMainland parameter value is BASE30_MAX300): the value range is 30 to 300 in Gbps; When exclusive DDoS protection is enabled in the Chinese mainland and the 60 Gbps baseline protection bandwidth is used (the LevelMainland parameter value is BASE60_MAX600): the value range is 60 to 600 in Gbps; When the default protection of the platform is used (the LevelMainland parameter value is PLATFORM): configuration is not supported, and the value of this parameter is invalid.",
+							Description: "Configuration 的 elastic protection 带宽 对于 exclusive DDoS protection 在 Chinese mainland.有效 仅 当 exclusive DDoS protection 在 Chinese mainland 是 已启用 (refer 到 LevelMainland 参数 配置)，和 值 has following limitations: 当 exclusive DDoS protection 是 已启用 在 Chinese mainland 和 30 Gbps baseline protection 带宽 是 使用 ( LevelMainland 参数 值 是 BASE30_MAX300): 值 范围 是 30 到 300 在 Gbps; 当 exclusive DDoS protection 是 已启用 在 Chinese mainland 和 60 Gbps baseline protection 带宽 是 使用 ( LevelMainland 参数 值 是 BASE60_MAX600): 值 范围 是 60 到 600 在 Gbps; 当 默认值 protection 的 平台 是 使用 ( LevelMainland 参数 值 是 PLATFORM): 配置 是 不 支持，和 值 的 此 参数 是 无效。",
 						},
 						"level_overseas": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Exclusive DDoS protection specifications in the worldwide region (excluding the Chinese mainland). `PLATFORM`: Default protection of the platform, i.e., Exclusive DDoS protection is not enabled; `ANYCAST300`: Exclusive DDoS protection enabled, offering a total maximum protection bandwidth of 300 Gbps; `ANYCAST_ALLIN`: Exclusive DDoS protection enabled, utilizing all available protection resources for protection. When no parameters are filled, the default value PLATFORM is used.",
+							Description: "Exclusive DDoS protection specifications 在 worldwide 地域 (excluding Chinese mainland). `PLATFORM`: Default protection 的 平台，i.e.，Exclusive DDoS protection 是 不 已启用; `ANYCAST300`: Exclusive DDoS protection 已启用，offering 总数 最大 protection 带宽 的 300 Gbps; `ANYCAST_ALLIN`: Exclusive DDoS protection 已启用，utilizing all 可用 protection resources 对于 protection. 当 无 参数 是 filled， 默认值 PLATFORM 是 使用。",
 						},
 					},
 				},

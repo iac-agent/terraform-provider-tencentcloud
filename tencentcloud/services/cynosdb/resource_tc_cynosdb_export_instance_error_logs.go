@@ -23,21 +23,21 @@ func ResourceTencentCloudCynosdbExportInstanceErrorLogs() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例ID。",
 			},
 
 			"start_time": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Log earliest time.",
+				Description: "记录最早时间。",
 			},
 
 			"end_time": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Latest log time.",
+				Description: "最新日志时间。",
 			},
 
 			"log_levels": {
@@ -47,7 +47,7 @@ func ResourceTencentCloudCynosdbExportInstanceErrorLogs() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Log level.",
+				Description: "日志级别。",
 			},
 
 			"key_words": {
@@ -57,50 +57,50 @@ func ResourceTencentCloudCynosdbExportInstanceErrorLogs() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "keyword.",
+				Description: "关键词。",
 			},
 
 			"file_type": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "File type, optional values: csv, original.",
+				Description: "文件类型，可选值：csv、original。",
 			},
 
 			"order_by": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Optional value Timestamp.",
+				Description: "可选值时间戳。",
 			},
 
 			"order_by_type": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "ASC or DESC.",
+				Description: "ASC 或 DESC。",
 			},
 
 			"error_log_item_export": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of instances in the read-write instance group.",
+				Description: "读写实例组中的实例列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"timestamp": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "time.",
+							Description: "时间。",
 						},
 						"level": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Log level, optional values note, warning, error.",
+							Description: "日志级别，可选值注释、警告、错误。",
 						},
 						"content": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "log content.",
+							Description: "日志内容。",
 						},
 					},
 				},

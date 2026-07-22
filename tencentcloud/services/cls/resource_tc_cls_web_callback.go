@@ -26,31 +26,31 @@ func ResourceTencentCloudClsWebCallback() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Notification content name.",
+				Description: "通知内容名称。",
 			},
 
 			"type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Channel type. WeCom: WeChat for Enterprise; DingTalk: DingTalk; Lark: Feishu; Http: custom callback.",
+				Description: "通道类型。 WeCom：企业微信；钉钉：钉钉；云雀：肺鼠； Http：自定义回调。",
 			},
 
 			"webhook": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Webhook address.",
+				Description: "网络钩子地址。",
 			},
 
 			"method": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Request method. Supports POST and PUT. Required when Type is Http.",
+				Description: "请求方法。支持 POST 和 PUT。 类型 为 Http 时必填。",
 			},
 
 			"key": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Secret key.",
+				Description: "秘密钥匙。",
 			},
 		},
 	}

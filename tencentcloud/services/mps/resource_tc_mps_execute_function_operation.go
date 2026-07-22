@@ -22,14 +22,14 @@ func ResourceTencentCloudMpsExecuteFunctionOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Name of called backend API.",
+				Description: "名称 called backend API。",
 			},
 
 			"function_arg": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "API parameter. Parameter format will depend on the actual function definition.",
+				Description: "API 参数. Parameter 格式 将 depend 在 actual 函数 definition。",
 			},
 		},
 	}

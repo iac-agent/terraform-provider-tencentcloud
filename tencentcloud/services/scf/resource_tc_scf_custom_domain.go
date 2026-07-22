@@ -26,61 +26,61 @@ func ResourceTencentCloudScfCustomDomain() *schema.Resource {
 			"domain": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Domain names, pan-domain names are not supported.",
+				Description: "域名 names，pan-域名 names 是 不 支持。",
 			},
 
 			"protocol": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Protocol, value range: HTTP, HTTPS, HTTP&HTTPS.",
+				Description: "协议，取值范围：HTTP，HTTPS，HTTP&HTTPS。",
 			},
 
 			"endpoints_config": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Routing configuration.",
+				Description: "Routing 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"namespace": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Function namespace.",
+							Description: "Function 命名空间。",
 						},
 						"function_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Function name.",
+							Description: "Function 名称",
 						},
 						"qualifier": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Function alias or version.",
+							Description: "Function alias 或 版本",
 						},
 						"path_match": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Path, value specification: /,/*,/xxx,/xxx/a,/xxx/*.",
+							Description: "路径，值 规格: /,/*,/xxx,/xxx/,/xxx/*。",
 						},
 						"path_rewrite": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Path rewriting policy.",
+							Description: "路径 rewriting 策略。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"path": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Path that needs to be rerouted, value specification: /,/*,/xxx,/xxx/a,/xxx/*.",
+										Description: "路径 该 needs 到 是 rerouted，值 规格: /,/*,/xxx,/xxx/,/xxx/*。",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Matching rules, value range: WildcardRules wildcard matching, ExactRules exact matching.",
+										Description: "Matching 规则，取值范围：WildcardRules wildcard matching，ExactRules exact matching。",
 									},
 									"rewrite": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Replacement values: such as/, /$.",
+										Description: "Replacement 值: such 作为/，/$。",
 									},
 								},
 							},
@@ -94,13 +94,13 @@ func ResourceTencentCloudScfCustomDomain() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Certificate configuration information, required for HTTPS protocol.",
+				Description: "Certificate 配置 信息，必填 对于 HTTPS 协议",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"certificate_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "SSL Certificates ID.",
+							Description: "SSL Certificates ID。",
 						},
 					},
 				},
@@ -111,18 +111,18 @@ func ResourceTencentCloudScfCustomDomain() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Web Application Firewall Configuration.",
+				Description: "Web Application Firewall Configuration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"waf_open": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether the Web Application Firewall is turned on, value range:OPEN, CLOSE.",
+							Description: "是否Web Application Firewall 是 turned 在，值 范围:OPEN，CLOSE。",
 						},
 						"waf_instance_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Web Application Firewall Instance ID.",
+							Description: "Web Application Firewall 实例 ID",
 						},
 					},
 				},

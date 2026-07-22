@@ -19,33 +19,33 @@ func DataSourceTencentCloudMonitorAlarmNoticeCallbacks() *schema.Resource {
 			"url_notices": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Alarm callback notification.",
+				Description: "Alarm callback 通知。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Callback URL (limited to 256 characters).",
+							Description: "Callback URL (limited 到 256 字符)。",
 						},
 						"is_valid": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Verified 0=No 1=Yes.",
+							Description: "Verified 0=No 1=Yes。",
 						},
 						"validation_code": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Verification code.",
+							Description: "Verification 代码",
 						},
 						"start_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of seconds starting from the day of notification start time.",
+							Description: "数量 秒 starting 从 day 的 通知 开始时间。",
 						},
 						"end_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of seconds from the end of the notification day.",
+							Description: "数量 秒 从 end 的 通知 day。",
 						},
 						"weekday": {
 							Type: schema.TypeSet,
@@ -53,7 +53,7 @@ func DataSourceTencentCloudMonitorAlarmNoticeCallbacks() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "Notification period 1-7 represents Monday to Sunday.",
+							Description: "Notification 周期 1-7 表示 Monday 到 Sunday。",
 						},
 					},
 				},
@@ -62,12 +62,12 @@ func DataSourceTencentCloudMonitorAlarmNoticeCallbacks() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -20,73 +20,73 @@ func DataSourceTencentCloudTdmqRocketmqMessages() *schema.Resource {
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster id.",
+				Description: "集群 ID",
 			},
 			"environment_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Environment.",
+				Description: "Environment。",
 			},
 			"topic_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Topic, groupId is passed when querying dead letters.",
+				Description: "Topic，groupId 是 passed 当 querying dead letters。",
 			},
 			"msg_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Message ID.",
+				Description: "消息 ID。",
 			},
 			"query_dlq_msg": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "The value is true when querying dead letters, only valid for Rocketmq.",
+				Description: "值 是 true 当 querying dead letters，仅 有效 对于 Rocketmq。",
 			},
 			"body": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Message body.",
+				Description: "消息 正文。",
 			},
 			"properties": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Detailed parameters.",
+				Description: "Detailed 参数。",
 			},
 			"produce_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Production time.",
+				Description: "Production 时间。",
 			},
 			"producer_addr": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Producer address.",
+				Description: "Producer 地址",
 			},
 			"message_tracks": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Consumer Group ConsumptionNote: This field may return null, indicating that no valid value can be obtained.",
+				Description: "Consumer Group Consumption注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"group": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "consumer group.",
+							Description: "消费者 组。",
 						},
 						"consume_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "consumption status.",
+							Description: "consumption 状态",
 						},
 						"track_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "message track type.",
+							Description: "消息 track 类型",
 						},
 						"exception_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Exception informationNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Exception information注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -94,12 +94,12 @@ func DataSourceTencentCloudTdmqRocketmqMessages() *schema.Resource {
 			"show_topic_name": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The topic name displayed on the details pageNote: This field may return null, indicating that no valid value can be obtained.",
+				Description: "主题 名称 displayed 在 details page注意：此字段可能返回 null，表示无法获取有效值。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

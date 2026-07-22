@@ -21,7 +21,7 @@ func DataSourceTencentCloudRumOfflineLogConfig() *schema.Resource {
 			"project_key": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Unique project key for reporting.",
+				Description: "Unique 项目 键 对于 报告.",
 			},
 
 			"unique_id_set": {
@@ -30,19 +30,19 @@ func DataSourceTencentCloudRumOfflineLogConfig() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Computed:    true,
-				Description: "Unique identifier of the user to be listened on(aid or uin).",
+				Description: "Unique identifier 的 用户 到 是 listened 在(aid 或 uin).",
 			},
 
 			"msg": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "API call information.",
+				Description: "API call 信息.",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

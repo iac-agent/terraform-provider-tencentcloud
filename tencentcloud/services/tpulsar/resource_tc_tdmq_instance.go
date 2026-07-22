@@ -33,22 +33,22 @@ func ResourceTencentCloudTdmqInstance() *schema.Resource {
 			"cluster_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The name of tdmq cluster to be created.",
+				Description: "名称 tdmq 集群 到 是 创建。",
 			},
 			"bind_cluster_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "The Dedicated Cluster Id.",
+				Description: "Dedicated Cluster ID。",
 			},
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Description of the tdmq cluster.",
+				Description: "描述 tdmq 集群。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 		},
 	}

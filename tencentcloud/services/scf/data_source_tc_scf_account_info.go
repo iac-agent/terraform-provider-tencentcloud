@@ -19,18 +19,18 @@ func DataSourceTencentCloudScfAccountInfo() *schema.Resource {
 			"account_usage": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Namespace usage information.",
+				Description: "Namespace usage 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"namespaces_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of namespaces.",
+							Description: "数量 namespaces。",
 						},
 						"namespace": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Namespace details.",
+							Description: "Namespace details。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"functions": {
@@ -39,32 +39,32 @@ func DataSourceTencentCloudScfAccountInfo() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Function array.",
+										Description: "Function 数组。",
 									},
 									"namespace": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Namespace name.",
+										Description: "Namespace 名称",
 									},
 									"functions_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of functions in namespace.",
+										Description: "数量 functions 在 命名空间。",
 									},
 									"total_concurrency_mem": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Total memory quota of the namespace Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Total 内存 配额 的 命名空间 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"total_allocated_concurrency_mem": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Concurrency usage of the namespace Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "并发 usage 的 命名空间 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"total_allocated_provisioned_mem": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Provisioned concurrency usage of the namespace Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Provisioned 并发 usage 的 命名空间 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -72,17 +72,17 @@ func DataSourceTencentCloudScfAccountInfo() *schema.Resource {
 						"total_concurrency_mem": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Upper limit of user concurrency memory in the current region.",
+							Description: "Upper 限制 的 用户 并发 内存 在 当前 地域",
 						},
 						"total_allocated_concurrency_mem": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Quota of configured user concurrency memory in the current region.",
+							Description: "Quota 的 已配置 用户 并发 内存 在 当前 地域",
 						},
 						"user_concurrency_mem_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Quota of account concurrency actually configured by user.",
+							Description: "Quota 的 账号 并发 actually 已配置 通过 用户",
 						},
 					},
 				},
@@ -91,90 +91,90 @@ func DataSourceTencentCloudScfAccountInfo() *schema.Resource {
 			"account_limit": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Namespace limit information.",
+				Description: "Namespace 限制 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"namespaces_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Limit of namespace quantity.",
+							Description: "限制 的 命名空间 quantity。",
 						},
 						"namespace": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Namespace limit information.",
+							Description: "Namespace 限制 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"functions_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Total number of functions.",
+										Description: "Total 数量 functions。",
 									},
 									"trigger": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Trigger information.",
+										Description: "Trigger 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"cos": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Number of COS triggers.",
+													Description: "数量 COS triggers。",
 												},
 												"timer": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Number of timer triggers.",
+													Description: "数量 timer triggers。",
 												},
 												"cmq": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Number of CMQ triggers.",
+													Description: "数量 CMQ triggers。",
 												},
 												"total": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Total number of triggers.",
+													Description: "Total 数量 triggers。",
 												},
 												"ckafka": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Number of CKafka triggers.",
+													Description: "数量 CKafka triggers。",
 												},
 												"apigw": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Number of API Gateway triggers.",
+													Description: "数量 API Gateway triggers。",
 												},
 												"cls": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Number of CLS triggers.",
+													Description: "数量 CLS triggers。",
 												},
 												"clb": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Number of CLB triggers.",
+													Description: "数量 CLB triggers。",
 												},
 												"mps": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Number of MPS triggers.",
+													Description: "数量 MPS triggers。",
 												},
 												"cm": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Number of CM triggers.",
+													Description: "数量 CM triggers。",
 												},
 												"vod": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Number of VOD triggers.",
+													Description: "数量 VOD triggers。",
 												},
 												"eb": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Number of EventBridge triggers Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "数量 EventBridge triggers 注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -182,42 +182,42 @@ func DataSourceTencentCloudScfAccountInfo() *schema.Resource {
 									"namespace": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Namespace name.",
+										Description: "Namespace 名称",
 									},
 									"concurrent_executions": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Concurrency.",
+										Description: "并发",
 									},
 									"timeout_limit": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Timeout limit.",
+										Description: "Timeout 限制",
 									},
 									"test_model_limit": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Test event limit Note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "Test 事件 限制 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 									},
 									"init_timeout_limit": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Initialization timeout limit.",
+										Description: "Initialization 超时 限制",
 									},
 									"retry_num_limit": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Limit of async retry attempt quantity.",
+										Description: "限制 的 async retry attempt quantity。",
 									},
 									"min_msg_ttl": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Lower limit of message retention time for async retry.",
+										Description: "Lower 限制 的 消息 retention 时间 对于 async retry。",
 									},
 									"max_msg_ttl": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Upper limit of message retention time for async retry.",
+										Description: "Upper 限制 的 消息 retention 时间 对于 async retry。",
 									},
 								},
 							},
@@ -229,7 +229,7 @@ func DataSourceTencentCloudScfAccountInfo() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -28,50 +28,50 @@ func ResourceTencentCloudTdmqRocketmqTopic() *schema.Resource {
 			"topic_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Topic name, which can contain 3-64 letters, digits, hyphens, and underscores.",
+				Description: "Topic 名称，其中 可以 contain 3-64 letters，digits，hyphens，和 underscores。",
 			},
 
 			"namespace_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Topic namespace. Currently, you can create topics only in one single namespace.",
+				Description: "Topic 命名空间. Currently，您 可以 create topics 仅 在 一个 单个 命名空间。",
 			},
 
 			"type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Topic type. Valid values: Normal, GlobalOrder, PartitionedOrder.",
+				Description: "Topic 类型 有效值：Normal，GlobalOrder，PartitionedOrder。",
 			},
 
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Topic remarks (up to 128 characters).",
+				Description: "Topic 备注 (up 到 128 字符)。",
 			},
 
 			"partition_num": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     3,
-				Description: "Number of partitions.",
+				Description: "数量 partitions。",
 			},
 
 			"create_time": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Creation time in milliseconds.",
+				Description: "创建时间 （毫秒）。",
 			},
 
 			"update_time": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Update time in milliseconds.",
+				Description: "更新时间 （毫秒）。",
 			},
 		},
 	}

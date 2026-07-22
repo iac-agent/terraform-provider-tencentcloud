@@ -20,13 +20,13 @@ func DataSourceTencentCloudMysqlUserTask() *schema.Resource {
 			"instance_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID, the format is: cdb-c1nl9rpv, which is the same as the instance ID displayed on the cloud database console page, and you can use the [query instance list] (https://cloud.tencent.com/document/api/236/15872) interface Gets the value of the field InstanceId in the output parameter.",
+				Description: "实例ID，格式为：cdb-c1nl9rpv，与云数据库控制台页面显示的实例ID相同，可以通过【查询实例列表】（https://云.tencent.com/document/api/236/15872）接口获取输出参数中InstanceId字段的值。",
 			},
 
 			"async_request_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Asynchronous task request ID, the AsyncRequestId returned by executing cloud database-related operations.",
+				Description: "异步任务请求ID，执行云数据库相关操作返回的AsyncRequestId。",
 			},
 
 			"task_types": {
@@ -35,7 +35,7 @@ func DataSourceTencentCloudMysqlUserTask() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Task type. If no value is passed, all task types will be queried. Supported values include: `ROLLBACK` - database rollback; `SQL OPERATION` - SQL operation; `IMPORT DATA` - data import; `MODIFY PARAM` - parameter setting; `INITIAL` - initialize the cloud database instance; `REBOOT` - restarts the cloud database instance; `OPEN GTID` - open the cloud database instance GTID; `UPGRADE RO` - read-only instance upgrade; `BATCH ROLLBACK` - database batch rollback; `UPGRADE MASTER` - master upgrade; `DROP TABLES` - delete cloud database tables; `SWITCH DR TO MASTER` - The disaster recovery instance.",
+				Description: "任务类型。如果不传值，则查询所有任务类型。支持的值包括： `ROLLBACK` - 数据库回滚； `SQL OPERATION` - SQL 操作； `IMPORT DATA`-数据导入； `MODIFY PARAM`-参数设置； `INITIAL` - 初始化云数据库实例； `REBOOT` - 重新启动云数据库实例； `OPEN GTID` - 打开云数据库实例GTID； `UPGRADE RO` - 只读实例升级； `BATCH ROLLBACK` - 数据库批量回滚； `UPGRADE MASTER`-主升级； `DROP TABLES` - 删除云数据库表； `SWITCH DR TO MASTER` - 灾难恢复实例。",
 			},
 
 			"task_status": {
@@ -44,66 +44,66 @@ func DataSourceTencentCloudMysqlUserTask() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Task status. If no value is passed, all task statuses will be queried. Supported values include: `UNDEFINED` - undefined; `INITIAL` - initialization; `RUNNING` - running; `SUCCEED` - the execution was successful; `FAILED` - execution failed; `KILLED` - terminated; `REMOVED` - removed; `PAUSED` - Paused.",
+				Description: "任务状态。如果不传值，则查询所有任务状态。支持的值包括： `UNDEFINED` - 未定义； `INITIAL` - 初始化； `RUNNING`-正在运行； `SUCCEED` - 执行成功； `FAILED` - 执行失败； `KILLED` - 终止； `已删除`-已删除； “暂停”- 暂停。",
 			},
 
 			"start_time_begin": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The start time of the first task, used for range query, the time format is as follows: 2017-12-31 10:40:01.",
+				Description: "第一个任务的开始时间，用于范围查询，时间格式如下：2017-12-31 10:40:01。",
 			},
 
 			"start_time_end": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The start time of the last task, used for range query, the time format is as follows: 2017-12-31 10:40:01.",
+				Description: "最后一个任务的开始时间，用于范围查询，时间格式如下：2017-12-31 10:40:01。",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The returned instance task information.",
+				Description: "返回的实例任务信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"code": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "error code.",
+							Description: "错误代码。",
 						},
 						"message": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "error message.",
+							Description: "错误信息。",
 						},
 						"job_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance task ID.",
+							Description: "实例任务ID。",
 						},
 						"progress": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance task progress.",
+							Description: "实例任务进度。",
 						},
 						"task_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance task status, possible values include:UNDEFINED - undefined;INITIAL - initialization;RUNNING - running;SUCCEED - the execution was successful;FAILED - execution failed;KILLED - terminated;REMOVED - removed;PAUSED - Paused.WAITING - waiting (cancellable).",
+							Description: "实例任务状态，可能的值包括：UNDEFINED - 未定义；INITIAL - 初始化；RUNNING - 正在运行；SUCCEED - 执行成功；FAILED - 执行失败；KILLED - 终止；REMOVED - 已删除；PAUSED - 已暂停。WAITING - 等待（可取消）。",
 						},
 						"task_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance task type, possible values include:ROLLBACK - database rollback;SQL OPERATION - SQL operation;IMPORT DATA - data import;MODIFY PARAM - parameter setting;INITIAL - initialize the cloud database instance;REBOOT - restarts the cloud database instance;OPEN GTID - open the cloud database instance GTID;UPGRADE RO - read-only instance upgrade;BATCH ROLLBACK - database batch rollback;UPGRADE MASTER - master upgrade;DROP TABLES - delete cloud database tables;SWITCH DR TO MASTER - The disaster recovery instance.",
+							Description: "实例任务类型，可能的值包括：ROLLBACK - 数据库回滚；SQL OPERATION - SQL操作；IMPORT DATA - 数据导入；MODIFY PARAM - 参数设置；INITIAL - 初始化云数据库实例；REBOOT - 重启云数据库实例；OPEN GTID - 打开云数据库实例GTID；UPGRADE RO - 只读实例升级；BATCH ROLLBACK - 数据库批量回滚；UPGRADE MASTER - 主升级；DROP TABLES - 删除云数据库表；SWITCH DR TO MASTER - 灾难恢复实例。",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance task start time.",
+							Description: "实例任务开始时间。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance task end time.",
+							Description: "实例任务结束时间。",
 						},
 						"instance_ids": {
 							Type: schema.TypeSet,
@@ -111,12 +111,12 @@ func DataSourceTencentCloudMysqlUserTask() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "The instance ID associated with the task. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "与任务关联的实例 ID。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"async_request_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The request ID of the asynchronous task.",
+							Description: "异步任务的请求ID。",
 						},
 					},
 				},
@@ -125,7 +125,7 @@ func DataSourceTencentCloudMysqlUserTask() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

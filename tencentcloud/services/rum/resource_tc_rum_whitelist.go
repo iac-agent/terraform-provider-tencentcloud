@@ -29,7 +29,7 @@ func ResourceTencentCloudRumWhitelist() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance ID, such as taw-123.",
+				Description: "实例 ID, such 作为 taw-123.",
 			},
 
 			"remark": {
@@ -53,7 +53,7 @@ func ResourceTencentCloudRumWhitelist() *schema.Resource {
 			"ttl": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "End time.",
+				Description: "End 时间.",
 			},
 
 			"wid": {
@@ -71,7 +71,7 @@ func ResourceTencentCloudRumWhitelist() *schema.Resource {
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time.",
+				Description: "Creation 时间.",
 			},
 		},
 	}

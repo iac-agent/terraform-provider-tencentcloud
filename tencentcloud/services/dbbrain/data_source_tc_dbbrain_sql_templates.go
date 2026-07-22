@@ -19,13 +19,13 @@ func DataSourceTencentCloudDbbrainSqlTemplates() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID.",
 			},
 
 			"schema": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "database name.",
+				Description: "数据库 名称.",
 			},
 
 			"sql_text": {
@@ -37,19 +37,19 @@ func DataSourceTencentCloudDbbrainSqlTemplates() *schema.Resource {
 			"product": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Service product type, supported values include: mysql - cloud database MySQL, cynosdb - cloud database CynosDB for MySQL, the default is mysql.",
+				Description: "Service product 类型, 支持 值 include: mysql - 云 数据库 MySQL, cynosdb - 云 数据库 CynosDB 对于 MySQL, 默认值 是 mysql.",
 			},
 
 			"sql_type": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "sql type.",
+				Description: "sql 类型.",
 			},
 
 			"sql_template": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "SQL template content.",
+				Description: "SQL template 内容.",
 			},
 
 			"sql_id": {
@@ -61,7 +61,7 @@ func DataSourceTencentCloudDbbrainSqlTemplates() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

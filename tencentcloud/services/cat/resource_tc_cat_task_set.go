@@ -29,18 +29,18 @@ func ResourceTencentCloudCatTaskSet() *schema.Resource {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Batch task name address.",
+				Description: "Batch 任务 名称 地址",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task name.",
+							Description: "任务 名称",
 						},
 						"target_address": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Target address.",
+							Description: "Target 地址",
 						},
 					},
 				},
@@ -49,7 +49,7 @@ func ResourceTencentCloudCatTaskSet() *schema.Resource {
 			"task_type": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Task Type 1:Page Performance, 2:File upload,3:File Download,4:Port performance 5:Audio and video.",
+				Description: "任务 类型 1:Page Performance，2:File upload,3:File Download,4:端口 performance 5:Audio 和 视频。",
 			},
 
 			"nodes": {
@@ -58,62 +58,62 @@ func ResourceTencentCloudCatTaskSet() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Required:    true,
-				Description: "Task Nodes.",
+				Description: "任务 Nodes。",
 			},
 
 			"task_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Task Id.",
+				Description: "任务 ID。",
 			},
 
 			"interval": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Task interval minutes in (1,5,10,15,30,60,120,240).",
+				Description: "任务 间隔 minutes 在 (1,5,10,15,30,60,120,240)。",
 			},
 
 			"parameters": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "tasks parameters.",
+				Description: "tasks 参数。",
 			},
 
 			"task_category": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Task category,1:PC,2:Mobile.",
+				Description: "任务 category,1:PC,2:Mobile。",
 			},
 
 			"cron": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Timer task cron expression.",
+				Description: "Timer 任务 cron expression。",
 			},
 
 			"operate": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The input is valid when the parameter is modified, `suspend`/`resume`, used to suspend/resume the dial test task.",
+				Description: "input 是 有效 当 参数 是 modified，`suspend`/`resume`，用于suspend/resume dial 测试 任务。",
 			},
 
 			"node_ip_type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "`0`-Unlimit ip type, `1`-IPv4, `2`-IPv6.",
+				Description: "`0`-Unlimit ip 类型，`1`-IPv4，`2`-IPv6。",
 			},
 
 			"status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Task status 1:TaskPending, 2:TaskRunning,3:TaskRunException,4:TaskSuspending 5:TaskSuspendException,6:TaskSuspendException,7:TaskSuspended,9:TaskDeleted.",
+				Description: "任务 状态 1:TaskPending，2:TaskRunning,3:TaskRunException,4:TaskSuspending 5:TaskSuspendException,6:TaskSuspendException,7:TaskSuspended,9:TaskDeleted。",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 		},
 	}

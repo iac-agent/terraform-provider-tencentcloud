@@ -27,27 +27,27 @@ func ResourceTencentCloudConfigRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Rule template identifier. For system preset rules use the identifier name; for custom rules use the cloud function ARN (region:functionName).",
+				Description: "Rule template identifier. For 系统 preset 规则 使用 identifier 名称; 对于 自定义 规则 使用 云 函数 ARN (地域:functionName)。",
 			},
 
 			"identifier_type": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Rule template type. Valid values: SYSTEM (system preset), CUSTOMIZE (custom).",
+				Description: "Rule template 类型 有效值：SYSTEM (系统 preset)，CUSTOMIZE (自定义)。",
 			},
 
 			"rule_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Rule name.",
+				Description: "Rule 名称",
 			},
 
 			"resource_type": {
 				Type:        schema.TypeList,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Supported resource type list (e.g. QCS::CAM::User).",
+				Description: "Supported 资源类型 列表 (e.g. QCS::CAM::用户)。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -56,18 +56,18 @@ func ResourceTencentCloudConfigRule() *schema.Resource {
 			"trigger_type": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Trigger type list, up to 2 entries.",
+				Description: "Trigger 类型 列表，up 到 2 entries。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"message_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Trigger message type. Valid values: ScheduledNotification, ConfigurationItemChangeNotification.",
+							Description: "Trigger 消息类型 有效值：ScheduledNotification，ConfigurationItemChangeNotification。",
 						},
 						"maximum_execution_frequency": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Maximum execution frequency (only for ScheduledNotification). e.g. TwentyFour_Hours.",
+							Description: "Maximum execution 频率 (仅 对于 ScheduledNotification). e.g. TwentyFour_Hours。",
 						},
 					},
 				},
@@ -76,29 +76,29 @@ func ResourceTencentCloudConfigRule() *schema.Resource {
 			"risk_level": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Risk level. Valid values: 1 (high risk), 2 (medium risk), 3 (low risk).",
+				Description: "风险等级 有效值：1 (high risk)，2 (medium risk)，3 (low risk)。",
 			},
 
 			"input_parameter": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Rule input parameter list.",
+				Description: "Rule input 参数 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"parameter_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Parameter key.",
+							Description: "Parameter 键",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Parameter type: Require or Optional.",
+							Description: "Parameter 类型: Require 或 可选",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Parameter value.",
+							Description: "Parameter 值",
 						},
 					},
 				},
@@ -107,13 +107,13 @@ func ResourceTencentCloudConfigRule() *schema.Resource {
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Rule description (0~1024 characters).",
+				Description: "Rule 描述 (0~1024 字符)。",
 			},
 
 			"regions_scope": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Region scope list; rule only applies to resources in the specified regions.",
+				Description: "地域 范围 列表; 规则 仅 applies 到 resources 在 指定 regions。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -122,18 +122,18 @@ func ResourceTencentCloudConfigRule() *schema.Resource {
 			"tags_scope": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Tag scope list; rule only applies to resources with the specified tags.",
+				Description: "标签 范围 列表; 规则 仅 applies 到 resources 使用 指定 标签",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag key.",
+							Description: "标签键",
 						},
 						"tag_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag value.",
+							Description: "标签值",
 						},
 					},
 				},
@@ -142,7 +142,7 @@ func ResourceTencentCloudConfigRule() *schema.Resource {
 			"exclude_resource_ids_scope": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Resource ID list excluded from rule evaluation.",
+				Description: "资源 ID 列表 excluded 从 规则 evaluation。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -152,32 +152,32 @@ func ResourceTencentCloudConfigRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Rule status. Valid values: ACTIVE (enabled), UN_ACTIVE (disabled).",
+				Description: "Rule 状态 有效值：ACTIVE (已启用)，UN_ACTIVE (已禁用)。",
 			},
 
 			// Computed
 			"config_rule_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Config rule ID.",
+				Description: "配置 规则 ID。",
 			},
 
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time.",
+				Description: "创建时间。",
 			},
 
 			"compliance_result": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Compliance result.",
+				Description: "Compliance 结果",
 			},
 
 			"config_rule_invoked_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Last rule evaluation time.",
+				Description: "Last 规则 evaluation 时间。",
 			},
 		},
 	}

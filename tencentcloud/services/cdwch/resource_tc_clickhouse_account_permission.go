@@ -28,25 +28,25 @@ func ResourceTencentCloudClickhouseAccountPermission() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"cluster": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster name.",
+				Description: "集群名称",
 			},
 
 			"user_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "User name.",
+				Description: "用户 名称",
 			},
 
 			"all_database": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether all database tables.",
+				Description: "Whether all 数据库 tables。",
 			},
 
 			"global_privileges": {
@@ -55,19 +55,19 @@ func ResourceTencentCloudClickhouseAccountPermission() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Global privileges.",
+				Description: "Global privileges。",
 			},
 
 			"database_privilege_list": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Database privilege list.",
+				Description: "Database privilege 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Database name.",
+							Description: "Database 名称",
 						},
 						"database_privileges": {
 							Type: schema.TypeSet,
@@ -75,18 +75,18 @@ func ResourceTencentCloudClickhouseAccountPermission() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "Database privileges. Valid valuse: SELECT, INSERT_ALL, ALTER, TRUNCATE, DROP_TABLE, CREATE_TABLE, DROP_DATABASE.",
+							Description: "Database privileges. 有效 valuse: SELECT，INSERT_ALL，ALTER，TRUNCATE，DROP_TABLE，CREATE_TABLE，DROP_DATABASE。",
 						},
 						"table_privilege_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Table privilege list.",
+							Description: "Table privilege 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"table_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Table name.",
+										Description: "Table 名称",
 									},
 									"table_privileges": {
 										Type: schema.TypeSet,
@@ -94,7 +94,7 @@ func ResourceTencentCloudClickhouseAccountPermission() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Required:    true,
-										Description: "Table privileges. Valid values: SELECT, INSERT_ALL, ALTER, TRUNCATE, DROP_TABLE.",
+										Description: "Table privileges. 有效值：SELECT，INSERT_ALL，ALTER，TRUNCATE，DROP_TABLE。",
 									},
 								},
 							},

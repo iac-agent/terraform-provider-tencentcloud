@@ -19,39 +19,39 @@ func DataSourceTencentCloudRedisRecordsParam() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of instance.",
+				Description: "ID 实例。",
 			},
 
 			"instance_param_history": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The parameter name.",
+				Description: "参数 名称",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"param_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The parameter name.",
+							Description: "参数 名称",
 						},
 						"pre_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Modify the previous value.",
+							Description: "Modify previous 值",
 						},
 						"new_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The modified value.",
+							Description: "modified 值",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Parameter status:1: parameter configuration modification.2: The parameter configuration is modified successfully.3: Parameter configuration modification failed.",
+							Description: "Parameter 状态:1: 参数 配置 modification.2: 参数 配置 是 modified successfully.3: Parameter 配置 modification failed。",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Modification time.",
+							Description: "修改时间。",
 						},
 					},
 				},
@@ -60,7 +60,7 @@ func DataSourceTencentCloudRedisRecordsParam() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

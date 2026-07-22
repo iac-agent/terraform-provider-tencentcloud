@@ -26,14 +26,14 @@ func ResourceTencentCloudElasticsearchRestartLogstashInstanceOperation() *schema
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"type": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Restart type, 0 full restart, 1 rolling restart.",
+				Description: "Restart 类型，0 full restart，1 rolling restart。",
 			},
 		},
 	}

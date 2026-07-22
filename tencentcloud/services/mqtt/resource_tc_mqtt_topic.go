@@ -28,19 +28,19 @@ func ResourceTencentCloudMqttTopic() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "MQTT instance ID.",
+				Description: "MQTT 实例 ID。",
 			},
 
 			"topic": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Topic.",
+				Description: "Topic。",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Remarks.",
+				Description: "备注",
 			},
 		},
 	}

@@ -26,84 +26,84 @@ func ResourceTencentCloudMpsTranscodeTemplate() *schema.Resource {
 			"container": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Encapsulation format, optional values: mp4, flv, hls, mp3, flac, ogg, m4a. Among them, mp3, flac, ogg, m4a are pure audio files.",
+				Description: "Encapsulation 格式，可选 值: mp4，flv，hls，mp3，flac，ogg，m4a. Among them，mp3，flac，ogg，m4a 是 pure 音频 files。",
 			},
 
 			"name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Transcoding template name, length limit: 64 characters.",
+				Description: "Transcoding 模板名称，长度 限制: 64 字符。",
 			},
 
 			"comment": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Template description information, length limit: 256 characters.",
+				Description: "模板描述 信息，长度 限制: 256 字符。",
 			},
 
 			"remove_video": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to remove video data, value:0: reserved.1: remove.Default: 0.",
+				Description: "是否remove 视频 数据，值:0: reserved.1: remove.默认值：0。",
 			},
 
 			"remove_audio": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to remove audio data, value:0: reserved.1: remove.Default: 0.",
+				Description: "是否remove 音频 数据，值:0: reserved.1: remove.默认值：0。",
 			},
 
 			"video_template": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Video stream configuration parameters, when RemoveVideo is 0, this field is required.",
+				Description: "Video 流 配置 参数，当 RemoveVideo 是 0，此 字段 为必填项。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"codec": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Encoding format of the video stream, optional value:libx264: H.264 encoding.libx265: H.265 encoding.av1: AOMedia Video 1 encoding.Note: Currently H.265 encoding must specify a resolution, and it needs to be within 640*480.Note: av1 encoded containers currently only support mp4.",
+							Description: "Encoding 格式 的 视频 流，可选 值:libx264: H.264 编码.libx265: H.265 编码.av1: AOMedia Video 1 编码.注意: Currently H.265 编码 必须 指定a resolution，和 它 needs 到 是 within 640*480.注意: av1 encoded containers currently 仅 support mp4。",
 						},
 						"fps": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Video frame rate, value range: [0, 100], unit: Hz.When the value is 0, it means that the frame rate is consistent with the original video.Note: The value range for adaptive code rate is [0, 60].",
+							Description: "Video frame 速率，取值范围：[0，100]，单位: Hz.当 值 是 0，它 表示 该 frame 速率 是 consistent 使用 original 视频.注意: 值 范围 对于 adaptive 代码 速率 是 [0，60]。",
 						},
 						"bitrate": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Bit rate of the video stream, value range: 0 and [128, 35000], unit: kbps.When the value is 0, it means that the video bit rate is consistent with the original video.",
+							Description: "Bit 速率 的 视频 流，取值范围：0 和 [128，35000]，单位: kbps.当 值 是 0，它 表示 该 视频 bit 速率 是 consistent 使用 original 视频。",
 						},
 						"resolution_adaptive": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Adaptive resolution, optional values:```open: open, at this time, Width represents the long side of the video, Height represents the short side of the video.close: close, at this time, Width represents the width of the video, and Height represents the height of the video.Default: open.Note: In adaptive mode, Width cannot be smaller than Height.",
+							Description: "Adaptive resolution，可选 值:```open: open，在 此 时间，宽度 表示 long side 的 视频，高度 表示 short side 的 视频.close: close，在 此 时间，宽度 表示 宽度 的 视频，和 高度 表示 高度 的 视频.默认值：open.注意: In adaptive 模式，宽度 不能 是 smaller 比 高度。",
 						},
 						"width": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The maximum value of video stream width (or long side), value range: 0 and [128, 4096], unit: px.When Width and Height are both 0, the resolution is the same.When Width is 0 and Height is not 0, Width is scaled proportionally.When Width is not 0 and Height is 0, Height is scaled proportionally.When both Width and Height are not 0, the resolution is specified by the user.Default: 0.",
+							Description: "最大 值 的 视频 流 宽度 (或 long side)，取值范围：0 和 [128，4096]，单位: 像素.当 宽度 和 高度 是 both 0， resolution 是 same.当 宽度 是 0 和 高度 是 不 0，宽度 是 scaled proportionally.当 宽度 是 不 0 和 高度 是 0，高度 是 scaled proportionally.当 both 宽度 和 高度 是 不 0， resolution 是 指定 通过 用户默认值：0。",
 						},
 						"height": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The maximum value of video stream height (or short side), value range: 0 and [128, 4096], unit: px.When Width and Height are both 0, the resolution is the same.When Width is 0 and Height is not 0, Width is scaled proportionally.When Width is not 0 and Height is 0, Height is scaled proportionally.When both Width and Height are not 0, the resolution is specified by the user.Default: 0.",
+							Description: "最大 值 的 视频 流 高度 (或 short side)，取值范围：0 和 [128，4096]，单位: 像素.当 宽度 和 高度 是 both 0， resolution 是 same.当 宽度 是 0 和 高度 是 不 0，宽度 是 scaled proportionally.当 宽度 是 不 0 和 高度 是 0，高度 是 scaled proportionally.当 both 宽度 和 高度 是 不 0， resolution 是 指定 通过 用户默认值：0。",
 						},
 						"gop": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The interval between keyframe I frames, value range: 0 and [1, 100000], unit: number of frames.When filling 0 or not filling, the system will automatically set the gop length.",
+							Description: "间隔 between keyframe I frames，取值范围：0 和 [1，100000]，单位: 数量 frames.当 filling 0 或 不 filling， 系统 将 automatically 集合 gop 长度。",
 						},
 						"fill_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Filling method, when the aspect ratio of the video stream configuration is inconsistent with the aspect ratio of the original video, the processing method for transcoding is filling. Optional filling method:stretch: Stretch, stretch each frame to fill the entire screen, which may cause the transcoded video to be squashed or stretched.black: Leave black, keep the aspect ratio of the video unchanged, and fill the rest of the edge with black.white: Leave blank, keep the aspect ratio of the video unchanged, and fill the rest of the edge with white.gauss: Gaussian blur, keep the aspect ratio of the video unchanged, and fill the rest of the edge with Gaussian blur.Default: black.Note: Adaptive stream only supports stretch, black.",
+							Description: "Filling 方法，当 aspect ratio 的 视频 流 配置 是 inconsistent 使用 aspect ratio 的 original 视频， processing 方法 对于 transcoding 是 filling. 可选 filling 方法:stretch: Stretch，stretch each frame 到 fill entire screen，其中 可能 cause transcoded 视频 到 是 squashed 或 stretched.black: Leave black，keep aspect ratio 的 视频 unchanged，和 fill rest 的 edge 使用 black.white: Leave blank，keep aspect ratio 的 视频 unchanged，和 fill rest 的 edge 使用 white.gauss: Gaussian blur，keep aspect ratio 的 视频 unchanged，和 fill rest 的 edge 使用 Gaussian blur.默认值：black.注意: Adaptive 流 仅 支持 stretch，black。",
 						},
 						"vcrf": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Video constant bit rate control factor, the value range is [1, 51].If this parameter is specified, the code rate control method of CRF will be used for transcoding (the video code rate will no longer take effect).If there is no special requirement, it is not recommended to specify this parameter.",
+							Description: "Video constant bit 速率 control factor， 值 范围 是 [1，51].如果 此 参数 是 指定， 代码 速率 control 方法 的 CRF 将 是 用于transcoding ( 视频 代码 速率 将 无 longer take effect).如果 there 是 无 special requirement，它 是 不 recommended 到 指定this 参数。",
 						},
 					},
 				},
@@ -113,28 +113,28 @@ func ResourceTencentCloudMpsTranscodeTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Audio stream configuration parameters, when RemoveAudio is 0, this field is required.",
+				Description: "Audio 流 配置 参数，当 RemoveAudio 是 0，此 字段 为必填项。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"codec": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Encoding format of frequency stream.When the outer parameter Container is mp3, the optional value is:libmp3lame.When the outer parameter Container is ogg or flac, the optional value is:flac.When the outer parameter Container is m4a, the optional value is:libfdk_aac.libmp3lame.ac3.When the outer parameter Container is mp4 or flv, the optional value is:libfdk_aac: more suitable for mp4.libmp3lame: more suitable for flv.When the outer parameter Container is hls, the optional value is:libfdk_aac.libmp3lame.",
+							Description: "Encoding 格式 的 频率 流.当 outer 参数 Container 是 mp3， 可选 值 是:libmp3lame.当 outer 参数 Container 是 ogg 或 flac， 可选 值 是:flac.当 outer 参数 Container 是 m4a， 可选 值 是:libfdk_aac.libmp3lame.ac3.当 outer 参数 Container 是 mp4 或 flv， 可选 值 是:libfdk_aac: more suitable 对于 mp4.libmp3lame: more suitable 对于 flv.当 outer 参数 Container 是 hls， 可选 值 是:libfdk_aac.libmp3lame。",
 						},
 						"bitrate": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Bit rate of the audio stream, value range: 0 and [26, 256], unit: kbps.When the value is 0, it means that the audio bit rate is consistent with the original audio.",
+							Description: "Bit 速率 的 音频 流，取值范围：0 和 [26，256]，单位: kbps.当 值 是 0，它 表示 该 音频 bit 速率 是 consistent 使用 original 音频。",
 						},
 						"sample_rate": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Sampling rate of audio stream, optional value.32000.44100.48000.Unit: Hz.",
+							Description: "Sampling 速率 的 音频 流，可选 值32000.44100.48000.单位：Hz。",
 						},
 						"audio_channel": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Audio channel mode, optional values:`1: single channel.2: Dual channel.6: Stereo.When the package format of the media is an audio format (flac, ogg, mp3, m4a), the number of channels is not allowed to be set to stereo.Default: 2.",
+							Description: "Audio channel 模式，可选 值:`1: 单个 channel.2: Dual channel.6: Stereo.当 包 格式 的 media 是 音频 格式 (flac，ogg，mp3，m4a)， 数量 channels 是 不 allowed 到 是 集合 到 stereo.默认值：2。",
 						},
 					},
 				},
@@ -144,18 +144,18 @@ func ResourceTencentCloudMpsTranscodeTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Ultra-fast HD transcoding parameters.",
+				Description: "Ultra-fast HD transcoding 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Extremely high-definition type, optional value:TEHD-100: Extreme HD-100.Not filling means that the ultra-fast high-definition is not enabled.",
+							Description: "Extremely high-definition 类型，可选 值:TEHD-100: Extreme HD-100.Not filling 表示 该 ultra-fast high-definition 是 不 已启用",
 						},
 						"max_video_bitrate": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The upper limit of the video bit rate, which is valid when the Type specifies the ultra-fast HD type.Do not fill in or fill in 0 means that there is no upper limit on the video bit rate.",
+							Description: "upper 限制 的 视频 bit 速率，其中 是 有效 当 类型 指定ultra-fast HD 类型Do 不 fill 在 或 fill 在 0 表示 该 there 是 无 upper 限制 在 视频 bit 速率。",
 						},
 					},
 				},
@@ -165,32 +165,32 @@ func ResourceTencentCloudMpsTranscodeTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Audio and video enhancement configuration.",
+				Description: "Audio 和 视频 enhancement 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"video_enhance": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Video Enhancement Configuration.Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Video Enhancement Configuration.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"frame_rate": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "Interpolation frame rate configuration.Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Interpolation frame 速率 配置.注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"switch": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Capability configuration switch, optional value: ON/OFF.Default value: ON.",
+													Description: "Capability 配置 switch，可选 值: ON/OFF.默认值：ON。",
 												},
 												"fps": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Frame rate, value range: [0, 100], unit: Hz.Default value: 0.Note: For transcoding, this parameter will override the Fps inside the VideoTemplate.Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "Frame 速率，取值范围：[0，100]，单位: Hz.默认值：0.注意: For transcoding，此 参数 将 override Fps inside VideoTemplate.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -199,23 +199,23 @@ func ResourceTencentCloudMpsTranscodeTemplate() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "Super resolution configuration.Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Super resolution 配置.注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"switch": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Capability configuration switch, optional value: ON/OFF.Default value: ON.",
+													Description: "Capability 配置 switch，可选 值: ON/OFF.默认值：ON。",
 												},
 												"type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Type, optional value:lq: super-resolution for low-definition video with more noise.hq: super resolution for high-definition video.Default value: lq.Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "类型，可选 值:lq: super-resolution 对于 low-definition 视频 使用 more noise.hq: super resolution 对于 high-definition 视频.默认值：lq.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"size": {
 													Type:        schema.TypeInt,
 													Optional:    true,
-													Description: "Super resolution multiple, optional value:2: currently only supports 2x super resolution.Default value: 2.Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "Super resolution 多个，可选 值:2: currently 仅 支持 2x super resolution.默认值：2.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -224,18 +224,18 @@ func ResourceTencentCloudMpsTranscodeTemplate() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "HDR configuration.Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "HDR 配置.注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"switch": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Capability configuration switch, optional value: ON/OFF.Default value: ON.",
+													Description: "Capability 配置 switch，可选 值: ON/OFF.默认值：ON。",
 												},
 												"type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Type, optional value: HDR10/HLG.Default value: HDR10.Note: The encoding method of video needs to be libx265.Note: Video encoding bit depth is 10.Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "类型，可选 值: HDR10/HLG.默认值：HDR10.注意: 编码 方法 的 视频 needs 到 是 libx265.注意: Video 编码 bit depth 是 10.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -244,18 +244,18 @@ func ResourceTencentCloudMpsTranscodeTemplate() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "Video Noise Reduction Configuration.Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Video Noise Reduction Configuration.注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"switch": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Capability configuration switch, optional value: ON/OFF.Default value: ON.",
+													Description: "Capability 配置 switch，可选 值: ON/OFF.默认值：ON。",
 												},
 												"type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Type, optional value: weak/strong.Default value: weak.Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "类型，可选 值: weak/strong.默认值：weak.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -264,18 +264,18 @@ func ResourceTencentCloudMpsTranscodeTemplate() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "Comprehensive Enhanced Configuration.Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Comprehensive Enhanced Configuration.注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"switch": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Capability configuration switch, optional value: ON/OFF.Default value: ON.",
+													Description: "Capability 配置 switch，可选 值: ON/OFF.默认值：ON。",
 												},
 												"type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Type, optional value: weak/normal/strong.Default value: weak.Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "类型，可选 值: weak/normal/strong.默认值：weak.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -284,18 +284,18 @@ func ResourceTencentCloudMpsTranscodeTemplate() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "Color Enhancement Configuration.Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Color Enhancement Configuration.注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"switch": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Capability configuration switch, optional value: ON/OFF.Default value: ON.",
+													Description: "Capability 配置 switch，可选 值: ON/OFF.默认值：ON。",
 												},
 												"type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Type, optional value: weak/normal/strong.Default value: weak.Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "类型，可选 值: weak/normal/strong.默认值：weak.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -304,7 +304,7 @@ func ResourceTencentCloudMpsTranscodeTemplate() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "Detail Enhancement Configuration.Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Detail Enhancement Configuration.注意：此字段可能返回 null，表示无法获取有效值。",
 										Deprecated:  "It has been deprecated from version v1.82.67. Please do not use this again.",
 										DiffSuppressFunc: func(k, old, new string, d *schema.ResourceData) bool {
 											return true
@@ -314,12 +314,12 @@ func ResourceTencentCloudMpsTranscodeTemplate() *schema.Resource {
 												"switch": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Capability configuration switch, optional value: ON/OFF.Default value: ON.",
+													Description: "Capability 配置 switch，可选 值: ON/OFF.默认值：ON。",
 												},
 												"intensity": {
 													Type:        schema.TypeFloat,
 													Optional:    true,
-													Description: "Intensity, value range: 0.0~1.0.Default value: 0.0.Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "Intensity，取值范围：0.0~1.0.默认值：0.0.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -328,7 +328,7 @@ func ResourceTencentCloudMpsTranscodeTemplate() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "Face Enhancement Configuration.Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Face Enhancement Configuration.注意：此字段可能返回 null，表示无法获取有效值。",
 										Deprecated:  "It has been deprecated from version v1.82.67. Please do not use this again.",
 										DiffSuppressFunc: func(k, old, new string, d *schema.ResourceData) bool {
 											return true
@@ -338,12 +338,12 @@ func ResourceTencentCloudMpsTranscodeTemplate() *schema.Resource {
 												"switch": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Capability configuration switch, optional value: ON/OFF.Default value: ON.",
+													Description: "Capability 配置 switch，可选 值: ON/OFF.默认值：ON。",
 												},
 												"intensity": {
 													Type:        schema.TypeFloat,
 													Optional:    true,
-													Description: "Intensity, value range: 0.0~1.0.Default value: 0.0.Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "Intensity，取值范围：0.0~1.0.默认值：0.0.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -352,18 +352,18 @@ func ResourceTencentCloudMpsTranscodeTemplate() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "Low Light Enhancement Configuration.Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Low Light Enhancement Configuration.注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"switch": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Capability configuration switch, optional value: ON/OFF.Default value: ON.",
+													Description: "Capability 配置 switch，可选 值: ON/OFF.默认值：ON。",
 												},
 												"type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Type, optional value: normal.Default value: normal.Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "类型，可选 值: normal.默认值：normal.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -372,18 +372,18 @@ func ResourceTencentCloudMpsTranscodeTemplate() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "De-scratch configuration.Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "De-scratch 配置.注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"switch": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Capability configuration switch, optional value: ON/OFF.Default value: ON.",
+													Description: "Capability 配置 switch，可选 值: ON/OFF.默认值：ON。",
 												},
 												"intensity": {
 													Type:        schema.TypeFloat,
 													Optional:    true,
-													Description: "Intensity, value range: 0.0~1.0.Default value: 0.0.Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "Intensity，取值范围：0.0~1.0.默认值：0.0.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -392,18 +392,18 @@ func ResourceTencentCloudMpsTranscodeTemplate() *schema.Resource {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "De-artifact (glitch) configuration.Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "De-artifact (glitch) 配置.注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"switch": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Capability configuration switch, optional value: ON/OFF.Default value: ON.",
+													Description: "Capability 配置 switch，可选 值: ON/OFF.默认值：ON。",
 												},
 												"type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Type, optional value: weak/strong.Default value: weak.Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "类型，可选 值: weak/strong.默认值：weak.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},

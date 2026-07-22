@@ -22,50 +22,50 @@ func DataSourceTencentCloudVpcSubnetResourceDashboard() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Subnet instance ID, such as `subnet-f1xjkw1b`.",
+				Description: "子网实例 ID，such 作为 `子网-f1xjkw1b`。",
 			},
 
 			"resource_statistics_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Information of resources returned.",
+				Description: "Information 的 resources 返回。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC instance ID, such as vpc-f1xjkw1b.",
+							Description: "VPC 实例 ID，such 作为 vpc-f1xjkw1b。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Subnet instance ID, such as `subnet-bthucmmy`.",
+							Description: "子网实例 ID，such 作为 `子网-bthucmmy`。",
 						},
 						"ip": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The total number of used IP addresses.",
+							Description: "总数 数量 使用 IP addresses。",
 						},
 						"resource_statistics_item_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Information of associated resources.",
+							Description: "Information 的 associated resources。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"resource_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Resource type, such as CVM, ENI.",
+										Description: "资源类型，such 作为 CVM，ENI。",
 									},
 									"resource_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Resource name.",
+										Description: "资源名称",
 									},
 									"resource_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of resources.",
+										Description: "数量 resources。",
 									},
 								},
 							},
@@ -77,7 +77,7 @@ func DataSourceTencentCloudVpcSubnetResourceDashboard() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

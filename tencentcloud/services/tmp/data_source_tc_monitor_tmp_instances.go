@@ -21,7 +21,7 @@ func DataSourceTencentCloudMonitorTmpInstances() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Query according to one or more instance IDs. The instance ID is like: prom-xxxx. The maximum number of instances requested is 100.",
+				Description: "Query according 到 一个 或 more 实例 IDs. 实例 ID 是 like: prom-xxxx. 最大instances requested 是 100。",
 			},
 
 			"instance_status": {
@@ -30,7 +30,7 @@ func DataSourceTencentCloudMonitorTmpInstances() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Filter according to instance status.\n" +
+				Description: "过滤器 according 到 实例 状态.\n" +
 					"	- 1: Creating;\n" +
 					"	- 2: In operation;\n" +
 					"	- 3: Abnormal;\n" +
@@ -44,7 +44,7 @@ func DataSourceTencentCloudMonitorTmpInstances() *schema.Resource {
 			"instance_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filter according to instance name.",
+				Description: "过滤器 according 到 实例名称",
 			},
 
 			"zones": {
@@ -53,24 +53,24 @@ func DataSourceTencentCloudMonitorTmpInstances() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Filter according to availability area. The availability area is shaped like: ap-Guangzhou-1.",
+				Description: "过滤器 according 到 availability area. availability area 是 shaped like: ap-Guangzhou-1。",
 			},
 
 			"tag_filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter according to tag Key-Value pair. The tag-key is replaced with a specific label key.",
+				Description: "过滤器 according 到 标签 键-值 pair. 标签-键 是 replaced 使用 特定 标签 键",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The key of the tag.",
+							Description: "键 的 标签",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The value of the tag.",
+							Description: "值 的 标签",
 						},
 					},
 				},
@@ -82,13 +82,13 @@ func DataSourceTencentCloudMonitorTmpInstances() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Filter according to ipv4 address.",
+				Description: "过滤器 according 到 ipv4 地址",
 			},
 
 			"instance_charge_type": {
 				Optional: true,
 				Type:     schema.TypeInt,
-				Description: "Filter according to instance charge type.\n" +
+				Description: "过滤器 according 到 实例 charge 类型.\n" +
 					"	- 2: Prepaid;\n" +
 					"	- 3: Postpaid by hour.",
 			},
@@ -96,55 +96,55 @@ func DataSourceTencentCloudMonitorTmpInstances() *schema.Resource {
 			"instance_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Instance details list.",
+				Description: "实例 details 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance id.",
+							Description: "实例 ID",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance name.",
+							Description: "实例名称",
 						},
 						"instance_charge_type": {
 							Type:     schema.TypeInt,
 							Computed: true,
-							Description: "Instance charge type.\n" +
+							Description: "实例 charge 类型.\n" +
 								"	- 2: Prepaid;\n" +
 								"	- 3: Postpaid by hour.",
 						},
 						"region_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Region id.",
+							Description: "地域 ID。",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Zone.",
+							Description: "可用区",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC id.",
+							Description: "VPC ID。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Subnet id.",
+							Description: "子网 ID",
 						},
 						"data_retention_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Data retention time.",
+							Description: "Data retention 时间。",
 						},
 						"instance_status": {
 							Type:     schema.TypeInt,
 							Computed: true,
-							Description: "Filter according to instance status.\n" +
+							Description: "过滤器 according 到 实例 状态.\n" +
 								"	- 1: Creating;\n" +
 								"	- 2: In operation;\n" +
 								"	- 3: Abnormal;\n" +
@@ -157,40 +157,40 @@ func DataSourceTencentCloudMonitorTmpInstances() *schema.Resource {
 						"grafana_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Grafana panel url.",
+							Description: "Grafana panel URL",
 						},
 						"created_at": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Created_at.",
+							Description: "Created_at。",
 						},
 						"enable_grafana": {
 							Type:     schema.TypeInt,
 							Computed: true,
-							Description: "Whether to enable grafana.\n" +
+							Description: "Whether 到 启用 grafana.\n" +
 								"	- 0: closed;\n" +
 								"	- 1: open.",
 						},
 						"ipv4_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IPV4 address.",
+							Description: "IPV4 地址",
 						},
 						"tag_specification": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of tags associated with the instance.",
+							Description: "列表 标签 associated 使用 实例。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The key of the tag.",
+										Description: "键 的 标签",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The value of the tag.",
+										Description: "值 的 标签",
 									},
 								},
 							},
@@ -198,12 +198,12 @@ func DataSourceTencentCloudMonitorTmpInstances() *schema.Resource {
 						"expire_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Expires for purchased instances.",
+							Description: "Expires 对于 purchased 实例。",
 						},
 						"charge_status": {
 							Type:     schema.TypeInt,
 							Computed: true,
-							Description: "Charge status.\n" +
+							Description: "Charge 状态.\n" +
 								"	- 1: Normal;\n" +
 								"	- 2: Expires;\n" +
 								"	- 3: Destruction;\n" +
@@ -213,7 +213,7 @@ func DataSourceTencentCloudMonitorTmpInstances() *schema.Resource {
 						"spec_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Specification name.",
+							Description: "规格名称",
 						},
 						"auto_renew_flag": {
 							Type:     schema.TypeInt,
@@ -227,34 +227,34 @@ func DataSourceTencentCloudMonitorTmpInstances() *schema.Resource {
 						"is_near_expire": {
 							Type:     schema.TypeInt,
 							Computed: true,
-							Description: "Whether it is about to expire.\n" +
+							Description: "Whether 它 是 about 到 expire.\n" +
 								"	- 0: No;\n" +
 								"	- 1: Expiring soon.",
 						},
 						"auth_token": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Token required for data writing.",
+							Description: "令牌 必填 对于 数据 writing。",
 						},
 						"remote_write": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Address of prometheus remote write.",
+							Description: "地址 的 prometheus 远程 write。",
 						},
 						"api_root_path": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Prometheus http api root address.",
+							Description: "Prometheus http api root 地址",
 						},
 						"proxy_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Proxy address.",
+							Description: "Proxy 地址",
 						},
 						"grafana_status": {
 							Type:     schema.TypeInt,
 							Computed: true,
-							Description: "Grafana status.\n" +
+							Description: "Grafana 状态.\n" +
 								"	- 1: Creating;\n" +
 								"	- 2: In operation;\n" +
 								"	- 3: Abnormal;\n" +
@@ -266,43 +266,43 @@ func DataSourceTencentCloudMonitorTmpInstances() *schema.Resource {
 						"grafana_ip_white_list": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Grafana IP whitelist list.",
+							Description: "Grafana IP whitelist 列表。",
 						},
 						"grant": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Authorization information for the instance.",
+							Description: "Authorization 信息 对于 实例。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"has_charge_operation": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Whether you have charging operation authority (1=yes, 2=no).",
+										Description: "Whether 您 have charging operation authority (1=yes，2=无)。",
 									},
 									"has_vpc_display": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Whether to display VPC information (1=yes, 2=no).",
+										Description: "是否display VPC 信息 (1=yes，2=无)。",
 									},
 									"has_grafana_status_change": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Whether the status of Grafana can be modified (1=yes, 2=no).",
+										Description: "是否status 的 Grafana 可以 是 modified (1=yes，2=无)。",
 									},
 									"has_agent_manage": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Whether you have permission to manage the agent (1=yes, 2=no).",
+										Description: "Whether 您 have 权限 到 manage agent (1=yes，2=无)。",
 									},
 									"has_tke_manage": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Whether you have permission to manage TKE integration (1=yes, 2=no).",
+										Description: "Whether 您 have 权限 到 manage TKE integration (1=yes，2=无)。",
 									},
 									"has_api_operation": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Whether to display API and other information (1=yes, 2=no).",
+										Description: "是否display API 和 other 信息 (1=yes，2=无)。",
 									},
 								},
 							},
@@ -310,22 +310,22 @@ func DataSourceTencentCloudMonitorTmpInstances() *schema.Resource {
 						"grafana_instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Binding grafana instance id.",
+							Description: "Binding grafana 实例 ID",
 						},
 						"alert_rule_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Alert rule limit.",
+							Description: "Alert 规则 限制",
 						},
 						"recording_rule_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Pre-aggregation rule limitations.",
+							Description: "Pre-aggregation 规则 limitations。",
 						},
 						"migration_type": {
 							Type:     schema.TypeInt,
 							Computed: true,
-							Description: "Migration status.\n" +
+							Description: "Migration 状态.\n" +
 								"	- 0: Not in migration;\n+" +
 								"	- 1: Migrating, original instance;\n+" +
 								"	- 2: Migrating, target instance.",
@@ -337,7 +337,7 @@ func DataSourceTencentCloudMonitorTmpInstances() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

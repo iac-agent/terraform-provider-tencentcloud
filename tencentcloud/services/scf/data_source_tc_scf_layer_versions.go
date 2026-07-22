@@ -19,7 +19,7 @@ func DataSourceTencentCloudScfLayerVersions() *schema.Resource {
 			"layer_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Layer name.",
+				Description: "Layer 名称",
 			},
 
 			"compatible_runtime": {
@@ -28,13 +28,13 @@ func DataSourceTencentCloudScfLayerVersions() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Compatible runtimes.",
+				Description: "Compatible runtimes。",
 			},
 
 			"layer_versions": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Layer version list.",
+				Description: "Layer 版本 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"compatible_runtimes": {
@@ -43,42 +43,42 @@ func DataSourceTencentCloudScfLayerVersions() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Runtime applicable to a versionNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Runtime applicable 到 version注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"add_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Version descriptionNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "版本 description注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"license_info": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "License informationNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "License information注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"layer_version": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Version number.",
+							Description: "版本 数量。",
 						},
 						"layer_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Layer name.",
+							Description: "Layer 名称",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Current status of specific layer version. For valid values, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81).",
+							Description: "Current 状态 特定 layer 版本 For 有效 值，please see [here](https://intl.云.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)。",
 						},
 						"stamp": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "StampNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Stamp注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -87,7 +87,7 @@ func DataSourceTencentCloudScfLayerVersions() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

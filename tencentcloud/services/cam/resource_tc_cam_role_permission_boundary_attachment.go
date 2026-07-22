@@ -28,7 +28,7 @@ func ResourceTencentCloudCamRolePermissionBoundaryAttachment() *schema.Resource 
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Role ID.",
+				Description: "角色 ID。",
 			},
 
 			"role_id": {
@@ -36,14 +36,14 @@ func ResourceTencentCloudCamRolePermissionBoundaryAttachment() *schema.Resource 
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Role ID (at least one should be filled in with the role name).",
+				Description: "角色 ID (在 least 一个 should 是 filled 在 使用 角色 名称)。",
 			},
 
 			"role_name": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Role name (at least one should be filled in with the role ID).",
+				Description: "角色 名称 (在 least 一个 should 是 filled 在 使用 角色 ID)。",
 			},
 		},
 	}

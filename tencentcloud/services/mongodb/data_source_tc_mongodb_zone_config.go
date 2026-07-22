@@ -17,73 +17,73 @@ func DataSourceTencentCloudMongodbZoneConfig() *schema.Resource {
 			"available_zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The available zone of the Mongodb.",
+				Description: "可用 可用区 的 Mongodb。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to store results.",
+				Description: "用于存储结果。",
 			},
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of zone config. Each element contains the following attributes:",
+				Description: "A 列表 可用区 配置 Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"available_zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The available zone of the Mongodb.",
+							Description: "可用 可用区 的 Mongodb。",
 						},
 						"cluster_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type of Mongodb cluster.",
+							Description: "类型 Mongodb 集群。",
 						},
 						"machine_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type of Mongodb instance.",
+							Description: "类型 Mongodb 实例。",
 						},
 						"cpu": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of cpu's core.",
+							Description: "数量 cpu's core。",
 						},
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Memory size.",
+							Description: "Memory 大小。",
 						},
 						"default_storage": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Default disk size.",
+							Description: "Default 磁盘 大小。",
 						},
 						"min_storage": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Minimum sie of the disk.",
+							Description: "Minimum sie 的 磁盘。",
 						},
 						"max_storage": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum size of the disk.",
+							Description: "Maximum 大小 的 磁盘。",
 						},
 						"engine_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Version of the Mongodb version.",
+							Description: "版本 的 Mongodb 版本",
 						},
 						"min_replicate_set_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Minimum replicate set num for sharding cluster.",
+							Description: "Minimum replicate 集合 num 对于 sharding 集群。",
 						},
 						"max_replicate_set_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum replicate set num for sharding cluster.",
+							Description: "Maximum replicate 集合 num 对于 sharding 集群。",
 						},
 					},
 				},

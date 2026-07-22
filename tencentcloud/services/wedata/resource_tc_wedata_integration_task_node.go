@@ -27,53 +27,53 @@ func ResourceTencentCloudWedataIntegrationTaskNode() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 			"task_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The task id to which the node belongs.",
+				Description: "任务 ID 到 其中 节点 belongs。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Node Name.",
+				Description: "Node 名称",
 			},
 			"node_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Node type: INPUT, OUTPUT, JOIN, FILTER, TRANSFORM.",
+				Description: "Node 类型: INPUT，OUTPUT，JOIN，FILTER，TRANSFORM。",
 			},
 			"data_source_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Data source type: MYSQL, POSTGRE, ORACLE, SQLSERVER, FTP, HIVE, HDFS, ICEBERG, KAFKA, HBASE, SPARK, TBASE, DB2, DM, GAUSSDB, GBASE, IMPALA, ES, S3_DATAINSIGHT, GREENPLUM, PHOENIX, SAP_HANA, SFTP, OCEANBASE, CLICKHOUSE, KUDU, VERTICA, REDIS, COS, DLC, DORIS, CKAFKA, DTS_KAFKA, S3, CDW, TDSQLC, TDSQL, MONGODB, SYBASE, REST_API, StarRocks, TCHOUSE_X.",
+				Description: "Data 来源 类型: MYSQL，POSTGRE，ORACLE，SQLSERVER，FTP，HIVE，HDFS，ICEBERG，KAFKA，HBASE，SPARK，TBASE，DB2，DM，GAUSSDB，GBASE，IMPALA，ES，S3_DATAINSIGHT，GREENPLUM，PHOENIX，SAP_HANA，SFTP，OCEANBASE，CLICKHOUSE，KUDU，VERTICA，REDIS，COS，DLC，DORIS，CKAFKA，DTS_KAFKA，S3，CDW，TDSQLC，TDSQL，MONGODB，SYBASE，REST_API，StarRocks，TCHOUSE_X。",
 			},
 			"task_type": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Task type, 201: real-time task, 202: offline task.",
+				Description: "任务 类型，201: real-时间 任务，202: offline 任务。",
 			},
 			"task_mode": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Task display mode, 0: canvas mode, 1: form mode.",
+				Description: "任务 display 模式，0: canvas 模式，1: form 模式",
 			},
 			//"config": {
 			//	Type:        schema.TypeList,
 			//	Required:    true,
-			//	Description: "Node configuration information.",
+			//	Description: "Node 配置 信息.",
 			//	Elem: &schema.Resource{
 			//		Schema: map[string]*schema.Schema{
 			//			"name": {
 			//				Type:        schema.TypeString,
 			//				Optional:    true,
-			//				Description: "Configuration name.",
+			//				Description: "Configuration 名称.",
 			//			},
 			//			"value": {
 			//				Type:        schema.TypeString,
 			//				Optional:    true,
-			//				Description: "Configuration value.",
+			//				Description: "Configuration 值.",
 			//			},
 			//		},
 			//	},
@@ -83,29 +83,29 @@ func ResourceTencentCloudWedataIntegrationTaskNode() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Node information.",
+				Description: "Node 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"datasource_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Datasource ID.",
+							Description: "Datasource ID。",
 						},
 						"config": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Node configuration information.",
+							Description: "Node 配置 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Configuration name.",
+										Description: "Configuration 名称",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Configuration value.",
+										Description: "Configuration 值",
 									},
 								},
 							},
@@ -113,18 +113,18 @@ func ResourceTencentCloudWedataIntegrationTaskNode() *schema.Resource {
 						"ext_config": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Node extension configuration information.",
+							Description: "Node extension 配置 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Configuration name.",
+										Description: "Configuration 名称",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Configuration value.",
+										Description: "Configuration 值",
 									},
 								},
 							},
@@ -132,44 +132,44 @@ func ResourceTencentCloudWedataIntegrationTaskNode() *schema.Resource {
 						"schema": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Schema information.",
+							Description: "Schema 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Schema ID.",
+										Description: "Schema ID",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Schema name.",
+										Description: "Schema 名称",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Schema type.",
+										Description: "Schema 类型",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Schema value.",
+										Description: "Schema 值",
 									},
 									"properties": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Schema extended attributes.",
+										Description: "Schema extended attributes。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Attributes name.",
+													Description: "Attributes 名称",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Attributes value.",
+													Description: "Attributes 值",
 												},
 											},
 										},
@@ -177,12 +177,12 @@ func ResourceTencentCloudWedataIntegrationTaskNode() *schema.Resource {
 									"alias": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Schema alias.",
+										Description: "Schema 别名",
 									},
 									"comment": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Schema comment.",
+										Description: "Schema 注释",
 									},
 								},
 							},
@@ -191,60 +191,60 @@ func ResourceTencentCloudWedataIntegrationTaskNode() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Node mapping.",
+							Description: "Node mapping。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"source_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Source node ID.",
+										Description: "来源 节点 ID",
 									},
 									"sink_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Sink node ID.",
+										Description: "Sink 节点 ID",
 									},
 									"source_schema": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Source node schema information.",
+										Description: "来源 节点 schema 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"id": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Schema ID.",
+													Description: "Schema ID",
 												},
 												"name": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Schema name.",
+													Description: "Schema 名称",
 												},
 												"type": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Schema type.",
+													Description: "Schema 类型",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Schema value.",
+													Description: "Schema 值",
 												},
 												"properties": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "Schema extended attributes.",
+													Description: "Schema extended attributes。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"name": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Attributes name.",
+																Description: "Attributes 名称",
 															},
 															"value": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Attributes value.",
+																Description: "Attributes 值",
 															},
 														},
 													},
@@ -252,12 +252,12 @@ func ResourceTencentCloudWedataIntegrationTaskNode() *schema.Resource {
 												"alias": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Schema alias.",
+													Description: "Schema 别名",
 												},
 												"comment": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Schema comment.",
+													Description: "Schema 注释",
 												},
 											},
 										},
@@ -265,18 +265,18 @@ func ResourceTencentCloudWedataIntegrationTaskNode() *schema.Resource {
 									"schema_mappings": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Schema mapping information.",
+										Description: "Schema mapping 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"source_schema_id": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Schema ID from source node.",
+													Description: "Schema ID 从 来源 节点。",
 												},
 												"sink_schema_id": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Schema ID from sink node.",
+													Description: "Schema ID 从 sink 节点。",
 												},
 											},
 										},
@@ -284,18 +284,18 @@ func ResourceTencentCloudWedataIntegrationTaskNode() *schema.Resource {
 									"ext_config": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Node extension configuration information.",
+										Description: "Node extension 配置 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Configuration name.",
+													Description: "Configuration 名称",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Configuration value.",
+													Description: "Configuration 值",
 												},
 											},
 										},
@@ -307,37 +307,37 @@ func ResourceTencentCloudWedataIntegrationTaskNode() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "User App Id.",
+							Description: "用户 App ID。",
 						},
 						"creator_uin": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Creator User ID.",
+							Description: "创建者 用户 ID。",
 						},
 						"operator_uin": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Operator User ID.",
+							Description: "操作者 用户 ID。",
 						},
 						"owner_uin": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Owner User ID.",
+							Description: "所有者 用户 ID。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Create time.",
+							Description: "创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Update time.",
+							Description: "更新时间。",
 						},
 					},
 				},
@@ -345,7 +345,7 @@ func ResourceTencentCloudWedataIntegrationTaskNode() *schema.Resource {
 			"node_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Node ID.",
+				Description: "节点 ID",
 			},
 		},
 	}

@@ -27,78 +27,78 @@ func ResourceTencentCloudTsfApplication() *schema.Resource {
 			"application_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Application name.",
+				Description: "Application 名称",
 			},
 
 			"application_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Application type: V for virtual machine, C for container, S for serverless.",
+				Description: "Application 类型: V 对于 virtual machine，C 对于 容器，S 对于 serverless。",
 			},
 
 			"microservice_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Application microservice type: M for service mesh, N for normal application, G for gateway application.",
+				Description: "Application microservice 类型: M 对于 服务 mesh，N 对于 normal 应用，G 对于 网关 应用。",
 			},
 
 			"application_desc": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Application description.",
+				Description: "Application 描述",
 			},
 
 			"application_log_config": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Application log configuration, deprecated parameter.",
+				Description: "Application 日志 配置，已弃用 参数。",
 			},
 
 			"application_resource_type": {
 				Optional:    true,
 				Default:     "DEF",
 				Type:        schema.TypeString,
-				Description: "Application resource type, deprecated parameter.",
+				Description: "Application 资源类型，已弃用 参数。",
 			},
 
 			"application_runtime_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Application runtime type.",
+				Description: "Application runtime 类型",
 			},
 
 			"program_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "ID of the dataset to be bound.",
+				Description: "ID dataset 到 是 bound。",
 			},
 
 			"service_config_list": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "List of service configuration information.",
+				Description: "列表 服务 配置 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Service name.",
+							Description: "服务名称",
 						},
 						"ports": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "List of port information.",
+							Description: "列表 端口 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"target_port": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Service port.",
+										Description: "Service 端口",
 									},
 									"protocol": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Port protocol.",
+										Description: "端口 协议",
 									},
 								},
 							},
@@ -107,13 +107,13 @@ func ResourceTencentCloudTsfApplication() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Health check configuration.",
+							Description: "Health check 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"path": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Health check path.",
+										Description: "Health check 路径",
 									},
 								},
 							},
@@ -125,7 +125,7 @@ func ResourceTencentCloudTsfApplication() *schema.Resource {
 			"ignore_create_image_repository": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Ignore creating image repository.",
+				Description: "Ignore creating 镜像 repository。",
 			},
 
 			"program_id_list": {
@@ -134,7 +134,7 @@ func ResourceTencentCloudTsfApplication() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "N/A.",
+				Description: "N/A。",
 			},
 		},
 	}

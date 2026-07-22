@@ -27,13 +27,13 @@ func ResourceTencentCloudClickhouseBackup() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"cos_bucket_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "COS bucket name.",
+				Description: "COS 存储桶名称",
 			},
 		},
 	}

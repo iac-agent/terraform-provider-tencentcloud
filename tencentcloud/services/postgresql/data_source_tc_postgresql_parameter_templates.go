@@ -19,13 +19,13 @@ func DataSourceTencentCloudPostgresqlParameterTemplates() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter conditions. Valid values:TemplateName, TemplateId, DBMajorVersion, DBEngine.",
+				Description: "过滤器 conditions. 有效 值:TemplateName，TemplateId，DBMajorVersion，DBEngine。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Filter name.",
+							Description: "过滤名称",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -33,7 +33,7 @@ func DataSourceTencentCloudPostgresqlParameterTemplates() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "One or more filter values.",
+							Description: "一个或多个过滤值",
 						},
 					},
 				},
@@ -42,45 +42,45 @@ func DataSourceTencentCloudPostgresqlParameterTemplates() *schema.Resource {
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sorting metric. Valid values:CreateTime, TemplateName, DBMajorVersion.",
+				Description: "Sorting metric. 有效 值:CreateTime，TemplateName，DBMajorVersion。",
 			},
 
 			"order_by_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sorting order. Valid values:asc (ascending order),desc (descending order).",
+				Description: "Sorting 顺序 有效 值:asc (升序),desc (降序)。",
 			},
 
 			"list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "list of parameter templates.",
+				Description: "列表 参数 templates。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"template_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "parameter template ID.",
+							Description: "参数 模板 ID",
 						},
 						"template_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "parameter template name.",
+							Description: "参数 模板名称",
 						},
 						"db_major_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "the database version to which the parameter template applies.",
+							Description: "数据库 版本 到 其中 参数 template applies。",
 						},
 						"db_engine": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "the database engine for which the parameter template applies.",
+							Description: "数据库 引擎 对于 其中 参数 template applies。",
 						},
 						"template_description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "parameter template description.",
+							Description: "参数 模板描述",
 						},
 					},
 				},
@@ -89,7 +89,7 @@ func DataSourceTencentCloudPostgresqlParameterTemplates() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

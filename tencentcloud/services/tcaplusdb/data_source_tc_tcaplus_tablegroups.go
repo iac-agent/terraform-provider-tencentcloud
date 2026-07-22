@@ -17,53 +17,53 @@ func DataSourceTencentCloudTcaplusTableGroups() *schema.Resource {
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Id of the TcaplusDB cluster to be query.",
+				Description: "ID 的 TcaplusDB 集群 到 是 查询。",
 			},
 			"tablegroup_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Id of the table group to be query.",
+				Description: "ID 的 表 组 到 是 查询。",
 			},
 			"tablegroup_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of the table group to be query.",
+				Description: "名称 表 组 到 是 查询。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "File for saving results.",
+				Description: "File 对于 saving results。",
 			},
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of table group. Each element contains the following attributes.",
+				Description: "A 列表 表 组. Each element 包含following attributes。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tablegroup_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the table group.",
+							Description: "名称 表 组。",
 						},
 						"tablegroup_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Id of the table group.",
+							Description: "ID 的 表 组。",
 						},
 						"table_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of tables.",
+							Description: "数量 tables。",
 						},
 						"total_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total storage size (MB).",
+							Description: "Total 存储 大小 (MB)。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create time of the table group..",
+							Description: "创建时间 的 表 组.。",
 						},
 					},
 				},

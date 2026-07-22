@@ -19,28 +19,28 @@ func DataSourceTencentCloudSqlserverRegions() *schema.Resource {
 			"region_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Region information array.",
+				Description: "Region 信息 数组.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region ID in the format of ap-guangzhou.",
+							Description: "Region ID 在 格式 的 ap-guangzhou.",
 						},
 						"region_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region name.",
+							Description: "Region 名称.",
 						},
 						"region_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Numeric ID of region.",
+							Description: "Numeric ID 的 地域.",
 						},
 						"region_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Current purchasability of this region. UNAVAILABLE: not purchasable, AVAILABLE: purchasable.",
+							Description: "Current purchasability 的 此 地域. UNAVAILABLE: 不 purchasable, AVAILABLE: purchasable.",
 						},
 					},
 				},
@@ -49,7 +49,7 @@ func DataSourceTencentCloudSqlserverRegions() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

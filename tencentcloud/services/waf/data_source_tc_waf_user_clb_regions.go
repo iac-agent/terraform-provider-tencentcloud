@@ -20,33 +20,33 @@ func DataSourceTencentCloudWafUserClbRegions() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Region list(ap-xxx format).",
+				Description: "地域 列表(ap-xxx 格式)。",
 			},
 			"rich_datas": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Detail info for region.",
+				Description: "Detail info 对于 地域",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region ID.",
+							Description: "地域 ID",
 						},
 						"text": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Chinese description for region.",
+							Description: "Chinese 描述 对于 地域",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "English description for region.",
+							Description: "English 描述 对于 地域",
 						},
 						"code": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region code.",
+							Description: "地域 代码",
 						},
 					},
 				},
@@ -54,7 +54,7 @@ func DataSourceTencentCloudWafUserClbRegions() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

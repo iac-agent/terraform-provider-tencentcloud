@@ -19,88 +19,88 @@ func DataSourceTencentCloudClickhouseInstanceNodes() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "InstanceId.",
+				Description: "实例 ID",
 			},
 
 			"node_role": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster role type, default is `data` data node.",
+				Description: "Cluster 角色 类型，默认为 `数据` 数据 节点。",
 			},
 
 			"display_policy": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Display strategy, display all when All.",
+				Description: "Display strategy，display all 当 All。",
 			},
 
 			"force_all": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "When true, returns all nodes, that is, the Limit is infinitely large.",
+				Description: "当 true，返回all nodes，该 是， 限制 是 infinitely large。",
 			},
 
 			"instance_nodes_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Total number of instance nodes.",
+				Description: "Total 数量 实例 nodes。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IP Address.",
+							Description: "IP 地址",
 						},
 						"spec": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Model, such as S1.",
+							Description: "Model，such 作为 S1。",
 						},
 						"core": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "CPU cores.",
+							Description: "CPU 核数",
 						},
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Memory size.",
+							Description: "Memory 大小。",
 						},
 						"disk_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Disk type.",
+							Description: "Disk 类型",
 						},
 						"disk_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Disk size.",
+							Description: "Disk 大小。",
 						},
 						"cluster": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the clickhouse cluster to which it belongs.",
+							Description: "名称 clickhouse 集群 到 其中 它 belongs。",
 						},
 						"node_groups": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Group information to which the node belongs.",
+							Description: "Group 信息 到 其中 节点 belongs。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"group_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Group Name.",
+										Description: "Group 名称",
 									},
 									"shard_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Fragmented variable name.",
+										Description: "Fragmented variable 名称",
 									},
 									"replica_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Copy variable name.",
+										Description: "Copy variable 名称",
 									},
 								},
 							},
@@ -108,12 +108,12 @@ func DataSourceTencentCloudClickhouseInstanceNodes() *schema.Resource {
 						"rip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC IP.",
+							Description: "VPC IP。",
 						},
 						"is_ch_proxy": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "When true, it indicates that the chproxy process has been deployed on the node.",
+							Description: "当 true，它 表示that chproxy process has been deployed 在 节点。",
 						},
 					},
 				},
@@ -122,7 +122,7 @@ func DataSourceTencentCloudClickhouseInstanceNodes() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

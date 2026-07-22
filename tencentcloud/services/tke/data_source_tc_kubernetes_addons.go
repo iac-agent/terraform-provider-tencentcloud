@@ -18,50 +18,50 @@ func DataSourceTencentCloudKubernetesAddons() *schema.Resource {
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 
 			"addon_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Add-on name (all add-ons in the cluster are returned if this parameter is not specified).",
+				Description: "Add-在 名称 (all add-ons 在 集群 是 返回 如果 此 参数 是 不 指定)。",
 			},
 
 			"addons": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of add-ons.",
+				Description: "列表 add-ons。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"addon_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Add-on name.",
+							Description: "Add-在 名称",
 						},
 						"addon_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Add-on version.",
+							Description: "Add-在 版本",
 						},
 						"raw_values": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Add-on parameters, which are base64-encoded strings in JSON/\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+							Description: "Add-在 参数，其中 是 base64-encoded strings 在 JSON/\nNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"decode_values": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Decoded add-on parameters (base64 decoded from raw_values).\nNote: This field may return empty string if raw_values is null or invalid base64.",
+							Description: "Decoded add-在 参数 (base64 decoded 从 raw_values).\nNote: 此 字段 可能 返回 空 字符串 如果 raw_values 是 null 或 无效 base64。",
 						},
 						"phase": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Add-on status\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+							Description: "Add-在 状态\nNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"reason": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Reason for add-on failure\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+							Description: "Reason 对于 add-在 failure\nNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 					},
 				},
@@ -70,7 +70,7 @@ func DataSourceTencentCloudKubernetesAddons() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -28,32 +28,32 @@ func ResourceTencentCloudDlcUser() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "Sub-user UIN that needs to be granted permissions. It can be checked through the upper right corner of Tencent Cloud Console -> Account Information -> Account ID.",
+				Description: "Sub-用户 UIN 该 needs 到 是 granted permissions. It 可以 是 checked through upper right corner 的 Tencent Cloud Console -> 账号 Information -> 账号 ID。",
 			},
 
 			"user_description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "User description, which can make it easy to identify different users.",
+				Description: "用户 描述，其中 可以 make 它 easy 到 identify different users。",
 			},
 
 			"user_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Types of users. ADMIN: administrators; COMMON: general users. When the type of user is administrator, the collections of permissions and bound working groups cannot be set. Administrators own all the permissions by default. If the parameter is not filled in, it will be COMMON by default.",
+				Description: "Types 的 users. ADMIN: administrators; COMMON: general users. 当 类型 用户 是 administrator， collections 的 permissions 和 bound working groups 不能 是 集合. Administrators own all permissions 通过 默认值. 如果 参数 是 不 filled 在，它 将 是 COMMON 通过 默认值。",
 			},
 
 			"user_alias": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "User alias, and its characters are less than 50.",
+				Description: "用户 alias，和 its 字符 是 less 比 50。",
 			},
 
 			"work_group_ids": {
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "Collection of IDs of working groups bound to users.",
+				Description: "Collection 的 IDs 的 working groups bound 到 users。",
 			},
 		},
 	}

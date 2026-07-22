@@ -24,13 +24,13 @@ func ResourceTencentCloudCosBucketVersion() *schema.Resource {
 			"bucket": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Bucket format should be [custom name]-[appid], for example `mycos-1258798060`.",
+				Description: "存储桶 格式 should 是 [自定义 名称]-[appid]，对于 示例 `mycos-1258798060`。",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Whether to enable versioning. Valid values: `Suspended`, `Enabled`.",
+				Description: "是否enable versioning. 有效值：`Suspended`，`已启用`。",
 			},
 		},
 	}

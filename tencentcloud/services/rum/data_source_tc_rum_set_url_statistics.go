@@ -19,19 +19,19 @@ func DataSourceTencentCloudRumSetUrlStatistics() *schema.Resource {
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Start time but is represented using a timestamp in seconds.",
+				Description: "Start 时间 但 是 represented 使用 timestamp 在 秒.",
 			},
 
 			"type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Query Data Type. `allcount`:CostType allcount, `data`: CostType group by data, `component`:miniProgram component, `day`:query data in day, `nettype`:query data group by nettype, `performance`:query data group by performance, `version`: CostType sort by version, `platform`: CostType sort by platform, `isp`: CostType sort by isp, `region`: CostType sort by region, `device`: CostType sort by device, `browser`: CostType sort by browser, `ext1`: CostType sort by ext1, `ext2`: CostType sort by ext2, `ext3`: CostType sort by ext3, `ret`: CostType sort by ret, `status`: CostType sort by status, `from`: CostType sort by from, `url`: CostType sort by url, `env`: CostType sort by env.",
+				Description: "Query Data Type. `allcount`:CostType allcount, `数据`: CostType 组 通过 数据, `组件`:miniProgram 组件, `day`:查询 数据 在 day, `nettype`:查询 数据 组 通过 nettype, `performance`:查询 数据 组 通过 performance, `版本`: CostType sort 通过 版本, `平台`: CostType sort 通过 平台, `isp`: CostType sort 通过 isp, `地域`: CostType sort 通过 地域, `device`: CostType sort 通过 device, `browser`: CostType sort 通过 browser, `ext1`: CostType sort 通过 ext1, `ext2`: CostType sort 通过 ext2, `ext3`: CostType sort 通过 ext3, `ret`: CostType sort 通过 ret, `状态`: CostType sort 通过 状态, `从`: CostType sort 通过 从, `url`: CostType sort 通过 url, `env`: CostType sort 通过 env.",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "End time but is represented using a timestamp in seconds.",
+				Description: "End 时间 但 是 represented 使用 timestamp 在 秒.",
 			},
 
 			"project_id": {
@@ -43,109 +43,109 @@ func DataSourceTencentCloudRumSetUrlStatistics() *schema.Resource {
 			"ext_second": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Second Expansion parameter.",
+				Description: "Second Expansion 参数.",
 			},
 
 			"engine": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The browser engine used for data reporting.",
+				Description: "browser 引擎 使用 对于 数据 报告.",
 			},
 
 			"isp": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The internet service provider used for data reporting.",
+				Description: "internet 服务 provider 使用 对于 数据 报告.",
 			},
 
 			"from": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The source page of the data reporting.",
+				Description: "source 页面 的 数据 报告.",
 			},
 
 			"level": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Log level for data reporting(`1`: whitelist, `2`: normal, `4`: error, `8`: promise error, `16`: ajax request error, `32`: js resource load error, `64`: image resource load error, `128`: css resource load error, `256`: console.error, `512`: video resource load error, `1024`: request retcode error, `2048`: sdk self monitor error, `4096`: pv log, `8192`: event log).",
+				Description: "Log 级别 对于 数据 报告(`1`: whitelist, `2`: normal, `4`: 错误, `8`: promise 错误, `16`: ajax 请求 错误, `32`: js 资源 load 错误, `64`: 镜像 资源 load 错误, `128`: css 资源 load 错误, `256`: console.错误, `512`: 视频 资源 load 错误, `1024`: 请求 retcode 错误, `2048`: sdk self 监控 错误, `4096`: pv 日志, `8192`: 事件 日志).",
 			},
 
 			"brand": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The mobile phone brand used for data reporting.",
+				Description: "mobile phone brand 使用 对于 数据 报告.",
 			},
 
 			"area": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The region where the data reporting takes place.",
+				Description: "地域 其中 数据 报告 takes place.",
 			},
 
 			"version_num": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The SDK version used for data reporting.",
+				Description: "SDK 版本 使用 对于 数据 报告.",
 			},
 
 			"platform": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The platform where the data reporting takes place.(`1`: Android, `2`: IOS, `3`: Windows, `4`: Mac, `5`: Linux, `100`: Other).",
+				Description: "平台 其中 数据 报告 takes place.(`1`: Android, `2`: IOS, `3`: Windows, `4`: Mac, `5`: Linux, `100`: Other).",
 			},
 
 			"ext_third": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Third Expansion parameter.",
+				Description: "Third Expansion 参数.",
 			},
 
 			"ext_first": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "First Expansion parameter.",
+				Description: "First Expansion 参数.",
 			},
 
 			"net_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The network type used for data reporting.(`1`: Wifi, `2`: 2G, `3`: 3G, `4`: 4G, `5`: 5G, `6`: 6G, `100`: Unknown).",
+				Description: "网络 类型 使用 对于 数据 报告.(`1`: Wifi, `2`: 2G, `3`: 3G, `4`: 4G, `5`: 5G, `6`: 6G, `100`: Unknown).",
 			},
 
 			"device": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The device used for data reporting.",
+				Description: "device 使用 对于 数据 报告.",
 			},
 
 			"is_abroad": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Whether it is non-China region.`1`: yes; `0`: no.",
+				Description: "Whether 它 是 non-China 地域.`1`: yes; `0`: 无.",
 			},
 
 			"os": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The operating system used for data reporting.",
+				Description: "operating 系统 使用 对于 数据 报告.",
 			},
 
 			"browser": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The browser type used for data reporting.",
+				Description: "browser 类型 使用 对于 数据 报告.",
 			},
 
 			"cost_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The method used for calculating the elapsed time `50`: 50th percentile, `75`: 75th percentile., `90`: 90th percentile., `95`: 95th percentile., `99`: 99th percentile., `99.5`: 99.5th percentile., `avg`: Mean.",
+				Description: "方法 使用 对于 calculating elapsed 时间 `50`: 50th percentile, `75`: 75th percentile., `90`: 90th percentile., `95`: 95th percentile., `99`: 99th percentile., `99.5`: 99.5th percentile., `avg`: Mean.",
 			},
 
 			"env": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The code environment where the data reporting takes place.(`production`: production env, `development`: development env, `gray`: gray env, `pre`: pre env, `daily`: daily env, `local`: local env, `others`: others env).",
+				Description: "代码 环境 其中 数据 报告 takes place.(`production`: production env, `development`: development env, `gray`: gray env, `pre`: pre env, `daily`: daily env, `本地`: 本地 env, `others`: others env).",
 			},
 
 			"package_type": {
@@ -157,13 +157,13 @@ func DataSourceTencentCloudRumSetUrlStatistics() *schema.Resource {
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Return value.",
+				Description: "Return 值.",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

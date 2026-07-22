@@ -18,40 +18,40 @@ func DataSourceTencentCloudWedataProjectRoles() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"role_display_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Role Chinese display name fuzzy search, can only pass one value.",
+				Description: "角色 Chinese display 名称 fuzzy search，可以 仅 pass 一个 值",
 			},
 
 			"items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Role information.",
+				Description: "角色 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"role_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Role ID.",
+							Description: "角色 ID。",
 						},
 						"role_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Role name.",
+							Description: "角色 名称",
 						},
 						"role_display_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Role display name.",
+							Description: "角色 display 名称",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description.",
+							Description: "描述",
 						},
 					},
 				},
@@ -60,7 +60,7 @@ func DataSourceTencentCloudWedataProjectRoles() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

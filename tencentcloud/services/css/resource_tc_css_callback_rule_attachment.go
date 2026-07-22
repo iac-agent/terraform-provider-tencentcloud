@@ -29,21 +29,21 @@ func ResourceTencentCloudCssCallbackRuleAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Streaming domain name.",
+				Description: "Streaming 域名 名称",
 			},
 
 			"app_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The streaming path is consistent with the AppName in the streaming and playback addresses. The default is live.",
+				Description: "streaming 路径 是 consistent 使用 AppName 在 streaming 和 playback addresses. 默认为 live。",
 			},
 
 			"template_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Template ID.",
+				Description: "模板 ID",
 			},
 		},
 	}

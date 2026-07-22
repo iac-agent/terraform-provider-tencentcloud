@@ -19,12 +19,12 @@ func DataSourceTencentCloudSsmProducts() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "List of supported services.",
+				Description: "列表 支持 services。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

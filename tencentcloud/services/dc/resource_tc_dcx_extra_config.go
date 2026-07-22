@@ -26,14 +26,14 @@ func ResourceTencentCloudDcxExtraConfig() *schema.Resource {
 			"direct_connect_tunnel_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "direct connect tunnel id.",
+				Description: "direct connect tunnel ID。",
 			},
 
 			"vlan": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "direct connect tunnel vlan id.",
+				Description: "direct connect tunnel vlan ID。",
 			},
 
 			"bgp_peer": {
@@ -41,20 +41,20 @@ func ResourceTencentCloudDcxExtraConfig() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "idc BGP, Asn, AuthKey.",
+				Description: "idc BGP，Asn，AuthKey。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"asn": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "user idc BGP Asn.",
+							Description: "用户 idc BGP Asn。",
 						},
 						"auth_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "user bgp key.",
+							Description: "用户 bgp 键",
 						},
 					},
 				},
@@ -65,14 +65,14 @@ func ResourceTencentCloudDcxExtraConfig() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "user filter network prefixes.",
+				Description: "用户 过滤器 网络 prefixes。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cidr": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "user network prefixes.",
+							Description: "用户 网络 prefixes。",
 						},
 					},
 				},
@@ -82,49 +82,49 @@ func ResourceTencentCloudDcxExtraConfig() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "direct connect tunnel tencent cloud connect ip.",
+				Description: "direct connect tunnel tencent 云 connect ip。",
 			},
 
 			"tencent_backup_address": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "direct connect tunnel tencent cloud backup connect ip.",
+				Description: "direct connect tunnel tencent 云 备份 connect ip。",
 			},
 
 			"customer_address": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "direct connect tunnel user idc connect ip.",
+				Description: "direct connect tunnel 用户 idc connect ip。",
 			},
 
 			"bandwidth": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "direct connect tunnel bandwidth.",
+				Description: "direct connect tunnel 带宽。",
 			},
 
 			"enable_bgp_community": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "BGP community attribute.",
+				Description: "BGP community attribute。",
 			},
 
 			"bfd_enable": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "be enabled BFD.",
+				Description: "是 已启用 BFD。",
 			},
 
 			"nqa_enable": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "be enabled NQA.",
+				Description: "是 已启用 NQA。",
 			},
 
 			"bfd_info": {
@@ -132,20 +132,20 @@ func ResourceTencentCloudDcxExtraConfig() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "BFD config info.",
+				Description: "BFD 配置 info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"probe_failed_times": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "detect times.",
+							Description: "detect times。",
 						},
 						"interval": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "detect interval.",
+							Description: "detect 间隔。",
 						},
 					},
 				},
@@ -156,26 +156,26 @@ func ResourceTencentCloudDcxExtraConfig() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "NQA config info.",
+				Description: "NQA 配置 info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"probe_failed_times": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "detect times.",
+							Description: "detect times。",
 						},
 						"interval": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "detect interval.",
+							Description: "detect 间隔。",
 						},
 						"destination_ip": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "detect ip.",
+							Description: "detect ip。",
 						},
 					},
 				},
@@ -185,14 +185,14 @@ func ResourceTencentCloudDcxExtraConfig() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "0: disable IPv61: enable IPv6.",
+				Description: "0: disable IPv61: 启用 IPv6。",
 			},
 
 			"jumbo_enable": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "direct connect tunnel support jumbo frame1: enable direct connect tunnel jumbo frame0: disable direct connect tunnel jumbo frame.",
+				Description: "direct connect tunnel support jumbo frame1: 启用 direct connect tunnel jumbo frame0: disable direct connect tunnel jumbo frame。",
 			},
 		},
 	}

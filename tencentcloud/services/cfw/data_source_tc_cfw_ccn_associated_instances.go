@@ -18,34 +18,34 @@ func DataSourceTencentCloudCfwCcnAssociatedInstances() *schema.Resource {
 			"ccn_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "CCN ID.",
+				Description: "CCN ID。",
 			},
 
 			"ccn_associated_instances": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information of instances associated with CCN.",
+				Description: "Information 的 实例 associated 使用 CCN。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance name.",
+							Description: "实例名称",
 						},
 						"ins_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance type.",
+							Description: "实例类型",
 						},
 						"cidr_lst": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "List of network segments for the instance.",
+							Description: "列表 网络 segments 对于 实例。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -53,7 +53,7 @@ func DataSourceTencentCloudCfwCcnAssociatedInstances() *schema.Resource {
 						"instance_region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region where the instance belongs.",
+							Description: "地域 其中 实例 belongs。",
 						},
 					},
 				},
@@ -62,7 +62,7 @@ func DataSourceTencentCloudCfwCcnAssociatedInstances() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

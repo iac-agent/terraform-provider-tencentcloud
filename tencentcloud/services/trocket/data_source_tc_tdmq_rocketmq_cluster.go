@@ -20,13 +20,13 @@ func DataSourceTencentCloudTdmqRocketmqCluster() *schema.Resource {
 			"id_keyword": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search by cluster ID.",
+				Description: "Search 通过 集群 ID。",
 			},
 
 			"name_keyword": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search by cluster name.",
+				Description: "Search 通过 集群名称",
 			},
 
 			"cluster_id_list": {
@@ -35,76 +35,76 @@ func DataSourceTencentCloudTdmqRocketmqCluster() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "Filter by cluster ID.",
+				Description: "过滤器 通过 集群 ID。",
 			},
 
 			"cluster_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Cluster information.",
+				Description: "Cluster 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Basic cluster information.",
+							Description: "Basic 集群 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"remark": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cluster description (up to 128 characters).",
+										Description: "Cluster 描述 (up 到 128 字符)。",
 									},
 									"cluster_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cluster ID.",
+										Description: "集群 ID",
 									},
 									"cluster_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cluster name.",
+										Description: "集群名称",
 									},
 									"region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Region information.",
+										Description: "地域 信息。",
 									},
 									"create_time": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Creation time in milliseconds.",
+										Description: "创建时间 （毫秒）。",
 									},
 									"public_end_point": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Public network access address.",
+										Description: "Public 网络 访问 地址",
 									},
 									"vpc_end_point": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "VPC access address.",
+										Description: "VPC 访问 地址",
 									},
 									"support_namespace_endpoint": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether the namespace access point is supported.",
+										Description: "是否namespace 访问 point 是 支持。",
 									},
 									"vpcs": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Vpc list.",
+										Description: "Vpc 列表。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"vpc_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Vpc ID.",
+													Description: "Vpc ID。",
 												},
 												"subnet_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Subnet ID.",
+													Description: "子网 ID",
 												},
 											},
 										},
@@ -112,12 +112,12 @@ func DataSourceTencentCloudTdmqRocketmqCluster() *schema.Resource {
 									"is_vip": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether it is an exclusive instance.",
+										Description: "是否为an exclusive 实例。",
 									},
 									"rocketmq_flag": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Rocketmq cluster identification.",
+										Description: "Rocketmq 集群 identification。",
 									},
 								},
 							},
@@ -125,53 +125,53 @@ func DataSourceTencentCloudTdmqRocketmqCluster() *schema.Resource {
 						"config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Cluster configuration information.",
+							Description: "Cluster 配置 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"max_tps_per_namespace": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Maximum TPS per namespace.",
+										Description: "Maximum TPS per 命名空间。",
 									},
 									"max_namespace_num": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Maximum number of namespaces.",
+										Description: "最大namespaces。",
 									},
 									"used_namespace_num": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of used namespaces.",
+										Description: "数量 使用 namespaces。",
 									},
 									"max_topic_num": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Maximum number of topics.",
+										Description: "最大topics。",
 									},
 									"used_topic_num": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of used topics.",
+										Description: "数量 使用 topics。",
 									},
 									"max_group_num": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Maximum number of groups.",
+										Description: "最大groups。",
 									},
 									"used_group_num": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of used groups.",
+										Description: "数量 使用 groups。",
 									},
 									"max_retention_time": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Maximum message retention period in milliseconds.",
+										Description: "Maximum 消息 retention 周期 （毫秒）。",
 									},
 									"max_latency_time": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Maximum message delay in millisecond.",
+										Description: "Maximum 消息 延迟 在 millisecond。",
 									},
 								},
 							},
@@ -179,7 +179,7 @@ func DataSourceTencentCloudTdmqRocketmqCluster() *schema.Resource {
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Cluster status. `0`: Creating; `1`: Normal; `2`: Terminating; `3`: Deleted; `4`: Isolated; `5`: Creation failed; `6`: Deletion failed.",
+							Description: "Cluster 状态 `0`: Creating; `1`: Normal; `2`: Terminating; `3`: Deleted; `4`: Isolated; `5`: Creation failed; `6`: Deletion failed。",
 						},
 					},
 				},
@@ -188,7 +188,7 @@ func DataSourceTencentCloudTdmqRocketmqCluster() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

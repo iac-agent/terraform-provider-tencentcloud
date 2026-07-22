@@ -18,18 +18,18 @@ func DataSourceTencentCloudTeoZones() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter criteria. the maximum value of Filters.Values is 20. if this parameter is left empty, all site information authorized under the current appid will be returned. detailed filter criteria are as follows: zone-name: filter by site name; zone-id: filter by site id. the site id is in the format of zone-2noz78a8ev6k; status: filter by site status; tag-key: filter by tag key; tag-value: filter by tag value; alias-zone-name: filter by identical site identifier. when performing a fuzzy query, the fields that support filtering are named zone-name or alias-zone-name.",
+				Description: "过滤器 criteria. 最大 值 的 Filters.Values 是 20. 如果此参数为空，all site 信息 authorized under 当前 appid 将 是 返回. detailed 过滤器 criteria 是 作为 follows: 可用区-名称: 过滤器 通过 站点名称; 可用区-ID: 过滤器 通过 站点 ID 站点 ID 是 在 格式 的 可用区-2noz78a8ev6k; 状态: 过滤器 通过 site 状态; 标签-键: 过滤器 通过 标签键; 标签-值: 过滤器 通过 标签值; alias-可用区-名称: 过滤器 通过 identical site identifier. 当 performing fuzzy 查询， 字段 该 support filtering 是 named 可用区-名称 或 alias-可用区-名称",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Field to be filtered.",
+							Description: "待过滤字段",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Value of the filtered field.",
+							Description: "值 的 filtered 字段。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -37,7 +37,7 @@ func DataSourceTencentCloudTeoZones() *schema.Resource {
 						"fuzzy": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether to enable fuzzy query.",
+							Description: "是否enable fuzzy 查询。",
 						},
 					},
 				},
@@ -46,35 +46,35 @@ func DataSourceTencentCloudTeoZones() *schema.Resource {
 			"order": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sort the returned results according to this field. Values include: `type`: Connection mode; `area`: Acceleration region; `create-time`: Creation time; `zone-name`: Site name; `use-time`: Last used time; `active-status` Effective status. Default value: `create-time`.",
+				Description: "Sort 返回 results according 到 此 字段. Values include: `类型`: Connection 模式; `area`: Acceleration 地域; `create-时间`: 创建时间; `可用区-名称`: 站点名称; `使用-时间`: Last 使用 时间; `活跃-状态` Effective 状态 默认值：`create-时间`。",
 			},
 
 			"direction": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sort direction. If the field value is a number, sort by the numeric value. If the field value is text, sort by the ascill code. Values include: `asc`: From the smallest to largest; `desc`: From the largest to smallest. Default value: `desc`.",
+				Description: "Sort direction. 如果 字段 值 是 数量，排序方式 numeric 值 如果 字段 值 是 text，排序方式 ascill 代码 Values include: `asc`: From smallest 到 largest; `desc`: From largest 到 smallest. 默认值：`desc`。",
 			},
 
 			"zones": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Details of sites.",
+				Description: "Details 的 sites。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"zone_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Site ID.",
+							Description: "站点 ID",
 						},
 						"zone_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The site name.",
+							Description: "站点名称",
 						},
 						"original_name_servers": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "List of name servers used by the site.",
+							Description: "列表 名称 servers 使用 通过 site。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -82,7 +82,7 @@ func DataSourceTencentCloudTeoZones() *schema.Resource {
 						"name_servers": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "The list of name servers assigned by Tencent Cloud.",
+							Description: "列表 名称 servers assigned 通过 Tencent Cloud。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -90,43 +90,43 @@ func DataSourceTencentCloudTeoZones() *schema.Resource {
 						"status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The site status. Values: `active`: The name server is switched to EdgeOne. `pending`: The name server is not switched. `moved`: The name server is changed to other service providers. `deactivated`: The site is blocked. `initializing`: The site is not bound with any plan.",
+							Description: "site 状态 Values: `活跃`: 名称 服务器 是 switched 到 EdgeOne. `pending`: 名称 服务器 是 不 switched. `moved`: 名称 服务器 是 changed 到 other 服务 providers. `deactivated`: site 是 blocked. `initializing`: site 是 不 bound 使用 any plan。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Site access method. Valid values: full: NS access; partial: CNAME access; noDomainAccess: access with no domain name.",
+							Description: "Site 访问 方法. 有效值：full: NS 访问; partial: CNAME 访问; noDomainAccess: 访问 使用 无 域名 名称",
 						},
 						"paused": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Whether the site is disabled.",
+							Description: "是否site 是 已禁用",
 						},
 						"cname_speed_up": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Whether CNAME acceleration is enabled. Values: `enabled`: Enabled; `disabled`: Disabled.",
+							Description: "Whether CNAME acceleration 是 已启用 Values: `已启用`: 已启用; `已禁用`: 已禁用",
 						},
 						"cname_status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "CNAME record access status. Values: `finished`: The site is verified.`pending`: The site is being verified.",
+							Description: "CNAME 记录 访问 状态 Values: `finished`: site 是 verified.`pending`: site 是 being verified。",
 						},
 						"tags": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "The list of resource tags.",
+							Description: "列表 资源 标签",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The tag key. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "标签键 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"tag_value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The tag value. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "标签值 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -134,69 +134,69 @@ func DataSourceTencentCloudTeoZones() *schema.Resource {
 						"resources": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "The list of billable resources.",
+							Description: "列表 billable resources。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The resource ID.",
+										Description: "资源 ID。",
 									},
 									"pay_mode": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Billing mode, `0`: Pay-as-you-go",
+										Description: "Billing 模式，`0`: Pay-作为-您-go",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The creation time.",
+										Description: "创建时间。",
 									},
 									"enable_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The effective time.",
+										Description: "effective 时间。",
 									},
 									"expire_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The expiration time.",
+										Description: "过期时间。",
 									},
 									"status": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The plan status. Values: `normal`: Normal; `isolated`: Isolated; `destroyed`: Terminated.",
+										Description: "plan 状态 Values: `normal`: Normal; `isolated`: Isolated; `destroyed`: Terminated。",
 									},
 									"sv": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "Pricing query parameter",
+										Description: "Pricing 查询 参数",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The parameter key.",
+													Description: "参数 键",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The parameter value.",
+													Description: "参数 值",
 												},
 												"pack": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Quota for a resource. Values: `zone`: Quota for sites; `custom-rule`: Quota for custom rules; `rate-limiting-rule`: Quota for rate limiting rules; `l4-proxy-instance`: Quota for L4 proxy instances. Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Quota 对于 资源. Values: `可用区`: Quota 对于 sites; `自定义-规则`: Quota 对于 自定义 规则; `速率-limiting-规则`: Quota 对于 速率 limiting 规则; `l4-proxy-实例`: Quota 对于 L4 proxy 实例. 注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"instance_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "ID of the L4 proxy instance. Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "ID L4 proxy 实例. 注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"protection_specs": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "The protection specification. Values: `cm_30G`: 30 Gbps base protection bandwidth in **Chinese mainland** service area; `cm_60G`: 60 Gbps base protection bandwidth in **Chinese mainland** service area; `cm_100G`: 100 Gbps base protection bandwidth in **Chinese mainland** service area; `anycast_300G`: 300 Gbps Anycast-based protection in **Global (MLC)** service area; `anycast_unlimited`: Unlimited Anycast-based protection bandwidth in **Global (MLC)** service area; `cm_30G_anycast_300G`: 30 Gbps base protection bandwidth in **Chinese mainland** service area and 300 Gbps Anycast-based protection bandwidth in **Global (MLC)** service area; `cm_30G_anycast_unlimited`: 30 Gbps base protection bandwidth in **Chinese mainland** service area and unlimited Anycast-based protection bandwidth in **Global (MLC)** service area; cm_60G_anycast_300G`: 60 Gbps base protection bandwidth in **Chinese mainland** service area and 300 Gbps Anycast-based protection bandwidth in **Global (MLC)** service area; cm_60G_anycast_unlimited`: 60 Gbps base protection bandwidth in **Chinese mainland** service area and unlimited Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> `cm_100G_anycast_300G`: 100 Gbps base protection bandwidth in **Chinese mainland** service area and 300 Gbps Anycast-based protection bandwidth in **Global (MLC)** service area, cm_100G_anycast_unlimited`: 100 Gbps base protection bandwidth in **Chinese mainland** service area and unlimited Anycast-based protection bandwidth in **Global (MLC)** service area. Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "protection 规格. Values: `cm_30G`: 30 Gbps base protection 带宽 在 **Chinese mainland** 服务 area; `cm_60G`: 60 Gbps base protection 带宽 在 **Chinese mainland** 服务 area; `cm_100G`: 100 Gbps base protection 带宽 在 **Chinese mainland** 服务 area; `anycast_300G`: 300 Gbps Anycast-based protection 在 **Global (MLC)** 服务 area; `anycast_unlimited`: Unlimited Anycast-based protection 带宽 在 **Global (MLC)** 服务 area; `cm_30G_anycast_300G`: 30 Gbps base protection 带宽 在 **Chinese mainland** 服务 area 和 300 Gbps Anycast-based protection 带宽 在 **Global (MLC)** 服务 area; `cm_30G_anycast_unlimited`: 30 Gbps base protection 带宽 在 **Chinese mainland** 服务 area 和 unlimited Anycast-based protection 带宽 在 **Global (MLC)** 服务 area; cm_60G_anycast_300G`: 60 Gbps base protection 带宽 在 **Chinese mainland** 服务 area 和 300 Gbps Anycast-based protection 带宽 在 **Global (MLC)** 服务 area; cm_60G_anycast_unlimited`: 60 Gbps base protection 带宽 在 **Chinese mainland** 服务 area 和 unlimited Anycast-based protection 带宽 在 **Global (MLC)** 服务 area</li><li> `cm_100G_anycast_300G`: 100 Gbps base protection 带宽 在 **Chinese mainland** 服务 area 和 300 Gbps Anycast-based protection 带宽 在 **Global (MLC)** 服务 area，cm_100G_anycast_unlimited`: 100 Gbps base protection 带宽 在 **Chinese mainland** 服务 area 和 unlimited Anycast-based protection 带宽 在 **Global (MLC)** 服务 area. 注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -204,32 +204,32 @@ func DataSourceTencentCloudTeoZones() *schema.Resource {
 									"auto_renew_flag": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Whether to enable auto-renewal. Values: `0`: Default status. `1`: Enable auto-renewal. `2`: Disable auto-renewal.",
+										Description: "是否enable auto-renewal. Values: `0`: Default 状态 `1`: Enable auto-renewal. `2`: Disable auto-renewal。",
 									},
 									"plan_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "ID of the resource associated with the plan.",
+										Description: "ID 资源 associated 使用 plan。",
 									},
 									"area": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Applicable area. Values: `mainland`: Chinese mainland; `overseas`: Regions outside the Chinese mainland; `global`: Global.",
+										Description: "Applicable area. Values: `mainland`: Chinese mainland; `overseas`: Regions outside Chinese mainland; `全局`: Global。",
 									},
 									"group": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The resource type. Values: `plan`: Plan resources; `pay-as-you-go`: Pay-as-you-go resources; `value-added`: Value-added resources. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "资源类型 Values: `plan`: Plan resources; `pay-作为-您-go`: Pay-作为-您-go resources; `值-added`: 值-added resources. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"zone_number": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "The sites that are associated with the current resources. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "sites 该 是 associated 使用 当前 resources. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Resource tag type. Valid values: vodeo: vodeo resource.",
+										Description: "Resource 标签 类型 有效值：vodeo: vodeo 资源。",
 									},
 								},
 							},
@@ -237,34 +237,34 @@ func DataSourceTencentCloudTeoZones() *schema.Resource {
 						"created_on": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The creation time of the site.",
+							Description: "创建时间 的 site。",
 						},
 						"modified_on": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The modification date of the site.",
+							Description: "modification date 的 site。",
 						},
 						"area": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The site access region. Values: `global`: Global. `mainland`: Chinese mainland. `overseas`: Outside the Chinese mainland.",
+							Description: "site 访问 地域 Values: `全局`: Global. `mainland`: Chinese mainland. `overseas`: Outside Chinese mainland。",
 						},
 						"vanity_name_servers": {
 							Type:        schema.TypeList,
 							Required:    true,
 							MaxItems:    1,
-							Description: "The custom name server information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "自定义 名称 服务器 信息.\n注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"switch": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Whether to enable custom name servers. Values: `on`: Enable; `off`: Disable.",
+										Description: "是否enable 自定义 名称 servers. Values: `在`: Enable; `关闭`: Disable。",
 									},
 									"servers": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "List of custom name servers",
+										Description: "列表 自定义 名称 servers",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -275,18 +275,18 @@ func DataSourceTencentCloudTeoZones() *schema.Resource {
 						"vanity_name_servers_ips": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "The custom name server IP information. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "自定义 名称 服务器 IP 信息. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Custom name of the name server",
+										Description: "Custom 名称 名称 服务器",
 									},
 									"i_pv4": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "IPv4 address of the custom name server",
+										Description: "IPv4 地址 的 自定义 名称 服务器",
 									},
 								},
 							},
@@ -294,51 +294,51 @@ func DataSourceTencentCloudTeoZones() *schema.Resource {
 						"active_status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Status of the proxy. Values: `active`: Enabled; `inactive`: Not activated; `paused`: Disabled.",
+							Description: "状态 proxy. Values: `活跃`: 已启用; `inactive`: Not activated; `paused`: 已禁用",
 						},
 						"alias_zone_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The site alias. It can be up to 20 characters consisting of digits, letters, hyphens (-) and underscores (_). Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "site alias. It 可以 是 up 到 20 字符 consisting 的 digits，letters，hyphens (-) 和 underscores (_). 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"is_fake": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Whether it is a fake site. Valid values: `0`: Non-fake site; `1`: Fake site.",
+							Description: "是否为a fake site. 有效值：`0`: Non-fake site; `1`: Fake site。",
 						},
 						"lock_status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Lock status. Values: `enable`: Normal. Modification is allowed. `disable`: Locked. Modification is not allowed. `plan_migrate`: Adjusting the plan. Modification is not allowed.",
+							Description: "Lock 状态 Values: `启用`: Normal. Modification 是 allowed. `disable`: Locked. Modification 是 不 allowed. `plan_migrate`: Adjusting plan. Modification 是 不 allowed。",
 						},
 						"ownership_verification": {
 							Type:        schema.TypeList,
 							Required:    true,
 							MaxItems:    1,
-							Description: "Ownership verification information. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Ownership verification 信息. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"dns_verification": {
 										Type:        schema.TypeList,
 										Required:    true,
 										MaxItems:    1,
-										Description: "CNAME, when there is no domain name access, the information required for DNS resolution verification is used. For details, refer to [Site/Domain Ownership Verification\n](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1#7af6ecf8-afca-4e35-8811-b5797ed1bde5). Note: This field may return null, which indicates a failure to obtain a valid value.",
+										Description: "CNAME，当 there 是 无 域名 名称 访问， 信息 必填 对于 DNS resolution verification 是 使用. For details，refer 到 [Site/域名 Ownership Verification\n](https://intl.云.tencent.com/document/product/1552/70789?from_cn_redirect=1#7af6ecf8-afca-4e35-8811-b5797ed1bde5). 注意: 此 字段 可能 返回 null，其中 表示a failure 到 obtain 有效 值",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"subdomain": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The host record.",
+													Description: "主机 记录。",
 												},
 												"record_type": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The record type.",
+													Description: "记录 类型",
 												},
 												"record_value": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The record value.",
+													Description: "记录 值",
 												},
 											},
 										},
@@ -347,18 +347,18 @@ func DataSourceTencentCloudTeoZones() *schema.Resource {
 										Type:        schema.TypeList,
 										Required:    true,
 										MaxItems:    1,
-										Description: "CNAME, when there is no domain name access, the information required for file verification is used. For details, refer to [Site/Domain Ownership Verification\n](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1#7af6ecf8-afca-4e35-8811-b5797ed1bde5). Note: This field may return null, which indicates a failure to obtain a valid value.",
+										Description: "CNAME，当 there 是 无 域名 名称 访问， 信息 必填 对于 文件 verification 是 使用. For details，refer 到 [Site/域名 Ownership Verification\n](https://intl.云.tencent.com/document/product/1552/70789?from_cn_redirect=1#7af6ecf8-afca-4e35-8811-b5797ed1bde5). 注意: 此 字段 可能 返回 null，其中 表示a failure 到 obtain 有效 值",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"path": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "EdgeOne obtains the file verification information in the format of \"Scheme + Host + URL Path\", (e.g. https://www.example.com/.well-known/teo-verification/z12h416twn.txt). This field is the URL path section of the URL you need to create.",
+													Description: "EdgeOne obtains 文件 verification 信息 在 格式 的 \"Scheme + Host + URL Path\", (e.g. https://www.示例.com/.well-known/teo-verification/z12h416twn.txt). 此 字段 是 URL 路径 section 的 URL 您 need 到 create.",
 												},
 												"content": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Content of the verification file. The contents of this field need to be filled into the text file returned by `Path`.",
+													Description: "内容 的 verification 文件. contents 的 此 字段 need 到 是 filled into text 文件 返回 通过 `路径`。",
 												},
 											},
 										},
@@ -367,13 +367,13 @@ func DataSourceTencentCloudTeoZones() *schema.Resource {
 										Type:        schema.TypeList,
 										Required:    true,
 										MaxItems:    1,
-										Description: "u200cInformation required for switching DNS servers. It's applicable to sites connected via NSs. For details, see [Modifying DNS Server](https://intl.cloud.tencent.com/document/product/1552/90452?from_cn_redirect=1).\nNote: This field may return·null, indicating that no valid values can be obtained.",
+										Description: "u200cInformation 必填 对于 switching DNS servers. It's applicable 到 sites connected via NSs. For details，see [Modifying DNS Server](https://intl.云.tencent.com/document/product/1552/90452?from_cn_redirect=1).\nNote: 此 字段 可能 返回·null，indicating 该 无 有效 值 可以 是 获取。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name_servers": {
 													Type:        schema.TypeSet,
 													Required:    true,
-													Description: "The DNS server address assigned to the user when connecting a site to EO via NS. You need to switch the NameServer of the domain name to this address.",
+													Description: "DNS 服务器 地址 assigned 到 用户 当 connecting site 到 EO via NS. You need 到 switch NameServer 的 域名 名称 到 此 地址",
 													Elem: &schema.Schema{
 														Type: schema.TypeString,
 													},
@@ -391,7 +391,7 @@ func DataSourceTencentCloudTeoZones() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -19,7 +19,7 @@ func DataSourceTencentCloudLighthouseZone() *schema.Resource {
 			"order_field": {
 				Optional: true,
 				Type:     schema.TypeString,
-				Description: "Sorting field. Valid values:\n" +
+				Description: "Sorting 字段. 有效 值:\n" +
 					"- ZONE: Sort by the availability zone.\n" +
 					"- INSTANCE_DISPLAY_LABEL: Sort by visibility labels (HIDDEN, NORMAL and SELECTED). Default: [HIDDEN, NORMAL, SELECTED].\n" +
 					"Sort by availability zone by default.",
@@ -28,7 +28,7 @@ func DataSourceTencentCloudLighthouseZone() *schema.Resource {
 			"order": {
 				Optional: true,
 				Type:     schema.TypeString,
-				Description: "Specifies how availability zones are listed. Valid values:\n" +
+				Description: "Specifies how availability zones 是 listed. 有效 值:\n" +
 					"- ASC: Ascending sort.\n" +
 					"- DESC: Descending sort.\n" +
 					"The default value is ASC.",
@@ -36,23 +36,23 @@ func DataSourceTencentCloudLighthouseZone() *schema.Resource {
 			"zone_info_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of zone info.",
+				Description: "列表 可用区 info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Availability zone.",
+							Description: "Availability 可用区",
 						},
 						"zone_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Chinese name of availability zone.",
+							Description: "Chinese 名称 availability 可用区",
 						},
 						"instance_display_label": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance purchase page availability zone display label.",
+							Description: "实例 purchase 页面 availability 可用区 display 标签",
 						},
 					},
 				},
@@ -61,7 +61,7 @@ func DataSourceTencentCloudLighthouseZone() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

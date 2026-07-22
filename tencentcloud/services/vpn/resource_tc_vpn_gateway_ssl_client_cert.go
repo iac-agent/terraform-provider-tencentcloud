@@ -27,7 +27,7 @@ func ResourceTencentCloudVpnGatewaySslClientCert() *schema.Resource {
 			"ssl_vpn_client_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "SSL-VPN-CLIENT Instance ID.",
+				Description: "SSL-VPN-CLIENT 实例 ID",
 			},
 
 			"switch": {
@@ -35,7 +35,7 @@ func ResourceTencentCloudVpnGatewaySslClientCert() *schema.Resource {
 				Type:         schema.TypeString,
 				Default:      "on",
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"on", "off"}),
-				Description:  "`on`: Enable, `off`: Disable.",
+				Description:  "`在`: Enable，`关闭`: Disable。",
 			},
 		},
 	}

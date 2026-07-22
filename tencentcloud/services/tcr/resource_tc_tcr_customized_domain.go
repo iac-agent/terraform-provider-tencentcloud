@@ -31,27 +31,27 @@ func ResourceTencentCloudTcrCustomizedDomain() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"domain_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "custom domain name.",
+				Description: "自定义 域名 名称",
 			},
 
 			"certificate_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "certificate id.",
+				Description: "证书 ID。",
 			},
 
 			"tags": {
 				Optional:    true,
 				Type:        schema.TypeMap,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 		},
 	}

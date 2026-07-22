@@ -22,70 +22,70 @@ func DataSourceTencentCloudTCRRepositories() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of the TCR instance that the repository belongs to.",
+				Description: "ID TCR 实例 该 repository belongs 到。",
 			},
 			"namespace_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Name of the namespace that the repository belongs to.",
+				Description: "名称 命名空间 该 repository belongs 到。",
 			},
 			"repository_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the TCR repositories to query.",
+				Description: "ID TCR repositories 到 查询。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// Computed values
 			"repository_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information list of the dedicated TCR repositories.",
+				Description: "Information 列表 dedicated TCR repositories。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of repository.",
+							Description: "名称 repository。",
 						},
 						"namespace_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the namespace that the repository belongs to.",
+							Description: "名称 命名空间 该 repository belongs 到。",
 						},
 						"is_public": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Indicate that the repository is public or not.",
+							Description: "Indicate 该 repository 是 公有 或 不。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create time.",
+							Description: "创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last update time.",
+							Description: "Last 更新时间。",
 						},
 						"brief_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Brief description of the repository.",
+							Description: "Brief 描述 repository。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description of the repository.",
+							Description: "描述 repository。",
 						},
 						"url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "URL of the repository.",
+							Description: "URL 的 repository。",
 						},
 					},
 				},

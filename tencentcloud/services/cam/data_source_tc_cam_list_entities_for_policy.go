@@ -19,51 +19,51 @@ func DataSourceTencentCloudCamListEntitiesForPolicy() *schema.Resource {
 			"policy_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Policy Id.",
+				Description: "Policy ID。",
 			},
 
 			"rp": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Per page size, default value is 20.",
+				Description: "Per 每页数量，默认值为 20。",
 			},
 
 			"entity_filter": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Can take values of &amp;amp;#39;All&amp;amp;#39;, &amp;amp;#39;User&amp;amp;#39;, &amp;amp;#39;Group&amp;amp;#39;, and &amp;amp;#39;Role&amp;amp;#39;. &amp;amp;#39;All&amp;amp;#39; represents obtaining all entity types, &amp;amp;#39;User&amp;amp;#39; represents only obtaining sub accounts, &amp;amp;#39;Group&amp;amp;#39; represents only obtaining user groups, and &amp;amp;#39;Role&amp;amp;#39; represents only obtaining roles. The default value is&amp;amp;#39; All &amp;amp;#39;.",
+				Description: "Can take 值 的 &amp;amp;#39;All&amp;amp;#39;，&amp;amp;#39;用户&amp;amp;#39;，&amp;amp;#39;Group&amp;amp;#39;，和 &amp;amp;#39;角色&amp;amp;#39;. &amp;amp;#39;All&amp;amp;#39; 表示 obtaining all entity types，&amp;amp;#39;用户&amp;amp;#39; 表示 仅 obtaining sub accounts，&amp;amp;#39;Group&amp;amp;#39; 表示 仅 obtaining 用户 groups，和 &amp;amp;#39;角色&amp;amp;#39; 表示 仅 obtaining roles. 默认值 是&amp;amp;#39; All &amp;amp;#39;。",
 			},
 
 			"list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Entity ListNote: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "Entity List注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Entity ID.",
+							Description: "Entity ID。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Entity NameNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Entity Name注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"uin": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Entity UinNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Entity Uin注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"related_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Association type. 1. User association; 2 User Group Association.",
+							Description: "Association 类型 1. 用户 association; 2 用户 Group Association。",
 						},
 						"attachment_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Policy association timeNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Policy association time注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -72,7 +72,7 @@ func DataSourceTencentCloudCamListEntitiesForPolicy() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

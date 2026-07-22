@@ -19,33 +19,33 @@ func DataSourceTencentCloudSqlserverBackupUploadSize() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID of imported target instance.",
+				Description: "ID 的 imported 目标 实例.",
 			},
 			"backup_migration_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Backup import task ID, which is returned through the API CreateBackupMigration.",
+				Description: "Backup import 任务 ID, 其中 是 返回 through API CreateBackupMigration.",
 			},
 			"incremental_migration_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Incremental import task ID.",
+				Description: "Incremental import 任务 ID.",
 			},
 			"cos_upload_backup_file_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Information of uploaded backups.",
+				Description: "Information 的 uploaded backups.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"file_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Backup name.",
+							Description: "Backup 名称.",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Backup size.",
+							Description: "Backup 大小.",
 						},
 					},
 				},
@@ -53,7 +53,7 @@ func DataSourceTencentCloudSqlserverBackupUploadSize() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

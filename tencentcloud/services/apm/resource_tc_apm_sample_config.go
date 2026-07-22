@@ -28,43 +28,43 @@ func ResourceTencentCloudApmSampleConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Business system ID.",
+				Description: "Business 系统 ID。",
 			},
 
 			"sample_rate": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Sampling rate.",
+				Description: "Sampling 速率。",
 			},
 
 			"service_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Application name.",
+				Description: "Application 名称",
 			},
 
 			"sample_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Sampling rule name.",
+				Description: "Sampling 规则 名称",
 			},
 
 			"tags": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Sampling tags.",
+				Description: "Sampling 标签",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Key value definition.",
+							Description: "键 值 definition。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Value definition.",
+							Description: "值 definition。",
 						},
 					},
 				},
@@ -73,13 +73,13 @@ func ResourceTencentCloudApmSampleConfig() *schema.Resource {
 			"operation_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "API name.",
+				Description: "API 名称",
 			},
 
 			"operation_type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "0: exact match (default); 1: prefix match; 2: suffix match.",
+				Description: "0: exact match (默认值); 1: prefix match; 2: suffix match。",
 			},
 		},
 	}

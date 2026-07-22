@@ -19,39 +19,39 @@ func DataSourceTencentCloudVpcProductQuota() *schema.Resource {
 			"product": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The name of the network product to be queried. The products that can be queried are:vpc, ccn, vpn, dc, dfw, clb, eip.",
+				Description: "名称 网络 product 到 是 queried. products 该 可以 是 queried 是:vpc，ccn，vpn，dc，dfw，clb，eip。",
 			},
 
 			"product_quota_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "ProductQuota Array.",
+				Description: "ProductQuota Array。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"quota_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Quota Id.",
+							Description: "Quota ID。",
 						},
 						"quota_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Quota name.",
+							Description: "Quota 名称",
 						},
 						"quota_current": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Current Quota.",
+							Description: "Current Quota。",
 						},
 						"quota_limit": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Quota limit.",
+							Description: "Quota 限制",
 						},
 						"quota_region": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Quota region.",
+							Description: "Quota 地域",
 						},
 					},
 				},
@@ -60,7 +60,7 @@ func DataSourceTencentCloudVpcProductQuota() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

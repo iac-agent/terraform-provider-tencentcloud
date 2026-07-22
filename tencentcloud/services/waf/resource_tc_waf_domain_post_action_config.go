@@ -26,21 +26,21 @@ func ResourceTencentCloudWafDomainPostActionConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Domain.",
+				Description: "域名",
 			},
 
 			"post_cls_action": {
 				Type:         schema.TypeInt,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
-				Description:  "0- Disable shipping, 1- Enable shipping.",
+				Description:  "0- Disable shipping，1- Enable shipping。",
 			},
 
 			"post_ckafka_action": {
 				Type:         schema.TypeInt,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
-				Description:  "0- Disable shipping, 1- Enable shipping.",
+				Description:  "0- Disable shipping，1- Enable shipping。",
 			},
 		},
 	}

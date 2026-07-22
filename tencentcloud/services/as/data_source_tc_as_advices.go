@@ -22,45 +22,45 @@ func DataSourceTencentCloudAsAdvices() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of scaling groups to be queried. Upper limit: 100.",
+				Description: "列表 scaling groups 到 是 queried. Upper 限制: 100。",
 			},
 
 			"auto_scaling_advice_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "A collection of suggestions for scaling group configurations.",
+				Description: "A collection 的 suggestions 对于 scaling 组 configurations。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"auto_scaling_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Auto scaling group ID.",
+							Description: "Auto scaling 组 ID",
 						},
 						"level": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scaling group warning level. Valid values: NORMAL, WARNING, CRITICAL.",
+							Description: "Scaling 组 警告 级别 有效值：NORMAL，WARNING，CRITICAL。",
 						},
 						"advices": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "A collection of suggestions for scaling group configurations.",
+							Description: "A collection 的 suggestions 对于 scaling 组 configurations。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"problem": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Problem Description.",
+										Description: "Problem 描述",
 									},
 									"detail": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Problem Details.",
+										Description: "Problem Details。",
 									},
 									"solution": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Recommended resolutions.",
+										Description: "Recommended resolutions。",
 									},
 								},
 							},
@@ -72,7 +72,7 @@ func DataSourceTencentCloudAsAdvices() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

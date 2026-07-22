@@ -28,21 +28,21 @@ func ResourceTencentCloudDlcBindWorkGroupsToUserAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "Information about bound working groups and users.",
+				Description: "Information about bound working groups 和 users。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"user_id": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "User ID, which matches Uin on the CAM side.",
+							Description: "用户 ID，其中 matches Uin 在 CAM side。",
 						},
 						"work_group_ids": {
 							Type:        schema.TypeSet,
 							Required:    true,
 							ForceNew:    true,
 							Elem:        &schema.Schema{Type: schema.TypeInt},
-							Description: "Collections of IDs of working groups.",
+							Description: "Collections 的 IDs 的 working groups。",
 						},
 					},
 				},

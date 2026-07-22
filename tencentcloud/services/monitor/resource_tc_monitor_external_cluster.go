@@ -27,39 +27,39 @@ func ResourceTencentCloudMonitorExternalCluster() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"cluster_region": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Cluster region.",
+				Description: "Cluster 地域",
 			},
 
 			"cluster_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Cluster name.",
+				Description: "集群名称",
 			},
 
 			"external_labels": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "External labels.",
+				Description: "External labels。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Label name.",
+							Description: "标签 名称",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Label value.",
+							Description: "标签值",
 						},
 					},
 				},
@@ -69,26 +69,26 @@ func ResourceTencentCloudMonitorExternalCluster() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Whether to enable public network access.",
+				Description: "是否enable 公有 网络 访问。",
 			},
 
 			// computed
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 
 			"cluster_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Cluster type, returned by API.",
+				Description: "集群类型，返回 通过 API。",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Agent status.",
+				Description: "Agent 状态",
 			},
 		},
 	}

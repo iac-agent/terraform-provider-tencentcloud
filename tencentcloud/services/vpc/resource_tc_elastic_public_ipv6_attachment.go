@@ -26,27 +26,27 @@ func ResourceTencentCloudElasticPublicIpv6Attachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Elastic IPv6 unique ID, EIPv6 unique ID is like eipv6-11112222.",
+				Description: "Elastic IPv6 唯一 ID，EIPv6 唯一 ID 是 like eipv6-11112222。",
 			},
 
 			"network_interface_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Elastic Network Interface ID to bind. Elastic Network Interface ID is like eni-11112222. NetworkInterfaceId and InstanceId cannot be specified simultaneously. The Elastic Network Interface ID can be queried by logging in to the console, or obtained through the networkInterfaceId in the return value of the DescribeNetworkInterfaces interface.",
+				Description: "Elastic Network Interface ID 到 bind. Elastic Network Interface ID 是 like eni-11112222. NetworkInterfaceId 和 实例 ID 不能 是 指定 simultaneously. Elastic Network Interface ID 可以 是 queried 通过 日志记录 在 到 console，或 获取 through networkInterfaceId 在 返回值 的 DescribeNetworkInterfaces interface。",
 			},
 
 			"private_ipv6_address": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "The intranet IPv6 to bind. If NetworkInterfaceId is specified, PrivateIPv6Address must also be specified, which means that the EIP is bound to the specified private network IP of the specified Elastic Network Interface. Also ensure that the specified PrivateIPv6Address is an intranet IPv6 on the specified NetworkInterfaceId. The intranet IPv6 of the specified Elastic Network Interface can be queried by logging in to the console, or obtained through the Ipv6AddressSet.Address in the return value of the DescribeNetworkInterfaces interface.",
+				Description: "intranet IPv6 到 bind. 如果 NetworkInterfaceId 是 指定，PrivateIPv6Address 必须 also 是 指定，其中 表示 该 EIP 是 bound 到 指定 私有 网络 IP 的 指定 Elastic Network Interface. Also ensure 该 指定 PrivateIPv6Address 是 intranet IPv6 在 指定 NetworkInterfaceId. intranet IPv6 的 指定 Elastic Network Interface 可以 是 queried 通过 日志记录 在 到 console，或 获取 through Ipv6AddressSet.地址 在 返回值 的 DescribeNetworkInterfaces interface。",
 			},
 
 			"keep_bind_with_eni": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to keep the Elastic Network Interface bound when unbinding.",
+				Description: "是否keep Elastic Network Interface bound 当 unbinding。",
 			},
 		},
 	}

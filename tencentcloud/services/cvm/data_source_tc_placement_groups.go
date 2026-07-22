@@ -21,60 +21,60 @@ func DataSourceTencentCloudPlacementGroups() *schema.Resource {
 			"placement_group_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the placement group to be queried.",
+				Description: "ID placement 组 到 是 queried。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of the placement group to be queried.",
+				Description: "名称 placement 组 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			"placement_group_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information list of placement group. Each element contains the following attributes:",
+				Description: "An 信息 列表 placement 组. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"placement_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the placement group.",
+							Description: "ID placement 组。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the placement group.",
+							Description: "名称 placement 组。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type of the placement group.",
+							Description: "类型 placement 组。",
 						},
 						"cvm_quota_total": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum number of hosts in the placement group.",
+							Description: "最大hosts 在 placement 组。",
 						},
 						"current_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of hosts in the placement group.",
+							Description: "数量 hosts 在 placement 组。",
 						},
 						"instance_ids": {
 							Type:        schema.TypeList,
 							Computed:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Host IDs in the placement group.",
+							Description: "主机 IDs 在 placement 组。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time of the placement group.",
+							Description: "创建时间 的 placement 组。",
 						},
 					},
 				},

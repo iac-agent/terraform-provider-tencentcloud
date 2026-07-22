@@ -30,7 +30,7 @@ func ResourceTencentCloudEipAssociation() *schema.Resource {
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 25),
-				Description:  "The ID of EIP.",
+				Description:  "ID EIP。",
 			},
 			"instance_id": {
 				Type:     schema.TypeString,
@@ -42,7 +42,7 @@ func ResourceTencentCloudEipAssociation() *schema.Resource {
 					"private_ip",
 				},
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 25),
-				Description:  "The ID of the target resource to associate with the Elastic IP (EIP). Supported targets include a CVM instance, SaaS WAF instance, CLB instance, or a VPC endpoint.\nLimitation (GWLB VPC endpoint): Only an EIP in the bound state can be associated with a GWLB-type VPC endpoint through this field, enabling more advanced networking scenarios.\nMutual exclusivity: This field conflicts with `network_interface_id` and `private_ip`. Only one association target can be specified per request.",
+				Description:  "ID 目标 资源 到 associate 使用 Elastic IP (EIP). Supported targets include CVM 实例，SaaS WAF 实例，CLB 实例，或 VPC 端点.\nLimitation (GWLB VPC 端点): Only EIP 在 bound state 可以 是 associated 使用 GWLB-类型 VPC 端点 through 此 字段，enabling more advanced networking scenarios.\nMutual exclusivity: 此 字段 conflicts 使用 `network_interface_id` 和 `private_ip`. Only 一个 association 目标 可以 是 指定 per 请求。",
 			},
 			"network_interface_id": {
 				Type:         schema.TypeString,
@@ -53,7 +53,7 @@ func ResourceTencentCloudEipAssociation() *schema.Resource {
 				ConflictsWith: []string{
 					"instance_id",
 				},
-				Description: "Indicates the network interface id like `eni-xxxxxx`. This field is conflict with `instance_id`.",
+				Description: "表示network interface ID like `eni-xxxxxx`. 此 字段 是 conflict 使用 `instance_id`。",
 			},
 			"private_ip": {
 				Type:         schema.TypeString,
@@ -64,14 +64,14 @@ func ResourceTencentCloudEipAssociation() *schema.Resource {
 				ConflictsWith: []string{
 					"instance_id",
 				},
-				Description: "Indicates an IP belongs to the `network_interface_id`. This field is conflict with `instance_id`.",
+				Description: "表示an IP belongs 到 `network_interface_id`. 此 字段 是 conflict 使用 `instance_id`。",
 			},
 
 			// computed
 			"cdc_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "ID of the dedicated cluster.",
+				Description: "ID dedicated 集群。",
 			},
 		},
 	}

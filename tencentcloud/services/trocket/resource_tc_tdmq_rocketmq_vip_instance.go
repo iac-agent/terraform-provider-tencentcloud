@@ -28,47 +28,47 @@ func ResourceTencentCloudTdmqRocketmqVipInstance() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance name.",
+				Description: "实例名称",
 			},
 			"spec": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance specification: Universal type, rocket-vip-basic-0, Basic type: `rocket-vip-basic-1`, Standard type: `rocket-vip-basic-2`, Advanced Type I: `rocket-vip-basic-3`, Advanced Type II: `rocket-vip-basic-4`.",
+				Description: "实例 规格: Universal 类型，rocket-VIP-basic-0，Basic 类型: `rocket-VIP-basic-1`，Standard 类型: `rocket-VIP-basic-2`，Advanced 类型 I: `rocket-VIP-basic-3`，Advanced 类型 II: `rocket-VIP-basic-4`。",
 			},
 			"node_count": {
 				Required:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateIntegerInRange(2, 20),
-				Description:  "Number of nodes, minimum 2, maximum 20.",
+				Description:  "节点数量，最小 2，最大 20。",
 			},
 			"storage_size": {
 				Required:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateIntegerMin(200),
-				Description:  "Single node storage space, in GB, minimum 200GB.",
+				Description:  "Single 节点 存储 space，（GB）， 最小 200GB。",
 			},
 			"zone_ids": {
 				Required:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "The Zone ID list for node deployment, such as Guangzhou Zone 1, is 100001. For details, please refer to the official website of Tencent Cloud.",
+				Description: "可用区 ID 列表 对于 节点 部署，such 作为 Guangzhou 可用区 1，是 100001. For details，please refer 到 official website 的 Tencent Cloud。",
 			},
 			"vpc_info": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "VPC information.",
+				Description: "VPC 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "VPC ID.",
+							Description: "私有网络 ID",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Subnet ID.",
+							Description: "子网 ID",
 						},
 					},
 				},
@@ -76,28 +76,28 @@ func ResourceTencentCloudTdmqRocketmqVipInstance() *schema.Resource {
 			"time_span": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Purchase period, in months.",
+				Description: "Purchase 周期，在 months。",
 			},
 			"ip_rules": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Public IP access control rules.",
+				Description: "Public IP 访问 control 规则。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ip_rule": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "IP address block information.",
+							Description: "IP 地址 block 信息。",
 						},
 						"allow": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Whether to allow or deny.",
+							Description: "是否allow 或 deny。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Remark.",
+							Description: "备注",
 						},
 					},
 				},

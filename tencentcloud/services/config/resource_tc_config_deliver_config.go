@@ -25,44 +25,44 @@ func ResourceTencentCloudConfigDeliverConfig() *schema.Resource {
 			"status": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Delivery switch. Valid values: 0 (disabled), 1 (enabled).",
+				Description: "Delivery switch. 有效值：0 (已禁用)，1 (已启用)。",
 			},
 
 			"deliver_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Delivery service name.",
+				Description: "Delivery 服务名称",
 			},
 
 			"target_arn": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Resource ARN. COS format: qcs::cos:$region:$account:prefix/$appid/$BucketName. CLS format: qcs::cls:$region:$account:cls/topicId.",
+				Description: "Resource ARN. COS 格式: qcs::cos:$地域:$账号:prefix/$appid/$BucketName. CLS 格式: qcs::cls:$地域:$账号:cls/topicId。",
 			},
 
 			"deliver_prefix": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Log prefix for stored delivery content.",
+				Description: "Log prefix 对于 stored delivery 内容",
 			},
 
 			"deliver_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Delivery type. Valid values: COS, CLS.",
+				Description: "Delivery 类型 有效值：COS，CLS。",
 			},
 
 			"deliver_content_type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Delivery content type. Valid values: 1 (configuration change), 2 (resource list), 3 (all).",
+				Description: "Delivery 内容 类型 有效值：1 (配置 change)，2 (资源 列表)，3 (all)。",
 			},
 
 			// Computed
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time of the delivery configuration.",
+				Description: "创建时间 的 delivery 配置。",
 			},
 		},
 	}

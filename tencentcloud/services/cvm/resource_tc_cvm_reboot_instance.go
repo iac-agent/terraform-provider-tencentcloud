@@ -23,7 +23,7 @@ func ResourceTencentCloudCvmRebootInstance() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"force_reboot": {
@@ -32,7 +32,7 @@ func ResourceTencentCloudCvmRebootInstance() *schema.Resource {
 				Type:          schema.TypeBool,
 				ConflictsWith: []string{"stop_type"},
 				Deprecated:    "It has been deprecated from version 1.81.21. Please use `stop_type` instead.",
-				Description:   "This parameter has been disused. We recommend using StopType instead. Note that ForceReboot and StopType parameters cannot be specified at the same time. Whether to forcibly restart an instance after a normal restart fails. Valid values are `TRUE` and `FALSE`. Default value: FALSE.",
+				Description:   "此 参数 has been disused. We recommend 使用 StopType instead. 注意 该 ForceReboot 和 StopType 参数 不能 是 指定 在 same 时间. 是否forcibly restart 实例 after normal restart fails. 有效 值 是 `TRUE` 和 `FALSE`. 默认值：FALSE。",
 			},
 
 			"stop_type": {
@@ -40,7 +40,7 @@ func ResourceTencentCloudCvmRebootInstance() *schema.Resource {
 				ForceNew:      true,
 				Type:          schema.TypeString,
 				ConflictsWith: []string{"force_reboot"},
-				Description:   "Shutdown type. Valid values: `SOFT`: soft shutdown; `HARD`: hard shutdown; `SOFT_FIRST`: perform a soft shutdown first, and perform a hard shutdown if the soft shutdown fails. Default value: SOFT.",
+				Description:   "Shutdown 类型 有效值：`SOFT`: soft shutdown; `HARD`: hard shutdown; `SOFT_FIRST`: perform soft shutdown first，和 perform hard shutdown 如果 soft shutdown fails. 默认值：SOFT。",
 			},
 		},
 	}

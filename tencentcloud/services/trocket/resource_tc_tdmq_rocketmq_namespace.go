@@ -28,45 +28,45 @@ func ResourceTencentCloudTdmqRocketmqNamespace() *schema.Resource {
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 
 			"namespace_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Namespace name, which can contain 3-64 letters, digits, hyphens, and underscores.",
+				Description: "Namespace 名称，其中 可以 contain 3-64 letters，digits，hyphens，和 underscores。",
 			},
 
 			"ttl": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Deprecated:  "It has been deprecated from version 1.81.20. Due to the adjustment of RocketMQ, the creation or modification of this parameter will be ignored.",
-				Description: "Retention time of unconsumed messages in milliseconds. Value range: 60 seconds-15 days.",
+				Description: "Retention 时间 的 unconsumed messages （毫秒）。 取值范围：60 秒-15 days。",
 			},
 
 			"retention_time": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Deprecated:  "It has been deprecated from version 1.81.20. Due to the adjustment of RocketMQ, the creation or modification of this parameter will be ignored.",
-				Description: "Retention time of persisted messages in milliseconds.",
+				Description: "Retention 时间 的 persisted messages （毫秒）。",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Remarks (up to 128 characters).",
+				Description: "备注 (up 到 128 字符)。",
 			},
 
 			"public_endpoint": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Public network access point address.",
+				Description: "Public 网络 访问 point 地址",
 			},
 
 			"vpc_endpoint": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "VPC access point address.",
+				Description: "VPC 访问 point 地址",
 			},
 		},
 	}

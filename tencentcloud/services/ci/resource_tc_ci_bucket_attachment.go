@@ -26,12 +26,12 @@ func ResourceTencentCloudCiBucketAttachment() *schema.Resource {
 				ForceNew:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateCosBucketName,
-				Description:  "bucket name.",
+				Description:  "存储桶名称",
 			},
 			"ci_status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Binding object storage state, `on`: bound, `off`: unbound, `unbinding`: unbinding.",
+				Description: "Binding 对象 存储 state，`在`: bound，`关闭`: unbound，`unbinding`: unbinding。",
 			},
 		},
 	}

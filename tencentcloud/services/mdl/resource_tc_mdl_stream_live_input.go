@@ -26,14 +26,14 @@ func ResourceTencentCloudMdlStreamLiveInput() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Input name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level.",
+				Description: "Input 名称，其中 可以 contain 1-32 case-sensitive letters，digits，和 underscores 和 必须 是 唯一 在 地域 级别",
 			},
 
 			"type": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Input typeValid values: `RTMP_PUSH`, `RTP_PUSH`, `UDP_PUSH`, `RTMP_PULL`, `HLS_PULL`, `MP4_PULL`.",
+				Description: "Input type有效值：`RTMP_PUSH`，`RTP_PUSH`，`UDP_PUSH`，`RTMP_PULL`，`HLS_PULL`，`MP4_PULL`。",
 			},
 
 			"security_group_ids": {
@@ -42,60 +42,60 @@ func ResourceTencentCloudMdlStreamLiveInput() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "ID of the input security group to attachYou can attach only one security group to an input.",
+				Description: "ID input 安全 组 到 attachYou 可以 attach 仅 一个 安全 组 到 input。",
 			},
 
 			"input_settings": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Input settings. For the type `RTMP_PUSH`, `RTMP_PULL`, `HLS_PULL`, or `MP4_PULL`, 1 or 2 inputs of the corresponding type can be configured.",
+				Description: "Input settings. For 类型 `RTMP_PUSH`，`RTMP_PULL`，`HLS_PULL`，或 `MP4_PULL`，1 或 2 inputs 的 corresponding 类型 可以 是 已配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"app_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Application name, which is valid if `Type` is `RTMP_PUSH` and can contain 1-32 letters and digitsNote: This field may return `null`, indicating that no valid value was found.",
+							Description: "Application 名称，其中 是 有效 如果 `类型` 是 `RTMP_PUSH` 和 可以 contain 1-32 letters 和 digitsNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 是 found。",
 						},
 						"stream_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Stream name, which is valid if `Type` is `RTMP_PUSH` and can contain 1-32 letters and digitsNote: This field may return `null`, indicating that no valid value was found.",
+							Description: "Stream 名称，其中 是 有效 如果 `类型` 是 `RTMP_PUSH` 和 可以 contain 1-32 letters 和 digitsNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 是 found。",
 						},
 						"source_url": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Source URL, which is valid if `Type` is `RTMP_PULL`, `HLS_PULL`, or `MP4_PULL` and can contain 1-512 charactersNote: This field may return `null`, indicating that no valid value was found.",
+							Description: "来源 URL，其中 是 有效 如果 `类型` 是 `RTMP_PULL`，`HLS_PULL`，或 `MP4_PULL` 和 可以 contain 1-512 charactersNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 是 found。",
 						},
 						"input_address": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "RTP/UDP input address, which does not need to be entered for the input parameter.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "RTP/UDP input 地址，其中 does 不 need 到 是 entered 对于 input 参数.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"source_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Source type for stream pulling and relaying. To pull content from private-read COS buckets under the current account, set this parameter to `TencentCOS`; otherwise, leave it empty.Note: this field may return `null`, indicating that no valid value was found.",
+							Description: "来源 类型 对于 流 pulling 和 relaying. To pull 内容 从 私有-read COS buckets under 当前 账号，集合 此 参数 到 `TencentCOS`; otherwise，leave 它 空.注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 是 found。",
 						},
 						"delay_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Delayed time (ms) for playback, which is valid if `Type` is `RTMP_PUSH`Value range: 0 (default) or 10000-600000The value must be a multiple of 1,000.Note: This field may return `null`, indicating that no valid value was found.",
+							Description: "Delayed 时间 (ms) 对于 playback，其中 是 有效 如果 `类型` 是 `RTMP_PUSH`取值范围：0 (默认值) 或 10000-600000The 值 必须 是 多个 的 1,000.注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 是 found。",
 						},
 						"input_domain": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The domain of an SRT_PUSH address. If this is a request parameter, you do not need to specify it.Note: This field may return `null`, indicating that no valid value was found.",
+							Description: "域名 的 SRT_PUSH 地址 如果 此 是 请求 参数，您 do 不 need 到 指定it.注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 是 found。",
 						},
 						"user_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The username, which is used for authentication.Note: This field may return `null`, indicating that no valid value was found.",
+							Description: "用户名，其中 是 用于authentication.注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 是 found。",
 						},
 						"password": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The password, which is used for authentication.Note: This field may return `null`, indicating that no valid value was found.",
+							Description: "密码，其中 是 用于authentication.注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 是 found。",
 						},
 					},
 				},

@@ -19,24 +19,24 @@ func DataSourceTencentCloudEbPlatformEventPatterns() *schema.Resource {
 			"product_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Platform product type.",
+				Description: "Platform 产品类型",
 			},
 
 			"event_patterns": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Platform product event matching rules.",
+				Description: "Platform product 事件 matching 规则。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"event_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Platform event name.Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Platform 事件名称注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"event_pattern": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Platform event matching rules.Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Platform 事件 matching 规则.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -45,7 +45,7 @@ func DataSourceTencentCloudEbPlatformEventPatterns() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

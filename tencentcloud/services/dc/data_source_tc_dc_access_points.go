@@ -19,34 +19,34 @@ func DataSourceTencentCloudDcAccessPoints() *schema.Resource {
 			"region_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Access point region, which can be queried through `DescribeRegions`.You can call `DescribeRegions` to get the region ID.",
+				Description: "Access point 地域，其中 可以 是 queried through `DescribeRegions`.You 可以 call `DescribeRegions` 到 get 地域 ID。",
 			},
 
 			"access_point_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Access point information.",
+				Description: "Access point 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"access_point_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Access point name.",
+							Description: "Access point 名称",
 						},
 						"access_point_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Unique access point ID.",
+							Description: "Unique 访问 point ID。",
 						},
 						"state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Access point status. Valid values: available, unavailable.",
+							Description: "Access point 状态 有效值：可用，unavailable。",
 						},
 						"location": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Access point location.",
+							Description: "Access point location。",
 						},
 						"line_operator": {
 							Type: schema.TypeSet,
@@ -54,12 +54,12 @@ func DataSourceTencentCloudDcAccessPoints() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "List of ISPs supported by access point.",
+							Description: "列表 ISPs 支持 通过 访问 point。",
 						},
 						"region_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the region that manages the access point.",
+							Description: "ID 地域 该 manages 访问 point。",
 						},
 						"available_port_type": {
 							Type: schema.TypeSet,
@@ -67,23 +67,23 @@ func DataSourceTencentCloudDcAccessPoints() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Available port type at the access point. Valid values: 1000BASE-T: gigabit electrical port; 1000BASE-LX: 10 km gigabit single-mode optical port; 1000BASE-ZX: 80 km gigabit single-mode optical port; 10GBASE-LR: 10 km 10-gigabit single-mode optical port; 10GBASE-ZR: 80 km 10-gigabit single-mode optical port; 10GBASE-LH: 40 km 10-gigabit single-mode optical port; 100GBASE-LR4: 10 km 100-gigabit single-mode optical portfiber optic port.Note: this field may return `null`, indicating that no valid value is obtained.",
+							Description: "Available 端口 类型 在 访问 point. 有效值：1000BASE-T: gigabit electrical 端口; 1000BASE-LX: 10 km gigabit 单个-模式 optical 端口; 1000BASE-ZX: 80 km gigabit 单个-模式 optical 端口; 10GBASE-LR: 10 km 10-gigabit 单个-模式 optical 端口; 10GBASE-ZR: 80 km 10-gigabit 单个-模式 optical 端口; 10GBASE-LH: 40 km 10-gigabit 单个-模式 optical 端口; 100GBASE-LR4: 10 km 100-gigabit 单个-模式 optical portfiber optic 端口Note: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 是 获取。",
 						},
 						"coordinate": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Latitude and longitude of the access pointNote: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "Latitude 和 longitude 的 访问 pointNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"lat": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Latitude.",
+										Description: "Latitude。",
 									},
 									"lng": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Longitude.",
+										Description: "Longitude。",
 									},
 								},
 							},
@@ -91,17 +91,17 @@ func DataSourceTencentCloudDcAccessPoints() *schema.Resource {
 						"city": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "City where the access point is locatedNote: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "City 其中 访问 point 是 locatedNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"area": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Access point regionNote: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "Access point regionNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"access_point_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Access point type. Valid values: `VXLAN`, `QCPL`, and `QCAR`.Note: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "Access point 类型 有效值：`VXLAN`，`QCPL`，和 `QCAR`.注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 					},
 				},
@@ -110,7 +110,7 @@ func DataSourceTencentCloudDcAccessPoints() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

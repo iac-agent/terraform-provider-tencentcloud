@@ -22,21 +22,21 @@ func ResourceTencentCloudCkafkaConsumerGroupModifyOffset() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Kafka instance id.",
+				Description: "Kafka 实例 ID",
 			},
 
 			"group": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "kafka group.",
+				Description: "kafka 组。",
 			},
 
 			"strategy": {
 				Required: true,
 				ForceNew: true,
 				Type:     schema.TypeInt,
-				Description: "Reset the policy of offset.\n" +
+				Description: "Reset 策略 的 偏移量.\n" +
 					"`0`: Move the offset forward or backward shift bar;\n" +
 					"`1`: Alignment reference (by-duration,to-datetime,to-earliest,to-latest), which means moving the offset to the location of the specified timestamp;\n" +
 					"`2`: Alignment reference (to-offset), which means to move the offset to the specified offset location.",
@@ -49,28 +49,28 @@ func ResourceTencentCloudCkafkaConsumerGroupModifyOffset() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Indicates the topics that needs to be reset. Leave it empty means all.",
+				Description: "表示topics 该 needs 到 是 reset. Leave 它 空 表示 all。",
 			},
 
 			"shift": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "This field must be included when strategy is 0. If it is greater than zero, the offset will be moved backward by shift bars, and if it is less than zero, the offset will be traced back to the number of shift entries. After the correct reset, the new offset should be (old_offset + shift). It should be noted that if the new offset is less than partition's earliest, it will be set to earliest, and if the latest greater than partition will be set to latest.",
+				Description: "此 字段 必须 是 included 当 strategy 是 0. 如果 它 是 greater 比 zero， 偏移量 将 是 moved backward 通过 shift bars，和 如果 它 是 less 比 zero， 偏移量 将 是 traced back 到 数量 shift entries. After correct reset， new 偏移量 should 是 (old_offset + shift). It should 是 noted 该 如果 new 偏移量 是 less 比 分区's earliest，它 将 是 集合 到 earliest，和 如果 latest greater 比 分区 将 是 集合 到 latest。",
 			},
 
 			"shift_timestamp": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Unit ms. When strategy is 1, you must include this field, where-2 means to reset the offset to the beginning,-1 means to reset to the latest position (equivalent to emptying), and other values represent the specified time. You will get the offset of the specified time in the topic and then reset it. If there is no message at the specified time, get the last offset.",
+				Description: "Unit ms. 当 strategy 是 1，您 必须 include 此 字段，其中-2 表示 到 reset 偏移量 到 beginning,-1 表示 到 reset 到 latest position (equivalent 到 emptying)，和 other 值 represent 指定 时间. You 将 get 偏移量 的 指定 时间 在 主题 和 then reset 它. 如果 there 是 无 消息 在 指定 时间，get last 偏移量",
 			},
 
 			"offset": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "The offset location that needs to be reset. When strategy is 2, this field must be included.",
+				Description: "偏移量 location 该 needs 到 是 reset. 当 strategy 是 2，此 字段 必须 是 included。",
 			},
 
 			"partitions": {
@@ -80,7 +80,7 @@ func ResourceTencentCloudCkafkaConsumerGroupModifyOffset() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "The list of partition that needs to be reset if no Topics parameter is specified. Resets the partition in the corresponding Partition list of all topics. When Topics is specified, the partition of the corresponding topic list of the specified Partitions list is reset.",
+				Description: "列表 分区 该 needs 到 是 reset 如果 无 Topics 参数 是 指定. Resets 分区 在 corresponding Partition 列表 all topics. 当 Topics 是 指定， 分区 的 corresponding 主题 列表 指定 Partitions 列表 是 reset。",
 			},
 		},
 	}

@@ -19,19 +19,19 @@ func DataSourceTencentCloudGaapProxyStatistics() *schema.Resource {
 			"proxy_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Proxy Id.",
+				Description: "Proxy ID。",
 			},
 
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Start Time(2019-03-25 12:00:00).",
+				Description: "Start Time(2019-03-25 12:00:00)。",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "End Time(2019-03-25 12:00:00).",
+				Description: "End Time(2019-03-25 12:00:00)。",
 			},
 
 			"metric_names": {
@@ -40,47 +40,47 @@ func DataSourceTencentCloudGaapProxyStatistics() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Metric Names. Valid values: InBandwidth,OutBandwidth, Concurrent, InPackets, OutPackets, PacketLoss, Latency, HttpQPS, HttpsQPS, HttpQPSPercent, HttpsQPSPercent.",
+				Description: "Metric Names. 有效值：InBandwidth,OutBandwidth，Concurrent，InPackets，OutPackets，PacketLoss，Latency，HttpQPS，HttpsQPS，HttpQPSPercent，HttpsQPSPercent。",
 			},
 
 			"granularity": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Monitoring granularity, currently supporting 60 300 3600 86400, in seconds.When the time range does not exceed 3 days, support a minimum granularity of 60 seconds;When the time range does not exceed 7 days, support a minimum granularity of 300 seconds;When the time range does not exceed 30 days, the minimum granularity supported is 3600 seconds.",
+				Description: "Monitoring granularity，currently supporting 60 300 3600 86400，（秒）。当 时间 范围 does 不 exceed 3 days，support 最小 granularity 的 60 秒;当 时间 范围 does 不 exceed 7 days，support 最小 granularity 的 300 秒;当 时间 范围 does 不 exceed 30 days， 最小 granularity 支持 是 3600 秒。",
 			},
 
 			"isp": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Operator (valid when the proxy is a three network proxy), supports CMCC, CUCC, CTCC, and merges data from the three operators if null values are passed or not passed.",
+				Description: "操作者 (有效 当 proxy 是 three 网络 proxy)，支持 CMCC，CUCC，CTCC，和 merges 数据 从 three operators 如果 null 值 是 passed 或 不 passed。",
 			},
 
 			"statistics_data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "proxy Statistics.",
+				Description: "proxy Statistics。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"metric_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Metric Name.",
+							Description: "Metric 名称",
 						},
 						"metric_data": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Metric Data.",
+							Description: "Metric Data。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"time": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Time.",
+										Description: "Time。",
 									},
 									"data": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "DataNote: This field may return null, indicating that a valid value cannot be obtained.",
+										Description: "Data注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -92,7 +92,7 @@ func DataSourceTencentCloudGaapProxyStatistics() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -29,26 +29,26 @@ func ResourceTencentCloudCiMediaAnimationTemplate() *schema.Resource {
 			"bucket": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "bucket name.",
+				Description: "存储桶名称",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The template name only supports `Chinese`, `English`, `numbers`, `_`, `-` and `*`.",
+				Description: "模板名称 仅 支持 `Chinese`，`English`，`numbers`，`_`，`-` 和 `*`。",
 			},
 
 			"container": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "container format.",
+				Description: "容器 格式",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"format": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Package format.",
+							Description: "Package 格式",
 						},
 					},
 				},
@@ -58,48 +58,48 @@ func ResourceTencentCloudCiMediaAnimationTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "video information, do not upload Video, which is equivalent to deleting video information.",
+				Description: "视频 信息，do 不 upload Video，其中 是 equivalent 到 deleting 视频 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"codec": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Codec format `gif`, `webp`.",
+							Description: "Codec 格式 `gif`，`webp`。",
 						},
 						"width": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "width, value range: [128, 4096], Unit: px, If only Width is set, Height is calculated according to the original ratio of the video, must be even.",
+							Description: "宽度，取值范围：[128，4096]，单位：像素，如果 仅 宽度 是 集合，高度 是 calculated according 到 original ratio 的 视频，必须 是 even。",
 						},
 						"height": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "High, value range: [128, 4096], Unit: px, If only Height is set, Width is calculated according to the original ratio of the video, must be even.",
+							Description: "High，取值范围：[128，4096]，单位：像素，如果 仅 高度 是 集合，宽度 是 calculated according 到 original ratio 的 视频，必须 是 even。",
 						},
 						"fps": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Frame rate, value range: (0, 60], Unit: fps.",
+							Description: "Frame 速率，取值范围：(0，60]，单位：fps。",
 						},
 						"animate_only_keep_key_frame": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "GIFs are kept only Keyframe, Priority: AnimateFramesPerSecond &gt; AnimateOnlyKeepKeyFrame &gt; AnimateTimeIntervalOfFrame.",
+							Description: "GIFs 是 kept 仅 Keyframe，优先级: AnimateFramesPerSecond &gt; AnimateOnlyKeepKeyFrame &gt; AnimateTimeIntervalOfFrame。",
 						},
 						"animate_time_interval_of_frame": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Animation frame extraction every time, (0, video duration], Animation frame extraction time interval, If TimeInterval.Duration is set, it is less than this value.",
+							Description: "Animation frame extraction every 时间，(0，视频 时长]，Animation frame extraction 时间间隔，如果 TimeInterval.Duration 是 集合，它 是 less 比 此 值",
 						},
 						"animate_frames_per_second": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Animation per second frame number, Priority: AnimateFramesPerSecond &gt; AnimateOnlyKeepKeyFrame &gt; AnimateTimeIntervalOfFrame.",
+							Description: "Animation per second frame 数量，优先级: AnimateFramesPerSecond &gt; AnimateOnlyKeepKeyFrame &gt; AnimateTimeIntervalOfFrame。",
 						},
 						"quality": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Set relative quality, [1, 100), webp image quality setting takes effect, gif has no quality parameter.",
+							Description: "Set relative quality，[1，100)，webp 镜像 quality setting takes effect，gif has 无 quality 参数。",
 						},
 					},
 				},
@@ -109,18 +109,18 @@ func ResourceTencentCloudCiMediaAnimationTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "time interval.",
+				Description: "时间间隔。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"start": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Starting time, [0 video duration], in seconds, Support float format, the execution accuracy is accurate to milliseconds.",
+							Description: "Starting 时间，[0 视频 时长]，（秒）， Support float 格式， execution accuracy 是 accurate 到 milliseconds。",
 						},
 						"duration": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "duration, [0 video duration], in seconds, Support float format, the execution accuracy is accurate to milliseconds.",
+							Description: "时长，[0 视频 时长]，（秒）， Support float 格式， execution accuracy 是 accurate 到 milliseconds。",
 						},
 					},
 				},

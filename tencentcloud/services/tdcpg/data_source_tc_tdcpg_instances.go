@@ -20,123 +20,123 @@ func DataSourceTencentCloudTdcpgInstances() *schema.Resource {
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"instance_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"instance_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "instance name.",
+				Description: "实例名称",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "instance status.",
+				Description: "实例状态",
 			},
 
 			"instance_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "instance type.",
+				Description: "实例类型",
 			},
 
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "instance list.",
+				Description: "实例 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "instance id.",
+							Description: "实例 ID",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "instance name.",
+							Description: "实例名称",
 						},
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "cluster id.",
+							Description: "集群 ID",
 						},
 						"endpoint_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "endpoint id.",
+							Description: "端点 ID。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "region.",
+							Description: "地域",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "zone.",
+							Description: "可用区",
 						},
 						"db_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "db version.",
+							Description: "db 版本",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "status.",
+							Description: "状态",
 						},
 						"status_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "status description.",
+							Description: "状态 描述",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "create time.",
+							Description: "创建时间。",
 						},
 						"pay_mode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "pay mode.",
+							Description: "付费模式",
 						},
 						"pay_period_end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "pay period expired time.",
+							Description: "pay 周期 过期时间。",
 						},
 						"cpu": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "cpu cores.",
+							Description: "CPU 核数",
 						},
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "memory size, unit is GiB.",
+							Description: "内存 大小，单位 是 GiB。",
 						},
 						"instance_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "instance type.",
+							Description: "实例类型",
 						},
 						"db_major_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "db major version.",
+							Description: "db major 版本",
 						},
 						"db_kernel_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "db kernel version.",
+							Description: "db kernel 版本",
 						},
 					},
 				},
@@ -145,7 +145,7 @@ func DataSourceTencentCloudTdcpgInstances() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

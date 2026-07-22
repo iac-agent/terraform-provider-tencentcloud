@@ -36,17 +36,17 @@ func ResourceTencentCloudPtsTmpKeyGenerate() *schema.Resource {
 			"start_time": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The timestamp of the moment when the temporary access credential was obtained (in seconds).",
+				Description: "timestamp 的 moment 当 temporary 访问 credential 是 获取 (在 秒).",
 			},
 			"expired_time": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Timestamp of temporary access credential timeout (in seconds).",
+				Description: "Timestamp 的 temporary 访问 credential 超时 (在 秒).",
 			},
 			"credentials": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Temporary access credentials.",
+				Description: "Temporary 访问 credentials.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tmp_secret_id": {
@@ -57,12 +57,12 @@ func ResourceTencentCloudPtsTmpKeyGenerate() *schema.Resource {
 						"tmp_secret_key": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Temporary secret key.",
+							Description: "Temporary secret 键.",
 						},
 						"token": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Temporary token.",
+							Description: "Temporary 令牌.",
 						},
 					},
 				},

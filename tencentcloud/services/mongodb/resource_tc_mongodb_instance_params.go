@@ -24,24 +24,24 @@ func ResourceTencentCloudMongodbInstanceParams() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"instance_params": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Specify the parameter name and value to be modified.",
+				Description: "指定parameter 名称 和 值 到 是 modified。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Parameter names that need to be modified.",
+							Description: "Parameter names 该 need 到 是 modified。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The value corresponding to the parameter name to be modified.",
+							Description: "值 corresponding 到 参数 名称 到 是 modified。",
 						},
 					},
 				},
@@ -50,7 +50,7 @@ func ResourceTencentCloudMongodbInstanceParams() *schema.Resource {
 			"modify_type": {
 				Type:     schema.TypeString,
 				Optional: true,
-				Description: "Operation types, including:\n" +
+				Description: "Operation types, 包括:\n" +
 					"	- IMMEDIATELY: Adjust immediately;\n" +
 					"	- DELAY: Delay adjustment;\n" +
 					"Optional field. If this parameter is not configured, it defaults to immediate adjustment.",

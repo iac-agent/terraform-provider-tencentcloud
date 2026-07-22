@@ -28,49 +28,49 @@ func ResourceTencentCloudWafBotIdRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Domain name.",
+				Description: "域名 名称",
 			},
 
 			"scene_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Scene ID.",
+				Description: "Scene ID。",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "Configuration information, supports batch processing.",
+				Description: "Configuration 信息，支持 batch processing。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"rule_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Rule ID.",
+							Description: "Rule ID。",
 						},
 						"status": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Rule switch.",
+							Description: "Rule switch。",
 						},
 						"action": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Action configuration.",
+							Description: "操作 配置。",
 						},
 						"bot_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Rule name.",
+							Description: "Rule 名称",
 						},
 						"redirect": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Redirect path.",
+							Description: "Redirect 路径",
 						},
 					},
 				},
@@ -79,14 +79,14 @@ func ResourceTencentCloudWafBotIdRule() *schema.Resource {
 			"global_switch": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "0-global settings do not take effect 1-global switch configuration field takes effect 2-global action configuration field takes effect 3-both global switch and action fields take effect 4-only modify global redirect path 5-only modify global protection level.",
+				Description: "0-全局 settings do 不 take effect 1-全局 switch 配置 字段 takes effect 2-全局 操作 配置 字段 takes effect 3-both 全局 switch 和 操作 字段 take effect 4-仅 modify 全局 redirect 路径 5-仅 modify 全局 protection 级别",
 			},
 
 			"protect_level": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Protection level: normal-normal; strict-strict.",
+				Description: "Protection 级别: normal-normal; strict-strict。",
 			},
 		},
 	}

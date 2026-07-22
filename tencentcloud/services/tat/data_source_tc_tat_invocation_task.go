@@ -22,19 +22,19 @@ func DataSourceTencentCloudTatInvocationTask() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of execution task IDs. Up to 100 IDs are allowed for each request. InvocationTaskIds and Filters cannot be specified at the same time.",
+				Description: "列表 execution 任务 IDs. Up 到 100 IDs 是 allowed 对于 each 请求. InvocationTaskIds 和 Filters 不能 是 指定 在 same 时间。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter conditions.invocation-id - String - Required: No - (Filter condition) Filter by the execution activity ID.invocation-task-id - String - Required: No - (Filter condition) Filter by the execution task ID.instance-id - String - Required: No - (Filter condition) Filter by the instance ID.command-id - String - Required: No - (Filter condition) Filter by the command ID.Up to 10 Filters are allowed for each request. Each filter can have up to five Filter.Values. InvocationTaskIds and Filters cannot be specified at the same time.",
+				Description: "过滤器 conditions.invocation-ID - String - 必填: No - (过滤器 condition) 过滤器 通过 execution activity ID.invocation-任务-ID - String - 必填: No - (过滤器 condition) 过滤器 通过 execution 任务 ID.实例-ID - String - 必填: No - (过滤器 condition) 过滤器 通过 实例 ID.command-ID - String - 必填: No - (过滤器 condition) 过滤器 通过 命令 IDUp 到 10 Filters 是 allowed 对于 each 请求. Each 过滤器 可以 have up 到 five 过滤器.Values. InvocationTaskIds 和 Filters 不能 是 指定 在 same 时间。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Field to be filtered.",
+							Description: "待过滤字段",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -42,7 +42,7 @@ func DataSourceTencentCloudTatInvocationTask() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Filter values of the field.",
+							Description: "过滤器 值 的 字段。",
 						},
 					},
 				},
@@ -51,80 +51,80 @@ func DataSourceTencentCloudTatInvocationTask() *schema.Resource {
 			"hide_output": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to hide the output. Valid values:True (default): Hide the outputFalse: Show the output.",
+				Description: "是否hide output. 有效 值:True (默认值): Hide outputFalse: Show output。",
 			},
 
 			"invocation_task_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of execution tasks.",
+				Description: "列表 execution tasks。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"invocation_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Execution activity ID.",
+							Description: "Execution activity ID。",
 						},
 						"invocation_task_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Execution task ID.",
+							Description: "Execution 任务 ID。",
 						},
 						"command_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Command ID.",
+							Description: "命令 ID",
 						},
 						"task_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Execution task status. Valid values:PENDING: PendingDELIVERING: DeliveringDELIVER_DELAYED: Delivery delayedDELIVER_FAILED: Delivery failedSTART_FAILED: Failed to start the commandRUNNING: RunningSUCCESS: SuccessFAILED: Failed to execute the command. The exit code is not 0 after execution.TIMEOUT: Command timed outTASK_TIMEOUT: Task timed outCANCELLING: CancelingCANCELLED: Canceled (canceled before execution)TERMINATED: Terminated (canceled during execution).",
+							Description: "Execution 任务 状态 有效 值:PENDING: PendingDELIVERING: DeliveringDELIVER_DELAYED: Delivery delayedDELIVER_FAILED: Delivery failedSTART_FAILED: Failed 到 start commandRUNNING: RunningSUCCESS: SuccessFAILED: Failed 到 execute command. exit 代码 是 不 0 after execution.TIMEOUT: Command timed outTASK_TIMEOUT: 任务 timed outCANCELLING: CancelingCANCELLED: Canceled (canceled before execution)TERMINATED: Terminated (canceled during execution)。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID",
 						},
 						"task_result": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Execution result.",
+							Description: "Execution 结果",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"exit_code": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "ExitCode of the execution.",
+										Description: "ExitCode 的 execution。",
 									},
 									"output": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Base64-encoded command output. The maximum length is 24 KB.",
+										Description: "Base64-encoded command output. 最大 长度 是 24 KB。",
 									},
 									"exec_start_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Time when the execution is started.",
+										Description: "Time 当 execution 是 started。",
 									},
 									"exec_end_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Time when the execution is ended.",
+										Description: "Time 当 execution 是 ended。",
 									},
 									"dropped": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Dropped bytes of the command output.",
+										Description: "Dropped bytes 的 command output。",
 									},
 									"output_url": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "COS URL of the logs.",
+										Description: "COS URL 的 logs。",
 									},
 									"output_upload_cos_error_info": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Error message for uploading logs to COS.",
+										Description: "错误信息 对于 uploading logs 到 COS。",
 									},
 								},
 							},
@@ -132,63 +132,63 @@ func DataSourceTencentCloudTatInvocationTask() *schema.Resource {
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Start time of the execution task.",
+							Description: "开始时间 的 execution 任务。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "End time of the execution task.",
+							Description: "结束时间 的 execution 任务。",
 						},
 						"created_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 						"updated_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Update time.",
+							Description: "更新时间。",
 						},
 						"command_document": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Command details of the execution task.",
+							Description: "Command details 的 execution 任务。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"content": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Base64-encoded command.",
+										Description: "Base64-encoded command。",
 									},
 									"command_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Command type.",
+										Description: "命令类型",
 									},
 									"timeout": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Timeout period.",
+										Description: "Timeout 周期",
 									},
 									"working_directory": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Execution path.",
+										Description: "Execution 路径",
 									},
 									"username": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The user who executes the command.",
+										Description: "用户 who executes command。",
 									},
 									"output_cos_bucket_url": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "URL of the COS bucket to store the output.",
+										Description: "URL 的 COS 存储桶 到 store output。",
 									},
 									"output_cos_key_prefix": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Prefix of the output file name.",
+										Description: "Prefix 的 输出文件 名称",
 									},
 								},
 							},
@@ -196,12 +196,12 @@ func DataSourceTencentCloudTatInvocationTask() *schema.Resource {
 						"error_info": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Error message displayed when the execution task fails.",
+							Description: "错误信息 displayed 当 execution 任务 fails。",
 						},
 						"invocation_source": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Invocation source.",
+							Description: "Invocation 来源",
 						},
 					},
 				},
@@ -210,7 +210,7 @@ func DataSourceTencentCloudTatInvocationTask() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -25,57 +25,57 @@ func DataSourceTencentCloudKeyPairs() *schema.Resource {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"key_name", "project_id"},
-				Description:   "ID of the key pair to be queried.",
+				Description:   "ID 键 pair 到 是 queried。",
 			},
 			"key_name": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"key_id"},
-				Description:   "Name of the key pair to be queried. Support regular expression search, only `^` and `$` are supported.",
+				Description:   "名称 键 pair 到 是 queried. Support regular expression search，仅 `^` 和 `$` 是 支持。",
 			},
 			"project_id": {
 				Type:          schema.TypeInt,
 				Optional:      true,
 				ConflictsWith: []string{"key_id"},
-				Description:   "Project ID of the key pair to be queried.",
+				Description:   "项目 ID 键 pair 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// computed
 			"key_pair_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information list of key pair. Each element contains the following attributes:",
+				Description: "An 信息 列表 键 pair. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the key pair.",
+							Description: "ID 键 pair。",
 						},
 						"key_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the key pair.",
+							Description: "名称 键 pair。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Project ID of the key pair.",
+							Description: "项目 ID 键 pair。",
 						},
 						"public_key": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "public key of the key pair.",
+							Description: "公有 键 的 键 pair。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time of the key pair.",
+							Description: "创建时间 的 键 pair。",
 						},
 					},
 				},

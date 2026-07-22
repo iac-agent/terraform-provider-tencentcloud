@@ -21,49 +21,49 @@ func DataSourceTencentCloudCfsAccessRules() *schema.Resource {
 			"access_group_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "A specified access group ID used to query.",
+				Description: "A 指定 访问 组 ID 用于query。",
 			},
 			"access_rule_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "A specified access rule ID used to query.",
+				Description: "A 指定 访问 规则 ID 用于query。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			"access_rule_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information list of CFS access rule. Each element contains the following attributes:",
+				Description: "An 信息 列表 CFS 访问 规则. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"access_rule_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the access rule.",
+							Description: "ID 访问 规则。",
 						},
 						"auth_client_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Allowed IP of the access rule.",
+							Description: "Allowed IP 的 访问 规则。",
 						},
 						"rw_permission": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Read and write permissions.",
+							Description: "Read 和 write permissions。",
 						},
 						"user_permission": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The permissions of accessing users.",
+							Description: "permissions 的 accessing users。",
 						},
 						"priority": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The priority level of access rule.",
+							Description: "优先级 级别 的 访问 规则。",
 						},
 					},
 				},

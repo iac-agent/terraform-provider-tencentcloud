@@ -25,7 +25,7 @@ func ResourceTencentCloudDtsMigrateJobStartOperation() *schema.Resource {
 				ForceNew:    true,
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Job Id from `tencentcloud_dts_migrate_job`.",
+				Description: "Job ID 从 `tencentcloud_dts_migrate_job`。",
 			},
 		},
 	}

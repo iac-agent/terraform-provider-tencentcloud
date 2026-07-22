@@ -19,7 +19,7 @@ func DataSourceTencentCloudVpcPrivateIpAddresses() *schema.Resource {
 			"vpc_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The `ID` of the `VPC`, such as `vpc-f49l6u0z`.",
+				Description: "`ID` 的 `VPC`，such 作为 `vpc-f49l6u0z`。",
 			},
 
 			"private_ip_addresses": {
@@ -28,34 +28,34 @@ func DataSourceTencentCloudVpcPrivateIpAddresses() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The private `IP` address list. Each request supports a maximum of `10` batch querying.",
+				Description: "私有 `IP` 地址 列表. Each 请求 支持 最大 的 `10` batch querying。",
 			},
 
 			"vpc_private_ip_address_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The list of private `IP` address information.",
+				Description: "列表 私有 `IP` 地址 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"private_ip_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "`VPC` private `IP`.",
+							Description: "`VPC` 私有 `IP`。",
 						},
 						"cidr_block": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The `CIDR` belonging to the subnet.",
+							Description: "`CIDR` belonging 到 子网。",
 						},
 						"private_ip_address_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Private `IP` type.",
+							Description: "Private `IP` 类型",
 						},
 						"created_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "`IP` application time.",
+							Description: "`IP` 应用 时间。",
 						},
 					},
 				},
@@ -64,7 +64,7 @@ func DataSourceTencentCloudVpcPrivateIpAddresses() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -18,19 +18,19 @@ func DataSourceTencentCloudIdentityCenterRoleConfigurations() *schema.Resource {
 			"zone_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Space ID.",
+				Description: "Space ID。",
 			},
 
 			"filter": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Filter criteria, which are case insensitive. Currently, only RoleConfigurationName is supported and only eq (Equals) and sw (Start With) are supported. Example: Filter = \"RoleConfigurationName, only sw test\" means querying all permission configurations starting with test. Filter = \"RoleConfigurationName, only eq TestRoleConfiguration\" means querying the permission configuration named TestRoleConfiguration.",
+				Description: "过滤器 criteria, 其中 是 case insensitive. Currently, 仅 RoleConfigurationName 是 支持 和 仅 eq (Equals) 和 sw (Start With) 是 支持. Example: 过滤器 = \"RoleConfigurationName, 仅 sw 测试\" 表示 querying all 权限 configurations starting 使用 测试. 过滤器 = \"RoleConfigurationName, 仅 eq TestRoleConfiguration\" 表示 querying 权限 配置 named TestRoleConfiguration.",
 			},
 
 			"filter_targets": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Check whether the member account has been configured with permissions. If configured, return IsSelected: true; otherwise, return false.",
+				Description: "Check 是否member 账号 has been 已配置 使用 permissions. 如果 已配置，返回 IsSelected: true; otherwise，返回 false。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -39,54 +39,54 @@ func DataSourceTencentCloudIdentityCenterRoleConfigurations() *schema.Resource {
 			"principal_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "UserId of the authorized user or GroupId of the authorized user group, which must be set together with the input parameter FilterTargets.",
+				Description: "UserId 的 authorized 用户 或 GroupId 的 authorized 用户 组，其中 必须 是 集合 together 使用 input 参数 FilterTargets。",
 			},
 
 			"role_configurations": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Permission configuration list.",
+				Description: "Permission 配置 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"role_configuration_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Permission configuration ID.",
+							Description: "权限配置 ID",
 						},
 						"role_configuration_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Permission configuration name.",
+							Description: "Permission 配置 名称",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Permission configuration description.",
+							Description: "Permission 配置 描述",
 						},
 						"session_duration": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Session duration. It indicates the maximum session duration when CIC users use the access configuration to access member accounts.\nUnit: seconds.",
+							Description: "Session 时长. It 表示maximum 会话 时长 当 CIC users 使用 访问 配置 到 访问 member accounts.\n单位：秒。",
 						},
 						"relay_state": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Initial access page. It indicates the initial access page URL when CIC users use the access configuration to access member accounts.",
+							Description: "Initial 访问 页面. It 表示initial 访问 页面 URL 当 CIC users 使用 访问 配置 到 访问 member accounts。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Creation time of the permission configuration.",
+							Description: "创建时间 的 权限 配置。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Update time of the permission configuration.",
+							Description: "更新时间 的 权限 配置。",
 						},
 						"is_selected": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "If the input parameter FilterTargets is provided, check whether the member account has been configured with permissions. If configured, return true; otherwise, return false.",
+							Description: "如果 input 参数 FilterTargets 是 提供，check 是否member 账号 has been 已配置 使用 permissions. 如果 已配置，返回 true; otherwise，返回 false。",
 						},
 					},
 				},
@@ -95,7 +95,7 @@ func DataSourceTencentCloudIdentityCenterRoleConfigurations() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

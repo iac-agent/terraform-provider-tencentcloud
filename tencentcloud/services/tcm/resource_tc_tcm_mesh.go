@@ -28,32 +28,32 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Mesh ID.",
+				Description: "Mesh ID。",
 			},
 
 			"display_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Mesh name.",
+				Description: "Mesh 名称",
 			},
 
 			"mesh_version": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Mesh version.",
+				Description: "Mesh 版本",
 			},
 
 			"type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Mesh type.",
+				Description: "Mesh 类型",
 			},
 
 			"config": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Required:    true,
-				Description: "Mesh configuration.",
+				Description: "Mesh 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tracing": {
@@ -61,40 +61,40 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 							MaxItems:    1,
 							Optional:    true,
 							Computed:    true,
-							Description: "Tracing config.",
+							Description: "Tracing 配置",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"enable": {
 										Type:        schema.TypeBool,
 										Optional:    true,
 										Computed:    true,
-										Description: "Whether enable tracing.",
+										Description: "Whether 启用 追踪。",
 									},
 									"apm": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
 										Computed:    true,
-										Description: "APM config.",
+										Description: "APM 配置",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"enable": {
 													Type:        schema.TypeBool,
 													Optional:    true,
 													Computed:    true,
-													Description: "Whether enable APM.",
+													Description: "Whether 启用 APM。",
 												},
 												"region": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "Region.",
+													Description: "地域",
 												},
 												"instance_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "Instance id of the APM.",
+													Description: "实例 ID APM。",
 												},
 											},
 										},
@@ -103,20 +103,20 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 										Type:        schema.TypeFloat,
 										Optional:    true,
 										Computed:    true,
-										Description: "Tracing sampling, 0.0-1.0.",
+										Description: "Tracing sampling，0.0-1.0。",
 									},
 									"zipkin": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
 										Computed:    true,
-										Description: "Third party zipkin config.",
+										Description: "Third party zipkin 配置",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"address": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Zipkin address.",
+													Description: "Zipkin 地址",
 												},
 											},
 										},
@@ -129,74 +129,74 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 							MaxItems:    1,
 							Optional:    true,
 							Computed:    true,
-							Description: "Prometheus configuration.",
+							Description: "Prometheus 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"vpc_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Vpc id.",
+										Description: "私有网络 ID",
 									},
 									"subnet_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Subnet id.",
+										Description: "子网 ID",
 									},
 									"region": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Region.",
+										Description: "地域",
 									},
 									"instance_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Instance id.",
+										Description: "实例 ID",
 									},
 									"custom_prom": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
 										Computed:    true,
-										Description: "Custom prometheus.",
+										Description: "Custom prometheus。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"is_public_addr": {
 													Type:        schema.TypeBool,
 													Optional:    true,
 													Computed:    true,
-													Description: "Whether it is public address, default false.",
+													Description: "是否为public 地址，默认值 false。",
 												},
 												"vpc_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "Vpc id.",
+													Description: "私有网络 ID",
 												},
 												"url": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Url of the prometheus.",
+													Description: "Url 的 prometheus。",
 												},
 												"auth_type": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Authentication type of the prometheus.",
+													Description: "Authentication 类型 prometheus。",
 												},
 												"username": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "Username of the prometheus, used in basic authentication type.",
+													Description: "用户名 的 prometheus，使用 在 basic authentication 类型",
 												},
 												"password": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "Password of the prometheus, used in basic authentication type.",
+													Description: "密码 的 prometheus，使用 在 basic authentication 类型",
 												},
 											},
 										},
@@ -208,53 +208,53 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Istio configuration.",
+							Description: "Istio 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"outbound_traffic_policy": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Outbound traffic policy, REGISTRY_ONLY or ALLOW_ANY, see https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-OutboundTrafficPolicy-Mode.",
+										Description: "Outbound 流量 策略，REGISTRY_ONLY 或 ALLOW_ANY，see https://istio.io/latest/docs/reference/配置/istio.mesh.v1alpha1/#MeshConfig-OutboundTrafficPolicy-模式",
 									},
 									"tracing": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "Tracing config(Deprecated, please use MeshConfig.Tracing for configuration).",
+										Description: "Tracing 配置(已弃用，please 使用 MeshConfig.Tracing 对于 配置)。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"sampling": {
 													Type:        schema.TypeFloat,
 													Optional:    true,
 													Computed:    true,
-													Description: "Tracing sampling, 0.0-1.0.",
+													Description: "Tracing sampling，0.0-1.0。",
 												},
 												"enable": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "Whether enable tracing.",
+													Description: "Whether 启用 追踪。",
 												},
 												"apm": {
 													Type:        schema.TypeList,
 													MaxItems:    1,
 													Optional:    true,
-													Description: "APM config.",
+													Description: "APM 配置",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"enable": {
 																Type:        schema.TypeBool,
 																Required:    true,
-																Description: "Whether enable APM.",
+																Description: "Whether 启用 APM。",
 															},
 															"region": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Region.",
+																Description: "地域",
 															},
 															"instance_id": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Instance id of the APM.",
+																Description: "实例 ID APM。",
 															},
 														},
 													},
@@ -263,13 +263,13 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 													Type:        schema.TypeList,
 													MaxItems:    1,
 													Optional:    true,
-													Description: "Third party zipkin config.",
+													Description: "Third party zipkin 配置",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"address": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Zipkin address.",
+																Description: "Zipkin 地址",
 															},
 														},
 													},
@@ -280,34 +280,34 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 									"disable_policy_checks": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Disable policy checks.",
+										Description: "Disable 策略 checks。",
 									},
 									"enable_pilot_http": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Enable HTTP/1.0 support.",
+										Description: "Enable HTTP/1.0 support。",
 									},
 									"disable_http_retry": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Disable http retry.",
+										Description: "Disable http retry。",
 									},
 									"smart_dns": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Optional:    true,
-										Description: "SmartDNS configuration.",
+										Description: "SmartDNS 配置。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"istio_meta_dns_capture": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "Enable dns proxy.",
+													Description: "Enable dns proxy。",
 												},
 												"istio_meta_dns_auto_allocate": {
 													Type:        schema.TypeBool,
 													Optional:    true,
-													Description: "Enable auto allocate address.",
+													Description: "Enable auto allocate 地址",
 												},
 											},
 										},
@@ -319,7 +319,7 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Sidecar inject configuration.",
+							Description: "Sidecar inject 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"exclude_ip_ranges": {
@@ -328,17 +328,17 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Optional:    true,
-										Description: "IP ranges that should not be proxied.",
+										Description: "IP ranges 该 should 不 是 proxied。",
 									},
 									"hold_application_until_proxy_starts": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Let istio-proxy(sidecar) start first, before app container.",
+										Description: "Let istio-proxy(sidecar) start first，before app 容器。",
 									},
 									"hold_proxy_until_application_ends": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Let istio-proxy(sidecar) stop last, after app container.",
+										Description: "Let istio-proxy(sidecar) stop last，after app 容器。",
 									},
 								},
 							},
@@ -347,24 +347,24 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Default sidecar requests and limits.",
+							Description: "Default sidecar requests 和 limits。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"limits": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Sidecar limits.",
+										Description: "Sidecar limits。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Resource type name, `cpu/memory`.",
+													Description: "资源类型 名称，`cpu/内存`。",
 												},
 												"quantity": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Resource quantity, example: cpu-`100m`, memory-`1Gi`.",
+													Description: "Resource quantity，示例: cpu-`100m`，内存-`1Gi`。",
 												},
 											},
 										},
@@ -372,18 +372,18 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 									"requests": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Sidecar requests.",
+										Description: "Sidecar requests。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Resource type name, `cpu/memory`.",
+													Description: "资源类型 名称，`cpu/内存`。",
 												},
 												"quantity": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Resource quantity, example: cpu-`100m`, memory-`1Gi`.",
+													Description: "Resource quantity，示例: cpu-`100m`，内存-`1Gi`。",
 												},
 											},
 										},
@@ -398,23 +398,23 @@ func ResourceTencentCloudTcmMesh() *schema.Resource {
 			"tag_list": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "A list of associated tags.",
+				Description: "A 列表 associated 标签",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag key.",
+							Description: "标签键",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag value.",
+							Description: "标签值",
 						},
 						"passthrough": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Passthrough to other related product.",
+							Description: "Passthrough 到 other related product。",
 						},
 					},
 				},

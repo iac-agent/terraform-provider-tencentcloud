@@ -19,135 +19,135 @@ func DataSourceTencentCloudTsfContainerGroup() *schema.Resource {
 			"search_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "search word, support group name.",
+				Description: "search word，support 组名称",
 			},
 
 			"application_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "ApplicationId, required.",
+				Description: "ApplicationId，必填",
 			},
 
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The sorting field. By default, it is the createTime field. Supports id, name, createTime.",
+				Description: "sorting 字段. By 默认值，它 是 createTime 字段. Supports ID，名称，createTime。",
 			},
 
 			"order_type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The sorting order. By default, it is 1, indicating descending order. 0 indicates ascending order, and 1 indicates descending order.",
+				Description: "sorting 顺序 By 默认值，它 是 1，indicating 降序 0 表示ascending 顺序，和 1 表示descending 顺序",
 			},
 
 			"cluster_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster Id.",
+				Description: "Cluster ID。",
 			},
 
 			"namespace_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Namespace Id.",
+				Description: "Namespace ID。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "result list.",
+				Description: "结果 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of deployment groups.Note: This field may return null, indicating that no valid value was found.",
+							Description: "列表 部署 groups.注意：此字段可能返回 null，表示未找到有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"group_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Group Id.Note: This field may return null, indicating that no valid value was found.",
+										Description: "Group ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"group_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Group name.Note: This field may return null, indicating that no valid value was found.",
+										Description: "组名称注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Create time.Note: This field may return null, indicating that no valid value was found.",
+										Description: "创建时间.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"server": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Image server.Note: This field may return null, indicating that no valid value was found.",
+										Description: "Image 服务器.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"repo_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Image name.Note: This field may return null, indicating that no valid value was found.",
+										Description: "Image 名称注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"tag_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Image version Name.Note: This field may return null, indicating that no valid value was found.",
+										Description: "Image 版本 名称注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"cluster_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cluster Id.Note: This field may return null, indicating that no valid value was found.",
+										Description: "Cluster ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"cluster_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cluster name.Note: This field may return null, indicating that no valid value was found.",
+										Description: "集群名称注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"namespace_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Namespace Id.Note: This field may return null, indicating that no valid value was found.",
+										Description: "Namespace ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"namespace_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Namespace name.Note: This field may return null, indicating that no valid value was found.",
+										Description: "Namespace 名称注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"cpu_request": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The initial amount of CPU, corresponding to K8S request.Note: This field may return null, indicating that no valid value was found.",
+										Description: "initial amount 的 CPU，corresponding 到 K8S 请求.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"cpu_limit": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The maximum amount of CPU, corresponding to K8S limit.Note: This field may return null, indicating that no valid value was found.",
+										Description: "最大 amount 的 CPU，corresponding 到 K8S 限制注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"mem_request": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The initial amount of memory allocated in MiB, corresponding to K8S request.Note: This field may return null, indicating that no valid value was found.",
+										Description: "initial amount 的 内存 allocated 在 MiB，corresponding 到 K8S 请求.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"mem_limit": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The maximum amount of memory allocated in MiB, corresponding to K8S limit.Note: This field may return null, indicating that no valid value was found.",
+										Description: "最大 amount 的 内存 allocated 在 MiB，corresponding 到 K8S 限制注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"alias": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The Group description.Note: This field may return null, indicating that no valid value was found.",
+										Description: "Group 描述注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"kube_inject_enable": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "The value of KubeInjectEnable.Note: This field may return null, indicating that no valid value was found.",
+										Description: "值 的 KubeInjectEnable.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"updated_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Update type.Note: This field may return null, indicating that no valid value was found.",
+										Description: "Update 类型注意：此字段可能返回 null，表示未找到有效值。",
 									},
 								},
 							},
@@ -155,7 +155,7 @@ func DataSourceTencentCloudTsfContainerGroup() *schema.Resource {
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total count.",
+							Description: "总数",
 						},
 					},
 				},
@@ -164,7 +164,7 @@ func DataSourceTencentCloudTsfContainerGroup() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

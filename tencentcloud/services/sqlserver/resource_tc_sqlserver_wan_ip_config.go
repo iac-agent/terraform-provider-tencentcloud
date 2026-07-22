@@ -25,51 +25,51 @@ func ResourceTencentCloudSqlserverWanIpConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 
 			"ro_group_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Read only group ID.",
+				Description: "Read 仅 组 ID.",
 			},
 
 			"enable_wan_ip": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "Whether to open wan ip, true: enable; false: disable.",
+				Description: "Whether 到 open wan ip, true: 启用; false: disable.",
 			},
 
 			// computed
 			"dns_pod_domain": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Internet address domain name.",
+				Description: "Internet 地址 域名 名称.",
 			},
 
 			"tgw_wan_vport": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "External port number.",
+				Description: "External 端口 数量.",
 			},
 
 			"ro_group": {
 				Type:        schema.TypeSet,
 				Computed:    true,
-				Description: "Read only group.",
+				Description: "Read 仅 组.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"dns_pod_domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Internet address domain name.",
+							Description: "Internet 地址 域名 名称.",
 						},
 
 						"tgw_wan_vport": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "External port number.",
+							Description: "External 端口 数量.",
 						},
 					},
 				},

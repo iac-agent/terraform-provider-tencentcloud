@@ -22,19 +22,19 @@ func DataSourceTencentCloudVpcNetDetectStates() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The array of network detection instance `IDs`, such as [`netd-12345678`].",
+				Description: "数组 网络 detection 实例 `IDs`，such 作为 [`netd-12345678`]。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter conditions. `NetDetectIds` and `Filters` cannot be specified at the same time.net-detect-id - String - (Filter condition) The network detection instance ID, such as netd-12345678.",
+				Description: "过滤器 conditions. `NetDetectIds` 和 `Filters` 不能 是 指定 在 same 时间.net-detect-ID - String - (过滤器 condition) 网络 detection 实例 ID，such 作为 netd-12345678。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The attribute name. If more than one Filter exists, the logical relation between these Filters is `AND`.",
+							Description: "attribute 名称 如果 more 比 一个 过滤器 exists， logical relation between these Filters 是 `AND`。",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -42,7 +42,7 @@ func DataSourceTencentCloudVpcNetDetectStates() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Attribute value. If multiple values exist in one filter, the logical relationship between these values is `OR`. For a `bool` parameter, the valid values include `TRUE` and `FALSE`.",
+							Description: "Attribute 值 如果 多个 值 exist 在 一个 过滤器， logical relationship between these 值 是 `OR`. For `bool` 参数， 有效 值 include `TRUE` 和 `FALSE`。",
 						},
 					},
 				},
@@ -51,39 +51,39 @@ func DataSourceTencentCloudVpcNetDetectStates() *schema.Resource {
 			"net_detect_state_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The array of network detection verification results that meet requirements.Note: This field may return null, indicating that no valid values can be obtained.",
+				Description: "数组 网络 detection verification results 该 meet requirements.注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"net_detect_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The ID of a network detection instance, such as netd-12345678.",
+							Description: "ID 网络 detection 实例，such 作为 netd-12345678。",
 						},
 						"net_detect_ip_state_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "The array of network detection destination IP verification results.",
+							Description: "数组 网络 detection destination IP verification results。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"detect_destination_ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The destination IPv4 address of network detection.",
+										Description: "destination IPv4 地址 的 网络 detection。",
 									},
 									"state": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The detection result.0: successful;-1: no packet loss occurred during routing;-2: packet loss occurred when outbound traffic is blocked by the ACL;-3: packet loss occurred when inbound traffic is blocked by the ACL;-4: other errors.",
+										Description: "detection 结果0: successful;-1: 无 packet loss occurred during routing;-2: packet loss occurred 当 outbound 流量 是 blocked 通过 ACL;-3: packet loss occurred 当 inbound 流量 是 blocked 通过 ACL;-4: other errors。",
 									},
 									"delay": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The latency. Unit: ms.",
+										Description: "延迟. 单位：ms。",
 									},
 									"packet_loss_rate": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The packet loss rate.",
+										Description: "packet loss 速率。",
 									},
 								},
 							},
@@ -95,7 +95,7 @@ func DataSourceTencentCloudVpcNetDetectStates() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

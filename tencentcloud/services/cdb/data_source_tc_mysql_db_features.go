@@ -19,67 +19,67 @@ func DataSourceTencentCloudMysqlDbFeatures() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID, the format is: cdb-c1nl9rpv or cdbro-c1nl9rpv, which is the same as the instance ID displayed on the cloud database console page.",
+				Description: "实例ID，格式为：cdb-c1nl9rpv或cdbro-c1nl9rpv，与云数据库控制台页面显示的实例ID相同。",
 			},
 
 			"is_support_audit": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to support the database audit function.",
+				Description: "是否支持数据库审计功能。",
 			},
 
 			"audit_need_upgrade": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to enable auditing needs to upgrade the kernel version.",
+				Description: "是否开启审计需要升级内核版本。",
 			},
 
 			"is_support_encryption": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to support the database encryption function.",
+				Description: "是否支持数据库加密功能。",
 			},
 
 			"encryption_need_upgrade": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to enable encryption needs to upgrade the kernel version.",
+				Description: "是否启用加密需要升级内核版本。",
 			},
 
 			"is_remote_ro": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether it is a remote read-only instance.",
+				Description: "是否为远程只读实例。",
 			},
 
 			"master_region": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The region where the master instance is located.",
+				Description: "主实例所在地域。",
 			},
 
 			"is_support_update_sub_version": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to support minor version upgrades.",
+				Description: "是否支持小版本升级。",
 			},
 
 			"current_sub_version": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Current kernel version.",
+				Description: "当前内核版本。",
 			},
 
 			"target_sub_version": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Available kernel versions for upgrade.",
+				Description: "可用于升级的内核版本。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -28,55 +28,55 @@ func ResourceTencentCloudClsDlcDeliver() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Log topic ID.",
+				Description: "日志主题ID。",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Task name. Length does not exceed 64 characters, starts with a letter, accepts 0-9, a-z, A-Z, _, -, Chinese characters.",
+				Description: "任务名称。长度不超过64个字符，以字母开头，接受0-9、-z、A-Z、_、-、汉字。",
 			},
 
 			"deliver_type": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Delivery type. `0`: batch delivery, `1`: real-time delivery.",
+				Description: "交货类型。 ‘0’：批量交付，‘1’：实时交付。",
 			},
 
 			"start_time": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Start time of the delivery time range (Unix timestamp).",
+				Description: "传送时间范围的开始时间（Unix 时间戳）。",
 			},
 
 			"dlc_info": {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "DLC configuration information.",
+				Description: "DLC 配置信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"table_info": {
 							Type:        schema.TypeList,
 							Required:    true,
 							MaxItems:    1,
-							Description: "DLC table information.",
+							Description: "DLC表信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"data_directory": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Data directory.",
+										Description: "数据目录。",
 									},
 									"database_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Database name.",
+										Description: "数据库名称。",
 									},
 									"table_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Table name.",
+										Description: "表名。",
 									},
 								},
 							},
@@ -85,33 +85,33 @@ func ResourceTencentCloudClsDlcDeliver() *schema.Resource {
 						"field_infos": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "DLC data field information.",
+							Description: "DLC数据字段信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"cls_field": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Field name in CLS log.",
+										Description: "CLS 日志中的字段名称。",
 									},
 									"dlc_field": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Column name in DLC table.",
+										Description: "DLC 表中的列名称。",
 									},
 									"dlc_field_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "DLC field type, e.g. `string`, `int`, `struct`.",
+										Description: "DLC 字段类型，例如`字符串`、`int`、`结构`。",
 									},
 									"fill_field": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Fill field when parsing fails.",
+										Description: "解析失败时填写字段。",
 									},
 									"disable": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Whether to disable this field.",
+										Description: "是否禁用该字段。",
 									},
 								},
 							},
@@ -120,23 +120,23 @@ func ResourceTencentCloudClsDlcDeliver() *schema.Resource {
 						"partition_infos": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "DLC partition information.",
+							Description: "DLC 分区信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"cls_field": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Field name in CLS log.",
+										Description: "CLS 日志中的字段名称。",
 									},
 									"dlc_field": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Column name in DLC table.",
+										Description: "DLC 表中的列名称。",
 									},
 									"dlc_field_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "DLC field type.",
+										Description: "DLC 字段类型。",
 									},
 								},
 							},
@@ -146,18 +146,18 @@ func ResourceTencentCloudClsDlcDeliver() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "DLC partition extra information.",
+							Description: "DLC 分区额外信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"time_format": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Time format, e.g. `/%Y/%m/%d/%H`.",
+										Description: "时间格式，例如`/%Y/%m/%d/%H`。",
 									},
 									"time_zone": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Time zone, e.g. `UTC+08:00`.",
+										Description: "时区，例如`UTC+08:00`。",
 									},
 								},
 							},
@@ -169,39 +169,39 @@ func ResourceTencentCloudClsDlcDeliver() *schema.Resource {
 			"max_size": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Delivery file size in MB. Required when `deliver_type=0`. Range: 5 <= MaxSize <= 256.",
+				Description: "交付文件大小（以 MB 为单位）。当`deliver_type=0`时需要。范围：5 <= 最大尺寸 <= 256。",
 			},
 
 			"interval": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Delivery interval in seconds. Required when `deliver_type=0`. Range: 300 <= Interval <= 900.",
+				Description: "传送间隔（以秒为单位）。当`deliver_type=0`时需要。范围：300 <= 间隔 <= 900。",
 			},
 
 			"end_time": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "End time of the delivery time range (Unix timestamp). If empty, no time limit. Must be greater than `start_time` when set.",
+				Description: "传送时间范围的结束时间（Unix 时间戳）。如果为空，则没有时间限制。设置时必须大于“start_time”。",
 			},
 
 			"has_services_log": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Whether to enable delivery service logs. `1`: disabled, `2`: enabled. Default is enabled.",
+				Description: "是否启用投递服务日志。 `1`：禁用，`2`：启用。默认启用。",
 			},
 
 			"status": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Task status. `1`: running, `2`: stopped.",
+				Description: "任务状态。 `1`：运行，`2`：停止。",
 			},
 
 			// computed
 			"task_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Delivery task ID.",
+				Description: "投递任务ID。",
 			},
 		},
 	}

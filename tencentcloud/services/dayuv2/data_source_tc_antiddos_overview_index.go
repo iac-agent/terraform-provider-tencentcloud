@@ -20,79 +20,79 @@ func DataSourceTencentCloudAntiddosOverviewIndex() *schema.Resource {
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "StartTime.",
+				Description: "StartTime。",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "EndTime.",
+				Description: "EndTime。",
 			},
 
 			"all_ip_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "ip count.",
+				Description: "ip count。",
 			},
 
 			"antiddos_ip_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Total number of advanced defense IPs (including advanced defense packets and advanced defense IPs).",
+				Description: "Total 数量 advanced defense IPs (包括 advanced defense packets 和 advanced defense IPs)。",
 			},
 
 			"attack_ip_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "AttackIpCount.",
+				Description: "AttackIpCount。",
 			},
 
 			"block_ip_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "BlockIpCount.",
+				Description: "BlockIpCount。",
 			},
 
 			"antiddos_domain_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "AntiddosDomainCount.",
+				Description: "AntiddosDomainCount。",
 			},
 
 			"attack_domain_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "AttackDomainCount.",
+				Description: "AttackDomainCount。",
 			},
 
 			"max_attack_flow": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "MaxAttackFlow.",
+				Description: "MaxAttackFlow。",
 			},
 
 			"new_attack_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The time in the most recent attack.",
+				Description: "时间 在 most recent attack。",
 			},
 
 			"new_attack_ip": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The IP address in the most recent attack.",
+				Description: "IP 地址 在 most recent attack。",
 			},
 
 			"new_attack_type": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The type in the most recent attack.",
+				Description: "类型 在 most recent attack。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

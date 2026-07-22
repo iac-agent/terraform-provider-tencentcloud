@@ -28,12 +28,12 @@ func ResourceTencentCloudDasbDeviceGroup() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Device group name, the maximum length is 32 characters.",
+				Description: "Device 组名称， 最大 长度 是 32 字符。",
 			},
 			"department_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of the department to which the asset group belongs, such as: 1.2.3 name, with a maximum length of 32 characters.",
+				Description: "ID department 到 其中 asset 组 belongs，such 作为: 1.2.3 名称，使用 最大长度32 字符。",
 			},
 		},
 	}

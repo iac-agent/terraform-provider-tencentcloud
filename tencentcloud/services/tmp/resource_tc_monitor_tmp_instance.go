@@ -29,61 +29,61 @@ func ResourceTencentCloudMonitorTmpInstance() *schema.Resource {
 			"instance_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance name.",
+				Description: "实例名称",
 			},
 
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Vpc Id.",
+				Description: "私有网络 ID",
 			},
 
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Subnet Id.",
+				Description: "Subnet ID。",
 			},
 
 			"data_retention_time": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Data retention time(in days). Value range: 15, 30, 45, 90, 180, 365, 730.",
+				Description: "Data retention 时间(在 days). 取值范围：15，30，45，90，180，365，730。",
 			},
 
 			"zone": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Available zone.",
+				Description: "Available 可用区",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 
 			"ipv4_address": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Instance IPv4 address.",
+				Description: "实例 IPv4 地址",
 			},
 
 			"remote_write": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Prometheus remote write address.",
+				Description: "Prometheus 远程 write 地址",
 			},
 
 			"api_root_path": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Prometheus HTTP API root address.",
+				Description: "Prometheus HTTP API root 地址",
 			},
 
 			"proxy_address": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Proxy address.",
+				Description: "Proxy 地址",
 			},
 		},
 	}

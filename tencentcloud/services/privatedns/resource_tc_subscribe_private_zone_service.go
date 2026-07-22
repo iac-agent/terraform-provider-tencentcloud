@@ -21,7 +21,7 @@ func ResourceTencentCloudSubscribePrivateZoneService() *schema.Resource {
 			"service_status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Private domain resolution service activation status.",
+				Description: "Private 域名 resolution 服务 activation 状态",
 			},
 		},
 	}

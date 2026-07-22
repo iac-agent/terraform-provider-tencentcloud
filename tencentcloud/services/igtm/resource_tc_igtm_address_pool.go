@@ -26,60 +26,60 @@ func ResourceTencentCloudIgtmAddressPool() *schema.Resource {
 			"pool_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Address pool name, duplicates are not allowed.",
+				Description: "地址 池 名称，duplicates 是 不 allowed。",
 			},
 
 			"traffic_strategy": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Traffic strategy: WEIGHT for load balancing, ALL for resolving all healthy addresses.",
+				Description: "Traffic strategy: WEIGHT 对于 load balancing，ALL 对于 resolving all healthy addresses。",
 			},
 
 			"address_set": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Address list.",
+				Description: "地址 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"addr": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Address value: only supports IPv4, IPv6, and domain name formats.\nLoopback addresses, reserved addresses, internal addresses, and Tencent reserved network segments are not supported.",
+							Description: "地址 值: 仅 支持 IPv4，IPv6，和 域名 名称 formats.\nLoopback addresses，reserved addresses，内部 addresses，和 Tencent reserved 网络 segments 是 不 支持。",
 						},
 						"is_enable": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Whether to enable: DISABLED for disabled, ENABLED for enabled.",
+							Description: "是否enable: DISABLED 对于 已禁用，ENABLED 对于 已启用",
 						},
 						"address_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Address ID.",
+							Description: "地址 ID。",
 						},
 						"location": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Address name.",
+							Description: "地址 名称",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "OK for normal, DOWN for failure, WARN for risk, UNKNOWN for probing, UNMONITORED for unknown.",
+							Description: "OK 对于 normal，DOWN 对于 failure，WARN 对于 risk，UNKNOWN 对于 probing，UNMONITORED 对于 unknown。",
 						},
 						"weight": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Weight, required when traffic strategy is WEIGHT; range 1-100.",
+							Description: "权重，必填 当 流量 strategy 是 WEIGHT; 范围 1-100。",
 						},
 						"created_on": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 						"updated_on": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Modification time.",
+							Description: "修改时间。",
 						},
 					},
 				},
@@ -88,14 +88,14 @@ func ResourceTencentCloudIgtmAddressPool() *schema.Resource {
 			"monitor_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Monitor ID.",
+				Description: "Monitor ID。",
 			},
 
 			// computed
 			"pool_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Address pool ID.",
+				Description: "地址 池 ID。",
 			},
 		},
 	}

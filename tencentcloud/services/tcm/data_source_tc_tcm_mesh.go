@@ -22,7 +22,7 @@ func DataSourceTencentCloudTcmMesh() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Mesh instance Id.",
+				Description: "Mesh 实例 ID。",
 			},
 
 			"mesh_name": {
@@ -31,7 +31,7 @@ func DataSourceTencentCloudTcmMesh() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Display name.",
+				Description: "Display 名称",
 			},
 
 			"tags": {
@@ -40,7 +40,7 @@ func DataSourceTencentCloudTcmMesh() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "tag key.",
+				Description: "标签键",
 			},
 
 			"mesh_cluster": {
@@ -49,82 +49,82 @@ func DataSourceTencentCloudTcmMesh() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Mesh name.",
+				Description: "Mesh 名称",
 			},
 
 			"mesh_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The mesh information is queriedNote: This field may return null, indicating that a valid value is not available.",
+				Description: "mesh 信息 是 queried注意：此字段可能返回 null，表示有效值不可用。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"mesh_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Mesh instance Id.",
+							Description: "Mesh 实例 ID。",
 						},
 						"display_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Mesh name.",
+							Description: "Mesh 名称",
 						},
 						"version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Mesh version.",
+							Description: "Mesh 版本",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Mesh type.  Value range:- `STANDALONE`: Standalone mesh- `HOSTED`: hosted the mesh.",
+							Description: "Mesh 类型 值 范围:- `STANDALONE`: Standalone mesh- `HOSTED`: hosted mesh。",
 						},
 						"config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Mesh configuration.",
+							Description: "Mesh 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"istio": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Istio configuration.",
+										Description: "Istio 配置。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"outbound_traffic_policy": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Outbound traffic policy.",
+													Description: "Outbound 流量 策略。",
 												},
 												"disable_policy_checks": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Disable policy checks.",
+													Description: "Disable 策略 checks。",
 												},
 												"enable_pilot_http": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Enable HTTP/1.0 support.",
+													Description: "Enable HTTP/1.0 support。",
 												},
 												"disable_http_retry": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Disable http retry.",
+													Description: "Disable http retry。",
 												},
 												"smart_dns": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "SmartDNS configuration.",
+													Description: "SmartDNS 配置。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"istio_meta_dns_capture": {
 																Type:        schema.TypeBool,
 																Computed:    true,
-																Description: "Enable dns proxy.",
+																Description: "Enable dns proxy。",
 															},
 															"istio_meta_dns_auto_allocate": {
 																Type:        schema.TypeBool,
 																Computed:    true,
-																Description: "Enable auto allocate address.",
+																Description: "Enable auto allocate 地址",
 															},
 														},
 													},
@@ -138,23 +138,23 @@ func DataSourceTencentCloudTcmMesh() *schema.Resource {
 						"tag_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "A list of associated tags.",
+							Description: "A 列表 associated 标签",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag key.",
+										Description: "标签键",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag value.",
+										Description: "标签值",
 									},
 									"passthrough": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Passthrough to other related product.",
+										Description: "Passthrough 到 other related product。",
 									},
 								},
 							},
@@ -166,7 +166,7 @@ func DataSourceTencentCloudTcmMesh() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

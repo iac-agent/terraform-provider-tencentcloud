@@ -20,110 +20,110 @@ func DataSourceTencentCloudApiGatewayApiAppApi() *schema.Resource {
 			"service_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The unique ID of the service where the API resides.",
+				Description: "唯一 ID 服务 其中 API resides。",
 			},
 			"api_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "API interface unique ID.",
+				Description: "API interface 唯一 ID。",
 			},
 			"api_region": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Api region.",
+				Description: "Api 地域",
 			},
 			// computed
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "API details.",
+				Description: "API details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"service_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The unique ID of the service where the API resides.",
+							Description: "唯一 ID 服务 其中 API resides。",
 						},
 						"service_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The name of the service where the API resides.",
+							Description: "名称 服务 其中 API resides。",
 						},
 						"service_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "A description of the service where the API resides.",
+							Description: "A 描述 服务 其中 API resides。",
 						},
 						"api_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "API interface unique ID.",
+							Description: "API interface 唯一 ID。",
 						},
 						"api_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description of the API interface.",
+							Description: "描述 API interface。",
 						},
 						"created_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time, expressed in accordance with the ISO8601 standard and using UTC time. The format is: YYYY-MM-DDThh:mm:ssZ.",
+							Description: "创建时间，expressed 在 accordance 使用 ISO8601 standard 和 使用 UTC 时间. 格式 是: YYYY-MM-DDThh:mm:ssZ。",
 						},
 						"modified_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last modification time, expressed in accordance with the ISO8601 standard and using UTC time. The format is: YYYY-MM-DDThh:mm:ssZ.",
+							Description: "Last 修改时间，expressed 在 accordance 使用 ISO8601 standard 和 使用 UTC 时间. 格式 是: YYYY-MM-DDThh:mm:ssZ。",
 						},
 						"api_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The name of the API interface.",
+							Description: "名称 API interface。",
 						},
 						"api_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "API type. Possible values are NORMAL (normal API) and TSF (microservice API).",
+							Description: "API 类型 Possible 值 是 NORMAL (normal API) 和 TSF (microservice API)。",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The front-end request type of the API, such as HTTP or HTTPS or HTTP and HTTPS.",
+							Description: "front-end 请求 类型 API，such 作为 HTTP 或 HTTPS 或 HTTP 和 HTTPS。",
 						},
 						"auth_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "API authentication type. Possible values are SECRET (key pair authentication), NONE (authentication-free), and OAUTH.",
+							Description: "API authentication 类型 Possible 值 是 SECRET (键 pair authentication)，NONE (authentication-free)，和 OAUTH。",
 						},
 						"api_business_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type of OAUTH API. Possible values are NORMAL (Business API), OAUTH (Authorization API).",
+							Description: "类型 OAUTH API. Possible 值 是 NORMAL (Business API)，OAUTH (Authorization API)。",
 						},
 						"auth_relation_api_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "OAUTH The unique ID of the authorization API associated with the business API.",
+							Description: "OAUTH 唯一 ID authorization API associated 使用 business API。",
 						},
 						"oauth_config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "OAUTH configuration.",
+							Description: "OAUTH 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"public_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Public key, used to verify user token.",
+										Description: "Public 键，用于verify 用户 令牌",
 									},
 									"token_location": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Token delivery position.",
+										Description: "令牌 delivery position。",
 									},
 									"login_redirect_url": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Redirect address, used to guide users to log in.",
+										Description: "Redirect 地址，用于guide users 到 日志 在。",
 									},
 								},
 							},
@@ -131,23 +131,23 @@ func DataSourceTencentCloudApiGatewayApiAppApi() *schema.Resource {
 						"is_debug_after_charge": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether to debug after purchase (parameters reserved in the cloud market).",
+							Description: "是否debug after purchase (参数 reserved 在 云 market)。",
 						},
 						"request_config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "The requested frontend configuration.",
+							Description: "requested frontend 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"path": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "API path, such as /path.",
+										Description: "API 路径，such 作为 /路径",
 									},
 									"method": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "API request method, such as GET.",
+										Description: "API 请求 方法，such 作为 GET。",
 									},
 								},
 							},
@@ -155,48 +155,48 @@ func DataSourceTencentCloudApiGatewayApiAppApi() *schema.Resource {
 						"response_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Return type.",
+							Description: "Return 类型",
 						},
 						"response_success_example": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Custom response configuration successful response example.",
+							Description: "Custom response 配置 successful response 示例。",
 						},
 						"response_fail_example": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Custom response configuration failure response example.",
+							Description: "Custom response 配置 failure response 示例。",
 						},
 						"response_error_codes": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "User-defined error code configuration.",
+							Description: "用户-defined 错误码 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"code": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Custom response configuration error code.",
+										Description: "Custom response 配置 错误码",
 									},
 									"msg": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Custom response configuration error message.",
+										Description: "Custom response 配置 错误信息",
 									},
 									"desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Custom response configuration error code remarks.",
+										Description: "Custom response 配置 错误码 备注",
 									},
 									"converted_code": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Custom error code conversion.",
+										Description: "Custom 错误码 conversion。",
 									},
 									"need_convert": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether it is necessary to enable error code conversion.",
+										Description: "是否为necessary 到 启用 错误码 conversion。",
 									},
 								},
 							},
@@ -204,38 +204,38 @@ func DataSourceTencentCloudApiGatewayApiAppApi() *schema.Resource {
 						"request_parameters": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Front-end request parameters.",
+							Description: "Front-end 请求 参数。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "API front-end parameter name.",
+										Description: "API front-end 参数 名称",
 									},
 									"position": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The front-end parameter position of the API, such as header. Currently supports header, query, path.",
+										Description: "front-end 参数 position 的 API，such 作为 头部. Currently 支持 头部，查询，路径",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "API front-end parameter type, such as String, int.",
+										Description: "API front-end 参数 类型，such 作为 String，int。",
 									},
 									"default_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "API front-end parameter default value.",
+										Description: "API front-end 参数 默认值",
 									},
 									"required": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: ".",
+										Description: "。",
 									},
 									"desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "API front-end parameter remarks.",
+										Description: "API front-end 参数 备注",
 									},
 								},
 							},
@@ -243,48 +243,48 @@ func DataSourceTencentCloudApiGatewayApiAppApi() *schema.Resource {
 						"service_timeout": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The backend service timeout of the API, in seconds.",
+							Description: "backend 服务 超时 的 API，（秒）。",
 						},
 						"service_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The backend service type of the API. Possible values are HTTP, MOCK, TSF, CLB, SCF, WEBSOCKET, and TARGET (internal testing).",
+							Description: "backend 服务 类型 API. Possible 值 是 HTTP，MOCK，TSF，CLB，SCF，WEBSOCKET，和 TARGET (内部 testing)。",
 						},
 						"service_config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Backend service configuration for the API.",
+							Description: "Backend 服务 配置 对于 API。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"product": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Backend type. It takes effect when vpc is enabled. Currently supported types are clb, cvm and upstream.",
+										Description: "Backend 类型 It takes effect 当 vpc 是 已启用 Currently 支持 types 是 clb，cvm 和 upstream。",
 									},
 									"uniq_vpc_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The unique ID of the vpc.",
+										Description: "唯一 ID vpc。",
 									},
 									"url": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "API&amp;#39;s backend service url. If ServiceType is HTTP, this parameter must be passed.",
+										Description: "API&amp;#39;s backend 服务 URL 如果 ServiceType 是 HTTP，此 参数 必须 是 passed。",
 									},
 									"path": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "API backend service path, such as /path. If ServiceType is HTTP, this parameter is required. The front-end and back-end paths can be different.",
+										Description: "API backend 服务 路径，such 作为 /路径 如果 ServiceType 是 HTTP，此 参数 为必填项. front-end 和 back-end paths 可以 是 different。",
 									},
 									"method": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "API backend service request method, such as GET. If ServiceType is HTTP, this parameter is required. The front-end and back-end methods can be different.",
+										Description: "API backend 服务 请求 方法，such 作为 GET. 如果 ServiceType 是 HTTP，此 参数 为必填项. front-end 和 back-end methods 可以 是 different。",
 									},
 									"upstream_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Only required when binding vpc channel.",
+										Description: "Only 必填 当 binding vpc channel。",
 									},
 								},
 							},
@@ -292,38 +292,38 @@ func DataSourceTencentCloudApiGatewayApiAppApi() *schema.Resource {
 						"service_parameters": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "API backend service parameters.",
+							Description: "API backend 服务 参数。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The backend service parameter name of the API. This parameter will be used only if the ServiceType is HTTP. The front-end and back-end parameter names can be different.",
+										Description: "backend 服务 参数 名称 API. 此 参数 将 是 使用 仅 如果 ServiceType 是 HTTP. front-end 和 back-end 参数 names 可以 是 different。",
 									},
 									"position": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The backend service parameter location of the API, such as head. This parameter is only used if the ServiceType is HTTP. The front-end and back-end parameter positions can be configured differently.",
+										Description: "backend 服务 参数 location 的 API，such 作为 head. 此 参数 是 仅 使用 如果 ServiceType 是 HTTP. front-end 和 back-end 参数 positions 可以 是 已配置 differently。",
 									},
 									"relevant_request_parameter_position": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The front-end parameter position corresponding to the back-end service parameter of the API, such as head. This parameter is only used if the ServiceType is HTTP.",
+										Description: "front-end 参数 position corresponding 到 back-end 服务 参数 的 API，such 作为 head. 此 参数 是 仅 使用 如果 ServiceType 是 HTTP。",
 									},
 									"relevant_request_parameter_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The front-end parameter name corresponding to the back-end service parameter of the API. This parameter is only used if the ServiceType is HTTP.",
+										Description: "front-end 参数 名称 corresponding 到 back-end 服务 参数 的 API. 此 参数 是 仅 使用 如果 ServiceType 是 HTTP。",
 									},
 									"default_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Default values for the APIs backend service parameters. This parameter is only used if the ServiceType is HTTP.",
+										Description: "Default 值 对于 APIs backend 服务 参数. 此 参数 是 仅 使用 如果 ServiceType 是 HTTP。",
 									},
 									"relevant_request_parameter_desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Remarks on the backend service parameters of the API. This parameter is only used if the ServiceType is HTTP.",
+										Description: "备注 在 backend 服务 参数 的 API. 此 参数 是 仅 使用 如果 ServiceType 是 HTTP。",
 									},
 								},
 							},
@@ -331,28 +331,28 @@ func DataSourceTencentCloudApiGatewayApiAppApi() *schema.Resource {
 						"constant_parameters": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Constant parameters.",
+							Description: "Constant 参数。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Constant parameter name. This parameter is only used if the ServiceType is HTTP.",
+										Description: "Constant 参数 名称 此 参数 是 仅 使用 如果 ServiceType 是 HTTP。",
 									},
 									"desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Constant parameter description. This parameter is only used if the ServiceType is HTTP.",
+										Description: "Constant 参数 描述 此 参数 是 仅 使用 如果 ServiceType 是 HTTP。",
 									},
 									"position": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Constant parameter position. This parameter is only used if the ServiceType is HTTP.",
+										Description: "Constant 参数 position. 此 参数 是 仅 使用 如果 ServiceType 是 HTTP。",
 									},
 									"default_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Constant parameter default value. This parameter is only used if the ServiceType is HTTP.",
+										Description: "Constant 参数 默认值 此 参数 是 仅 使用 如果 ServiceType 是 HTTP。",
 									},
 								},
 							},
@@ -360,98 +360,98 @@ func DataSourceTencentCloudApiGatewayApiAppApi() *schema.Resource {
 						"service_mock_return_message": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "APIs backend Mock returns information. If ServiceType is Mock, this parameter must be passed.",
+							Description: "APIs backend Mock 返回information. 如果 ServiceType 是 Mock，此 参数 必须 是 passed。",
 						},
 						"service_scf_function_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scf function name. Effective when the backend type is SCF.",
+							Description: "Scf 函数 名称 Effective 当 backend 类型 是 SCF。",
 						},
 						"service_scf_function_namespace": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scf function namespace. Effective when the backend type is SCF.",
+							Description: "Scf 函数 命名空间. Effective 当 backend 类型 是 SCF。",
 						},
 						"service_scf_function_qualifier": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scf function version. Effective when the backend type is SCF.",
+							Description: "Scf 函数 版本 Effective 当 backend 类型 是 SCF。",
 						},
 						"service_scf_is_integrated_response": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether to enable integrated response.",
+							Description: "是否enable integrated response。",
 						},
 						"service_websocket_register_function_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scf websocket registration function namespace. Valid when the front-end type is WEBSOCKET and the back-end type is SCF.",
+							Description: "Scf websocket registration 函数 命名空间. 有效 当 front-end 类型 是 WEBSOCKET 和 back-end 类型 是 SCF。",
 						},
 						"service_websocket_register_function_namespace": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scf websocket registration function namespace. Valid when the front-end type is WEBSOCKET and the back-end type is SCF.",
+							Description: "Scf websocket registration 函数 命名空间. 有效 当 front-end 类型 是 WEBSOCKET 和 back-end 类型 是 SCF。",
 						},
 						"service_websocket_register_function_qualifier": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scf websocket transfer function version. Valid when the front-end type is WEBSOCKET and the back-end type is SCF.",
+							Description: "Scf websocket transfer 函数 版本 有效 当 front-end 类型 是 WEBSOCKET 和 back-end 类型 是 SCF。",
 						},
 						"service_websocket_cleanup_function_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scf websocket cleaning function. Valid when the front-end type is WEBSOCKET and the back-end type is SCF.",
+							Description: "Scf websocket cleaning 函数. 有效 当 front-end 类型 是 WEBSOCKET 和 back-end 类型 是 SCF。",
 						},
 						"service_websocket_cleanup_function_namespace": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scf websocket cleanup function namespace. Valid when the front-end type is WEBSOCKET and the back-end type is SCF.",
+							Description: "Scf websocket cleanup 函数 命名空间. 有效 当 front-end 类型 是 WEBSOCKET 和 back-end 类型 是 SCF。",
 						},
 						"service_websocket_cleanup_function_qualifier": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scf websocket cleanup function version. Valid when the front-end type is WEBSOCKET and the back-end type is SCF.",
+							Description: "Scf websocket cleanup 函数 版本 有效 当 front-end 类型 是 WEBSOCKET 和 back-end 类型 是 SCF。",
 						},
 						"internal_domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "WEBSOCKET pushback address.",
+							Description: "WEBSOCKET pushback 地址",
 						},
 						"service_websocket_transport_function_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scf websocket transfer function. Valid when the front-end type is WEBSOCKET and the back-end type is SCF.",
+							Description: "Scf websocket transfer 函数. 有效 当 front-end 类型 是 WEBSOCKET 和 back-end 类型 是 SCF。",
 						},
 						"service_websocket_transport_function_namespace": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scf websocket transfer function namespace. Valid when the front-end type is WEBSOCKET and the back-end type is SCF.",
+							Description: "Scf websocket transfer 函数 命名空间. 有效 当 front-end 类型 是 WEBSOCKET 和 back-end 类型 是 SCF。",
 						},
 						"service_websocket_transport_function_qualifier": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scf websocket transfer function version. Valid when the front-end type is WEBSOCKET and the back-end type is SCF.",
+							Description: "Scf websocket transfer 函数 版本 有效 当 front-end 类型 是 WEBSOCKET 和 back-end 类型 是 SCF。",
 						},
 						"micro_services": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "API binding microservice list.",
+							Description: "API binding microservice 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"cluster_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Microservice cluster ID.",
+										Description: "Microservice 集群 ID。",
 									},
 									"namespace_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Microservice namespace ID.",
+										Description: "Microservice 命名空间 ID。",
 									},
 									"micro_service_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Microservice name.",
+										Description: "Microservice 名称",
 									},
 								},
 							},
@@ -462,33 +462,33 @@ func DataSourceTencentCloudApiGatewayApiAppApi() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "Microservice information details.",
+							Description: "Microservice 信息 details。",
 						},
 						"service_tsf_load_balance_conf": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Load balancing configuration for microservices.",
+							Description: "Load balancing 配置 对于 microservices。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"is_load_balance": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether to enable load balancing.",
+										Description: "是否enable load balancing。",
 									},
 									"method": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Load balancing method.",
+										Description: "Load balancing 方法。",
 									},
 									"session_stick_required": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether to enable session persistence.",
+										Description: "是否enable 会话 persistence。",
 									},
 									"session_stick_timeout": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Session retention timeout.",
+										Description: "Session retention 超时。",
 									},
 								},
 							},
@@ -496,28 +496,28 @@ func DataSourceTencentCloudApiGatewayApiAppApi() *schema.Resource {
 						"service_tsf_health_check_conf": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Health check configuration for microservices.",
+							Description: "Health check 配置 对于 microservices。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"is_health_check": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether to enable health check.",
+										Description: "是否enable health check。",
 									},
 									"request_volume_threshold": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Health check threshold.",
+										Description: "Health check 阈值。",
 									},
 									"sleep_window_in_milliseconds": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Window size.",
+										Description: "Window 大小。",
 									},
 									"error_threshold_percentage": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Threshold percentage.",
+										Description: "Threshold percentage。",
 									},
 								},
 							},
@@ -525,23 +525,23 @@ func DataSourceTencentCloudApiGatewayApiAppApi() *schema.Resource {
 						"enable_cors": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether to enable cross-domain.",
+							Description: "是否enable cross-域名",
 						},
 						"tags": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "API binding tag information.",
+							Description: "API binding 标签 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Key of the label.",
+										Description: "键 的 标签",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The value of the note.",
+										Description: "值 的 note。",
 									},
 								},
 							},
@@ -552,28 +552,28 @@ func DataSourceTencentCloudApiGatewayApiAppApi() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "API published environment information.",
+							Description: "API published 环境 信息。",
 						},
 						"is_base64_encoded": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether to enable Base64 encoding will only take effect when the backend is scf.",
+							Description: "是否enable Base64 编码 将 仅 take effect 当 backend 是 scf。",
 						},
 						"is_base64_trigger": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether to enable Base64-encoded header triggering will only take effect when the backend is scf.",
+							Description: "是否enable Base64-encoded 头部 triggering 将 仅 take effect 当 backend 是 scf。",
 						},
 						"base64_encoded_trigger_rules": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Header triggers rules, and the total number of rules does not exceed 10.",
+							Description: "Header triggers 规则，和 总数 数量 规则 does 不 exceed 10。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Header for encoding triggering, optional values Accept and Content_Type correspond to Accept and Content-Type in the actual data flow request header.",
+										Description: "Header 对于 编码 triggering，可选 值 Accept 和 Content_Type correspond 到 Accept 和 内容-类型 在 actual 数据 flow 请求 头部。",
 									},
 									"value": {
 										Type: schema.TypeSet,
@@ -581,7 +581,7 @@ func DataSourceTencentCloudApiGatewayApiAppApi() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "An array of optional values for the header triggered by encoding. The maximum string length of the array element is 40. The elements can include numbers, English letters and special characters. The optional values for special characters are: `.` `+` ` *` `-` `/` `_` For example [ application/x-vpeg005, application/xhtml+xml, application/vnd.ms -project, application/vnd.rn-rn_music_package] etc. are all legal.",
+										Description: "An 数组 可选 值 对于 头部 triggered 通过 编码. 最大 字符串 长度 的 数组 element 是 40. elements 可以 include numbers，English letters 和 special 字符. 可选 值 对于 special 字符 是: `.` `+` ` *` `-` `/` `_` For 示例 [ 应用/x-vpeg005，应用/xhtml+xml，应用/vnd.ms -项目，应用/vnd.rn-rn_music_package] etc. 是 all legal。",
 									},
 								},
 							},
@@ -592,7 +592,7 @@ func DataSourceTencentCloudApiGatewayApiAppApi() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save apiAppApis.",
+				Description: "用于save apiAppApis。",
 			},
 		},
 	}

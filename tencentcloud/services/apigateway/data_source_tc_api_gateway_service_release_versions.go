@@ -19,23 +19,23 @@ func DataSourceTencentCloudApiGatewayServiceReleaseVersions() *schema.Resource {
 			"service_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The unique ID of the service to be queried.",
+				Description: "唯一 ID 服务 到 是 queried。",
 			},
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of service releases.Note: This field may return null, indicating that no valid value can be obtained.",
+				Description: "列表 服务 releases.注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"version_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Version number.Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "版本 数量.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"version_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Version description.Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "版本 描述注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -43,7 +43,7 @@ func DataSourceTencentCloudApiGatewayServiceReleaseVersions() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

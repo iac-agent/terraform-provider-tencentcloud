@@ -25,13 +25,13 @@ func ResourceTencentCloudSqlserverStartBackupFullMigration() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "ID of imported target instance.",
+				Description: "ID 的 imported 目标 实例.",
 			},
 			"backup_migration_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Backup import task ID, returned by the CreateBackupMigration interface.",
+				Description: "Backup import 任务 ID, 返回 通过 CreateBackupMigration interface.",
 			},
 		},
 	}

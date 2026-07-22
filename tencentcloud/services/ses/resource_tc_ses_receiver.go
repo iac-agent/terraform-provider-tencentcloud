@@ -27,34 +27,34 @@ func ResourceTencentCloudSesReceiver() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Recipient group name.",
+				Description: "Recipient 组名称",
 			},
 
 			"desc": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Recipient group description.",
+				Description: "Recipient 组 描述",
 			},
 
 			"data": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeSet,
-				Description: "Recipient email and template parameters in array format. The number of recipients is limited to within 20,000. If there is an object in the `data` list that inputs `template_data`, then other objects are also required.",
+				Description: "Recipient email 和 template 参数 在 数组 格式 数量 recipients 是 limited 到 within 20,000. 如果 there 是 对象 在 `数据` 列表 该 inputs `template_data`，then other objects 是 also 必填",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"email": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Recipient email addresses.",
+							Description: "Recipient email addresses。",
 						},
 						"template_data": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Variable parameters in the template, please use json.dump to format the JSON object as a string type. The object is a set of key-value pairs, where each key represents a variable in the template, and the variables in the template are represented by {{key}}, and the corresponding values will be replaced with {{value}} when sent.Note: Parameter values cannot be complex data such as HTML. The total length of TemplateData (the entire JSON structure) should be less than 800 bytes.",
+							Description: "Variable 参数 在 template，please 使用 json.dump 到 格式 JSON 对象 作为 字符串 类型 对象 是 集合 的 键-值 pairs，其中 each 键 表示 variable 在 template，和 variables 在 template 是 represented 通过 {{键}}，和 corresponding 值 将 是 replaced 使用 {{值}} 当 sent.注意: Parameter 值 不能 是 complex 数据 such 作为 HTML. 总数 长度 的 TemplateData ( entire JSON structure) should 是 less 比 800 bytes。",
 						},
 					},
 				},

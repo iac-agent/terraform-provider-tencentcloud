@@ -36,7 +36,7 @@ func ResourceTencentCloudMysqlPrivilege() *schema.Resource {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "Instance ID.",
+				Description: "实例ID。",
 			},
 			"account_name": {
 				Type:     schema.TypeString,
@@ -52,14 +52,14 @@ func ResourceTencentCloudMysqlPrivilege() *schema.Resource {
 					}
 					return
 				},
-				Description: "Account name.the forbidden value is:root,mysql.sys,tencentroot.",
+				Description: "账户名。禁止值为：root、mysql.sys、tencentroot。",
 			},
 			"account_host": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
 				Default:     MYSQL_DEFAULT_ACCOUNT_HOST,
-				Description: "Account host, default is `%`.",
+				Description: "帐户主机，默认为`%`。",
 			},
 			"global": {
 				Type:     schema.TypeSet,
@@ -73,13 +73,13 @@ func ResourceTencentCloudMysqlPrivilege() *schema.Resource {
 			"database": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Database privileges list.",
+				Description: "数据库权限列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Database name.",
+							Description: "数据库名称。",
 						},
 						"privileges": {
 							Type:        schema.TypeSet,
@@ -93,18 +93,18 @@ func ResourceTencentCloudMysqlPrivilege() *schema.Resource {
 			"table": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Table privileges list.",
+				Description: "表权限列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Database name.",
+							Description: "数据库名称。",
 						},
 						"table_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Table name.",
+							Description: "表名。",
 						},
 						"privileges": {
 							Type:        schema.TypeSet,
@@ -118,23 +118,23 @@ func ResourceTencentCloudMysqlPrivilege() *schema.Resource {
 			"column": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Column privileges list.",
+				Description: "列权限列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Database name.",
+							Description: "数据库名称。",
 						},
 						"table_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Table name.",
+							Description: "表名。",
 						},
 						"column_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Column name.",
+							Description: "列名。",
 						},
 						"privileges": {
 							Type:        schema.TypeSet,

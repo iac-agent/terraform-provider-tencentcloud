@@ -20,113 +20,113 @@ func DataSourceTencentCloudTatCommand() *schema.Resource {
 			"command_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Command ID.",
+				Description: "命令 ID",
 			},
 
 			"command_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Command name.",
+				Description: "命令名称",
 			},
 
 			"command_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Command type, Value is `SHELL` or `POWERSHELL`.",
+				Description: "命令类型，值 是 `SHELL` 或 `POWERSHELL`。",
 			},
 
 			"created_by": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Command creator. `TAT` indicates a public command and `USER` indicates a personal command.",
+				Description: "Command 创建者 `TAT` 表示a 公有 command 和 `USER` 表示a personal command。",
 			},
 
 			"command_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of command details.",
+				Description: "列表 command details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"command_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Command ID.",
+							Description: "命令 ID",
 						},
 						"command_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Command name.",
+							Description: "命令名称",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Command description.",
+							Description: "命令描述",
 						},
 						"content": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "command.",
+							Description: "command。",
 						},
 						"command_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Command type.",
+							Description: "命令类型",
 						},
 						"working_directory": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Command execution path.",
+							Description: "Command execution 路径",
 						},
 						"timeout": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Command timeout period.",
+							Description: "Command 超时 周期",
 						},
 						"created_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Command creation time.",
+							Description: "Command 创建时间。",
 						},
 						"updated_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Command update time.",
+							Description: "Command 更新时间。",
 						},
 						"enable_parameter": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether to enable the custom parameter feature.",
+							Description: "是否enable 自定义 参数 功能。",
 						},
 						"default_parameters": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Default custom parameter value.",
+							Description: "Default 自定义 参数 值",
 						},
 						"formatted_description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Formatted description of the command. This parameter is an empty string for user commands and contains values for public commands.",
+							Description: "Formatted 描述 command. 此 参数 是 空 字符串 对于 用户 commands 和 包含values 对于 公有 commands。",
 						},
 						"created_by": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Command creator. `TAT` indicates a public command and `USER` indicates a personal command.",
+							Description: "Command 创建者 `TAT` 表示a 公有 command 和 `USER` 表示a personal command。",
 						},
 						"tags": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Tags bound to the command. At most 10 tags are allowed.",
+							Description: "标签 bound 到 command. At most 10 标签 是 allowed。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag key.",
+										Description: "标签键",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag value.",
+										Description: "标签值",
 									},
 								},
 							},
@@ -134,17 +134,17 @@ func DataSourceTencentCloudTatCommand() *schema.Resource {
 						"username": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The user who executes the command on the instance.",
+							Description: "用户 who executes command 在 实例。",
 						},
 						"output_cos_bucket_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The COS bucket URL for uploading logs.",
+							Description: "COS 存储桶 URL 对于 uploading logs。",
 						},
 						"output_cos_key_prefix": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The COS bucket directory where the logs are saved.",
+							Description: "COS 存储桶 directory 其中 logs 是 saved。",
 						},
 					},
 				},
@@ -153,7 +153,7 @@ func DataSourceTencentCloudTatCommand() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

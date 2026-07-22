@@ -29,13 +29,13 @@ func ResourceTencentCloudDnspodLineGroup() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "Domain name.",
+				Description: "域名 名称",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Line group name, length 1-17 characters.",
+				Description: "Line 组名称，长度 1-17 字符。",
 			},
 
 			"lines": {
@@ -44,31 +44,31 @@ func ResourceTencentCloudDnspodLineGroup() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of lines in the group. Maximum 120 lines.",
+				Description: "列表 lines 在 组. Maximum 120 lines。",
 			},
 
 			"domain_id": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Domain ID.",
+				Description: "域名 ID。",
 			},
 
 			"line_group_id": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Line group ID.",
+				Description: "Line 组 ID",
 			},
 
 			"created_on": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Creation time.",
+				Description: "创建时间。",
 			},
 
 			"updated_on": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Update time.",
+				Description: "更新时间。",
 			},
 		},
 	}

@@ -18,24 +18,24 @@ func DataSourceTencentCloudIgtmStrategyList() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Strategy filter conditions: StrategyName: strategy name.",
+				Description: "Strategy 过滤器 conditions: StrategyName: strategy 名称",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter field name, supported list as follows:\n- type: main resource type, CDN.\n- instanceId: IGTM instance ID. This is a required parameter, failure to pass will cause interface query failure.",
+							Description: "过滤字段名称，支持 列表 作为 follows:\n- 类型: main 资源类型，CDN.\n- instanceId: IGTM 实例 ID. 此 是 必填 参数，failure 到 pass 将 cause interface 查询 failure。",
 						},
 						"value": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Filter field values.",
+							Description: "过滤器 字段 值。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -43,7 +43,7 @@ func DataSourceTencentCloudIgtmStrategyList() *schema.Resource {
 						"fuzzy": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether to enable fuzzy query, only supports filter field name as domain.\nWhen fuzzy query is enabled, Value maximum length is 1, otherwise Value maximum length is 5. (Reserved field, currently unused).",
+							Description: "是否enable fuzzy 查询，仅 支持 过滤字段名称 作为 域名\nWhen fuzzy 查询 是 已启用，值 最大 长度 是 1，otherwise 值 最大 长度 是 5. (Reserved 字段，currently unused)。",
 						},
 					},
 				},
@@ -52,34 +52,34 @@ func DataSourceTencentCloudIgtmStrategyList() *schema.Resource {
 			"strategy_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Strategy list.",
+				Description: "Strategy 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Strategy name.",
+							Description: "Strategy 名称",
 						},
 						"source": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Address source.",
+							Description: "地址 来源",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"dns_line_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Resolution request source line ID.",
+										Description: "Resolution 请求来源 line ID。",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Resolution request source line name.",
+										Description: "Resolution 请求来源 line 名称",
 									},
 								},
 							},
@@ -87,62 +87,62 @@ func DataSourceTencentCloudIgtmStrategyList() *schema.Resource {
 						"strategy_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Strategy ID.",
+							Description: "Strategy ID。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Health status: ok healthy, warn risk, down failure.",
+							Description: "Health 状态: ok healthy，warn risk，down failure。",
 						},
 						"activate_main_pool_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Activated main pool ID, null means unknown.",
+							Description: "Activated main 池 ID，null 表示 unknown。",
 						},
 						"activate_level": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Current activated address pool level, 0 means fallback activated, null means unknown.",
+							Description: "Current activated 地址 池 级别，0 表示 fallback activated，null 表示 unknown。",
 						},
 						"active_pool_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Current activated address pool set type: main main pool; fallback fallback pool.",
+							Description: "Current activated 地址 池 集合 类型: main main 池; fallback fallback 池。",
 						},
 						"active_traffic_strategy": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Current activated address pool traffic strategy: all resolve all; weight load balancing.",
+							Description: "Current activated 地址 池 流量 strategy: all resolve all; 权重 load balancing。",
 						},
 						"monitor_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Monitor count.",
+							Description: "Monitor count。",
 						},
 						"is_enabled": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Whether enabled: ENABLED enabled; DISABLED disabled.",
+							Description: "Whether 已启用: ENABLED 已启用; DISABLED 已禁用",
 						},
 						"keep_domain_records": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Whether to retain lines: enabled retain, disabled not retain, only retain default lines.",
+							Description: "是否retain lines: 已启用 retain，已禁用 不 retain，仅 retain 默认值 lines。",
 						},
 						"switch_pool_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scheduling mode: AUTO default; PAUSE only pause without switching.",
+							Description: "Scheduling 模式: AUTO 默认值; PAUSE 仅 pause without switching。",
 						},
 						"created_on": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 						"updated_on": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Update time.",
+							Description: "更新时间。",
 						},
 					},
 				},
@@ -151,7 +151,7 @@ func DataSourceTencentCloudIgtmStrategyList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

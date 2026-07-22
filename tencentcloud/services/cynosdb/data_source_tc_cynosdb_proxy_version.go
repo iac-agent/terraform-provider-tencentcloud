@@ -20,28 +20,28 @@ func DataSourceTencentCloudCynosdbProxyVersion() *schema.Resource {
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 			"proxy_group_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Database Agent Group ID.",
+				Description: "数据库代理组 ID。",
 			},
 			"support_proxy_versions": {
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Supported Database Agent Version Collection Note: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "支持的数据库代理版本集合 注意：该字段可能返回null，表示无法获取有效值。",
 			},
 			"current_proxy_version": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Current proxy version number note: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "当前代理版本号 注意：该字段可能返回null，表示无法获取有效值。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

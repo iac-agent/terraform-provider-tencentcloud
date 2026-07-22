@@ -21,66 +21,66 @@ func DataSourceTencentCloudMysqlBackupList() *schema.Resource {
 			"mysql_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance ID, such as `cdb-c1nl9rpv`. It is identical to the instance ID displayed in the database console page.",
+				Description: "实例 ID，例如“cdb-c1nl9rpv”。它与数据库控制台页面中显示的实例 ID 相同。",
 			},
 			"max_number": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Default:      10,
 				ValidateFunc: tccommon.ValidateIntegerInRange(1, 10000),
-				Description:  "The latest files to list, rang from 1 to 10000. And the default value is `10`.",
+				Description: "列出最新的文件，范围从 1 到 10000。默认值为“10”。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to store results.",
+				Description: "用于存储结果。",
 			},
 			// Computed values
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of MySQL backup. Each element contains the following attributes:",
+				Description: "MySQL 备份列表。每个元素包含以下属性：",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The earliest time at which the backup starts. For example, `2` indicates 2:00 am.",
+							Description: "备份开始的最早时间。例如，“2”表示凌晨 2:00。",
 						},
 						"finish_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The time at which the backup finishes.",
+							Description: "备份完成的时间。",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "the size of backup file.",
+							Description: "备份文件的大小。",
 						},
 						"backup_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "ID of Backup task.",
+							Description: "备份任务ID。",
 						},
 						"backup_model": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Backup method. Supported values include: `physical` - physical backup, and `logical` - logical backup.",
+							Description: "备份方法。支持的值包括：“physical”- 物理备份和“逻辑”- 逻辑备份。",
 						},
 						"intranet_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "URL for downloads internally.",
+							Description: "内部下载的 URL。",
 						},
 						"internet_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "URL for downloads externally.",
+							Description: "外部下载的 URL。",
 						},
 						"creator": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The owner of the backup files.",
+							Description: "备份文件的所有者。",
 						},
 					},
 				},

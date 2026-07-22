@@ -31,36 +31,36 @@ func ResourceTencentCloudAntiddosDdosSpeedLimitConfig() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "InstanceId.",
+				Description: "实例 ID",
 			},
 
 			"ddos_speed_limit_config": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Accessing speed limit configuration, the configuration ID cannot be empty when filling in parameters.",
+				Description: "Accessing speed 限制 配置， 配置 ID 不能 是 空 当 filling 在 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"mode": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Speed limit mode, value [1 (based on source IP speed limit) 2 (based on destination port speed limit)].",
+							Description: "Speed 限制 模式，值 [1 (based 在 来源 IP speed 限制) 2 (based 在 destination 端口 speed 限制)]。",
 						},
 						"speed_values": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Speed limit values, each type of speed limit value can support up to 1; This field array has at least one speed limit value.",
+							Description: "Speed 限制 值，each 类型 speed 限制 值 可以 support up 到 1; 此 字段 数组 has 在 least 一个 speed 限制 值",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"type": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Speed limit value type, value [1 (packet rate pps) 2 (bandwidth bps)].",
+										Description: "Speed 限制 值 类型，值 [1 (packet 速率 pps) 2 (带宽 bps)]。",
 									},
 									"value": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "value.",
+										Description: "值",
 									},
 								},
 							},
@@ -68,18 +68,18 @@ func ResourceTencentCloudAntiddosDdosSpeedLimitConfig() *schema.Resource {
 						"dst_port_scopes": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "This field has been deprecated. Please fill in the new field DstPortList.",
+							Description: "此 字段 has been 已弃用 Please fill 在 new 字段 DstPortList。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"begin_port": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Starting port, ranging from 1 to 65535.",
+										Description: "Starting 端口，ranging 从 1 到 65535。",
 									},
 									"end_port": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "end  port, ranging from 1 to 65535.",
+										Description: "end 端口，ranging 从 1 到 65535。",
 									},
 								},
 							},
@@ -87,12 +87,12 @@ func ResourceTencentCloudAntiddosDdosSpeedLimitConfig() *schema.Resource {
 						"protocol_list": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "IP protocol numbers, values [ALL (all protocols) TCP (tcp protocol) UDP (udp protocol) SMP (smp protocol) 1; 2-100 (custom protocol number range, up to 8)] Note: When customizing the protocol number range, only the protocol number can be filled in, multiple ranges; Separation; When filling in ALL, no other agreements or agreements can be filled inNumber.",
+							Description: "IP 协议 numbers，值 [ALL (all protocols) TCP (tcp 协议) UDP (udp 协议) SMP (smp 协议) 1; 2-100 (自定义 协议 数量 范围，up 到 8)] 注意: 当 customizing 协议 数量 范围，仅 协议 数量 可以 是 filled 在，多个 ranges; Separation; 当 filling 在 ALL，无 other agreements 或 agreements 可以 是 filled inNumber。",
 						},
 						"dst_port_list": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "List of port ranges, up to 8, multiple; Separate and indicate the range with -; This port range must be filled in; Fill in style 1:0-65535, style 2: 80; 443; 1000-2000.",
+							Description: "列表 端口 ranges，up 到 8，多个; Separate 和 indicate 范围 使用 -; 此 端口 范围 必须 是 filled 在; Fill 在 style 1:0-65535，style 2: 80; 443; 1000-2000。",
 						},
 					},
 				},

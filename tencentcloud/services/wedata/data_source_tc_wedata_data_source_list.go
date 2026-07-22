@@ -20,18 +20,18 @@ func DataSourceTencentCloudWedataDataSourceList() *schema.Resource {
 			"order_fields": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "OrderFields.",
+				Description: "OrderFields。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "OrderFields name.",
+							Description: "OrderFields 名称",
 						},
 						"direction": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "OrderFields rule.",
+							Description: "OrderFields 规则。",
 						},
 					},
 				},
@@ -39,19 +39,19 @@ func DataSourceTencentCloudWedataDataSourceList() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filters.",
+				Description: "Filters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Filter name.",
+							Description: "过滤名称",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Optional:    true,
-							Description: "Filter value.",
+							Description: "过滤值",
 						},
 					},
 				},
@@ -59,163 +59,163 @@ func DataSourceTencentCloudWedataDataSourceList() *schema.Resource {
 			"rows": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Data rows.",
+				Description: "Data rows。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DatabaseName.",
+							Description: "DatabaseName。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description.",
+							Description: "描述",
 						},
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "ID.",
+							Description: "ID。",
 						},
 						"instance": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance.",
+							Description: "实例。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Datasource name.",
+							Description: "Datasource 名称",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Datasource engin cluster region.",
+							Description: "Datasource engin 集群 地域",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Datasource type.",
+							Description: "Datasource 类型",
 						},
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Datasource cluster id.",
+							Description: "Datasource 集群 ID",
 						},
 						"app_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Appid.",
+							Description: "Appid。",
 						},
 						"biz_params": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Biz params.",
+							Description: "Biz params。",
 						},
 						"category": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Datasource category.",
+							Description: "Datasource category。",
 						},
 						"display": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Datasource display name.",
+							Description: "Datasource display 名称",
 						},
 						"owner_account": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Datasource owner account.",
+							Description: "Datasource 所有者 账号",
 						},
 						"params": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Datasource params.",
+							Description: "Datasource params。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Datasource status.",
+							Description: "Datasource 状态",
 						},
 						"owner_account_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Datasource owner account name.",
+							Description: "Datasource 所有者 账号 名称",
 						},
 						"cluster_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Datasource cluster name.",
+							Description: "Datasource 集群名称",
 						},
 						"owner_project_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Datasource owner project id.",
+							Description: "Datasource 所有者 项目 ID",
 						},
 						"owner_project_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Datasource OwnerProjectName.",
+							Description: "Datasource OwnerProjectName。",
 						},
 						"owner_project_ident": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Datasource OwnerProjectIdent.",
+							Description: "Datasource OwnerProjectIdent。",
 						},
 						"authority_project_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Datasource AuthorityProjectName.",
+							Description: "Datasource AuthorityProjectName。",
 						},
 						"authority_user_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Datasource AuthorityUserName.",
+							Description: "Datasource AuthorityUserName。",
 						},
 						"edit": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Datasource can Edit.",
+							Description: "Datasource 可以 Edit。",
 						},
 						"author": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Has Author.",
+							Description: "Has Author。",
 						},
 						"deliver": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Can Deliver.",
+							Description: "Can Deliver。",
 						},
 						"data_source_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DatasourceDataSourceStatus.",
+							Description: "DatasourceDataSourceStatus。",
 						},
 						"create_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "CreateTime.",
+							Description: "CreateTime。",
 						},
 						"params_string": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Params json string.",
+							Description: "Params json 字符串。",
 						},
 						"biz_params_string": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Biz params json string.",
+							Description: "Biz params json 字符串。",
 						},
 						"modified_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Datasource ModifiedTime.",
+							Description: "Datasource ModifiedTime。",
 						},
 						"show_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Datasource show type.",
+							Description: "Datasource show 类型",
 						},
 					},
 				},
@@ -223,7 +223,7 @@ func DataSourceTencentCloudWedataDataSourceList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

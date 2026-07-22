@@ -33,14 +33,14 @@ func ResourceTencentCloudVpcInstance() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 60),
-				Description:  "The name of the VPC.",
+				Description:  "名称 VPC。",
 			},
 			"cidr_block": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateCIDRNetworkAddress,
-				Description:  "A network address block which should be a subnet of the three internal network segments (10.0.0.0/16, 172.16.0.0/12 and 192.168.0.0/16).",
+				Description:  "A 网络 地址 block 其中 should 是 子网 的 three 内部 网络 segments (10.0.0.0/16，172.16.0.0/12 和 192.168.0.0/16)。",
 			},
 			"dns_servers": {
 				Type:     schema.TypeSet,
@@ -50,18 +50,18 @@ func ResourceTencentCloudVpcInstance() *schema.Resource {
 				Set: func(v interface{}) int {
 					return helper.HashString(v.(string))
 				},
-				Description: "The DNS server list of the VPC. And you can specify 0 to 5 servers to this list.",
+				Description: "DNS 服务器 列表 VPC. And 您 可以 指定0 到 5 servers 到 此 列表。",
 			},
 			"is_multicast": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     true,
-				Description: "Indicates whether VPC multicast is enabled. The default value is 'true'. Multicast are whitelist-restricted. We recommend disabling these features if they are not applicable to your environment.",
+				Description: "表示是否VPC multicast 是 已启用 默认值为 'true'. Multicast 是 whitelist-restricted. We recommend disabling these features 如果 they 是 不 applicable 到 your 环境。",
 			},
 			"assistant_cidrs": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "List of Assistant CIDR, NOTE: Only `NORMAL` typed CIDRs included, check the Docker CIDR by readonly `assistant_docker_cidrs`.",
+				Description: "列表 Assistant CIDR，NOTE: Only `NORMAL` typed CIDRs included，check Docker CIDR 通过 readonly `assistant_docker_cidrs`。",
 				Computed:    true,
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
@@ -69,7 +69,7 @@ func ResourceTencentCloudVpcInstance() *schema.Resource {
 			},
 			"docker_assistant_cidrs": {
 				Type:        schema.TypeList,
-				Description: "List of Docker Assistant CIDR.",
+				Description: "列表 Docker Assistant CIDR。",
 				Computed:    true,
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
@@ -78,36 +78,36 @@ func ResourceTencentCloudVpcInstance() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tags of the VPC.",
+				Description: "标签 的 VPC。",
 			},
 			"enable_route_vpc_publish": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Vpc association with CCN route publish policy. true: enables cidr route publishing. false: enables subnet route publishing. default is subnet route publishing when creating a vpc. to select cidr route publishing, submit a ticket for adding to allowlist.",
+				Description: "Vpc association 使用 CCN 路由 publish 策略. true: enables cidr 路由 publishing. false: enables 子网 路由 publishing. 默认为 子网 路由 publishing 当 creating vpc. 到 select cidr 路由 publishing，提交 ticket 对于 adding 到 allowlist。",
 			},
 			"enable_route_vpc_publish_ipv6": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Vpc association with CCN IPV6 route publish policy. true: enables cidr route publishing. false: enables subnet route publishing. default is subnet route publishing when creating a vpc. to select cidr route publishing, submit a ticket for adding to allowlist.",
+				Description: "Vpc association 使用 CCN IPV6 路由 publish 策略. true: enables cidr 路由 publishing. false: enables 子网 路由 publishing. 默认为 子网 路由 publishing 当 creating vpc. 到 select cidr 路由 publishing，提交 ticket 对于 adding 到 allowlist。",
 			},
 
 			// Computed values
 			"is_default": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Indicates whether it is the default VPC for this region.",
+				Description: "表示是否it 是 默认值 VPC 对于 此 地域",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time of VPC.",
+				Description: "创建时间 的 VPC。",
 			},
 			"default_route_table_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Default route table id, which created automatically after VPC create.",
+				Description: "Default 路由 表 ID，其中 创建 automatically after VPC create。",
 			},
 		},
 	}

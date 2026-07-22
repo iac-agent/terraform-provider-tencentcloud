@@ -31,37 +31,37 @@ func ResourceTencentCloudCynosdbClusterPasswordComplexity() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 
 			"validate_password_length": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Password length.",
+				Description: "密码长度。",
 			},
 
 			"validate_password_mixed_case_count": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Number of uppercase and lowercase characters.",
+				Description: "大写和小写字符的数量。",
 			},
 
 			"validate_password_special_char_count": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Number of special characters.",
+				Description: "特殊字符的数量。",
 			},
 
 			"validate_password_number_count": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Number of digits.",
+				Description: "位数。",
 			},
 
 			"validate_password_policy": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Password strength (MEDIUM, STRONG).",
+				Description: "密码强度（中、强）。",
 			},
 
 			"validate_password_dictionary": {
@@ -70,7 +70,7 @@ func ResourceTencentCloudCynosdbClusterPasswordComplexity() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Data dictionary.",
+				Description: "数据字典。",
 			},
 		},
 	}

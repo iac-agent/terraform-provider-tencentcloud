@@ -28,62 +28,62 @@ func ResourceTencentCloudVpcEndPointService() *schema.Resource {
 			"vpc_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID of vpc instance.",
+				Description: "ID vpc 实例。",
 			},
 
 			"end_point_service_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Name of end point service.",
+				Description: "名称 end point 服务。",
 			},
 
 			"auto_accept_flag": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to automatically accept.",
+				Description: "是否automatically accept。",
 			},
 
 			"service_instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Id of service instance, like lb-xxx.",
+				Description: "ID 的 服务 实例，like lb-xxx。",
 			},
 
 			"service_type": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Type of service instance, like `CLB`, `CDB`, `CRS`, `GWLB`. default is `CLB`.",
+				Description: "类型 服务 实例，like `CLB`，`CDB`，`CRS`，`GWLB`. 默认为 `CLB`。",
 			},
 
 			"service_owner": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "APPID.",
+				Description: "APPID。",
 			},
 
 			"service_vip": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "VIP of backend service.",
+				Description: "VIP 的 backend 服务。",
 			},
 
 			"end_point_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Count of end point.",
+				Description: "Count 的 end point。",
 			},
 
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create Time.",
+				Description: "Create Time。",
 			},
 
 			"cdc_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "CDC instance ID.",
+				Description: "CDC 实例 ID",
 			},
 		},
 	}

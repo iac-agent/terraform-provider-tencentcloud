@@ -19,13 +19,13 @@ func DataSourceTencentCloudElasticsearchInstanceLogs() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"log_type": {
 				Optional: true,
 				Type:     schema.TypeInt,
-				Description: "Log type. Log type, default is 1, Valid values:\n" +
+				Description: "Log 类型. Log 类型, 默认值 是 1, 有效 值:\n" +
 					"- 1: master log\n" +
 					"- 2: Search slow log\n" +
 					"- 3: Index slow log\n" +
@@ -35,25 +35,25 @@ func DataSourceTencentCloudElasticsearchInstanceLogs() *schema.Resource {
 			"search_key": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Search key. Support LUCENE syntax, such as level:WARN, ip:1.1.1.1, message:test-index, etc.",
+				Description: "Search 键 Support LUCENE syntax，such 作为 级别:WARN，ip:1.1.1.1，消息:测试-索引，etc。",
 			},
 
 			"start_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Start time. The format is YYYY-MM-DD HH:MM:SS, such as 2019-01-22 20:15:53.",
+				Description: "开始时间. 格式 是 YYYY-MM-DD HH:MM:SS，such 作为 2019-01-22 20:15:53。",
 			},
 
 			"end_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "End time. The format is YYYY-MM-DD HH:MM:SS, such as 2019-01-22 20:15:53.",
+				Description: "结束时间. 格式 是 YYYY-MM-DD HH:MM:SS，such 作为 2019-01-22 20:15:53。",
 			},
 
 			"order_by_type": {
 				Optional: true,
 				Type:     schema.TypeInt,
-				Description: "Order type. Time sort method. Default is 0, valid values:\n" +
+				Description: "Order 类型. Time sort 方法. Default 是 0, 有效 值:\n" +
 					"- 0: descending;\n" +
 					"- 1: ascending order.",
 			},
@@ -61,33 +61,33 @@ func DataSourceTencentCloudElasticsearchInstanceLogs() *schema.Resource {
 			"instance_log_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of log details.",
+				Description: "列表 日志 details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Log time.",
+							Description: "Log 时间。",
 						},
 						"level": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Log level.",
+							Description: "Log 级别",
 						},
 						"ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster node ip.",
+							Description: "Cluster 节点 ip。",
 						},
 						"message": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Log message.",
+							Description: "Log 消息",
 						},
 						"node_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster node id.",
+							Description: "Cluster 节点 ID。",
 						},
 					},
 				},
@@ -96,7 +96,7 @@ func DataSourceTencentCloudElasticsearchInstanceLogs() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

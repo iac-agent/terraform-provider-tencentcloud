@@ -19,13 +19,13 @@ func DataSourceTencentCloudVpcClassicLinkInstances() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter conditions.`vpc-id` - String - (Filter condition) The VPC instance ID. `vm-ip` - String - (Filter condition) The IP address of the CVM on the basic network.",
+				Description: "过滤器 conditions.`vpc-ID` - String - (过滤器 condition) VPC 实例 ID `vm-ip` - String - (过滤器 condition) IP 地址 的 CVM 在 basic 网络。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The attribute name. If more than one Filter exists, the logical relation between these Filters is `AND`.",
+							Description: "attribute 名称 如果 more 比 一个 过滤器 exists， logical relation between these Filters 是 `AND`。",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -33,7 +33,7 @@ func DataSourceTencentCloudVpcClassicLinkInstances() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "The attribute value. If there are multiple Values for one Filter, the logical relation between these Values under the same Filter is `OR`.",
+							Description: "attribute 值 如果 there 是 多个 Values 对于 一个 过滤器， logical relation between these Values under same 过滤器 是 `OR`。",
 						},
 					},
 				},
@@ -42,18 +42,18 @@ func DataSourceTencentCloudVpcClassicLinkInstances() *schema.Resource {
 			"classic_link_instance_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Classiclink instance.",
+				Description: "Classiclink 实例。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC instance ID.",
+							Description: "VPC 实例 ID",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The unique ID of the CVM instance.",
+							Description: "唯一 ID CVM 实例。",
 						},
 					},
 				},
@@ -62,7 +62,7 @@ func DataSourceTencentCloudVpcClassicLinkInstances() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

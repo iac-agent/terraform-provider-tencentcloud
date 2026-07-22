@@ -19,70 +19,70 @@ func DataSourceTencentCloudWafFindDomains() *schema.Resource {
 			"key": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filter condition.",
+				Description: "过滤器 condition。",
 			},
 			"is_waf_domain": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Whether access to waf or not.",
+				Description: "Whether 访问 到 waf 或 不。",
 			},
 			"by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sorting parameter, eg: FindTime.",
+				Description: "Sorting 参数，eg: FindTime。",
 			},
 			"order": {
 				Optional:    true,
 				Type:        schema.TypeString,
 				Default:     ORDER_DESC,
-				Description: "Sorting type, eg: desc, asc.",
+				Description: "Sorting 类型，eg: desc，asc。",
 			},
 			"list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Domain info list.",
+				Description: "域名 info 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"appid": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "User appid.",
+							Description: "用户 appid。",
 						},
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain name.",
+							Description: "域名 名称",
 						},
 						"ips": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Computed:    true,
-							Description: "Domain ip.",
+							Description: "域名 ip。",
 						},
 						"find_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Find time.",
+							Description: "Find 时间。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance unique id.",
+							Description: "实例 唯一 ID。",
 						},
 						"domain_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain unique id.",
+							Description: "域名 唯一 ID。",
 						},
 						"edition": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance type, sparta-waf represents SAAS WAF, clb-waf represents CLB WAF.",
+							Description: "实例类型，sparta-waf 表示 SAAS WAF，clb-waf 表示 CLB WAF。",
 						},
 						"is_waf_domain": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether access to waf or not.",
+							Description: "Whether 访问 到 waf 或 不。",
 						},
 					},
 				},
@@ -90,7 +90,7 @@ func DataSourceTencentCloudWafFindDomains() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -27,25 +27,25 @@ func ResourceTencentCloudChdfsAccessGroup() *schema.Resource {
 			"access_group_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Permission group name.",
+				Description: "Permission 组名称",
 			},
 
 			"vpc_type": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "vpc network type(1:CVM, 2:BM 1.0).",
+				Description: "vpc 网络 类型(1:CVM，2:BM 1.0)。",
 			},
 
 			"vpc_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "VPC ID.",
+				Description: "私有网络 ID",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Permission group description, default empty.",
+				Description: "Permission 组 描述，默认值 空。",
 			},
 		},
 	}

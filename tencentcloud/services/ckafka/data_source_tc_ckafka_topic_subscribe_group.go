@@ -19,83 +19,83 @@ func DataSourceTencentCloudCkafkaTopicSubscribeGroup() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "InstanceId.",
+				Description: "实例 ID",
 			},
 
 			"topic_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "TopicName.",
+				Description: "TopicName。",
 			},
 
 			"groups_info": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Consumer group information.",
+				Description: "Consumer 组 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"error_code": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Error code, normally 0.",
+							Description: "错误码，normally 0。",
 						},
 						"state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Group state description (commonly Empty, Stable, and Dead states): Dead: The consumption group does not exist Empty: The consumption group does not currently have any consumer subscriptions PreparingRebalance: The consumption group is in the rebalance state CompletingRebalance: The consumption group is in the rebalance state Stable: Each consumer in the consumption group has joined and is in a stable state.",
+							Description: "Group state 描述 (commonly Empty，Stable，和 Dead states): Dead: consumption 组 does 不 exist Empty: consumption 组 does 不 currently have any 消费者 subscriptions PreparingRebalance: consumption 组 是 在 rebalance state CompletingRebalance: consumption 组 是 在 rebalance state Stable: Each 消费者 在 consumption 组 has joined 和 是 在 stable state。",
 						},
 						"protocol_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The protocol type selected by the consumption group is normally the consumer, but some systems use their own protocol, such as kafka-connect, which uses connect. Only the standard consumer protocol, this interface knows the format of the specific allocation method, and can analyze the specific partition allocation.",
+							Description: "协议 类型 selected 通过 consumption 组 是 normally 消费者，但 some systems 使用 their own 协议，such 作为 kafka-connect，其中 uses connect. Only standard 消费者 协议，此 interface knows 格式 的 特定 allocation 方法，和 可以 analyze 特定 分区 allocation。",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Common consumer partition allocation algorithms are as follows (the default option for Kafka consumer SDK is range) range|roundrobin| sticky.",
+							Description: "Common 消费者 分区 allocation algorithms 是 作为 follows ( 默认值 选项 对于 Kafka 消费者 SDK 是 范围) 范围|roundrobin| sticky。",
 						},
 						"members": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "This array contains information only if state is Stable and protocol_type is consumer.",
+							Description: "此 数组 包含information 仅 如果 state 是 Stable 和 protocol_type 是 消费者。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"member_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ID that the coordinator generated for consumer.",
+										Description: "ID 该 coordinator generated 对于 消费者。",
 									},
 									"client_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The client.id information set by the client consumer SDK itself.",
+										Description: "客户端.ID 信息 集合 通过 客户端 消费者 SDK itself。",
 									},
 									"client_host": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Generally store the customer&#39;s IP address.",
+										Description: "Generally store customer&#39;s IP 地址",
 									},
 									"assignment": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Stores the partition information assigned to the consumer.",
+										Description: "Stores 分区 信息 assigned 到 消费者。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"version": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "assignment version information.",
+													Description: "assignment 版本 信息。",
 												},
 												"topics": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "topic list.",
+													Description: "主题 列表。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"topic": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "topic name.",
+																Description: "主题 名称",
 															},
 															"partitions": {
 																Type: schema.TypeSet,
@@ -103,7 +103,7 @@ func DataSourceTencentCloudCkafkaTopicSubscribeGroup() *schema.Resource {
 																	Type: schema.TypeInt,
 																},
 																Computed:    true,
-																Description: "partition list.",
+																Description: "分区 列表。",
 															},
 														},
 													},
@@ -117,7 +117,7 @@ func DataSourceTencentCloudCkafkaTopicSubscribeGroup() *schema.Resource {
 						"group": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Kafka consumer group.",
+							Description: "Kafka 消费者 组。",
 						},
 					},
 				},
@@ -126,7 +126,7 @@ func DataSourceTencentCloudCkafkaTopicSubscribeGroup() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

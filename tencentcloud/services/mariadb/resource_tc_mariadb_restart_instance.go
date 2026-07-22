@@ -26,13 +26,13 @@ func ResourceTencentCloudMariadbRestartInstance() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "instance ID.",
+				Description: "实例 ID。",
 			},
 			"restart_time": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "expected restart time.",
+				Description: "expected restart 时间。",
 			},
 		},
 	}

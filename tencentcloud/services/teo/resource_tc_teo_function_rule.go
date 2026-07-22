@@ -30,66 +30,66 @@ func ResourceTencentCloudTeoFunctionRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the site.",
+				Description: "ID site。",
 			},
 
 			"rule_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "ID of the Function Rule.",
+				Description: "ID Function Rule。",
 			},
 
 			"function_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the Function.",
+				Description: "ID Function。",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Rule description, maximum support of 60 characters.",
+				Description: "Rule 描述，最大 support 的 60 字符。",
 			},
 
 			"function_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The name of the function.",
+				Description: "名称 函数。",
 			},
 
 			"priority": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "The priority of the function trigger rule. A higher numerical value indicates a higher priority.",
+				Description: "优先级 的 函数 触发器 规则. A higher numerical 值 表示a higher 优先级",
 			},
 
 			"function_rule_conditions": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "The list of rule conditions, where the conditions are connected by an \"OR\" relationship.",
+				Description: "列表 的 规则 conditions, 其中 conditions 是 connected 通过 \"OR\" relationship.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"rule_conditions": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "For edge function trigger rule conditions, if all items in the list are satisfied, then the condition is considered fulfilled.",
+							Description: "For edge 函数 触发器 规则 conditions，如果 all items 在 列表 是 satisfied，then condition 是 considered fulfilled。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"operator": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Operator. Valid values:\n  - `equals`: Equals.\n  - `notEquals`: Does not equal.\n  - `exist`: Exists.\n  - `notexist`: Does not exist.",
+										Description: "操作者 有效 值:\n - `equals`: Equals.\n - `notEquals`: Does 不 equal.\n - `exist`: Exists.\n - `notexist`: Does 不 exist。",
 									},
 									"target": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The match type. Values:\n  - `filename`: File name.\n  - `extension`: File extension.\n  - `host`: Host.\n  - `full_url`: Full URL, which indicates the complete URL path under the current site and must contain the HTTP protocol, host, and path.\n  - `url`: Partial URL under the current site.\n  - `client_country`: Country/Region of the client.\n  - `query_string`: Query string in the request URL.\n  - `request_header`: HTTP request header.",
+										Description: "match 类型 Values:\n - `filename`: File 名称\n - `extension`: File extension.\n - `主机`: 主机\n - `full_url`: Full URL，其中 表示complete URL 路径 under 当前 site 和 必须 contain HTTP 协议，主机，和 路径\n - `URL`: Partial URL under 当前 site.\n - `client_country`: Country/地域 的 客户端.\n - `query_string`: Query 字符串 在 请求 URL\n - `request_header`: HTTP 请求 头部。",
 									},
 									"values": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "The parameter value of the match type. It can be an empty string only when `Target=query string/request header` and `Operator=exist/notexist`.\n  - When `Target=extension`, enter the file extension, such as \"jpg\" and \"txt\".\n  - When `Target=filename`, enter the file name, such as \"foo\" in \"foo.jpg\".\n  - When `Target=all`, it indicates any site request.\n  - When `Target=host`, enter the host under the current site, such as \"www.maxx55.com\".\n  - When `Target=url`, enter the partial URL path under the current site, such as \"/example\".\n  - When `Target=full_url`, enter the complete URL under the current site. It must contain the HTTP protocol, host, and path, such as \"https://www.maxx55.cn/example\".\n  - When `Target=client_country`, enter the ISO-3166 country/region code.\n  - When `Target=query_string`, enter the value of the query string, such as \"cn\" and \"1\" in \"lang=cn&version=1\".\n  - When `Target=request_header`, enter the HTTP request header value, such as \"zh-CN,zh;q=0.9\" in the \"Accept-Language:zh-CN,zh;q=0.9\" header.",
+										Description: "参数 值 的 match 类型. It 可以 是 空 字符串 仅 当 `Target=查询 字符串/请求 头部` 和 `Operator=exist/notexist`.\n - 当 `Target=extension`, enter 文件 extension, such 作为 \"jpg\" 和 \"txt\".\n - 当 `Target=filename`, enter 文件 名称, such 作为 \"foo\" 在 \"foo.jpg\".\n - 当 `Target=all`, 它 indicates any site 请求.\n - 当 `Target=主机`, enter 主机 under 当前 site, such 作为 \"www.maxx55.com\".\n - 当 `Target=url`, enter partial URL 路径 under 当前 site, such 作为 \"/示例\".\n - 当 `Target=full_url`, enter 完整 URL under 当前 site. It 必须 contain HTTP protocol, 主机, 和 路径, such 作为 \"https://www.maxx55.cn/示例\".\n - 当 `Target=client_country`, enter ISO-3166 country/地域 代码.\n - 当 `Target=query_string`, enter 值 的 查询 字符串, such 作为 \"cn\" 和 \"1\" 在 \"lang=cn&版本=1\".\n - 当 `Target=request_header`, enter HTTP 请求 头部 值, such 作为 \"zh-CN,zh;q=0.9\" 在 \"Accept-Language:zh-CN,zh;q=0.9\" 头部.",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -97,12 +97,12 @@ func ResourceTencentCloudTeoFunctionRule() *schema.Resource {
 									"ignore_case": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Whether the parameter value is case insensitive. Default value: false.",
+										Description: "是否parameter 值 是 case insensitive. 默认值：false。",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The parameter name of the match type. This field is required only when `Target=query_string/request_header`.\n  - `query_string`: Name of the query string, such as \"lang\" and \"version\" in \"lang=cn&version=1\".\n  - `request_header`: Name of the HTTP request header, such as \"Accept-Language\" in the \"Accept-Language:zh-CN,zh;q=0.9\" header.",
+										Description: "参数 名称 的 match 类型. 此 字段 是 必填 仅 当 `Target=query_string/request_header`.\n - `query_string`: Name 的 查询 字符串, such 作为 \"lang\" 和 \"版本\" 在 \"lang=cn&版本=1\".\n - `request_header`: Name 的 HTTP 请求 头部, such 作为 \"Accept-Language\" 在 \"Accept-Language:zh-CN,zh;q=0.9\" 头部.",
 									},
 								},
 							},

@@ -28,20 +28,20 @@ func ResourceTencentCloudRumOfflineLogConfigAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Unique project key for reporting.",
+				Description: "Unique 项目 键 对于 报告.",
 			},
 
 			"unique_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Unique identifier of the user to be listened on(aid or uin).",
+				Description: "Unique identifier 的 用户 到 是 listened 在(aid 或 uin).",
 			},
 
 			"msg": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Interface call information.",
+				Description: "Interface call 信息.",
 			},
 		},
 	}

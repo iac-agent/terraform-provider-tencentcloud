@@ -19,19 +19,19 @@ func DataSourceTencentCloudRedisBackup() *schema.Resource {
 			"instance_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of instance.",
+				Description: "ID 实例。",
 			},
 
 			"begin_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "start time, such as 2017-02-08 19:09:26.Query the list of backups that the instance started backing up during the [beginTime, endTime] time period.",
+				Description: "开始时间，such 作为 2017-02-08 19:09:26.Query 列表 backups 该 实例 started backing up during [beginTime，endTime] 时间 周期",
 			},
 
 			"end_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "End time, such as 2017-02-08 19:09:26.Query the list of backups that the instance started backing up during the [beginTime, endTime] time period.",
+				Description: "结束时间，such 作为 2017-02-08 19:09:26.Query 列表 backups 该 实例 started backing up during [beginTime，endTime] 时间 周期",
 			},
 
 			"status": {
@@ -40,95 +40,95 @@ func DataSourceTencentCloudRedisBackup() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Status of the backup task:1: Backup is in the process.2: The backup is normal.3: Backup to RDB file processing.4: RDB conversion completed.-1: The backup has expired.-2: Backup deleted.",
+				Description: "状态 备份 任务:1: Backup 是 在 process.2: 备份 是 normal.3: Backup 到 RDB 文件 processing.4: RDB conversion completed.-1: 备份 has expired.-2: Backup 删除。",
 			},
 
 			"instance_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Instance name, which supports fuzzy search based on instance name.",
+				Description: "实例名称，其中 支持 fuzzy search based 在 实例名称",
 			},
 
 			"backup_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "An array of backups for the instance.",
+				Description: "An 数组 backups 对于 实例。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Backup start time.",
+							Description: "Backup 开始时间。",
 						},
 						"backup_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Backup ID.",
+							Description: "Backup ID。",
 						},
 						"backup_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Backup type.1: User-initiated manual backup.0: System-initiated backup in the early morning.",
+							Description: "Backup 类型1: 用户-initiated manual 备份.0: System-initiated 备份 在 early morning。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Backup status.1: The backup is locked by another process.2: The backup is normal and not locked by any process.-1: The backup has expired.3: The backup is being exported.4: The backup export is successful.",
+							Description: "Backup 状态1: 备份 是 locked 通过 another process.2: 备份 是 normal 和 不 locked 通过 any process.-1: 备份 has expired.3: 备份 是 being exported.4: 备份 export 是 successful。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Notes information for the backup.",
+							Description: "Notes 信息 对于 备份。",
 						},
 						"locked": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether the backup is locked.0: Not locked.1: Has been locked.",
+							Description: "是否backup 是 locked.0: Not locked.1: Has been locked。",
 						},
 						"backup_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Internal fields, which can be ignored by the user.",
+							Description: "Internal 字段，其中 可以 是 ignored 通过 用户",
 						},
 						"full_backup": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Internal fields, which can be ignored by the user.",
+							Description: "Internal 字段，其中 可以 是 ignored 通过 用户",
 						},
 						"instance_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Internal fields, which can be ignored by the user.",
+							Description: "Internal 字段，其中 可以 是 ignored 通过 用户",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The ID of instance.",
+							Description: "ID 实例。",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The name of instance.",
+							Description: "名称 实例。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The region where the backup is located.",
+							Description: "地域 其中 备份 是 located。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Backup end time.",
+							Description: "Backup 结束时间。",
 						},
 						"file_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Back up file types.",
+							Description: "Back up 文件 types。",
 						},
 						"expire_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Backup file expiration time.",
+							Description: "Backup 文件 过期时间。",
 						},
 					},
 				},
@@ -137,7 +137,7 @@ func DataSourceTencentCloudRedisBackup() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

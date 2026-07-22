@@ -20,53 +20,53 @@ func DataSourceTencentCloudCssWatermarks() *schema.Resource {
 			"watermark_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Watermark information list.",
+				Description: "Watermark 信息 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"watermark_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Watermark ID.",
+							Description: "Watermark ID。",
 						},
 						"picture_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Watermark image URL.",
+							Description: "Watermark 镜像 URL",
 						},
 						"x_position": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Display position: X-axis offset.",
+							Description: "Display position: X-axis 偏移量",
 						},
 						"y_position": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Display position: Y-axis offset.",
+							Description: "Display position: Y-axis 偏移量",
 						},
 						"watermark_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Watermark name.",
+							Description: "Watermark 名称",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Current status. 0: not used. 1: in use.",
+							Description: "Current 状态 0: 不 使用. 1: 在 使用。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The time when the watermark was added.Note: Beijing time (UTC+8) is used.",
+							Description: "时间 当 水印 是 added.注意: Beijing 时间 (UTC+8) 是 使用。",
 						},
 						"width": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Watermark width.",
+							Description: "Watermark 宽度。",
 						},
 						"height": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Watermark height.",
+							Description: "Watermark 高度。",
 						},
 					},
 				},
@@ -75,7 +75,7 @@ func DataSourceTencentCloudCssWatermarks() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

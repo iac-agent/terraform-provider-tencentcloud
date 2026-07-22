@@ -25,7 +25,7 @@ func ResourceTencentCloudMysqlSwitchForUpgrade() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.",
+				Description: "实例ID，格式为cdb-c1nl9rpv。与腾讯数据库控制台页面显示的实例ID相同。",
 			},
 		},
 	}

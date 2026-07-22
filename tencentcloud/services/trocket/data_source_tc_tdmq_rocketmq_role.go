@@ -20,45 +20,45 @@ func DataSourceTencentCloudTdmqRocketmqRole() *schema.Resource {
 			"role_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Fuzzy query by role name.",
+				Description: "Fuzzy 查询 通过 角色 名称",
 			},
 
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Cluster ID (required).",
+				Description: "集群 ID (必填)。",
 			},
 
 			"role_sets": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Array of roles.",
+				Description: "数组 roles。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"role_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Role name.",
+							Description: "角色 名称",
 						},
 						"token": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Value of the role token.",
+							Description: "值 的 角色 令牌",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Remarks.",
+							Description: "备注",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Update time.",
+							Description: "更新时间。",
 						},
 					},
 				},
@@ -67,7 +67,7 @@ func DataSourceTencentCloudTdmqRocketmqRole() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

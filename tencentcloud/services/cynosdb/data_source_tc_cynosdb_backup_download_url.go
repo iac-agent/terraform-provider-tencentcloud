@@ -18,22 +18,22 @@ func DataSourceTencentCloudCynosdbBackupDownloadUrl() *schema.Resource {
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 			"backup_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Backup ID.",
+				Description: "备份ID。",
 			},
 			"download_url": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Backup download address.",
+				Description: "备份下载地址。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

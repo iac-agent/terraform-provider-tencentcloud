@@ -16,13 +16,13 @@ func DataSourceTencentCloudConfigRuleEvaluationResults() *schema.Resource {
 			"config_rule_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Config rule ID.",
+				Description: "配置 规则 ID。",
 			},
 
 			"resource_type": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Resource type list for filtering (e.g. QCS::CVM::Instance).",
+				Description: "资源类型 列表 对于 filtering (e.g. QCS::CVM::实例)。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -31,7 +31,7 @@ func DataSourceTencentCloudConfigRuleEvaluationResults() *schema.Resource {
 			"compliance_type": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Compliance type list for filtering. Valid values: COMPLIANT, NON_COMPLIANT.",
+				Description: "Compliance 类型 列表 对于 filtering. 有效值：COMPLIANT，NON_COMPLIANT。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -40,94 +40,94 @@ func DataSourceTencentCloudConfigRuleEvaluationResults() *schema.Resource {
 			"result_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Evaluation result list.",
+				Description: "Evaluation 结果 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource ID.",
+							Description: "资源 ID",
 						},
 						"resource_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource type.",
+							Description: "资源类型",
 						},
 						"resource_region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource region.",
+							Description: "Resource 地域",
 						},
 						"resource_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource name.",
+							Description: "资源名称",
 						},
 						"config_rule_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Config rule ID.",
+							Description: "配置 规则 ID。",
 						},
 						"config_rule_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Config rule name.",
+							Description: "配置 规则 名称",
 						},
 						"compliance_pack_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Compliance pack ID.",
+							Description: "Compliance pack ID。",
 						},
 						"risk_level": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Risk level. Valid values: 1 (high risk), 2 (medium risk), 3 (low risk).",
+							Description: "风险等级 有效值：1 (high risk)，2 (medium risk)，3 (low risk)。",
 						},
 						"compliance_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Compliance type. Valid values: COMPLIANT, NON_COMPLIANT.",
+							Description: "Compliance 类型 有效值：COMPLIANT，NON_COMPLIANT。",
 						},
 						"invoking_event_message_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Rule invocation type.",
+							Description: "Rule invocation 类型",
 						},
 						"config_rule_invoked_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Evaluation invocation time.",
+							Description: "Evaluation invocation 时间。",
 						},
 						"result_recorded_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Evaluation result recorded time.",
+							Description: "Evaluation 结果 recorded 时间。",
 						},
 						"annotation": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Evaluation annotation detail.",
+							Description: "Evaluation annotation detail。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"configuration": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Actual resource configuration (non-compliant configuration).",
+										Description: "Actual 资源 配置 (non-compliant 配置)。",
 									},
 									"desired_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Expected resource configuration (compliant configuration).",
+										Description: "Expected 资源 配置 (compliant 配置)。",
 									},
 									"operator": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Comparison operator between actual and expected configuration.",
+										Description: "比较运算符 between actual 和 expected 配置。",
 									},
 									"property": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "JSON path of the current configuration in the resource attribute structure.",
+										Description: "JSON 路径 的 当前 配置 在 资源 attribute structure。",
 									},
 								},
 							},
@@ -139,7 +139,7 @@ func DataSourceTencentCloudConfigRuleEvaluationResults() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

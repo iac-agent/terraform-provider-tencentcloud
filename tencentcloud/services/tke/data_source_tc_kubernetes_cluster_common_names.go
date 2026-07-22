@@ -19,13 +19,13 @@ func DataSourceTencentCloudKubernetesClusterCommonNames() *schema.Resource {
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 
 			"subaccount_uins": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "List of sub-account. Up to 50 sub-accounts can be passed in at a time.",
+				Description: "列表 sub-账号 Up 到 50 sub-accounts 可以 是 passed 在 在 时间。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -34,7 +34,7 @@ func DataSourceTencentCloudKubernetesClusterCommonNames() *schema.Resource {
 			"role_ids": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "List of Role ID. Up to 50 sub-accounts can be passed in at a time.",
+				Description: "列表 角色 ID. Up 到 50 sub-accounts 可以 是 passed 在 在 时间。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -43,23 +43,23 @@ func DataSourceTencentCloudKubernetesClusterCommonNames() *schema.Resource {
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of the CommonName in the certificate of the client corresponding to the sub-account UIN.",
+				Description: "列表 CommonName 在 证书 的 客户端 corresponding 到 sub-账号 UIN。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"subaccount_uin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "User UIN.",
+							Description: "用户 UIN。",
 						},
 						"common_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The CommonName in the certificate of the client corresponding to the sub-account.",
+							Description: "CommonName 在 证书 的 客户端 corresponding 到 sub-账号",
 						},
 						"common_names": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The CommonName in the certificate of the client corresponding to the sub-account.",
+							Description: "CommonName 在 证书 的 客户端 corresponding 到 sub-账号",
 							Deprecated:  "It has been deprecated from version 1.81.140. Please use `common_name`.",
 						},
 					},
@@ -69,7 +69,7 @@ func DataSourceTencentCloudKubernetesClusterCommonNames() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

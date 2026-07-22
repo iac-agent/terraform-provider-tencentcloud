@@ -20,43 +20,43 @@ func DataSourceTencentCloudTdmqPublisherSummary() *schema.Resource {
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 			"namespace": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "namespace name.",
+				Description: "命名空间 名称",
 			},
 			"topic": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "subject name.",
+				Description: "subject 名称",
 			},
 			// computed
 			"msg_rate_in": {
 				Computed:    true,
 				Type:        schema.TypeFloat,
-				Description: "Production rate (units per second)Note: This field may return null, indicating that no valid value can be obtained.",
+				Description: "Production 速率 (units per second)注意：此字段可能返回 null，表示无法获取有效值。",
 			},
 			"msg_throughput_in": {
 				Computed:    true,
 				Type:        schema.TypeFloat,
-				Description: "Production rate (bytes per second)Note: This field may return null, indicating that no valid value can be obtained.",
+				Description: "Production 速率 (bytes per second)注意：此字段可能返回 null，表示无法获取有效值。",
 			},
 			"publisher_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "number of producersNote: This field may return null, indicating that no valid value can be obtained.",
+				Description: "数量 producers注意：此字段可能返回 null，表示无法获取有效值。",
 			},
 			"storage_size": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Message store size in bytesNote: This field may return null, indicating that no valid value can be obtained.",
+				Description: "消息 store 大小 在 bytes注意：此字段可能返回 null，表示无法获取有效值。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -19,55 +19,55 @@ func DataSourceTencentCloudTseGatewayNodes() *schema.Resource {
 			"gateway_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway ID.",
+				Description: "网关 ID。",
 			},
 
 			"group_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "gateway group ID.",
+				Description: "网关 组 ID",
 			},
 
 			"node_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "nodes information.",
+				Description: "nodes 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"node_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "gateway node id.",
+							Description: "网关 节点 ID。",
 						},
 						"node_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "gateway node ip.",
+							Description: "网关 节点 ip。",
 						},
 						"zone_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Zone idNote: This field may return null, indicating that a valid value is not available.",
+							Description: "可用区 id注意：此字段可能返回 null，表示有效值不可用。",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ZoneNote: This field may return null, indicating that a valid value is not available.",
+							Description: "Zone注意：此字段可能返回 null，表示有效值不可用。",
 						},
 						"group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Group IDNote: This field may return null, indicating that a valid value is not available.",
+							Description: "Group ID注意：此字段可能返回 null，表示有效值不可用。",
 						},
 						"group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Group nameNote: This field may return null, indicating that a valid value is not available.",
+							Description: "Group name注意：此字段可能返回 null，表示有效值不可用。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "statusNote: This field may return null, indicating that a valid value is not available.",
+							Description: "status注意：此字段可能返回 null，表示有效值不可用。",
 						},
 					},
 				},
@@ -76,7 +76,7 @@ func DataSourceTencentCloudTseGatewayNodes() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

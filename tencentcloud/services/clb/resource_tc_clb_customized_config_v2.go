@@ -30,36 +30,36 @@ func ResourceTencentCloudClbCustomizedConfigV2() *schema.Resource {
 			"config_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Name of Customized Config.",
+				Description: "自定义配置的名称。",
 			},
 			"config_type": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"CLB", "SERVER", "LOCATION"}),
-				Description:  "Type of Customized Config. Valid values: `SERVER` and `LOCATION`.",
+				Description: "定制配置的类型。有效值：“服务器”和“位置”。",
 			},
 			"config_content": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Content of Customized Config.",
+				Description: "自定义配置的内容。",
 			},
 
 			//computed
 			"config_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "ID of Customized Config.",
+				Description: "自定义配置ID",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create time of Customized Config.",
+				Description: "自定义配置的创建时间。",
 			},
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Update time of Customized Config.",
+				Description: "自定义配置更新时间",
 			},
 		},
 	}

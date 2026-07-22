@@ -25,35 +25,35 @@ func ResourceTencentCloudSesBatchSendEmail() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Sender address. Enter a sender address such as noreply@mail.qcloud.com. To display the sender name, enter the address in the following format:sender &amp;amp;lt;email address&amp;amp;gt;. For example:Tencent Cloud team &amp;amp;lt;noreply@mail.qcloud.com&amp;amp;gt;.",
+				Description: "Sender 地址 Enter sender 地址 such 作为 noreply@mail.qcloud.com. To display sender 名称，enter 地址 在 following 格式:sender &amp;amp;lt;email 地址&amp;amp;gt;. For 示例:Tencent Cloud team &amp;amp;lt;noreply@mail.qcloud.com&amp;amp;gt;。",
 			},
 
 			"receiver_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Recipient group ID.",
+				Description: "Recipient 组 ID",
 			},
 
 			"subject": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Email subject.",
+				Description: "Email subject。",
 			},
 
 			"task_type": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Task type. 1: immediate; 2: scheduled; 3: recurring.",
+				Description: "任务 类型 1: immediate; 2: scheduled; 3: recurring。",
 			},
 
 			"reply_to_addresses": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Reply-to address. You can enter a valid personal email address that can receive emails. If this parameter is left empty, reply emails will fail to be sent.",
+				Description: "Reply-到 地址 You 可以 enter 有效 personal email 地址 该 可以 receive emails. 如果此参数为空，reply emails 将 fail 到 是 sent。",
 			},
 
 			"template": {
@@ -61,18 +61,18 @@ func ResourceTencentCloudSesBatchSendEmail() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Template when emails are sent using a template.",
+				Description: "模板 当 emails 是 sent 使用 template。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"template_id": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Template ID. If you do not have any template, please create one.",
+							Description: "模板 ID 如果 您 do 不 have any template，please create 一个。",
 						},
 						"template_data": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Variable parameters in the template. Please use json.dump to format the JSON object into a string type.The object is a set of key-value pairs. Each key denotes a variable, which is represented by {{key}}. The key will be replaced with the correspondingvalue (represented by {{value}}) when sending the email.Note: The parameter value cannot be data of a complex type such as HTML.Example: {name:xxx,age:xx}.",
+							Description: "Variable 参数 在 template. Please 使用 json.dump 到 格式 JSON 对象 into 字符串 类型The 对象 是 集合 的 键-值 pairs. Each 键 denotes variable，其中 是 represented 通过 {{键}}. 键 将 是 replaced 使用 correspondingvalue (represented 通过 {{值}}) 当 sending email.注意: 参数 值 不能 是 数据 的 complex 类型 such 作为 HTML.Example: {名称:xxx,age:xx}。",
 						},
 					},
 				},
@@ -82,18 +82,18 @@ func ResourceTencentCloudSesBatchSendEmail() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "Attachment parameters to set when you need to send attachments. This parameter is currently unavailable.",
+				Description: "Attachment 参数 到 集合 当 您 need 到 send attachments. 此 参数 是 currently unavailable。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"file_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Attachment name, which cannot exceed 255 characters. Some attachment types are not supported. For details, see [Attachment Types.](https://www.tencentcloud.com/document/product/1084/42373?has_map=1).",
+							Description: "Attachment 名称，其中 不能 exceed 255 字符. Some attachment types 是 不 支持. For details，see [Attachment Types.](https://www.tencentcloud.com/document/product/1084/42373?has_map=1)。",
 						},
 						"content": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Base64-encoded attachment content. You can send attachments of up to 4 MB in the total size.Note: The TencentCloud API supports a request packet of up to 8 MB in size, and the size of the attachmentcontent will increase by 1.5 times after Base64 encoding. Therefore, you need to keep the total size of allattachments below 4 MB. If the entire request exceeds 8 MB, the API will return an error.",
+							Description: "Base64-encoded attachment 内容 You 可以 send attachments 的 up 到 4 MB 在 总数 大小.注意: TencentCloud API 支持 请求 packet 的 up 到 8 MB 在 大小，和 大小 的 attachmentcontent 将 increase 通过 1.5 times after Base64 编码. Therefore，您 need 到 keep 总数 大小 的 allattachments below 4 MB. 如果 entire 请求 exceeds 8 MB， API 将 返回 错误",
 						},
 					},
 				},
@@ -104,23 +104,23 @@ func ResourceTencentCloudSesBatchSendEmail() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Parameter required for a recurring sending task.",
+				Description: "Parameter 必填 对于 recurring sending 任务。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"begin_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Start time of the task.",
+							Description: "开始时间 的 任务。",
 						},
 						"interval_time": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Task recurrence in hours.",
+							Description: "任务 recurrence 在 hours。",
 						},
 						"term_cycle": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Specifies whether to end the cycle. This parameter is used to update the task. Valid values: 0: No; 1: Yes.",
+							Description: "指定是否end cycle. 此 参数 是 用于update 任务. 有效值：0: No; 1: Yes。",
 						},
 					},
 				},
@@ -131,13 +131,13 @@ func ResourceTencentCloudSesBatchSendEmail() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Parameter required for a scheduled sending task.",
+				Description: "Parameter 必填 对于 scheduled sending 任务。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"begin_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Start time of a scheduled sending task.",
+							Description: "开始时间 的 scheduled sending 任务。",
 						},
 					},
 				},
@@ -147,14 +147,14 @@ func ResourceTencentCloudSesBatchSendEmail() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Unsubscribe link option.  0: Do not add unsubscribe link; 1: English 2: Simplified Chinese;  3: Traditional Chinese; 4: Spanish; 5: French;  6: German; 7: Japanese; 8: Korean;  9: Arabic; 10: Thai.",
+				Description: "Unsubscribe link 选项. 0: Do 不 add unsubscribe link; 1: English 2: Simplified Chinese; 3: Traditional Chinese; 4: Spanish; 5: French; 6: German; 7: Japanese; 8: Korean; 9: Arabic; 10: Thai。",
 			},
 
 			"ad_location": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to add an ad tag. 0: Add no tag; 1: Add before the subject; 2: Add after the subject.",
+				Description: "是否add ad 标签 0: Add 无 标签; 1: Add before subject; 2: Add after subject。",
 			},
 		},
 	}

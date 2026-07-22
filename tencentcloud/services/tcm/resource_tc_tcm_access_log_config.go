@@ -27,26 +27,26 @@ func ResourceTencentCloudTcmAccessLogConfig() *schema.Resource {
 			"mesh_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Mesh ID.",
+				Description: "Mesh ID。",
 			},
 
 			"selected_range": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "Selected range.",
+				Description: "Selected 范围。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"items": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Items.",
+							Description: "Items。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"namespace": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Namespace.",
+										Description: "Namespace。",
 									},
 									"gateways": {
 										Type: schema.TypeSet,
@@ -54,7 +54,7 @@ func ResourceTencentCloudTcmAccessLogConfig() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Optional:    true,
-										Description: "Ingress gateway list.",
+										Description: "Ingress 网关 列表。",
 									},
 								},
 							},
@@ -62,7 +62,7 @@ func ResourceTencentCloudTcmAccessLogConfig() *schema.Resource {
 						"all": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Select all if true, default false.",
+							Description: "Select all 如果 true，默认值 false。",
 						},
 					},
 				},
@@ -71,36 +71,36 @@ func ResourceTencentCloudTcmAccessLogConfig() *schema.Resource {
 			"template": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Log template, istio/trace/custome.",
+				Description: "Log template，istio/trace/custome。",
 			},
 
 			"enable": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether enable log.",
+				Description: "Whether 启用 日志。",
 			},
 
 			"cls": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "CLS config.",
+				Description: "CLS 配置",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"enable": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Whether enable CLS.",
+							Description: "Whether 启用 CLS。",
 						},
 						"log_set": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Log set of CLS.",
+							Description: "Log 集合 的 CLS。",
 						},
 						"topic": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Log topic of CLS.",
+							Description: "Log 主题 的 CLS。",
 						},
 					},
 				},
@@ -109,31 +109,31 @@ func ResourceTencentCloudTcmAccessLogConfig() *schema.Resource {
 			"encoding": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Log encoding, TEXT or JSON.",
+				Description: "Log 编码，TEXT 或 JSON。",
 			},
 
 			"format": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Log format.",
+				Description: "Log 格式",
 			},
 
 			"enable_stdout": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether enable stdout.",
+				Description: "Whether 启用 stdout。",
 			},
 
 			"enable_server": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether enable third party grpc server.",
+				Description: "Whether 启用 third party grpc 服务器。",
 			},
 
 			"address": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Third party grpc server address.",
+				Description: "Third party grpc 服务器 地址",
 			},
 		},
 	}

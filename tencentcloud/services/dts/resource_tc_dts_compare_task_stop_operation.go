@@ -22,14 +22,14 @@ func ResourceTencentCloudDtsCompareTaskStopOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "job id.",
+				Description: "作业 ID",
 			},
 
 			"compare_task_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Compare task id.",
+				Description: "Compare 任务 ID",
 			},
 		},
 	}

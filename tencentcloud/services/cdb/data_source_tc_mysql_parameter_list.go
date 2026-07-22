@@ -18,32 +18,32 @@ func TencentCloudMysqlParameterDetail() map[string]*schema.Schema {
 		"parameter_name": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "Parameter name.",
+			Description: "参数名称。",
 		},
 		"parameter_type": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "Parameter type.",
+			Description: "参数类型。",
 		},
 		"description": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "Parameter specification description.",
+			Description: "参数规格说明。",
 		},
 		"current_value": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "Current value.",
+			Description: "当前值。",
 		},
 		"default_value": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "Default value.",
+			Description: "默认值。",
 		},
 		"enum_value": {
 			Type:        schema.TypeList,
 			Computed:    true,
-			Description: "Enumerated value.",
+			Description: "枚举值。",
 			Elem: &schema.Schema{
 				Type: schema.TypeString,
 			},
@@ -51,17 +51,17 @@ func TencentCloudMysqlParameterDetail() map[string]*schema.Schema {
 		"max": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "Maximum value for the parameter.",
+			Description: "参数的最大值。",
 		},
 		"min": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "Minimum value for the parameter.",
+			Description: "参数的最小值。",
 		},
 		"need_reboot": {
 			Type:        schema.TypeInt,
 			Computed:    true,
-			Description: "Indicates whether reboot is needed to enable the new parameters.",
+			Description: "指示是否需要重新启动才能启用新参数。",
 		},
 	}
 }
@@ -73,23 +73,23 @@ func DataSourceTencentCloudMysqlParameterList() *schema.Resource {
 			"mysql_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Instance ID.",
+				Description: "实例ID。",
 			},
 			"engine_version": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"5.1", "5.5", "5.6", "5.7", "8.0"}),
-				Description:  "The version number of the database engine to use. Supported versions include 5.5/5.6/5.7/8.0.",
+				Description: "要使用的数据库引擎的版本号。支持的版本包括5.5/5.6/5.7/8.0。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to store results.",
+				Description: "用于存储结果。",
 			},
 			"parameter_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of parameters. Each element contains the following attributes:",
+				Description: "参数列表。每个元素包含以下属性：",
 				Elem: &schema.Resource{
 					Schema: TencentCloudMysqlParameterDetail(),
 				},

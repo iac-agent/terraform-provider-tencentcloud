@@ -20,71 +20,71 @@ func DataSourceTencentCloudMariadbSecurityGroups() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"product": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "product name, fixed to mariadb.",
+				Description: "product 名称，fixed 到 mariadb。",
 			},
 
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "SecurityGroup list.",
+				Description: "SecurityGroup 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Project ID.",
+							Description: "项目 ID",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time, time format: `yyyy-mm-dd hh:mm:ss`.",
+							Description: "创建时间，时间格式: `yyyy-mm-dd hh:mm:ss`。",
 						},
 						"security_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Security group ID.",
+							Description: "安全组 ID",
 						},
 						"security_group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "security group name.",
+							Description: "安全 组名称",
 						},
 						"security_group_remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Security Group Notes.",
+							Description: "Security Group Notes。",
 						},
 						"inbound": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Inbound rules.",
+							Description: "Inbound 规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"action": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Policy, ACCEPT or DROP.",
+										Description: "Policy，ACCEPT 或 DROP。",
 									},
 									"cidr_ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Source IP or IP range, such as 192.168.0.0/16.",
+										Description: "来源 IP 或 IP 范围，such 作为 192.168.0.0/16。",
 									},
 									"port_range": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "port.",
+										Description: "端口",
 									},
 									"ip_protocol": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Network protocols, support `UDP`, `TCP`, etc.",
+										Description: "Network protocols，support `UDP`，`TCP`，etc。",
 									},
 								},
 							},
@@ -92,28 +92,28 @@ func DataSourceTencentCloudMariadbSecurityGroups() *schema.Resource {
 						"outbound": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Outbound Rules.",
+							Description: "Outbound Rules。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"action": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Policy, ACCEPT or DROP.",
+										Description: "Policy，ACCEPT 或 DROP。",
 									},
 									"cidr_ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Source IP or IP range, such as 192.168.0.0/16.",
+										Description: "来源 IP 或 IP 范围，such 作为 192.168.0.0/16。",
 									},
 									"port_range": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "port.",
+										Description: "端口",
 									},
 									"ip_protocol": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Network protocols, support `UDP`, `TCP`, etc.",
+										Description: "Network protocols，support `UDP`，`TCP`，etc。",
 									},
 								},
 							},
@@ -125,7 +125,7 @@ func DataSourceTencentCloudMariadbSecurityGroups() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

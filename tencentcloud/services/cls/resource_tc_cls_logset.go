@@ -28,31 +28,31 @@ func ResourceTencentCloudClsLogset() *schema.Resource {
 			"logset_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Logset name, which must be unique.",
+				Description: "日志集名称，必须唯一。",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表。",
 			},
 
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time.",
+				Description: "创作时间。",
 			},
 
 			"topic_count": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Number of log topics in logset.",
+				Description: "日志集中的日志主题数。",
 			},
 
 			"role_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "If assumer_uin is not empty, it indicates the service provider who creates the logset.",
+				Description: "如果assumer_uin不为空，则表示创建日志集的服务提供者。",
 			},
 		},
 	}

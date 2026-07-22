@@ -20,7 +20,7 @@ func DataSourceTencentCloudDnspodDomainList() *schema.Resource {
 			"type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Get domain names based on domain group type. Available values are ALL, MINE, SHARE, RECENT. ALL: All MINE: My domain names SHARE: Domain names shared with me RECENT: Recently operated domain names.",
+				Description: "Get 域名 names based 在 域名 组 类型 Available 值 是 ALL，MINE，SHARE，RECENT. ALL: All MINE: My 域名 names SHARE: 域名 names shared 使用 me RECENT: Recently operated 域名 names。",
 			},
 
 			"group_id": {
@@ -29,25 +29,25 @@ func DataSourceTencentCloudDnspodDomainList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Get domain names based on domain group id, which can be obtained through the GroupId field in DescribeDomain or DescribeDomainList interface.",
+				Description: "Get 域名 names based 在 域名 组 ID，其中 可以 是 获取 through GroupId 字段 在 DescribeDomain 或 DescribeDomainList interface。",
 			},
 
 			"keyword": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Get domain names based on keywords.",
+				Description: "Get 域名 names based 在 keywords。",
 			},
 
 			"sort_field": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sorting field. Available values are NAME, STATUS, RECORDS, GRADE, UPDATED_ON. NAME: Domain name STATUS: Domain status RECORDS: Number of records GRADE: Package level UPDATED_ON: Update time.",
+				Description: "Sorting 字段. Available 值 是 NAME，STATUS，RECORDS，GRADE，UPDATED_ON. NAME: 域名 名称 STATUS: 域名 状态 RECORDS: 数量 records GRADE: Package 级别 UPDATED_ON: 更新时间。",
 			},
 
 			"sort_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sorting type, ascending: ASC, descending: DESC.",
+				Description: "Sorting 类型，ascending: ASC，descending: DESC。",
 			},
 
 			"status": {
@@ -56,7 +56,7 @@ func DataSourceTencentCloudDnspodDomainList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Get domain names based on domain status. Available values are ENABLE, LOCK, PAUSE, SPAM. ENABLE: Normal LOCK: Locked PAUSE: Paused SPAM: Banned.",
+				Description: "Get 域名 names based 在 域名 状态 Available 值 是 ENABLE，LOCK，PAUSE，SPAM. ENABLE: Normal LOCK: Locked PAUSE: Paused SPAM: Banned。",
 			},
 
 			"package": {
@@ -65,61 +65,61 @@ func DataSourceTencentCloudDnspodDomainList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Get domain names based on the package, which can be obtained through the Grade field in DescribeDomain or DescribeDomainList interface.",
+				Description: "Get 域名 names based 在 包，其中 可以 是 获取 through Grade 字段 在 DescribeDomain 或 DescribeDomainList interface。",
 			},
 
 			"remark": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Get domain names based on remark information.",
+				Description: "Get 域名 names based 在 备注 信息。",
 			},
 
 			"updated_at_begin": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The start time of the domain name&amp;#39;s update time to be obtained, such as &amp;#39;2021-05-01 03:00:00&amp;#39;.",
+				Description: "开始时间 的 域名 名称&amp;#39;s 更新时间 到 是 获取，such 作为 &amp;#39;2021-05-01 03:00:00&amp;#39;。",
 			},
 
 			"updated_at_end": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The end time of the domain name&amp;#39;s update time to be obtained, such as &amp;#39;2021-05-10 20:00:00&amp;#39;.",
+				Description: "结束时间 的 域名 名称&amp;#39;s 更新时间 到 是 获取，such 作为 &amp;#39;2021-05-10 20:00:00&amp;#39;。",
 			},
 
 			"record_count_begin": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The start point of the domain name&amp;#39;s record count query range.",
+				Description: "start point 的 域名 名称&amp;#39;s 记录 count 查询 范围。",
 			},
 
 			"record_count_end": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The end point of the domain name&amp;#39;s record count query range.",
+				Description: "end point 的 域名 名称&amp;#39;s 记录 count 查询 范围。",
 			},
 
 			"project_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"tags": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Field to be filtered.",
+							Description: "待过滤字段",
 						},
 						"tag_value": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Required:    true,
-							Description: "Filter value of the field.",
+							Description: "过滤值 的 字段。",
 						},
 					},
 				},
@@ -128,63 +128,63 @@ func DataSourceTencentCloudDnspodDomainList() *schema.Resource {
 			"domain_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Domain list.",
+				Description: "域名 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"domain_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Unique identifier assigned to the domain by the system.",
+							Description: "Unique identifier assigned 到 域名 通过 系统。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Original format of the domain.",
+							Description: "Original 格式 的 域名",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain status, normal: ENABLE, paused: PAUSE, banned: SPAM.",
+							Description: "域名 状态，normal: ENABLE，paused: PAUSE，banned: SPAM。",
 						},
 						"ttl": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Default TTL value for domain resolution records.",
+							Description: "Default TTL 值 对于 域名 resolution records。",
 						},
 						"cname_speedup": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Whether to enable CNAME acceleration, enabled: ENABLE, disabled: DISABLE.",
+							Description: "是否enable CNAME acceleration，已启用: ENABLE，已禁用: DISABLE。",
 						},
 						"dns_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DNS settings status, error: DNSERROR, normal: empty string.",
+							Description: "DNS settings 状态，错误: DNSERROR，normal: 空 字符串。",
 						},
 						"grade": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain package level code.",
+							Description: "域名 包 级别 代码",
 						},
 						"group_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Group Id the domain belongs to.",
+							Description: "Group ID 域名 belongs 到。",
 						},
 						"search_engine_push": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Whether to enable search engine push optimization, YES: YES, NO: NO.",
+							Description: "是否enable search 引擎 push optimization，YES: YES，NO: NO。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain remark description.",
+							Description: "域名 备注 描述",
 						},
 						"punycode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Punycode encoded domain format.",
+							Description: "Punycode encoded 域名 格式",
 						},
 						"effective_dns": {
 							Type: schema.TypeSet,
@@ -192,73 +192,73 @@ func DataSourceTencentCloudDnspodDomainList() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Valid DNS assigned to the domain by the system.",
+							Description: "有效 DNS assigned 到 域名 通过 系统。",
 						},
 						"grade_level": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Sequence number corresponding to the domain package level.",
+							Description: "Sequence 数量 corresponding 到 域名 包 级别",
 						},
 						"grade_title": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Package name.",
+							Description: "Package 名称",
 						},
 						"is_vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Whether it is a paid package.",
+							Description: "是否为a paid 包。",
 						},
 						"vip_start_at": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Paid package activation time.",
+							Description: "Paid 包 activation 时间。",
 						},
 						"vip_end_at": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Paid package expiration time.",
+							Description: "Paid 包 过期时间。",
 						},
 						"vip_auto_renew": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Whether the domain has VIP auto-renewal enabled, YES: YES, NO: NO, DEFAULT: DEFAULT.",
+							Description: "是否domain has VIP auto-renewal 已启用，YES: YES，NO: NO，DEFAULT: DEFAULT。",
 						},
 						"record_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of records under the domain.",
+							Description: "数量 records under 域名",
 						},
 						"created_on": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain addition time.",
+							Description: "域名 addition 时间。",
 						},
 						"updated_on": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain update time.",
+							Description: "域名 更新时间。",
 						},
 						"owner": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain owner account.",
+							Description: "域名 所有者 账号",
 						},
 						"tag_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Domain-related tag list Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "域名-related 标签列表 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag key.",
+										Description: "标签键",
 									},
 									"tag_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag Value. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "标签值 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -270,7 +270,7 @@ func DataSourceTencentCloudDnspodDomainList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

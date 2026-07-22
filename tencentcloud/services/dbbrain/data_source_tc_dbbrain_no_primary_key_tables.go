@@ -20,43 +20,43 @@ func DataSourceTencentCloudDbbrainNoPrimaryKeyTables() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID.",
 			},
 
 			"date": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Query date, such as 2021-05-27, the earliest date is 30 days ago.",
+				Description: "Query date, such 作为 2021-05-27, earliest date 是 30 days ago.",
 			},
 
 			"product": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Service product type, supported values: `mysql` - ApsaraDB for MySQL, the default is `mysql`.",
+				Description: "Service product 类型, 支持 值: `mysql` - ApsaraDB 对于 MySQL, 默认值 是 `mysql`.",
 			},
 
 			"timestamp": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Collection timestamp (seconds).",
+				Description: "Collection timestamp (秒).",
 			},
 
 			"no_primary_key_table_count_diff": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The difference with yesterday&amp;#39;s scan of the table without a primary key. A positive number means an increase, a negative number means a decrease, and 0 means no change.",
+				Description: "difference 使用 yesterday&amp;#39;s scan 的 表 without primary 键. A positive 数量 表示 increase, negative 数量 表示 decrease, 和 0 表示 无 change.",
 			},
 
 			"no_primary_key_tables": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "A list of tables without primary keys.",
+				Description: "A 列表 的 tables without primary keys.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"table_schema": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "library name.",
+							Description: "库 名称.",
 						},
 						"table_name": {
 							Type:        schema.TypeString,
@@ -66,7 +66,7 @@ func DataSourceTencentCloudDbbrainNoPrimaryKeyTables() *schema.Resource {
 						"engine": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Storage engine for database tables.",
+							Description: "Storage 引擎 对于 数据库 tables.",
 						},
 						"table_rows": {
 							Type:        schema.TypeInt,
@@ -76,7 +76,7 @@ func DataSourceTencentCloudDbbrainNoPrimaryKeyTables() *schema.Resource {
 						"total_length": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Total space used (MB).",
+							Description: "Total space 使用 (MB).",
 						},
 					},
 				},
@@ -85,7 +85,7 @@ func DataSourceTencentCloudDbbrainNoPrimaryKeyTables() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

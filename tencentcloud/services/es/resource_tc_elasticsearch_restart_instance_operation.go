@@ -23,7 +23,7 @@ func ResourceTencentCloudElasticsearchRestartInstanceOperation() *schema.Resourc
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"force_restart": {
@@ -31,7 +31,7 @@ func ResourceTencentCloudElasticsearchRestartInstanceOperation() *schema.Resourc
 				Default:  false,
 				ForceNew: true,
 				Type:     schema.TypeBool,
-				Description: "Force restart. Valid values:\n" +
+				Description: "Force restart. 有效 值:\n" +
 					"- true: Forced restart;\n" +
 					"- false: No forced restart;\n" +
 					"default false.",
@@ -42,7 +42,7 @@ func ResourceTencentCloudElasticsearchRestartInstanceOperation() *schema.Resourc
 				Default:     0,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Restart mode: 0 roll restart; 1 full restart.",
+				Description: "Restart 模式: 0 roll restart; 1 full restart。",
 			},
 		},
 	}

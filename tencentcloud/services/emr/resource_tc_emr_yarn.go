@@ -28,49 +28,49 @@ func ResourceTencentCloudEmrYarn() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "EMR Instance ID.",
+				Description: "EMR 实例 ID.",
 			},
 
 			"enable_resource_schedule": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether the resource scheduling function is enabled.",
+				Description: "Whether 资源 scheduling 函数 是 已启用.",
 			},
 			"disable_resource_schedule_sync": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to synchronize when closing.",
+				Description: "Whether 到 synchronize 当 closing.",
 			},
 			"active_scheduler": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Resource dispatchers currently in effect.",
+				Description: "Resource dispatchers currently 在 effect.",
 			},
 			"capacity_global_config": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "Information about capacity scheduler.",
+				Description: "Information about 容量 scheduler.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"enable_label": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Computed:    true,
-							Description: "Whether label scheduling is turned on.",
+							Description: "Whether label scheduling 是 turned 在.",
 						},
 						"label_dir": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "If label scheduling is enabled, the path where label information is stored.",
+							Description: "如果 label scheduling 是 已启用, 路径 其中 label 信息 是 stored.",
 						},
 						"queue_mapping_override": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Computed:    true,
-							Description: "Whether to overwrite the user-specified queue. True means overwriting.",
+							Description: "Whether 到 overwrite 用户-指定 queue. True 表示 overwriting.",
 						},
 						"default_settings": {
 							Type:        schema.TypeSet,
@@ -82,7 +82,7 @@ func ResourceTencentCloudEmrYarn() *schema.Resource {
 									"name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Name, as the key for the input parameter.",
+										Description: "Name, 作为 键 对于 input 参数.",
 									},
 									"desc": {
 										Type:        schema.TypeString,
@@ -97,12 +97,12 @@ func ResourceTencentCloudEmrYarn() *schema.Resource {
 									"key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Key, used for display. This configuration corresponds to the configuration item in the configuration file.",
+										Description: "Key, 使用 对于 display. 此 配置 corresponds 到 配置 item 在 配置 文件.",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Value corresponding to tame.",
+										Description: "Value corresponding 到 tame.",
 									},
 								},
 							},
@@ -121,7 +121,7 @@ func ResourceTencentCloudEmrYarn() *schema.Resource {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Corresponding to the page procedural upper limit.",
+							Description: "Corresponding 到 页面 procedural upper 限制.",
 						},
 					},
 				},
@@ -130,7 +130,7 @@ func ResourceTencentCloudEmrYarn() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "The latest resource scheduler.",
+				Description: "latest 资源 scheduler.",
 			},
 		},
 	}

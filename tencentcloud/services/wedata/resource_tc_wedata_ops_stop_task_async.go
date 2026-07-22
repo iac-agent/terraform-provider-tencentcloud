@@ -25,14 +25,14 @@ func ResourceTencentCloudWedataOpsStopTaskAsync() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Project id.",
+				Description: "项目 ID",
 			},
 
 			"task_ids": {
 				Type:        schema.TypeSet,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Task id list.",
+				Description: "任务 ID 列表。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -42,7 +42,7 @@ func ResourceTencentCloudWedataOpsStopTaskAsync() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Whether to terminate the generated instance, the default is false; if true, it will wait for all forces to terminate.",
+				Description: "是否terminate generated 实例， 默认为 false; 如果 true，它 将 wait 对于 all forces 到 terminate。",
 			},
 		},
 	}

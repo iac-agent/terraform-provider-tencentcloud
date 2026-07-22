@@ -29,39 +29,39 @@ func ResourceTencentCloudTdmqRabbitmqUser() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster instance ID.",
+				Description: "Cluster 实例 ID。",
 			},
 			"user": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Username, used when logging in.",
+				Description: "用户名，使用 当 日志记录 在。",
 			},
 			"password": {
 				Required:    true,
 				Type:        schema.TypeString,
 				Sensitive:   true,
-				Description: "Password, used when logging in.",
+				Description: "密码，使用 当 日志记录 在。",
 			},
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Describe.",
+				Description: "Describe。",
 			},
 			"tags": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "User tag, used to determine the permission range for changing user access to RabbitMQ Management. Management: regular console user, monitoring: management console user, other values: non console user.",
+				Description: "用户 标签，用于determine 权限 范围 对于 changing 用户 访问 到 RabbitMQ Management. Management: regular console 用户，监控: management console 用户，other 值: non console 用户",
 			},
 			"max_connections": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The maximum number of connections for this user, if not filled in, there is no limit.",
+				Description: "最大connections 对于 此 用户，如果未填写 在，there 是 无 限制",
 			},
 			"max_channels": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The maximum number of channels for this user, if not filled in, there is no limit.",
+				Description: "最大channels 对于 此 用户，如果未填写 在，there 是 无 限制",
 			},
 		},
 	}

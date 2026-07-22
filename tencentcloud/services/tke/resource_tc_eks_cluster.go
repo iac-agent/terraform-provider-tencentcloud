@@ -89,52 +89,52 @@ func ResourceTencentCloudEksCluster() *schema.Resource {
 			"cluster_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Name of EKS cluster.",
+				Description: "名称 EKS 集群。",
 			},
 			"k8s_version": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Kubernetes version of EKS cluster.",
+				Description: "Kubernetes 版本 的 EKS 集群。",
 			},
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Vpc Id of EKS cluster.",
+				Description: "私有网络 ID EKS 集群。",
 			},
 			"subnet_ids": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Subnet Ids for EKS cluster.",
+				Description: "Subnet Ids 对于 EKS 集群。",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 			"cluster_desc": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Description of EKS cluster.",
+				Description: "描述 EKS 集群。",
 			},
 			"service_subnet_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Subnet id of service.",
+				Description: "子网 ID 服务。",
 			},
 			"dns_servers": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "List of cluster custom DNS Server info.",
+				Description: "列表 集群 自定义 DNS Server info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"domain": {
 							Optional:    true,
 							Type:        schema.TypeString,
-							Description: "DNS Server domain. Empty indicates all domain.",
+							Description: "DNS Server 域名 Empty 表示all 域名",
 						},
 						"servers": {
 							Optional:    true,
 							Type:        schema.TypeList,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "List of DNS Server IP address, pattern: \"ip[:port]\".",
+							Description: "List 的 DNS Server IP 地址, pattern: \"ip[:端口]\".",
 						},
 					},
 				},
@@ -143,54 +143,54 @@ func ResourceTencentCloudEksCluster() *schema.Resource {
 				Type:        schema.TypeMap,
 				ForceNew:    true,
 				Optional:    true,
-				Description: "Extend parameters.",
+				Description: "Extend 参数。",
 			},
 			"enable_vpc_core_dns": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     true,
 				ForceNew:    true,
-				Description: "Indicates whether to enable dns in user cluster, default value is `true`.",
+				Description: "表示是否enable dns 在 用户 集群，默认值为 `true`。",
 			},
 			// update after create
 			"need_delete_cbs": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Delete CBS after EKS cluster remove.",
+				Description: "Delete CBS after EKS 集群 remove。",
 			},
 			"public_lb": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "Cluster public access LoadBalancer info.",
+				Description: "Cluster 公有 访问 LoadBalancer info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"enabled": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Indicates weather the public access LB enabled.",
+							Description: "表示weather 公有 访问 LB 已启用",
 						},
 						"allow_from_cidrs": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "List of CIDRs which allowed to access.",
+							Description: "列表 CIDRs 其中 allowed 到 访问。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 						"security_policies": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "List of security allow IP or CIDRs, default deny all.",
+							Description: "列表 安全 allow IP 或 CIDRs，默认值 deny all。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 						"extra_param": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Extra param text json.",
+							Description: "Extra param text json。",
 						},
 						"security_group": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Security group.",
+							Description: "Security 组。",
 						},
 					},
 				},
@@ -199,18 +199,18 @@ func ResourceTencentCloudEksCluster() *schema.Resource {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "Cluster internal access LoadBalancer info.",
+				Description: "Cluster 内部 访问 LoadBalancer info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"enabled": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Indicates weather the internal access LB enabled.",
+							Description: "表示weather 内部 访问 LB 已启用",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "ID of subnet which related to Internal LB.",
+							Description: "ID 子网 其中 related 到 Internal LB。",
 						},
 					},
 				},
@@ -218,14 +218,14 @@ func ResourceTencentCloudEksCluster() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tags of EKS cluster.",
+				Description: "标签 的 EKS 集群。",
 			},
 			// computed
 			"kube_config": {
 				Type:        schema.TypeString,
 				Computed:    true,
 				Sensitive:   true,
-				Description: "EKS cluster kubeconfig.",
+				Description: "EKS 集群 kubeconfig。",
 			},
 		},
 	}

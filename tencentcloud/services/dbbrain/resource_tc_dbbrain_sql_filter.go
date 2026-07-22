@@ -28,25 +28,25 @@ func ResourceTencentCloudDbbrainSqlFilter() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "instance id.",
+				Description: "实例 ID.",
 			},
 
 			"session_token": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Required:    true,
-				Description: "session token.",
+				Description: "会话 令牌.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"user": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "user name.",
+							Description: "用户 名称.",
 						},
 						"password": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "password.",
+							Description: "密码.",
 						},
 					},
 				},
@@ -55,44 +55,44 @@ func ResourceTencentCloudDbbrainSqlFilter() *schema.Resource {
 			"sql_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "sql type, optional value is SELECT, UPDATE, DELETE, INSERT, REPLACE.",
+				Description: "sql 类型, 可选 值 是 SELECT, UPDATE, DELETE, INSERT, REPLACE.",
 			},
 
 			"filter_key": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "filter key.",
+				Description: "过滤器 键.",
 			},
 
 			"max_concurrency": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "maximum concurreny.",
+				Description: "最大 concurreny.",
 			},
 
 			"duration": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "filter duration.",
+				Description: "过滤器 时长.",
 			},
 
 			"product": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "product, optional value is &amp;#39;mysql&amp;#39;, &amp;#39;cynosdb&amp;#39;.",
+				Description: "product, 可选 值 是 &amp;#39;mysql&amp;#39;, &amp;#39;cynosdb&amp;#39;.",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "filter status.",
+				Description: "过滤器 状态.",
 			},
 
 			"filter_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "filter id.",
+				Description: "过滤器 ID.",
 			},
 		},
 	}

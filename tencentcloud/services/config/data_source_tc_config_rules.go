@@ -17,13 +17,13 @@ func DataSourceTencentCloudConfigRules() *schema.Resource {
 			"rule_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Rule name for filtering.",
+				Description: "Rule 名称 对于 filtering。",
 			},
 
 			"risk_level": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Risk level list for filtering. Valid values: 1 (high risk), 2 (medium risk), 3 (low risk).",
+				Description: "风险等级 列表 对于 filtering. 有效值：1 (high risk)，2 (medium risk)，3 (low risk)。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -32,13 +32,13 @@ func DataSourceTencentCloudConfigRules() *schema.Resource {
 			"state": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Rule state for filtering. Valid values: ACTIVE, UN_ACTIVE.",
+				Description: "Rule state 对于 filtering. 有效值：ACTIVE，UN_ACTIVE。",
 			},
 
 			"compliance_result": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Compliance result list for filtering. Valid values: COMPLIANT, NON_COMPLIANT.",
+				Description: "Compliance 结果 列表 对于 filtering. 有效值：COMPLIANT，NON_COMPLIANT。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -47,79 +47,79 @@ func DataSourceTencentCloudConfigRules() *schema.Resource {
 			"order_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sort type by rule name. Valid values: desc (descending), asc (ascending).",
+				Description: "Sort 类型 通过 规则 名称 有效值：desc (descending)，asc (ascending)。",
 			},
 
 			"rule_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Config rule list.",
+				Description: "配置 规则 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"config_rule_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Config rule ID.",
+							Description: "配置 规则 ID。",
 						},
 						"identifier": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Rule identifier.",
+							Description: "Rule identifier。",
 						},
 						"rule_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Rule name.",
+							Description: "Rule 名称",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Rule description.",
+							Description: "Rule 描述",
 						},
 						"risk_level": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Risk level. Valid values: 1 (low risk), 2 (medium risk), 3 (high risk).",
+							Description: "风险等级 有效值：1 (low risk)，2 (medium risk)，3 (high risk)。",
 						},
 						"service_function": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Corresponding service function.",
+							Description: "Corresponding 服务 函数。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Rule status. Valid values: ACTIVE, NO_ACTIVE.",
+							Description: "Rule 状态 有效值：ACTIVE，NO_ACTIVE。",
 						},
 						"compliance_result": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Compliance result. Valid values: COMPLIANT, NON_COMPLIANT, NOT_APPLICABLE.",
+							Description: "Compliance 结果 有效值：COMPLIANT，NON_COMPLIANT，NOT_APPLICABLE。",
 						},
 						"identifier_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Rule type. Valid values: CUSTOMIZE (custom rule), SYSTEM (managed rule).",
+							Description: "Rule 类型 有效值：CUSTOMIZE (自定义 规则)，SYSTEM (managed 规则)。",
 						},
 						"compliance_pack_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Compliance pack ID.",
+							Description: "Compliance pack ID。",
 						},
 						"compliance_pack_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Compliance pack name.",
+							Description: "Compliance pack 名称",
 						},
 						"resource_type": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Supported resource type list.",
+							Description: "Supported 资源类型 列表。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -127,7 +127,7 @@ func DataSourceTencentCloudConfigRules() *schema.Resource {
 						"labels": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Rule label list.",
+							Description: "Rule 标签 列表。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -135,7 +135,7 @@ func DataSourceTencentCloudConfigRules() *schema.Resource {
 						"config_rule_invoked_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Rule evaluation time.",
+							Description: "Rule evaluation 时间。",
 						},
 					},
 				},
@@ -144,7 +144,7 @@ func DataSourceTencentCloudConfigRules() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

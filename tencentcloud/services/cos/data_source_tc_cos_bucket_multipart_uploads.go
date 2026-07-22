@@ -21,64 +21,64 @@ func DataSourceTencentCloudCosBucketMultipartUploads() *schema.Resource {
 			"bucket": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Bucket.",
+				Description: "存储桶",
 			},
 			"delimiter": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The delimiter is a symbol, and the Object name contains the Object between the specified prefix and the first occurrence of delimiter characters as a set of elements: common prefix. If there is no prefix, start from the beginning of the path.",
+				Description: "delimiter 是 symbol，和 Object 名称 包含Object between 指定 prefix 和 first occurrence 的 delimiter 字符 作为 集合 的 elements: common prefix. 如果 there 是 无 prefix，start 从 beginning 的 路径",
 			},
 			"encoding_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Specifies the encoding format of the return value. Legal value: url.",
+				Description: "指定encoding 格式 的 返回值 Legal 值: URL",
 			},
 			"prefix": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The returned Object key must be prefixed with Prefix. Note that when using the prefix query, the returned key still contains Prefix.",
+				Description: "返回 Object 键 必须 是 prefixed 使用 Prefix. 注意 该 当 使用 prefix 查询， 返回 键 still 包含Prefix。",
 			},
 			"uploads": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information for each Upload.",
+				Description: "Information 对于 each Upload。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the Object.",
+							Description: "名称 Object。",
 						},
 						"upload_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Mark the ID of this multipart upload.",
+							Description: "Mark ID 此 multipart upload。",
 						},
 						"storage_class": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Used to represent the storage level of a chunk. Enumerated value: STANDARD,STANDARD_IA,ARCHIVE.",
+							Description: "用于represent 存储 级别 的 chunk. Enumerated 值: STANDARD,STANDARD_IA,ARCHIVE。",
 						},
 						"initiated": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The starting time of multipart upload.",
+							Description: "starting 时间 的 multipart upload。",
 						},
 						"owner": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Information used to represent the owner of these chunks.",
+							Description: "Information 用于represent 所有者 的 these chunks。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The user's unique CAM identity ID.",
+										Description: "用户's 唯一 CAM identity ID。",
 									},
 									"display_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Abbreviation for user identity ID (UIN).",
+										Description: "Abbreviation 对于 用户 identity ID (UIN)。",
 									},
 								},
 							},
@@ -86,18 +86,18 @@ func DataSourceTencentCloudCosBucketMultipartUploads() *schema.Resource {
 						"initiator": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Used to represent the information of the initiator of this upload.",
+							Description: "用于represent 信息 的 initiator 的 此 upload。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The user's unique CAM identity ID.",
+										Description: "用户's 唯一 CAM identity ID。",
 									},
 									"display_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Abbreviation for user identity ID (UIN).",
+										Description: "Abbreviation 对于 用户 identity ID (UIN)。",
 									},
 								},
 							},
@@ -108,7 +108,7 @@ func DataSourceTencentCloudCosBucketMultipartUploads() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

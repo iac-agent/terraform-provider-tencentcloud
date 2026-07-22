@@ -17,28 +17,28 @@ func DataSourceTencentCloudConfigResourceTypes() *schema.Resource {
 			"resource_type_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Supported resource type list.",
+				Description: "Supported 资源类型 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"product": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Product code (e.g. CAM).",
+							Description: "Product 代码 (e.g. CAM)。",
 						},
 						"product_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Product name.",
+							Description: "Product 名称",
 						},
 						"resource_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource type identifier (e.g. QCS::CAM::Group).",
+							Description: "资源类型 identifier (e.g. QCS::CAM::Group)。",
 						},
 						"resource_type_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource type name.",
+							Description: "资源类型 名称",
 						},
 					},
 				},
@@ -47,7 +47,7 @@ func DataSourceTencentCloudConfigResourceTypes() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

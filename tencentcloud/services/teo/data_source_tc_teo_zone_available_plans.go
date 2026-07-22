@@ -19,48 +19,48 @@ func DataSourceTencentCloudTeoZoneAvailablePlans() *schema.Resource {
 			"plan_info_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Zone plans which current account can use.",
+				Description: "可用区 plans 其中 当前 账号 可以 使用。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"plan_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Plan type.",
+							Description: "Plan 类型",
 						},
 						"currency": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Settlement Currency Type. Valid values: `CNY`, `USD`.",
+							Description: "Settlement Currency 类型 有效值：`CNY`，`USD`。",
 						},
 						"flux": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of fluxes included in the zone plan. Unit: Byte.",
+							Description: "数量 fluxes included 在 可用区 plan. 单位：Byte。",
 						},
 						"frequency": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Billing cycle. Valid values:\n- `y`: Billed by the year.\n- `m`: Billed by the month.\n- `h`: Billed by the hour.\n- `M`: Billed by the minute.\n- `s`: Billed by the second.",
+							Description: "Billing cycle. 有效 值:\n- `y`: Billed 通过 year.\n- `m`: Billed 通过 month.\n- `h`: Billed 通过 hour.\n- `M`: Billed 通过 minute.\n- `s`: Billed 通过 second。",
 						},
 						"price": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Price of the plan. Unit: cent.",
+							Description: "Price 的 plan. 单位：cent。",
 						},
 						"request": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of requests included in the zone plan.",
+							Description: "数量 requests included 在 可用区 plan。",
 						},
 						"site_number": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of zones this zone plan can bind.",
+							Description: "数量 zones 此 可用区 plan 可以 bind。",
 						},
 						"area": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Acceleration area of the plan. Valid value: `mainland`, `overseas`.",
+							Description: "Acceleration area 的 plan. 有效 值: `mainland`，`overseas`。",
 						},
 					},
 				},
@@ -69,7 +69,7 @@ func DataSourceTencentCloudTeoZoneAvailablePlans() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

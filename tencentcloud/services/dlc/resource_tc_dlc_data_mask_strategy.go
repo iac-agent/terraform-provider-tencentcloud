@@ -27,34 +27,34 @@ func ResourceTencentCloudDlcDataMaskStrategy() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "The data masking strategy.",
+				Description: "数据 masking strategy。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"strategy_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The name of the data masking strategy.",
+							Description: "名称 数据 masking strategy。",
 						},
 						"strategy_desc": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The description of the data masking strategy.",
+							Description: "描述 数据 masking strategy。",
 						},
 						"groups": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Collection of bound working groups.",
+							Description: "Collection 的 bound working groups。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"work_group_id": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The unique ID of the work group.",
+										Description: "唯一 ID work 组。",
 									},
 									"strategy_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The type of the data masking strategy. Supported value: MASK/MASK_NONE/MASK_NULL/MASK_HASH/MASK_SHOW_LAST_4/MASK_SHOW_FIRST_4/MASK_DATE_SHOW_YEAR.",
+										Description: "类型 数据 masking strategy. Supported 值: MASK/MASK_NONE/MASK_NULL/MASK_HASH/MASK_SHOW_LAST_4/MASK_SHOW_FIRST_4/MASK_DATE_SHOW_YEAR。",
 									},
 								},
 							},
@@ -62,7 +62,7 @@ func ResourceTencentCloudDlcDataMaskStrategy() *schema.Resource {
 						"strategy_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The ID of the data masking strategy.",
+							Description: "ID 数据 masking strategy。",
 						},
 					},
 				},

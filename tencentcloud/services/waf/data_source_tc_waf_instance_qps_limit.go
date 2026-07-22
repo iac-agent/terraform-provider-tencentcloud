@@ -19,43 +19,43 @@ func DataSourceTencentCloudWafInstanceQpsLimit() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Unique ID of Instance.",
+				Description: "Unique ID 实例。",
 			},
 			"type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Instance type.",
+				Description: "实例类型",
 			},
 			"qps_data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Qps info.",
+				Description: "Qps info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"elastic_billing_default": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Elastic qps default value.",
+							Description: "Elastic qps 默认值",
 						},
 						"elastic_billing_min": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Minimum elastic qps.",
+							Description: "Minimum elastic qps。",
 						},
 						"elastic_billing_max": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum elastic qps.",
+							Description: "Maximum elastic qps。",
 						},
 						"qps_extend_max": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum qps of extend package.",
+							Description: "Maximum qps 的 extend 包。",
 						},
 						"qps_extend_intl_max": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum qps of extend package for overseas.",
+							Description: "Maximum qps 的 extend 包 对于 overseas。",
 						},
 					},
 				},
@@ -63,7 +63,7 @@ func DataSourceTencentCloudWafInstanceQpsLimit() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

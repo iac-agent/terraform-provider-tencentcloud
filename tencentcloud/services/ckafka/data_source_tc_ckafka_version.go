@@ -17,36 +17,36 @@ func DataSourceTencentCloudCkafkaVersion() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "CKafka instance ID.",
+				Description: "CKafka 实例 ID。",
 			},
 
 			"kafka_version": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Current Kafka version.",
+				Description: "Current Kafka 版本",
 			},
 
 			"cur_broker_version": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Current broker version.",
+				Description: "Current broker 版本",
 			},
 
 			"latest_broker_versions": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of latest broker versions supported by the platform.",
+				Description: "列表 latest broker versions 支持 通过 平台。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"kafka_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Kafka version.",
+							Description: "Kafka 版本",
 						},
 						"broker_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Broker version.",
+							Description: "Broker 版本",
 						},
 					},
 				},
@@ -55,7 +55,7 @@ func DataSourceTencentCloudCkafkaVersion() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

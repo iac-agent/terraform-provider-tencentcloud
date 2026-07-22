@@ -29,25 +29,25 @@ func ResourceTencentCloudTsfMicroservice() *schema.Resource {
 			"namespace_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Namespace ID.",
+				Description: "Namespace ID。",
 			},
 
 			"microservice_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Microservice name.",
+				Description: "Microservice 名称",
 			},
 
 			"microservice_desc": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Microservice description information.",
+				Description: "Microservice 描述 信息。",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 		},
 	}

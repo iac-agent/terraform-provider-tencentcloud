@@ -18,25 +18,25 @@ func DataSourceTencentCloudKeewidbInstances() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Filter by instance ID, e.g. `kee-6ubhg****`.",
+				Description: "过滤器 通过 实例 ID，e.g. `kee-6ubhg****`。",
 			},
 
 			"instance_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Filter by instance name.",
+				Description: "过滤器 通过 实例名称",
 			},
 
 			"search_key": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Fuzzy search keyword. Supports instance ID or instance name.",
+				Description: "Fuzzy search keyword. Supports 实例 ID 或 实例名称",
 			},
 
 			"uniq_vpc_ids": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter by VPC ID (string format, e.g. vpc-xxx).",
+				Description: "过滤器 通过 私有网络 ID (字符串 格式，e.g. vpc-xxx)。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -45,7 +45,7 @@ func DataSourceTencentCloudKeewidbInstances() *schema.Resource {
 			"uniq_subnet_ids": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter by subnet ID (string format, e.g. subnet-xxx).",
+				Description: "过滤器 通过 子网 ID (字符串 格式，e.g. 子网-xxx)。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -54,7 +54,7 @@ func DataSourceTencentCloudKeewidbInstances() *schema.Resource {
 			"project_ids": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter by project IDs.",
+				Description: "过滤器 通过 项目 IDs。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -63,7 +63,7 @@ func DataSourceTencentCloudKeewidbInstances() *schema.Resource {
 			"status": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter by instance status. 0: pending init; 1: in process; 2: running; -2: isolated; -3: to be deleted.",
+				Description: "过滤器 通过 实例状态 0: pending init; 1: 在 process; 2: running; -2: isolated; -3: 到 是 删除。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -72,31 +72,31 @@ func DataSourceTencentCloudKeewidbInstances() *schema.Resource {
 			"billing_mode": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Filter by billing mode. postpaid: pay-as-you-go; prepaid: prepaid.",
+				Description: "过滤器 通过 billing 模式 postpaid: pay-作为-您-go; prepaid: prepaid。",
 			},
 
 			"order_by": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sort field. Valid values: projectId, createtime, instancename, type, curDeadline.",
+				Description: "排序字段 有效值：projectId，createtime，instancename，类型，curDeadline。",
 			},
 
 			"order_type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Sort direction. 1: descending (default); 0: ascending.",
+				Description: "Sort direction. 1: descending (默认值); 0: ascending。",
 			},
 
 			"type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Filter by instance type. 13: standard; 14: cluster.",
+				Description: "过滤器 通过 实例类型 13: standard; 14: 集群。",
 			},
 
 			"auto_renew": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter by renewal mode. 0: manual renewal; 1: auto-renewal; 2: no renewal on expiry.",
+				Description: "过滤器 通过 renewal 模式 0: manual renewal; 1: auto-renewal; 2: 无 renewal 在 expiry。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -105,7 +105,7 @@ func DataSourceTencentCloudKeewidbInstances() *schema.Resource {
 			"vpc_ids": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter by VPC ID (numeric format).",
+				Description: "过滤器 通过 私有网络 ID (numeric 格式)。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -114,7 +114,7 @@ func DataSourceTencentCloudKeewidbInstances() *schema.Resource {
 			"subnet_ids": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter by subnet ID (numeric format).",
+				Description: "过滤器 通过 子网 ID (numeric 格式)。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -123,7 +123,7 @@ func DataSourceTencentCloudKeewidbInstances() *schema.Resource {
 			"search_keys": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Search keywords. Supports instance ID, instance name, and private network IP.",
+				Description: "Search keywords. Supports 实例 ID，实例名称，和 私有 网络 IP。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -132,7 +132,7 @@ func DataSourceTencentCloudKeewidbInstances() *schema.Resource {
 			"tag_keys": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter by tag keys.",
+				Description: "过滤器 通过 标签 keys。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -141,18 +141,18 @@ func DataSourceTencentCloudKeewidbInstances() *schema.Resource {
 			"tag_list": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter by tag key and value.",
+				Description: "过滤器 通过 标签键 和 值",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag key.",
+							Description: "标签键",
 						},
 						"tag_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag value.",
+							Description: "标签值",
 						},
 					},
 				},
@@ -162,128 +162,128 @@ func DataSourceTencentCloudKeewidbInstances() *schema.Resource {
 			"instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of KeeWiDB instances.",
+				Description: "列表 KeeWiDB 实例。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance name.",
+							Description: "实例名称",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance status.",
+							Description: "实例状态",
 						},
 						"region_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Region ID.",
+							Description: "地域 ID",
 						},
 						"zone_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Availability zone ID.",
+							Description: "Availability 可用区 ID。",
 						},
 						"uniq_vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC ID (string format).",
+							Description: "私有网络 ID (字符串 格式)。",
 						},
 						"uniq_subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Subnet ID (string format).",
+							Description: "子网 ID (字符串 格式)。",
 						},
 						"wan_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance VIP.",
+							Description: "实例 VIP",
 						},
 						"port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance port.",
+							Description: "实例端口",
 						},
 						"createtime": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance creation time.",
+							Description: "实例 创建时间。",
 						},
 						"size": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Total persistent memory capacity (MB).",
+							Description: "Total persistent 内存 容量 (MB)。",
 						},
 						"type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance type. 13: standard; 14: cluster.",
+							Description: "实例类型 13: standard; 14: 集群。",
 						},
 						"auto_renew_flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Auto-renewal flag. 1: enabled; 0: disabled.",
+							Description: "Auto-renewal flag. 1: 已启用; 0: 已禁用",
 						},
 						"deadline_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance expiry time.",
+							Description: "实例 expiry 时间。",
 						},
 						"engine": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Storage engine.",
+							Description: "Storage 引擎。",
 						},
 						"product_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Product type. standalone or cluster.",
+							Description: "产品类型 standalone 或 集群。",
 						},
 						"billing_mode": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Billing mode. 0: pay-as-you-go; 1: prepaid.",
+							Description: "Billing 模式 0: pay-作为-您-go; 1: prepaid。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Project ID.",
+							Description: "项目 ID",
 						},
 						"project_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Project name.",
+							Description: "项目名称",
 						},
 						"no_auth": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether the instance is password-free.",
+							Description: "是否instance 是 密码-free。",
 						},
 						"disk_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Disk capacity (GB).",
+							Description: "Disk 容量 (GB)。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region, e.g. ap-guangzhou.",
+							Description: "地域，e.g. ap-guangzhou。",
 						},
 						"machine_memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance memory capacity (GB).",
+							Description: "实例 内存 容量 (GB)。",
 						},
 						"compression": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data compression switch. ON or OFF.",
+							Description: "Data 压缩 switch. ON 或 OFF。",
 						},
 					},
 				},
@@ -292,7 +292,7 @@ func DataSourceTencentCloudKeewidbInstances() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

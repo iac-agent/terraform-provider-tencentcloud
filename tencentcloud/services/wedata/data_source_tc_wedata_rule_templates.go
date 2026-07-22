@@ -19,19 +19,19 @@ func DataSourceTencentCloudWedataRuleTemplates() *schema.Resource {
 			"type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Template type. `1` means System template, `2` means Custom template.",
+				Description: "模板 类型 `1` 表示 System template，`2` 表示 Custom template。",
 			},
 
 			"source_object_type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Source data object type. `1`: Constant, `2`: Offline table level, `3`: Offline field level.",
+				Description: "来源 数据 对象 类型 `1`: Constant，`2`: Offline 表 级别，`3`: Offline 字段 级别",
 			},
 
 			"project_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"source_engine_types": {
@@ -40,49 +40,49 @@ func DataSourceTencentCloudWedataRuleTemplates() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Applicable type of source data.",
+				Description: "Applicable 类型 来源 数据。",
 			},
 
 			"data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "rule template list.",
+				Description: "规则 template 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"rule_template_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "ID of rule template.",
+							Description: "ID 规则 template。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of rule template.",
+							Description: "名称 规则 template。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description of rule template.",
+							Description: "描述 规则 template。",
 						},
 						"type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Template type. `1` means System template, `2` means Custom template.",
+							Description: "模板 类型 `1` 表示 System template，`2` 表示 Custom template。",
 						},
 						"source_object_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Source object type. `1`: Constant, `2`: Offline table level, `3`: Offline field level.",
+							Description: "来源 对象 类型 `1`: Constant，`2`: Offline 表 级别，`3`: Offline 字段 级别",
 						},
 						"source_object_data_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Source data object type. `1`: value, `2`: string.",
+							Description: "来源 数据 对象 类型 `1`: 值，`2`: 字符串。",
 						},
 						"source_content": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Content of rule template.",
+							Description: "内容 的 规则 template。",
 						},
 						"source_engine_types": {
 							Type: schema.TypeSet,
@@ -90,57 +90,57 @@ func DataSourceTencentCloudWedataRuleTemplates() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "Applicable type of source data.",
+							Description: "Applicable 类型 来源 数据。",
 						},
 						"quality_dim": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Quality inspection dimensions. `1`: Accuracy, `2`: Uniqueness, `3`: Completeness, `4`: Consistency, `5`: Timeliness, `6`: Effectiveness.",
+							Description: "Quality inspection dimensions. `1`: Accuracy，`2`: Uniqueness，`3`: Completeness，`4`: Consistency，`5`: Timeliness，`6`: Effectiveness。",
 						},
 						"compare_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The type of comparison method supported by the rule (1: fixed value comparison, greater than, less than, greater than or equal to, etc. 2: fluctuating value comparison, absolute value, rise, fall).",
+							Description: "类型 comparison 方法 支持 通过 规则 (1: fixed 值 comparison，greater 比，less 比，greater 比 或 equal 到，etc. 2: fluctuating 值 comparison，absolute 值，rise，fall)。",
 						},
 						"citation_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Citations.",
+							Description: "Citations。",
 						},
 						"user_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "user id.",
+							Description: "用户 ID。",
 						},
 						"user_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "user name.",
+							Description: "用户 名称",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "update time, like: yyyy-MM-dd HH:mm:ss.",
+							Description: "更新时间，like: yyyy-MM-dd HH:mm:ss。",
 						},
 						"where_flag": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "If add where.",
+							Description: "如果 add 其中。",
 						},
 						"multi_source_flag": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether to associate other library tables.",
+							Description: "是否associate other 库 tables。",
 						},
 						"sql_expression": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Sql Expression.",
+							Description: "Sql Expression。",
 						},
 						"sub_quality_dim": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Sub Quality inspection dimensions. `1`: Accuracy, `2`: Uniqueness, `3`: Completeness, `4`: Consistency, `5`: Timeliness, `6`: Effectiveness.",
+							Description: "Sub Quality inspection dimensions. `1`: Accuracy，`2`: Uniqueness，`3`: Completeness，`4`: Consistency，`5`: Timeliness，`6`: Effectiveness。",
 						},
 					},
 				},
@@ -149,7 +149,7 @@ func DataSourceTencentCloudWedataRuleTemplates() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

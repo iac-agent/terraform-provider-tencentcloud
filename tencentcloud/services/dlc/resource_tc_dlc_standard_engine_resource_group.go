@@ -23,79 +23,79 @@ func ResourceTencentCloudDlcStandardEngineResourceGroup() *schema.Resource {
 			"engine_resource_group_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Standard engine resource group name.",
+				Description: "Standard 引擎 资源 组名称",
 			},
 
 			"data_engine_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Standard engine name.",
+				Description: "Standard 引擎 名称",
 			},
 
 			"auto_launch": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Automatic start (task submission automatically pulls up the resource group) 0-automatic start, 1-not automatic start.",
+				Description: "Automatic start (任务 submission automatically pulls up 资源 组) 0-automatic start，1-不 automatic start。",
 			},
 
 			"auto_pause": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Automatically suspend resource groups. 0 - Automatically suspend, 1 - Not automatically suspend.",
+				Description: "Automatically suspend 资源 groups. 0 - Automatically suspend，1 - Not automatically suspend。",
 			},
 
 			"driver_cu_spec": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Driver CU specifications: Currently supported: small (default, 1 CU), medium (2 CU), large (4 CU), xlarge (8 CU). Memory CUs are CPUs with a ratio of 1:8, m.small (1 CU memory), m.medium (2 CU memory), m.large (4 CU memory), and m.xlarge (8 CU memory).",
+				Description: "Driver CU specifications: Currently 支持: small (默认值，1 CU)，medium (2 CU)，large (4 CU)，xlarge (8 CU). Memory CUs 是 CPUs 使用 ratio 的 1:8，m.small (1 CU 内存)，m.medium (2 CU 内存)，m.large (4 CU 内存)，和 m.xlarge (8 CU 内存)。",
 			},
 
 			"executor_cu_spec": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Executor CU specifications: Currently supported: small (default, 1 CU), medium (2 CU), large (4 CU), xlarge (8 CU). Memory CUs are CPUs with a ratio of 1:8, m.small (1 CU memory), m.medium (2 CU memory), m.large (4 CU memory), and m.xlarge (8 CU memory).",
+				Description: "Executor CU specifications: Currently 支持: small (默认值，1 CU)，medium (2 CU)，large (4 CU)，xlarge (8 CU). Memory CUs 是 CPUs 使用 ratio 的 1:8，m.small (1 CU 内存)，m.medium (2 CU 内存)，m.large (4 CU 内存)，和 m.xlarge (8 CU 内存)。",
 			},
 
 			"min_executor_nums": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Minimum number of executors.",
+				Description: "最小executors。",
 			},
 
 			"max_executor_nums": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Maximum number of executors.",
+				Description: "最大executors。",
 			},
 
 			"auto_pause_time": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Automatic suspension time, in minutes, with a value range of 1-999 (after no tasks have reached AutoPauseTime, the resource group will automatically suspend).",
+				Description: "Automatic suspension 时间，在 minutes，使用 值 范围 的 1-999 (after 无 tasks have reached AutoPauseTime， 资源 组 将 automatically suspend)。",
 			},
 
 			"static_config_pairs": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "Static parameters of the resource group, which require restarting the resource group to take effect.",
+				Description: "Static 参数 的 资源 组，其中 require restarting 资源 组 到 take effect。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"config_item": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration items.",
+							Description: "Configuration items。",
 						},
 						"config_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration values.",
+							Description: "Configuration 值。",
 						},
 					},
 				},
@@ -105,18 +105,18 @@ func ResourceTencentCloudDlcStandardEngineResourceGroup() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "Dynamic parameters of the resource group, effective in the next task.",
+				Description: "Dynamic 参数 的 资源 组，effective 在 next 任务。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"config_item": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration items.",
+							Description: "Configuration items。",
 						},
 						"config_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration values.",
+							Description: "Configuration 值。",
 						},
 					},
 				},
@@ -125,13 +125,13 @@ func ResourceTencentCloudDlcStandardEngineResourceGroup() *schema.Resource {
 			"max_concurrency": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "The number of concurrent tasks is 5 by default.",
+				Description: "数量 concurrent tasks 是 5 通过 默认值。",
 			},
 
 			"network_config_names": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Network configuration name.",
+				Description: "Network 配置 名称",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -140,87 +140,87 @@ func ResourceTencentCloudDlcStandardEngineResourceGroup() *schema.Resource {
 			"public_domain": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Customized mirror domain name.",
+				Description: "Customized mirror 域名 名称",
 			},
 
 			"registry_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Custom image instance ID.",
+				Description: "Custom 镜像 实例 ID。",
 			},
 
 			"frame_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The framework type of the AI type resource group, machine-learning, python, spark-ml, if not filled in, the default is machine-learning.",
+				Description: "框架 类型 AI 类型 资源 组，machine-learning，python，spark-ml，如果未填写 在， 默认为 machine-learning。",
 			},
 
 			"image_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Image type, build-in: built-in, custom: custom, if not filled in, the default is build-in.",
+				Description: "Image 类型，build-在: built-在，自定义: 自定义，如果未填写 在， 默认为 build-在。",
 			},
 
 			"image_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Image Name. \nExample value: image-xxx. If using a built-in image (ImageType is built-in), the ImageName for different frameworks is: machine-learning: pytorch-v2.5.1, scikit-learn-v1.6.0, tensorflow-v2.18.0, python: python-v3.10, spark-m: Standard-S 1.1.",
+				Description: "Image 名称 \nExample 值: 镜像-xxx. 如果 使用 built-在 镜像 (ImageType 是 built-在)， ImageName 对于 different frameworks 是: machine-learning: pytorch-v2.5.1，scikit-learn-v1.6.0，tensorflow-v2.18.0，python: python-v3.10，spark-m: Standard-S 1.1。",
 			},
 
 			"image_version": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Image ID.",
+				Description: "Image ID。",
 			},
 
 			"size": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "The AI resource group is valid, and the upper limit of available resources in the resource group must be less than the upper limit of engine resources.",
+				Description: "AI 资源 组 是 有效，和 upper 限制 的 可用 resources 在 资源 组 必须 是 less 比 upper 限制 的 引擎 resources。",
 			},
 
 			"resource_group_scene": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Resource group scenario.",
+				Description: "Resource 组 scenario。",
 			},
 
 			"region_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Custom image location.",
+				Description: "Custom 镜像 location。",
 			},
 
 			"python_cu_spec": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The resource limit for a Python stand-alone node in a Python resource group must be smaller than the resource limit for the resource group. Small: 1cu Medium: 2cu Large: 4cu Xlarge: 8cu 4xlarge: 16cu 8xlarge: 32cu 16xlarge: 64cu. If the resource type is high memory, add m before the type.",
+				Description: "资源 限制 对于 Python stand-alone 节点 在 Python 资源 组 必须 是 smaller 比 资源 限制 对于 资源 组. Small: 1cu Medium: 2cu Large: 4cu Xlarge: 8cu 4xlarge: 16cu 8xlarge: 32cu 16xlarge: 64cu. 如果 资源类型 是 high 内存，add m before 类型",
 			},
 
 			"spark_spec_mode": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Only SQL resource group resource configuration mode, fast: fast mode, custom: custom mode.",
+				Description: "Only SQL 资源 组 资源 配置 模式，fast: fast 模式，自定义: 自定义 模式",
 			},
 
 			"spark_size": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Only the SQL resource group resource limit, only used for the express module.",
+				Description: "Only SQL 资源 组 资源 限制，仅 用于the express 模块",
 			},
 
 			"running_state": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "The state of the resource group. true: launch standard engine resource group; false: pause standard engine resource group. Default is true.",
+				Description: "state 的 资源 组. true: launch standard 引擎 资源 组; false: pause standard 引擎 资源 组. 默认为 true。",
 			},
 
 			// computed
 			"engine_resource_group_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Standard engine resource group ID.",
+				Description: "Standard 引擎 资源 组 ID",
 			},
 		},
 	}

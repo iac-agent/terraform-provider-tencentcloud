@@ -29,114 +29,114 @@ func ResourceTencentCloudTseCngwService() *schema.Resource {
 			"gateway_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway ID.",
+				Description: "网关 ID。",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "service name.",
+				Description: "服务名称",
 			},
 
 			"protocol": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "protocol. Reference value:`https`, `http`, `tcp`, `udp`.",
+				Description: "协议 Reference 值:`https`，`http`，`tcp`，`udp`。",
 			},
 
 			"path": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "path.",
+				Description: "路径",
 			},
 
 			"timeout": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "time out, unit:ms.",
+				Description: "时间 out，单位:ms。",
 			},
 
 			"retries": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "retry times.",
+				Description: "重试次数",
 			},
 
 			"upstream_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "service type. Reference value:`Kubernetes`, `Registry`, `IPList`, `HostIP`, `Scf`.",
+				Description: "服务 类型 Reference 值:`Kubernetes`，`Registry`，`IPList`，`HostIP`，`Scf`。",
 			},
 
 			"upstream_info": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "service config information.",
+				Description: "服务 配置 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"host": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "an IP address or domain name.",
+							Description: "IP 地址 或 域名 名称",
 						},
 						"port": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "backend service port.valid values: `1` to `65535`.",
+							Description: "backend 服务 端口有效值：`1` 到 `65535`。",
 						},
 						"source_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "service source ID.",
+							Description: "服务 来源 ID。",
 						},
 						"namespace": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "namespace.",
+							Description: "命名空间。",
 						},
 						"service_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "the name of the service in registry or kubernetes.",
+							Description: "名称 服务 在 registry 或 kubernetes。",
 						},
 						"targets": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Computed:    true,
-							Description: "provided when service type is IPList.",
+							Description: "提供 当 服务 类型 是 IPList。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"host": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "host.",
+										Description: "主机",
 									},
 									"port": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "port.",
+										Description: "端口",
 									},
 									"weight": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "weight.",
+										Description: "权重",
 									},
 									"health": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "health.",
+										Description: "health。",
 									},
 									"created_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "created time.",
+										Description: "创建 时间。",
 									},
 									"source": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "source of target.",
+										Description: "来源 的 目标。",
 									},
 								},
 							},
@@ -145,69 +145,69 @@ func ResourceTencentCloudTseCngwService() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "source service type.",
+							Description: "来源 服务 类型",
 						},
 						"scf_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "scf lambda type.",
+							Description: "scf lambda 类型",
 						},
 						"scf_namespace": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "scf lambda namespace.",
+							Description: "scf lambda 命名空间。",
 						},
 						"scf_lambda_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "scf lambda name.",
+							Description: "scf lambda 名称",
 						},
 						"scf_lambda_qualifier": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "scf lambda version.",
+							Description: "scf lambda 版本",
 						},
 						"slow_start": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "slow start time, unit: `second`, when it is enabled, weight of the node is increased from 1 to the target value gradually.",
+							Description: "slow 开始时间，单位: `second`，当 它 是 已启用，权重 的 节点 是 increased 从 1 到 目标 值 gradually。",
 						},
 						"algorithm": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "load balance algorithm,default: `round-robin`, `least-connections` and `consisten_hashing` also support.",
+							Description: "load balance algorithm,默认值：`round-robin`，`least-connections` 和 `consisten_hashing` also support。",
 						},
 						"auto_scaling_group_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "auto scaling group ID of cvm.",
+							Description: "auto scaling 组 ID cvm。",
 						},
 						"auto_scaling_cvm_port": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "auto scaling group port of cvm.",
+							Description: "auto scaling 组 端口 的 cvm。",
 						},
 						"auto_scaling_tat_cmd_status": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "tat cmd status in auto scaling group of cvm.",
+							Description: "tat cmd 状态 在 auto scaling 组 的 cvm。",
 						},
 						"auto_scaling_hook_status": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "hook status in auto scaling group of cvm.",
+							Description: "hook 状态 在 auto scaling 组 的 cvm。",
 						},
 						"source_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "the name of source service.",
+							Description: "名称 来源 服务。",
 						},
 						"real_source_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "exact source service type.",
+							Description: "exact 来源 服务 类型",
 						},
 					},
 				},
@@ -216,13 +216,13 @@ func ResourceTencentCloudTseCngwService() *schema.Resource {
 			"service_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "service id.",
+				Description: "服务 ID。",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 				Deprecated:  "Deprecate ineffective tags",
 			},
 		},

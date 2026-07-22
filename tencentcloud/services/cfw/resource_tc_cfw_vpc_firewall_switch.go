@@ -30,18 +30,18 @@ func ResourceTencentCloudCfwVpcFirewallSwitch() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Firewall instance id.",
+				Description: "Firewall 实例 ID",
 			},
 			"switch_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Firewall switch ID.",
+				Description: "Firewall switch ID。",
 			},
 			"enable": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Turn the switch on or off. 0: turn off the switch; 1: Turn on the switch.",
+				Description: "Turn switch 在 或 关闭. 0: turn 关闭 switch; 1: Turn 在 switch。",
 			},
 		},
 	}

@@ -22,34 +22,34 @@ func DataSourceTencentCloudDcdbOrders() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of long order numbers to be queried, which are returned for the APIs for creating, renewing, or scaling instances.",
+				Description: "列表 long 顺序 numbers 到 是 queried，其中 是 返回 对于 APIs 对于 creating，renewing，或 scaling 实例。",
 			},
 
 			"deals": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Order information list.",
+				Description: "顺序 信息 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"deal_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Order number.",
+							Description: "顺序 数量。",
 						},
 						"owner_uin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Account.",
+							Description: "账号",
 						},
 						"count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of items.",
+							Description: "数量 items。",
 						},
 						"flow_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "ID of the associated process, which can be used to query the process execution status.",
+							Description: "ID associated process，其中 可以 是 用于query process execution 状态",
 						},
 						"instance_ids": {
 							Type: schema.TypeSet,
@@ -57,12 +57,12 @@ func DataSourceTencentCloudDcdbOrders() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "The ID of the created instance, which is required only for the order that creates an instance.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "ID 创建 实例，其中 为必填项 仅 对于 顺序 该 creates 实例.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"pay_mode": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Payment mode. Valid values: 0 (postpaid), 1 (prepaid).",
+							Description: "Payment 模式 有效值：0 (postpaid)，1 (prepaid)。",
 						},
 					},
 				},
@@ -71,7 +71,7 @@ func DataSourceTencentCloudDcdbOrders() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

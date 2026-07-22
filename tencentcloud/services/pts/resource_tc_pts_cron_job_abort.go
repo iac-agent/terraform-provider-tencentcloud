@@ -30,7 +30,7 @@ func ResourceTencentCloudPtsCronJobAbort() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Cron job ID.",
+				Description: "Cron 作业 ID.",
 			},
 		},
 	}

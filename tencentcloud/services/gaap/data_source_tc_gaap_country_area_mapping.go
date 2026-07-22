@@ -19,43 +19,43 @@ func DataSourceTencentCloudGaapCountryAreaMapping() *schema.Resource {
 			"country_area_mapping_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Country/region code mapping table.",
+				Description: "Country/地域 代码 mapping 表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"nation_country_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Country name.",
+							Description: "Country 名称",
 						},
 						"nation_country_inner_code": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Country code.",
+							Description: "Country 代码",
 						},
 						"geographical_zone_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region name.",
+							Description: "地域名称",
 						},
 						"geographical_zone_inner_code": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region code.",
+							Description: "地域 代码",
 						},
 						"continent_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The name of the continent.",
+							Description: "名称 continent。",
 						},
 						"continent_inner_code": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Continental Code.",
+							Description: "Continental 代码",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Annotation InformationNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Annotation Information注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -64,7 +64,7 @@ func DataSourceTencentCloudGaapCountryAreaMapping() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

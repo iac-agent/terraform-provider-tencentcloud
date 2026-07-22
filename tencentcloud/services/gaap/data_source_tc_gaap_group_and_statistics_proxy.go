@@ -19,66 +19,66 @@ func DataSourceTencentCloudGaapGroupAndStatisticsProxy() *schema.Resource {
 			"project_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Project Id.",
+				Description: "项目 ID",
 			},
 
 			"group_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Channel group information that can be counted.",
+				Description: "Channel 组 信息 该 可以 是 counted。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Channel Group ID.",
+							Description: "Channel 组 ID",
 						},
 						"group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Channel Group name.",
+							Description: "Channel 组名称",
 						},
 						"proxy_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Channel list in the proxy group.",
+							Description: "Channel 列表 在 proxy 组。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"proxy_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Channel Id.",
+										Description: "Channel ID。",
 									},
 									"proxy_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Channel name.",
+										Description: "Channel 名称",
 									},
 									"listener_list": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "listener list.",
+										Description: "listener 列表。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"listener_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "listener Id.",
+													Description: "listener ID。",
 												},
 												"listener_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "listener name.",
+													Description: "listener 名称",
 												},
 												"port": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "listened port.",
+													Description: "listened 端口",
 												},
 												"protocol": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Listener protocol type.",
+													Description: "Listener 协议 类型",
 												},
 											},
 										},
@@ -93,7 +93,7 @@ func DataSourceTencentCloudGaapGroupAndStatisticsProxy() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

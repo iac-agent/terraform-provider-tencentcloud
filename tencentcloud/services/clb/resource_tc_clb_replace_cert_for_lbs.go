@@ -22,7 +22,7 @@ func ResourceTencentCloudClbReplaceCertForLbs() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "ID of the certificate to be replaced, which can be a server certificate or a client certificate.",
+				Description: "待替换的证书ID，可以是服务器证书，也可以是客户端证书。",
 			},
 
 			"certificate": {
@@ -30,48 +30,48 @@ func ResourceTencentCloudClbReplaceCertForLbs() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Information such as the content of the new certificate.",
+				Description: "新证书的内容等信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ssl_mode": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Authentication type. Value range: UNIDIRECTIONAL (unidirectional authentication), MUTUAL (mutual authentication).",
+							Description: "认证类型。取值范围：UNIDIRECTIONAL（单向认证）、MUTUAL（相互认证）。",
 						},
 						"cert_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "ID of a server certificate. If you leave this parameter empty, you must upload the certificate, including CertContent, CertKey, and CertName.",
+							Description: "服务器证书ID。如果将此参数留空，则必须上传证书，包括 CertContent、CertKey 和 CertName。",
 						},
 						"cert_ca_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "ID of a client certificate. When the listener adopts mutual authentication (i.e., SSLMode = mutual), if you leave this parameter empty, you must upload the client certificate, including CertCaContent and CertCaName.",
+							Description: "客户端证书ID。当监听器采用双向认证（即SSLMode=mutual）时，如果该参数留空，则必须上传客户端证书，包括CertCaContent和CertCaName。",
 						},
 						"cert_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Name of the uploaded server certificate. If there is no CertId, this parameter is required.",
+							Description: "上传的服务器证书名称。如果没有CertId，则该参数为必填项。",
 						},
 						"cert_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Key of the uploaded server certificate. If there is no CertId, this parameter is required.",
+							Description: "上传的服务器证书的密钥。如果没有CertId，则该参数为必填项。",
 						},
 						"cert_content": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Content of the uploaded server certificate. If there is no CertId, this parameter is required.",
+							Description: "上传的服务器证书内容。如果没有CertId，则该参数为必填项。",
 						},
 						"cert_ca_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Name of the uploaded client CA certificate. When SSLMode = mutual, if there is no CertCaId, this parameter is required.",
+							Description: "上传的客户端CA证书的名称。当SSLMode=mutual时，如果没有CertCaId，则该参数为必填项。",
 						},
 						"cert_ca_content": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Content of the uploaded client certificate. When SSLMode = mutual, if there is no CertCaId, this parameter is required.",
+							Description: "上传的客户端证书的内容。当SSLMode=mutual时，如果没有CertCaId，则该参数为必填项。",
 						},
 					},
 				},

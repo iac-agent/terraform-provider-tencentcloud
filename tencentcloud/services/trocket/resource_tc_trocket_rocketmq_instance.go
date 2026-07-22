@@ -30,81 +30,81 @@ func ResourceTencentCloudTrocketRocketmqInstance() *schema.Resource {
 			"instance_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance type. Valid values: `EXPERIMENT`, `BASIC`, `PRO`, `PLATINUM`.",
+				Description: "实例类型 有效值：`EXPERIMENT`，`BASIC`，`PRO`，`PLATINUM`。",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance name.",
+				Description: "实例名称",
 			},
 
 			"sku_code": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "SKU code. Available specifications are as follows: experiment_500, basic_1k, basic_2k, basic_3k, basic_4k, basic_5k, basic_6k, basic_7k, basic_8k, basic_9k, basic_10k, pro_4k, pro_6k, pro_8k, pro_1w, pro_15k, pro_2w, pro_25k, pro_3w, pro_35k, pro_4w, pro_45k, pro_5w, pro_55k, pro_60k, pro_65k, pro_70k, pro_75k, pro_80k, pro_85k, pro_90k, pro_95k, pro_100k, platinum_1w, platinum_2w, platinum_3w, platinum_4w, platinum_5w, platinum_6w, platinum_7w, platinum_8w, platinum_9w, platinum_10w, platinum_12w, platinum_14w, platinum_16w, platinum_18w, platinum_20w, platinum_25w, platinum_30w, platinum_35w, platinum_40w, platinum_45w, platinum_50w, platinum_60w, platinum_70w, platinum_80w, platinum_90w, platinum_100w.",
+				Description: "SKU 代码 Available specifications 是 作为 follows: experiment_500，basic_1k，basic_2k，basic_3k，basic_4k，basic_5k，basic_6k，basic_7k，basic_8k，basic_9k，basic_10k，pro_4k，pro_6k，pro_8k，pro_1w，pro_15k，pro_2w，pro_25k，pro_3w，pro_35k，pro_4w，pro_45k，pro_5w，pro_55k，pro_60k，pro_65k，pro_70k，pro_75k，pro_80k，pro_85k，pro_90k，pro_95k，pro_100k，platinum_1w，platinum_2w，platinum_3w，platinum_4w，platinum_5w，platinum_6w，platinum_7w，platinum_8w，platinum_9w，platinum_10w，platinum_12w，platinum_14w，platinum_16w，platinum_18w，platinum_20w，platinum_25w，platinum_30w，platinum_35w，platinum_40w，platinum_45w，platinum_50w，platinum_60w，platinum_70w，platinum_80w，platinum_90w，platinum_100w。",
 			},
 
 			"remark": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Remark.",
+				Description: "备注",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
 				Computed:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "VPC id.",
+				Description: "VPC ID。",
 			},
 
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Subnet id.",
+				Description: "子网 ID",
 			},
 
 			"enable_public": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to enable the public network. Must set `bandwidth` when `enable_public` equal true.",
+				Description: "是否enable 公有 网络. Must 集合 `带宽` 当 `enable_public` equal true。",
 			},
 
 			"bandwidth": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Public network bandwidth. `bandwidth` must be greater than zero when `enable_public` equal true.",
+				Description: "Public 网络 带宽. `带宽` 必须 是 greater 比 zero 当 `enable_public` equal true。",
 			},
 
 			"ip_rules": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Public network access whitelist.",
+				Description: "Public 网络 访问 whitelist。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ip": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "IP.",
+							Description: "IP。",
 						},
 						"allow": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Whether to allow release or not.",
+							Description: "是否allow release 或 不。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Remark.",
+							Description: "备注",
 						},
 					},
 				},
@@ -114,19 +114,19 @@ func ResourceTencentCloudTrocketRocketmqInstance() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Message retention time in hours.",
+				Description: "消息 retention 时间 在 hours。",
 			},
 
 			"public_end_point": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Public network access address.",
+				Description: "Public 网络 访问 地址",
 			},
 
 			"vpc_end_point": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "VPC access address.",
+				Description: "VPC 访问 地址",
 			},
 		},
 	}

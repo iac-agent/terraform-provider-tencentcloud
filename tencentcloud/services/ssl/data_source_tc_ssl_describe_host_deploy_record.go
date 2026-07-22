@@ -19,55 +19,55 @@ func DataSourceTencentCloudSslDescribeHostDeployRecord() *schema.Resource {
 			"certificate_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Certificate ID to be deployed.",
+				Description: "证书 ID 到 是 deployed。",
 			},
 
 			"resource_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Resource Type.",
+				Description: "资源类型",
 			},
 
 			"deploy_record_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Certificate deployment record listNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Certificate 部署 记录 listNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Deployment record ID.",
+							Description: "Deployment 记录 ID。",
 						},
 						"cert_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Deployment certificate ID.",
+							Description: "Deployment 证书 ID",
 						},
 						"resource_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Deploy resource type.",
+							Description: "Deploy 资源类型",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Deployment.",
+							Description: "Deployment。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Deployment state.",
+							Description: "Deployment state。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Deployment time.",
+							Description: "Deployment 时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Recent update time.",
+							Description: "Recent 更新时间。",
 						},
 					},
 				},
@@ -76,7 +76,7 @@ func DataSourceTencentCloudSslDescribeHostDeployRecord() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

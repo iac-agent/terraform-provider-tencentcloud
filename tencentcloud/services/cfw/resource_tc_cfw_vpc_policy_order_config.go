@@ -27,7 +27,7 @@ func ResourceTencentCloudCfwVpcPolicyOrderConfig() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "The unique IDs of the rule, which is not required when you create a rule. The priority will be determined by the index position of the UUID in the list.",
+				Description: "唯一 IDs 的 规则，其中 不是必填项 当 您 create 规则. 优先级 将 是 determined 通过 索引 position 的 UUID 在 列表。",
 				Elem:        &schema.Schema{Type: schema.TypeInt},
 			},
 		},

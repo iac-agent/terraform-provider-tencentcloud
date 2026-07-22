@@ -19,59 +19,59 @@ func DataSourceTencentCloudSslDescribeCompanies() *schema.Resource {
 			"company_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Company ID.",
+				Description: "公司 ID",
 			},
 
 			"companies": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Company list.",
+				Description: "公司列表",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"company_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Company Name.",
+							Description: "公司名称",
 						},
 						"company_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Company ID.",
+							Description: "公司 ID",
 						},
 						"company_country": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Company country.",
+							Description: "公司国家",
 						},
 						"company_province": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Province where the company is located.",
+							Description: "Province 其中 company 是 located。",
 						},
 						"company_city": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The city where the company is.",
+							Description: "city 其中 company 是。",
 						},
 						"company_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Detailed address where the company is located.",
+							Description: "Detailed 地址 其中 company 是 located。",
 						},
 						"company_phone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "company phone.",
+							Description: "company phone。",
 						},
 						"id_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "typeNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "typeNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"id_number": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID numberNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "ID numberNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 					},
 				},
@@ -80,7 +80,7 @@ func DataSourceTencentCloudSslDescribeCompanies() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

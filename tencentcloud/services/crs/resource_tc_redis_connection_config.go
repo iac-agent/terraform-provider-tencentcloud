@@ -28,44 +28,44 @@ func ResourceTencentCloudRedisConnectionConfig() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of instance.",
+				Description: "ID 实例。",
 			},
 
 			"client_limit": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The total number of connections per shard.If read-only replicas are not enabled, the lower limit is 10,000 and the upper limit is 40,000.When you enable read-only replicas, the minimum limit is 10,000 and the upper limit is 10,000 * (the number of read replicas +3).",
+				Description: "总数 数量 connections per 分片.如果 read-仅 replicas 是 不 已启用， lower 限制 是 10,000 和 upper 限制 是 40,000.当 您 启用 read-仅 replicas， 最小 限制 是 10,000 和 upper 限制 是 10,000 * ( 数量 read replicas +3)。",
 			},
 
 			"total_bandwidth": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Total bandwidth of the instance = additional bandwidth * number of shards + standard bandwidth * number of shards * (number of primary nodes + number of read-only replica nodes), the number of shards of the standard architecture = 1, in Mb/s.",
+				Description: "Total 带宽 的 实例 = additional 带宽 * 数量 shards + standard 带宽 * 数量 shards * (数量 primary nodes + 数量 read-仅 副本 nodes)， 数量 shards 的 standard architecture = 1，在 Mb/s。",
 			},
 
 			"base_bandwidth": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "standard bandwidth. Refers to the bandwidth allocated by the system to each node when an instance is purchased.",
+				Description: "standard 带宽. Refers 到 带宽 allocated 通过 系统 到 each 节点 当 实例 是 purchased。",
 			},
 
 			"add_bandwidth": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Refers to the additional bandwidth of the instance. When the standard bandwidth does not meet the demand, the user can increase the bandwidth by himself. When the read-only copy is enabled, the total bandwidth of the instance = additional bandwidth * number of fragments + standard bandwidth * number of fragments * Max ([number of read-only replicas, 1] ), the number of shards in the standard architecture = 1, and when read-only replicas are not enabled, the total bandwidth of the instance = additional bandwidth * number of shards + standard bandwidth * number of shards, and the number of shards in the standard architecture = 1.",
+				Description: "Refers 到 additional 带宽 的 实例. 当 standard 带宽 does 不 meet demand， 用户 可以 increase 带宽 通过 himself. 当 read-仅 copy 是 已启用， 总数 带宽 的 实例 = additional 带宽 * 数量 fragments + standard 带宽 * 数量 fragments * Max ([数量 read-仅 replicas，1] )， 数量 shards 在 standard architecture = 1，和 当 read-仅 replicas 是 不 已启用， 总数 带宽 的 实例 = additional 带宽 * 数量 shards + standard 带宽 * 数量 shards，和 数量 shards 在 standard architecture = 1。",
 			},
 
 			"min_add_bandwidth": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Additional bandwidth sets the lower limit.",
+				Description: "Additional 带宽 sets lower 限制",
 			},
 
 			"max_add_bandwidth": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Additional bandwidth is capped.",
+				Description: "Additional 带宽 是 capped。",
 			},
 		},
 	}

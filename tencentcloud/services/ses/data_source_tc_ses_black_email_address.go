@@ -19,42 +19,42 @@ func DataSourceTencentCloudSesBlackEmailAddress() *schema.Resource {
 			"start_date": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Start date in the format of `YYYY-MM-DD`.",
+				Description: "Start date 在 格式 的 `YYYY-MM-DD`。",
 			},
 
 			"end_date": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "End date in the format of `YYYY-MM-DD`.",
+				Description: "End date 在 格式 的 `YYYY-MM-DD`。",
 			},
 
 			"email_address": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "You can specify an email address to query.",
+				Description: "You 可以 指定an email 地址 到 查询。",
 			},
 
 			"task_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "You can specify a task ID to query.",
+				Description: "You 可以 指定a 任务 ID 到 查询。",
 			},
 
 			"black_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of blocklisted addresses.",
+				Description: "列表 blocklisted addresses。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"bounce_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Time when the email address is blocklisted.",
+							Description: "Time 当 email 地址 是 blocklisted。",
 						},
 						"email_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Blocklisted email address.",
+							Description: "Blocklisted email 地址",
 						},
 					},
 				},
@@ -63,7 +63,7 @@ func DataSourceTencentCloudSesBlackEmailAddress() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -26,14 +26,14 @@ func ResourceTencentCloudCfwSyncRoute() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Synchronization operation type: Route, synchronize firewall routing.",
+				Description: "Synchronization 操作类型: Route，synchronize firewall routing。",
 			},
 			"fw_type": {
 				Optional:     true,
 				ForceNew:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(FW_TYPE),
-				Description:  "Firewall type; nat: nat firewall; ew: inter-vpc firewall.",
+				Description:  "Firewall 类型; nat: nat firewall; ew: inter-vpc firewall。",
 			},
 		},
 	}

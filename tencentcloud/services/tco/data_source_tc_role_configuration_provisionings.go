@@ -18,84 +18,84 @@ func DataSourceTencentCloudRoleConfigurationProvisionings() *schema.Resource {
 			"zone_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Space ID.",
+				Description: "Space ID。",
 			},
 
 			"role_configuration_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Permission configuration ID.",
+				Description: "权限配置 ID",
 			},
 
 			"target_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Type of the synchronized target account of the Tencent Cloud Organization. ManagerUin: admin account; MemberUin: member account.",
+				Description: "类型 synchronized 目标 账号 的 Tencent Cloud Organization. ManagerUin: admin 账号; MemberUin: member 账号",
 			},
 
 			"target_uin": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "UIN of the synchronized target account of the Tencent Cloud Organization.",
+				Description: "UIN 的 synchronized 目标 账号 的 Tencent Cloud Organization。",
 			},
 
 			"deployment_status": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Deployed: Deployment succeeded; DeployedRequired: Redeployment required; DeployFailed: Deployment failed.",
+				Description: "Deployed: Deployment succeeded; DeployedRequired: Redeployment 必填; DeployFailed: Deployment failed。",
 			},
 
 			"filter": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search by configuration name is supported.",
+				Description: "Search 通过 配置 名称 是 支持。",
 			},
 
 			"role_configuration_provisionings": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Department member account list.",
+				Description: "Department member 账号 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"deployment_status": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Deployed: Deployment succeeded; DeployedRequired: Redeployment required; DeployFailed: Deployment failed.",
+							Description: "Deployed: Deployment succeeded; DeployedRequired: Redeployment 必填; DeployFailed: Deployment failed。",
 						},
 						"role_configuration_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Permission configuration ID.",
+							Description: "权限配置 ID",
 						},
 						"role_configuration_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Permission configuration name.",
+							Description: "Permission 配置 名称",
 						},
 						"target_uin": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "UIN of the target account of the Tencent Cloud Organization.",
+							Description: "UIN 的 目标 账号 的 Tencent Cloud Organization。",
 						},
 						"target_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Name of the target account of the Tencent Cloud Organization.",
+							Description: "名称 目标 账号 的 Tencent Cloud Organization。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Modification time.",
+							Description: "修改时间。",
 						},
 						"target_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Type of the synchronized target account of the Tencent Cloud Organization. ManagerUin: admin account; MemberUin: member account.",
+							Description: "类型 synchronized 目标 账号 的 Tencent Cloud Organization. ManagerUin: admin 账号; MemberUin: member 账号",
 						},
 					},
 				},
@@ -104,7 +104,7 @@ func DataSourceTencentCloudRoleConfigurationProvisionings() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

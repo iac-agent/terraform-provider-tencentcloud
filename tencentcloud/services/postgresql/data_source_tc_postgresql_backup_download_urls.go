@@ -19,43 +19,43 @@ func DataSourceTencentCloudPostgresqlBackupDownloadUrls() *schema.Resource {
 			"db_instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"backup_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Backup type. Valid values: `LogBackup`, `BaseBackup`.",
+				Description: "Backup 类型 有效值：`LogBackup`，`BaseBackup`。",
 			},
 
 			"backup_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Unique backup ID.",
+				Description: "Unique 备份 ID。",
 			},
 
 			"url_expire_time": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Validity period of a URL, which is 12 hours by default.",
+				Description: "Validity 周期 的 URL，其中 是 12 hours 通过 默认值。",
 			},
 
 			"backup_download_restriction": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Backup download restriction.",
+				Description: "Backup download restriction。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"restriction_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Type of the network restrictions for downloading backup files. Valid values: `NONE` (backups can be downloaded over both private and public networks), `INTRANET` (backups can only be downloaded over the private network), `CUSTOMIZE` (backups can be downloaded over specified VPCs or at specified IPs).",
+							Description: "类型 网络 restrictions 对于 downloading 备份 files. 有效值：`NONE` (backups 可以 是 downloaded over both 私有 和 公有 networks)，`INTRANET` (backups 可以 仅 是 downloaded over 私有 网络)，`CUSTOMIZE` (backups 可以 是 downloaded over 指定 VPCs 或 在 指定 IPs)。",
 						},
 						"vpc_restriction_effect": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether VPC is allowed. Valid values: `ALLOW` (allow), `DENY` (deny).",
+							Description: "Whether VPC 是 allowed. 有效值：`ALLOW` (allow)，`DENY` (deny)。",
 						},
 						"vpc_id_set": {
 							Type: schema.TypeSet,
@@ -63,12 +63,12 @@ func DataSourceTencentCloudPostgresqlBackupDownloadUrls() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "Whether it is allowed to download the VPC ID list of the backup files.",
+							Description: "是否为allowed 到 download 私有网络 ID 列表 备份 files。",
 						},
 						"ip_restriction_effect": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether IP is allowed. Valid values: `ALLOW` (allow), `DENY` (deny).",
+							Description: "Whether IP 是 allowed. 有效值：`ALLOW` (allow)，`DENY` (deny)。",
 						},
 						"ip_set": {
 							Type: schema.TypeSet,
@@ -76,7 +76,7 @@ func DataSourceTencentCloudPostgresqlBackupDownloadUrls() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "Whether it is allowed to download IP list of the backup files.",
+							Description: "是否为allowed 到 download IP 列表 备份 files。",
 						},
 					},
 				},
@@ -85,13 +85,13 @@ func DataSourceTencentCloudPostgresqlBackupDownloadUrls() *schema.Resource {
 			"backup_download_url": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Backup download URL.",
+				Description: "Backup download URL",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

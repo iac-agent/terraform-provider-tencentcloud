@@ -19,17 +19,17 @@ func DataSourceTencentCloudKmsWhiteBoxDecryptKey() *schema.Resource {
 			"key_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Globally unique identifier for the white box key.",
+				Description: "Globally 唯一 identifier 对于 white box 键",
 			},
 			"decrypt_key": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "White box decryption key, base64 encoded.",
+				Description: "White box decryption 键，base64 encoded。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

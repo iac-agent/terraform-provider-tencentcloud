@@ -29,56 +29,56 @@ func ResourceTencentCloudTrocketRocketmqRole() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "ID of instance.",
+				Description: "ID 实例。",
 			},
 
 			"role": {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "Name of role.",
+				Description: "名称 角色",
 			},
 
 			"remark": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "remark.",
+				Description: "备注",
 			},
 
 			"perm_write": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to enable production permission.",
+				Description: "是否enable production 权限。",
 			},
 
 			"perm_read": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to enable consumption permission.",
+				Description: "是否enable consumption 权限。",
 			},
 
 			"access_key": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Access key.",
+				Description: "Access 键",
 			},
 
 			"secret_key": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Secret key.",
+				Description: "Secret 键",
 			},
 
 			"created_time": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Created time.",
+				Description: "Created 时间。",
 			},
 
 			"modified_time": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Modified time.",
+				Description: "Modified 时间。",
 			},
 		},
 	}

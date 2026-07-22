@@ -28,37 +28,37 @@ func ResourceTencentCloudTdmqRocketmqRole() *schema.Resource {
 			"role_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Role name, which can contain up to 32 letters, digits, hyphens, and underscores.",
+				Description: "角色 名称，其中 可以 contain up 到 32 letters，digits，hyphens，和 underscores。",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Remarks (up to 128 characters).",
+				Description: "备注 (up 到 128 字符)。",
 			},
 
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Cluster ID (required).",
+				Description: "集群 ID (必填)。",
 			},
 
 			"token": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Value of the role token.",
+				Description: "值 的 角色 令牌",
 			},
 
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time.",
+				Description: "创建时间。",
 			},
 
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Update time.",
+				Description: "更新时间。",
 			},
 		},
 	}

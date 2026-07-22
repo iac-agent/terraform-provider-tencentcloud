@@ -20,103 +20,103 @@ func DataSourceTencentCloudTdmqRocketmqGroup() *schema.Resource {
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 
 			"namespace_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Namespace.",
+				Description: "Namespace。",
 			},
 
 			"filter_topic": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Topic name, which can be used to query all subscription groups under the topic.",
+				Description: "Topic 名称，其中 可以 是 用于query all subscription groups under 主题。",
 			},
 
 			"filter_group": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Consumer group query by consumer group name. Fuzzy query is supported.",
+				Description: "Consumer 组 查询 通过 消费者 组名称 Fuzzy 查询 是 支持。",
 			},
 
 			"filter_one_group": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Subscription group name. After it is specified, the information of only this subscription group will be returned.",
+				Description: "Subscription 组名称 After 它 是 指定， 信息 的 仅 此 subscription 组 将 是 返回。",
 			},
 
 			"groups": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of subscription groups.",
+				Description: "列表 subscription groups。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Consumer group name.",
+							Description: "Consumer 组名称",
 						},
 						"consumer_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of online consumers.",
+							Description: "数量 online consumers。",
 						},
 						"tps": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Consumption TPS.",
+							Description: "Consumption TPS。",
 						},
 						"total_accumulative": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The total number of heaped messages.",
+							Description: "总数 数量 heaped messages。",
 						},
 						"consumption_mode": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "`0`: Cluster consumption mode; `1`: Broadcast consumption mode; `-1`: Unknown.",
+							Description: "`0`: Cluster consumption 模式; `1`: Broadcast consumption 模式; `-1`: Unknown。",
 						},
 						"read_enable": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether to enable consumption.",
+							Description: "是否enable consumption。",
 						},
 						"retry_partition_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of partitions in a retry topic.",
+							Description: "数量 partitions 在 retry 主题。",
 						},
 						"create_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Creation time in milliseconds.",
+							Description: "创建时间 （毫秒）。",
 						},
 						"update_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Modification time in milliseconds.",
+							Description: "修改时间 （毫秒）。",
 						},
 						"client_protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Client protocol.",
+							Description: "Client 协议",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Remarks (up to 128 characters).",
+							Description: "备注 (up 到 128 字符)。",
 						},
 						"consumer_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Consumer type. Enumerated values: ACTIVELY or PASSIVELY.",
+							Description: "Consumer 类型 Enumerated 值: ACTIVELY 或 PASSIVELY。",
 						},
 						"broadcast_enable": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether to enable broadcast consumption.",
+							Description: "是否enable broadcast consumption。",
 						},
 					},
 				},
@@ -125,7 +125,7 @@ func DataSourceTencentCloudTdmqRocketmqGroup() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

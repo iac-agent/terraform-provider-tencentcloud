@@ -18,30 +18,30 @@ func DataSourceTencentCloudTeoConfigGroupVersions() *schema.Resource {
 			"zone_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Zone ID.",
+				Description: "可用区 ID",
 			},
 
 			"group_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Configuraration group ID.",
+				Description: "Configuraration 组 ID",
 			},
 
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filtering condition. The maximum value of Filters.Values is 20. If this parameter is not specified, all version information for the selected configuration group is returned. Detailed filtering conditions: version-id (Filter by version ID).",
+				Description: "Filtering condition. 最大 值 的 Filters.Values 是 20. 如果 此 参数 是 不 指定，all 版本 信息 对于 selected 配置 组 是 返回. Detailed filtering conditions: 版本-ID (过滤器 通过 版本 ID)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Field to be filtered.",
+							Description: "待过滤字段",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Value of the filtered field.",
+							Description: "值 的 filtered 字段。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -49,7 +49,7 @@ func DataSourceTencentCloudTeoConfigGroupVersions() *schema.Resource {
 						"fuzzy": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether to enable fuzzy query.",
+							Description: "是否enable fuzzy 查询。",
 						},
 					},
 				},
@@ -58,43 +58,43 @@ func DataSourceTencentCloudTeoConfigGroupVersions() *schema.Resource {
 			"config_group_version_infos": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Version information list.",
+				Description: "版本 信息 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"version_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Version ID.",
+							Description: "版本 ID。",
 						},
 						"version_number": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Version No.",
+							Description: "版本 No。",
 						},
 						"group_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Configuraration group ID.",
+							Description: "Configuraration 组 ID",
 						},
 						"group_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Configuration group type. Valid values: l7_acceleration (L7 acceleration configuration group), edge_functions (Edge function configuration group).",
+							Description: "Configuration 组 类型 有效值：l7_acceleration (L7 acceleration 配置 组)，edge_functions (Edge 函数 配置 组)。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Version description.",
+							Description: "版本 描述",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Version status. Valid values: creating (Being created), inactive (Not effective), active (Effective).",
+							Description: "版本 状态 有效值：creating (Being 创建)，inactive (Not effective)，活跃 (Effective)。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Version creation time. The time format follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC).",
+							Description: "版本 创建时间. 时间格式 follows ISO 8601 standard 和 是 represented 在 Coordinated Universal Time (UTC)。",
 						},
 					},
 				},
@@ -103,7 +103,7 @@ func DataSourceTencentCloudTeoConfigGroupVersions() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

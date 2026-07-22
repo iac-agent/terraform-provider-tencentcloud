@@ -21,74 +21,74 @@ func DataSourceTencentCloudClbServerAttachments() *schema.Resource {
 			"clb_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of the CLB to be queried.",
+				Description: "需要查询的CLB ID。",
 			},
 			"listener_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of the CLB listener to be queried.",
+				Description: "需要查询的CLB监听ID。",
 			},
 			"rule_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the CLB listener rule. If the protocol of listener is `HTTP`/`HTTPS`, this para is required.",
+				Description: "CLB监听规则ID。如果监听协议是`HTTP`/`HTTPS`，则此段为必填项。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			"attachment_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of cloud load balancer attachment configurations. Each element contains the following attributes:",
+				Description: "云负载均衡器附件配置列表。每个元素包含以下属性：",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"clb_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the CLB.",
+							Description: "CLB的ID。",
 						},
 						"listener_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the CLB listener.",
+							Description: "CLB监听器ID。",
 						},
 						"protocol_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type of protocol within the listener, and available values include `TCP`, `UDP`, `HTTP`, `HTTPS` and `TCP_SSL`. NOTES: `TCP_SSL` is testing internally, please apply if you need to use.",
+							Description: "侦听器中的协议类型，可用值包括“TCP”、“UDP”、“HTTP”、“HTTPS”和“TCP_SSL”。注意：`TCP_SSL`正在内部测试，如需使用请申请。",
 						},
 						"rule_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the CLB listener rule.",
+							Description: "CLB监听规则ID。",
 						},
 						"targets": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "Information of the backends to be attached.",
+							Description: "要附加的后端信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Id of the backend server.",
+										Description: "后端服务器的id。",
 									},
 									"eni_ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Elastic network card unique ID.",
+										Description: "弹性网卡唯一ID。",
 									},
 									"port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Port of the backend server.",
+										Description: "后端服务器的端口。",
 									},
 									"weight": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Forwarding weight of the backend service, the range of [0, 100], defaults to `10`.",
+										Description: "后端服务的转发权重，范围[0，100]，默认为`10`。",
 									},
 								},
 							},

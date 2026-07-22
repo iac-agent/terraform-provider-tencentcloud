@@ -30,7 +30,7 @@ func ResourceTencentCloudMysqlSsl() *schema.Resource {
 				Optional:     true,
 				ForceNew:     true,
 				ExactlyOneOf: []string{"ro_group_id"},
-				Description:  "Instance ID. Example value: cdb-c1nl9rpv.",
+				Description: "实例ID。示例值：cdb-c1nl9rpv。",
 			},
 
 			"ro_group_id": {
@@ -38,20 +38,20 @@ func ResourceTencentCloudMysqlSsl() *schema.Resource {
 				Optional:     true,
 				ForceNew:     true,
 				ExactlyOneOf: []string{"instance_id"},
-				Description:  "RO group ID. Example value: cdbrg-k9a6gup3.",
+				Description: "RO 组 ID。示例值：cdbrg-k9a6gup3。",
 			},
 
 			"status": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"ON", "OFF"}),
-				Description:  "Whether to enable SSL. `ON` means enabled, `OFF` means not enabled.",
+				Description: "是否启用SSL。 “ON”表示启用，“OFF”表示不启用。",
 			},
 
 			"url": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The certificate download link. Example value: http://testdownload.url.",
+				Description: "证书下载链接。示例值：http://testdownload.URL。",
 			},
 		},
 	}

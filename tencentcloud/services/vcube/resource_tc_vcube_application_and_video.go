@@ -26,58 +26,58 @@ func ResourceTencentCloudVcubeApplicationAndVideo() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Application name.",
+				Description: "Application 名称",
 			},
 
 			"bundle_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "IOS bundle ID. Choose at least one of `bundle_id` and `package_name`.",
+				Description: "IOS bundle ID. Choose 在 least 一个 的 `bundle_id` 和 `package_name`。",
 			},
 
 			"package_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Android package name. Choose at least one of `bundle_id` and `package_name`.",
+				Description: "Android 包 名称 Choose 在 least 一个 的 `bundle_id` 和 `package_name`。",
 			},
 
 			// computed
 			"license_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "License ID.",
+				Description: "License ID。",
 			},
 
 			"app_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Account App ID.",
+				Description: "账号 App ID。",
 			},
 
 			"app_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Application type: formal: formal application, test: test application.",
+				Description: "Application 类型: formal: formal 应用，测试: 测试 应用。",
 			},
 
 			"application_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "User Application ID.",
+				Description: "用户 Application ID。",
 			},
 
 			"license_key": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "License key.",
+				Description: "License 键",
 			},
 
 			"license_url": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "License url.",
+				Description: "License URL",
 			},
 		},
 	}

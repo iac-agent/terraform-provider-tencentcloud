@@ -21,38 +21,38 @@ func DataSourceTencentCloudSsmSecretVersions() *schema.Resource {
 			"secret_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Secret name used to filter result.",
+				Description: "Secret 名称 用于filter 结果",
 			},
 			"version_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "VersionId used to filter result.",
+				Description: "VersionId 用于filter 结果",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			"secret_version_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of SSM secret versions. When secret status is `Disabled`, this field will not update anymore.",
+				Description: "A 列表 SSM secret versions. 当 secret 状态 是 `已禁用`，此 字段 将 不 update anymore。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"version_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Version of secret.",
+							Description: "版本 的 secret。",
 						},
 						"secret_binary": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The base64-encoded binary secret.",
+							Description: "base64-encoded binary secret。",
 						},
 						"secret_string": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The string text of secret.",
+							Description: "字符串 text 的 secret。",
 						},
 					},
 				},

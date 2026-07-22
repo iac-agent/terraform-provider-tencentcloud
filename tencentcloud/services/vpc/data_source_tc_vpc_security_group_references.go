@@ -22,19 +22,19 @@ func DataSourceTencentCloudVpcSecurityGroupReferences() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "A set of security group instance IDs, e.g. [sg-12345678].",
+				Description: "A 集合 的 安全 组 实例 IDs，e.g. [sg-12345678]。",
 			},
 
 			"referred_security_group_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Referred security groups.",
+				Description: "Referred 安全 groups。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"security_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Security group instance ID.",
+							Description: "Security 组 实例 ID。",
 						},
 						"referred_security_group_ids": {
 							Type: schema.TypeSet,
@@ -42,7 +42,7 @@ func DataSourceTencentCloudVpcSecurityGroupReferences() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "IDs of all referred security group instances.",
+							Description: "IDs 的 all referred 安全 组 实例。",
 						},
 					},
 				},
@@ -51,7 +51,7 @@ func DataSourceTencentCloudVpcSecurityGroupReferences() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

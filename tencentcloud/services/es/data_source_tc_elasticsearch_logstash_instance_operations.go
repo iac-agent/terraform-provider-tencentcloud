@@ -19,63 +19,63 @@ func DataSourceTencentCloudElasticsearchLogstashInstanceOperations() *schema.Res
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Start time, e.g. 2019-03-07 16:30:39.",
+				Description: "开始时间，e.g. 2019-03-07 16:30:39。",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "End time, e.g. 2019-03-30 20:18:03.",
+				Description: "结束时间，e.g. 2019-03-30 20:18:03。",
 			},
 
 			"operations": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Operation records.",
+				Description: "Operation records。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Id.",
+							Description: "ID。",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Start time.",
+							Description: "开始时间。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type.",
+							Description: "类型",
 						},
 						"detail": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Operation details.",
+							Description: "Operation details。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"old_info": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Instance original configuration information.",
+										Description: "实例 original 配置 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Key.",
+													Description: "键",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Value.",
+													Description: "值",
 												},
 											},
 										},
@@ -83,18 +83,18 @@ func DataSourceTencentCloudElasticsearchLogstashInstanceOperations() *schema.Res
 									"new_info": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Configuration information after instance update.",
+										Description: "Configuration 信息 after 实例 update。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Key.",
+													Description: "键",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Value.",
+													Description: "值",
 												},
 											},
 										},
@@ -105,59 +105,59 @@ func DataSourceTencentCloudElasticsearchLogstashInstanceOperations() *schema.Res
 						"result": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Operation result.",
+							Description: "Operation 结果",
 						},
 						"tasks": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Task information.",
+							Description: "任务 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Task name.",
+										Description: "任务 名称",
 									},
 									"progress": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Task progress.",
+										Description: "任务 progress。",
 									},
 									"finish_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Task completion time.",
+										Description: "任务 completion 时间。",
 									},
 									"sub_tasks": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Subtask.",
+										Description: "Subtask。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Subtask name.",
+													Description: "Subtask 名称",
 												},
 												"result": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Subtask result.",
+													Description: "Subtask 结果",
 												},
 												"err_msg": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Subtask error message.",
+													Description: "Subtask 错误信息",
 												},
 												"type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Subtask type.",
+													Description: "Subtask 类型",
 												},
 												"status": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Subtask status, 1: success; 0: processing; -1: failure.",
+													Description: "Subtask 状态，1: success; 0: processing; -1: failure。",
 												},
 												"failed_indices": {
 													Type: schema.TypeSet,
@@ -165,17 +165,17 @@ func DataSourceTencentCloudElasticsearchLogstashInstanceOperations() *schema.Res
 														Type: schema.TypeString,
 													},
 													Computed:    true,
-													Description: "The index name of the failed upgrade check.",
+													Description: "索引 名称 failed upgrade check。",
 												},
 												"finish_time": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Subtask end time.",
+													Description: "Subtask 结束时间。",
 												},
 												"level": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Subtask level, 1: warning; 2: failed.",
+													Description: "Subtask 级别，1: 警告; 2: failed。",
 												},
 											},
 										},
@@ -183,33 +183,33 @@ func DataSourceTencentCloudElasticsearchLogstashInstanceOperations() *schema.Res
 									"elapsed_time": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Elapsed time.",
+										Description: "Elapsed 时间。",
 									},
 									"process_info": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Progress info.",
+										Description: "Progress info。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"completed": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Completed quantity.",
+													Description: "完成数量",
 												},
 												"remain": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Remaining quantity.",
+													Description: "Remaining quantity。",
 												},
 												"total": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Total quantity.",
+													Description: "Total quantity。",
 												},
 												"task_type": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Task type. 60: restart task 70: fragment migration task 80: node modification task.",
+													Description: "任务 类型 60: restart 任务 70: fragment 迁移 任务 80: 节点 modification 任务。",
 												},
 											},
 										},
@@ -220,12 +220,12 @@ func DataSourceTencentCloudElasticsearchLogstashInstanceOperations() *schema.Res
 						"progress": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Operation progress.",
+							Description: "Operation progress。",
 						},
 						"sub_account_uin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Operator uin.",
+							Description: "操作者 uin。",
 						},
 					},
 				},
@@ -234,7 +234,7 @@ func DataSourceTencentCloudElasticsearchLogstashInstanceOperations() *schema.Res
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

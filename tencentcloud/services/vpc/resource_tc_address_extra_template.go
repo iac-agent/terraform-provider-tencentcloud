@@ -29,7 +29,7 @@ func ResourceTencentCloudAddressExtraTemplate() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "IP address template name.",
+				Description: "IP 地址 模板名称",
 			},
 			"addresses_extra": {
 				Required: true,
@@ -39,26 +39,26 @@ func ResourceTencentCloudAddressExtraTemplate() *schema.Resource {
 						"address": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "IP address.",
+							Description: "IP 地址",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Remarks.",
+							Description: "备注",
 						},
 						"updated_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Update Time.",
+							Description: "Update Time。",
 						},
 					},
 				},
-				Description: "The address information can contain remarks and be presented by the IP, CIDR block or IP address range.",
+				Description: "地址 信息 可以 contain 备注 和 是 presented 通过 IP，CIDR block 或 IP 地址 范围。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tags of the Addresses.",
+				Description: "标签 的 Addresses。",
 			},
 		},
 	}

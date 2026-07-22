@@ -29,47 +29,47 @@ func ResourceTencentCloudCiMediaVoiceSeparateTemplate() *schema.Resource {
 			"bucket": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "bucket name.",
+				Description: "存储桶名称",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The template name only supports `Chinese`, `English`, `numbers`, `_`, `-` and `*`.",
+				Description: "模板名称 仅 支持 `Chinese`，`English`，`numbers`，`_`，`-` 和 `*`。",
 			},
 
 			"audio_mode": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Output audio IsAudio: output human voice, IsBackground: output background sound, AudioAndBackground: output vocal and background sound.",
+				Description: "Output 音频 IsAudio: output human voice，IsBackground: output background sound，AudioAndBackground: output vocal 和 background sound。",
 			},
 
 			"audio_config": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "audio configuration.",
+				Description: "音频 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"codec": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Codec format, value aac, mp3, flac, amr.",
+							Description: "Codec 格式，值 aac，mp3，flac，amr。",
 						},
 						"samplerate": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Sampling Rate- 1: Unit: Hz- 2: Optional 8000, 11025, 22050, 32000, 44100, 48000, 96000- 3: When Codec is set to aac/flac, 8000 is not supported- 4: When Codec is set to mp3, 8000 and 96000 are not supported- 5: When Codec is set to amr, only 8000 is supported.",
+							Description: "Sampling Rate- 1: 单位：Hz- 2: 可选 8000，11025，22050，32000，44100，48000，96000- 3: 当 Codec 是 集合 到 aac/flac，8000 是 不 支持- 4: 当 Codec 是 集合 到 mp3，8000 和 96000 是 不 支持- 5: 当 Codec 是 集合 到 amr，仅 8000 是 支持。",
 						},
 						"bitrate": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Original audio bit rate, unit: Kbps, Value range: [8, 1000].",
+							Description: "Original 音频 bit 速率，单位: Kbps，取值范围：[8，1000]。",
 						},
 						"channels": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "number of channels- When Codec is set to aac/flac, support 1, 2, 4, 5, 6, 8- When Codec is set to mp3, support 1, 2- When Codec is set to amr, only 1 is supported.",
+							Description: "数量 channels- 当 Codec 是 集合 到 aac/flac，support 1，2，4，5，6，8- 当 Codec 是 集合 到 mp3，support 1，2- 当 Codec 是 集合 到 amr，仅 1 是 支持。",
 						},
 					},
 				},

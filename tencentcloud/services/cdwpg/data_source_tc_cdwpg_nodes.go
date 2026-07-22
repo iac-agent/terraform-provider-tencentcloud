@@ -18,29 +18,29 @@ func DataSourceTencentCloudCdwpgNodes() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"instance_nodes": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Node list.",
+				Description: "Node 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"node_id": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Node id.",
+							Description: "Node ID。",
 						},
 						"node_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Node type.",
+							Description: "Node 类型",
 						},
 						"node_ip": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "IP address.",
+							Description: "IP 地址",
 						},
 					},
 				},
@@ -49,7 +49,7 @@ func DataSourceTencentCloudCdwpgNodes() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

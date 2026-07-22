@@ -21,55 +21,55 @@ func DataSourceTencentCloudAPIGatewayThrottlingServices() *schema.Resource {
 			"service_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Service ID for query.",
+				Description: "服务 ID 对于 查询。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			//compute
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of Throttling policy.",
+				Description: "A 列表 Throttling 策略。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"service_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Service ID for query.",
+							Description: "服务 ID 对于 查询。",
 						},
 						"environments": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "A list of Throttling policy.",
+							Description: "A 列表 Throttling 策略。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"environment_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Environment name.",
+										Description: "Environment 名称",
 									},
 									"url": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Access service environment URL.",
+										Description: "Access 服务 环境 URL",
 									},
 									"status": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Release status.",
+										Description: "Release 状态",
 									},
 									"version_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Published version number.",
+										Description: "Published 版本 数量。",
 									},
 									"strategy": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Throttling value.",
+										Description: "Throttling 值",
 									},
 								},
 							},

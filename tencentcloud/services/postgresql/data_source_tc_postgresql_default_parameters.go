@@ -19,55 +19,55 @@ func DataSourceTencentCloudPostgresqlDefaultParameters() *schema.Resource {
 			"db_major_version": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The major database version number, such as 11, 12, 13.",
+				Description: "major 数据库 版本 数量，such 作为 11，12，13。",
 			},
 
 			"db_engine": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Database engine, such as postgresql, mssql_compatible.",
+				Description: "Database 引擎，such 作为 postgresql，mssql_compatible。",
 			},
 
 			"param_info_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Parameter informationNote: This field may return null, indicating that no valid values can be obtained.",
+				Description: "Parameter information注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Parameter IDNote: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "Parameter IDNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Parameter nameNote: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "Parameter nameNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"param_value_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Value type of the parameter. Valid values: `integer`, `real` (floating-point), `bool`, `enum`, `mutil_enum` (this type of parameter can be set to multiple enumerated values).For an `integer` or `real` parameter, the `Min` field represents the minimum value and the `Max` field the maximum value. For a `bool` parameter, the valid values include `true` and `false`; For an `enum` or `mutil_enum` parameter, the `EnumValue` field represents the valid values.Note: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "值 类型 参数. 有效值：`整数`，`real` (floating-point)，`bool`，`enum`，`mutil_enum` (此 类型 参数 可以 是 集合 到 多个 enumerated 值).For `整数` 或 `real` 参数， `Min` 字段 表示 最小 值 和 `Max` 字段 最大 值 For `bool` 参数， 有效 值 include `true` 和 `false`; For `enum` 或 `mutil_enum` 参数， `EnumValue` 字段 表示 有效 值.注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"unit": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Unit of the parameter value. If the parameter has no unit, this field will return null.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Unit 的 参数 值 如果 参数 has 无 单位，此 字段 将 返回 null.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"default_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Default value of the parameter, which is returned as a stringNote: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "默认值 的 参数，其中 是 返回 作为 stringNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"current_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Current value of the parameter, which is returned as a stringNote: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "当前值 的 参数，其中 是 返回 作为 stringNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"max": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "The maximum value of the `integer` or `real` parameterNote: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "最大 值 的 `整数` 或 `real` parameterNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"enum_value": {
 							Type: schema.TypeSet,
@@ -75,93 +75,93 @@ func DataSourceTencentCloudPostgresqlDefaultParameters() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Value range of the enum parameterNote: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "值 范围 的 enum parameterNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"min": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "The minimum value of the `integer` or `real` parameterNote: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "最小 值 的 `整数` 或 `real` parameterNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"param_description_ch": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Parameter description in ChineseNote: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "Parameter 描述 在 ChineseNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"param_description_en": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Parameter description in EnglishNote: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "Parameter 描述 在 EnglishNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"need_reboot": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether to restart the instance for the modified parameter to take effect. Valid values: `true` (yes), `false` (no)Note: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "是否restart 实例 对于 modified 参数 到 take effect. 有效值：`true` (yes)，`false` (无)注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"classification_cn": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Parameter category in ChineseNote: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "Parameter category 在 ChineseNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"classification_en": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Parameter category in EnglishNote: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "Parameter category 在 EnglishNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"spec_related": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether the parameter is related to specifications. Valid values: `true` (yes), `false` (no)Note: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "是否parameter 是 related 到 specifications. 有效值：`true` (yes)，`false` (无)注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"advanced": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether it is a key parameter. Valid values: `true` (yes, and modifying it may affect instance performance), `false` (no)Note: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "是否为a 键 参数. 有效值：`true` (yes，和 modifying 它 可能 affect 实例 performance)，`false` (无)注意: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"last_modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The last modified time of the parameterNote: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "最后修改时间 的 parameterNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 						"standby_related": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Primary-standby constraint. Valid values: `0` (no constraint), `1` (The parameter value of the standby server must be greater than that of the primary server), `2` (The parameter value of the primary server must be greater than that of the standby server.)Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Primary-standby constraint. 有效值：`0` (无 constraint)，`1` ( 参数 值 的 standby 服务器 必须 是 greater 比 该 的 primary 服务器)，`2` ( 参数 值 的 primary 服务器 必须 是 greater 比 该 的 standby 服务器.)注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"version_relation_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Associated parameter version information, which refers to the detailed parameter information of the kernel version.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Associated 参数 版本 信息，其中 refers 到 detailed 参数 信息 的 kernel 版本注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Parameter nameNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Parameter name注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"db_kernel_version": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The kernel version that corresponds to the parameter informationNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "kernel 版本 该 corresponds 到 参数 information注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Default parameter value under the kernel version and specification of the instanceNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Default 参数 值 under kernel 版本 和 规格 的 instance注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"unit": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Unit of the parameter value. If the parameter has no unit, this field will return null.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Unit 的 参数 值 如果 参数 has 无 单位，此 字段 将 返回 null.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"max": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "The maximum value of the `integer` or `real` parameterNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "最大 值 的 `整数` 或 `real` parameter注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"min": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "The minimum value of the `integer` or `real` parameterNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "最小 值 的 `整数` 或 `real` parameter注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"enum_value": {
 										Type: schema.TypeSet,
@@ -169,7 +169,7 @@ func DataSourceTencentCloudPostgresqlDefaultParameters() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Value range of the enum parameterNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "值 范围 的 enum parameter注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -177,38 +177,38 @@ func DataSourceTencentCloudPostgresqlDefaultParameters() *schema.Resource {
 						"spec_relation_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Associated parameter specification information, which refers to the detailed parameter information of the specifications.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Associated 参数 规格 信息，其中 refers 到 detailed 参数 信息 的 specifications.注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Parameter nameNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Parameter name注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"memory": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The specification that corresponds to the parameter informationNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "规格 该 corresponds 到 参数 information注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The default parameter value under this specificationNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "默认值 参数 值 under 此 specification注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"unit": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Unit of the parameter value. If the parameter has no unit, this field will return null.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Unit 的 参数 值 如果 参数 has 无 单位，此 字段 将 返回 null.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"max": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "The maximum value of the `integer` or `real` parameterNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "最大 值 的 `整数` 或 `real` parameter注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"min": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "The minimum value of the `integer` or `real` parameterNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "最小 值 的 `整数` 或 `real` parameter注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"enum_value": {
 										Type: schema.TypeSet,
@@ -216,7 +216,7 @@ func DataSourceTencentCloudPostgresqlDefaultParameters() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Value range of the enum parameterNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "值 范围 的 enum parameter注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -228,7 +228,7 @@ func DataSourceTencentCloudPostgresqlDefaultParameters() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

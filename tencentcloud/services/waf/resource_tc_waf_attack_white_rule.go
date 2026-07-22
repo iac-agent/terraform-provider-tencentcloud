@@ -29,40 +29,40 @@ func ResourceTencentCloudWafAttackWhiteRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Domain.",
+				Description: "域名",
 			},
 
 			"status": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Rule status.",
+				Description: "Rule 状态",
 			},
 
 			"rules": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Rule list.",
+				Description: "Rule 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"match_field": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Matching domains.",
+							Description: "Matching domains。",
 						},
 						"match_method": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Matching method.",
+							Description: "Matching 方法。",
 						},
 						"match_content": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Matching content.",
+							Description: "Matching 内容",
 						},
 						"match_params": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Matching params.",
+							Description: "Matching params。",
 						},
 					},
 				},
@@ -72,7 +72,7 @@ func ResourceTencentCloudWafAttackWhiteRule() *schema.Resource {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whitelist of rule IDs.",
+				Description: "Whitelist 的 规则 IDs。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -82,7 +82,7 @@ func ResourceTencentCloudWafAttackWhiteRule() *schema.Resource {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				Computed:    true,
-				Description: "The whitened category rule ID.",
+				Description: "whitened category 规则 ID。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -92,21 +92,21 @@ func ResourceTencentCloudWafAttackWhiteRule() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "0: Whiten according to a specific rule ID, 1: Whiten according to the rule type.",
+				Description: "0: Whiten according 到 特定 规则 ID，1: Whiten according 到 规则 类型",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Rule name.",
+				Description: "Rule 名称",
 			},
 
 			// computed
 			"rule_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Rule ID.",
+				Description: "Rule ID。",
 			},
 		},
 	}

@@ -22,7 +22,7 @@ func ResourceTencentCloudVpcEnableEndPointConnect() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Endpoint service ID.",
+				Description: "Endpoint 服务 ID",
 			},
 
 			"end_point_id": {
@@ -32,14 +32,14 @@ func ResourceTencentCloudVpcEnableEndPointConnect() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Endpoint ID.",
+				Description: "Endpoint ID。",
 			},
 
 			"accept_flag": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to accept endpoint connection requests. `true`: Accept automatically. `false`: Do not automatically accept.",
+				Description: "是否accept 端点 连接 requests. `true`: Accept automatically. `false`: Do 不 automatically accept。",
 			},
 		},
 	}

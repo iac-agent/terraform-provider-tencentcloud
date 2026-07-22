@@ -28,44 +28,44 @@ func ResourceTencentCloudSslCheckCertificateDomainVerificationOperation() *schem
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The certificate ID.",
+				Description: "证书 ID",
 			},
 
 			"verification_results": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Domain name verification results.",
+				Description: "域名 名称 verification results。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain name.",
+							Description: "域名 名称",
 						},
 						"verify_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain Verify Type.",
+							Description: "域名 Verify 类型",
 						},
 						"local_check": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Local inspection results.",
+							Description: "Local inspection results。",
 						},
 						"ca_check": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "CA inspection results.",
+							Description: "CA inspection results。",
 						},
 						"local_check_fail_reason": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Check the reason for the failure.",
+							Description: "Check reason 对于 failure。",
 						},
 						"check_value": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "Detected values.",
+							Description: "Detected 值。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -73,12 +73,12 @@ func ResourceTencentCloudSslCheckCertificateDomainVerificationOperation() *schem
 						"frequently": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether frequent requests.",
+							Description: "Whether frequent requests。",
 						},
 						"issued": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether issued.",
+							Description: "Whether issued。",
 						},
 					},
 				},

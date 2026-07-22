@@ -29,68 +29,68 @@ func ResourceTencentCloudBillingInstance() *schema.Resource {
 			"product_code": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Product code.",
+				Description: "Product 代码",
 			},
 
 			"sub_product_code": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Sub-product code.",
+				Description: "Sub-product 代码",
 			},
 
 			"region_code": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Region code.",
+				Description: "地域 代码",
 			},
 
 			"zone_code": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Availability zone code.",
+				Description: "Availability 可用区 代码",
 			},
 
 			"pay_mode": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Payment mode. Available values: PrePay: upfront charge.",
+				Description: "Payment 模式 可用值：PrePay: upfront charge。",
 			},
 
 			"parameter": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Product detailed information.",
+				Description: "Product detailed 信息。",
 			},
 
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Project id, default value is 0.",
+				Description: "项目 ID，默认值为 0。",
 			},
 
 			"period": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Purchase duration, max number is 36, default value is 1.",
+				Description: "Purchase 时长，max 数量 是 36，默认值为 1。",
 			},
 
 			"period_unit": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Purchase duration unit. valid values: \nm: month,\ny: year. \ndefault value is: m.",
+				Description: "Purchase 时长 单位. 有效值：\nm: month,\ny: year. \ndefault 值 是: m。",
 			},
 
 			"renew_flag": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Auto-renewal flag. valid values: NOTIFY_AND_MANUAL_RENEW: manually renew, NOTIFY_AND_AUTO_RENEW: automatically renew, DISABLE_NOTIFY_AND_MANUAL_RENEW: renewal is disabled. \ndefault value is NOTIFY_AND_MANUAL_RENEW.",
+				Description: "Auto-renewal flag. 有效值：NOTIFY_AND_MANUAL_RENEW: manually renew，NOTIFY_AND_AUTO_RENEW: automatically renew，DISABLE_NOTIFY_AND_MANUAL_RENEW: renewal 是 已禁用 \n默认值为 NOTIFY_AND_MANUAL_RENEW。",
 			},
 
 			// computed
 			"instance_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 		},
 	}

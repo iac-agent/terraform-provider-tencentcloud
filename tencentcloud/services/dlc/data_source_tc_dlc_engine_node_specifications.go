@@ -18,34 +18,34 @@ func DataSourceTencentCloudDlcEngineNodeSpecifications() *schema.Resource {
 			"data_engine_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Engine Name.",
+				Description: "Engine 名称",
 			},
 
 			"driver_spec": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Driver available specifications.",
+				Description: "Driver 可用 specifications。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Specification name.",
+							Description: "规格名称",
 						},
 						"cu": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Current specification of CU number.",
+							Description: "Current 规格 的 CU 数量。",
 						},
 						"cpu": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Current CPU specifications.",
+							Description: "Current CPU specifications。",
 						},
 						"memory": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The current memory size, in GB.",
+							Description: "当前 内存 大小，（GB）。",
 						},
 					},
 				},
@@ -54,28 +54,28 @@ func DataSourceTencentCloudDlcEngineNodeSpecifications() *schema.Resource {
 			"executor_spec": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Available executor specifications.",
+				Description: "Available executor specifications。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Specification name.",
+							Description: "规格名称",
 						},
 						"cu": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Current specification of CU number.",
+							Description: "Current 规格 的 CU 数量。",
 						},
 						"cpu": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Current CPU specifications.",
+							Description: "Current CPU specifications。",
 						},
 						"memory": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The current memory size, in GB.",
+							Description: "当前 内存 大小，（GB）。",
 						},
 					},
 				},
@@ -84,7 +84,7 @@ func DataSourceTencentCloudDlcEngineNodeSpecifications() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

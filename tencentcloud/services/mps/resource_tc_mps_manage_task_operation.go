@@ -22,14 +22,14 @@ func ResourceTencentCloudMpsManageTaskOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Operation type. Valid values:`Abort`: task termination. Notice: If the task type is live stream processing (LiveStreamProcessTask), tasks whose task status is `WAITING` or `PROCESSING` can be terminated.For other task types, only tasks whose task status is `WAITING` can be terminated.",
+				Description: "操作类型 有效 值:`Abort`: 任务 termination. Notice: 如果 任务 类型 是 live 流 processing (LiveStreamProcessTask)，tasks whose 任务 状态 是 `WAITING` 或 `PROCESSING` 可以 是 terminated.For other 任务 types，仅 tasks whose 任务 状态 是 `WAITING` 可以 是 terminated。",
 			},
 
 			"task_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Video processing task ID.",
+				Description: "Video processing 任务 ID。",
 			},
 		},
 	}

@@ -18,71 +18,71 @@ func DataSourceTencentCloudOceanusJobEvents() *schema.Resource {
 			"job_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Job ID.",
+				Description: "作业 ID",
 			},
 			"start_timestamp": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Filter condition:Start Unix timestamp (seconds).",
+				Description: "过滤器 condition:Start Unix 时间戳 (秒)。",
 			},
 			"end_timestamp": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Filter condition:End Unix timestamp (seconds).",
+				Description: "过滤器 condition:End Unix 时间戳 (秒)。",
 			},
 			"types": {
 				Optional:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Event types. If not passed, data of all types will be returned.",
+				Description: "Event types. 如果未传入，数据 的 all types 将 是 返回。",
 			},
 			"work_space_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Workspace SerialId.",
+				Description: "Workspace SerialId。",
 			},
 			// Computed
 			"running_order_ids": {
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "Array of running instance IDs.",
+				Description: "数组 running 实例 IDs。",
 			},
 			"events": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of events within the specified range for this jobNote: This field may return null, indicating that no valid values can be obtained.",
+				Description: "列表 events within 指定 范围 对于 此 job注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Internally defined event type.",
+							Description: "Internally defined 事件 类型",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description text of the event type.",
+							Description: "描述 text 的 事件 类型",
 						},
 						"timestamp": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Unix timestamp (seconds) when the event occurred.",
+							Description: "Unix 时间戳 (秒) 当 事件 occurred。",
 						},
 						"running_order_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Running ID when the event occurredNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Running ID 当 事件 occurred注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"message": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Some optional explanations of the eventNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Some 可选 explanations 的 event注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"solution_link": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Troubleshooting manual link for the abnormal eventNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Troubleshooting manual link 对于 abnormal event注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -90,7 +90,7 @@ func DataSourceTencentCloudOceanusJobEvents() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

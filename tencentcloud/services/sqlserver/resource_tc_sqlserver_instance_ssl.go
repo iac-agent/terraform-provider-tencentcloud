@@ -26,13 +26,13 @@ func ResourceTencentCloudSqlserverInstanceSsl() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 			"type": {
 				Required:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(SSL_TYPE),
-				Description:  "Operation type. enable: turn on SSL; disable: turn off SSL; renew: update the certificate validity period.",
+				Description:  "Operation 类型. 启用: turn 在 SSL; disable: turn 关闭 SSL; renew: update 证书 validity 周期.",
 			},
 		},
 	}

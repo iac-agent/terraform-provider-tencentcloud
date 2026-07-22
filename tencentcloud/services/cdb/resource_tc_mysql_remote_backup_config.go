@@ -26,19 +26,19 @@ func ResourceTencentCloudMysqlRemoteBackupConfig() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID, in the format: cdb-c1nl9rpv. Same instance ID as displayed in the ApsaraDB for Console page.",
+				Description: "实例ID，格式为：cdb-c1nl9rpv。与云数据库控制台页面显示的实例ID相同。",
 			},
 
 			"remote_backup_save": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Remote data backup switch, off - disable remote backup, on - enable remote backup.",
+				Description: "远程数据备份开关，关闭-禁用远程备份，在-启用远程备份。",
 			},
 
 			"remote_binlog_save": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Off-site log backup switch, off - off off-site backup, on-on off-site backup, only when the parameter RemoteBackupSave is on, the RemoteBinlogSave parameter can be set to on.",
+				Description: "异地日志备份开关，关闭-off异地备份，在-on异地备份，只有当参数RemoteBackupSave为on时，才可以将RemoteBinlogSave参数设置为on。",
 			},
 
 			"remote_region": {
@@ -47,13 +47,13 @@ func ResourceTencentCloudMysqlRemoteBackupConfig() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "User settings off-site backup region list.",
+				Description: "用户设置异地备份区域列表。",
 			},
 
 			"expire_days": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Remote backup retention time, in days.",
+				Description: "远程备份保留时间，以天为单位。",
 			},
 		},
 	}

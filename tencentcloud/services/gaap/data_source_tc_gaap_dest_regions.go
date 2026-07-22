@@ -19,43 +19,43 @@ func DataSourceTencentCloudGaapDestRegions() *schema.Resource {
 			"dest_region_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Source Site Area Details List.",
+				Description: "来源 Site Area Details List。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "region ID.",
+							Description: "地域 ID。",
 						},
 						"region_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "region name.",
+							Description: "地域名称",
 						},
 						"region_area": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region of the computer room.",
+							Description: "地域 的 computer room。",
 						},
 						"region_area_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region name of the computer room.",
+							Description: "地域名称 的 computer room。",
 						},
 						"idc_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The type of computer room, where dc represents the DataCenter data center and ec represents the EdgeComputing edge node.",
+							Description: "类型 computer room，其中 dc 表示 DataCenter 数据 center 和 ec 表示 EdgeComputing edge 节点。",
 						},
 						"feature_bitmap": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Property bitmap, where each bit represents a property, where:0, indicates that the feature is not supported;1, indicates support for this feature.The meaning of the feature bitmap is as follows (from right to left):The first bit supports 4-layer acceleration;The second bit supports 7-layer acceleration;The third bit supports Http3 access;The fourth bit supports IPv6;The fifth bit supports high-quality BGP access;The 6th bit supports three network access;The 7th bit supports QoS acceleration in the access segment.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Property bitmap，其中 each bit 表示 属性，其中:0，表示that 功能 是 不 支持;1，表示support 对于 此 功能. meaning 的 功能 bitmap 是 作为 follows (从 right 到 left): first bit 支持 4-layer acceleration; second bit 支持 7-layer acceleration; third bit 支持 Http3 访问; fourth bit 支持 IPv6; fifth bit 支持 high-quality BGP 访问; 6th bit 支持 three 网络 访问; 7th bit 支持 QoS acceleration 在 访问 segment.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"support_feature": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Ability to access regional supportNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Ability 到 访问 regional support注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"network_type": {
@@ -64,7 +64,7 @@ func DataSourceTencentCloudGaapDestRegions() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "A list of network types supported by the access area, with normal indicating support for regular BGP, cn2 indicating premium BGP, triple indicating three networks, and secure_EIP represents a custom secure EIP.",
+										Description: "A 列表 网络 types 支持 通过 访问 area，使用 normal indicating support 对于 regular BGP，cn2 indicating premium BGP，triple indicating three networks，和 secure_EIP 表示 自定义 secure EIP。",
 									},
 								},
 							},
@@ -76,7 +76,7 @@ func DataSourceTencentCloudGaapDestRegions() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

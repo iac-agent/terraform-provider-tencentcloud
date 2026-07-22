@@ -18,34 +18,34 @@ func DataSourceTencentCloudTeoEnvironments() *schema.Resource {
 			"zone_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Zone ID.",
+				Description: "可用区 ID",
 			},
 
 			"env_infos": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Environment list.",
+				Description: "Environment 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"env_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Environment ID.",
+							Description: "Environment ID。",
 						},
 						"env_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Environment type. Valid values: production (Production environment), staging (Test environment).",
+							Description: "Environment 类型 有效值：production (Production 环境)，staging (Test 环境)。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Environment status. Valid values: creating (Being created), running (The environment is stable, with version changes allowed), version_deploying (The version is currently being deployed, with no more changes allowed).",
+							Description: "Environment 状态 有效值：creating (Being 创建)，running ( 环境 是 stable，使用 版本 changes allowed)，version_deploying ( 版本 是 currently being deployed，使用 无 more changes allowed)。",
 						},
 						"scope": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Effective scope of the configuration in the current environment. Valid values: ALL (It takes effect on the entire network when EnvType is set to production), It returns the IP address of the test node for host binding during testing when EnvType is set to staging.",
+							Description: "Effective 范围 的 配置 在 当前 环境. 有效值：ALL (It takes effect 在 entire 网络 当 EnvType 是 集合 到 production)，It 返回IP 地址 的 测试 节点 对于 主机 binding during testing 当 EnvType 是 集合 到 staging。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -53,43 +53,43 @@ func DataSourceTencentCloudTeoEnvironments() *schema.Resource {
 						"current_config_group_version_infos": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "For the effective versions of each configuration group in the current environment, there are two possible scenarios based on the value of Status: When Status is set to version_deploying, the returned value of this field represents the previously effective version. In other words, during the deployment of the new version, the effective version is the one that was in effect before any changes were made. When Status is set to running, the value returned by this field is the currently effective version.",
+							Description: "For effective versions 的 each 配置 组 在 当前 环境，there 是 two possible scenarios based 在 值 的 状态: 当 状态 是 集合 到 version_deploying， 返回 值 的 此 字段 表示 previously effective 版本 In other words，during 部署 的 new 版本， effective 版本 是 一个 该 是 在 effect before any changes 是 made. 当 状态 是 集合 到 running， 值 返回 通过 此 字段 是 currently effective 版本",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"version_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Version ID.",
+										Description: "版本 ID。",
 									},
 									"version_number": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Version No.",
+										Description: "版本 No。",
 									},
 									"group_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Configuraration group ID.",
+										Description: "Configuraration 组 ID",
 									},
 									"group_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Configuration group type. Valid values: l7_acceleration (L7 acceleration configuration group), edge_functions (Edge function configuration group).",
+										Description: "Configuration 组 类型 有效值：l7_acceleration (L7 acceleration 配置 组)，edge_functions (Edge 函数 配置 组)。",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Version description.",
+										Description: "版本 描述",
 									},
 									"status": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Version status. Valid values: creating (Being created), inactive (Not effective), active (Effective).",
+										Description: "版本 状态 有效值：creating (Being 创建)，inactive (Not effective)，活跃 (Effective)。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Version creation time. The time format follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC).",
+										Description: "版本 创建时间. 时间格式 follows ISO 8601 standard 和 是 represented 在 Coordinated Universal Time (UTC)。",
 									},
 								},
 							},
@@ -97,12 +97,12 @@ func DataSourceTencentCloudTeoEnvironments() *schema.Resource {
 						"create_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Creation time. The time format follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC).",
+							Description: "创建时间. 时间格式 follows ISO 8601 standard 和 是 represented 在 Coordinated Universal Time (UTC)。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Update time. The time format follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC).",
+							Description: "更新时间. 时间格式 follows ISO 8601 standard 和 是 represented 在 Coordinated Universal Time (UTC)。",
 						},
 					},
 				},
@@ -111,7 +111,7 @@ func DataSourceTencentCloudTeoEnvironments() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

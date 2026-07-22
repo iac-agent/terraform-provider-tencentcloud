@@ -29,56 +29,56 @@ func ResourceTencentCloudTcrImmutableTagRule() *schema.Resource {
 			"registry_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"namespace_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "namespace name.",
+				Description: "命名空间 名称",
 			},
 
 			"rule": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "rule.",
+				Description: "规则。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"repository_pattern": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "repository matching rules.",
+							Description: "repository matching 规则。",
 						},
 						"tag_pattern": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "tag matching rules.",
+							Description: "标签 matching 规则。",
 						},
 						"repository_decoration": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "repository decoration type:repoMatches or repoExcludes.",
+							Description: "repository decoration 类型:repoMatches 或 repoExcludes。",
 						},
 						"tag_decoration": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "tag decoration type: matches or excludes.",
+							Description: "标签 decoration 类型: matches 或 excludes。",
 						},
 						"disabled": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "disable rule.",
+							Description: "disable 规则。",
 						},
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "rule id.",
+							Description: "规则 ID。",
 						},
 						"ns_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "namespace name.",
+							Description: "命名空间 名称",
 						},
 					},
 				},
@@ -87,7 +87,7 @@ func ResourceTencentCloudTcrImmutableTagRule() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 		},
 	}

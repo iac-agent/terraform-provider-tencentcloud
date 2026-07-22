@@ -27,45 +27,45 @@ func ResourceTencentCloudBhUser() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Username, 3-20 characters, must start with an English letter and cannot contain characters other than `letters`, `numbers`, `.`, `_`, `-`.",
+				Description: "用户名，3-20 字符，必须 start 使用 English letter 和 不能 contain 字符 other 比 `letters`，`numbers`，`.`，`_`，`-`。",
 			},
 
 			"real_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "User's real name, maximum length 20 characters, cannot contain whitespace characters.",
+				Description: "用户's real 名称，最大 长度 20 字符，不能 contain whitespace 字符。",
 			},
 
 			"phone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Input in the format of \"country code|phone number\", e.g.: \"+86|xxxxxxxx\". At least one of phone and email parameters must be provided.",
+				Description: "Input 在 格式 的 \"country 代码|phone 数量\", e.g.: \"+86|xxxxxxxx\". At least 一个 的 phone 和 email 参数 必须 是 提供.",
 			},
 
 			"email": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Email address. At least one of phone and email parameters must be provided.",
+				Description: "Email 地址 At least 一个 的 phone 和 email 参数 必须 是 提供。",
 			},
 
 			"validate_from": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "User effective time, e.g.: \"2021-09-22T00:00:00+00:00\". If effective and expiration times are not filled, the user will be valid permanently.",
+				Description: "User effective 时间, e.g.: \"2021-09-22T00:00:00+00:00\". 如果 effective 和 expiration times 是 不 filled, 用户 将 是 有效 permanently.",
 			},
 
 			"validate_to": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "User expiration time, e.g.: \"2021-09-23T00:00:00+00:00\". If effective and expiration times are not filled, the user will be valid permanently.",
+				Description: "User expiration 时间, e.g.: \"2021-09-23T00:00:00+00:00\". 如果 effective 和 expiration times 是 不 filled, 用户 将 是 有效 permanently.",
 			},
 
 			"group_id_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "User group ID set to which the user belongs.",
+				Description: "用户 组 ID 集合 到 其中 用户 belongs。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -75,27 +75,27 @@ func ResourceTencentCloudBhUser() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Authentication method, 0 - local, 1 - LDAP, 2 - OAuth. Default is 0 if not provided.",
+				Description: "Authentication 方法，0 - 本地，1 - LDAP，2 - OAuth. 默认为 0 如果 不 提供。",
 			},
 
 			"validate_time": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Access time restriction, a string composed of 0 and 1 with length 168 (7 * 24), representing the time slots allowed for the user in a week. The Nth character in the string represents the Nth hour in the week, 0 - not allowed to access, 1 - allowed to access.",
+				Description: "Access 时间 restriction， 字符串 composed 的 0 和 1 使用 长度 168 (7 * 24)，representing 时间 slots allowed 对于 用户 在 week. Nth character 在 字符串 表示 Nth hour 在 week，0 - 不 allowed 到 访问，1 - allowed 到 访问。",
 			},
 
 			"department_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Department ID to which the user belongs, e.g.: \"1.2.3\".",
+				Description: "Department ID 到 其中 用户 belongs, e.g.: \"1.2.3\".",
 			},
 
 			// computed
 			"user_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "User ID.",
+				Description: "用户 ID。",
 			},
 		},
 	}

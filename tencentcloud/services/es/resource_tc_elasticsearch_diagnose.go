@@ -23,35 +23,35 @@ func ResourceTencentCloudElasticsearchDiagnose() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"cron_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Intelligent operation and maintenance staff regularly patrol the inspection time every day, the time format is HH:00:00, such as 15:00:00.",
+				Description: "Intelligent operation 和 maintenance staff regularly patrol inspection 时间 every day， 时间格式 是 HH:00:00，such 作为 15:00:00。",
 			},
 
 			"diagnose_job_metas": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Diagnostic items and meta-information of intelligent operation and maintenance.",
+				Description: "Diagnostic items 和 meta-信息 的 intelligent operation 和 maintenance。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"job_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "English name of diagnosis item for intelligent operation and maintenance.",
+							Description: "English 名称 diagnosis item 对于 intelligent operation 和 maintenance。",
 						},
 						"job_zh_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Chinese name of intelligent operation and maintenance diagnosis item.",
+							Description: "Chinese 名称 intelligent operation 和 maintenance diagnosis item。",
 						},
 						"job_description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Intelligent operation and maintenance diagnostic item description.",
+							Description: "Intelligent operation 和 maintenance diagnostic item 描述",
 						},
 					},
 				},
@@ -60,7 +60,7 @@ func ResourceTencentCloudElasticsearchDiagnose() *schema.Resource {
 			"max_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The maximum number of manual triggers per day for intelligent operation and maintenance staff.",
+				Description: "最大manual triggers per day 对于 intelligent operation 和 maintenance staff。",
 			},
 		},
 	}

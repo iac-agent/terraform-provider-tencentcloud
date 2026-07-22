@@ -19,7 +19,7 @@ func DataSourceTencentCloudCynosdbAccounts() *schema.Resource {
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of cluster.",
+				Description: "集群的ID。",
 			},
 
 			"account_names": {
@@ -28,7 +28,7 @@ func DataSourceTencentCloudCynosdbAccounts() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of accounts to be filtered.",
+				Description: "要过滤的帐户列表。",
 			},
 
 			"hosts": {
@@ -37,44 +37,44 @@ func DataSourceTencentCloudCynosdbAccounts() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of hosts to be filtered.",
+				Description: "要过滤的主机列表。",
 			},
 
 			"account_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Database account list.&amp;quot;&amp;quot;Note: This field may return null, indicating that no valid value can be obtained.",
+				Description: "数据库账户列表。&quot;&quot;注意：该字段可能返回null，表示取不到有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"account_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Account name of database.",
+							Description: "数据库的帐户名。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The account description of database.",
+							Description: "数据库的账户描述。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create time.",
+							Description: "创造时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Update time.",
+							Description: "更新时间。",
 						},
 						"host": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Host.",
+							Description: "主持人。",
 						},
 						"max_user_connections": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum number of user connections.",
+							Description: "最大用户连接数。",
 						},
 					},
 				},
@@ -83,7 +83,7 @@ func DataSourceTencentCloudCynosdbAccounts() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -21,23 +21,23 @@ func ResourceTencentCloudKmsExternalKey() *schema.Resource {
 			Type:        schema.TypeString,
 			Optional:    true,
 			Default:     KMS_WRAPPING_ALGORITHM_RSAES_PKCS1_V1_5,
-			Description: "The algorithm for encrypting key material. Available values include `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1` and `RSAES_OAEP_SHA_256`. Default value is `RSAES_PKCS1_V1_5`.",
+			Description: "algorithm 对于 encrypting 键 material. Available 值 include `RSAES_PKCS1_V1_5`，`RSAES_OAEP_SHA_1` 和 `RSAES_OAEP_SHA_256`. 默认值为 `RSAES_PKCS1_V1_5`。",
 		},
 		"key_material_base64": {
 			Type:        schema.TypeString,
 			Optional:    true,
 			Sensitive:   true,
-			Description: "The base64-encoded key material encrypted with the public_key. For regions using the national secret version, the length of the imported key material is required to be 128 bits, and for regions using the FIPS version, the length of the imported key material is required to be 256 bits.",
+			Description: "base64-encoded 键 material encrypted 使用 public_key. For regions 使用 national secret 版本， 长度 的 imported 键 material 为必填项 到 是 128 bits，和 对于 regions 使用 FIPS 版本， 长度 的 imported 键 material 为必填项 到 是 256 bits。",
 		},
 		"valid_to": {
 			Type:        schema.TypeInt,
 			Optional:    true,
-			Description: "This value means the effective timestamp of the key material, 0 means it does not expire. Need to be greater than the current timestamp, the maximum support is 2147443200.",
+			Description: "此 值 表示 effective 时间戳 的 键 material，0 表示 它 does 不 expire. Need 到 是 greater 比 当前 时间戳， 最大 support 是 2147443200。",
 		},
 		"hsm_cluster_id": {
 			Type:        schema.TypeString,
 			Optional:    true,
-			Description: "The HSM cluster ID corresponding to KMS Advanced Edition (only valid for KMS Exclusive/Managed Edition service instances).",
+			Description: "HSM 集群 ID corresponding 到 KMS Advanced Edition (仅 有效 对于 KMS Exclusive/Managed Edition 服务 实例)。",
 		},
 	}
 

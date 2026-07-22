@@ -19,37 +19,37 @@ func DataSourceTencentCloudDcInternetAddressQuota() *schema.Resource {
 			"ipv6_prefix_len": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The minimum prefix length allowed on the IPv6 Internet public network.",
+				Description: "最小 prefix 长度 allowed 在 IPv6 Internet 公有 网络。",
 			},
 
 			"ipv4_bgp_quota": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "BGP type IPv4 Internet address quota.",
+				Description: "BGP 类型 IPv4 Internet 地址 配额。",
 			},
 
 			"ipv4_other_quota": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Non-BGP type IPv4 Internet address quota.",
+				Description: "Non-BGP 类型 IPv4 Internet 地址 配额。",
 			},
 
 			"ipv4_bgp_num": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Number of used BGP type IPv4 Internet addresses.",
+				Description: "数量 使用 BGP 类型 IPv4 Internet addresses。",
 			},
 
 			"ipv4_other_num": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The number of non-BGP Internet addresses used.",
+				Description: "数量 non-BGP Internet addresses 使用。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -19,111 +19,111 @@ func DataSourceTencentCloudCynosdbInstanceSlowQueries() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例ID。",
 			},
 
 			"start_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Earliest transaction start time.",
+				Description: "最早交易开始时间。",
 			},
 
 			"end_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Latest transaction start time.",
+				Description: "最晚交易开始时间。",
 			},
 
 			"username": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "user name.",
+				Description: "用户名。",
 			},
 
 			"host": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Client host.",
+				Description: "客户端主机。",
 			},
 
 			"database": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Database name.",
+				Description: "数据库名称。",
 			},
 
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sort field, optional values: QueryTime, LockTime, RowsExamined, RowsSent.",
+				Description: "排序字段，可选值：QueryTime、LockTime、RowsExamined、RowsSent。",
 			},
 
 			"order_by_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sort type, optional values: asc, desc.",
+				Description: "排序类型，可选值：asc、desc。",
 			},
 
 			"slow_queries": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Slow query records.",
+				Description: "查询记录慢。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"timestamp": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Execution timestamp.",
+							Description: "执行时间戳。",
 						},
 						"query_time": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Execution time in seconds.",
+							Description: "执行时间以秒为单位。",
 						},
 						"sql_text": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "SQL statement.",
+							Description: "SQL 语句。",
 						},
 						"user_host": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Client host.",
+							Description: "客户端主机。",
 						},
 						"user_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "user name.",
+							Description: "用户名。",
 						},
 						"database": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database name.",
+							Description: "数据库名称。",
 						},
 						"lock_time": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Lock duration in seconds.",
+							Description: "锁定持续时间（以秒为单位）。",
 						},
 						"rows_examined": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Scan Rows.",
+							Description: "扫描行。",
 						},
 						"rows_sent": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Return the number of rows.",
+							Description: "返回行数。",
 						},
 						"sql_template": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "SQL template.",
+							Description: "SQL 模板。",
 						},
 						"sql_md5": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "SQL statement md5.",
+							Description: "SQL语句md5。",
 						},
 					},
 				},
@@ -132,7 +132,7 @@ func DataSourceTencentCloudCynosdbInstanceSlowQueries() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

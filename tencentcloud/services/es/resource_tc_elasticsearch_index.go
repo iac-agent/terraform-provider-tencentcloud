@@ -31,25 +31,25 @@ func ResourceTencentCloudElasticsearchIndex() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "es instance id.",
+				Description: "es 实例 ID",
 			},
 
 			"index_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "type of the index to be created. auto: autonomous index. normal: indicates a common index.",
+				Description: "类型 索引 到 是 创建. auto: autonomous 索引 normal: 表示a common 索引",
 			},
 
 			"index_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "index name to create.",
+				Description: "索引 名称 到 create。",
 			},
 
 			"index_meta_json": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Create index metadata JSON, such as mappings, settings.",
+				Description: "Create 索引 metadata JSON，such 作为 mappings，settings。",
 			},
 		},
 	}

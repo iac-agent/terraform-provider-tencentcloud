@@ -19,135 +19,135 @@ func DataSourceTencentCloudAsScalingGroups() *schema.Resource {
 			"scaling_group_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "A specified scaling group ID used to query.",
+				Description: "A 指定 scaling 组 ID 用于query。",
 			},
 			"configuration_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Filter results by launch configuration ID.",
+				Description: "过滤器 results 通过 启动配置 ID",
 			},
 			"scaling_group_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "A scaling group name used to query.",
+				Description: "A scaling 组名称 用于query。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tags used to query.",
+				Description: "标签 用于query。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// computed
 			"scaling_group_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of scaling group. Each element contains the following attributes:",
+				Description: "A 列表 scaling 组. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"scaling_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Auto scaling group ID.",
+							Description: "Auto scaling 组 ID",
 						},
 						"scaling_group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Auto scaling group name.",
+							Description: "Auto scaling 组名称",
 						},
 						"configuration_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Launch configuration ID.",
+							Description: "启动配置 ID",
 						},
 						"max_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The maximum number of CVM instances.",
+							Description: "最大CVM 实例。",
 						},
 						"min_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The minimum number of CVM instances.",
+							Description: "最小CVM 实例。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the vpc with which the instance is associated.",
+							Description: "ID vpc 使用 其中 实例 是 associated。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "ID of the project to which the scaling group belongs. Default value is 0.",
+							Description: "ID 项目 到 其中 scaling 组 belongs. 默认值为 0。",
 						},
 						"subnet_ids": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "A list of subnet IDs.",
+							Description: "A 列表 子网 IDs。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 						"zones": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "A list of available zones.",
+							Description: "A 列表 可用 zones。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 						"default_cooldown": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Default cooldown time of scaling group.",
+							Description: "Default cooldown 时间 的 scaling 组。",
 						},
 						"desired_capacity": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The desired number of CVM instances.",
+							Description: "desired 数量 CVM 实例。",
 						},
 						"load_balancer_ids": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "A list of traditional clb ids which the CVM instances attached to.",
+							Description: "A 列表 traditional clb ids 其中 CVM 实例 attached 到。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 						"forward_load_balancers": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "A list of application clb.",
+							Description: "A 列表 应用 clb。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"load_balancer_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ID of available load balancers.",
+										Description: "ID 可用 load balancers。",
 									},
 									"listener_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Listener ID for application load balancers.",
+										Description: "Listener ID 对于 应用 load balancers。",
 									},
 									"location_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ID of forwarding rules.",
+										Description: "ID forwarding 规则。",
 									},
 									"target_attribute": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Attribute list of target rules.",
+										Description: "Attribute 列表 目标 规则。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"port": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Port number.",
+													Description: "端口 数量。",
 												},
 												"weight": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Weight.",
+													Description: "权重",
 												},
 											},
 										},
@@ -158,38 +158,38 @@ func DataSourceTencentCloudAsScalingGroups() *schema.Resource {
 						"termination_policies": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "A policy used to select a CVM instance to be terminated from the scaling group.",
+							Description: "A 策略 用于select CVM 实例 到 是 terminated 从 scaling 组。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 						"retry_policy": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "A retry policy can be used when a creation fails.",
+							Description: "A retry 策略 可以 是 使用 当 creation fails。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Current status of a scaling group.",
+							Description: "Current 状态 scaling 组。",
 						},
 						"instance_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of instance.",
+							Description: "数量 实例。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The time when the AS group was created.",
+							Description: "时间 当 AS 组 是 创建。",
 						},
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "Tags of the scaling group.",
+							Description: "标签 的 scaling 组。",
 						},
 						"multi_zone_subnet_policy": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Multi zone or subnet strategy, Valid values: PRIORITY and EQUALITY.",
+							Description: "Multi 可用区 或 子网 strategy，有效值：PRIORITY 和 EQUALITY。",
 						},
 					},
 				},

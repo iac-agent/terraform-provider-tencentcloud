@@ -19,30 +19,30 @@ func DataSourceTencentCloudCynosdbClusterParams() *schema.Resource {
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of cluster.",
+				Description: "集群的ID。",
 			},
 
 			"param_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Parameter name.",
+				Description: "参数名称。",
 			},
 
 			"items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Instance parameter list. Note: This field may return null, indicating that no valid value can be obtained.",
+				Description: "实例参数列表。注意：该字段可能返回null，表示取不到有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"current_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Current value.",
+							Description: "当前值。",
 						},
 						"default": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Default value.",
+							Description: "默认值。",
 						},
 						"enum_value": {
 							Type:     schema.TypeSet,
@@ -50,62 +50,62 @@ func DataSourceTencentCloudCynosdbClusterParams() *schema.Resource {
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
-							Description: "When the parameter is enum/string/bool, the optional value list.Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "当参数为enum/字符串/bool时，可选值列表。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"max": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The maximum value when the parameter type is float/integer.",
+							Description: "参数类型为float/integer时的最大值。",
 						},
 						"min": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The minimum value when the parameter type is float/integer.",
+							Description: "参数类型为float/integer时的最小值。",
 						},
 						"param_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The name of parameter.",
+							Description: "参数名称。",
 						},
 						"need_reboot": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether to reboot.",
+							Description: "是否重启。",
 						},
 						"param_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Parameter type: integer/float/string/enum/bool.",
+							Description: "参数类型：整数/浮点/字符串/枚举/布尔。",
 						},
 						"match_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Matching type, multiVal, regex is used when the parameter type is string.",
+							Description: "当参数类型为字符串时，使用匹配类型、multiVal、regex。",
 						},
 						"match_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Match the target value, when multiVal, each key is divided by `;`.",
+							Description: "匹配目标值，multiVal时，每个key除以`;`。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The description of parameter.",
+							Description: "参数说明。",
 						},
 						"is_global": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Is it a global parameter.Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "是否为全局参数。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"is_func": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Is it a function.Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "是否是一个函数。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"func": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Function.Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "函数注意：该字段可能返回null，表示取不到有效值。",
 						},
 					},
 				},
@@ -114,7 +114,7 @@ func DataSourceTencentCloudCynosdbClusterParams() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -25,13 +25,13 @@ func ResourceTencentCloudDasbBindDeviceAccountPassword() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Host account ID.",
+				Description: "主机 账号 ID。",
 			},
 			"password": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Host account password.",
+				Description: "主机 账号 密码",
 			},
 		},
 	}

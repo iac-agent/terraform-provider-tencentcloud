@@ -27,67 +27,67 @@ func ResourceTencentCloudClsConfigExtra() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Collection configuration name.",
+				Description: "集合配置名称。",
 			},
 			"topic_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Log topic ID (TopicId) of collection configuration.",
+				Description: "采集配置的日志主题ID（TopicId）。",
 			},
 			"type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Type. Valid values: container_stdout; container_file; host_file.",
+				Description: "类型。有效值：container_stdout；容器文件；主机文件。",
 			},
 			"log_type": {
 				Type:     schema.TypeString,
 				Required: true,
-				Description: "Type of the log to be collected. Valid values: json_log: log in JSON format; delimiter_log: log in delimited format; minimalist_log: minimalist log; multiline_log: log in multi-line format; " +
+				Description: "需要收集的日志类型。有效值： json_log：JSON格式日志； delimiter_log：以分隔格式记录； imalist_log：极简日志； multiline_log：以多行格式记录；" +
 					"fullregex_log: log in full regex format. Default value: minimalist_log.",
 			},
 			"config_flag": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Collection configuration flag.",
+				Description: "集合配置标志。",
 			},
 			"logset_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Logset Id.",
+				Description: "日志集 ID。",
 			},
 			"logset_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Logset Name.",
+				Description: "日志集名称。",
 			},
 			"topic_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Topic Name.",
+				Description: "主题名称。",
 			},
 			"host_file": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Node file config info.",
+				Description: "节点文件配置信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"log_path": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Log file dir.",
+							Description: "日志文件目录。",
 						},
 						"file_pattern": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Log file name.",
+							Description: "日志文件名。",
 						},
 						"custom_labels": {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Metadata info.",
+							Description: "元数据信息。",
 						},
 					},
 				},
@@ -96,61 +96,61 @@ func ResourceTencentCloudClsConfigExtra() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Container file path info.",
+				Description: "容器文件路径信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"namespace": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Namespace. There can be multiple namespaces, separated by separators, such as A, B.",
+							Description: "命名空间。可以有多个命名空间，用分隔符分隔，如A、B。",
 						},
 						"container": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Container name.",
+							Description: "容器名称。",
 						},
 						"log_path": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Log Path.",
+							Description: "日志路径。",
 						},
 						"file_pattern": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "log name.",
+							Description: "日志名称。",
 						},
 						"include_labels": {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Pod label info.",
+							Description: "Pod 标签信息。",
 						},
 						"workload": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Workload info.",
+							Description: "Workload info。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"kind": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "workload type.",
+										Description: "工作负载类型。",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "workload name.",
+										Description: "工作负载名称。",
 									},
 									"container": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "container name.",
+										Description: "容器名称。",
 									},
 									"namespace": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "namespace.",
+										Description: "命名空间。",
 									},
 								},
 							},
@@ -158,13 +158,13 @@ func ResourceTencentCloudClsConfigExtra() *schema.Resource {
 						"exclude_namespace": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Namespaces to be excluded, separated by separators, such as A, B.",
+							Description: "要排除的命名空间，用分隔符分隔，例如 A、B。",
 						},
 						"exclude_labels": {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Pod label to be excluded.",
+							Description: "要排除的 Pod 标签。",
 						},
 					},
 				},
@@ -174,50 +174,50 @@ func ResourceTencentCloudClsConfigExtra() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Container stdout info.",
+				Description: "容器标准输出信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"all_containers": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Is all containers.",
+							Description: "都是集装箱。",
 						},
 						"namespace": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Namespace. There can be multiple namespaces, separated by separators, such as A, B.",
+							Description: "命名空间。可以有多个命名空间，用分隔符分隔，如A、B。",
 						},
 						"include_labels": {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Pod label info.",
+							Description: "Pod 标签信息。",
 						},
 						"workloads": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Workload info.",
+							Description: "Workload info。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"kind": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "workload type.",
+										Description: "工作负载类型。",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "workload name.",
+										Description: "工作负载名称。",
 									},
 									"container": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "container name.",
+										Description: "容器名称。",
 									},
 									"namespace": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "namespace.",
+										Description: "命名空间。",
 									},
 								},
 							},
@@ -225,13 +225,13 @@ func ResourceTencentCloudClsConfigExtra() *schema.Resource {
 						"exclude_namespace": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Namespaces to be excluded, separated by separators, such as A, B.",
+							Description: "要排除的命名空间，用分隔符分隔，例如 A、B。",
 						},
 						"exclude_labels": {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Pod label to be excluded.",
+							Description: "要排除的 Pod 标签。",
 						},
 					},
 				},
@@ -239,62 +239,62 @@ func ResourceTencentCloudClsConfigExtra() *schema.Resource {
 			"log_format": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Log format.",
+				Description: "日志格式。",
 			},
 			"extract_rule": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Extraction rule. If ExtractRule is set, LogType must be set.",
+				Description: "提取规则。如果设置了ExtractRule，则必须设置LogType。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"time_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Time field key name. time_key and time_format must appear in pair.",
+							Description: "时间字段键名称。 time_key 和 time_format 必须成对出现。",
 						},
 						"time_format": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Time field format. For more information, please see the output parameters of the time format description of the strftime function in C language.",
+							Description: "时间字段格式。更多信息请参见C语言strftime函数时间格式说明的输出参数。",
 						},
 						"delimiter": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Delimiter for delimited log, which is valid only if log_type is delimiter_log.",
+							Description: "分隔日志的分隔符，仅当log_type为delimiter_log时有效。",
 						},
 						"log_regex": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Full log matching rule, which is valid only if log_type is fullregex_log.",
+							Description: "全日志匹配规则，仅当log_type为fullregex_log时有效。",
 						},
 						"begin_regex": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "First-Line matching rule, which is valid only if log_type is multiline_log or fullregex_log.",
+							Description: "首行匹配规则，仅当log_type为multiline_log或fullregex_log时有效。",
 						},
 						"keys": {
 							Type:        schema.TypeSet,
 							Optional:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Key name of each extracted field. An empty key indicates to discard the field. This parameter is valid only if log_type is delimiter_log. json_log logs use the key of JSON itself.",
+							Description: "每个提取字段的键名称。空键表示放弃该字段。该参数仅当log_type为delimiter_log时有效。 json_log 日志使用 JSON 本身的密钥。",
 						},
 						"filter_key_regex": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Log keys to be filtered and the corresponding regex.",
+							Description: "记录要过滤的键和相应的正则表达式。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Log key to be filtered.",
+										Description: "要过滤的日志键。",
 									},
 									"regex": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Filter rule regex corresponding to key.",
+										Description: "key对应的过滤规则正则表达式。",
 									},
 								},
 							},
@@ -303,18 +303,18 @@ func ResourceTencentCloudClsConfigExtra() *schema.Resource {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Computed:    true,
-							Description: "Whether to upload the logs that failed to be parsed. Valid values: true: yes; false: no.",
+							Description: "是否上传解析失败的日志。有效值：true：是；假：没有。",
 						},
 						"un_match_log_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Unmatched log key.",
+							Description: "不匹配的日志密钥。",
 						},
 						"backtracking": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Size of the data to be rewound in incremental collection mode. Default value: -1 (full collection).",
+							Description: "增量采集模式下回滚的数据大小。默认值：-1（完整集合）。",
 						},
 					},
 				},
@@ -322,18 +322,18 @@ func ResourceTencentCloudClsConfigExtra() *schema.Resource {
 			"exclude_paths": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Collection path blocklist.",
+				Description: "收集路径阻止列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Type. Valid values: File, Path.",
+							Description: "类型。有效值：文件、路径。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Specific content corresponding to Type.",
+							Description: "具体内容对应Type。",
 						},
 					},
 				},
@@ -341,19 +341,19 @@ func ResourceTencentCloudClsConfigExtra() *schema.Resource {
 			"user_define_rule": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Custom collection rule, which is a serialized JSON string.",
+				Description: "自定义采集规则，是序列化的JSON字符串。",
 			},
 			"group_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Binding group id.",
+				Description: "绑定组id。",
 			},
 			"group_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				ForceNew:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Binding group ids.",
+				Description: "绑定组 ID。",
 			},
 		},
 	}

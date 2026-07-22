@@ -19,22 +19,22 @@ func DataSourceTencentCloudCynosdbBinlogDownloadUrl() *schema.Resource {
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 			"binlog_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Binlog file ID.",
+				Description: "二进制日志文件ID。",
 			},
 			"download_url": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Download address.",
+				Description: "下载地址。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -19,7 +19,7 @@ func DataSourceTencentCloudCssXp2pDetailInfoList() *schema.Resource {
 			"query_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The UTC minute granularity query time for querying usage data for a specific minute is in the format: yyyy-mm-ddTHH:MM:00Z. Please refer to the link https://cloud.tencent.com/document/product/266/11732#I.For example, if the local time is 2019-01-08 10:00:00 in Beijing, the corresponding UTC time would be 2019-01-08T10:00:00+08:00.This query supports data from the past six months.",
+				Description: "UTC minute granularity 查询 时间 对于 querying usage 数据 对于 特定 minute 是 在 格式: yyyy-mm-ddTHH:MM:00Z. Please refer 到 link https://云.tencent.com/document/product/266/11732#I.For 示例，如果 本地 时间 是 2019-01-08 10:00:00 在 Beijing， corresponding UTC 时间 would 是 2019-01-08T10:00:00+08:00.此 查询 支持 数据 从 past six months。",
 			},
 
 			"type": {
@@ -28,7 +28,7 @@ func DataSourceTencentCloudCssXp2pDetailInfoList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The type array can be used to specify the type of media content to be queried. The two available options are live for live streaming and vod for video on demand. If no type is specified, the query will include both live and VOD content by default.",
+				Description: "类型 数组 可以 是 用于指定type 的 media 内容 到 是 queried. two 可用 options 是 live 对于 live streaming 和 vod 对于 视频 在 demand. 如果 无 类型 是 指定， 查询 将 include both live 和 VOD 内容 通过 默认值。",
 			},
 
 			"stream_names": {
@@ -37,7 +37,7 @@ func DataSourceTencentCloudCssXp2pDetailInfoList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The stream array can be used to specify the streams to be queried. If no stream is specified, the query will include all streams by default.",
+				Description: "流 数组 可以 是 用于指定streams 到 是 queried. 如果 无 流 是 指定， 查询 将 include all streams 通过 默认值。",
 			},
 
 			"dimension": {
@@ -46,69 +46,69 @@ func DataSourceTencentCloudCssXp2pDetailInfoList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The dimension parameter can be used to specify the dimension for the query. If this parameter is not passed, the query will default to stream-level data. If you pass this parameter, it will only retrieve data for the specified dimension. The available dimension currently supported is AppId dimension, which allows you to query data based on the application ID. Please note that the returned fields will be related to the specified dimension.",
+				Description: "dimension 参数 可以 是 用于指定dimension 对于 查询. 如果 此 参数 是 不 passed， 查询 将 默认为 流-级别 数据. 如果 您 pass 此 参数，它 将 仅 retrieve 数据 对于 指定 dimension. 可用 dimension currently 支持 是 AppId dimension，其中 allows 您 到 查询 数据 based 在 应用 ID. Please note 该 返回 字段 将 是 related 到 指定 dimension。",
 			},
 
 			"data_info_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "P2P streaming statistical information.",
+				Description: "P2P streaming statistical 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cdn_bytes": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "CDN traffic.",
+							Description: "CDN 流量。",
 						},
 						"p2p_bytes": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "P2P traffic.",
+							Description: "P2P 流量。",
 						},
 						"stuck_people": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "People count.",
+							Description: "People count。",
 						},
 						"stuck_times": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Count.",
+							Description: "Count。",
 						},
 						"online_people": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Online numbers.",
+							Description: "Online numbers。",
 						},
 						"request": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Request numbers.",
+							Description: "Request numbers。",
 						},
 						"request_success": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Success numbers.",
+							Description: "Success numbers。",
 						},
 						"time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The requested format for time in UTC with one-minute granularity is yyyy-mm-ddTHH:MM:SSZ. This format follows the ISO 8601 standard and is commonly used for representing timestamps in UTC. For more information and examples, you can refer to the link provided: https://cloud.tencent.com/document/product/266/11732#I.",
+							Description: "requested 格式 对于 时间 在 UTC 使用 一个-minute granularity 是 yyyy-mm-ddTHH:MM:SSZ. 此 格式 follows ISO 8601 standard 和 是 commonly 用于representing timestamps 在 UTC. For more 信息 和 examples，您 可以 refer 到 link 提供: https://云.tencent.com/document/product/266/11732#I。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type, divided into two categories: live and vod.Note: This field may return null, indicating that no valid value is available.",
+							Description: "类型，divided into two categories: live 和 vod.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 						},
 						"stream_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Stream ID.Note: This field may return null, indicating that no valid value is available.",
+							Description: "Stream ID.注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 						},
 						"app_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "AppId. Note: This field may return null, indicating that no valid value is available.",
+							Description: "AppId. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 是 可用。",
 						},
 					},
 				},
@@ -117,7 +117,7 @@ func DataSourceTencentCloudCssXp2pDetailInfoList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

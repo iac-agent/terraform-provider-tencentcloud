@@ -29,7 +29,7 @@ func ResourceTencentCloudMonitorGrafanaWhitelistConfig() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Grafana instance ID.",
+				Description: "Grafana 实例 ID",
 			},
 
 			"whitelist": {
@@ -38,7 +38,7 @@ func ResourceTencentCloudMonitorGrafanaWhitelistConfig() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The addresses in the whitelist.",
+				Description: "addresses 在 whitelist。",
 			},
 		},
 	}

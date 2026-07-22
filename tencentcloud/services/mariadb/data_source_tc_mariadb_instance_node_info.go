@@ -18,23 +18,23 @@ func DataSourceTencentCloudMariadbInstanceNodeInfo() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID, such as tdsql-6ltok4u9.",
+				Description: "实例 ID，such 作为 tdsql-6ltok4u9。",
 			},
 			"nodes_info": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Node information.",
+				Description: "Node 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"node_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Node ID.",
+							Description: "节点 ID",
 						},
 						"role": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Node role. Valid values: `master`, `slave`.",
+							Description: "Node 角色 有效值：`master`，`slave`。",
 						},
 					},
 				},
@@ -42,7 +42,7 @@ func DataSourceTencentCloudMariadbInstanceNodeInfo() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

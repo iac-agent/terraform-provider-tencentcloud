@@ -19,54 +19,54 @@ func DataSourceTencentCloudClbIdleInstances() *schema.Resource {
 			"load_balancer_region": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "CLB instance region.",
+				Description: "CLB实例区域。",
 			},
 
 			"idle_load_balancers": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of idle CLBs. Note: This field may return null, indicating that no valid values can be obtained.",
+				Description: "空闲 CLB 列表。注意：该字段可能返回null，表示取不到有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"load_balancer_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLB instance ID.",
+							Description: "CLB实例ID。",
 						},
 						"load_balancer_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLB instance name.",
+							Description: "CLB 实例名称。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLB instance region.",
+							Description: "CLB实例区域。",
 						},
 						"vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLB instance VIP.",
+							Description: "CLB实例VIP。",
 						},
 						"idle_reason": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The reason why the load balancer is considered idle. NO_RULES: No rules configured. NO_RS: The rules are not associated with servers.",
+							Description: "负载均衡器被视为空闲的原因。 NO_RULES：未配置规则。 NO_RS：规则不与服务器关联。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "CLB instance status, including:0: Creating; 1: Running.",
+							Description: "CLB实例状态，包括：0：正在创建； 1：跑步。",
 						},
 						"forward": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "CLB type. Value range: 1 (CLB); 0 (classic CLB).",
+							Description: "CLB型。取值范围：1（CLB）； 0（经典 CLB）。",
 						},
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The load balancing hostname.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "负载均衡主机名。注意：该字段可能返回null，表示取不到有效值。",
 						},
 					},
 				},
@@ -75,7 +75,7 @@ func DataSourceTencentCloudClbIdleInstances() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

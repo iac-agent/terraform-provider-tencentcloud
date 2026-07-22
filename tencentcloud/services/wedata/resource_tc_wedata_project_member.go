@@ -28,20 +28,20 @@ func ResourceTencentCloudWedataProjectMember() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"user_uin": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "User ID.",
+				Description: "用户 ID。",
 			},
 
 			"role_ids": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Role ID.",
+				Description: "角色 ID。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},

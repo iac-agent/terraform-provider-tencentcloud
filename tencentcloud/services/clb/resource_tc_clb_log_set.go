@@ -26,22 +26,22 @@ func ResourceTencentCloudClbLogSet() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Logset retention period in days. Maximun value is `90`.",
+				Description: "日志集保留期限（以天为单位）。最大值为“90”​​。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Logset name, which unique and fixed `clb_logset` among all CLS logsets.",
+				Description: "日志集名称，在所有 CLS 日志集中唯一且固定的“clb_logset”。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Logset creation time.",
+				Description: "日志集创建时间。",
 			},
 			"topic_count": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Number of log topics in logset.",
+				Description: "日志集中的日志主题数。",
 			},
 		},
 	}

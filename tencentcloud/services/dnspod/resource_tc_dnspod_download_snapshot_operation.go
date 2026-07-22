@@ -24,20 +24,20 @@ func ResourceTencentCloudDnspodDownloadSnapshotOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Domain.",
+				Description: "域名",
 			},
 
 			"snapshot_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Snapshot ID.",
+				Description: "Snapshot ID。",
 			},
 
 			"cos_url": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Snapshot download url.",
+				Description: "Snapshot download URL",
 			},
 		},
 	}

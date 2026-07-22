@@ -29,38 +29,38 @@ func ResourceTencentCloudMonitorGrafanaSsoAccount() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "grafana instance id.",
+				Description: "grafana 实例 ID",
 			},
 
 			"user_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "sub account uin of specific user.",
+				Description: "sub 账号 uin 的 特定 用户",
 			},
 
 			"notes": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "account related description.",
+				Description: "账号 related 描述",
 			},
 
 			"role": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "grafana role.",
+				Description: "grafana 角色",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"organization": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Grafana organization id string.",
+							Description: "Grafana organization ID 字符串。",
 						},
 						"role": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Grafana role, one of {Admin,Editor,Viewer}.",
+							Description: "Grafana 角色，一个 的 {Admin,Editor,Viewer}。",
 						},
 					},
 				},

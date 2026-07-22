@@ -27,18 +27,18 @@ func ResourceTencentCloudCcnRoutes() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "CCN Instance ID.",
+				Description: "CCN 实例 ID",
 			},
 			"route_id": {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "CCN Route Id List.",
+				Description: "CCN Route ID List。",
 			},
 			"switch": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "`on`: Enable, `off`: Disable.",
+				Description: "`在`: Enable，`关闭`: Disable。",
 			},
 		},
 	}

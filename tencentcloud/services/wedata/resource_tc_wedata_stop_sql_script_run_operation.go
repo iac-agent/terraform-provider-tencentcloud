@@ -24,14 +24,14 @@ func ResourceTencentCloudWedataStopSqlScriptRunOperation() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Specifies the query id.",
+				Description: "指定query ID。",
 			},
 
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 		},
 	}

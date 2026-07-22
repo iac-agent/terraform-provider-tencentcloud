@@ -26,122 +26,122 @@ func ResourceTencentCloudBhAcl() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Access permission name, maximum 32 characters, cannot contain whitespace characters.",
+				Description: "Access 权限 名称，最大 32 字符，不能 contain whitespace 字符。",
 			},
 
 			"allow_disk_redirect": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "Whether to enable disk mapping.",
+				Description: "是否enable 磁盘 mapping。",
 			},
 
 			"allow_any_account": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "Whether to allow any account to log in.",
+				Description: "是否allow any 账号 到 日志 在。",
 			},
 
 			"allow_clip_file_up": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable clipboard file upload.",
+				Description: "是否enable clipboard 文件 upload。",
 			},
 
 			"allow_clip_file_down": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable clipboard file download.",
+				Description: "是否enable clipboard 文件 download。",
 			},
 
 			"allow_clip_text_up": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable clipboard text (including images) upload.",
+				Description: "是否enable clipboard text (包括 images) upload。",
 			},
 
 			"allow_clip_text_down": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable clipboard text (including images) download.",
+				Description: "是否enable clipboard text (包括 images) download。",
 			},
 
 			"allow_file_up": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable SFTP file upload.",
+				Description: "是否enable SFTP 文件 upload。",
 			},
 
 			"max_file_up_size": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "File transfer upload size limit (reserved parameter, not currently used).",
+				Description: "File transfer upload 大小 限制 (reserved 参数，不 currently 使用)。",
 			},
 
 			"allow_file_down": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable SFTP file download.",
+				Description: "是否enable SFTP 文件 download。",
 			},
 
 			"max_file_down_size": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "File transfer download size limit (reserved parameter, not currently used).",
+				Description: "File transfer download 大小 限制 (reserved 参数，不 currently 使用)。",
 			},
 
 			"allow_disk_file_up": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable RDP disk mapping file upload.",
+				Description: "是否enable RDP 磁盘 mapping 文件 upload。",
 			},
 
 			"allow_disk_file_down": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable RDP disk mapping file download.",
+				Description: "是否enable RDP 磁盘 mapping 文件 download。",
 			},
 
 			"allow_shell_file_up": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable rz sz file upload.",
+				Description: "是否enable rz sz 文件 upload。",
 			},
 
 			"allow_shell_file_down": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable rz sz file download.",
+				Description: "是否enable rz sz 文件 download。",
 			},
 
 			"allow_file_del": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable SFTP file deletion.",
+				Description: "是否enable SFTP 文件 deletion。",
 			},
 
 			"allow_access_credential": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to allow the use of access credentials. Default is allowed.",
+				Description: "是否allow 使用 的 访问 credentials. 默认为 allowed。",
 			},
 
 			"allow_keyboard_logger": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to allow keyboard logging.",
+				Description: "是否allow keyboard 日志记录。",
 			},
 
 			"max_access_credential_duration": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Maximum validity period of access credentials (in seconds). Must be a multiple of 86400 when access credentials are enabled.",
+				Description: "Maximum validity 周期 的 访问 credentials (在 秒). Must 是 多个 的 86400 当 访问 credentials 是 已启用",
 			},
 
 			"user_id_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Associated user ID set.",
+				Description: "Associated 用户 ID 集合。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -150,7 +150,7 @@ func ResourceTencentCloudBhAcl() *schema.Resource {
 			"user_group_id_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Associated user group ID set.",
+				Description: "Associated 用户 组 ID 集合。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -159,7 +159,7 @@ func ResourceTencentCloudBhAcl() *schema.Resource {
 			"device_id_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Associated asset ID set.",
+				Description: "Associated asset ID 集合。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -168,7 +168,7 @@ func ResourceTencentCloudBhAcl() *schema.Resource {
 			"app_asset_id_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Associated application asset ID set.",
+				Description: "Associated 应用 asset ID 集合。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -177,7 +177,7 @@ func ResourceTencentCloudBhAcl() *schema.Resource {
 			"device_group_id_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Associated asset group ID set.",
+				Description: "Associated asset 组 ID 集合。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -186,7 +186,7 @@ func ResourceTencentCloudBhAcl() *schema.Resource {
 			"account_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Associated account set.",
+				Description: "Associated 账号 集合。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -195,7 +195,7 @@ func ResourceTencentCloudBhAcl() *schema.Resource {
 			"cmd_template_id_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Associated high-risk command template ID set.",
+				Description: "Associated high-risk command 模板 ID 集合。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -204,7 +204,7 @@ func ResourceTencentCloudBhAcl() *schema.Resource {
 			"ac_template_id_set": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Associated high-risk DB template ID set.",
+				Description: "Associated high-risk DB 模板 ID 集合。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -214,28 +214,28 @@ func ResourceTencentCloudBhAcl() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Access permission effective time in ISO8601 format, e.g.: `2021-09-22T00:00:00+00:00`. If not set, the permission is permanently valid.",
+				Description: "Access 权限 effective 时间 在 ISO8601 格式，e.g.: `2021-09-22T00:00:00+00:00`. 如果 不 集合， 权限 是 permanently 有效。",
 			},
 
 			"validate_to": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Access permission expiration time in ISO8601 format, e.g.: `2021-09-23T00:00:00+00:00`. If not set, the permission is permanently valid.",
+				Description: "Access 权限 过期时间 在 ISO8601 格式，e.g.: `2021-09-23T00:00:00+00:00`. 如果 不 集合， 权限 是 permanently 有效。",
 			},
 
 			"department_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Department ID to which the access permission belongs, e.g.: `1.2.3`.",
+				Description: "Department ID 到 其中 访问 权限 belongs，e.g.: `1.2.3`。",
 			},
 
 			// computed
 			"acl_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Access permission ID.",
+				Description: "Access 权限 ID。",
 			},
 		},
 	}

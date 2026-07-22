@@ -30,22 +30,22 @@ func ResourceTencentCloudWafCustomWhiteRule() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Rule Name.",
+				Description: "Rule 名称",
 			},
 			"sort_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Priority, value range 1-100, The smaller the number, the higher the execution priority of this rule.",
+				Description: "优先级，值 范围 1-100， smaller 数量， higher execution 优先级 的 此 规则。",
 			},
 			"expire_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Expiration time in second-level timestamp, for example, 1677254399 indicates the expiration time is 2023-02-24 23:59:59; 0 indicates it will never expire.",
+				Description: "过期时间 在 second-级别 时间戳，对于 示例，1677254399 表示expiration 时间 是 2023-02-24 23:59:59; 0 表示it 将 never expire。",
 			},
 			"strategies": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "Strategies detail.",
+				Description: "Strategies detail。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"field": {
@@ -110,7 +110,7 @@ func ResourceTencentCloudWafCustomWhiteRule() *schema.Resource {
 						"case_not_sensitive": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "0: case-sensitive, 1: case-insensitive. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "0: case-sensitive，1: case-insensitive. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -118,49 +118,49 @@ func ResourceTencentCloudWafCustomWhiteRule() *schema.Resource {
 			"domain": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Domain name that needs to add policy.",
+				Description: "域名 名称 该 needs 到 add 策略。",
 			},
 			"bypass": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The bypass modules are connected by commas between multiple modules. Supported modules ACL (Custom Rules), OWASP (Rule Engine), Webshell (Malicious File Detection), GeoIP (Geographic Block), BWIP (IP Black and White List), CC, BotRPC (BOT Protection), AntiLeakage (Information Leakage Prevention), API (API Security), AI (AI Engine), ip_outo_deny (IP Block), Applet (Mini Program Traffic Risk Control).",
+				Description: "bypass modules 是 connected 通过 commas between 多个 modules. Supported modules ACL (Custom Rules)，OWASP (Rule Engine)，Webshell (Malicious File Detection)，GeoIP (Geographic Block)，BWIP (IP Black 和 White List)，CC，BotRPC (BOT Protection)，AntiLeakage (Information Leakage Prevention)，API (API Security)，AI (AI Engine)，ip_outo_deny (IP Block)，Applet (Mini Program Traffic Risk Control)。",
 			},
 			"status": {
 				Optional:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CUSTOM_WHITE_RULE_STATUS),
 				Default:      CUSTOM_WHITE_RULE_STATUS_1,
-				Description:  "The status of the switch, 1 is on, 0 is off, default 1.",
+				Description:  "状态 switch，1 是 在，0 是 关闭，默认值 1。",
 			},
 			"job_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Rule execution mode: TimedJob indicates scheduled execution. CronJob indicates periodic execution.",
+				Description: "Rule execution 模式: TimedJob 表示scheduled execution. CronJob 表示periodic execution。",
 			},
 			"job_date_time": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Rule execution time.",
+				Description: "Rule 执行时间。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"timed": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Time parameters for scheduled execution. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Time 参数 对于 scheduled execution. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"start_date_time": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Start timestamp, in seconds. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Start 时间戳，（秒）。 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"end_date_time": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "End timestamp, in seconds. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "End 时间戳，（秒）。 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -168,13 +168,13 @@ func ResourceTencentCloudWafCustomWhiteRule() *schema.Resource {
 						"cron": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Time parameters for periodic execution. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Time 参数 对于 periodic execution. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"days": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Days in each month for execution. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Days 在 each month 对于 execution. 注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Schema{
 											Type: schema.TypeInt,
 										},
@@ -182,7 +182,7 @@ func ResourceTencentCloudWafCustomWhiteRule() *schema.Resource {
 									"w_days": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Days of each week for execution. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Days 的 each week 对于 execution. 注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Schema{
 											Type: schema.TypeInt,
 										},
@@ -190,12 +190,12 @@ func ResourceTencentCloudWafCustomWhiteRule() *schema.Resource {
 									"start_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Start time. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "开始时间. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"end_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "End time. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "结束时间. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -203,7 +203,7 @@ func ResourceTencentCloudWafCustomWhiteRule() *schema.Resource {
 						"time_t_zone": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Time zone. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "时区. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -212,12 +212,12 @@ func ResourceTencentCloudWafCustomWhiteRule() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Logical operator of configuration mode, and/or.",
+				Description: "Logical 操作者 的 配置 模式，和/或。",
 			},
 			"rule_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "rule ID.",
+				Description: "规则 ID。",
 			},
 		},
 	}

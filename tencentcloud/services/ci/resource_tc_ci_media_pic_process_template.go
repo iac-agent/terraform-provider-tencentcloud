@@ -29,31 +29,31 @@ func ResourceTencentCloudCiMediaPicProcessTemplate() *schema.Resource {
 			"bucket": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "bucket name.",
+				Description: "存储桶名称",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The template name only supports `Chinese`, `English`, `numbers`, `_`, `-` and `*`.",
+				Description: "模板名称 仅 支持 `Chinese`，`English`，`numbers`，`_`，`-` 和 `*`。",
 			},
 
 			"pic_process": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "container format.",
+				Description: "容器 格式",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"is_pic_info": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether to return the original image information.",
+							Description: "是否return original 镜像 信息。",
 						},
 						"process_rule": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Image processing rules, 1: basic image processing, please refer to the basic image processing document, 2: image compression, please refer to the image compression document, 3: blind watermark, please refer to the blind watermark document.",
+							Description: "Image processing 规则，1: basic 镜像 processing，please refer 到 basic 镜像 processing document，2: 镜像 压缩，please refer 到 镜像 压缩 document，3: blind 水印，please refer 到 blind 水印 document。",
 						},
 					},
 				},

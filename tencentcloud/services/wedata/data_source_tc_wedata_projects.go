@@ -18,7 +18,7 @@ func DataSourceTencentCloudWedataProjects() *schema.Resource {
 			"project_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "List of project IDs.",
+				Description: "列表 项目 IDs。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -27,71 +27,71 @@ func DataSourceTencentCloudWedataProjects() *schema.Resource {
 			"project_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Project name or unique identifier name, supports fuzzy search.",
+				Description: "项目名称 或 唯一 identifier 名称，支持 fuzzy search。",
 			},
 
 			"status": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Project status, optional values: 0 (disabled), 1 (normal).",
+				Description: "Project 状态，可选 值: 0 (已禁用)，1 (normal)。",
 			},
 
 			"project_model": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Project model, optional values: SIMPLE, STANDARD.",
+				Description: "Project model，可选 值: SIMPLE，STANDARD。",
 			},
 
 			"items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of data sources.",
+				Description: "列表 数据 sources。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"project_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Project ID.",
+							Description: "项目 ID",
 						},
 						"project_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Project identifier, English name.",
+							Description: "Project identifier，English 名称",
 						},
 						"display_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Project display name, can be Chinese name.",
+							Description: "Project display 名称，可以 是 Chinese 名称",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Remarks.",
+							Description: "备注",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 						"creator_uin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Project creator ID.",
+							Description: "Project 创建者 ID。",
 						},
 						"project_owner_uin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Project owner ID.",
+							Description: "Project 所有者 ID。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Project status: 0: disabled, 1: enabled, -3: disabling, 2: enabling.",
+							Description: "Project 状态: 0: 已禁用，1: 已启用，-3: disabling，2: enabling。",
 						},
 						"project_model": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Project model, SIMPLE: simple mode, STANDARD: standard mode.",
+							Description: "Project model，SIMPLE: simple 模式，STANDARD: standard 模式",
 						},
 					},
 				},
@@ -100,7 +100,7 @@ func DataSourceTencentCloudWedataProjects() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

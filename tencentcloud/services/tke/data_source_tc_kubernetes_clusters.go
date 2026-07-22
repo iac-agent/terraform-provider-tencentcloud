@@ -20,130 +20,130 @@ func DataSourceTencentCloudKubernetesClusters() *schema.Resource {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"cluster_name"},
-				Description:   "ID of the cluster. Conflict with cluster_name, can not be set at the same time.",
+				Description:   "ID 集群. Conflict 使用 cluster_name，可以 不 是 集合 在 same 时间。",
 			},
 
 			"cluster_name": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"cluster_id"},
-				Description:   "Name of the cluster. Conflict with cluster_id, can not be set at the same time.",
+				Description:   "名称 集群. Conflict 使用 cluster_id，可以 不 是 集合 在 same 时间。",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tags of the cluster.",
+				Description: "标签 的 集群。",
 			},
 
 			"kube_config_file_prefix": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The path prefix of kube config. You can store KubeConfig in a specified directory by specifying this field, such as ~/.kube/k8s, then public network access will use ~/.kube/k8s-clusterID-kubeconfig naming, and intranet access will use ~/.kube /k8s-clusterID-kubeconfig-intranet naming. If this field is not set, the KubeConfig will not be exported.",
+				Description: "路径 prefix 的 kube 配置 You 可以 store KubeConfig 在 指定 directory 通过 specifying 此 字段，such 作为 ~/.kube/k8s，then 公有 网络 访问 将 使用 ~/.kube/k8s-clusterID-kubeconfig naming，和 intranet 访问 将 使用 ~/.kube /k8s-clusterID-kubeconfig-intranet naming. 如果 此 字段 是 不 集合， KubeConfig 将 不 是 exported。",
 			},
 
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information list of kubernetes clusters. Each element contains the following attributes:",
+				Description: "An 信息 列表 kubernetes clusters. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of cluster.",
+							Description: "ID 集群。",
 						},
 						"cluster_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the cluster.",
+							Description: "名称 集群。",
 						},
 						"cluster_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description of the cluster.",
+							Description: "描述 集群。",
 						},
 						"cdc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CDC ID.",
+							Description: "CDC ID。",
 						},
 						"cluster_os": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Operating system of the cluster.",
+							Description: "Operating 系统 的 集群。",
 						},
 						"container_runtime": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Container runtime of the cluster.",
+							Description: "Container runtime 的 集群。",
 							Deprecated:  "It has been deprecated from version 1.18.1.",
 						},
 						"cluster_deploy_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Deployment type of the cluster.",
+							Description: "Deployment 类型 集群。",
 						},
 						"cluster_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Version of the cluster.",
+							Description: "版本 的 集群。",
 						},
 						"cluster_ipvs": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Indicates whether ipvs is enabled.",
+							Description: "表示是否ipvs 是 已启用",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Vpc ID of the cluster.",
+							Description: "Vpc ID 集群。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Project ID of the cluster.",
+							Description: "项目 ID 集群。",
 						},
 						"cluster_cidr": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "A network address block of the cluster. Different from vpc cidr and cidr of other clusters within this VPC.",
+							Description: "A 网络 地址 block 的 集群. Different 从 vpc cidr 和 cidr 的 other clusters within 此 VPC。",
 						},
 						"ignore_cluster_cidr_conflict": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Indicates whether to ignore the cluster cidr conflict error.",
+							Description: "表示是否ignore 集群 cidr conflict 错误",
 						},
 						"cluster_max_pod_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The maximum number of Pods per node in the cluster.",
+							Description: "最大Pods per 节点 在 集群。",
 						},
 						"cluster_max_service_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The maximum number of services in the cluster.",
+							Description: "最大services 在 集群。",
 						},
 						"cluster_as_enabled": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Indicates whether to enable cluster node auto scaler.",
+							Description: "表示是否enable 集群 节点 auto scaler。",
 						},
 						"node_name_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Node name type of cluster.",
+							Description: "节点名称 类型 集群。",
 						},
 						"cluster_extra_args": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Customized parameters for master component.",
+							Description: "Customized 参数 对于 master 组件。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"kube_apiserver": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "The customized parameters for kube-apiserver.",
+										Description: "customized 参数 对于 kube-apiserver。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -151,7 +151,7 @@ func DataSourceTencentCloudKubernetesClusters() *schema.Resource {
 									"kube_controller_manager": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "The customized parameters for kube-controller-manager.",
+										Description: "customized 参数 对于 kube-controller-manager。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -159,7 +159,7 @@ func DataSourceTencentCloudKubernetesClusters() *schema.Resource {
 									"kube_scheduler": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "The customized parameters for kube-scheduler.",
+										Description: "customized 参数 对于 kube-scheduler。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -170,32 +170,32 @@ func DataSourceTencentCloudKubernetesClusters() *schema.Resource {
 						"network_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster network type.",
+							Description: "Cluster 网络 类型",
 						},
 						"is_non_static_ip_mode": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Indicates whether non-static ip mode is enabled.",
+							Description: "表示是否non-静态 ip 模式 是 已启用",
 						},
 						"kube_proxy_mode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster kube-proxy mode.",
+							Description: "Cluster kube-proxy 模式",
 						},
 						"vpc_cni_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Distinguish between shared network card multi-IP mode and independent network card mode.",
+							Description: "Distinguish between shared 网络 card multi-IP 模式 和 independent 网络 card 模式",
 						},
 						"service_cidr": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The network address block of the cluster.",
+							Description: "网络 地址 block 的 集群。",
 						},
 						"eni_subnet_ids": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Subnet IDs for cluster with VPC-CNI network mode.",
+							Description: "Subnet IDs 对于 集群 使用 VPC-CNI 网络 模式",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -203,48 +203,48 @@ func DataSourceTencentCloudKubernetesClusters() *schema.Resource {
 						"claim_expired_seconds": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The expired seconds to recycle ENI.",
+							Description: "expired 秒 到 recycle ENI。",
 						},
 						"deletion_protection": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Indicates whether cluster deletion protection is enabled.",
+							Description: "表示是否cluster 删除保护 是 已启用",
 						},
 						"cluster_node_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of nodes in the cluster.",
+							Description: "节点数量 在 集群。",
 						},
 						"worker_instances_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "An information list of cvm within the WORKER clusters. Each element contains the following attributes.",
+							Description: "An 信息 列表 cvm within WORKER clusters. Each element 包含following attributes。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ID of the cvm.",
+										Description: "ID cvm。",
 									},
 									"instance_role": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Role of the cvm.",
+										Description: "角色 的 cvm。",
 									},
 									"instance_state": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "State of the cvm.",
+										Description: "State 的 cvm。",
 									},
 									"failed_reason": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Information of the cvm when it is failed.",
+										Description: "Information 的 cvm 当 它 是 failed。",
 									},
 									"lan_ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "LAN IP of the cvm.",
+										Description: "LAN IP 的 cvm。",
 									},
 								},
 							},
@@ -252,54 +252,54 @@ func DataSourceTencentCloudKubernetesClusters() *schema.Resource {
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "Tags of the cluster.",
+							Description: "标签 的 集群。",
 						},
 						"kube_config": {
 							Type:        schema.TypeString,
 							Computed:    true,
 							Sensitive:   true,
-							Description: "Kubernetes config.",
+							Description: "Kubernetes 配置",
 						},
 						"kube_config_intranet": {
 							Type:        schema.TypeString,
 							Computed:    true,
 							Sensitive:   true,
-							Description: "Kubernetes config of private network.",
+							Description: "Kubernetes 配置 的 私有 网络。",
 						},
 						"user_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "User name of account.",
+							Description: "用户 名称 账号",
 						},
 						"password": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Password of account.",
+							Description: "密码 的 账号",
 						},
 						"certification_authority": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The certificate used for access.",
+							Description: "证书 用于access。",
 						},
 						"cluster_external_endpoint": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "External network address to access.",
+							Description: "External 网络 地址 到 访问。",
 						},
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain name for access.",
+							Description: "域名 名称 对于 访问。",
 						},
 						"pgw_endpoint": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The Intranet address used for access.",
+							Description: "Intranet 地址 用于access。",
 						},
 						"security_policy": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Access policy.",
+							Description: "Access 策略。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -311,7 +311,7 @@ func DataSourceTencentCloudKubernetesClusters() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

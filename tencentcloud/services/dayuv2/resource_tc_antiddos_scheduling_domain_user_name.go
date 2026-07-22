@@ -28,13 +28,13 @@ func ResourceTencentCloudAntiddosSchedulingDomainUserName() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "user cname.",
+				Description: "用户 cname。",
 			},
 
 			"domain_user_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "domain name.",
+				Description: "域名 名称",
 			},
 		},
 	}

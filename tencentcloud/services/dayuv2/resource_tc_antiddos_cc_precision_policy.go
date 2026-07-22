@@ -31,58 +31,58 @@ func ResourceTencentCloudAntiddosCcPrecisionPolicy() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance Id.",
+				Description: "实例 ID",
 			},
 
 			"ip": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Ip value.",
+				Description: "Ip 值",
 			},
 
 			"protocol": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "protocol http or https.",
+				Description: "协议 http 或 https。",
 			},
 
 			"domain": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "domain.",
+				Description: "域名",
 			},
 
 			"policy_action": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "policy type, alg or drop.",
+				Description: "策略 类型，alg 或 drop。",
 			},
 
 			"policy_list": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "policy list.",
+				Description: "策略 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"field_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "field type.",
+							Description: "字段 类型",
 						},
 						"field_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration fields can take values of cgi, ua, cookie, referer, accept, srcip.",
+							Description: "Configuration 字段 可以 take 值 的 cgi，ua，cookie，referer，accept，srcip。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "value.",
+							Description: "值",
 						},
 						"value_operator": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration item value comparison method, can take values of equal, not_ Equal, include.",
+							Description: "Configuration item 值 comparison 方法，可以 take 值 的 equal，not_ Equal，include。",
 						},
 					},
 				},

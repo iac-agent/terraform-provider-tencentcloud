@@ -20,50 +20,50 @@ func DataSourceTencentCloudScfNamespaces() *schema.Resource {
 			"namespace": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of the SCF namespace to be queried.",
+				Description: "名称 SCF 命名空间 到 是 queried。",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Description of the SCF namespace to be queried.",
+				Description: "描述 SCF 命名空间 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// computed
 			"namespaces": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "An information list of namespace. Each element contains the following attributes:",
+				Description: "An 信息 列表 命名空间. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"namespace": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the SCF namespace.",
+							Description: "名称 SCF 命名空间。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description of the SCF namespace.",
+							Description: "描述 SCF 命名空间。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create time of the SCF namespace.",
+							Description: "创建时间 的 SCF 命名空间。",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Modify time of the SCF namespace.",
+							Description: "修改时间 的 SCF 命名空间。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type of the SCF namespace.",
+							Description: "类型 SCF 命名空间。",
 						},
 					},
 				},

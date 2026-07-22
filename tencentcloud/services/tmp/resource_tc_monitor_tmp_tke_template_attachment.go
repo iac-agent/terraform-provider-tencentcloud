@@ -26,7 +26,7 @@ func ResourceTencentCloudMonitorTmpTkeTemplateAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The ID of the template, which is used for the outgoing reference.",
+				Description: "ID template，其中 是 用于the outgoing reference。",
 			},
 
 			"targets": {
@@ -34,48 +34,48 @@ func ResourceTencentCloudMonitorTmpTkeTemplateAttachment() *schema.Resource {
 				MaxItems:    1,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Sync target details.",
+				Description: "Sync 目标 details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "target area.",
+							Description: "目标 area。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "instance id.",
+							Description: "实例 ID",
 						},
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "ID of the cluster.",
+							Description: "ID 集群。",
 						},
 						"sync_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Last sync template time.",
+							Description: "Last sync template 时间。",
 						},
 						"version": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Template version currently in use.",
+							Description: "模板 版本 currently 在 使用。",
 						},
 						"cluster_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Cluster type.",
+							Description: "集群类型",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Name of the prometheus instance.",
+							Description: "名称 prometheus 实例。",
 						},
 						"cluster_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Name the cluster.",
+							Description: "名称 集群。",
 						},
 					},
 				},

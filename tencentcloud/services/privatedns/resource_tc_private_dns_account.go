@@ -23,17 +23,17 @@ func ResourceTencentCloudPrivateDnsAccount() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Uin of the associated account.",
+				Description: "Uin 的 associated 账号",
 			},
 			"account": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Email of the associated account.",
+				Description: "Email 的 associated 账号",
 			},
 			"nickname": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Nickname of the associated account.",
+				Description: "Nickname 的 associated 账号",
 			},
 		},
 	}

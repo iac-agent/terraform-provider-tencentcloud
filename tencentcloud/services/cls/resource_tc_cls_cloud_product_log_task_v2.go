@@ -29,34 +29,34 @@ func ResourceTencentCloudClsCloudProductLogTaskV2() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance ID.",
+				Description: "实例ID。",
 			},
 
 			"assumer_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Cloud product identification, Values: CDS, CWP, CDB, TDSQL-C, MongoDB, TDStore, DCDB, MariaDB, PostgreSQL, BH, APIS.",
+				Description: "云产品标识，值：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS。",
 			},
 
 			"log_type": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Log type, Values: CDS-AUDIT, CDS-RISK, CDB-AUDIT, TDSQL-C-AUDIT, MongoDB-AUDIT, MongoDB-SlowLog, MongoDB-ErrorLog, TDMYSQL-SLOW, DCDB-AUDIT, DCDB-SLOW, DCDB-ERROR, MariaDB-AUDIT, MariaDB-SLOW, MariaDB-ERROR, PostgreSQL-SLOW, PostgreSQL-ERROR, PostgreSQL-AUDIT, BH-FILELOG, BH-COMMANDLOG, APIS-ACCESS.",
+				Description: "日志类型，值：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、 PostgreSQL-审计、BH-文件日志、BH-命令日志、APIS-访问。",
 			},
 
 			"cloud_product_region": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Cloud product region. There are differences in the input format of different log types in different regions. Please refer to the following example:\n- CDS(all log type): ap-guangzhou\n- CDB-AUDIT: gz\n- TDSQL-C-AUDIT: gz\n- MongoDB-AUDIT: gz\n- MongoDB-SlowLog: ap-guangzhou\n- MongoDB-ErrorLog: ap-guangzhou\n- TDMYSQL-SLOW: gz\n- DCDB(all log type): gz\n- MariaDB(all log type): gz\n- PostgreSQL(all log type): gz\n- BH(all log type): overseas-polaris(Domestic sites overseas)/fsi-polaris(Domestic sites finance)/general-polaris(Domestic sites)/intl-sg-prod(International sites)\n- APIS(all log type): gz.",
+				Description: "云产品区域。不同地区不同日志类型的输入格式存在差异。请参考以下示例：\n- CDS(所有日志类型): ap-guangzhou\n- CDB-AUDIT: gz\n- TDSQL-C-AUDIT: gz\n- MongoDB-AUDIT: gz\n- MongoDB-SlowLog: ap-guangzhou\n- MongoDB-ErrorLog: ap-guangzhou\n- TDMYSQL-SLOW: gz\n- DCDB(所有日志type): gz\n- MariaDB(所有日志类型): gz\n- PostgreSQL(所有日志类型): gz\n- BH(所有日志类型): Overseas-polaris(海外国内站点)/fsi-polaris(国内站点金融)/general-polaris(国内站点)/intl-sg-prod(国际站点)\n- APIS(所有日志类型): gz。",
 			},
 
 			"cls_region": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "CLS target region.",
+				Description: "CLS 目标区域。",
 			},
 
 			"logset_name": {
@@ -64,7 +64,7 @@ func ResourceTencentCloudClsCloudProductLogTaskV2() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Computed:    true,
-				Description: "Log set name, required if `logset_id` is not filled in. If the log set does not exist, it will be automatically created.",
+				Description: "日志集名称，如果不填写“logset_id”，则为必填项。如果日志集不存在，则会自动创建。",
 			},
 
 			"topic_name": {
@@ -72,14 +72,14 @@ func ResourceTencentCloudClsCloudProductLogTaskV2() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Computed:    true,
-				Description: "The name of the log topic is required when `topic_id` is not filled in. If the log theme does not exist, it will be automatically created.",
+				Description: "不填写“topic_id”时，日志主题的名称为必填项。如果日志主题不存在，则会自动创建。",
 			},
 
 			"extend": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Log configuration extension information, generally used to store additional log delivery configurations.",
+				Description: "日志配置扩展信息，一般用于存储额外的日志传递配置。",
 			},
 
 			"logset_id": {
@@ -87,7 +87,7 @@ func ResourceTencentCloudClsCloudProductLogTaskV2() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Computed:    true,
-				Description: "Log set ID.",
+				Description: "日志集 ID。",
 			},
 
 			"topic_id": {
@@ -95,13 +95,13 @@ func ResourceTencentCloudClsCloudProductLogTaskV2() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Computed:    true,
-				Description: "Log theme ID.",
+				Description: "记录主题 ID。",
 			},
 
 			"force_delete": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Indicate whether to forcibly delete the corresponding logset and topic. If set to true, it will be forcibly deleted. Default is false.",
+				Description: "是否强制删除对应的日志集和主题。如果设置为true，则会被强制删除。默认为 false。",
 			},
 		},
 	}

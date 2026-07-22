@@ -20,31 +20,31 @@ func DataSourceTencentCloudMysqlRoMinScale() *schema.Resource {
 			"ro_instance_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The read-only instance ID, in the format: cdbro-c1nl9rpv, is the same as the instance ID displayed on the cloud database console page. This parameter and the MasterInstanceId parameter cannot be empty at the same time.",
+				Description: "只读实例ID，格式为cdbro-c1nl9rpv，与云数据库控制台页面显示的实例ID一致。该参数与MasterInstanceId参数不能同时为空。",
 			},
 
 			"master_instance_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The primary instance ID, in the format: cdb-c1nl9rpv, is the same as the instance ID displayed on the cloud database console page. This parameter and the RoInstanceId parameter cannot be empty at the same time. Note that when the input parameter contains RoInstanceId, the return value is the minimum specification when the read-only instance is upgraded; when the input parameter only contains MasterInstanceId, the return value is the minimum specification when the read-only instance is purchased.",
+				Description: "主实例ID与云数据库控制台页面显示的实例ID一致，格式为：cdb-c1nl9rpv。该参数与RoInstanceId参数不能同时为空。注意，当入参包含RoInstanceId时，返回值为只读实例升级时的最小规格；当入参仅包含MasterInstanceId时，返回值为购买只读实例时的最低规格。",
 			},
 
 			"memory": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Memory specification size, unit: MB.",
+				Description: "内存规格大小，单位：MB。",
 			},
 
 			"volume": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Disk specification size, unit: GB.",
+				Description: "磁盘规格大小，单位：GB。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

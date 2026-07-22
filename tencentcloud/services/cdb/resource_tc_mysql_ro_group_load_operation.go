@@ -23,7 +23,7 @@ func ResourceTencentCloudMysqlRoGroupLoadOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of the RO group, in the format: cdbrg-c1nl9rpv.",
+				Description: "RO组ID，格式为：cdbrg-c1nl9rpv。",
 			},
 		},
 	}

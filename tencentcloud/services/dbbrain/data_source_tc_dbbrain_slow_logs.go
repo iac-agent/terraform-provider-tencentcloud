@@ -20,31 +20,31 @@ func DataSourceTencentCloudDbbrainSlowLogs() *schema.Resource {
 			"product": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Service product type, supported values include: mysql - cloud database MySQL, cynosdb - cloud database CynosDB for MySQL, the default is mysql.",
+				Description: "Service product 类型, 支持 值 include: mysql - 云 数据库 MySQL, cynosdb - 云 数据库 CynosDB 对于 MySQL, 默认值 是 mysql.",
 			},
 
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance Id.",
+				Description: "实例 ID.",
 			},
 
 			"md5": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "md5 value of sql template.",
+				Description: "md5 值 的 sql template.",
 			},
 
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Start time, such as 2019-09-10 12:13:14.",
+				Description: "Start 时间, such 作为 2019-09-10 12:13:14.",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The deadline, such as 2019-09-11 10:13:14, the interval between the deadline and the start time is less than 7 days.",
+				Description: "deadline, such 作为 2019-09-11 10:13:14, 间隔 between deadline 和 start 时间 是 less 比 7 days.",
 			},
 
 			"db": {
@@ -53,7 +53,7 @@ func DataSourceTencentCloudDbbrainSlowLogs() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "database list.",
+				Description: "数据库 列表.",
 			},
 
 			"key": {
@@ -71,7 +71,7 @@ func DataSourceTencentCloudDbbrainSlowLogs() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "user.",
+				Description: "用户.",
 			},
 
 			"ip": {
@@ -89,19 +89,19 @@ func DataSourceTencentCloudDbbrainSlowLogs() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Time-consuming interval, the left and right boundaries of the time-consuming interval correspond to the 0th element and the first element of the array respectively.",
+				Description: "Time-consuming 间隔, left 和 right boundaries 的 时间-consuming 间隔 correspond 到 0th element 和 first element 的 数组 respectively.",
 			},
 
 			"rows": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Slow log details.",
+				Description: "Slow 日志 details.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"timestamp": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Slow log start time.",
+							Description: "Slow 日志 start 时间.",
 						},
 						"sql_text": {
 							Type:        schema.TypeString,
@@ -111,37 +111,37 @@ func DataSourceTencentCloudDbbrainSlowLogs() *schema.Resource {
 						"database": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "database.",
+							Description: "数据库.",
 						},
 						"user_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "User sourceNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "User sourceNote: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 						},
 						"user_host": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Ip sourceNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Ip sourceNote: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 						},
 						"query_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Execution time, in seconds.",
+							Description: "Execution 时间, 在 秒.",
 						},
 						"lock_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "lock time, in secondsNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "lock 时间, 在 secondsNote: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 						},
 						"rows_examined": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "scan linesNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "scan linesNote: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 						},
 						"rows_sent": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Return the number of rowsNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Return 数量 的 rowsNote: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 						},
 					},
 				},
@@ -150,7 +150,7 @@ func DataSourceTencentCloudDbbrainSlowLogs() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

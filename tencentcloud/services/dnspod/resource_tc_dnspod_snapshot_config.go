@@ -27,13 +27,13 @@ func ResourceTencentCloudDnspodSnapshotConfig() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Domain name.",
+				Description: "域名 名称",
 			},
 
 			"period": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Backup interval: empty string - no backup, half_hour - every half hour, hourly - every hour, daily - every day, monthly - every month.",
+				Description: "Backup 间隔: 空 字符串 - 无 备份，half_hour - every half hour，hourly - every hour，daily - every day，monthly - every month。",
 			},
 		},
 	}

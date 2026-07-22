@@ -19,57 +19,57 @@ func DataSourceTencentCloudSqlserverUploadBackupInfo() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 			"backup_migration_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Backup import task ID, which is returned through the API CreateBackupMigration.",
+				Description: "Backup import 任务 ID, 其中 是 返回 through API CreateBackupMigration.",
 			},
 			"bucket_name": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Bucket name.",
+				Description: "Bucket 名称.",
 			},
 			"region": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Bucket location information.",
+				Description: "Bucket location 信息.",
 			},
 			"path": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Storage path.",
+				Description: "Storage 路径.",
 			},
 			"tmp_secret_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Temporary key ID.",
+				Description: "Temporary 键 ID.",
 			},
 			"tmp_secret_key": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Temporary key (Key).",
+				Description: "Temporary 键 (Key).",
 			},
 			"x_cos_security_token": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Temporary key (Token).",
+				Description: "Temporary 键 (Token).",
 			},
 			"start_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Temporary key start time.",
+				Description: "Temporary 键 start 时间.",
 			},
 			"expired_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Temporary key expiration time.",
+				Description: "Temporary 键 expiration 时间.",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

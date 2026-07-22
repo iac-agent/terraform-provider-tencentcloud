@@ -19,77 +19,77 @@ func DataSourceTencentCloudOceanusJobSubmissionLog() *schema.Resource {
 			"job_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Job ID.",
+				Description: "作业 ID",
 			},
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Start time, unix timestamp, in milliseconds.",
+				Description: "开始时间，unix 时间戳，（毫秒）。",
 			},
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "End time, unix timestamp, in milliseconds.",
+				Description: "结束时间，unix 时间戳，（毫秒）。",
 			},
 			"running_order_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
 				Default:     0,
-				Description: "Job instance ID.",
+				Description: "Job 实例 ID。",
 			},
 			"keyword": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Keyword, default empty.",
+				Description: "Keyword，默认值 空。",
 			},
 			"cursor": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Cursor, default empty, first request does not need to pass in.",
+				Description: "Cursor，默认值 空，first 请求 does 不 need 到 pass 在。",
 			},
 			"order_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
 				Default:     "asc",
-				Description: "Sorting method, default asc, asc: ascending, desc: descending.",
+				Description: "Sorting 方法，默认值 asc，asc: ascending，desc: descending。",
 			},
 			"list_over": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether the list is over.",
+				Description: "是否list 是 over。",
 			},
 			"job_request_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Request ID of starting job.",
+				Description: "请求 ID starting 作业。",
 			},
 			"log_list": {
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Log list, deprecated.",
+				Description: "Log 列表，已弃用",
 			},
 			"job_instance_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Job instance list during the specified time period.",
+				Description: "Job 实例 列表 during 指定 时间 周期",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"running_order_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The ID of the instance, starting from 1 in the order of startup time.",
+							Description: "ID 实例，starting 从 1 在 顺序 的 startup 时间。",
 						},
 						"job_instance_start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The startup time of the instance.",
+							Description: "startup 时间 的 实例。",
 						},
 						"starting_millis": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The startup time of the instance in milliseconds.",
+							Description: "startup 时间 的 实例 （毫秒）。",
 						},
 					},
 				},
@@ -97,33 +97,33 @@ func DataSourceTencentCloudOceanusJobSubmissionLog() *schema.Resource {
 			"log_content_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The list of log contents.",
+				Description: "列表 日志 contents。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"log": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The content of the log.",
+							Description: "内容 的 日志。",
 						},
 						"time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The timestamp in milliseconds.",
+							Description: "时间戳 （毫秒）。",
 						},
 						"pkg_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The ID of the log group.",
+							Description: "ID 日志 组。",
 						},
 						"pkg_log_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The ID of the log, which is unique within the log group.",
+							Description: "ID 日志，其中 是 唯一 within 日志 组。",
 						},
 						"container_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The name of the container to which the log belongs.",
+							Description: "名称 容器 到 其中 日志 belongs。",
 						},
 					},
 				},
@@ -131,7 +131,7 @@ func DataSourceTencentCloudOceanusJobSubmissionLog() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

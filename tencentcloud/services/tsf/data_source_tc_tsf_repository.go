@@ -19,76 +19,76 @@ func DataSourceTencentCloudTsfRepository() *schema.Resource {
 			"search_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Query keywords (search by Repository name).",
+				Description: "Query keywords (search 通过 Repository 名称)。",
 			},
 
 			"repository_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Repository type (default Repository: default, private Repository: private).",
+				Description: "Repository 类型 (默认值 Repository: 默认值，私有 Repository: 私有)。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "A list of Repository information that meets the query criteria.",
+				Description: "A 列表 Repository 信息 该 meets 查询 criteria。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total Repository.",
+							Description: "Total Repository。",
 						},
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Repository information list. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Repository 信息 列表. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"repository_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "repository Id.",
+										Description: "repository ID。",
 									},
 									"repository_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Repository Name.",
+										Description: "Repository 名称",
 									},
 									"repository_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Repository type (default Repository: default, private Repository: private).",
+										Description: "Repository 类型 (默认值 Repository: 默认值，私有 Repository: 私有)。",
 									},
 									"repository_desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Repository description (default warehouse: default, private warehouse: private).",
+										Description: "Repository 描述 (默认值 warehouse: 默认值，私有 warehouse: 私有)。",
 									},
 									"is_used": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether the repository is being used. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "是否repository 是 being 使用. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "CreationTime. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "CreationTime. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"bucket_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Repository bucket name. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Repository 存储桶名称 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"bucket_region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Repository region. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Repository 地域 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"directory": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Repository Directory. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Repository Directory. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -100,7 +100,7 @@ func DataSourceTencentCloudTsfRepository() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

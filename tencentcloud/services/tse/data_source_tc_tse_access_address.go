@@ -19,80 +19,80 @@ func DataSourceTencentCloudTseAccessAddress() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "engine instance Id.",
+				Description: "引擎 实例 ID。",
 			},
 
 			"vpc_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "VPC ID, Zookeeper does not need to pass vpcid and subnetid; nacos and Polaris need to pass vpcid and subnetid.",
+				Description: "私有网络 ID，Zookeeper does 不 need 到 pass vpcid 和 subnetid; nacos 和 Polaris need 到 pass vpcid 和 subnetid。",
 			},
 
 			"subnet_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Subnet ID, Zookeeper does not need to pass vpcid and subnetid; nacos and Polaris need to pass vpcid and subnetid.",
+				Description: "子网 ID，Zookeeper does 不 need 到 pass vpcid 和 subnetid; nacos 和 Polaris need 到 pass vpcid 和 subnetid。",
 			},
 
 			"workload": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Name of other engine components(pushgateway, polaris-limiter).",
+				Description: "名称 other 引擎 components(pushgateway，polaris-limiter)。",
 			},
 
 			"engine_region": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Deploy region.",
+				Description: "Deploy 地域",
 			},
 
 			"intranet_address": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Intranet access address.",
+				Description: "Intranet 访问 地址",
 			},
 
 			"internet_address": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Public access address.",
+				Description: "Public 访问 地址",
 			},
 
 			"env_address_infos": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Apollo Multi-environment public ip address.",
+				Description: "Apollo Multi-环境 公有 ip 地址",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"env_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "env name.",
+							Description: "env 名称",
 						},
 						"enable_config_internet": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether to enable the config public network.",
+							Description: "是否enable 配置 公有 网络。",
 						},
 						"config_internet_service_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "config public network ip.",
+							Description: "配置 公有 网络 ip。",
 						},
 						"config_intranet_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "config Intranet access addressNote: This field may return null, indicating that a valid value is not available.",
+							Description: "配置 Intranet 访问 address注意：此字段可能返回 null，表示有效值不可用。",
 						},
 						"enable_config_intranet": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether to enable the config Intranet clbNote: This field may return null, indicating that a valid value is not available.",
+							Description: "是否enable 配置 Intranet clb注意：此字段可能返回 null，表示有效值不可用。",
 						},
 						"internet_band_width": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Client public network bandwidthNote: This field may return null, indicating that a valid value is not available.",
+							Description: "Client 公有 网络 bandwidth注意：此字段可能返回 null，表示有效值不可用。",
 						},
 					},
 				},
@@ -101,37 +101,37 @@ func DataSourceTencentCloudTseAccessAddress() *schema.Resource {
 			"console_internet_address": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Console public network access addressNote: This field may return null, indicating that a valid value is not available.",
+				Description: "Console 公有 网络 访问 address注意：此字段可能返回 null，表示有效值不可用。",
 			},
 
 			"console_intranet_address": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Console Intranet access addressNote: This field may return null, indicating that a valid value is not available.",
+				Description: "Console Intranet 访问 address注意：此字段可能返回 null，表示有效值不可用。",
 			},
 
 			"internet_band_width": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Client public network bandwidthNote: This field may return null, indicating that a valid value is not available.",
+				Description: "Client 公有 网络 bandwidth注意：此字段可能返回 null，表示有效值不可用。",
 			},
 
 			"console_internet_band_width": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Console public network bandwidthNote: This field may return null, indicating that a valid value is not available.",
+				Description: "Console 公有 网络 bandwidth注意：此字段可能返回 null，表示有效值不可用。",
 			},
 
 			"limiter_address_infos": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Access IP address of the Polaris traffic limiting server nodeNote: This field may return null, indicating that a valid value is not available.",
+				Description: "Access IP 地址 的 Polaris 流量 limiting 服务器 node注意：此字段可能返回 null，表示有效值不可用。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"intranet_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC access IP address listNote: This field may return null, indicating that a valid value is not available.",
+							Description: "VPC 访问 IP 地址 list注意：此字段可能返回 null，表示有效值不可用。",
 						},
 					},
 				},
@@ -140,7 +140,7 @@ func DataSourceTencentCloudTseAccessAddress() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

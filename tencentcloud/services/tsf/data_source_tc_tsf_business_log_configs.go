@@ -19,13 +19,13 @@ func DataSourceTencentCloudTsfBusinessLogConfigs() *schema.Resource {
 			"search_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "wild search word.",
+				Description: "wild search word。",
 			},
 
 			"disable_program_auth_check": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Disable Program auth check or not.",
+				Description: "Disable Program auth check 或 不。",
 			},
 
 			"config_id_list": {
@@ -34,101 +34,101 @@ func DataSourceTencentCloudTsfBusinessLogConfigs() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Config Id list.",
+				Description: "配置 ID 列表。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of business log configurations.Note: This field may return null, indicating that no valid values can be obtained.",
+				Description: "列表 business 日志 configurations.注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total Count.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Total Count.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Log configuration item list. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Log 配置 item 列表. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"config_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ConfigId.",
+										Description: "ConfigId。",
 									},
 									"config_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ConfigName.",
+										Description: "ConfigName。",
 									},
 									"config_path": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Log path of configuration item.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Log 路径 的 配置 item.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Description of configuration item.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "描述 配置 item.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_tags": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "configuration Tag.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "配置 标签注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_pipeline": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Pipeline of configuration item.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Pipeline 的 配置 item.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_create_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Create time of configuration item.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "创建时间 的 配置 item.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_update_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Update time of configuration item.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "更新时间 的 配置 item.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_schema": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "ParserSchema of configuration item.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "ParserSchema 的 配置 item.注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"schema_type": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Schema type.",
+													Description: "Schema 类型",
 												},
 												"schema_content": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "content of schema.",
+													Description: "内容 的 schema。",
 												},
 												"schema_date_format": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Schema format.Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Schema 格式注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"schema_multiline_pattern": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Schema pattern of configuration item.Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Schema pattern 的 配置 item.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"schema_create_time": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Create time of configuration item.Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "创建时间 的 配置 item.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"schema_pattern_layout": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "User-defined parsing rules.Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "用户-defined parsing 规则.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -136,63 +136,63 @@ func DataSourceTencentCloudTsfBusinessLogConfigs() *schema.Resource {
 									"config_associated_groups": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "the associate group of Config.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "associate 组 的 配置注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"group_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Group Id. Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Group ID. 注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"group_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Group Name. Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Group 名称 注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"application_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Application Id of Group. Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Application ID 的 Group. 注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"application_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Application Name. Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Application 名称 注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"application_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Application Type. Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Application 类型 注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"namespace_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Namespace ID to which the deployment group belongs.Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Namespace ID 到 其中 部署 组 belongs.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"namespace_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Namespace Name to which the deployment group belongs.Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Namespace 名称 到 其中 部署 组 belongs.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"cluster_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Cluster ID to which the deployment group belongs.Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "集群 ID 到 其中 部署 组 belongs.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"cluster_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Cluster Name to which the deployment group belongs.Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Cluster 名称 到 其中 部署 组 belongs.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"cluster_type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Cluster type to which the deployment group belongs.Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "集群类型 到 其中 部署 组 belongs.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 												"associated_time": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Time when the deployment group is associated with the log configuration.Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Time 当 部署 组 是 associated 使用 日志 配置.注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -207,7 +207,7 @@ func DataSourceTencentCloudTsfBusinessLogConfigs() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

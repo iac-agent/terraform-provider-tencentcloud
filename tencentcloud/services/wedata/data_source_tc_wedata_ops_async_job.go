@@ -19,75 +19,75 @@ func DataSourceTencentCloudWedataOpsAsyncJob() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"async_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Asynchronous operation ID.",
+				Description: "Asynchronous operation ID。",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Asynchronous operation detail result.",
+				Description: "Asynchronous operation detail 结果",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"project_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Project ID.",
+							Description: "项目 ID",
 						},
 						"async_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Operation ID.",
+							Description: "Operation ID。",
 						},
 						"async_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Asynchronous operation type.",
+							Description: "Asynchronous 操作类型",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Asynchronous operation status: Initial state: INIT; Running: RUNNING; Success: SUCCESS; Failure: FAIL; Partial success: PART_SUCCESS.",
+							Description: "Asynchronous operation 状态: Initial state: INIT; Running: RUNNING; Success: SUCCESS; Failure: FAIL; Partial success: PART_SUCCESS。",
 						},
 						"error_desc": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Error message.",
+							Description: "错误信息",
 						},
 						"total_sub_process_count": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Total number of sub-operations.",
+							Description: "Total 数量 sub-operations。",
 						},
 						"finished_sub_process_count": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Number of completed sub-operations.",
+							Description: "数量 completed sub-operations。",
 						},
 						"success_sub_process_count": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Number of successful sub-operations.",
+							Description: "数量 successful sub-operations。",
 						},
 						"create_user_uin": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Operator ID.",
+							Description: "操作者 ID。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Operation creation time.",
+							Description: "Operation 创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Update time.",
+							Description: "更新时间。",
 						},
 					},
 				},
@@ -96,7 +96,7 @@ func DataSourceTencentCloudWedataOpsAsyncJob() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

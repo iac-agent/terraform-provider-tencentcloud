@@ -22,25 +22,25 @@ func DataSourceTencentCloudDbbrainDiagEvents() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Instance ID list.",
+				Description: "实例 ID 列表.",
 			},
 
 			"product": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Service product type; supported values include: `mysql` - Cloud Database MySQL, `redis` - Cloud Database Redis, `mariadb` - MariaDB database. The default is `mysql`.",
+				Description: "Service product 类型; 支持 值 include: `mysql` - Cloud Database MySQL, `redis` - Cloud Database Redis, `mariadb` - MariaDB 数据库. 默认值 是 `mysql`.",
 			},
 
 			"start_time": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Start time.",
+				Description: "Start 时间.",
 			},
 
 			"end_time": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "End time.",
+				Description: "End 时间.",
 			},
 
 			"severities": {
@@ -49,29 +49,29 @@ func DataSourceTencentCloudDbbrainDiagEvents() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Severity list, optional value is 1-fatal, 2-severity, 3-warning, 4-tips, 5-health.",
+				Description: "Severity 列表, 可选 值 是 1-fatal, 2-severity, 3-warning, 4-tips, 5-health.",
 			},
 
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Diag event list.",
+				Description: "Diag 事件 列表.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"diag_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Diag type.",
+							Description: "Diag 类型.",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "End time.",
+							Description: "End 时间.",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Start time.",
+							Description: "Start 时间.",
 						},
 						"event_id": {
 							Type:        schema.TypeInt,
@@ -96,7 +96,7 @@ func DataSourceTencentCloudDbbrainDiagEvents() *schema.Resource {
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID.",
 						},
 						"metric": {
 							Type:        schema.TypeString,
@@ -115,7 +115,7 @@ func DataSourceTencentCloudDbbrainDiagEvents() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

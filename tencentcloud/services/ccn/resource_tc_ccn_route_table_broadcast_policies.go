@@ -29,51 +29,51 @@ func ResourceTencentCloudCcnRouteTableBroadcastPolicies() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "CCN Instance ID.",
+				Description: "CCN 实例 ID",
 			},
 			"route_table_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "CCN Route table ID.",
+				Description: "CCN Route 表 ID。",
 			},
 			"policies": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "Routing propagation strategy.",
+				Description: "Routing propagation strategy。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"action": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Routing behavior, `accept` allows, `drop` rejects.",
+							Description: "Routing behavior，`accept` allows，`drop` rejects。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Policy description.",
+							Description: "Policy 描述",
 						},
 						"route_conditions": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Routing conditions.",
+							Description: "Routing conditions。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "condition type.",
+										Description: "条件类型",
 									},
 									"values": {
 										Type:        schema.TypeList,
 										Required:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "List of conditional values.",
+										Description: "列表 conditional 值。",
 									},
 									"match_pattern": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Matching mode, `1` precise matching, `0` fuzzy matching.",
+										Description: "Matching 模式，`1` precise matching，`0` fuzzy matching。",
 									},
 								},
 							},
@@ -81,24 +81,24 @@ func ResourceTencentCloudCcnRouteTableBroadcastPolicies() *schema.Resource {
 						"broadcast_conditions": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "propagation conditions.",
+							Description: "propagation conditions。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "condition type.",
+										Description: "条件类型",
 									},
 									"values": {
 										Type:        schema.TypeList,
 										Required:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "List of conditional values.",
+										Description: "列表 conditional 值。",
 									},
 									"match_pattern": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Matching mode, `1` precise matching, `0` fuzzy matching.",
+										Description: "Matching 模式，`1` precise matching，`0` fuzzy matching。",
 									},
 								},
 							},

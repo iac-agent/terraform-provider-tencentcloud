@@ -20,73 +20,73 @@ func DataSourceTencentCloudDbbrainRedisTopBigKeys() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID.",
 			},
 
 			"date": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Query date, such as 2021-05-27, the earliest date can be the previous 30 days.",
+				Description: "Query date, such 作为 2021-05-27, earliest date 可以 是 previous 30 days.",
 			},
 
 			"product": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Service product type, supported values include `redis` - cloud database Redis.",
+				Description: "Service product 类型, 支持 值 include `redis` - 云 数据库 Redis.",
 			},
 
 			"sort_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sorting field, the value includes `Capacity` - memory, `ItemCount` - number of elements, the default is `Capacity`.",
+				Description: "Sorting 字段, 值 includes `Capacity` - 内存, `ItemCount` - 数量 的 elements, 默认值 是 `Capacity`.",
 			},
 
 			"key_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Key type filter condition, the default is no filter, the value includes `string`, `list`, `set`, `hash`, `sortedset`, `stream`.",
+				Description: "Key 类型 过滤器 condition, 默认值 是 无 过滤器, 值 includes `字符串`, `列表`, `集合`, `hash`, `sortedset`, `流`.",
 			},
 
 			"top_keys": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "list of top keys.",
+				Description: "列表 的 top keys.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "key name.",
+							Description: "键 名称.",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "key type.",
+							Description: "键 类型.",
 						},
 						"encoding": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "key encoding method.",
+							Description: "键 编码 方法.",
 						},
 						"expire_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Key expiration timestamp (in milliseconds), 0 means no expiration time is set.",
+							Description: "Key expiration timestamp (在 milliseconds), 0 表示 无 expiration 时间 是 集合.",
 						},
 						"length": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Key memory size, unit Byte.",
+							Description: "Key 内存 大小, 单位 Byte.",
 						},
 						"item_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "number of elements.",
+							Description: "数量 的 elements.",
 						},
 						"max_element_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum element length.",
+							Description: "Maximum element 长度.",
 						},
 					},
 				},
@@ -95,7 +95,7 @@ func DataSourceTencentCloudDbbrainRedisTopBigKeys() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

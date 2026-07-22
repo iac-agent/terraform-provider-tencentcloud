@@ -19,44 +19,44 @@ func DataSourceTencentCloudClbInstanceTraffic() *schema.Resource {
 			"load_balancer_region": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "CLB instance region. If this parameter is not passed in, CLB instances in all regions will be returned.",
+				Description: "CLB实例区域。如果不传入该参数，则返回所有Region的CLB实例。",
 			},
 
 			"load_balancer_traffic": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Information of CLB instances sorted by outbound bandwidth from highest to lowest. Note: This field may return null, indicating that no valid values can be obtained.",
+				Description: "CLB实例信息按照出站带宽从高到低排序。注意：该字段可能返回null，表示取不到有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"load_balancer_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLB instance ID.",
+							Description: "CLB实例ID。",
 						},
 						"load_balancer_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLB instance name.",
+							Description: "CLB 实例名称。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLB instance region.",
+							Description: "CLB实例区域。",
 						},
 						"vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLB instance VIP.",
+							Description: "CLB实例VIP。",
 						},
 						"out_bandwidth": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Maximum outbound bandwidth in Mbps.",
+							Description: "最大出站带宽（以 Mbps 为单位）。",
 						},
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLB domain name. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: ".CLB 域名.注意：该字段可能返回null，表示取不到有效值。",
 						},
 					},
 				},
@@ -65,7 +65,7 @@ func DataSourceTencentCloudClbInstanceTraffic() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -22,19 +22,19 @@ func DataSourceTencentCloudClbTargetGroupList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Target group ID array.",
+				Description: "目标组 ID 数组。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter array, which is exclusive of TargetGroupIds. Valid values: TargetGroupVpcId and TargetGroupName. Target group ID will be used first.",
+				Description: "过滤器数组，不包含 TargetGroupIds。有效值：TargetGroupVpcId 和 TargetGroupName。将首先使用目标组 ID。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter name.",
+							Description: "过滤器名称。",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -42,7 +42,7 @@ func DataSourceTencentCloudClbTargetGroupList() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Filter value array.",
+							Description: "过滤值数组。",
 						},
 					},
 				},
@@ -51,89 +51,89 @@ func DataSourceTencentCloudClbTargetGroupList() *schema.Resource {
 			"target_group_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Information set of displayed target groups.",
+				Description: "显示的目标群体的信息集。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"target_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Target group ID.",
+							Description: "目标组 ID。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "vpcid of target group.",
+							Description: "目标组的 vpcid。",
 						},
 						"target_group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Target group name.",
+							Description: "目标群体名称。",
 						},
 						"port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Default port of target group. Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "目标组的默认端口。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"created_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Target group creation time.",
+							Description: "目标组创建时间。",
 						},
 						"updated_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Target group modification time.",
+							Description: "目标群体修改时间。",
 						},
 						"associated_rule": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Array of associated rules. Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "关联规则数组。注意：该字段可能返回null，表示取不到有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"load_balancer_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ID of associated CLB instance.",
+										Description: "关联的CLB实例ID。",
 									},
 									"listener_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ID of associated listener.",
+										Description: "关联监听器的ID。",
 									},
 									"location_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ID of associated forwarding rule. Note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "关联的转发规则ID。注意：该字段可能返回null，表示取不到有效值。",
 									},
 									"protocol": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Protocol type of associated listener, such as HTTP or TCP.",
+										Description: "关联侦听器的协议类型，例如 HTTP 或 TCP。",
 									},
 									"port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Port of associated listener.",
+										Description: "关联监听器的端口。",
 									},
 									"domain": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Domain name of associated forwarding rule. Note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "关联转发规则的域名。注意：该字段可能返回null，表示取不到有效值。",
 									},
 									"url": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "URL of associated forwarding rule. Note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "关联的转发规则的URL。注意：该字段可能返回null，表示取不到有效值。",
 									},
 									"load_balancer_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "CLB instance name.",
+										Description: "CLB 实例名称。",
 									},
 									"listener_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Listener name.",
+										Description: "听众姓名。",
 									},
 								},
 							},
@@ -145,7 +145,7 @@ func DataSourceTencentCloudClbTargetGroupList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

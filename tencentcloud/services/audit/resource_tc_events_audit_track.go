@@ -27,51 +27,51 @@ func ResourceTencentCloudEventsAuditTrack() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Tracking set name, which can only contain 3-48 letters, digits, hyphens, and underscores.",
+				Description: "Tracking 集合 名称，其中 可以 仅 contain 3-48 letters，digits，hyphens，和 underscores。",
 			},
 
 			"status": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Tracking set status (0: Not enabled; 1: Enabled).",
+				Description: "Tracking 集合 状态 (0: Not 已启用; 1: 已启用)。",
 			},
 
 			"storage": {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Storage type of shipped data. Valid values: `cos`, `cls` and `ckafka`.",
+				Description: "Storage 类型 shipped 数据. 有效值：`cos`，`cls` 和 `ckafka`。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"storage_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Storage type (Valid values: cos, cls, ckafka).",
+							Description: "Storage 类型 (有效值：cos，cls，ckafka)。",
 						},
 						"storage_region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "StorageRegion *string `json:'StorageRegion,omitnil,omitempty' name: 'StorageRegion'`.",
+							Description: "StorageRegion *字符串 `json:'StorageRegion,omitnil,omitempty' 名称: 'StorageRegion'`。",
 						},
 						"storage_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Storage name. For COS, the storage name is the custom bucket name, which can contain up to 50 lowercase letters, digits, and hyphens. It cannot contain \"-APPID\" and cannot start or end with a hyphen. For CLS, the storage name is the log topic ID, which can contain 1-50 characters.",
+							Description: "Storage 名称. For COS, 存储 名称 是 自定义 存储桶 名称, 其中 可以 contain up 到 50 lowercase letters, digits, 和 hyphens. It 不能 contain \"-APPID\" 和 不能 start 或 end 使用 hyphen. For CLS, 存储 名称 是 日志 主题 ID, 其中 可以 contain 1-50 字符.",
 						},
 						"storage_prefix": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Storage directory prefix. The COS log file prefix can only contain 3-40 letters and digits.",
+							Description: "Storage directory prefix. COS 日志 文件 prefix 可以 仅 contain 3-40 letters 和 digits。",
 						},
 						"storage_account_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Designated to store user ID.",
+							Description: "Designated 到 store 用户 ID。",
 						},
 						"storage_app_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Designated to store user app ID.",
+							Description: "Designated 到 store 用户 app ID。",
 						},
 					},
 				},
@@ -81,29 +81,29 @@ func ResourceTencentCloudEventsAuditTrack() *schema.Resource {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Data filtering criteria.",
+				Description: "Data filtering criteria。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_fields": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Resource filtering conditions.",
+							Description: "Resource filtering conditions。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"resource_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The product to which the tracking set event belongs. The value can be a single product such as `cos`, or `*` that indicates all products.",
+										Description: "product 到 其中 tracking 集合 事件 belongs. 值 可以 是 单个 product such 作为 `cos`，或 `*` 该 表示all products。",
 									},
 									"action_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Tracking set event type (`Read`: Read; `Write`: Write; `*`: All).",
+										Description: "Tracking 集合 事件 类型 (`Read`: Read; `Write`: Write; `*`: All)。",
 									},
 									"event_names": {
 										Type:        schema.TypeSet,
 										Required:    true,
-										Description: "The list of API names of tracking set events. When `ResourceType` is `*`, the value of `EventNames` must be `*`. When `ResourceType` is a specified product, the value of `EventNames` can be `*`. When `ResourceType` is `cos` or `cls`, up to 10 APIs are supported.",
+										Description: "列表 API names 的 tracking 集合 events. 当 `ResourceType` 是 `*`， 值 的 `EventNames` 必须 是 `*`. 当 `ResourceType` 是 指定 product， 值 的 `EventNames` 可以 是 `*`. 当 `ResourceType` 是 `cos` 或 `cls`，up 到 10 APIs 是 支持。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -118,13 +118,13 @@ func ResourceTencentCloudEventsAuditTrack() *schema.Resource {
 			"track_for_all_members": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Whether to enable the feature of shipping organization members operation logs to the organization admin account or the trusted service admin account (0: Not enabled; 1: Enabled. This feature can only be enabled by the organization admin account or the trusted service admin account).",
+				Description: "是否enable 功能 的 shipping organization members operation logs 到 organization admin 账号 或 trusted 服务 admin 账号 (0: Not 已启用; 1: 已启用 此 功能 可以 仅 是 已启用 通过 organization admin 账号 或 trusted 服务 admin 账号)。",
 			},
 
 			"track_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Whether the log list has come to an end. `true`: Yes. Pagination is not required.",
+				Description: "是否log 列表 has come 到 end. `true`: Yes. Pagination 不是必填项。",
 			},
 		},
 	}

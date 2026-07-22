@@ -27,66 +27,66 @@ func ResourceTencentCloudTseCngwNetwork() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "gateway ID.",
+				Description: "网关 ID。",
 			},
 
 			"group_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "gateway group ID.",
+				Description: "网关 组 ID",
 			},
 
 			"network_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "network id.",
+				Description: "网络 ID。",
 			},
 
 			"internet_address_version": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "internet type. Reference value:`IPV4` (default value), `IPV6`.",
+				Description: "internet 类型 Reference 值:`IPV4` (默认值)，`IPV6`。",
 			},
 			"internet_pay_mode": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "trade type of internet. Reference value:`BANDWIDTH` (default value), `TRAFFIC`.",
+				Description: "trade 类型 internet. Reference 值:`BANDWIDTH` (默认值)，`TRAFFIC`。",
 			},
 			"internet_max_bandwidth_out": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "public network bandwidth.",
+				Description: "公有 网络 带宽。",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "description of clb.",
+				Description: "描述 clb。",
 			},
 			"sla_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "specification type of clb. Default `shared` type when this parameter is empty, Note: input `shared` is not supported when creating. Reference value:`clb.c2.medium`, `clb.c3.small`, `clb.c3.medium`, `clb.c4.small`, `clb.c4.medium`, `clb.c4.large`, `clb.c4.xlarge`.",
+				Description: "规格 类型 clb. Default `shared` 类型 当 此 参数 是 空，注意: input `shared` 是 不 支持 当 creating. Reference 值:`clb.c2.medium`，`clb.c3.small`，`clb.c3.medium`，`clb.c4.small`，`clb.c4.medium`，`clb.c4.large`，`clb.c4.xlarge`。",
 			},
 			"multi_zone_flag": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether load balancing has multiple availability zones.",
+				Description: "Whether load balancing has 多个 availability zones。",
 			},
 			"master_zone_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "primary availability zone.",
+				Description: "primary availability 可用区",
 			},
 			"slave_zone_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "alternate availability zone.",
+				Description: "alternate availability 可用区",
 			},
 			"vip": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "clb vip.",
+				Description: "clb VIP",
 			},
 		},
 	}

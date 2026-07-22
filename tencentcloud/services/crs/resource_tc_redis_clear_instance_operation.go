@@ -28,7 +28,7 @@ func ResourceTencentCloudRedisClearInstanceOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of instance.",
+				Description: "ID 实例。",
 			},
 
 			"password": {
@@ -36,7 +36,7 @@ func ResourceTencentCloudRedisClearInstanceOperation() *schema.Resource {
 				ForceNew:    true,
 				Sensitive:   true,
 				Type:        schema.TypeString,
-				Description: "Redis instance password (password-free instances do not need to pass passwords, non-password-free instances must be transmitted).",
+				Description: "Redis 实例 密码 (密码-free 实例 do 不 need 到 pass passwords，non-密码-free 实例 必须 是 transmitted)。",
 			},
 		},
 	}

@@ -26,72 +26,72 @@ func ResourceTencentCloudCamMessageReceiver() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Username of the message recipient.",
+				Description: "用户名 的 消息 recipient。",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Recipient's notes.",
+				Description: "Recipient's notes。",
 			},
 
 			"country_code": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The international area code for mobile phone numbers is 86 for domestic areas.",
+				Description: "international area 代码 对于 mobile phone numbers 是 86 对于 domestic areas。",
 			},
 
 			"phone_number": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Mobile phone number, for example: 132****2492.",
+				Description: "Mobile phone 数量，对于 示例: 132****2492。",
 			},
 
 			"email": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Email address, for example: 57*****@qq.com.",
+				Description: "Email 地址，对于 示例: 57*****@qq.com。",
 			},
 
 			// computed
 			"uid": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "UID.",
+				Description: "UID。",
 			},
 
 			"is_receiver_owner": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Whether it is the primary contact person.",
+				Description: "是否为the primary contact person。",
 			},
 
 			"phone_flag": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Whether the mobile phone number is verified.",
+				Description: "是否mobile phone 数量 是 verified。",
 			},
 
 			"email_flag": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Whether the email is verified.",
+				Description: "是否email 是 verified。",
 			},
 
 			"wechat_flag": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Whether WeChat is allowed to receive notifications.",
+				Description: "Whether WeChat 是 allowed 到 receive notifications。",
 			},
 
 			"uin": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Account uin.",
+				Description: "账号 uin。",
 			},
 		},
 	}

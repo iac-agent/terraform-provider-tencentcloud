@@ -28,49 +28,49 @@ func ResourceTencentCloudScfFunctionAlias() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Alias name, which must be unique in the function, can contain 1 to 64 letters, digits, _, and -, and must begin with a letter.",
+				Description: "Alias 名称，其中 必须 是 唯一 在 函数，可以 contain 1 到 64 letters，digits，_，和 -，和 必须 begin 使用 letter。",
 			},
 
 			"function_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Function name.",
+				Description: "Function 名称",
 			},
 
 			"function_version": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Master version pointed to by the alias.",
+				Description: "Master 版本 pointed 到 通过 alias。",
 			},
 
 			"namespace": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Function namespace.",
+				Description: "Function 命名空间。",
 			},
 
 			"routing_config": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Request routing configuration of alias.",
+				Description: "Request routing 配置 的 alias。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"additional_version_weights": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Additional version with random weight-based routing.",
+							Description: "Additional 版本 使用 random 权重-based routing。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"version": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Function version name.",
+										Description: "Function 版本 名称",
 									},
 									"weight": {
 										Type:        schema.TypeFloat,
 										Required:    true,
-										Description: "Version weight.",
+										Description: "版本 权重",
 									},
 								},
 							},
@@ -78,28 +78,28 @@ func ResourceTencentCloudScfFunctionAlias() *schema.Resource {
 						"additional_version_matches": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Additional version with rule-based routing.",
+							Description: "Additional 版本 使用 规则-based routing。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"version": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Function version name.",
+										Description: "Function 版本 名称",
 									},
 									"key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Matching rule key. When the API is called, pass in the key to route the request to the specified version based on the matching ruleHeader method:Enter invoke.headers.User for key and pass in RoutingKey:{User:value} when invoking a function through invoke for invocation based on rule matching.",
+										Description: "Matching 规则 键 当 API 是 called，pass 在 键 到 路由 请求 到 指定 版本 based 在 matching ruleHeader 方法:Enter invoke.headers.用户 对于 键 和 pass 在 RoutingKey:{用户:值} 当 invoking 函数 through invoke 对于 invocation based 在 规则 matching。",
 									},
 									"method": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Match method. Valid values:range: Range matchexact: exact string match.",
+										Description: "Match 方法. 有效 值:范围: Range matchexact: exact 字符串 match。",
 									},
 									"expression": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Rule requirements for range match:It should be described in an open or closed range, i.e., (a,b) or [a,b], where both a and b are integersRule requirements for exact match:Exact string match.",
+										Description: "Rule requirements 对于 范围 match:It should 是 described 在 open 或 closed 范围，i.e.，(,b) 或 [,b]，其中 both 和 b 是 integersRule requirements 对于 exact match:Exact 字符串 match。",
 									},
 								},
 							},
@@ -111,7 +111,7 @@ func ResourceTencentCloudScfFunctionAlias() *schema.Resource {
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Alias description information.",
+				Description: "Alias 描述 信息。",
 			},
 		},
 	}

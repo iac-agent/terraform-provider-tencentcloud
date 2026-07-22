@@ -25,14 +25,14 @@ func ResourceTencentCloudVpnCustomerGatewayConfigurationDownload() *schema.Resou
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "VPN Gateway Instance ID.",
+				Description: "VPN Gateway 实例 ID",
 			},
 
 			"vpn_connection_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "VPN Connection Instance id.",
+				Description: "VPN Connection 实例 ID",
 			},
 
 			"customer_gateway_vendor": {
@@ -40,23 +40,23 @@ func ResourceTencentCloudVpnCustomerGatewayConfigurationDownload() *schema.Resou
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Customer Gateway Vendor Info.",
+				Description: "Customer Gateway Vendor Info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"platform": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Platform.",
+							Description: "Platform。",
 						},
 						"software_version": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "SoftwareVersion.",
+							Description: "SoftwareVersion。",
 						},
 						"vendor_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "VendorName.",
+							Description: "VendorName。",
 						},
 					},
 				},
@@ -66,13 +66,13 @@ func ResourceTencentCloudVpnCustomerGatewayConfigurationDownload() *schema.Resou
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "VPN connection access device physical interface name.",
+				Description: "VPN 连接 访问 device physical interface 名称",
 			},
 
 			"customer_gateway_configuration": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "xml configuration.",
+				Description: "xml 配置。",
 			},
 		},
 	}

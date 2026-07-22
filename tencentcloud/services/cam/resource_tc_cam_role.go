@@ -35,7 +35,7 @@ func ResourceTencentCloudCamRole() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Name of CAM role.",
+				Description: "名称 CAM 角色",
 			},
 			"document": {
 				Type:     schema.TypeString,
@@ -54,43 +54,43 @@ func ResourceTencentCloudCamRole() *schema.Resource {
 					flag := reflect.DeepEqual(oldJson, newJson)
 					return flag
 				},
-				Description: "Document of the CAM role. The syntax refers to [CAM POLICY](https://intl.cloud.tencent.com/document/product/598/10604). There are some notes when using this para in terraform: 1. The elements in json claimed supporting two types as `string` and `array` only support type `array`; 2. Terraform does not support the `root` syntax, when appears, it must be replaced with the uin it stands for.",
+				Description: "Document 的 CAM 角色 syntax refers 到 [CAM POLICY](https://intl.云.tencent.com/document/product/598/10604). There 是 some notes 当 使用 此 para 在 terraform: 1. elements 在 json claimed supporting two types 作为 `字符串` 和 `数组` 仅 support 类型 `数组`; 2. Terraform does 不 support `root` syntax，当 appears，它 必须 是 replaced 使用 uin 它 stands 对于。",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Description of the CAM role.",
+				Description: "描述 CAM 角色",
 			},
 			"console_login": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Indicates whether the CAM role can login or not.",
+				Description: "表示是否CAM 角色 可以 login 或 不。",
 			},
 			"session_duration": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "The maximum validity period of the temporary key for creating a role.",
+				Description: "最大 validity 周期 的 temporary 键 对于 creating 角色",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create time of the CAM role.",
+				Description: "创建时间 的 CAM 角色",
 			},
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The last update time of the CAM role.",
+				Description: "last 更新时间 的 CAM 角色",
 			},
 			"role_arn": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "RoleArn Information for Roles.",
+				Description: "RoleArn Information 对于 Roles。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "A list of tags used to associate different resources.",
+				Description: "A 列表 标签 用于associate different resources。",
 			},
 		},
 	}

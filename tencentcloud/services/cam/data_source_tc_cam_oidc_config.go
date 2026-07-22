@@ -19,25 +19,25 @@ func DataSourceTencentCloudCamOidcConfig() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Name.",
+				Description: "名称",
 			},
 
 			"provider_type": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "IdP type. 11: Role IdP.",
+				Description: "IdP 类型 11: 角色 IdP。",
 			},
 
 			"identity_url": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "IdP URL.",
+				Description: "IdP URL",
 			},
 
 			"identity_key": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Public key for signature.",
+				Description: "Public 键 对于 签名",
 			},
 
 			"client_id": {
@@ -46,25 +46,25 @@ func DataSourceTencentCloudCamOidcConfig() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Client ID.",
+				Description: "Client ID。",
 			},
 
 			"status": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Status. 0: Not set; 2: Disabled; 11: Enabled.",
+				Description: "状态 0: Not 集合; 2: 已禁用; 11: 已启用",
 			},
 
 			"description": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Description.",
+				Description: "描述",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

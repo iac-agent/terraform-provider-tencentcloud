@@ -19,48 +19,48 @@ func DataSourceTencentCloudDbbrainSlowLogTimeSeriesStats() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Start time, such as `2019-09-10 12:13:14`.",
+				Description: "Start 时间, such 作为 `2019-09-10 12:13:14`.",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "End time, such as `2019-09-10 12:13:14`, the interval between the end time and the start time can be up to 7 days.",
+				Description: "End 时间, such 作为 `2019-09-10 12:13:14`, 间隔 between end 时间 和 start 时间 可以 是 up 到 7 days.",
 			},
 
 			"product": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Service product type, supported values include: `mysql` - cloud database MySQL, `cynosdb` - cloud database CynosDB for MySQL, the default is `mysql`.",
+				Description: "Service product 类型, 支持 值 include: `mysql` - 云 数据库 MySQL, `cynosdb` - 云 数据库 CynosDB 对于 MySQL, 默认值 是 `mysql`.",
 			},
 
 			"period": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The unit time interval between bars, in seconds.",
+				Description: "单位 时间 间隔 between bars, 在 秒.",
 			},
 
 			"time_series": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Statistics on the number of slow logs in a unit time interval.",
+				Description: "Statistics 在 数量 的 slow logs 在 单位 时间 间隔.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "total.",
+							Description: "总数.",
 						},
 						"timestamp": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Statistics start time.",
+							Description: "Statistics start 时间.",
 						},
 					},
 				},
@@ -70,7 +70,7 @@ func DataSourceTencentCloudDbbrainSlowLogTimeSeriesStats() *schema.Resource {
 				Computed: true,
 				Type:     schema.TypeList,
 				// MaxItems:    1,
-				Description: "Instan1ce cpu utilization monitoring data within a unit time interval.",
+				Description: "Instan1ce cpu utilization 监控 数据 within 单位 时间 间隔.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"series": {
@@ -82,12 +82,12 @@ func DataSourceTencentCloudDbbrainSlowLogTimeSeriesStats() *schema.Resource {
 									"metric": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Indicator name.",
+										Description: "Indicator 名称.",
 									},
 									"unit": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Indicator unit.",
+										Description: "Indicator 单位.",
 									},
 									"values": {
 										Type: schema.TypeSet,
@@ -95,7 +95,7 @@ func DataSourceTencentCloudDbbrainSlowLogTimeSeriesStats() *schema.Resource {
 											Type: schema.TypeInt,
 										},
 										Computed:    true,
-										Description: "Index value. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Index 值. 注意: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 									},
 								},
 							},
@@ -106,7 +106,7 @@ func DataSourceTencentCloudDbbrainSlowLogTimeSeriesStats() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "The timestamp corresponding to the monitoring indicator.",
+							Description: "timestamp corresponding 到 监控 indicator.",
 						},
 					},
 				},
@@ -115,7 +115,7 @@ func DataSourceTencentCloudDbbrainSlowLogTimeSeriesStats() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

@@ -19,24 +19,24 @@ func DataSourceTencentCloudCwpMachines() *schema.Resource {
 			"machine_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Type of the machine's zone\nCVM: Cloud Virtual Machine\nBM: BMECM: Edge Computing Machine\nLH: Lighthouse\nOther: Hybrid Cloud Zone.",
+				Description: "类型 machine's 可用区\nCVM: Cloud Virtual Machine\nBM: BMECM: Edge Computing Machine\nLH: Lighthouse\nOther: Hybrid Cloud 可用区",
 			},
 
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter criteria\n<li>Ips - String - required: no - query by IP</li>\n<li>Names - String - required: no - query by instance name</li>\n<li>InstanceIds - String - required: no - instance ID for query </li>\n<li>Status - String - required: no - client online status (OFFLINE: offline/shut down | ONLINE: online | UNINSTALLED: not installed | AGENT_OFFLINE: agent offline | AGENT_SHUTDOWN: agent shut down)</li>\n<li>Version - String required: no - current edition ( PRO_VERSION: Pro Edition | BASIC_VERSION: Basic Edition | Flagship: Ultimate Edition | ProtectedMachines: Pro + Ultimate Editions)</li>\n<li>Risk - String - required: no - risky host (yes)</li>\n<li>Os - String - required: no - operating system (value of DescribeMachineOsList)</li>\nEach filter criterion supports only one value.\n<li>Quuid - String - required: no - CVM instance UUID. Maximum value: 100.</li>\n<li>AddedOnTheFifteen - String required: no - whether to query only hosts added within the last 15 days (1: yes) </li>\n<li> TagId - String required: no - query the list of hosts associated with the specified tag </li>.",
+				Description: "过滤器 criteria\n<li>Ips - String - 必填: 无 - 查询 通过 IP</li>\n<li>Names - String - 必填: 无 - 查询 通过 实例名称</li>\n<li>InstanceIds - String - 必填: 无 - 实例 ID 对于 查询 </li>\n<li>状态 - String - 必填: 无 - 客户端 online 状态 (OFFLINE: offline/shut down | ONLINE: online | UNINSTALLED: 不 installed | AGENT_OFFLINE: agent offline | AGENT_SHUTDOWN: agent shut down)</li>\n<li>版本 - String 必填: 无 - 当前 edition ( PRO_VERSION: Pro Edition | BASIC_VERSION: Basic Edition | Flagship: Ultimate Edition | ProtectedMachines: Pro + Ultimate Editions)</li>\n<li>Risk - String - 必填: 无 - risky 主机 (yes)</li>\n<li>Os - String - 必填: 无 - operating 系统 (值 的 DescribeMachineOsList)</li>\nEach 过滤器 criterion 支持 仅 一个 值\n<li>Quuid - String - 必填: 无 - CVM 实例 UUID. Maximum 值: 100.</li>\n<li>AddedOnTheFifteen - String 必填: 无 - 是否query 仅 hosts added within last 15 days (1: yes) </li>\n<li> TagId - String 必填: 无 - 查询 列表 hosts associated 使用 指定 标签 </li>。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Name of filter key.",
+							Description: "名称 过滤器 键",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "One or more filter values.",
+							Description: "一个或多个过滤值",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -44,7 +44,7 @@ func DataSourceTencentCloudCwpMachines() *schema.Resource {
 						"exact_match": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Fuzzy search.",
+							Description: "Fuzzy search。",
 						},
 					},
 				},
@@ -53,13 +53,13 @@ func DataSourceTencentCloudCwpMachines() *schema.Resource {
 			"machine_region": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Machine region. For example, ap-guangzhou and ap-shanghai.",
+				Description: "Machine 地域 For 示例，ap-guangzhou 和 ap-shanghai。",
 			},
 
 			"project_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "ID List of Businesses to which machines belong.",
+				Description: "ID 列表 Businesses 到 其中 machines belong。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -68,94 +68,94 @@ func DataSourceTencentCloudCwpMachines() *schema.Resource {
 			"machines": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of hosts.",
+				Description: "列表 hosts。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"machine_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Host name.",
+							Description: "主机名",
 						},
 						"machine_os": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Host System.",
+							Description: "主机 System。",
 						},
 						"machine_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Host status\n<li>OFFLINE: Offline</li>\n<li>ONLINE: Online</li>\n<li>SHUTDOWN: Shut down</li>\n<li>UNINSTALLED: Unprotected</li>.",
+							Description: "主机 状态\n<li>OFFLINE: Offline</li>\n<li>ONLINE: Online</li>\n<li>SHUTDOWN: Shut down</li>\n<li>UNINSTALLED: Unprotected</li>。",
 						},
 						"agent_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ONLINE: Protected; OFFLINE: Offline; UNINSTALLED: Not installed.",
+							Description: "ONLINE: Protected; OFFLINE: Offline; UNINSTALLED: Not installed。",
 						},
 						"instance_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "RUNNING; STOPPED; EXPIRED (awaiting recycling).",
+							Description: "RUNNING; STOPPED; EXPIRED (awaiting recycling)。",
 						},
 						"uuid": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Yunjing client UUID. If the client is offline for a long time, an empty string is returned.",
+							Description: "Yunjing 客户端 UUID. 如果 客户端 是 offline 对于 long 时间， 空 字符串 是 返回。",
 						},
 						"quuid": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CVM or BM Machine Unique UUID.",
+							Description: "CVM 或 BM Machine Unique UUID。",
 						},
 						"vul_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of vulnerabilities.",
+							Description: "数量 vulnerabilities。",
 						},
 						"machine_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Host IP.",
+							Description: "主机 IP",
 						},
 						"is_pro_version": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether the edition is Pro Edition\n<li>true: yes</li>\n<li>false: no</li>.",
+							Description: "是否edition 是 Pro Edition\n<li>true: yes</li>\n<li>false: 无</li>。",
 						},
 						"machine_wan_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Public IP address of a host.",
+							Description: "公网 IP 地址 的 主机",
 						},
 						"pay_mode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Host status\n<li>POSTPAY: postpaid, indicating pay-as-you-go mode  </li>\n<li>PREPAY: prepaid, indicating monthly subscription mode</li>.",
+							Description: "主机 状态\n<li>POSTPAY: postpaid，indicating pay-作为-您-go 模式 </li>\n<li>PREPAY: prepaid，indicating monthly subscription 模式</li>。",
 						},
 						"malware_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of Trojans.",
+							Description: "数量 Trojans。",
 						},
 						"tag": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Tag information.",
+							Description: "标签 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"rid": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Associated tag ID.",
+										Description: "Associated 标签 ID。",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag name.",
+										Description: "标签 名称",
 									},
 									"tag_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Tag ID.",
+										Description: "标签 ID。",
 									},
 								},
 							},
@@ -163,53 +163,53 @@ func DataSourceTencentCloudCwpMachines() *schema.Resource {
 						"baseline_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of baseline risks.",
+							Description: "数量 baseline risks。",
 						},
 						"cyber_attack_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of network risks.",
+							Description: "数量 网络 risks。",
 						},
 						"security_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Risk status\n<li>SAFE: Safe</li>\n<li>RISK: Risk</li>\n<li>UNKNOWN: Unknown</li>.",
+							Description: "Risk 状态\n<li>SAFE: Safe</li>\n<li>RISK: Risk</li>\n<li>UNKNOWN: Unknown</li>。",
 						},
 						"invasion_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of intrusion events.",
+							Description: "数量 intrusion events。",
 						},
 						"region_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Region information.",
+							Description: "地域 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Region identifiers, such as ap-guangzhou, ap-shanghai, and ap-beijing.",
+										Description: "地域 identifiers，such 作为 ap-guangzhou，ap-shanghai，和 ap-beijing。",
 									},
 									"region_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Chinese name of a region, such as South China (Guangzhou), East China (Shanghai Finance), and North China (Beijing).",
+										Description: "Chinese 名称 地域，such 作为 South China (Guangzhou)，East China (Shanghai Finance)，和 North China (Beijing)。",
 									},
 									"region_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Region ID.",
+										Description: "地域 ID",
 									},
 									"region_code": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Region code, such as gz, sh, and bj.",
+										Description: "地域 代码，such 作为 gz，sh，和 bj。",
 									},
 									"region_name_en": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "English name of the region.",
+										Description: "English 名称 地域",
 									},
 								},
 							},
@@ -217,53 +217,53 @@ func DataSourceTencentCloudCwpMachines() *schema.Resource {
 						"instance_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance status: TERMINATED_PRO_VERSION - terminated.",
+							Description: "实例状态: TERMINATED_PRO_VERSION - terminated。",
 						},
 						"license_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Tamper-proof; authorization status: 1 - authorized; 0 - unauthorized.",
+							Description: "Tamper-proof; authorization 状态: 1 - authorized; 0 - unauthorized。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Project ID.",
+							Description: "项目 ID",
 						},
 						"has_asset_scan": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether there is an available asset scanning API: 0 - no; 1 - yes.",
+							Description: "Whether there 是 可用 asset scanning API: 0 - 无; 1 - yes。",
 						},
 						"machine_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Machine Zone Type. CVM - Cloud Virtual Machine; BM: Bare Metal; ECM: Edge Computing Machine; LH: Lightweight Application Server; Other: Hybrid Cloud Zone.",
+							Description: "Machine 可用区 类型 CVM - Cloud Virtual Machine; BM: Bare Metal; ECM: Edge Computing Machine; LH: Lightweight Application Server; Other: Hybrid Cloud 可用区",
 						},
 						"kernel_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Kernel version.",
+							Description: "Kernel 版本",
 						},
 						"protect_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Protection version: BASIC_VERSION - Basic Edition; PRO_VERSION - Professional Edition; Flagship - Ultimate Edition; GENERAL_DISCOUNT - Inclusive Edition.",
+							Description: "Protection 版本: BASIC_VERSION - Basic Edition; PRO_VERSION - Professional Edition; Flagship - Ultimate Edition; GENERAL_DISCOUNT - Inclusive Edition。",
 						},
 						"cloud_tags": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Cloud Tag Information\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Cloud 标签 Information\n注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag key.",
+										Description: "标签键",
 									},
 									"tag_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag value.",
+										Description: "标签值",
 									},
 								},
 							},
@@ -271,53 +271,53 @@ func DataSourceTencentCloudCwpMachines() *schema.Resource {
 						"is_added_on_the_fifteen": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether a host added within the last 15 days: 0: no; 1: yes\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Whether 主机 added within last 15 days: 0: 无; 1: yes\n注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"ip_list": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Host IP List\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "主机 IP List\n注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Network\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Network\n注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"machine_extra_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Additional information\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Additional 信息\n注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"wan_ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Public IP address\nNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "公网 IP 地址\n注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"private_ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Private IP address\nNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "内网 IP 地址\n注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"network_type": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Network Type. 1: VPC network; 2: Basic Network; 3: Non-Tencent Cloud Network\nNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Network 类型 1: VPC 网络; 2: Basic Network; 3: Non-Tencent Cloud Network\n注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"network_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Network Name, returns vpc_id in the case of a VPC network\nNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Network 名称，返回vpc_id 在 case 的 VPC 网络\n注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "实例 ID\n注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"host_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Host name\nNote: This field may return null, indicating that no valid values can be obtained.",
+										Description: "主机名\n注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -325,17 +325,17 @@ func DataSourceTencentCloudCwpMachines() *schema.Resource {
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Remarks\nNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "备注\n注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"agent_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Host security agent version.",
+							Description: "主机 安全 agent 版本",
 						},
 					},
 				},
@@ -344,7 +344,7 @@ func DataSourceTencentCloudCwpMachines() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -19,49 +19,49 @@ func DataSourceTencentCloudCcnCrossBorderFlowMonitor() *schema.Resource {
 			"source_region": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "SourceRegion.",
+				Description: "SourceRegion。",
 			},
 
 			"destination_region": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "DestinationRegion.",
+				Description: "DestinationRegion。",
 			},
 
 			"ccn_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "CcnId.",
+				Description: "CcnId。",
 			},
 
 			"ccn_uin": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "CcnUin.",
+				Description: "CcnUin。",
 			},
 
 			"period": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "TimePeriod.",
+				Description: "TimePeriod。",
 			},
 
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "StartTime.",
+				Description: "StartTime。",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "EndTime.",
+				Description: "EndTime。",
 			},
 
 			"cross_border_flow_monitor_data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "monitor data of cross border.",
+				Description: "监控 数据 的 cross border。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"in_bandwidth": {
@@ -70,7 +70,7 @@ func DataSourceTencentCloudCcnCrossBorderFlowMonitor() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "in bandwidth, `bps`.",
+							Description: "在 带宽，`bps`。",
 						},
 						"out_bandwidth": {
 							Type: schema.TypeSet,
@@ -78,7 +78,7 @@ func DataSourceTencentCloudCcnCrossBorderFlowMonitor() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "out bandwidth, `bps`.",
+							Description: "out 带宽，`bps`。",
 						},
 						"in_pkg": {
 							Type: schema.TypeSet,
@@ -86,7 +86,7 @@ func DataSourceTencentCloudCcnCrossBorderFlowMonitor() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "in pkg, `pps`.",
+							Description: "在 pkg，`pps`。",
 						},
 						"out_pkg": {
 							Type: schema.TypeSet,
@@ -94,7 +94,7 @@ func DataSourceTencentCloudCcnCrossBorderFlowMonitor() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "out pkg, `pps`.",
+							Description: "out pkg，`pps`。",
 						},
 					},
 				},
@@ -103,7 +103,7 @@ func DataSourceTencentCloudCcnCrossBorderFlowMonitor() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

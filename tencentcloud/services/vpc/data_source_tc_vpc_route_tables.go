@@ -24,60 +24,60 @@ func DataSourceTencentCloudVpcRouteTables() *schema.Resource {
 			"route_table_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the routing table to be queried.",
+				Description: "ID routing 表 到 是 queried。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of the routing table to be queried.",
+				Description: "名称 routing 表 到 是 queried。",
 			},
 			"tag_key": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Filter if routing table has this tag.",
+				Description: "过滤器 如果 routing 表 has 此 标签",
 			},
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the VPC to be queried.",
+				Description: "ID VPC 到 是 queried。",
 			},
 			"association_main": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Filter the main routing table.",
+				Description: "过滤器 main routing 表。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tags of the routing table to be queried.",
+				Description: "标签 的 routing 表 到 是 queried。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// Computed values
 			"instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "The information list of the VPC route table.",
+				Description: "信息 列表 VPC 路由 表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"route_table_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the routing table.",
+							Description: "ID routing 表。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the routing table.",
+							Description: "名称 routing 表。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the VPC.",
+							Description: "ID VPC。",
 						},
 						"subnet_ids": {
 							Type:     schema.TypeList,
@@ -85,58 +85,58 @@ func DataSourceTencentCloudVpcRouteTables() *schema.Resource {
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
-							Description: "List of subnet IDs bound to the route table.",
+							Description: "列表 子网 IDs bound 到 路由 表。",
 						},
 						"is_default": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Indicates whether it is the default routing table.",
+							Description: "表示是否it 是 默认值 routing 表。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time of the routing table.",
+							Description: "创建时间 的 routing 表。",
 						},
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "Tags of the routing table.",
+							Description: "标签 的 routing 表。",
 						},
 						"route_entry_infos": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Detailed information of each entry of the route table.",
+							Description: "Detailed 信息 的 each entry 的 路由 表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"route_entry_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ID of a route table entry.",
+										Description: "ID 路由 表 entry。",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Description information user defined for a route table rule.",
+										Description: "描述 信息 用户 defined 对于 路由 表 规则。",
 									},
 									"destination_cidr_block": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The destination address block.",
+										Description: "destination 地址 block。",
 									},
 									"next_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Type of next-hop, and available values include `CVM`, `VPN`, `DIRECTCONNECT`, `PEERCONNECTION`, `SSLVPN`, `NAT`, `NORMAL_CVM`, `EIP` and `CCN`.",
+										Description: "类型 next-hop，和 可用 值 include `CVM`，`VPN`，`DIRECTCONNECT`，`PEERCONNECTION`，`SSLVPN`，`NAT`，`NORMAL_CVM`，`EIP` 和 `CCN`。",
 									},
 									"next_hub": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ID of next-hop gateway. Note: when 'next_type' is EIP, GatewayId will fix the value `0`.",
+										Description: "ID next-hop 网关. 注意: 当 'next_type' 是 EIP，GatewayId 将 fix 值 `0`。",
 									},
 									"route_item_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The unique policy ID for the route.",
+										Description: "唯一 策略 ID 对于 路由。",
 									},
 								},
 							},

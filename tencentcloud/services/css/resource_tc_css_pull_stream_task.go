@@ -27,7 +27,7 @@ func ResourceTencentCloudCssPullStreamTask() *schema.Resource {
 			"source_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "`PullLivePushLive`: SourceUrls live type, `PullVodPushLive`: SourceUrls vod type.",
+				Description: "`PullLivePushLive`: SourceUrls live 类型，`PullVodPushLive`: SourceUrls vod 类型",
 			},
 
 			"source_urls": {
@@ -36,49 +36,49 @@ func ResourceTencentCloudCssPullStreamTask() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Required:    true,
-				Description: "Pull Source media, SourceType=PullLivePushLive only 1 value, SourceType=PullLivePushLive can input multi values.",
+				Description: "Pull 来源 media，SourceType=PullLivePushLive 仅 1 值，SourceType=PullLivePushLive 可以 input multi 值。",
 			},
 
 			"domain_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "push domain name.",
+				Description: "push 域名 名称",
 			},
 
 			"app_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "push app name.",
+				Description: "push app 名称",
 			},
 
 			"stream_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "push stream name.",
+				Description: "push 流 名称",
 			},
 
 			"start_time": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "task begin time.",
+				Description: "任务 开始时间。",
 			},
 
 			"end_time": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "task end time.",
+				Description: "任务 结束时间。",
 			},
 
 			"operator": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "desc operator user name.",
+				Description: "desc 操作者 用户 名称",
 			},
 
 			"push_args": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "other pushing args.",
+				Description: "other pushing args。",
 			},
 
 			"callback_events": {
@@ -88,94 +88,94 @@ func ResourceTencentCloudCssPullStreamTask() *schema.Resource {
 				},
 				Optional:    true,
 				Computed:    true,
-				Description: "defind the callback event you need, null for all. TaskStart, TaskExit, VodSourceFileStart, VodSourceFileFinish, ResetTaskConfig, PullFileUnstable, PushStreamUnstable, PullFileFailed, PushStreamFailed, FileEndEarly.",
+				Description: "defind callback 事件 您 need，null 对于 all. TaskStart，TaskExit，VodSourceFileStart，VodSourceFileFinish，ResetTaskConfig，PullFileUnstable，PushStreamUnstable，PullFileFailed，PushStreamFailed，FileEndEarly。",
 			},
 
 			"vod_loop_times": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "loop time for vod.",
+				Description: "loop 时间 对于 vod。",
 			},
 
 			"vod_refresh_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "vod refresh method. `ImmediateNewSource`: switch to new source at once, `ContinueBreakPoint`: switch to new source while old source finish.",
+				Description: "vod refresh 方法. `ImmediateNewSource`: switch 到 new 来源 在 once，`ContinueBreakPoint`: switch 到 new 来源 while old 来源 finish。",
 			},
 
 			"callback_url": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "task event callback url.",
+				Description: "任务 事件 callback URL",
 			},
 
 			"extra_cmd": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ignore_region for ignore the input region and reblance inside the server.",
+				Description: "ignore_region 对于 ignore input 地域 和 reblance inside 服务器。",
 			},
 
 			"comment": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "desc for pull task.",
+				Description: "desc 对于 pull 任务。",
 			},
 
 			"to_url": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "full target push url, DomainName, AppName, StreamName field must be empty.",
+				Description: "full 目标 push URL，DomainName，AppName，StreamName 字段 必须 是 空。",
 			},
 
 			"backup_source_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "backup pull source type.",
+				Description: "备份 pull 来源 类型",
 			},
 
 			"backup_source_url": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "backup pull source.",
+				Description: "备份 pull 来源",
 			},
 
 			"watermark_list": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "watermark list, max 4 setting.",
+				Description: "水印 列表，max 4 setting。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"picture_url": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "watermark picture url.",
+							Description: "水印 picture URL",
 						},
 						"x_position": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "x position.",
+							Description: "x position。",
 						},
 						"y_position": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "y position.",
+							Description: "y position。",
 						},
 						"width": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "pic width.",
+							Description: "pic 宽度。",
 						},
 						"height": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "pic height.",
+							Description: "pic 高度。",
 						},
 						"location": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "position type, 0:left top, 1:right top, 2:right bot, 3: left bot.",
+							Description: "position 类型，0:left top，1:right top，2:right bot，3: left bot。",
 						},
 					},
 				},
@@ -185,49 +185,49 @@ func ResourceTencentCloudCssPullStreamTask() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "task enable or disable.",
+				Description: "任务 启用 或 disable。",
 			},
 
 			"create_by": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "desc who create the task.",
+				Description: "desc who create 任务。",
 			},
 
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "create time.",
+				Description: "创建时间。",
 			},
 
 			"update_by": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "desc who update the task.",
+				Description: "desc who update 任务。",
 			},
 
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "update time.",
+				Description: "更新时间。",
 			},
 
 			"file_index": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "task enable or disable.",
+				Description: "任务 启用 或 disable。",
 			},
 
 			"offset_time": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "task enable or disable.",
+				Description: "任务 启用 或 disable。",
 			},
 
 			"region": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "task run region.",
+				Description: "任务 run 地域",
 			},
 		},
 	}

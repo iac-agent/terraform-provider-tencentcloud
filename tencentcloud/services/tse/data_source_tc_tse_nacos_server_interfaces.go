@@ -17,19 +17,19 @@ func DataSourceTencentCloudTseNacosServerInterfaces() *schema.Resource {
 			"instance_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "engine instance ID.",
+				Description: "引擎 实例 ID。",
 			},
 
 			"content": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "interface list.",
+				Description: "interface 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"interface": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "interface nameNote: This field may return null, indicating that a valid value is not available.",
+							Description: "interface name注意：此字段可能返回 null，表示有效值不可用。",
 						},
 					},
 				},
@@ -38,7 +38,7 @@ func DataSourceTencentCloudTseNacosServerInterfaces() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

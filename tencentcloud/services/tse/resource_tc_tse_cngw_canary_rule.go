@@ -30,73 +30,73 @@ func ResourceTencentCloudTseCngwCanaryRule() *schema.Resource {
 			"gateway_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway ID.",
+				Description: "网关 ID。",
 			},
 
 			"service_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "service ID.",
+				Description: "服务 ID",
 			},
 
 			"canary_rule": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "canary rule configuration.",
+				Description: "canary 规则 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"priority": {
 							Type:        schema.TypeInt,
 							Required:    true,
 							ForceNew:    true,
-							Description: "priority. The value ranges from 0 to 100; the larger the value, the higher the priority; the priority cannot be repeated between different rules.",
+							Description: "优先级 值 ranges 从 0 到 100; larger 值， higher 优先级; 优先级 不能 是 repeated between different 规则。",
 						},
 						"enabled": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "the status of canary rule.",
+							Description: "状态 canary 规则。",
 						},
 						"condition_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "parameter matching condition list.",
+							Description: "参数 matching condition 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "type.Reference value:`path`,`method`,`query`,`header`,`cookie`,`body`,`system`.",
+										Description: "类型Reference 值:`路径`,`方法`,`查询`,`头部`,`cookie`,`正文`,`系统`。",
 									},
 									"key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "parameter name.",
+										Description: "参数 名称",
 									},
 									"operator": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "operator.Reference value:`le`,`eq`,`lt`,`ne`,`ge`,`gt`,`regex`,`exists`,`in`,`not in`,`prefix`,`exact`,`regex`.",
+										Description: "操作者Reference 值:`le`,`eq`,`lt`,`ne`,`ge`,`gt`,`regex`,`exists`,`在`,`不 在`,`prefix`,`exact`,`regex`。",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "parameter value.",
+										Description: "参数 值",
 									},
 									"delimiter": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "delimiter. valid when operator is in or not in, reference value:`,`, `;`,`\\n`.",
+										Description: "delimiter. 有效 当 操作者 是 在 或 不 在，reference 值:`,`，`;`,`\\n`。",
 									},
 									"global_config_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "global configuration ID.",
+										Description: "全局 配置 ID。",
 									},
 									"global_config_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "global configuration name.",
+										Description: "全局 配置 名称",
 									},
 								},
 							},
@@ -104,28 +104,28 @@ func ResourceTencentCloudTseCngwCanaryRule() *schema.Resource {
 						"balanced_service_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "service weight configuration.",
+							Description: "服务 权重 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"service_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "service ID, required when used as an input parameter.",
+										Description: "服务 ID，必填 当 使用 作为 input 参数。",
 									},
 									"service_name": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "service name, meaningless when used as an input parameter.",
+										Description: "服务名称，meaningless 当 使用 作为 input 参数。",
 									},
 									"upstream_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "upstream name, meaningless when used as an input parameter.",
+										Description: "upstream 名称，meaningless 当 使用 作为 input 参数。",
 									},
 									"percent": {
 										Type:        schema.TypeFloat,
 										Optional:    true,
-										Description: "percent, 10 is 10%, valid values:0 to 100.",
+										Description: "percent，10 是 10%，有效 值:0 到 100。",
 									},
 								},
 							},
@@ -133,12 +133,12 @@ func ResourceTencentCloudTseCngwCanaryRule() *schema.Resource {
 						"service_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "service ID.",
+							Description: "服务 ID",
 						},
 						"service_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "service name.",
+							Description: "服务名称",
 						},
 					},
 				},
@@ -147,7 +147,7 @@ func ResourceTencentCloudTseCngwCanaryRule() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 		},
 	}

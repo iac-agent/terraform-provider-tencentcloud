@@ -28,17 +28,17 @@ func ResourceTencentCloudCiamUserGroup() *schema.Resource {
 			"user_store_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "User Store ID.",
+				Description: "用户 Store ID。",
 			},
 			"display_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "User Group Name.",
+				Description: "用户 Group 名称",
 			},
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "User Group Description.",
+				Description: "用户 Group 描述",
 			},
 		},
 	}

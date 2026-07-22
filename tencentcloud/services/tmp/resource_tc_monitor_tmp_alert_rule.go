@@ -30,49 +30,49 @@ func ResourceTencentCloudMonitorTmpAlertRule() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 			"rule_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Rule name.",
+				Description: "Rule 名称",
 			},
 			"expr": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Rule expression, reference documentation: `https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/`.",
+				Description: "Rule expression，reference documentation: `https://prometheus.io/docs/prometheus/latest/配置/alerting_rules/`。",
 			},
 			"receivers": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Alarm notification template id list.",
+				Description: "Alarm 通知 template ID 列表。",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 			"rule_state": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Rule state code.",
+				Description: "Rule state 代码",
 			},
 			"duration": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Rule alarm duration.",
+				Description: "Rule 告警 时长。",
 			},
 			"labels": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Rule alarm duration.",
+				Description: "Rule 告警 时长。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "key.",
+							Description: "键",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "value.",
+							Description: "值",
 						},
 					},
 				},
@@ -80,18 +80,18 @@ func ResourceTencentCloudMonitorTmpAlertRule() *schema.Resource {
 			"annotations": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Rule alarm duration.",
+				Description: "Rule 告警 时长。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "key.",
+							Description: "键",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "value.",
+							Description: "值",
 						},
 					},
 				},
@@ -99,7 +99,7 @@ func ResourceTencentCloudMonitorTmpAlertRule() *schema.Resource {
 			"type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Alarm Policy Template Classification.",
+				Description: "Alarm Policy 模板 Classification。",
 			},
 		},
 	}

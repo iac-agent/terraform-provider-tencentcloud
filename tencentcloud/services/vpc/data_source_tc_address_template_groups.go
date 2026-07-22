@@ -21,35 +21,35 @@ func DataSourceTencentCloudAddressTemplateGroups() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of the address template group to query.",
+				Description: "名称 地址 template 组 到 查询。",
 			},
 			"id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Id of the address template group to query.",
+				Description: "ID 的 地址 template 组 到 查询。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// Computed values
 			"group_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information list of the dedicated address template groups.",
+				Description: "Information 列表 dedicated 地址 模板组s。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Id of the address template group.",
+							Description: "ID 的 地址 template 组。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of address template group.",
+							Description: "名称 地址 template 组。",
 						},
 						"template_ids": {
 							Type: schema.TypeList,
@@ -57,7 +57,7 @@ func DataSourceTencentCloudAddressTemplateGroups() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "ID set of the address template.",
+							Description: "ID 集合 的 地址 template。",
 						},
 					},
 				},

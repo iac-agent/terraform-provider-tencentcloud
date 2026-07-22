@@ -31,13 +31,13 @@ func ResourceTencentCloudPrivateDnsZone() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Domain name, which must be in the format of standard TLD.",
+				Description: "域名 名称，其中 必须 是 在 格式 的 standard TLD。",
 			},
 			"tag_set": {
 				Type:          schema.TypeList,
 				Optional:      true,
 				Computed:      true,
-				Description:   "Tags the private domain when it is created.",
+				Description:   "标签 私有 域名 当 它 是 创建。",
 				Deprecated:    "It has been deprecated from version 1.72.4. Use `tags` instead.",
 				ConflictsWith: []string{"tags"},
 				Elem: &schema.Resource{
@@ -45,12 +45,12 @@ func ResourceTencentCloudPrivateDnsZone() *schema.Resource {
 						"tag_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Key of Tag.",
+							Description: "键 的 标签",
 						},
 						"tag_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Value of Tag.",
+							Description: "值 的 标签",
 						},
 					},
 				},
@@ -58,25 +58,25 @@ func ResourceTencentCloudPrivateDnsZone() *schema.Resource {
 			"tags": {
 				Type:          schema.TypeMap,
 				Optional:      true,
-				Description:   "Tags of the private dns zone.",
+				Description:   "标签 的 私有 dns 可用区",
 				ConflictsWith: []string{"tag_set"},
 			},
 			"vpc_set": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "Associates the private domain to a VPC when it is created.",
+				Description: "Associates 私有 域名 到 VPC 当 它 是 创建。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"uniq_vpc_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "VPC ID.",
+							Description: "私有网络 ID",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "VPC REGION.",
+							Description: "VPC REGION。",
 						},
 					},
 				},
@@ -84,41 +84,41 @@ func ResourceTencentCloudPrivateDnsZone() *schema.Resource {
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Remarks.",
+				Description: "备注",
 			},
 			"dns_forward_status": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Default:      DNS_FORWARD_STATUS_DISABLED,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(PRIVATE_DNS_FORWARD_STATUS),
-				Description:  "Whether to enable subdomain recursive DNS. Valid values: ENABLED, DISABLED. Default value: DISABLED.",
+				Description:  "是否enable subdomain recursive DNS. 有效值：ENABLED，DISABLED. 默认值：DISABLED。",
 			},
 			"account_vpc_set": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "List of authorized accounts' VPCs to associate with the private domain.",
+				Description: "列表 authorized accounts' VPCs 到 associate 使用 私有 域名",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"uin": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "UIN of the VPC account.",
+							Description: "UIN 的 VPC 账号",
 						},
 						"uniq_vpc_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "VPC ID.",
+							Description: "私有网络 ID",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Region.",
+							Description: "地域",
 						},
 						"vpc_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "VPC NAME.",
+							Description: "VPC NAME。",
 						},
 					},
 				},
@@ -128,7 +128,7 @@ func ResourceTencentCloudPrivateDnsZone() *schema.Resource {
 				Optional:     true,
 				Default:      CNAME_SPEEDUP_STATUS_ENABLED,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CNAME_SPEEDUP_STATUS),
-				Description:  "CNAME acceleration: ENABLED, DISABLED, Default value is ENABLED.",
+				Description:  "CNAME acceleration: ENABLED，DISABLED，默认值为 ENABLED。",
 			},
 		},
 	}

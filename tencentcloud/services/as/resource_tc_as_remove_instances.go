@@ -22,7 +22,7 @@ func ResourceTencentCloudAsRemoveInstances() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Launch configuration ID.",
+				Description: "启动配置 ID",
 			},
 
 			"instance_ids": {
@@ -32,7 +32,7 @@ func ResourceTencentCloudAsRemoveInstances() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of cvm instances to remove.",
+				Description: "列表 cvm 实例 到 remove。",
 			},
 		},
 	}

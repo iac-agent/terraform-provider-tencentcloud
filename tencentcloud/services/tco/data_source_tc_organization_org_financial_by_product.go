@@ -19,13 +19,13 @@ func DataSourceTencentCloudOrganizationOrgFinancialByProduct() *schema.Resource 
 			"month": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Query for the start month. Format:yyyy-mm, for example:2021-01.",
+				Description: "Query 对于 start month. 格式:yyyy-mm，对于 示例:2021-01。",
 			},
 
 			"end_month": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Query for the end month. Format:yyyy-mm, for example:2021-01.The default value is the `Month`.",
+				Description: "Query 对于 end month. 格式:yyyy-mm，对于 示例:2021-01. 默认值为 `Month`。",
 			},
 
 			"member_uins": {
@@ -34,7 +34,7 @@ func DataSourceTencentCloudOrganizationOrgFinancialByProduct() *schema.Resource 
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Member uin list. Up to 100.",
+				Description: "Member uin 列表. Up 到 100。",
 			},
 
 			"product_codes": {
@@ -43,40 +43,40 @@ func DataSourceTencentCloudOrganizationOrgFinancialByProduct() *schema.Resource 
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Product code list. Up to 100.",
+				Description: "Product 代码 列表. Up 到 100。",
 			},
 
 			"total_cost": {
 				Computed:    true,
 				Type:        schema.TypeFloat,
-				Description: "Total cost of the product.",
+				Description: "Total 费用 的 product。",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Organization financial info by products.",
+				Description: "Organization financial info 通过 products。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"product_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Product name.",
+							Description: "Product 名称",
 						},
 						"product_code": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Product code.",
+							Description: "Product 代码",
 						},
 						"total_cost": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Total cost of the product.",
+							Description: "Total 费用 的 product。",
 						},
 						"ratio": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The percentage of the organization total cost that is accounted for by the product.",
+							Description: "percentage 的 organization 总数 费用 该 是 accounted 对于 通过 product。",
 						},
 					},
 				},
@@ -85,7 +85,7 @@ func DataSourceTencentCloudOrganizationOrgFinancialByProduct() *schema.Resource 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -24,42 +24,42 @@ func ResourceTencentCloudDlcUserVpcConnection() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "User vpc ID.",
+				Description: "用户 vpc ID。",
 			},
 
 			"user_subnet_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "User subnet ID.",
+				Description: "用户 子网 ID。",
 			},
 
 			"user_vpc_endpoint_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "User vpc endpoint name.",
+				Description: "用户 vpc 端点 名称",
 			},
 
 			"engine_network_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Engine network ID.",
+				Description: "Engine 网络 ID。",
 			},
 
 			"user_vpc_endpoint_vip": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Manually specify VIP, if not filled in, an IP address under the subnet will be automatically assigned.",
+				Description: "Manually 指定VIP，如果未填写 在， IP 地址 under 子网 将 是 automatically assigned。",
 			},
 
 			// computed
 			"user_vpc_endpoint_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "User endpoint ID.",
+				Description: "用户 端点 ID。",
 			},
 		},
 	}

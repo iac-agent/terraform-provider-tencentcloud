@@ -26,35 +26,35 @@ func ResourceTencentCloudMysqlAuditLogFile() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "The ID of instance.",
+				Description: "实例的ID。",
 			},
 
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "start time.",
+				Description: "开始时间。",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "end time.",
+				Description: "结束时间。",
 			},
 
 			"order": {
 				Optional:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "Sort by. supported values are: `ASC`- ascending order, `DESC`- descending order.",
+				Description: "排序方式。支持的值为：“ASC”- 升序，“DESC”- 降序。",
 			},
 
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "Sort field. supported values include:`timestamp` - timestamp; `affectRows` - affected rows; `execTime` - execution time.",
+				Description: "排序字段。支持的值包括：`时间戳` - 时间戳； `affectRows` - 受影响的行； `execTime` - 执行时间。",
 			},
 
 			"filter": {
@@ -62,7 +62,7 @@ func ResourceTencentCloudMysqlAuditLogFile() *schema.Resource {
 				Type:        schema.TypeList,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "Filter condition. Logs can be filtered according to the filter conditions set.",
+				Description: "过滤条件。可以根据设置的过滤条件对日志进行过滤。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"host": {
@@ -71,7 +71,7 @@ func ResourceTencentCloudMysqlAuditLogFile() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "Client address.",
+							Description: "客户地址。",
 						},
 						"user": {
 							Type: schema.TypeSet,
@@ -79,7 +79,7 @@ func ResourceTencentCloudMysqlAuditLogFile() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "User name.",
+							Description: "用户名。",
 						},
 						"db_name": {
 							Type: schema.TypeSet,
@@ -87,7 +87,7 @@ func ResourceTencentCloudMysqlAuditLogFile() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "Database name.",
+							Description: "数据库名称。",
 						},
 						"table_name": {
 							Type: schema.TypeSet,
@@ -95,7 +95,7 @@ func ResourceTencentCloudMysqlAuditLogFile() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "Table name.",
+							Description: "表名。",
 						},
 						"policy_name": {
 							Type: schema.TypeSet,
@@ -103,27 +103,27 @@ func ResourceTencentCloudMysqlAuditLogFile() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "The name of policy.",
+							Description: "政策名称。",
 						},
 						"sql": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "SQL statement. support fuzzy matching.",
+							Description: "SQL 语句。支持模糊匹配。",
 						},
 						"sql_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "SQL type. Currently supported: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER, SET, REPLACE, EXECUTE.",
+							Description: "SQL 类型。目前支持：选择、插入、更新、删除、创建、删除、更改、设置、替换、执行。",
 						},
 						"exec_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Execution time. The unit is: ms. Indicates to filter audit logs whose execution time is greater than this value.",
+							Description: "执行时间。单位是：毫秒。表示过滤执行时间大于该值的审计日志。",
 						},
 						"affect_rows": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Affects the number of rows. Indicates to filter audit logs whose number of affected rows is greater than this value.",
+							Description: "影响行数。表示过滤受影响行数大于该值的审计日志。",
 						},
 						"sql_types": {
 							Type: schema.TypeSet,
@@ -131,7 +131,7 @@ func ResourceTencentCloudMysqlAuditLogFile() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "SQL type. Supports simultaneous query of multiple types. Currently supported: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER, SET, REPLACE, EXECUTE.",
+							Description: "SQL 类型。支持多种类型同时查询。目前支持：选择、插入、更新、删除、创建、删除、更改、设置、替换、执行。",
 						},
 						"sqls": {
 							Type: schema.TypeSet,
@@ -139,7 +139,7 @@ func ResourceTencentCloudMysqlAuditLogFile() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "SQL statement. Support passing multiple sql statements.",
+							Description: "SQL 语句。支持传递多个sql语句。",
 						},
 					},
 				},
@@ -148,13 +148,13 @@ func ResourceTencentCloudMysqlAuditLogFile() *schema.Resource {
 			"file_size": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "size of file(KB).",
+				Description: "文件大小（KB）。",
 			},
 
 			"download_url": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "download url.",
+				Description: "下载网址。",
 			},
 		},
 	}

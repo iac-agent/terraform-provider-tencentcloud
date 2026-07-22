@@ -27,21 +27,21 @@ func ResourceTencentCloudPostgresqlDisisolateDbInstanceOperation() *schema.Resou
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of resource IDs. Note that currently you cannot remove multiple instances from isolation at the same time. Only one instance ID can be passed in here.",
+				Description: "列表 资源 IDs. 注意 该 currently 您 不能 remove 多个 实例 从 isolation 在 same 时间. Only 一个 实例 ID 可以 是 passed 在 here。",
 			},
 
 			"period": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "The valid period (in months) of the monthly-subscribed instance when removing it from isolation.",
+				Description: "有效 周期 (在 months) 的 monthly-subscribed 实例 当 removing 它 从 isolation。",
 			},
 
 			"auto_voucher": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to use vouchers. Valid values:true (yes), false (no). Default value:false.",
+				Description: "是否use vouchers. 有效 值:true (yes)，false (无). 默认值:false。",
 			},
 
 			"voucher_ids": {
@@ -51,7 +51,7 @@ func ResourceTencentCloudPostgresqlDisisolateDbInstanceOperation() *schema.Resou
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Voucher ID list.",
+				Description: "Voucher ID 列表。",
 			},
 		},
 	}

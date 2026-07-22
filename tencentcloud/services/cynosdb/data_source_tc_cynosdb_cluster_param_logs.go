@@ -19,7 +19,7 @@ func DataSourceTencentCloudCynosdbClusterParamLogs() *schema.Resource {
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 			"instance_ids": {
 				Optional: true,
@@ -27,63 +27,63 @@ func DataSourceTencentCloudCynosdbClusterParamLogs() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Instance ID list, used to record specific instances of operations.",
+				Description: "实例ID列表，用于记录具体实例的操作。",
 			},
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sort field, defining which field to sort based on when returning results.",
+				Description: "排序字段，定义返回结果时根据哪个字段进行排序。",
 			},
 			"order_by_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Define specific sorting rules, limited to one of desc, asc, DESC, or ASC.",
+				Description: "定义特定的排序规则，仅限于 desc、asc、DESC 或 ASC 之一。",
 			},
 			"cluster_param_logs": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Parameter modification record note: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "参数修改记录注意：该字段可能返回null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"param_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Parameter Name.",
+							Description: "参数名称。",
 						},
 						"current_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Current value.",
+							Description: "当前值。",
 						},
 						"update_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Modified value.",
+							Description: "修改值。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "modify state.",
+							Description: "修改状态。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time.",
+							Description: "创作时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Update time.",
+							Description: "更新时间。",
 						},
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster ID.",
+							Description: "集群 ID。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例ID。",
 						},
 					},
 				},
@@ -91,7 +91,7 @@ func DataSourceTencentCloudCynosdbClusterParamLogs() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

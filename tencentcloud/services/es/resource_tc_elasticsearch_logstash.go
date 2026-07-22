@@ -30,61 +30,61 @@ func ResourceTencentCloudElasticsearchLogstash() *schema.Resource {
 			"instance_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance name (compose of 1-50 letter, number, - or _).",
+				Description: "实例名称 (compose 的 1-50 letter，数量，- 或 _)。",
 			},
 
 			"zone": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Available zone. Create multi zone instance, parameter zone need input '-', details input to multi_zone_infos.",
+				Description: "Available 可用区 Create multi 可用区 实例，参数 可用区 need input '-'，details input 到 multi_zone_infos。",
 			},
 
 			"logstash_version": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance version(6.8.13, 7.10.1).",
+				Description: "实例 版本(6.8.13，7.10.1)。",
 			},
 
 			"vpc_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "VPC id.",
+				Description: "VPC ID。",
 			},
 
 			"subnet_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Subnet id. Create multi zone instance, parameter subnet_id need input '-', details input to multi_zone_infos.",
+				Description: "子网 ID Create multi 可用区 实例，参数 subnet_id need input '-'，details input 到 multi_zone_infos。",
 			},
 
 			"node_num": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Node num(range 2-50).",
+				Description: "Node num(范围 2-50)。",
 			},
 
 			"charge_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Charge type. PREPAID: charged by months or years; POSTPAID_BY_HOUR: charged by hours; default vaule: POSTPAID_BY_HOUR.",
+				Description: "计费类型 PREPAID: charged 通过 months 或 years; POSTPAID_BY_HOUR: charged 通过 hours; 默认值 vaule: POSTPAID_BY_HOUR。",
 			},
 
 			"charge_period": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Period when charged by months or years(unit depends on TimeUnit).",
+				Description: "周期 当 charged 通过 months 或 years(单位 depends 在 TimeUnit)。",
 			},
 
 			"time_unit": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "charge time unit(set when ChargeType is PREPAID, default value: ms).",
+				Description: "charge 时间 单位(集合 当 ChargeType 是 PREPAID，默认值：ms)。",
 			},
 
 			"auto_voucher": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "whether to use voucher auto, 1 when use, else 0.",
+				Description: "是否use voucher auto，1 当 使用，else 0。",
 			},
 
 			"voucher_ids": {
@@ -93,19 +93,19 @@ func ResourceTencentCloudElasticsearchLogstash() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Voucher list(only can use one voucher by now).",
+				Description: "Voucher 列表(仅 可以 使用 一个 voucher 通过 now)。",
 			},
 
 			"renew_flag": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Automatic renewal flag. RENEW_FLAG_AUTO: auto renewal; RENEW_FLAG_MANUAL: do not renew automatically, users renew manually. It needs to be set when ChargeType is PREPAID. If this parameter is not passed, ordinary users will not renew automatically by default, and SVIP users will renew automatically.",
+				Description: "Automatic renewal flag. RENEW_FLAG_AUTO: auto renewal; RENEW_FLAG_MANUAL: do 不 renew automatically，users renew manually. It needs 到 是 集合 当 ChargeType 是 PREPAID. 如果 此 参数 是 不 passed，ordinary users 将 不 renew automatically 通过 默认值，和 SVIP users 将 renew automatically。",
 			},
 
 			"node_type": {
 				Optional: true,
 				Type:     schema.TypeString,
-				Description: "Node type. Valid values:\n" +
+				Description: "Node 类型. 有效 值:\n" +
 					"- LOGSTASH.S1.SMALL2: 1 core 2G;\n" +
 					"- LOGSTASH.S1.MEDIUM4:2 core 4G;\n" +
 					"- LOGSTASH.S1.MEDIUM8:2 core 8G;\n" +
@@ -118,33 +118,33 @@ func ResourceTencentCloudElasticsearchLogstash() *schema.Resource {
 			"disk_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Disk type. CLOUD_SSD: SSD cloud disk; CLOUD_PREMIUM: high hard energy cloud disk; default: CLOUD_SSD.",
+				Description: "Disk 类型 CLOUD_SSD: SSD 云 磁盘; CLOUD_PREMIUM: high hard energy 云 磁盘; 默认值：CLOUD_SSD。",
 			},
 
 			"disk_size": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "node disk size (unit GB).",
+				Description: "节点 磁盘 大小 (单位 GB)。",
 			},
 
 			"license_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "License type. oss: open source version; xpack:xpack version; default: xpack.",
+				Description: "License 类型 oss: open 来源 版本; xpack:xpack 版本; 默认值：xpack。",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
 				Computed:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 
 			"operation_duration": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "operation time by tencent clound.",
+				Description: "operation 时间 通过 tencent clound。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"periods": {
@@ -153,22 +153,22 @@ func ResourceTencentCloudElasticsearchLogstash() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Required:    true,
-							Description: "day of week, from Monday to Sunday, value range: [0, 6]notes: may return null when missing.",
+							Description: "day 的 week，从 Monday 到 Sunday，取值范围：[0，6]notes: 可能 返回 null 当 missing。",
 						},
 						"time_start": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "operation start time.",
+							Description: "operation 开始时间。",
 						},
 						"time_end": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "operation end time.",
+							Description: "operation 结束时间。",
 						},
 						"time_zone": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "time zone, for example: UTC+8.",
+							Description: "时区，对于 示例: UTC+8。",
 						},
 					},
 				},
@@ -178,30 +178,30 @@ func ResourceTencentCloudElasticsearchLogstash() *schema.Resource {
 				Optional:     true,
 				Default:      ES_DEPLOY_MODE_SINGLE_REGION,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(ES_DEPLOY_MODE),
-				Description:  "Deployment mode, 0: single availability zone, 1: multiple availability zones.",
+				Description:  "Deployment 模式，0: 单个 availability 可用区，1: 多个 availability zones。",
 			},
 			"multi_zone_infos": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "Details of availability zones when deploying multiple availability zones.",
+				Description: "Details 的 availability zones 当 deploying 多个 availability zones。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"availability_zone": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Availability zone.",
+							Description: "Availability 可用区",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Subnet id.",
+							Description: "子网 ID",
 						},
 						"hidden": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Computed:    true,
-							Description: "Whether it is a hidden availability zone.",
+							Description: "是否为a hidden availability 可用区",
 						},
 					},
 				},

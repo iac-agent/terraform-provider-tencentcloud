@@ -99,76 +99,76 @@ func ResourceTencentCloudVpcNetworkAclQuintuple() *schema.Resource {
 			"network_acl_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Network ACL instance ID. For example:acl-12345678.",
+				Description: "Network ACL 实例 ID. For 示例:acl-12345678。",
 			},
 
 			"network_acl_quintuple_set": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Network quintuple ACL rule set.",
+				Description: "Network quintuple ACL 规则 集合。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ingress": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Network ACL quintuple inbound rule.",
+							Description: "Network ACL quintuple inbound 规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"protocol": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Protocol, value: TCP,UDP, ICMP, ALL.",
+										Description: "协议，值: TCP,UDP，ICMP，ALL。",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Description.",
+										Description: "描述",
 									},
 									"source_port": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "source port (all, single port, range). When the protocol is ALL or ICMP, the port cannot be specified.",
+										Description: "来源 端口 (all，单个 端口，范围). 当 协议 是 ALL 或 ICMP， 端口 不能 是 指定。",
 									},
 									"source_cidr": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "源CIDR。.",
+										Description: "源CIDR。。",
 									},
 									"destination_port": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Destination port (all, single port, range). When Protocol is ALL or ICMP, Port cannot be specified.",
+										Description: "Destination 端口 (all，单个 端口，范围). 当 协议 是 ALL 或 ICMP，端口 不能 是 指定。",
 									},
 									"destination_cidr": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Destination CIDR.",
+										Description: "Destination CIDR。",
 									},
 									"action": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Action, ACCEPT or DROP.",
+										Description: "操作，ACCEPT 或 DROP。",
 									},
 									"network_acl_quintuple_entry_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Unique ID of a network ACL entry.",
+										Description: "Unique ID 网络 ACL entry。",
 									},
 									"priority": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Priority, starting from 1.",
+										Description: "优先级，starting 从 1。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Creation time, used as an output parameter of DescribeNetworkAclQuintupleEntries.",
+										Description: "创建时间，使用 作为 output 参数 的 DescribeNetworkAclQuintupleEntries。",
 									},
 									"network_acl_direction": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Direction, INGRESS or EGRESS, is used as an output parameter of DescribeNetworkAclQuintupleEntries.",
+										Description: "Direction，INGRESS 或 EGRESS，是 使用 作为 output 参数 的 DescribeNetworkAclQuintupleEntries。",
 									},
 								},
 							},
@@ -176,63 +176,63 @@ func ResourceTencentCloudVpcNetworkAclQuintuple() *schema.Resource {
 						"egress": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Network ACL quintuple outbound rule.",
+							Description: "Network ACL quintuple outbound 规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"protocol": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Protocol, value: TCP,UDP, ICMP, ALL.",
+										Description: "协议，值: TCP,UDP，ICMP，ALL。",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Description.",
+										Description: "描述",
 									},
 									"source_port": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Source port (all, single port, range). When Protocol is ALL or ICMP, Port cannot be specified.",
+										Description: "来源 端口 (all，单个 端口，范围). 当 协议 是 ALL 或 ICMP，端口 不能 是 指定。",
 									},
 									"source_cidr": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Source CIDR.",
+										Description: "来源 CIDR。",
 									},
 									"destination_port": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Destination port (all, single port, range). When Protocol is ALL or ICMP, Port cannot be specified.",
+										Description: "Destination 端口 (all，单个 端口，范围). 当 协议 是 ALL 或 ICMP，端口 不能 是 指定。",
 									},
 									"destination_cidr": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Destination CIDR.",
+										Description: "Destination CIDR。",
 									},
 									"action": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Action, ACCEPT or DROP.",
+										Description: "操作，ACCEPT 或 DROP。",
 									},
 									"network_acl_quintuple_entry_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Unique ID of a network ACL entry.",
+										Description: "Unique ID 网络 ACL entry。",
 									},
 									"priority": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Priority, starting from 1.",
+										Description: "优先级，starting 从 1。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Creation time, used as an output parameter of DescribeNetworkAclQuintupleEntries.",
+										Description: "创建时间，使用 作为 output 参数 的 DescribeNetworkAclQuintupleEntries。",
 									},
 									"network_acl_direction": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Direction, INGRESS or EGRESS, is used as an output parameter of DescribeNetworkAclQuintupleEntries.",
+										Description: "Direction，INGRESS 或 EGRESS，是 使用 作为 output 参数 的 DescribeNetworkAclQuintupleEntries。",
 									},
 								},
 							},

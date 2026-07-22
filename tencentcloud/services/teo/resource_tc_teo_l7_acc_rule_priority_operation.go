@@ -21,13 +21,13 @@ func ResourceTencentCloudTeoL7AccRulePriorityOperation() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Zone id.",
+				Description: "可用区 ID",
 			},
 			"rule_ids": {
 				Type:        schema.TypeList,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Complete list of rule IDs under site ID.",
+				Description: "Complete 列表 规则 IDs under site ID。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},

@@ -20,55 +20,55 @@ func DataSourceTencentCloudDbbrainTopSpaceSchemaTimeSeries() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID.",
 			},
 
 			"limit": {
 				Optional:    true,
 				Type:        schema.TypeInt,
 				Default:     20,
-				Description: "The number of Top libraries to return, the maximum value is 100, and the default is 20.",
+				Description: "数量 的 Top libraries 到 返回, 最大 值 是 100, 和 默认值 是 20.",
 			},
 
 			"sort_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The sorting field used to filter the Top library. The optional fields include DataLength, IndexLength, TotalLength, DataFree, FragRatio, TableRows, and PhysicalFileSize (only supported by ApsaraDB for MySQL instances). The default for ApsaraDB for MySQL instances is PhysicalFileSize, and the default for other product instances is TotalLength.",
+				Description: "sorting 字段 使用 到 过滤器 Top 库. 可选 字段 include DataLength, IndexLength, TotalLength, DataFree, FragRatio, TableRows, 和 PhysicalFileSize (仅 支持 通过 ApsaraDB 对于 MySQL 实例). 默认值 对于 ApsaraDB 对于 MySQL 实例 是 PhysicalFileSize, 和 默认值 对于 other product 实例 是 TotalLength.",
 			},
 
 			"start_date": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The start date, such as 2021-01-01, the earliest is the 29th day before the current day, and the default is the 6th day before the deadline.",
+				Description: "start date, such 作为 2021-01-01, earliest 是 29th day before 当前 day, 和 默认值 是 6th day before deadline.",
 			},
 
 			"end_date": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The deadline, such as 2021-01-01, the earliest is the 29th day before the current day, and the default is the current day.",
+				Description: "deadline, such 作为 2021-01-01, earliest 是 29th day before 当前 day, 和 默认值 是 当前 day.",
 			},
 
 			"product": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Service product type, supported values include: mysql - cloud database MySQL, cynosdb - cloud database CynosDB for MySQL, the default is mysql.",
+				Description: "Service product 类型, 支持 值 include: mysql - 云 数据库 MySQL, cynosdb - 云 数据库 CynosDB 对于 MySQL, 默认值 是 mysql.",
 			},
 
 			"top_space_schema_time_series": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The time series data list of the returned top library space statistics.",
+				Description: "时间 series 数据 列表 的 返回 top 库 space 统计.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"table_schema": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "databases name.",
+							Description: "databases 名称.",
 						},
 						"series_data": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Spatial index data in unit time interval.",
+							Description: "Spatial index 数据 在 单位 时间 间隔.",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"series": {
@@ -80,12 +80,12 @@ func DataSourceTencentCloudDbbrainTopSpaceSchemaTimeSeries() *schema.Resource {
 												"metric": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Indicator name.",
+													Description: "Indicator 名称.",
 												},
 												"unit": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Indicator unit.",
+													Description: "Indicator 单位.",
 												},
 												"values": {
 													Type:     schema.TypeSet,
@@ -93,7 +93,7 @@ func DataSourceTencentCloudDbbrainTopSpaceSchemaTimeSeries() *schema.Resource {
 													Elem: &schema.Schema{
 														Type: schema.TypeFloat,
 													},
-													Description: "Index value. Note: This field may return null, indicating that no valid value can be obtained.",
+													Description: "Index 值. 注意: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 												},
 											},
 										},
@@ -104,7 +104,7 @@ func DataSourceTencentCloudDbbrainTopSpaceSchemaTimeSeries() *schema.Resource {
 											Type: schema.TypeInt,
 										},
 										Computed:    true,
-										Description: "The timestamp corresponding to the monitoring indicator.",
+										Description: "timestamp corresponding 到 监控 indicator.",
 									},
 								},
 							},
@@ -116,7 +116,7 @@ func DataSourceTencentCloudDbbrainTopSpaceSchemaTimeSeries() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

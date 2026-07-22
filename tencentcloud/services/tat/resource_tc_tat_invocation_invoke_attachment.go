@@ -28,7 +28,7 @@ func ResourceTencentCloudTatInvocationInvokeAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "ID of instances about to execute commands. Supported instance types:  CVM  LIGHTHOUSE.",
+				Description: "ID 实例 about 到 execute commands. Supported 实例 types: CVM LIGHTHOUSE。",
 			},
 
 			"working_directory": {
@@ -36,49 +36,49 @@ func ResourceTencentCloudTatInvocationInvokeAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Default:     "/root",
-				Description: "Command execution path. The default value is /root for SHELL commands and C:Program Filesqcloudtat_agentworkdir for POWERSHELL commands.",
+				Description: "Command execution 路径 默认值为 /root 对于 SHELL commands 和 C:Program Filesqcloudtat_agentworkdir 对于 POWERSHELL commands。",
 			},
 
 			"timeout": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Command timeout period. Default value: 60 seconds. Value range: [1, 86400].",
+				Description: "Command 超时 周期 默认值：60 秒. 取值范围：[1，86400]。",
 			},
 
 			"parameters": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Custom parameters of Command. The field type is JSON encoded string. For example, {varA: 222}.key is the name of the custom parameter and value is the default value. Both key and value are strings.If no parameter value is provided, the DefaultParameters is used.Up to 20 custom parameters are supported.The name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].",
+				Description: "Custom 参数 的 Command. 字段 类型 是 JSON encoded 字符串. For 示例，{varA: 222}.键 是 名称 自定义 参数 和 值 是 默认值 Both 键 和 值 是 strings.如果 无 参数 值 是 提供， DefaultParameters 是 使用.Up 到 20 自定义 参数 是 支持. 名称 自定义 参数 不能 exceed 64 字符 和 可以 contain [-z]，[A-Z]，[0-9] 和 [-_]。",
 			},
 
 			"username": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The username used to execute the command on the CVM or Lighthouse instance.The principle of least privilege is the best practice for permission management. We recommend you execute TAT commands as a general user. By default, the user root is used to execute commands on Linux and the user System is used on Windows.",
+				Description: "用户名 用于execute command 在 CVM 或 Lighthouse 实例. principle 的 least privilege 是 best practice 对于 权限 management. We recommend 您 execute TAT commands 作为 general 用户 By 默认值， 用户 root 是 用于execute commands 在 Linux 和 用户 System 是 使用 在 Windows。",
 			},
 
 			"output_cos_bucket_url": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The COS bucket URL for uploading logs. The URL must start with https, such as https://BucketName-123454321.cos.ap-beijing.myqcloud.com.",
+				Description: "COS 存储桶 URL 对于 uploading logs. URL 必须 start 使用 https，such 作为 https://BucketName-123454321.cos.ap-beijing.myqcloud.com。",
 			},
 
 			"output_cos_key_prefix": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The COS bucket directory where the logs are saved; Check below for the rules of the directory name: 1 It must be a combination of number, letters, and visible characters, Up to 60 characters are allowed; 2 Use a slash (/) to create a subdirectory; 3 can not be used as the folder name; It cannot start with a slash (/), and cannot contain consecutive slashes.",
+				Description: "COS 存储桶 directory 其中 logs 是 saved; Check below 对于 规则 的 directory 名称: 1 It 必须 是 combination 的 数量，letters，和 visible 字符，Up 到 60 字符 是 allowed; 2 Use slash (/) 到 create subdirectory; 3 可以 不 是 使用 作为 文件夹 名称; It 不能 start 使用 slash (/)，和 不能 contain consecutive slashes。",
 			},
 
 			"command_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Command ID.",
+				Description: "命令 ID",
 			},
 		},
 	}

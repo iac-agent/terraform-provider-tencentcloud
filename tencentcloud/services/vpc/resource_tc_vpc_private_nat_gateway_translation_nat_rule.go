@@ -29,39 +29,39 @@ func ResourceTencentCloudVpcPrivateNatGatewayTranslationNatRule() *schema.Resour
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Private NAT gateway unique ID, such as: `intranat-xxxxxxxx`.",
+				Description: "Private NAT 网关 唯一 ID，such 作为: `intranat-xxxxxxxx`。",
 			},
 
 			"translation_nat_rules": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Translation rule object array.",
+				Description: "Translation 规则 对象 数组。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"translation_direction": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Translation rule target, optional values \"LOCAL\",\"PEER\".",
+							Description: "Translation 规则 目标, 可选 值 \"LOCAL\",\"PEER\".",
 						},
 						"translation_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Translation rule type, optional values \"NETWORK_LAYER\",\"TRANSPORT_LAYER\".",
+							Description: "Translation 规则 类型, 可选 值 \"NETWORK_LAYER\",\"TRANSPORT_LAYER\".",
 						},
 						"translation_ip": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Translation IP, when translation rule type is transport layer, it is an IP pool.",
+							Description: "Translation IP，当 translation 规则 类型 是 transport layer，它 是 IP 池。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Translation rule description.",
+							Description: "Translation 规则 描述",
 						},
 						"original_ip": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Source IP, valid when translation rule type is network layer.",
+							Description: "来源 IP，有效 当 translation 规则 类型 是 网络 layer。",
 						},
 					},
 				},

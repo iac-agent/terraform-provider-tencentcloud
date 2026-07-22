@@ -27,58 +27,58 @@ func ResourceTencentCloudOrganizationOrgShareUnitResource() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Shared unit ID.",
+				Description: "共享单元 ID",
 			},
 
 			"area": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Shared unit area.",
+				Description: "Shared 单位 area。",
 			},
 
 			"type": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Shared resource type.",
+				Description: "Shared 资源类型",
 			},
 
 			"product_resource_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Product Resource ID.",
+				Description: "Product 资源 ID",
 			},
 
 			"resource_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Shared resource ID.",
+				Description: "Shared 资源 ID。",
 			},
 
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create time.",
+				Description: "创建时间。",
 			},
 
 			"shared_member_num": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Number of shared unit members.",
+				Description: "数量 shared 单位 members。",
 			},
 
 			"shared_member_use_num": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Number of shared unit members in use.",
+				Description: "数量 shared 单位 members 在 使用。",
 			},
 
 			"share_manager_uin": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Sharing administrator OwnerUin.",
+				Description: "Sharing administrator OwnerUin。",
 			},
 		},
 	}

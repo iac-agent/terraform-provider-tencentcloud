@@ -19,19 +19,19 @@ func DataSourceTencentCloudElasticsearchInstancePluginList() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "order field. Valid values: `pluginName`.",
+				Description: "顺序 字段. 有效值：`pluginName`。",
 			},
 
 			"order_by_type": {
 				Optional: true,
 				Type:     schema.TypeString,
-				Description: "Order type. Valid values:\n" +
+				Description: "Order 类型. 有效 值:\n" +
 					"- asc: Ascending asc\n" +
 					"- desc: Descending Desc.",
 			},
@@ -39,34 +39,34 @@ func DataSourceTencentCloudElasticsearchInstancePluginList() *schema.Resource {
 			"plugin_type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Plugin type. Valid values: `0`: System plugin.",
+				Description: "Plugin 类型 有效值：`0`: System 插件。",
 			},
 
 			"plugin_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Plugin information list.",
+				Description: "Plugin 信息 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"plugin_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Plugin name.",
+							Description: "Plugin 名称",
 						},
 						"plugin_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Plugin version.",
+							Description: "Plugin 版本",
 						},
 						"plugin_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Plugin description.",
+							Description: "Plugin 描述",
 						},
 						"status": {
 							Type:     schema.TypeInt,
 							Computed: true,
-							Description: "Plugin status. Valid values:\n" +
+							Description: "Plugin 状态. 有效 值:\n" +
 								"- `-2` has been uninstalled\n" +
 								"- `-1` has been installed in\n" +
 								"- `0` installation.",
@@ -74,17 +74,17 @@ func DataSourceTencentCloudElasticsearchInstancePluginList() *schema.Resource {
 						"removable": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether the plug-in can be uninstalled.",
+							Description: "是否plug-在 可以 是 uninstalled。",
 						},
 						"plugin_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Plugin type. Valid values: `0`: System plugin.",
+							Description: "Plugin 类型 有效值：`0`: System 插件。",
 						},
 						"plugin_update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Plugin update time.",
+							Description: "Plugin 更新时间。",
 						},
 					},
 				},
@@ -93,7 +93,7 @@ func DataSourceTencentCloudElasticsearchInstancePluginList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

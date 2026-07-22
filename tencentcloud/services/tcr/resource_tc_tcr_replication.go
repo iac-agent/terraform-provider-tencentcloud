@@ -24,14 +24,14 @@ func ResourceTencentCloudTcrReplication() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Source instance ID.",
+				Description: "来源 实例 ID。",
 			},
 
 			"destination_registry_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Destination instance ID.",
+				Description: "Destination 实例 ID。",
 			},
 
 			"rule": {
@@ -39,45 +39,45 @@ func ResourceTencentCloudTcrReplication() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "Synchronization rule.",
+				Description: "Synchronization 规则。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Name of synchronization rule.",
+							Description: "名称 synchronization 规则。",
 						},
 						"dest_namespace": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Destination namespace.",
+							Description: "Destination 命名空间。",
 						},
 						"override": {
 							Type:        schema.TypeBool,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Whether to override.",
+							Description: "是否override。",
 						},
 						"filters": {
 							Type:        schema.TypeList,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Synchronization filters.",
+							Description: "Synchronization filters。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"type": {
 										Type:        schema.TypeString,
 										Required:    true,
 										ForceNew:    true,
-										Description: "Type (`name`, `tag` and `resource`).",
+										Description: "类型 (`名称`，`标签` 和 `资源`)。",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "It is left blank by default. If the type is `resource` it supports `image`, `chart`, and an empty string. If the type is `name` it supports Namespace name/**, Namespace name/Repository name.",
+										Description: "It 是 left blank 通过 默认值. 如果 类型 是 `资源` 它 支持 `镜像`，`chart`，和 空 字符串. 如果 类型 是 `名称` 它 支持 Namespace 名称/**，Namespace 名称/Repository 名称",
 									},
 								},
 							},
@@ -86,7 +86,7 @@ func ResourceTencentCloudTcrReplication() *schema.Resource {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Whether synchronous deletion event.",
+							Description: "Whether synchronous deletion 事件。",
 						},
 					},
 				},
@@ -96,14 +96,14 @@ func ResourceTencentCloudTcrReplication() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Rule description.",
+				Description: "Rule 描述",
 			},
 
 			"destination_region_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Region ID of the destination instance. For example, `1` represents Guangzhou.",
+				Description: "地域 ID destination 实例. For 示例，`1` 表示 Guangzhou。",
 			},
 
 			"peer_replication_option": {
@@ -111,26 +111,26 @@ func ResourceTencentCloudTcrReplication() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "Configuration of the synchronization rule.",
+				Description: "Configuration 的 synchronization 规则。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"peer_registry_uin": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "UIN of the destination instance.",
+							Description: "UIN 的 destination 实例。",
 						},
 						"peer_registry_token": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Permanent access Token for the destination instance.",
+							Description: "Permanent 访问 令牌 对于 destination 实例。",
 						},
 						"enable_peer_replication": {
 							Type:        schema.TypeBool,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Whether to enable cross-account synchronization.",
+							Description: "是否enable cross-账号 synchronization。",
 						},
 					},
 				},

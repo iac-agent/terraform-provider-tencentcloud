@@ -20,25 +20,25 @@ func DataSourceTencentCloudMonitorAlarmBasicAlarms() *schema.Resource {
 			"module": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Interface module name, current value monitor.",
+				Description: "Interface 模块 名称，当前值 监控。",
 			},
 
 			"start_time": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Start time, default to one day is timestamp.",
+				Description: "开始时间，默认为 一个 day 是 时间戳。",
 			},
 
 			"end_time": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "End time, default to current timestamp.",
+				Description: "结束时间，默认为 当前 时间戳。",
 			},
 
 			"occur_time_order": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sort by occurrence time, taking ASC or DESC values.",
+				Description: "排序方式 occurrence 时间，taking ASC 或 DESC 值。",
 			},
 
 			"project_ids": {
@@ -47,7 +47,7 @@ func DataSourceTencentCloudMonitorAlarmBasicAlarms() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Filter based on project ID.",
+				Description: "过滤器 based 在 项目 ID。",
 			},
 
 			"view_names": {
@@ -56,7 +56,7 @@ func DataSourceTencentCloudMonitorAlarmBasicAlarms() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Filter based on policy type.",
+				Description: "过滤器 based 在 策略 类型",
 			},
 
 			"alarm_status": {
@@ -65,13 +65,13 @@ func DataSourceTencentCloudMonitorAlarmBasicAlarms() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Filter based on alarm status.",
+				Description: "过滤器 based 在 告警状态",
 			},
 
 			"obj_like": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filter based on alarm objects.",
+				Description: "过滤器 based 在 告警 objects。",
 			},
 
 			"instance_group_ids": {
@@ -80,7 +80,7 @@ func DataSourceTencentCloudMonitorAlarmBasicAlarms() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Filter based on instance group ID.",
+				Description: "过滤器 based 在 实例 组 ID",
 			},
 
 			"metric_names": {
@@ -89,114 +89,114 @@ func DataSourceTencentCloudMonitorAlarmBasicAlarms() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Filter by indicator name.",
+				Description: "过滤器 通过 indicator 名称",
 			},
 
 			"alarms": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Alarm List.",
+				Description: "Alarm List。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The ID of this alarm.",
+							Description: "ID 此 告警。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Project ID.",
+							Description: "项目 ID",
 						},
 						"project_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Entry name.",
+							Description: "Entry 名称",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Alarm status ID, 0 indicates not recovered; 1 indicates that it has been restored; 2,3,5 indicates insufficient data; 4 indicates it has expired.",
+							Description: "告警状态 ID，0 表示not recovered; 1 表示that 它 has been restored; 2,3,5 表示insufficient 数据; 4 表示it has expired。",
 						},
 						"alarm_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Alarm status, ALARM indicates not recovered; OK indicates that it has been restored; NO_ DATA indicates insufficient data; NO_ CONF indicates that it has expired.",
+							Description: "告警状态，ALARM 表示not recovered; OK 表示that 它 has been restored; NO_ DATA 表示insufficient 数据; NO_ CONF 表示that 它 has expired。",
 						},
 						"group_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Policy Group ID.",
+							Description: "Policy 组 ID",
 						},
 						"group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Policy Group Name.",
+							Description: "Policy Group 名称",
 						},
 						"first_occur_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Time of occurrence.",
+							Description: "Time 的 occurrence。",
 						},
 						"duration": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Duration in seconds.",
+							Description: "Duration （秒）。",
 						},
 						"last_occur_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "End time.",
+							Description: "结束时间。",
 						},
 						"content": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Alarm content.",
+							Description: "Alarm 内容",
 						},
 						"obj_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Alarm Object.",
+							Description: "Alarm Object。",
 						},
 						"obj_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Alarm object ID.",
+							Description: "Alarm 对象 ID。",
 						},
 						"view_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Policy Type.",
+							Description: "Policy 类型",
 						},
 						"vpc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC, only CVM has.",
+							Description: "VPC，仅 CVM has。",
 						},
 						"metric_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Indicator ID.",
+							Description: "Indicator ID。",
 						},
 						"metric_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Indicator Name.",
+							Description: "Indicator 名称",
 						},
 						"alarm_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Alarm type, 0 represents indicator alarm, 2 represents product event alarm, and 3 represents platform event alarm.",
+							Description: "Alarm 类型，0 表示 indicator 告警，2 表示 product 事件 告警，和 3 表示 平台 事件 告警。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region.",
+							Description: "地域",
 						},
 						"dimensions": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Alarm object dimension information.",
+							Description: "Alarm 对象 dimension 信息。",
 						},
 						"notify_way": {
 							Type: schema.TypeSet,
@@ -204,23 +204,23 @@ func DataSourceTencentCloudMonitorAlarmBasicAlarms() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Notification method.",
+							Description: "Notification 方法。",
 						},
 						"instance_group": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Instance Group Information.",
+							Description: "实例 Group Information。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_group_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Instance Group ID.",
+										Description: "实例 组 ID",
 									},
 									"instance_group_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance Group Name.",
+										Description: "实例 Group 名称",
 									},
 								},
 							},
@@ -232,13 +232,13 @@ func DataSourceTencentCloudMonitorAlarmBasicAlarms() *schema.Resource {
 			"warning": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Remarks.",
+				Description: "备注",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

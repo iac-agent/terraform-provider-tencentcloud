@@ -21,33 +21,33 @@ func DataSourceTencentCloudWafAttackTotalCount() *schema.Resource {
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Begin time.",
+				Description: "开始时间。",
 			},
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "End time.",
+				Description: "结束时间。",
 			},
 			"domain": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Query domain name, all domain use all.",
+				Description: "Query 域名 名称，all 域名 使用 all。",
 			},
 			"query_string": {
 				Optional:    true,
 				Type:        schema.TypeString,
 				Default:     "",
-				Description: "Query conditions.",
+				Description: "Query conditions。",
 			},
 			"total_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Total number of attacks.",
+				Description: "Total 数量 attacks。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

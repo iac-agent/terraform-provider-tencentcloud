@@ -27,39 +27,39 @@ func ResourceTencentCloudCfwNatInstance() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Firewall instance name.",
+				Description: "Firewall 实例名称",
 			},
 			"width": {
 				Required:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateIntegerMin(BAND_WIDTH),
-				Description:  "Bandwidth.",
+				Description:  "Bandwidth。",
 			},
 			"mode": {
 				Required:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(MODE),
-				Description:  "Mode 1: access mode; 0: new mode.",
+				Description:  "模式 1: 访问 模式; 0: new 模式",
 			},
 			"new_mode_items": {
 				Optional:     true,
 				Type:         schema.TypeList,
 				MaxItems:     1,
 				ExactlyOneOf: []string{"nat_gw_list"},
-				Description:  "New mode passing parameters are added, at least one of new_mode_items and nat_gw_list is passed.",
+				Description:  "New 模式 passing 参数 是 added，在 least 一个 的 new_mode_items 和 nat_gw_list 是 passed。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_list": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Required:    true,
-							Description: "List of vpcs connected in new mode.",
+							Description: "列表 vpcs connected 在 new 模式",
 						},
 						"eips": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Required:    true,
-							Description: "List of egress elastic public network IPs bound in the new mode.",
+							Description: "列表 egress elastic 公有 网络 IPs bound 在 new 模式",
 						},
 					},
 				},
@@ -69,7 +69,7 @@ func ResourceTencentCloudCfwNatInstance() *schema.Resource {
 				Type:         schema.TypeSet,
 				ExactlyOneOf: []string{"new_mode_items"},
 				Elem:         &schema.Schema{Type: schema.TypeString},
-				Description:  "A list of nat gateways connected to the access mode, at least one of NewModeItems and NatgwList is passed.",
+				Description:  "A 列表 nat gateways connected 到 访问 模式，在 least 一个 的 NewModeItems 和 NatgwList 是 passed。",
 			},
 			"zone_set": {
 				Type:        schema.TypeSet,
@@ -77,47 +77,47 @@ func ResourceTencentCloudCfwNatInstance() *schema.Resource {
 				MinItems:    1,
 				MaxItems:    2,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Zone list.",
+				Description: "可用区 列表。",
 			},
 			"cross_a_zone": {
 				Optional:     true,
 				Type:         schema.TypeInt,
 				Default:      CROSS_A_ZONE_0,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(CROSS_A_ZONE),
-				Description:  "Off-site disaster recovery 1: use off-site disaster recovery; 0: do not use off-site disaster recovery; if empty, the default is not to use off-site disaster recovery.",
+				Description:  "Off-site disaster recovery 1: 使用 关闭-site disaster recovery; 0: do 不 使用 关闭-site disaster recovery; 如果为空， 默认为 不 到 使用 关闭-site disaster recovery。",
 			},
 			//"domain": {
 			//	Optional:    true,
 			//	Type:        schema.TypeString,
-			//	Description: "Required if you want to create a domain name.",
+			//	Description: "Required 如果 您 want 到 create 域名 名称.",
 			//},
 			//"fw_cidr_info": {
 			//	Optional:    true,
 			//	Type:        schema.TypeList,
 			//	MaxItems:    1,
-			//	Description: "Specify the network segment information used by the firewall.",
+			//	Description: "Specify 网络 segment 信息 使用 通过 firewall.",
 			//	Elem: &schema.Resource{
 			//		Schema: map[string]*schema.Schema{
 			//			"fw_cidr_type": {
 			//				Type:        schema.TypeString,
 			//				Required:    true,
-			//				Description: "The type of network segment used by the firewall. The values VpcSelf/Assis/Custom respectively represent own network segment priority/extended network segment priority/custom.",
+			//				Description: "类型 的 网络 segment 使用 通过 firewall. 值 VpcSelf/Assis/Custom respectively represent own 网络 segment 优先级/extended 网络 segment 优先级/自定义.",
 			//			},
 			//			"fw_cidr_lst": {
 			//				Type:        schema.TypeList,
 			//				Optional:    true,
-			//				Description: "Specify the network segment of the firewall for each vpc.",
+			//				Description: "Specify 网络 segment 的 firewall 对于 each vpc.",
 			//				Elem: &schema.Resource{
 			//					Schema: map[string]*schema.Schema{
 			//						"vpc_id": {
 			//							Type:        schema.TypeString,
 			//							Required:    true,
-			//							Description: "Vpc id.",
+			//							Description: "Vpc ID.",
 			//						},
 			//						"fw_cidr": {
 			//							Type:        schema.TypeString,
 			//							Required:    true,
-			//							Description: "Firewall network segment, at least /24 network segment.",
+			//							Description: "Firewall 网络 segment, 在 least /24 网络 segment.",
 			//						},
 			//					},
 			//				},
@@ -125,7 +125,7 @@ func ResourceTencentCloudCfwNatInstance() *schema.Resource {
 			//			"com_fw_cidr": {
 			//				Type:        schema.TypeString,
 			//				Optional:    true,
-			//				Description: "Other firewalls occupy the network segment, which is usually the network segment specified when the firewall needs to exclusively occupy the vpc.",
+			//				Description: "Other firewalls occupy 网络 segment, 其中 是 usually 网络 segment 指定 当 firewall needs 到 exclusively occupy vpc.",
 			//			},
 			//		},
 			//	},
@@ -135,7 +135,7 @@ func ResourceTencentCloudCfwNatInstance() *schema.Resource {
 			"nat_instance_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Nat instance ID.",
+				Description: "Nat 实例 ID。",
 			},
 		},
 	}

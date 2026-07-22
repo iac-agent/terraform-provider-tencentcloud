@@ -29,14 +29,14 @@ func ResourceTencentCloudMariadbInstance() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Instance ID, uniquely identifies a TDSQL instance.",
+				Description: "实例 ID，uniquely identifies TDSQL 实例。",
 			},
 
 			"instance_name": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Instance name, you can set the name of the instance independently through this field.",
+				Description: "实例名称，您 可以 集合 名称 实例 independently through 此 字段。",
 			},
 
 			"zones": {
@@ -45,39 +45,39 @@ func ResourceTencentCloudMariadbInstance() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Instance node availability zone distribution, up to two availability zones can be filled. When the shard specification is one master and two slaves, two of the nodes are in the first availability zone.",
+				Description: "实例 节点 availability 可用区 distribution，up 到 two availability zones 可以 是 filled. 当 分片 规格 是 一个 master 和 two slaves，two 的 nodes 是 在 first availability 可用区",
 			},
 
 			"node_count": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Number of nodes, 2 is one master and one slave, 3 is one master and two slaves.",
+				Description: "节点数量，2 是 一个 master 和 一个 slave，3 是 一个 master 和 two slaves。",
 			},
 
 			"memory": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Memory size, unit: GB, can be obtained by querying instance specifications through DescribeDBInstanceSpecs.",
+				Description: "Memory 大小，单位: GB，可以 是 获取 通过 querying 实例 specifications through DescribeDBInstanceSpecs。",
 			},
 
 			"storage": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Storage size, unit: GB. You can query instance specifications through DescribeDBInstanceSpecs to obtain the lower and upper limits of disk specifications corresponding to different memory sizes.",
+				Description: "Storage 大小，单位: GB. You 可以 查询 实例 specifications through DescribeDBInstanceSpecs 到 obtain lower 和 upper limits 的 磁盘 specifications corresponding 到 different 内存 sizes。",
 			},
 
 			"period": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "The duration of the purchase, unit: month.",
+				Description: "时长 的 purchase，单位: month。",
 			},
 
 			"auto_voucher": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to automatically use the voucher for payment, the default is not used.",
+				Description: "是否automatically 使用 voucher 对于 payment， 默认为 不 使用。",
 			},
 
 			"voucher_ids": {
@@ -87,42 +87,42 @@ func ResourceTencentCloudMariadbInstance() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "A list of voucher IDs. Currently, only one voucher can be specified.",
+				Description: "A 列表 voucher IDs. Currently，仅 一个 voucher 可以 是 指定。",
 			},
 
 			"vip": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Intranet IP address.",
+				Description: "内网 IP 地址",
 			},
 
 			"vpc_id": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Virtual private network ID, if not passed, it means that it is created as a basic network.",
+				Description: "Virtual 私有 网络 ID，如果未传入，它 表示 该 它 是 创建 作为 basic 网络。",
 			},
 
 			"subnet_id": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Virtual private network subnet ID, required when VpcId is not empty.",
+				Description: "Virtual 私有 网络 子网 ID，必填 当 VpcId 是 不 空。",
 			},
 
 			"project_id": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Project ID, which can be obtained by viewing the project list, if not passed, it will be associated with the default project.",
+				Description: "项目 ID，其中 可以 是 获取 通过 viewing 项目 列表，如果未传入，它 将 是 associated 使用 默认值 项目。",
 			},
 
 			"db_version_id": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Database engine version, currently available: 8.0.18, 10.1.9, 5.7.17. If not passed, the default is Percona 5.7.17.",
+				Description: "Database 引擎 版本，currently 可用: 8.0.18，10.1.9，5.7.17. 如果未传入， 默认为 Percona 5.7.17。",
 			},
 
 			"security_group_ids": {
@@ -131,215 +131,215 @@ func ResourceTencentCloudMariadbInstance() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Security group ID list.",
+				Description: "安全组 ID 列表。",
 			},
 
 			"auto_renew_flag": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Automatic renewal flag, 1: automatic renewal, 2: no automatic renewal.",
+				Description: "Automatic renewal flag，1: automatic renewal，2: 无 automatic renewal。",
 			},
 
 			"ipv6_flag": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether IPv6 is supported.",
+				Description: "Whether IPv6 是 支持。",
 			},
 
 			"app_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "ID of the application to which the instance belongs.",
+				Description: "ID 应用 到 其中 实例 belongs。",
 			},
 
 			"region": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The name of the region where the instance is located, such as ap-shanghai.",
+				Description: "名称 地域 其中 实例 是 located，such 作为 ap-shanghai。",
 			},
 
 			"status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Instance status: 0 creating, 1 process processing, 2 running, 3 instance not initialized, -1 instance isolated, 4 instance initializing, 5 instance deleting, 6 instance restarting, 7 data migration.",
+				Description: "实例状态: 0 creating，1 process processing，2 running，3 实例 不 initialized，-1 实例 isolated，4 实例 initializing，5 实例 deleting，6 实例 restarting，7 数据 迁移。",
 			},
 
 			"vport": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Intranet port.",
+				Description: "Intranet 端口",
 			},
 			"wan_domain": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The domain name accessed from the external network, which can be resolved by the public network.",
+				Description: "域名 名称 accessed 从 外部 网络，其中 可以 是 resolved 通过 公有 网络。",
 			},
 			"wan_vip": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Extranet IP address, accessible from the public network.",
+				Description: "Extranet IP 地址，accessible 从 公有 网络。",
 			},
 			"wan_port": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Internet port.",
+				Description: "Internet 端口",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Instance creation time, the format is 2006-01-02 15:04:05.",
+				Description: "实例 创建时间， 格式 是 2006-01-02 15:04:05。",
 			},
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The last update time of the instance in the format of 2006-01-02 15:04:05.",
+				Description: "last 更新时间 的 实例 在 格式 的 2006-01-02 15:04:05。",
 			},
 			"period_end_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Instance expiration time, the format is 2006-01-02 15:04:05.",
+				Description: "实例 过期时间， 格式 是 2006-01-02 15:04:05。",
 			},
 			"uin": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The account to which the instance belongs.",
+				Description: "账号 到 其中 实例 belongs。",
 			},
 			"tdsql_version": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "TDSQL version information.",
+				Description: "TDSQL 版本 信息。",
 			},
 			"is_tmp": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Whether it is a temporary instance, 0 means no, non-zero means yes.",
+				Description: "是否为a temporary 实例，0 表示 无，non-zero 表示 yes。",
 			},
 			"excluster_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Exclusive cluster ID, if it is empty, it means a normal instance.",
+				Description: "Exclusive 集群 ID，如果 它 是 空，它 表示 normal 实例。",
 			},
 			"pid": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Product Type ID.",
+				Description: "Product 类型 ID。",
 			},
 			"qps": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Maximum Qps value.",
+				Description: "Maximum Qps 值",
 			},
 			"paymode": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Payment Mode.",
+				Description: "Payment 模式",
 			},
 			"locker": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Asynchronous task process ID when the instance is in an asynchronous task.",
+				Description: "Asynchronous 任务 process ID 当 实例 是 在 asynchronous 任务。",
 			},
 			"status_desc": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Description of the current running state of the instance.",
+				Description: "描述 当前 running state 的 实例。",
 			},
 			"wan_status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "External network status, 0-unopened; 1-opened; 2-closed; 3-opening.",
+				Description: "External 网络 状态，0-unopened; 1-opened; 2-closed; 3-opening。",
 			},
 			"is_audit_supported": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Whether the instance supports auditing. 1-supported; 0-not supported.",
+				Description: "是否instance 支持 审计. 1-支持; 0-不 支持。",
 			},
 			"machine": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Machine Model.",
+				Description: "Machine Model。",
 			},
 			"is_encrypt_supported": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Whether data encryption is supported. 1-supported; 0-not supported.",
+				Description: "Whether 数据 加密 是 支持. 1-支持; 0-不 支持。",
 			},
 			"cpu": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Number of CPU cores of the instance.",
+				Description: "CPU 核数 的 实例。",
 			},
 			"vipv6": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Intranet IPv6.",
+				Description: "Intranet IPv6。",
 			},
 			"wan_vipv6": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Internet IPv6.",
+				Description: "Internet IPv6。",
 			},
 			"wan_port_ipv6": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Internet IPv6 port.",
+				Description: "Internet IPv6 端口",
 			},
 			"wan_status_ipv6": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Internet IPv6 status.",
+				Description: "Internet IPv6 状态",
 			},
 			"db_engine": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Database Engine.",
+				Description: "Database Engine。",
 			},
 			"dcn_flag": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "DCN flag, 0-none, 1-primary instance, 2-disaster backup instance.",
+				Description: "DCN flag，0-none，1-primary 实例，2-disaster 备份 实例。",
 			},
 			"dcn_status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "DCN status, 0-none, 1-creating, 2-synchronizing, 3-disconnected.",
+				Description: "DCN 状态，0-none，1-creating，2-synchronizing，3-disconnected。",
 			},
 
 			"dcn_dst_num": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Number of DCN disaster recovery instances.",
+				Description: "数量 DCN disaster recovery 实例。",
 			},
 			"instance_type": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "1: primary instance (exclusive), 2: primary instance, 3: disaster recovery instance, 4: disaster recovery instance (exclusive type).",
+				Description: "1: primary 实例 (exclusive)，2: primary 实例，3: disaster recovery 实例，4: disaster recovery 实例 (exclusive 类型)。",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "tag list.",
+				Description: "标签列表",
 			},
 
 			"init_params": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "Parameter list. The optional values of this interface are: character_set_server (character set, required) enum: utf8,latin1,gbk,utf8mb4,gb18030, lower_case_table_names (table name case sensitive, required, 0 - sensitive; 1 - insensitive), innodb_page_size (innodb data page, Default 16K), sync_mode (sync mode: 0 - asynchronous; 1 - strong synchronous; 2 - strong synchronous can degenerate. The default is strong synchronous can degenerate).",
+				Description: "Parameter 列表. 可选 值 的 此 interface 是: character_set_server (character 集合，必填) enum: utf8,latin1,gbk,utf8mb4,gb18030，lower_case_table_names (表 名称 case sensitive，必填，0 - sensitive; 1 - insensitive)，innodb_page_size (innodb 数据 页面，Default 16K)，sync_mode (sync 模式: 0 - asynchronous; 1 - strong synchronous; 2 - strong synchronous 可以 degenerate. 默认为 strong synchronous 可以 degenerate)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"param": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "parameter name.",
+							Description: "参数 名称",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "parameter value.",
+							Description: "参数 值",
 						},
 					},
 				},
@@ -349,14 +349,14 @@ func ResourceTencentCloudMariadbInstance() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "DCN source region.",
+				Description: "DCN 来源 地域",
 			},
 
 			"dcn_instance_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "DCN source instance ID.",
+				Description: "DCN 来源 实例 ID。",
 			},
 		},
 	}

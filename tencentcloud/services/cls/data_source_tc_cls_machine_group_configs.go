@@ -19,70 +19,70 @@ func DataSourceTencentCloudClsMachineGroupConfigs() *schema.Resource {
 			"group_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "group id.",
+				Description: "组 ID。",
 			},
 
 			"configs": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "scrape config list.",
+				Description: "抓取配置列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"config_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "scrape config id.",
+							Description: "抓取配置 ID。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "scrape config name.",
+							Description: "抓取配置名称。",
 						},
 						"log_format": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "style of log format.",
+							Description: "日志格式的风格。",
 						},
 						"path": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "scrape log path.",
+							Description: "抓取日志路径。",
 						},
 						"log_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "log type.",
+							Description: "日志类型。",
 						},
 						"extract_rule": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Extraction rule. If ExtractRule is set, LogType must be set.",
+							Description: "提取规则。如果设置了ExtractRule，则必须设置LogType。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"time_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Time field key name. time_key and time_format must appear in pair.",
+										Description: "时间字段键名称。 time_key 和 time_format 必须成对出现。",
 									},
 									"time_format": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Time field format. For more information, please see the output parameters of the time format description of the strftime function in C language.",
+										Description: "时间字段格式。更多信息请参见C语言strftime函数时间格式说明的输出参数。",
 									},
 									"delimiter": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Delimiter for delimited log, which is valid only if log_type is delimiter_log.",
+										Description: "分隔日志的分隔符，仅当log_type为delimiter_log时有效。",
 									},
 									"log_regex": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Full log matching rule, which is valid only if log_type is fullregex_log.",
+										Description: "全日志匹配规则，仅当log_type为fullregex_log时有效。",
 									},
 									"begin_regex": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "First-Line matching rule, which is valid only if log_type is multiline_log or fullregex_log.",
+										Description: "首行匹配规则，仅当log_type为multiline_log或fullregex_log时有效。",
 									},
 									"keys": {
 										Type: schema.TypeSet,
@@ -90,23 +90,23 @@ func DataSourceTencentCloudClsMachineGroupConfigs() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Key name of each extracted field. An empty key indicates to discard the field. This parameter is valid only if log_type is delimiter_log. json_log logs use the key of JSON itself.",
+										Description: "每个提取字段的键名称。空键表示放弃该字段。该参数仅当log_type为delimiter_log时有效。 json_log 日志使用 JSON 本身的密钥。",
 									},
 									"filter_key_regex": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Log keys to be filtered and the corresponding regex.",
+										Description: "记录要过滤的键和相应的正则表达式。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Log key to be filtered.",
+													Description: "要过滤的日志键。",
 												},
 												"regex": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Filter rule regex corresponding to key.",
+													Description: "key对应的过滤规则正则表达式。",
 												},
 											},
 										},
@@ -114,68 +114,68 @@ func DataSourceTencentCloudClsMachineGroupConfigs() *schema.Resource {
 									"un_match_up_load_switch": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether to upload the logs that failed to be parsed. Valid values: true: yes; false: no.",
+										Description: "是否上传解析失败的日志。有效值：true：是；假：没有。",
 									},
 									"un_match_log_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Unmatched log key.",
+										Description: "不匹配的日志密钥。",
 									},
 									"backtracking": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Size of the data to be rewound in incremental collection mode. Default value: -1 (full collection).",
+										Description: "增量采集模式下回滚的数据大小。默认值：-1（完整集合）。",
 									},
 									"is_gbk": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "GBK encoding. Default 0.",
+										Description: "GBK编码。默认 0。",
 									},
 									"json_standard": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "standard json. Default 0.",
+										Description: "标准 json。默认 0。",
 									},
 									"protocol": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "syslog protocol, tcp or udp.",
+										Description: "系统日志协议、tcp 或 udp。",
 									},
 									"address": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "syslog system log collection specifies the address and port that the collector listens to.",
+										Description: "syslog系统日志采集指定采集器监听的地址和端口。",
 									},
 									"parse_protocol": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "parse protocol.",
+										Description: "解析协议。",
 									},
 									"metadata_type": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "metadata type.",
+										Description: "元数据类型。",
 									},
 									"path_regex": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "metadata path regex.",
+										Description: "元数据路径正则表达式。",
 									},
 									"meta_tags": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "metadata tags.",
+										Description: "元数据标签。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "tag key.",
+													Description: "标签键。",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "tag value.",
+													Description: "标签值。",
 												},
 											},
 										},
@@ -186,18 +186,18 @@ func DataSourceTencentCloudClsMachineGroupConfigs() *schema.Resource {
 						"exclude_paths": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Collection path blocklist.",
+							Description: "收集路径阻止列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Type. Valid values: File, Path.",
+										Description: "类型。有效值：文件、路径。",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Specific content corresponding to Type.",
+										Description: "具体内容对应Type。",
 									},
 								},
 							},
@@ -205,22 +205,22 @@ func DataSourceTencentCloudClsMachineGroupConfigs() *schema.Resource {
 						"output": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "topicid.",
+							Description: "主题ID。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "update time.",
+							Description: "更新时间。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "create time.",
+							Description: "创造时间。",
 						},
 						"user_define_rule": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "user define rule.",
+							Description: "用户定义规则。",
 						},
 					},
 				},
@@ -229,7 +229,7 @@ func DataSourceTencentCloudClsMachineGroupConfigs() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

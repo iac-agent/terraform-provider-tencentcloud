@@ -17,7 +17,7 @@ func DataSourceTencentCloudMysqlSupportedPrivileges() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The instance ID, in the format: cdb-c1nl9rpv, is the same as the instance ID displayed on the cloud database console page.",
+				Description: "实例ID与云数据库控制台页面显示的实例ID一致，格式为：cdb-c1nl9rpv。",
 			},
 
 			"global_supported_privileges": {
@@ -26,7 +26,7 @@ func DataSourceTencentCloudMysqlSupportedPrivileges() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Global permissions supported by the instance.",
+				Description: "实例支持的全局权限。",
 			},
 
 			"database_supported_privileges": {
@@ -35,7 +35,7 @@ func DataSourceTencentCloudMysqlSupportedPrivileges() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Database permissions supported by the instance.",
+				Description: "实例支持的数据库权限。",
 			},
 
 			"table_supported_privileges": {
@@ -44,7 +44,7 @@ func DataSourceTencentCloudMysqlSupportedPrivileges() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Database table permissions supported by the instance.",
+				Description: "实例支持的数据库表权限。",
 			},
 
 			"column_supported_privileges": {
@@ -53,13 +53,13 @@ func DataSourceTencentCloudMysqlSupportedPrivileges() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The database column permissions supported by the instance.",
+				Description: "实例支持的数据库列权限。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -28,50 +28,50 @@ func ResourceTencentCloudClsAlarm() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "log alarm name.",
+				Description: "记录报警名称。",
 			},
 
 			"alarm_targets": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "list of alarm target.",
+				Description: "报警目标列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"topic_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "topic id.",
+							Description: "主题 ID。",
 						},
 						"query": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "query rules.",
+							Description: "查询规则。",
 						},
 						"number": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "the number of alarm object.",
+							Description: "报警对象的数量。",
 						},
 						"start_time_offset": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "search start time of offset.",
+							Description: "偏移量的搜索开始时间。",
 						},
 						"end_time_offset": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "search end time of offset.",
+							Description: "偏移量的搜索结束时间。",
 						},
 						"logset_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "logset id.",
+							Description: "日志集 ID。",
 						},
 						"syntax_rule": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Retrieve grammar rules, 0: Lucene syntax, 1: CQL syntax, Default value is 0.",
+							Description: "检索语法规则，0：Lucene语法，1：CQL语法，默认值为0。",
 						},
 					},
 				},
@@ -81,18 +81,18 @@ func ResourceTencentCloudClsAlarm() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "monitor task execution time.",
+				Description: "监控任务执行时间。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Period for periodic execution, Fixed for regular execution.",
+							Description: "周期执行为周期，定期执行为固定。",
 						},
 						"time": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "time period or point in time.",
+							Description: "时间段或时间点。",
 						},
 					},
 				},
@@ -102,7 +102,7 @@ func ResourceTencentCloudClsAlarm() *schema.Resource {
 				Optional:     true,
 				Type:         schema.TypeString,
 				ExactlyOneOf: []string{"multi_conditions"},
-				Description:  "Trigger condition.",
+				Description: "触发条件。",
 			},
 
 			"alarm_level": {
@@ -111,26 +111,26 @@ func ResourceTencentCloudClsAlarm() *schema.Resource {
 				Type:          schema.TypeInt,
 				ConflictsWith: []string{"multi_conditions"},
 				RequiredWith:  []string{"condition"},
-				Description:   "Alarm level. 0: Warning; 1: Info; 2: Critical. Default is 0.",
+				Description: "报警级别。 0：警告； 1：信息； 2：关键。默认值为 0。",
 			},
 
 			"multi_conditions": {
 				Optional:     true,
 				Type:         schema.TypeList,
 				ExactlyOneOf: []string{"condition"},
-				Description:  "Multiple triggering conditions.",
+				Description: "多种触发条件。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"condition": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Trigger condition.",
+							Description: "触发条件。",
 						},
 						"alarm_level": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Alarm level. 0: Warning; 1: Info; 2: Critical. Default is 0.",
+							Description: "报警级别。 0：警告； 1：信息； 2：关键。默认值为 0。",
 						},
 					},
 				},
@@ -139,13 +139,13 @@ func ResourceTencentCloudClsAlarm() *schema.Resource {
 			"trigger_count": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "continuous cycle.",
+				Description: "连续循环。",
 			},
 
 			"alarm_period": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "alarm repeat cycle.",
+				Description: "闹钟重复循环。",
 			},
 
 			"alarm_notice_ids": {
@@ -155,7 +155,7 @@ func ResourceTencentCloudClsAlarm() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of alarm notice id. Note: AlarmNoticeIds and MonitorNotice cannot be set at the same time.",
+				Description: "报警通知ID列表。注意：AlarmNoticeIds 和 MonitorNotice 不能同时设置。",
 			},
 
 			"monitor_notice": {
@@ -163,29 +163,29 @@ func ResourceTencentCloudClsAlarm() *schema.Resource {
 				Type:         schema.TypeList,
 				MaxItems:     1,
 				ExactlyOneOf: []string{"alarm_notice_ids"},
-				Description:  "Monitor notice configuration for observable platform. Note: AlarmNoticeIds and MonitorNotice cannot be set at the same time.",
+				Description: "可观察平台的监控通知配置。注意：AlarmNoticeIds 和 MonitorNotice 不能同时设置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"notices": {
 							Optional:    true,
 							Type:        schema.TypeList,
-							Description: "List of monitor notice rules.",
+							Description: "监控通知规则列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"notice_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Observable platform notification template ID.",
+										Description: "可观察的平台通知模板ID。",
 									},
 									"content_tmpl_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Observable platform content template ID. If empty, use default content template.",
+										Description: "可观察的平台内容模板ID。如果为空，则使用默认内容模板。",
 									},
 									"alarm_levels": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Alarm levels. 0: Warning; 1: Info; 2: Critical.",
+										Description: "警报级别。 0：警告； 1：信息； 2：关键。",
 										Elem: &schema.Schema{
 											Type: schema.TypeInt,
 										},
@@ -201,13 +201,13 @@ func ResourceTencentCloudClsAlarm() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "whether to enable the alarm policy.",
+				Description: "是否启用报警策略。",
 			},
 
 			"message_template": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "user define alarm notice.",
+				Description: "用户定义报警通知。",
 			},
 
 			"call_back": {
@@ -215,13 +215,13 @@ func ResourceTencentCloudClsAlarm() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "user define callback.",
+				Description: "用户定义回调。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"body": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "callback body.",
+							Description: "回调体。",
 						},
 						"headers": {
 							Type: schema.TypeSet,
@@ -229,7 +229,7 @@ func ResourceTencentCloudClsAlarm() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "callback headers.",
+							Description: "回调标头。",
 						},
 					},
 				},
@@ -238,39 +238,39 @@ func ResourceTencentCloudClsAlarm() *schema.Resource {
 			"analysis": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "multidimensional analysis.",
+				Description: "多维分析。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "analysis name.",
+							Description: "分析名称。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "analysis type.",
+							Description: "分析类型。",
 						},
 						"content": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "analysis content.",
+							Description: "分析内容。",
 						},
 						"config_info": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "configuration.",
+							Description: "配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "key.",
+										Description: "钥匙。",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "value.",
+										Description: "价值。",
 									},
 								},
 							},
@@ -282,13 +282,13 @@ func ResourceTencentCloudClsAlarm() *schema.Resource {
 			"classifications": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Alarm classification information map. Key must match regex `^[a-z]([a-z0-9_]{0,49})$`, value length cannot exceed 200 characters. Maximum 20 entries.",
+				Description: "报警分类信息图。键必须匹配正则表达式 `^[-z]([-z0-9_]{0,49})$`，值长度不能超过 200 个字符。最多 20 个条目。",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表。",
 			},
 		},
 	}

@@ -25,35 +25,35 @@ func ResourceTencentCloudCynosdbReadOnlyInstanceExclusiveAccess() *schema.Resour
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 
 			"instance_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Need to activate a read-only instance ID with unique access.",
+				Description: "需要激活具有唯一访问权限的只读实例 ID。",
 			},
 
 			"vpc_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Specified VPC ID.",
+				Description: "指定VPC ID。",
 			},
 
 			"subnet_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The specified subnet ID.",
+				Description: "指定的子网ID。",
 			},
 
 			"port": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "port.",
+				Description: "港口。",
 			},
 
 			"security_group_ids": {
@@ -63,7 +63,7 @@ func ResourceTencentCloudCynosdbReadOnlyInstanceExclusiveAccess() *schema.Resour
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Security Group.",
+				Description: "安全组。",
 			},
 		},
 	}

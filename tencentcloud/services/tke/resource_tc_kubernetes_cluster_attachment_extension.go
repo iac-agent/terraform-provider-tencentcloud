@@ -312,31 +312,31 @@ func TKEGpuArgsSetting() map[string]*schema.Schema {
 			Type:        schema.TypeBool,
 			Optional:    true,
 			Default:     false,
-			Description: "Whether to enable MIG.",
+			Description: "是否enable MIG。",
 		},
 		"driver": {
 			Type:         schema.TypeMap,
 			Optional:     true,
 			ValidateFunc: tccommon.ValidateTkeGpuDriverVersion,
-			Description:  "GPU driver version. Format like: `{ version: String, name: String }`. `version`: Version of GPU driver or CUDA; `name`: Name of GPU driver or CUDA.",
+			Description:  "GPU 驱动 版本 格式 like: `{ 版本: String，名称: String }`. `版本`: 版本 的 GPU 驱动 或 CUDA; `名称`: 名称 GPU 驱动 或 CUDA。",
 		},
 		"cuda": {
 			Type:         schema.TypeMap,
 			Optional:     true,
 			ValidateFunc: tccommon.ValidateTkeGpuDriverVersion,
-			Description:  "CUDA  version. Format like: `{ version: String, name: String }`. `version`: Version of GPU driver or CUDA; `name`: Name of GPU driver or CUDA.",
+			Description:  "CUDA 版本 格式 like: `{ 版本: String，名称: String }`. `版本`: 版本 的 GPU 驱动 或 CUDA; `名称`: 名称 GPU 驱动 或 CUDA。",
 		},
 		"cudnn": {
 			Type:         schema.TypeMap,
 			Optional:     true,
 			ValidateFunc: tccommon.ValidateTkeGpuDriverVersion,
-			Description: "cuDNN version. Format like: `{ version: String, name: String, doc_name: String, dev_name: String }`." +
+			Description: "cuDNN 版本. Format like: `{ 版本: String, 名称: String, doc_name: String, dev_name: String }`." +
 				" `version`: cuDNN version; `name`: cuDNN name; `doc_name`: Doc name of cuDNN; `dev_name`: Dev name of cuDNN.",
 		},
 		"custom_driver": {
 			Type:        schema.TypeMap,
 			Optional:    true,
-			Description: "Custom GPU driver. Format like: `{address: String}`. `address`: URL of custom GPU driver address.",
+			Description: "Custom GPU 驱动. 格式 like: `{地址: String}`. `地址`: URL 的 自定义 GPU 驱动 地址",
 		},
 	}
 }
@@ -347,21 +347,21 @@ func TkeInstanceAdvancedSetting() map[string]*schema.Schema {
 			Type:        schema.TypeString,
 			Optional:    true,
 			ForceNew:    true,
-			Description: "Mount target. Default is not mounting.",
+			Description: "挂载目标 默认为 不 mounting。",
 		},
 		"docker_graph_path": {
 			Type:        schema.TypeString,
 			Optional:    true,
 			ForceNew:    true,
 			Default:     "/var/lib/docker",
-			Description: "Docker graph path. Default is `/var/lib/docker`.",
+			Description: "Docker graph 路径 默认为 `/var/lib/docker`。",
 		},
 		"data_disk": {
 			Type:        schema.TypeList,
 			ForceNew:    true,
 			Optional:    true,
 			MaxItems:    11,
-			Description: "Configurations of data disk.",
+			Description: "数据盘配置",
 			Elem: &schema.Resource{
 				Schema: map[string]*schema.Schema{
 					"disk_type": {
@@ -370,41 +370,41 @@ func TkeInstanceAdvancedSetting() map[string]*schema.Schema {
 						Optional:     true,
 						Default:      svcas.SYSTEM_DISK_TYPE_CLOUD_PREMIUM,
 						ValidateFunc: tccommon.ValidateAllowedStringValue(svcas.SYSTEM_DISK_ALLOW_TYPE),
-						Description:  "Types of disk. Valid value: `LOCAL_BASIC`, `LOCAL_SSD`, `CLOUD_BASIC`, `CLOUD_PREMIUM`, `CLOUD_SSD`, `CLOUD_HSSD`, `CLOUD_TSSD` and `CLOUD_BSSD`.",
+						Description:  "Types 的 磁盘. 有效 值: `LOCAL_BASIC`，`LOCAL_SSD`，`CLOUD_BASIC`，`CLOUD_PREMIUM`，`CLOUD_SSD`，`CLOUD_HSSD`，`CLOUD_TSSD` 和 `CLOUD_BSSD`。",
 					},
 					"disk_size": {
 						Type:        schema.TypeInt,
 						ForceNew:    true,
 						Optional:    true,
 						Default:     0,
-						Description: "Volume of disk in GB. Default is `0`.",
+						Description: "Volume 的 磁盘 （GB）。 默认为 `0`。",
 					},
 					"file_system": {
 						Type:        schema.TypeString,
 						ForceNew:    true,
 						Optional:    true,
 						Default:     "",
-						Description: "File system, e.g. `ext3/ext4/xfs`.",
+						Description: "File 系统，e.g. `ext3/ext4/xfs`。",
 					},
 					"auto_format_and_mount": {
 						Type:        schema.TypeBool,
 						Optional:    true,
 						ForceNew:    true,
 						Default:     false,
-						Description: "Indicate whether to auto format and mount or not. Default is `false`.",
+						Description: "Indicate 是否auto 格式 和 mount 或 不. 默认为 `false`。",
 					},
 					"mount_target": {
 						Type:        schema.TypeString,
 						Optional:    true,
 						ForceNew:    true,
 						Default:     "",
-						Description: "Mount target.",
+						Description: "挂载目标",
 					},
 					"disk_partition": {
 						Type:        schema.TypeString,
 						ForceNew:    true,
 						Optional:    true,
-						Description: "The name of the device or partition to mount. NOTE: this argument doesn't support setting in node pool, or will leads to mount error.",
+						Description: "名称 device 或 分区 到 mount. NOTE: 此 argument doesn't support setting 在 节点 池，或 将 leads 到 mount 错误",
 					},
 				},
 			},
@@ -414,32 +414,32 @@ func TkeInstanceAdvancedSetting() map[string]*schema.Schema {
 			Optional:    true,
 			ForceNew:    true,
 			Elem:        &schema.Schema{Type: schema.TypeString},
-			Description: "Custom parameter information related to the node. This is a white-list parameter.",
+			Description: "Custom 参数 信息 related 到 节点. 此 是 white-列表 参数。",
 		},
 		"user_data": {
 			Type:        schema.TypeString,
 			ForceNew:    true,
 			Optional:    true,
-			Description: "Base64-encoded User Data text, the length limit is 16KB.",
+			Description: "Base64-encoded 用户 Data text， 长度 限制 是 16KB。",
 		},
 		"pre_start_user_script": {
 			Type:        schema.TypeString,
 			ForceNew:    true,
 			Optional:    true,
-			Description: "Base64-encoded user script, executed before initializing the node, currently only effective for adding existing nodes.",
+			Description: "Base64-encoded 用户 脚本，executed before initializing 节点，currently 仅 effective 对于 adding existing nodes。",
 		},
 		"is_schedule": {
 			Type:        schema.TypeBool,
 			ForceNew:    true,
 			Optional:    true,
 			Default:     true,
-			Description: "Indicate to schedule the adding node or not. Default is true.",
+			Description: "Indicate 到 调度 adding 节点 或 不. 默认为 true。",
 		},
 		"desired_pod_num": {
 			Type:        schema.TypeInt,
 			ForceNew:    true,
 			Optional:    true,
-			Description: "Indicate to set desired pod number in node. valid when the cluster is podCIDR.",
+			Description: "Indicate 到 集合 desired pod 数量 在 节点. 有效 当 集群 是 podCIDR。",
 		},
 		"gpu_args": {
 			Type:     schema.TypeList,
@@ -449,7 +449,7 @@ func TkeInstanceAdvancedSetting() map[string]*schema.Schema {
 			Elem: &schema.Resource{
 				Schema: TKEGpuArgsSetting(),
 			},
-			Description: "GPU driver parameters.",
+			Description: "GPU 驱动 参数。",
 		},
 	}
 }

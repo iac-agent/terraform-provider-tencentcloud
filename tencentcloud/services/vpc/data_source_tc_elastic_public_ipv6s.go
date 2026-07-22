@@ -18,7 +18,7 @@ func DataSourceTencentCloudElasticPublicIpv6s() *schema.Resource {
 			"ipv6_address_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Unique ID column that identifies IPv6.\n\t- Traditional Elastic IPv6 unique ID is like: `eip-11112222`\n\t- Elastic IPv6 unique ID is like: `eipv6 -11112222`\nNote: Parameters do not support specifying both IPv6AddressIds and Filters.",
+				Description: "Unique ID 列 该 identifies IPv6.\n\t- Traditional Elastic IPv6 唯一 ID 是 like: `eip-11112222`\n\t- Elastic IPv6 唯一 ID 是 like: `eipv6 -11112222`\nNote: Parameters do 不 support specifying both IPv6AddressIds 和 Filters。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -27,18 +27,18 @@ func DataSourceTencentCloudElasticPublicIpv6s() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "The detailed filter conditions are as follows:\n\t- address-id-String-required: no-(filter condition) filter by the unique ID of the elastic public network IPv6.\n\t- public-ipv6-address-String-required: no-(filter condition) filter by the IP address of the public network IPv6.\n\t- charge-type-String-required: no-(filter condition) filter by billing type.\n\t- private-ipv6-address-String-required: no-(filter condition) filter by bound private network IPv6 address.\n\t- egress-String-required: no-(filter condition) filter by exit.\n\t- address-type-String-required: no-(filter condition) filter by IPv6 type.\n\t- address-isp-String-required: no-(filter condition) filter by operator type.\n  The status includes: 'CREATING','BINDING','BIND','UNBINDING','UNBIND','OFFLINING','BIND_ENI','PRIVATE'.\n\t- address-name-String-required: no-(filter condition) filter by EIP name. Blur filtering is not supported.\n\t- tag-key-String-required: no-(filter condition) filter by label key.\n\t- tag-value-String-required: no-(filter condition) filter by tag value.\n\t- tag:tag-key-String-required: no-(filter condition) filter by label key value pair. Tag-key is replaced with a specific label key.",
+				Description: "detailed 过滤器 conditions 是 作为 follows:\n\t- 地址-ID-String-必填: 无-(过滤器 condition) 过滤器 通过 唯一 ID elastic 公有 网络 IPv6.\n\t- 公有-ipv6-地址-String-必填: 无-(过滤器 condition) 过滤器 通过 IP 地址 的 公有 网络 IPv6.\n\t- charge-类型-String-必填: 无-(过滤器 condition) 过滤器 通过 billing 类型\n\t- 私有-ipv6-地址-String-必填: 无-(过滤器 condition) 过滤器 通过 bound 私有 网络 IPv6 地址\n\t- egress-String-必填: 无-(过滤器 condition) 过滤器 通过 exit.\n\t- 地址-类型-String-必填: 无-(过滤器 condition) 过滤器 通过 IPv6 类型\n\t- 地址-isp-String-必填: 无-(过滤器 condition) 过滤器 通过 操作者 类型\n 状态 includes: 'CREATING','BINDING','BIND','UNBINDING','UNBIND','OFFLINING','BIND_ENI','PRIVATE'.\n\t- 地址-名称-String-必填: 无-(过滤器 condition) 过滤器 通过 EIP 名称 Blur filtering 是 不 支持.\n\t- 标签-键-String-必填: 无-(过滤器 condition) 过滤器 通过 标签 键\n\t- 标签-值-String-必填: 无-(过滤器 condition) 过滤器 通过 标签值\n\t- 标签:标签-键-String-必填: 无-(过滤器 condition) 过滤器 通过 标签 键 值 pair. 标签-键 是 replaced 使用 特定 标签 键",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Property name. If there are multiple Filters, the relationship between Filters is a logical AND (AND) relationship.",
+							Description: "属性名称 如果 there 是 多个 Filters， relationship between Filters 是 logical AND (AND) relationship。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Attribute value. If there are multiple Values in the same Filter, the relationship between Values under the same Filter is a logical OR relationship. When the value type is a Boolean type, the value can be directly taken to the string TRUE or FALSE.",
+							Description: "Attribute 值 如果 there 是 多个 Values 在 same 过滤器， relationship between Values under same 过滤器 是 logical OR relationship. 当 值 类型 是 Boolean 类型， 值 可以 是 directly taken 到 字符串 TRUE 或 FALSE。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -50,96 +50,96 @@ func DataSourceTencentCloudElasticPublicIpv6s() *schema.Resource {
 			"traditional": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to query traditional IPv6 address information.",
+				Description: "是否query traditional IPv6 地址 信息。",
 			},
 
 			"address_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of IPv6 details.",
+				Description: "列表 IPv6 details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"address_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The ID of EIP is the unique identifier of EIP.",
+							Description: "ID EIP 是 唯一 identifier 的 EIP。",
 						},
 						"address_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "EIP name.",
+							Description: "EIP 名称",
 						},
 						"address_status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "EIP status, including CREATING(Creating),BINDING(Binding),BIND(Binding),UNBINDING(Unbinding),UNBIND(Unbinding),OFFLINING(Releasing),BIND_ENI(Binding Suspend Elastic Network Interface).",
+							Description: "EIP 状态，包括 CREATING(Creating),BINDING(Binding),BIND(Binding),UNBINDING(Unbinding),UNBIND(Unbinding),OFFLINING(Releasing),BIND_ENI(Binding Suspend Elastic Network Interface)。",
 						},
 						"address_ip": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "External network IP address.",
+							Description: "External 网络 IP 地址",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The bound resource instance `ID`. It may be a `CVM`,`NAT`.",
+							Description: "bound 资源 实例 `ID`. It 可能 是 `CVM`,`NAT`。",
 						},
 						"created_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Creation time. It is expressed in accordance with the ISO8601 standard and uses UTC time. The format is: `Y-MM-DDThh:mm:ssZ`.",
+							Description: "创建时间. It 是 expressed 在 accordance 使用 ISO8601 standard 和 uses UTC 时间. 格式 是: `Y-MM-DDThh:mm:ssZ`。",
 						},
 						"network_interface_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The bound Elastic Network Interface ID.",
+							Description: "bound Elastic Network Interface ID。",
 						},
 						"private_address_ip": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Binding resources intranet IP.",
+							Description: "Binding resources intranet IP。",
 						},
 						"is_arrears": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Resource isolation status. true means eip is in isolation, false means resource is in non-isolation state.",
+							Description: "Resource isolation 状态 true 表示 eip 是 在 isolation，false 表示 资源 是 在 non-isolation state。",
 						},
 						"is_blocked": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Resource blocking status. true means eip is blocked, false means eip is not blocked.",
+							Description: "Resource blocking 状态 true 表示 eip 是 blocked，false 表示 eip 是 不 blocked。",
 						},
 						"is_eip_direct_connection": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Whether eip supports pass-through mode. true means eip supports pass-through mode, false means resources do not support pass-through mode.",
+							Description: "Whether eip 支持 pass-through 模式 true 表示 eip 支持 pass-through 模式，false 表示 resources do 不 support pass-through 模式",
 						},
 						"address_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "EIP resource types, including CalcIP, WanIP, EIP, AnycastEIP, and high-defense EIP. Among them: `CalcIP` means device IP,`WanIP` means ordinary public network IP,`EIP` means elastic public network IP,`AnycastEIP` means accelerated EIP, and `AntiDDoSEIP` means highly resistant EIP.",
+							Description: "EIP 资源 types，包括 CalcIP，WanIP，EIP，AnycastEIP，和 high-defense EIP. Among them: `CalcIP` 表示 device IP,`WanIP` 表示 ordinary 公有 网络 IP,`EIP` 表示 elastic 公有 网络 IP,`AnycastEIP` 表示 accelerated EIP，和 `AntiDDoSEIP` 表示 highly resistant EIP。",
 						},
 						"cascade_release": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Whether eip is automatically released after unbinding. true means that eip will be automatically released after unbinding, false means that eip will not be automatically released after unbinding.",
+							Description: "Whether eip 是 automatically released after unbinding. true 表示 该 eip 将 是 automatically released after unbinding，false 表示 该 eip 将 不 是 automatically released after unbinding。",
 						},
 						"eip_alg_type": {
 							Type:        schema.TypeList,
 							Required:    true,
 							MaxItems:    1,
-							Description: "The type of protocol opened by EIP ALG.",
+							Description: "类型 协议 opened 通过 EIP ALG。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"ftp": {
 										Type:        schema.TypeBool,
 										Required:    true,
-										Description: "Whether the Ftp protocol Alg function is enabled.",
+										Description: "是否Ftp 协议 Alg 函数 是 已启用",
 									},
 									"sip": {
 										Type:        schema.TypeBool,
 										Required:    true,
-										Description: "Whether the Sip protocol Alg function is enabled.",
+										Description: "是否Sip 协议 Alg 函数 是 已启用",
 									},
 								},
 							},
@@ -147,38 +147,38 @@ func DataSourceTencentCloudElasticPublicIpv6s() *schema.Resource {
 						"internet_service_provider": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Operator information of elastic public network IP. Current possible return values include `CMCC`,`CTCC`,`CUCC`,`BGP`.",
+							Description: "操作者 信息 的 elastic 公有 网络 IP. Current possible 返回 值 include `CMCC`,`CTCC`,`CUCC`,`BGP`。",
 						},
 						"local_bgp": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Whether local bandwidth EIP.",
+							Description: "Whether 本地 带宽 EIP。",
 						},
 						"bandwidth": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The bandwidth value of the elastic public network IP. Note that the elastic public IP of traditional account types has no bandwidth attribute and the value is null.",
+							Description: "带宽 值 的 elastic 公有 网络 IP. 注意 该 elastic 公有 IP 的 traditional 账号 types has 无 带宽 attribute 和 值 是 null。",
 						},
 						"internet_charge_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Network charging model for elastic public network IP. Note that the elastic public IP of traditional account types does not have a network charging mode attribute and the value is blank. Note: This field may return null, indicating that a valid value cannot be obtained. Includes: \nBANDWIDTH_PREPAID_BY_MONTH: indicates a prepaid monthly bandwidth. \nTRAFFIC_POSTPAID_BY_HOUR: means post-payment per hour. BANDWIDTH_POSTPAID_BY_HOUR: means postpayment per hour of bandwidth.\nBANDWIDTH_PACKAGE: indicates a shared Bandwidth Package.",
+							Description: "Network charging model 对于 elastic 公有 网络 IP. 注意 该 elastic 公有 IP 的 traditional 账号 types does 不 have 网络 charging 模式 attribute 和 值 是 blank. 注意：此字段可能返回 null，表示无法获取有效值。 Includes: \nBANDWIDTH_PREPAID_BY_MONTH: 表示a prepaid monthly 带宽. \nTRAFFIC_POSTPAID_BY_HOUR: 表示 post-payment per hour. BANDWIDTH_POSTPAID_BY_HOUR: 表示 postpayment per hour 的 带宽.\nBANDWIDTH_PACKAGE: 表示a shared Bandwidth Package。",
 						},
 						"tag_set": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "List of tags associated with elastic public IP.",
+							Description: "列表 标签 associated 使用 elastic 公有 IP。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Tag key",
+										Description: "标签键",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Tag value",
+										Description: "标签值",
 									},
 								},
 							},
@@ -186,42 +186,42 @@ func DataSourceTencentCloudElasticPublicIpv6s() *schema.Resource {
 						"deadline_date": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Expiration time.",
+							Description: "过期时间。",
 						},
 						"instance_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The instance type of the EIP binding.",
+							Description: "实例 类型 EIP binding。",
 						},
 						"egress": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Static single-wire IP network exit.",
+							Description: "Static 单个-wire IP 网络 exit。",
 						},
 						"anti_ddos_package_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "High-defense package ID. When the EIP type is high-defense EIP, it returns the high-defense package ID to which the EIP is bound.",
+							Description: "High-defense 包 ID. 当 EIP 类型 是 high-defense EIP，它 返回high-defense 包 ID 到 其中 EIP 是 bound。",
 						},
 						"renew_flag": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Whether the current EIP is automatically renewed, this field will be displayed only for EIP prepaid by monthly bandwidth. Examples of specific values are as follows:\n\t- NOTIFY_AND_MANUAL_RENEW: Normal renewal\n\t- NOTIFY_AND_AUTO_RENEW: Automatic renewal\n\t- DISABLE_NOTIFY_AND_MANUAL_RENEW: No renewal after expiration.",
+							Description: "是否current EIP 是 automatically renewed，此 字段 将 是 displayed 仅 对于 EIP prepaid 通过 monthly 带宽. Examples 的 特定 值 是 作为 follows:\n\t- NOTIFY_AND_MANUAL_RENEW: Normal renewal\n\t- NOTIFY_AND_AUTO_RENEW: Automatic renewal\n\t- DISABLE_NOTIFY_AND_MANUAL_RENEW: No renewal after expiration。",
 						},
 						"bandwidth_package_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The bandwidth package ID associated with the current public IP. If the public IP does not use bandwidth packages for charging, the return will be blank.",
+							Description: "带宽 包 ID associated 使用 当前 公有 IP. 如果 公有 IP does 不 使用 带宽 packages 对于 charging， 返回 将 是 blank。",
 						},
 						"un_vpc_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Unique ID of the vpc to which traditional Elastic IPv6 belongs.",
+							Description: "Unique ID vpc 到 其中 traditional Elastic IPv6 belongs。",
 						},
 						"dedicated_cluster_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "CDC unique ID.",
+							Description: "CDC 唯一 ID。",
 						},
 					},
 				},
@@ -230,7 +230,7 @@ func DataSourceTencentCloudElasticPublicIpv6s() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

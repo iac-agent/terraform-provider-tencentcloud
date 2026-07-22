@@ -19,18 +19,18 @@ func DataSourceTencentCloudClbListenersByTargets() *schema.Resource {
 			"backends": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "List of private network IPs to be queried.",
+				Description: "需要查询的私网IP列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "VPC ID.",
+							Description: "专有网络ID。",
 						},
 						"private_ip": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Private network IP to be queried, which can be of the CVM or ENI.",
+							Description: "需要查询的私网IP，可以是云服务器的私网IP，也可以是弹性网卡的私网IP。",
 						},
 					},
 				},
@@ -39,91 +39,91 @@ func DataSourceTencentCloudClbListenersByTargets() *schema.Resource {
 			"load_balancers": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Detail of the CLB instance.",
+				Description: "CLB实例的详细信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"load_balancer_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "String ID of the CLB instance.",
+							Description: "CLB实例的字符串ID。",
 						},
 						"vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VIP of the CLB instance.",
+							Description: "CLB实例的VIP。",
 						},
 						"listeners": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Listener rule.",
+							Description: "听者法则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"listener_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Listener ID.",
+										Description: "听众 ID。",
 									},
 									"protocol": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Listener protocol.",
+										Description: "监听器协议。",
 									},
 									"port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Listener port.",
+										Description: "侦听器端口。",
 									},
 									"rules": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Bound rule. Note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "约束规则。注意：该字段可能返回null，表示取不到有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"location_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Rule ID.",
+													Description: "规则 ID。",
 												},
 												"domain": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Domain name.",
+													Description: "域名。",
 												},
 												"url": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "url.",
+													Description: "网址。",
 												},
 												"targets": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "Object bound to the real server.",
+													Description: "绑定到真实服务器的对象。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"type": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Private network IP type, which can be cvm or eni.",
+																Description: "私网IP类型，可以是cvm或eni。",
 															},
 															"private_ip": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Private network IP of the real server.",
+																Description: "真实服务器的私网IP。",
 															},
 															"port": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "Port bound to the real server.",
+																Description: "与真实服务器绑定的端口。",
 															},
 															"vpc_id": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "VPC ID of the real server. Note: this field may return null, indicating that no valid values can be obtained.",
+																Description: "真实服务器的VPC ID。注意：该字段可能返回null，表示取不到有效值。",
 															},
 															"weight": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "Weight of the real server. Note: this field may return null, indicating that no valid values can be obtained.",
+																Description: "真实服务器的权重。注意：该字段可能返回null，表示取不到有效值。",
 															},
 														},
 													},
@@ -134,33 +134,33 @@ func DataSourceTencentCloudClbListenersByTargets() *schema.Resource {
 									"targets": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Object bound to the layer-4 listener. Note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "绑定到第 4 层侦听器的对象。注意：该字段可能返回null，表示取不到有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"type": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Private network IP type, which can be cvm or eni.",
+													Description: "私网IP类型，可以是cvm或eni。",
 												},
 												"private_ip": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Private network IP of the real server.",
+													Description: "真实服务器的私网IP。",
 												},
 												"port": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Port bound to the real server.",
+													Description: "与真实服务器绑定的端口。",
 												},
 												"vpc_id": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "VPC ID of the real server. Note: this field may return null, indicating that no valid values can be obtained.",
+													Description: "真实服务器的VPC ID。注意：该字段可能返回null，表示取不到有效值。",
 												},
 												"weight": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Weight of the real server. Note: this field may return null, indicating that no valid values can be obtained.",
+													Description: "真实服务器的权重。注意：该字段可能返回null，表示取不到有效值。",
 												},
 											},
 										},
@@ -168,7 +168,7 @@ func DataSourceTencentCloudClbListenersByTargets() *schema.Resource {
 									"end_port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "End port of the listener. Note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "监听器的结束端口。注意：该字段可能返回null，表示取不到有效值。",
 									},
 								},
 							},
@@ -176,7 +176,7 @@ func DataSourceTencentCloudClbListenersByTargets() *schema.Resource {
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CLB instance region.",
+							Description: "CLB实例区域。",
 						},
 					},
 				},
@@ -185,7 +185,7 @@ func DataSourceTencentCloudClbListenersByTargets() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

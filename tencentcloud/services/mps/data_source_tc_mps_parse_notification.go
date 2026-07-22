@@ -19,13 +19,13 @@ func DataSourceTencentCloudMpsParseNotification() *schema.Resource {
 			"content": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Event notification obtained from CMQ.",
+				Description: "Event 通知 获取 从 CMQ。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

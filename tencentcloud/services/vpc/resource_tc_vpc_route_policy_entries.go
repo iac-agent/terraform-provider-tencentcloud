@@ -27,64 +27,64 @@ func ResourceTencentCloudVpcRoutePolicyEntries() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Specifies the instance ID of the route reception policy.",
+				Description: "指定instance ID 路由 reception 策略。",
 			},
 
 			"route_policy_entry_set": {
 				Type:        schema.TypeSet,
 				Required:    true,
-				Description: "Route reception policy entry list.",
+				Description: "Route reception 策略 entry 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"route_policy_entry_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Specifies the unique ID of the IPv4 routing strategy entry.\nNote: This field may return null, indicating that no valid value was found.",
+							Description: "指定unique ID IPv4 routing strategy entry.\n注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"cidr_block": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Destination ip range.\nNote: This field may return null, indicating that no valid value was found.",
+							Description: "Destination ip 范围.\n注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Describes the routing strategy rule.\nNote: This field may return null, indicating that no valid value was found.",
+							Description: "Describes routing strategy 规则.\n注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"route_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Routing Type\n\nSpecifies the USER-customized data type.\nNETD: specifies the route for network detection.\nCCN: CCN route.\nNote: This field may return null, indicating that no valid value was found.",
+							Description: "Routing 类型\n\n指定USER-customized 数据 类型\nNETD: 指定route 对于 网络 detection.\nCCN: CCN 路由.\n注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"gateway_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Next hop type. types currently supported:.\nCVM: cloud virtual machine with public network gateway type.\nVPN: vpn gateway.\nDIRECTCONNECT: direct connect gateway.\nPEERCONNECTION: peering connection.\nHAVIP: high availability virtual ip.\nNAT: specifies the nat gateway. \nEIP: specifies the public ip address of the cloud virtual machine.\nLOCAL_GATEWAY: specifies the local gateway.\nPVGW: pvgw gateway.\nNote: This field may return null, indicating that no valid value was found.",
+							Description: "Next hop 类型 types currently 支持:.\nCVM: 云 virtual machine 使用 公有 网络 网关 类型\nVPN: vpn 网关.\nDIRECTCONNECT: direct connect 网关.\nPEERCONNECTION: peering 连接.\nHAVIP: high availability virtual ip.\nNAT: 指定nat 网关. \nEIP: 指定public ip 地址 的 云 virtual machine.\nLOCAL_GATEWAY: 指定local 网关.\nPVGW: pvgw 网关.\n注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"gateway_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Gateway unique ID.\nNote: This field may return null, indicating that no valid value was found.",
+							Description: "Gateway 唯一 ID.\n注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"priority": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Priority. a smaller value indicates a higher priority.\nNote: This field may return null, indicating that no valid value was found.",
+							Description: "优先级 smaller 值 表示a higher 优先级\n注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"action": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Action.\nDROP: drop.\nDISABLE: receive and disable.\nACCEPT: receive and enable.\nNote: This field may return null, indicating that no valid value was found.",
+							Description: "操作\nDROP: drop.\nDISABLE: receive 和 disable.\nACCEPT: receive 和 启用.\n注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"created_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time.\n\nNote: This field may return null, indicating that no valid value was found.",
+							Description: "创建时间.\n\n注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Specifies the region.\nNote: This field may return null, indicating that no valid value was found.",
+							Description: "指定region.\n注意：此字段可能返回 null，表示未找到有效值。",
 						},
 					},
 				},

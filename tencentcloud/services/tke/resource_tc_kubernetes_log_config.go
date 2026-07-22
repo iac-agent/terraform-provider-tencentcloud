@@ -25,28 +25,28 @@ func ResourceTencentCloudKubernetesLogConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "JSON expression of log collection configuration. For more details, please refer to the guide: https://www.tencentcloud.com/zh/document/product/457/64846.",
+				Description: "JSON expression 的 日志 collection 配置. For more details，please refer 到 guide: https://www.tencentcloud.com/zh/document/product/457/64846。",
 			},
 
 			"log_config_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Log config name.",
+				Description: "Log 配置 名称",
 			},
 
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 
 			"logset_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "CLS log set ID.",
+				Description: "CLS 日志 集合 ID。",
 			},
 
 			"cluster_type": {
@@ -54,7 +54,7 @@ func ResourceTencentCloudKubernetesLogConfig() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Default:     "tke",
-				Description: "The current cluster type supports tke and eks, default is tke.",
+				Description: "当前 集群类型 支持 tke 和 eks，默认为 tke。",
 			},
 		},
 	}

@@ -23,42 +23,42 @@ func ResourceTencentCloudPrivateDnsInboundEndpoint() *schema.Resource {
 			"endpoint_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Name.",
+				Description: "名称",
 			},
 
 			"endpoint_region": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Region.",
+				Description: "地域",
 			},
 
 			"endpoint_vpc": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "VPC ID.",
+				Description: "私有网络 ID",
 			},
 
 			"subnet_ip": {
 				Type:        schema.TypeList,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Subnet information.",
+				Description: "Subnet 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Subnet ID.",
+							Description: "子网 ID",
 						},
 						"subnet_vip": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
 							Computed:    true,
-							Description: "IP address.",
+							Description: "IP 地址",
 						},
 					},
 				},

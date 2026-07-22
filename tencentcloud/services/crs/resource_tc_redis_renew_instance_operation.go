@@ -27,21 +27,21 @@ func ResourceTencentCloudRedisRenewInstanceOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of instance.",
+				Description: "ID 实例。",
 			},
 
 			"period": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Purchase duration, in months.",
+				Description: "Purchase 时长，在 months。",
 			},
 
 			"modify_pay_mode": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Identifies whether the billing model is modified:The current instance billing mode is pay-as-you-go, which is prepaid and renewed.The billing mode of the current instance is subscription and you can not set this parameter.",
+				Description: "Identifies 是否billing model 是 modified: 当前 实例 billing 模式 是 pay-作为-您-go，其中 是 prepaid 和 renewed. billing 模式 的 当前 实例 是 subscription 和 您 可以 不 集合 此 参数。",
 			},
 		},
 	}

@@ -19,44 +19,44 @@ func DataSourceTencentCloudMysqlSlowLog() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID, in the format: cdb-c1nl9rpv. Same instance ID as displayed in the ApsaraDB for Console page.",
+				Description: "实例ID，格式为：cdb-c1nl9rpv。与云数据库控制台页面显示的实例ID相同。",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Details of slow query logs that meet the query conditions.",
+				Description: "满足查询条件的慢查询日志详情。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "backup file name.",
+							Description: "备份文件名。",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Backup file size, unit: Byte.",
+							Description: "备份文件大小，单位：Byte。",
 						},
 						"date": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Backup snapshot time, time format: 2016-03-17 02:10:37.",
+							Description: "备份快照时间，时间格式：2016-03-17 02:10:37。",
 						},
 						"intranet_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Intranet download address.",
+							Description: "内网下载地址。",
 						},
 						"internet_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "External network download address.",
+							Description: "外网下载地址。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Log specific type, possible values: slowlog - slow log.",
+							Description: "日志具体类型，可能的值：slowlog - 慢速日志。",
 						},
 					},
 				},
@@ -65,7 +65,7 @@ func DataSourceTencentCloudMysqlSlowLog() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

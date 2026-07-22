@@ -27,25 +27,25 @@ func ResourceTencentCloudCynosdbAuditService() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance ID.",
+				Description: "实例ID。",
 			},
 
 			"log_expire_day": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Log retention period.",
+				Description: "日志保留期限。",
 			},
 
 			"high_log_expire_day": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Frequent log retention period.",
+				Description: "频繁的日志保留期限。",
 			},
 
 			"rule_template_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Rule template ID set.",
+				Description: "规则模板ID集。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -54,7 +54,7 @@ func ResourceTencentCloudCynosdbAuditService() *schema.Resource {
 			"audit_all": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Audit type. true - full audit; default false - rule-based audit.",
+				Description: "审核类型。 true——全面审核；默认 false - 基于规则的审核。",
 			},
 		},
 	}

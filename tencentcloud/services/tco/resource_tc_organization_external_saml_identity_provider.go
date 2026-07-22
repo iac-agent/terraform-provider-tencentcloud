@@ -25,14 +25,14 @@ func ResourceTencentCloudOrganizationExternalSamlIdentityProvider() *schema.Reso
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Space ID.",
+				Description: "Space ID。",
 			},
 
 			"encoded_metadata_document": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"x509_certificate"},
-				Description:   "IdP metadata document (Base64 encoded). Provided by an IdP that supports the SAML 2.0 protocol.",
+				Description:   "IdP metadata document (Base64 encoded). Provided 通过 IdP 该 支持 SAML 2.0 协议",
 			},
 
 			"sso_status": {
@@ -40,7 +40,7 @@ func ResourceTencentCloudOrganizationExternalSamlIdentityProvider() *schema.Reso
 				Optional:    true,
 				ForceNew:    true,
 				Computed:    true,
-				Description: "SSO enabling status. Valid values: Enabled, Disabled (default).",
+				Description: "SSO enabling 状态 有效值：已启用，已禁用 (默认值)。",
 			},
 
 			"entity_id": {
@@ -48,7 +48,7 @@ func ResourceTencentCloudOrganizationExternalSamlIdentityProvider() *schema.Reso
 				Optional:    true,
 				ForceNew:    true,
 				Computed:    true,
-				Description: "IdP identifier.",
+				Description: "IdP identifier。",
 			},
 
 			"login_url": {
@@ -56,45 +56,45 @@ func ResourceTencentCloudOrganizationExternalSamlIdentityProvider() *schema.Reso
 				Optional:    true,
 				ForceNew:    true,
 				Computed:    true,
-				Description: "IdP login URL.",
+				Description: "IdP login URL",
 			},
 
 			"x509_certificate": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"encoded_metadata_document"},
-				Description:   "X509 certificate in PEM format. If this parameter is specified, all existing certificates will be replaced.",
+				Description:   "X509 证书 在 PEM 格式 如果 此 参数 是 指定，all existing certificates 将 是 replaced。",
 			},
 
 			"another_x509_certificate": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Another X509 certificate in PEM format. If this parameter is specified, all existing certificates will be replaced.",
+				Description: "Another X509 证书 在 PEM 格式 如果 此 参数 是 指定，all existing certificates 将 是 replaced。",
 			},
 
 			// computed
 			"certificate_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Certificate ID.",
+				Description: "证书 ID",
 			},
 
 			"another_certificate_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Another certificate ID.",
+				Description: "Another 证书 ID",
 			},
 
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create time.",
+				Description: "创建时间。",
 			},
 
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Update time.",
+				Description: "更新时间。",
 			},
 		},
 	}

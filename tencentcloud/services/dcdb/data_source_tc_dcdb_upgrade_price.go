@@ -19,36 +19,36 @@ func DataSourceTencentCloudDcdbUpgradePrice() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"upgrade_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Upgrade type, ADD: add new shard, EXPAND: upgrade the existing shard, SPLIT: split existing shard.",
+				Description: "Upgrade 类型，ADD: add new 分片，EXPAND: upgrade existing 分片，SPLIT: split existing 分片。",
 			},
 
 			"add_shard_config": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Config for adding new shard.",
+				Description: "配置 对于 adding new 分片。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"shard_count": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The number of new shards.",
+							Description: "数量 new shards。",
 						},
 						"shard_memory": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Shard memory size in GB.",
+							Description: "Shard 内存 大小 （GB）。",
 						},
 						"shard_storage": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Shard storage capacity in GB.",
+							Description: "Shard 存储 容量 （GB）。",
 						},
 					},
 				},
@@ -58,7 +58,7 @@ func DataSourceTencentCloudDcdbUpgradePrice() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Config for expanding existing shard.",
+				Description: "配置 对于 expanding existing 分片。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"shard_instance_ids": {
@@ -67,22 +67,22 @@ func DataSourceTencentCloudDcdbUpgradePrice() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "List of shard ID.",
+							Description: "列表 分片 ID。",
 						},
 						"shard_memory": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Shard memory size in GB.",
+							Description: "Shard 内存 大小 （GB）。",
 						},
 						"shard_storage": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Shard storage capacity in GB.",
+							Description: "Shard 存储 容量 （GB）。",
 						},
 						"shard_node_count": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Shard node count.",
+							Description: "Shard 节点 count。",
 						},
 					},
 				},
@@ -92,7 +92,7 @@ func DataSourceTencentCloudDcdbUpgradePrice() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Config for splitting existing shard.",
+				Description: "配置 对于 splitting existing 分片。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"shard_instance_ids": {
@@ -101,22 +101,22 @@ func DataSourceTencentCloudDcdbUpgradePrice() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "List of shard ID.",
+							Description: "列表 分片 ID。",
 						},
 						"split_rate": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Data split ratio, fixed at 50%.",
+							Description: "Data split ratio，fixed 在 50%。",
 						},
 						"shard_memory": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Shard memory size in GB.",
+							Description: "Shard 内存 大小 （GB）。",
 						},
 						"shard_storage": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Shard storage capacity in GB.",
+							Description: "Shard 存储 容量 （GB）。",
 						},
 					},
 				},
@@ -125,31 +125,31 @@ func DataSourceTencentCloudDcdbUpgradePrice() *schema.Resource {
 			"amount_unit": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Price unit. Valid values: `pent` (cent), `microPent` (microcent).",
+				Description: "Price 单位. 有效值：`pent` (cent)，`microPent` (microcent)。",
 			},
 
 			"original_price": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Original price. Unit: Cent (default). If the request parameter contains `AmountUnit`, see `AmountUnit` description. Currency: CNY (Chinese site), USD (international site).",
+				Description: "Original 价格. 单位：Cent (默认值). 如果 请求 参数 包含`AmountUnit`，see `AmountUnit` 描述 Currency: CNY (Chinese site)，USD (international site)。",
 			},
 
 			"price": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The actual price may be different from the original price due to discounts. Unit: Cent (default). If the request parameter contains `AmountUnit`, see `AmountUnit` description. Currency: CNY (Chinese site), USD (international site).",
+				Description: "actual 价格 可能 是 different 从 original 价格 due 到 discounts. 单位：Cent (默认值). 如果 请求 参数 包含`AmountUnit`，see `AmountUnit` 描述 Currency: CNY (Chinese site)，USD (international site)。",
 			},
 
 			"formula": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Price calculation formula.",
+				Description: "Price calculation formula。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

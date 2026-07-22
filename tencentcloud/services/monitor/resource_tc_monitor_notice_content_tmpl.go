@@ -26,64 +26,64 @@ func ResourceTencentCloudMonitorNoticeContentTmpl() *schema.Resource {
 			"tmpl_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Template name.",
+				Description: "模板名称",
 			},
 
 			"monitor_type": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Monitor type, e.g. MT_QCE.",
+				Description: "监控类型，e.g. MT_QCE。",
 			},
 
 			"tmpl_language": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Template language, zh for Chinese, en for English.",
+				Description: "模板 语言，zh 对于 Chinese，en 对于 English。",
 			},
 
 			"tmpl_contents": {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Template content configuration for different notification channels.",
+				Description: "模板 内容 配置 对于 different 通知 channels。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"qcloud_yehe": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "QCloud Yehe notification channel configuration.",
+							Description: "QCloud Yehe 通知 channel 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"matching_status": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Matching status list, e.g. Trigger, Recovery.",
+										Description: "Matching 状态 列表，e.g. Trigger，Recovery。",
 										Elem:        &schema.Schema{Type: schema.TypeString},
 									},
 									"template": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Template configuration.",
+										Description: "模板 配置。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"email": {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "Email notification.",
+													Description: "Email 通知。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"content_tmpl": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Content template.",
+																Description: "内容模板",
 															},
 															"title_tmpl": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Title template.",
+																Description: "标题模板",
 															},
 														},
 													},
@@ -92,18 +92,18 @@ func ResourceTencentCloudMonitorNoticeContentTmpl() *schema.Resource {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "Enterprise WeChat notification.",
+													Description: "Enterprise WeChat 通知。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"content_tmpl": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Content template.",
+																Description: "内容模板",
 															},
 															"title_tmpl": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Title template.",
+																Description: "标题模板",
 															},
 														},
 													},
@@ -112,18 +112,18 @@ func ResourceTencentCloudMonitorNoticeContentTmpl() *schema.Resource {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "SMS notification.",
+													Description: "SMS 通知。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"content_tmpl": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Content template.",
+																Description: "内容模板",
 															},
 															"title_tmpl": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Title template.",
+																Description: "标题模板",
 															},
 														},
 													},
@@ -132,18 +132,18 @@ func ResourceTencentCloudMonitorNoticeContentTmpl() *schema.Resource {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "Voice notification.",
+													Description: "Voice 通知。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"content_tmpl": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Content template.",
+																Description: "内容模板",
 															},
 															"title_tmpl": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Title template.",
+																Description: "标题模板",
 															},
 														},
 													},
@@ -152,28 +152,28 @@ func ResourceTencentCloudMonitorNoticeContentTmpl() *schema.Resource {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "WeChat notification.",
+													Description: "WeChat 通知。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"alarm_content_tmpl": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Alarm content template.",
+																Description: "Alarm 内容模板",
 															},
 															"alarm_object_tmpl": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Alarm object template.",
+																Description: "Alarm 对象 template。",
 															},
 															"alarm_region_tmpl": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Alarm region template.",
+																Description: "Alarm 地域 template。",
 															},
 															"alarm_time_tmpl": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Alarm time template.",
+																Description: "Alarm 时间 template。",
 															},
 														},
 													},
@@ -182,18 +182,18 @@ func ResourceTencentCloudMonitorNoticeContentTmpl() *schema.Resource {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "Site notification.",
+													Description: "Site 通知。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"content_tmpl": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Content template.",
+																Description: "内容模板",
 															},
 															"title_tmpl": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Title template.",
+																Description: "标题模板",
 															},
 														},
 													},
@@ -202,18 +202,18 @@ func ResourceTencentCloudMonitorNoticeContentTmpl() *schema.Resource {
 													Type:        schema.TypeList,
 													Optional:    true,
 													MaxItems:    1,
-													Description: "Andon notification.",
+													Description: "Andon 通知。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"content_tmpl": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Content template.",
+																Description: "内容模板",
 															},
 															"title_tmpl": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Title template.",
+																Description: "标题模板",
 															},
 														},
 													},
@@ -227,26 +227,26 @@ func ResourceTencentCloudMonitorNoticeContentTmpl() *schema.Resource {
 						"we_work_robot": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "WeWork Robot notification channel configuration.",
+							Description: "WeWork Robot 通知 channel 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"matching_status": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Matching status list, e.g. Trigger, Recovery.",
+										Description: "Matching 状态 列表，e.g. Trigger，Recovery。",
 										Elem:        &schema.Schema{Type: schema.TypeString},
 									},
 									"template": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Template configuration.",
+										Description: "模板 配置。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"content_tmpl": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Content template.",
+													Description: "内容模板",
 												},
 											},
 										},
@@ -257,31 +257,31 @@ func ResourceTencentCloudMonitorNoticeContentTmpl() *schema.Resource {
 						"ding_ding_robot": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "DingDing Robot notification channel configuration.",
+							Description: "DingDing Robot 通知 channel 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"matching_status": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Matching status list, e.g. Trigger, Recovery.",
+										Description: "Matching 状态 列表，e.g. Trigger，Recovery。",
 										Elem:        &schema.Schema{Type: schema.TypeString},
 									},
 									"template": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Template configuration.",
+										Description: "模板 配置。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"content_tmpl": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Content template.",
+													Description: "内容模板",
 												},
 												"title_tmpl": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Title template.",
+													Description: "标题模板",
 												},
 											},
 										},
@@ -292,31 +292,31 @@ func ResourceTencentCloudMonitorNoticeContentTmpl() *schema.Resource {
 						"fei_shu_robot": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "FeiShu Robot notification channel configuration.",
+							Description: "FeiShu Robot 通知 channel 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"matching_status": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Matching status list, e.g. Trigger, Recovery.",
+										Description: "Matching 状态 列表，e.g. Trigger，Recovery。",
 										Elem:        &schema.Schema{Type: schema.TypeString},
 									},
 									"template": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Template configuration.",
+										Description: "模板 配置。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"content_tmpl": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Content template.",
+													Description: "内容模板",
 												},
 												"title_tmpl": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Title template.",
+													Description: "标题模板",
 												},
 											},
 										},
@@ -327,47 +327,47 @@ func ResourceTencentCloudMonitorNoticeContentTmpl() *schema.Resource {
 						"webhook": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Webhook notification channel configuration.",
+							Description: "Webhook 通知 channel 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"matching_status": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Matching status list.",
+										Description: "Matching 状态 列表。",
 										Elem:        &schema.Schema{Type: schema.TypeString},
 									},
 									"template": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Webhook template.",
+										Description: "Webhook template。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"body": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Request body.",
+													Description: "Request 正文。",
 												},
 												"body_content_type": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Body content type.",
+													Description: "Body 内容 类型",
 												},
 												"headers": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "Request headers.",
+													Description: "Request headers。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"key": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Header key.",
+																Description: "Header 键",
 															},
 															"values": {
 																Type:        schema.TypeList,
 																Optional:    true,
-																Description: "Header values.",
+																Description: "Header 值。",
 																Elem:        &schema.Schema{Type: schema.TypeString},
 															},
 														},
@@ -382,26 +382,26 @@ func ResourceTencentCloudMonitorNoticeContentTmpl() *schema.Resource {
 						"teams_robot": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Teams Robot notification channel configuration.",
+							Description: "Teams Robot 通知 channel 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"matching_status": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Matching status list, e.g. Trigger, Recovery.",
+										Description: "Matching 状态 列表，e.g. Trigger，Recovery。",
 										Elem:        &schema.Schema{Type: schema.TypeString},
 									},
 									"template": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Template configuration.",
+										Description: "模板 配置。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"content_tmpl": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Content template.",
+													Description: "内容模板",
 												},
 											},
 										},
@@ -412,47 +412,47 @@ func ResourceTencentCloudMonitorNoticeContentTmpl() *schema.Resource {
 						"pager_duty_robot": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "PagerDuty Robot notification channel configuration.",
+							Description: "PagerDuty Robot 通知 channel 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"matching_status": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Matching status list.",
+										Description: "Matching 状态 列表。",
 										Elem:        &schema.Schema{Type: schema.TypeString},
 									},
 									"template": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "PagerDuty template.",
+										Description: "PagerDuty template。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"body": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Request body template in JSON.",
+													Description: "Request 正文 template 在 JSON。",
 												},
 												"title_tmpl": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Title template.",
+													Description: "标题模板",
 												},
 												"headers": {
 													Type:        schema.TypeList,
 													Optional:    true,
-													Description: "Request headers.",
+													Description: "Request headers。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"key": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Header key.",
+																Description: "Header 键",
 															},
 															"values": {
 																Type:        schema.TypeList,
 																Optional:    true,
-																Description: "Header values.",
+																Description: "Header 值。",
 																Elem:        &schema.Schema{Type: schema.TypeString},
 															},
 														},
@@ -472,7 +472,7 @@ func ResourceTencentCloudMonitorNoticeContentTmpl() *schema.Resource {
 			"tmpl_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Template ID.",
+				Description: "模板 ID",
 			},
 		},
 	}

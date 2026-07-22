@@ -19,73 +19,73 @@ func DataSourceTencentCloudDcdbPrice() *schema.Resource {
 			"instance_count": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The count of instances wants to buy.",
+				Description: "count 的 实例 wants 到 buy。",
 			},
 
 			"zone": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "AZ ID of the purchased instance.",
+				Description: "AZ ID purchased 实例。",
 			},
 
 			"period": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Purchase period in months.",
+				Description: "Purchase 周期 在 months。",
 			},
 
 			"shard_node_count": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Number of instance shard nodes.",
+				Description: "数量 实例 分片 nodes。",
 			},
 
 			"shard_memory": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Shard memory size in GB.",
+				Description: "Shard 内存 大小 （GB）。",
 			},
 
 			"shard_storage": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Shard storage capacity in GB.",
+				Description: "Shard 存储 容量 （GB）。",
 			},
 
 			"shard_count": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Number of instance shards.",
+				Description: "数量 实例 shards。",
 			},
 
 			"paymode": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Billing type. Valid values: `postpaid` (pay-as-you-go), `prepaid` (monthly subscription).",
+				Description: "Billing 类型 有效值：`postpaid` (pay-作为-您-go)，`prepaid` (monthly subscription)。",
 			},
 
 			"amount_unit": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Price unit. Valid values: `pent` (cent), `microPent` (microcent).",
+				Description: "Price 单位. 有效值：`pent` (cent)，`microPent` (microcent)。",
 			},
 
 			"original_price": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Original price. Unit: Cent (default). If the request parameter contains `AmountUnit`, see `AmountUnit` description. Currency: CNY (Chinese site), USD (international site).",
+				Description: "Original 价格. 单位：Cent (默认值). 如果 请求 参数 包含`AmountUnit`，see `AmountUnit` 描述 Currency: CNY (Chinese site)，USD (international site)。",
 			},
 
 			"price": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The actual price may be different from the original price due to discounts. Unit: Cent (default). If the request parameter contains `AmountUnit`, see `AmountUnit` description. Currency: CNY (Chinese site), USD (international site).",
+				Description: "actual 价格 可能 是 different 从 original 价格 due 到 discounts. 单位：Cent (默认值). 如果 请求 参数 包含`AmountUnit`，see `AmountUnit` 描述 Currency: CNY (Chinese site)，USD (international site)。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

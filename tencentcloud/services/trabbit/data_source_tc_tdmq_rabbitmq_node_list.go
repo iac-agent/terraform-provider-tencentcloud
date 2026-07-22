@@ -20,29 +20,29 @@ func DataSourceTencentCloudTdmqRabbitmqNodeList() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "rabbitmq cluster ID.",
+				Description: "rabbitmq 集群 ID。",
 			},
 			"node_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Fuzzy search node name.",
+				Description: "Fuzzy search 节点名称",
 			},
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "filter parameter name and valueNow there is only one nodeStatusrunning/downArray type, compatible with adding filter parameters later.",
+				Description: "过滤器 参数 名称 和 valueNow there 是 仅 一个 nodeStatusrunning/downArray 类型，compatible 使用 adding 过滤器 参数 later。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The name of the filter parameter.",
+							Description: "名称 过滤器 参数。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Optional:    true,
-							Description: "value.",
+							Description: "值",
 						},
 					},
 				},
@@ -50,49 +50,49 @@ func DataSourceTencentCloudTdmqRabbitmqNodeList() *schema.Resource {
 			"sort_element": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sort by the specified element, now there are only 2cpuUsage/diskUsage.",
+				Description: "排序方式 指定 element，now there 是 仅 2cpuUsage/diskUsage。",
 			},
 			"sort_order": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "ascend/descend.",
+				Description: "ascend/descend。",
 			},
 			// computed
 			"node_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "cluster listNote: This field may return null, indicating that no valid value can be obtained.",
+				Description: "集群 list注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"node_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "node nameNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "节点 name注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"node_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "node statusNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "节点 status注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"cpu_usage": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CPU usageNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "CPU usage注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Memory usage, in MBNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Memory usage，在 MB注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"disk_usage": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "disk usageNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "磁盘 usage注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"process_number": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of Erlang processes for RabbitmqNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "数量 Erlang processes 对于 Rabbitmq注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -100,7 +100,7 @@ func DataSourceTencentCloudTdmqRabbitmqNodeList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

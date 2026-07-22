@@ -23,14 +23,14 @@ func ResourceTencentCloudDlcSwitchDataEngineImageOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Engine ID.",
+				Description: "Engine ID。",
 			},
 
 			"new_image_version_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "New image version ID.",
+				Description: "New 镜像 版本 ID。",
 			},
 		},
 	}

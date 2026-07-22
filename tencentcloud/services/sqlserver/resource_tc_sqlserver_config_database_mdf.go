@@ -26,12 +26,12 @@ func ResourceTencentCloudSqlserverConfigDatabaseMdf() *schema.Resource {
 			"db_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Array of database names.",
+				Description: "Array 的 数据库 names.",
 			},
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 		},
 	}

@@ -24,7 +24,7 @@ func ResourceTencentCloudAddressTemplate() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Name of the address template.",
+				Description: "名称 地址 template。",
 			},
 			"addresses": {
 				Type: schema.TypeSet,
@@ -32,7 +32,7 @@ func ResourceTencentCloudAddressTemplate() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Required:    true,
-				Description: "Address list. IP(`10.0.0.1`), CIDR(`10.0.1.0/24`), IP range(`10.0.0.1-10.0.0.100`) format are supported.",
+				Description: "地址 列表. IP(`10.0.0.1`)，CIDR(`10.0.1.0/24`)，IP 范围(`10.0.0.1-10.0.0.100`) 格式 是 支持。",
 			},
 		},
 	}

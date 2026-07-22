@@ -21,34 +21,34 @@ func ResourceTencentCloudTeoIdentifyZoneOperation() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Zone name.",
+				Description: "可用区 名称",
 			},
 			"domain": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Subdomain under the zone. Required only when verifying a subdomain.",
+				Description: "Subdomain under 可用区 必填 仅 当 verifying subdomain。",
 			},
 			"ascription": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "DNS verification information.",
+				Description: "DNS verification 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"subdomain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DNS record host.",
+							Description: "DNS 记录 主机",
 						},
 						"record_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DNS record type.",
+							Description: "DNS 记录 类型",
 						},
 						"record_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "DNS record value.",
+							Description: "DNS 记录 值",
 						},
 					},
 				},
@@ -56,18 +56,18 @@ func ResourceTencentCloudTeoIdentifyZoneOperation() *schema.Resource {
 			"file_ascription": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "File verification information.",
+				Description: "File verification 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"identify_path": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "File verification path.",
+							Description: "File verification 路径",
 						},
 						"identify_content": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "File verification content.",
+							Description: "File verification 内容",
 						},
 					},
 				},

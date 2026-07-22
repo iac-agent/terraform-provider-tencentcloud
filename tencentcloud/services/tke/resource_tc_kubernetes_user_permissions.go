@@ -28,39 +28,39 @@ func ResourceTencentCloudKubernetesUserPermissions() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Unique identifier of the user to be authorized (supports sub-account UIN and role UIN).",
+				Description: "Unique identifier 的 用户 到 是 authorized (支持 sub-账号 UIN 和 角色 UIN)。",
 			},
 
 			"permissions": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Complete list of permissions that the user should ultimately have. Uses declarative semantics, the passed list represents all permissions the user should ultimately have, the system will automatically calculate differences and perform necessary create/delete operations. When empty or not provided, all permissions for this user will be cleared. Maximum support for 100 permission items.",
+				Description: "Complete 列表 permissions 该 用户 should ultimately have. Uses declarative semantics， passed 列表 表示 all permissions 用户 should ultimately have， 系统 将 automatically calculate differences 和 perform necessary create/delete operations. 当 空 或 不 提供，all permissions 对于 此 用户 将 是 cleared. Maximum support 对于 100 权限 items。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Cluster ID.",
+							Description: "集群 ID",
 						},
 						"role_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Role name. Predefined roles include: tke:admin (cluster administrator), tke:ops (operations personnel), tke:dev (developer), tke:ro (read-only user), tke:ns:dev (namespace developer), tke:ns:ro (namespace read-only user), others are user-defined roles.",
+							Description: "角色 名称 Predefined roles include: tke:admin (集群 administrator)，tke:ops (operations personnel)，tke:dev (developer)，tke:ro (read-仅 用户)，tke:ns:dev (命名空间 developer)，tke:ns:ro (命名空间 read-仅 用户)，others 是 用户-defined roles。",
 						},
 						"role_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Authorization type. Enum values: cluster (cluster-level permissions, corresponding to ClusterRoleBinding), namespace (namespace-level permissions, corresponding to RoleBinding).",
+							Description: "Authorization 类型 Enum 值: 集群 (集群-级别 permissions，corresponding 到 ClusterRoleBinding)，命名空间 (命名空间-级别 permissions，corresponding 到 RoleBinding)。",
 						},
 						"is_custom": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether it is a custom role, default false.",
+							Description: "是否为a 自定义 角色，默认值 false。",
 						},
 						"namespace": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Namespace. Required when RoleType is namespace.",
+							Description: "Namespace. 必填 当 RoleType 是 命名空间。",
 						},
 					},
 				},

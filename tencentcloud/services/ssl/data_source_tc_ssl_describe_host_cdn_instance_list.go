@@ -19,36 +19,36 @@ func DataSourceTencentCloudSslDescribeHostCdnInstanceList() *schema.Resource {
 			"certificate_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Certificate ID to be deployed.",
+				Description: "证书 ID 到 是 deployed。",
 			},
 
 			"resource_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Deploy resource type.",
+				Description: "Deploy 资源类型",
 			},
 
 			"is_cache": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to query the cache, 1: Yes; 0: No, the default is the query cache, the cache is half an hour.",
+				Description: "是否query 缓存，1: Yes; 0: No， 默认为 查询 缓存， 缓存 是 half hour。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "List of filtering parameters; Filterkey: domainmatch.",
+				Description: "列表 filtering 参数; Filterkey: domainmatch。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"filter_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter parameter key.",
+							Description: "过滤参数键",
 						},
 						"filter_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter parameter value.",
+							Description: "过滤参数值",
 						},
 					},
 				},
@@ -57,40 +57,40 @@ func DataSourceTencentCloudSslDescribeHostCdnInstanceList() *schema.Resource {
 			"old_certificate_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Original certificate ID.",
+				Description: "Original 证书 ID",
 			},
 
 			"async_cache": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether.",
+				Description: "Whether。",
 			},
 
 			"instance_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "CDN instance listNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "CDN 实例 listNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "domain name.",
+							Description: "域名 名称",
 						},
 						"cert_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Deployment certificate ID.",
+							Description: "Deployment 证书 ID",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain name.",
+							Description: "域名 名称",
 						},
 						"https_billing_switch": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain name billing status.",
+							Description: "域名 名称 billing 状态",
 						},
 					},
 				},
@@ -99,25 +99,25 @@ func DataSourceTencentCloudSslDescribeHostCdnInstanceList() *schema.Resource {
 			"async_total_num": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total number of asynchronous refreshNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "总数 数量 asynchronous refreshNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"async_offset": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Asynchronous refresh current execution numberNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Asynchronous refresh 当前 execution numberNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"async_cache_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Current cache read timeNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Current 缓存 read timeNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

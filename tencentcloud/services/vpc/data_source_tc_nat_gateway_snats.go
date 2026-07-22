@@ -20,40 +20,40 @@ func DataSourceTencentCloudNatGatewaySnats() *schema.Resource {
 			"nat_gateway_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "NAT gateway ID.",
+				Description: "NAT 网关 ID。",
 			},
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Subnet instance ID.",
+				Description: "子网实例 ID",
 			},
 			"instance_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 			"public_ip_addr": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Elastic IP address pool.",
+				Description: "Elastic IP 地址 池。",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Description.",
+				Description: "描述",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// Computed values
 			"snat_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information list of the nat gateway snat.",
+				Description: "Information 列表 nat 网关 snat。",
 				Elem: &schema.Resource{
 					Schema: NatGatewaySnatPara(),
 				},

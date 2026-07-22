@@ -27,25 +27,25 @@ func ResourceTencentCloudBiProject() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Project name.",
+				Description: "项目名称",
 			},
 
 			"color_code": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Logo background color.",
+				Description: "Logo background color。",
 			},
 
 			"logo": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Project logo.",
+				Description: "Project logo。",
 			},
 
 			"mark": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Remark.",
+				Description: "备注",
 			},
 		},
 	}

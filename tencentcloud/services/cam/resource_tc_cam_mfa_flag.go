@@ -29,7 +29,7 @@ func ResourceTencentCloudCamMfaFlag() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Operate uin.",
+				Description: "Operate uin。",
 			},
 
 			"login_flag": {
@@ -37,23 +37,23 @@ func ResourceTencentCloudCamMfaFlag() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Login flag setting.",
+				Description: "Login flag setting。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"phone": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Phone.",
+							Description: "Phone。",
 						},
 						"stoken": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Soft token.",
+							Description: "Soft 令牌",
 						},
 						"wechat": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Wechat.",
+							Description: "Wechat。",
 						},
 					},
 				},
@@ -64,23 +64,23 @@ func ResourceTencentCloudCamMfaFlag() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Action flag setting.",
+				Description: "操作 flag setting。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"phone": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Phone.",
+							Description: "Phone。",
 						},
 						"stoken": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Soft token.",
+							Description: "Soft 令牌",
 						},
 						"wechat": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Wechat.",
+							Description: "Wechat。",
 						},
 					},
 				},

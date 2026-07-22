@@ -17,19 +17,19 @@ func DataSourceTencentCloudMariadbDatabases() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"databases": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The database list of this instance.",
+				Description: "数据库 列表 此 实例。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"db_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database name.",
+							Description: "Database 名称",
 						},
 					},
 				},
@@ -38,7 +38,7 @@ func DataSourceTencentCloudMariadbDatabases() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

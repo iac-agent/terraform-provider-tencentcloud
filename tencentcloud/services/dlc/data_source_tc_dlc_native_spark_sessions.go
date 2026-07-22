@@ -18,80 +18,80 @@ func DataSourceTencentCloudDlcNativeSparkSessions() *schema.Resource {
 			"data_engine_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Data engine id.",
+				Description: "Data 引擎 ID。",
 			},
 
 			"resource_group_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Resource group id.",
+				Description: "Resource 组 ID。",
 			},
 
 			"spark_sessions_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Spark sessions list.",
+				Description: "Spark sessions 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"spark_session_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Spark session id.",
+							Description: "Spark 会话 ID。",
 						},
 						"spark_session_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Spark session name.",
+							Description: "Spark 会话 名称",
 						},
 						"resource_group_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Resource groupid.",
+							Description: "Resource groupid。",
 						},
 						"engine_session_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Engine session id.",
+							Description: "Engine 会话 ID。",
 						},
 						"engine_session_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Engine session name.",
+							Description: "Engine 会话 名称",
 						},
 						"idle_timeout_min": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Idle timeout min.",
+							Description: "Idle 超时 min。",
 						},
 						"driver_spec": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Driver specifications.",
+							Description: "Driver specifications。",
 						},
 						"executor_spec": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Executor specifications.",
+							Description: "Executor specifications。",
 						},
 						"executor_num_min": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Minimum number of executors.",
+							Description: "最小executors。",
 						},
 						"executor_num_max": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Maximum number of executors.",
+							Description: "最大executors。",
 						},
 						"total_spec_min": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Minimum specifications.",
+							Description: "Minimum specifications。",
 						},
 						"total_spec_max": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Maximum specifications.",
+							Description: "Maximum specifications。",
 						},
 					},
 				},
@@ -100,7 +100,7 @@ func DataSourceTencentCloudDlcNativeSparkSessions() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

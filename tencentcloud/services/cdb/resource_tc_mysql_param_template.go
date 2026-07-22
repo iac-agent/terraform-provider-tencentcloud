@@ -27,46 +27,46 @@ func ResourceTencentCloudMysqlParamTemplate() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The name of parameter template.",
+				Description: "参数模板的名称。",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The description of parameter template.",
+				Description: "参数模板的描述。",
 			},
 
 			"engine_version": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The version of MySQL.",
+				Description: "MySQL 的版本。",
 			},
 
 			"template_id": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The ID of source parameter template.",
+				Description: "源参数模板ID。",
 			},
 
 			"param_list": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "parameter list.",
+				Description: "参数列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "The name of parameter.",
+							Description: "参数名称。",
 						},
 						"current_value": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "The value of parameter.",
+							Description: "参数的值。",
 						},
 					},
 				},
@@ -75,13 +75,13 @@ func ResourceTencentCloudMysqlParamTemplate() *schema.Resource {
 			"template_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The default type of parameter template, supported value is HIGH_STABILITY or HIGH_PERFORMANCE.",
+				Description: "参数模板默认类型，支持的值为HIGH_STABILITY或HIGH_PERFORMANCE。",
 			},
 
 			"engine_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The engine type of instance, optional value is InnoDB or RocksDB, default to InnoDB.",
+				Description: "实例的引擎类型，可选值为InnoDB或RocksDB，默认为InnoDB。",
 			},
 		},
 	}

@@ -25,14 +25,14 @@ func ResourceTencentCloudOrganizationOrgShareUnitNode() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Shared unit ID.",
+				Description: "共享单元 ID",
 			},
 
 			"node_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Organization department ID.",
+				Description: "Organization department ID。",
 			},
 		},
 	}

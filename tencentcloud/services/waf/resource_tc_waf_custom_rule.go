@@ -31,27 +31,27 @@ func ResourceTencentCloudWafCustomRule() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Rule Name.",
+				Description: "Rule 名称",
 			},
 			"sort_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Priority, value range 0-100.",
+				Description: "优先级，值 范围 0-100。",
 			},
 			"redirect": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "If the action is a Redirect, it represents the redirect address; Other situations can be left blank.",
+				Description: "如果 操作 是 Redirect，它 表示 redirect 地址; Other situations 可以 是 left blank。",
 			},
 			"expire_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Expiration time in second-level timestamp, for example, 1677254399 indicates the expiration time is 2023-02-24 23:59:59; 0 indicates it will never expire.",
+				Description: "过期时间 在 second-级别 时间戳，对于 示例，1677254399 表示expiration 时间 是 2023-02-24 23:59:59; 0 表示it 将 never expire。",
 			},
 			"strategies": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "Strategies detail.",
+				Description: "Strategies detail。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"field": {
@@ -116,7 +116,7 @@ func ResourceTencentCloudWafCustomRule() *schema.Resource {
 						"case_not_sensitive": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "0: case-sensitive, 1: case-insensitive. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "0: case-sensitive，1: case-insensitive. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -124,50 +124,50 @@ func ResourceTencentCloudWafCustomRule() *schema.Resource {
 			"domain": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Domain.",
+				Description: "域名",
 			},
 			"action_type": {
 				Required:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CUSTOM_RULE_ACTION_TYPE),
-				Description:  "Action type, 1(Block), 2(Captcha), 3(log), 4(Redirect).",
+				Description:  "操作 类型，1(Block)，2(Captcha)，3(日志)，4(Redirect)。",
 			},
 			"status": {
 				Optional:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CUSTOM_RULE_STATUS),
 				Default:      CUSTOM_RULE_STATUS_1,
-				Description:  "The status of the rule, 1(open), 0(close).",
+				Description:  "状态 规则，1(open)，0(close)。",
 			},
 			"job_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Rule execution mode: TimedJob indicates scheduled execution. CronJob indicates periodic execution.",
+				Description: "Rule execution 模式: TimedJob 表示scheduled execution. CronJob 表示periodic execution。",
 			},
 			"job_date_time": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Rule execution time.",
+				Description: "Rule 执行时间。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"timed": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Time parameters for scheduled execution. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Time 参数 对于 scheduled execution. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"start_date_time": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Start timestamp, in seconds. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Start 时间戳，（秒）。 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"end_date_time": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "End timestamp, in seconds. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "End 时间戳，（秒）。 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -175,13 +175,13 @@ func ResourceTencentCloudWafCustomRule() *schema.Resource {
 						"cron": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Time parameters for periodic execution. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Time 参数 对于 periodic execution. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"days": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Days in each month for execution. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Days 在 each month 对于 execution. 注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Schema{
 											Type: schema.TypeInt,
 										},
@@ -189,7 +189,7 @@ func ResourceTencentCloudWafCustomRule() *schema.Resource {
 									"w_days": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Days of each week for execution. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Days 的 each week 对于 execution. 注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Schema{
 											Type: schema.TypeInt,
 										},
@@ -197,12 +197,12 @@ func ResourceTencentCloudWafCustomRule() *schema.Resource {
 									"start_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Start time. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "开始时间. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"end_time": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "End time. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "结束时间. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -210,7 +210,7 @@ func ResourceTencentCloudWafCustomRule() *schema.Resource {
 						"time_t_zone": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Time zone. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "时区. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -218,7 +218,7 @@ func ResourceTencentCloudWafCustomRule() *schema.Resource {
 			"rule_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "rule ID.",
+				Description: "规则 ID。",
 			},
 		},
 	}

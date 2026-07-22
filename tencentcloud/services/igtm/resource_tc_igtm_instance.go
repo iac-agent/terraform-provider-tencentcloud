@@ -26,64 +26,64 @@ func ResourceTencentCloudIgtmInstance() *schema.Resource {
 			"domain": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Business domain.",
+				Description: "Business 域名",
 			},
 
 			"access_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "CUSTOM: Custom access domain\nSYSTEM: System access domain.",
+				Description: "CUSTOM: Custom 访问 域名\nSYSTEM: System 访问 域名",
 			},
 
 			"global_ttl": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Resolution effective time.",
+				Description: "Resolution effective 时间。",
 			},
 
 			"package_type": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Package type\nFREE: Free version\nSTANDARD: Standard version\nULTIMATE: Ultimate version.",
+				Description: "Package 类型\nFREE: Free 版本\nSTANDARD: Standard 版本\nULTIMATE: Ultimate 版本",
 			},
 
 			"instance_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance name.",
+				Description: "实例名称",
 			},
 
 			"access_domain": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Access main domain.",
+				Description: "Access main 域名",
 			},
 
 			"access_sub_domain": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Access subdomain.",
+				Description: "Access subdomain。",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Remark.",
+				Description: "备注",
 			},
 
 			"resource_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Package resource ID.",
+				Description: "Package 资源 ID。",
 			},
 
 			// computed
 			"instance_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 		},
 	}

@@ -22,34 +22,34 @@ func DataSourceTencentCloudGaapRealServersStatus() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Real Server Ids.",
+				Description: "Real Server Ids。",
 			},
 
 			"real_server_status_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Real Server Status Set.",
+				Description: "Real Server 状态 Set。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"real_server_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Real Server Id.",
+							Description: "Real Server ID。",
 						},
 						"bind_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Bind Status, 0 indicates unbound, 1 indicates bound by rules or listeners.",
+							Description: "Bind 状态，0 表示unbound，1 表示bound 通过 规则 或 listeners。",
 						},
 						"proxy_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Bind the proxy ID of this real server, which is an empty string when not bound.",
+							Description: "Bind proxy ID 此 real 服务器，其中 是 空 字符串 当 不 bound。",
 						},
 						"group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Bind the group ID of this real server, which is an empty string when not bound.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Bind 组 ID 此 real 服务器，其中 是 空 字符串 当 不 bound.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -58,7 +58,7 @@ func DataSourceTencentCloudGaapRealServersStatus() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

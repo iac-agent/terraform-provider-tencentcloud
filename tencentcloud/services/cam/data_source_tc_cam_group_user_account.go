@@ -19,52 +19,52 @@ func DataSourceTencentCloudCamGroupUserAccount() *schema.Resource {
 			"uid": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Sub-user uid.",
+				Description: "Sub-用户 uid。",
 			},
 
 			"rp": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Number per page. The default is 20.",
+				Description: "Number per 页面. 默认为 20。",
 			},
 
 			"sub_uin": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Sub-user uin.",
+				Description: "Sub-用户 uin。",
 			},
 
 			"total_num": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total number of user groups the sub-user has joined.",
+				Description: "总数 数量 用户 groups sub-用户 has joined。",
 			},
 
 			"group_info": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "User group information.",
+				Description: "用户 组 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"group_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "User group ID.",
+							Description: "用户 组 ID",
 						},
 						"group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "User group name.",
+							Description: "用户 组名称",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create time.",
+							Description: "创建时间。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Remark.",
+							Description: "备注",
 						},
 					},
 				},
@@ -73,7 +73,7 @@ func DataSourceTencentCloudCamGroupUserAccount() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

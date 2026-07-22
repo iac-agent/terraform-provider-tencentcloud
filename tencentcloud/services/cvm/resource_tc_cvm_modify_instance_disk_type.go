@@ -25,25 +25,25 @@ func ResourceTencentCloudCvmModifyInstanceDiskType() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID. To obtain the instance IDs, you can call DescribeInstances and look for InstanceId in the response.",
+				Description: "实例 ID To obtain 实例 IDs，您 可以 call DescribeInstances 和 look 对于 实例 ID 在 response。",
 			},
 
 			"data_disks": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "For instance data disk configuration information, you only need to specify the media type of the target cloud disk to be converted, and specify the value of DiskType. Currently, only one data disk conversion is supported. The CdcId parameter is only supported for instances of the CDHPAID type.",
+				Description: "For 实例 数据 磁盘 配置 信息，您 仅 need 到 指定media 类型 目标 云 磁盘 到 是 converted，和 指定value 的 DiskType. Currently，仅 一个 数据 磁盘 conversion 是 支持. CdcId 参数 是 仅 支持 对于 实例 的 CDHPAID 类型",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"disk_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.",
+							Description: "Data 磁盘 大小 (在 GB). 最小 adjustment increment 是 10 GB. 值 范围 varies 通过 数据 磁盘 类型 默认值为 0，indicating 该 无 数据 磁盘 是 purchased. For more 信息，see product documentation。",
 						},
 						"disk_type": {
 							Type:     schema.TypeString,
 							Optional: true,
-							Description: "Data disk type. Valid values:\n" +
+							Description: "数据盘类型。有效值:\n" +
 								"- LOCAL_BASIC: local hard disk;\n" +
 								"- LOCAL_SSD: local SSD hard disk;\n" +
 								"- LOCAL_NVME: local NVME hard disk, which is strongly related to InstanceType and cannot be specified;\n" +
@@ -59,12 +59,12 @@ func ResourceTencentCloudCvmModifyInstanceDiskType() *schema.Resource {
 						"disk_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Data disk ID. Note that it's not available for LOCAL_BASIC and LOCAL_SSD disks.",
+							Description: "Data 磁盘 ID. 注意 该 它's 不 可用 对于 LOCAL_BASIC 和 LOCAL_SSD disks。",
 						},
 						"delete_with_instance": {
 							Type:     schema.TypeBool,
 							Optional: true,
-							Description: "Whether to terminate the data disk when its CVM is terminated. Valid values:\n" +
+							Description: "CVM 终止时是否终止数据盘。有效值:\n" +
 								"- TRUE: terminate the data disk when its CVM is terminated. This value only supports pay-as-you-go cloud disks billed on an hourly basis.\n" +
 								"- FALSE: retain the data disk when its CVM is terminated.\n" +
 								"Default value: TRUE.",
@@ -72,12 +72,12 @@ func ResourceTencentCloudCvmModifyInstanceDiskType() *schema.Resource {
 						"snapshot_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Data disk snapshot ID. The size of the selected data disk snapshot must be smaller than that of the data disk.",
+							Description: "Data 磁盘 快照 ID. 大小 的 selected 数据 磁盘 快照 必须 是 smaller 比 该 的 数据 磁盘。",
 						},
 						"encrypt": {
 							Type:     schema.TypeBool,
 							Optional: true,
-							Description: "Specifies whether the data disk is encrypted. Valid values:\n" +
+							Description: "数据盘是否加密。有效值:\n" +
 								"- TRUE: encrypted\n" +
 								"- FALSE: not encrypted\n" +
 								"Default value: FALSE.",
@@ -85,17 +85,17 @@ func ResourceTencentCloudCvmModifyInstanceDiskType() *schema.Resource {
 						"kms_key_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "ID of the custom CMK in the format of UUID or “kms-abcd1234”. This parameter is used to encrypt cloud disks.",
+							Description: "ID 自定义 CMK 在 格式 的 UUID 或 “kms-abcd1234”. 此 参数 是 用于encrypt 云 disks。",
 						},
 						"throughput_performance": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Cloud disk performance, in MB/s.",
+							Description: "Cloud 磁盘 performance，在 MB/s。",
 						},
 						"cdc_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "ID of the dedicated cluster to which the instance belongs.",
+							Description: "ID dedicated 集群 到 其中 实例 belongs。",
 						},
 					},
 				},
@@ -106,13 +106,13 @@ func ResourceTencentCloudCvmModifyInstanceDiskType() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "For instance system disk configuration information, you only need to specify the nature type of the target cloud disk to be converted, and specify the value of DiskType. Only CDHPAID type instances are supported to specify Cd.",
+				Description: "For 实例 系统 磁盘 配置 信息，您 仅 need 到 指定nature 类型 目标 云 磁盘 到 是 converted，和 指定value 的 DiskType. Only CDHPAID 类型 实例 是 支持 到 指定Cd。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"disk_type": {
 							Type:     schema.TypeString,
 							Optional: true,
-							Description: "System disk type. Valid values:" +
+							Description: "系统盘类型。有效值：" +
 								"- LOCAL_BASIC: local disk\n" +
 								"- LOCAL_SSD: local SSD disk\n" +
 								"- CLOUD_BASIC: ordinary cloud disk\n" +
@@ -124,17 +124,17 @@ func ResourceTencentCloudCvmModifyInstanceDiskType() *schema.Resource {
 						"disk_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "System disk ID. System disks whose type is LOCAL_BASIC or LOCAL_SSD do not have an ID and do not support this parameter.",
+							Description: "System 磁盘 ID. System disks whose 类型 是 LOCAL_BASIC 或 LOCAL_SSD do 不 have ID 和 do 不 support 此 参数。",
 						},
 						"disk_size": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "System disk size; unit: GB; default value: 50 GB.",
+							Description: "System 磁盘 大小; 单位: GB; 默认值：50 GB。",
 						},
 						"cdc_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "ID of the dedicated cluster to which the instance belongs.",
+							Description: "ID dedicated 集群 到 其中 实例 belongs。",
 						},
 					},
 				},

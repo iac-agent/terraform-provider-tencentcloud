@@ -26,22 +26,22 @@ func ResourceTencentCloudCfwEdgeFirewallSwitch() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Public Ip.",
+				Description: "Public Ip。",
 			},
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The first EIP switch in the vpc is turned on, and you need to specify a subnet to create a private connection. If `switch_mode` is 1 and `enable` is 1, this field is required.",
+				Description: "first EIP switch 在 vpc 是 turned 在，和 您 need 到 指定a 子网 到 create 私有 连接. 如果 `switch_mode` 是 1 和 `启用` 是 1，此 字段 为必填项。",
 			},
 			"switch_mode": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "0: bypass; 1: serial.",
+				Description: "0: bypass; 1: serial。",
 			},
 			"enable": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Switch, 0: off, 1: on.",
+				Description: "Switch，0: 关闭，1: 在。",
 			},
 		},
 	}

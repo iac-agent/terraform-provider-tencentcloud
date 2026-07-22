@@ -19,20 +19,20 @@ func DataSourceTencentCloudDbbrainDiagEvent() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "isntance id.",
+				Description: "isntance ID.",
 			},
 
 			"event_id": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Event ID. Obtain it through `Get Instance Diagnosis History DescribeDBDiagHistory`.",
+				Description: "Event ID. Obtain 它 through `Get 实例 Diagnosis History DescribeDBDiagHistory`.",
 			},
 
 			"product": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Service product type, supported values include: `mysql` - cloud database MySQL, `cynosdb` - cloud database CynosDB for MySQL, the default is `mysql`.",
+				Description: "Service product 类型, 支持 值 include: `mysql` - 云 数据库 MySQL, `cynosdb` - 云 数据库 CynosDB 对于 MySQL, 默认值 是 `mysql`.",
 			},
 
 			"diag_item": {
@@ -44,13 +44,13 @@ func DataSourceTencentCloudDbbrainDiagEvent() *schema.Resource {
 			"diag_type": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Diagnostic type.",
+				Description: "Diagnostic 类型.",
 			},
 
 			"explanation": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Diagnostic event details, output is empty if there is no additional explanatory information.",
+				Description: "Diagnostic 事件 details, output 是 空 如果 there 是 无 additional explanatory 信息.",
 			},
 
 			"outline": {
@@ -68,25 +68,25 @@ func DataSourceTencentCloudDbbrainDiagEvent() *schema.Resource {
 			"severity": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "severity. The severity is divided into 5 levels, according to the degree of impact from high to low: 1: Fatal, 2: Serious, 3: Warning, 4: Prompt, 5: Healthy.",
+				Description: "severity. severity 是 divided into 5 levels, according 到 degree 的 impact 从 high 到 low: 1: Fatal, 2: Serious, 3: Warning, 4: Prompt, 5: Healthy.",
 			},
 
 			"start_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Starting time.",
+				Description: "Starting 时间.",
 			},
 
 			"suggestions": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "A diagnostic suggestion, or empty if there is no suggestion.",
+				Description: "A diagnostic suggestion, 或 空 如果 there 是 无 suggestion.",
 			},
 
 			"metric": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "reserved text. Note: This field may return null, indicating that no valid value can be obtained.",
+				Description: "reserved text. 注意: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 			},
 
 			"end_time": {
@@ -98,7 +98,7 @@ func DataSourceTencentCloudDbbrainDiagEvent() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

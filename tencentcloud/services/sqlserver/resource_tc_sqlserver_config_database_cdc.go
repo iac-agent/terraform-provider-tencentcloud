@@ -28,17 +28,17 @@ func ResourceTencentCloudSqlserverConfigDatabaseCDC() *schema.Resource {
 			"db_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "database name.",
+				Description: "数据库 名称.",
 			},
 			"modify_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Enable or disable CDC. Valid values: enable, disable.",
+				Description: "Enable 或 disable CDC. 有效 值: 启用, disable.",
 			},
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 		},
 	}

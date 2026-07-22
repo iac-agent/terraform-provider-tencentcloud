@@ -20,13 +20,13 @@ func DataSourceTencentCloudRumScores() *schema.Resource {
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "End time.",
+				Description: "End 时间.",
 			},
 
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Start time.",
+				Description: "Start 时间.",
 			},
 
 			"project_id": {
@@ -38,13 +38,13 @@ func DataSourceTencentCloudRumScores() *schema.Resource {
 			"is_demo": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Get data from demo. This parameter is deprecated.",
+				Description: "Get 数据 从 demo. 此 参数 是 deprecated.",
 			},
 
 			"score_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Score list.",
+				Description: "Score 列表.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"static_duration": {
@@ -60,17 +60,17 @@ func DataSourceTencentCloudRumScores() *schema.Resource {
 						"api_fail": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The number of failed api.",
+							Description: "数量 的 failed api.",
 						},
 						"api_num": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The number of all request api.",
+							Description: "数量 的 all 请求 api.",
 						},
 						"static_fail": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The number of failed request static resource.",
+							Description: "数量 的 failed 请求 静态 资源.",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
@@ -85,37 +85,37 @@ func DataSourceTencentCloudRumScores() *schema.Resource {
 						"api_duration": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The mean duration of api request.",
+							Description: "mean 时长 的 api 请求.",
 						},
 						"score": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The score of project.",
+							Description: "score 的 项目.",
 						},
 						"page_error": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The number of exception which happened on page.",
+							Description: "数量 的 exception 其中 happened 在 页面.",
 						},
 						"static_num": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The number of static resource on page.",
+							Description: "数量 的 静态 资源 在 页面.",
 						},
 						"record_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of record.",
+							Description: "数量 的 记录.",
 						},
 						"page_duration": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The duration of page load.",
+							Description: "时长 的 页面 load.",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Project record created time.",
+							Description: "Project 记录 创建 时间.",
 						},
 					},
 				},
@@ -124,7 +124,7 @@ func DataSourceTencentCloudRumScores() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

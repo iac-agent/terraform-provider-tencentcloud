@@ -25,14 +25,14 @@ func ResourceTencentCloudCbsDiskBackup() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "ID of the original cloud disk of the backup point, which can be queried through the DescribeDisks API.",
+				Description: "ID original 云 磁盘 的 备份 point，其中 可以 是 queried through DescribeDisks API。",
 			},
 
 			"disk_backup_name": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Backup point name.",
+				Description: "Backup point 名称",
 			},
 		},
 	}

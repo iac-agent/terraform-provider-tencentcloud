@@ -28,46 +28,46 @@ func ResourceTencentCloudAlbServerAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "loadbalancer ID.",
+				Description: "负载均衡器 ID。",
 			},
 			"listener_id": {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "listener ID.",
+				Description: "听众ID。",
 			},
 			"location_id": {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Optional:    true,
 				Computed:    true,
-				Description: "location ID, only support for layer 7 loadbalancer.",
+				Description: "位置ID，仅支持7层负载均衡器。",
 			},
 			"backends": {
 				Type:        schema.TypeSet,
 				Required:    true,
 				MinItems:    1,
 				MaxItems:    100,
-				Description: "list of backend server.",
+				Description: "后端服务器列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "A list backend instance ID (CVM instance ID).",
+							Description: "列表后端实例 ID（CVM 实例 ID）。",
 						},
 						"port": {
 							Type:         schema.TypeInt,
 							Required:     true,
 							ValidateFunc: tccommon.ValidateIntegerInRange(0, 65535),
-							Description:  "The port used by the backend server. Valid value range: [1-65535].",
+							Description: "后端服务器使用的端口。有效值范围：[1-65535]。",
 						},
 						"weight": {
 							Type:         schema.TypeInt,
 							Optional:     true,
 							Computed:     true,
 							ValidateFunc: tccommon.ValidateIntegerInRange(0, 100),
-							Description:  "Weight of the backend server. Valid value range: [0-100]. Default to 10.",
+							Description: "后端服务器的权重。有效值范围：[0-100]。默认为 10。",
 						},
 					},
 				},
@@ -75,7 +75,7 @@ func ResourceTencentCloudAlbServerAttachment() *schema.Resource {
 			"protocol_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The protocol type, http or tcp.",
+				Description: "协议类型，http 或 tcp。",
 			},
 		},
 	}

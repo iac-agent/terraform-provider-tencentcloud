@@ -30,35 +30,35 @@ func ResourceTencentCloudDbbrainDbDiagReportTask() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID.",
 			},
 
 			"product": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Service product type, supported values include: mysql - cloud database MySQL, cynosdb - cloud database CynosDB for MySQL.",
+				Description: "Service product 类型, 支持 值 include: mysql - 云 数据库 MySQL, cynosdb - 云 数据库 CynosDB 对于 MySQL.",
 			},
 
 			"start_time": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Start time, such as 2020-11-08T14:00:00+08:00.",
+				Description: "Start 时间, such 作为 2020-11-08T14:00:00+08:00.",
 			},
 
 			"end_time": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "End time, such as 2020-11-09T14:00:00+08:00.",
+				Description: "End 时间, such 作为 2020-11-09T14:00:00+08:00.",
 			},
 
 			"send_mail_flag": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to send mail: 0 - no, 1 - yes.",
+				Description: "Whether 到 send mail: 0 - 无, 1 - yes.",
 			},
 
 			"contact_person": {
@@ -68,7 +68,7 @@ func ResourceTencentCloudDbbrainDbDiagReportTask() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "An array of contact IDs to receive emails from.",
+				Description: "An 数组 的 contact IDs 到 receive emails 从.",
 			},
 
 			"contact_group": {
@@ -78,7 +78,7 @@ func ResourceTencentCloudDbbrainDbDiagReportTask() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "An array of contact group IDs to receive mail from.",
+				Description: "An 数组 的 contact 组 IDs 到 receive mail 从.",
 			},
 		},
 	}

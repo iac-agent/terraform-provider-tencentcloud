@@ -28,7 +28,7 @@ func ResourceTencentCloudTcmClusterAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Mesh ID.",
+				Description: "Mesh ID。",
 			},
 
 			"cluster_list": {
@@ -36,39 +36,39 @@ func ResourceTencentCloudTcmClusterAttachment() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "Cluster list.",
+				Description: "Cluster 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "TKE Cluster id.",
+							Description: "TKE 集群 ID",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "TKE cluster region.",
+							Description: "TKE 集群 地域",
 						},
 						"role": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Cluster role in mesh, REMOTE or MASTER.",
+							Description: "Cluster 角色 在 mesh，REMOTE 或 MASTER。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Cluster&#39;s VpcId.",
+							Description: "Cluster&#39;s VpcId。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Subnet id, only needed if it&#39;s standalone mesh.",
+							Description: "子网 ID，仅 needed 如果 它&#39;s standalone mesh。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Cluster type.",
+							Description: "集群类型",
 						},
 					},
 				},

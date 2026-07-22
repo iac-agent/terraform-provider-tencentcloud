@@ -25,19 +25,19 @@ func ResourceTencentCloudWedataWorkflowFolder() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Project id.",
+				Description: "项目 ID",
 			},
 
 			"parent_folder_path": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The absolute path of the parent folder, such as/abc/de, if it is the root directory, pass/.",
+				Description: "absolute 路径 的 parent 文件夹，such 作为/abc/de，如果 它 是 root directory，pass/。",
 			},
 
 			"folder_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Name of the folder to create.",
+				Description: "名称 文件夹 到 create。",
 			},
 		},
 	}

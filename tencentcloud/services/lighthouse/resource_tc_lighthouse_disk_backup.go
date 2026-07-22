@@ -28,13 +28,13 @@ func ResourceTencentCloudLighthouseDiskBackup() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Disk ID. Only data disks are supported to create disk backup.",
+				Description: "Disk ID. Only 数据 disks 是 支持 到 create 磁盘 备份。",
 			},
 
 			"disk_backup_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Disk backup name. The maximum length is 90 characters.",
+				Description: "Disk 备份 名称 最大 长度 是 90 字符。",
 			},
 		},
 	}

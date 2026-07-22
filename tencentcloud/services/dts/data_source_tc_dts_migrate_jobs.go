@@ -20,13 +20,13 @@ func DataSourceTencentCloudDtsMigrateJobs() *schema.Resource {
 			"job_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "job id.",
+				Description: "作业 ID",
 			},
 
 			"job_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "job name.",
+				Description: "作业名称",
 			},
 
 			"status": {
@@ -35,19 +35,19 @@ func DataSourceTencentCloudDtsMigrateJobs() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "migrate status.",
+				Description: "migrate 状态",
 			},
 
 			"src_instance_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "source instance id.",
+				Description: "来源 实例 ID",
 			},
 
 			"src_region": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "source region.",
+				Description: "来源 地域",
 			},
 
 			"src_database_type": {
@@ -56,7 +56,7 @@ func DataSourceTencentCloudDtsMigrateJobs() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "source database type.",
+				Description: "来源 数据库 类型",
 			},
 
 			"src_access_type": {
@@ -65,19 +65,19 @@ func DataSourceTencentCloudDtsMigrateJobs() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "source access type.",
+				Description: "来源 访问 类型",
 			},
 
 			"dst_instance_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "source instance id.",
+				Description: "来源 实例 ID",
 			},
 
 			"dst_region": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "destination region.",
+				Description: "destination 地域",
 			},
 
 			"dst_database_type": {
@@ -86,7 +86,7 @@ func DataSourceTencentCloudDtsMigrateJobs() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "destination database type.",
+				Description: "destination 数据库 类型",
 			},
 
 			"dst_access_type": {
@@ -95,36 +95,36 @@ func DataSourceTencentCloudDtsMigrateJobs() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "destination access type.",
+				Description: "destination 访问 类型",
 			},
 
 			"run_mode": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "run mode.",
+				Description: "run 模式",
 			},
 
 			"order_seq": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "order by, default by create time.",
+				Description: "排序依据，默认值 通过 创建时间。",
 			},
 
 			"tag_filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "tag filters.",
+				Description: "标签 filters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "tag key.",
+							Description: "标签键",
 						},
 						"tag_value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "tag value.",
+							Description: "标签值",
 						},
 					},
 				},
@@ -133,63 +133,63 @@ func DataSourceTencentCloudDtsMigrateJobs() *schema.Resource {
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "migration job list.",
+				Description: "迁移 作业 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"job_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "job id.",
+							Description: "作业 ID",
 						},
 						"job_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "job name.",
+							Description: "作业名称",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "create time.",
+							Description: "创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "update time.",
+							Description: "更新时间。",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "start time.",
+							Description: "开始时间。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "end time.",
+							Description: "结束时间。",
 						},
 						"brief_msg": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "brief message for migrate error.",
+							Description: "brief 消息 对于 migrate 错误",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "status.",
+							Description: "状态",
 						},
 						"run_mode": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "run mode, optional value is immediate or Timed.",
+							Description: "run 模式，可选 值 是 immediate 或 Timed。",
 						},
 						"expect_run_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "expected run time.",
+							Description: "expected run 时间。",
 						},
 						"action": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "action info.",
+							Description: "操作 info。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"all_action": {
@@ -198,7 +198,7 @@ func DataSourceTencentCloudDtsMigrateJobs() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "all action list.",
+										Description: "all 操作 列表。",
 									},
 									"allowed_action": {
 										Type: schema.TypeSet,
@@ -206,7 +206,7 @@ func DataSourceTencentCloudDtsMigrateJobs() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "allowed action list.",
+										Description: "allowed 操作 列表。",
 									},
 								},
 							},
@@ -214,90 +214,90 @@ func DataSourceTencentCloudDtsMigrateJobs() *schema.Resource {
 						"step_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "step info.",
+							Description: "step info。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"step_all": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "number of all steps.",
+										Description: "数量 all steps。",
 									},
 									"step_now": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "current step.",
+										Description: "当前 step。",
 									},
 									"master_slave_distance": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "master slave distance.",
+										Description: "master slave distance。",
 									},
 									"seconds_behind_master": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "seconds behind master.",
+										Description: "秒 behind master。",
 									},
 									"step_info": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "step infos.",
+										Description: "step infos。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"step_no": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "step number.",
+													Description: "step 数量。",
 												},
 												"step_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "step name.",
+													Description: "step 名称",
 												},
 												"step_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "step id.",
+													Description: "step ID。",
 												},
 												"status": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "current status.",
+													Description: "当前 状态",
 												},
 												"start_time": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "start time.",
+													Description: "开始时间。",
 												},
 												"step_message": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "step message.",
+													Description: "step 消息",
 												},
 												"percent": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "the percent of miragtion progress.",
+													Description: "percent 的 miragtion progress。",
 												},
 												"errors": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "error list.",
+													Description: "错误 列表。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"message": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "message.",
+																Description: "消息",
 															},
 															"solution": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "solution.",
+																Description: "解决方案",
 															},
 															"help_doc": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "help document.",
+																Description: "帮助文档",
 															},
 														},
 													},
@@ -305,23 +305,23 @@ func DataSourceTencentCloudDtsMigrateJobs() *schema.Resource {
 												"warnings": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "warning list.",
+													Description: "警告 列表。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"message": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "message.",
+																Description: "消息",
 															},
 															"solution": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "solution.",
+																Description: "解决方案",
 															},
 															"help_doc": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "help document.",
+																Description: "帮助文档",
 															},
 														},
 													},
@@ -335,129 +335,129 @@ func DataSourceTencentCloudDtsMigrateJobs() *schema.Resource {
 						"src_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "source info.",
+							Description: "来源 info。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "region.",
+										Description: "地域",
 									},
 									"access_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "access type.",
+										Description: "访问 类型",
 									},
 									"database_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "database type.",
+										Description: "数据库 类型",
 									},
 									"node_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "node type.",
+										Description: "节点 类型",
 									},
 									"info": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "db info.",
+										Description: "db info。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"role": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "node role.",
+													Description: "节点 角色",
 												},
 												"db_kernel": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "database kernel.",
+													Description: "数据库 kernel。",
 												},
 												"host": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "host.",
+													Description: "主机",
 												},
 												"port": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "port.",
+													Description: "端口",
 												},
 												"user": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "user.",
+													Description: "用户",
 												},
 												"password": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "password.",
+													Description: "密码",
 												},
 												"cvm_instance_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "cvm instance id.",
+													Description: "cvm 实例 ID",
 												},
 												"uniq_vpn_gw_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "vpn gateway id.",
+													Description: "vpn 网关 ID",
 												},
 												"instance_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "instance id.",
+													Description: "实例 ID",
 												},
 												"ccn_gw_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "ccn gateway id.",
+													Description: "ccn 网关 ID",
 												},
 												"vpc_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "vpc id.",
+													Description: "私有网络 ID",
 												},
 												"subnet_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "subnet id.",
+													Description: "子网 ID",
 												},
 												"engine_version": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "engine version.",
+													Description: "引擎 版本",
 												},
 												"account": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "account.",
+													Description: "账号",
 												},
 												"account_role": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "account role.",
+													Description: "账号 角色",
 												},
 												"account_mode": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "account mode.",
+													Description: "账号 模式",
 												},
 												"tmp_secret_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "temporary secret id.",
+													Description: "temporary secret ID。",
 												},
 												"tmp_secret_key": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "temporary secret key.",
+													Description: "temporary secret 键",
 												},
 												"tmp_token": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "temporary token.",
+													Description: "temporary 令牌",
 												},
 											},
 										},
@@ -465,23 +465,23 @@ func DataSourceTencentCloudDtsMigrateJobs() *schema.Resource {
 									"supplier": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "supplier.",
+										Description: "supplier。",
 									},
 									"extra_attr": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "extra attributes.",
+										Description: "extra attributes。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "key.",
+													Description: "键",
 												},
 												"value": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "value.",
+													Description: "值",
 												},
 											},
 										},
@@ -492,129 +492,129 @@ func DataSourceTencentCloudDtsMigrateJobs() *schema.Resource {
 						"dst_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "destination info.",
+							Description: "destination info。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "region.",
+										Description: "地域",
 									},
 									"access_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "access type.",
+										Description: "访问 类型",
 									},
 									"database_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "database type.",
+										Description: "数据库 类型",
 									},
 									"node_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "node type.",
+										Description: "节点 类型",
 									},
 									"info": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "db info.",
+										Description: "db info。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"role": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "node role.",
+													Description: "节点 角色",
 												},
 												"db_kernel": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "database kernel.",
+													Description: "数据库 kernel。",
 												},
 												"host": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "host.",
+													Description: "主机",
 												},
 												"port": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "port.",
+													Description: "端口",
 												},
 												"user": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "user.",
+													Description: "用户",
 												},
 												"password": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "password.",
+													Description: "密码",
 												},
 												"cvm_instance_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "cvm instance id.",
+													Description: "cvm 实例 ID",
 												},
 												"uniq_vpn_gw_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "vpn gateway id.",
+													Description: "vpn 网关 ID",
 												},
 												"instance_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "instance id.",
+													Description: "实例 ID",
 												},
 												"ccn_gw_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "ccn gateway id.",
+													Description: "ccn 网关 ID",
 												},
 												"vpc_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "vpc id.",
+													Description: "私有网络 ID",
 												},
 												"subnet_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "subnet id.",
+													Description: "子网 ID",
 												},
 												"engine_version": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "engine version.",
+													Description: "引擎 版本",
 												},
 												"account": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "account.",
+													Description: "账号",
 												},
 												"account_role": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "account role.",
+													Description: "账号 角色",
 												},
 												"account_mode": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "account mode.",
+													Description: "账号 模式",
 												},
 												"tmp_secret_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "temporary secret id.",
+													Description: "temporary secret ID。",
 												},
 												"tmp_secret_key": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "temporary secret key.",
+													Description: "temporary secret 键",
 												},
 												"tmp_token": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "temporary token.",
+													Description: "temporary 令牌",
 												},
 											},
 										},
@@ -625,18 +625,18 @@ func DataSourceTencentCloudDtsMigrateJobs() *schema.Resource {
 						"compare_task": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "compare task info.",
+							Description: "compare 任务 info。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"compare_task_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "compare task id.",
+										Description: "compare 任务 ID",
 									},
 									"status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "status.",
+										Description: "状态",
 									},
 								},
 							},
@@ -644,63 +644,63 @@ func DataSourceTencentCloudDtsMigrateJobs() *schema.Resource {
 						"trade_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "trade info.",
+							Description: "trade info。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"deal_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "deal name.",
+										Description: "deal 名称",
 									},
 									"last_deal_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "last deal name.",
+										Description: "last deal 名称",
 									},
 									"instance_class": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "instance class.",
+										Description: "实例 class。",
 									},
 									"trade_status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "trade status.",
+										Description: "trade 状态",
 									},
 									"expire_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "expired time.",
+										Description: "过期时间。",
 									},
 									"offline_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "offline time.",
+										Description: "offline 时间。",
 									},
 									"isolate_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "isolate time.",
+										Description: "isolate 时间。",
 									},
 									"offline_reason": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "offline reason.",
+										Description: "offline reason。",
 									},
 									"isolate_reason": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "isolate reason.",
+										Description: "isolate reason。",
 									},
 									"pay_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "pay type.",
+										Description: "pay 类型",
 									},
 									"billing_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "billing type.",
+										Description: "billing 类型",
 									},
 								},
 							},
@@ -708,18 +708,18 @@ func DataSourceTencentCloudDtsMigrateJobs() *schema.Resource {
 						"tags": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "tag list.",
+							Description: "标签列表",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "tag key.",
+										Description: "标签键",
 									},
 									"tag_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "tag value.",
+										Description: "标签值",
 									},
 								},
 							},
@@ -731,7 +731,7 @@ func DataSourceTencentCloudDtsMigrateJobs() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

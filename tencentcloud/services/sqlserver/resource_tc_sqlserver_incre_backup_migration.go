@@ -28,29 +28,29 @@ func ResourceTencentCloudSqlserverIncreBackupMigration() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID of imported target instance.",
+				Description: "ID 的 imported 目标 实例.",
 			},
 			"backup_migration_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Backup import task ID, which is returned through the API CreateBackupMigration.",
+				Description: "Backup import 任务 ID, 其中 是 返回 through API CreateBackupMigration.",
 			},
 			"backup_files": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Incremental backup file. If the UploadType of a full backup file is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.",
+				Description: "Incremental 备份 文件. 如果 UploadType 的 full 备份 文件 是 COS_URL, fill 在 URL here. 如果 UploadType 是 COS_UPLOAD, fill 在 名称 的 备份 文件 here. Only 1 备份 文件 是 支持, 但 备份 文件 可以 involve 多个 databases.",
 			},
 			"is_recovery": {
 				Optional:    true,
 				Default:     "NO",
 				Type:        schema.TypeString,
-				Description: "Whether restoration is required. No: not required. Yes: required. Not required by default.",
+				Description: "Whether restoration 是 必填. No: 不 必填. Yes: 必填. Not 必填 通过 默认值.",
 			},
 			"incremental_migration_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Incremental import task ID.",
+				Description: "Incremental import 任务 ID.",
 			},
 		},
 	}

@@ -19,53 +19,53 @@ func DataSourceTencentCloudSqlserverDescHaLog() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Start time (yyyy-MM-dd HH:mm:ss).",
+				Description: "Start 时间 (yyyy-MM-dd HH:mm:ss).",
 			},
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "End time (yyyy-MM-dd HH:mm:ss).",
+				Description: "End 时间 (yyyy-MM-dd HH:mm:ss).",
 			},
 			"switch_type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Switching mode 0-system automatically switches, 1-manual switch, if not filled in, all will be checked by default.",
+				Description: "Switching 模式 0-系统 automatically switches, 1-manual switch, 如果 不 filled 在, all 将 是 checked 通过 默认值.",
 			},
 			"switch_log": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Master/Slave switching log.",
+				Description: "Master/Slave switching 日志.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"event_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Switch event ID Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Switch 事件 ID 注意: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 						},
 						"switch_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Switching mode 0-system automatic switching, 1-manual switching Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Switching 模式 0-系统 automatic switching, 1-manual switching 注意: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Switch start time Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Switch start 时间 注意: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Switch end time Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Switch end 时间 注意: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 						},
 						"reason": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Machine failure causes automatic switching Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Machine failure causes automatic switching 注意: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 						},
 					},
 				},
@@ -73,7 +73,7 @@ func DataSourceTencentCloudSqlserverDescHaLog() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

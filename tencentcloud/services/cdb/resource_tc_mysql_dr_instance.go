@@ -32,18 +32,18 @@ func ResourceTencentCloudMysqlDrInstance() *schema.Resource {
 			"master_instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Indicates the master instance ID of recovery instances.",
+				Description: "恢复实例的主实例ID。",
 			},
 			"master_region": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The zone information of the primary instance is required when you purchase a disaster recovery instance.",
+				Description: "购买容灾实例时需要提供主实例的可用区信息。",
 			},
 			"instance_name": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 100),
-				Description:  "The name of a mysql instance.",
+				Description: "mysql 实例的名称。",
 			},
 			"pay_type": {
 				Type:          schema.TypeInt,
@@ -55,7 +55,7 @@ func ResourceTencentCloudMysqlDrInstance() *schema.Resource {
 					return true
 				},
 				Default:     -1,
-				Description: "Pay type of instance. Valid values: `0`, `1`. `0`: prepaid, `1`: postpaid.",
+				Description: "实例付费类型。有效值：“0”、“1”。 “0”：预付费，“1”：后付费。",
 			},
 			"charge_type": {
 				Type:          schema.TypeString,
@@ -78,7 +78,7 @@ func ResourceTencentCloudMysqlDrInstance() *schema.Resource {
 					}
 					return olds == news
 				},
-				Description: "Pay type of instance. Valid values:`PREPAID`, `POSTPAID`. Default is `POSTPAID`.",
+				Description: "实例付费类型。有效值：`预付费`、`后付费`。默认为“后付费”。",
 			},
 			"period": {
 				Type:          schema.TypeInt,
@@ -90,7 +90,7 @@ func ResourceTencentCloudMysqlDrInstance() *schema.Resource {
 				DiffSuppressFunc: func(k, olds, news string, d *schema.ResourceData) bool {
 					return true
 				},
-				Description: "Period of instance. NOTES: Only supported prepaid instance.",
+				Description: "实例时期。注意：仅支持预付费实例。",
 			},
 			"prepaid_period": {
 				Type:          schema.TypeInt,
@@ -98,51 +98,51 @@ func ResourceTencentCloudMysqlDrInstance() *schema.Resource {
 				Default:       1,
 				ConflictsWith: []string{"pay_type", "period"},
 				ValidateFunc:  tccommon.ValidateAllowedIntValue(MYSQL_AVAILABLE_PERIOD),
-				Description:   "Period of instance. NOTES: Only supported prepaid instance.",
+				Description: "实例时期。注意：仅支持预付费实例。",
 			},
 			"auto_renew_flag": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
 				Default:      0,
-				Description:  "Auto renew flag. NOTES: Only supported prepaid instance.",
+				Description: "自动更新标志。注意：仅支持预付费实例。",
 			},
 			"intranet_port": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateIntegerInRange(1024, 65535),
 				Default:      3306,
-				Description:  "Public access port. Valid value ranges: [1024~65535]. The default value is `3306`.",
+				Description: "公共访问端口。有效值范围：[1024~65535]。默认值为“3306”。",
 			},
 			"mem_size": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Memory size (in MB).",
+				Description: "内存大小（以 MB 为单位）。",
 			},
 			"cpu": {
 				Type:        schema.TypeInt,
 				Computed:    true,
 				Optional:    true,
-				Description: "CPU cores.",
+				Description: "CPU 核心。",
 			},
 			"volume_size": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Disk size (in GB).",
+				Description: "磁盘大小（以 GB 为单位）。",
 			},
 			"vpc_id": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 100),
-				Description:  "ID of VPC, which can be modified once every 24 hours and can't be removed.",
+				Description: "VPC的ID，每24小时可修改一次，且不可删除。",
 			},
 			"subnet_id": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 100),
-				Description:  "Private network ID. If `vpc_id` is set, this value is required.",
+				Description: "私网ID。如果设置了“vpc_id”，则该值是必需的。",
 			},
 			"security_groups": {
 				Type:     schema.TypeSet,
@@ -151,75 +151,75 @@ func ResourceTencentCloudMysqlDrInstance() *schema.Resource {
 				Set: func(v interface{}) int {
 					return helper.HashString(v.(string))
 				},
-				Description: "Security groups to use.",
+				Description: "要使用的安全组。",
 			},
 			"device_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Specify device type, available values: `UNIVERSAL` (default), `EXCLUSIVE`, `BASIC`.",
+				Description: "指定设备类型，可用值：“UNIVERSAL”（默认）、“EXCLUSIVE”、“BASIC”。",
 			},
 			"slave_deploy_mode": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
 				Default:      0,
-				Description:  "Availability zone deployment method. Available values: 0 - Single availability zone; 1 - Multiple availability zones.",
+				Description: "可用区部署方式。可用值：0 - 单个可用区； 1 - 多个可用区。",
 			},
 			"availability_zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Indicates which availability zone will be used.",
+				Description: "指示将使用哪个可用区。",
 			},
 			"first_slave_zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Zone information about first slave instance.",
+				Description: "有关第一个从属实例的区域信息。",
 			},
 			"second_slave_zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Zone information about second slave instance.",
+				Description: "有关第二个从属实例的区域信息。",
 			},
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
-				Description: "Project ID, default value is 0.",
+				Description: "项目ID，默认值为0。",
 			},
 			"slave_sync_mode": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1, 2}),
 				Default:      0,
-				Description:  "Data replication mode. 0 - Async replication; 1 - Semisync replication; 2 - Strongsync replication.",
+				Description: "数据复制模式。 0 - 异步复制； 1 - 半同步复制； 2 - 强同步复制。",
 			},
 			"force_delete": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Indicate whether to delete instance directly or not. Default is `false`. If set true, the instance will be deleted instead of staying recycle bin. Note: only works for `PREPAID` instance.",
+				Description: "是否直接删除实例。默认为“假”。如果设置为true，实例将被删除而不是保留在回收站中。注意：仅适用于“PREPAID”实例。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Instance tags.",
+				Description: "实例标签。",
 			},
 			"disk_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
 				Computed:    true,
-				Description: "Disk Type: This parameter can be specified for Single-Node (Cloud Disk) or Cloud Disk Edition instances. `CLOUD_SSD` designates an SSD cloud disk; `CLOUD_HSSD` designates an Enhanced SSD cloud disk; and `CLOUD_PREMIUM` designates a High-Performance cloud disk. Note: The regions that support the disk types for Single-Node (Cloud Disk) and Cloud Disk Edition instances vary slightly; please refer to `Regions and Availability Zones` for specific support details.",
+				Description: "磁盘类型：单机（云盘）或云盘版实例可以指定该参数。 `CLOUD_SSD`表示SSD云盘； `CLOUD_HSSD`表示增强型SSD云盘； “CLOUD_PREMIUM”表示高性能云盘。注：单节点（云盘）和云盘版实例支持的磁盘类型地域略有差异；具体支持详情请参阅“区域和可用区”。",
 			},
 
 			// Computed values
 			"intranet_ip": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "instance intranet IP.",
+				Description: "实例内网IP。",
 			},
 		},
 	}

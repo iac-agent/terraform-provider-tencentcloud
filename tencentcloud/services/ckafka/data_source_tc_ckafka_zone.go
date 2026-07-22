@@ -19,86 +19,86 @@ func DataSourceTencentCloudCkafkaZone() *schema.Resource {
 			"cdc_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "cdc professional cluster business parameters.",
+				Description: "cdc professional 集群 business 参数。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "query result complex object entity.",
+				Description: "查询 结果 complex 对象 entity。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"zone_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "zone list.",
+							Description: "可用区 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"zone_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "zone id.",
+										Description: "可用区 ID",
 									},
 									"is_internal_app": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "internal APP.",
+										Description: "内部 APP。",
 									},
 									"app_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "app id.",
+										Description: "app ID。",
 									},
 									"flag": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "flag.",
+										Description: "flag。",
 									},
 									"zone_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "zone name.",
+										Description: "可用区 名称",
 									},
 									"zone_status": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "zone status.",
+										Description: "可用区 状态",
 									},
 									"exflag": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "extra flag.",
+										Description: "extra flag。",
 									},
 									"sold_out": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "json object, key is model, value true is sold out, false is not sold out.",
+										Description: "json 对象，键 是 model，值 true 是 sold out，false 是 不 sold out。",
 									},
 									"sales_info": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Standard Edition Sold Out Information.",
+										Description: "Standard Edition Sold Out Information。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"flag": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "Manually set flags.",
+													Description: "Manually 集合 flags。",
 												},
 												"version": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "ckakfa version(1.1.1/2.4.2/0.10.2).",
+													Description: "ckakfa 版本(1.1.1/2.4.2/0.10.2)。",
 												},
 												"platform": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Professional Edition, Standard Edition flag.",
+													Description: "Professional Edition，Standard Edition flag。",
 												},
 												"sold_out": {
 													Type:        schema.TypeBool,
 													Computed:    true,
-													Description: "sold out flag: true sold out.",
+													Description: "sold out flag: true sold out。",
 												},
 											},
 										},
@@ -109,28 +109,28 @@ func DataSourceTencentCloudCkafkaZone() *schema.Resource {
 						"max_buy_instance_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The maximum number of purchased instances.",
+							Description: "最大purchased 实例。",
 						},
 						"max_bandwidth": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum purchased bandwidth in Mbs.",
+							Description: "Maximum purchased 带宽 在 Mbs。",
 						},
 						"unit_price": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Postpaid unit price.",
+							Description: "Postpaid 单位 价格。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"real_total_cost": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "discount price.",
+										Description: "discount 价格。",
 									},
 									"total_cost": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "original price.",
+										Description: "original 价格。",
 									},
 								},
 							},
@@ -138,18 +138,18 @@ func DataSourceTencentCloudCkafkaZone() *schema.Resource {
 						"message_price": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Postpaid message unit price.",
+							Description: "Postpaid 消息 单位 价格。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"real_total_cost": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "discount price.",
+										Description: "discount 价格。",
 									},
 									"total_cost": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "original price.",
+										Description: "original 价格。",
 									},
 								},
 							},
@@ -157,43 +157,43 @@ func DataSourceTencentCloudCkafkaZone() *schema.Resource {
 						"cluster_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "User exclusive cluster information.",
+							Description: "用户 exclusive 集群 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"cluster_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "ClusterId.",
+										Description: "集群 ID",
 									},
 									"cluster_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ClusterName.",
+										Description: "ClusterName。",
 									},
 									"max_disk_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The largest disk in the cluster, in GB.",
+										Description: "largest 磁盘 在 集群，（GB）。",
 									},
 									"max_band_width": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Maximum cluster bandwidth in MBs.",
+										Description: "Maximum 集群 带宽 在 MBs。",
 									},
 									"available_disk_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The current available disk of the cluster, in GB.",
+										Description: "当前 可用 磁盘 的 集群，（GB）。",
 									},
 									"available_band_width": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The current available bandwidth of the cluster in MBs.",
+										Description: "当前 可用 带宽 的 集群 在 MBs。",
 									},
 									"zone_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Availability zone to which the cluster belongs, indicating the availability zone to which the cluster belongs.",
+										Description: "Availability 可用区 到 其中 集群 belongs，indicating availability 可用区 到 其中 集群 belongs。",
 									},
 									"zone_ids": {
 										Type: schema.TypeSet,
@@ -201,7 +201,7 @@ func DataSourceTencentCloudCkafkaZone() *schema.Resource {
 											Type: schema.TypeInt,
 										},
 										Computed:    true,
-										Description: "The availability zone where the cluster node is located. If the cluster is a cross-availability zone cluster, it includes multiple availability zones where the cluster node is located.",
+										Description: "availability 可用区 其中 集群 节点 是 located. 如果 集群 是 cross-availability 可用区 集群，它 includes 多个 availability zones 其中 集群 节点 是 located。",
 									},
 								},
 							},
@@ -209,32 +209,32 @@ func DataSourceTencentCloudCkafkaZone() *schema.Resource {
 						"standard": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Purchase Standard Edition Configuration.",
+							Description: "Purchase Standard Edition Configuration。",
 						},
 						"standard_s2": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Standard Edition S2 configuration.",
+							Description: "Standard Edition S2 配置。",
 						},
 						"profession": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Professional Edition configuration.",
+							Description: "Professional Edition 配置。",
 						},
 						"physical": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Physical Exclusive Edition Configuration.",
+							Description: "Physical Exclusive Edition Configuration。",
 						},
 						"public_network": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Public network bandwidth.",
+							Description: "Public 网络 带宽。",
 						},
 						"public_network_limit": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Public network bandwidth configuration.",
+							Description: "Public 网络 带宽 配置。",
 						},
 					},
 				},
@@ -243,7 +243,7 @@ func DataSourceTencentCloudCkafkaZone() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

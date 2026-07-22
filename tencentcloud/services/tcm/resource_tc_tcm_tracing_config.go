@@ -27,36 +27,36 @@ func ResourceTencentCloudTcmTracingConfig() *schema.Resource {
 			"mesh_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Mesh ID.",
+				Description: "Mesh ID。",
 			},
 
 			"enable": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether enable tracing.",
+				Description: "Whether 启用 追踪。",
 			},
 
 			"apm": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "APM config.",
+				Description: "APM 配置",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"enable": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether enable APM.",
+							Description: "Whether 启用 APM。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Region.",
+							Description: "地域",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Instance id of the APM.",
+							Description: "实例 ID APM。",
 						},
 					},
 				},
@@ -65,20 +65,20 @@ func ResourceTencentCloudTcmTracingConfig() *schema.Resource {
 			"sampling": {
 				Type:        schema.TypeFloat,
 				Optional:    true,
-				Description: "Tracing sampling, 0.0-1.0.",
+				Description: "Tracing sampling，0.0-1.0。",
 			},
 
 			"zipkin": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
-				Description: "Third party zipkin config.",
+				Description: "Third party zipkin 配置",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"address": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Zipkin address.",
+							Description: "Zipkin 地址",
 						},
 					},
 				},

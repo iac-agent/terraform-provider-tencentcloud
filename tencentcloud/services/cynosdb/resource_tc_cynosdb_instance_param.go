@@ -28,31 +28,31 @@ func ResourceTencentCloudCynosdbInstanceParam() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 
 			"instance_id": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例ID。",
 			},
 
 			"instance_param_list": {
 				Optional:    true,
 				Type:        schema.TypeSet,
-				Description: "Instance parameter list.",
+				Description: "实例参数列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"param_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Parameter Name.",
+							Description: "参数名称。",
 						},
 						"current_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Current value of parameter.",
+							Description: "参数的当前值。",
 						},
 					},
 				},
@@ -61,7 +61,7 @@ func ResourceTencentCloudCynosdbInstanceParam() *schema.Resource {
 			"is_in_maintain_period": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Yes: modify within the operation and maintenance time window, no: execute immediately (default value).",
+				Description: "是：运维时间窗口内修改，否：立即执行（默认值）。",
 			},
 		},
 	}

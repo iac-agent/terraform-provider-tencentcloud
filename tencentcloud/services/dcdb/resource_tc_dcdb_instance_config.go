@@ -22,13 +22,13 @@ func ResourceTencentCloudDcdbInstanceConfig() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"rs_access_strategy": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "RS nearest access mode, 0-no policy, 1-nearest access.",
+				Description: "RS nearest 访问 模式，0-无 策略，1-nearest 访问。",
 			},
 		},
 	}

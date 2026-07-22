@@ -35,49 +35,49 @@ func ResourceTencentCloudTcrInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Name of the TCR instance.",
+				Description: "名称 TCR 实例。",
 			},
 			"instance_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "TCR types. Valid values are: `standard`, `basic`, `premium`.",
+				Description: "TCR types. 有效值：`standard`，`basic`，`premium`。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "The available tags within this TCR instance.",
+				Description: "可用 标签 within 此 TCR 实例。",
 			},
 			"open_public_operation": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Control public network access.",
+				Description: "Control 公有 网络 访问。",
 			},
 			"security_policy": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Public network access allowlist policies of the TCR instance. Only available when `open_public_operation` is `true`.",
+				Description: "Public 网络 访问 allowlist policies 的 TCR 实例. Only 可用 当 `open_public_operation` 是 `true`。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cidr_block": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The public network IP address of the access source.",
+							Description: "公有 网络 IP 地址 的 访问 来源",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Remarks of policy.",
+							Description: "备注 的 策略。",
 						},
 						"index": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Index of policy.",
+							Description: "索引 的 策略。",
 						},
 						"version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Version of policy.",
+							Description: "版本 的 策略。",
 						},
 					},
 				},
@@ -85,28 +85,28 @@ func ResourceTencentCloudTcrInstance() *schema.Resource {
 			"replications": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Specify List of instance Replications, premium only. The available [source region list](https://www.tencentcloud.com/document/api/1051/41101) is here.",
+				Description: "指定List 的 实例 Replications，premium 仅. 可用 [来源 地域 列表](https://www.tencentcloud.com/document/api/1051/41101) 是 here。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Replication registry ID (readonly).",
+							Description: "Replication registry ID (readonly)。",
 						},
 						"region_id": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Replication region ID, check the example at the top of page to find out id of region.",
+							Description: "Replication 地域 ID，check 示例 在 top 的 页面 到 find out ID 地域",
 						},
 						"region_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Replication region name.",
+							Description: "Replication 地域名称",
 						},
 						"syn_tag": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Specify whether to sync TCR cloud tags to COS Bucket. NOTE: You have to specify when adding, modifying will be ignored for now.",
+							Description: "指定是否sync TCR 云 标签 到 COS 存储桶 NOTE: You have 到 指定when adding，modifying 将 是 ignored 对于 now。",
 						},
 					},
 				},
@@ -116,51 +116,51 @@ func ResourceTencentCloudTcrInstance() *schema.Resource {
 				Optional:     true,
 				Default:      1,
 				ValidateFunc: tccommon.ValidateIntegerInRange(1, 2),
-				Description:  "Charge type of instance. 1: postpaid; 2: prepaid. Default is postpaid.",
+				Description:  "Charge 类型 实例. 1: postpaid; 2: prepaid. 默认为 postpaid。",
 			},
 			"instance_charge_type_prepaid_period": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateIntegerMin(1),
-				Description:  "Length of time to purchase an instance (in month). Must set when registry_charge_type is prepaid.",
+				Description:  "Length 的 时间 到 purchase 实例 (在 month). Must 集合 当 registry_charge_type 是 prepaid。",
 			},
 			"instance_charge_type_prepaid_renew_flag": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateIntegerInRange(1, 3),
-				Description:  "Auto renewal flag. 1: manual renewal, 2: automatic renewal, 3: no renewal and no notification. Must set when registry_charge_type is prepaid.",
+				Description:  "自动续费标识 1: manual renewal，2: automatic renewal，3: 无 renewal 和 无 通知. Must 集合 当 registry_charge_type 是 prepaid。",
 			},
 			//Computed values
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Status of the TCR instance.",
+				Description: "状态 TCR 实例。",
 			},
 			"public_status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Status of the TCR instance public network access.",
+				Description: "状态 TCR 实例 公有 网络 访问。",
 			},
 			"public_domain": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Public address for access of the TCR instance.",
+				Description: "Public 地址 对于 访问 的 TCR 实例。",
 			},
 			"internal_end_point": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Internal address for access of the TCR instance.",
+				Description: "Internal 地址 对于 访问 的 TCR 实例。",
 			},
 			"delete_bucket": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     false,
-				Description: "Indicate to delete the COS bucket which is auto-created with the instance or not.",
+				Description: "Indicate 到 delete COS 存储桶 其中 是 auto-创建 使用 实例 或 不。",
 			},
 			"expired_at": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Instance expiration time (prepaid).",
+				Description: "实例 过期时间 (prepaid)。",
 			},
 		},
 	}

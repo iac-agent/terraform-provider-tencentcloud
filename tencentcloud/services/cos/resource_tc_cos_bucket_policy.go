@@ -32,7 +32,7 @@ func ResourceTencentCloudCosBucketPolicy() *schema.Resource {
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateCosBucketName,
-				Description:  "The name of a bucket to be created. Bucket format should be [custom name]-[appid], for example `mycos-1258798060`.",
+				Description:  "名称 存储桶 到 是 创建. 存储桶 格式 should 是 [自定义 名称]-[appid]，对于 示例 `mycos-1258798060`。",
 			},
 			"policy": {
 				Type:         schema.TypeString,
@@ -52,7 +52,7 @@ func ResourceTencentCloudCosBucketPolicy() *schema.Resource {
 					flag := reflect.DeepEqual(oldJson, newJson)
 					return flag
 				},
-				Description: "The text of the policy. For more info please refer to [Tencent official doc](https://intl.cloud.tencent.com/document/product/436/18023), The six-segment resource scenario example in the document is as follows: Example of specifying a bucket: `qcs::cos:ap-guangzhou:uid/1250000000:examplebucket-1250000000/*`, In the cdc scenario: `qcs::cos:ap-guangzhou:uid/1250000000:cdc_cluster-123456_examplebucket-1250000000/*`; Example of specifying a folder: `qcs::cos:ap-guangzhou:uid/1250000000:examplebucket-1250000000/folder/*`, In the cdc scenario: `qcs::cos:ap-guangzhou:uid/1250000000:cdc_cluster-123456_examplebucket-1250000000/folder/*`; Specified object example: `qcs::cos:ap-guangzhou:uid/1250000000:examplebucket-1250000000/folder/exampleobject`, In the cdc scenario: `qcs::cos:ap-guangzhou:uid/1250000000:cdc_cluster-123456_examplebucket-1250000000/folder/exampleobject`.",
+				Description: "text 的 策略. For more info please refer 到 [Tencent official doc](https://intl.云.tencent.com/document/product/436/18023)， six-segment 资源 scenario 示例 在 document 是 作为 follows: Example 的 specifying 存储桶: `qcs::cos:ap-guangzhou:uid/1250000000:examplebucket-1250000000/*`，In cdc scenario: `qcs::cos:ap-guangzhou:uid/1250000000:cdc_cluster-123456_examplebucket-1250000000/*`; Example 的 specifying 文件夹: `qcs::cos:ap-guangzhou:uid/1250000000:examplebucket-1250000000/文件夹/*`，In cdc scenario: `qcs::cos:ap-guangzhou:uid/1250000000:cdc_cluster-123456_examplebucket-1250000000/文件夹/*`; Specified 对象 示例: `qcs::cos:ap-guangzhou:uid/1250000000:examplebucket-1250000000/文件夹/exampleobject`，In cdc scenario: `qcs::cos:ap-guangzhou:uid/1250000000:cdc_cluster-123456_examplebucket-1250000000/文件夹/exampleobject`。",
 			},
 		},
 	}

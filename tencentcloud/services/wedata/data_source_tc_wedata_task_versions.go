@@ -18,67 +18,67 @@ func DataSourceTencentCloudWedataTaskVersions() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"task_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Task ID.",
+				Description: "任务 ID",
 			},
 
 			"task_version_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "SAVE version.\nSUBMIT version.\nDefaults to SAVE.",
+				Description: "SAVE 版本\nSUBMIT 版本\n默认为 SAVE。",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Task version list.",
+				Description: "任务 版本 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 
 						"create_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 						"version_num": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Version number.",
+							Description: "版本 数量。",
 						},
 						"create_user_uin": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Creator ID.",
+							Description: "创建者 ID。",
 						},
 						"version_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Saved version ID.",
+							Description: "Saved 版本 ID。",
 						},
 						"version_remark": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Version description.",
+							Description: "版本 描述",
 						},
 						"approve_status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Approval status (only for submit version).",
+							Description: "Approval 状态 (仅 对于 提交 版本)。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Production status (only for submit version).",
+							Description: "Production 状态 (仅 对于 提交 版本)。",
 						},
 						"approve_user_uin": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Approver (only for submit version).",
+							Description: "Approver (仅 对于 提交 版本)。",
 						},
 					},
 				},
@@ -87,7 +87,7 @@ func DataSourceTencentCloudWedataTaskVersions() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

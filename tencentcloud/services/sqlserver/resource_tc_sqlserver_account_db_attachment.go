@@ -26,24 +26,24 @@ func ResourceTencentCloudSqlserverAccountDBAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "SQL Server instance ID that the account belongs to.",
+				Description: "SQL Server 实例 ID 该 account belongs 到.",
 			},
 			"account_name": {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "SQL Server account name.",
+				Description: "SQL Server account 名称.",
 			},
 			"db_name": {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "SQL Server DB name.",
+				Description: "SQL Server DB 名称.",
 			},
 			"privilege": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Privilege of the account on DB. Valid values: `ReadOnly`, `ReadWrite`.",
+				Description: "Privilege 的 account 在 DB. 有效 值: `ReadOnly`, `ReadWrite`.",
 			},
 		},
 	}

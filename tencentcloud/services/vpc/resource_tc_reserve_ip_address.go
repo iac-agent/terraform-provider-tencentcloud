@@ -28,63 +28,63 @@ func ResourceTencentCloudReserveIpAddress() *schema.Resource {
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "VPC unique ID.",
+				Description: "VPC 唯一 ID。",
 			},
 
 			"ip_address": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Specify the reserved IP address of the intranet for which the IP application is requested.",
+				Description: "指定reserved IP 地址 的 intranet 对于 其中 IP 应用 是 requested。",
 			},
 
 			"subnet_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Subnet ID.",
+				Description: "子网 ID",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The IP name is reserved for the intranet.",
+				Description: "IP 名称 是 reserved 对于 intranet。",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The IP description is retained on the intranet.",
+				Description: "IP 描述 是 retained 在 intranet。",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tags.",
+				Description: "标签",
 			},
 			"reserve_ip_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Reserve ip ID.",
+				Description: "Reserve ip ID。",
 			},
 			"resource_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The intranet retains the resource instance ID bound to the IPs.",
+				Description: "intranet retains 资源 实例 ID bound 到 IPs。",
 			},
 			"ip_type": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Ip type for product application.",
+				Description: "Ip 类型 对于 product 应用。",
 			},
 			"state": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Binding status.",
+				Description: "Binding 状态",
 			},
 			"created_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Created time.",
+				Description: "Created 时间。",
 			},
 		},
 	}

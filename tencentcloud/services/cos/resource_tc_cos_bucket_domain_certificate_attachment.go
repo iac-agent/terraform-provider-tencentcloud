@@ -32,14 +32,14 @@ func ResourceTencentCloudCosBucketDomainCertificateAttachment() *schema.Resource
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateCosBucketName,
-				Description:  "Bucket name.",
+				Description:  "存储桶名称",
 			},
 			"domain_certificate": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The certificate of specified doamin.",
+				Description: "证书 的 指定 doamin。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"certificate": {
@@ -47,42 +47,42 @@ func ResourceTencentCloudCosBucketDomainCertificateAttachment() *schema.Resource
 							MaxItems:    1,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Certificate info.",
+							Description: "Certificate info。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"cert_type": {
 										Type:        schema.TypeString,
 										Required:    true,
 										ForceNew:    true,
-										Description: "Certificate type.",
+										Description: "Certificate 类型",
 									},
 									"custom_cert": {
 										Type:        schema.TypeList,
 										MaxItems:    1,
 										Required:    true,
 										ForceNew:    true,
-										Description: "Custom certificate.",
+										Description: "Custom 证书。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"cert_id": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													ForceNew:    true,
-													Description: "ID of certificate.",
+													Description: "ID 证书。",
 												},
 												"cert": {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
 													Sensitive:   true,
-													Description: "Public key of certificate.",
+													Description: "Public 键 的 证书。",
 												},
 												"private_key": {
 													Type:        schema.TypeString,
 													Required:    true,
 													ForceNew:    true,
 													Sensitive:   true,
-													Description: "Private key of certificate.",
+													Description: "Private 键 的 证书。",
 												},
 											},
 										},
@@ -94,7 +94,7 @@ func ResourceTencentCloudCosBucketDomainCertificateAttachment() *schema.Resource
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "The name of domain.",
+							Description: "名称 域名",
 						},
 					},
 				},

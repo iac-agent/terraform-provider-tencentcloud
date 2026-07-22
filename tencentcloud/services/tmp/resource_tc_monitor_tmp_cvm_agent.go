@@ -30,20 +30,20 @@ func ResourceTencentCloudMonitorTmpCvmAgent() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Agent name.",
+				Description: "Agent 名称",
 			},
 
 			"agent_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Agent id.",
+				Description: "Agent ID。",
 			},
 		},
 	}

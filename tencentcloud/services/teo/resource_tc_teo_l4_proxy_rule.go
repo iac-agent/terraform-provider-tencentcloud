@@ -28,37 +28,37 @@ func ResourceTencentCloudTeoL4ProxyRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Zone ID.",
+				Description: "可用区 ID",
 			},
 
 			"proxy_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Layer 4 proxy instance ID.",
+				Description: "Layer 4 proxy 实例 ID。",
 			},
 
 			"l4_proxy_rules": {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "List of forwarding rules. Note: When L4ProxyRule is used here, Protocol, PortRange, OriginType, OriginValue, and OriginPortRange are required fields; ClientIPPassThroughMode, SessionPersist, SessionPersistTime, and RuleTag are optional fields; do not fill in RuleId and Status.",
+				Description: "列表 forwarding 规则. 注意: 当 L4ProxyRule 是 使用 here，协议，PortRange，OriginType，OriginValue，和 OriginPortRange 为必填项 字段; ClientIPPassThroughMode，SessionPersist，SessionPersistTime，和 RuleTag 是 可选 字段; do 不 fill 在 RuleId 和 状态",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"rule_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Forwarding rule ID.",
+							Description: "Forwarding 规则 ID。",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Forwarding protocol. Valid values:\n<li>TCP: TCP protocol;</li>\n<li>UDP: UDP protocol.</li>\nNote: This parameter must be filled in when L4ProxyRule is used as an input parameter in Createl4ProxyRule; it is optional when L4ProxyRule is used as an input parameter in Modifyl4ProxyRule. If not specified, it will retain its existing value.",
+							Description: "Forwarding 协议 有效 值:\n<li>TCP: TCP 协议;</li>\n<li>UDP: UDP 协议</li>\nNote: 此 参数 必须 是 filled 在 当 L4ProxyRule 是 使用 作为 input 参数 在 Createl4ProxyRule; 它 为可选项 当 L4ProxyRule 是 使用 作为 input 参数 在 Modifyl4ProxyRule. 如果未指定，它 将 retain its existing 值",
 						},
 						"port_range": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Forwarding port, which can be set as follows:\n<li>A single port, such as 80;</li>\n<li>A range of ports, such as 81-85, representing ports 81, 82, 83, 84, 85.</li>\nNote: This parameter must be filled in when L4ProxyRule is used as an input parameter in Createl4ProxyRule; it is optional when L4ProxyRule is used as an input parameter in Modifyl4ProxyRule. If not specified, it will retain its existing value.",
+							Description: "Forwarding 端口，其中 可以 是 集合 作为 follows:\n<li>A 单个 端口，such 作为 80;</li>\n<li>A 范围 的 ports，such 作为 81-85，representing ports 81，82，83，84，85.</li>\nNote: 此 参数 必须 是 filled 在 当 L4ProxyRule 是 使用 作为 input 参数 在 Createl4ProxyRule; 它 为可选项 当 L4ProxyRule 是 使用 作为 input 参数 在 Modifyl4ProxyRule. 如果未指定，它 将 retain its existing 值",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -66,12 +66,12 @@ func ResourceTencentCloudTeoL4ProxyRule() *schema.Resource {
 						"origin_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Origin server type. Valid values:\n<li>IP_DOMAIN: IP/Domain name origin server;</li>\n<li>ORIGIN_GROUP: Origin server group;</li>\n<li>LB: Cloud Load Balancer, currently only open to the allowlist.</li>\nNote: This parameter must be filled in when L4ProxyRule is used as an input parameter in Createl4ProxyRule; it is optional when L4ProxyRule is used as an input parameter in Modifyl4ProxyRule. If not specified, it will retain its existing value.",
+							Description: "Origin 服务器 类型 有效 值:\n<li>IP_DOMAIN: IP/域名 名称 源站 服务器;</li>\n<li>ORIGIN_GROUP: Origin 服务器 组;</li>\n<li>LB: Cloud Load Balancer，currently 仅 open 到 allowlist.</li>\nNote: 此 参数 必须 是 filled 在 当 L4ProxyRule 是 使用 作为 input 参数 在 Createl4ProxyRule; 它 为可选项 当 L4ProxyRule 是 使用 作为 input 参数 在 Modifyl4ProxyRule. 如果未指定，它 将 retain its existing 值",
 						},
 						"origin_value": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Origin server address.\n<li>When OriginType is set to IP_DOMAIN, enter the IP address or domain name, such as 8.8.8.8 or test.com;</li>\n<li>When OriginType is set to ORIGIN_GROUP, enter the origin server group ID, such as og-537y24vf5b41;</li>\n<li>When OriginType is set to LB, enter the Cloud Load Balancer instance ID, such as lb-2qwk30xf7s9g.</li>\nNote: This parameter must be filled in when L4ProxyRule is used as an input parameter in Createl4ProxyRule; it is optional when L4ProxyRule is used as an input parameter in Modifyl4ProxyRule. If not specified, it will retain its existing value.",
+							Description: "Origin 服务器 地址\n<li>当 OriginType 是 集合 到 IP_DOMAIN，enter IP 地址 或 域名 名称，such 作为 8.8.8.8 或 测试.com;</li>\n<li>当 OriginType 是 集合 到 ORIGIN_GROUP，enter 源站 服务器 组 ID，such 作为 og-537y24vf5b41;</li>\n<li>当 OriginType 是 集合 到 LB，enter Cloud Load Balancer 实例 ID，such 作为 lb-2qwk30xf7s9g.</li>\nNote: 此 参数 必须 是 filled 在 当 L4ProxyRule 是 使用 作为 input 参数 在 Createl4ProxyRule; 它 为可选项 当 L4ProxyRule 是 使用 作为 input 参数 在 Modifyl4ProxyRule. 如果未指定，它 将 retain its existing 值",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -79,33 +79,33 @@ func ResourceTencentCloudTeoL4ProxyRule() *schema.Resource {
 						"origin_port_range": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Origin server port, which can be set as follows:<li>A single port, such as 80;</li>\n<li>A range of ports, such as 81-85, representing ports 81, 82, 83, 84, 85. When inputting a range of ports, ensure that the length corresponds with that of the forwarding port range. For example, if the forwarding port range is 80-90, this port range should be 90-100.</li>\nNote: This parameter must be filled in when L4ProxyRule is used as an input parameter in Createl4ProxyRule; it is optional when L4ProxyRule is used as an input parameter in Modifyl4ProxyRule. If not specified, it will retain its existing value.",
+							Description: "Origin 服务器 端口，其中 可以 是 集合 作为 follows:<li>A 单个 端口，such 作为 80;</li>\n<li>A 范围 的 ports，such 作为 81-85，representing ports 81，82，83，84，85. 当 inputting 范围 的 ports，ensure 该 长度 corresponds 使用 该 的 forwarding 端口 范围. For 示例，如果 forwarding 端口 范围 是 80-90，此 端口 范围 should 是 90-100.</li>\nNote: 此 参数 必须 是 filled 在 当 L4ProxyRule 是 使用 作为 input 参数 在 Createl4ProxyRule; 它 为可选项 当 L4ProxyRule 是 使用 作为 input 参数 在 Modifyl4ProxyRule. 如果未指定，它 将 retain its existing 值",
 						},
 						"client_ip_pass_through_mode": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Transmission of the client IP address. Valid values:<li>TOA: Available only when Protocol=TCP;</li> \n<li>PPV1: Transmission via Proxy Protocol V1. Available only when Protocol=TCP;</li>\n<li>PPV2: Transmission via Proxy Protocol V2;</li> \n<li>SPP: Transmission via Simple Proxy Protocol. Available only when Protocol=UDP;</li> \n<li>OFF: No transmission.</li>\nNote: This parameter is optional when L4ProxyRule is used as an input parameter in Createl4ProxyRule, and if not specified, the default value OFF will be used; it is optional when L4ProxyRule is used as an input parameter in Modifyl4ProxyRule. If not specified, it will retain its existing value.",
+							Description: "Transmission 的 客户端 IP 地址 有效 值:<li>TOA: Available 仅 当 协议=TCP;</li> \n<li>PPV1: Transmission via Proxy 协议 V1. Available 仅 当 协议=TCP;</li>\n<li>PPV2: Transmission via Proxy 协议 V2;</li> \n<li>SPP: Transmission via Simple Proxy 协议 Available 仅 当 协议=UDP;</li> \n<li>OFF: No transmission.</li>\nNote: 此 参数 为可选项 当 L4ProxyRule 是 使用 作为 input 参数 在 Createl4ProxyRule，和 如果未指定， 默认值 OFF 将 是 使用; 它 为可选项 当 L4ProxyRule 是 使用 作为 input 参数 在 Modifyl4ProxyRule. 如果未指定，它 将 retain its existing 值",
 						},
 						"session_persist": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Specifies whether to enable session persistence. Valid values:\n<li>on: Enable;</li>\n<li>off: Disable.</li>\nNote: This parameter is optional when L4ProxyRule is used as an input parameter in Createl4ProxyRule, and if not specified, the default value off will be used; it is optional when L4ProxyRule is used as an input parameter in Modifyl4ProxyRule. If not specified, it will retain its existing value.",
+							Description: "指定是否enable 会话 persistence. 有效 值:\n<li>在: Enable;</li>\n<li>关闭: Disable.</li>\nNote: 此 参数 为可选项 当 L4ProxyRule 是 使用 作为 input 参数 在 Createl4ProxyRule，和 如果未指定， 默认值 关闭 将 是 使用; 它 为可选项 当 L4ProxyRule 是 使用 作为 input 参数 在 Modifyl4ProxyRule. 如果未指定，它 将 retain its existing 值",
 						},
 						"session_persist_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Session persistence period, with a range of 30-3600, measured in seconds.\nNote: This parameter is optional when L4ProxyRule is used as an input parameter in Createl4ProxyRule. It is valid only when SessionPersist is set to on and defaults to 3600 if not specified. It is optional when L4ProxyRule is used as an input parameter in Modifyl4ProxyRule. If not specified, it will retain its existing value.",
+							Description: "Session persistence 周期，使用 范围 的 30-3600，measured （秒）。\nNote: 此 参数 为可选项 当 L4ProxyRule 是 使用 作为 input 参数 在 Createl4ProxyRule. It 是 有效 仅 当 SessionPersist 是 集合 到 在 和 默认为 3600 如果未指定. It 为可选项 当 L4ProxyRule 是 使用 作为 input 参数 在 Modifyl4ProxyRule. 如果未指定，它 将 retain its existing 值",
 						},
 						"rule_tag": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Rule tag. Accepts 1-50 arbitrary characters.\nNote: This parameter is optional when L4ProxyRule is used as an input parameter in Createl4ProxyRule; it is optional when L4ProxyRule is used as an input parameter in Modifyl4ProxyRule. If not specified, it will retain its existing value.",
+							Description: "Rule 标签 Accepts 1-50 arbitrary 字符.\nNote: 此 参数 为可选项 当 L4ProxyRule 是 使用 作为 input 参数 在 Createl4ProxyRule; 它 为可选项 当 L4ProxyRule 是 使用 作为 input 参数 在 Modifyl4ProxyRule. 如果未指定，它 将 retain its existing 值",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Rule status. Valid values:<li>online: Enabled;</li>\n<li>offline: Disabled;</li>\n<li>progress: Deploying;</li>\n<li>stopping: Disabling;</li>\n<li>fail: Failed to deploy or disable.</li>.",
+							Description: "Rule 状态 有效 值:<li>online: 已启用;</li>\n<li>offline: 已禁用;</li>\n<li>progress: Deploying;</li>\n<li>stopping: Disabling;</li>\n<li>fail: Failed 到 deploy 或 disable.</li>。",
 						},
 					},
 				},

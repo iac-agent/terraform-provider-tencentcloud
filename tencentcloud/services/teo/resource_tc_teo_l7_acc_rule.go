@@ -28,36 +28,36 @@ func ResourceTencentCloudTeoL7AccRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Zone id.",
+				Description: "可用区 ID",
 			},
 
 			"rules": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Computed:    true,
-				Description: "Rules content.",
+				Description: "Rules 内容",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"rule_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Rule ID. Unique identifier of the rule.",
+							Description: "Rule ID. Unique identifier 的 规则。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Rule status. The possible values are: `enable`: enabled; `disable`: disabled.",
+							Description: "Rule 状态 possible 值 是: `启用`: 已启用; `disable`: 已禁用",
 							Deprecated:  "This field is deprecated and will be removed in the future. No longer valid. If the rule is empty, delete the rule.",
 						},
 						"rule_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Rule name. The name length limit is 255 characters.",
+							Description: "Rule 名称 名称 长度 限制 是 255 字符。",
 						},
 						"description": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Rule annotation. multiple annotations can be added.",
+							Description: "Rule annotation. 多个 annotations 可以 是 added。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -66,12 +66,12 @@ func ResourceTencentCloudTeoL7AccRule() *schema.Resource {
 							Type: schema.TypeInt,
 							// Optional:    true,
 							Computed:    true,
-							Description: "Rule priority. only used as an output parameter.",
+							Description: "Rule 优先级 仅 使用 作为 output 参数。",
 						},
 						"branches": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Sub-Rule branch. this list currently supports filling in only one rule; multiple entries are invalid.",
+							Description: "Sub-Rule branch. 此 列表 currently 支持 filling 在 仅 一个 规则; 多个 entries 是 无效。",
 							Elem: &schema.Resource{
 								Schema: TencentTeoL7RuleBranchBasicInfo(1),
 							},

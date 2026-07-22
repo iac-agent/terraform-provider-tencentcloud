@@ -28,7 +28,7 @@ func ResourceTencentCloudEniIpv6Address() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "ENI instance `ID`, in the form of `eni-m6dyj72l`.",
+				Description: "ENI 实例 `ID`，在 form 的 `eni-m6dyj72l`。",
 			},
 
 			"ipv6_addresses": {
@@ -37,48 +37,48 @@ func ResourceTencentCloudEniIpv6Address() *schema.Resource {
 				Computed:      true,
 				ForceNew:      true,
 				ConflictsWith: []string{"ipv6_address_count"},
-				Description:   "The specified `IPv6` address list, up to 10 can be specified at a time. Combined with the input parameter `Ipv6AddressCount` to calculate the quota. Mandatory one with Ipv6AddressCount.",
+				Description:   "指定 `IPv6` 地址 列表，up 到 10 可以 是 指定 在 时间. Combined 使用 input 参数 `Ipv6AddressCount` 到 calculate 配额. Mandatory 一个 使用 Ipv6AddressCount。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"address": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "`IPv6` address, in the form of: `3402:4e00:20:100:0:8cd9:2a67:71f3`.",
+							Description: "`IPv6` 地址，在 form 的: `3402:4e00:20:100:0:8cd9:2a67:71f3`。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Description.",
+							Description: "描述",
 						},
 						"primary": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Computed:    true,
 							ForceNew:    true,
-							Description: "Whether to master `IP`.",
+							Description: "是否master `IP`。",
 						},
 						"address_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
 							ForceNew:    true,
-							Description: "`EIP` instance `ID`, such as:`eip-hxlqja90`.",
+							Description: "`EIP` 实例 `ID`，such 作为:`eip-hxlqja90`。",
 						},
 						"is_wan_ip_blocked": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Computed:    true,
 							ForceNew:    true,
-							Description: "Whether the public network IP is blocked.",
+							Description: "是否public 网络 IP 是 blocked。",
 						},
 						"state": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
 							ForceNew:    true,
-							Description: "`IPv6` address status: `PENDING`: pending, `MIGRATING`: migrating, `DELETING`: deleting, `AVAILABLE`: available.",
+							Description: "`IPv6` 地址 状态: `PENDING`: pending，`MIGRATING`: migrating，`DELETING`: deleting，`AVAILABLE`: 可用。",
 						},
 					},
 				},
@@ -90,7 +90,7 @@ func ResourceTencentCloudEniIpv6Address() *schema.Resource {
 				ForceNew:      true,
 				Type:          schema.TypeInt,
 				ConflictsWith: []string{"ipv6_addresses"},
-				Description:   "The number of automatically assigned IPv6 addresses and the total number of private IP addresses cannot exceed the quota. This should be combined with the input parameter `ipv6_addresses` for quota calculation. At least one of them, either this or 'Ipv6Addresses', must be provided.",
+				Description:   "数量 automatically assigned IPv6 addresses 和 总数 数量 私有 IP addresses 不能 exceed 配额. 此 should 是 combined 使用 input 参数 `ipv6_addresses` 对于 配额 calculation. At least 一个 的 them，either 此 或 'Ipv6Addresses'，必须 是 提供。",
 			},
 		},
 	}

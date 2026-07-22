@@ -23,24 +23,24 @@ func ResourceTencentCloudSqlserverStartXevent() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 			"event_config": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "Whether to start or stop an extended event.",
+				Description: "Whether 到 start 或 stop extended 事件.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"event_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Event type. Valid values: slow (set threshold for slow SQL ), blocked (set threshold for the blocking and deadlock).",
+							Description: "Event 类型. 有效 值: slow (集合 阈值 对于 slow SQL ), blocked (集合 阈值 对于 blocking 和 deadlock).",
 						},
 						"threshold": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Threshold in milliseconds. Valid values: 0(disable), non-zero (enable).",
+							Description: "Threshold 在 milliseconds. 有效 值: 0(disable), non-zero (启用).",
 						},
 					},
 				},

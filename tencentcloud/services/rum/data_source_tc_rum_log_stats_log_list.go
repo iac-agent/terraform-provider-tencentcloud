@@ -18,7 +18,7 @@ func DataSourceTencentCloudRumLogStatsLogList() *schema.Resource {
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Start time but is represented using a timestamp in seconds.",
+				Description: "Start 时间 但 是 represented 使用 timestamp 在 秒.",
 			},
 
 			"query": {
@@ -30,7 +30,7 @@ func DataSourceTencentCloudRumLogStatsLogList() *schema.Resource {
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "End time but is represented using a timestamp in seconds.",
+				Description: "End 时间 但 是 represented 使用 timestamp 在 秒.",
 			},
 
 			"project_id": {
@@ -42,13 +42,13 @@ func DataSourceTencentCloudRumLogStatsLogList() *schema.Resource {
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Return value.",
+				Description: "Return 值.",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

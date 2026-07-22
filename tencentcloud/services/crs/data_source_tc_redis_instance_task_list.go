@@ -20,13 +20,13 @@ func DataSourceTencentCloudRedisInstanceTaskList() *schema.Resource {
 			"instance_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of instance.",
+				Description: "ID 实例。",
 			},
 
 			"instance_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Instance name.",
+				Description: "实例名称",
 			},
 
 			"project_ids": {
@@ -35,7 +35,7 @@ func DataSourceTencentCloudRedisInstanceTaskList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Project Id.",
+				Description: "项目 ID",
 			},
 
 			"task_types": {
@@ -44,19 +44,19 @@ func DataSourceTencentCloudRedisInstanceTaskList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Task type.",
+				Description: "任务 类型",
 			},
 
 			"begin_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Start time.",
+				Description: "开始时间。",
 			},
 
 			"end_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Termination time.",
+				Description: "Termination 时间。",
 			},
 
 			"task_status": {
@@ -65,7 +65,7 @@ func DataSourceTencentCloudRedisInstanceTaskList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Task status.",
+				Description: "任务 状态",
 			},
 
 			"result": {
@@ -74,7 +74,7 @@ func DataSourceTencentCloudRedisInstanceTaskList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Task status.",
+				Description: "任务 状态",
 			},
 
 			"operate_uin": {
@@ -83,59 +83,59 @@ func DataSourceTencentCloudRedisInstanceTaskList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Operator Uin.",
+				Description: "操作者 Uin。",
 			},
 
 			"tasks": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Task details.",
+				Description: "任务 details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"task_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Task ID.",
+							Description: "任务 ID",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Start time.",
+							Description: "开始时间。",
 						},
 						"task_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Task type.",
+							Description: "任务 类型",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The name of instance.",
+							Description: "名称 实例。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The ID of instance.",
+							Description: "ID 实例。",
 						},
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The project ID.",
+							Description: "项目 ID。",
 						},
 						"progress": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Task progress.",
+							Description: "任务 progress。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The end time.",
+							Description: "结束时间。",
 						},
 						"result": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Task status.",
+							Description: "任务 状态",
 						},
 					},
 				},
@@ -144,7 +144,7 @@ func DataSourceTencentCloudRedisInstanceTaskList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

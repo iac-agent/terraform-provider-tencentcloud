@@ -27,62 +27,62 @@ func ResourceTencentCloudWafCc() *schema.Resource {
 			"domain": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Domain.",
+				Description: "域名",
 			},
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Rule Name.",
+				Description: "Rule 名称",
 			},
 			"status": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Rule Status, 0 rule close, 1 rule open.",
+				Description: "Rule 状态，0 规则 close，1 规则 open。",
 			},
 			"advance": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Advanced mode (whether to use session detection). 0(disabled) 1(enabled).",
+				Description: "Advanced 模式 (是否use 会话 detection). 0(已禁用) 1(已启用)。",
 			},
 			"limit": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "CC detection threshold.",
+				Description: "CC detection 阈值。",
 			},
 			"interval": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "CC detection cycle.",
+				Description: "CC detection cycle。",
 			},
 			"url": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Detection URL.",
+				Description: "Detection URL",
 			},
 			"match_func": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Match method, 0(equal), 1(prefix), 2(contains), 3(not equal), 6(suffix), 7(not contains).",
+				Description: "Match 方法，0(equal)，1(prefix)，2(contains)，3(不 equal)，6(suffix)，7(不 contains)。",
 			},
 			"action_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Rule Action, 20 means observation, 21 means human-machine identification, 22 means interception, 23 means precise interception, 26 means precise human-machine identification, and 27 means JS verification.",
+				Description: "Rule 操作，20 表示 observation，21 表示 human-machine identification，22 表示 interception，23 表示 precise interception，26 表示 precise human-machine identification，和 27 表示 JS verification。",
 			},
 			"priority": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Rule Priority.",
+				Description: "Rule 优先级",
 			},
 			"valid_time": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Action ValidTime, minute unit. Min: 60, Max: 604800.",
+				Description: "操作 ValidTime，minute 单位. Min: 60，Max: 604800。",
 			},
 			"options_arr": {
 				Optional: true,
 				Type:     schema.TypeString,
-				Description: "CC matching conditions JSON serialized string. " +
+				Description: "CC 匹配条件 JSON 序列化字符串。" +
 					"Example: [{\"key\":\"Method\",\"args\":[\"=R0VU\"],\"match\":\"0\",\"encodeflag\":true}]. " +
 					"\n\nSupported key types: URL, Method, Post, Referer, Cookie, User-Agent, CustomHeader, IPLocation, CaptchaRisk, CaptchaDeviceRisk, CaptchaScore. " +
 					"\n\nMatch operators by key type:\n" +
@@ -106,45 +106,45 @@ func ResourceTencentCloudWafCc() *schema.Resource {
 				Required:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(EDITION_TYPE),
-				Description:  "WAF edition. clb-waf means clb-waf, sparta-waf means saas-waf.",
+				Description:  "WAF edition. clb-waf 表示 clb-waf，sparta-waf 表示 saas-waf。",
 			},
 			"type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Operate Type.",
+				Description: "Operate 类型",
 			},
 			"event_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Event ID.",
+				Description: "事件 ID",
 			},
 			"session_applied": {
 				Optional:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "Session ID that needs to be enabled for the rule.",
+				Description: "Session ID 该 needs 到 是 已启用 对于 规则。",
 			},
 			"limit_method": {
 				Optional:    true,
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Frequency limiting method.",
+				Description: "Frequency limiting 方法。",
 			},
 			"cel_rule": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Cel expression.",
+				Description: "Cel expression。",
 			},
 			"logical_op": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Logical operator of configuration mode, and/or.",
+				Description: "Logical 操作者 的 配置 模式，和/或。",
 			},
 			"rule_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Rule ID.",
+				Description: "Rule ID。",
 			},
 		},
 	}

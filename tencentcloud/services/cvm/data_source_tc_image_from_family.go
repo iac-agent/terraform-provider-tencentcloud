@@ -18,105 +18,105 @@ func DataSourceTencentCloudImageFromFamily() *schema.Resource {
 			"image_family": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Image family name.",
+				Description: "Image family 名称",
 			},
 
 			"image": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information of Image.",
+				Description: "Information 的 Image。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"image_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Image ID.",
+							Description: "Image ID。",
 						},
 						"os_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Operating system of the image.",
+							Description: "Operating 系统 的 镜像。",
 						},
 						"image_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Image type.",
+							Description: "Image 类型",
 						},
 						"created_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Creation time of the image.",
+							Description: "创建时间 的 镜像。",
 						},
 						"image_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Image name.",
+							Description: "Image 名称",
 						},
 						"image_description": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Image description.",
+							Description: "Image 描述",
 						},
 						"image_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Image size.",
+							Description: "Image 大小。",
 						},
 						"architecture": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Image architecture.",
+							Description: "Image architecture。",
 						},
 						"image_state": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Image state.",
+							Description: "Image state。",
 						},
 						"platform": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Source platform of the image.",
+							Description: "来源 平台 的 镜像。",
 						},
 						"image_creator": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Image creator.",
+							Description: "Image 创建者",
 						},
 						"image_source": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Image source.",
+							Description: "Image 来源",
 						},
 						"sync_percent": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Synchronization percentage.",
+							Description: "Synchronization percentage。",
 						},
 						"is_support_cloudinit": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Whether the image supports cloud-init.",
+							Description: "是否image 支持 云-init。",
 						},
 						"snapshot_set": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Information on the snapshots associated with the image.",
+							Description: "Information 在 snapshots associated 使用 镜像。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"snapshot_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Snapshot ID.",
+										Description: "Snapshot ID。",
 									},
 									"disk_usage": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Type of the cloud disk used to create the snapshot. Valid values: YSTEM_DISK: system disk, DATA_DISK: data disk.",
+										Description: "类型 云 磁盘 用于create 快照. 有效值：YSTEM_DISK: 系统 磁盘，DATA_DISK: 数据 磁盘。",
 									},
 									"disk_size": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Size of the cloud disk used to create the snapshot, unit(GB).",
+										Description: "Size 的 云 磁盘 用于create 快照，单位(GB)。",
 									},
 								},
 							},
@@ -124,18 +124,18 @@ func DataSourceTencentCloudImageFromFamily() *schema.Resource {
 						"tags": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "The list of tags bound to the image.",
+							Description: "列表 标签 bound 到 镜像。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Key.",
+										Description: "键",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Vaule.",
+										Description: "Vaule。",
 									},
 								},
 							},
@@ -143,17 +143,17 @@ func DataSourceTencentCloudImageFromFamily() *schema.Resource {
 						"license_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Image license type.",
+							Description: "Image license 类型",
 						},
 						"image_family": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Image Family.",
+							Description: "Image Family。",
 						},
 						"image_deprecated": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "If Image Deprecated.",
+							Description: "如果 Image 已弃用",
 						},
 					},
 				},
@@ -162,7 +162,7 @@ func DataSourceTencentCloudImageFromFamily() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

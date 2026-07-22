@@ -22,14 +22,14 @@ func ResourceTencentCloudDlcModifyUserTypOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "User ID.",
+				Description: "用户 ID。",
 			},
 
 			"user_type": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Types that users modify. ADMIN: administrators; COMMON: general users.",
+				Description: "Types 该 users modify. ADMIN: administrators; COMMON: general users。",
 			},
 		},
 	}

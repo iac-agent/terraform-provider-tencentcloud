@@ -58,33 +58,33 @@ func DataSourceTencentCloudEksClusterCredential() *schema.Resource {
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "EKS Cluster ID.",
+				Description: "EKS 集群 ID",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used for save result.",
+				Description: "用于save 结果",
 			},
 			"addresses": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of IP Address information.",
+				Description: "列表 IP 地址 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type of IP, can be `advertise`, `public`, etc.",
+							Description: "类型 IP，可以 是 `advertise`，`公有`，etc。",
 						},
 						"ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IP Address.",
+							Description: "IP 地址",
 						},
 						"port": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Port.",
+							Description: "端口",
 						},
 					},
 				},
@@ -92,41 +92,41 @@ func DataSourceTencentCloudEksClusterCredential() *schema.Resource {
 			"credential": {
 				Type:        schema.TypeMap,
 				Computed:    true,
-				Description: "Credential info. Format `{ ca_cert: String, token: String }`.",
+				Description: "Credential info. 格式 `{ ca_cert: String，令牌: String }`。",
 			},
 			"public_lb": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Cluster public access LoadBalancer info.",
+				Description: "Cluster 公有 访问 LoadBalancer info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"enabled": {
 							Type:     schema.TypeBool,
 							Computed: true,
 
-							Description: "Indicates weather the public access LB enabled.",
+							Description: "表示weather 公有 访问 LB 已启用",
 						},
 						"allow_from_cidrs": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of CIDRs which allowed to access.",
+							Description: "列表 CIDRs 其中 allowed 到 访问。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 						"security_policies": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of security allow IP or CIDRs, default deny all.",
+							Description: "列表 安全 allow IP 或 CIDRs，默认值 deny all。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 						"extra_param": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Extra param text json.",
+							Description: "Extra param text json。",
 						},
 						"security_group": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Security group.",
+							Description: "Security 组。",
 						},
 					},
 				},
@@ -134,18 +134,18 @@ func DataSourceTencentCloudEksClusterCredential() *schema.Resource {
 			"internal_lb": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Cluster internal access LoadBalancer info.",
+				Description: "Cluster 内部 访问 LoadBalancer info。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"enabled": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Indicates weather the internal access LB enabled.",
+							Description: "表示weather 内部 访问 LB 已启用",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of subnet which related to Internal LB.",
+							Description: "ID 子网 其中 related 到 Internal LB。",
 						},
 					},
 				},
@@ -153,13 +153,13 @@ func DataSourceTencentCloudEksClusterCredential() *schema.Resource {
 			"proxy_lb": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Indicates whether the new internal/public network function.",
+				Description: "表示是否new 内部/公有 网络 函数。",
 			},
 			"kube_config": {
 				Type:        schema.TypeString,
 				Computed:    true,
 				Sensitive:   true,
-				Description: "EKS cluster kubeconfig.",
+				Description: "EKS 集群 kubeconfig。",
 			},
 		},
 	}

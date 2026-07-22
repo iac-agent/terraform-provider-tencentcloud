@@ -19,66 +19,66 @@ func DataSourceTencentCloudTcrWebhookTriggerLogs() *schema.Resource {
 			"registry_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance Id.",
+				Description: "实例 ID。",
 			},
 
 			"namespace": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "namespace.",
+				Description: "命名空间。",
 			},
 
 			"trigger_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "trigger id.",
+				Description: "触发器 ID。",
 			},
 
 			"logs": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "log list.",
+				Description: "日志 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "log id.",
+							Description: "日志 ID。",
 						},
 						"trigger_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "trigger Id.",
+							Description: "触发器 ID。",
 						},
 						"event_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "event type.",
+							Description: "事件 类型",
 						},
 						"notify_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "notification type.",
+							Description: "通知 类型",
 						},
 						"detail": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "webhook trigger detail.",
+							Description: "webhook 触发器 detail。",
 						},
 						"creation_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "creation time.",
+							Description: "创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "update time.",
+							Description: "更新时间。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "status.",
+							Description: "状态",
 						},
 					},
 				},
@@ -87,12 +87,12 @@ func DataSourceTencentCloudTcrWebhookTriggerLogs() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

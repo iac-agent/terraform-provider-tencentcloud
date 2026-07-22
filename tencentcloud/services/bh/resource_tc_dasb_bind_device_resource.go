@@ -28,20 +28,20 @@ func ResourceTencentCloudDasbBindDeviceResource() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "Asset ID collection.",
+				Description: "Asset ID collection。",
 			},
 			"resource_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Bastion host service ID.",
+				Description: "Bastion 主机 服务 ID",
 			},
 			"domain_id": {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Network Domain ID.",
+				Description: "Network 域名 ID。",
 			},
 		},
 	}

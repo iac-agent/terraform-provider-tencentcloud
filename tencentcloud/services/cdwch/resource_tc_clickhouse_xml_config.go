@@ -28,30 +28,30 @@ func ResourceTencentCloudClickhouseXmlConfig() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 
 			"modify_conf_context": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Configuration file modification information.",
+				Description: "Configuration 文件 modification 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"file_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration file name.",
+							Description: "Configuration 文件 名称",
 						},
 						"new_conf_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "New content of configuration file, base64 encoded.",
+							Description: "New 内容 的 配置 文件，base64 encoded。",
 						},
 						"file_path": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Path to save configuration file.",
+							Description: "路径 到 save 配置 文件。",
 						},
 					},
 				},

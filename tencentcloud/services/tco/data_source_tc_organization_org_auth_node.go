@@ -19,40 +19,40 @@ func DataSourceTencentCloudOrganizationOrgAuthNode() *schema.Resource {
 			"auth_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Verified company name.",
+				Description: "Verified 公司名称",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Organization auth node list.",
+				Description: "Organization auth 节点 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"relation_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Relationship Id.",
+							Description: "Relationship ID。",
 						},
 						"auth_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Verified company name.",
+							Description: "Verified 公司名称",
 						},
 						"manager": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Organization auth manager.",
+							Description: "Organization auth manager。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"member_uin": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Member uin.",
+										Description: "Member uin。",
 									},
 									"member_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Member name.",
+										Description: "Member 名称",
 									},
 								},
 							},
@@ -64,7 +64,7 @@ func DataSourceTencentCloudOrganizationOrgAuthNode() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

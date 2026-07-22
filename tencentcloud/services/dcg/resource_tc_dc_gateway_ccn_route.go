@@ -22,14 +22,14 @@ func ResourceTencentCloudDcGatewayCcnRouteInstance() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the DCG.",
+				Description: "ID DCG。",
 			},
 			"cidr_block": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateCIDRNetworkAddress,
-				Description:  "A network address segment of IDC.",
+				Description:  "A 网络 地址 segment 的 IDC。",
 			},
 
 			//compute
@@ -39,7 +39,7 @@ func ResourceTencentCloudDcGatewayCcnRouteInstance() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "As path list of the BGP.",
+				Description: "As 路径 列表 BGP。",
 			},
 		},
 	}

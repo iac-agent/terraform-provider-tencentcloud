@@ -19,53 +19,53 @@ func DataSourceTencentCloudCynosdbResourcePackageSaleSpecs() *schema.Resource {
 			"instance_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance Type. Value range: cynosdb-serverless, cynosdb, cdb.",
+				Description: "实例类型。值范围：cynosdb-serverless、cynosdb、cdb。",
 			},
 			"package_region": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Resource package usage region China - common in mainland China, overseas - common in Hong Kong, Macao, Taiwan, and overseas.",
+				Description: "资源包使用地区 中国-中国大陆通用，海外-港澳台、海外通用。",
 			},
 			"package_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Resource package type CCU - Computing resource package DISK - Storage resource package.",
+				Description: "资源包类型 CCU - 计算资源包 DISK - 存储资源包。",
 			},
 			"detail": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Resource package details note: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "资源包详情说明：该字段可能返回null，表示无法获取到有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"package_region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "注意：该字段可能返回null，表示无法获取到有效值。",
 						},
 						"package_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource package type CCU - Compute resource package DISK - Store resource package Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "资源包类型 CCU - 计算资源包 DISK - 存储资源包 注意：该字段可能返回 null，表示无法获取有效值。",
 						},
 						"package_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource package version base basic version, common general version, enterprise enterprise version Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "资源包版本base基础版、普通通用版、企业企业版 注：该字段可能返回null，表示无法获取有效值。",
 						},
 						"min_package_spec": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "The minimum number of resources in the current version of the resource package, calculated in units of resources; Storage resource: GB Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "当前版本资源包中的最小资源数量，以资源为单位计算；存储资源：GB 注：该字段可能返回null，表示无法获取有效值。",
 						},
 						"max_package_spec": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "The maximum number of resources in the current version of the resource package, calculated in units of resources; Storage resource: GB Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "当前版本资源包的最大资源数量，以资源为单位计算；存储资源：GB 注：该字段可能返回null，表示无法获取有效值。",
 						},
 						"expire_day": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Resource package validity period, in days. Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "资源包有效期，单位为天。注意：该字段可能返回null，表示无法获取到有效值。",
 						},
 					},
 				},
@@ -73,7 +73,7 @@ func DataSourceTencentCloudCynosdbResourcePackageSaleSpecs() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

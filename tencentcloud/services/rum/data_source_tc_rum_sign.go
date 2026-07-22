@@ -19,31 +19,31 @@ func DataSourceTencentCloudRumSign() *schema.Resource {
 			"timeout": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Timeout duration.",
+				Description: "Timeout 时长.",
 			},
 
 			"file_type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Bucket type. `1`:web project; `2`:app project.",
+				Description: "Bucket 类型. `1`:web 项目; `2`:app 项目.",
 			},
 
 			"secret_key": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Temporary access key.",
+				Description: "Temporary 访问 键.",
 			},
 
 			"secret_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Temporary access key ID.",
+				Description: "Temporary 访问 键 ID.",
 			},
 
 			"session_token": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Temporary access key token.",
+				Description: "Temporary 访问 键 令牌.",
 			},
 
 			"start_time": {
@@ -61,7 +61,7 @@ func DataSourceTencentCloudRumSign() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

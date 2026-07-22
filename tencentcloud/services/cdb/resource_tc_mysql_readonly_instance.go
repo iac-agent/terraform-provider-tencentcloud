@@ -23,32 +23,32 @@ func ResourceTencentCloudMysqlReadonlyInstance() *schema.Resource {
 		"master_instance_id": {
 			Type:        schema.TypeString,
 			Required:    true,
-			Description: "Indicates the master instance ID of recovery instances.",
+			Description: "恢复实例的主实例ID。",
 		},
 		"zone": {
 			Type:        schema.TypeString,
 			Optional:    true,
 			Computed:    true,
-			Description: "Zone information, this parameter defaults to, the system automatically selects an Availability Zone.",
+			Description: "可用区信息，该参数默认为，系统自动选择一个可用区。",
 		},
 		"master_region": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Optional:    true,
-			Description: "The region information of the master instance. This field is required when purchasing a cross-region subscription.",
+			Description: "主实例的地域信息。购买跨区域订阅时，此字段为必填项。",
 		},
 		"slave_deploy_mode": {
 			Type:         schema.TypeInt,
 			Optional:     true,
 			ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
 			Default:      0,
-			Description:  "Availability zone deployment method. Available values: 0 - Single availability zone; 1 - Multiple availability zones.",
+			Description: "可用区部署方式。可用值：0 - 单个可用区； 1 - 多个可用区。",
 		},
 		"ro_group_id": {
 			Type:        schema.TypeString,
 			Optional:    true,
 			Computed:    true,
-			Description: "Read only group id. If rogroupId is empty, a new ro group is created by default. If it is not empty, the existing ro group is used. Cross-region query requires master instance permission.",
+			Description: "只读组 ID。如果rogroupId为空，则默认创建一个新的ro组。如果不为空，则使用现有的 ro 组。跨地域查询需要主实例权限。",
 		},
 	}
 

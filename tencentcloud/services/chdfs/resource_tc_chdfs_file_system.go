@@ -27,25 +27,25 @@ func ResourceTencentCloudChdfsFileSystem() *schema.Resource {
 			"file_system_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "file system name.",
+				Description: "文件 系统 名称",
 			},
 
 			"capacity_quota": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "file system capacity. min 1GB, max 1PB, CapacityQuota is N * 1073741824.",
+				Description: "文件 系统 容量. min 1GB，max 1PB，CapacityQuota 是 N * 1073741824。",
 			},
 
 			"posix_acl": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "check POSIX ACL or not.",
+				Description: "check POSIX ACL 或 不。",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "desc of the file system.",
+				Description: "desc 的 文件 系统。",
 			},
 
 			"super_users": {
@@ -54,13 +54,13 @@ func ResourceTencentCloudChdfsFileSystem() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "super users of the file system, default empty.",
+				Description: "super users 的 文件 系统，默认值 空。",
 			},
 
 			"enable_ranger": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "check the ranger address or not.",
+				Description: "check ranger 地址 或 不。",
 			},
 
 			"ranger_service_addresses": {
@@ -69,7 +69,7 @@ func ResourceTencentCloudChdfsFileSystem() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "ranger address list, default empty.",
+				Description: "ranger 地址 列表，默认值 空。",
 			},
 		},
 	}

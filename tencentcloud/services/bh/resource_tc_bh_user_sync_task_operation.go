@@ -22,7 +22,7 @@ func ResourceTencentCloudBhUserSyncTaskOperation() *schema.Resource {
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Synchronized user type, 1-synchronize IOA users.",
+				Description: "Synchronized 用户 类型，1-synchronize IOA users。",
 			},
 		},
 	}

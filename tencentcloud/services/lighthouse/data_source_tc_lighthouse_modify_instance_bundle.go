@@ -20,13 +20,13 @@ func DataSourceTencentCloudLighthouseModifyInstanceBundle() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"filters": {
 				Optional: true,
 				Type:     schema.TypeList,
-				Description: "Filter list.\n" +
+				Description: "过滤器 列表.\n" +
 					"- `bundle-id`: filter by the bundle ID.\n" +
 					"- `support-platform-type`: filter by system type, valid values: `LINUX_UNIX`, `WINDOWS`.\n" +
 					"- `bundle-type`: filter according to package type, valid values: `GENERAL_BUNDLE`, `STORAGE_BUNDLE`, `ENTERPRISE_BUNDLE`, `EXCLUSIVE_BUNDLE`, `BEFAST_BUNDLE`.\n" +
@@ -37,7 +37,7 @@ func DataSourceTencentCloudLighthouseModifyInstanceBundle() *schema.Resource {
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Field to be filtered.",
+							Description: "待过滤字段",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -45,7 +45,7 @@ func DataSourceTencentCloudLighthouseModifyInstanceBundle() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Filter value of field.",
+							Description: "过滤值 的 字段。",
 						},
 					},
 				},
@@ -54,45 +54,45 @@ func DataSourceTencentCloudLighthouseModifyInstanceBundle() *schema.Resource {
 			"modify_bundle_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Change package details.",
+				Description: "Change 包 details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"modify_price": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Change the price difference to be made up after the instance package.",
+							Description: "Change 价格 difference 到 是 made up after 实例 包。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_price": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Instance price.",
+										Description: "实例 价格。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"original_bundle_price": {
 													Type:        schema.TypeFloat,
 													Computed:    true,
-													Description: "Original unit price of the package.",
+													Description: "Original 单位 价格 的 包。",
 												},
 												"original_price": {
 													Type:        schema.TypeFloat,
 													Computed:    true,
-													Description: "Original price.",
+													Description: "Original 价格。",
 												},
 												"discount": {
 													Type:        schema.TypeFloat,
 													Computed:    true,
-													Description: "Discount.",
+													Description: "Discount。",
 												},
 												"discount_price": {
 													Type:        schema.TypeFloat,
 													Computed:    true,
-													Description: "Discounted price.",
+													Description: "Discounted 价格。",
 												},
 												"currency": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "A monetary unit of price. Value range CNY: RMB. USD: us dollar.",
+													Description: "A monetary 单位 的 价格. 值 范围 CNY: RMB. USD: us dollar。",
 												},
 											},
 										},
@@ -103,7 +103,7 @@ func DataSourceTencentCloudLighthouseModifyInstanceBundle() *schema.Resource {
 						"modify_bundle_state": {
 							Type:     schema.TypeString,
 							Computed: true,
-							Description: "Change the status of the package. Value:\n" +
+							Description: "Change 状态 的 包. Value:\n" +
 								"- SOLD_OUT: the package is sold out;\n" +
 								"- AVAILABLE: support package changes;\n" +
 								"- UNAVAILABLE: package changes are not supported for the time being.",
@@ -111,80 +111,80 @@ func DataSourceTencentCloudLighthouseModifyInstanceBundle() *schema.Resource {
 						"bundle": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Package information.",
+							Description: "Package 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"bundle_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Package ID.",
+										Description: "Package ID。",
 									},
 									"memory": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Memory size in GB.",
+										Description: "Memory 大小 （GB）。",
 									},
 									"system_disk_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "System disk type.",
+										Description: "System 磁盘 类型",
 									},
 									"system_disk_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "System disk size.",
+										Description: "System 磁盘 大小。",
 									},
 									"monthly_traffic": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Monthly network traffic in Gb.",
+										Description: "Monthly 网络 流量 在 Gb。",
 									},
 									"support_linux_unix_platform": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether Linux/Unix is supported.",
+										Description: "Whether Linux/Unix 是 支持。",
 									},
 									"support_windows_platform": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether Windows is supported.",
+										Description: "Whether Windows 是 支持。",
 									},
 									"price": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Current package unit price information.",
+										Description: "Current 包 单位 价格 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"instance_price": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "Instance price.",
+													Description: "实例 价格。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"original_bundle_price": {
 																Type:        schema.TypeFloat,
 																Computed:    true,
-																Description: "Original package unit price.",
+																Description: "Original 包 单位 价格。",
 															},
 															"original_price": {
 																Type:        schema.TypeFloat,
 																Computed:    true,
-																Description: "Original price.",
+																Description: "Original 价格。",
 															},
 															"discount": {
 																Type:        schema.TypeFloat,
 																Computed:    true,
-																Description: "Discount.",
+																Description: "Discount。",
 															},
 															"discount_price": {
 																Type:        schema.TypeFloat,
 																Computed:    true,
-																Description: "Discounted price.",
+																Description: "Discounted 价格。",
 															},
 															"currency": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "Currency unit. Valid values: CNY and USD.",
+																Description: "Currency 单位. 有效值：CNY 和 USD。",
 															},
 														},
 													},
@@ -195,37 +195,37 @@ func DataSourceTencentCloudLighthouseModifyInstanceBundle() *schema.Resource {
 									"cpu": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "CPU.",
+										Description: "CPU。",
 									},
 									"internet_max_bandwidth_out": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Peak bandwidth in Mbps.",
+										Description: "Peak 带宽 在 Mbps。",
 									},
 									"internet_charge_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Network billing mode.",
+										Description: "Network billing 模式",
 									},
 									"bundle_sales_state": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Package sale status. Valid values are AVAILABLE, SOLD_OUT.",
+										Description: "Package sale 状态 有效 值 是 AVAILABLE，SOLD_OUT。",
 									},
 									"bundle_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Package type.Valid values:GENERAL_BUNDLE: generalSTORAGE_BUNDLE: Storage.",
+										Description: "Package 类型Valid 值:GENERAL_BUNDLE: generalSTORAGE_BUNDLE: Storage。",
 									},
 									"bundle_type_description": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Package type description information.",
+										Description: "Package 类型 描述 信息。",
 									},
 									"bundle_display_label": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Package tag.Valid values:ACTIVITY: promotional packageNORMAL: regular packageCAREFREE: carefree package.",
+										Description: "Package 标签Valid 值:ACTIVITY: promotional packageNORMAL: regular packageCAREFREE: carefree 包。",
 									},
 								},
 							},
@@ -233,7 +233,7 @@ func DataSourceTencentCloudLighthouseModifyInstanceBundle() *schema.Resource {
 						"not_support_modify_message": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Package change reason information is not supported. When the package status is changed to `AVAILABLE`, the information is empty.",
+							Description: "Package change reason 信息 是 不 支持. 当 包 状态 是 changed 到 `AVAILABLE`， 信息 是 空。",
 						},
 					},
 				},
@@ -242,7 +242,7 @@ func DataSourceTencentCloudLighthouseModifyInstanceBundle() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

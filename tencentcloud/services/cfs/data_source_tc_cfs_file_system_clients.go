@@ -17,44 +17,44 @@ func DataSourceTencentCloudCfsFileSystemClients() *schema.Resource {
 			"file_system_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "File system ID.",
+				Description: "File 系统 ID。",
 			},
 
 			"client_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Client list.",
+				Description: "Client 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cfs_vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IP address of the file system.",
+							Description: "IP 地址 的 文件 系统。",
 						},
 						"client_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Client IP.",
+							Description: "客户端 IP",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "File system VPCID.",
+							Description: "File 系统 VPCID。",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the availability zone, e.g. ap-beijing-1. For more information, see regions and availability zones in the Overview document.",
+							Description: "名称 availability 可用区，e.g. ap-beijing-1. For more 信息，see regions 和 availability zones 在 Overview document。",
 						},
 						"zone_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "AZ name.",
+							Description: "AZ 名称",
 						},
 						"mount_directory": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Path in which the file system is mounted to the client.",
+							Description: "路径 在 其中 文件 系统 是 mounted 到 客户端。",
 						},
 					},
 				},
@@ -63,7 +63,7 @@ func DataSourceTencentCloudCfsFileSystemClients() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

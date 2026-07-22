@@ -28,46 +28,46 @@ func ResourceTencentCloudMonitorTmpTkeTemplate() *schema.Resource {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Required:    true,
-				Description: "Template settings.",
+				Description: "模板 settings。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Template name.",
+							Description: "模板名称",
 						},
 						"level": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Template dimensions, the following types are supported `instance` instance level, `cluster` cluster level.",
+							Description: "模板 dimensions， following types 是 支持 `实例` 实例 级别，`集群` 集群 级别",
 						},
 						"describe": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Template description.",
+							Description: "模板描述",
 						},
 						"record_rules": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Computed:    true,
-							Description: "Effective when Level is instance, A list of aggregation rules in the template.",
+							Description: "Effective 当 级别 是 实例，A 列表 aggregation 规则 在 template。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Name.",
+										Description: "名称",
 									},
 									"config": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Config.",
+										Description: "配置",
 									},
 									"template_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Used for the argument, if the configuration comes to the template, the template id.",
+										Description: "用于the argument，如果 配置 comes 到 template， template ID。",
 									},
 								},
 							},
@@ -76,23 +76,23 @@ func ResourceTencentCloudMonitorTmpTkeTemplate() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Computed:    true,
-							Description: "Effective when Level is a cluster, A list of ServiceMonitor rules in the template.",
+							Description: "Effective 当 级别 是 集群，A 列表 ServiceMonitor 规则 在 template。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Name.",
+										Description: "名称",
 									},
 									"config": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Config.",
+										Description: "配置",
 									},
 									"template_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Used for the argument, if the configuration comes to the template, the template id.",
+										Description: "用于the argument，如果 配置 comes 到 template， template ID。",
 									},
 								},
 							},
@@ -101,23 +101,23 @@ func ResourceTencentCloudMonitorTmpTkeTemplate() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Computed:    true,
-							Description: "Effective when Level is a cluster, A list of PodMonitors rules in the template.",
+							Description: "Effective 当 级别 是 集群，A 列表 PodMonitors 规则 在 template。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Name.",
+										Description: "名称",
 									},
 									"config": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Config.",
+										Description: "配置",
 									},
 									"template_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Used for the argument, if the configuration comes to the template, the template id.",
+										Description: "用于the argument，如果 配置 comes 到 template， template ID。",
 									},
 								},
 							},
@@ -126,23 +126,23 @@ func ResourceTencentCloudMonitorTmpTkeTemplate() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Computed:    true,
-							Description: "Effective when Level is a cluster, A list of RawJobs rules in the template.",
+							Description: "Effective 当 级别 是 集群，A 列表 RawJobs 规则 在 template。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Name.",
+										Description: "名称",
 									},
 									"config": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Config.",
+										Description: "配置",
 									},
 									"template_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Used for the argument, if the configuration comes to the template, the template id.",
+										Description: "用于the argument，如果 配置 comes 到 template， template ID。",
 									},
 								},
 							},
@@ -150,22 +150,22 @@ func ResourceTencentCloudMonitorTmpTkeTemplate() *schema.Resource {
 						"template_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The ID of the template, which is used for the outgoing reference.",
+							Description: "ID template，其中 是 用于the outgoing reference。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Last updated, for outgoing references.",
+							Description: "Last 更新，对于 outgoing references。",
 						},
 						"version": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether the system-supplied default template is used for outgoing references.",
+							Description: "是否system-supplied 默认值 template 是 用于outgoing references。",
 						},
 						"is_default": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether the system-supplied default template is used for outgoing references.",
+							Description: "是否system-supplied 默认值 template 是 用于outgoing references。",
 						},
 					},
 				},

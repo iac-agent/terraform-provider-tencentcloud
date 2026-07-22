@@ -17,18 +17,18 @@ func DataSourceTencentCloudConfigDiscoveredResources() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter conditions. Supported filter names: resourceName (resource name), resourceId (resource ID).",
+				Description: "过滤器 conditions. Supported 过滤器 names: resourceName (资源名称)，resourceId (资源 ID)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter field name. Valid values: resourceName, resourceId.",
+							Description: "过滤字段名称 有效值：resourceName，resourceId。",
 						},
 						"values": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Filter field values.",
+							Description: "过滤器 字段 值。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -40,18 +40,18 @@ func DataSourceTencentCloudConfigDiscoveredResources() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Tag filter conditions.",
+				Description: "标签 过滤器 conditions。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag key.",
+							Description: "标签键",
 						},
 						"tag_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag value.",
+							Description: "标签值",
 						},
 					},
 				},
@@ -60,75 +60,75 @@ func DataSourceTencentCloudConfigDiscoveredResources() *schema.Resource {
 			"order_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Sort type. Valid values: asc, desc.",
+				Description: "Sort 类型 有效值：asc，desc。",
 			},
 
 			"resource_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Discovered resource list.",
+				Description: "Discovered 资源 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource type.",
+							Description: "资源类型",
 						},
 						"resource_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource name.",
+							Description: "资源名称",
 						},
 						"resource_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource ID.",
+							Description: "资源 ID",
 						},
 						"resource_region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource region.",
+							Description: "Resource 地域",
 						},
 						"resource_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource status.",
+							Description: "Resource 状态",
 						},
 						"resource_delete": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Resource deletion mark. Valid values: 1 (deleted), 2 (not deleted).",
+							Description: "Resource deletion mark. 有效值：1 (删除)，2 (不 删除)。",
 						},
 						"resource_create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource creation time.",
+							Description: "Resource 创建时间。",
 						},
 						"resource_zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource availability zone.",
+							Description: "Resource availability 可用区",
 						},
 						"compliance_result": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Compliance result. Valid values: COMPLIANT, NON_COMPLIANT.",
+							Description: "Compliance 结果 有效值：COMPLIANT，NON_COMPLIANT。",
 						},
 						"tags": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Resource tag list.",
+							Description: "Resource 标签列表",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag key.",
+										Description: "标签键",
 									},
 									"tag_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag value.",
+										Description: "标签值",
 									},
 								},
 							},
@@ -140,7 +140,7 @@ func DataSourceTencentCloudConfigDiscoveredResources() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -24,14 +24,14 @@ func ResourceTencentCloudMysqlSwitchProxy() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID。",
 			},
 
 			"proxy_group_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Proxy group id.",
+				Description: "代理组 ID。",
 			},
 		},
 	}

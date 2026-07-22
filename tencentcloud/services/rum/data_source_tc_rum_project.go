@@ -21,19 +21,19 @@ func DataSourceTencentCloudRumProject() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 
 			"project_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Project list.",
+				Description: "Project 列表.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Project name.",
+							Description: "Project 名称.",
 						},
 						"creator": {
 							Type:        schema.TypeString,
@@ -43,12 +43,12 @@ func DataSourceTencentCloudRumProject() *schema.Resource {
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID.",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Project type.",
+							Description: "Project 类型.",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
@@ -58,7 +58,7 @@ func DataSourceTencentCloudRumProject() *schema.Resource {
 						"repo": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Project repository address.",
+							Description: "Project repository 地址.",
 						},
 						"url": {
 							Type:        schema.TypeString,
@@ -68,22 +68,22 @@ func DataSourceTencentCloudRumProject() *schema.Resource {
 						"rate": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Project sample rate.",
+							Description: "Project sample 速率.",
 						},
 						"key": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Unique project key (12 characters).",
+							Description: "Unique 项目 键 (12 字符).",
 						},
 						"enable_url_group": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether to enable URL aggregation.",
+							Description: "Whether 到 启用 URL aggregation.",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance name.",
+							Description: "实例 名称.",
 						},
 						"pid": {
 							Type:        schema.TypeInt,
@@ -93,22 +93,22 @@ func DataSourceTencentCloudRumProject() *schema.Resource {
 						"instance_key": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance key.",
+							Description: "实例 键.",
 						},
 						"desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Project description.",
+							Description: "Project 描述.",
 						},
 						"is_star": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Starred status. `1`: yes; `0`: no.",
+							Description: "Starred 状态. `1`: yes; `0`: 无.",
 						},
 						"project_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Project status (`1`: Creating; `2`: Running; `3`: Abnormal; `4`: Restarting; `5`: Stopping; `6`: Stopped; `7`: Terminating; `8`: Terminated).",
+							Description: "Project 状态 (`1`: Creating; `2`: Running; `3`: Abnormal; `4`: Restarting; `5`: Stopping; `6`: Stopped; `7`: Terminating; `8`: Terminated).",
 						},
 					},
 				},
@@ -117,7 +117,7 @@ func DataSourceTencentCloudRumProject() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

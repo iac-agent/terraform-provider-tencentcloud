@@ -29,58 +29,58 @@ func ResourceTencentCloudSgRule() *schema.Resource {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Creates rule data.",
+				Description: "Creates 规则 数据。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"source_content": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Source example: `net`: IP/CIDR (192.168.0.2); `template`: parameter template (ipm-dyodhpby); `instance`: asset instance (ins-123456); `resourcegroup`: asset group (/all groups/group 1/subgroup 1); `tag`: resource tag ({\"Key\":\"tag key\",\"Value\":\"tag value\"}); `region`: region (ap-gaungzhou).",
+							Description: "Source 示例: `net`: IP/CIDR (192.168.0.2); `template`: 参数 template (ipm-dyodhpby); `实例`: asset 实例 (ins-123456); `resourcegroup`: asset 组 (/all groups/组 1/subgroup 1); `标签`: 资源 标签 ({\"Key\":\"标签 键\",\"Value\":\"标签 值\"}); `地域`: 地域 (ap-gaungzhou).",
 						},
 						"source_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Access source type. Valid values: net|template|instance|resourcegroup|tag|region.",
+							Description: "Access 来源 类型 有效值：net|template|实例|resourcegroup|标签|地域",
 						},
 						"dest_content": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Destination example: `net`: IP/CIDR (192.168.0.2); `template`: parameter template (ipm-dyodhpby); `instance`: asset instance (ins-123456); `resourcegroup`: asset group (/all groups/group 1/subgroup 1); `tag`: resource tag ({\"Key\":\"tag key\",\"Value\":\"tag value\"}); `region`: region (ap-gaungzhou).",
+							Description: "Destination 示例: `net`: IP/CIDR (192.168.0.2); `template`: 参数 template (ipm-dyodhpby); `实例`: asset 实例 (ins-123456); `resourcegroup`: asset 组 (/all groups/组 1/subgroup 1); `标签`: 资源 标签 ({\"Key\":\"标签 键\",\"Value\":\"标签 值\"}); `地域`: 地域 (ap-gaungzhou).",
 						},
 						"dest_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Access destination type. Valid values: net|template|instance|resourcegroup|tag|region.",
+							Description: "Access destination 类型 有效值：net|template|实例|resourcegroup|标签|地域",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Protocol. TCP/UDP/ICMP/ANY.",
+							Description: "协议 TCP/UDP/ICMP/ANY。",
 						},
 						"port": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The port to apply access control rules. Valid values: `-1/-1`: all ports, `80`: port 80.",
+							Description: "端口 到 apply 访问 control 规则. 有效值：`-1/-1`: all ports，`80`: 端口 80。",
 						},
 						"service_template_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Parameter template ID of port and protocol type; mutually exclusive with Protocol and Port.",
+							Description: "Parameter 模板 ID 端口 和 协议 类型; mutually exclusive 使用 协议 和 端口",
 						},
 						"rule_action": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The action that Cloud Firewall performs on the traffic. Valid values: `accept`: allow, `drop`: deny.",
+							Description: "操作 该 Cloud Firewall performs 在 流量. 有效值：`accept`: allow，`drop`: deny。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Description.",
+							Description: "描述",
 						},
 						"order_index": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Rule priority.",
+							Description: "Rule 优先级",
 						},
 					},
 				},
@@ -90,7 +90,7 @@ func ResourceTencentCloudSgRule() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Rule status. `0` is off, `1` is on. This parameter is not required or is 1 when creating.",
+				Description: "Rule 状态 `0` 是 关闭，`1` 是 在. 此 参数 不是必填项 或 是 1 当 creating。",
 			},
 		},
 	}

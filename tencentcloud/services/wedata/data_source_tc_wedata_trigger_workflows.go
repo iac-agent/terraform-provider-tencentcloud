@@ -18,43 +18,43 @@ func DataSourceTencentCloudWedataTriggerWorkflows() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"keyword": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search keyword.",
+				Description: "Search keyword。",
 			},
 
 			"parent_folder_path": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Folder path to which the workflow belongs.",
+				Description: "Folder 路径 到 其中 工作流 belongs。",
 			},
 
 			"bundle_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Bundle ID item.",
+				Description: "Bundle ID item。",
 			},
 
 			"owner_uin": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Owner ID.",
+				Description: "所有者 ID。",
 			},
 
 			"create_user_uin": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Creator ID.",
+				Description: "创建者 ID。",
 			},
 
 			"modify_time": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Modification time range yyyy-MM-dd HH:mm:ss, two timestamps need to be filled in the array.",
+				Description: "修改时间 范围 yyyy-MM-dd HH:mm:ss，two timestamps need 到 是 filled 在 数组。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -63,7 +63,7 @@ func DataSourceTencentCloudWedataTriggerWorkflows() *schema.Resource {
 			"create_time": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Creation time range yyyy-MM-dd HH:mm:ss, two timestamps need to be filled in the array.",
+				Description: "创建时间 范围 yyyy-MM-dd HH:mm:ss，two timestamps need 到 是 filled 在 数组。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -72,54 +72,54 @@ func DataSourceTencentCloudWedataTriggerWorkflows() *schema.Resource {
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Paginated workflow query information.",
+				Description: "Paginated 工作流 查询 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"items": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "List items.",
+							Description: "List items。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"workflow_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Workflow ID.",
+										Description: "Workflow ID。",
 									},
 									"workflow_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Workflow name.",
+										Description: "Workflow 名称",
 									},
 									"owner_uin": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Owner ID.",
+										Description: "所有者 ID。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Creation time.",
+										Description: "创建时间。",
 									},
 									"modify_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Latest modification time.",
+										Description: "Latest 修改时间。",
 									},
 									"update_user_uin": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Last updater ID.",
+										Description: "Last updater ID。",
 									},
 									"workflow_desc": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Workflow description.",
+										Description: "Workflow 描述",
 									},
 									"create_user_uin": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Creator ID.",
+										Description: "创建者 ID。",
 									},
 								},
 							},
@@ -131,7 +131,7 @@ func DataSourceTencentCloudWedataTriggerWorkflows() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

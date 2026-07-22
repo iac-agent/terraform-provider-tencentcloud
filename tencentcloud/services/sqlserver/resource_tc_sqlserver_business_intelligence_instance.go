@@ -27,7 +27,7 @@ func ResourceTencentCloudSqlserverBusinessIntelligenceInstance() *schema.Resourc
 			"zone": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance AZ, such as ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through theDescribeZones API.",
+				Description: "实例 AZ, such 作为 ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs 对于 实例 可以 是 获取 through theDescribeZones API.",
 			},
 			"project_id": {
 				Optional:    true,
@@ -38,73 +38,73 @@ func ResourceTencentCloudSqlserverBusinessIntelligenceInstance() *schema.Resourc
 			"memory": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Instance memory size in GB.",
+				Description: "实例 内存 大小 在 GB.",
 			},
 			"storage": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Instance disk size in GB.",
+				Description: "实例 磁盘 大小 在 GB.",
 			},
 			"subnet_id": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "VPC subnet ID in the format of subnet-bdoe83fa. Both SubnetId and VpcId need to be set or unset at the same time.",
+				Description: "VPC 子网 ID 在 格式 的 子网-bdoe83fa. Both SubnetId 和 VpcId need 到 是 集合 或 unset 在 same 时间.",
 			},
 			"vpc_id": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "VPC ID in the format of vpc-dsp338hz. Both SubnetId and VpcId need to be set or unset at the same time.",
+				Description: "VPC ID 在 格式 的 vpc-dsp338hz. Both SubnetId 和 VpcId need 到 是 集合 或 unset 在 same 时间.",
 			},
 			"db_version": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Supported versions of business intelligence server. Valid values: 201603 (SQL Server 2016 Integration Services), 201703 (SQL Server 2017 Integration Services), 201903 (SQL Server 2019 Integration Services). Default value: 201903. As the purchasable versions are region-specific, you can use the DescribeProductConfig API to query the information of purchasable versions in each region.",
+				Description: "Supported versions 的 business intelligence 服务器. 有效 值: 201603 (SQL Server 2016 Integration Services), 201703 (SQL Server 2017 Integration Services), 201903 (SQL Server 2019 Integration Services). Default 值: 201903. As purchasable versions 是 地域-特定, 您 可以 使用 DescribeProductConfig API 到 查询 信息 的 purchasable versions 在 each 地域.",
 			},
 			"security_group_list": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Security group list, which contains security group IDs in the format of sg-xxx.",
+				Description: "Security 组 列表, 其中 contains 安全 组 IDs 在 格式 的 sg-xxx.",
 			},
 			"weekly": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeList,
 				Elem:        &schema.Schema{Type: schema.TypeInt},
-				Description: "Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: 1 (Monday), 2 (Tuesday), 3 (Wednesday), 4 (Thursday), 5 (Friday), 6 (Saturday), 7 (Sunday).",
+				Description: "Configuration 的 maintenance window, 其中 specifies day 的 week 当 maintenance 可以 是 performed. 有效 值: 1 (Monday), 2 (Tuesday), 3 (Wednesday), 4 (Thursday), 5 (Friday), 6 (Saturday), 7 (Sunday).",
 			},
 			"start_time": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Configuration of the maintenance window, which specifies the start time of daily maintenance.",
+				Description: "Configuration 的 maintenance window, 其中 specifies start 时间 的 daily maintenance.",
 			},
 			"span": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Configuration of the maintenance window, which specifies the maintenance duration in hours.",
+				Description: "Configuration 的 maintenance window, 其中 specifies maintenance 时长 在 hours.",
 			},
 			"resource_tags": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Tags associated with the instances to be created.",
+				Description: "Tags associated 使用 实例 到 是 创建.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Tag key.",
+							Description: "Tag 键.",
 						},
 						"tag_value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Tag value.",
+							Description: "Tag 值.",
 						},
 					},
 				},
@@ -112,17 +112,17 @@ func ResourceTencentCloudSqlserverBusinessIntelligenceInstance() *schema.Resourc
 			"cpu": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The number of CPU cores of the instance you want to purchase.",
+				Description: "数量 的 CPU cores 的 实例 您 want 到 purchase.",
 			},
 			"machine_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The host type of purchased instance. Valid values: CLOUD_PREMIUM (virtual machine with premium cloud disk), CLOUD_SSD (virtual machine with SSD).",
+				Description: "主机 类型 的 purchased 实例. 有效 值: CLOUD_PREMIUM (virtual machine 使用 premium 云 磁盘), CLOUD_SSD (virtual machine 使用 SSD).",
 			},
 			"instance_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance Name.",
+				Description: "实例 Name.",
 			},
 		},
 	}

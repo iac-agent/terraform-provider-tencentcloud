@@ -28,21 +28,21 @@ func ResourceTencentCloudDcGatewayAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "vpc id.",
+				Description: "私有网络 ID",
 			},
 
 			"nat_gateway_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "NatGatewayId.",
+				Description: "NatGatewayId。",
 			},
 
 			"direct_connect_gateway_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "DirectConnectGatewayId.",
+				Description: "DirectConnectGatewayId。",
 			},
 		},
 	}

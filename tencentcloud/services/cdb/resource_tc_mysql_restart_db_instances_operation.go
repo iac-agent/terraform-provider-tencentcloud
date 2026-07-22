@@ -23,13 +23,13 @@ func ResourceTencentCloudMysqlRestartDbInstancesOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "An array of instance ID in the format: cdb-c1nl9rpv, which is the same as the instance ID displayed on the cloud database console page.",
+				Description: "实例ID数组，格式为：cdb-c1nl9rpv，与云数据库控制台页面显示的实例ID相同。",
 			},
 
 			"status": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Instance status.",
+				Description: "实例状态。",
 			},
 		},
 	}

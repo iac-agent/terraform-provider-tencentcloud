@@ -29,37 +29,37 @@ func ResourceTencentCloudCynosdbWan() *schema.Resource {
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 
 			"instance_grp_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance Group ID.",
+				Description: "实例组ID。",
 			},
 
 			"wan_domain": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Domain name.",
+				Description: "域名。",
 			},
 
 			"wan_ip": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Network ip.",
+				Description: "网络ip。",
 			},
 
 			"wan_port": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Internet port.",
+				Description: "互联网端口。",
 			},
 
 			"wan_status": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Internet status.",
+				Description: "互联网状态。",
 			},
 		},
 	}

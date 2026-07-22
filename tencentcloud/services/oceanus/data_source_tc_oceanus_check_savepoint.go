@@ -19,38 +19,38 @@ func DataSourceTencentCloudOceanusCheckSavepoint() *schema.Resource {
 			"job_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Job id.",
+				Description: "Job ID。",
 			},
 			"serial_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Snapshot resource ID.",
+				Description: "Snapshot 资源 ID。",
 			},
 			"record_type": {
 				Required:     true,
 				Type:         schema.TypeInt,
 				ValidateFunc: tccommon.ValidateAllowedIntValue(RECORD_TYPE),
-				Description:  "Snapshot type. 1:savepoint; 2:checkpoint; 3:cancelWithSavepoint.",
+				Description:  "Snapshot 类型 1:savepoint; 2:checkpoint; 3:cancelWithSavepoint。",
 			},
 			"savepoint_path": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Snapshot path, currently only supports COS path.",
+				Description: "Snapshot 路径，currently 仅 支持 COS 路径",
 			},
 			"work_space_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Workspace ID.",
+				Description: "Workspace ID。",
 			},
 			"savepoint_status": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "1=available, 2=unavailable.",
+				Description: "1=可用，2=unavailable。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

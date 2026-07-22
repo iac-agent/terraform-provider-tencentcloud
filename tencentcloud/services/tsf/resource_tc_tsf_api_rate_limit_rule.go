@@ -28,13 +28,13 @@ func ResourceTencentCloudTsfApiRateLimitRule() *schema.Resource {
 			"api_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Api Id.",
+				Description: "Api ID。",
 			},
 
 			"max_qps": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "qps value.",
+				Description: "qps 值",
 			},
 
 			"usable_status": {
@@ -42,49 +42,49 @@ func ResourceTencentCloudTsfApiRateLimitRule() *schema.Resource {
 				Computed:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"enabled", "disabled"}),
-				Description:  "Enabled/disabled, enabled/disabled, if not passed, it is enabled by default.",
+				Description:  "已启用/已禁用，已启用/已禁用，如果未传入，它 是 已启用 通过 默认值。",
 			},
 
 			"rule_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "rule Id.",
+				Description: "规则 ID。",
 			},
 
 			"rule_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Current limit name.",
+				Description: "Current 限制 名称",
 			},
 
 			"rule_content": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Rule content.",
+				Description: "Rule 内容",
 			},
 
 			"tsf_rule_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Tsf Rule ID.",
+				Description: "Tsf Rule ID。",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "describe.",
+				Description: "describe。",
 			},
 
 			"created_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "creation time.",
+				Description: "创建时间。",
 			},
 
 			"updated_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "update time.",
+				Description: "更新时间。",
 			},
 		},
 	}

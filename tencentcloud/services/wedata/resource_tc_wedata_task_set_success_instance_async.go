@@ -25,14 +25,14 @@ func ResourceTencentCloudWedataTaskSetSuccessInstanceAsync() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Project Id.",
+				Description: "项目 ID",
 			},
 
 			"instance_key_list": {
 				Type:        schema.TypeSet,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance id list, which can be obtained from ListInstances.",
+				Description: "实例 ID 列表，其中 可以 是 获取 从 ListInstances。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},

@@ -19,49 +19,49 @@ func DataSourceTencentCloudClickhouseBackupTables() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"available_tables": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Available tables.",
+				Description: "Available tables。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database.",
+							Description: "Database。",
 						},
 						"table": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Table.",
+							Description: "Table。",
 						},
 						"total_bytes": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Table total bytes.",
+							Description: "Table 总数 bytes。",
 						},
 						"v_cluster": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Virtual cluster.",
+							Description: "Virtual 集群。",
 						},
 						"ips": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Table ips.",
+							Description: "Table ips。",
 						},
 						"zoo_path": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Zk path.",
+							Description: "Zk 路径",
 						},
 						"rip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Ip address of cvm.",
+							Description: "Ip 地址 的 cvm。",
 						},
 					},
 				},
@@ -70,7 +70,7 @@ func DataSourceTencentCloudClickhouseBackupTables() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -27,66 +27,66 @@ func ResourceTencentCloudTatCommand() *schema.Resource {
 			"command_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Command name. The name can be up to 60 bytes, and contain [a-z], [A-Z], [0-9] and [_-.].",
+				Description: "命令名称 名称 可以 是 up 到 60 bytes，和 contain [-z]，[A-Z]，[0-9] 和 [_-.]。",
 			},
 
 			"content": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Command content. The maximum length is 64 KB.",
+				Description: "Command 内容 最大 长度 是 64 KB。",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Command description. The maximum length is 120 characters.",
+				Description: "命令描述 最大 长度 是 120 字符。",
 			},
 
 			"command_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Command type. `SHELL`, `POWERSHELL` and `BAT` are supported. The default value is `SHELL`.",
+				Description: "命令类型 `SHELL`，`POWERSHELL` 和 `BAT` 是 支持. 默认值为 `SHELL`。",
 			},
 
 			"working_directory": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Command execution path. The default value is /root for `SHELL` commands and C:/Program Files/qcloudtat_agent/workdir for `POWERSHELL` commands.",
+				Description: "Command execution 路径 默认值为 /root 对于 `SHELL` commands 和 C:/Program Files/qcloudtat_agent/workdir 对于 `POWERSHELL` commands。",
 			},
 
 			"timeout": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Command timeout period. Default value: 60 seconds. Value range: [1, 86400].",
+				Description: "Command 超时 周期 默认值：60 秒. 取值范围：[1，86400]。",
 			},
 
 			"enable_parameter": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable the custom parameter feature.This cannot be modified once created.Default value: `false`.",
+				Description: "是否enable 自定义 参数 功能.此 不能 是 modified once 创建.默认值：`false`。",
 			},
 
 			"default_parameters": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The default value of the custom parameter value when it is enabled. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.`key` is the name of the custom parameter and value is the default value. Both `key` and `value` are strings.If no parameter value is provided in the `InvokeCommand` API, the default value is used.Up to 20 custom parameters are supported.The name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].",
+				Description: "默认值 值 的 自定义 参数 值 当 它 是 已启用. 字段 类型 是 JSON encoded 字符串. For 示例, {\"varA\": \"222\"}.`键` 是 名称 的 自定义 参数 和 值 是 默认值 值. Both `键` 和 `值` 是 strings.如果 无 参数 值 是 提供 在 `InvokeCommand` API, 默认值 值 是 使用.Up 到 20 自定义 参数 是 支持. 名称 的 自定义 参数 不能 exceed 64 字符 和 可以 contain [-z], [A-Z], [0-9] 和 [-_].",
 			},
 
 			"tags": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Tags bound to the command. At most 10 tags are allowed.",
+				Description: "标签 bound 到 command. At most 10 标签 是 allowed。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag key.",
+							Description: "标签键",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag value.",
+							Description: "标签值",
 						},
 					},
 				},
@@ -95,43 +95,43 @@ func ResourceTencentCloudTatCommand() *schema.Resource {
 			"username": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The username used to execute the command on the CVM or Lighthouse instance.The principle of least privilege is the best practice for permission management. We recommend you execute TAT commands as a general user. By default, the root user is used to execute commands on Linux and the System user is used on Windows.",
+				Description: "用户名 用于execute command 在 CVM 或 Lighthouse 实例. principle 的 least privilege 是 best practice 对于 权限 management. We recommend 您 execute TAT commands 作为 general 用户 By 默认值， root 用户 是 用于execute commands 在 Linux 和 System 用户 是 使用 在 Windows。",
 			},
 
 			"output_cos_bucket_url": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The COS bucket URL for uploading logs. The URL must start with `https`, such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`.",
+				Description: "COS 存储桶 URL 对于 uploading logs. URL 必须 start 使用 `https`，such 作为 `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`。",
 			},
 
 			"output_cos_key_prefix": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The COS bucket directory where the logs are saved. Check below for the rules of the directory name.1. It must be a combination of number, letters, and visible characters. Up to 60 characters are allowed.2. Use a slash (/) to create a subdirectory.3. Consecutive dots (.) and slashes (/) are not allowed. It can not start with a slash (/).",
+				Description: "COS 存储桶 directory 其中 logs 是 saved. Check below 对于 规则 的 directory 名称1. It 必须 是 combination 的 数量，letters，和 visible 字符. Up 到 60 字符 是 allowed.2. Use slash (/) 到 create subdirectory.3. Consecutive dots (.) 和 slashes (/) 是 不 allowed. It 可以 不 start 使用 slash (/)。",
 			},
 
 			"created_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Command creation time.",
+				Description: "Command 创建时间。",
 			},
 
 			"updated_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Command update time.",
+				Description: "Command 更新时间。",
 			},
 
 			"formatted_description": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Formatted description of the command. This parameter is an empty string for user commands and contains values for public commands.",
+				Description: "Formatted 描述 command. 此 参数 是 空 字符串 对于 用户 commands 和 包含values 对于 公有 commands。",
 			},
 
 			"created_by": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Command creator. `TAT` indicates a public command and `USER` indicates a personal command.",
+				Description: "Command 创建者 `TAT` 表示a 公有 command 和 `USER` 表示a personal command。",
 			},
 		},
 	}

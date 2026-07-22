@@ -20,13 +20,13 @@ func DataSourceTencentCloudTdmqRocketmqTopic() *schema.Resource {
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Cluster ID.",
+				Description: "集群 ID",
 			},
 
 			"namespace_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Namespace.",
+				Description: "Namespace。",
 			},
 
 			"filter_type": {
@@ -35,45 +35,45 @@ func DataSourceTencentCloudTdmqRocketmqTopic() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Optional:    true,
-				Description: "Filter by topic type. Valid values: `Normal`, `GlobalOrder`, `PartitionedOrder`, `Transaction`.",
+				Description: "过滤器 通过 主题 类型 有效值：`Normal`，`GlobalOrder`，`PartitionedOrder`，`Transaction`。",
 			},
 
 			"filter_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Search by topic name. Fuzzy query is supported.",
+				Description: "Search 通过 主题 名称 Fuzzy 查询 是 支持。",
 			},
 
 			"topics": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of topic information.",
+				Description: "列表 主题 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Topic name.",
+							Description: "Topic 名称",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Topic name.",
+							Description: "Topic 名称",
 						},
 						"partition_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The number of read/write partitions.",
+							Description: "数量 read/write partitions。",
 						},
 						"create_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Creation time in milliseconds.",
+							Description: "创建时间 （毫秒）。",
 						},
 						"update_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Update time in milliseconds.",
+							Description: "更新时间 （毫秒）。",
 						},
 					},
 				},
@@ -82,7 +82,7 @@ func DataSourceTencentCloudTdmqRocketmqTopic() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

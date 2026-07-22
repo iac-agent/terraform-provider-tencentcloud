@@ -28,14 +28,14 @@ func ResourceTencentCloudTsfApplicationReleaseConfig() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Configuration ID.",
+				Description: "Configuration ID。",
 			},
 
 			"group_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "deployment group ID.",
+				Description: "部署 组 ID",
 			},
 
 			"release_desc": {
@@ -43,67 +43,67 @@ func ResourceTencentCloudTsfApplicationReleaseConfig() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "release description.",
+				Description: "release 描述",
 			},
 
 			"config_release_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "configuration item release ID.",
+				Description: "配置 item release ID。",
 			},
 
 			"config_name": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "configuration item name.",
+				Description: "配置 item 名称",
 			},
 
 			"config_version": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "configuration item version.",
+				Description: "配置 item 版本",
 			},
 
 			"release_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "release time.",
+				Description: "release 时间。",
 			},
 
 			"group_name": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "deployment group name.",
+				Description: "部署 组名称",
 			},
 
 			"namespace_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Namespace ID.",
+				Description: "Namespace ID。",
 			},
 
 			"namespace_name": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "namespace name.",
+				Description: "命名空间 名称",
 			},
 
 			"cluster_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "cluster ID.",
+				Description: "集群 ID。",
 			},
 
 			"cluster_name": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "cluster name.",
+				Description: "集群名称",
 			},
 
 			"application_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Application ID.",
+				Description: "Application ID。",
 			},
 		},
 	}

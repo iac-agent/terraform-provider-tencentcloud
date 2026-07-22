@@ -29,99 +29,99 @@ func ResourceTencentCloudBiDatasource() *schema.Resource {
 			"db_host": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Host.",
+				Description: "主机",
 			},
 
 			"db_port": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Port.",
+				Description: "端口",
 			},
 
 			"db_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "`MYSQL`, `MSSQL`, `POSTGRE`, `ORACLE`, `CLICKHOUSE`, `TIDB`, `HIVE`, `PRESTO`.",
+				Description: "`MYSQL`，`MSSQL`，`POSTGRE`，`ORACLE`，`CLICKHOUSE`，`TIDB`，`HIVE`，`PRESTO`。",
 			},
 
 			"charset": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Charset.",
+				Description: "Charset。",
 			},
 
 			"db_user": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "User name.",
+				Description: "用户 名称",
 			},
 
 			"db_pwd": {
 				Required:    true,
 				Sensitive:   true,
 				Type:        schema.TypeString,
-				Description: "Password.",
+				Description: "密码",
 			},
 
 			"db_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Database name.",
+				Description: "Database 名称",
 			},
 
 			"source_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Datasource name in BI.",
+				Description: "Datasource 名称 在 BI。",
 			},
 
 			"project_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Project id.",
+				Description: "项目 ID",
 			},
 
 			"service_type": {
 				Optional:    true,
 				Default:     "{\"Type\":\"Own\"}",
 				Type:        schema.TypeString,
-				Description: "Own or Cloud, default: `Own`.",
+				Description: "Own 或 Cloud，默认值：`Own`。",
 			},
 
 			"catalog": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Catalog.",
+				Description: "Catalog。",
 			},
 
 			"data_origin": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Third-party datasource identification, this parameter can be ignored.",
+				Description: "Third-party datasource identification，此 参数 可以 是 ignored。",
 			},
 
 			"data_origin_project_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Third-party datasource project id, this parameter can be ignored.",
+				Description: "Third-party datasource 项目 ID，此 参数 可以 是 ignored。",
 			},
 
 			"data_origin_datasource_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Third-party datasource project id, this parameter can be ignored.",
+				Description: "Third-party datasource 项目 ID，此 参数 可以 是 ignored。",
 			},
 
 			"uniq_vpc_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Tencent cloud private network unified identity.",
+				Description: "Tencent 云 私有 网络 unified identity。",
 			},
 
 			"vpc_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Tencent cloud private network identity.",
+				Description: "Tencent 云 私有 网络 identity。",
 			},
 		},
 	}

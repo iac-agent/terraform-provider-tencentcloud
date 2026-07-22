@@ -19,23 +19,23 @@ func DataSourceTencentCloudWafCiphers() *schema.Resource {
 			"ciphers": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Encryption Suite InformationNote: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "Encryption Suite Information注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"version_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "TLS version IDNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "TLS 版本 ID注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"cipher_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Encryption Suite IDNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Encryption Suite ID注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"cipher_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Encryption Suite NameNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Encryption Suite Name注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -43,7 +43,7 @@ func DataSourceTencentCloudWafCiphers() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

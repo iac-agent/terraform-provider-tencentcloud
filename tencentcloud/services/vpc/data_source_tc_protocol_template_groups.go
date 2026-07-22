@@ -21,35 +21,35 @@ func DataSourceTencentCloudProtocolTemplateGroups() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of the protocol template group to query.",
+				Description: "名称 协议 template 组 到 查询。",
 			},
 			"id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the protocol template group to query.",
+				Description: "ID 协议 template 组 到 查询。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// Computed values
 			"group_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information list of the dedicated protocol template groups.",
+				Description: "Information 列表 dedicated 协议 template groups。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Id of the protocol template group.",
+							Description: "ID 的 协议 template 组。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of protocol template group.",
+							Description: "名称 协议 template 组。",
 						},
 						"template_ids": {
 							Type: schema.TypeList,
@@ -57,7 +57,7 @@ func DataSourceTencentCloudProtocolTemplateGroups() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "ID set of the protocol template.",
+							Description: "ID 集合 的 协议 template。",
 						},
 					},
 				},

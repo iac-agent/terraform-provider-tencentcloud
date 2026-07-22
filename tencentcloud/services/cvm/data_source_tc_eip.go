@@ -25,19 +25,19 @@ func DataSourceTencentCloudEip() *schema.Resource {
 			"filter": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "One or more name/value pairs to filter.",
+				Description: "One 或 more 名称/值 pairs 到 过滤器。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Key of the filter, valid keys: `address-id`,`address-name`,`address-ip`.",
+							Description: "键 的 过滤器，有效 keys: `地址-ID`,`地址-名称`,`地址-ip`。",
 						},
 						"values": {
 							Type:        schema.TypeList,
 							Required:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Value of the filter.",
+							Description: "值 的 过滤器。",
 						},
 					},
 				},
@@ -45,27 +45,27 @@ func DataSourceTencentCloudEip() *schema.Resource {
 			"include_arrears": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether the IP is arrears.",
+				Description: "是否IP 是 arrears。",
 			},
 			"include_blocked": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether the IP is blocked.",
+				Description: "是否IP 是 blocked。",
 			},
 			"id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "An EIP id indicate the uniqueness of a certain EIP,  which can be used for instance binding or network interface binding.",
+				Description: "An EIP ID indicate uniqueness 的 certain EIP， 其中 可以 是 用于instance binding 或 网络 interface binding。",
 			},
 			"public_ip": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "An public IP address for the EIP.",
+				Description: "An 公网 IP 地址 对于 EIP。",
 			},
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The status of the EIP, there are several status like `BIND`, `UNBIND`, and `BIND_ENI`.",
+				Description: "状态 EIP，there 是 several 状态 like `BIND`，`UNBIND`，和 `BIND_ENI`。",
 			},
 		},
 	}

@@ -19,35 +19,35 @@ func DataSourceTencentCloudSslDescribeHostUpdateRecord() *schema.Resource {
 			"certificate_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "New certificate ID.",
+				Description: "New 证书 ID",
 			},
 
 			"old_certificate_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Original certificate ID.",
+				Description: "Original 证书 ID",
 			},
 
 			"deploy_record_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Certificate deployment record listNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Certificate 部署 记录 listNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Record ID.",
+							Description: "Record ID。",
 						},
 						"cert_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "New certificate ID.",
+							Description: "New 证书 ID",
 						},
 						"old_cert_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Original certificate ID.",
+							Description: "Original 证书 ID",
 						},
 						"resource_types": {
 							Type: schema.TypeSet,
@@ -55,7 +55,7 @@ func DataSourceTencentCloudSslDescribeHostUpdateRecord() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "List of resource types.",
+							Description: "列表 资源 types。",
 						},
 						"regions": {
 							Type: schema.TypeSet,
@@ -63,22 +63,22 @@ func DataSourceTencentCloudSslDescribeHostUpdateRecord() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "List of regional deploymentNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "列表 regional deploymentNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Deployment state.",
+							Description: "Deployment state。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Deployment time.",
+							Description: "Deployment 时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last update time.",
+							Description: "Last 更新时间。",
 						},
 					},
 				},
@@ -87,7 +87,7 @@ func DataSourceTencentCloudSslDescribeHostUpdateRecord() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

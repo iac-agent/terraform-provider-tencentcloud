@@ -27,43 +27,43 @@ func ResourceTencentCloudCssWatermark() *schema.Resource {
 			"picture_url": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "watermark url.",
+				Description: "水印 URL",
 			},
 
 			"watermark_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "watermark name.",
+				Description: "水印 名称",
 			},
 
 			"x_position": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "x position of the picture.",
+				Description: "x position 的 picture。",
 			},
 
 			"y_position": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "y position of the picture.",
+				Description: "y position 的 picture。",
 			},
 
 			"width": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "width of the picture.",
+				Description: "宽度 的 picture。",
 			},
 
 			"height": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "height of the picture.",
+				Description: "高度 的 picture。",
 			},
 
 			"status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "status. 0: not used, 1: used.",
+				Description: "状态 0: 不 使用，1: 使用。",
 			},
 		},
 	}

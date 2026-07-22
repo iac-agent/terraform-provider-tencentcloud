@@ -26,28 +26,28 @@ func ResourceTencentCloudTcrCreateImageSignatureOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID",
 			},
 
 			"namespace_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "namespace name.",
+				Description: "命名空间 名称",
 			},
 
 			"repository_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "repository name.",
+				Description: "repository 名称",
 			},
 
 			"image_version": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "image version name.",
+				Description: "镜像 版本 名称",
 			},
 		},
 	}

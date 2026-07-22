@@ -19,115 +19,115 @@ func DataSourceTencentCloudWedataOpsAlarmMessages() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project id.",
+				Description: "项目 ID",
 			},
 
 			"start_time": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Starting Alarm time. format: yyyy-MM-dd HH:MM:ss.",
+				Description: "Starting Alarm 时间. 格式: yyyy-MM-dd HH:MM:ss。",
 			},
 
 			"end_time": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Specifies the Alarm end time in the format yyyy-MM-dd HH:MM:ss.",
+				Description: "指定Alarm 结束时间 在 格式 yyyy-MM-dd HH:MM:ss。",
 			},
 
 			"alarm_level": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Alarm level.",
+				Description: "Alarm 级别",
 			},
 
 			"alarm_recipient_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Alert recipient Id.",
+				Description: "Alert recipient ID。",
 			},
 
 			"time_zone": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "For incoming and returned filter time zone, default UTC+8.",
+				Description: "For incoming 和 返回 过滤器 时区，默认值 UTC+8。",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Alarm information list.",
+				Description: "Alarm 信息 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"page_number": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Page number.",
+							Description: "页码",
 						},
 						"page_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Pagination size.",
+							Description: "Pagination 大小。",
 						},
 						"total_count": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Total number of entries.",
+							Description: "Total 数量 entries。",
 						},
 						"total_page_number": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Total pages.",
+							Description: "总页数",
 						},
 						"items": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Alarm information list.",
+							Description: "Alarm 信息 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"alarm_message_id": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Alarm message Id.",
+										Description: "Alarm 消息 ID。",
 									},
 									"alarm_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Alarm time. the same Alarm may be sent multiple times, only the latest Alarm time is displayed.",
+										Description: "Alarm 时间. same Alarm 可能 是 sent 多个 times，仅 latest Alarm 时间 是 displayed。",
 									},
 									"task_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task name.",
+										Description: "任务 名称",
 									},
 									"task_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task ID.",
+										Description: "任务 ID",
 									},
 									"cur_run_date": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Instance data time of the task.",
+										Description: "实例 数据 时间 的 任务。",
 									},
 									"alarm_reason": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Indicates the Alarm cause.",
+										Description: "表示Alarm cause。",
 									},
 									"alarm_level": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Alarm level. 1. ordinary, 2. important, 3. critical.",
+										Description: "Alarm 级别 1. ordinary，2. important，3. critical。",
 									},
 									"alarm_rule_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Specifies the Id of the Alarm rule.",
+										Description: "指定Id 的 Alarm 规则。",
 									},
 									"alarm_ways": {
 										Type:        schema.TypeSet,
 										Required:    true,
-										Description: "Alarm channel specifies the notification methods: 1. mail, 2. sms, 3. wechat, 4. voice, 5. wecom, 6. Http, 7. wecom group, 8. lark group, 9. dingtalk group, 10. Slack group, 11. Teams group (default: 1. mail).",
+										Description: "Alarm channel 指定notification methods: 1. mail，2. sms，3. wechat，4. voice，5. wecom，6. Http，7. wecom 组，8. lark 组，9. dingtalk 组，10. Slack 组，11. Teams 组 (默认值：1. mail)。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -135,7 +135,7 @@ func DataSourceTencentCloudWedataOpsAlarmMessages() *schema.Resource {
 									"alarm_recipients": {
 										Type:        schema.TypeSet,
 										Required:    true,
-										Description: "Alarm recipient.",
+										Description: "Alarm recipient。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -150,7 +150,7 @@ func DataSourceTencentCloudWedataOpsAlarmMessages() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -29,7 +29,7 @@ func ResourceTencentCloudCynosdbClsDelivery() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Intance ID.",
+				Description: "实例ID。",
 			},
 
 			"cls_info_list": {
@@ -37,42 +37,42 @@ func ResourceTencentCloudCynosdbClsDelivery() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "Log shipping configuration.",
+				Description: "日志传送配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Log delivery area.",
+							Description: "日志传送区。",
 						},
 						"topic_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
 							ForceNew:    true,
-							Description: "Log topic ID.",
+							Description: "日志主题ID。",
 						},
 						"topic_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
 							ForceNew:    true,
-							Description: "Log topic name.",
+							Description: "日志主题名称。",
 						},
 						"group_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
 							ForceNew:    true,
-							Description: "Log set ID.",
+							Description: "日志集 ID。",
 						},
 						"group_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
 							ForceNew:    true,
-							Description: "Log set name.",
+							Description: "日志集名称。",
 						},
 					},
 				},
@@ -83,14 +83,14 @@ func ResourceTencentCloudCynosdbClsDelivery() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "Log type.",
+				Description: "日志类型。",
 			},
 
 			"running_status": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Delivery status. true: Enabled; false: Disabled.",
+				Description: "交货状态。 true：启用； false：禁用。",
 			},
 		},
 	}

@@ -29,53 +29,53 @@ func ResourceTencentCloudCdwpgInstance() *schema.Resource {
 			"instance_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance name.",
+				Description: "实例名称",
 			},
 
 			"zone": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Availability Zone.",
+				Description: "Availability 可用区",
 			},
 
 			"user_vpc_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "private network.",
+				Description: "私有 网络。",
 			},
 
 			"user_subnet_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "subnet.",
+				Description: "子网。",
 			},
 
 			"charge_properties": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "instance billing mode.",
+				Description: "实例 billing 模式",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"renew_flag": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "0-no automatic renewal,1-automatic renewalNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "0-无 automatic renewal,1-automatic renewal注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"time_span": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Time RangeNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Time Range注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"time_unit": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Time Unit,Generally h and mNote: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Time Unit,Generally h 和 m注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"charge_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Charge type, vaild values: PREPAID, POSTPAID_BY_HOUR.",
+							Description: "计费类型，vaild 值: PREPAID，POSTPAID_BY_HOUR。",
 						},
 					},
 				},
@@ -85,46 +85,46 @@ func ResourceTencentCloudCdwpgInstance() *schema.Resource {
 				Required:    true,
 				Sensitive:   true,
 				Type:        schema.TypeString,
-				Description: "cluster password.",
+				Description: "集群 密码",
 			},
 
 			"resources": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "resource information.",
+				Description: "资源 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"spec_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "resource name.",
+							Description: "资源名称",
 						},
 						"count": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "resource count.",
+							Description: "资源 count。",
 						},
 						"disk_spec": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Required:    true,
-							Description: "disk Information.",
+							Description: "磁盘 Information。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"disk_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "disk type.",
+										Description: "磁盘 类型",
 									},
 									"disk_size": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "disk size.",
+										Description: "磁盘 大小。",
 									},
 									"disk_count": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "disk count.",
+										Description: "磁盘 count。",
 									},
 								},
 							},
@@ -132,7 +132,7 @@ func ResourceTencentCloudCdwpgInstance() *schema.Resource {
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "resource type.",
+							Description: "资源类型",
 						},
 					},
 				},
@@ -141,13 +141,13 @@ func ResourceTencentCloudCdwpgInstance() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 			"product_version": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Version.",
+				Description: "版本",
 			},
 		},
 	}

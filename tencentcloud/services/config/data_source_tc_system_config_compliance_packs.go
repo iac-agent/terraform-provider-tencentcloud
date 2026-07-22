@@ -17,64 +17,64 @@ func DataSourceTencentCloudSystemConfigCompliancePacks() *schema.Resource {
 			"compliance_pack_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "System compliance pack list.",
+				Description: "System compliance pack 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"compliance_pack_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Compliance pack ID.",
+							Description: "Compliance pack ID。",
 						},
 						"compliance_pack_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Compliance pack name.",
+							Description: "Compliance pack 名称",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Compliance pack description.",
+							Description: "Compliance pack 描述",
 						},
 						"risk_level": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Risk level. Valid values: 1 (high risk), 2 (medium risk), 3 (low risk).",
+							Description: "风险等级 有效值：1 (high risk)，2 (medium risk)，3 (low risk)。",
 						},
 						"config_rules": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Config rules in the compliance pack.",
+							Description: "配置 规则 在 compliance pack。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"identifier": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Rule unique identifier.",
+										Description: "Rule 唯一 identifier。",
 									},
 									"rule_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Rule name.",
+										Description: "Rule 名称",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Rule description.",
+										Description: "Rule 描述",
 									},
 									"risk_level": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Rule risk level. Valid values: 1 (high risk), 2 (medium risk), 3 (low risk).",
+										Description: "Rule 风险等级 有效值：1 (high risk)，2 (medium risk)，3 (low risk)。",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Rule creation time.",
+										Description: "Rule 创建时间。",
 									},
 									"update_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Rule last update time.",
+										Description: "Rule last 更新时间。",
 									},
 								},
 							},
@@ -86,7 +86,7 @@ func DataSourceTencentCloudSystemConfigCompliancePacks() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

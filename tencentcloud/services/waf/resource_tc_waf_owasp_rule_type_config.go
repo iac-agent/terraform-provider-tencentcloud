@@ -28,66 +28,66 @@ func ResourceTencentCloudWafOwaspRuleTypeConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Domain name.",
+				Description: "域名 名称",
 			},
 
 			"type_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Rule type ID.",
+				Description: "Rule 类型 ID。",
 			},
 
 			"rule_type_status": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "The switch status of the rule type. valid values: 0 (disabled), 1 (enabled).",
+				Description: "switch 状态 规则 类型 有效值：0 (已禁用)，1 (已启用)。",
 			},
 
 			"rule_type_action": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Protection mode of the rule type. valid values: 0 (observation), 1 (intercept).",
+				Description: "Protection 模式 的 规则 类型 有效值：0 (observation)，1 (intercept)。",
 			},
 
 			"rule_type_level": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Protection level of the rule. valid values: 100 (loose), 200 (normal), 300 (strict), 400 (ultra-strict).",
+				Description: "Protection 级别 的 规则. 有效值：100 (loose)，200 (normal)，300 (strict)，400 (ultra-strict)。",
 			},
 
 			// computed
 			"rule_type_name": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Rule type name.",
+				Description: "Rule 类型 名称",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Rule type description.",
+				Description: "Rule 类型 描述",
 			},
 
 			"classification": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Data type category.",
+				Description: "Data 类型 category。",
 			},
 
 			"total_rule": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Specifies all rules under the rule type. always.",
+				Description: "指定all 规则 under 规则 类型 always。",
 			},
 
 			"active_rule": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Indicates the total number of rules enabled under the rule type.",
+				Description: "表示total 数量 规则 已启用 under 规则 类型",
 			},
 		},
 	}

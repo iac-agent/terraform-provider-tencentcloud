@@ -20,76 +20,76 @@ func DataSourceTencentCloudNatGateways() *schema.Resource {
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the VPC.",
+				Description: "ID VPC。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of the NAT gateway.",
+				Description: "名称 NAT 网关。",
 			},
 			"id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "ID of the NAT gateway.",
+				Description: "ID NAT 网关。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			// Computed values
 			"nats": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Information list of the dedicated NATs.",
+				Description: "Information 列表 dedicated NATs。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the NAT gateway.",
+							Description: "ID NAT 网关。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the VPC.",
+							Description: "ID VPC。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the NAT gateway.",
+							Description: "名称 NAT 网关。",
 						},
 						"state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "State of the NAT gateway.",
+							Description: "State 的 NAT 网关。",
 						},
 						"max_concurrent": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The upper limit of concurrent connection of NAT gateway, the available values include: 1000000,3000000,10000000. Default is 1000000.",
+							Description: "upper 限制 的 concurrent 连接 的 NAT 网关， 可用 值 include: 1000000,3000000,10000000. 默认为 1000000。",
 						},
 						"bandwidth": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The maximum public network output bandwidth of NAT gateway (unit: Mbps), the available values include: 20,50,100,200,500,1000,2000,5000. Default is 100.",
+							Description: "最大 公有 网络 output 带宽 的 NAT 网关 (单位: Mbps)， 可用 值 include: 20,50,100,200,500,1000,2000,5000. 默认为 100。",
 						},
 						"assigned_eip_set": {
 							Type:        schema.TypeList,
 							Computed:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "EIP IP address set bound to the gateway. The value of at least 1.",
+							Description: "EIP IP 地址 集合 bound 到 网关. 值 的 在 least 1。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create time of the NAT gateway.",
+							Description: "创建时间 的 NAT 网关。",
 						},
 						"tags": {
 							Type:        schema.TypeMap,
 							Computed:    true,
-							Description: "The available tags within this NAT gateway.",
+							Description: "可用 标签 within 此 NAT 网关。",
 						},
 					},
 				},

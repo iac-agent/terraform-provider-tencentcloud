@@ -27,20 +27,20 @@ func ResourceTencentCloudConfigAlarmPolicy() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Alarm policy name.",
+				Description: "Alarm 策略 名称",
 			},
 
 			"type": {
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Event Type 1: Resource Non Compliance Event.",
+				Description: "Event 类型 1: Resource Non Compliance Event。",
 			},
 
 			"event_scope": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Event scope. Valid values: 1 (current account), 2 (multi-account).",
+				Description: "Event 范围 有效值：1 (当前 账号)，2 (multi-账号)。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -49,7 +49,7 @@ func ResourceTencentCloudConfigAlarmPolicy() *schema.Resource {
 			"risk_level": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Risk level list. Valid values: 1 (high risk), 2 (medium risk), 3 (low risk).",
+				Description: "风险等级 列表. 有效值：1 (high risk)，2 (medium risk)，3 (low risk)。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -58,25 +58,25 @@ func ResourceTencentCloudConfigAlarmPolicy() *schema.Resource {
 			"notice_time": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Notification time range, format: HH:mm:ss~HH:mm:ss (e.g. 09:30:00~23:30:00).",
+				Description: "Notification 时间 范围，格式: HH:mm:ss~HH:mm:ss (e.g. 09:30:00~23:30:00)。",
 			},
 
 			"notification_mechanism": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Notification mechanism.",
+				Description: "Notification mechanism。",
 			},
 
 			"status": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Policy status. Valid values: 1 (enabled), 2 (disabled).",
+				Description: "Policy 状态 有效值：1 (已启用)，2 (已禁用)。",
 			},
 
 			"notice_period": {
 				Type:        schema.TypeList,
 				Required:    true,
-				Description: "Notification weekday list, 1-7 represent Monday to Sunday.",
+				Description: "Notification weekday 列表，1-7 represent Monday 到 Sunday。",
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
@@ -85,14 +85,14 @@ func ResourceTencentCloudConfigAlarmPolicy() *schema.Resource {
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Policy description.",
+				Description: "Policy 描述",
 			},
 
 			// Computed
 			"alarm_policy_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Alarm policy unique ID.",
+				Description: "Alarm 策略 唯一 ID。",
 			},
 		},
 	}

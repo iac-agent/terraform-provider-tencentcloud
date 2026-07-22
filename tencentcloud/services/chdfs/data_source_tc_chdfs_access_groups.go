@@ -19,50 +19,50 @@ func DataSourceTencentCloudChdfsAccessGroups() *schema.Resource {
 			"vpc_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "get groups belongs to the vpc id, must set but only can use one of VpcId and OwnerUin to get the groups.",
+				Description: "get groups belongs 到 私有网络 ID，必须 集合 但 仅 可以 使用 一个 的 VpcId 和 OwnerUin 到 get groups。",
 			},
 
 			"owner_uin": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "get groups belongs to the owner uin, must set but only can use one of VpcId and OwnerUin to get the groups.",
+				Description: "get groups belongs 到 所有者 uin，必须 集合 但 仅 可以 使用 一个 的 VpcId 和 OwnerUin 到 get groups。",
 			},
 
 			"access_groups": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "access group list.",
+				Description: "访问 组 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"access_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "access group id.",
+							Description: "访问 组 ID。",
 						},
 						"access_group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "access group name.",
+							Description: "访问 组名称",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "access group description.",
+							Description: "访问 组 描述",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "create time.",
+							Description: "创建时间。",
 						},
 						"vpc_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "vpc network type(1:CVM, 2:BM 1.0).",
+							Description: "vpc 网络 类型(1:CVM，2:BM 1.0)。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC ID.",
+							Description: "私有网络 ID",
 						},
 					},
 				},
@@ -71,7 +71,7 @@ func DataSourceTencentCloudChdfsAccessGroups() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

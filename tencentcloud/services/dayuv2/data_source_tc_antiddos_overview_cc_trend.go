@@ -20,31 +20,31 @@ func DataSourceTencentCloudAntiddosOverviewCcTrend() *schema.Resource {
 			"period": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Statistical granularity, values [300 (5 minutes), 3600 (hours), 86400 (days)].",
+				Description: "Statistical granularity，值 [300 (5 minutes)，3600 (hours)，86400 (days)]。",
 			},
 
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "StartTime.",
+				Description: "StartTime。",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "EndTime.",
+				Description: "EndTime。",
 			},
 
 			"metric_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Indicator, values [inqps (peak total requests, dropqps (peak attack requests)), incount (number of requests), dropcount (number of attacks)].",
+				Description: "Indicator，值 [inqps (peak 总数 requests，dropqps (peak attack requests))，incount (数量 requests)，dropcount (数量 attacks)]。",
 			},
 
 			"business": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Dayu sub product code (bgpip represents advanced defense IP; net represents professional version of advanced defense IP).",
+				Description: "Dayu sub product 代码 (bgpip 表示 advanced defense IP; net 表示 professional 版本 的 advanced defense IP)。",
 			},
 
 			"ip_list": {
@@ -53,7 +53,7 @@ func DataSourceTencentCloudAntiddosOverviewCcTrend() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "resource id list.",
+				Description: "资源 ID 列表。",
 			},
 
 			"data": {
@@ -62,13 +62,13 @@ func DataSourceTencentCloudAntiddosOverviewCcTrend() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "Data.",
+				Description: "Data。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

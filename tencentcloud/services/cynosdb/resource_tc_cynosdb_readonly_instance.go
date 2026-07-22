@@ -22,31 +22,31 @@ func ResourceTencentCloudCynosdbReadonlyInstance() *schema.Resource {
 			Type:        schema.TypeString,
 			Required:    true,
 			ForceNew:    true,
-			Description: "Cluster ID which the readonly instance belongs to.",
+			Description: "只读实例所属的集群ID。",
 		},
 		"instance_name": {
 			Type:        schema.TypeString,
 			Required:    true,
 			ForceNew:    true,
-			Description: "Name of instance.",
+			Description: "实例名称。",
 		},
 		"force_delete": {
 			Type:        schema.TypeBool,
 			Optional:    true,
 			Default:     false,
-			Description: "Indicate whether to delete readonly instance directly or not. Default is false. If set true, instance will be deleted instead of staying recycle bin. Note: works for both `PREPAID` and `POSTPAID_BY_HOUR` cluster.",
+			Description: "是否直接删除只读实例。默认为 false。如果设置为true，实例将被删除而不是保留在回收站中。注意：适用于“PREPAID”和“POSTPAID_BY_HOUR”集群。",
 		},
 		"vpc_id": {
 			Type:        schema.TypeString,
 			Optional:    true,
 			Computed:    true,
-			Description: "ID of the VPC.",
+			Description: "专有网络ID。",
 		},
 		"subnet_id": {
 			Type:        schema.TypeString,
 			Optional:    true,
 			Computed:    true,
-			Description: "ID of the subnet within this VPC.",
+			Description: "该VPC内子网的ID。",
 		},
 	}
 	basic := TencentCynosdbInstanceBaseInfo()

@@ -25,13 +25,13 @@ func ResourceTencentCloudReservedInstance() *schema.Resource {
 			"config_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Configuration ID of the reserved instance.",
+				Description: "Configuration ID reserved 实例。",
 			},
 			"instance_count": {
 				Type:         schema.TypeInt,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateIntegerMin(1),
-				Description:  "Number of reserved instances to be purchased.",
+				Description:  "数量 reserved 实例 到 是 purchased。",
 			},
 			"reserved_instance_name": {
 				Type:     schema.TypeString,
@@ -45,17 +45,17 @@ func ResourceTencentCloudReservedInstance() *schema.Resource {
 			"start_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Start time of the RI.",
+				Description: "开始时间 的 RI。",
 			},
 			"end_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Expiry time of the RI.",
+				Description: "Expiry 时间 的 RI。",
 			},
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Status of the RI at the time of purchase.",
+				Description: "状态 RI 在 时间 的 purchase。",
 			},
 		},
 	}

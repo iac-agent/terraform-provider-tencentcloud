@@ -19,7 +19,7 @@ func DataSourceTencentCloudCvmImportImageOs() *schema.Resource {
 			"import_image_os_list_supported": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Supported operating system types of imported images.",
+				Description: "Supported operating 系统 types 的 imported images。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"windows": {
@@ -28,7 +28,7 @@ func DataSourceTencentCloudCvmImportImageOs() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Supported Windows OS Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Supported Windows OS 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"linux": {
 							Type: schema.TypeSet,
@@ -36,7 +36,7 @@ func DataSourceTencentCloudCvmImportImageOs() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Supported Linux OS Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Supported Linux OS 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -45,13 +45,13 @@ func DataSourceTencentCloudCvmImportImageOs() *schema.Resource {
 			"import_image_os_version_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Supported operating system versions of imported images.",
+				Description: "Supported operating 系统 versions 的 imported images。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"os_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Operating system type.",
+							Description: "Operating 系统 类型",
 						},
 						"os_versions": {
 							Type: schema.TypeSet,
@@ -59,7 +59,7 @@ func DataSourceTencentCloudCvmImportImageOs() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Supported operating system versions.",
+							Description: "Supported operating 系统 versions。",
 						},
 						"architecture": {
 							Type: schema.TypeSet,
@@ -67,7 +67,7 @@ func DataSourceTencentCloudCvmImportImageOs() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Supported operating system architecture.",
+							Description: "Supported operating 系统 architecture。",
 						},
 					},
 				},
@@ -76,7 +76,7 @@ func DataSourceTencentCloudCvmImportImageOs() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -2404,27 +2404,27 @@ func tkeCvmState() map[string]*schema.Schema {
 		"instance_id": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "ID of the cvm.",
+			Description: "ID cvm。",
 		},
 		"instance_role": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "Role of the cvm.",
+			Description: "角色 的 cvm。",
 		},
 		"instance_state": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "State of the cvm.",
+			Description: "State 的 cvm。",
 		},
 		"failed_reason": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "Information of the cvm when it is failed.",
+			Description: "Information 的 cvm 当 它 是 failed。",
 		},
 		"lan_ip": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "LAN IP of the cvm.",
+			Description: "LAN IP 的 cvm。",
 		},
 	}
 }
@@ -2434,38 +2434,38 @@ func tkeCvmState() map[string]*schema.Schema {
 //		"user_name": {
 //			Type:        schema.TypeString,
 //			Computed:    true,
-//			Description: "User name of account.",
+//			Description: "User 名称 的 account.",
 //		},
 //		"password": {
 //			Type:        schema.TypeString,
 //			Computed:    true,
-//			Description: "Password of account.",
+//			Description: "Password 的 account.",
 //		},
 //		"certification_authority": {
 //			Type:        schema.TypeString,
 //			Computed:    true,
-//			Description: "The certificate used for access.",
+//			Description: "证书 使用 对于 访问.",
 //		},
 //		"cluster_external_endpoint": {
 //			Type:        schema.TypeString,
 //			Computed:    true,
-//			Description: "External network address to access.",
+//			Description: "External 网络 地址 到 访问.",
 //		},
 //		"domain": {
 //			Type:        schema.TypeString,
 //			Computed:    true,
-//			Description: "Domain name for access.",
+//			Description: "Domain 名称 对于 访问.",
 //		},
 //		"pgw_endpoint": {
 //			Type:        schema.TypeString,
 //			Computed:    true,
-//			Description: "The Intranet address used for access.",
+//			Description: "Intranet 地址 使用 对于 访问.",
 //		},
 //		"security_policy": {
 //			Type:        schema.TypeList,
 //			Computed:    true,
 //			Elem:        &schema.Schema{Type: schema.TypeString},
-//			Description: "Access policy.",
+//			Description: "Access 策略.",
 //		},
 //	}
 //}
@@ -2477,26 +2477,26 @@ func TkeCvmCreateInfo() map[string]*schema.Schema {
 			Optional:    true,
 			ForceNew:    true,
 			Default:     1,
-			Description: "Number of cvm.",
+			Description: "数量 cvm。",
 		},
 		"availability_zone": {
 			Type:        schema.TypeString,
 			ForceNew:    true,
 			Optional:    true,
-			Description: "Indicates which availability zone will be used.",
+			Description: "表示which availability 可用区 将 是 使用。",
 		},
 		"instance_name": {
 			Type:        schema.TypeString,
 			ForceNew:    true,
 			Optional:    true,
 			Default:     "sub machine of tke",
-			Description: "Name of the CVMs.",
+			Description: "名称 CVMs。",
 		},
 		"instance_type": {
 			Type:        schema.TypeString,
 			ForceNew:    true,
 			Required:    true,
-			Description: "Specified types of CVM instance.",
+			Description: "Specified types 的 CVM 实例。",
 		},
 		// payment
 		"instance_charge_type": {
@@ -2505,7 +2505,7 @@ func TkeCvmCreateInfo() map[string]*schema.Schema {
 			ForceNew:     true,
 			Default:      svccvm.CVM_CHARGE_TYPE_POSTPAID,
 			ValidateFunc: tccommon.ValidateAllowedStringValue(TKE_INSTANCE_CHARGE_TYPE),
-			Description:  "The charge type of instance. Valid values are `PREPAID` and `POSTPAID_BY_HOUR`. The default is `POSTPAID_BY_HOUR`. Note: TencentCloud International only supports `POSTPAID_BY_HOUR`, `PREPAID` instance will not terminated after cluster deleted, and may not allow to delete before expired.",
+			Description:  "charge 类型 实例. 有效 值 是 `PREPAID` 和 `POSTPAID_BY_HOUR`. 默认为 `POSTPAID_BY_HOUR`. 注意: TencentCloud International 仅 支持 `POSTPAID_BY_HOUR`，`PREPAID` 实例 将 不 terminated after 集群 删除，和 可能 不 allow 到 delete before expired。",
 		},
 		"instance_charge_type_prepaid_period": {
 			Type:         schema.TypeInt,
@@ -2513,7 +2513,7 @@ func TkeCvmCreateInfo() map[string]*schema.Schema {
 			ForceNew:     true,
 			Default:      1,
 			ValidateFunc: tccommon.ValidateAllowedIntValue(svccvm.CVM_PREPAID_PERIOD),
-			Description:  "The tenancy (time unit is month) of the prepaid instance. NOTE: it only works when instance_charge_type is set to `PREPAID`. Valid values are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.",
+			Description:  "tenancy (时间 单位 是 month) 的 prepaid 实例. NOTE: 它 仅 works 当 instance_charge_type 是 集合 到 `PREPAID`. 有效 值 是 `1`，`2`，`3`，`4`，`5`，`6`，`7`，`8`，`9`，`10`，`11`，`12`，`24`，`36`。",
 		},
 		"instance_charge_type_prepaid_renew_flag": {
 			Type:         schema.TypeString,
@@ -2521,14 +2521,14 @@ func TkeCvmCreateInfo() map[string]*schema.Schema {
 			ForceNew:     true,
 			Computed:     true,
 			ValidateFunc: tccommon.ValidateAllowedStringValue(svccvm.CVM_PREPAID_RENEW_FLAG),
-			Description:  "Auto renewal flag. Valid values: `NOTIFY_AND_AUTO_RENEW`: notify upon expiration and renew automatically, `NOTIFY_AND_MANUAL_RENEW`: notify upon expiration but do not renew automatically, `DISABLE_NOTIFY_AND_MANUAL_RENEW`: neither notify upon expiration nor renew automatically. Default value: `NOTIFY_AND_MANUAL_RENEW`. If this parameter is specified as `NOTIFY_AND_AUTO_RENEW`, the instance will be automatically renewed on a monthly basis if the account balance is sufficient. NOTE: it only works when instance_charge_type is set to `PREPAID`.",
+			Description:  "自动续费标识 有效值：`NOTIFY_AND_AUTO_RENEW`: notify upon expiration 和 renew automatically，`NOTIFY_AND_MANUAL_RENEW`: notify upon expiration 但 do 不 renew automatically，`DISABLE_NOTIFY_AND_MANUAL_RENEW`: neither notify upon expiration nor renew automatically. 默认值：`NOTIFY_AND_MANUAL_RENEW`. 如果 此 参数 是 指定 作为 `NOTIFY_AND_AUTO_RENEW`， 实例 将 是 automatically renewed 在 monthly basis 如果 账号 balance 是 sufficient. NOTE: 它 仅 works 当 instance_charge_type 是 集合 到 `PREPAID`。",
 		},
 		"subnet_id": {
 			Type:         schema.TypeString,
 			ForceNew:     true,
 			Required:     true,
 			ValidateFunc: tccommon.ValidateStringLengthInRange(4, 100),
-			Description:  "Private network ID.",
+			Description:  "Private 网络 ID。",
 		},
 		"system_disk_type": {
 			Type:         schema.TypeString,
@@ -2536,7 +2536,7 @@ func TkeCvmCreateInfo() map[string]*schema.Schema {
 			Optional:     true,
 			Default:      svcas.SYSTEM_DISK_TYPE_CLOUD_PREMIUM,
 			ValidateFunc: tccommon.ValidateAllowedStringValue(svcas.SYSTEM_DISK_ALLOW_TYPE),
-			Description:  "System disk type. For more information on limits of system disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952). Valid values: `LOCAL_BASIC`: local disk, `LOCAL_SSD`: local SSD disk, `CLOUD_SSD`: SSD, `CLOUD_PREMIUM`: Premium Cloud Storage. NOTE: `CLOUD_BASIC`, `LOCAL_BASIC` and `LOCAL_SSD` are deprecated.",
+			Description:  "System 磁盘 类型 For more 信息 在 limits 的 系统 磁盘 types，see [Storage Overview](https://intl.云.tencent.com/document/product/213/4952). 有效值：`LOCAL_BASIC`: 本地 磁盘，`LOCAL_SSD`: 本地 SSD 磁盘，`CLOUD_SSD`: SSD，`CLOUD_PREMIUM`: Premium Cloud Storage. NOTE: `CLOUD_BASIC`，`LOCAL_BASIC` 和 `LOCAL_SSD` 是 已弃用",
 		},
 		"system_disk_size": {
 			Type:         schema.TypeInt,
@@ -2544,14 +2544,14 @@ func TkeCvmCreateInfo() map[string]*schema.Schema {
 			Optional:     true,
 			Default:      50,
 			ValidateFunc: tccommon.ValidateIntegerInRange(20, 1024),
-			Description:  "Volume of system disk in GB. Default is `50`.",
+			Description:  "Volume 的 系统 磁盘 （GB）。 默认为 `50`。",
 		},
 		"data_disk": {
 			Type:        schema.TypeList,
 			ForceNew:    true,
 			Optional:    true,
 			MaxItems:    11,
-			Description: "Configurations of data disk.",
+			Description: "数据盘配置",
 			Elem: &schema.Resource{
 				Schema: map[string]*schema.Schema{
 					"disk_type": {
@@ -2560,55 +2560,55 @@ func TkeCvmCreateInfo() map[string]*schema.Schema {
 						Optional:     true,
 						Default:      svcas.SYSTEM_DISK_TYPE_CLOUD_PREMIUM,
 						ValidateFunc: tccommon.ValidateAllowedStringValue(svcas.SYSTEM_DISK_ALLOW_TYPE),
-						Description:  "Types of disk, available values: `CLOUD_PREMIUM` and `CLOUD_SSD` and `CLOUD_HSSD` and `CLOUD_TSSD`.",
+						Description:  "Types 的 磁盘，可用值：`CLOUD_PREMIUM` 和 `CLOUD_SSD` 和 `CLOUD_HSSD` 和 `CLOUD_TSSD`。",
 					},
 					"disk_size": {
 						Type:        schema.TypeInt,
 						ForceNew:    true,
 						Optional:    true,
 						Default:     0,
-						Description: "Volume of disk in GB. Default is `0`.",
+						Description: "Volume 的 磁盘 （GB）。 默认为 `0`。",
 					},
 					"snapshot_id": {
 						Type:        schema.TypeString,
 						ForceNew:    true,
 						Optional:    true,
-						Description: "Data disk snapshot ID.",
+						Description: "Data 磁盘 快照 ID。",
 					},
 					"encrypt": {
 						Type:        schema.TypeBool,
 						Optional:    true,
-						Description: "Indicates whether to encrypt data disk, default `false`.",
+						Description: "表示是否encrypt 数据 磁盘，默认值 `false`。",
 					},
 					"kms_key_id": {
 						Type:        schema.TypeString,
 						Optional:    true,
-						Description: "ID of the custom CMK in the format of UUID or `kms-abcd1234`. This parameter is used to encrypt cloud disks.",
+						Description: "ID 自定义 CMK 在 格式 的 UUID 或 `kms-abcd1234`. 此 参数 是 用于encrypt 云 disks。",
 					},
 					"file_system": {
 						Type:        schema.TypeString,
 						ForceNew:    true,
 						Optional:    true,
-						Description: "File system, e.g. `ext3/ext4/xfs`.",
+						Description: "File 系统，e.g. `ext3/ext4/xfs`。",
 					},
 					"auto_format_and_mount": {
 						Type:        schema.TypeBool,
 						ForceNew:    true,
 						Optional:    true,
 						Default:     false,
-						Description: "Indicate whether to auto format and mount or not. Default is `false`.",
+						Description: "Indicate 是否auto 格式 和 mount 或 不. 默认为 `false`。",
 					},
 					"mount_target": {
 						Type:        schema.TypeString,
 						ForceNew:    true,
 						Optional:    true,
-						Description: "Mount target.",
+						Description: "挂载目标",
 					},
 					"disk_partition": {
 						Type:        schema.TypeString,
 						ForceNew:    true,
 						Optional:    true,
-						Description: "The name of the device or partition to mount.",
+						Description: "名称 device 或 分区 到 mount。",
 					},
 				},
 			},
@@ -2619,24 +2619,24 @@ func TkeCvmCreateInfo() map[string]*schema.Schema {
 			Optional:     true,
 			Default:      svcas.INTERNET_CHARGE_TYPE_TRAFFIC_POSTPAID_BY_HOUR,
 			ValidateFunc: tccommon.ValidateAllowedStringValue(svcas.INTERNET_CHARGE_ALLOW_TYPE),
-			Description:  "Charge types for network traffic. Available values include `TRAFFIC_POSTPAID_BY_HOUR`.",
+			Description:  "Charge types 对于 网络 流量. Available 值 include `TRAFFIC_POSTPAID_BY_HOUR`。",
 		},
 		"internet_max_bandwidth_out": {
 			Type:        schema.TypeInt,
 			Optional:    true,
 			Default:     0,
-			Description: "Max bandwidth of Internet access in Mbps. Default is 0.",
+			Description: "Max 带宽 的 Internet 访问 在 Mbps. 默认为 0。",
 		},
 		"bandwidth_package_id": {
 			Type:        schema.TypeString,
 			Optional:    true,
-			Description: "bandwidth package id. if user is standard user, then the bandwidth_package_id is needed, or default has bandwidth_package_id.",
+			Description: "带宽 包 ID. 如果 用户 是 standard 用户，then bandwidth_package_id 是 needed，或 默认值 has bandwidth_package_id。",
 		},
 		"public_ip_assigned": {
 			Type:        schema.TypeBool,
 			ForceNew:    true,
 			Optional:    true,
-			Description: "Specify whether to assign an Internet IP address.",
+			Description: "指定是否assign 公网 IP 地址",
 		},
 		"password": {
 			Type:         schema.TypeString,
@@ -2644,7 +2644,7 @@ func TkeCvmCreateInfo() map[string]*schema.Schema {
 			Optional:     true,
 			Sensitive:    true,
 			ValidateFunc: tccommon.ValidateAsConfigPassword,
-			Description:  "Password to access, should be set if `key_ids` not set.",
+			Description:  "密码 到 访问，should 是 集合 如果 `key_ids` 不 集合。",
 		},
 		"key_ids": {
 			MaxItems:    1,
@@ -2652,46 +2652,46 @@ func TkeCvmCreateInfo() map[string]*schema.Schema {
 			ForceNew:    true,
 			Optional:    true,
 			Elem:        &schema.Schema{Type: schema.TypeString},
-			Description: "ID list of keys, should be set if `password` not set.",
+			Description: "ID 列表 keys，should 是 集合 如果 `密码` 不 集合。",
 		},
 		"security_group_ids": {
 			Type:        schema.TypeList,
 			ForceNew:    true,
 			Optional:    true,
 			Elem:        &schema.Schema{Type: schema.TypeString},
-			Description: "Security groups to which a CVM instance belongs.",
+			Description: "Security groups 到 其中 CVM 实例 belongs。",
 		},
 		"enhanced_security_service": {
 			Type:        schema.TypeBool,
 			ForceNew:    true,
 			Optional:    true,
 			Default:     true,
-			Description: "To specify whether to enable cloud security service. Default is TRUE.",
+			Description: "To 指定是否enable 云 安全 服务. 默认为 TRUE。",
 		},
 		"enhanced_monitor_service": {
 			Type:        schema.TypeBool,
 			ForceNew:    true,
 			Optional:    true,
 			Default:     true,
-			Description: "To specify whether to enable cloud monitor service. Default is TRUE.",
+			Description: "To 指定是否enable 云 监控 服务. 默认为 TRUE。",
 		},
 		"user_data": {
 			Type:        schema.TypeString,
 			ForceNew:    true,
 			Optional:    true,
-			Description: "ase64-encoded User Data text, the length limit is 16KB.",
+			Description: "ase64-encoded 用户 Data text， 长度 限制 是 16KB。",
 		},
 		"cam_role_name": {
 			Type:        schema.TypeString,
 			ForceNew:    true,
 			Optional:    true,
-			Description: "CAM role name authorized to access.",
+			Description: "被授权访问的 CAM 角色名称",
 		},
 		"hostname": {
 			Type:     schema.TypeString,
 			ForceNew: true,
 			Optional: true,
-			Description: "The host name of the attached instance. " +
+			Description: "主机 名称 的 attached 实例." +
 				"Dot (.) and dash (-) cannot be used as the first and last characters of HostName and cannot be used consecutively. " +
 				"Windows example: The length of the name character is [2, 15], letters (capitalization is not restricted), numbers and dashes (-) are allowed, dots (.) are not supported, and not all numbers are allowed. " +
 				"Examples of other types (Linux, etc.): The character length is [2, 60], and multiple dots are allowed. There is a segment between the dots. Each segment allows letters (with no limitation on capitalization), numbers and dashes (-).",
@@ -2702,13 +2702,13 @@ func TkeCvmCreateInfo() map[string]*schema.Schema {
 			Optional:    true,
 			MaxItems:    1,
 			Elem:        &schema.Schema{Type: schema.TypeString},
-			Description: "Disaster recover groups to which a CVM instance belongs. Only support maximum 1.",
+			Description: "Disaster recover groups 到 其中 CVM 实例 belongs. Only support 最大 1。",
 		},
 		"img_id": {
 			Type:         schema.TypeString,
 			Optional:     true,
 			ValidateFunc: tccommon.ValidateImageID,
-			Description:  "The valid image id, format of img-xxx.",
+			Description:  "有效 镜像 ID，格式 的 img-xxx。",
 		},
 		// InstanceAdvancedSettingsOverrides
 		"desired_pod_num": {
@@ -2716,13 +2716,13 @@ func TkeCvmCreateInfo() map[string]*schema.Schema {
 			ForceNew: true,
 			Optional: true,
 			Default:  DefaultDesiredPodNum,
-			Description: "Indicate to set desired pod number in node. valid when enable_customized_pod_cidr=true, " +
+			Description: "Indicate 到 集合 desired pod 数量 在 节点. 有效 当 enable_customized_pod_cidr=true," +
 				"and it override `[globe_]desired_pod_num` for current node. Either all the fields `desired_pod_num` or none.",
 		},
 		"hpc_cluster_id": {
 			Type:        schema.TypeString,
 			Optional:    true,
-			Description: "Id of cvm hpc cluster.",
+			Description: "ID 的 cvm hpc 集群。",
 		},
 	}
 }

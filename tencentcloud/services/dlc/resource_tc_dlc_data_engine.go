@@ -28,105 +28,105 @@ func ResourceTencentCloudDlcDataEngine() *schema.Resource {
 			"engine_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The engine type. Valid values: `spark` and `presto`.",
+				Description: "引擎 类型 有效值：`spark` 和 `presto`。",
 			},
 
 			"data_engine_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The name of the virtual cluster.",
+				Description: "名称 virtual 集群。",
 			},
 
 			"cluster_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The cluster type. Valid values: `spark_private`, `presto_private`, `presto_cu`, and `spark_cu`.",
+				Description: "集群类型 有效值：`spark_private`，`presto_private`，`presto_cu`，和 `spark_cu`。",
 			},
 
 			"mode": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The billing mode. Valid values: `0` (shared engine), `1` (pay-as-you-go), and `2` (monthly subscription).",
+				Description: "billing 模式 有效值：`0` (shared 引擎)，`1` (pay-作为-您-go)，和 `2` (monthly subscription)。",
 			},
 
 			"auto_resume": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to automatically start the clusters.",
+				Description: "是否automatically start clusters。",
 			},
 
 			"size": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Cluster size. Required when updating.",
+				Description: "Cluster 大小. 必填 当 updating。",
 			},
 
 			"min_clusters": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The minimum number of clusters.",
+				Description: "最小clusters。",
 			},
 
 			"max_clusters": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The maximum number of clusters.",
+				Description: "最大clusters。",
 			},
 
 			"default_data_engine": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether it is the default virtual cluster.",
+				Description: "是否为the 默认值 virtual 集群。",
 			},
 
 			"cidr_block": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The VPC CIDR block.",
+				Description: "VPC CIDR block。",
 			},
 
 			"message": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The description.",
+				Description: "描述",
 			},
 
 			"pay_mode": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The pay mode. Valid value: `0` (postpaid, default) and `1` (prepaid) (currently not available).",
+				Description: "付费模式 有效 值: `0` (postpaid，默认值) 和 `1` (prepaid) (currently 不 可用)。",
 			},
 
 			"time_span": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The usage duration of the resource. Postpaid: Fill in 3,600 as a fixed figure; prepaid: fill in a figure equal to or bigger than 1 which means purchasing resources for one month. The maximum figure is not bigger than 120. The default value is 1.",
+				Description: "usage 时长 的 资源. Postpaid: Fill 在 3,600 作为 fixed figure; prepaid: fill 在 figure equal 到 或 bigger 比 1 其中 表示 purchasing resources 对于 一个 month. 最大 figure 是 不 bigger 比 120. 默认值为 1。",
 			},
 
 			"time_unit": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The unit of the resource period. Valid values: `s` (default) for the postpaid mode and `m` for the prepaid mode.",
+				Description: "单位 的 资源 周期 有效值：`s` (默认值) 对于 postpaid 模式 和 `m` 对于 prepaid 模式",
 			},
 
 			"auto_renew": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The auto-renewal status of the resource. For the postpaid mode, no renewal is required, and the value is fixed to `0`. For the prepaid mode, valid values are `0` (manual), `1` (auto), and `2` (no renewal). If this parameter is set to `0` for a key account in the prepaid mode, auto-renewal applies. It defaults to `0`.",
+				Description: "auto-renewal 状态 资源. For postpaid 模式，无 renewal 为必填项，和 值 是 fixed 到 `0`. For prepaid 模式，有效 值 是 `0` (manual)，`1` (auto)，和 `2` (无 renewal). 如果 此 参数 是 集合 到 `0` 对于 键 账号 在 prepaid 模式，auto-renewal applies. It 默认为 `0`。",
 			},
 
 			"auto_suspend": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to automatically suspend clusters. Valid values: `false` (default, no) and `true` (yes).",
+				Description: "是否automatically suspend clusters. 有效值：`false` (默认值，无) 和 `true` (yes)。",
 			},
 
 			"crontab_resume_suspend": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to enable scheduled start and suspension of clusters. Valid values: `0` (disable) and `1` (enable). Note: This policy and the auto-suspension policy are mutually exclusive.",
+				Description: "是否enable scheduled start 和 suspension 的 clusters. 有效值：`0` (disable) 和 `1` (启用). 注意: 此 策略 和 auto-suspension 策略 是 mutually exclusive。",
 			},
 
 			"crontab_resume_suspend_strategy": {
@@ -134,23 +134,23 @@ func ResourceTencentCloudDlcDataEngine() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "The complex policy for scheduled start and suspension, including the start/suspension time and suspension policy.",
+				Description: "complex 策略 对于 scheduled start 和 suspension，包括 start/suspension 时间 和 suspension 策略。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resume_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Scheduled starting time, such as 8: 00 a.m. on Monday and Wednesday.",
+							Description: "Scheduled starting 时间，such 作为 8: 00 .m. 在 Monday 和 Wednesday。",
 						},
 						"suspend_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Scheduled suspension time, such as 8: 00 p.m. on Monday and Wednesday.",
+							Description: "Scheduled suspension 时间，such 作为 8: 00 p.m. 在 Monday 和 Wednesday。",
 						},
 						"suspend_strategy": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The suspension setting. Valid values: `0` (suspension after task end, default) and `1` (force suspension).",
+							Description: "suspension setting. 有效值：`0` (suspension after 任务 end，默认值) 和 `1` (force suspension)。",
 						},
 					},
 				},
@@ -160,51 +160,51 @@ func ResourceTencentCloudDlcDataEngine() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The type of tasks to be executed by the engine, which defaults to SQL. Valid values: `SQL` and `BATCH`.",
+				Description: "类型 tasks 到 是 executed 通过 引擎，其中 默认为 SQL. 有效值：`SQL` 和 `BATCH`。",
 			},
 
 			"max_concurrency": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The max task concurrency of a cluster, which defaults to 5.",
+				Description: "max 任务 并发 的 集群，其中 默认为 5。",
 			},
 
 			"tolerable_queue_time": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The task queue time limit, which defaults to 0. When the actual queue time exceeds the value set here, scale-out may be triggered. Setting this parameter to 0 represents that scale-out may be triggered immediately after a task queues up.",
+				Description: "任务 queue 时间 限制，其中 默认为 0. 当 actual queue 时间 exceeds 值 集合 here，scale-out 可能 是 triggered. Setting 此 参数 到 0 表示 该 scale-out 可能 是 triggered immediately after 任务 queues up。",
 			},
 
 			"auto_suspend_time": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The cluster auto-suspension time, which defaults to 10 min.",
+				Description: "集群 auto-suspension 时间，其中 默认为 10 min。",
 			},
 
 			"resource_type": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The resource type. Valid values: `Standard_CU` (standard) and `Memory_CU` (memory).",
+				Description: "资源类型 有效值：`Standard_CU` (standard) 和 `Memory_CU` (内存)。",
 			},
 
 			"data_engine_config_pairs": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "The advanced configurations of clusters.",
+				Description: "advanced configurations 的 clusters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"config_item": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration items.",
+							Description: "Configuration items。",
 						},
 						"config_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Configuration value.",
+							Description: "Configuration 值",
 						},
 					},
 				},
@@ -214,25 +214,25 @@ func ResourceTencentCloudDlcDataEngine() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The version name of cluster image, such as SuperSQL-P 1.1 and SuperSQL-S 3.2. If no value is passed in, a cluster is created using the latest image version.",
+				Description: "版本 名称 集群 镜像，such 作为 SuperSQL-P 1.1 和 SuperSQL-S 3.2. 如果 无 值 是 passed 在， 集群 是 创建 使用 latest 镜像 版本",
 			},
 
 			"main_cluster_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The primary cluster, which is specified when a failover cluster is created.",
+				Description: "primary 集群，其中 是 指定 当 failover 集群 是 创建。",
 			},
 
 			"elastic_switch": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to enable the scaling feature for a monthly subscribed Spark job cluster.",
+				Description: "是否enable scaling 功能 对于 monthly subscribed Spark 作业 集群。",
 			},
 
 			"elastic_limit": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The upper limit (in CUs) for scaling of the monthly subscribed Spark job cluster.",
+				Description: "upper 限制 (在 CUs) 对于 scaling 的 monthly subscribed Spark 作业 集群。",
 			},
 
 			"session_resource_template": {
@@ -240,44 +240,44 @@ func ResourceTencentCloudDlcDataEngine() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "The session resource configuration template for a Spark job cluster.",
+				Description: "会话 资源 配置 template 对于 Spark 作业 集群。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"driver_size": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The driver size. Valid values for the standard resource type: `small`, `medium`, `large`, and `xlarge`. Valid values for the memory resource type: `m.small`, `m.medium`, `m.large`, and `m.xlarge`.",
+							Description: "驱动 大小. 有效 值 对于 standard 资源类型: `small`，`medium`，`large`，和 `xlarge`. 有效 值 对于 内存 资源类型: `m.small`，`m.medium`，`m.large`，和 `m.xlarge`。",
 						},
 						"executor_size": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "The executor size. Valid values for the standard resource type: `small`, `medium`, `large`, and `xlarge`. Valid values for the memory resource type: `m.small`, `m.medium`, `m.large`, and `m.xlarge`.",
+							Description: "executor 大小. 有效 值 对于 standard 资源类型: `small`，`medium`，`large`，和 `xlarge`. 有效 值 对于 内存 资源类型: `m.small`，`m.medium`，`m.large`，和 `m.xlarge`。",
 						},
 						"executor_nums": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The executor count. The minimum value is 1 and the maximum value is less than the cluster specification.",
+							Description: "executor count. 最小 值 是 1 和 最大 值 是 less 比 集群 规格。",
 						},
 						"executor_max_numbers": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The maximum executor count (in dynamic mode). The minimum value is 1 and the maximum value is less than the cluster specification. If you set `ExecutorMaxNumbers` to a value smaller than that of `ExecutorNums`, the value of `ExecutorMaxNumbers` is automatically changed to that of `ExecutorNums`.",
+							Description: "最大 executor count (在 动态 模式). 最小 值 是 1 和 最大 值 是 less 比 集群 规格. 如果 您 集合 `ExecutorMaxNumbers` 到 值 smaller 比 该 的 `ExecutorNums`， 值 的 `ExecutorMaxNumbers` 是 automatically changed 到 该 的 `ExecutorNums`。",
 						},
 						"running_time_parameters": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "The running time parameters of the session resource configuration template for a Spark job cluster.",
+							Description: "running 时间 参数 的 会话 资源 配置 template 对于 Spark 作业 集群。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"config_item": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Configuration items.",
+										Description: "Configuration items。",
 									},
 									"config_value": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Configuration value.",
+										Description: "Configuration 值",
 									},
 								},
 							},
@@ -290,28 +290,28 @@ func ResourceTencentCloudDlcDataEngine() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Automatic authorization.",
+				Description: "Automatic authorization。",
 			},
 
 			"engine_network_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Engine network ID.",
+				Description: "Engine 网络 ID。",
 			},
 
 			"engine_generation": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Generation of the engine. SuperSQL means the supersql engine while Native means the standard engine. It is SuperSQL by default.",
+				Description: "Generation 的 引擎. SuperSQL 表示 supersql 引擎 while Native 表示 standard 引擎. It 是 SuperSQL 通过 默认值。",
 			},
 
 			// computed
 			"data_engine_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Data engine ID.",
+				Description: "Data 引擎 ID。",
 			},
 		},
 	}

@@ -19,33 +19,33 @@ func DataSourceTencentCloudPostgresqlZones() *schema.Resource {
 			"zone_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "AZ information set.",
+				Description: "AZ 信息 集合。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "AZ abbreviation.",
+							Description: "AZ abbreviation。",
 						},
 						"zone_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "AZ name.",
+							Description: "AZ 名称",
 						},
 						"zone_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "AZ number.",
+							Description: "AZ 数量。",
 						},
 						"zone_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Availability status. Valid values:`UNAVAILABLE`.`AVAILABLE`.`SELLOUT`.`SUPPORTMODIFYONLY` (supports configuration adjustment).",
+							Description: "Availability 状态 有效 值:`UNAVAILABLE`.`AVAILABLE`.`SELLOUT`.`SUPPORTMODIFYONLY` (支持 配置 adjustment)。",
 						},
 						"zone_support_ipv6": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether the AZ supports IPv6 address access.",
+							Description: "是否AZ 支持 IPv6 地址 访问。",
 						},
 						"standby_zone_set": {
 							Type: schema.TypeSet,
@@ -53,7 +53,7 @@ func DataSourceTencentCloudPostgresqlZones() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "AZs that can be used as standby when this AZ is primaryNote: this field may return `null`, indicating that no valid values can be obtained.",
+							Description: "AZs 该 可以 是 使用 作为 standby 当 此 AZ 是 primaryNote: 此 字段 可能 返回 `null`，indicating 该 无 有效 值 可以 是 获取。",
 						},
 					},
 				},
@@ -62,7 +62,7 @@ func DataSourceTencentCloudPostgresqlZones() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -20,61 +20,61 @@ func DataSourceTencentCloudAPIGatewayAPIApps() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 
 			"api_app_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Api app ID.",
+				Description: "Api app ID。",
 			},
 
 			"api_app_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Api app name.",
+				Description: "Api app 名称",
 			},
 
 			"api_app_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of ApiApp.",
+				Description: "列表 ApiApp。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"api_app_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ApiApp ID.",
+							Description: "ApiApp ID。",
 						},
 						"api_app_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ApiApp Name.",
+							Description: "ApiApp 名称",
 						},
 						"api_app_key": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ApiApp key.",
+							Description: "ApiApp 键",
 						},
 						"api_app_secret": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ApiApp secret.",
+							Description: "ApiApp secret。",
 						},
 						"created_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ApiApp create time.",
+							Description: "ApiApp 创建时间。",
 						},
 						"modified_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ApiApp modified time.",
+							Description: "ApiApp modified 时间。",
 						},
 						"api_app_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ApiApp description.",
+							Description: "ApiApp 描述",
 						},
 					},
 				},

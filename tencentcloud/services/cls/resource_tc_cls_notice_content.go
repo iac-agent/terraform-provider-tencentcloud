@@ -26,48 +26,48 @@ func ResourceTencentCloudClsNoticeContent() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Notice content name.",
+				Description: "注意内容名称。",
 			},
 
 			"type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Template content language. 0: Chinese 1: English.",
+				Description: "模板内容语言。 0：中文 1：英文。",
 			},
 
 			"notice_contents": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Template detailed configuration.",
+				Description: "模板详细配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Channel type. Email: Email; Sms: SMS; WeChat: WeChat; Phone: Telephone; WeCom: Enterprise WeChat; DingTalk: DingTalk; Lark: Feishu; Http: Custom callback.",
+							Description: "通道类型。电子邮件： 电子邮件；短信：短信；微信：微信；电话：电话； WeCom：企业微信；钉钉：钉钉；云雀：肺鼠； Http：自定义回调。",
 						},
 						"trigger_content": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Alarm triggered notification content template.",
+							Description: "警报触发的通知内容模板。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"title": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Notification content template title information. Some notification channel types do not support 'title', please refer to the Tencent Cloud Console page.",
+										Description: "通知内容模板标题信息。部分通知渠道类型不支持“title”，请参考腾讯云控制台页面。",
 									},
 									"content": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Notification content template body information.",
+										Description: "通知内容模板主体信息。",
 									},
 									"headers": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Request headers: In HTTP requests, request headers contain additional information sent by the client to the server, such as user agent, authorization credentials, expected response format, etc. Only `custom callback` supports this configuration.",
+										Description: "请求标头：在 HTTP 请求中，请求标头包含客户端发送到服务器的附加信息，例如用户代理、授权凭证、预期响应格式等。只有“自定义回调”支持此配置。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -79,23 +79,23 @@ func ResourceTencentCloudClsNoticeContent() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Template for Alarm Recovery Notification Content.",
+							Description: "警报恢复通知内容模板。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"title": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Notification content template title information. Some notification channel types do not support 'title', please refer to the Tencent Cloud Console page.",
+										Description: "通知内容模板标题信息。部分通知渠道类型不支持“title”，请参考腾讯云控制台页面。",
 									},
 									"content": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Notification content template body information.",
+										Description: "通知内容模板主体信息。",
 									},
 									"headers": {
 										Type:        schema.TypeSet,
 										Optional:    true,
-										Description: "Request headers: In HTTP requests, request headers contain additional information sent by the client to the server, such as user agent, authorization credentials, expected response format, etc. Only `custom callback` supports this configuration.",
+										Description: "请求标头：在 HTTP 请求中，请求标头包含客户端发送到服务器的附加信息，例如用户代理、授权凭证、预期响应格式等。只有“自定义回调”支持此配置。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},

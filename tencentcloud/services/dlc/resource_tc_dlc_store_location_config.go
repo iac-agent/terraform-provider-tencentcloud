@@ -24,13 +24,13 @@ func ResourceTencentCloudDlcStoreLocationConfig() *schema.Resource {
 			"store_location": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The calculation results are stored in the cos path, such as: cosn://bucketname/.",
+				Description: "calculation results 是 stored 在 cos 路径，such 作为: cosn://bucketname/。",
 			},
 
 			"enable": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Whether to enable advanced settings. 0 means no while 1 means yes.",
+				Description: "是否enable advanced settings. 0 表示 无 while 1 表示 yes。",
 			},
 		},
 	}

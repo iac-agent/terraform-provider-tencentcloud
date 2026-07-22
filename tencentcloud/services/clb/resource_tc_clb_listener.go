@@ -33,61 +33,61 @@ func ResourceTencentCloudClbListener() *schema.Resource {
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 60),
-				Description:  "ID of the CLB.",
+				Description: "CLB的ID。",
 			},
 			"listener_name": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 60),
-				Description:  "Name of the CLB listener, and available values can only be Chinese characters, English letters, numbers, underscore and hyphen '-'.",
+				Description: "CLB监听器名称，取值只能是汉字、英文字母、数字、下划线和连字符“-”。",
 			},
 			"port": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateIntegerInRange(1, 65535),
-				Description:  "Port of the CLB listener.",
+				Description: "CLB监听端口。",
 			},
 			"protocol": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CLB_LISTENER_PROTOCOL),
-				Description:  "Type of protocol within the listener. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`, `TCP_SSL` and `QUIC`.",
+				Description: "侦听器内的协议类型。有效值：“TCP”、“UDP”、“HTTP”、“HTTPS”、“TCP_SSL”和“QUIC”。",
 			},
 			"health_check_switch": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Indicates whether health check is enabled.",
+				Description: "是否开启健康检查。",
 			},
 			"health_check_time_out": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateIntegerInRange(2, 60),
-				Description:  "Response timeout of health check. Valid value ranges: [2~60] sec. Default is 2 sec. Response timeout needs to be less than check interval. NOTES: Only supports listeners of `TCP`,`UDP`,`TCP_SSL` protocol.",
+				Description: "健康检查响应超时。有效值范围：[2~60]秒。默认值为 2 秒。响应超时需要小于检查间隔。注意：仅支持 `TCP`、`UDP`、`TCP_SSL` 协议的监听器。",
 			},
 			"health_check_interval_time": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateIntegerInRange(2, 300),
-				Description:  "Interval time of health check. Valid value ranges: [2~300] sec. and the default is 5 sec. NOTES: TCP/UDP/TCP_SSL listener allows direct configuration, HTTP/HTTPS listener needs to be configured in `tencentcloud_clb_listener_rule`.",
+				Description: "健康检查的间隔时间。有效值范围：[2~300]秒。默认为 5 秒。注意：TCP/UDP/TCP_SSL监听可以直接配置，HTTP/HTTPS监听需要在tencentcloud_clb_listener_rule中配置。",
 			},
 			"health_check_health_num": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateIntegerInRange(2, 10),
-				Description:  "Health threshold of health check, and the default is `3`. If a success result is returned for the health check for 3 consecutive times, the backend CVM is identified as healthy. The value range is 2-10. NOTES: TCP/UDP/TCP_SSL listener allows direct configuration, HTTP/HTTPS listener needs to be configured in tencentcloud_clb_listener_rule.",
+				Description: "健康检查的健康阈值，默认为`3`。如果连续3次健康检查返回成功结果，则判定后端云服务器健康。取值范围为2-10。注意：TCP/UDP/TCP_SSL监听可以直接配置，HTTP/HTTPS监听需要在tencentcloud_clb_listener_rule中配置。",
 			},
 			"health_check_unhealth_num": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateIntegerInRange(2, 10),
-				Description: "Unhealthy threshold of health check, and the default is `3`. " +
+				Description: "健康检查不健康阈值，默认为`3`。" +
 					"If a success result is returned for the health check 3 consecutive times, " +
 					"the CVM is identified as unhealthy. The value range is [2-10]. " +
 					"NOTES: TCP/UDP/TCP_SSL listener allows direct configuration, " +
@@ -98,13 +98,13 @@ func ResourceTencentCloudClbListener() *schema.Resource {
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(HEALTH_CHECK_TYPE),
-				Description:  "Protocol used for health check. Valid values: `CUSTOM`, `TCP`, `HTTP`,`HTTPS`, `PING`, `GRPC`.",
+				Description: "用于健康检查的协议。有效值：“CUSTOM”、“TCP”、“HTTP”、“HTTPS”、“PING”、“GRPC”。",
 			},
 			"health_check_port": {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateIntegerInRange(1, 65535),
-				Description: "The health check port is the port of the backend service by default. " +
+				Description: "健康检查端口默认为后端服务的端口。" +
 					"Unless you want to specify a specific port, it is recommended to leave it blank. " +
 					"Only applicable to TCP/UDP listener.",
 			},
@@ -112,7 +112,7 @@ func ResourceTencentCloudClbListener() *schema.Resource {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(HTTP_VERSION),
-				Description: "The HTTP version of the backend service. When the value of `health_check_type` of " +
+				Description: "后端服务的 HTTP 版本。当`health_check_type`的值为" +
 					"the health check protocol is `HTTP`, this field is required. " +
 					"Valid values: `HTTP/1.0`, `HTTP/1.1`.",
 			},
@@ -120,7 +120,7 @@ func ResourceTencentCloudClbListener() *schema.Resource {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateIntegerInRange(1, 31),
-				Description: "HTTP health check code of TCP listener, Valid value ranges: [1~31]. When the value of `health_check_type` of " +
+				Description: "TCP监听器的HTTP健康检查代码，有效值范围：[1~31]。当`health_check_type`的值为" +
 					"the health check protocol is `HTTP`, this field is required. Valid values: `1`, `2`, `4`, `8`, `16`. " +
 					"`1` means http_1xx, `2` means http_2xx, `4` means http_3xx, `8` means http_4xx, `16` means http_5xx." +
 					"If you want multiple return codes to indicate health, need to add the corresponding values.",
@@ -128,26 +128,26 @@ func ResourceTencentCloudClbListener() *schema.Resource {
 			"health_check_http_path": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "HTTP health check path of TCP listener.",
+				Description: "TCP监听的HTTP健康检查路径。",
 			},
 			"health_check_http_domain": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "HTTP health check domain of TCP listener.",
+				Description: "TCP监听的HTTP健康检查域。",
 			},
 			"health_check_http_method": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CLB_HTTP_METHOD),
-				Description:  "HTTP health check method of TCP listener. Valid values: `HEAD`, `GET`.",
+				Description: "TCP监听的HTTP健康检查方法。有效值：“HEAD”、“GET”。",
 			},
 			"health_check_context_type": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CONTEX_TYPE),
-				Description: "Health check protocol. When the value of `health_check_type` of the health check protocol is `CUSTOM`, " +
+				Description: "健康检查协议。当健康检查协议的“health_check_type”值为“CUSTOM”时，" +
 					"this field is required, which represents the input format of the health check. " +
 					"Valid values: `HEX`, `TEXT`.",
 			},
@@ -155,7 +155,7 @@ func ResourceTencentCloudClbListener() *schema.Resource {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(0, 500),
-				Description: "It represents the content of the request sent by the health check. " +
+				Description: "它代表健康检查发送的请求的内容。" +
 					"When the value of `health_check_type` of the health check protocol is `CUSTOM`, " +
 					"this field is required. Only visible ASCII characters are allowed and the maximum length is 500. " +
 					"When `health_check_context_type` value is `HEX`, " +
@@ -166,7 +166,7 @@ func ResourceTencentCloudClbListener() *schema.Resource {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(0, 500),
-				Description: "It represents the result returned by the health check. " +
+				Description: "它代表健康检查返回的结果。" +
 					"When the value of `health_check_type` of the health check protocol is `CUSTOM`, " +
 					"this field is required. Only ASCII visible characters are allowed and the maximum length is 500. " +
 					"When `health_check_context_type` value is `HEX`, " +
@@ -178,45 +178,45 @@ func ResourceTencentCloudClbListener() *schema.Resource {
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1}),
-				Description:  "Specifies the type of health check source IP. `0` (default): CLB VIP. `1`: 100.64 IP range.",
+				Description: "指定健康检查源IP的类型。 `0`（默认）：CLB VIP。 `1`：100.64 IP 范围。",
 			},
 			"certificate_ssl_mode": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"multi_cert_info"},
 				ValidateFunc:  tccommon.ValidateAllowedStringValue(CERT_SSL_MODE),
-				Description:   "Type of certificate. Valid values: `UNIDIRECTIONAL`, `MUTUAL`. NOTES: Only supports listeners of `HTTPS` and `TCP_SSL` protocol and must be set when it is available.",
+				Description: "证书类型。有效值：“单向”、“相互”。注意：仅支持“HTTPS”和“TCP_SSL”协议的监听器，并且必须在可用时进行设置。",
 			},
 			"certificate_id": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"multi_cert_info"},
-				Description:   "ID of the server certificate. NOTES: Only supports listeners of `HTTPS` and `TCP_SSL` protocol and must be set when it is available.",
+				Description: "服务器证书的 ID。注意：仅支持“HTTPS”和“TCP_SSL”协议的监听器，并且必须在可用时进行设置。",
 			},
 			"certificate_ca_id": {
 				Type:          schema.TypeString,
 				Optional:      true,
 				ConflictsWith: []string{"multi_cert_info"},
-				Description:   "ID of the client certificate. NOTES: Only supports listeners of `HTTPS` and `TCP_SSL` protocol and must be set when the ssl mode is `MUTUAL`.",
+				Description: "客户端证书的ID。注意：仅支持`HTTPS`和`TCP_SSL`协议的监听，且ssl模式为`MUTUAL`时必须设置。",
 			},
 			"multi_cert_info": {
 				Type:          schema.TypeList,
 				Optional:      true,
 				MaxItems:      1,
 				ConflictsWith: []string{"certificate_ssl_mode", "certificate_id", "certificate_ca_id"},
-				Description:   "Certificate information. You can specify multiple server-side certificates with different algorithm types. This parameter is only applicable to HTTPS listeners with the SNI feature not enabled. Certificate and MultiCertInfo cannot be specified at the same time.",
+				Description: "证书信息。您可以指定多个具有不同算法类型的服务器端证书。该参数仅适用于未开启SNI功能的HTTPS监听。不能同时指定Certificate 和MultiCertInfo。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ssl_mode": {
 							Type:         schema.TypeString,
 							Required:     true,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CERT_SSL_MODE),
-							Description:  "Authentication type. Values: UNIDIRECTIONAL (one-way authentication), MUTUAL (two-way authentication).",
+							Description: "认证类型。值：UNIDIRECTIONAL（单向身份验证）、MUTUAL（双向身份验证）。",
 						},
 						"cert_id_list": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "List of server certificate ID.",
+							Description: "服务器证书 ID 列表。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 					},
@@ -226,108 +226,108 @@ func ResourceTencentCloudClbListener() *schema.Resource {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateIntegerInRange(30, 3600),
-				Description:  "Time of session persistence within the CLB listener. NOTES: Available when scheduler is specified as `WRR`, and not available when listener protocol is `TCP_SSL`. NOTES: TCP/UDP/TCP_SSL listener allows direct configuration, HTTP/HTTPS listener needs to be configured in `tencentcloud_clb_listener_rule`.",
+				Description: "CLB 侦听器中的会话持续时间。注意：当调度程序指定为“WRR”时可用，当侦听器协议为“TCP_SSL”时不可用。注意：TCP/UDP/TCP_SSL监听可以直接配置，HTTP/HTTPS监听需要在tencentcloud_clb_listener_rule中配置。",
 			},
 			"scheduler": {
 				Type:         schema.TypeString,
 				Default:      CLB_LISTENER_SCHEDULER_WRR,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(CLB_LISTENER_SCHEDULER),
-				Description:  "Scheduling method of the CLB listener, and available values are 'WRR' and 'LEAST_CONN'. The default is 'WRR'. NOTES: The listener of `HTTP` and `HTTPS` protocol additionally supports the `IP Hash` method. NOTES: TCP/UDP/TCP_SSL listener allows direct configuration, HTTP/HTTPS listener needs to be configured in `tencentcloud_clb_listener_rule`.",
+				Description: "CLB监听的调度方式，可用值为'WRR'和'LEAST_CONN'。默认值为“WRR”。注意：`HTTP`和`HTTPS`协议的监听器还支持`IP Hash`方法。注意：TCP/UDP/TCP_SSL监听可以直接配置，HTTP/HTTPS监听需要在tencentcloud_clb_listener_rule中配置。",
 			},
 			"sni_switch": {
 				Type:        schema.TypeBool,
 				ForceNew:    true,
 				Optional:    true,
-				Description: "Indicates whether SNI is enabled, and only supported with protocol `HTTPS`. If enabled, you can set a certificate for each rule in `tencentcloud_clb_listener_rule`, otherwise all rules have a certificate.",
+				Description: "指示是否启用 SNI，并且仅支持协议“HTTPS”。如果启用，则可以为tencentcloud_clb_listener_rule中的每条规则设置证书，否则所有规则都有证书。",
 			},
 			"target_type": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{CLB_TARGET_TYPE_NODE, CLB_TARGET_TYPE_TARGETGROUP, CLB_TARGET_TYPE_TARGETGROUP_V2}),
-				Description:  "Backend target type. Valid values: `NODE`, `TARGETGROUP`, `TARGETGROUP-V2`. `NODE` means to bind ordinary nodes, `TARGETGROUP` means to bind target group. NOTES: TCP/UDP/TCP_SSL listener must configuration, HTTP/HTTPS listener needs to be configured in tencentcloud_clb_listener_rule.",
+				Description: "后端目标类型。有效值：“NODE”、“TARGETGROUP”、“TARGETGROUP-V2”。 `NODE` 表示绑定普通节点，`TARGETGROUP` 表示绑定目标组。注意：TCP/UDP/TCP_SSL监听必须配置，HTTP/HTTPS监听需要在tencentcloud_clb_listener_rule中配置。",
 			},
 			"session_type": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{CLB_SESSION_TYPE_NORMAL, CLB_SESSION_TYPE_QUIC}),
-				Description:  "Session persistence type. Valid values: `NORMAL`: the default session persistence type; `QUIC_CID`: session persistence by QUIC connection ID. The `QUIC_CID` value can only be configured in UDP listeners. If this field is not specified, the default session persistence type will be used.",
+				Description: "会话持续类型。有效值：`NORMAL`：默认会话持久类型； `QUIC_CID`：通过 QUIC 连接 ID 进行会话持久化。 “QUIC_CID”值只能在 UDP 侦听器中配置。如果不指定该字段，则使用默认的会话保持类型。",
 			},
 			"keepalive_enable": {
 				Type:        schema.TypeInt,
 				Computed:    true,
 				Optional:    true,
-				Description: "Whether to enable a persistent connection. This parameter is applicable only to HTTP and HTTPS listeners. Valid values: 0 (disable; default value) and 1 (enable).",
+				Description: "是否启用持久连接。该参数仅适用于HTTP和HTTPS监听。有效值：0（禁用；默认值）和 1（启用）。",
 			},
 			"end_port": {
 				Type:        schema.TypeInt,
 				ForceNew:    true,
 				Computed:    true,
 				Optional:    true,
-				Description: "This parameter is used to specify the end port and is required when creating a port range listener. Only one member can be passed in when inputting the `Ports` parameter, which is used to specify the start port. If you want to try the port range feature, please [submit a ticket](https://console.cloud.tencent.com/workorder/category).",
+				Description: "该参数用于指定结束端口，创建端口范围监听时需要此参数。输入“Ports”参数时只能传入一个成员，用于指定起始端口。如果您想尝试端口范围功能，请【提交工单】(https://console.云.tencent.com/workorder/category)。",
 			},
 			"h2c_switch": {
 				Type:        schema.TypeBool,
 				ForceNew:    true,
 				Computed:    true,
 				Optional:    true,
-				Description: "Enable H2C switch for intranet HTTP listener.",
+				Description: "启用H2C内网HTTP监听开关。",
 			},
 			"snat_enable": {
 				Type:        schema.TypeBool,
 				Computed:    true,
 				Optional:    true,
-				Description: "Whether to enable SNAT.",
+				Description: "是否启用SNAT。",
 			},
 			"deregister_target_rst": {
 				Type:        schema.TypeBool,
 				Computed:    true,
 				Optional:    true,
-				Description: "Whether to send the TCP RST packet to the client when unbinding a real server. This parameter is applicable to TCP listeners only.",
+				Description: "解绑真实服务器时是否发送TCP RST包给客户端。该参数仅适用于TCP监听。",
 			},
 			"idle_connect_timeout": {
 				Type:        schema.TypeInt,
 				Computed:    true,
 				Optional:    true,
-				Description: "Connection idle timeout period (in seconds). It's only available to TCP listeners. Value range: 300-900 for shared and dedicated instances; 300-2000 for LCU-supported CLB instances. It defaults to 900. To set a period longer than 2000 seconds (up to 3600 seconds). Please submit a work order for processing.",
+				Description: "连接空闲超时时间（以秒为单位）。它仅适用于 TCP 侦听器。值范围：共享实例和专用实例为300-900；对于 LCU 支持的 CLB 实例，为 300-2000。默认为 900。设置长于 2000 秒的周期（最多 3600 秒）。请提交工单进行处理。",
 			},
 			"reschedule_target_zero_weight": {
 				Type:        schema.TypeBool,
 				Computed:    true,
 				Optional:    true,
-				Description: "The rescheduling function, with a weight of 0 as a switch, triggers rescheduling when the weight of the backend server is set to 0. Only supported by TCP/UDP listeners.",
+				Description: "重新调度功能，以权重0为开关，当后端服务器的权重设置为0时，触发重新调度。仅TCP/UDP监听支持。",
 			},
 			"reschedule_unhealthy": {
 				Type:        schema.TypeBool,
 				Computed:    true,
 				Optional:    true,
-				Description: "Rescheduling function, health check exception switch. Enabling this switch triggers rescheduling when a backend server fails a health check. Supported only by TCP/UDP listeners.",
+				Description: "重新调度功能、健康检查异常开关。启用此开关会在后端服务器健康检查失败时触发重新调度。仅 TCP/UDP 侦听器支持。",
 			},
 			"reschedule_expand_target": {
 				Type:        schema.TypeBool,
 				Computed:    true,
 				Optional:    true,
-				Description: "The rescheduling function, a switch for scaling backend services, triggers rescheduling when backend servers are added or removed. Only supported by TCP/UDP listeners.",
+				Description: "重新调度功能是后端服务伸缩的开关，当后端服务器增加或减少时，会触发重新调度。仅受 TCP/UDP 侦听器支持。",
 			},
 			"reschedule_start_time": {
 				Type:        schema.TypeInt,
 				Computed:    true,
 				Optional:    true,
-				Description: "Reschedule the trigger start time, with a value ranging from 0 to 3600 seconds. Only supported by TCP/UDP listeners.",
+				Description: "重新安排触发开始时间，值范围为 0 到 3600 秒。仅受 TCP/UDP 侦听器支持。",
 			},
 			"reschedule_interval": {
 				Type:        schema.TypeInt,
 				Computed:    true,
 				Optional:    true,
-				Description: "Rescheduled trigger duration, ranging from 0 to 3600 seconds. Supported only by TCP/UDP listeners.",
+				Description: "重新安排的触发持续时间，范围从 0 到 3600 秒。仅 TCP/UDP 侦听器支持。",
 			},
 			//computed
 			"listener_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "ID of this CLB listener.",
+				Description: "该CLB监听器的ID。",
 			},
 		},
 	}

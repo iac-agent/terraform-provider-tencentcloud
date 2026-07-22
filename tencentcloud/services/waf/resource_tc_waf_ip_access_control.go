@@ -29,60 +29,60 @@ func ResourceTencentCloudWafIpAccessControl() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Waf instance Id.",
+				Description: "Waf 实例 ID。",
 			},
 			"domain": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Domain.",
+				Description: "域名",
 			},
 			"edition": {
 				Required:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(EDITION_TYPE),
-				Description:  "Waf edition. clb-waf means clb-waf, sparta-waf means saas-waf.",
+				Description:  "Waf edition. clb-waf 表示 clb-waf，sparta-waf 表示 saas-waf。",
 			},
 			"items": {
 				Required:    true,
 				Type:        schema.TypeSet,
-				Description: "Ip parameter list.",
+				Description: "Ip 参数 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ip": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "IP address.",
+							Description: "IP 地址",
 						},
 						"note": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Note info.",
+							Description: "注意 info。",
 						},
 						"action": {
 							Type:         schema.TypeInt,
 							Required:     true,
 							ValidateFunc: tccommon.ValidateAllowedIntValue([]int{40, 42}),
-							Description:  "Action value 40 is whitelist, 42 is blacklist.",
+							Description:  "操作 值 40 是 whitelist，42 是 blacklist。",
 						},
 						"valid_ts": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Effective date, with a second level timestamp value. For example, 1680570420 represents 2023-04-04 09:07:00; 2019571199 means permanently effective.",
+							Description: "Effective date，使用 second 级别 时间戳 值 For 示例，1680570420 表示 2023-04-04 09:07:00; 2019571199 表示 permanently effective。",
 						},
 						"valid_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Valid status.",
+							Description: "有效 状态",
 						},
 						"source": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Source.",
+							Description: "来源",
 						},
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Id.",
+							Description: "ID。",
 						},
 					},
 				},

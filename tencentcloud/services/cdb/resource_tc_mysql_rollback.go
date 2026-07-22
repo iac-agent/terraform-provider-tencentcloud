@@ -26,39 +26,39 @@ func ResourceTencentCloudMysqlRollback() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Cloud database instance ID.",
+				Description: "云数据库实例ID。",
 			},
 
 			"strategy": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Rollback strategy. Available values are: table, db, full; the default value is full. table- Extremely fast rollback mode, only import the backup and binlog of the selected table level, if there is a cross-table operation, and the associated table is not selected at the same time, the rollback will fail. In this mode, the parameter Databases must be empty; db- Quick mode, only import the backup and binlog of the selected library level, if there is a cross-database operation, and the associated library is not selected at the same time, the rollback will fail; full- normal rollback mode, the backup and binlog of the entire instance will be imported, at a slower rate.",
+				Description: "回滚策略。可用值有：表、db、full；默认值是满的。 表- 极速回滚模式，仅导入所选表级别的备份和binlog，如果存在跨表操作，且未同时选择关联表，则回滚将失败。该模式下，参数Databases必须为空； db- Quick模式，只导入所选库级别的备份和binlog，如果有跨库操作，且没有同时选择关联库，则回滚会失败； full-普通回滚模式，会导入整个实例的备份和binlog，速度较慢。",
 			},
 
 			"rollback_time": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Database rollback time, the time format is: yyyy-mm-dd hh:mm:ss.",
+				Description: "数据库回滚时间，时间格式为：yyyy-mm-dd hh:mm:ss。",
 			},
 
 			"databases": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "The database information to be archived, indicating that the entire database is archived.",
+				Description: "待归档的数据库信息，表示整个数据库已归档。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The original database name before rollback.",
+							Description: "回滚前的原始数据库名称。",
 						},
 						"new_database_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The new database name after rollback.",
+							Description: "回滚后的新数据库名称。",
 						},
 					},
 				},
@@ -68,29 +68,29 @@ func ResourceTencentCloudMysqlRollback() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "The database table information to be rolled back, indicating that the file is rolled back by table.",
+				Description: "待回滚的数据库表信息，表示该文件是按表回滚的。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Database name.",
+							Description: "数据库名称。",
 						},
 						"table": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Database table details.",
+							Description: "数据库表详细信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"table_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The original database table name before rollback.",
+										Description: "回滚前的原始数据库表名。",
 									},
 									"new_table_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "New database table name after rollback.",
+										Description: "回滚后新的数据库表名。",
 									},
 								},
 							},

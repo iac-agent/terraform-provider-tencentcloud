@@ -19,13 +19,13 @@ func DataSourceTencentCloudVpcUsedIpAddress() *schema.Resource {
 			"vpc_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "VPC instance ID.",
+				Description: "VPC 实例 ID",
 			},
 
 			"subnet_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Subnet instance ID.",
+				Description: "子网实例 ID",
 			},
 
 			"ip_addresses": {
@@ -34,39 +34,39 @@ func DataSourceTencentCloudVpcUsedIpAddress() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "IPs to query.",
+				Description: "IPs 到 查询。",
 			},
 
 			"ip_address_states": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Information of resources bound with the queried IPs Note: This parameter may return null, indicating that no valid values can be obtained.",
+				Description: "Information 的 resources bound 使用 queried IPs 注意: 此 参数 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC instance ID.",
+							Description: "VPC 实例 ID",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Subnet instance ID.",
+							Description: "子网实例 ID",
 						},
 						"ip_address": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IP address.",
+							Description: "IP 地址",
 						},
 						"resource_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource type.",
+							Description: "资源类型",
 						},
 						"resource_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Resource ID.",
+							Description: "资源 ID",
 						},
 					},
 				},
@@ -75,7 +75,7 @@ func DataSourceTencentCloudVpcUsedIpAddress() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

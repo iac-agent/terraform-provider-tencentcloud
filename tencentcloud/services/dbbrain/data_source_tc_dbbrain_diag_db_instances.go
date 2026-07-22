@@ -19,13 +19,13 @@ func DataSourceTencentCloudDbbrainDiagDbInstances() *schema.Resource {
 			"is_supported": {
 				Required:    true,
 				Type:        schema.TypeBool,
-				Description: "whether it is an instance supported by DBbrain, always pass `true`.",
+				Description: "whether 它 是 实例 支持 通过 DBbrain, always pass `true`.",
 			},
 
 			"product": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "service product type, supported values include: `mysql` - cloud database MySQL, `cynosdb` - cloud database TDSQL-C for MySQL, the default is `mysql`.",
+				Description: "服务 product 类型, 支持 值 include: `mysql` - 云 数据库 MySQL, `cynosdb` - 云 数据库 TDSQL-C 对于 MySQL, 默认值 是 `mysql`.",
 			},
 
 			"instance_names": {
@@ -34,7 +34,7 @@ func DataSourceTencentCloudDbbrainDiagDbInstances() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "query based on the instance name condition.",
+				Description: "查询 based 在 实例 名称 condition.",
 			},
 
 			"instance_ids": {
@@ -43,7 +43,7 @@ func DataSourceTencentCloudDbbrainDiagDbInstances() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "query based on the instance ID condition.",
+				Description: "查询 based 在 实例 ID condition.",
 			},
 
 			"regions": {
@@ -52,35 +52,35 @@ func DataSourceTencentCloudDbbrainDiagDbInstances() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "query based on geographical conditions.",
+				Description: "查询 based 在 geographical conditions.",
 			},
 
 			"db_scan_status": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "all-instance inspection status. `0`: All-instance inspection is enabled; `1`: All-instance inspection is not enabled.",
+				Description: "all-实例 inspection 状态. `0`: All-实例 inspection 是 已启用; `1`: All-实例 inspection 是 不 已启用.",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "information about the instance.",
+				Description: "信息 about 实例.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "instance id.",
+							Description: "实例 ID.",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "instance name.",
+							Description: "实例 名称.",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "region.",
+							Description: "地域.",
 						},
 						"health_score": {
 							Type:        schema.TypeInt,
@@ -90,108 +90,108 @@ func DataSourceTencentCloudDbbrainDiagDbInstances() *schema.Resource {
 						"product": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "belongs to the product.",
+							Description: "belongs 到 product.",
 						},
 						"event_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "the number of abnormal events.",
+							Description: "数量 的 abnormal events.",
 						},
 						"instance_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "instance type. `1`: MASTER; `2`: DR, `3`: RO, `4`: SDR.",
+							Description: "实例 类型. `1`: MASTER; `2`: DR, `3`: RO, `4`: SDR.",
 						},
 						"cpu": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "number of cores.",
+							Description: "数量 的 cores.",
 						},
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "memory, in MB.",
+							Description: "内存, 在 MB.",
 						},
 						"volume": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "hard disk storage, in GB.",
+							Description: "hard 磁盘 存储, 在 GB.",
 						},
 						"engine_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "database version.",
+							Description: "数据库 版本.",
 						},
 						"vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "intranet address.",
+							Description: "intranet 地址.",
 						},
 						"vport": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "intranet port.",
+							Description: "intranet 端口.",
 						},
 						"source": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "access source.",
+							Description: "访问 source.",
 						},
 						"group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "group ID.",
+							Description: "组 ID.",
 						},
 						"group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "group name.",
+							Description: "组 名称.",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance status: `0`: Shipping; `1`: Running normally; `4`: Destroying; `5`: Isolating.",
+							Description: "实例 状态: `0`: Shipping; `1`: Running normally; `4`: Destroying; `5`: Isolating.",
 						},
 						"uniq_subnet_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "subnet uniform ID.",
+							Description: "子网 uniform ID.",
 						},
 						"deploy_mode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "cdb type.",
+							Description: "cdb 类型.",
 						},
 						"init_flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "cdb instance initialization flag: `0`: not initialized; `1`: initialized.",
+							Description: "cdb 实例 initialization flag: `0`: 不 initialized; `1`: initialized.",
 						},
 						"task_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "task status.",
+							Description: "任务 状态.",
 						},
 						"uniq_vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "the unified ID of the private network.",
+							Description: "unified ID 的 私有 网络.",
 						},
 						"instance_conf": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "status of instance inspection/overview.",
+							Description: "状态 的 实例 inspection/overview.",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"daily_inspection": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "database inspection switch, Yes/No.",
+										Description: "数据库 inspection switch, Yes/No.",
 									},
 									"overview_display": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "instance overview switch, Yes/No.",
+										Description: "实例 overview switch, Yes/No.",
 									},
 									"key_delimiters": {
 										Type: schema.TypeSet,
@@ -199,7 +199,7 @@ func DataSourceTencentCloudDbbrainDiagDbInstances() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Custom separator for redis large key analysis, only used by `redis`. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Custom separator 对于 redis large 键 analysis, 仅 使用 通过 `redis`. 注意: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 									},
 								},
 							},
@@ -207,42 +207,42 @@ func DataSourceTencentCloudDbbrainDiagDbInstances() *schema.Resource {
 						"deadline_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "resource expiration time.",
+							Description: "资源 expiration 时间.",
 						},
 						"is_supported": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "whether it is an instance supported by DBbrain.",
+							Description: "whether 它 是 实例 支持 通过 DBbrain.",
 						},
 						"sec_audit_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "enabled status of the instance security audit log. `ON`: security audit is enabled; `OFF`: security audit is not enabled.",
+							Description: "已启用 状态 的 实例 安全 audit 日志. `ON`: 安全 audit 是 已启用; `OFF`: 安全 audit 是 不 已启用.",
 						},
 						"audit_policy_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance audit log enable status. `ALL_AUDIT`: full audit is enabled; `RULE_AUDIT`: rule audit is enabled; `UNBOUND`: audit is not enabled.",
+							Description: "实例 audit 日志 启用 状态. `ALL_AUDIT`: full audit 是 已启用; `RULE_AUDIT`: 规则 audit 是 已启用; `UNBOUND`: audit 是 不 已启用.",
 						},
 						"audit_running_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance audit log running status. `normal`: running; `paused`: arrears suspended.",
+							Description: "实例 audit 日志 running 状态. `normal`: running; `paused`: arrears suspended.",
 						},
 						"internal_vip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Intranet VIPNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Intranet VIPNote: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 						},
 						"internal_vport": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Intranet portNote: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Intranet portNote: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "create time.",
+							Description: "create 时间.",
 						},
 					},
 				},
@@ -251,7 +251,7 @@ func DataSourceTencentCloudDbbrainDiagDbInstances() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

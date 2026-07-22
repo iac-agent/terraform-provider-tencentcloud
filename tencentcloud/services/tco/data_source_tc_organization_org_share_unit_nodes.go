@@ -17,30 +17,30 @@ func DataSourceTencentCloudOrganizationOrgShareUnitNodes() *schema.Resource {
 			"unit_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Shared unit ID.",
+				Description: "共享单元 ID",
 			},
 
 			"search_key": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Search key, supports searching by department ID.",
+				Description: "Search 键，支持 searching 通过 department ID。",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of share unit nodes.",
+				Description: "列表 share 单位 nodes。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"share_node_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Department ID.",
+							Description: "Department ID。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create time.",
+							Description: "创建时间。",
 						},
 					},
 				},
@@ -49,7 +49,7 @@ func DataSourceTencentCloudOrganizationOrgShareUnitNodes() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -19,69 +19,69 @@ func DataSourceTencentCloudMysqlBinLog() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID, in the format: cdb-c1nl9rpv. Same instance ID as displayed in the ApsaraDB for Console page.",
+				Description: "实例ID，格式为：cdb-c1nl9rpv。与云数据库控制台页面显示的实例ID相同。",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Details of binary log files that meet the query conditions.",
+				Description: "符合查询条件的二进制日志文件的详细信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "binlog log backup file name.",
+							Description: "binlog日志备份文件名。",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Backup file size, unit: Byte.",
+							Description: "备份文件大小，单位：Byte。",
 						},
 						"date": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "File storage time, time format: 2016-03-17 02:10:37.",
+							Description: "文件存储时间，时间格式：2016-03-17 02:10:37。",
 						},
 						"intranet_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "download link.",
+							Description: "下载链接。",
 						},
 						"internet_url": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "download link.",
+							Description: "下载链接。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Specific log type, possible values are: binlog - binary log.",
+							Description: "具体的日志类型，可能的值有： binlog - 二进制日志。",
 						},
 						"binlog_start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Binlog file start time.",
+							Description: "Binlog文件开始时间。",
 						},
 						"binlog_finish_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "binlog file deadline.",
+							Description: "binlog 文件截止时间。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The region where the local binlog file is located.",
+							Description: "本地binlog文件所在区域。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Backup task status. Possible values are `SUCCESS`: backup succeeded, `FAILED`: backup failed, `RUNNING`: backup in progress.",
+							Description: "备份任务状态。可能的值为“SUCCESS”：备份成功，“FAILED”：备份失败，“RUNNING”：备份正在进行。",
 						},
 						"remote_info": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Binlog remote backup details.",
+							Description: "Binlog远程备份详细信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"sub_backup_id": {
@@ -90,32 +90,32 @@ func DataSourceTencentCloudMysqlBinLog() *schema.Resource {
 											Type: schema.TypeInt,
 										},
 										Computed:    true,
-										Description: "The ID of the remote backup subtask.",
+										Description: "远程备份子任务ID。",
 									},
 									"region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The region where remote backup is located.",
+										Description: "远程备份所在区域。",
 									},
 									"status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Backup task status. Possible values are `SUCCESS`: backup succeeded, `FAILED`: backup failed, `RUNNING`: backup in progress.",
+										Description: "备份任务状态。可能的值为“SUCCESS”：备份成功，“FAILED”：备份失败，“RUNNING”：备份正在进行。",
 									},
 									"start_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Start time of remote backup task.",
+										Description: "远程备份任务的开始时间。",
 									},
 									"finish_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "End time of remote backup task.",
+										Description: "远程备份任务结束时间。",
 									},
 									"url": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "download link.",
+										Description: "下载链接。",
 									},
 								},
 							},
@@ -123,12 +123,12 @@ func DataSourceTencentCloudMysqlBinLog() *schema.Resource {
 						"cos_storage_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Storage method, 0-regular storage, 1-archive storage, the default is 0.",
+							Description: "存储方式，0-常规存储，1-归档存储，默认0。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID, in the format: cdb-c1nl9rpv. Same instance ID as displayed in the ApsaraDB for Console page.",
+							Description: "实例ID，格式为：cdb-c1nl9rpv。与云数据库控制台页面显示的实例ID相同。",
 						},
 					},
 				},
@@ -137,7 +137,7 @@ func DataSourceTencentCloudMysqlBinLog() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

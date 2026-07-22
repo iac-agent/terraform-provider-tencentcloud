@@ -18,61 +18,61 @@ func DataSourceTencentCloudWedataTasks() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"task_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Task name.",
+				Description: "任务 名称",
 			},
 
 			"workflow_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Workflow ID.",
+				Description: "Workflow ID。",
 			},
 
 			"owner_uin": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Owner ID.",
+				Description: "所有者 ID。",
 			},
 
 			"task_type_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Task type.",
+				Description: "任务 类型",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Task Status:\n* N: New\n* Y: Scheduling\n* F: Offline\n* O: Paused\n* T: Offlining\n* INVALID: Invalid.",
+				Description: "任务 状态:\n* N: New\n* Y: Scheduling\n* F: Offline\n* O: Paused\n* T: Offlining\n* INVALID: Invalid。",
 			},
 
 			"submit": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Submission status.",
+				Description: "Submission 状态",
 			},
 
 			"bundle_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Bundle id.",
+				Description: "Bundle ID。",
 			},
 
 			"create_user_uin": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Creator ID.",
+				Description: "创建者 ID。",
 			},
 
 			"modify_time": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Modification time range (yyyy-MM-dd HH:mm:ss). Two time values must be provided in the array.",
+				Description: "修改时间 范围 (yyyy-MM-dd HH:mm:ss). Two 时间 值 必须 是 提供 在 数组。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -81,7 +81,7 @@ func DataSourceTencentCloudWedataTasks() *schema.Resource {
 			"create_time": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Creation time range (yyyy-MM-dd HH:MM:ss). Two time values must be provided in the array.",
+				Description: "创建时间 范围 (yyyy-MM-dd HH:MM:ss). Two 时间 值 必须 是 提供 在 数组。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -90,99 +90,99 @@ func DataSourceTencentCloudWedataTasks() *schema.Resource {
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Describes the task pagination information.",
+				Description: "Describes 任务 pagination 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 
 						"task_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task ID.",
+							Description: "任务 ID",
 						},
 						"task_type_id": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Specifies the task type ID.\n\n* 21:JDBC SQL\n* 23:TDSQL-PostgreSQL\n* 26:OfflineSynchronization\n* 30:Python\n* 31:PySpark\n* 33:Impala\n* 34:Hive SQL\n* 35:Shell\n* 36:Spark SQL\n* 38:Shell Form Mode\n* 39:Spark\n* 40:TCHouse-P\n* 41:Kettle\n* 42:Tchouse-X\n* 43:TCHouse-X SQL\n* 46:DLC Spark\n* 47:TiOne\n* 48:Trino\n* 50:DLC PySpark\n* 92:MapReduce\n* 130:Branch Node\n* 131:Merged Node\n* 132:Notebook\n* 133:SSH\n* 134:StarRocks\n* 137:For-each\n* 138:Setats SQL.",
+							Description: "指定task 类型 ID.\n\n* 21:JDBC SQL\n* 23:TDSQL-PostgreSQL\n* 26:OfflineSynchronization\n* 30:Python\n* 31:PySpark\n* 33:Impala\n* 34:Hive SQL\n* 35:Shell\n* 36:Spark SQL\n* 38:Shell Form 模式\n* 39:Spark\n* 40:TCHouse-P\n* 41:Kettle\n* 42:Tchouse-X\n* 43:TCHouse-X SQL\n* 46:DLC Spark\n* 47:TiOne\n* 48:Trino\n* 50:DLC PySpark\n* 92:MapReduce\n* 130:Branch Node\n* 131:Merged Node\n* 132:Notebook\n* 133:SSH\n* 134:StarRocks\n* 137:For-each\n* 138:Setats SQL。",
 						},
 						"workflow_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Workflow ID.",
+							Description: "Workflow ID。",
 						},
 						"task_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Task name.",
+							Description: "任务 名称",
 						},
 						"task_latest_version_no": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Last save version number.",
+							Description: "Last save 版本 数量。",
 						},
 						"task_latest_submit_version_no": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Last submit version number.",
+							Description: "Last 提交 版本 数量。",
 						},
 						"workflow_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Workflow name.",
+							Description: "Workflow 名称",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Task Status:\n\n* N: New\n* Y: Scheduling\n* F: Offline\n* O: Paused\n* T: Offlining (in the process of being taken offline)\n* INVALID: Invalid.",
+							Description: "任务 状态:\n\n* N: New\n* Y: Scheduling\n* F: Offline\n* O: Paused\n* T: Offlining (在 process 的 being taken offline)\n* INVALID: Invalid。",
 						},
 						"submit": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Latest submission status of the task. Specifies whether it has been submitted: true/false.",
+							Description: "Latest submission 状态 任务. 指定whether 它 has been submitted: true/false。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Task creation time. example: 2022-02-12 11:13:41.",
+							Description: "任务 创建时间. 示例: 2022-02-12 11:13:41。",
 						},
 						"last_update_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Last update time. example: 2025-08-13 16:34:06.",
+							Description: "Last 更新时间. 示例: 2025-08-13 16:34:06。",
 						},
 						"last_update_user_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Last Updated By (Name).",
+							Description: "Last Updated By (名称)。",
 						},
 						"last_ops_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Last operation time.",
+							Description: "Last operation 时间。",
 						},
 						"last_ops_user_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Last operator name.",
+							Description: "Last 操作者 名称",
 						},
 						"owner_uin": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Task owner ID.",
+							Description: "任务 所有者 ID。",
 						},
 						"task_description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Task description.",
+							Description: "任务 描述",
 						},
 						"update_user_uin": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Last Updated User ID.",
+							Description: "Last Updated 用户 ID。",
 						},
 						"create_user_uin": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Created By User ID.",
+							Description: "Created By 用户 ID。",
 						},
 					},
 				},
@@ -191,7 +191,7 @@ func DataSourceTencentCloudWedataTasks() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -19,36 +19,36 @@ func DataSourceTencentCloudSslDescribeHostVodInstanceList() *schema.Resource {
 			"certificate_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Certificate ID to be deployed.",
+				Description: "证书 ID 到 是 deployed。",
 			},
 
 			"resource_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Deploy resource type VOD.",
+				Description: "Deploy 资源类型 VOD。",
 			},
 
 			"is_cache": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to query the cache, 1: Yes; 0: No, the default is the query cache, the cache is half an hour.",
+				Description: "是否query 缓存，1: Yes; 0: No， 默认为 查询 缓存， 缓存 是 half hour。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "List of filter parameters.",
+				Description: "列表 过滤器 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"filter_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter parameter key.",
+							Description: "过滤参数键",
 						},
 						"filter_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter parameter value.",
+							Description: "过滤参数值",
 						},
 					},
 				},
@@ -57,24 +57,24 @@ func DataSourceTencentCloudSslDescribeHostVodInstanceList() *schema.Resource {
 			"old_certificate_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Deployed certificate ID.",
+				Description: "Deployed 证书 ID",
 			},
 
 			"instance_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "VOD example listNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "VOD 示例 listNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "domain name.",
+							Description: "域名 名称",
 						},
 						"cert_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Certificate ID.",
+							Description: "证书 ID",
 						},
 					},
 				},
@@ -83,7 +83,7 @@ func DataSourceTencentCloudSslDescribeHostVodInstanceList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -27,54 +27,54 @@ func ResourceTencentCloudClsCosShipper() *schema.Resource {
 			"topic_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of the log topic to which the shipping rule to be created belongs.",
+				Description: "待创建的发货规则所属日志主题ID。",
 			},
 			"bucket": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Destination bucket in the shipping rule to be created.",
+				Description: "要创建的发货规则中的目标存储桶。",
 			},
 			"prefix": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Prefix of the shipping directory in the shipping rule to be created.",
+				Description: "要创建的发货规则中的发货目录的前缀。",
 			},
 			"shipper_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Shipping rule name.",
+				Description: "运输规则名称。",
 			},
 			"interval": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Shipping time interval in seconds. Default value: 300. Value range: 300~900.",
+				Description: "运送时间间隔（以秒为单位）。默认值：300。取值范围：300~900。",
 			},
 			"max_size": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Maximum size of a file to be shipped, in MB. Default value: 256. Value range: 100~256.",
+				Description: "要传送的文件的最大大小（以 MB 为单位）。默认值：256。取值范围：100~256。",
 			},
 			"filter_rules": {
 				Type:     schema.TypeList,
 				Optional: true,
-				Description: "Filter rules for shipped logs. Only logs matching the rules can be shipped. All rules are in the AND relationship, and up to five rules can be added. " +
+				Description: "已发送日志的过滤规则。只有符合规则的日志才能被发送。所有规则都是AND关系，最多可以添加5条规则。" +
 					"If the array is empty, no filtering will be performed, and all logs will be shipped.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter rule key.",
+							Description: "过滤规则键。",
 						},
 						"regex": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter rule.",
+							Description: "过滤规则。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter rule value.",
+							Description: "过滤规则值。",
 						},
 					},
 				},
@@ -82,7 +82,7 @@ func ResourceTencentCloudClsCosShipper() *schema.Resource {
 			"partition": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Partition rule of shipped log, which can be represented in strftime time format.",
+				Description: "发送日志的分区规则，可以用strftime时间格式表示。",
 			},
 			"compress": {
 				Type:     schema.TypeList,
@@ -93,23 +93,23 @@ func ResourceTencentCloudClsCosShipper() *schema.Resource {
 						"format": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Compression format. Valid values: gzip, lzop, none (no compression).",
+							Description: "压缩格式。有效值：gzip、lzop、none（无压缩）。",
 						},
 					},
 				},
-				Description: "Compression configuration of shipped log.",
+				Description: "发送日志的压缩配置。",
 			},
 			"content": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Format configuration of shipped log content.",
+				Description: "发送日志内容的格式配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"format": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Content format. Valid values: json, csv, parquet.",
+							Description: "内容格式。有效值：json、csv、parquet。",
 						},
 						"csv": {
 							Type:     schema.TypeList,
@@ -120,32 +120,32 @@ func ResourceTencentCloudClsCosShipper() *schema.Resource {
 									"print_key": {
 										Type:        schema.TypeBool,
 										Required:    true,
-										Description: "Whether to print key on the first row of the CSV file.",
+										Description: "是否在 CSV 文件的第一行打印密钥。",
 									},
 									"keys": {
 										Type:        schema.TypeSet,
 										Required:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "Names of keys.Note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "键名。注意：该字段可能返回null，表示取不到有效值。",
 									},
 									"delimiter": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Field delimiter.",
+										Description: "字段分隔符。",
 									},
 									"escape_char": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Field delimiter.",
+										Description: "字段分隔符。",
 									},
 									"non_existing_field": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Content used to populate non-existing fields.",
+										Description: "用于填充不存在字段的内容。",
 									},
 								},
 							},
-							Description: "CSV format content description.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "CSV格式内容描述。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"json": {
 							Type:     schema.TypeList,
@@ -156,17 +156,17 @@ func ResourceTencentCloudClsCosShipper() *schema.Resource {
 									"enable_tag": {
 										Type:        schema.TypeBool,
 										Required:    true,
-										Description: "Enablement flag.",
+										Description: "启用标志。",
 									},
 									"meta_fields": {
 										Type:        schema.TypeSet,
 										Required:    true,
 										Elem:        &schema.Schema{Type: schema.TypeString},
-										Description: "Metadata information list\nNote: this field may return null, indicating that no valid values can be obtained..",
+										Description: "元数据信息列表\n注意：该字段可能返回null，表示取不到有效值。",
 									},
 								},
 							},
-							Description: "JSON format content description.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "JSON格式内容描述。注意：该字段可能返回null，表示取不到有效值。",
 						},
 						"parquet": {
 							Type:     schema.TypeList,
@@ -178,31 +178,31 @@ func ResourceTencentCloudClsCosShipper() *schema.Resource {
 										Type:        schema.TypeList,
 										Required:    true,
 										MinItems:    1,
-										Description: "Array of Parquet column definitions.",
+										Description: "Parquet 列定义数组。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key_name": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Column name in the Parquet file.",
+													Description: "Parquet 文件中的列名称。",
 												},
 												"key_type": {
 													Type:         schema.TypeString,
 													Required:     true,
 													ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"string", "boolean", "int32", "int64", "float", "double"}),
-													Description:  "Data type of the column. Valid values: string, boolean, int32, int64, float, double.",
+													Description: "列的数据类型。有效值：字符串、布尔值、int32、int64、float、double。",
 												},
 												"key_non_existing_field": {
 													Type:        schema.TypeString,
 													Optional:    true,
-													Description: "Value to assign when the field does not exist or parsing fails.",
+													Description: "当字段不存在或解析失败时要分配的值。",
 												},
 											},
 										},
 									},
 								},
 							},
-							Description: "Parquet format content description.Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "Parquet格式内容描述。注意：该字段可能返回null，表示取不到有效值。",
 						},
 					},
 				},
@@ -210,23 +210,23 @@ func ResourceTencentCloudClsCosShipper() *schema.Resource {
 			"filename_mode": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Naming a shipping file. Valid values: 0 (by random number); 1 (by shipping time). Default value: 0.",
+				Description: "命名运输文件。有效值：0（随机数）； 1（按运输时间）。默认值：0。",
 			},
 			"start_time": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Start time for data shipping, which cannot be earlier than the lifecycle start time of the log topic. If you do not specify this parameter, it will be set to the time when you create the data shipping task.",
+				Description: "数据传送的开始时间，不能早于日志主题的生命周期开始时间。如果不指定该参数，则默认为创建数据传送任务时的时间。",
 			},
 			"end_time": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "End time for data shipping, which cannot be set to a future time. If you do not specify this parameter, it indicates continuous data shipping.",
+				Description: "数据传输的结束时间，不能设置为将来的时间。如果不指定该参数，则表示持续发送数据。",
 			},
 			"storage_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "COS bucket storage type. support: STANDARD_IA, ARCHIVE, DEEP_ARCHIVE, STANDARD, MAZ_STANDARD, MAZ_STANDARD_IA, INTELLIGENT_TIERING.",
+				Description: "COS 桶存储类型。支持：STANDARD_IA、ARCHIVE、DEEP_ARCHIVE、STANDARD、MAZ_STANDARD、MAZ_STANDARD_IA、INTELLIGENT_TIERING。",
 			},
 		},
 	}

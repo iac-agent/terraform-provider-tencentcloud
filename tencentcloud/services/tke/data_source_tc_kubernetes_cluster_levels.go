@@ -20,54 +20,54 @@ func DataSourceTencentCloudKubernetesClusterLevels() *schema.Resource {
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Specify cluster Id, if set will only query current cluster's available levels.",
+				Description: "指定cluster ID，如果 集合 将 仅 查询 当前 集群's 可用 levels。",
 			},
 
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of level information.",
+				Description: "列表 级别 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"alias": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Alias used for pass to cluster level arguments.",
+							Description: "Alias 用于pass 到 集群 级别 arguments。",
 						},
 						"crd_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of CRDs.",
+							Description: "数量 CRDs。",
 						},
 						"config_map_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of ConfigMaps.",
+							Description: "数量 ConfigMaps。",
 						},
 						"enable": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Indicates whether the current level enabled.",
+							Description: "表示是否current 级别 已启用",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Level name.",
+							Description: "级别 名称",
 						},
 						"node_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of nodes.",
+							Description: "节点数量",
 						},
 						"other_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of others.",
+							Description: "数量 others。",
 						},
 						"pod_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of pods.",
+							Description: "数量 pods。",
 						},
 					},
 				},
@@ -76,7 +76,7 @@ func DataSourceTencentCloudKubernetesClusterLevels() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

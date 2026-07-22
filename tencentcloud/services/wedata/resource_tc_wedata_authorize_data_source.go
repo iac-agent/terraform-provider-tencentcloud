@@ -27,13 +27,13 @@ func ResourceTencentCloudWedataAuthorizeDataSource() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Data source ID.",
+				Description: "数据源 ID",
 			},
 
 			"auth_project_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "List of target project ID to be authorized.",
+				Description: "列表 目标 项目 ID 到 是 authorized。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -43,7 +43,7 @@ func ResourceTencentCloudWedataAuthorizeDataSource() *schema.Resource {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				Computed:    true,
-				Description: "List of users under the authorized project, format: project_id_user_id.\nWhen authorizing multiple objects, the project ID must be consistent.",
+				Description: "列表 users under authorized 项目，格式: project_id_user_id.\nWhen authorizing 多个 objects， 项目 ID 必须 是 consistent。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},

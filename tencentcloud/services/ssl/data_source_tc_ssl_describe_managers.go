@@ -19,108 +19,108 @@ func DataSourceTencentCloudSslDescribeManagers() *schema.Resource {
 			"company_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Company ID.",
+				Description: "公司 ID",
 			},
 
 			"manager_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Manager&amp;#39;s name (will be abandoned), please use Searchkey.",
+				Description: "Manager&amp;#39;s 名称 (将 是 abandoned)，please 使用 Searchkey。",
 			},
 
 			"manager_mail": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Vague query manager email (will be abandoned), please use Searchkey.",
+				Description: "Vague 查询 manager email (将 是 abandoned)，please 使用 Searchkey。",
 			},
 
 			"status": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filter according to the status of the manager, and the value is available&amp;#39;None&amp;#39; Unable to submit review&amp;#39;Audit&amp;#39;, Asian Credit Review&amp;#39;Caaudit&amp;#39; CA review&amp;#39;OK&amp;#39; has been reviewed&amp;#39;Invalid&amp;#39; review failed&amp;#39;Expiring&amp;#39; is about to expire&amp;#39;Expired&amp;#39; expired.",
+				Description: "过滤器 according 到 状态 manager，和 值 是 可用&amp;#39;None&amp;#39; Unable 到 提交 review&amp;#39;Audit&amp;#39;，Asian Credit Review&amp;#39;Caaudit&amp;#39; CA review&amp;#39;OK&amp;#39; has been reviewed&amp;#39;Invalid&amp;#39; review failed&amp;#39;Expiring&amp;#39; 是 about 到 expire&amp;#39;Expired&amp;#39; expired。",
 			},
 
 			"search_key": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Manager&amp;#39;s surname/Manager name/mailbox/department precise matching.",
+				Description: "Manager&amp;#39;s surname/Manager 名称/mailbox/department precise matching。",
 			},
 
 			"managers": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Company Manager List.",
+				Description: "公司管理员 List。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Status: Audit: OK during the review: review passed inValid: expired expiRing: is about to expire Expired: expired.",
+							Description: "状态: Audit: OK during review: review passed inValid: expired expiRing: 是 about 到 expire Expired: expired。",
 						},
 						"manager_first_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Manager name.",
+							Description: "Manager 名称",
 						},
 						"manager_last_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Manager name.",
+							Description: "Manager 名称",
 						},
 						"manager_position": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Manager position.",
+							Description: "Manager position。",
 						},
 						"manager_phone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Manager phone call.",
+							Description: "Manager phone call。",
 						},
 						"manager_mail": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Manager mailbox.",
+							Description: "Manager mailbox。",
 						},
 						"manager_department": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Administrator department.",
+							Description: "Administrator department。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation timeNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Creation timeNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"domain_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of administrators.",
+							Description: "数量 administrators。",
 						},
 						"cert_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of administrative certificates.",
+							Description: "数量 administrative certificates。",
 						},
 						"manager_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Manager ID.",
+							Description: "Manager ID。",
 						},
 						"expire_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Examine the validity expiration timeNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Examine validity expiration timeNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"submit_audit_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The last time the review timeNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "last 时间 review timeNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"verify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Examination timeNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Examination timeNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 					},
 				},
@@ -129,7 +129,7 @@ func DataSourceTencentCloudSslDescribeManagers() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

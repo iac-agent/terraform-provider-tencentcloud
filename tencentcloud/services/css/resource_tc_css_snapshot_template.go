@@ -27,67 +27,67 @@ func ResourceTencentCloudCssSnapshotTemplate() *schema.Resource {
 			"template_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Template name. Maximum length: 255 bytes. Only Chinese, English, numbers, `_`, `-` are supported.",
+				Description: "模板名称 Maximum 长度: 255 bytes. Only Chinese，English，numbers，`_`，`-` 是 支持。",
 			},
 
 			"cos_app_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Cos application ID.",
+				Description: "Cos 应用 ID。",
 			},
 
 			"cos_bucket": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cos bucket name. Note: The CosBucket parameter value cannot include the - [appid] part.",
+				Description: "Cos 存储桶名称 注意: CosBucket 参数 值 不能 include - [appid] part。",
 			},
 
 			"cos_region": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cos region.",
+				Description: "Cos 地域",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Description information. Maximum length: 1024 bytes. Only `Chinese`, `English`, `numbers`, `_`, `-` are supported.",
+				Description: "描述 信息. Maximum 长度: 1024 bytes. Only `Chinese`，`English`，`numbers`，`_`，`-` 是 支持。",
 			},
 
 			"snapshot_interval": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Screenshot interval, unit: s, default: 10s. Range: 2s~300s.",
+				Description: "Screenshot 间隔，单位: s，默认值：10s. Range: 2s~300s。",
 			},
 
 			"width": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Screenshot width. Default: 0 (original width). Range: 0-3000.",
+				Description: "Screenshot 宽度. 默认值：0 (original 宽度). Range: 0-3000。",
 			},
 
 			"height": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Screenshot height. Default: 0 (original height). Range: 0-2000.",
+				Description: "Screenshot 高度. 默认值：0 (original 高度). Range: 0-2000。",
 			},
 
 			"porn_flag": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether porn is enabled, 0: not enabled, 1: enabled. Default: 0.",
+				Description: "Whether porn 是 已启用，0: 不 已启用，1: 已启用 默认值：0。",
 			},
 
 			"cos_prefix": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Cos Bucket folder prefix. If it is empty, set according to the default value /{Year}-{Month}-{Day}/.",
+				Description: "Cos 存储桶 文件夹 prefix. 如果 它 是 空，集合 according 到 默认值 /{Year}-{Month}-{Day}/。",
 			},
 
 			"cos_file_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Cos file name. If it is empty, set according to the default value {StreamID}-screenshot-{Hour}-{Minute}-{Second}-{Width}x{Height}{Ext}.",
+				Description: "Cos 文件 名称 如果 它 是 空，集合 according 到 默认值 {StreamID}-screenshot-{Hour}-{Minute}-{Second}-{宽度}x{高度}{Ext}。",
 			},
 		},
 	}

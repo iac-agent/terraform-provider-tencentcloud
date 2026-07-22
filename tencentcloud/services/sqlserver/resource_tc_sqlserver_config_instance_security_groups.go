@@ -26,13 +26,13 @@ func ResourceTencentCloudSqlserverConfigInstanceSecurityGroups() *schema.Resourc
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 			"security_group_id_set": {
 				Required:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "A list of security group IDs to modify, an array of one or more security group IDs.",
+				Description: "A 列表 的 安全 组 IDs 到 modify, 数组 的 一个 或 more 安全 组 IDs.",
 			},
 		},
 	}

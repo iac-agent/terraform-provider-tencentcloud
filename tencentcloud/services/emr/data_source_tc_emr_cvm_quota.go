@@ -19,7 +19,7 @@ func DataSourceTencentCloudEmrCvmQuota() *schema.Resource {
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "EMR cluster ID.",
+				Description: "EMR 集群 ID.",
 			},
 
 			"zone_id": {
@@ -31,28 +31,28 @@ func DataSourceTencentCloudEmrCvmQuota() *schema.Resource {
 			"post_paid_quota_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Postpaid quota list Note: This field may return null, indicating that no valid value can be obtained.",
+				Description: "Postpaid 配额 列表 注意: 此 字段 可能 返回 null, indicating 该 无 有效 值 可以 是 获取.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"used_quota": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Used quota Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Used 配额 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 						},
 						"remaining_quota": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Residual quota Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Residual 配额 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 						},
 						"total_quota": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total quota Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Total 配额 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Available area Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Available area 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 						},
 					},
 				},
@@ -61,28 +61,28 @@ func DataSourceTencentCloudEmrCvmQuota() *schema.Resource {
 			"spot_paid_quota_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Biding instance quota list Note: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "Biding 实例 配额 列表 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"used_quota": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Used quota Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Used 配额 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 						},
 						"remaining_quota": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Residual quota Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Residual 配额 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 						},
 						"total_quota": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total quota Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Total 配额 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 						},
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Available area Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Available area 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 						},
 					},
 				},
@@ -91,13 +91,13 @@ func DataSourceTencentCloudEmrCvmQuota() *schema.Resource {
 			"eks_quota_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Eks quota Note: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "Eks 配额 注意: 此 字段 可能 返回 null, indicating 该 有效 值 不能 是 获取.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"node_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The specifications of the marketable resource are as follows: `TASK`, `CORE`, `MASTER`, `ROUTER`.",
+							Description: "specifications 的 marketable 资源 是 作为 follows: `TASK`, `CORE`, `MASTER`, `ROUTER`.",
 						},
 						"cpu": {
 							Type:        schema.TypeInt,
@@ -107,12 +107,12 @@ func DataSourceTencentCloudEmrCvmQuota() *schema.Resource {
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Memory quantity (unit: GB).",
+							Description: "Memory quantity (单位: GB).",
 						},
 						"number": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Specifies the maximum number of resources that can be applied for.",
+							Description: "Specifies 最大 数量 的 resources 该 可以 是 applied 对于.",
 						},
 					},
 				},
@@ -121,7 +121,7 @@ func DataSourceTencentCloudEmrCvmQuota() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

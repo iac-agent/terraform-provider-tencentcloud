@@ -21,12 +21,12 @@ func DataSourceTencentCloudMonitorData() *schema.Resource {
 			"namespace": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Namespace of each cloud product in monitor system, refer to `data.tencentcloud_monitor_product_namespace`.",
+				Description: "Namespace 的 each 云 product 在 监控 系统，refer 到 `数据.tencentcloud_monitor_product_namespace`。",
 			},
 			"metric_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Metric name, please refer to the documentation of monitor interface of each product.",
+				Description: "指标名称，please refer 到 documentation 的 监控 interface 的 each product。",
 			},
 			"dimensions": {
 				Type:     schema.TypeList,
@@ -36,54 +36,54 @@ func DataSourceTencentCloudMonitorData() *schema.Resource {
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instance dimension name, eg: `InstanceId` for cvm.",
+							Description: "实例 dimension 名称，eg: `实例 ID` 对于 cvm。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instance dimension value, eg: `ins-j0hk02zo` for cvm.",
+							Description: "实例 dimension 值，eg: `ins-j0hk02zo` 对于 cvm。",
 						},
 					},
 				},
-				Description: "Dimensional composition of instance objects.",
+				Description: "Dimensional composition 的 实例 objects。",
 			},
 			"period": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     300,
-				Description: "Statistical period.",
+				Description: "Statistical 周期",
 			},
 			"start_time": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Start time for this query, eg:`2018-09-22T19:51:23+08:00`.",
+				Description: "开始时间 对于 此 查询，eg:`2018-09-22T19:51:23+08:00`。",
 			},
 			"end_time": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "End time for this query, eg:`2018-09-22T20:00:00+08:00`.",
+				Description: "结束时间 对于 此 查询，eg:`2018-09-22T20:00:00+08:00`。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to store results.",
+				Description: "用于存储结果。",
 			},
 			// Computed values
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list data point. Each element contains the following attributes:",
+				Description: "A 列表 数据 point. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"timestamp": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Statistical timestamp.",
+							Description: "Statistical 时间戳。",
 						},
 						"value": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Statistical value.",
+							Description: "Statistical 值",
 						},
 					},
 				},

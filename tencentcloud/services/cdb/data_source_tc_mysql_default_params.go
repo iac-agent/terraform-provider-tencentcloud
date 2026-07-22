@@ -22,7 +22,7 @@ func DataSourceTencentCloudMysqlDefaultParams() *schema.Resource {
 			"db_version": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "MySQL database version.",
+				Description: "MySQL 数据库版本。",
 			},
 			//"template_type": {
 			//	Type:        schema.TypeString,
@@ -32,59 +32,59 @@ func DataSourceTencentCloudMysqlDefaultParams() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used for save results.",
+				Description: "用于保存结果。",
 			},
 			"param_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "List of param detail.",
+				Description: "参数详细信息列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"current_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Param current value.",
+							Description: "参数当前值。",
 						},
 						"default": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Param default value.",
+							Description: "参数默认值。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Param description.",
+							Description: "参数说明。",
 						},
 						"enum_value": {
 							Type:        schema.TypeList,
 							Computed:    true,
 							Elem:        &schema.Schema{Type: schema.TypeString},
-							Description: "Params available values if type of param is enum.",
+							Description: "如果参数类型为枚举，则参数可用值。",
 						},
 						"max": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Param maximum value if type of param is integer.",
+							Description: "如果参数类型为整数，则参数最大值。",
 						},
 						"min": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Param minimum value if type of param is integer.",
+							Description: "如果参数类型为整数，则参数最小值。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Param key name.",
+							Description: "参数键名称。",
 						},
 						"need_reboot": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Indicates weather the database instance reboot if param modified.",
+							Description: "指示如果参数修改，数据库实例是否会重新启动。",
 						},
 						"param_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Type of param.",
+							Description: "参数类型",
 						},
 					},
 				},

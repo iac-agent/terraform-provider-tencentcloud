@@ -19,30 +19,30 @@ func DataSourceTencentCloudCkafkaGroup() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "InstanceId.",
+				Description: "实例 ID",
 			},
 
 			"search_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "search for the keyword.",
+				Description: "search 对于 keyword。",
 			},
 
 			"group_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "GroupList.",
+				Description: "GroupList。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"group": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "groupId.",
+							Description: "groupId。",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The protocol used by this group.",
+							Description: "协议 使用 通过 此 组。",
 						},
 					},
 				},
@@ -51,7 +51,7 @@ func DataSourceTencentCloudCkafkaGroup() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

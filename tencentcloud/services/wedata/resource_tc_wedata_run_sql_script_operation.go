@@ -23,35 +23,35 @@ func ResourceTencentCloudWedataRunSqlScriptOperation() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Script id.",
+				Description: "Script ID。",
 			},
 
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"script_content": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Script content. executed by default if not transmitted.",
+				Description: "Script 内容 executed 通过 默认值 如果 不 transmitted。",
 			},
 
 			"params": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Advanced running parameter.",
+				Description: "Advanced running 参数。",
 			},
 
 			// computed
 			"job_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Job ID of the SQL script operation.",
+				Description: "作业 ID SQL 脚本 operation。",
 			},
 		},
 	}

@@ -22,7 +22,7 @@ func DataSourceTencentCloudAntiddosBasicDeviceStatus() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Ip resource list.",
+				Description: "Ip 资源 列表。",
 			},
 
 			"id_list": {
@@ -31,30 +31,30 @@ func DataSourceTencentCloudAntiddosBasicDeviceStatus() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Named resource transfer ID.",
+				Description: "Named 资源 transfer ID。",
 			},
 
 			"filter_region": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Region Id.",
+				Description: "地域 ID",
 			},
 
 			"data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Return resources and status, status code: 1- Blocking status 2- Normal status 3- Attack status.",
+				Description: "Return resources 和 状态，状态 代码: 1- Blocking 状态 2- Normal 状态 3- Attack 状态",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Properties name.",
+							Description: "Properties 名称",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Properties value.",
+							Description: "Properties 值",
 						},
 					},
 				},
@@ -63,18 +63,18 @@ func DataSourceTencentCloudAntiddosBasicDeviceStatus() *schema.Resource {
 			"clb_data": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Note: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Properties name.",
+							Description: "Properties 名称",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Properties value.",
+							Description: "Properties 值",
 						},
 					},
 				},
@@ -83,7 +83,7 @@ func DataSourceTencentCloudAntiddosBasicDeviceStatus() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

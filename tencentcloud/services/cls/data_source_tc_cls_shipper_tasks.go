@@ -19,71 +19,71 @@ func DataSourceTencentCloudClsShipperTasks() *schema.Resource {
 			"shipper_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "shipper id.",
+				Description: "发货人 ID。",
 			},
 
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "start time(ms).",
+				Description: "开始时间（毫秒）。",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "end time(ms).",
+				Description: "结束时间（毫秒）。",
 			},
 
 			"tasks": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: ".",
+				Description: "。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"task_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "task id.",
+							Description: "任务 ID。",
 						},
 						"shipper_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "shipper id.",
+							Description: "发货人 ID。",
 						},
 						"topic_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "topic id.",
+							Description: "主题 ID。",
 						},
 						"range_start": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "start time of current task (ms).",
+							Description: "当前任务的开始时间（毫秒）。",
 						},
 						"range_end": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "end time of current task (ms).",
+							Description: "当前任务的结束时间（毫秒）。",
 						},
 						"start_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "start time(ms).",
+							Description: "开始时间（毫秒）。",
 						},
 						"end_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "end time(ms).",
+							Description: "结束时间（毫秒）。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "status of current shipper task.",
+							Description: "当前托运人任务的状态。",
 						},
 						"message": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "detail info.",
+							Description: "详细信息。",
 						},
 					},
 				},
@@ -92,7 +92,7 @@ func DataSourceTencentCloudClsShipperTasks() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

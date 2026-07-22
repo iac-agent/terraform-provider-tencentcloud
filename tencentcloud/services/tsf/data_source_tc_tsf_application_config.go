@@ -19,13 +19,13 @@ func DataSourceTencentCloudTsfApplicationConfig() *schema.Resource {
 			"application_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Application ID, query all when not provided.",
+				Description: "Application ID，查询 all 当 不 提供。",
 			},
 
 			"config_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Configuration ID, query all with higher priority when not provided.",
+				Description: "Configuration ID，查询 all 使用 higher 优先级 当 不 提供。",
 			},
 
 			"config_id_list": {
@@ -34,97 +34,97 @@ func DataSourceTencentCloudTsfApplicationConfig() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Configuration ID list, query all with lower priority when not provided.",
+				Description: "Configuration ID 列表，查询 all 使用 lower 优先级 当 不 提供。",
 			},
 
 			"config_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Configuration name, precise query, query all when not provided.",
+				Description: "Configuration 名称，precise 查询，查询 all 当 不 提供。",
 			},
 
 			"config_version": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Configuration version, precise query, query all when not provided.",
+				Description: "Configuration 版本，precise 查询，查询 all 当 不 提供。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Paginated configuration item list. Note: This field may return null, indicating that no valid values can be obtained.",
+				Description: "Paginated 配置 item 列表. 注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "TsfPageConfig.",
+							Description: "TsfPageConfig。",
 						},
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Configuration item list.",
+							Description: "Configuration item 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"config_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration ID. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Configuration ID. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration name Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Configuration 名称 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_version": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration version. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Configuration 版本 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_version_desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration version description. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Configuration 版本 描述 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration value. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Configuration 值 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration type. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Configuration 类型 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"creation_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "CreationTime. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "CreationTime. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"application_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "application Id. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "应用 ID. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"application_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "application Id. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "应用 ID. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"delete_flag": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "delete flag, true: allow delete; false: delete prohibit.",
+										Description: "delete flag，true: allow delete; false: delete prohibit。",
 									},
 									"last_update_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "last update time.  Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "last 更新时间. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"config_version_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "config version count.  Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "配置 版本 count. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -136,7 +136,7 @@ func DataSourceTencentCloudTsfApplicationConfig() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

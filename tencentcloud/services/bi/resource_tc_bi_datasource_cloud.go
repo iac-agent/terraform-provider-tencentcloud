@@ -28,23 +28,23 @@ func ResourceTencentCloudBiDatasourceCloud() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Service type, Own or Cloud.",
+				Description: "Service 类型，Own 或 Cloud。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Service type, Cloud.",
+							Description: "Service 类型，Cloud。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instance Id.",
+							Description: "实例 ID",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Region.",
+							Description: "地域",
 						},
 					},
 				},
@@ -53,105 +53,105 @@ func ResourceTencentCloudBiDatasourceCloud() *schema.Resource {
 			"db_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "`MYSQL`, `TDSQL-C_MYSQL`, `TDSQL_MYSQL`, `MSSQL`, `POSTGRESQL`, `MARIADB`.",
+				Description: "`MYSQL`，`TDSQL-C_MYSQL`，`TDSQL_MYSQL`，`MSSQL`，`POSTGRESQL`，`MARIADB`。",
 			},
 
 			"charset": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Charset.",
+				Description: "Charset。",
 			},
 
 			"db_user": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "User name.",
+				Description: "用户 名称",
 			},
 
 			"db_pwd": {
 				Required:    true,
 				Sensitive:   true,
 				Type:        schema.TypeString,
-				Description: "Password.",
+				Description: "密码",
 			},
 
 			"db_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Database name.",
+				Description: "Database 名称",
 			},
 
 			"source_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Datasource name in BI.",
+				Description: "Datasource 名称 在 BI。",
 			},
 
 			"project_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Project id.",
+				Description: "项目 ID",
 			},
 
 			"vip": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Public cloud intranet ip.",
+				Description: "Public 云 intranet ip。",
 			},
 
 			"vport": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Public cloud intranet port.",
+				Description: "Public 云 intranet 端口",
 			},
 
 			"vpc_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Vpc identification.",
+				Description: "Vpc identification。",
 			},
 
 			"uniq_vpc_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Unified vpc identification.",
+				Description: "Unified vpc identification。",
 			},
 
 			"region_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Region identifier.",
+				Description: "地域 identifier。",
 			},
 
 			"extra_param": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Extended parameters.",
+				Description: "Extended 参数。",
 			},
 
 			"data_origin": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Third-party datasource identification, this parameter can be ignored.",
+				Description: "Third-party datasource identification，此 参数 可以 是 ignored。",
 			},
 
 			"data_origin_project_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Third-party datasource project id, this parameter can be ignored.",
+				Description: "Third-party datasource 项目 ID，此 参数 可以 是 ignored。",
 			},
 
 			"data_origin_datasource_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Third-party datasource project id, this parameter can be ignored.",
+				Description: "Third-party datasource 项目 ID，此 参数 可以 是 ignored。",
 			},
 
 			"cluster_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster id.",
+				Description: "集群 ID",
 			},
 		},
 	}

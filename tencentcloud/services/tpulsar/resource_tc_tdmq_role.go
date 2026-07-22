@@ -25,23 +25,23 @@ func ResourceTencentCloudTdmqRole() *schema.Resource {
 			"role_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The name of tdmq role.",
+				Description: "名称 tdmq 角色",
 			},
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The id of tdmq cluster.",
+				Description: "ID tdmq 集群。",
 			},
 			"remark": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The description of tdmq role.",
+				Description: "描述 tdmq 角色",
 			},
 			"token": {
 				Type:        schema.TypeString,
 				Computed:    true,
 				Sensitive:   true,
-				Description: "Role token. This field is returned by the API and used for authentication.",
+				Description: "角色 令牌 此 字段 是 返回 通过 API 和 用于authentication。",
 			},
 		},
 	}

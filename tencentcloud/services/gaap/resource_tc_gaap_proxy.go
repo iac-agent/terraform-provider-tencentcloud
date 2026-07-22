@@ -34,46 +34,46 @@ func ResourceTencentCloudGaapProxy() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 30),
-				Description:  "Name of the GAAP proxy, the maximum length is 30.",
+				Description:  "名称 GAAP proxy， 最大 长度 是 30。",
 			},
 			"project_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
-				Description: "ID of the project within the GAAP proxy, `0` means is default project.",
+				Description: "ID 项目 within GAAP proxy，`0` 表示 是 默认值 项目。",
 			},
 			"bandwidth": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Maximum bandwidth of the GAAP proxy, unit is Mbps. Valid value: `10`, `20`, `50`, `100`, `200`, `500`, `1000`, `2000`, `5000` and `10000`. To set `2000`, `5000` or `10000`, you need to apply for a whitelist from Tencent Cloud.",
+				Description: "Maximum 带宽 的 GAAP proxy，单位 是 Mbps. 有效 值: `10`，`20`，`50`，`100`，`200`，`500`，`1000`，`2000`，`5000` 和 `10000`. To 集合 `2000`，`5000` 或 `10000`，您 need 到 apply 对于 whitelist 从 Tencent Cloud。",
 			},
 			"concurrent": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Maximum concurrency of the GAAP proxy, unit is 10k. Valid value: `2`, `5`, `10`, `20`, `30`, `40`, `50`, `60`, `70`, `80`, `90`, `100`, `150`, `200`, `250` and `300`. To set `150`, `200`, `250` or `300`, you need to apply for a whitelist from Tencent Cloud.",
+				Description: "Maximum 并发 的 GAAP proxy，单位 是 10k. 有效 值: `2`，`5`，`10`，`20`，`30`，`40`，`50`，`60`，`70`，`80`，`90`，`100`，`150`，`200`，`250` 和 `300`. To 集合 `150`，`200`，`250` 或 `300`，您 need 到 apply 对于 whitelist 从 Tencent Cloud。",
 			},
 			"access_region": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Access region of the GAAP proxy. Valid value: `Hongkong`, `SoutheastAsia`, `Korea`, `Europe`, `NorthAmerica`, `Canada`, `WestIndia`, `Thailand`, `Virginia`, `Japan`, `Taipei`, `SL_AZURE_NorthUAE`, `SL_AZURE_EastAUS`, `SL_AZURE_NorthCentralUSA`, `SL_AZURE_SouthIndia`, `SL_AZURE_SouthBrazil`, `SL_AZURE_NorthZAF`, `SL_AZURE_SoutheastAsia`, `SL_AZURE_CentralFrance`, `SL_AZURE_SouthEngland`, `SL_AZURE_EastUS`, `SL_AZURE_WestUS`, `SL_AZURE_SouthCentralUSA`, `Jakarta`, `Beijing`, `Shanghai`, `Guangzhou`, `Chengdu`, `SL_AZURE_NorwayEast`, `Chongqing`, `Nanjing`, `SaoPaulo`, `SL_AZURE_JapanEast`, `Changsha`, `Xian`, `Wuhan`, `Fuzhou`, `Shenyang`, `Zhengzhou`, `Jinan`, `Hangzhou`, `Shijiazhuang`, `Hefei`.",
+				Description: "Access 地域 的 GAAP proxy. 有效 值: `Hongkong`，`SoutheastAsia`，`Korea`，`Europe`，`NorthAmerica`，`Canada`，`WestIndia`，`Thailand`，`Virginia`，`Japan`，`Taipei`，`SL_AZURE_NorthUAE`，`SL_AZURE_EastAUS`，`SL_AZURE_NorthCentralUSA`，`SL_AZURE_SouthIndia`，`SL_AZURE_SouthBrazil`，`SL_AZURE_NorthZAF`，`SL_AZURE_SoutheastAsia`，`SL_AZURE_CentralFrance`，`SL_AZURE_SouthEngland`，`SL_AZURE_EastUS`，`SL_AZURE_WestUS`，`SL_AZURE_SouthCentralUSA`，`Jakarta`，`Beijing`，`Shanghai`，`Guangzhou`，`Chengdu`，`SL_AZURE_NorwayEast`，`Chongqing`，`Nanjing`，`SaoPaulo`，`SL_AZURE_JapanEast`，`Changsha`，`Xian`，`Wuhan`，`Fuzhou`，`Shenyang`，`Zhengzhou`，`Jinan`，`Hangzhou`，`Shijiazhuang`，`Hefei`。",
 			},
 			"realserver_region": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Region of the GAAP realserver. Valid value: `Hongkong`, `SoutheastAsia`, `Korea`, `Europe`, `NorthAmerica`, `Canada`, `WestIndia`, `Thailand`, `Virginia`, `Japan`, `Taipei`, `SL_AZURE_NorthUAE`, `SL_AZURE_EastAUS`, `SL_AZURE_NorthCentralUSA`, `SL_AZURE_SouthIndia`, `SL_AZURE_SouthBrazil`, `SL_AZURE_NorthZAF`, `SL_AZURE_SoutheastAsia`, `SL_AZURE_CentralFrance`, `SL_AZURE_SouthEngland`, `SL_AZURE_EastUS`, `SL_AZURE_WestUS`, `SL_AZURE_SouthCentralUSA`, `Jakarta`, `Beijing`, `Shanghai`, `Guangzhou`, `Chengdu`, `SL_AZURE_NorwayEast`, `Chongqing`, `Nanjing`, `SaoPaulo`, `SL_AZURE_JapanEast`.",
+				Description: "地域 的 GAAP realserver. 有效 值: `Hongkong`，`SoutheastAsia`，`Korea`，`Europe`，`NorthAmerica`，`Canada`，`WestIndia`，`Thailand`，`Virginia`，`Japan`，`Taipei`，`SL_AZURE_NorthUAE`，`SL_AZURE_EastAUS`，`SL_AZURE_NorthCentralUSA`，`SL_AZURE_SouthIndia`，`SL_AZURE_SouthBrazil`，`SL_AZURE_NorthZAF`，`SL_AZURE_SoutheastAsia`，`SL_AZURE_CentralFrance`，`SL_AZURE_SouthEngland`，`SL_AZURE_EastUS`，`SL_AZURE_WestUS`，`SL_AZURE_SouthCentralUSA`，`Jakarta`，`Beijing`，`Shanghai`，`Guangzhou`，`Chengdu`，`SL_AZURE_NorwayEast`，`Chongqing`，`Nanjing`，`SaoPaulo`，`SL_AZURE_JapanEast`。",
 			},
 			"enable": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     true,
-				Description: "Indicates whether GAAP proxy is enabled, default value is `true`.",
+				Description: "表示是否GAAP proxy 是 已启用，默认值为 `true`。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tags of the GAAP proxy. Tags that do not exist are not created automatically.",
+				Description: "标签 的 GAAP proxy. 标签 该 do 不 exist 是 不 创建 automatically。",
 			},
 			"network_type": {
 				Type:         schema.TypeString,
@@ -81,34 +81,34 @@ func ResourceTencentCloudGaapProxy() *schema.Resource {
 				Computed:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(PROXY_NETWORK_TYPE),
-				Description:  "Network type. `normal`: regular BGP, `cn2`: boutique BGP, `triple`: triple play.",
+				Description:  "Network 类型 `normal`: regular BGP，`cn2`: boutique BGP，`triple`: triple play。",
 			},
 
 			// computed
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time of the GAAP proxy.",
+				Description: "创建时间 的 GAAP proxy。",
 			},
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Status of the GAAP proxy.",
+				Description: "状态 GAAP proxy。",
 			},
 			"domain": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Access domain of the GAAP proxy.",
+				Description: "Access 域名 的 GAAP proxy。",
 			},
 			"ip": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Access IP of the GAAP proxy.",
+				Description: "Access IP 的 GAAP proxy。",
 			},
 			"scalable": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "Indicates whether GAAP proxy can scalable.",
+				Description: "表示是否GAAP proxy 可以 scalable。",
 			},
 			"support_protocols": {
 				Type:     schema.TypeList,
@@ -116,12 +116,12 @@ func ResourceTencentCloudGaapProxy() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Supported protocols of the GAAP proxy.",
+				Description: "Supported protocols 的 GAAP proxy。",
 			},
 			"forward_ip": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Forwarding IP of the GAAP proxy.",
+				Description: "Forwarding IP 的 GAAP proxy。",
 			},
 		},
 	}

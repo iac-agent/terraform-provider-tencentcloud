@@ -18,13 +18,13 @@ func DataSourceTencentCloudAntiddosBgpInstances() *schema.Resource {
 			"filter_region": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Region.",
+				Description: "地域",
 			},
 
 			"filter_instance_id_list": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Instance ID list.",
+				Description: "实例 ID 列表。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -33,18 +33,18 @@ func DataSourceTencentCloudAntiddosBgpInstances() *schema.Resource {
 			"filter_tag": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter by tag key and value.",
+				Description: "过滤器 通过 标签键 和 值",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag key.",
+							Description: "标签键",
 						},
 						"tag_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag value.",
+							Description: "标签值",
 						},
 					},
 				},
@@ -54,29 +54,29 @@ func DataSourceTencentCloudAntiddosBgpInstances() *schema.Resource {
 			"bgp_instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Returns purchased Anti-DDoS package information.",
+				Description: "返回purchased Anti-DDoS 包 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID",
 						},
 						"instance_charge_prepaid": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Renewal period related.",
+							Description: "Renewal 周期 related。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"period": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Purchase duration: unit in months.",
+										Description: "Purchase 时长: 单位 在 months。",
 									},
 									"renew_flag": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "NOTIFY_AND_MANUAL_RENEW: Notify expiration without automatic renewal.\nNOTIFY_AND_AUTO_RENEW: Notify expiration and automatically renew.\nDISABLE_NOTIFY_AND_MANUAL_RENEW: No notification and no automatic renewal.\nDefault: Notify expiration without automatic renewal.",
+										Description: "NOTIFY_AND_MANUAL_RENEW: Notify expiration without automatic renewal.\nNOTIFY_AND_AUTO_RENEW: Notify expiration 和 automatically renew.\nDISABLE_NOTIFY_AND_MANUAL_RENEW: No 通知 和 无 automatic renewal.\n默认值：Notify expiration without automatic renewal。",
 									},
 								},
 							},
@@ -84,38 +84,38 @@ func DataSourceTencentCloudAntiddosBgpInstances() *schema.Resource {
 						"enterprise_package_config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Enterprise edition Anti-DDoS package configuration.",
+							Description: "Enterprise edition Anti-DDoS 包 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Region where the Anti-DDoS package is purchased.",
+										Description: "地域 其中 Anti-DDoS 包 是 purchased。",
 									},
 									"protect_ip_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of protected IPs.",
+										Description: "数量 protected IPs。",
 									},
 									"basic_protect_bandwidth": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Basic protection bandwidth.",
+										Description: "Basic protection 带宽。",
 									},
 									"bandwidth": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Business bandwidth scale.",
+										Description: "Business 带宽 scale。",
 									},
 									"elastic_protect_bandwidth": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Elastic bandwidth in Gbps, selectable elastic bandwidth [0,400,500,600,800,1000].\nDefault is 0.",
+										Description: "Elastic 带宽 在 Gbps，selectable elastic 带宽 [0,400,500,600,800,1000].\n默认为 0。",
 									},
 									"elastic_bandwidth_flag": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether to enable elastic business bandwidth.\nDefault is false.",
+										Description: "是否enable elastic business 带宽.\n默认为 false。",
 									},
 								},
 							},
@@ -123,28 +123,28 @@ func DataSourceTencentCloudAntiddosBgpInstances() *schema.Resource {
 						"standard_package_config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Standard edition Anti-DDoS package configuration.",
+							Description: "Standard edition Anti-DDoS 包 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Region where the Anti-DDoS package is purchased.",
+										Description: "地域 其中 Anti-DDoS 包 是 purchased。",
 									},
 									"protect_ip_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of protected IPs.",
+										Description: "数量 protected IPs。",
 									},
 									"bandwidth": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Protection business bandwidth 50Mbps.",
+										Description: "Protection business 带宽 50Mbps。",
 									},
 									"elastic_bandwidth_flag": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether to enable elastic protection bandwidth. true: enable \nDefault is false: disable.",
+										Description: "是否enable elastic protection 带宽. true: 启用 \n默认为 false: disable。",
 									},
 								},
 							},
@@ -152,33 +152,33 @@ func DataSourceTencentCloudAntiddosBgpInstances() *schema.Resource {
 						"standard_plus_package_config": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Standard edition 2.0 Anti-DDoS package configuration.",
+							Description: "Standard edition 2.0 Anti-DDoS 包 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Region where the Anti-DDoS package is purchased.",
+										Description: "地域 其中 Anti-DDoS 包 是 purchased。",
 									},
 									"protect_count": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Protection count: TWO_TIMES: two full protections, UNLIMITED: unlimited protections.",
+										Description: "Protection count: TWO_TIMES: two full protections，UNLIMITED: unlimited protections。",
 									},
 									"protect_ip_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of protected IPs.",
+										Description: "数量 protected IPs。",
 									},
 									"bandwidth": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Protection bandwidth 50Mbps.",
+										Description: "Protection 带宽 50Mbps。",
 									},
 									"elastic_bandwidth_flag": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether to enable elastic business bandwidth.\ntrue: enable\nfalse: disable \nDefault is disable.",
+										Description: "是否enable elastic business 带宽.\ntrue: 启用\nfalse: disable \n默认为 disable。",
 									},
 								},
 							},
@@ -186,18 +186,18 @@ func DataSourceTencentCloudAntiddosBgpInstances() *schema.Resource {
 						"tag_info_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Tag information.",
+							Description: "标签 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag key.",
+										Description: "标签键",
 									},
 									"tag_value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Tag value.",
+										Description: "标签值",
 									},
 								},
 							},
@@ -205,12 +205,12 @@ func DataSourceTencentCloudAntiddosBgpInstances() *schema.Resource {
 						"package_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Anti-DDoS package type.",
+							Description: "Anti-DDoS 包 类型",
 						},
 						"instance_charge_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Payment method.",
+							Description: "Payment 方法。",
 						},
 					},
 				},
@@ -219,7 +219,7 @@ func DataSourceTencentCloudAntiddosBgpInstances() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

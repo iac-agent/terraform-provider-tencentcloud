@@ -21,34 +21,34 @@ func DataSourceTencentCloudMonitorProductNamespace() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name for filter, eg:`Load Banlancer`.",
+				Description: "名称 对于 过滤器，eg:`Load Banlancer`。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to store results.",
+				Description: "用于存储结果。",
 			},
 			// Computed values
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list product namespaces. Each element contains the following attributes:",
+				Description: "A 列表 product namespaces. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"product_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "English name of this product.",
+							Description: "English 名称 此 product。",
 						},
 						"product_chinese_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Chinese name of this product.",
+							Description: "Chinese 名称 此 product。",
 						},
 						"namespace": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Namespace of each cloud product in monitor system.",
+							Description: "Namespace 的 each 云 product 在 监控 系统。",
 						},
 					},
 				},

@@ -29,94 +29,94 @@ func ResourceTencentCloudCiMediaWatermarkTemplate() *schema.Resource {
 			"bucket": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "bucket name.",
+				Description: "存储桶名称",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The template name only supports `Chinese`, `English`, `numbers`, `_`, `-` and `*`.",
+				Description: "模板名称 仅 支持 `Chinese`，`English`，`numbers`，`_`，`-` 和 `*`。",
 			},
 
 			"watermark": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "container format.",
+				Description: "容器 格式",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Watermark type, Text: text watermark, Image: image watermark.",
+							Description: "Watermark 类型，Text: text 水印，Image: 镜像 水印。",
 						},
 						"pos": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Reference position, TopRight, TopLeft, BottomRight, BottomLeft, Left, Right, Top, Bottom, Center.",
+							Description: "Reference position，TopRight，TopLeft，BottomRight，BottomLeft，Left，Right，Top，Bottom，Center。",
 						},
 						"loc_mode": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Offset method, Relativity: proportional, Absolute: fixed position.",
+							Description: "偏移量 方法，Relativity: proportional，Absolute: fixed position。",
 						},
 						"dx": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Horizontal offset, 1: In the picture watermark, if Background is true, when locMode is Relativity, it is %, value range: [-300 0]; when locMode is Absolute, it is px, value range: [-4096 0] ], 2: In the picture watermark, if Background is false, when locMode is Relativity, it is %, value range: [0 100]; when locMode is Absolute, it is px, value range: [0 4096], 3: In text watermark, when locMode is Relativity, it is %, value range: [0 100]; when locMode is Absolute, it is px, value range: [0 4096], 4: When Pos is Top, Bottom and Center, the parameter is invalid.",
+							Description: "Horizontal 偏移量，1: In picture 水印，如果 Background 是 true，当 locMode 是 Relativity，它 是 %，取值范围：[-300 0]; 当 locMode 是 Absolute，它 是 像素，取值范围：[-4096 0] ]，2: In picture 水印，如果 Background 是 false，当 locMode 是 Relativity，它 是 %，取值范围：[0 100]; 当 locMode 是 Absolute，它 是 像素，取值范围：[0 4096]，3: In text 水印，当 locMode 是 Relativity，它 是 %，取值范围：[0 100]; 当 locMode 是 Absolute，它 是 像素，取值范围：[0 4096]，4: 当 Pos 是 Top，Bottom 和 Center， 参数 是 无效。",
 						},
 						"dy": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Vertical offset, 1: In the picture watermark, if Background is true, when locMode is Relativity, it is %, value range: [-300 0]; when locMode is Absolute, it is px, value range: [-4096 0] ],2: In the picture watermark, if Background is false, when locMode is Relativity, it is %, value range: [0 100]; when locMode is Absolute, it is px, value range: [0 4096],3: In text watermark, when locMode is Relativity, it is %, value range: [0 100]; when locMode is Absolute, it is px, value range: [0 4096], 4: When Pos is Left, Right and Center, the parameter is invalid.",
+							Description: "Vertical 偏移量，1: In picture 水印，如果 Background 是 true，当 locMode 是 Relativity，它 是 %，取值范围：[-300 0]; 当 locMode 是 Absolute，它 是 像素，取值范围：[-4096 0] ],2: In picture 水印，如果 Background 是 false，当 locMode 是 Relativity，它 是 %，取值范围：[0 100]; 当 locMode 是 Absolute，它 是 像素，取值范围：[0 4096],3: In text 水印，当 locMode 是 Relativity，它 是 %，取值范围：[0 100]; 当 locMode 是 Absolute，它 是 像素，取值范围：[0 4096]，4: 当 Pos 是 Left，Right 和 Center， 参数 是 无效。",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Watermark start time, 1: [0 video duration], 2: unit is second, 3: support float format, execution accuracy is accurate to milliseconds.",
+							Description: "Watermark 开始时间，1: [0 视频 时长]，2: 单位 是 second，3: support float 格式，execution accuracy 是 accurate 到 milliseconds。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Watermark end time, 1: [0 video duration], 2: unit is second, 3: support float format, execution accuracy is accurate to milliseconds.",
+							Description: "Watermark 结束时间，1: [0 视频 时长]，2: 单位 是 second，3: support float 格式，execution accuracy 是 accurate 到 milliseconds。",
 						},
 
 						"image": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Image watermark node.",
+							Description: "Image 水印 节点。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"url": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Address of watermark map (pass in after Urlencode is required).",
+										Description: "地址 的 水印 map (pass 在 after Urlencode 为必填项)。",
 									},
 									"mode": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Size mode, Original: original size, Proportion: proportional, Fixed: fixed size.",
+										Description: "Size 模式，Original: original 大小，Proportion: proportional，Fixed: fixed 大小。",
 									},
 									"width": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Width, 1: When the Mode is Original, it does not support setting the width of the watermark image, 2: When the Mode is Proportion, the unit is %, the value range of the background image: [100 300]; the value range of the foreground image: [1 100], relative to Video width, up to 4096px, 3: When Mode is Fixed, the unit is px, value range: [8, 4096], 4: If only Width is set, Height is calculated according to the proportion of the watermark image.",
+										Description: "宽度，1: 当 模式 是 Original，它 does 不 support setting 宽度 的 水印 镜像，2: 当 模式 是 Proportion， 单位 是 %， 值 范围 的 background 镜像: [100 300]; 值 范围 的 foreground 镜像: [1 100]，relative 到 Video 宽度，up 到 4096px，3: 当 模式 是 Fixed， 单位 是 像素，取值范围：[8，4096]，4: 如果 仅 宽度 是 集合，高度 是 calculated according 到 proportion 的 水印 镜像。",
 									},
 									"height": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "High, 1: When the Mode is Original, it does not support setting the width of the watermark image, 2: When the Mode is Proportion, the unit is %, the value range of the background image: [100 300]; the value range of the foreground image: [1 100], relative to Video width, up to 4096px, 3: When Mode is Fixed, the unit is px, value range: [8, 4096], 4: If only Width is set, Height is calculated according to the proportion of the watermark image.",
+										Description: "High，1: 当 模式 是 Original，它 does 不 support setting 宽度 的 水印 镜像，2: 当 模式 是 Proportion， 单位 是 %， 值 范围 的 background 镜像: [100 300]; 值 范围 的 foreground 镜像: [1 100]，relative 到 Video 宽度，up 到 4096px，3: 当 模式 是 Fixed， 单位 是 像素，取值范围：[8，4096]，4: 如果 仅 宽度 是 集合，高度 是 calculated according 到 proportion 的 水印 镜像。",
 									},
 									"transparency": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Transparency, value range: [1 100], unit %.",
+										Description: "Transparency，取值范围：[1 100]，单位 %。",
 									},
 									"background": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Whether the background image.",
+										Description: "是否background 镜像。",
 									},
 								},
 							},
@@ -125,33 +125,33 @@ func ResourceTencentCloudCiMediaWatermarkTemplate() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Text Watermark Node.",
+							Description: "Text Watermark Node。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"font_size": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Font size, value range: [5 100], unit px.",
+										Description: "Font 大小，取值范围：[5 100]，单位 像素。",
 									},
 									"font_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "font type.",
+										Description: "font 类型",
 									},
 									"font_color": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Font color, format: 0xRRGGBB.",
+										Description: "Font color，格式: 0xRRGGBB。",
 									},
 									"transparency": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Transparency, value range: [1 100], unit %.",
+										Description: "Transparency，取值范围：[1 100]，单位 %。",
 									},
 									"text": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Watermark content, the length does not exceed 64 characters, only supports Chinese, English, numbers, _, - and *.",
+										Description: "Watermark 内容， 长度 does 不 exceed 64 字符，仅 支持 Chinese，English，numbers，_，- 和 *。",
 									},
 								},
 							},

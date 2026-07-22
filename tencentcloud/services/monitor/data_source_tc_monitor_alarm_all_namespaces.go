@@ -19,13 +19,13 @@ func DataSourceTencentCloudMonitorAlarmAllNamespaces() *schema.Resource {
 			"scene_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Currently, only ST_ALARM=alarm type is filtered based on usage scenarios.",
+				Description: "Currently，仅 ST_ALARM=告警 类型 是 filtered based 在 usage scenarios。",
 			},
 
 			"module": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Fixed value, as `monitor`.",
+				Description: "Fixed 值，作为 `监控`。",
 			},
 
 			"monitor_types": {
@@ -34,7 +34,7 @@ func DataSourceTencentCloudMonitorAlarmAllNamespaces() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Filter based on monitoring type, do not fill in default, check all types MT_QCE=cloud product monitoring.",
+				Description: "过滤器 based 在 监控 类型，do 不 fill 在 默认值，check all types MT_QCE=云 product 监控。",
 			},
 
 			"ids": {
@@ -43,39 +43,39 @@ func DataSourceTencentCloudMonitorAlarmAllNamespaces() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Filter based on the Id of the namespace without filling in the default query for all.",
+				Description: "过滤器 based 在 ID 的 命名空间 without filling 在 默认值 查询 对于 all。",
 			},
 
 			"qce_namespaces_new": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Types of alarm strategies for cloud products.",
+				Description: "Types 的 告警 strategies 对于 云 products。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Namespace labeling.",
+							Description: "Namespace labeling。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Namespace name.",
+							Description: "Namespace 名称",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Namespace value.",
+							Description: "Namespace 值",
 						},
 						"product_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Product Name.",
+							Description: "Product 名称",
 						},
 						"config": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Configuration information.",
+							Description: "Configuration 信息。",
 						},
 						"available_regions": {
 							Type: schema.TypeSet,
@@ -83,17 +83,17 @@ func DataSourceTencentCloudMonitorAlarmAllNamespaces() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "List of supported regions.",
+							Description: "列表 支持 regions。",
 						},
 						"sort_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Sort Id.",
+							Description: "Sort ID。",
 						},
 						"dashboard_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Unique representation in dashboard.",
+							Description: "Unique representation 在 仪表盘。",
 						},
 					},
 				},
@@ -102,33 +102,33 @@ func DataSourceTencentCloudMonitorAlarmAllNamespaces() *schema.Resource {
 			"custom_namespaces_new": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Other alarm strategy types are currently not supported.",
+				Description: "Other 告警 strategy types 是 currently 不 支持。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Namespace labeling.",
+							Description: "Namespace labeling。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Namespace name.",
+							Description: "Namespace 名称",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Namespace value.",
+							Description: "Namespace 值",
 						},
 						"product_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Product Name.",
+							Description: "Product 名称",
 						},
 						"config": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Configuration information.",
+							Description: "Configuration 信息。",
 						},
 						"available_regions": {
 							Type: schema.TypeSet,
@@ -136,17 +136,17 @@ func DataSourceTencentCloudMonitorAlarmAllNamespaces() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "List of supported regions.",
+							Description: "列表 支持 regions。",
 						},
 						"sort_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Sort Id.",
+							Description: "Sort ID。",
 						},
 						"dashboard_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Unique representation in dashboard.",
+							Description: "Unique representation 在 仪表盘。",
 						},
 					},
 				},
@@ -155,60 +155,60 @@ func DataSourceTencentCloudMonitorAlarmAllNamespaces() *schema.Resource {
 			"common_namespaces": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "General alarm strategy types (including: application performance monitoring, front-end performance monitoring, cloud dial testing).",
+				Description: "General 告警 strategy types (包括: 应用 performance 监控，front-end performance 监控，云 dial testing)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Namespace labeling.",
+							Description: "Namespace labeling。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Namespace name.",
+							Description: "Namespace 名称",
 						},
 						"monitor_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Monitoring type.",
+							Description: "Monitoring 类型",
 						},
 						"dimensions": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Dimension Information.",
+							Description: "Dimension Information。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Dimension key identifier, backend English name.",
+										Description: "Dimension 键 identifier，backend English 名称",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Dimension key name, Chinese and English frontend display name.",
+										Description: "Dimension 键 名称，Chinese 和 English frontend display 名称",
 									},
 									"is_required": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Required or not.",
+										Description: "必填 或 不。",
 									},
 									"operators": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "List of supported operators.",
+										Description: "列表 支持 operators。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Operator identification.",
+													Description: "操作者 identification。",
 												},
 												"name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Operator Display Name.",
+													Description: "操作者 Display 名称",
 												},
 											},
 										},
@@ -216,42 +216,42 @@ func DataSourceTencentCloudMonitorAlarmAllNamespaces() *schema.Resource {
 									"is_multiple": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Do you support multiple selections.",
+										Description: "Do 您 support 多个 selections。",
 									},
 									"is_mutable": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Can I modify it after creation.",
+										Description: "Can I modify 它 after creation。",
 									},
 									"is_visible": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether to display to users.",
+										Description: "是否display 到 users。",
 									},
 									"can_filter_policy": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Can it be used to filter the policy list.",
+										Description: "Can 它 是 用于filter 策略 列表。",
 									},
 									"can_filter_history": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Can it be used to filter alarm history.",
+										Description: "Can 它 是 用于filter 告警 history。",
 									},
 									"can_group_by": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Can it be used as an aggregation dimension.",
+										Description: "Can 它 是 使用 作为 aggregation dimension。",
 									},
 									"must_group_by": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Must it be used as an aggregation dimension.",
+										Description: "Must 它 是 使用 作为 aggregation dimension。",
 									},
 									"show_value_replace": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Key to replace in front-end translation.",
+										Description: "键 到 replace 在 front-end translation。",
 									},
 								},
 							},
@@ -263,7 +263,7 @@ func DataSourceTencentCloudMonitorAlarmAllNamespaces() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

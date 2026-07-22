@@ -20,25 +20,25 @@ func DataSourceTencentCloudVpnDefaultHealthCheckIp() *schema.Resource {
 			"vpn_gateway_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "vpn gateway id.",
+				Description: "vpn 网关 ID",
 			},
 
 			"health_check_local_ip": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "local ip of health check.",
+				Description: "本地 ip 的 health check。",
 			},
 
 			"health_check_remote_ip": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "remote ip for health check.",
+				Description: "远程 ip 对于 health check。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

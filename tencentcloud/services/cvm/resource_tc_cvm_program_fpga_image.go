@@ -25,14 +25,14 @@ func ResourceTencentCloudCvmProgramFpgaImage() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The ID information of the instance.",
+				Description: "ID 信息 的 实例。",
 			},
 
 			"fpga_url": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "COS URL address of the FPGA image file.",
+				Description: "COS URL 地址 的 FPGA 镜像 文件。",
 			},
 
 			"dbd_fs": {
@@ -42,14 +42,14 @@ func ResourceTencentCloudCvmProgramFpgaImage() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "The DBDF number of the FPGA card on the instance, if left blank, the FPGA image will be burned to all FPGA cards owned by the instance by default.",
+				Description: "DBDF 数量 FPGA card 在 实例，如果 left blank， FPGA 镜像 将 是 burned 到 all FPGA cards owned 通过 实例 通过 默认值。",
 			},
 
 			"dry_run": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Trial run, will not perform the actual burning action, the default is False.",
+				Description: "Trial run，将 不 perform actual burning 操作， 默认为 False。",
 			},
 		},
 	}

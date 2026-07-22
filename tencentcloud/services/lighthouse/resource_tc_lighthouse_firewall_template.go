@@ -27,39 +27,39 @@ func ResourceTencentCloudLighthouseFirewallTemplate() *schema.Resource {
 			"template_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Template name.",
+				Description: "模板名称",
 			},
 
 			"template_rules": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "List of firewall rules.",
+				Description: "列表 firewall 规则。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"protocol": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Protocol. Values: TCP, UDP, ICMP, ALL.",
+							Description: "协议 Values: TCP，UDP，ICMP，ALL。",
 						},
 						"port": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Port. Values: ALL, Separate ports, comma-separated discrete ports, minus sign-separated port ranges.",
+							Description: "端口 Values: ALL，Separate ports，comma-separated discrete ports，minus sign-separated 端口 ranges。",
 						},
 						"cidr_block": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Network segment or IP (mutually exclusive). The default is `0.0.0.0`, indicating all sources.",
+							Description: "Network segment 或 IP (mutually exclusive). 默认为 `0.0.0.0`，indicating all sources。",
 						},
 						"action": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Action. Values: ACCEPT, DROP. The default is `ACCEPT`.",
+							Description: "操作 Values: ACCEPT，DROP. 默认为 `ACCEPT`。",
 						},
 						"firewall_rule_description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Firewall rule description.",
+							Description: "Firewall 规则 描述",
 						},
 					},
 				},

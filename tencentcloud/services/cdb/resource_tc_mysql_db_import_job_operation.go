@@ -25,48 +25,48 @@ func ResourceTencentCloudMysqlDbImportJobOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The instance ID, in the format: cdb-c1nl9rpv, is the same as the instance ID displayed on the cloud database console page.",
+				Description: "实例ID与云数据库控制台页面显示的实例ID一致，格式为：cdb-c1nl9rpv。",
 			},
 
 			"user": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The username of the cloud database.",
+				Description: "云数据库的用户名。",
 			},
 
 			"file_name": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "file name. This file refers to the file that the user has uploaded to Tencent Cloud, and only .sql files are supported.",
+				Description: "文件名。该文件是指用户上传到腾讯云的文件，仅支持.sql文件。",
 			},
 
 			"password": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The password of the user account of the cloud database instance.",
+				Description: "云数据库实例用户帐号的密码。",
 			},
 
 			"db_name": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The name of the imported target database, if it is not passed, it means that no database is specified.",
+				Description: "导入的目标数据库名称，如果不传则表示没有指定数据库。",
 			},
 
 			"cos_url": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The name of the imported target database, if it is not passed, it means that no database is specified.",
+				Description: "导入的目标数据库名称，如果不传则表示没有指定数据库。",
 			},
 
 			"async_request_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The request ID of the asynchronous task.",
+				Description: "异步任务的请求ID。",
 			},
 		},
 	}

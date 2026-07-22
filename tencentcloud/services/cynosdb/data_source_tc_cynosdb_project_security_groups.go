@@ -19,74 +19,74 @@ func DataSourceTencentCloudCynosdbProjectSecurityGroups() *schema.Resource {
 			"project_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Project ID.",
+				Description: "项目编号。",
 			},
 			"search_key": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Search Keywords.",
+				Description: "搜索关键词。",
 			},
 			"groups": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Security Group Details.",
+				Description: "安全组详细信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"project_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Project ID.",
+							Description: "项目编号。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time, time format: yyyy mm dd hh: mm: ss.",
+							Description: "创建时间，时间格式：yyyy mm dd hh:mm:ss。",
 						},
 						"inbound": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Inbound Rules.",
+							Description: "入站规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"action": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Action.",
+										Description: "行动。",
 									},
 									"cidr_ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "CidrIp.",
+										Description: "CidrIp。",
 									},
 									"port_range": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "PortRange.",
+										Description: "端口范围。",
 									},
 									"ip_protocol": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Ip protocol.",
+										Description: "IP协议。",
 									},
 									"service_module": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Service Module.",
+										Description: "服务模块。",
 									},
 									"address_module": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "AddressModule.",
+										Description: "地址模块。",
 									},
 									"id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "id.",
+										Description: "ID。",
 									},
 									"desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Description.",
+										Description: "描述。",
 									},
 								},
 							},
@@ -94,48 +94,48 @@ func DataSourceTencentCloudCynosdbProjectSecurityGroups() *schema.Resource {
 						"outbound": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Outbound rules.",
+							Description: "出站规则。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"action": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Action.",
+										Description: "行动。",
 									},
 									"cidr_ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cidr Ip.",
+										Description: "Cidr Ip。",
 									},
 									"port_range": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Port range.",
+										Description: "端口范围。",
 									},
 									"ip_protocol": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Ip protocol.",
+										Description: "IP协议。",
 									},
 									"service_module": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Service module.",
+										Description: "服务模块。",
 									},
 									"address_module": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Address module.",
+										Description: "地址模块。",
 									},
 									"id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "id.",
+										Description: "ID。",
 									},
 									"desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Description.",
+										Description: "描述。",
 									},
 								},
 							},
@@ -143,17 +143,17 @@ func DataSourceTencentCloudCynosdbProjectSecurityGroups() *schema.Resource {
 						"security_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Security Group ID.",
+							Description: "安全组ID。",
 						},
 						"security_group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Security Group Name.",
+							Description: "安全组名称。",
 						},
 						"security_group_remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Security Group Notes.",
+							Description: "安全组注释。",
 						},
 					},
 				},
@@ -161,7 +161,7 @@ func DataSourceTencentCloudCynosdbProjectSecurityGroups() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

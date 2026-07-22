@@ -27,27 +27,27 @@ func ResourceTencentCloudMongodbInstanceBackupDownloadTask() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID, the format is: cmgo-9d0p6umb.Same as the instance ID displayed in the cloud database console page.",
+				Description: "实例 ID， 格式 是: cmgo-9d0p6umb.Same 作为 实例 ID displayed 在 云 数据库 console 页面。",
 			},
 
 			"backup_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The name of the backup file to be downloaded can be obtained through the DescribeDBBackups interface.",
+				Description: "名称 备份 文件 到 是 downloaded 可以 是 获取 through DescribeDBBackups interface。",
 			},
 
 			"backup_sets": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "Specifies the node names of replica sets to download or a list of shard names for sharded clusters.For example, the replica set cmgo-p8vnipr5, example (fixed value): BackupSets.0=cmgo-p8vnipr5_0, the full amount of data can be downloaded.For example, the sharded cluster cmgo-p8vnipr5, for example: BackupSets.0=cmgo-p8vnipr5_0&amp;amp;BackupSets.1=cmgo-p8vnipr5_1, that is, to download the data of shard 0 and 1. If the sharded cluster needs to be downloaded in full, please pass in the example. Full slice name.",
+				Description: "指定node names 的 副本 sets 到 download 或 列表 分片 names 对于 sharded clusters.For 示例， 副本 集合 cmgo-p8vnipr5，示例 (fixed 值): BackupSets.0=cmgo-p8vnipr5_0， full amount 的 数据 可以 是 downloaded.For 示例， sharded 集群 cmgo-p8vnipr5，对于 示例: BackupSets.0=cmgo-p8vnipr5_0&amp;amp;BackupSets.1=cmgo-p8vnipr5_1，该 是，到 download 数据 的 分片 0 和 1. 如果 sharded 集群 needs 到 是 downloaded 在 full，please pass 在 示例. Full slice 名称",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"replica_set_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Replication Id.",
+							Description: "Replication ID。",
 						},
 					},
 				},

@@ -27,54 +27,54 @@ func ResourceTencentCloudClsDataTransform() *schema.Resource {
 			"func_type": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Task type. `1`: Specify the theme; `2`: Dynamic creation.",
+				Description: "任务类型。 `1`：指定主题； `2`：动态创建。",
 			},
 
 			"src_topic_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Source topic ID.",
+				Description: "源主题 ID。",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Task name.",
+				Description: "任务名称。",
 			},
 
 			"etl_content": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Data transform content. If `func_type` is `2`, must use `log_auto_output`.",
+				Description: "数据转换内容。如果“func_type”为“2”，则必须使用“log_auto_output”。",
 			},
 
 			"task_type": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Task type. `1`: Use random data from the source log theme for processing preview; `2`: Use user-defined test data for processing preview; `3`: Create real machining tasks.",
+				Description: "任务类型。 `1`：使用源日志主题中的随机数据进行处理预览； `2`：使用用户自定义的测试数据进行处理预览； `3`：创建真实的加工任务。",
 			},
 
 			"enable_flag": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Task enable flag. `1`: enable, `2`: disable, Default is `1`.",
+				Description: "任务启用标志。 `1`：启用，`2`：禁用，默认为`1`。",
 			},
 
 			"dst_resources": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Data transform des resources. If `func_type` is `1`, this parameter is required. If `func_type` is `2`, this parameter does not need to be filled in.",
+				Description: "数据转换资源。如果“func_type”为“1”，则此参数是必需的。如果“func_type”为“2”，则该参数无需填写。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"topic_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Dst topic ID.",
+							Description: "目标主题 ID。",
 						},
 						"alias": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Alias.",
+							Description: "别名。",
 						},
 					},
 				},
@@ -83,85 +83,85 @@ func ResourceTencentCloudClsDataTransform() *schema.Resource {
 			"backup_give_up_data": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "When `func_type` is `2`, whether to discard data when the number of dynamically created logsets and topics exceeds the product specification limit. Default is `false`. `false`: Create backup logset and topic and write logs to the backup topic; `true`: Discard log data.",
+				Description: "当 func_type 为 2 时，动态创建的日志集和主题数量超过产品规格限制时是否丢弃数据。默认为“假”。 `false`：创建备份日志集和主题，并将日志写入备份主题； `true`：丢弃日志数据。",
 			},
 
 			"has_services_log": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to enable service log delivery. `1`: disable; `2`: enable.",
+				Description: "是否开启服务日志下发。 `1`：禁用； `2`：启用。",
 			},
 
 			"data_transform_type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Data transform type. `0`: Standard data transform task; `1`: Pre-processing data transform task (process collected logs before writing to the log topic).",
+				Description: "数据转换类型。 `0`：标准数据转换任务； `1`：预处理数据转换任务（在写入日志主题之前处理收集的日志）。",
 			},
 
 			"keep_failure_log": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Keep failure log status. `1`: do not keep (default); `2`: keep.",
+				Description: "保留故障日志状态。 `1`：不保留（默认）； `2`：保留。",
 			},
 
 			"failure_log_key": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Field name for failure logs.",
+				Description: "失败日志的字段名称。",
 			},
 
 			"process_from_timestamp": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Specify the start time of processing data, in seconds-level timestamp. Any time range within the log topic lifecycle. If it exceeds the lifecycle, only the part with data within the lifecycle is processed.",
+				Description: "指定处理数据的开始时间，单位为秒级时间戳。日志主题生命周期内的任意时间范围。如果超过生命周期，则只处理生命周期内数据的部分。",
 			},
 
 			"process_to_timestamp": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Specify the end time of processing data, in seconds-level timestamp. Cannot specify a future time. If not filled, it means continuous execution.",
+				Description: "指定处理数据的结束时间，单位为秒级时间戳。无法指定未来时间。如果不填，则表示继续执行。",
 			},
 
 			"data_transform_sql_data_sources": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Associated data source information.",
+				Description: "关联数据源信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"data_source": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Data source type. `1`: MySQL; `2`: Self-built MySQL; `3`: PostgreSQL.",
+							Description: "数据源类型。 `1`：MySQL； `2`：自建MySQL； `3`：PostgreSQL。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "InstanceId region. For example: ap-guangzhou.",
+							Description: "实例 ID 区域。例如：ap-广州。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Instance ID. When DataSource is `1`, it represents the cloud database MySQL instance ID, such as: cdb-zxcvbnm.",
+							Description: "实例ID。当DataSource为‘1’时，代表云数据库MySQL实例ID，如：cdb-zxcvbnm。",
 						},
 						"user": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "MySQL access username.",
+							Description: "MySQL 访问用户名。",
 						},
 						"alias_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Alias. Used in data transform statements.",
+							Description: "别名。用于数据转换语句。",
 						},
 						"password": {
 							Type:        schema.TypeString,
 							Required:    true,
 							Sensitive:   true,
-							Description: "MySQL access password.",
+							Description: "MySQL访问密码。",
 						},
 					},
 				},
@@ -170,18 +170,18 @@ func ResourceTencentCloudClsDataTransform() *schema.Resource {
 			"env_infos": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Set environment variables.",
+				Description: "设置环境变量。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Environment variable name.",
+							Description: "环境变量名称。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Environment variable value.",
+							Description: "环境变量值。",
 						},
 					},
 				},

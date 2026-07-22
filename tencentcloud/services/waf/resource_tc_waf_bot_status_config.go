@@ -28,59 +28,59 @@ func ResourceTencentCloudWafBotStatusConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"domain": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Domain.",
+				Description: "域名",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Bot status. 1 - enable; 0 - disable.",
+				Description: "Bot 状态 1 - 启用; 0 - disable。",
 			},
 
 			"scene_count": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Scene total count.",
+				Description: "Scene 总数",
 			},
 
 			"valid_scene_count": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Number of effective scenarios.",
+				Description: "数量 effective scenarios。",
 			},
 
 			"current_global_scene": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "The currently enabled scenario with a global matching range and the highest priority.",
+				Description: "currently 已启用 scenario 使用 全局 matching 范围 和 highest 优先级",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"scene_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scene ID.",
+							Description: "Scene ID。",
 						},
 						"scene_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Scene name.",
+							Description: "Scene 名称",
 						},
 						"priority": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Priority.",
+							Description: "优先级",
 						},
 						"update_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Update time.",
+							Description: "更新时间。",
 						},
 					},
 				},
@@ -89,7 +89,7 @@ func ResourceTencentCloudWafBotStatusConfig() *schema.Resource {
 			"custom_rule_nums": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Total number of custom rules, excluding BOT whitelist.",
+				Description: "Total 数量 自定义 规则，excluding BOT whitelist。",
 			},
 		},
 	}

@@ -26,13 +26,13 @@ func ResourceTencentCloudRedisSwitchMaster() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of instance.",
+				Description: "ID 实例。",
 			},
 
 			"group_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Replication group ID, required for multi-AZ instances.",
+				Description: "Replication 组 ID，必填 对于 multi-AZ 实例。",
 			},
 		},
 	}

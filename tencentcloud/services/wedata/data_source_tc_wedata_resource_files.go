@@ -18,76 +18,76 @@ func DataSourceTencentCloudWedataResourceFiles() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"resource_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Resource file name (fuzzy search keyword).",
+				Description: "Resource 文件 名称 (fuzzy search keyword)。",
 			},
 
 			"parent_folder_path": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Specifies the path of the file's parent folder (for example /a/b/c, querying resource files under the folder c).",
+				Description: "指定path 的 文件's parent 文件夹 (对于 示例 //b/c，querying 资源 files under 文件夹 c)。",
 			},
 
 			"create_user_uin": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Creator ID. obtain through the DescribeCurrentUserInfo API.",
+				Description: "创建者 ID. obtain through DescribeCurrentUserInfo API。",
 			},
 
 			"modify_time_start": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Update time range. specifies the start time in yyyy-MM-dd HH:MM:ss format.",
+				Description: "更新时间 范围. 指定start 时间 在 yyyy-MM-dd HH:MM:ss 格式",
 			},
 
 			"modify_time_end": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Update time range. specifies the end time in yyyy-MM-dd HH:MM:ss format.",
+				Description: "更新时间 范围. 指定end 时间 在 yyyy-MM-dd HH:MM:ss 格式",
 			},
 
 			"create_time_start": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Create time range. specifies the start time in yyyy-MM-dd HH:MM:ss format.",
+				Description: "创建时间 范围. 指定start 时间 在 yyyy-MM-dd HH:MM:ss 格式",
 			},
 
 			"create_time_end": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Create time range. specifies the termination time in yyyy-MM-dd HH:MM:ss format.",
+				Description: "创建时间 范围. 指定termination 时间 在 yyyy-MM-dd HH:MM:ss 格式",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Retrieve the resource file list.",
+				Description: "Retrieve 资源 文件 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Resource file ID.",
+							Description: "Resource 文件 ID。",
 						},
 						"resource_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Resource file name.",
+							Description: "Resource 文件 名称",
 						},
 						"file_extension_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Specifies the resource file type.",
+							Description: "指定resource 文件 类型",
 						},
 						"local_path": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Resource path.",
+							Description: "Resource 路径",
 						},
 					},
 				},
@@ -96,7 +96,7 @@ func DataSourceTencentCloudWedataResourceFiles() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

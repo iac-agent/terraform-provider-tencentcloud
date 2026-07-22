@@ -26,20 +26,20 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "group Id.",
+				Description: "组 ID。",
 			},
 
 			"tag_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "image version name, v1.",
+				Description: "镜像 版本 名称，v1。",
 			},
 
 			"instance_num": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "instance number.",
+				Description: "实例 数量。",
 			},
 
 			"server": {
@@ -47,7 +47,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "image server.",
+				Description: "镜像 服务器。",
 			},
 
 			"reponame": {
@@ -55,7 +55,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "old image name, eg: /tsf/server.",
+				Description: "old 镜像 名称，eg: /tsf/服务器。",
 			},
 
 			"cpu_limit": {
@@ -63,7 +63,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The maximum number of CPU cores for the business container, corresponding to the limit in K8S. If not specified, it defaults to twice the request.",
+				Description: "最大CPU cores 对于 business 容器，corresponding 到 限制 在 K8S. 如果未指定，它 默认为 twice 请求。",
 			},
 
 			"mem_limit": {
@@ -71,7 +71,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The maximum memory size in MiB for the business container, corresponding to the limit in K8S. If not specified, it defaults to twice the request.",
+				Description: "最大 内存 大小 在 MiB 对于 business 容器，corresponding 到 限制 在 K8S. 如果未指定，它 默认为 twice 请求。",
 			},
 
 			"jvm_opts": {
@@ -79,7 +79,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "jvm options.",
+				Description: "jvm options。",
 			},
 
 			"cpu_request": {
@@ -87,7 +87,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The number of CPU cores allocated to the business container, corresponding to the request in K8S. The default value is 0.25.",
+				Description: "数量 CPU 核数 allocated 到 business 容器，corresponding 到 请求 在 K8S. 默认值为 0.25。",
 			},
 
 			"mem_request": {
@@ -95,7 +95,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The amount of memory in MiB allocated to the business container, corresponding to the request in K8S. The default value is 640 MiB.",
+				Description: "amount 的 内存 在 MiB allocated 到 business 容器，corresponding 到 请求 在 K8S. 默认值为 640 MiB。",
 			},
 
 			"do_not_start": {
@@ -103,7 +103,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Not start right away.",
+				Description: "Not start right away。",
 			},
 
 			"repo_name": {
@@ -111,7 +111,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "(Priority use) New image name, such as /tsf/nginx.",
+				Description: "(优先级 使用) New 镜像 名称，such 作为 /tsf/nginx。",
 			},
 
 			"update_type": {
@@ -119,7 +119,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Update method: 0 for fast update, 1 for rolling update.",
+				Description: "Update 方法: 0 对于 fast update，1 对于 rolling update。",
 			},
 
 			"update_ivl": {
@@ -127,7 +127,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "update Interval, is required when rolling update.",
+				Description: "update Interval，为必填项 当 rolling update。",
 			},
 
 			"agent_cpu_request": {
@@ -135,7 +135,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The number of CPU cores allocated to the agent container corresponds to the request field in Kubernetes.",
+				Description: "数量 CPU 核数 allocated 到 agent 容器 corresponds 到 请求 字段 在 Kubernetes。",
 			},
 
 			"agent_cpu_limit": {
@@ -143,7 +143,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The maximum number of CPU cores allocated to the agent container corresponds to the limit field in Kubernetes.",
+				Description: "最大CPU cores allocated 到 agent 容器 corresponds 到 限制 字段 在 Kubernetes。",
 			},
 
 			"agent_mem_request": {
@@ -151,7 +151,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The amount of memory in MiB allocated to the agent container corresponds to the request field in Kubernetes.",
+				Description: "amount 的 内存 在 MiB allocated 到 agent 容器 corresponds 到 请求 字段 在 Kubernetes。",
 			},
 
 			"agent_mem_limit": {
@@ -159,7 +159,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The maximum amount of memory in MiB allocated to the agent container corresponds to the &amp;#39;limit&amp;#39; field in Kubernetes.",
+				Description: "最大 amount 的 内存 在 MiB allocated 到 agent 容器 corresponds 到 &amp;#39;限制&amp;#39; 字段 在 Kubernetes。",
 			},
 
 			"istio_cpu_request": {
@@ -167,7 +167,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The number of CPU cores allocated to the istio proxy container corresponds to the &amp;#39;request&amp;#39; field in Kubernetes.",
+				Description: "数量 CPU 核数 allocated 到 istio proxy 容器 corresponds 到 &amp;#39;请求&amp;#39; 字段 在 Kubernetes。",
 			},
 
 			"istio_cpu_limit": {
@@ -175,7 +175,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The maximum amount of CPU cores allocated to the istio proxy container corresponds to the &amp;#39;limit&amp;#39; field in Kubernetes.",
+				Description: "最大 amount 的 CPU 核数 allocated 到 istio proxy 容器 corresponds 到 &amp;#39;限制&amp;#39; 字段 在 Kubernetes。",
 			},
 
 			"istio_mem_request": {
@@ -183,7 +183,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The amount of memory in MiB allocated to the agent container corresponds to the request field in Kubernetes.",
+				Description: "amount 的 内存 在 MiB allocated 到 agent 容器 corresponds 到 请求 字段 在 Kubernetes。",
 			},
 
 			"istio_mem_limit": {
@@ -191,7 +191,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The maximum amount of memory in MiB allocated to the agent container corresponds to the request field in Kubernetes.",
+				Description: "最大 amount 的 内存 在 MiB allocated 到 agent 容器 corresponds 到 请求 字段 在 Kubernetes。",
 			},
 
 			"max_surge": {
@@ -199,7 +199,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "MaxSurge parameter in Kubernetes rolling update strategy.",
+				Description: "MaxSurge 参数 在 Kubernetes rolling update strategy。",
 			},
 
 			"max_unavailable": {
@@ -207,7 +207,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "MaxUnavailable parameter in Kubernetes rolling update strategy.",
+				Description: "MaxUnavailable 参数 在 Kubernetes rolling update strategy。",
 			},
 
 			"health_check_settings": {
@@ -215,60 +215,60 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "The configuration information for health checks. If this parameter is not specified, the health check is not set by default.",
+				Description: "配置 信息 对于 health checks. 如果 此 参数 是 不 指定， health check 是 不 集合 通过 默认值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"liveness_probe": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Liveness probe. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Liveness probe. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"action_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The health check method. HTTP: checks through an HTTP interface; CMD: checks by executing a command; TCP: checks by establishing a TCP connection. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "health check 方法. HTTP: checks through HTTP interface; CMD: checks 通过 executing command; TCP: checks 通过 establishing TCP 连接. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"initial_delay_seconds": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The time delay for the container to start the health check. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "时间 延迟 对于 容器 到 start health check. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"timeout_seconds": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The maximum timeout period for each health check response. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "最大 超时 周期 对于 each health check response. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"period_seconds": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The time interval for performing health checks. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "时间间隔 对于 performing health checks. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"success_threshold": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The number of consecutive successful health checks required for the backend container to transition from failure to success. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "数量 consecutive successful health checks 必填 对于 backend 容器 到 transition 从 failure 到 success. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"failure_threshold": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The number of consecutive successful health checks required for the backend container to transition from success to failure. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "数量 consecutive successful health checks 必填 对于 backend 容器 到 transition 从 success 到 failure. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"scheme": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The protocol used for HTTP health checks. HTTP and HTTPS are supported. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "协议 用于HTTP health checks. HTTP 和 HTTPS 是 支持. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"port": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The port used for health checks, ranging from 1 to 65535. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "端口 用于health checks，ranging 从 1 到 65535. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"path": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The request path for HTTP health checks. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "请求 路径 对于 HTTP health checks. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"command": {
 										Type: schema.TypeSet,
@@ -276,12 +276,12 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Optional:    true,
-										Description: "The command to be executed for command health checks. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "command 到 是 executed 对于 command health checks. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The type of readiness probe. TSF_DEFAULT represents the default readiness probe of TSF, while K8S_NATIVE represents the native readiness probe of Kubernetes. If this field is not specified, the native readiness probe of Kubernetes is used by default. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "类型 readiness probe. TSF_DEFAULT 表示 默认值 readiness probe 的 TSF，while K8S_NATIVE 表示 native readiness probe 的 Kubernetes. 如果 此 字段 是 不 指定， native readiness probe 的 Kubernetes 是 使用 通过 默认值. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -290,53 +290,53 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Readiness health check. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Readiness health check. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"action_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "The health check method. HTTP indicates checking through an HTTP interface, CMD indicates checking through executing a command, and TCP indicates checking through establishing a TCP connection. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "health check 方法. HTTP 表示checking through HTTP interface，CMD 表示checking through executing command，和 TCP 表示checking through establishing TCP 连接. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"initial_delay_seconds": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The time to delay the start of the container health check. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "时间 到 延迟 start 的 容器 health check. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"timeout_seconds": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The maximum timeout period for each health check response. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "最大 超时 周期 对于 each health check response. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"period_seconds": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The time interval for performing health checks. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "时间间隔 对于 performing health checks. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"success_threshold": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The number of consecutive successful health checks required for the backend container to transition from failure to success. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "数量 consecutive successful health checks 必填 对于 backend 容器 到 transition 从 failure 到 success. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"failure_threshold": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The number of consecutive successful health checks required for the backend container to transition from success to failure. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "数量 consecutive successful health checks 必填 对于 backend 容器 到 transition 从 success 到 failure. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"scheme": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The protocol used for HTTP health checks. HTTP and HTTPS are supported. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "协议 用于HTTP health checks. HTTP 和 HTTPS 是 支持. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"port": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The port used for health checks, ranging from 1 to 65535. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "端口 用于health checks，ranging 从 1 到 65535. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"path": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The request path for HTTP health checks. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "请求 路径 对于 HTTP health checks. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"command": {
 										Type: schema.TypeSet,
@@ -344,12 +344,12 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Optional:    true,
-										Description: "The command to be executed for command check. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "command 到 是 executed 对于 command check. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "The type of readiness probe. TSF_DEFAULT represents the default readiness probe of TSF, while K8S_NATIVE represents the native readiness probe of Kubernetes. If this field is not specified, the native readiness probe of Kubernetes is used by default. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "类型 readiness probe. TSF_DEFAULT 表示 默认值 readiness probe 的 TSF，while K8S_NATIVE 表示 native readiness probe 的 Kubernetes. 如果 此 字段 是 不 指定， native readiness probe 的 Kubernetes 是 使用 通过 默认值. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -363,26 +363,26 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "The environment variables that the application runs in the deployment group. If this parameter is not specified, no additional environment variables are set by default.",
+				Description: "环境 variables 该 应用 runs 在 部署 组. 如果 此 参数 是 不 指定，无 additional 环境 variables 是 集合 通过 默认值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "env param name.",
+							Description: "env param 名称",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "value of env.",
+							Description: "值 的 env。",
 						},
 						"value_from": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
 							Computed:    true,
-							Description: "Kubernetes ValueFrom configuration. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Kubernetes ValueFrom 配置. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"field_ref": {
@@ -390,14 +390,14 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 										MaxItems:    1,
 										Optional:    true,
 										Computed:    true,
-										Description: "The FieldRef configuration of Kubernetes env. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "FieldRef 配置 的 Kubernetes env. 注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"field_path": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "The FieldPath configuration of Kubernetes. Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "FieldPath 配置 的 Kubernetes. 注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -407,14 +407,14 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 										MaxItems:    1,
 										Optional:    true,
 										Computed:    true,
-										Description: "The ResourceFieldRef configuration of Kubernetes env. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "ResourceFieldRef 配置 的 Kubernetes env. 注意：此字段可能返回 null，表示无法获取有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"resource": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "The Resource configuration of Kubernetes. Note: This field may return null, indicating that no valid values can be obtained.",
+													Description: "Resource 配置 的 Kubernetes. 注意：此字段可能返回 null，表示无法获取有效值。",
 												},
 											},
 										},
@@ -432,40 +432,40 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Network settings for container deployment groups.",
+				Description: "Network settings 对于 容器 部署 groups。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"access_type": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "0: Public network, 1: Access within the cluster, 2: NodePort, 3: Access within VPC. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "0: Public 网络，1: Access within 集群，2: NodePort，3: Access within VPC. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"protocol_ports": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Container port mapping. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Container 端口 mapping. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"protocol": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "TCP or UDP.",
+										Description: "TCP 或 UDP。",
 									},
 									"port": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "port.",
+										Description: "端口",
 									},
 									"target_port": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "container port.",
+										Description: "容器 端口",
 									},
 									"node_port": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "node port.",
+										Description: "节点 端口",
 									},
 								},
 							},
@@ -473,37 +473,37 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "subnet Id.",
+							Description: "子网 ID。",
 						},
 						"disable_service": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Computed:    true,
-							Description: "Whether to create a Kubernetes service. The default value is false. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "是否create Kubernetes 服务. 默认值为 false. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"headless_service": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Computed:    true,
-							Description: "Whether the service is of headless type. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "是否service 是 的 headless 类型 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"allow_delete_service": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Computed:    true,
-							Description: "When set to true and DisableService is also true, the previously created service will be deleted. Please use with caution. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "当 集合 到 true 和 DisableService 是 also true， previously 创建 服务 将 是 删除. Please 使用 使用 caution. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"open_session_affinity": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Computed:    true,
-							Description: "Enable session affinity. true means enabled, false means disabled. The default value is false. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Enable 会话 affinity. true 表示 已启用，false 表示 已禁用 默认值为 false. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"session_affinity_timeout_seconds": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Session affinity session time. The default value is 10800. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Session affinity 会话 时间. 默认值为 10800. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -514,7 +514,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to deploy the agent container. If this parameter is not specified, the agent container will not be deployed by default.",
+				Description: "是否deploy agent 容器. 如果 此 参数 是 不 指定， agent 容器 将 不 是 deployed 通过 默认值。",
 			},
 
 			"scheduling_strategy": {
@@ -523,13 +523,13 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Node scheduling strategy. If this parameter is not specified, the node scheduling strategy will not be used by default.",
+				Description: "Node scheduling strategy. 如果 此 参数 是 不 指定， 节点 scheduling strategy 将 不 是 使用 通过 默认值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "NONE: Do not use scheduling strategy; CROSS_AZ: Deploy across availability zones. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "NONE: Do 不 使用 scheduling strategy; CROSS_AZ: Deploy across availability zones. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -540,7 +540,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to perform incremental deployment. The default value is false, which means full update.",
+				Description: "是否perform incremental 部署. 默认值为 false，其中 表示 full update。",
 			},
 
 			"repo_type": {
@@ -548,7 +548,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "repo type, tcr or leave it blank.",
+				Description: "repo 类型，tcr 或 leave 它 blank。",
 			},
 
 			"volume_info_list": {
@@ -556,24 +556,24 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "Volume information, as a list.",
+				Description: "Volume 信息，作为 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"volume_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "volume type.",
+							Description: "卷 类型",
 						},
 						"volume_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "volume name.",
+							Description: "卷 名称",
 						},
 						"volume_config": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "volume config.",
+							Description: "卷 配置",
 						},
 					},
 				},
@@ -584,30 +584,30 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "Volume mount point information, list type.",
+				Description: "Volume mount point 信息，列表 类型",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"volume_mount_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "mount volume name.",
+							Description: "mount 卷 名称",
 						},
 						"volume_mount_path": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "mount path.",
+							Description: "mount 路径",
 						},
 						"volume_mount_sub_path": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "mount subPath.",
+							Description: "mount subPath。",
 						},
 						"read_or_write": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Read and write access mode. 1: Read-only. 2: Read-write.",
+							Description: "Read 和 write 访问 模式 1: Read-仅. 2: Read-write。",
 						},
 					},
 				},
@@ -618,7 +618,7 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to clear the volume information. Default is false.",
+				Description: "是否clear 卷 信息. 默认为 false。",
 			},
 
 			"agent_profile_list": {
@@ -626,20 +626,20 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				Computed:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "javaagent info: SERVICE_AGENT/OT_AGENT.",
+				Description: "javaagent info: SERVICE_AGENT/OT_AGENT。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"agent_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Agent type.",
+							Description: "Agent 类型",
 						},
 						"agent_version": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Agent version.",
+							Description: "Agent 版本",
 						},
 					},
 				},
@@ -651,32 +651,32 @@ func ResourceTencentCloudTsfDeployContainerGroup() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "warmup setting.",
+				Description: "warmup setting。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"enabled": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Computed:    true,
-							Description: "Whether to enable preheating.",
+							Description: "是否enable preheating。",
 						},
 						"warmup_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "warmup time.",
+							Description: "warmup 时间。",
 						},
 						"curvature": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Preheating curvature, with a value between 1 and 5.",
+							Description: "Preheating curvature，使用 值 between 1 和 5。",
 						},
 						"enabled_protection": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Computed:    true,
-							Description: "Whether to enable preheating protection. If protection is enabled and more than 50% of nodes are in preheating state, preheating will be aborted.",
+							Description: "是否enable preheating protection. 如果 protection 是 已启用 和 more 比 50% 的 nodes 是 在 preheating state，preheating 将 是 aborted。",
 						},
 					},
 				},

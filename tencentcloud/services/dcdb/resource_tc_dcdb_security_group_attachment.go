@@ -28,13 +28,13 @@ func ResourceTencentCloudDcdbSecurityGroupAttachment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "security group id.",
+				Description: "安全组 ID",
 			},
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "attached instance id.",
+				Description: "attached 实例 ID",
 			},
 		},
 	}

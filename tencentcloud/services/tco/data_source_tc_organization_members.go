@@ -19,73 +19,73 @@ func DataSourceTencentCloudOrganizationMembers() *schema.Resource {
 			"lang": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Valid values: `en` (Tencent Cloud International); `zh` (Tencent Cloud).",
+				Description: "有效值：`en` (Tencent Cloud International); `zh` (Tencent Cloud)。",
 			},
 
 			"search_key": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Search by member name or ID.",
+				Description: "Search 通过 member 名称 或 ID。",
 			},
 
 			"auth_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Entity name.",
+				Description: "Entity 名称",
 			},
 
 			"product": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Abbreviation of the trusted service, which is required during querying the trusted service admin.",
+				Description: "Abbreviation 的 trusted 服务，其中 为必填项 during querying trusted 服务 admin。",
 			},
 
 			"items": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Member list.",
+				Description: "Member 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"member_uin": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Member UINNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Member UIN注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Member nameNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Member name注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"member_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Member type. Valid values: `Invite` (invited); `Create` (created).Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Member 类型 有效值：`Invite` (invited); `Create` (创建).注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"org_policy_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Relationship policy typeNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Relationship 策略 type注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"org_policy_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Relationship policy nameNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Relationship 策略 name注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"org_permission": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Relationship policy permissionNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Relationship 策略 permission注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Permission ID.",
+										Description: "Permission ID。",
 									},
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Permission name.",
+										Description: "Permission 名称",
 									},
 								},
 							},
@@ -93,58 +93,58 @@ func DataSourceTencentCloudOrganizationMembers() *schema.Resource {
 						"node_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Node IDNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Node ID注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"node_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Node nameNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Node name注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "RemarksNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Remarks注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation timeNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Creation time注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Update timeNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Update time注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"is_allow_quit": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Whether the member is allowed to leave. Valid values: `Allow`, `Denied`.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "是否member 是 allowed 到 leave. 有效值：`Allow`，`Denied`.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"pay_uin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Payer UINNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Payer UIN注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"pay_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Payer nameNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Payer name注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"org_identity": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Management identityNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Management identity注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"identity_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Identity ID.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Identity ID.注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"identity_alias_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Identity name.Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Identity 名称注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -152,17 +152,17 @@ func DataSourceTencentCloudOrganizationMembers() *schema.Resource {
 						"bind_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Security information binding status. Valid values: `Unbound`, `Valid`, `Success`, `Failed`.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Security 信息 binding 状态 有效值：`Unbound`，`有效`，`Success`，`Failed`.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"permission_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Member permission status. Valid values: `Confirmed`, `UnConfirmed`.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Member 权限 状态 有效值：`Confirmed`，`UnConfirmed`.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"nick_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Tencent Cloud nickname. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Tencent Cloud nickname. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -171,7 +171,7 @@ func DataSourceTencentCloudOrganizationMembers() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -30,13 +30,13 @@ func ResourceTencentCloudMonitorGrafanaVersionUpgrade() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Grafana instance ID.",
+				Description: "Grafana 实例 ID",
 			},
 
 			"alias": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Version alias.",
+				Description: "版本 alias。",
 			},
 		},
 	}

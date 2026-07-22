@@ -29,7 +29,7 @@ func ResourceTencentCloudEmrUserManager() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "Cluster string ID.",
+				Description: "Cluster 字符串 ID.",
 			},
 			"user_name": {
 				Type:        schema.TypeString,
@@ -41,7 +41,7 @@ func ResourceTencentCloudEmrUserManager() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "User group membership.",
+				Description: "User 组 membership.",
 			},
 			"password": {
 				Type:        schema.TypeString,
@@ -51,17 +51,17 @@ func ResourceTencentCloudEmrUserManager() *schema.Resource {
 			"user_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "User type.",
+				Description: "User 类型.",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create time.",
+				Description: "Create 时间.",
 			},
 			"support_download_keytab": {
 				Type:        schema.TypeBool,
 				Computed:    true,
-				Description: "If support download keytab.",
+				Description: "如果 support download keytab.",
 			},
 			"download_keytab_url": {
 				Type:        schema.TypeString,

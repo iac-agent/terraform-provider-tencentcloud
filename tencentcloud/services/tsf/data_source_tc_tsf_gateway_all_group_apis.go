@@ -19,87 +19,87 @@ func DataSourceTencentCloudTsfGatewayAllGroupApis() *schema.Resource {
 			"gateway_deploy_group_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway group Id.",
+				Description: "网关 组 ID。",
 			},
 
 			"search_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Search keyword, supports api group name or API path.",
+				Description: "Search keyword，支持 api 组名称 或 API 路径",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Gateway group and API list information.",
+				Description: "Gateway 组 和 API 列表 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"gateway_deploy_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Gateway deployment group ID.Note: This field may return null, which means no valid value was found.",
+							Description: "Gateway 部署 组 ID注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"gateway_deploy_group_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Gateway deployment group name.Note: This field may return null, which means no valid value was found.",
+							Description: "Gateway 部署 组名称注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"group_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Gateway deployment api group number.Note: This field may return null, which means no valid value was found.",
+							Description: "Gateway 部署 api 组 数量.注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"groups": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Gateway deployment  api group list.Note: This field may return null, which means no valid value was found.",
+							Description: "Gateway 部署 api 组 列表.注意：此字段可能返回 null，表示未找到有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"group_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "api group id.Note: This field may return null, which means no valid value was found.",
+										Description: "api 组 ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"group_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "api group name.Note: This field may return null, which means no valid value was found.",
+										Description: "api 组名称注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"group_api_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of APIs under the group. Note: This field may return null, which means no valid value was found.",
+										Description: "数量 APIs under 组. 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"group_apis": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "List of APIs under the group.Note: This field may return null, which means no valid value was found.",
+										Description: "列表 APIs under 组.注意：此字段可能返回 null，表示未找到有效值。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"api_id": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "API ID.",
+													Description: "API ID。",
 												},
 												"path": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "API path.",
+													Description: "API 路径",
 												},
 												"microservice_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "API service name.",
+													Description: "API 服务名称",
 												},
 												"method": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "API method.",
+													Description: "API 方法。",
 												},
 												"namespace_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "namespace name.",
+													Description: "命名空间 名称",
 												},
 											},
 										},
@@ -107,12 +107,12 @@ func DataSourceTencentCloudTsfGatewayAllGroupApis() *schema.Resource {
 									"gateway_instance_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Type of the gateway instance.Note: This field may return null, which means no valid value was found.",
+										Description: "类型 网关 实例.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"gateway_instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "gateway instance id.Note: This field may return null, which means no valid value was found.",
+										Description: "网关 实例 ID注意：此字段可能返回 null，表示未找到有效值。",
 									},
 								},
 							},
@@ -124,7 +124,7 @@ func DataSourceTencentCloudTsfGatewayAllGroupApis() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

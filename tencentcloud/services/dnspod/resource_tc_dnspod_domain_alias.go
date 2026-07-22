@@ -28,20 +28,20 @@ func ResourceTencentCloudDnspodDomainAlias() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Domain alias.",
+				Description: "域名 alias。",
 			},
 
 			"domain": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Domain.",
+				Description: "域名",
 			},
 
 			"domain_alias_id": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Domain alias ID.",
+				Description: "域名 alias ID。",
 			},
 		},
 	}

@@ -19,51 +19,51 @@ func DataSourceTencentCloudChdfsMountPoints() *schema.Resource {
 			"file_system_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "get mount points belongs to file system id, only can use one of the AccessGroupId,FileSystemId,OwnerUin parameters.",
+				Description: "get mount points belongs 到 文件 系统 ID，仅 可以 使用 一个 的 AccessGroupId,FileSystemId,OwnerUin 参数。",
 			},
 
 			"access_group_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "get mount points belongs to access group id, only can use one of the AccessGroupId,FileSystemId,OwnerUin parameters.",
+				Description: "get mount points belongs 到 访问 组 ID，仅 可以 使用 一个 的 AccessGroupId,FileSystemId,OwnerUin 参数。",
 			},
 
 			"owner_uin": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "get mount points belongs to owner uin, only can use one of the AccessGroupId,FileSystemId,OwnerUin parameters.",
+				Description: "get mount points belongs 到 所有者 uin，仅 可以 使用 一个 的 AccessGroupId,FileSystemId,OwnerUin 参数。",
 			},
 
 			"mount_points": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "mount point list.",
+				Description: "mount point 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"mount_point_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "mount point id.",
+							Description: "mount point ID。",
 						},
 						"mount_point_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "mount point name.",
+							Description: "mount point 名称",
 						},
 						"file_system_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "mounted file system id.",
+							Description: "mounted 文件 系统 ID。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "mount point status.",
+							Description: "mount point 状态",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "create time.",
+							Description: "创建时间。",
 						},
 						"access_group_ids": {
 							Type: schema.TypeSet,
@@ -71,7 +71,7 @@ func DataSourceTencentCloudChdfsMountPoints() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "associated group ids.",
+							Description: "associated 组 ids。",
 						},
 					},
 				},
@@ -80,7 +80,7 @@ func DataSourceTencentCloudChdfsMountPoints() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

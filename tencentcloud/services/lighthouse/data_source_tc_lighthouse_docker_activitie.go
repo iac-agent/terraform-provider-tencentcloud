@@ -57,7 +57,7 @@ func DataSourceTencentCloudLighthouseDockerActivitie() *schema.Resource {
 			"instance_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID. Can be obtained from the InstanceId field returned by the DescribeInstances interface.",
+				Description: "实例 ID Can 是 获取 从 实例 ID 字段 返回 通过 DescribeInstances interface。",
 			},
 
 			"activity_ids": {
@@ -66,46 +66,46 @@ func DataSourceTencentCloudLighthouseDockerActivitie() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Docker activity ID list. Can be obtained from the ActivityId field returned by the DescribeDockerActivities interface.",
+				Description: "Docker activity ID 列表. Can 是 获取 从 ActivityId 字段 返回 通过 DescribeDockerActivities interface。",
 			},
 
 			"created_time_begin": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The start value of the activity creation time, timestamp in seconds.",
+				Description: "start 值 的 activity 创建时间，时间戳 （秒）。",
 			},
 
 			"created_time_end": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The end value of the activity creation time, timestamp in seconds.",
+				Description: "end 值 的 activity 创建时间，时间戳 （秒）。",
 			},
 
 			"docker_activity_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Docker activity list.",
+				Description: "Docker activity 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"activity_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Activity ID.",
+							Description: "Activity ID。",
 						},
 						"activity_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Activity name.",
+							Description: "Activity 名称",
 						},
 						"activity_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Activity state. Valid values: INIT, OPERATING, SUCCESS, FAILED.",
+							Description: "Activity state. 有效值：INIT，OPERATING，SUCCESS，FAILED。",
 						},
 						"activity_command_output": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Activity command output, base64 encoded.",
+							Description: "Activity command output，base64 encoded。",
 						},
 						"container_ids": {
 							Type: schema.TypeSet,
@@ -113,17 +113,17 @@ func DataSourceTencentCloudLighthouseDockerActivitie() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Container ID list.",
+							Description: "Container ID 列表。",
 						},
 						"created_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time according to ISO8601 standard. UTC time is used. Format is YYYY-MM-DDThh:mm:ssZ.",
+							Description: "创建时间 according 到 ISO8601 standard. UTC 时间 是 使用. 格式 是 YYYY-MM-DDThh:mm:ssZ。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "End time according to ISO8601 standard. UTC time is used. Format is YYYY-MM-DDThh:mm:ssZ.",
+							Description: "结束时间 according 到 ISO8601 standard. UTC 时间 是 使用. 格式 是 YYYY-MM-DDThh:mm:ssZ。",
 						},
 					},
 				},
@@ -132,7 +132,7 @@ func DataSourceTencentCloudLighthouseDockerActivitie() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

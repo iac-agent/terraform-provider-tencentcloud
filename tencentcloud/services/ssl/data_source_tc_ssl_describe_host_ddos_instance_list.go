@@ -19,36 +19,36 @@ func DataSourceTencentCloudSslDescribeHostDdosInstanceList() *schema.Resource {
 			"certificate_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Certificate ID to be deployed.",
+				Description: "证书 ID 到 是 deployed。",
 			},
 
 			"resource_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Deploy resource type.",
+				Description: "Deploy 资源类型",
 			},
 
 			"is_cache": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to query the cache, 1: Yes; 0: No, the default is the query cache, the cache is half an hour.",
+				Description: "是否query 缓存，1: Yes; 0: No， 默认为 查询 缓存， 缓存 是 half hour。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "List of filtering parameters; Filterkey: domainmatch.",
+				Description: "列表 filtering 参数; Filterkey: domainmatch。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"filter_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter parameter key.",
+							Description: "过滤参数键",
 						},
 						"filter_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter parameter value.",
+							Description: "过滤参数值",
 						},
 					},
 				},
@@ -57,39 +57,39 @@ func DataSourceTencentCloudSslDescribeHostDdosInstanceList() *schema.Resource {
 			"old_certificate_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Deployed certificate ID.",
+				Description: "Deployed 证书 ID",
 			},
 
 			"instance_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "DDOS example listNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "DDOS 示例 listNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "domain name.",
+							Description: "域名 名称",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "agreement type.",
+							Description: "agreement 类型",
 						},
 						"cert_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Certificate IDNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+							Description: "Certificate IDNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 						},
 						"virtual_port": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Forwarding port.",
+							Description: "Forwarding 端口",
 						},
 					},
 				},
@@ -98,7 +98,7 @@ func DataSourceTencentCloudSslDescribeHostDdosInstanceList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

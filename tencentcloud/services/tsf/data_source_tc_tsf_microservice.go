@@ -19,7 +19,7 @@ func DataSourceTencentCloudTsfMicroservice() *schema.Resource {
 			"namespace_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "namespace id.",
+				Description: "命名空间 ID。",
 			},
 
 			"status": {
@@ -28,7 +28,7 @@ func DataSourceTencentCloudTsfMicroservice() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "status filter, online, offline, single_online.",
+				Description: "状态 过滤器，online，offline，single_online。",
 			},
 
 			"microservice_id_list": {
@@ -37,7 +37,7 @@ func DataSourceTencentCloudTsfMicroservice() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "microservice id list.",
+				Description: "microservice ID 列表。",
 			},
 
 			"microservice_name_list": {
@@ -46,65 +46,65 @@ func DataSourceTencentCloudTsfMicroservice() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of service names for search.",
+				Description: "列表 服务 names 对于 search。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Microservice paging list information. Note: This field may return null, indicating that no valid value can be obtained.",
+				Description: "Microservice paging 列表 信息. 注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Microservice paging list information. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Microservice paging 列表 信息. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Microservice list information. Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Microservice 列表 信息. 注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"microservice_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Microservice Id. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Microservice ID. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"microservice_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Microservice name. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Microservice 名称 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"microservice_desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Microservice description. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "Microservice 描述 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"create_time": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "CreationTime. Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "CreationTime. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"update_time": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "last update time.  Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "last 更新时间. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"namespace_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Namespace Id.  Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "Namespace ID. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"run_instance_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "run instance count in namespace.  Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "run 实例 count 在 命名空间. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"critical_instance_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "offline instance count.  Note: This field may return null, indicating that no valid values can be obtained.",
+										Description: "offline 实例 count. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -116,7 +116,7 @@ func DataSourceTencentCloudTsfMicroservice() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

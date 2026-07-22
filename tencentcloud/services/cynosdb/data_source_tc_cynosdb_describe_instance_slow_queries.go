@@ -19,48 +19,48 @@ func DataSourceTencentCloudCynosdbDescribeInstanceSlowQueries() *schema.Resource
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 			"start_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "start time.",
+				Description: "开始时间。",
 			},
 			"end_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "End time.",
+				Description: "结束时间。",
 			},
 			"binlogs": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Note to the Binlog list: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "Binlog列表注意：该字段可能返回null，表示无法获取到有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"file_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Binlog file name.",
+							Description: "二进制日志文件名。",
 						},
 						"file_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "File size in bytes.",
+							Description: "文件大小（以字节为单位）。",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Earliest transaction time.",
+							Description: "最早交易时间。",
 						},
 						"finish_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Latest transaction time.",
+							Description: "最晚交易时间。",
 						},
 						"binlog_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Binlog file ID.",
+							Description: "二进制日志文件ID。",
 						},
 					},
 				},
@@ -68,7 +68,7 @@ func DataSourceTencentCloudCynosdbDescribeInstanceSlowQueries() *schema.Resource
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

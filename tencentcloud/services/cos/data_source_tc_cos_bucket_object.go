@@ -21,52 +21,52 @@ func DataSourceTencentCloudCosBucketObject() *schema.Resource {
 			"bucket": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Name of the bucket that contains the objects to query.",
+				Description: "名称 存储桶 该 包含objects 到 查询。",
 			},
 			"key": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The full path to the object inside the bucket.",
+				Description: "full 路径 到 对象 inside 存储桶",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			"cache_control": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Specifies caching behavior along the request/reply chain.",
+				Description: "指定caching behavior along 请求/reply chain。",
 			},
 			"content_disposition": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Specifies presentational information for the object.",
+				Description: "指定presentational 信息 对于 对象。",
 			},
 			"content_encoding": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.",
+				Description: "指定what 内容 encodings have been applied 到 对象 和 thus what decoding mechanisms 必须 是 applied 到 obtain media-类型 referenced 通过 内容-类型 头部 字段。",
 			},
 			"content_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "A standard MIME type describing the format of the object data.",
+				Description: "A standard MIME 类型 describing 格式 的 对象 数据。",
 			},
 			"etag": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "ETag generated for the object, which is may not equal to MD5 value.",
+				Description: "ETag generated 对于 对象，其中 是 可能 不 equal 到 MD5 值",
 			},
 			"last_modified": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Last modified date of the object.",
+				Description: "Last modified date 的 对象。",
 			},
 			"storage_class": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Object storage type such as STANDARD.",
+				Description: "Object 存储 类型 such 作为 STANDARD。",
 			},
 		},
 	}

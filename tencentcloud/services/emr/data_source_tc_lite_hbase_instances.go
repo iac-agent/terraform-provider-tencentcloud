@@ -18,7 +18,7 @@ func DataSourceTencentCloudLiteHbaseInstances() *schema.Resource {
 			"display_strategy": {
 				Type:     schema.TypeString,
 				Required: true,
-				Description: "Cluster filtering policy. Value range:\n" +
+				Description: "Cluster filtering 策略. Value 范围:\n" +
 					"	* clusterList: Query the list of clusters except the destroyed cluster;\n" +
 					"	* monitorManage: Queries the list of clusters except those destroyed, being created, and failed to create.",
 			},
@@ -26,7 +26,7 @@ func DataSourceTencentCloudLiteHbaseInstances() *schema.Resource {
 			"order_field": {
 				Type:     schema.TypeString,
 				Optional: true,
-				Description: "Sorting field. Value range:\n" +
+				Description: "Sorting 字段. Value 范围:\n" +
 					"	* clusterId: Sorting by instance ID;\n" +
 					"	* addTime: sorted by instance creation time;\n" +
 					"	* status: sorted by the status code of the instance.",
@@ -35,7 +35,7 @@ func DataSourceTencentCloudLiteHbaseInstances() *schema.Resource {
 			"asc": {
 				Type:     schema.TypeInt,
 				Optional: true,
-				Description: "Sort by OrderField in ascending or descending order. Value range:\n" +
+				Description: "Sort 通过 OrderField 在 ascending 或 descending order. Value 范围:\n" +
 					"	* 0: indicates the descending order;\n" +
 					"	* 1: indicates the ascending order;\n" +
 					"	The default value is 0.",
@@ -44,18 +44,18 @@ func DataSourceTencentCloudLiteHbaseInstances() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Custom query.",
+				Description: "Custom 查询.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Field name.",
+							Description: "Field 名称.",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Filter field value.",
+							Description: "过滤器 字段 值.",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -67,28 +67,28 @@ func DataSourceTencentCloudLiteHbaseInstances() *schema.Resource {
 			"instance_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Cluster instance list.",
+				Description: "Cluster 实例 列表.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cluster_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster Instance String ID.",
+							Description: "Cluster 实例 String ID.",
 						},
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Cluster Instance Digital ID.",
+							Description: "Cluster 实例 Digital ID.",
 						},
 						"status_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "State description.",
+							Description: "State 描述.",
 						},
 						"cluster_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Cluster Instance name.",
+							Description: "Cluster 实例 名称.",
 						},
 						"region_id": {
 							Type:        schema.TypeInt,
@@ -123,33 +123,33 @@ func DataSourceTencentCloudLiteHbaseInstances() *schema.Resource {
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Status code, please refer to the StatusDesc.",
+							Description: "Status 代码, please refer 到 StatusDesc.",
 						},
 						"add_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time.",
+							Description: "Creation 时间.",
 						},
 						"pay_mode": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Cluster charging type. 0 means charging by volume, 1 means annual and monthly.",
+							Description: "Cluster charging 类型. 0 表示 charging 通过 卷, 1 表示 annual 和 monthly.",
 						},
 						"zone_settings": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Detailed configuration of the instance availability zone, including the availability zone name, VPC information, and the total number of nodes, where the total number of nodes must be greater than or equal to 3 and less than or equal to 50.",
+							Description: "Detailed 配置 的 实例 availability zone, 包括 availability zone 名称, VPC 信息, 和 总数 数量 的 nodes, 其中 总数 数量 的 nodes 必须 是 greater 比 或 equal 到 3 和 less 比 或 equal 到 50.",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"zone": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The availability zone to which the instance belongs, such as ap-guangzhou-1.",
+										Description: "availability zone 到 其中 实例 belongs, such 作为 ap-guangzhou-1.",
 									},
 									"vpc_settings": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Private network related information configuration. This parameter can be used to specify the ID of the private network, subnet ID, and other information.",
+										Description: "Private 网络 related 信息 配置. 此 参数 可以 是 使用 到 specify ID 的 私有 网络, 子网 ID, 和 other 信息.",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"vpc_id": {
@@ -168,7 +168,7 @@ func DataSourceTencentCloudLiteHbaseInstances() *schema.Resource {
 									"node_num": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of nodes.",
+										Description: "Number 的 nodes.",
 									},
 								},
 							},
@@ -176,18 +176,18 @@ func DataSourceTencentCloudLiteHbaseInstances() *schema.Resource {
 						"tags": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of tags.",
+							Description: "List 的 tags.",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_key": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Tag key.",
+										Description: "Tag 键.",
 									},
 									"tag_value": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Tag value.",
+										Description: "Tag 值.",
 									},
 								},
 							},
@@ -199,7 +199,7 @@ func DataSourceTencentCloudLiteHbaseInstances() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

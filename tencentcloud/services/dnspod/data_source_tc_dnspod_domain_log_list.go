@@ -19,13 +19,13 @@ func DataSourceTencentCloudDnspodDomainLogList() *schema.Resource {
 			"domain": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Domain.",
+				Description: "域名",
 			},
 
 			"domain_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Domain ID. The parameter DomainId has a higher priority than the parameter Domain. If the parameter DomainId is passed, the parameter Domain will be ignored. You can find all Domains and DomainIds through the DescribeDomainList interface.",
+				Description: "域名 ID. 参数 DomainId has higher 优先级 比 参数 域名 如果 参数 DomainId 是 passed， 参数 域名 将 是 ignored. You 可以 find all Domains 和 DomainIds through DescribeDomainList interface。",
 			},
 
 			"log_list": {
@@ -34,13 +34,13 @@ func DataSourceTencentCloudDnspodDomainLogList() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Domain Operation Log List. Note: This field may return null, indicating that no valid value can be obtained.",
+				Description: "域名 Operation Log List. 注意：此字段可能返回 null，表示无法获取有效值。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

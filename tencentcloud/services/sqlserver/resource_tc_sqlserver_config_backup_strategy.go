@@ -26,31 +26,31 @@ func ResourceTencentCloudSqlserverConfigBackupStrategy() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 
 			"backup_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Backup type. Valid values: weekly (when length(BackupDay) <=7 && length(BackupDay) >=2), daily (when length(BackupDay)=1). Default value: daily.",
+				Description: "Backup 类型. 有效 值: weekly (当 长度(BackupDay) <=7 && 长度(BackupDay) >=2), daily (当 长度(BackupDay)=1). Default 值: daily.",
 			},
 
 			"backup_time": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Backup time. Value range: an integer from 0 to 23.",
+				Description: "Backup 时间. Value 范围: 整数 从 0 到 23.",
 			},
 
 			"backup_day": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Backup interval in days when the BackupType is daily. The current value can only be 1.",
+				Description: "Backup 间隔 在 days 当 BackupType 是 daily. 当前 值 可以 仅 是 1.",
 			},
 
 			"backup_model": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Backup mode. Valid values: master_pkg (archive the backup files of the primary node), master_no_pkg (do not archive the backup files of the primary node), slave_pkg (archive the backup files of the replica node), slave_no_pkg (do not archive the backup files of the replica node). Backup files of the replica node are supported only when Always On disaster recovery is enabled.",
+				Description: "Backup 模式. 有效 值: master_pkg (archive 备份 files 的 primary 节点), master_no_pkg (do 不 archive 备份 files 的 primary 节点), slave_pkg (archive 备份 files 的 副本 节点), slave_no_pkg (do 不 archive 备份 files 的 副本 节点). Backup files 的 副本 节点 是 支持 仅 当 Always On disaster recovery 是 已启用.",
 			},
 
 			"backup_cycle": {
@@ -59,43 +59,43 @@ func ResourceTencentCloudSqlserverConfigBackupStrategy() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "The days of the week on which backup will be performed when `BackupType` is weekly. If data backup retention period is less than 7 days, the values will be 1-7, indicating that backup will be performed everyday by default; if data backup retention period is greater than or equal to 7 days, the values will be at least any two days, indicating that backup will be performed at least twice in a week by default.",
+				Description: "days 的 week 在 其中 备份 将 是 performed 当 `BackupType` 是 weekly. 如果 数据 备份 retention 周期 是 less 比 7 days, 值 将 是 1-7, indicating 该 备份 将 是 performed everyday 通过 默认值; 如果 数据 备份 retention 周期 是 greater 比 或 equal 到 7 days, 值 将 是 在 least any two days, indicating 该 备份 将 是 performed 在 least twice 在 week 通过 默认值.",
 			},
 
 			"backup_save_days": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Data (log) backup retention period. Value range: 3-1830 days, default value: 7 days.",
+				Description: "Data (日志) 备份 retention 周期. Value 范围: 3-1830 days, 默认值 值: 7 days.",
 			},
 
 			"regular_backup_enable": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Archive backup status. Valid values: enable (enabled); disable (disabled). Default value: disable.",
+				Description: "Archive 备份 状态. 有效 值: 启用 (已启用); disable (已禁用). Default 值: disable.",
 			},
 
 			"regular_backup_save_days": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Archive backup retention days. Value range: 90-3650 days. Default value: 365 days.",
+				Description: "Archive 备份 retention days. Value 范围: 90-3650 days. Default 值: 365 days.",
 			},
 
 			"regular_backup_strategy": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Archive backup policy. Valid values: years (yearly); quarters (quarterly); months(monthly); Default value: `months`.",
+				Description: "Archive 备份 策略. 有效 值: years (yearly); quarters (quarterly); months(monthly); Default 值: `months`.",
 			},
 
 			"regular_backup_counts": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The number of retained archive backups. Default value: 1.",
+				Description: "数量 的 retained archive backups. Default 值: 1.",
 			},
 
 			"regular_backup_start_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Archive backup start date in YYYY-MM-DD format, which is the current time by default.",
+				Description: "Archive 备份 start date 在 YYYY-MM-DD 格式, 其中 是 当前 时间 通过 默认值.",
 			},
 		},
 	}

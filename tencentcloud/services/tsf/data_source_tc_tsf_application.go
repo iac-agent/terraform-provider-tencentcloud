@@ -19,13 +19,13 @@ func DataSourceTencentCloudTsfApplication() *schema.Resource {
 			"application_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The application type. V OR C, V means VM, C means container.",
+				Description: "应用 类型 V OR C，V 表示 VM，C 表示 容器。",
 			},
 
 			"microservice_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The microservice type of the application.",
+				Description: "microservice 类型 应用。",
 			},
 
 			"application_resource_type_list": {
@@ -34,7 +34,7 @@ func DataSourceTencentCloudTsfApplication() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "An array of application resource types.",
+				Description: "An 数组 应用 资源 types。",
 			},
 
 			"application_id_list": {
@@ -43,112 +43,112 @@ func DataSourceTencentCloudTsfApplication() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Id list.",
+				Description: "ID 列表。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The application paging list information.",
+				Description: "应用 paging 列表 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The total number of applications.",
+							Description: "总数 数量 applications。",
 						},
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "The list of application information.",
+							Description: "列表 应用 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"application_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The ID of the application.",
+										Description: "ID 应用。",
 									},
 									"application_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The name of the application.",
+										Description: "名称 应用。",
 									},
 									"application_desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The description of the application.",
+										Description: "描述 应用。",
 									},
 									"application_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The type of the application.",
+										Description: "类型 应用。",
 									},
 									"microservice_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The microservice type of the application.",
+										Description: "microservice 类型 应用。",
 									},
 									"prog_lang": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Programming language.",
+										Description: "Programming 语言",
 									},
 									"create_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "create time.",
+										Description: "创建时间。",
 									},
 									"update_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "update time.",
+										Description: "更新时间。",
 									},
 									"application_resource_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "application resource type.",
+										Description: "应用 资源类型",
 									},
 									"application_runtime_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "application runtime type.",
+										Description: "应用 runtime 类型",
 									},
 									"apigateway_service_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "gateway service id.",
+										Description: "网关 服务 ID。",
 									},
 									"application_remark_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "remark name.",
+										Description: "备注 名称",
 									},
 									"service_config_list": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "service config list.",
+										Description: "服务 配置 列表。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "serviceName.",
+													Description: "serviceName。",
 												},
 												"ports": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "port list.",
+													Description: "端口 列表。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"target_port": {
 																Type:        schema.TypeInt,
 																Computed:    true,
-																Description: "service port.",
+																Description: "服务 端口",
 															},
 															"protocol": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "protocol.",
+																Description: "协议",
 															},
 														},
 													},
@@ -156,13 +156,13 @@ func DataSourceTencentCloudTsfApplication() *schema.Resource {
 												"health_check": {
 													Type:        schema.TypeList,
 													Computed:    true,
-													Description: "health check setting.",
+													Description: "health check setting。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"path": {
 																Type:        schema.TypeString,
 																Computed:    true,
-																Description: "health check path.",
+																Description: "health check 路径",
 															},
 														},
 													},
@@ -173,7 +173,7 @@ func DataSourceTencentCloudTsfApplication() *schema.Resource {
 									"ignore_create_image_repository": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "whether ignore create image repository.",
+										Description: "whether ignore create 镜像 repository。",
 									},
 								},
 							},
@@ -185,7 +185,7 @@ func DataSourceTencentCloudTsfApplication() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

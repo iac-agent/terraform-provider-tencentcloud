@@ -29,46 +29,46 @@ func ResourceTencentCloudCiMediaSmartCoverTemplate() *schema.Resource {
 			"bucket": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "bucket name.",
+				Description: "存储桶名称",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The template name only supports `Chinese`, `English`, `numbers`, `_`, `-` and `*`.",
+				Description: "模板名称 仅 支持 `Chinese`，`English`，`numbers`，`_`，`-` 和 `*`。",
 			},
 
 			"smart_cover": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Smart Cover Parameters.",
+				Description: "Smart Cover Parameters。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"format": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Image Format, value jpg, png, webp.",
+							Description: "Image 格式，值 jpg，png，webp。",
 						},
 						"width": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Width, value range: [128, 4096], unit: px, if only Width is set, Height is calculated according to the original ratio of the video.",
+							Description: "宽度，取值范围：[128，4096]，单位: 像素，如果 仅 宽度 是 集合，高度 是 calculated according 到 original ratio 的 视频。",
 						},
 						"height": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Height, value range: [128, 4096], unit: px, if only Height is set, Width is calculated according to the original video ratio.",
+							Description: "高度，取值范围：[128，4096]，单位: 像素，如果 仅 高度 是 集合，宽度 是 calculated according 到 original 视频 ratio。",
 						},
 						"count": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Number of screenshots, [1,10].",
+							Description: "数量 screenshots，[1,10]。",
 						},
 						"delete_duplicates": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "cover deduplication, true/false.",
+							Description: "cover deduplication，true/false。",
 						},
 					},
 				},

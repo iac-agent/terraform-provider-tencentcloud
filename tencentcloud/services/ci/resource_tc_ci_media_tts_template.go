@@ -27,43 +27,43 @@ func ResourceTencentCloudCiMediaTtsTemplate() *schema.Resource {
 			"bucket": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "bucket name.",
+				Description: "存储桶名称",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The template name only supports `Chinese`, `English`, `numbers`, `_`, `-` and `*`.",
+				Description: "模板名称 仅 支持 `Chinese`，`English`，`numbers`，`_`，`-` 和 `*`。",
 			},
 
 			"mode": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Processing mode, default value Asyc, Asyc (asynchronous composition), Sync (synchronous composition), When Asyc is selected, the codec only supports pcm.",
+				Description: "Processing 模式，默认值 Asyc，Asyc (asynchronous composition)，Sync (synchronous composition)，当 Asyc 是 selected， codec 仅 支持 pcm。",
 			},
 
 			"codec": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Audio format, default wav (synchronous)/pcm (asynchronous, wav, mp3, pcm.",
+				Description: "Audio 格式，默认值 wav (synchronous)/pcm (asynchronous，wav，mp3，pcm。",
 			},
 
 			"voice_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Timbre, the default value is ruxue.",
+				Description: "Timbre， 默认值为 ruxue。",
 			},
 
 			"volume": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Volume, default value 0, [-10,10].",
+				Description: "Volume，默认值 0，[-10,10]。",
 			},
 
 			"speed": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Speech rate, the default value is 100, [50,200].",
+				Description: "Speech 速率， 默认值为 100，[50,200]。",
 			},
 		},
 	}

@@ -22,20 +22,20 @@ func ResourceTencentCloudAPIGatewayUpdateService() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Service ID.",
+				Description: "服务 ID",
 			},
 			"environment_name": {
 				Required:     true,
 				ForceNew:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"test", "prepub", "release"}),
-				Description:  "The name of the environment to be switched, currently supporting three environments: test (test environment), prepub (pre release environment), and release (release environment).",
+				Description:  "名称 环境 到 是 switched，currently supporting three environments: 测试 (测试 环境)，prepub (pre release 环境)，和 release (release 环境)。",
 			},
 			"version_name": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The version number of the switch.",
+				Description: "版本 数量 switch。",
 			},
 		},
 	}

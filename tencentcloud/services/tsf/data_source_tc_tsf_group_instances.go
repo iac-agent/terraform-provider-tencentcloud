@@ -19,238 +19,238 @@ func DataSourceTencentCloudTsfGroupInstances() *schema.Resource {
 			"group_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "group id.",
+				Description: "组 ID。",
 			},
 
 			"search_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "search word.",
+				Description: "search word。",
 			},
 
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "order term.",
+				Description: "顺序 term。",
 			},
 
 			"order_type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "order type.",
+				Description: "顺序 类型",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Machine information of the deployment group.Note: This field may return null, which means no valid value was found.",
+				Description: "Machine 信息 的 部署 组.注意：此字段可能返回 null，表示未找到有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total number of machine instances.Note: This field may return null, which means no valid value was found.",
+							Description: "Total 数量 machine 实例.注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of machine instances.Note: This field may return null, which means no valid value was found.",
+							Description: "列表 machine 实例.注意：此字段可能返回 null，表示未找到有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Machine instance ID.Note: This field may return null, which means no valid value was found.",
+										Description: "Machine 实例 ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Machine name.Note: This field may return null, which means no valid value was found.",
+										Description: "Machine 名称注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"lan_ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Private IP address.Note: This field may return null, which means no valid value was found.",
+										Description: "内网 IP 地址注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"wan_ip": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Public IP address.Note: This field may return null, which means no valid value was found.",
+										Description: "公网 IP 地址注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Description.Note: This field may return null, which means no valid value was found.",
+										Description: "描述注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"cluster_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cluster id.Note: This field may return null, which means no valid value was found.",
+										Description: "集群 ID注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"cluster_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cluster name. Note: This field may return null, which means no valid value was found.",
+										Description: "集群名称 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "VM status. For virtual machines, it indicates the status of the virtual machine. For containers, it indicates the status of the virtual machine where the pod is located.Note: This field may return null, which means no valid value was found.",
+										Description: "VM 状态 For virtual machines，它 表示status 的 virtual machine. For containers，它 表示status 的 virtual machine 其中 pod 是 located.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_available_status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "VM availability status. For virtual machines, it indicates whether the virtual machine can be used as a resource. For containers, it indicates whether the virtual machine can be used to deploy pods.Note: This field may return null, which means no valid value was found.",
+										Description: "VM availability 状态 For virtual machines，它 表示是否virtual machine 可以 是 使用 作为 资源. For containers，它 表示是否virtual machine 可以 是 用于deploy pods.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"service_instance_status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Status of service instances under the service. For virtual machines, it indicates whether the application is available and the agent status. For containers, it indicates the status of the pod.Note: This field may return null, which means no valid value was found.",
+										Description: "状态 服务 实例 under 服务. For virtual machines，它 表示是否application 是 可用 和 agent 状态 For containers，它 表示status 的 pod.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"count_in_tsf": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Indicates whether this instance has been added to the TSF.Note: This field may return null, which means no valid value was found.",
+										Description: "表示是否this 实例 has been added 到 TSF.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"group_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Group id.Note: This field may return null, which means no valid value was found.",
+										Description: "Group ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"application_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Application id.Note: This field may return null, which means no valid value was found.",
+										Description: "Application ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"application_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Application name. Note: This field may return null, which means no valid value was found.",
+										Description: "Application 名称 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_created_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Creation time of the machine instance in CVM.Note: This field may return null, which means no valid value was found.",
+										Description: "创建时间 的 machine 实例 在 CVM.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_expired_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Expire time of the machine instance in CVM.Note: This field may return null, which means no valid value was found.",
+										Description: "Expire 时间 的 machine 实例 在 CVM.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_charge_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "machine instance charge type.Note: This field may return null, which means no valid value was found.",
+										Description: "machine 实例计费类型注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_total_cpu": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Total CPU information of the machine instance.Note: This field may return null, which means no valid value was found.",
+										Description: "Total CPU 信息 的 machine 实例.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_total_mem": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Total memory information of the machine instance.Note: This field may return null, which means no valid value was found.",
+										Description: "Total 内存 信息 的 machine 实例.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_used_cpu": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "CPU information used by the machine instance.Note: This field may return null, which means no valid value was found.",
+										Description: "CPU 信息 使用 通过 machine 实例.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_used_mem": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Memory information used by the machine instance.Note: This field may return null, which means no valid value was found.",
+										Description: "Memory 信息 使用 通过 machine 实例.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_limit_cpu": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Limit CPU information of the machine instance.Note: This field may return null, which means no valid value was found.",
+										Description: "限制 CPU 信息 的 machine 实例.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_limit_mem": {
 										Type:        schema.TypeFloat,
 										Computed:    true,
-										Description: "Limit memory information of the machine instance.Note: This field may return null, which means no valid value was found.",
+										Description: "限制 内存 信息 的 machine 实例.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_pkg_version": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "instance pkg version.Note: This field may return null, which means no valid value was found.",
+										Description: "实例 pkg 版本注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"cluster_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cluster type.Note: This field may return null, which means no valid value was found.",
+										Description: "集群类型注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"restrict_state": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Business status of the machine instance.Note: This field may return null, which means no valid value was found.",
+										Description: "Business 状态 machine 实例.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"update_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Update time.Note: This field may return null, which means no valid value was found.",
+										Description: "更新时间.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"operation_state": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Execution status of the instance.Note: This field may return null, which means no valid value was found.",
+										Description: "Execution 状态 实例.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"namespace_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Namespace id.Note: This field may return null, which means no valid value was found.",
+										Description: "Namespace ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_zone_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance zone id.Note: This field may return null, which means no valid value was found.",
+										Description: "实例 可用区 ID注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"instance_import_mode": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "InstanceImportMode import mode.Note: This field may return null, which means no valid value was found.",
+										Description: "InstanceImportMode import 模式注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"application_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Application id.Note: This field may return null, which means no valid value was found.",
+										Description: "Application ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"application_resource_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "application resource id.Note: This field may return null, which means no valid value was found.",
+										Description: "应用 资源 ID注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"service_sidecar_status": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Sidecar status.Note: This field may return null, which means no valid value was found.",
+										Description: "Sidecar 状态注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"group_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Group name.Note: This field may return null, which means no valid value was found.",
+										Description: "组名称注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"namespace_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Namespace name.Note: This field may return null, which means no valid value was found.",
+										Description: "Namespace 名称注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"reason": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Health checking reason.Note: This field may return null, which means no valid value was found.",
+										Description: "Health checking reason.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"agent_version": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Agent version.Note: This field may return null, which means no valid value was found.",
+										Description: "Agent 版本注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"node_instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Container host instance ID.Note: This field may return null, which means no valid value was found.",
+										Description: "Container 主机 实例 ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 								},
 							},
@@ -262,7 +262,7 @@ func DataSourceTencentCloudTsfGroupInstances() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -26,52 +26,52 @@ func ResourceTencentCloudMonitorTmpTkeGlobalNotification() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance Id.",
+				Description: "实例 ID",
 			},
 
 			"notification": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Required:    true,
-				Description: "Alarm notification channels.",
+				Description: "Alarm 通知 channels。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"enabled": {
 							Type:        schema.TypeBool,
 							Required:    true,
-							Description: "Alarm notification switch.",
+							Description: "Alarm 通知 switch。",
 						},
 						"type": {
 							Type:         schema.TypeString,
 							Required:     true,
 							ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"amp", "webhook", "alertmanager"}),
-							Description:  "Alarm notification type, Valid values: `amp`, `webhook`, `alertmanager`.",
+							Description:  "Alarm 通知 类型，有效值：`amp`，`webhook`，`alertmanager`。",
 						},
 						"web_hook": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Web hook, if Type is `webhook`, this field is required.",
+							Description: "Web hook，如果 类型 是 `webhook`，此 字段 为必填项。",
 						},
 						"alert_manager": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Alert manager, if Type is `alertmanager`, this field is required.",
+							Description: "Alert manager，如果 类型 是 `alertmanager`，此 字段 为必填项。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"url": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Alert manager url.",
+										Description: "Alert manager URL",
 									},
 									"cluster_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Cluster type.",
+										Description: "集群类型",
 									},
 									"cluster_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Cluster id.",
+										Description: "集群 ID",
 									},
 								},
 							},
@@ -79,17 +79,17 @@ func ResourceTencentCloudMonitorTmpTkeGlobalNotification() *schema.Resource {
 						"repeat_interval": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Convergence time.",
+							Description: "Convergence 时间。",
 						},
 						"time_range_start": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Effective start time.",
+							Description: "Effective 开始时间。",
 						},
 						"time_range_end": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Effective end time.",
+							Description: "Effective 结束时间。",
 						},
 						"notify_way": {
 							Type: schema.TypeSet,
@@ -98,7 +98,7 @@ func ResourceTencentCloudMonitorTmpTkeGlobalNotification() *schema.Resource {
 								ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"SMS", "EMAIL", "CALL", "WECHAT"}),
 							},
 							Optional:    true,
-							Description: "Alarm notification method, Valid values: `SMS`, `EMAIL`, `CALL`, `WECHAT`.",
+							Description: "Alarm 通知 方法，有效值：`SMS`，`EMAIL`，`CALL`，`WECHAT`。",
 						},
 						"receiver_groups": {
 							Type: schema.TypeSet,
@@ -106,7 +106,7 @@ func ResourceTencentCloudMonitorTmpTkeGlobalNotification() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "Alarm receiving group(user group).",
+							Description: "Alarm receiving 组(用户 组)。",
 						},
 						"phone_notify_order": {
 							Type: schema.TypeSet,
@@ -114,27 +114,27 @@ func ResourceTencentCloudMonitorTmpTkeGlobalNotification() *schema.Resource {
 								Type: schema.TypeInt,
 							},
 							Optional:    true,
-							Description: "Phone alert sequence, NotifyWay is `CALL`, and this parameter is used.",
+							Description: "Phone alert sequence，NotifyWay 是 `CALL`，和 此 参数 是 使用。",
 						},
 						"phone_circle_times": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Number of phone alerts (user group), NotifyWay is `CALL`, and this parameter is used.",
+							Description: "数量 phone alerts (用户 组)，NotifyWay 是 `CALL`，和 此 参数 是 使用。",
 						},
 						"phone_inner_interval": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Interval between telephone alarm rounds, NotifyWay is `CALL`, and this parameter is used.",
+							Description: "Interval between telephone 告警 rounds，NotifyWay 是 `CALL`，和 此 参数 是 使用。",
 						},
 						"phone_circle_interval": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Telephone alarm off-wheel interval, NotifyWay is `CALL`, and this parameter is used.",
+							Description: "Telephone 告警 关闭-wheel 间隔，NotifyWay 是 `CALL`，和 此 参数 是 使用。",
 						},
 						"phone_arrive_notice": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Phone Alarm Reach Notification, NotifyWay is `CALL`, and this parameter is used.",
+							Description: "Phone Alarm Reach Notification，NotifyWay 是 `CALL`，和 此 参数 是 使用。",
 						},
 					},
 				},

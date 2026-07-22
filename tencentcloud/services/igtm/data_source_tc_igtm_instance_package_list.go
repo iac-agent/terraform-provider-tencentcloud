@@ -18,18 +18,18 @@ func DataSourceTencentCloudIgtmInstancePackageList() *schema.Resource {
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Filter conditions.",
+				Description: "过滤器 conditions。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter field name, supported list as follows:\n- InstanceId: instance ID.\n- InstanceName: instance name.\n- ResourceId: package ID.\n- PackageType: package type. This is a required parameter, not passing it will cause interface query failure.",
+							Description: "过滤字段名称，支持 列表 作为 follows:\n- 实例 ID: 实例 ID.\n- InstanceName: 实例名称\n- ResourceId: 包 ID.\n- PackageType: 包 类型 此 是 必填 参数，不 passing 它 将 cause interface 查询 failure。",
 						},
 						"value": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Filter field value.",
+							Description: "过滤字段值",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -37,7 +37,7 @@ func DataSourceTencentCloudIgtmInstancePackageList() *schema.Resource {
 						"fuzzy": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether to enable fuzzy query, only supports filter field name as domain.\nWhen fuzzy query is enabled, maximum Value length is 1, otherwise maximum Value length is 5. (Reserved field, not currently used).",
+							Description: "是否enable fuzzy 查询，仅 支持 过滤字段名称 作为 域名\nWhen fuzzy 查询 是 已启用，最大 值 长度 是 1，otherwise 最大 值 长度 是 5. (Reserved 字段，不 currently 使用)。",
 						},
 					},
 				},
@@ -46,80 +46,80 @@ func DataSourceTencentCloudIgtmInstancePackageList() *schema.Resource {
 			"is_used": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Whether used: 0 not used 1 used.",
+				Description: "Whether 使用: 0 不 使用 1 使用。",
 			},
 
 			"instance_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Instance package list.",
+				Description: "实例 包 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance package resource ID.",
+							Description: "实例 包 资源 ID。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance name.",
+							Description: "实例名称",
 						},
 						"package_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Package type\nFREE: Free version\nSTANDARD: Standard version\nULTIMATE: Ultimate version.",
+							Description: "Package 类型\nFREE: Free 版本\nSTANDARD: Standard 版本\nULTIMATE: Ultimate 版本",
 						},
 						"current_deadline": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Package expiration time.",
+							Description: "Package 过期时间。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Package creation time.",
+							Description: "Package 创建时间。",
 						},
 						"is_expire": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether expired 0 no 1 yes.",
+							Description: "Whether expired 0 无 1 yes。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance status\nENABLED: Normal\nDISABLED: Disabled.",
+							Description: "实例状态\nENABLED: Normal\nDISABLED: 已禁用",
 						},
 						"auto_renew_flag": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether auto-renew 0 no 1 yes.",
+							Description: "Whether auto-renew 0 无 1 yes。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Remark.",
+							Description: "备注",
 						},
 						"cost_item_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Billing item.",
+							Description: "Billing item。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"cost_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Billing item name.",
+										Description: "Billing item 名称",
 									},
 									"cost_value": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Billing item value.",
+										Description: "Billing item 值",
 									},
 								},
 							},
@@ -127,17 +127,17 @@ func DataSourceTencentCloudIgtmInstancePackageList() *schema.Resource {
 						"min_check_interval": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Minimum check interval time s.",
+							Description: "Minimum check 间隔 时间 s。",
 						},
 						"min_global_ttl": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Minimum TTL s.",
+							Description: "Minimum TTL s。",
 						},
 						"traffic_strategy": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "Traffic strategy type: ALL return all, WEIGHT weight.",
+							Description: "Traffic strategy 类型: ALL 返回 all，WEIGHT 权重",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -145,7 +145,7 @@ func DataSourceTencentCloudIgtmInstancePackageList() *schema.Resource {
 						"schedule_strategy": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "Strategy type: LOCATION schedule by geographic location, DELAY schedule by delay.",
+							Description: "Strategy 类型: LOCATION 调度 通过 geographic location，DELAY 调度 通过 延迟",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -157,7 +157,7 @@ func DataSourceTencentCloudIgtmInstancePackageList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

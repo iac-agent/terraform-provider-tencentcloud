@@ -21,19 +21,19 @@ func ResourceTencentCloudCosObjectRestoreOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Bucket.",
+				Description: "存储桶",
 			},
 			"key": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Object key.",
+				Description: "Object 键",
 			},
 			"tier": {
 				Required: true,
 				ForceNew: true,
 				Type:     schema.TypeString,
-				Description: "when restoring, Tier can be specified as the supported recovery model.\n" +
+				Description: "当 restoring, Tier 可以 是 指定 作为 支持 recovery model.\n" +
 					"There are three recovery models for recovering archived storage type data, which are:\n" +
 					"- Expedited: quick retrieval mode, and the recovery task can be completed in 1-5 minutes.\n" +
 					"- Standard: standard retrieval mode. Recovery task is completed within 3-5 hours.\n" +
@@ -46,7 +46,7 @@ func ResourceTencentCloudCosObjectRestoreOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Specifies the valid duration of the restored temporary copy in days.",
+				Description: "指定valid 时长 的 restored temporary copy 在 days。",
 			},
 		},
 	}

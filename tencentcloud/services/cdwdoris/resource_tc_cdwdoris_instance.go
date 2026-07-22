@@ -24,29 +24,29 @@ func ResourceTencentCloudCdwdorisInstance() *schema.Resource {
 			"zone": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Availability zone.",
+				Description: "Availability 可用区",
 			},
 			"fe_spec": {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "FE specifications.",
+				Description: "FE specifications。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"spec_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Specification name.",
+							Description: "规格名称",
 						},
 						"count": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Quantities.",
+							Description: "Quantities。",
 						},
 						"disk_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Cloud disk size.",
+							Description: "Cloud 磁盘 大小。",
 						},
 					},
 				},
@@ -55,23 +55,23 @@ func ResourceTencentCloudCdwdorisInstance() *schema.Resource {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "BE specifications.",
+				Description: "BE specifications。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"spec_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Specification name.",
+							Description: "规格名称",
 						},
 						"count": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Quantities.",
+							Description: "Quantities。",
 						},
 						"disk_size": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Cloud disk size.",
+							Description: "Cloud 磁盘 大小。",
 						},
 					},
 				},
@@ -79,50 +79,50 @@ func ResourceTencentCloudCdwdorisInstance() *schema.Resource {
 			"ha_flag": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "Whether it is highly available.",
+				Description: "是否为highly 可用。",
 			},
 			"user_vpc_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "User VPCID.",
+				Description: "用户 VPCID。",
 			},
 			"user_subnet_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "User subnet ID.",
+				Description: "用户 子网 ID。",
 			},
 			"product_version": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Product version number.",
+				Description: "Product 版本 数量。",
 			},
 			"charge_properties": {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Payment type.",
+				Description: "Payment 类型",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"charge_type": {
 							Type:         schema.TypeString,
 							Optional:     true,
 							ValidateFunc: tccommon.ValidateAllowedStringValue(CHARGE_TYPE),
-							Description:  "Billing type: `PREPAID` for prepayment, and `POSTPAID_BY_HOUR` for postpayment. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description:  "Billing 类型: `PREPAID` 对于 prepayment，和 `POSTPAID_BY_HOUR` 对于 postpayment. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"renew_flag": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Whether to automatically renew. 1 means automatic renewal is enabled. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "是否automatically renew. 1 表示 automatic renewal 是 已启用 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"time_span": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Billing duration Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Billing 时长 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"time_unit": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Billing time unit, and `m` means month, etc. Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Billing 时间 单位，和 `m` 表示 month，etc. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -130,29 +130,29 @@ func ResourceTencentCloudCdwdorisInstance() *schema.Resource {
 			"instance_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance name.",
+				Description: "实例名称",
 			},
 			"doris_user_pwd": {
 				Type:        schema.TypeString,
 				Required:    true,
 				Sensitive:   true,
-				Description: "Database password.",
+				Description: "Database 密码",
 			},
 			"tags": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Tag list.",
+				Description: "标签列表",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"tag_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag key.",
+							Description: "标签键",
 						},
 						"tag_value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Tag value.",
+							Description: "标签值",
 						},
 					},
 				},
@@ -160,39 +160,39 @@ func ResourceTencentCloudCdwdorisInstance() *schema.Resource {
 			"ha_type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "High availability type: 0 indicates non-high availability (only one FE, FeSpec.CreateInstanceSpec.Count=1), 1 indicates read high availability (at least 3 FEs must be deployed, FeSpec.CreateInstanceSpec.Count>=3, and it must be an odd number), 2 indicates read and write high availability (at least 5 FEs must be deployed, FeSpec.CreateInstanceSpec.Count>=5, and it must be an odd number).",
+				Description: "High availability 类型: 0 表示non-high availability (仅 一个 FE，FeSpec.CreateInstanceSpec.Count=1)，1 表示read high availability (在 least 3 FEs 必须 是 deployed，FeSpec.CreateInstanceSpec.Count>=3，和 它 必须 是 odd 数量)，2 表示read 和 write high availability (在 least 5 FEs 必须 是 deployed，FeSpec.CreateInstanceSpec.Count>=5，和 它 必须 是 odd 数量)。",
 			},
 			"case_sensitive": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Whether the table name is case sensitive, 0 refers to sensitive, 1 refers to insensitive, compared in lowercase; 2 refers to insensitive, and the table name is changed to lowercase for storage.",
+				Description: "是否table 名称 是 case sensitive，0 refers 到 sensitive，1 refers 到 insensitive，compared 在 lowercase; 2 refers 到 insensitive，和 表 名称 是 changed 到 lowercase 对于 存储。",
 			},
 			"enable_multi_zones": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to enable multi-availability zone.",
+				Description: "是否enable multi-availability 可用区",
 			},
 			"user_multi_zone_infos": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "After the Multi-AZ is enabled, all user's Availability Zones and Subnets information are shown.",
+				Description: "After Multi-AZ 是 已启用，all 用户's Availability Zones 和 Subnets 信息 是 shown。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"zone": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Availability zone Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Availability 可用区 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Subnet ID Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "子网 ID 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"subnet_ip_num": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The number of available IP addresses in the current subnet Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "数量 可用 IP addresses 在 当前 子网 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -201,13 +201,13 @@ func ResourceTencentCloudCdwdorisInstance() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Security Group Id list.",
+				Description: "Security Group ID 列表。",
 			},
 			"workload_group_status": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(WORKLOAD_GROUP_STATUS),
-				Description:  "Whether to enable resource group. `open` - enable, `close` - disable.",
+				Description:  "是否enable 资源 组. `open` - 启用，`close` - disable。",
 			},
 		},
 	}

@@ -23,33 +23,33 @@ func ResourceTencentCloudEbPutEvents() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeList,
-				Description: "event list.",
+				Description: "事件 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"source": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Event source information, new product reporting must comply with EB specifications.",
+							Description: "Event 来源 信息，new product 报告 必须 comply 使用 EB specifications。",
 						},
 						"data": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Event data, the content is controlled by the system that created the event, the current datacontenttype only supports application/json;charset=utf-8, so this field is a json string.",
+							Description: "Event 数据， 内容 是 controlled 通过 系统 该 创建 事件， 当前 datacontenttype 仅 支持 应用/json;字符集=utf-8，so 此 字段 是 json 字符串。",
 						},
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Event type, customizable, optional. The cloud service writes COS:Created:PostObject by default, use: to separate the type field.",
+							Description: "Event 类型，customizable，可选 云 服务 writes COS:Created:PostObject 通过 默认值，使用: 到 separate 类型 字段。",
 						},
 						"subject": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Detailed description of the event source, customizable, optional. The cloud service defaults to the standard qcs resource representation syntax: qcs::dts:ap-guangzhou:appid/uin:xxx.",
+							Description: "Detailed 描述 事件 来源，customizable，可选 云 服务 默认为 standard qcs 资源 representation syntax: qcs::dts:ap-guangzhou:appid/uin:xxx。",
 						},
 						"time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The timestamp in milliseconds when the event occurred,time.Now().UnixNano()/1e6.",
+							Description: "时间戳 在 milliseconds 当 事件 occurred,时间.Now().UnixNano()/1e6。",
 						},
 					},
 				},
@@ -59,7 +59,7 @@ func ResourceTencentCloudEbPutEvents() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "event bus Id.",
+				Description: "事件 bus ID。",
 			},
 		},
 	}

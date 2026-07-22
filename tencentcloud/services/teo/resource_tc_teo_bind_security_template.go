@@ -30,21 +30,21 @@ func ResourceTencentCloudTeoBindSecurityTemplate() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Site ID of the policy template to be bound to or unbound from.",
+				Description: "站点 ID 策略 template 到 是 bound 到 或 unbound 从。",
 			},
 
 			"entity": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "List of domain names to bind to/unbind from a policy template.",
+				Description: "列表 域名 names 到 bind 到/unbind 从 策略 template。",
 			},
 
 			"template_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Specifies the ID of the policy template or the site global policy to be bound or unbound.\n<li>To bind to a policy template, or unbind from it, specify the policy template ID.</li>.\n<li>To bind to the site's global policy, or unbind from it, use the @ZoneLevel@domain parameter value.</li>.\n\nNote: After unbinding, the domain name will use an independent policy and rule quota will be calculated separately. Please make sure there is sufficient rule quota before unbinding.",
+				Description: "指定ID 的 策略 template 或 site 全局 策略 到 是 bound 或 unbound.\n<li>To bind 到 策略 template，或 unbind 从 它，指定policy 模板 ID</li>.\n<li>To bind 到 site's 全局 策略，或 unbind 从 它，使用 @ZoneLevel@域名 参数 值</li>.\n\nNote: After unbinding， 域名 名称 将 使用 independent 策略 和 规则 配额 将 是 calculated separately. Please make sure there 是 sufficient 规则 配额 before unbinding。",
 			},
 
 			"operate": {
@@ -52,7 +52,7 @@ func ResourceTencentCloudTeoBindSecurityTemplate() *schema.Resource {
 				ForceNew:    true,
 				Optional:    true,
 				Computed:    true,
-				Description: "Unbind operation option. valid values: `unbind-keep-policy`: unbind a domain name from the policy template while retaining the current policy. `unbind-use-default`: unbind a domain name from the policy template and use the default blank policy. default value: `unbind-keep-policy`.",
+				Description: "Unbind operation 选项. 有效值：`unbind-keep-策略`: unbind 域名 名称 从 策略 template while retaining 当前 策略. `unbind-使用-默认值`: unbind 域名 名称 从 策略 template 和 使用 默认值 blank 策略. 默认值：`unbind-keep-策略`。",
 			},
 
 			"over_write": {
@@ -60,13 +60,13 @@ func ResourceTencentCloudTeoBindSecurityTemplate() *schema.Resource {
 				ForceNew:    true,
 				Optional:    true,
 				Computed:    true,
-				Description: "If the passed-in domain is already bound to a policy template (including site-level protection policies), setting this parameter indicates whether to replace that template. The default value is true. Supported values are: `true`: Replace the currently bound template for the domain. `false`: Do not replace the currently bound template for the domain. Note: When set to false, if the passed-in domain is already bound to a policy template, the API will return an error; site-level protection policies are also a type of policy template.",
+				Description: "如果 passed-在 域名 是 already bound 到 策略 template (包括 site-级别 protection policies)，setting 此 参数 表示是否replace 该 template. 默认值为 true. Supported 值 是: `true`: Replace currently bound template 对于 域名 `false`: Do 不 replace currently bound template 对于 域名 注意: 当 集合 到 false，如果 passed-在 域名 是 already bound 到 策略 template， API 将 返回 错误; site-级别 protection policies 是 also 类型 策略 template。",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Instance configuration delivery status, the possible values are: `online`: the configuration has taken effect; `fail`: the configuration failed; `process`: the configuration is being delivered.",
+				Description: "实例 配置 delivery 状态， possible 值 是: `online`: 配置 has taken effect; `fail`: 配置 failed; `process`: 配置 是 being delivered。",
 			},
 		},
 	}

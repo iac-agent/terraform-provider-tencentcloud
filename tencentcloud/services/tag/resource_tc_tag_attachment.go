@@ -28,21 +28,21 @@ func ResourceTencentCloudTagAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "tag key.",
+				Description: "标签键",
 			},
 
 			"tag_value": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "tag value.",
+				Description: "标签值",
 			},
 
 			"resource": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "[Six-segment description of resources](https://cloud.tencent.com/document/product/598/10606).",
+				Description: "[Six-segment 描述 resources](https://云.tencent.com/document/product/598/10606)。",
 			},
 		},
 	}

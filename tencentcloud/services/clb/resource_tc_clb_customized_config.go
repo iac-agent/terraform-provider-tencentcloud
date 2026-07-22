@@ -29,29 +29,29 @@ func ResourceTencentCloudClbCustomizedConfig() *schema.Resource {
 			"config_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Name of Customized Config.",
+				Description: "自定义配置的名称。",
 			},
 			"config_content": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Content of Customized Config.",
+				Description: "自定义配置的内容。",
 			},
 			"load_balancer_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "List of LoadBalancer Ids.",
+				Description: "负载均衡器 ID 列表。",
 			},
 			//computed
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create time of Customized Config.",
+				Description: "自定义配置的创建时间。",
 			},
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Update time of Customized Config.",
+				Description: "自定义配置更新时间",
 			},
 		},
 	}

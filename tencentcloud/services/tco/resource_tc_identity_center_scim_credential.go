@@ -27,44 +27,44 @@ func ResourceTencentCloudIdentityCenterScimCredential() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Space ID. z-prefix starts with 12 random digits/lowercase letters.",
+				Description: "Space ID. z-prefix starts 使用 12 random digits/lowercase letters。",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "SCIM key status, Enabled-On, Disabled-Closed.",
+				Description: "SCIM 键 状态，已启用-On，已禁用-Closed。",
 			},
 
 			"credential_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "SCIM key ID. scimcred-prefix and followed by 12 random digits/lowercase letters.",
+				Description: "SCIM 键 ID. scimcred-prefix 和 followed 通过 12 random digits/lowercase letters。",
 			},
 
 			"credential_secret": {
 				Type:        schema.TypeString,
 				Computed:    true,
 				Sensitive:   true,
-				Description: "SCIM key.",
+				Description: "SCIM 键",
 			},
 
 			"credential_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "SCIM credential type.",
+				Description: "SCIM credential 类型",
 			},
 
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "SCIM create time.",
+				Description: "SCIM 创建时间。",
 			},
 
 			"expire_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "SCIM expire time.",
+				Description: "SCIM expire 时间。",
 			},
 		},
 	}

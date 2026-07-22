@@ -30,37 +30,37 @@ func ResourceTencentCloudWedataRuleTemplate() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Template type. `1` means System template, `2` means Custom template.",
+				Description: "模板 类型 `1` 表示 System template，`2` 表示 Custom template。",
 			},
 
 			"name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Template name.",
+				Description: "模板名称",
 			},
 
 			"quality_dim": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Quality inspection dimensions. `1`: Accuracy, `2`: Uniqueness, `3`: Completeness, `4`: Consistency, `5`: Timeliness, `6`: Effectiveness.",
+				Description: "Quality inspection dimensions. `1`: Accuracy，`2`: Uniqueness，`3`: Completeness，`4`: Consistency，`5`: Timeliness，`6`: Effectiveness。",
 			},
 
 			"source_object_type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Source data object type. `1`: Constant, `2`: Offline table level, `3`: Offline field level.",
+				Description: "来源 数据 对象 类型 `1`: Constant，`2`: Offline 表 级别，`3`: Offline 字段 级别",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Description of Template.",
+				Description: "描述 模板。",
 			},
 
 			"source_engine_types": {
@@ -69,25 +69,25 @@ func ResourceTencentCloudWedataRuleTemplate() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeInt,
 				},
-				Description: "The engine type corresponding to the source. `2`: hive,`4`: spark, `16`: dlc.",
+				Description: "引擎 类型 corresponding 到 来源 `2`: hive,`4`: spark，`16`: dlc。",
 			},
 
 			"multi_source_flag": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to associate other library tables.",
+				Description: "是否associate other 库 tables。",
 			},
 
 			"sql_expression": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "SQL Expression.",
+				Description: "SQL Expression。",
 			},
 
 			"where_flag": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "If add where.",
+				Description: "如果 add 其中。",
 			},
 		},
 	}

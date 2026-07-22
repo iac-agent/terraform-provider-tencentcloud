@@ -25,13 +25,13 @@ func ResourceTencentCloudCosBucketGenerateInventoryImmediatelyOperation() *schem
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The id of inventory.",
+				Description: "ID inventory。",
 			},
 			"bucket": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Bucket.",
+				Description: "存储桶",
 			},
 		},
 	}

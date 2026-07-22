@@ -28,13 +28,13 @@ func ResourceTencentCloudPtsProject() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ptsObjectName, which must be required.",
+				Description: "ptsObjectName, 其中 必须 是 必填.",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Pts object description.",
+				Description: "Pts 对象 描述.",
 			},
 
 			"tags": {
@@ -46,12 +46,12 @@ func ResourceTencentCloudPtsProject() *schema.Resource {
 						"tag_key": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "tag key.",
+							Description: "标签 键.",
 						},
 						"tag_value": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "tag value.",
+							Description: "标签 值.",
 						},
 					},
 				},
@@ -72,25 +72,25 @@ func ResourceTencentCloudPtsProject() *schema.Resource {
 			"sub_account_uin": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Sub-user ID.",
+				Description: "Sub-用户 ID.",
 			},
 
 			"created_at": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time.",
+				Description: "Creation 时间.",
 			},
 
 			"updated_at": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Update time.",
+				Description: "Update 时间.",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Project status.",
+				Description: "Project 状态.",
 			},
 		},
 	}

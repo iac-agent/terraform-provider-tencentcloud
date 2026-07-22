@@ -24,30 +24,30 @@ func ResourceTencentCloudScfNamespace() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Name of the SCF namespace.",
+				Description: "名称 SCF 命名空间。",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "",
-				Description: "Description of the SCF namespace.",
+				Description: "描述 SCF 命名空间。",
 			},
 
 			// computed
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "SCF namespace creation time.",
+				Description: "SCF 命名空间 创建时间。",
 			},
 			"modify_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "SCF namespace last modified time.",
+				Description: "SCF 命名空间 最后修改时间。",
 			},
 			"type": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "SCF namespace type.",
+				Description: "SCF 命名空间 类型",
 			},
 		},
 	}

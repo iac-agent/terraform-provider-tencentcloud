@@ -22,41 +22,41 @@ func TencentKmsBasicInfo() map[string]*schema.Schema {
 		"alias": {
 			Type:        schema.TypeString,
 			Required:    true,
-			Description: "Name of CMK. The name can only contain English letters, numbers, underscore and hyphen '-'. The first character must be a letter or number.",
+			Description: "名称 CMK. 名称 可以 仅 contain English letters，numbers，underscore 和 hyphen '-'. first character 必须 是 letter 或 数量。",
 		},
 		"description": {
 			Type:        schema.TypeString,
 			Optional:    true,
-			Description: "Description of CMK. The maximum is 1024 bytes.",
+			Description: "描述 CMK. 最大 是 1024 bytes。",
 		},
 		"is_enabled": {
 			Type:          schema.TypeBool,
 			Optional:      true,
 			ConflictsWith: []string{"is_archived"},
-			Description:   "Specify whether to enable key. Default value is `false`. This field is conflict with `is_archived`, valid when key_state is `Enabled`, `Disabled`, `Archived`.",
+			Description:   "指定是否enable 键 默认值为 `false`. 此 字段 是 conflict 使用 `is_archived`，有效 当 key_state 是 `已启用`，`已禁用`，`Archived`。",
 		},
 		"is_archived": {
 			Type:          schema.TypeBool,
 			Optional:      true,
 			ConflictsWith: []string{"is_enabled"},
-			Description:   "Specify whether to archive key. Default value is `false`. This field is conflict with `is_enabled`, valid when key_state is `Enabled`, `Disabled`, `Archived`.",
+			Description:   "指定是否archive 键 默认值为 `false`. 此 字段 是 conflict 使用 `is_enabled`，有效 当 key_state 是 `已启用`，`已禁用`，`Archived`。",
 		},
 		"pending_delete_window_in_days": {
 			Type:         schema.TypeInt,
 			Optional:     true,
 			Default:      7,
 			ValidateFunc: tccommon.ValidateIntegerInRange(7, 30),
-			Description:  "Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 7 days.",
+			Description:  "Duration 在 days after 其中 键 是 删除 after destruction 的 资源，必须 是 between 7 和 30 days. 默认为 7 days。",
 		},
 		"tags": {
 			Type:        schema.TypeMap,
 			Optional:    true,
-			Description: "Tags of CMK.",
+			Description: "标签 的 CMK。",
 		},
 		"key_state": {
 			Type:        schema.TypeString,
 			Computed:    true,
-			Description: "State of CMK.",
+			Description: "State 的 CMK。",
 		},
 	}
 }
@@ -68,18 +68,18 @@ func ResourceTencentCloudKmsKey() *schema.Resource {
 			Optional:    true,
 			ForceNew:    true,
 			Default:     KMS_KEY_USAGE_ENCRYPT_DECRYPT,
-			Description: "Usage of CMK. Available values include `ENCRYPT_DECRYPT`, `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, `ASYMMETRIC_SIGN_VERIFY_SM2`, `ASYMMETRIC_SIGN_VERIFY_RSA_2048`, `ASYMMETRIC_SIGN_VERIFY_ECC`. Default value is `ENCRYPT_DECRYPT`.",
+			Description: "Usage 的 CMK. Available 值 include `ENCRYPT_DECRYPT`，`ASYMMETRIC_DECRYPT_RSA_2048`，`ASYMMETRIC_DECRYPT_SM2`，`ASYMMETRIC_SIGN_VERIFY_SM2`，`ASYMMETRIC_SIGN_VERIFY_RSA_2048`，`ASYMMETRIC_SIGN_VERIFY_ECC`. 默认值为 `ENCRYPT_DECRYPT`。",
 		},
 		"key_rotation_enabled": {
 			Type:        schema.TypeBool,
 			Optional:    true,
 			Default:     false,
-			Description: "Specify whether to enable key rotation, valid when key_usage is `ENCRYPT_DECRYPT`. Default value is `false`.",
+			Description: "指定是否enable 键 rotation，有效 当 key_usage 是 `ENCRYPT_DECRYPT`. 默认值为 `false`。",
 		},
 		"hsm_cluster_id": {
 			Type:        schema.TypeString,
 			Optional:    true,
-			Description: "The HSM cluster ID corresponding to KMS Advanced Edition (only valid for KMS Exclusive/Managed Edition service instances).",
+			Description: "HSM 集群 ID corresponding 到 KMS Advanced Edition (仅 有效 对于 KMS Exclusive/Managed Edition 服务 实例)。",
 		},
 	}
 

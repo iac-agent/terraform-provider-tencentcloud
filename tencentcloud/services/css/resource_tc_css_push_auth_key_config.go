@@ -26,31 +26,31 @@ func ResourceTencentCloudCssPushAuthKeyConfig() *schema.Resource {
 			"domain_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Domain Name.",
+				Description: "域名 名称",
 			},
 
 			"enable": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Enable or not, 0: Close, 1: Enable. No transfer means that the current value is not modified.",
+				Description: "Enable 或 不，0: Close，1: Enable. No transfer 表示 该 当前值 是 不 modified。",
 			},
 
 			"master_auth_key": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Primary authentication key. No transfer means that the current value is not modified.",
+				Description: "Primary authentication 键 No transfer 表示 该 当前值 是 不 modified。",
 			},
 
 			"backup_auth_key": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Standby authentication key. No transfer means that the current value is not modified.",
+				Description: "Standby authentication 键 No transfer 表示 该 当前值 是 不 modified。",
 			},
 
 			"auth_delta": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Valid time, unit: second.",
+				Description: "有效 时间，单位: second。",
 			},
 		},
 	}

@@ -29,28 +29,28 @@ func ResourceTencentCloudCssPadRuleAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Push domain.",
+				Description: "Push 域名",
 			},
 
 			"template_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Template id.",
+				Description: "模板 ID。",
 			},
 
 			"app_name": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Push path, must same with play path, default is live.",
+				Description: "Push 路径，必须 same 使用 play 路径，默认为 live。",
 			},
 
 			"stream_name": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Stream name.",
+				Description: "Stream 名称",
 			},
 		},
 	}

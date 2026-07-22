@@ -28,7 +28,7 @@ func ResourceTencentCloudSqlserverBusinessIntelligenceFile() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID.",
 			},
 			"file_url": {
 				Required:    true,
@@ -40,7 +40,7 @@ func ResourceTencentCloudSqlserverBusinessIntelligenceFile() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "File Type FLAT - Flat File as Data Source, SSIS - ssis project package.",
+				Description: "File Type FLAT - Flat File 作为 Data Source, SSIS - ssis 项目 包.",
 			},
 			"remark": {
 				Optional:    true,

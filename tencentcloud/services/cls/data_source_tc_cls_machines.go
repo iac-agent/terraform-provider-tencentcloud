@@ -19,54 +19,54 @@ func DataSourceTencentCloudClsMachines() *schema.Resource {
 			"group_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Group id.",
+				Description: "组 ID。",
 			},
 
 			"machines": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Info of Machines.",
+				Description: "机器信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ip of machine.",
+							Description: "机器的ip。",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "status of machine.",
+							Description: "机器的状态。",
 						},
 						"offline_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "offline time of machine.",
+							Description: "机器离线时间。",
 						},
 						"auto_update": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "if open auto update flag.",
+							Description: "如果打开自动更新标志。",
 						},
 						"version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "current machine version.",
+							Description: "当前机器版本。",
 						},
 						"update_status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "machine update status.",
+							Description: "机器更新状态。",
 						},
 						"err_code": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "code of update operation.",
+							Description: "更新操作的代码。",
 						},
 						"err_msg": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "msg of update operation.",
+							Description: "更新操作的消息。",
 						},
 					},
 				},
@@ -75,7 +75,7 @@ func DataSourceTencentCloudClsMachines() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

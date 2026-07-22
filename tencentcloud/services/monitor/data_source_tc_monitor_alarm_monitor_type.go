@@ -22,29 +22,29 @@ func DataSourceTencentCloudMonitorAlarmMonitorType() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Monitoring type, cloud product monitoring is MT_ QCE.",
+				Description: "Monitoring 类型，云 product 监控 是 MT_ QCE。",
 			},
 
 			"monitor_type_infos": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Monitoring type details.",
+				Description: "Monitoring 类型 details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Monitoring type ID.",
+							Description: "Monitoring 类型 ID。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Monitoring type.",
+							Description: "Monitoring 类型",
 						},
 						"sort_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Sort order.",
+							Description: "排序顺序",
 						},
 					},
 				},
@@ -53,7 +53,7 @@ func DataSourceTencentCloudMonitorAlarmMonitorType() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

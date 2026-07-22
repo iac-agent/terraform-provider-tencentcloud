@@ -27,66 +27,66 @@ func ResourceTencentCloudMpsAdaptiveDynamicStreamingTemplate() *schema.Resource 
 			"format": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Adaptive transcoding format, value range:HLS, MPEG-DASH.",
+				Description: "Adaptive transcoding 格式，值 范围:HLS，MPEG-DASH。",
 			},
 
 			"stream_infos": {
 				Required:    true,
 				Type:        schema.TypeList,
-				Description: "Convert adaptive code stream to output sub-stream parameter information, and output up to 10 sub-streams.Note: The frame rate of each sub-stream must be consistent; if not, the frame rate of the first sub-stream is used as the output frame rate.",
+				Description: "Convert adaptive 代码 流 到 output sub-流 参数 信息，和 output up 到 10 sub-streams.注意: frame 速率 的 each sub-流 必须 是 consistent; 如果 不， frame 速率 的 first sub-流 是 使用 作为 output frame 速率。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"video": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Required:    true,
-							Description: "Video parameter information.",
+							Description: "Video 参数 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"codec": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Encoding format of the video stream, optional value:libx264: H.264 encoding.libx265: H.265 encoding.av1: AOMedia Video 1 encoding.Note: Currently H.265 encoding must specify a resolution, and it needs to be within 640*480.Note: av1 encoded containers currently only support mp4.",
+										Description: "Encoding 格式 的 视频 流，可选 值:libx264: H.264 编码.libx265: H.265 编码.av1: AOMedia Video 1 编码.注意: Currently H.265 编码 必须 指定a resolution，和 它 needs 到 是 within 640*480.注意: av1 encoded containers currently 仅 support mp4。",
 									},
 									"fps": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Video frame rate, value range: [0, 100], unit: Hz.When the value is 0, it means that the frame rate is consistent with the original video.Note: The value range for adaptive code rate is [0, 60].",
+										Description: "Video frame 速率，取值范围：[0，100]，单位: Hz.当 值 是 0，它 表示 该 frame 速率 是 consistent 使用 original 视频.注意: 值 范围 对于 adaptive 代码 速率 是 [0，60]。",
 									},
 									"bitrate": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Bit rate of the video stream, value range: 0 and [128, 35000], unit: kbps.When the value is 0, it means that the video bit rate is consistent with the original video.",
+										Description: "Bit 速率 的 视频 流，取值范围：0 和 [128，35000]，单位: kbps.当 值 是 0，它 表示 该 视频 bit 速率 是 consistent 使用 original 视频。",
 									},
 									"resolution_adaptive": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Adaptive resolution, optional value:open: At this time, Width represents the long side of the video, Height represents the short side of the video.close: At this point, Width represents the width of the video, and Height represents the height of the video.Default value: open.Note: In adaptive mode, Width cannot be smaller than Height.",
+										Description: "Adaptive resolution，可选 值:open: At 此 时间，宽度 表示 long side 的 视频，高度 表示 short side 的 视频.close: At 此 point，宽度 表示 宽度 的 视频，和 高度 表示 高度 的 视频.默认值：open.注意: In adaptive 模式，宽度 不能 是 smaller 比 高度。",
 									},
 									"width": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The maximum value of the width (or long side) of the video streaming, value range: 0 and [128, 4096], unit: px.When Width and Height are both 0, the resolution is the same.When Width is 0 and Height is not 0, Width is scaled proportionally.When Width is not 0 and Height is 0, Height is scaled proportionally.When both Width and Height are not 0, the resolution is specified by the user.Default value: 0.",
+										Description: "最大 值 的 宽度 (或 long side) 的 视频 streaming，取值范围：0 和 [128，4096]，单位: 像素.当 宽度 和 高度 是 both 0， resolution 是 same.当 宽度 是 0 和 高度 是 不 0，宽度 是 scaled proportionally.当 宽度 是 不 0 和 高度 是 0，高度 是 scaled proportionally.当 both 宽度 和 高度 是 不 0， resolution 是 指定 通过 用户默认值：0。",
 									},
 									"height": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The maximum value of the height (or short side) of the video streaming, value range: 0 and [128, 4096], unit: px.When Width and Height are both 0, the resolution is the same.When Width is 0 and Height is not 0, Width is scaled proportionally.When Width is not 0 and Height is 0, Height is scaled proportionally.When both Width and Height are not 0, the resolution is specified by the user.Default value: 0.",
+										Description: "最大 值 的 高度 (或 short side) 的 视频 streaming，取值范围：0 和 [128，4096]，单位: 像素.当 宽度 和 高度 是 both 0， resolution 是 same.当 宽度 是 0 和 高度 是 不 0，宽度 是 scaled proportionally.当 宽度 是 不 0 和 高度 是 0，高度 是 scaled proportionally.当 both 宽度 和 高度 是 不 0， resolution 是 指定 通过 用户默认值：0。",
 									},
 									"gop": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "The interval between keyframe I frames, value range: 0 and [1, 100000], unit: number of frames.When filling 0 or not filling, the system will automatically set the gop length.",
+										Description: "间隔 between keyframe I frames，取值范围：0 和 [1，100000]，单位: 数量 frames.当 filling 0 或 不 filling， 系统 将 automatically 集合 gop 长度。",
 									},
 									"fill_type": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "Filling type, when the aspect ratio of the video stream configuration is inconsistent with the aspect ratio of the original video, the processing method for transcoding is filling. Optional filling type:stretch: Stretching, stretching each frame to fill the entire screen, which may cause the transcoded video to be squashed or stretched.black: Leave black, keep the video aspect ratio unchanged, and fill the rest of the edge with black.white: Leave blank, keep the aspect ratio of the video, and fill the rest of the edge with white.gauss: Gaussian blur, keep the aspect ratio of the video unchanged, and use Gaussian blur for the rest of the edge.Default value: black.Note: Adaptive stream only supports stretch, black.",
+										Description: "Filling 类型，当 aspect ratio 的 视频 流 配置 是 inconsistent 使用 aspect ratio 的 original 视频， processing 方法 对于 transcoding 是 filling. 可选 filling 类型:stretch: Stretching，stretching each frame 到 fill entire screen，其中 可能 cause transcoded 视频 到 是 squashed 或 stretched.black: Leave black，keep 视频 aspect ratio unchanged，和 fill rest 的 edge 使用 black.white: Leave blank，keep aspect ratio 的 视频，和 fill rest 的 edge 使用 white.gauss: Gaussian blur，keep aspect ratio 的 视频 unchanged，和 使用 Gaussian blur 对于 rest 的 edge.默认值：black.注意: Adaptive 流 仅 支持 stretch，black。",
 									},
 									"vcrf": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Video constant bit rate control factor, the value range is [1, 51].If this parameter is specified, the code rate control method of CRF will be used for transcoding (the video code rate will no longer take effect).If there is no special requirement, it is not recommended to specify this parameter.",
+										Description: "Video constant bit 速率 control factor， 值 范围 是 [1，51].如果 此 参数 是 指定， 代码 速率 control 方法 的 CRF 将 是 用于transcoding ( 视频 代码 速率 将 无 longer take effect).如果 there 是 无 special requirement，它 是 不 recommended 到 指定this 参数。",
 									},
 								},
 							},
@@ -95,28 +95,28 @@ func ResourceTencentCloudMpsAdaptiveDynamicStreamingTemplate() *schema.Resource 
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Required:    true,
-							Description: "Audio parameter information.",
+							Description: "Audio 参数 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"codec": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Encoding format of audio stream.When the outer parameter Container is mp3, the optional value is:libmp3lame.When the outer parameter Container is ogg or flac, the optional value is:flac.When the outer parameter Container is m4a, the optional value is:libfdk_aac.libmp3lame.ac3.When the outer parameter Container is mp4 or flv, the optional value is:libfdk_aac: more suitable for mp4.libmp3lame: more suitable for flv.When the outer parameter Container is hls, the optional value is:libfdk_aac.libmp3lame.",
+										Description: "Encoding 格式 的 音频 流.当 outer 参数 Container 是 mp3， 可选 值 是:libmp3lame.当 outer 参数 Container 是 ogg 或 flac， 可选 值 是:flac.当 outer 参数 Container 是 m4a， 可选 值 是:libfdk_aac.libmp3lame.ac3.当 outer 参数 Container 是 mp4 或 flv， 可选 值 是:libfdk_aac: more suitable 对于 mp4.libmp3lame: more suitable 对于 flv.当 outer 参数 Container 是 hls， 可选 值 是:libfdk_aac.libmp3lame。",
 									},
 									"bitrate": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Bit rate of the audio stream, value range: 0 and [26, 256], unit: kbps.When the value is 0, it means that the audio bit rate is consistent with the original audio.",
+										Description: "Bit 速率 的 音频 流，取值范围：0 和 [26，256]，单位: kbps.当 值 是 0，它 表示 该 音频 bit 速率 是 consistent 使用 original 音频。",
 									},
 									"sample_rate": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Sampling rate of audio stream, optional value.32000.44100.48000.Unit: Hz.",
+										Description: "Sampling 速率 的 音频 流，可选 值32000.44100.48000.单位：Hz。",
 									},
 									"audio_channel": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Audio channel mode, optional values:`1: single channel.2: Dual channel.6: Stereo.When the package format of the media is an audio format (flac, ogg, mp3, m4a), the number of channels is not allowed to be set to stereo.Default: 2.",
+										Description: "Audio channel 模式，可选 值:`1: 单个 channel.2: Dual channel.6: Stereo.当 包 格式 的 media 是 音频 格式 (flac，ogg，mp3，m4a)， 数量 channels 是 不 allowed 到 是 集合 到 stereo.默认值：2。",
 									},
 								},
 							},
@@ -124,12 +124,12 @@ func ResourceTencentCloudMpsAdaptiveDynamicStreamingTemplate() *schema.Resource 
 						"remove_audio": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Whether to remove audio stream, value:0: reserved.1: remove.",
+							Description: "是否remove 音频 流，值:0: reserved.1: remove。",
 						},
 						"remove_video": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Whether to remove video stream, value:0: reserved.1: remove.",
+							Description: "是否remove 视频 流，值:0: reserved.1: remove。",
 						},
 					},
 				},
@@ -138,39 +138,39 @@ func ResourceTencentCloudMpsAdaptiveDynamicStreamingTemplate() *schema.Resource 
 			"name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Template name, length limit: 64 characters.",
+				Description: "模板名称，长度 限制: 64 字符。",
 			},
 
 			"disable_higher_video_bitrate": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to prohibit video from low bit rate to high bit rate, value range:0: no.1: yes.Default value: 0.",
+				Description: "是否prohibit 视频 从 low bit 速率 到 high bit 速率，值 范围:0: 无.1: yes.默认值：0。",
 			},
 
 			"disable_higher_video_resolution": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Whether to prohibit the conversion of video resolution to high resolution, value range:0: no.1: yes.Default value: 0.",
+				Description: "是否prohibit conversion 的 视频 resolution 到 high resolution，值 范围:0: 无.1: yes.默认值：0。",
 			},
 
 			"comment": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Template description information, length limit: 256 characters.",
+				Description: "模板描述 信息，长度 限制: 256 字符。",
 			},
 
 			"pure_audio": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Indicates whether it is audio-only. 0 means video template, 1 means audio-only template.\nWhen the value is 1.\n1. StreamInfos.N.RemoveVideo=1\n2. StreamInfos.N.RemoveAudio=0\n3. StreamInfos.N.Video.Codec=copy\nWhen the value is 0.\n1. StreamInfos.N.Video.Codec cannot be copy.\n2. StreamInfos.N.Video.Fps cannot be null.\nNote: This value only distinguishes template types. The task uses the values of RemoveAudio and RemoveVideo.",
+				Description: "表示是否it 是 音频-仅. 0 表示 视频 template，1 表示 音频-仅 template.\nWhen 值 是 1.\n1. StreamInfos.N.RemoveVideo=1\n2. StreamInfos.N.RemoveAudio=0\n3. StreamInfos.N.Video.Codec=copy\nWhen 值 是 0.\n1. StreamInfos.N.Video.Codec 不能 是 copy.\n2. StreamInfos.N.Video.Fps 不能 是 null.\nNote: 此 值 仅 distinguishes template types. 任务 uses 值 的 RemoveAudio 和 RemoveVideo。",
 			},
 
 			"segment_type": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Segment type. Valid values: \nts-segment: HLS+TS segment\nts-byterange: HLS+TS byte range\nmp4-segment: HLS+MP4 segment\nmp4-byterange: HLS/DASH+MP4 byte range\nts-packed-audio: HLS+TS+Packed Audio segment\nmp4-packed-audio: HLS+MP4+Packed Audio segment\nts-ts-segment: HLS+TS+TS segment\nts-ts-byterange: HLS+TS+TS byte range\nmp4-mp4-segment: HLS+MP4+MP4 segment\nmp4-mp4-byterange: HLS/DASH+MP4+MP4 byte range\nts-packed-audio-byterange: HLS+TS+Packed Audio byte range\nmp4-packed-audio-byterange: HLS+MP4+Packed Audio byte range.\n Default value: ts-segment. Note: The segment format for adaptive bitrate streaming is determined by this field. For DASH format, SegmentType can only be mp4-byterange or mp4-mp4-byterange.",
+				Description: "Segment 类型 有效值：\nts-segment: HLS+TS segment\nts-byterange: HLS+TS byte 范围\nmp4-segment: HLS+MP4 segment\nmp4-byterange: HLS/DASH+MP4 byte 范围\nts-packed-音频: HLS+TS+Packed Audio segment\nmp4-packed-音频: HLS+MP4+Packed Audio segment\nts-ts-segment: HLS+TS+TS segment\nts-ts-byterange: HLS+TS+TS byte 范围\nmp4-mp4-segment: HLS+MP4+MP4 segment\nmp4-mp4-byterange: HLS/DASH+MP4+MP4 byte 范围\nts-packed-音频-byterange: HLS+TS+Packed Audio byte 范围\nmp4-packed-音频-byterange: HLS+MP4+Packed Audio byte 范围.\n 默认值：ts-segment. 注意: segment 格式 对于 adaptive bitrate streaming 是 determined 通过 此 字段. For DASH 格式，SegmentType 可以 仅 是 mp4-byterange 或 mp4-mp4-byterange。",
 			},
 		},
 	}

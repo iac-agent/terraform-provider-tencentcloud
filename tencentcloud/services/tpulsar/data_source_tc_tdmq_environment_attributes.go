@@ -20,53 +20,53 @@ func DataSourceTencentCloudTdmqEnvironmentAttributes() *schema.Resource {
 			"environment_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Environment (namespace) name.",
+				Description: "Environment (命名空间) 名称",
 			},
 			"cluster_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "ID of the Pulsar cluster.",
+				Description: "ID Pulsar 集群。",
 			},
 			// computed
 			"msg_ttl": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Expiration time of unconsumed messages, unit second, maximum 1296000 (15 days).",
+				Description: "过期时间 的 unconsumed messages，单位 second，最大 1296000 (15 days)。",
 			},
 			"rate_in_byte": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Consumption rate limit, unit byte/second, 0 unlimited rate.",
+				Description: "Consumption 速率 限制，单位 byte/second，0 unlimited 速率。",
 			},
 			"rate_in_size": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Consumption rate limit, unit number/second, 0 is unlimited.",
+				Description: "Consumption 速率 限制，单位 数量/second，0 是 unlimited。",
 			},
 			"retention_hours": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Consumed message storage policy, unit hour, 0 will be deleted immediately after consumption.",
+				Description: "Consumed 消息 存储 策略，单位 hour，0 将 是 删除 immediately after consumption。",
 			},
 			"retention_size": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Consumed message storage strategy, unit G, 0 Delete immediately after consumption.",
+				Description: "Consumed 消息 存储 strategy，单位 G，0 Delete immediately after consumption。",
 			},
 			"replicas": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Duplicate number.",
+				Description: "Duplicate 数量。",
 			},
 			"remark": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Remark.",
+				Description: "备注",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

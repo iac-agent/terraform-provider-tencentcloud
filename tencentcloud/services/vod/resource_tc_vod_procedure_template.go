@@ -33,91 +33,91 @@ func ResourceTencentCloudVodProcedureTemplate() *schema.Resource {
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 20),
-				Description:  "Task flow name (up to 20 characters).",
+				Description:  "任务 flow 名称 (up 到 20 字符)。",
 			},
 			"comment": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(1, 256),
-				Description:  "Template description. Length limit: 256 characters.",
+				Description:  "模板描述 Length 限制: 256 字符。",
 			},
 			"sub_app_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.",
+				Description: "VOD [应用](https://intl.云.tencent.com/document/product/266/14574) ID. For customers who activate VOD 服务 从 December 25，2023，如果 they want 到 访问 resources 在 VOD 应用 (whether 它's 默认值 应用 或 newly 创建 一个)，they 必须 fill 在 此 字段 使用 应用 ID。",
 			},
 			"media_process_task": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
 				MinItems:    1,
-				Description: "Parameter of video processing task.",
+				Description: "Parameter 的 视频 processing 任务。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"transcode_task_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "List of transcoding tasks. Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "列表 transcoding tasks. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"definition": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Video transcoding template ID.",
+										Description: "Video transcoding 模板 ID",
 									},
 									"watermark_list": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    10,
-										Description: "List of up to `10` image or text watermarks. Note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "列表 up 到 `10` 镜像 或 text watermarks. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 										Elem:        VodWatermarkResource(),
 									},
 									"mosaic_list": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    10,
-										Description: "List of blurs. Up to 10 ones can be supported.",
+										Description: "列表 blurs. Up 到 10 ones 可以 是 支持。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"coordinate_origin": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Default:     "TopLeft",
-													Description: "Origin position, which currently can only be: `TopLeft`: the origin of coordinates is in the top-left corner of the video, and the origin of the blur is in the top-left corner of the image or text. Default value: TopLeft.",
+													Description: "Origin position，其中 currently 可以 仅 是: `TopLeft`: 源站 的 coordinates 是 在 top-left corner 的 视频，和 源站 的 blur 是 在 top-left corner 的 镜像 或 text. 默认值：TopLeft。",
 												},
 												"x_pos": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Default:     "0px",
-													Description: "The horizontal position of the origin of the blur relative to the origin of coordinates of the video. `%` and `px` formats are supported: If the string ends in `%`, the XPos of the blur will be the specified percentage of the video width; for example, 10% means that XPos is 10% of the video width; If the string ends in `px`, the XPos of the blur will be the specified px; for example, 100px means that XPos is 100 px. Default value: `0px`.",
+													Description: "horizontal position 的 源站 的 blur relative 到 源站 的 coordinates 的 视频. `%` 和 `像素` formats 是 支持: 如果 字符串 结束 在 `%`， XPos 的 blur 将 是 指定 percentage 的 视频 宽度; 对于 示例，10% 表示 该 XPos 是 10% 的 视频 宽度; 如果 字符串 结束 在 `像素`， XPos 的 blur 将 是 指定 像素; 对于 示例，100px 表示 该 XPos 是 100 像素. 默认值：`0px`。",
 												},
 												"y_pos": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Default:     "0px",
-													Description: "Vertical position of the origin of blur relative to the origin of coordinates of video. `%` and `px` formats are supported: If the string ends in `%`, the YPos of the blur will be the specified percentage of the video height; for example, 10% means that YPos is 10% of the video height; If the string ends in `px`, the YPos of the blur will be the specified px; for example, 100px means that YPos is 100 px. Default value: `0px`.",
+													Description: "Vertical position 的 源站 的 blur relative 到 源站 的 coordinates 的 视频. `%` 和 `像素` formats 是 支持: 如果 字符串 结束 在 `%`， YPos 的 blur 将 是 指定 percentage 的 视频 高度; 对于 示例，10% 表示 该 YPos 是 10% 的 视频 高度; 如果 字符串 结束 在 `像素`， YPos 的 blur 将 是 指定 像素; 对于 示例，100px 表示 该 YPos 是 100 像素. 默认值：`0px`。",
 												},
 												"width": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Default:     "10%",
-													Description: "Blur width. `%` and `px` formats are supported: If the string ends in `%`, the `width` of the blur will be the specified percentage of the video width; for example, 10% means that `width` is 10% of the video width; If the string ends in `px`, the `width` of the blur will be in px; for example, 100px means that Width is 100 px. Default value: `10%`.",
+													Description: "Blur 宽度. `%` 和 `像素` formats 是 支持: 如果 字符串 结束 在 `%`， `宽度` 的 blur 将 是 指定 percentage 的 视频 宽度; 对于 示例，10% 表示 该 `宽度` 是 10% 的 视频 宽度; 如果 字符串 结束 在 `像素`， `宽度` 的 blur 将 是 在 像素; 对于 示例，100px 表示 该 宽度 是 100 像素. 默认值：`10%`。",
 												},
 												"height": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Default:     "10%",
-													Description: "Blur height. `%` and `px` formats are supported: If the string ends in `%`, the `height` of the blur will be the specified percentage of the video height; for example, 10% means that Height is 10% of the video height; If the string ends in `px`, the `height` of the blur will be in px; for example, 100px means that Height is 100 px. Default value: `10%`.",
+													Description: "Blur 高度. `%` 和 `像素` formats 是 支持: 如果 字符串 结束 在 `%`， `高度` 的 blur 将 是 指定 percentage 的 视频 高度; 对于 示例，10% 表示 该 高度 是 10% 的 视频 高度; 如果 字符串 结束 在 `像素`， `高度` 的 blur 将 是 在 像素; 对于 示例，100px 表示 该 高度 是 100 像素. 默认值：`10%`。",
 												},
 												"start_time_offset": {
 													Type:        schema.TypeFloat,
 													Optional:    true,
-													Description: "Start time offset of blur in seconds. If this parameter is left empty or `0` is entered, the blur will appear upon the first video frame. If this parameter is left empty or `0` is entered, the blur will appear upon the first video frame; If this value is greater than `0` (e.g., n), the blur will appear at second n after the first video frame; If this value is smaller than `0` (e.g., -n), the blur will appear at second n before the last video frame.",
+													Description: "开始时间 偏移量 的 blur （秒）。 如果此参数为空 或 `0` 是 entered， blur 将 appear upon first 视频 frame. 如果此参数为空 或 `0` 是 entered， blur 将 appear upon first 视频 frame; 如果 此 值 是 greater 比 `0` (e.g.，n)， blur 将 appear 在 second n after first 视频 frame; 如果 此 值 是 smaller 比 `0` (e.g.，-n)， blur 将 appear 在 second n before last 视频 frame。",
 												},
 												"end_time_offset": {
 													Type:        schema.TypeFloat,
 													Optional:    true,
-													Description: "End time offset of blur in seconds. If this parameter is left empty or `0` is entered, the blur will exist till the last video frame; If this value is greater than `0` (e.g., n), the blur will exist till second n; If this value is smaller than `0` (e.g., -n), the blur will exist till second n before the last video frame.",
+													Description: "结束时间 偏移量 的 blur （秒）。 如果此参数为空 或 `0` 是 entered， blur 将 exist till last 视频 frame; 如果 此 值 是 greater 比 `0` (e.g.，n)， blur 将 exist till second n; 如果 此 值 是 smaller 比 `0` (e.g.，-n)， blur 将 exist till second n before last 视频 frame。",
 												},
 											},
 										},
@@ -127,14 +127,14 @@ func ResourceTencentCloudVodProcedureTemplate() *schema.Resource {
 										Optional:    true,
 										Computed:    true,
 										MaxItems:    1,
-										Description: "Digital watermark.",
+										Description: "Digital 水印。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"switch": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "Whether to use digital watermarks. This parameter is required. Valid values: ON, OFF.",
+													Description: "是否use digital watermarks. 此 参数 为必填项. 有效值：ON，OFF。",
 												},
 											},
 										},
@@ -144,14 +144,14 @@ func ResourceTencentCloudVodProcedureTemplate() *schema.Resource {
 										Optional:    true,
 										Computed:    true,
 										MaxItems:    1,
-										Description: "opyright watermark.",
+										Description: "opyright 水印。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"text": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "Copyright information, maximum length is 200 characters.",
+													Description: "Copyright 信息，最大 长度 是 200 字符。",
 												},
 											},
 										},
@@ -160,14 +160,14 @@ func ResourceTencentCloudVodProcedureTemplate() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										Computed:    true,
-										Description: "List of video opening/closing credits configuration template IDs. You can enter up to 10 IDs.",
+										Description: "列表 视频 opening/closing credits 配置 template IDs. You 可以 enter up 到 10 IDs。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"definition": {
 													Type:        schema.TypeString,
 													Optional:    true,
 													Computed:    true,
-													Description: "Video opening/closing credits configuration template ID.",
+													Description: "Video opening/closing credits 配置 模板 ID",
 												},
 											},
 										},
@@ -176,13 +176,13 @@ func ResourceTencentCloudVodProcedureTemplate() *schema.Resource {
 										Type:        schema.TypeFloat,
 										Optional:    true,
 										Computed:    true,
-										Description: "Start time offset of blur in seconds. If this parameter is left empty or `0` is entered, the blur will appear upon the first video frame. If this parameter is left empty or `0` is entered, the blur will appear upon the first video frame; If this value is greater than `0` (e.g., n), the blur will appear at second n after the first video frame; If this value is smaller than `0` (e.g., -n), the blur will appear at second n before the last video frame.",
+										Description: "开始时间 偏移量 的 blur （秒）。 如果此参数为空 或 `0` 是 entered， blur 将 appear upon first 视频 frame. 如果此参数为空 或 `0` 是 entered， blur 将 appear upon first 视频 frame; 如果 此 值 是 greater 比 `0` (e.g.，n)， blur 将 appear 在 second n after first 视频 frame; 如果 此 值 是 smaller 比 `0` (e.g.，-n)， blur 将 appear 在 second n before last 视频 frame。",
 									},
 									"end_time_offset": {
 										Type:        schema.TypeFloat,
 										Optional:    true,
 										Computed:    true,
-										Description: "End time offset of blur in seconds. If this parameter is left empty or `0` is entered, the blur will exist till the last video frame; If this value is greater than `0` (e.g., n), the blur will exist till second n; If this value is smaller than `0` (e.g., -n), the blur will exist till second n before the last video frame.",
+										Description: "结束时间 偏移量 的 blur （秒）。 如果此参数为空 或 `0` 是 entered， blur 将 exist till last 视频 frame; 如果 此 值 是 greater 比 `0` (e.g.，n)， blur 将 exist till second n; 如果 此 值 是 smaller 比 `0` (e.g.，-n)， blur 将 exist till second n before last 视频 frame。",
 									},
 								},
 							},
@@ -190,23 +190,23 @@ func ResourceTencentCloudVodProcedureTemplate() *schema.Resource {
 						"animated_graphic_task_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "List of animated image generating tasks. Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "列表 animated 镜像 generating tasks. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"definition": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Animated image generating template ID.",
+										Description: "Animated 镜像 generating 模板 ID",
 									},
 									"start_time_offset": {
 										Type:        schema.TypeFloat,
 										Required:    true,
-										Description: "Start time of animated image in video in seconds.",
+										Description: "开始时间 的 animated 镜像 在 视频 （秒）。",
 									},
 									"end_time_offset": {
 										Type:        schema.TypeFloat,
 										Required:    true,
-										Description: "End time of animated image in video in seconds.",
+										Description: "结束时间 的 animated 镜像 在 视频 （秒）。",
 									},
 								},
 							},
@@ -214,18 +214,18 @@ func ResourceTencentCloudVodProcedureTemplate() *schema.Resource {
 						"snapshot_by_time_offset_task_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "List of time point screen capturing tasks. Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "列表 时间 point screen capturing tasks. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"definition": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Time point screen capturing template ID.",
+										Description: "Time point screen capturing 模板 ID",
 									},
 									"ext_time_offset_list": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "The list of screenshot time points. `s` and `%` formats are supported: When a time point string ends with `s`, its unit is second. For example, `3.5s` means the 3.5th second of the video; When a time point string ends with `%`, it is marked with corresponding percentage of the video duration. For example, `10%` means that the time point is at the 10% of the video entire duration.",
+										Description: "列表 screenshot 时间 points. `s` 和 `%` formats 是 支持: 当 时间 point 字符串 结束 使用 `s`，its 单位 是 second. For 示例，`3.5s` 表示 3.5th second 的 视频; 当 时间 point 字符串 结束 使用 `%`，它 是 marked 使用 corresponding percentage 的 视频 时长. For 示例，`10%` 表示 该 时间 point 是 在 10% 的 视频 entire 时长。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -234,14 +234,14 @@ func ResourceTencentCloudVodProcedureTemplate() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    10,
-										Description: "List of up to `10` image or text watermarks. Note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "列表 up 到 `10` 镜像 或 text watermarks. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 										Elem:        VodWatermarkResource(),
 									},
 									"time_offset_list": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										Computed:    true,
-										Description: "List of time points for screencapturing in milliseconds. Note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "列表 时间 points 对于 screencapturing （毫秒）。 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 										Elem: &schema.Schema{
 											Type: schema.TypeFloat,
 										},
@@ -252,19 +252,19 @@ func ResourceTencentCloudVodProcedureTemplate() *schema.Resource {
 						"sample_snapshot_task_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "List of sampled screen capturing tasks. Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "列表 sampled screen capturing tasks. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"definition": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Sampled screen capturing template ID.",
+										Description: "Sampled screen capturing 模板 ID",
 									},
 									"watermark_list": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    10,
-										Description: "List of up to `10` image or text watermarks. Note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "列表 up 到 `10` 镜像 或 text watermarks. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 										Elem:        VodWatermarkResource(),
 									},
 								},
@@ -273,13 +273,13 @@ func ResourceTencentCloudVodProcedureTemplate() *schema.Resource {
 						"image_sprite_task_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "List of image sprite generating tasks. Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "列表 镜像 sprite generating tasks. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"definition": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Image sprite generating template ID.",
+										Description: "Image sprite generating 模板 ID",
 									},
 								},
 							},
@@ -287,30 +287,30 @@ func ResourceTencentCloudVodProcedureTemplate() *schema.Resource {
 						"cover_by_snapshot_task_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "List of cover generating tasks. Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "列表 cover generating tasks. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"definition": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Time point screen capturing template ID.",
+										Description: "Time point screen capturing 模板 ID",
 									},
 									"position_type": {
 										Type:         schema.TypeString,
 										Required:     true,
 										ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"Time", "Percent"}),
-										Description:  "Screen capturing mode. Valid values: `Time`, `Percent`. `Time`: screen captures by time point, `Percent`: screen captures by percentage.",
+										Description:  "Screen capturing 模式 有效值：`Time`，`Percent`. `Time`: screen captures 通过 时间 point，`Percent`: screen captures 通过 percentage。",
 									},
 									"position_value": {
 										Type:        schema.TypeFloat,
 										Required:    true,
-										Description: "Screenshot position: For time point screen capturing, this means to take a screenshot at a specified time point (in seconds) and use it as the cover. For percentage screen capturing, this value means to take a screenshot at a specified percentage of the video duration and use it as the cover.",
+										Description: "Screenshot position: For 时间 point screen capturing，此 表示 到 take screenshot 在 指定 时间 point (在 秒) 和 使用 它 作为 cover. For percentage screen capturing，此 值 表示 到 take screenshot 在 指定 percentage 的 视频 时长 和 使用 它 作为 cover。",
 									},
 									"watermark_list": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    10,
-										Description: "List of up to `10` image or text watermarks. Note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "列表 up 到 `10` 镜像 或 text watermarks. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 										Elem:        VodWatermarkResource(),
 									},
 								},
@@ -319,26 +319,26 @@ func ResourceTencentCloudVodProcedureTemplate() *schema.Resource {
 						"adaptive_dynamic_streaming_task_list": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "List of adaptive bitrate streaming tasks. Note: this field may return null, indicating that no valid values can be obtained.",
+							Description: "列表 adaptive bitrate streaming tasks. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"definition": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Adaptive bitrate streaming template ID.",
+										Description: "Adaptive bitrate streaming 模板 ID",
 									},
 									"watermark_list": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    10,
-										Description: "List of up to `10` image or text watermarks. Note: this field may return null, indicating that no valid values can be obtained.",
+										Description: "列表 up 到 `10` 镜像 或 text watermarks. 注意: 此 字段 可能 返回 null，indicating 该 无 有效 值 可以 是 获取。",
 										Elem:        VodWatermarkResource(),
 									},
 									"subtitle_list": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										Computed:    true,
-										Description: "Subtitle list, element is subtitle ID, support multiple subtitles, up to 16.",
+										Description: "Subtitle 列表，element 是 subtitle ID，support 多个 subtitles，up 到 16。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -354,14 +354,14 @@ func ResourceTencentCloudVodProcedureTemplate() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Parameter of AI-based content analysis task.",
+				Description: "Parameter 的 AI-based 内容 analysis 任务。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"definition": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Video content analysis template ID.",
+							Description: "Video 内容 analysis 模板 ID",
 						},
 					},
 				},
@@ -371,14 +371,14 @@ func ResourceTencentCloudVodProcedureTemplate() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Type parameter of AI-based content recognition task.",
+				Description: "类型 参数 的 AI-based 内容 recognition 任务。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"definition": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Intelligent video recognition template ID.",
+							Description: "Intelligent 视频 recognition 模板 ID",
 						},
 					},
 				},
@@ -388,7 +388,7 @@ func ResourceTencentCloudVodProcedureTemplate() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Type parameter of AI-based content recognition task.",
+				Description: "类型 参数 的 AI-based 内容 recognition 任务。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"review_contents": {
@@ -398,7 +398,7 @@ func ResourceTencentCloudVodProcedureTemplate() *schema.Resource {
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
-							Description: "The type of moderated content. Valid values:\n" +
+							Description: "类型 的 moderated 内容. 有效 值:\n" +
 								"- `Media`: The original audio/video;\n" +
 								"- `Cover`: Thumbnails.",
 						},
@@ -406,7 +406,7 @@ func ResourceTencentCloudVodProcedureTemplate() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Review template.",
+							Description: "Review template。",
 						},
 					},
 				},
@@ -414,17 +414,17 @@ func ResourceTencentCloudVodProcedureTemplate() *schema.Resource {
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time of template in ISO date format.",
+				Description: "创建时间 的 template 在 ISO date 格式",
 			},
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Last modified time of template in ISO date format.",
+				Description: "最后修改时间 的 template 在 ISO date 格式",
 			},
 			"type": {
 				Type:     schema.TypeString,
 				Computed: true,
-				Description: "Template type, value range:\n" +
+				Description: "模板 类型, 值 范围:\n" +
 					"- Preset: system preset template;\n" +
 					"- Custom: user-defined templates.",
 			},

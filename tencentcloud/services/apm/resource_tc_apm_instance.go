@@ -28,119 +28,119 @@ func ResourceTencentCloudApmInstance() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Name Of Instance.",
+				Description: "名称 Of 实例。",
 			},
 
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Description Of Instance.",
+				Description: "描述 Of 实例。",
 			},
 
 			"trace_duration": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Duration Of Trace Data.",
+				Description: "Duration Of Trace Data。",
 			},
 
 			"span_daily_counters": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Quota Of Instance Reporting.",
+				Description: "Quota Of 实例 Reporting。",
 			},
 
 			"pay_mode": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Modify the billing mode: `1` means prepaid, `0` means pay-as-you-go, the default value is `0`.",
+				Description: "Modify billing 模式: `1` 表示 prepaid，`0` 表示 pay-作为-您-go， 默认值为 `0`。",
 			},
 
 			"free": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether it is free (0 = paid edition; 1 = tsf restricted free edition; 2 = free edition), default 0.",
+				Description: "是否为free (0 = paid edition; 1 = tsf restricted free edition; 2 = free edition)，默认值 0。",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 
 			"open_billing": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Billing switch.",
+				Description: "Billing switch。",
 			},
 
 			"err_rate_threshold": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Error rate warning line. when the average error rate of the application exceeds this threshold, the system will give an abnormal note.",
+				Description: "错误 速率 警告 line. 当 average 错误 速率 的 应用 exceeds 此 阈值， 系统 将 give abnormal note。",
 			},
 
 			"sample_rate": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Sampling rate (unit: %).",
+				Description: "Sampling 速率 (单位: %)。",
 			},
 
 			"error_sample": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Error sampling switch (0: off, 1: on).",
+				Description: "错误 sampling switch (0: 关闭，1: 在)。",
 			},
 
 			"slow_request_saved_threshold": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Sampling slow call saving threshold (unit: ms).",
+				Description: "Sampling slow call saving 阈值 (单位: ms)。",
 			},
 
 			"is_related_log": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Log feature switch (0: off; 1: on).",
+				Description: "Log 功能 switch (0: 关闭; 1: 在)。",
 			},
 
 			"log_region": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Log region, which takes effect after the log feature is enabled.",
+				Description: "Log 地域，其中 takes effect after 日志 功能 是 已启用",
 			},
 
 			"log_topic_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "CLS log topic id, which takes effect after the log feature is enabled.",
+				Description: "CLS 日志 主题 ID，其中 takes effect after 日志 功能 是 已启用",
 			},
 
 			"log_set": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Logset, which takes effect only after the log feature is enabled.",
+				Description: "Logset，其中 takes effect 仅 after 日志 功能 是 已启用",
 			},
 
 			"log_source": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Log source, which takes effect only after the log feature is enabled.",
+				Description: "Log 来源，其中 takes effect 仅 after 日志 功能 是 已启用",
 			},
 
 			"custom_show_tags": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "List of custom display tags.",
+				Description: "列表 自定义 display 标签",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -150,178 +150,178 @@ func ResourceTencentCloudApmInstance() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Response time warning line.",
+				Description: "Response 时间 警告 line。",
 			},
 
 			"is_related_dashboard": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to associate the dashboard (0 = off, 1 = on).",
+				Description: "是否associate 仪表盘 (0 = 关闭，1 = 在)。",
 			},
 
 			"dashboard_topic_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Associated dashboard id, which takes effect after the associated dashboard is enabled.",
+				Description: "Associated 仪表盘 ID，其中 takes effect after associated 仪表盘 是 已启用",
 			},
 
 			"is_sql_injection_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "SQL injection detection switch (0: off, 1: on).",
+				Description: "SQL injection detection switch (0: 关闭，1: 在)。",
 			},
 
 			"is_instrumentation_vulnerability_scan": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to enable component vulnerability detection (0 = no, 1 = yes).",
+				Description: "是否enable 组件 vulnerability detection (0 = 无，1 = yes)。",
 			},
 
 			"is_remote_command_execution_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to enable detection of the remote command attack.",
+				Description: "是否enable detection 的 远程 command attack。",
 			},
 
 			"is_memory_hijacking_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to enable detection of Java webshell.",
+				Description: "是否enable detection 的 Java webshell。",
 			},
 
 			"log_index_type": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "CLS index type. (0 = full-text index; 1 = key-value index).",
+				Description: "CLS 索引 类型 (0 = full-text 索引; 1 = 键-值 索引)。",
 			},
 
 			"log_trace_id_key": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Index key of traceId. It is valid when the CLS index type is key-value index.",
+				Description: "索引 键 的 traceId. It 是 有效 当 CLS 索引 类型 是 键-值 索引",
 			},
 
 			"is_delete_any_file_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to enable the detection of deleting arbitrary files. (0 - disabled; 1: enabled).",
+				Description: "是否enable detection 的 deleting arbitrary files. (0 - 已禁用; 1: 已启用)。",
 			},
 
 			"is_read_any_file_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to enable the detection of reading arbitrary files. (0 - disabled; 1 - enabled).",
+				Description: "是否enable detection 的 reading arbitrary files. (0 - 已禁用; 1 - 已启用)。",
 			},
 
 			"is_upload_any_file_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to enable the detection of uploading arbitrary files. (0 - disabled; 1 - enabled).",
+				Description: "是否enable detection 的 uploading arbitrary files. (0 - 已禁用; 1 - 已启用)。",
 			},
 
 			"is_include_any_file_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to enable the detection of the inclusion of arbitrary files. (0: disabled, 1: enabled).",
+				Description: "是否enable detection 的 inclusion 的 arbitrary files. (0: 已禁用，1: 已启用)。",
 			},
 
 			"is_directory_traversal_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to enable traversal detection of the directory. (0 - disabled; 1 - enabled).",
+				Description: "是否enable traversal detection 的 directory. (0 - 已禁用; 1 - 已启用)。",
 			},
 
 			"is_template_engine_injection_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to enable template engine injection detection. (0: disabled; 1: enabled).",
+				Description: "是否enable template 引擎 injection detection. (0: 已禁用; 1: 已启用)。",
 			},
 
 			"is_script_engine_injection_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to enable script engine injection detection. (0 - disabled; 1 - enabled).",
+				Description: "是否enable 脚本 引擎 injection detection. (0 - 已禁用; 1 - 已启用)。",
 			},
 
 			"is_expression_injection_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to enable expression injection detection. (0 - disabled; 1 - enabled).",
+				Description: "是否enable expression injection detection. (0 - 已禁用; 1 - 已启用)。",
 			},
 
 			"is_jndi_injection_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to enable JNDI injection detection. (0 - disabled; 1 - enabled).",
+				Description: "是否enable JNDI injection detection. (0 - 已禁用; 1 - 已启用)。",
 			},
 
 			"is_jni_injection_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to enable JNI injection detection. (0 - disabled, 1 - enabled).",
+				Description: "是否enable JNI injection detection. (0 - 已禁用，1 - 已启用)。",
 			},
 
 			"is_webshell_backdoor_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to enable Webshell backdoor detection. (0 - disabled; 1 - enabled).",
+				Description: "是否enable Webshell backdoor detection. (0 - 已禁用; 1 - 已启用)。",
 			},
 
 			"is_deserialization_analysis": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to enable deserialization detection. (0 - disabled; 1 - enabled).",
+				Description: "是否enable deserialization detection. (0 - 已禁用; 1 - 已启用)。",
 			},
 
 			"url_long_segment_threshold": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Convergence threshold for URL long segments.",
+				Description: "Convergence 阈值 对于 URL long segments。",
 			},
 
 			"url_number_segment_threshold": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Convergence threshold for URL numerical segments.",
+				Description: "Convergence 阈值 对于 URL numerical segments。",
 			},
 
 			// computed
 			"instance_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "APM instance ID.",
+				Description: "APM 实例 ID。",
 			},
 
 			"token": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Business system authentication token.",
+				Description: "Business 系统 authentication 令牌",
 			},
 
 			"public_collector_url": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "External Network Reporting Address.",
+				Description: "External Network Reporting 地址",
 			},
 		},
 	}

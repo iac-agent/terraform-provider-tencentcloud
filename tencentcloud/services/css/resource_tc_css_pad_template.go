@@ -28,37 +28,37 @@ func ResourceTencentCloudCssPadTemplate() *schema.Resource {
 			"template_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Template namelimit 255 bytes.",
+				Description: "模板 namelimit 255 bytes。",
 			},
 
 			"url": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Pad content.",
+				Description: "Pad 内容",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Description content.limit length 1024 bytes.",
+				Description: "描述 内容limit 长度 1024 bytes。",
 			},
 
 			"wait_duration": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Stop stream wait time.limit: 0 - 30000 ms.",
+				Description: "Stop 流 wait 时间.限制: 0 - 30000 ms。",
 			},
 
 			"max_duration": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Max pad duration.limit: 0 - 9999999 ms.",
+				Description: "Max pad 时长.限制: 0 - 9999999 ms。",
 			},
 
 			"type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Pad content type.1: picture.2: video.default: 1.",
+				Description: "Pad 内容 类型1: picture.2: 视频.默认值：1。",
 			},
 		},
 	}

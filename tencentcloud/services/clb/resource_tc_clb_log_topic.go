@@ -33,25 +33,25 @@ func ResourceTencentCloudClbLogTopic() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Log topic of CLB instance.",
+				Description: "CLB实例的日志主题。",
 			},
 			"topic_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Log topic of CLB instance.",
+				Description: "CLB实例的日志主题。",
 			},
 			"status": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "The status of log topic. true: enable; false: disable. Default is true.",
+				Description: "日志主题的状态。 true：启用； false：禁用。默认为 true。",
 			},
 			//compute
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Log topic creation time.",
+				Description: "记录主题创建时间。",
 			},
 		},
 	}

@@ -20,31 +20,31 @@ func DataSourceTencentCloudCatMetricData() *schema.Resource {
 			"analyze_task_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Analysis of task type, supported types: `AnalyzeTaskType_Network`: network quality, `AnalyzeTaskType_Browse`: page performance, `AnalyzeTaskType_Transport`: port performance, `AnalyzeTaskType_UploadDownload`: file transport, `AnalyzeTaskType_MediaStream`: audiovisual experience.",
+				Description: "Analysis 的 任务 类型，支持 types: `AnalyzeTaskType_Network`: 网络 quality，`AnalyzeTaskType_Browse`: 页面 performance，`AnalyzeTaskType_Transport`: 端口 performance，`AnalyzeTaskType_UploadDownload`: 文件 transport，`AnalyzeTaskType_MediaStream`: audiovisual experience。",
 			},
 
 			"metric_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Metric type, metrics queries are passed with gauge by default.",
+				Description: "Metric 类型，metrics queries 是 passed 使用 gauge 通过 默认值。",
 			},
 
 			"field": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Detailed fields of metrics, specified metrics can be passed or aggregate metrics, such as avg(ping_time) means entire delay.",
+				Description: "Detailed 字段 的 metrics，指定 metrics 可以 是 passed 或 aggregate metrics，such 作为 avg(ping_time) 表示 entire 延迟",
 			},
 
 			"filter": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filter conditions can be passed as a single filter or multiple parameters concatenated together.",
+				Description: "过滤器 conditions 可以 是 passed 作为 单个 过滤器 或 多个 参数 concatenated together。",
 			},
 
 			"group_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Aggregation time, such as 1m, 1d, 30d, and so on.",
+				Description: "Aggregation 时间，such 作为 1m，1d，30d，和 so 在。",
 			},
 
 			"filters": {
@@ -53,19 +53,19 @@ func DataSourceTencentCloudCatMetricData() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Multiple condition filtering, supports combining multiple filtering conditions for query.",
+				Description: "Multiple condition filtering，支持 combining 多个 filtering conditions 对于 查询。",
 			},
 
 			"metric_set": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Return JSON string.",
+				Description: "Return JSON 字符串。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -21,38 +21,38 @@ func DataSourceTencentCloudSqlserverBackupCommands() *schema.Resource {
 			"backup_file_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Backup file type. Full: full backup. FULL_LOG: full backup which needs log increments. FULL_DIFF: full backup which needs differential increments. LOG: log backup. DIFF: differential backup.",
+				Description: "Backup 文件 类型. Full: full 备份. FULL_LOG: full 备份 其中 needs 日志 increments. FULL_DIFF: full 备份 其中 needs differential increments. LOG: 日志 备份. DIFF: differential 备份.",
 			},
 			"data_base_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Database name.",
+				Description: "Database 名称.",
 			},
 			"is_recovery": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Whether restoration is required. No: not required. Yes: required.",
+				Description: "Whether restoration 是 必填. No: 不 必填. Yes: 必填.",
 			},
 			"local_path": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Storage path of backup files. If this parameter is left empty, the default storage path will be D:.",
+				Description: "Storage 路径 的 备份 files. 如果 此 参数 是 left 空, 默认值 存储 路径 将 是 D:.",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Command list.",
+				Description: "Command 列表.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"command": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create backup command.",
+							Description: "Create 备份 command.",
 						},
 						"request_id": {
 							Type:        schema.TypeString,

@@ -18,99 +18,99 @@ func DataSourceTencentCloudWedataListTable() *schema.Resource {
 			"catalog_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Directory name.",
+				Description: "Directory 名称",
 			},
 
 			"datasource_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Data source ID.",
+				Description: "数据源 ID",
 			},
 
 			"database_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Database name.",
+				Description: "Database 名称",
 			},
 
 			"schema_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Database schema name.",
+				Description: "Database schema 名称",
 			},
 
 			"keyword": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Table search keyword.",
+				Description: "Table search keyword。",
 			},
 
 			"items": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Schema record list.",
+				Description: "Schema 记录 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"guid": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data table GUID.",
+							Description: "Data 表 GUID。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data table name.",
+							Description: "Data 表 名称",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Data table description.",
+							Description: "Data 表 描述",
 						},
 						"database_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database name.",
+							Description: "Database 名称",
 						},
 						"schema_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database schema name.",
+							Description: "Database schema 名称",
 						},
 						"table_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Table type.",
+							Description: "Table 类型",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Update time.",
+							Description: "更新时间。",
 						},
 						"technical_metadata": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Technical metadata of the table.",
+							Description: "Technical metadata 的 表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"owner": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Owner.",
+										Description: "所有者",
 									},
 									"location": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Data table location.",
+										Description: "Data 表 location。",
 									},
 									"storage_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Storage size.",
+										Description: "Storage 大小。",
 									},
 								},
 							},
@@ -118,13 +118,13 @@ func DataSourceTencentCloudWedataListTable() *schema.Resource {
 						"business_metadata": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Business metadata of the table.",
+							Description: "Business metadata 的 表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"tag_names": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "Tag names.",
+										Description: "标签 names。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -139,7 +139,7 @@ func DataSourceTencentCloudWedataListTable() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

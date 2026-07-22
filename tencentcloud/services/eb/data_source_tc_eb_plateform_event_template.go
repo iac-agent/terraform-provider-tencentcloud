@@ -18,19 +18,19 @@ func DataSourceTencentCloudEbPlateformEventTemplate() *schema.Resource {
 			"event_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Platform product event type.",
+				Description: "Platform product 事件 类型",
 			},
 
 			"event_template": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Platform product event template.",
+				Description: "Platform product 事件 template。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

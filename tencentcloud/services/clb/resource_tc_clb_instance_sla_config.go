@@ -26,12 +26,12 @@ func ResourceTencentCloudClbInstanceSlaConfig() *schema.Resource {
 			"load_balancer_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of the CLB instance.",
+				Description: "CLB实例ID。",
 			},
 			"sla_type": {
 				Type:     schema.TypeString,
 				Required: true,
-				Description: "This parameter is required to create LCU-supported instances. Values:" +
+				Description: "创建 LCU 支持的实例需要此参数。价值观：" +
 					"`SLA`: Super Large 4. When you have activated Super Large models, `SLA` refers to Super Large 4; " +
 					"`clb.c2.medium`: Standard; " +
 					"`clb.c3.small`: Advanced 1; " +

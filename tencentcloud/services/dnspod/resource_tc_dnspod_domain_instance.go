@@ -27,13 +27,13 @@ func ResourceTencentCloudDnspodDomainInstance() *schema.Resource {
 			"domain": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The Domain.",
+				Description: "域名",
 			},
 			"group_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "The Group Id of Domain.",
+				Description: "Group ID 的 域名",
 			},
 			"is_mark": {
 				Type:         schema.TypeString,
@@ -41,49 +41,49 @@ func ResourceTencentCloudDnspodDomainInstance() *schema.Resource {
 				Computed:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(DNSPOD_DOMAIN_MARK_TYPE),
-				Description:  "Whether to Mark the Domain.",
+				Description:  "是否Mark 域名",
 			},
 			"status": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue(DNSPOD_DOMAIN_STATUS_TYPE),
-				Description:  "The status of Domain.",
+				Description:  "状态 域名",
 			},
 			"remark": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The remark of Domain.",
+				Description: "备注 的 域名",
 			},
 			//computed
 			"domain_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "ID of the domain.",
+				Description: "ID 域名",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create time of the domain.",
+				Description: "创建时间 的 域名",
 			},
 			"slave_dns": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Is secondary DNS enabled.",
+				Description: "Is secondary DNS 已启用",
 			},
 			"record_count": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Number of DNS records under this domain.",
+				Description: "数量 DNS records under 此 域名",
 			},
 			"grade": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The DNS plan/package grade of the domain (e.g., DP_Free, DP_Plus).",
+				Description: "DNS plan/包 grade 的 域名 (e.g.，DP_Free，DP_Plus)。",
 			},
 			"updated_on": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Last modification time of the domain.",
+				Description: "Last 修改时间 的 域名",
 			},
 		},
 	}

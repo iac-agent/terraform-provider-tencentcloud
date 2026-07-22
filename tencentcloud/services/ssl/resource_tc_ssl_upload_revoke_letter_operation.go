@@ -25,14 +25,14 @@ func ResourceTencentCloudSslUploadRevokeLetterOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Certificate ID.",
+				Description: "证书 ID",
 			},
 
 			"revoke_letter": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The format of the base64-encoded certificate confirmation letter file should be jpg, jpeg, png, or pdf, and the size should be between 1kb and 1.4M.",
+				Description: "格式 的 base64-encoded 证书 confirmation letter 文件 should 是 jpg，jpeg，png，或 pdf，和 大小 should 是 between 1kb 和 1.4M。",
 			},
 		},
 	}

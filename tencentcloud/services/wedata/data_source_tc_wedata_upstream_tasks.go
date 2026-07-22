@@ -18,106 +18,106 @@ func DataSourceTencentCloudWedataUpstreamTasks() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"task_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Task ID.",
+				Description: "任务 ID",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Upstream task details.",
+				Description: "Upstream 任务 details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 
 						"task_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task ID.",
+							Description: "任务 ID",
 						},
 						"task_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task name.",
+							Description: "任务 名称",
 						},
 						"workflow_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Workflow id.",
+							Description: "Workflow ID。",
 						},
 						"workflow_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Workflow name.",
+							Description: "Workflow 名称",
 						},
 						"project_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Project ID.",
+							Description: "项目 ID",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task Status:\n\n* N: New\n\n* Y: Scheduling\n\n* F: Offline\n\n* O: Paused\n\n* T: Offlining (in the process of being taken offline)\n\nI* NVALID: Invalid.",
+							Description: "任务 状态:\n\n* N: New\n\n* Y: Scheduling\n\n* F: Offline\n\n* O: Paused\n\n* T: Offlining (在 process 的 being taken offline)\n\nI* NVALID: Invalid。",
 						},
 						"task_type_id": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Task type id.",
+							Description: "任务 类型 ID。",
 						},
 						"task_type_desc": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task type description.\n-20: universal data synchronization.\n - 25:  ETLTaskType\n - 26:  ETLTaskType\n - 30:  python\n - 31:  pyspark\n - 34:  hivesql\n - 35:  shell\n - 36:  sparksql\n - 21:  jdbcsql\n - 32:  dlc\n - 33:  ImpalaTaskType\n - 40:  CDWTaskType\n - 41:  kettle\n - 42:  TCHouse-X\n - 43:  TCHouse-X SQL\n - 46:  dlcsparkTaskType\n - 47:  TiOneMachineLearningTaskType\n - 48:  Trino\n - 50:  DLCPyspark\n - 23:  TencentDistributedSQL\n - 39:  spark\n - 92:  MRTaskType\n - 38:  ShellScript\n - 70:  HiveSQLScrip\n-130: branch.\n-131: merge.\n-132: Notebook \n-133: SSH node.\n - 134:  StarRocks\n - 137:  For-each\n-10000: custom business common.",
+							Description: "任务 类型 描述\n-20: universal 数据 synchronization.\n - 25: ETLTaskType\n - 26: ETLTaskType\n - 30: python\n - 31: pyspark\n - 34: hivesql\n - 35: shell\n - 36: sparksql\n - 21: jdbcsql\n - 32: dlc\n - 33: ImpalaTaskType\n - 40: CDWTaskType\n - 41: kettle\n - 42: TCHouse-X\n - 43: TCHouse-X SQL\n - 46: dlcsparkTaskType\n - 47: TiOneMachineLearningTaskType\n - 48: Trino\n - 50: DLCPyspark\n - 23: TencentDistributedSQL\n - 39: spark\n - 92: MRTaskType\n - 38: ShellScript\n - 70: HiveSQLScrip\n-130: branch.\n-131: merge.\n-132: Notebook \n-133: SSH 节点.\n - 134: StarRocks\n - 137: For-each\n-10000: 自定义 business common。",
 						},
 						"schedule_desc": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Specifies scheduling plan display description information.",
+							Description: "指定scheduling plan display 描述 信息。",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task start time.",
+							Description: "任务 开始时间。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Task end time.",
+							Description: "任务 结束时间。",
 						},
 						"delay_time": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Delay time.",
+							Description: "延迟 时间。",
 						},
 						"cycle_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Cycle Type, Default: D\nSupported types:\n* O: One-time\n\n* Y: Yearly\n\n* M: Monthly\n\n* W: Weekly\n\n* D: Daily\n\n* H: Hourly\n\n* I: Minute\n\n* C: Crontab expression type.",
+							Description: "Cycle 类型，默认值：D\nSupported types:\n* O: One-时间\n\n* Y: Yearly\n\n* M: Monthly\n\n* W: Weekly\n\n* D: Daily\n\n* H: Hourly\n\n* I: Minute\n\n* C: Crontab expression 类型",
 						},
 						"owner_uin": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Owner ID.",
+							Description: "所有者 ID。",
 						},
 						"task_action": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Elastic cycle configuration.",
+							Description: "Elastic cycle 配置。",
 						},
 						"init_strategy": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Initialization strategy for scheduling.",
+							Description: "Initialization strategy 对于 scheduling。",
 						},
 						"crontab_expression": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "crontab expression.",
+							Description: "crontab expression。",
 						},
 					},
 				},
@@ -126,7 +126,7 @@ func DataSourceTencentCloudWedataUpstreamTasks() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

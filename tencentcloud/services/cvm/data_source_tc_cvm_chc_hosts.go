@@ -22,13 +22,13 @@ func DataSourceTencentCloudCvmChcHosts() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "CHC host ID. Up to 100 instances per request is allowed. ChcIds and Filters cannot be specified at the same time.",
+				Description: "CHC 主机 ID. Up 到 100 实例 per 请求 是 allowed. ChcIds 和 Filters 不能 是 指定 在 same 时间。",
 			},
 
 			"filters": {
 				Optional: true,
 				Type:     schema.TypeList,
-				Description: "- `zone` Filter by the availability zone, such as ap-guangzhou-1. Valid values: See [Regions and Availability Zones](https://www.tencentcloud.com/document/product/213/6091?from_cn_redirect=1).\n" +
+				Description: "- `zone` 按可用区域过滤，例如 ap-guangzhou-1。有效值：请参见【地域和可用区】(https://www.tencentcloud.com/document/product/213/6091?from_cn_redirect=1)。\n" +
 					"- `instance-name` Filter by the instance name.\n" +
 					"- `instance-state` Filter by the instance status. For status details, see [InstanceStatus](https://www.tencentcloud.com/document/api/213/15753?from_cn_redirect=1#InstanceStatus).\n" +
 					"- `device-type` Filter by the device type.\n" +
@@ -39,7 +39,7 @@ func DataSourceTencentCloudCvmChcHosts() *schema.Resource {
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter name.",
+							Description: "过滤名称",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -47,7 +47,7 @@ func DataSourceTencentCloudCvmChcHosts() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Filter values.",
+							Description: "过滤器 值。",
 						},
 					},
 				},
@@ -56,49 +56,49 @@ func DataSourceTencentCloudCvmChcHosts() *schema.Resource {
 			"chc_host_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of returned instances.",
+				Description: "列表 返回 实例。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"chc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CHC host ID.",
+							Description: "CHC 主机 ID。",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance name.",
+							Description: "实例名称",
 						},
 						"serial_number": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Server serial number.",
+							Description: "Server serial 数量。",
 						},
 						"instance_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "CHC host status&lt;br/&gt;&lt;ul&gt;&lt;li&gt;REGISTERED: The CHC host is registered, but the out-of-band network and deployment network are not configured.&lt;/li&gt;&lt;li&gt;VPC_READY: The out-of-band network and deployment network are configured.&lt;/li&gt;&lt;li&gt;PREPARED: It&#39;s ready and can be associated with a CVM.&lt;/li&gt;&lt;li&gt;ONLINE: It&#39;s already associated with a CVM.&lt;/li&gt;&lt;/ul&gt;.",
+							Description: "CHC 主机 状态&lt;br/&gt;&lt;ul&gt;&lt;li&gt;REGISTERED: CHC 主机 是 registered，但 out-的-band 网络 和 部署 网络 是 不 已配置.&lt;/li&gt;&lt;li&gt;VPC_READY: out-的-band 网络 和 部署 网络 是 已配置.&lt;/li&gt;&lt;li&gt;PREPARED: It&#39;s ready 和 可以 是 associated 使用 CVM.&lt;/li&gt;&lt;li&gt;ONLINE: It&#39;s already associated 使用 CVM.&lt;/li&gt;&lt;/ul&gt;。",
 						},
 						"device_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Device typeNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Device type注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"placement": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Availability zone.",
+							Description: "Availability 可用区",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"zone": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "ID of the availability zone where the instance resides. You can call the [DescribeZones](https://www.tencentcloud.com/document/product/213/35071) API and obtain the ID in the returned Zone field.",
+										Description: "ID availability 可用区 其中 实例 resides. You 可以 call [DescribeZones](https://www.tencentcloud.com/document/product/213/35071) API 和 obtain ID 在 返回 可用区 字段。",
 									},
 									"project_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "ID of the project to which the instance belongs. This parameter can be obtained from the projectId returned by DescribeProject. If this is left empty, the default project is used.",
+										Description: "ID 项目 到 其中 实例 belongs. 此 参数 可以 是 获取 从 projectId 返回 通过 DescribeProject. 如果 此 是 left 空， 默认值 项目 是 使用。",
 									},
 									"host_ids": {
 										Type: schema.TypeSet,
@@ -106,19 +106,19 @@ func DataSourceTencentCloudCvmChcHosts() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "ID list of CDHs from which the instance can be created. If you have purchased CDHs and specify this parameter, the instances you purchase will be randomly deployed on the CDHs.",
+										Description: "ID 列表 CDHs 从 其中 实例 可以 是 创建. 如果 您 have purchased CDHs 和 指定this 参数， 实例 您 purchase 将 是 randomly deployed 在 CDHs。",
 									},
 									"host_ips": {
 										Type:        schema.TypeSet,
 										Elem:        &schema.Schema{Type: schema.TypeString},
 										Computed:    true,
 										Deprecated:  "It has been deprecated from version 1.81.108.",
-										Description: "IPs of the hosts to create CVMs.",
+										Description: "IPs 的 hosts 到 create CVMs。",
 									},
 									"host_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "The ID of the CDH to which the instance belongs, only used as an output parameter.",
+										Description: "ID CDH 到 其中 实例 belongs，仅 使用 作为 output 参数。",
 									},
 								},
 							},
@@ -126,23 +126,23 @@ func DataSourceTencentCloudCvmChcHosts() *schema.Resource {
 						"bmc_virtual_private_cloud": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Out-of-band networkNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Out-的-band network注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"vpc_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "VPC ID in the format of vpc-xxx. To obtain valid VPC IDs, you can log in to the [console](https://console.tencentcloud.com/vpc/vpc?rid=1) or call the DescribeVpcEx API and look for the unVpcId fields in the response. If you specify DEFAULT for both VpcId and SubnetId when creating an instance, the default VPC will be used.",
+										Description: "私有网络 ID 在 格式 的 vpc-xxx. To obtain 有效 VPC IDs，您 可以 日志 在 到 [console](https://console.tencentcloud.com/vpc/vpc?rid=1) 或 call DescribeVpcEx API 和 look 对于 unVpcId 字段 在 response. 如果 您 指定DEFAULT 对于 both VpcId 和 SubnetId 当 creating 实例， 默认值 VPC 将 是 使用。",
 									},
 									"subnet_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "VPC subnet ID in the format subnet-xxx. To obtain valid subnet IDs, you can log in to the [console](https://console.tencentcloud.com/vpc/vpc?rid=1) or call DescribeSubnets and look for the unSubnetId fields in the response. If you specify DEFAULT for both SubnetId and VpcId when creating an instance, the default VPC will be used.",
+										Description: "VPC 子网 ID 在 格式 子网-xxx. To obtain 有效 子网 IDs，您 可以 日志 在 到 [console](https://console.tencentcloud.com/vpc/vpc?rid=1) 或 call DescribeSubnets 和 look 对于 unSubnetId 字段 在 response. 如果 您 指定DEFAULT 对于 both SubnetId 和 VpcId 当 creating 实例， 默认值 VPC 将 是 使用。",
 									},
 									"as_vpc_gateway": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether to use a CVM instance as a public gateway. The public gateway is only available when the instance has a public IP and resides in a VPC. Valid values:&lt;br&gt;&lt;li&gt;TRUE: yes;&lt;br&gt;&lt;li&gt;FALSE: no&lt;br&gt;&lt;br&gt;Default: FALSE.",
+										Description: "是否use CVM 实例 作为 公有 网关. 公有 网关 是 仅 可用 当 实例 has 公有 IP 和 resides 在 VPC. 有效 值:&lt;br&gt;&lt;li&gt;TRUE: yes;&lt;br&gt;&lt;li&gt;FALSE: 无&lt;br&gt;&lt;br&gt;默认值：FALSE。",
 									},
 									"private_ip_addresses": {
 										Type: schema.TypeSet,
@@ -150,12 +150,12 @@ func DataSourceTencentCloudCvmChcHosts() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Array of VPC subnet IPs. You can use this parameter when creating instances or modifying VPC attributes of instances. Currently you can specify multiple IPs in one subnet only when creating multiple instances at the same time.",
+										Description: "数组 VPC 子网 IPs. You 可以 使用 此 参数 当 creating 实例 或 modifying VPC attributes 的 实例. Currently 您 可以 指定multiple IPs 在 一个 子网 仅 当 creating 多个 实例 在 same 时间。",
 									},
 									"ipv6_address_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of IPv6 addresses randomly generated for the ENI.",
+										Description: "数量 IPv6 addresses randomly generated 对于 ENI。",
 									},
 								},
 							},
@@ -163,7 +163,7 @@ func DataSourceTencentCloudCvmChcHosts() *schema.Resource {
 						"bmc_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Out-of-band network IPNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Out-的-band 网络 IP注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"bmc_security_group_ids": {
 							Type: schema.TypeSet,
@@ -171,28 +171,28 @@ func DataSourceTencentCloudCvmChcHosts() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Out-of-band network security group IDNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Out-的-band 网络 安全 组 ID注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"deploy_virtual_private_cloud": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Deployment networkNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Deployment network注意：此字段可能返回 null，表示无法获取有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"vpc_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "VPC ID in the format of vpc-xxx. To obtain valid VPC IDs, you can log in to the [console](https://console.tencentcloud.com/vpc/vpc?rid=1) or call the DescribeVpcEx API and look for the unVpcId fields in the response. If you specify DEFAULT for both VpcId and SubnetId when creating an instance, the default VPC will be used.",
+										Description: "私有网络 ID 在 格式 的 vpc-xxx. To obtain 有效 VPC IDs，您 可以 日志 在 到 [console](https://console.tencentcloud.com/vpc/vpc?rid=1) 或 call DescribeVpcEx API 和 look 对于 unVpcId 字段 在 response. 如果 您 指定DEFAULT 对于 both VpcId 和 SubnetId 当 creating 实例， 默认值 VPC 将 是 使用。",
 									},
 									"subnet_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "VPC subnet ID in the format subnet-xxx. To obtain valid subnet IDs, you can log in to the [console](https://console.tencentcloud.com/vpc/vpc?rid=1) or call DescribeSubnets and look for the unSubnetId fields in the response. If you specify DEFAULT for both SubnetId and VpcId when creating an instance, the default VPC will be used.",
+										Description: "VPC 子网 ID 在 格式 子网-xxx. To obtain 有效 子网 IDs，您 可以 日志 在 到 [console](https://console.tencentcloud.com/vpc/vpc?rid=1) 或 call DescribeSubnets 和 look 对于 unSubnetId 字段 在 response. 如果 您 指定DEFAULT 对于 both SubnetId 和 VpcId 当 creating 实例， 默认值 VPC 将 是 使用。",
 									},
 									"as_vpc_gateway": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether to use a CVM instance as a public gateway. The public gateway is only available when the instance has a public IP and resides in a VPC. Valid values:&lt;br&gt;&lt;li&gt;TRUE: yes;&lt;br&gt;&lt;li&gt;FALSE: no&lt;br&gt;&lt;br&gt;Default: FALSE.",
+										Description: "是否use CVM 实例 作为 公有 网关. 公有 网关 是 仅 可用 当 实例 has 公有 IP 和 resides 在 VPC. 有效 值:&lt;br&gt;&lt;li&gt;TRUE: yes;&lt;br&gt;&lt;li&gt;FALSE: 无&lt;br&gt;&lt;br&gt;默认值：FALSE。",
 									},
 									"private_ip_addresses": {
 										Type: schema.TypeSet,
@@ -200,12 +200,12 @@ func DataSourceTencentCloudCvmChcHosts() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Array of VPC subnet IPs. You can use this parameter when creating instances or modifying VPC attributes of instances. Currently you can specify multiple IPs in one subnet only when creating multiple instances at the same time.",
+										Description: "数组 VPC 子网 IPs. You 可以 使用 此 参数 当 creating 实例 或 modifying VPC attributes 的 实例. Currently 您 可以 指定multiple IPs 在 一个 子网 仅 当 creating 多个 实例 在 same 时间。",
 									},
 									"ipv6_address_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of IPv6 addresses randomly generated for the ENI.",
+										Description: "数量 IPv6 addresses randomly generated 对于 ENI。",
 									},
 								},
 							},
@@ -213,7 +213,7 @@ func DataSourceTencentCloudCvmChcHosts() *schema.Resource {
 						"deploy_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Deployment network IPNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Deployment 网络 IP注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"deploy_security_group_ids": {
 							Type: schema.TypeSet,
@@ -221,52 +221,52 @@ func DataSourceTencentCloudCvmChcHosts() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Deployment network security group IDNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Deployment 网络 安全 组 ID注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"cvm_instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the associated CVMNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "ID associated CVM注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"created_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Server creation time.",
+							Description: "Server 创建时间。",
 						},
 						"hardware_description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance hardware description, including CPU cores, memory capacity and disk capacity.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "实例 hardware 描述，包括 CPU 核数，内存 容量 和 磁盘 容量.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"cpu": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "CPU cores of the CHC hostNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "CPU 核数 的 CHC host注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Memory capacity of the CHC host (unit: GB)Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Memory 容量 的 CHC 主机 (单位: GB)注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"disk": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Disk capacity of the CHC hostNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Disk 容量 的 CHC host注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"bmc_mac": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "MAC address assigned under the out-of-band networkNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "MAC 地址 assigned under out-的-band network注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"deploy_mac": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "MAC address assigned under the deployment networkNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "MAC 地址 assigned under 部署 network注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"tenant_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Management typeHOSTING: HostingTENANT: LeasingNote: This field may return null, indicating that no valid values can be obtained.",
+							Description: "Management typeHOSTING: HostingTENANT: Leasing注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -275,7 +275,7 @@ func DataSourceTencentCloudCvmChcHosts() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

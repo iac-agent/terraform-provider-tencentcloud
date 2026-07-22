@@ -28,59 +28,59 @@ func ResourceTencentCloudMpsOutput() *schema.Resource {
 			"flow_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Flow ID.",
+				Description: "Flow ID。",
 			},
 
 			"output": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Output configuration of the transport stream.",
+				Description: "Output 配置 的 transport 流。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"output_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The name of the output.",
+							Description: "名称 output。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Output description.",
+							Description: "Output 描述",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Output protocol, optional [SRT|RTP|RTMP|RTMP_PULL].",
+							Description: "Output 协议，可选 [SRT|RTP|RTMP|RTMP_PULL]。",
 						},
 						"output_region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Output region.",
+							Description: "输出地域",
 						},
 						"srt_settings": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
 							Computed:    true,
-							Description: "configuration of the output SRT.",
+							Description: "配置 的 output SRT。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"destinations": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "The target address of the relay is required when Mode is CALLER, and only one group can be filled in.",
+										Description: "目标 地址 的 relay 为必填项 当 模式 是 CALLER，和 仅 一个 组 可以 是 filled 在。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"ip": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Output IP.",
+													Description: "Output IP。",
 												},
 												"port": {
 													Type:        schema.TypeInt,
 													Required:    true,
-													Description: "output port.",
+													Description: "output 端口",
 												},
 											},
 										},
@@ -88,49 +88,49 @@ func ResourceTencentCloudMpsOutput() *schema.Resource {
 									"stream_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
-										Description: "relay the stream ID of SRT. You can choose uppercase and lowercase letters, numbers and special characters (.#!:&amp;,=_-). The length is 0~512.",
+										Description: "relay 流 ID SRT. You 可以 choose uppercase 和 lowercase letters，numbers 和 special 字符 (.#!:&amp;,=_-). 长度 是 0~512。",
 									},
 									"latency": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "The total delay of relaying SRT, the default is 0, the unit is ms, and the range is [0, 3000].",
+										Description: "总数 延迟 的 relaying SRT， 默认为 0， 单位 是 ms，和 范围 是 [0，3000]。",
 									},
 									"recv_latency": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "The reception delay of relay SRT, the default is 120, the unit is ms, the range is [0, 3000].",
+										Description: "reception 延迟 的 relay SRT， 默认为 120， 单位 是 ms， 范围 是 [0，3000]。",
 									},
 									"peer_latency": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "The peer delay of relaying SRT, the default is 0, the unit is ms, and the range is [0, 3000].",
+										Description: "peer 延迟 的 relaying SRT， 默认为 0， 单位 是 ms，和 范围 是 [0，3000]。",
 									},
 									"peer_idle_timeout": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "The peer idle timeout for relaying SRT, the default is 5000, the unit is ms, and the range is [1000, 10000].",
+										Description: "peer idle 超时 对于 relaying SRT， 默认为 5000， 单位 是 ms，和 范围 是 [1000，10000]。",
 									},
 									"passphrase": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "The encryption key for relaying SRT, which is empty by default, indicating no encryption. Only ascii code values can be filled in, and the length is [10, 79].",
+										Description: "加密 键 对于 relaying SRT，其中 是 空 通过 默认值，indicating 无 加密. Only ascii 代码 值 可以 是 filled 在，和 长度 是 [10，79]。",
 									},
 									"pb_key_len": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "The key length of relay SRT, the default is 0, optional [0|16|24|32].",
+										Description: "键 长度 的 relay SRT， 默认为 0，可选 [0|16|24|32]。",
 									},
 									"mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "SRT mode, optional [LISTENER|CALLER], default is CALLER.",
+										Description: "SRT 模式，可选 [LISTENER|CALLER]，默认为 CALLER。",
 									},
 								},
 							},
@@ -140,24 +140,24 @@ func ResourceTencentCloudMpsOutput() *schema.Resource {
 							MaxItems:    1,
 							Optional:    true,
 							Computed:    true,
-							Description: "Output RTMP configuration.",
+							Description: "Output RTMP 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"destinations": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "The target address of the relay can be filled in 1~2.",
+										Description: "目标 地址 的 relay 可以 是 filled 在 1~2。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"url": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "relayed URL, the format is: rtmp://domain/live.",
+													Description: "relayed URL， 格式 是: rtmp://域名/live。",
 												},
 												"stream_key": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "relayed StreamKey, in the format: stream?key=value.",
+													Description: "relayed StreamKey，在 格式: 流?键=值",
 												},
 											},
 										},
@@ -165,7 +165,7 @@ func ResourceTencentCloudMpsOutput() *schema.Resource {
 									"chunk_size": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "RTMP Chunk size, range is [4096, 40960].",
+										Description: "RTMP Chunk 大小，范围 是 [4096，40960]。",
 									},
 								},
 							},
@@ -174,24 +174,24 @@ func ResourceTencentCloudMpsOutput() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Output RTP configuration.",
+							Description: "Output RTP 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"destinations": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "The target address of the relay can be filled in 1~2.",
+										Description: "目标 地址 的 relay 可以 是 filled 在 1~2。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"ip": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The target IP of the relay.",
+													Description: "目标 IP 的 relay。",
 												},
 												"port": {
 													Type:        schema.TypeInt,
 													Required:    true,
-													Description: "Destination port for relays.",
+													Description: "Destination 端口 对于 relays。",
 												},
 											},
 										},
@@ -199,12 +199,12 @@ func ResourceTencentCloudMpsOutput() *schema.Resource {
 									"fec": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "You can only fill in none.",
+										Description: "You 可以 仅 fill 在 none。",
 									},
 									"idle_timeout": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Idle timeout, unit ms.",
+										Description: "Idle 超时，单位 ms。",
 									},
 								},
 							},
@@ -216,12 +216,12 @@ func ResourceTencentCloudMpsOutput() *schema.Resource {
 							},
 							Optional:    true,
 							Computed:    true,
-							Description: "IP whitelist list, the format is CIDR, such as 0.0.0.0/0. When the Protocol is RTMP_PULL, it is valid, and if it is empty, it means that the client IP is not limited.",
+							Description: "IP whitelist 列表， 格式 是 CIDR，such 作为 0.0.0.0/0. 当 协议 是 RTMP_PULL，它 是 有效，和 如果 它 是 空，它 表示 该 客户端 IP 是 不 limited。",
 						},
 						"max_concurrent": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The maximum number of concurrent pull streams, the maximum is 4, and the default is 4. Only SRT or RTMP_PULL can set this parameter.",
+							Description: "最大concurrent pull streams， 最大 是 4，和 默认为 4. Only SRT 或 RTMP_PULL 可以 集合 此 参数。",
 						},
 					},
 				},

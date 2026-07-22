@@ -27,25 +27,25 @@ func ResourceTencentCloudTsfConfigTemplate() *schema.Resource {
 			"config_template_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Configuration template name.",
+				Description: "Configuration 模板名称",
 			},
 
 			"config_template_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Configure the microservice framework corresponding to the template.",
+				Description: "Configure microservice 框架 corresponding 到 template。",
 			},
 
 			"config_template_value": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Configure template data.",
+				Description: "Configure template 数据。",
 			},
 
 			"config_template_desc": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Configuration template description.",
+				Description: "Configuration 模板描述",
 			},
 
 			"program_id_list": {
@@ -54,25 +54,25 @@ func ResourceTencentCloudTsfConfigTemplate() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Program id list.",
+				Description: "Program ID 列表。",
 			},
 
 			"create_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "creation time.",
+				Description: "创建时间。",
 			},
 
 			"update_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "update time.",
+				Description: "更新时间。",
 			},
 
 			"config_template_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Template Id.",
+				Description: "模板 ID。",
 			},
 		},
 	}

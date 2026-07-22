@@ -26,13 +26,13 @@ func ResourceTencentCloudWafWebShell() *schema.Resource {
 			"domain": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Domain.",
+				Description: "域名",
 			},
 			"status": {
 				Type:         schema.TypeInt,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{0, 1, 2}),
-				Description:  "Webshell status, 1: open; 0: closed; 2: log.",
+				Description:  "Webshell 状态，1: open; 0: closed; 2: 日志。",
 			},
 		},
 	}

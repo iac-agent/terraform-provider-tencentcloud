@@ -27,27 +27,27 @@ func ResourceTencentCloudTeoPlan() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"personal", "basic", "standard", "enterprise"}),
-				Description:  "The subscription package type, the possible values are: `personal`: personal package, prepaid package; `basic`: basic package, prepaid package; `standard`: standard package, prepaid package; `enterprise`: enterprise package, postpaid package.",
+				Description:  "subscription 包 类型， possible 值 是: `personal`: personal 包，prepaid 包; `basic`: basic 包，prepaid 包; `standard`: standard 包，prepaid 包; `enterprise`: enterprise 包，postpaid 包。",
 			},
 
 			"prepaid_plan_param": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Subscription prepaid package parameters. When PlanType is personal, basic, or standard, this parameter is optional and is used to enter the subscription duration of the package and whether to enable automatic renewal. If this parameter is not filled in, the default subscription duration is 1 month and automatic renewal is not enabled.",
+				Description: "Subscription prepaid 包 参数. 当 PlanType 是 personal，basic，或 standard，此 参数 为可选项 和 是 用于enter subscription 时长 的 包 和 是否enable automatic renewal. 如果 此 参数 是 不 filled 在， 默认值 subscription 时长 是 1 month 和 automatic renewal 是 不 已启用",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"period": {
 							Type:         schema.TypeInt,
 							Optional:     true,
 							ValidateFunc: tccommon.ValidateAllowedIntValue([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36}),
-							Description:  "The subscription period of the prepaid package, in months, with possible values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36. If not filled in, the default value 1 is used.",
+							Description:  "subscription 周期 的 prepaid 包，在 months，使用 possible 值: 1，2，3，4，5，6，7，8，9，10，11，12，24，36. 如果未填写 在， 默认值 1 是 使用。",
 						},
 						"renew_flag": {
 							Type:         schema.TypeString,
 							Optional:     true,
 							ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"on", "off"}),
-							Description:  "The automatic renewal flag of the prepaid package, the values are: `on`: turn on automatic renewal; `off`: do not turn on automatic renewal. If not filled in, the default value off is used. When automatic renewal occurs, the default renewal period is 1 month.",
+							Description:  "automatic renewal flag 的 prepaid 包， 值 是: `在`: turn 在 automatic renewal; `关闭`: do 不 turn 在 automatic renewal. 如果未填写 在， 默认值 关闭 是 使用. 当 automatic renewal occurs， 默认值 renewal 周期 是 1 month。",
 						},
 					},
 				},
@@ -57,37 +57,37 @@ func ResourceTencentCloudTeoPlan() *schema.Resource {
 			"plan_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Plan ID.",
+				Description: "Plan ID。",
 			},
 
 			"area": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Service area, possible values are: <li>mainland: Mainland China; </li><li>overseas: Worldwide (excluding Mainland China); </li><li>global: Worldwide (including Mainland China). </li>.",
+				Description: "Service area，possible 值 是: <li>mainland: Mainland China; </li><li>overseas: Worldwide (excluding Mainland China); </li><li>全局: Worldwide (包括 Mainland China). </li>。",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Package status, the values are: <li>normal: normal status; </li><li>expiring-soon: about to expire; </li><li>expired: expired; </li><li>isolated: isolated; </li><li>overdue-isolated: overdue isolated. </li>.",
+				Description: "Package 状态， 值 是: <li>normal: normal 状态; </li><li>expiring-soon: about 到 expire; </li><li>expired: expired; </li><li>isolated: isolated; </li><li>overdue-isolated: overdue isolated. </li>。",
 			},
 
 			"pay_mode": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Payment type, possible values: <li>0: post-payment; </li><li>1: pre-payment. </li>.",
+				Description: "Payment 类型，possible 值: <li>0: post-payment; </li><li>1: pre-payment. </li>。",
 			},
 
 			"enabled_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The time when the package takes effect.",
+				Description: "时间 当 包 takes effect。",
 			},
 
 			"expired_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The expiration date of the package.",
+				Description: "expiration date 的 包。",
 			},
 		},
 	}

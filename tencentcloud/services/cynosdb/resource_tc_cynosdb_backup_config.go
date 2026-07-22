@@ -27,32 +27,32 @@ func ResourceTencentCloudCynosdbBackupConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 
 			"backup_time_beg": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Full backup start time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively.",
+				Description: "完整备份开始时间。取值范围：[0-24*3600]。例如，0:00 AM、1:00 AM 和 2:00 AM 分别表示为 0、3600 和 7200。",
 			},
 
 			"backup_time_end": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Full backup end time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively.",
+				Description: "完整备份结束时间。取值范围：[0-24*3600]。例如，0:00 AM、1:00 AM 和 2:00 AM 分别表示为 0、3600 和 7200。",
 			},
 
 			"reserve_duration": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Backup retention period in seconds. Backups will be cleared after this period elapses. 7 days is represented by 3600*24*7 = 604800. Maximum value: 158112000.",
+				Description: "备份保留期（以秒为单位）。在此期限过后，备份将被清除。 7 天表示为 3600*24*7 = 604800。最大值：158112000。",
 			},
 
 			"backup_freq": {
 				Type: schema.TypeList,
 				// Optional:    true,
 				Computed:    true,
-				Description: "Backup frequency. It is an array of 7 elements corresponding to Monday through Sunday. full: full backup; increment: incremental backup. This parameter cannot be modified currently and doesn't need to be entered.",
+				Description: "备份频率。它是一个包含 7 个元素的数组，对应于星期一到星期日。 full：完全备份；增量：增量备份。该参数目前无法修改，无需输入。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -62,7 +62,7 @@ func ResourceTencentCloudCynosdbBackupConfig() *schema.Resource {
 				Type: schema.TypeString,
 				// Optional:    true,
 				Computed:    true,
-				Description: "Backup mode. logic: logic backup; snapshot: snapshot backup. This parameter cannot be modified currently and doesn't need to be entered.",
+				Description: "备份模式。逻辑：逻辑备份；快照：快照备份。该参数目前无法修改，无需输入。",
 			},
 
 			"logic_backup_config": {
@@ -70,39 +70,39 @@ func ResourceTencentCloudCynosdbBackupConfig() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Logical backup configuration. Do not set this field if it is not enabled. Example value: [{\"LogicBackupEnable\": \"ON\",\"LogicBackupTimeBeg\": \"2023-04-24 15:06:04\",\"LogicBackupTimeEnd\": \"2024-04-24 15:06:04\",\"LogicReserveDuration\": \"60\",\"LogicCrossRegionsEnable\": \"ON\",\"LogicCrossRegions\": [\"ap-guangzhou\"]}].",
+				Description: "逻辑备份配置。如果未启用，请勿设置该字段。示例值： [{\"LogicBackupEnable\": \"ON\",\"LogicBackupTimeBeg\": \"2023-04-24 15:06:04\",\"LogicBackupTimeEnd\": \"2024-04-24 15:06:04\",\"LogicReserveDuration\": \“60\”，\“LogicCrossRegionsEnable\”：\“ON\”，\“LogicCrossRegions\”：[\“ap-广州\”]}]。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"logic_backup_enable": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Whether to enable automatic logical backup. Value: `ON`, `OFF`.",
+							Description: "是否启用自动逻辑备份。值：“开”、“关”。",
 						},
 						"logic_backup_time_beg": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Automatic logical backup start time. When `logic_backup_enable` is `OFF`, it must be `0` or not entered. Example value: 2.",
+							Description: "自动逻辑备份开始时间。当“logic_backup_enable”为“OFF”时，必须为“0”或不输入。示例值：2。",
 						},
 						"logic_backup_time_end": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Automatic logical backup end time. When `logic_backup_enable` is `OFF`, it must be `0` or not entered. Example value: 6.",
+							Description: "自动逻辑备份结束时间。当“logic_backup_enable”为“OFF”时，必须为“0”或不输入。示例值：6。",
 						},
 						"logic_reserve_duration": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Automatic logical backup retention period. When `logic_backup_enable` is `OFF`, it must be `0` or not entered. Value range: [259200,158112000]. `logic_backup_enable` is `OFF`, `logic_reserve_duration` cannot be set when creating.",
+							Description: "自动逻辑备份保留期限。当“logic_backup_enable”为“OFF”时，必须为“0”或不输入。值范围：[259200,158112000]。 `logic_backup_enable`为`OFF`，创建时不能设置`logic_reserve_duration`。",
 						},
 						"logic_cross_regions_enable": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether to enable cross-region logical backup. Cannot be input when `logic_backup_enable` is `OFF`. When `logic_backup_enable` is `ON`, `logic_cross_regions_enable` setting `ON` will take effect. Value: `ON`, `OFF`.",
+							Description: "是否启用跨地域逻辑备份。当“logic_backup_enable”为“OFF”时无法输入。当“logic_backup_enable”为“ON”时，“logic_cross_regions_enable”设置“ON”才会生效。值：“开”、“关”。",
 						},
 						"logic_cross_regions": {
 							Type:        schema.TypeSet,
 							Optional:    true,
-							Description: "Logical backup across regions. Example value: [\"ap-guangzhou\"]. When `logic_backup_enable` is `OFF`, it must be `[]` or not entered.",
+							Description: "跨区域逻辑备份。示例值：[\"ap-guangzhou\"]。当“logic_backup_enable”为“OFF”时，必须为“[]”或不输入。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -116,32 +116,32 @@ func ResourceTencentCloudCynosdbBackupConfig() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Secondary snapshot backup configuration.",
+				Description: "辅助快照备份配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"backup_custom_auto_time": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Computed:    true,
-							Description: "Whether to use system auto time.",
+							Description: "是否使用系统自动时间。",
 						},
 						"backup_time_beg": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Backup start time. Range: [0-24*3600]. E.g. 0:00, 1:00, 2:00 are 0, 3600, 7200.",
+							Description: "备份开始时间。范围：[0-24*3600]。例如。 0:00、1:00、2:00 分别为 0、3600、7200。",
 						},
 						"backup_time_end": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Backup end time. Range: [0-24*3600]. E.g. 0:00, 1:00, 2:00 are 0, 3600, 7200.",
+							Description: "备份结束时间。范围：[0-24*3600]。例如。 0:00、1:00、2:00 分别为 0、3600、7200。",
 						},
 						"backup_week_days": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Computed:    true,
-							Description: "Backup week days array (length 7, Sunday to Saturday). Values: full, increment, none.",
+							Description: "备份工作日数组（长度7，周日到周六）。值：完整、增量、无。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -150,29 +150,29 @@ func ResourceTencentCloudCynosdbBackupConfig() *schema.Resource {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Backup interval time.",
+							Description: "备份间隔时间。",
 						},
 						"reserve_duration": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Computed:    true,
-							Description: "Backup retention period in seconds. 7 days = 604800. Max: 158112000.",
+							Description: "备份保留期（以秒为单位）。 7 天 = 604800。最大值：158112000。",
 						},
 						"backup_trigger_strategy": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Backup trigger strategy. Values: `periodically` (periodic auto backup), `frequent` (high-frequency backup).",
+							Description: "备份触发策略。值：“periodically”（定期自动备份）、“frequent”（高频备份）。",
 						},
 						"cross_regions_enable": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Whether cross-region backup is enabled. Values: `yes`, `no`.",
+							Description: "是否启用跨区域备份。值：“是”、“否”。",
 						},
 						"cross_regions": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Cross-region backup target regions.",
+							Description: "跨区域备份目标区域。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -181,20 +181,20 @@ func ResourceTencentCloudCynosdbBackupConfig() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							Computed:    true,
-							Description: "Auto copy vault configuration list.",
+							Description: "自动复制保管库配置列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"vault_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Vault ID.",
+										Description: "保险库 ID。",
 									},
 									"vault_region": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Vault region.",
+										Description: "避难所区域。",
 									},
 								},
 							},

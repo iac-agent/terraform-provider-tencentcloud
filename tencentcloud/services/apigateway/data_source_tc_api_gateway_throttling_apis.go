@@ -21,72 +21,72 @@ func DataSourceTencentCloudAPIGatewayThrottlingApis() *schema.Resource {
 			"service_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Unique service ID of API.",
+				Description: "Unique 服务 ID API。",
 			},
 			"environment_names": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Environment list.",
+				Description: "Environment 列表。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			//compute
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of policies bound to API.",
+				Description: "A 列表 policies bound 到 API。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"service_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Unique service ID of API.",
+							Description: "Unique 服务 ID API。",
 						},
 						"api_environment_strategies": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of throttling policies bound to API.",
+							Description: "列表 throttling policies bound 到 API。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"api_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Unique API ID.",
+										Description: "Unique API ID。",
 									},
 									"api_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Custom API name.",
+										Description: "Custom API 名称",
 									},
 									"path": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "API path.",
+										Description: "API 路径",
 									},
 									"method": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "API method.",
+										Description: "API 方法。",
 									},
 									"strategy_list": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Environment throttling information.",
+										Description: "Environment throttling 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"environment_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Environment name.",
+													Description: "Environment 名称",
 												},
 												"quota": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Throttling value.",
+													Description: "Throttling 值",
 												},
 											},
 										},

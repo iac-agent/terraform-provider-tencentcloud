@@ -30,17 +30,17 @@ func ResourceTencentCloudSqlserverGeneralClone() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 			"old_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Database name. If the OldName database does not exist, a failure will be returned. It can be left empty in offline migration tasks.",
+				Description: "Database 名称. 如果 OldName 数据库 does 不 exist, failure 将 是 返回. It 可以 是 left 空 在 offline 迁移 tasks.",
 			},
 			"new_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "New database name. In offline migration, OldName will be used if NewName is left empty (OldName and NewName cannot be both empty). In database cloning, OldName and NewName must be both specified and cannot have the same value.",
+				Description: "New 数据库 名称. In offline 迁移, OldName 将 是 使用 如果 NewName 是 left 空 (OldName 和 NewName 不能 是 both 空). In 数据库 cloning, OldName 和 NewName 必须 是 both 指定 和 不能 have same 值.",
 			},
 		},
 	}

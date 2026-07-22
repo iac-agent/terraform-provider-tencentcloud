@@ -19,24 +19,24 @@ func DataSourceTencentCloudCynosdbAccountAllGrantPrivileges() *schema.Resource {
 			"cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Cluster ID.",
+				Description: "集群 ID。",
 			},
 			"account": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "account information.",
+				Description: "帐户信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"account_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Account.",
+							Description: "帐户。",
 						},
 						"host": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Host, default `%`.",
+							Description: "主机，默认“%”。",
 						},
 					},
 				},
@@ -45,30 +45,30 @@ func DataSourceTencentCloudCynosdbAccountAllGrantPrivileges() *schema.Resource {
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Permission statement note: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "权限声明注意：该字段可能返回null，表示无法获取有效值。",
 			},
 			"global_privileges": {
 				Computed:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Global permission note: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "全局权限说明：该字段可能返回null，表示无法获取到有效值。",
 			},
 			"database_privileges": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Database permissions note: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "数据库权限注意：该字段可能返回null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"db": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "database.",
+							Description: "数据库。",
 						},
 						"privileges": {
 							Type:        schema.TypeSet,
 							Elem:        &schema.Schema{Type: schema.TypeString},
 							Computed:    true,
-							Description: "Permission List.",
+							Description: "权限列表。",
 						},
 					},
 				},
@@ -76,18 +76,18 @@ func DataSourceTencentCloudCynosdbAccountAllGrantPrivileges() *schema.Resource {
 			"table_privileges": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Database table permissions note: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "数据库表权限注意：该字段可能返回null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"db": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database name.",
+							Description: "数据库名称。",
 						},
 						"table_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Table Name.",
+							Description: "表名称。",
 						},
 						"privileges": {
 							Type: schema.TypeSet,
@@ -95,7 +95,7 @@ func DataSourceTencentCloudCynosdbAccountAllGrantPrivileges() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Computed:    true,
-							Description: "Permission List.",
+							Description: "权限列表。",
 						},
 					},
 				},
@@ -103,7 +103,7 @@ func DataSourceTencentCloudCynosdbAccountAllGrantPrivileges() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

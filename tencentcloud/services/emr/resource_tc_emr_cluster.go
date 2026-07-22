@@ -36,13 +36,13 @@ func ResourceTencentCloudEmrCluster() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Deprecated:  "It will be deprecated in later versions.",
-				Description: "Display strategy of EMR instance.",
+				Description: "Display strategy 的 EMR 实例.",
 			},
 			"product_id": {
 				Type:     schema.TypeInt,
 				Required: true,
 				ForceNew: true,
-				Description: "Product ID. Different products ID represents different EMR product versions. Value range:\n" +
+				Description: "Product ID. Different products ID 表示 different EMR product versions. Value 范围:\n" +
 					"	- 16: represents EMR-V2.3.0\n" +
 					"	- 20: represents EMR-V2.5.0\n" +
 					"	- 25: represents EMR-V3.1.0\n" +
@@ -62,14 +62,14 @@ func ResourceTencentCloudEmrCluster() *schema.Resource {
 				Type:        schema.TypeMap,
 				Required:    true,
 				ForceNew:    true,
-				Description: "The private net config of EMR instance.",
+				Description: "私有 net config 的 EMR 实例.",
 			},
 			"softwares": {
 				Type:        schema.TypeSet,
 				Required:    true,
 				ForceNew:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "The softwares of a EMR instance.",
+				Description: "softwares 的 EMR 实例.",
 			},
 			"resource_spec": {
 				Type:          schema.TypeList,
@@ -85,19 +85,19 @@ func ResourceTencentCloudEmrCluster() *schema.Resource {
 							Type:        schema.TypeInt,
 							Computed:    true,
 							Optional:    true,
-							Description: "The number of master node.",
+							Description: "数量 的 master 节点.",
 						},
 						"core_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
 							Optional:    true,
-							Description: "The number of core node.",
+							Description: "数量 的 core 节点.",
 						},
 						"task_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
 							Optional:    true,
-							Description: "The number of core node.",
+							Description: "数量 的 core 节点.",
 						},
 						"common_resource_spec": buildResourceSpecSchema(),
 						"common_count": {
@@ -105,16 +105,16 @@ func ResourceTencentCloudEmrCluster() *schema.Resource {
 							Computed:    true,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "The number of common node.",
+							Description: "数量 的 common 节点.",
 						},
 					},
 				},
-				Description: "Resource specification of EMR instance.",
+				Description: "Resource 规格 的 EMR 实例.",
 			},
 			"terminate_node_info": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Terminate nodes. Note: it only works when the number of nodes decreases.",
+				Description: "Terminate nodes. 注意: 它 仅 works 当 数量 的 nodes decreases.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cvm_instance_ids": {
@@ -123,12 +123,12 @@ func ResourceTencentCloudEmrCluster() *schema.Resource {
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
-							Description: "Destroy resource list.",
+							Description: "Destroy 资源 列表.",
 						},
 						"node_flag": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Value range of destruction node type: `MASTER`, `TASK`, `CORE`, `ROUTER`.",
+							Description: "Value 范围 的 destruction 节点 类型: `MASTER`, `TASK`, `CORE`, `ROUTER`.",
 						},
 					},
 				},
@@ -138,20 +138,20 @@ func ResourceTencentCloudEmrCluster() *schema.Resource {
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateIntegerInRange(0, 1),
-				Description:  "The flag whether the instance support high availability.(0=>not support, 1=>support).",
+				Description:  "flag whether 实例 support high availability.(0=>不 support, 1=>support).",
 			},
 			"instance_name": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(6, 36),
-				Description:  "Name of the instance, which can contain 6 to 36 English letters, Chinese characters, digits, dashes(-), or underscores(_).",
+				Description:  "Name 的 实例, 其中 可以 contain 6 到 36 English letters, Chinese 字符, digits, dashes(-), 或 underscores(_).",
 			},
 			"pay_mode": {
 				Type:         schema.TypeInt,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateIntegerInRange(0, 1),
-				Description:  "The pay mode of instance. 0 represent POSTPAID_BY_HOUR, 1 represent PREPAID.",
+				Description:  "pay 模式 的 实例. 0 represent POSTPAID_BY_HOUR, 1 represent PREPAID.",
 			},
 			"placement": {
 				Type:         schema.TypeMap,
@@ -159,7 +159,7 @@ func ResourceTencentCloudEmrCluster() *schema.Resource {
 				Computed:     true,
 				ExactlyOneOf: []string{"placement", "placement_info"},
 				Deprecated:   "It will be deprecated in later versions. Use `placement_info` instead.",
-				Description:  "The location of the instance.",
+				Description:  "location 的 实例.",
 			},
 			"placement_info": {
 				Type:         schema.TypeList,
@@ -178,40 +178,40 @@ func ResourceTencentCloudEmrCluster() *schema.Resource {
 							Type:        schema.TypeInt,
 							Computed:    true,
 							Optional:    true,
-							Description: "Project id.",
+							Description: "Project ID.",
 						},
 					},
 				},
-				Description: "The location of the instance.",
+				Description: "location 的 实例.",
 			},
 			"time_span": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "The length of time the instance was purchased. Use with TimeUnit.When TimeUnit is s, the parameter can only be filled in at 3600, representing a metered instance.\nWhen TimeUnit is m, the number filled in by this parameter indicates the length of purchase of the monthly instance of the package year, such as 1 for one month of purchase.",
+				Description: "长度 的 时间 实例 是 purchased. Use 使用 TimeUnit.当 TimeUnit 是 s, 参数 可以 仅 是 filled 在 在 3600, representing metered 实例.\nWhen TimeUnit 是 m, 数量 filled 在 通过 此 参数 indicates 长度 的 purchase 的 monthly 实例 的 包 year, such 作为 1 对于 一个 month 的 purchase.",
 			},
 			"time_unit": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The unit of time in which the instance was purchased. When PayMode is 0, TimeUnit can only take values of s(second). When PayMode is 1, TimeUnit can only take the value m(month).",
+				Description: "单位 的 时间 在 其中 实例 是 purchased. 当 PayMode 是 0, TimeUnit 可以 仅 take 值 的 s(second). 当 PayMode 是 1, TimeUnit 可以 仅 take 值 m(month).",
 			},
 			"login_settings": {
 				Type:      schema.TypeMap,
 				Optional:  true,
 				Sensitive: true,
-				Description: "Instance login settings. There are two optional fields:" +
+				Description: "实例 login settings. There 是 two 可选 字段:" +
 					"- password: Instance login password: 8-16 characters, including uppercase letters, lowercase letters, numbers and special characters. Special symbols only support! @% ^ *. The first bit of the password cannot be a special character;" +
 					"- public_key_id: Public key id. After the key is associated, the instance can be accessed through the corresponding private key.",
 			},
 			"extend_fs_field": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Access the external file system.",
+				Description: "Access 外部 文件 系统.",
 			},
 			"scene_name": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: true,
-				Description: "Scene-based value:\n" +
+				Description: "Scene-based 值:\n" +
 					"	- Hadoop-Kudu\n" +
 					"	- Hadoop-Zookeeper\n" +
 					"	- Hadoop-Presto\n" +
@@ -220,7 +220,7 @@ func ResourceTencentCloudEmrCluster() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Created EMR instance id.",
+				Description: "Created EMR 实例 ID.",
 			},
 			"need_master_wan": {
 				Type:         schema.TypeString,
@@ -237,25 +237,25 @@ func ResourceTencentCloudEmrCluster() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "The ID of the security group to which the instance belongs, in the form of sg-xxxxxxxx.",
+				Description: "ID 的 安全 组 到 其中 实例 belongs, 在 form 的 sg-xxxxxxxx.",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
 				Computed:    true,
-				Description: "Tag description list.",
+				Description: "Tag 描述 列表.",
 			},
 			"auto_renew": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "0 means turn off automatic renewal, 1 means turn on automatic renewal. Default is 0.",
+				Description: "0 表示 turn 关闭 automatic renewal, 1 表示 turn 在 automatic renewal. Default 是 0.",
 			},
 			"pre_executed_file_settings": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Pre executed file settings. It can only be set at the time of creation, and cannot be modified.",
+				Description: "Pre executed 文件 settings. It 可以 仅 是 集合 在 时间 的 creation, 和 不能 是 modified.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"args": {
@@ -265,7 +265,7 @@ func ResourceTencentCloudEmrCluster() *schema.Resource {
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
-							Description: "Execution script parameters.",
+							Description: "Execution 脚本 参数.",
 						},
 						"run_order": {
 							Type:        schema.TypeInt,
@@ -277,19 +277,19 @@ func ResourceTencentCloudEmrCluster() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "`resourceAfter` or `clusterAfter`.",
+							Description: "`resourceAfter` 或 `clusterAfter`.",
 						},
 						"cos_file_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Script file name.",
+							Description: "Script 文件 名称.",
 						},
 						"cos_file_uri": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "The cos address of the script.",
+							Description: "cos 地址 的 脚本.",
 						},
 						"cos_secret_id": {
 							Type:        schema.TypeString,
@@ -318,7 +318,7 @@ func ResourceTencentCloudEmrCluster() *schema.Resource {
 				Computed:     true,
 				ForceNew:     true,
 				RequiredWith: []string{"multi_zone_setting"},
-				Description:  "true means that cross-AZ deployment is enabled; it is only a user parameter when creating a new cluster, and no subsequent adjustment is supported.",
+				Description:  "true 表示 该 cross-AZ 部署 是 已启用; 它 是 仅 用户 参数 当 creating new 集群, 和 无 subsequent adjustment 是 支持.",
 			},
 			"multi_zone_setting": {
 				Type:         schema.TypeList,
@@ -331,7 +331,7 @@ func ResourceTencentCloudEmrCluster() *schema.Resource {
 							Type:        schema.TypeMap,
 							Required:    true,
 							ForceNew:    true,
-							Description: "The private net config of EMR instance.",
+							Description: "私有 net config 的 EMR 实例.",
 						},
 						"placement": {
 							Type:     schema.TypeList,
@@ -348,7 +348,7 @@ func ResourceTencentCloudEmrCluster() *schema.Resource {
 									},
 								},
 							},
-							Description: "The location of the instance.",
+							Description: "location 的 实例.",
 						},
 						"resource_spec": {
 							Type:     schema.TypeList,
@@ -363,19 +363,19 @@ func ResourceTencentCloudEmrCluster() *schema.Resource {
 										Type:        schema.TypeInt,
 										Computed:    true,
 										Optional:    true,
-										Description: "The number of master node.",
+										Description: "数量 的 master 节点.",
 									},
 									"core_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
 										Optional:    true,
-										Description: "The number of core node.",
+										Description: "数量 的 core 节点.",
 									},
 									"task_count": {
 										Type:        schema.TypeInt,
 										Computed:    true,
 										Optional:    true,
-										Description: "The number of core node.",
+										Description: "数量 的 core 节点.",
 									},
 									"common_resource_spec": buildResourceSpecSchema(),
 									"common_count": {
@@ -383,15 +383,15 @@ func ResourceTencentCloudEmrCluster() *schema.Resource {
 										Computed:    true,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "The number of common node.",
+										Description: "数量 的 common 节点.",
 									},
 								},
 							},
-							Description: "Resource specification of EMR instance.",
+							Description: "Resource 规格 的 EMR 实例.",
 						},
 					},
 				},
-				Description: "The specification of node resources is as follows: fill in a few available areas. In order, the first one is the main available area, the second one is the backup available area, and the third one is the arbitration available area.",
+				Description: "规格 的 节点 resources 是 作为 follows: fill 在 few 可用 areas. In order, first 一个 是 main 可用 area, second 一个 是 备份 可用 area, 和 third 一个 是 arbitration 可用 area.",
 			},
 		},
 	}

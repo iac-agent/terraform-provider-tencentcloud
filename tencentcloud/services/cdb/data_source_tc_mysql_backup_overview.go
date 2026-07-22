@@ -19,55 +19,55 @@ func DataSourceTencentCloudMysqlBackupOverview() *schema.Resource {
 			"product": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The type of cloud database product to be queried, currently only supports `mysql`.",
+				Description: "查询的云数据库产品类型，目前仅支持`mysql`。",
 			},
 
 			"backup_count": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total number of user backups in the current region (including data backups and log backups).",
+				Description: "当前区域的用户备份总数（包括数据备份和日志备份）。",
 			},
 
 			"backup_volume": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total backup capacity of the user in the current region.",
+				Description: "当前区域用户的总备份容量。",
 			},
 
 			"billing_volume": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The billable capacity of the user&amp;#39;s backup in the current region, that is, the part that exceeds the gifted capacity.",
+				Description: "当前区域用户备份的可计费容量，即超出赠送容量的部分。",
 			},
 
 			"free_volume": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The free backup capacity obtained by the user in the current region.",
+				Description: "用户在当前区域获得的免费备份容量。",
 			},
 
 			"remote_backup_volume": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total capacity of off-site backup of the user in the current region. Note: This field may return null, indicating that no valid value can be obtained.",
+				Description: "当前区域用户异地备份总容量。注意：该字段可能返回null，表示取不到有效值。",
 			},
 
 			"backup_archive_volume": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Archive backup capacity, including data backup and log backup. Note: This field may return null, indicating that no valid value can be obtained.",
+				Description: "归档备份能力，包括数据备份和日志备份。注意：该字段可能返回null，表示取不到有效值。",
 			},
 
 			"backup_standby_volume": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Standard storage backup capacity, including data backup and log backup. Note: This field may return null, indicating that no valid value can be obtained.",
+				Description: "标准存储备份能力，包括数据备份和日志备份。注意：该字段可能返回null，表示取不到有效值。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -20,13 +20,13 @@ func DataSourceTencentCloudDbbrainSecurityAuditLogExportTasks() *schema.Resource
 			"sec_audit_group_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "security audit group id.",
+				Description: "安全 audit 组 ID.",
 			},
 
 			"product": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "product, optional value is mysql.",
+				Description: "product, 可选 值 是 mysql.",
 			},
 
 			"async_request_ids": {
@@ -35,59 +35,59 @@ func DataSourceTencentCloudDbbrainSecurityAuditLogExportTasks() *schema.Resource
 					Type: schema.TypeInt,
 				},
 				Optional:    true,
-				Description: "async request id list.",
+				Description: "async 请求 ID 列表.",
 			},
 
 			"list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "security audit log export task list.",
+				Description: "安全 audit 日志 export 任务 列表.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"async_request_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "async request id.",
+							Description: "async 请求 ID.",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "start time.",
+							Description: "start 时间.",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "end time.",
+							Description: "end 时间.",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "create time.",
+							Description: "create 时间.",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "status.",
+							Description: "状态.",
 						},
 						"progress": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "task progress.",
+							Description: "任务 progress.",
 						},
 						"log_start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "log start time.",
+							Description: "日志 start 时间.",
 						},
 						"log_end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "log end time.",
+							Description: "日志 end 时间.",
 						},
 						"total_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "the total size of log.",
+							Description: "总数 大小 的 日志.",
 						},
 						"danger_levels": {
 							Type: schema.TypeSet,
@@ -95,7 +95,7 @@ func DataSourceTencentCloudDbbrainSecurityAuditLogExportTasks() *schema.Resource
 								Type: schema.TypeInt,
 							},
 							Computed:    true,
-							Description: "danger level list.",
+							Description: "danger 级别 列表.",
 						},
 					},
 				},
@@ -104,7 +104,7 @@ func DataSourceTencentCloudDbbrainSecurityAuditLogExportTasks() *schema.Resource
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

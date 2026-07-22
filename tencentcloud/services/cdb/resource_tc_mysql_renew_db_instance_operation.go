@@ -25,33 +25,33 @@ func ResourceTencentCloudMysqlRenewDbInstanceOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The instance ID to be renewed, the format is: cdb-c1nl9rpv, which is the same as the instance ID displayed on the cloud database console page, you can use [Query Instance List](https://cloud.tencent.com/document/api/236/ 15872).",
+				Description: "需要续费的实例ID，格式为：cdb-c1nl9rpv，与云数据库控制台页面显示的实例ID相同，可以使用【查询实例列表】(https://云.tencent.com/document/api/236/15872)。",
 			},
 
 			"time_span": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Renewal duration, unit: month, optional values include [1,2,3,4,5,6,7,8,9,10,11,12,24,36].",
+				Description: "续订时长，单位：月，可选值包括[1,2,3,4,5,6,7,8,9,10,11,12,24,36]。",
 			},
 
 			"modify_pay_type": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "If you need to renew the Pay-As-You-Go instance to a Subscription instance, the value of this input parameter needs to be specified as `PREPAID`.",
+				Description: "如果您需要将按量付费实例续费为包年包月实例，则需要将该入参指定为“PREPAID”。",
 			},
 
 			"deal_id": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Deal id.",
+				Description: "交易 ID。",
 			},
 
 			"deadline_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Instance expiration time.",
+				Description: "实例过期时间。",
 			},
 		},
 	}

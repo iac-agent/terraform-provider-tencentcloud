@@ -28,37 +28,37 @@ func ResourceTencentCloudTseCngwGateway() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway name, supports up to 60 characters.",
+				Description: "网关 名称，支持 up 到 60 字符。",
 			},
 
 			"type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway type,currently only supports kong.",
+				Description: "网关 类型,currently 仅 支持 kong。",
 			},
 
 			"gateway_version": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "gateway vwersion. Reference value: `2.4.1`, `2.5.1`.",
+				Description: "网关 vwersion. Reference 值: `2.4.1`，`2.5.1`。",
 			},
 
 			"node_config": {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "gateway node configration.",
+				Description: "网关 节点 configration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"specification": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "specification, 1c2g|2c4g|4c8g|8c16g.",
+							Description: "规格，1c2g|2c4g|4c8g|8c16g。",
 						},
 						"number": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "node number, 2-50.",
+							Description: "节点 数量，2-50。",
 						},
 					},
 				},
@@ -68,18 +68,18 @@ func ResourceTencentCloudTseCngwGateway() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "vpc information.",
+				Description: "vpc 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "VPC ID. Assign an IP address to the engine in the VPC subnet. Reference value: vpc-conz6aix.",
+							Description: "私有网络 ID Assign IP 地址 到 引擎 在 VPC 子网. Reference 值: vpc-conz6aix。",
 						},
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "subnet ID. Assign an IP address to the engine in the VPC subnet. Reference value: subnet-ahde9me9.",
+							Description: "子网 ID. Assign IP 地址 到 引擎 在 VPC 子网. Reference 值: 子网-ahde9me9。",
 						},
 					},
 				},
@@ -88,94 +88,94 @@ func ResourceTencentCloudTseCngwGateway() *schema.Resource {
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "description information, up to 120 characters.",
+				Description: "描述 信息，up 到 120 字符。",
 			},
 
 			"enable_cls": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "whether to enable CLS log. Default value: fasle.",
+				Description: "是否enable CLS 日志. 默认值：fasle。",
 			},
 
 			"feature_version": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "product version. Reference value: `TRIAL`, `STANDARD`(default value), `PROFESSIONAL`.",
+				Description: "product 版本 Reference 值: `TRIAL`，`STANDARD`(默认值)，`PROFESSIONAL`。",
 			},
 
 			"internet_max_bandwidth_out": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "public network outbound traffic bandwidth,[1,2048]Mbps.",
+				Description: "公有 网络 outbound 流量 带宽,[1,2048]Mbps。",
 			},
 
 			"engine_region": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "engine region of gateway.",
+				Description: "引擎 地域 的 网关。",
 			},
 
 			"ingress_class_name": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "ingress class name.",
+				Description: "ingress class 名称",
 			},
 
 			"trade_type": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "trade type. Reference value: `0`: postpaid, `1`:Prepaid (Interface does not support the creation of prepaid instances yet).",
+				Description: "trade 类型 Reference 值: `0`: postpaid，`1`:Prepaid (Interface does 不 support creation 的 prepaid 实例 yet)。",
 			},
 
 			"internet_config": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "internet configration.",
+				Description: "internet configration。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"internet_address_version": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "internet type. Reference value: `IPV4`(default value), `IPV6`.",
+							Description: "internet 类型 Reference 值: `IPV4`(默认值)，`IPV6`。",
 						},
 						"internet_pay_mode": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "trade type of internet. Reference value: `BANDWIDTH`, `TRAFFIC`(default value).",
+							Description: "trade 类型 internet. Reference 值: `BANDWIDTH`，`TRAFFIC`(默认值)。",
 						},
 						"internet_max_bandwidth_out": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "public network bandwidth.",
+							Description: "公有 网络 带宽。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "description of clb.",
+							Description: "描述 clb。",
 						},
 						"sla_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "specification type of clb. Default shared type when this parameter is empty. Reference value:- SLA LCU-supported.",
+							Description: "规格 类型 clb. Default shared 类型 当 此 参数 是 空. Reference 值:- SLA LCU-支持。",
 						},
 						"multi_zone_flag": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Whether load balancing has multiple availability zones.",
+							Description: "Whether load balancing has 多个 availability zones。",
 						},
 						"master_zone_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "primary availability zone.",
+							Description: "primary availability 可用区",
 						},
 						"slave_zone_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "alternate availability zone.",
+							Description: "alternate availability 可用区",
 						},
 					},
 				},
@@ -184,34 +184,34 @@ func ResourceTencentCloudTseCngwGateway() *schema.Resource {
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 
 			"instance_port": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Port information that the instance listens to.",
+				Description: "端口 信息 该 实例 listens 到。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"http_port": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Http port range.",
+							Description: "Http 端口 范围。",
 						},
 						"https_port": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Https port range.",
+							Description: "Https 端口 范围。",
 						},
 						"tcp_port": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Tcp port range.",
+							Description: "Tcp 端口 范围。",
 						},
 						"udp_port": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Udp port range.",
+							Description: "Udp 端口 范围。",
 						},
 					},
 				},
@@ -223,7 +223,7 @@ func ResourceTencentCloudTseCngwGateway() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Computed:    true,
-				Description: "Public IP address list.",
+				Description: "公网 IP 地址 列表。",
 			},
 		},
 	}

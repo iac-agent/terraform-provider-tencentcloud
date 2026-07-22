@@ -28,28 +28,28 @@ func ResourceTencentCloudRedisUpgradeCacheVersionOperation() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of instance.",
+				Description: "ID 实例。",
 			},
 
 			"current_redis_version": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Current redis version.",
+				Description: "Current redis 版本",
 			},
 
 			"upgrade_redis_version": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Upgradeable redis version.",
+				Description: "Upgradeable redis 版本",
 			},
 
 			"instance_type_upgrade_now": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Switch mode:1 - Upgrade now0 - Maintenance window upgrade.",
+				Description: "Switch 模式:1 - Upgrade now0 - Maintenance window upgrade。",
 			},
 		},
 	}

@@ -36,7 +36,7 @@ func ResourceTencentCloudCamPolicy() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Name of CAM policy.",
+				Description: "名称 CAM 策略。",
 			},
 			"document": {
 				Type:     schema.TypeString,
@@ -55,32 +55,32 @@ func ResourceTencentCloudCamPolicy() *schema.Resource {
 					flag := reflect.DeepEqual(oldJson, newJson)
 					return flag
 				},
-				Description: "Document of the CAM policy. The syntax refers to [CAM POLICY](https://intl.cloud.tencent.com/document/product/598/10604). There are some notes when using this para in terraform: 1. The elements in JSON claimed supporting two types as `string` and `array` only support type `array`; 2. Terraform does not support the `root` syntax, when it appears, it must be replaced with the uin it stands for.",
+				Description: "Document 的 CAM 策略. syntax refers 到 [CAM POLICY](https://intl.云.tencent.com/document/product/598/10604). There 是 some notes 当 使用 此 para 在 terraform: 1. elements 在 JSON claimed supporting two types 作为 `字符串` 和 `数组` 仅 support 类型 `数组`; 2. Terraform does 不 support `root` syntax，当 它 appears，它 必须 是 replaced 使用 uin 它 stands 对于。",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Description of the CAM policy.",
+				Description: "描述 CAM 策略。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Instance tag.",
+				Description: "实例 标签",
 			},
 			"type": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Type of the policy strategy. Valid values: `1`, `2`.  `1` means customer strategy and `2` means preset strategy.",
+				Description: "类型 策略 strategy. 有效值：`1`，`2`. `1` 表示 customer strategy 和 `2` 表示 preset strategy。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Create time of the CAM policy.",
+				Description: "创建时间 的 CAM 策略。",
 			},
 			"update_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The last update time of the CAM policy.",
+				Description: "last 更新时间 的 CAM 策略。",
 			},
 		},
 	}

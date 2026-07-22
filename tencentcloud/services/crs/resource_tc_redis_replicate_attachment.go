@@ -28,13 +28,13 @@ func ResourceTencentCloudRedisReplicateAttachment() *schema.Resource {
 			"group_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of group.",
+				Description: "ID 组。",
 			},
 
 			"master_instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of master instance.",
+				Description: "ID master 实例。",
 			},
 
 			"instance_ids": {
@@ -43,7 +43,7 @@ func ResourceTencentCloudRedisReplicateAttachment() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "All instance ids of the replication group.",
+				Description: "All 实例 ids 的 复制 组。",
 			},
 		},
 	}

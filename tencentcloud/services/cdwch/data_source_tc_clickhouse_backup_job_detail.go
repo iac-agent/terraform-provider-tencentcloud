@@ -17,55 +17,55 @@ func DataSourceTencentCloudClickhouseBackupJobDetail() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"back_up_job_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Back up job id.",
+				Description: "Back up 作业 ID",
 			},
 
 			"table_contents": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Back up tables.",
+				Description: "Back up tables。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"database": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database.",
+							Description: "Database。",
 						},
 						"table": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Table.",
+							Description: "Table。",
 						},
 						"total_bytes": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Total bytes.",
+							Description: "Total bytes。",
 						},
 						"v_cluster": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Virtual cluster.",
+							Description: "Virtual 集群。",
 						},
 						"ips": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Ips.",
+							Description: "Ips。",
 						},
 						"zoo_path": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ZK path.",
+							Description: "ZK 路径",
 						},
 						"rip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Ip address of cvm.",
+							Description: "Ip 地址 的 cvm。",
 						},
 					},
 				},
@@ -74,7 +74,7 @@ func DataSourceTencentCloudClickhouseBackupJobDetail() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

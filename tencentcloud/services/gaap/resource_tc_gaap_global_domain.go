@@ -31,32 +31,32 @@ func ResourceTencentCloudGaapGlobalDomain() *schema.Resource {
 			"project_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Domain Name Project ID.",
+				Description: "域名 名称 项目 ID",
 			},
 
 			"default_value": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Domain name default entry.",
+				Description: "域名 名称 默认值 entry。",
 			},
 
 			"alias": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "alias.",
+				Description: "alias。",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Instance tags.",
+				Description: "实例 标签",
 			},
 			"status": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Computed:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{GLOBAL_DOMAIN_STATUS_OPEN, GLOBAL_DOMAIN_STATUS_CLOSE}),
-				Description:  "Global domain statue. Available values: open and close, default is open.",
+				Description:  "Global 域名 statue. 可用值：open 和 close，默认为 open。",
 			},
 		},
 	}

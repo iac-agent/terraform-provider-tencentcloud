@@ -21,43 +21,43 @@ func DataSourceTencentCloudCamSAMLProviders() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Name of the CAM SAML provider to be queried.",
+				Description: "名称 CAM SAML provider 到 是 queried。",
 			},
 			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "The description of the CAM SAML provider.",
+				Description: "描述 CAM SAML provider。",
 			},
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 			"provider_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of CAM SAML providers. Each element contains the following attributes:",
+				Description: "A 列表 CAM SAML providers. Each element 包含following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of CAM SAML provider.",
+							Description: "名称 CAM SAML provider。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description of CAM SAML provider.",
+							Description: "描述 CAM SAML provider。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create time of the CAM SAML provider.",
+							Description: "创建时间 的 CAM SAML provider。",
 						},
 						"modify_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The last modify time of the CAM SAML provider.",
+							Description: "last 修改时间 的 CAM SAML provider。",
 						},
 					},
 				},

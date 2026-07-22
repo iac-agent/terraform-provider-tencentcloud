@@ -19,44 +19,44 @@ func DataSourceTencentCloudDlcDescribeDataEnginePythonSparkImages() *schema.Reso
 			"child_image_version_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "ID of the minor version of the cluster image.",
+				Description: "ID minor 版本 的 集群 镜像。",
 			},
 
 			"python_spark_images": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "PYSPARK image information list.",
+				Description: "PYSPARK 镜像 信息 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"spark_image_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Unique ID of the spark image.",
+							Description: "Unique ID spark 镜像。",
 						},
 						"child_image_version_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the cluster image of the minor version.",
+							Description: "ID 集群 镜像 的 minor 版本",
 						},
 						"spark_image_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the spark image.",
+							Description: "名称 spark 镜像。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description of the spark image.",
+							Description: "描述 spark 镜像。",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Spark image create time.",
+							Description: "Spark 镜像 创建时间。",
 						},
 						"update_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Spark image update time.",
+							Description: "Spark 镜像 更新时间。",
 						},
 					},
 				},
@@ -65,7 +65,7 @@ func DataSourceTencentCloudDlcDescribeDataEnginePythonSparkImages() *schema.Reso
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

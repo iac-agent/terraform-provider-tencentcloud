@@ -26,7 +26,7 @@ func ResourceTencentCloudVpcIpv6CidrBlock() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "`VPC` instance `ID`, in the form of `vpc-f49l6u0z`.",
+				Description: "`VPC` 实例 `ID`，在 form 的 `vpc-f49l6u0z`。",
 			},
 
 			"address_type": {
@@ -34,35 +34,35 @@ func ResourceTencentCloudVpcIpv6CidrBlock() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "Apply for the type of IPv6 Cidr, GUA (Global Unicast Address), ULA (Unique Local Address).",
+				Description: "Apply 对于 类型 IPv6 Cidr，GUA (Global Unicast 地址)，ULA (Unique Local 地址)。",
 			},
 
 			"ipv6_cidr_block": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Ipv6 cidr block.",
+				Description: "Ipv6 cidr block。",
 			},
 
 			"ipv6_cidr_block_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Ipv6 cidr block set.",
+				Description: "Ipv6 cidr block 集合。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"ipv6_cidr_block": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Ipv6 cidr block.",
+							Description: "Ipv6 cidr block。",
 						},
 						"address_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Apply for the type of IPv6 Cidr, GUA (Global Unicast Address), ULA (Unique Local Address).",
+							Description: "Apply 对于 类型 IPv6 Cidr，GUA (Global Unicast 地址)，ULA (Unique Local 地址)。",
 						},
 						"isp_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Range of network operator types: 'BGP' - default, 'CMCC' - China Mobile, 'CTCC' - China Telecom, 'CUCC' - China Joint Debugging.",
+							Description: "Range 的 网络 操作者 types: 'BGP' - 默认值，'CMCC' - China Mobile，'CTCC' - China Telecom，'CUCC' - China Joint Debugging。",
 						},
 					},
 				},

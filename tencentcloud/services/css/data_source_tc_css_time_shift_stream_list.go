@@ -19,89 +19,89 @@ func DataSourceTencentCloudCssTimeShiftStreamList() *schema.Resource {
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The start time, which must be a Unix timestamp.",
+				Description: "开始时间，其中 必须 是 Unix 时间戳。",
 			},
 
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "The end time, which must be a Unix timestamp.",
+				Description: "结束时间，其中 必须 是 Unix 时间戳。",
 			},
 
 			"stream_name": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The stream name.",
+				Description: "流 名称",
 			},
 
 			"domain": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The push domain.",
+				Description: "push 域名",
 			},
 
 			"domain_group": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The group the push domain belongs to.",
+				Description: "组 push 域名 belongs 到。",
 			},
 
 			"total_size": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "The total number of records in the specified time period.",
+				Description: "总数 数量 records 在 指定 时间 周期",
 			},
 
 			"stream_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The information of the streams.Note: This field may return null, indicating that no valid values can be obtained.",
+				Description: "信息 的 streams.注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"domain_group": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The group the push domain belongs to.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "组 push 域名 belongs 到.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The push domain.",
+							Description: "push 域名",
 						},
 						"app_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The push path.",
+							Description: "push 路径",
 						},
 						"stream_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The stream name.",
+							Description: "流 名称",
 						},
 						"start_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The stream start time, which is a Unix timestamp.",
+							Description: "流 开始时间，其中 是 Unix 时间戳。",
 						},
 						"end_time": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The stream end time (for streams that ended before the time of query), which is a Unix timestamp.",
+							Description: "流 结束时间 (对于 streams 该 ended before 时间 的 查询)，其中 是 Unix 时间戳。",
 						},
 						"trans_code_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The transcoding template ID.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "transcoding 模板 ID注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"stream_type": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The stream type. `0`: The original stream; `1`: The watermarked stream; `2`: The transcoded stream.",
+							Description: "流 类型 `0`: original 流; `1`: watermarked 流; `2`: transcoded 流。",
 						},
 						"duration": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The storage duration (seconds) of the recording.Note: This field may return null, indicating that no valid values can be obtained.",
+							Description: "存储 时长 (秒) 的 recording.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -110,7 +110,7 @@ func DataSourceTencentCloudCssTimeShiftStreamList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

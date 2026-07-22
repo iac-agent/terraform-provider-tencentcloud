@@ -32,21 +32,21 @@ func ResourceTencentCloudMongodbInstanceAccount() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "Instance ID, the format is: cmgo-9d0p6umb.Same as the instance ID displayed in the cloud database console page.",
+				Description: "实例 ID， 格式 是: cmgo-9d0p6umb.Same 作为 实例 ID displayed 在 云 数据库 console 页面。",
 			},
 
 			"user_name": {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "The new account name. Its format requirements are as follows: character range [1,32]. Characters in the range of [A,Z], [a,z], [1,9] as well as underscore _ and dash - can be input.",
+				Description: "new 账号 名称 Its 格式 requirements 是 作为 follows: character 范围 [1,32]. Characters 在 范围 的 [A,Z]，[,z]，[1,9] 作为 well 作为 underscore _ 和 dash - 可以 是 input。",
 			},
 
 			"password": {
 				Optional:    true,
 				Sensitive:   true,
 				Type:        schema.TypeString,
-				Description: "New account password. Password complexity requirements are as follows: character length range [8,32]. Contains at least letters, numbers and special characters (exclamation point!, at@, pound sign #, percent sign %, caret ^, asterisk *, parentheses (), underscore _).",
+				Description: "New 账号 密码 密码 complexity requirements 是 作为 follows: character 长度 范围 [8,32]. 包含at least letters，numbers 和 special 字符 (exclamation point!，在@，pound sign #，percent sign %，caret ^，asterisk *，parentheses ()，underscore _)。",
 			},
 
 			"mongo_user_password": {
@@ -54,30 +54,30 @@ func ResourceTencentCloudMongodbInstanceAccount() *schema.Resource {
 				Sensitive:   true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "The password corresponding to the mongouser account. mongouser is the system default account, which is the password set when creating an instance.",
+				Description: "密码 corresponding 到 mongouser 账号 mongouser 是 系统 默认值 账号，其中 是 密码 集合 当 creating 实例。",
 			},
 
 			"user_desc": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Account remarks.",
+				Description: "账号 备注",
 			},
 
 			"auth_role": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "The read and write permission information of the account.",
+				Description: "read 和 write 权限信息 的 账号",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"mask": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Permission information of the current account. 0: No permission. 1: read-only. 2: Write only. 3: Read and write.",
+							Description: "权限信息 的 当前 账号 0: No 权限. 1: read-仅. 2: Write 仅. 3: Read 和 write。",
 						},
 						"namespace": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Refers to the name of the database with the current account permissions.*: Indicates all databases. db.name: Indicates the database of a specific name.",
+							Description: "Refers 到 名称 数据库 使用 当前 账号 permissions.*: 表示all databases. db.名称: 表示database 的 特定 名称",
 						},
 					},
 				},

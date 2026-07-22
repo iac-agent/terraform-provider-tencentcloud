@@ -30,7 +30,7 @@ func ResourceTencentCloudAntiddosPortAclConfig() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "InstanceIdList.",
+				Description: "InstanceIdList。",
 			},
 
 			"acl_config": {
@@ -38,43 +38,43 @@ func ResourceTencentCloudAntiddosPortAclConfig() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Port ACL Policy.",
+				Description: "端口 ACL Policy。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"forward_protocol": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Protocol type, can take TCP, udp, all values.",
+							Description: "协议 类型，可以 take TCP，udp，all 值。",
 						},
 						"d_port_start": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Starting from port, with a range of 0~65535 values.",
+							Description: "Starting 从 端口，使用 范围 的 0~65535 值。",
 						},
 						"d_port_end": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "end from port, with a range of 0~65535 values.",
+							Description: "end 从 端口，使用 范围 的 0~65535 值。",
 						},
 						"s_port_start": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "Starting from the source port, with a value range of 0~65535.",
+							Description: "Starting 从 来源 端口，使用 值 范围 的 0~65535。",
 						},
 						"s_port_end": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "end from the source port, with a value range of 0~65535.",
+							Description: "end 从 来源 端口，使用 值 范围 的 0~65535。",
 						},
 						"action": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Action, can take values: drop, transmit, forward.",
+							Description: "操作，可以 take 值: drop，transmit，forward。",
 						},
 						"priority": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "The policy priority, the smaller the number, the higher the level, and the higher the matching of the rule, with values ranging from 1 to 1000. Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "策略 优先级， smaller 数量， higher 级别，和 higher matching 的 规则，使用 值 ranging 从 1 到 1000. 注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},

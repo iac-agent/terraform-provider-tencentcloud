@@ -26,45 +26,45 @@ func ResourceTencentCloudMonitorTmpTkeConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of instance.",
+				Description: "ID 实例。",
 			},
 			"cluster_type": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Type of cluster.",
+				Description: "类型 集群。",
 			},
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of cluster.",
+				Description: "ID 集群。",
 			},
 			"config": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Global configuration.",
+				Description: "Global 配置。",
 			},
 			"service_monitors": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Configuration of the service monitors.",
+				Description: "Configuration 的 服务 monitors。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Name. The naming rule is: namespace/name. If you don't have any namespace, use the default namespace: kube-system, otherwise use the specified one.",
+							Description: "名称 naming 规则 是: 命名空间/名称 如果 您 don't have any 命名空间，使用 默认值 命名空间: kube-系统，otherwise 使用 指定 一个。",
 						},
 						"config": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Config.",
+							Description: "配置",
 						},
 						"template_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Used for output parameters, if the configuration comes from a template, it is the template id.",
+							Description: "用于output 参数，如果 配置 comes 从 template，它 是 template ID。",
 						},
 					},
 				},
@@ -72,23 +72,23 @@ func ResourceTencentCloudMonitorTmpTkeConfig() *schema.Resource {
 			"pod_monitors": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Configuration of the pod monitors.",
+				Description: "Configuration 的 pod monitors。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Name. The naming rule is: namespace/name. If you don't have any namespace, use the default namespace: kube-system, otherwise use the specified one.",
+							Description: "名称 naming 规则 是: 命名空间/名称 如果 您 don't have any 命名空间，使用 默认值 命名空间: kube-系统，otherwise 使用 指定 一个。",
 						},
 						"config": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Config.",
+							Description: "配置",
 						},
 						"template_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Used for output parameters, if the configuration comes from a template, it is the template id.",
+							Description: "用于output 参数，如果 配置 comes 从 template，它 是 template ID。",
 						},
 					},
 				},
@@ -96,23 +96,23 @@ func ResourceTencentCloudMonitorTmpTkeConfig() *schema.Resource {
 			"raw_jobs": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Configuration of the native prometheus job.",
+				Description: "Configuration 的 native prometheus 作业。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Name.",
+							Description: "名称",
 						},
 						"config": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Config.",
+							Description: "配置",
 						},
 						"template_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Used for output parameters, if the configuration comes from a template, it is the template id.",
+							Description: "用于output 参数，如果 配置 comes 从 template，它 是 template ID。",
 						},
 					},
 				},

@@ -18,13 +18,13 @@ func DataSourceTencentCloudRumLogList() *schema.Resource {
 			"order_by": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Sorting method. `desc`:Descending order; `asc`: Ascending order.",
+				Description: "Sorting 方法. `desc`:Descending order; `asc`: Ascending order.",
 			},
 
 			"start_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Start time but is represented using a timestamp in milliseconds.",
+				Description: "Start 时间 但 是 represented 使用 timestamp 在 milliseconds.",
 			},
 
 			"query": {
@@ -36,7 +36,7 @@ func DataSourceTencentCloudRumLogList() *schema.Resource {
 			"end_time": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "End time but is represented using a timestamp in milliseconds.",
+				Description: "End 时间 但 是 represented 使用 timestamp 在 milliseconds.",
 			},
 
 			"project_id": {
@@ -48,13 +48,13 @@ func DataSourceTencentCloudRumLogList() *schema.Resource {
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Return value.",
+				Description: "Return 值.",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

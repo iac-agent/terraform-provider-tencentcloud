@@ -25,40 +25,40 @@ func ResourceTencentCloudCfwClusterVpcFwSwitch() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "CCN ID.",
+				Description: "CCN ID。",
 			},
 			"switch_mode": {
 				Type:        schema.TypeInt,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Switch access mode, 1: automatic access, 2: manual access.",
+				Description: "Switch 访问 模式，1: automatic 访问，2: manual 访问。",
 			},
 			"routing_mode": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Traffic steering routing method, 0: multi-route table, 1: policy routing.",
+				Description: "Traffic steering routing 方法，0: multi-路由 表，1: 策略 routing。",
 			},
 			"region_cidr_configs": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Regional level CIDR configuration.",
+				Description: "Regional 级别 CIDR 配置。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"region": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Traffic steering region.",
+							Description: "Traffic steering 地域",
 						},
 						"cidr_mode": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "CIDR mode: 0-skip, 1-automatic, 2-custom.",
+							Description: "CIDR 模式: 0-skip，1-automatic，2-自定义。",
 						},
 						"custom_cidr": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Custom CIDR (required when CidrMode=2), empty string otherwise.",
+							Description: "Custom CIDR (必填 当 CidrMode=2)，空 字符串 otherwise。",
 						},
 					},
 				},
@@ -66,39 +66,39 @@ func ResourceTencentCloudCfwClusterVpcFwSwitch() *schema.Resource {
 			"interconnect_pairs": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Interconnect pair list.",
+				Description: "Interconnect pair 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"group_a": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Group A.",
+							Description: "Group A。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Instance ID.",
+										Description: "实例 ID",
 									},
 									"instance_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Instance type such as VPC or DIRECTCONNECT.",
+										Description: "实例类型 such 作为 VPC 或 DIRECTCONNECT。",
 									},
 									"instance_region": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Region where the instance is located.",
+										Description: "地域 其中 实例 是 located。",
 									},
 									"access_cidr_mode": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Network segment mode for accessing firewall: 0-no access, 1-access all network segments associated with the instance, 2-access user-defined network segments.",
+										Description: "Network segment 模式 对于 accessing firewall: 0-无 访问，1-访问 all 网络 segments associated 使用 实例，2-访问 用户-defined 网络 segments。",
 									},
 									"access_cidr_list": {
 										Type:        schema.TypeSet,
 										Required:    true,
-										Description: "List of network segments for accessing firewall.",
+										Description: "列表 网络 segments 对于 accessing firewall。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -109,33 +109,33 @@ func ResourceTencentCloudCfwClusterVpcFwSwitch() *schema.Resource {
 						"group_b": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Group B.",
+							Description: "Group B。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"instance_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Instance ID.",
+										Description: "实例 ID",
 									},
 									"instance_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Instance type such as VPC or DIRECTCONNECT.",
+										Description: "实例类型 such 作为 VPC 或 DIRECTCONNECT。",
 									},
 									"instance_region": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Region where the instance is located.",
+										Description: "地域 其中 实例 是 located。",
 									},
 									"access_cidr_mode": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Network segment mode for accessing firewall: 0-no access, 1-access all network segments associated with the instance, 2-access user-defined network segments.",
+										Description: "Network segment 模式 对于 accessing firewall: 0-无 访问，1-访问 all 网络 segments associated 使用 实例，2-访问 用户-defined 网络 segments。",
 									},
 									"access_cidr_list": {
 										Type:        schema.TypeSet,
 										Required:    true,
-										Description: "List of network segments for accessing firewall.",
+										Description: "列表 网络 segments 对于 accessing firewall。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -146,7 +146,7 @@ func ResourceTencentCloudCfwClusterVpcFwSwitch() *schema.Resource {
 						"interconnect_mode": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Interconnect mode: `CrossConnect`: cross interconnect (each instance in group A interconnects with each instance in group B), `FullMesh`: full mesh (group A content is identical to group B, equivalent to pairwise interconnection within the group).",
+							Description: "Interconnect 模式: `CrossConnect`: cross interconnect (each 实例 在 组 A interconnects 使用 each 实例 在 组 B)，`FullMesh`: full mesh (组 A 内容 是 identical 到 组 B，equivalent 到 pairwise interconnection within 组)。",
 						},
 					},
 				},

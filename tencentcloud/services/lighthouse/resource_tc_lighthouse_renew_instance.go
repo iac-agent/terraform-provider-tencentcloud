@@ -26,7 +26,7 @@ func ResourceTencentCloudLighthouseRenewInstance() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID",
 			},
 
 			"instance_charge_prepaid": {
@@ -34,13 +34,13 @@ func ResourceTencentCloudLighthouseRenewInstance() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Prepaid mode, that is, yearly and monthly subscription related parameter settings. Through this parameter, you can specify attributes such as the purchase duration of the Subscription instance and whether to set automatic renewal.",
+				Description: "Prepaid 模式，该 是，yearly 和 monthly subscription related 参数 settings. Through 此 参数，您 可以 指定attributes such 作为 purchase 时长 的 Subscription 实例 和 是否set automatic renewal。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"period": {
 							Type:        schema.TypeInt,
 							Required:    true,
-							Description: "The duration of purchasing an instance. Unit is month. Valid values are (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60).",
+							Description: "时长 的 purchasing 实例. Unit 是 month. 有效 值 是 (1，2，3，4，5，6，7，8，9，10，11，12，24，36，48，60)。",
 						},
 						"renew_flag": {
 							Type:     schema.TypeString,
@@ -59,14 +59,14 @@ func ResourceTencentCloudLighthouseRenewInstance() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to renew the data disk. Valid values:true: Indicates that the renewal instance also renews the data disk attached to it.false: Indicates that the instance will be renewed and the data disk attached to it will not be renewed at the same time.Default value: true.",
+				Description: "是否renew 数据 磁盘. 有效 值:true: 表示that renewal 实例 also renews 数据 磁盘 attached 到 它.false: 表示that 实例 将 是 renewed 和 数据 磁盘 attached 到 它 将 不 是 renewed 在 same 时间.默认值：true。",
 			},
 
 			"auto_voucher": {
 				Optional: true,
 				ForceNew: true,
 				Type:     schema.TypeBool,
-				Description: "Whether to automatically deduct vouchers. Valid values:\n" +
+				Description: "Whether 到 automatically deduct vouchers. 有效 值:\n" +
 					"- true: Automatically deduct vouchers.\n" +
 					"-false:Do not automatically deduct vouchers. Default value: false.",
 			},

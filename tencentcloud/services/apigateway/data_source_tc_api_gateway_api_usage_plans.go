@@ -19,88 +19,88 @@ func DataSourceTencentCloudAPIGatewayApiUsagePlans() *schema.Resource {
 			"service_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The unique ID of the service to be queried.",
+				Description: "唯一 ID 服务 到 是 queried。",
 			},
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "API binding usage plan list.Note: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "API binding usage plan 列表.注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"service_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Service unique ID.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Service 唯一 ID.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"service_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Service name.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "服务名称注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"api_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "API unique ID.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "API 唯一 ID.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"api_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "API name.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "API 名称注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"path": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "API path.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "API 路径注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"method": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "API method.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "API 方法.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"usage_plan_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Use the unique ID of the plan.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Use 唯一 ID plan.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"usage_plan_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Use the name of the plan.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Use 名称 plan.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"usage_plan_desc": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Description of the usage plan.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "描述 usage plan.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"environment": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Use the service environment bound by the plan.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Use 服务 环境 bound 通过 plan.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"in_use_request_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "The quota that has already been used.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "配额 该 has already been 使用.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"max_request_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Request total quota, -1 indicates no limit.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Request 总数 配额，-1 表示no 限制注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"max_request_num_pre_sec": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Request QPS upper limit, -1 indicates no limit.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Request QPS upper 限制，-1 表示no 限制注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"created_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Create a time using a schedule.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Create 时间 使用 调度.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"modified_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Use the last modification time of the plan.Note: This field may return null, indicating that a valid value cannot be obtained.",
+							Description: "Use last 修改时间 的 plan.注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -108,7 +108,7 @@ func DataSourceTencentCloudAPIGatewayApiUsagePlans() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

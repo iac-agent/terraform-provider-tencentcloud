@@ -36,26 +36,26 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the cluster.",
+				Description: "ID 集群。",
 			},
 
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Name of the node pool. The name does not exceed 25 characters, and only supports Chinese, English, numbers, underscores, separators (`-`) and decimal points.",
+				Description: "名称 节点 池. 名称 does 不 exceed 25 字符，和 仅 支持 Chinese，English，numbers，underscores，separators (`-`) 和 decimal points。",
 			},
 
 			"max_size": {
 				Type:         schema.TypeInt,
 				Required:     true,
-				Description:  "Maximum number of node.",
+				Description:  "最大node。",
 				ValidateFunc: tccommon.ValidateIntegerInRange(0, 2000),
 			},
 
 			"min_size": {
 				Type:         schema.TypeInt,
 				Required:     true,
-				Description:  "Minimum number of node.",
+				Description:  "最小node。",
 				ValidateFunc: tccommon.ValidateIntegerInRange(0, 2000),
 			},
 
@@ -63,20 +63,20 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 				Type:         schema.TypeInt,
 				Optional:     true,
 				Computed:     true,
-				Description:  "Desired capacity of the node. If `enable_auto_scale` is set `true`, this will be a computed parameter.",
+				Description:  "Desired 容量 的 节点. 如果 `enable_auto_scale` 是 集合 `true`，此 将 是 computed 参数。",
 				ValidateFunc: tccommon.ValidateIntegerInRange(0, 2000),
 			},
 
 			"wait_node_ready": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to wait for all desired nodes to be ready. Default is false. Only can be set if `enable_auto_scale` is `false`.",
+				Description: "是否wait 对于 all desired nodes 到 是 ready. 默认为 false. Only 可以 是 集合 如果 `enable_auto_scale` 是 `false`。",
 			},
 
 			"scale_tolerance": {
 				Type:         schema.TypeInt,
 				Optional:     true,
-				Description:  "Control how many expectations(`desired_capacity`) can be tolerated successfully. Unit is percentage, Default is `100`. Only can be set if `wait_node_ready` is `true`.",
+				Description:  "Control how many expectations(`desired_capacity`) 可以 是 tolerated successfully. Unit 是 percentage，默认为 `100`. Only 可以 是 集合 如果 `wait_node_ready` 是 `true`。",
 				ValidateFunc: tccommon.ValidateIntegerInRange(0, 100),
 			},
 
@@ -84,7 +84,7 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     true,
-				Description: "Indicate whether to enable auto scaling or not.",
+				Description: "Indicate 是否enable auto scaling 或 不。",
 			},
 
 			"retry_policy": {
@@ -92,7 +92,7 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 				Optional:     true,
 				ForceNew:     true,
 				Default:      "IMMEDIATE_RETRY",
-				Description:  "Available values for retry policies include `IMMEDIATE_RETRY` and `INCREMENTAL_INTERVALS`.",
+				Description:  "Available 值 对于 retry policies include `IMMEDIATE_RETRY` 和 `INCREMENTAL_INTERVALS`。",
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{svcas.SCALING_GROUP_RETRY_POLICY_IMMEDIATE_RETRY, svcas.SCALING_GROUP_RETRY_POLICY_INCREMENTAL_INTERVALS, svcas.SCALING_GROUP_RETRY_POLICY_NO_RETRY}),
 			},
 
@@ -100,14 +100,14 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of VPC network.",
+				Description: "ID VPC 网络。",
 			},
 
 			"subnet_ids": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "ID list of subnet, and for VPC it is required.",
+				Description: "ID 列表 子网，和 对于 VPC 它 为必填项。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -117,7 +117,7 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Auto scaling mode. Valid values are `CLASSIC_SCALING`(scaling by create/destroy instances), `WAKE_UP_STOPPED_SCALING`(Boot priority for expansion. When expanding the capacity, the shutdown operation is given priority to the shutdown of the instance. If the number of instances is still lower than the expected number of instances after the startup, the instance will be created, and the method of destroying the instance will still be used for shrinking).",
+				Description: "Auto scaling 模式 有效 值 是 `CLASSIC_SCALING`(scaling 通过 create/destroy 实例)，`WAKE_UP_STOPPED_SCALING`(Boot 优先级 对于 expansion. 当 expanding 容量， shutdown operation 是 given 优先级 到 shutdown 的 实例. 如果 数量 实例 是 still lower 比 expected 数量 实例 after startup， 实例 将 是 创建，和 方法 的 destroying 实例 将 still 是 用于shrinking)。",
 			},
 
 			"auto_update_instance_tags": {
@@ -125,13 +125,13 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				ForceNew:    true,
-				Description: "Automatically update instance tags. The default value is false. After configuration, if the scaling group tags are updated, the tags of the running instances in the scaling group will be updated synchronously (synchronous updates only support adding and modifying tags, and do not support deleting tags for the time being). Synchronous updates do not take effect immediately and there is a certain delay.",
+				Description: "Automatically update 实例 标签 默认值为 false. After 配置，如果 scaling 组 标签 是 更新， 标签 的 running 实例 在 scaling 组 将 是 更新 synchronously (synchronous updates 仅 support adding 和 modifying 标签，和 do 不 support deleting 标签 对于 时间 being). Synchronous updates do 不 take effect immediately 和 there 是 certain 延迟",
 			},
 
 			"multi_zone_subnet_policy": {
 				Type:         schema.TypeString,
 				Optional:     true,
-				Description:  "Multi-availability zone/subnet policy. Valid values: PRIORITY and EQUALITY. Default value: PRIORITY.",
+				Description:  "Multi-availability 可用区/子网 策略. 有效值：PRIORITY 和 EQUALITY. 默认值：PRIORITY。",
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{svcas.MultiZoneSubnetPolicyPriority, svcas.MultiZoneSubnetPolicyEquality}),
 			},
 
@@ -139,28 +139,28 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 				Type:        schema.TypeList,
 				Optional:    true,
 				MaxItems:    1,
-				Description: "Node config.",
+				Description: "Node 配置",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"mount_target": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Mount target. Default is not mounting.",
+							Description: "挂载目标 默认为 不 mounting。",
 						},
 						"docker_graph_path": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
 							Default:     "/var/lib/docker",
-							Description: "Docker graph path. Default is `/var/lib/docker`.",
+							Description: "Docker graph 路径 默认为 `/var/lib/docker`。",
 						},
 						"data_disk": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    11,
-							Description: "Configurations of data disk.",
+							Description: "数据盘配置",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"disk_type": {
@@ -168,7 +168,7 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 										Optional:     true,
 										ForceNew:     true,
 										Default:      "CLOUD_PREMIUM",
-										Description:  "Types of disk. Valid value: `LOCAL_BASIC`, `LOCAL_SSD`, `CLOUD_BASIC`, `CLOUD_PREMIUM`, `CLOUD_SSD`, `CLOUD_HSSD`, `CLOUD_TSSD`, `CLOUD_BSSD` and `LOCAL_NVME`.",
+										Description:  "Types 的 磁盘. 有效 值: `LOCAL_BASIC`，`LOCAL_SSD`，`CLOUD_BASIC`，`CLOUD_PREMIUM`，`CLOUD_SSD`，`CLOUD_HSSD`，`CLOUD_TSSD`，`CLOUD_BSSD` 和 `LOCAL_NVME`。",
 										ValidateFunc: tccommon.ValidateAllowedStringValue(svcas.SYSTEM_DISK_ALLOW_TYPE),
 									},
 									"disk_size": {
@@ -176,34 +176,34 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 										Optional:    true,
 										ForceNew:    true,
 										Default:     0,
-										Description: "Volume of disk in GB. Default is `0`.",
+										Description: "Volume 的 磁盘 （GB）。 默认为 `0`。",
 									},
 									"file_system": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
 										Default:     "",
-										Description: "File system, e.g. `ext3/ext4/xfs`.",
+										Description: "File 系统，e.g. `ext3/ext4/xfs`。",
 									},
 									"auto_format_and_mount": {
 										Type:        schema.TypeBool,
 										Optional:    true,
 										ForceNew:    true,
 										Default:     false,
-										Description: "Indicate whether to auto format and mount or not. Default is `false`.",
+										Description: "Indicate 是否auto 格式 和 mount 或 不. 默认为 `false`。",
 									},
 									"mount_target": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
 										Default:     "",
-										Description: "Mount target.",
+										Description: "挂载目标",
 									},
 									"disk_partition": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "The name of the device or partition to mount. NOTE: this argument doesn't support setting in node pool, or will leads to mount error.",
+										Description: "名称 device 或 分区 到 mount. NOTE: 此 argument doesn't support setting 在 节点 池，或 将 leads 到 mount 错误",
 									},
 								},
 							},
@@ -212,7 +212,7 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Custom parameter information related to the node. This is a white-list parameter.",
+							Description: "Custom 参数 信息 related 到 节点. 此 是 white-列表 参数。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -220,62 +220,62 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 						"user_data": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Base64-encoded User Data text, the length limit is 16KB.",
+							Description: "Base64-encoded 用户 Data text， 长度 限制 是 16KB。",
 						},
 						"pre_start_user_script": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Base64-encoded user script, executed before initializing the node, currently only effective for adding existing nodes.",
+							Description: "Base64-encoded 用户 脚本，executed before initializing 节点，currently 仅 effective 对于 adding existing nodes。",
 						},
 						"is_schedule": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							ForceNew:    true,
 							Default:     true,
-							Description: "Indicate to schedule the adding node or not. Default is true.",
+							Description: "Indicate 到 调度 adding 节点 或 不. 默认为 true。",
 						},
 						"desired_pod_num": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Indicate to set desired pod number in node. valid when the cluster is podCIDR.",
+							Description: "Indicate 到 集合 desired pod 数量 在 节点. 有效 当 集群 是 podCIDR。",
 						},
 						"gpu_args": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							ForceNew:    true,
 							MaxItems:    1,
-							Description: "GPU driver parameters.",
+							Description: "GPU 驱动 参数。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"mig_enable": {
 										Type:        schema.TypeBool,
 										Optional:    true,
 										Default:     false,
-										Description: "Whether to enable MIG.",
+										Description: "是否enable MIG。",
 									},
 									"driver": {
 										Type:         schema.TypeMap,
 										Optional:     true,
-										Description:  "GPU driver version. Format like: `{ version: String, name: String }`. `version`: Version of GPU driver or CUDA; `name`: Name of GPU driver or CUDA.",
+										Description:  "GPU 驱动 版本 格式 like: `{ 版本: String，名称: String }`. `版本`: 版本 的 GPU 驱动 或 CUDA; `名称`: 名称 GPU 驱动 或 CUDA。",
 										ValidateFunc: tccommon.ValidateTkeGpuDriverVersion,
 									},
 									"cuda": {
 										Type:         schema.TypeMap,
 										Optional:     true,
-										Description:  "CUDA  version. Format like: `{ version: String, name: String }`. `version`: Version of GPU driver or CUDA; `name`: Name of GPU driver or CUDA.",
+										Description:  "CUDA 版本 格式 like: `{ 版本: String，名称: String }`. `版本`: 版本 的 GPU 驱动 或 CUDA; `名称`: 名称 GPU 驱动 或 CUDA。",
 										ValidateFunc: tccommon.ValidateTkeGpuDriverVersion,
 									},
 									"cudnn": {
 										Type:         schema.TypeMap,
 										Optional:     true,
-										Description:  "cuDNN version. Format like: `{ version: String, name: String, doc_name: String, dev_name: String }`. `version`: cuDNN version; `name`: cuDNN name; `doc_name`: Doc name of cuDNN; `dev_name`: Dev name of cuDNN.",
+										Description:  "cuDNN 版本 格式 like: `{ 版本: String，名称: String，doc_name: String，dev_name: String }`. `版本`: cuDNN 版本; `名称`: cuDNN 名称; `doc_name`: Doc 名称 cuDNN; `dev_name`: Dev 名称 cuDNN。",
 										ValidateFunc: tccommon.ValidateTkeGpuDriverVersion,
 									},
 									"custom_driver": {
 										Type:        schema.TypeMap,
 										Optional:    true,
-										Description: "Custom GPU driver. Format like: `{address: String}`. `address`: URL of custom GPU driver address.",
+										Description: "Custom GPU 驱动. 格式 like: `{地址: String}`. `地址`: URL 的 自定义 GPU 驱动 地址",
 									},
 								},
 							},
@@ -288,19 +288,19 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 				Type:        schema.TypeList,
 				Required:    true,
 				MaxItems:    1,
-				Description: "Auto scaling config parameters.",
+				Description: "Auto scaling 配置 参数。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"instance_type": {
 							Type:        schema.TypeString,
 							Required:    true,
 							ForceNew:    true,
-							Description: "Specified types of CVM instance.",
+							Description: "Specified types 的 CVM 实例。",
 						},
 						"backup_instance_types": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Backup CVM instance types if specified instance type sold out or mismatch.",
+							Description: "Backup CVM 实例 types 如果 指定 实例类型 sold out 或 mismatch。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -309,55 +309,55 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 							Type:         schema.TypeString,
 							Optional:     true,
 							Default:      "CLOUD_PREMIUM",
-							Description:  "Type of a CVM disk. Valid value: `LOCAL_BASIC`, `LOCAL_SSD`, `CLOUD_BASIC`, `CLOUD_PREMIUM`, `CLOUD_SSD`, `CLOUD_HSSD`, `CLOUD_TSSD`, `CLOUD_BSSD` and `LOCAL_NVME`. Default is `CLOUD_PREMIUM`.",
+							Description:  "类型 CVM 磁盘. 有效 值: `LOCAL_BASIC`，`LOCAL_SSD`，`CLOUD_BASIC`，`CLOUD_PREMIUM`，`CLOUD_SSD`，`CLOUD_HSSD`，`CLOUD_TSSD`，`CLOUD_BSSD` 和 `LOCAL_NVME`. 默认为 `CLOUD_PREMIUM`。",
 							ValidateFunc: tccommon.ValidateAllowedStringValue(svcas.SYSTEM_DISK_ALLOW_TYPE),
 						},
 						"system_disk_size": {
 							Type:         schema.TypeInt,
 							Optional:     true,
 							Default:      50,
-							Description:  "Volume of system disk in GB. Default is `50`.",
+							Description:  "Volume 的 系统 磁盘 （GB）。 默认为 `50`。",
 							ValidateFunc: tccommon.ValidateIntegerInRange(20, 2048),
 						},
 						"data_disk": {
 							Type:        schema.TypeList,
 							Optional:    true,
-							Description: "Configurations of data disk.",
+							Description: "数据盘配置",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"disk_type": {
 										Type:         schema.TypeString,
 										Optional:     true,
 										Default:      "CLOUD_PREMIUM",
-										Description:  "Types of disk. Valid value: `LOCAL_BASIC`, `LOCAL_SSD`, `CLOUD_BASIC`, `CLOUD_PREMIUM`, `CLOUD_SSD`, `CLOUD_HSSD`, `CLOUD_TSSD` and `CLOUD_BSSD`.",
+										Description:  "Types 的 磁盘. 有效 值: `LOCAL_BASIC`，`LOCAL_SSD`，`CLOUD_BASIC`，`CLOUD_PREMIUM`，`CLOUD_SSD`，`CLOUD_HSSD`，`CLOUD_TSSD` 和 `CLOUD_BSSD`。",
 										ValidateFunc: tccommon.ValidateAllowedStringValue(svcas.SYSTEM_DISK_ALLOW_TYPE),
 									},
 									"disk_size": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Default:     0,
-										Description: "Volume of disk in GB. Default is `0`.",
+										Description: "Volume 的 磁盘 （GB）。 默认为 `0`。",
 									},
 									"snapshot_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										ForceNew:    true,
-										Description: "Data disk snapshot ID.",
+										Description: "Data 磁盘 快照 ID。",
 									},
 									"delete_with_instance": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Indicates whether the disk remove after instance terminated. Default is `false`.",
+										Description: "表示是否disk remove after 实例 terminated. 默认为 `false`。",
 									},
 									"encrypt": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Specify whether to encrypt data disk, default: false. NOTE: Make sure the instance type is offering and the cam role `QcloudKMSAccessForCVMRole` was provided.",
+										Description: "指定是否encrypt 数据 磁盘，默认值：false. NOTE: Make sure 实例类型 是 offering 和 cam 角色 `QcloudKMSAccessForCVMRole` 是 提供。",
 									},
 									"throughput_performance": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Add extra performance to the data disk. Only works when disk type is `CLOUD_TSSD` or `CLOUD_HSSD` and `data_size` > 460GB.",
+										Description: "Add extra performance 到 数据 磁盘. Only works 当 磁盘 类型 是 `CLOUD_TSSD` 或 `CLOUD_HSSD` 和 `data_size` > 460GB。",
 									},
 								},
 							},
@@ -366,61 +366,61 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Charge type of instance. Valid values are `PREPAID`, `POSTPAID_BY_HOUR`, `SPOTPAID`, `CDCPAID`. The default is `POSTPAID_BY_HOUR`. NOTE: `SPOTPAID` instance must set `spot_instance_type` and `spot_max_price` at the same time.",
+							Description: "Charge 类型 实例. 有效 值 是 `PREPAID`，`POSTPAID_BY_HOUR`，`SPOTPAID`，`CDCPAID`. 默认为 `POSTPAID_BY_HOUR`. NOTE: `SPOTPAID` 实例 必须 集合 `spot_instance_type` 和 `spot_max_price` 在 same 时间。",
 						},
 						"instance_charge_type_prepaid_period": {
 							Type:         schema.TypeInt,
 							Optional:     true,
-							Description:  "The tenancy (in month) of the prepaid instance, NOTE: it only works when instance_charge_type is set to `PREPAID`. Valid values are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.",
+							Description:  "tenancy (在 month) 的 prepaid 实例，NOTE: 它 仅 works 当 instance_charge_type 是 集合 到 `PREPAID`. 有效 值 是 `1`，`2`，`3`，`4`，`5`，`6`，`7`，`8`，`9`，`10`，`11`，`12`，`24`，`36`。",
 							ValidateFunc: tccommon.ValidateAllowedIntValue(svccvm.CVM_PREPAID_PERIOD),
 						},
 						"instance_charge_type_prepaid_renew_flag": {
 							Type:         schema.TypeString,
 							Optional:     true,
 							Computed:     true,
-							Description:  "Auto renewal flag. Valid values: `NOTIFY_AND_AUTO_RENEW`: notify upon expiration and renew automatically, `NOTIFY_AND_MANUAL_RENEW`: notify upon expiration but do not renew automatically, `DISABLE_NOTIFY_AND_MANUAL_RENEW`: neither notify upon expiration nor renew automatically. Default value: `NOTIFY_AND_MANUAL_RENEW`. If this parameter is specified as `NOTIFY_AND_AUTO_RENEW`, the instance will be automatically renewed on a monthly basis if the account balance is sufficient. NOTE: it only works when instance_charge_type is set to `PREPAID`.",
+							Description:  "自动续费标识 有效值：`NOTIFY_AND_AUTO_RENEW`: notify upon expiration 和 renew automatically，`NOTIFY_AND_MANUAL_RENEW`: notify upon expiration 但 do 不 renew automatically，`DISABLE_NOTIFY_AND_MANUAL_RENEW`: neither notify upon expiration nor renew automatically. 默认值：`NOTIFY_AND_MANUAL_RENEW`. 如果 此 参数 是 指定 作为 `NOTIFY_AND_AUTO_RENEW`， 实例 将 是 automatically renewed 在 monthly basis 如果 账号 balance 是 sufficient. NOTE: 它 仅 works 当 instance_charge_type 是 集合 到 `PREPAID`。",
 							ValidateFunc: tccommon.ValidateAllowedStringValue(svccvm.CVM_PREPAID_RENEW_FLAG),
 						},
 						"spot_instance_type": {
 							Type:         schema.TypeString,
 							Optional:     true,
-							Description:  "Type of spot instance, only support `one-time` now. Note: it only works when instance_charge_type is set to `SPOTPAID`.",
+							Description:  "类型 spot 实例，仅 support `一个-时间` now. 注意: 它 仅 works 当 instance_charge_type 是 集合 到 `SPOTPAID`。",
 							ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"one-time"}),
 						},
 						"spot_max_price": {
 							Type:         schema.TypeString,
 							Optional:     true,
-							Description:  "Max price of a spot instance, is the format of decimal string, for example \"0.50\". Note: it only works when instance_charge_type is set to `SPOTPAID`.",
+							Description:  "Max 价格 的 spot 实例, 是 格式 的 decimal 字符串, 对于 示例 \"0.50\". 注意: 它 仅 works 当 instance_charge_type 是 集合 到 `SPOTPAID`.",
 							ValidateFunc: tccommon.ValidateStringNumber,
 						},
 						"internet_charge_type": {
 							Type:         schema.TypeString,
 							Optional:     true,
 							Default:      "TRAFFIC_POSTPAID_BY_HOUR",
-							Description:  "Charge types for network traffic. Valid value: `BANDWIDTH_PREPAID`, `TRAFFIC_POSTPAID_BY_HOUR` and `BANDWIDTH_PACKAGE`.",
+							Description:  "Charge types 对于 网络 流量. 有效 值: `BANDWIDTH_PREPAID`，`TRAFFIC_POSTPAID_BY_HOUR` 和 `BANDWIDTH_PACKAGE`。",
 							ValidateFunc: tccommon.ValidateAllowedStringValue(svcas.INTERNET_CHARGE_ALLOW_TYPE),
 						},
 						"internet_max_bandwidth_out": {
 							Type:        schema.TypeInt,
 							Optional:    true,
 							Default:     0,
-							Description: "Max bandwidth of Internet access in Mbps. Default is `0`.",
+							Description: "Max 带宽 的 Internet 访问 在 Mbps. 默认为 `0`。",
 						},
 						"bandwidth_package_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "bandwidth package id. if user is standard user, then the bandwidth_package_id is needed, or default has bandwidth_package_id.",
+							Description: "带宽 包 ID. 如果 用户 是 standard 用户，then bandwidth_package_id 是 needed，或 默认值 has bandwidth_package_id。",
 						},
 						"public_ip_assigned": {
 							Type:        schema.TypeBool,
 							Optional:    true,
-							Description: "Specify whether to assign an Internet IP address.",
+							Description: "指定是否assign 公网 IP 地址",
 						},
 						"ipv4_address_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Type of public IP address. WanIP: Ordinary public IP address; HighQualityEIP: High Quality EIP is supported only in Singapore and Hong Kong; AntiDDoSEIP: Anti-DDoS IP is supported only in specific regions. For details, see EIP Product Overview. Specify the type of public IPv4 address to assign a public IPv4 address to the resource. HighQualityEIP and AntiDDoSEIP features are gradually released in select regions. For usage, submit a ticket for consultation.",
+							Description: "类型 公网 IP 地址 WanIP: Ordinary 公网 IP 地址; HighQualityEIP: High Quality EIP 是 支持 仅 在 Singapore 和 Hong Kong; AntiDDoSEIP: Anti-DDoS IP 是 支持 仅 在 特定 regions. For details，see EIP Product Overview. 指定type 的 公有 IPv4 地址 到 assign 公有 IPv4 地址 到 资源. HighQualityEIP 和 AntiDDoSEIP features 是 gradually released 在 select regions. For usage，提交 ticket 对于 consultation。",
 						},
 						"password": {
 							Type:          schema.TypeString,
@@ -428,7 +428,7 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 							ForceNew:      true,
 							Sensitive:     true,
 							ConflictsWith: []string{"auto_scaling_config.0.key_ids"},
-							Description:   "Password to access.",
+							Description:   "密码 到 访问。",
 							ValidateFunc:  tccommon.ValidateAsConfigPassword,
 						},
 						"key_ids": {
@@ -436,7 +436,7 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 							Optional:      true,
 							ForceNew:      true,
 							ConflictsWith: []string{"auto_scaling_config.0.password"},
-							Description:   "ID list of keys.",
+							Description:   "ID 列表 keys。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -446,7 +446,7 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 							Optional:      true,
 							Computed:      true,
 							ConflictsWith: []string{"auto_scaling_config.0.orderly_security_group_ids"},
-							Description:   "Security groups to which a CVM instance belongs.",
+							Description:   "Security groups 到 其中 CVM 实例 belongs。",
 							Deprecated:    "The order of elements in this field cannot be guaranteed. Use `orderly_security_group_ids` instead.",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
@@ -457,7 +457,7 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 							Optional:      true,
 							Computed:      true,
 							ConflictsWith: []string{"auto_scaling_config.0.security_group_ids"},
-							Description:   "Ordered security groups to which a CVM instance belongs.",
+							Description:   "Ordered 安全 groups 到 其中 CVM 实例 belongs。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -466,50 +466,50 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							Default:     true,
-							Description: "To specify whether to enable cloud security service. Default is TRUE.",
+							Description: "To 指定是否enable 云 安全 服务. 默认为 TRUE。",
 						},
 						"enhanced_monitor_service": {
 							Type:        schema.TypeBool,
 							Optional:    true,
 							ForceNew:    true,
 							Default:     true,
-							Description: "To specify whether to enable cloud monitor service. Default is TRUE.",
+							Description: "To 指定是否enable 云 监控 服务. 默认为 TRUE。",
 						},
 						"cam_role_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "Name of cam role.",
+							Description: "名称 cam 角色",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Instance name, no more than 60 characters. For usage, refer to `InstanceNameSettings` in https://www.tencentcloud.com/document/product/377/31001.",
+							Description: "实例名称，无 more 比 60 字符. For usage，refer 到 `InstanceNameSettings` 在 https://www.tencentcloud.com/document/product/377/31001。",
 						},
 						"instance_name_style": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "Type of CVM instance name. Valid values: `ORIGINAL` and `UNIQUE`. Default value: `ORIGINAL`. For usage, refer to `InstanceNameSettings` in https://www.tencentcloud.com/document/product/377/31001.",
+							Description: "类型 CVM 实例名称 有效值：`ORIGINAL` 和 `UNIQUE`. 默认值：`ORIGINAL`. For usage，refer 到 `InstanceNameSettings` 在 https://www.tencentcloud.com/document/product/377/31001。",
 						},
 						"host_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "The hostname of the cloud server, dot (.) and dash (-) cannot be used as the first and last characters of HostName and cannot be used consecutively. Windows instances are not supported. Examples of other types (Linux, etc.): The character length is [2, 40], multiple periods are allowed, and there is a paragraph between the dots, and each paragraph is allowed to consist of letters (unlimited case), numbers and dashes (-). Pure numbers are not allowed. For usage, refer to `HostNameSettings` in https://www.tencentcloud.com/document/product/377/31001.",
+							Description: "hostname 的 云 服务器，dot (.) 和 dash (-) 不能 是 使用 作为 first 和 last 字符 的 HostName 和 不能 是 使用 consecutively. Windows 实例 是 不 支持. Examples 的 other types (Linux，etc.): character 长度 是 [2，40]，多个 periods 是 allowed，和 there 是 paragraph between dots，和 each paragraph 是 allowed 到 consist 的 letters (unlimited case)，numbers 和 dashes (-). Pure numbers 是 不 allowed. For usage，refer 到 `HostNameSettings` 在 https://www.tencentcloud.com/document/product/377/31001。",
 						},
 						"host_name_style": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "The style of the host name of the cloud server, the value range includes ORIGINAL and UNIQUE, and the default is ORIGINAL. For usage, refer to `HostNameSettings` in https://www.tencentcloud.com/document/product/377/31001.",
+							Description: "style 的 主机 名称 云 服务器， 值 范围 includes ORIGINAL 和 UNIQUE，和 默认为 ORIGINAL. For usage，refer 到 `HostNameSettings` 在 https://www.tencentcloud.com/document/product/377/31001。",
 						},
 						"cdc_id": {
 							Type:        schema.TypeString,
 							Optional:    true,
 							ForceNew:    true,
-							Description: "CDC ID.",
+							Description: "CDC ID。",
 						},
 					},
 				},
@@ -518,7 +518,7 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 			"labels": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Labels of kubernetes node pool created nodes. The label key name does not exceed 63 characters, only supports English, numbers,'/','-', and does not allow beginning with ('/').",
+				Description: "Labels 的 kubernetes 节点 池 创建 nodes. 标签 键 名称 does 不 exceed 63 字符，仅 支持 English，numbers,'/','-'，和 does 不 allow beginning 使用 ('/')。",
 			},
 
 			"unschedulable": {
@@ -526,29 +526,29 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 				Optional:    true,
 				ForceNew:    true,
 				Default:     0,
-				Description: "Sets whether the joining node participates in the schedule. Default is '0'. Participate in scheduling.",
+				Description: "Sets 是否joining 节点 participates 在 调度. 默认为 '0'. Participate 在 scheduling。",
 			},
 
 			"taints": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "Taints of kubernetes node pool created nodes.",
+				Description: "Taints 的 kubernetes 节点 池 创建 nodes。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Key of the taint. The taint key name does not exceed 63 characters, only supports English, numbers,'/','-', and does not allow beginning with ('/').",
+							Description: "键 的 taint. taint 键 名称 does 不 exceed 63 字符，仅 支持 English，numbers,'/','-'，和 does 不 allow beginning 使用 ('/')。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Value of the taint.",
+							Description: "值 的 taint。",
 						},
 						"effect": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Effect of the taint. Valid values are: `NoSchedule`, `PreferNoSchedule`, `NoExecute`.",
+							Description: "Effect 的 taint. 有效值：`NoSchedule`，`PreferNoSchedule`，`NoExecute`。",
 						},
 					},
 				},
@@ -558,32 +558,32 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     true,
-				Description: "Indicate to keep the CVM instance when delete the node pool. Default is `true`.",
+				Description: "Indicate 到 keep CVM 实例 当 delete 节点 池. 默认为 `true`。",
 			},
 
 			"deletion_protection": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Indicates whether the node pool deletion protection is enabled.",
+				Description: "表示是否node 池 删除保护 是 已启用",
 			},
 
 			"annotations": {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				Computed:    true,
-				Description: "Node Annotation List.",
+				Description: "Node Annotation List。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Name in the map table.",
+							Description: "名称 在 map 表。",
 						},
 						"value": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Value in the map table.",
+							Description: "值 在 map 表。",
 						},
 					},
 				},
@@ -593,14 +593,14 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "tlinux2.4x86_64",
-				Description: "Node pool operating system (enter the image ID for a custom image, and enter the OS name for a public image). If custom image, please refer to [TencentCloud Documentation](https://www.tencentcloud.com/document/product/457/46750?lang=en&pg=#list-of-public-images-supported-by-tke) for available values. Default is 'tlinux2.4x86_64'. This parameter will only affect new nodes, not including the existing nodes.",
+				Description: "Node 池 operating 系统 (enter 镜像 ID 对于 自定义 镜像，和 enter OS 名称 对于 公有 镜像). 如果 自定义 镜像，please refer 到 [TencentCloud Documentation](https://www.tencentcloud.com/document/product/457/46750?lang=en&pg=#列表-的-公有-images-支持-通过-tke) 对于 可用 值. 默认为 'tlinux2.4x86_64'. 此 参数 将 仅 affect new nodes，不 包括 existing nodes。",
 			},
 
 			"node_os_type": {
 				Type:             schema.TypeString,
 				Optional:         true,
 				Default:          "GENERAL",
-				Description:      "The image version of the node. Valida values are `DOCKER_CUSTOMIZE` and `GENERAL`. Default is `GENERAL`. This parameter will only affect new nodes, not including the existing nodes.",
+				Description:      "镜像 版本 的 节点. Valida 值 是 `DOCKER_CUSTOMIZE` 和 `GENERAL`. 默认为 `GENERAL`. 此 参数 将 仅 affect new nodes，不 包括 existing nodes。",
 				DiffSuppressFunc: nodeOsTypeDiffSuppressFunc,
 			},
 
@@ -608,13 +608,13 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Name of relative scaling group.",
+				Description: "名称 relative scaling 组。",
 			},
 
 			"zones": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "List of auto scaling group available zones, for Basic network it is required.",
+				Description: "列表 auto scaling 组 可用 zones，对于 Basic 网络 它 为必填项。",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -624,14 +624,14 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
-				Description: "Project ID the scaling group belongs to.",
+				Description: "项目 ID scaling 组 belongs 到。",
 			},
 
 			"default_cooldown": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Computed:    true,
-				Description: "Seconds of scaling group cool down. Default value is `300`.",
+				Description: "Seconds 的 scaling 组 cool down. 默认值为 `300`。",
 			},
 
 			"termination_policies": {
@@ -639,7 +639,7 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems:    1,
-				Description: "Policy of scaling group termination. Available values: `[\"OLDEST_INSTANCE\"]`, `[\"NEWEST_INSTANCE\"]`.",
+				Description: "Policy 的 scaling 组 termination. Available 值: `[\"OLDEST_INSTANCE\"]`, `[\"NEWEST_INSTANCE\"]`.",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -649,43 +649,43 @@ func ResourceTencentCloudKubernetesNodePool() *schema.Resource {
 				Type:        schema.TypeMap,
 				Optional:    true,
 				Computed:    true,
-				Description: "Node pool tag specifications, will passthroughs to the scaling instances.",
+				Description: "Node 池 标签 specifications，将 passthroughs 到 scaling 实例。",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Status of the node pool.",
+				Description: "状态 节点 池。",
 			},
 
 			"node_count": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "The total node count.",
+				Description: "总数 节点 count。",
 			},
 
 			"autoscaling_added_total": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "The total of autoscaling added node.",
+				Description: "总数 的 autoscaling added 节点。",
 			},
 
 			"manually_added_total": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "The total of manually added node.",
+				Description: "总数 的 manually added 节点。",
 			},
 
 			"launch_config_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The launch config ID.",
+				Description: "launch 配置 ID。",
 			},
 
 			"auto_scaling_group_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "The auto scaling group ID.",
+				Description: "auto scaling 组 ID",
 			},
 		},
 	}

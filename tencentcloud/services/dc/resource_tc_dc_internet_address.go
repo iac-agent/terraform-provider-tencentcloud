@@ -26,21 +26,21 @@ func ResourceTencentCloudDcInternetAddress() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "CIDR address mask.",
+				Description: "CIDR 地址 mask。",
 			},
 
 			"addr_type": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "0: BGP, 1: china telecom, 2: china mobile, 3: china unicom.",
+				Description: "0: BGP，1: china telecom，2: china mobile，3: china unicom。",
 			},
 
 			"addr_proto": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "0: IPv4, 1: IPv6.",
+				Description: "0: IPv4，1: IPv6。",
 			},
 		},
 	}

@@ -19,37 +19,37 @@ func DataSourceTencentCloudScfFunctionAddress() *schema.Resource {
 			"function_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Function name.",
+				Description: "Function 名称",
 			},
 
 			"qualifier": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Function version.",
+				Description: "Function 版本",
 			},
 
 			"namespace": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Function namespace.",
+				Description: "Function 命名空间。",
 			},
 
 			"url": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Cos address of the function.",
+				Description: "Cos 地址 的 函数。",
 			},
 
 			"code_sha256": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "SHA256 code of the function.",
+				Description: "SHA256 代码 的 函数。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

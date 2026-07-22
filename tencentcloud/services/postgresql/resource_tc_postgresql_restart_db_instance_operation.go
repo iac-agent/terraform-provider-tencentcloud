@@ -23,7 +23,7 @@ func ResourceTencentCloudPostgresqlRestartDbInstanceOperation() *schema.Resource
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "dbInstance ID.",
+				Description: "dbInstance ID。",
 			},
 		},
 	}

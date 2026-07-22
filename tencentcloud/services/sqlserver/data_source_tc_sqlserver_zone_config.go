@@ -17,34 +17,34 @@ func DataSourceTencentCloudSqlserverZoneConfig() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to store results.",
+				Description: "Used 到 store results.",
 			},
 			"zone_list": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "A list of availability zones. Each element contains the following attributes:",
+				Description: "A 列表 的 availability zones. Each element contains following attributes:",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"availability_zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Alphabet ID of availability zone.",
+							Description: "Alphabet ID 的 availability zone.",
 						},
 						"zone_id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number ID of availability zone.",
+							Description: "Number ID 的 availability zone.",
 						},
 						"specinfo_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "A list of specinfo configurations for the specific availability zone. Each element contains the following attributes:",
+							Description: "A 列表 的 specinfo configurations 对于 特定 availability zone. Each element contains following attributes:",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"spec_id": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Instance specification ID.",
+										Description: "实例 规格 ID.",
 									},
 									"machine_type": {
 										Type:        schema.TypeString,
@@ -54,42 +54,42 @@ func DataSourceTencentCloudSqlserverZoneConfig() *schema.Resource {
 									"db_version": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Database version information. Valid values: `2008R2 (SQL Server 2008 Enterprise)`, `2012SP3 (SQL Server 2012 Enterprise)`, `2016SP1 (SQL Server 2016 Enterprise)`, `201602 (SQL Server 2016 Standard)`, `2017 (SQL Server 2017 Enterprise)`.",
+										Description: "Database 版本 信息. 有效 值: `2008R2 (SQL Server 2008 Enterprise)`, `2012SP3 (SQL Server 2012 Enterprise)`, `2016SP1 (SQL Server 2016 Enterprise)`, `201602 (SQL Server 2016 Standard)`, `2017 (SQL Server 2017 Enterprise)`.",
 									},
 									"db_version_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Version name corresponding to the `db_version` field.",
+										Description: "Version 名称 corresponding 到 `db_version` 字段.",
 									},
 									"memory": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Memory size in GB.",
+										Description: "Memory 大小 在 GB.",
 									},
 									"cpu": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of CPU cores.",
+										Description: "Number 的 CPU cores.",
 									},
 									"min_storage_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Minimum disk size under this specification in GB.",
+										Description: "Minimum 磁盘 大小 under 此 规格 在 GB.",
 									},
 									"max_storage_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Maximum disk size under this specification in GB.",
+										Description: "Maximum 磁盘 大小 under 此 规格 在 GB.",
 									},
 									"qps": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "QPS of this specification.",
+										Description: "QPS 的 此 规格.",
 									},
 									"charge_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Billing mode under this specification. Valid values are `POSTPAID_BY_HOUR`, `PREPAID` and `ALL`. `ALL` means both POSTPAID_BY_HOUR and PREPAID.",
+										Description: "Billing 模式 under 此 规格. 有效 值 是 `POSTPAID_BY_HOUR`, `PREPAID` 和 `ALL`. `ALL` 表示 both POSTPAID_BY_HOUR 和 PREPAID.",
 									},
 								},
 							},

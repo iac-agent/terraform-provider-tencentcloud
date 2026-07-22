@@ -28,14 +28,14 @@ func ResourceTencentCloudCvmImageSharePermission() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Image ID such as `img-gvbnzy6f`. You can only specify an image in the NORMAL state.",
+				Description: "Image ID such 作为 `img-gvbnzy6f`. You 可以 仅 指定an 镜像 在 NORMAL state。",
 			},
 
 			"account_ids": {
 				Required:    true,
 				Type:        schema.TypeSet,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "List of account IDs with which an image is shared.",
+				Description: "列表 账号 IDs 使用 其中 镜像 是 shared。",
 			},
 		},
 	}

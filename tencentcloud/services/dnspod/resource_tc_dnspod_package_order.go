@@ -25,21 +25,21 @@ func ResourceTencentCloudDnspodPackageOrder() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Domain.",
+				Description: "域名",
 			},
 
 			"grade": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Valid options for the package version are as follows: `DPG_PROFESSIONAL`; `DPG_ENTERPRISE`; `DPG_ULTIMATE`.",
+				Description: "有效 options 对于 包 版本 是 作为 follows: `DPG_PROFESSIONAL`; `DPG_ENTERPRISE`; `DPG_ULTIMATE`。",
 			},
 
 			// computed
 			"domain_id": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Domain ID.",
+				Description: "域名 ID。",
 			},
 		},
 	}

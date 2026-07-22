@@ -19,49 +19,49 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 			"layer4_listeners": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "L4 listener list.",
+				Description: "L4 listener 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"backend_port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Origin port, value 1~65535.",
+							Description: "Origin 端口，值 1~65535。",
 						},
 						"frontend_port": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Forwarding port, value 1~65535.",
+							Description: "Forwarding 端口，值 1~65535。",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "TCP or UDP.",
+							Description: "TCP 或 UDP。",
 						},
 						"real_servers": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Source server list.",
+							Description: "来源 服务器 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"real_server": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Source server addr, ip or domain.",
+										Description: "来源 服务器 addr，ip 或 域名",
 									},
 									"rs_type": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "1: domain, 2: ip.",
+										Description: "1: 域名，2: ip。",
 									},
 									"weight": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The return weight of the source station, ranging from 1 to 100.",
+										Description: "返回 权重 的 来源 station，ranging 从 1 到 100。",
 									},
 									"port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "0~65535.",
+										Description: "0~65535。",
 									},
 								},
 							},
@@ -69,7 +69,7 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 						"instance_details": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Resource instance.",
+							Description: "Resource 实例。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"eip_list": {
@@ -78,12 +78,12 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Instance ip.",
+										Description: "实例 ip。",
 									},
 									"instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "InstanceId.",
+										Description: "实例 ID",
 									},
 								},
 							},
@@ -91,7 +91,7 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 						"instance_detail_rule": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Resource instance to which the rule belongs.",
+							Description: "Resource 实例 到 其中 规则 belongs。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"eip_list": {
@@ -100,17 +100,17 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Resource instance ip.",
+										Description: "Resource 实例 ip。",
 									},
 									"instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "InstanceId.",
+										Description: "实例 ID",
 									},
 									"cname": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance cname.",
+										Description: "实例 cname。",
 									},
 								},
 							},
@@ -122,18 +122,18 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 			"layer7_listeners": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Layer 7 forwarding listener list.",
+				Description: "Layer 7 forwarding listener 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"domain": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Domain.",
+							Description: "域名",
 						},
 						"proxy_type_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "List of forwarding types.",
+							Description: "列表 forwarding types。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"proxy_ports": {
@@ -142,12 +142,12 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 											Type: schema.TypeInt,
 										},
 										Computed:    true,
-										Description: "Forwarding listening port list, port value is 1~65535.",
+										Description: "Forwarding listening 端口 列表，端口 值 是 1~65535。",
 									},
 									"proxy_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Http, https.",
+										Description: "Http，https。",
 									},
 								},
 							},
@@ -155,28 +155,28 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 						"real_servers": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Source server list.",
+							Description: "来源 服务器 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"real_server": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Source server list.",
+										Description: "来源 服务器 列表。",
 									},
 									"rs_type": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "1: domain, 2: ip.",
+										Description: "1: 域名，2: ip。",
 									},
 									"weight": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Weight: 1-100.",
+										Description: "权重: 1-100。",
 									},
 									"port": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "0-65535.",
+										Description: "0-65535。",
 									},
 								},
 							},
@@ -184,7 +184,7 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 						"instance_details": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "InstanceDetails.",
+							Description: "InstanceDetails。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"eip_list": {
@@ -193,12 +193,12 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Instance ip list.",
+										Description: "实例 ip 列表。",
 									},
 									"instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance id.",
+										Description: "实例 ID",
 									},
 								},
 							},
@@ -206,7 +206,7 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 						"instance_detail_rule": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Resource instance to which the rule belongs.",
+							Description: "Resource 实例 到 其中 规则 belongs。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"eip_list": {
@@ -215,17 +215,17 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 											Type: schema.TypeString,
 										},
 										Computed:    true,
-										Description: "Instance ip list.",
+										Description: "实例 ip 列表。",
 									},
 									"instance_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Instance id.",
+										Description: "实例 ID",
 									},
 									"cname": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cname.",
+										Description: "Cname。",
 									},
 								},
 							},
@@ -233,12 +233,12 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 						"protocol": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Protocol.",
+							Description: "协议",
 						},
 						"vport": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Port.",
+							Description: "端口",
 						},
 					},
 				},
@@ -247,7 +247,7 @@ func DataSourceTencentCloudAntiddosListListener() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

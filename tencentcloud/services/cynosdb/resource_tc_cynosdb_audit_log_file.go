@@ -26,35 +26,35 @@ func ResourceTencentCloudCynosdbAuditLogFile() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of instance.",
+				Description: "实例的ID。",
 			},
 
 			"start_time": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Start time.",
+				Description: "开始时间。",
 			},
 
 			"end_time": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "End time.",
+				Description: "结束时间。",
 			},
 
 			"order": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Sort by. Supported values are: `ASC` - ascending, `DESC` - descending.",
+				Description: "排序方式。支持的值为：“ASC”- 升序，“DESC”- 降序。",
 			},
 
 			"order_by": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Sort field. supported values are:\n`timestamp` - timestamp\n`affectRows` - affected rows\n`execTime` - execution time.",
+				Description: "排序字段。支持的值为：\n`时间戳` - 时间戳\n`affectRows` - 受影响的行\n`execTime` - 执行时间。",
 			},
 
 			"filter": {
@@ -62,7 +62,7 @@ func ResourceTencentCloudCynosdbAuditLogFile() *schema.Resource {
 				ForceNew:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "Filter condition. Logs can be filtered according to the filter conditions set.",
+				Description: "过滤条件。可以根据设置的过滤条件对日志进行过滤。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"host": {
@@ -71,7 +71,7 @@ func ResourceTencentCloudCynosdbAuditLogFile() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "Client host.",
+							Description: "客户端主机。",
 						},
 						"user": {
 							Type: schema.TypeSet,
@@ -79,7 +79,7 @@ func ResourceTencentCloudCynosdbAuditLogFile() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "User name.",
+							Description: "用户名。",
 						},
 						"db_name": {
 							Type: schema.TypeSet,
@@ -87,7 +87,7 @@ func ResourceTencentCloudCynosdbAuditLogFile() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "The name of database.",
+							Description: "数据库的名称。",
 						},
 						"table_name": {
 							Type: schema.TypeSet,
@@ -95,7 +95,7 @@ func ResourceTencentCloudCynosdbAuditLogFile() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "The name of table.",
+							Description: "表的名称。",
 						},
 						"policy_name": {
 							Type: schema.TypeSet,
@@ -103,27 +103,27 @@ func ResourceTencentCloudCynosdbAuditLogFile() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "The name of audit policy.",
+							Description: "审核策略的名称。",
 						},
 						"sql": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "SQL statement. Support fuzzy matching.",
+							Description: "SQL 语句。支持模糊匹配。",
 						},
 						"sql_type": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "SQL type. currently supported: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER, SET, REPLACE, EXECUTE.",
+							Description: "SQL 类型。目前支持：SELECT、INSERT、UPDATE、DELETE、CREATE、DROP、ALTER、SET、REPLACE、EXECUTE。",
 						},
 						"exec_time": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Execution time. The unit is: ms. Indicates to filter audit logs whose execution time is greater than this value.",
+							Description: "执行时间。单位是：毫秒。表示过滤执行时间大于该值的审计日志。",
 						},
 						"affect_rows": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Affects the number of rows. Indicates that the audit log whose number of affected rows is greater than this value is filtered.",
+							Description: "影响行数。表示过滤影响行数大于该值的审计日志。",
 						},
 						"sql_types": {
 							Type: schema.TypeSet,
@@ -131,7 +131,7 @@ func ResourceTencentCloudCynosdbAuditLogFile() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "SQL type. Supports simultaneous query of multiple types. currently supported: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER, SET, REPLACE, EXECUTE.",
+							Description: "SQL 类型。支持多种类型同时查询。目前支持：SELECT、INSERT、UPDATE、DELETE、CREATE、DROP、ALTER、SET、REPLACE、EXECUTE。",
 						},
 						"sqls": {
 							Type: schema.TypeSet,
@@ -139,12 +139,12 @@ func ResourceTencentCloudCynosdbAuditLogFile() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "SQL statement. Support passing multiple sql statements.",
+							Description: "SQL 语句。支持传递多个sql语句。",
 						},
 						"sent_rows": {
 							Type:        schema.TypeInt,
 							Optional:    true,
-							Description: "Return the number of rows.",
+							Description: "返回行数。",
 						},
 						"thread_id": {
 							Type: schema.TypeSet,
@@ -152,7 +152,7 @@ func ResourceTencentCloudCynosdbAuditLogFile() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "The ID of thread.",
+							Description: "线程的ID。",
 						},
 					},
 				},
@@ -161,27 +161,27 @@ func ResourceTencentCloudCynosdbAuditLogFile() *schema.Resource {
 			"file_name": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Audit log file name.",
+				Description: "审核日志文件名。",
 			},
 			"create_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Audit log file creation time. The format is 2019-03-20 17:09:13.",
+				Description: "审核日志文件创建时间。格式为2019-03-20 17:09:13。",
 			},
 			"file_size": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "File size, The unit is KB.",
+				Description: "文件大小，单位为KB。",
 			},
 			"download_url": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The download address of the audit logs.",
+				Description: "审计日志的下载地址。",
 			},
 			"err_msg": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Error message.",
+				Description: "错误信息。",
 			},
 		},
 	}

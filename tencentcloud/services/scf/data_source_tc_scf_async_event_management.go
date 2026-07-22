@@ -19,19 +19,19 @@ func DataSourceTencentCloudScfAsyncEventManagement() *schema.Resource {
 			"function_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Function name.",
+				Description: "Function 名称",
 			},
 
 			"namespace": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Function namespace.",
+				Description: "Function 命名空间。",
 			},
 
 			"qualifier": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filter (function version).",
+				Description: "过滤器 (函数 版本)。",
 			},
 
 			"invoke_type": {
@@ -40,7 +40,7 @@ func DataSourceTencentCloudScfAsyncEventManagement() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Filter (invocation type list), Values: CMQ, CKAFKA_TRIGGER, APIGW, COS, TRIGGER_TIMER, MPS_TRIGGER, CLS_TRIGGER, OTHERS.",
+				Description: "过滤器 (invocation 类型 列表)，Values: CMQ，CKAFKA_TRIGGER，APIGW，COS，TRIGGER_TIMER，MPS_TRIGGER，CLS_TRIGGER，OTHERS。",
 			},
 
 			"status": {
@@ -49,62 +49,62 @@ func DataSourceTencentCloudScfAsyncEventManagement() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Filter (event status list), Values: RUNNING, FINISHED, ABORTED, FAILED.",
+				Description: "过滤器 (事件 状态 列表)，Values: RUNNING，FINISHED，ABORTED，FAILED。",
 			},
 
 			"order": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Valid values: ASC, DESC. Default value: DESC.",
+				Description: "有效值：ASC，DESC. 默认值：DESC。",
 			},
 
 			"orderby": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Valid values: StartTime, EndTime. Default value: StartTime.",
+				Description: "有效值：StartTime，EndTime. 默认值：StartTime。",
 			},
 
 			"invoke_request_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Filter (event invocation request ID).",
+				Description: "过滤器 (事件 invocation 请求 ID)。",
 			},
 
 			"event_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Async event list.",
+				Description: "Async 事件 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"invoke_request_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Invocation request ID.",
+							Description: "Invocation 请求 ID",
 						},
 						"invoke_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Invocation type.",
+							Description: "Invocation 类型",
 						},
 						"qualifier": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Function version.",
+							Description: "Function 版本",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Event status. Values: `RUNNING`; `FINISHED` (invoked successfully); `ABORTED` (invocation ended); `FAILED` (invocation failed).",
+							Description: "Event 状态 Values: `RUNNING`; `FINISHED` (invoked successfully); `ABORTED` (invocation ended); `FAILED` (invocation failed)。",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Invocation start time in the format of %Y-%m-%d %H:%M:%S.%f.",
+							Description: "Invocation 开始时间 在 格式 的 %Y-%m-%d %H:%M:%S.%f。",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Invocation end time in the format of %Y-%m-%d %H:%M:%S.%f.",
+							Description: "Invocation 结束时间 在 格式 的 %Y-%m-%d %H:%M:%S.%f。",
 						},
 					},
 				},
@@ -113,7 +113,7 @@ func DataSourceTencentCloudScfAsyncEventManagement() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

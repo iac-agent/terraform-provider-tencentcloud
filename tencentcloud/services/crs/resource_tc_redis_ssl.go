@@ -26,14 +26,14 @@ func ResourceTencentCloudRedisSsl() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of instance.",
+				Description: "ID 实例。",
 			},
 
 			"ssl_config": {
 				Required:     true,
 				Type:         schema.TypeString,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"enabled", "disabled"}),
-				Description:  "The SSL configuration status of the instance: `enabled`,`disabled`.",
+				Description:  "SSL 配置 状态 实例: `已启用`,`已禁用`。",
 			},
 		},
 	}

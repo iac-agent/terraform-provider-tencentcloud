@@ -29,28 +29,28 @@ func ResourceTencentCloudCssRecordRuleAttachment() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Streaming domain name.",
+				Description: "Streaming 域名 名称",
 			},
 
 			"template_id": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeInt,
-				Description: "Template ID.",
+				Description: "模板 ID",
 			},
 
 			"app_name": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "The streaming path is consistent with the AppName in the streaming and playback addresses. The default is live.",
+				Description: "streaming 路径 是 consistent 使用 AppName 在 streaming 和 playback addresses. 默认为 live。",
 			},
 
 			"stream_name": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Stream name. Note: If this parameter is set to a non empty string, the rule will only work on this streaming.",
+				Description: "Stream 名称 注意: 如果 此 参数 是 集合 到 non 空 字符串， 规则 将 仅 work 在 此 streaming。",
 			},
 		},
 	}

@@ -29,31 +29,31 @@ func ResourceTencentCloudSmsTemplate() *schema.Resource {
 			"template_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Message Template name, which must be unique.",
+				Description: "消息 模板名称，其中 必须 是 唯一。",
 			},
 
 			"template_content": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Message Template Content.",
+				Description: "消息 模板 内容",
 			},
 
 			"international": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Whether it is Global SMS: 0: Mainland China SMS; 1: Global SMS.",
+				Description: "是否为Global SMS: 0: Mainland China SMS; 1: Global SMS。",
 			},
 
 			"sms_type": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "SMS type. 0: regular SMS, 1: marketing SMS.",
+				Description: "SMS 类型 0: regular SMS，1: marketing SMS。",
 			},
 
 			"remark": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Template remarks, such as reason for application and use case.",
+				Description: "模板 备注，such 作为 reason 对于 应用 和 使用 case。",
 			},
 		},
 	}

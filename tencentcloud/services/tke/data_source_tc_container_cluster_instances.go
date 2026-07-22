@@ -23,58 +23,58 @@ func DataSourceTencentCloudContainerClusterInstances() *schema.Resource {
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "An ID identify the cluster, like cls-xxxxxx.",
+				Description: "An ID identify 集群，like cls-xxxxxx。",
 			},
 			"limit": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "An int variable describe how many instances in return at most.",
+				Description: "An int variable describe how many 实例 在 返回 在 most。",
 			},
 			"total_count": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Number of instances.",
+				Description: "数量 实例。",
 			},
 			"nodes": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "An information list of kubernetes instances.",
+				Description: "An 信息 列表 kubernetes 实例。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"abnormal_reason": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Describe the reason when node is in abnormal state(if it was).",
+							Description: "Describe reason 当 节点 是 在 abnormal state(如果 它 是)。",
 						},
 						"cpu": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Describe the cpu of the node.",
+							Description: "Describe cpu 的 节点。",
 						},
 						"mem": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Describe the memory of the node.",
+							Description: "Describe 内存 的 节点。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "An id identify the node, provided by cvm.",
+							Description: "An ID identify 节点，提供 通过 cvm。",
 						},
 						"is_normal": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Describe whether the node is normal.",
+							Description: "Describe 是否node 是 normal。",
 						},
 						"wan_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Describe the WAN IP of the node.",
+							Description: "Describe WAN IP 的 节点。",
 						},
 						"lan_ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Describe the LAN IP of the node.",
+							Description: "Describe LAN IP 的 节点。",
 						},
 					},
 				},

@@ -19,19 +19,19 @@ func DataSourceTencentCloudDbbrainSecurityAuditLogDownloadUrls() *schema.Resourc
 			"sec_audit_group_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Security audit group Id.",
+				Description: "Security audit 组 ID.",
 			},
 
 			"async_request_id": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Asynchronous task ID.",
+				Description: "Asynchronous 任务 ID.",
 			},
 
 			"product": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Service product type, supported values: `mysql` - ApsaraDB for MySQL.",
+				Description: "Service product 类型, 支持 值: `mysql` - ApsaraDB 对于 MySQL.",
 			},
 
 			"urls": {
@@ -40,13 +40,13 @@ func DataSourceTencentCloudDbbrainSecurityAuditLogDownloadUrls() *schema.Resourc
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of COS links to export results. When the result set is large, it may be divided into multiple urls for download.",
+				Description: "List 的 COS links 到 export results. 当 结果 集合 是 large, 它 可能 是 divided into 多个 urls 对于 download.",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

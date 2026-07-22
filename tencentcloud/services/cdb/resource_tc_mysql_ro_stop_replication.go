@@ -25,7 +25,7 @@ func ResourceTencentCloudMysqlRoStopReplication() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Read-Only instance ID.",
+				Description: "只读实例 ID。",
 			},
 		},
 	}

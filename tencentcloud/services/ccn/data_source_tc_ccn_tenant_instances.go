@@ -22,7 +22,7 @@ func DataSourceTencentCloudCcnTenantInstance() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "filter by ccn ids, like: ['ccn-12345678'].",
+				Description: "过滤器 通过 ccn ids，like: ['ccn-12345678']。",
 			},
 
 			"user_account_id": {
@@ -31,7 +31,7 @@ func DataSourceTencentCloudCcnTenantInstance() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "filter by ccn ids, like: ['12345678'].",
+				Description: "过滤器 通过 ccn ids，like: ['12345678']。",
 			},
 
 			"is_security_lock": {
@@ -40,13 +40,13 @@ func DataSourceTencentCloudCcnTenantInstance() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "filter by locked, like ['true'].",
+				Description: "过滤器 通过 locked，like ['true']。",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

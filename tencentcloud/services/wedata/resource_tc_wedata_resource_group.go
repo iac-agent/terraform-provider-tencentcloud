@@ -24,7 +24,7 @@ func ResourceTencentCloudWedataResourceGroup() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Resource group name. The name for creating a general resource group must start with a letter, can contain letters, numbers, underscores (_), and up to 64 characters.",
+				Description: "Resource 组名称 名称 对于 creating general 资源 组 必须 start 使用 letter，可以 contain letters，numbers，underscores (_)，和 up 到 64 字符。",
 			},
 
 			"type": {
@@ -32,37 +32,37 @@ func ResourceTencentCloudWedataResourceGroup() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "Information about the activated resource group.",
+				Description: "Information about activated 资源 组。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"resource_group_type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Resource group type.\n\n- Schedule --- Scheduling resource group\n- Integration --- Integration resource group  \n- DataService -- Data service resource group.",
+							Description: "Resource 组 类型\n\n- Schedule --- Scheduling 资源 组\n- Integration --- Integration 资源 组 \n- DataService -- Data 服务 资源 组。",
 						},
 						"integration": {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Integration resource group, subdivided into real-time resource group and offline resource group (Integration, scheduling, and data service resource groups cannot be purchased simultaneously).",
+							Description: "Integration 资源 组，subdivided into real-时间 资源 组 和 offline 资源 组 (Integration，scheduling，和 数据 服务 资源 groups 不能 是 purchased simultaneously)。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"real_time_data_sync": {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Real-time integration resource group.\n\n- i32c (Real-time data synchronization - 16C64G).",
+										Description: "Real-时间 integration 资源 组.\n\n- i32c (Real-时间 数据 synchronization - 16C64G)。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"specification": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Resource group specification.",
+													Description: "Resource 组 规格。",
 												},
 												"number": {
 													Type:        schema.TypeInt,
 													Required:    true,
-													Description: "Quantity.",
+													Description: "Quantity。",
 												},
 											},
 										},
@@ -71,18 +71,18 @@ func ResourceTencentCloudWedataResourceGroup() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MaxItems:    1,
-										Description: "Offline integration resource group.\n\n- integrated (Offline data synchronization - 8C16G)\n- i16 (Offline data synchronization - 8C32G).",
+										Description: "Offline integration 资源 组.\n\n- integrated (Offline 数据 synchronization - 8C16G)\n- i16 (Offline 数据 synchronization - 8C32G)。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"specification": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Resource group specification.",
+													Description: "Resource 组 规格。",
 												},
 												"number": {
 													Type:        schema.TypeInt,
 													Required:    true,
-													Description: "Quantity.",
+													Description: "Quantity。",
 												},
 											},
 										},
@@ -94,18 +94,18 @@ func ResourceTencentCloudWedataResourceGroup() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Scheduling resource group (Integration, scheduling, and data service resource groups cannot be purchased simultaneously).\n\n- s_test (Test specification)\n- s_small (Basic specification)\n- s_medium (Popular specification)\n- s_large (Professional specification).",
+							Description: "Scheduling 资源 组 (Integration，scheduling，和 数据 服务 资源 groups 不能 是 purchased simultaneously).\n\n- s_test (Test 规格)\n- s_small (Basic 规格)\n- s_medium (Popular 规格)\n- s_large (Professional 规格)。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"specification": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Resource group specification.",
+										Description: "Resource 组 规格。",
 									},
 									"number": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Quantity.",
+										Description: "Quantity。",
 									},
 								},
 							},
@@ -114,18 +114,18 @@ func ResourceTencentCloudWedataResourceGroup() *schema.Resource {
 							Type:        schema.TypeList,
 							Optional:    true,
 							MaxItems:    1,
-							Description: "Data service resource group (Integration, scheduling, and data service resource groups cannot be purchased simultaneously).\n\n- ds_t (Test specification)\n- ds_s (Basic specification)\n- ds_m (Popular specification)\n- ds_l (Professional specification).",
+							Description: "Data 服务 资源 组 (Integration，scheduling，和 数据 服务 资源 groups 不能 是 purchased simultaneously).\n\n- ds_t (Test 规格)\n- ds_s (Basic 规格)\n- ds_m (Popular 规格)\n- ds_l (Professional 规格)。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"specification": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Resource group specification.",
+										Description: "Resource 组 规格。",
 									},
 									"number": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Quantity.",
+										Description: "Quantity。",
 									},
 								},
 							},
@@ -137,48 +137,48 @@ func ResourceTencentCloudWedataResourceGroup() *schema.Resource {
 			"auto_renew_enabled": {
 				Type:        schema.TypeBool,
 				Required:    true,
-				Description: "Whether auto-renewal is enabled.",
+				Description: "Whether auto-renewal 是 已启用",
 			},
 
 			"purchase_period": {
 				Type:        schema.TypeInt,
 				Required:    true,
-				Description: "Purchase duration, in months.",
+				Description: "Purchase 时长，在 months。",
 			},
 
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "VPC ID.",
+				Description: "私有网络 ID",
 			},
 
 			"subnet": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Subnet.",
+				Description: "Subnet。",
 			},
 
 			"resource_region": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Resource purchase region.",
+				Description: "Resource purchase 地域",
 			},
 
 			"associated_project_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				ForceNew:    true,
-				Description: "Associated project space project ID.",
+				Description: "Associated 项目 space 项目 ID。",
 			},
 
 			// computed
 			"resource_group_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Resource group ID.",
+				Description: "Resource 组 ID",
 			},
 		},
 	}

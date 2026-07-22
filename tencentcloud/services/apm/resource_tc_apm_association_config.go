@@ -28,33 +28,33 @@ func ResourceTencentCloudApmAssociationConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Associated product name. currently only supports Prometheus.",
+				Description: "Associated product 名称 currently 仅 支持 Prometheus。",
 			},
 
 			"status": {
 				Type:         schema.TypeInt,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedIntValue([]int{1, 2}),
-				Description:  "Status of the association relationship: // association status: 1 (enabled), 2 (disabled).",
+				Description:  "状态 association relationship: // association 状态: 1 (已启用)，2 (已禁用)。",
 			},
 
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Business system ID.",
+				Description: "Business 系统 ID。",
 			},
 
 			"peer_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Associated product instance ID.",
+				Description: "Associated product 实例 ID。",
 			},
 
 			"topic": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Specifies the CKafka message topic.",
+				Description: "指定CKafka 消息 主题。",
 			},
 		},
 	}

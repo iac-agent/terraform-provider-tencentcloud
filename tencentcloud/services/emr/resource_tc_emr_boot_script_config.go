@@ -28,50 +28,50 @@ func ResourceTencentCloudEmrBootScriptConfig() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "EMR instance ID.",
+				Description: "EMR 实例 ID.",
 			},
 
 			"boot_type": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Boot type. Valid values: `resourceAfter`, `clusterAfter`, `clusterBefore`.",
+				Description: "Boot 类型. 有效 值: `resourceAfter`, `clusterAfter`, `clusterBefore`.",
 			},
 
 			"pre_executed_file_settings": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "List of pre-execution script settings.",
+				Description: "List 的 pre-execution 脚本 settings.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"path": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Script path on COS.",
+							Description: "Script 路径 在 COS.",
 						},
 
 						"args": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Script execution parameters.",
+							Description: "Script execution 参数.",
 						},
 
 						"bucket": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "COS bucket name.",
+							Description: "COS 存储桶 名称.",
 						},
 
 						"region": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "COS region name.",
+							Description: "COS 地域 名称.",
 						},
 
 						"domain": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "COS domain data.",
+							Description: "COS 域名 数据.",
 						},
 
 						"run_order": {
@@ -83,19 +83,19 @@ func ResourceTencentCloudEmrBootScriptConfig() *schema.Resource {
 						"when_run": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Execution timing. Valid values: `resourceAfter`, `clusterAfter`.",
+							Description: "Execution timing. 有效 值: `resourceAfter`, `clusterAfter`.",
 						},
 
 						"cos_file_name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Script file name.",
+							Description: "Script 文件 名称.",
 						},
 
 						"cos_file_uri": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Script COS address.",
+							Description: "Script COS 地址.",
 						},
 
 						"cos_secret_id": {

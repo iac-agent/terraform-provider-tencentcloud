@@ -29,25 +29,25 @@ func ResourceTencentCloudSesTemplate() *schema.Resource {
 			"template_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "smsTemplateName, which must be required.",
+				Description: "smsTemplateName，其中 必须 是 必填",
 			},
 
 			"template_content": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Required:    true,
-				Description: "Sms Template Content.",
+				Description: "Sms 模板 内容",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"html": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Html code after base64.",
+							Description: "Html 代码 after base64。",
 						},
 						"text": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Text content after base64.",
+							Description: "Text 内容 after base64。",
 						},
 					},
 				},

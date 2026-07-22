@@ -27,26 +27,26 @@ func ResourceTencentCloudMonitorGrafanaInstance() *schema.Resource {
 			"instance_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Instance name.",
+				Description: "实例名称",
 			},
 
 			"instance_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Grafana instance id.",
+				Description: "Grafana 实例 ID",
 			},
 
 			"root_url": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Grafana external url which could be accessed by user.",
+				Description: "Grafana 外部 URL 其中 could 是 accessed 通过 用户",
 			},
 
 			"vpc_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Vpc Id.",
+				Description: "私有网络 ID",
 			},
 
 			"subnet_ids": {
@@ -56,64 +56,64 @@ func ResourceTencentCloudMonitorGrafanaInstance() *schema.Resource {
 				},
 				Optional:    true,
 				Computed:    true,
-				Description: "Subnet Id array.",
+				Description: "Subnet ID 数组。",
 			},
 
 			"grafana_init_password": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "Grafana server admin password.",
+				Description: "Grafana 服务器 admin 密码",
 			},
 
 			"enable_internet": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Control whether grafana could be accessed by internet.",
+				Description: "Control whether grafana could 是 accessed 通过 internet。",
 			},
 
 			"is_distroy": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Deprecated:  "It has been deprecated from version 1.81.16.",
-				Description: "Whether to clean up completely, the default is false.",
+				Description: "是否clean up completely， 默认为 false。",
 			},
 
 			"is_destroy": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to clean up completely, the default is false.",
+				Description: "是否clean up completely， 默认为 false。",
 			},
 
 			"instance_status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Grafana instance status, 1: Creating, 2: Running, 6: Stopped.",
+				Description: "Grafana 实例状态，1: Creating，2: Running，6: Stopped。",
 			},
 
 			"internet_url": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Grafana intranet address.",
+				Description: "Grafana intranet 地址",
 			},
 
 			"internal_url": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Grafana public address.",
+				Description: "Grafana 公有 地址",
 			},
 
 			"auto_voucher": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to automatically use vouchers.",
+				Description: "是否automatically 使用 vouchers。",
 			},
 
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 		},
 	}

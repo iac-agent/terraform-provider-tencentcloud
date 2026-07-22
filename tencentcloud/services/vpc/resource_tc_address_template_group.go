@@ -24,7 +24,7 @@ func ResourceTencentCloudAddressTemplateGroup() *schema.Resource {
 			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Name of the address template group.",
+				Description: "名称 地址 template 组。",
 			},
 			"template_ids": {
 				Type: schema.TypeSet,
@@ -32,7 +32,7 @@ func ResourceTencentCloudAddressTemplateGroup() *schema.Resource {
 					Type: schema.TypeString,
 				},
 				Required:    true,
-				Description: "Template ID list.",
+				Description: "模板 ID 列表。",
 			},
 		},
 	}

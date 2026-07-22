@@ -19,25 +19,25 @@ func DataSourceTencentCloudPostgresqlLogBackups() *schema.Resource {
 			"min_finish_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Minimum end time of a backup in the format of `2018-01-01 00:00:00`. It is 7 days ago by default.",
+				Description: "Minimum 结束时间 的 备份 在 格式 的 `2018-01-01 00:00:00`. It 是 7 days ago 通过 默认值。",
 			},
 
 			"max_finish_time": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Maximum end time of a backup in the format of `2018-01-01 00:00:00`. It is the current time by default.",
+				Description: "Maximum 结束时间 的 备份 在 格式 的 `2018-01-01 00:00:00`. It 是 当前 时间 通过 默认值。",
 			},
 
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter instances using one or more criteria. Valid filter names:db-instance-id: Filter by instance ID (in string format).db-instance-name: Filter by instance name (in string format).db-instance-ip: Filter by instance VPC IP (in string format).",
+				Description: "过滤器 实例 使用 一个 或 more criteria. 有效 过滤器 names:db-实例-ID: 过滤器 通过 实例 ID (在 字符串 格式).db-实例-名称: 过滤器 通过 实例名称 (在 字符串 格式).db-实例-ip: 过滤器 通过 实例 VPC IP (在 字符串 格式)。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Filter name.",
+							Description: "过滤名称",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -45,7 +45,7 @@ func DataSourceTencentCloudPostgresqlLogBackups() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "One or more filter values.",
+							Description: "一个或多个过滤值",
 						},
 					},
 				},
@@ -54,70 +54,70 @@ func DataSourceTencentCloudPostgresqlLogBackups() *schema.Resource {
 			"order_by": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sorting field. Valid values: `StartTime`, `FinishTime`, `Size`.",
+				Description: "Sorting 字段. 有效值：`StartTime`，`FinishTime`，`Size`。",
 			},
 
 			"order_by_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Sorting order. Valid values: `asc` (ascending), `desc` (descending).",
+				Description: "Sorting 顺序 有效值：`asc` (ascending)，`desc` (descending)。",
 			},
 
 			"log_backup_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of log backup details.",
+				Description: "列表 日志 备份 details。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"db_instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance ID.",
+							Description: "实例 ID",
 						},
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Unique ID of a backup file.",
+							Description: "Unique ID 备份 文件。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Backup file name.",
+							Description: "Backup 文件 名称",
 						},
 						"backup_method": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Backup method, including physical and logical.",
+							Description: "Backup 方法，包括 physical 和 logical。",
 						},
 						"backup_mode": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Backup mode, including automatic and manual.",
+							Description: "Backup 模式，包括 automatic 和 manual。",
 						},
 						"state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Backup task status.",
+							Description: "Backup 任务 状态",
 						},
 						"size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Backup set size in bytes.",
+							Description: "Backup 集合 大小 在 bytes。",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Backup start time.",
+							Description: "Backup 开始时间。",
 						},
 						"finish_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Backup end time.",
+							Description: "Backup 结束时间。",
 						},
 						"expire_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Backup expiration time.",
+							Description: "Backup 过期时间。",
 						},
 					},
 				},
@@ -126,7 +126,7 @@ func DataSourceTencentCloudPostgresqlLogBackups() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

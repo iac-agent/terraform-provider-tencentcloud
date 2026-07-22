@@ -23,7 +23,7 @@ func ResourceTencentCloudElasticsearchRestartKibanaOperation() *schema.Resource 
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 		},
 	}

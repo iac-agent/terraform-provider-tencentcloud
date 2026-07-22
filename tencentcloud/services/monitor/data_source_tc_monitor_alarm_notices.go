@@ -21,153 +21,153 @@ func DataSourceTencentCloudMonitorAlarmNotices() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "ASC",
-				Description: "Sort by update time ASC=forward order DESC=reverse order.",
+				Description: "排序方式 更新时间 ASC=forward 顺序 DESC=reverse 顺序",
 			},
 			"owner_uid": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "The primary account uid is used to create a preset notification.",
+				Description: "primary 账号 uid 是 用于create preset 通知。",
 			},
 			"name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Alarm notification template name Used for fuzzy search.",
+				Description: "Alarm 通知 模板名称 用于fuzzy search。",
 			},
 			"receiver_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "To filter alarm notification templates according to recipients, you need to select the notification user type. USER=user GROUP=user group Leave blank = not filter by recipient.",
+				Description: "To 过滤器 告警 通知 templates according 到 recipients，您 need 到 select 通知 用户 类型 USER=用户 GROUP=用户 组 Leave blank = 不 过滤器 通过 recipient。",
 			},
 			"user_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "List of recipients.",
+				Description: "列表 recipients。",
 				Elem:        &schema.Schema{Type: schema.TypeInt},
 			},
 			"group_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Receive group list.",
+				Description: "Receive 组 列表。",
 				Elem:        &schema.Schema{Type: schema.TypeInt},
 			},
 			"notice_ids": {
 				Type:        schema.TypeSet,
 				Optional:    true,
-				Description: "Receive group list.",
+				Description: "Receive 组 列表。",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to store results.",
+				Description: "用于存储结果。",
 			},
 
 			"alarm_notice": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Alarm notification template list.",
+				Description: "Alarm 通知 template 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Alarm notification template ID.",
+							Description: "Alarm 通知 模板 ID",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Alarm notification template name.",
+							Description: "Alarm 通知 模板名称",
 						},
 						"updated_at": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last modified time.",
+							Description: "最后修改时间。",
 						},
 						"updated_by": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Last Modified By.",
+							Description: "Last Modified By。",
 						},
 						"notice_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Alarm notification type ALARM=Notification not restored OK=Notification restored ALL.",
+							Description: "Alarm 通知 类型 ALARM=Notification 不 restored OK=Notification restored ALL。",
 						},
 						"user_notices": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Alarm notification template list.(At most five).",
+							Description: "Alarm 通知 template 列表.(At most five)。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"receiver_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Recipient Type USER=User GROUP=User Group.",
+										Description: "Recipient 类型 USER=用户 GROUP=用户 Group。",
 									},
 									"start_time": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The number of seconds since the notification start time 00:00:00 (value range 0-86399).",
+										Description: "数量 秒 since 通知 开始时间 00:00:00 (值 范围 0-86399)。",
 									},
 									"end_time": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "The number of seconds since the notification end time 00:00:00 (value range 0-86399).",
+										Description: "数量 秒 since 通知 结束时间 00:00:00 (值 范围 0-86399)。",
 									},
 									"notice_way": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "Notification Channel List EMAIL=Mail SMS=SMS CALL=Telephone WECHAT=WeChat RTX=Enterprise WeChat.",
+										Description: "Notification Channel List EMAIL=Mail SMS=SMS CALL=Telephone WECHAT=WeChat RTX=Enterprise WeChat。",
 										Elem:        &schema.Schema{Type: schema.TypeString},
 									},
 									"user_ids": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "User UID List.",
+										Description: "用户 UID List。",
 										Elem:        &schema.Schema{Type: schema.TypeInt},
 									},
 									"group_ids": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "User group ID list.",
+										Description: "用户 组 ID 列表。",
 										Elem:        &schema.Schema{Type: schema.TypeInt},
 									},
 									"phone_order": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "Telephone polling list.",
+										Description: "Telephone polling 列表。",
 										Elem:        &schema.Schema{Type: schema.TypeInt},
 									},
 									"phone_circle_times": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of telephone polls (value range: 1-5).",
+										Description: "数量 telephone polls (取值范围：1-5)。",
 									},
 									"phone_inner_interval": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of seconds between calls in a polling session (value range: 60-900).",
+										Description: "数量 秒 between calls 在 polling 会话 (取值范围：60-900)。",
 									},
 									"phone_circle_interval": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Number of seconds between polls (value range: 60-900).",
+										Description: "数量 秒 between polls (取值范围：60-900)。",
 									},
 									"need_phone_arrive_notice": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Contact notification required 0= No 1= Yes.",
+										Description: "Contact 通知 必填 0= No 1= Yes。",
 									},
 									"phone_call_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Call type SYNC= Simultaneous call CIRCLE= Round call If this parameter is not specified, the default value is round call.",
+										Description: "Call 类型 SYNC= Simultaneous call CIRCLE= Round call 如果 此 参数 是 不 指定， 默认值为 round call。",
 									},
 									"weekday": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "Notification period 1-7 indicates Monday to Sunday.",
+										Description: "Notification 周期 1-7 表示Monday 到 Sunday。",
 										Elem:        &schema.Schema{Type: schema.TypeInt},
 									},
 								},
@@ -176,28 +176,28 @@ func DataSourceTencentCloudMonitorAlarmNotices() *schema.Resource {
 						"url_notices": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "The maximum number of callback notifications is 3.",
+							Description: "最大callback notifications 是 3。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"url": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Callback URL (limited to 256 characters).",
+										Description: "Callback URL (limited 到 256 字符)。",
 									},
 									"start_time": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Notification Start Time Number of seconds at the start of a day.",
+										Description: "Notification Start Time 数量 秒 在 start 的 day。",
 									},
 									"end_time": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Notification End Time Seconds at the start of a day.",
+										Description: "Notification End Time Seconds 在 start 的 day。",
 									},
 									"weekday": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "Notification period 1-7 indicates Monday to Sunday.",
+										Description: "Notification 周期 1-7 表示Monday 到 Sunday。",
 										Elem:        &schema.Schema{Type: schema.TypeInt},
 									},
 								},
@@ -206,28 +206,28 @@ func DataSourceTencentCloudMonitorAlarmNotices() *schema.Resource {
 						"cls_notices": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "A maximum of one alarm notification can be pushed to the CLS service.",
+							Description: "A 最大 的 一个 告警 通知 可以 是 pushed 到 CLS 服务。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"region": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Regional.",
+										Description: "Regional。",
 									},
 									"log_set_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Log collection Id.",
+										Description: "Log collection ID。",
 									},
 									"topic_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Theme Id.",
+										Description: "Theme ID。",
 									},
 									"enable": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Start-stop status, can not be transmitted, default enabled. 0= Disabled, 1= enabled.",
+										Description: "Start-stop 状态，可以 不 是 transmitted，默认值 已启用 0= 已禁用，1= 已启用",
 									},
 								},
 							},
@@ -235,23 +235,23 @@ func DataSourceTencentCloudMonitorAlarmNotices() *schema.Resource {
 						"is_preset": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Whether it is the system default notification template 0=No 1=Yes.",
+							Description: "是否为the 系统 默认值 通知 template 0=No 1=Yes。",
 						},
 						"notice_language": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Notification language zh-CN=Chinese en-US=English.",
+							Description: "Notification 语言 zh-CN=Chinese en-US=English。",
 						},
 						"policy_ids": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "List of alarm policy IDs bound to the alarm notification template.",
+							Description: "列表 告警 策略 IDs bound 到 告警 通知 template。",
 							Elem:        &schema.Schema{Type: schema.TypeString},
 						},
 						"amp_consumer_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "AMP consumer ID.",
+							Description: "AMP 消费者 ID。",
 						},
 					},
 				},

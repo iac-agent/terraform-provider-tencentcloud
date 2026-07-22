@@ -27,44 +27,44 @@ func ResourceTencentCloudCdwpgUserhba() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Instance id.",
+				Description: "实例 ID",
 			},
 
 			"hba_configs": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "HBA configuration array.",
+				Description: "HBA 配置 数组。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"type": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Type.",
+							Description: "类型",
 						},
 						"database": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Database.",
+							Description: "Database。",
 						},
 						"user": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "User.",
+							Description: "用户",
 						},
 						"address": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "IP address.",
+							Description: "IP 地址",
 						},
 						"mask": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Mask.",
+							Description: "Mask。",
 						},
 						"method": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Method.",
+							Description: "Method。",
 						},
 					},
 				},

@@ -29,7 +29,7 @@ func ResourceTencentCloudMpsPersonSample() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Material name, length limit: 20 characters.",
+				Description: "Material 名称，长度 限制: 20 字符。",
 			},
 
 			"usages": {
@@ -38,13 +38,13 @@ func ResourceTencentCloudMpsPersonSample() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Material application scene, optional value:1. Recognition.Face: used for content recognition 2. Review.Face: used for inappropriate content identification 3. All: contains all of the above, equivalent to 1+2.",
+				Description: "Material 应用 scene，可选 值:1. Recognition.Face: 用于content recognition 2. Review.Face: 用于inappropriate 内容 identification 3. All: 包含all 的 above，equivalent 到 1+2。",
 			},
 
 			"description": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Material description, length limit: 1024 characters.",
+				Description: "Material 描述，长度 限制: 1024 字符。",
 			},
 
 			"face_contents": {
@@ -53,7 +53,7 @@ func ResourceTencentCloudMpsPersonSample() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "Material image [Base64](https://tools.ietf.org/html/rfc4648) encoded string only supports jpeg and png image formats. Array length limit: 5 images.Note: The picture must be a single portrait with clearer facial features, with a pixel size of not less than 200*200.",
+				Description: "Material 镜像 [Base64](https://tools.ietf.org/html/rfc4648) encoded 字符串 仅 支持 jpeg 和 png 镜像 formats. Array 长度 限制: 5 images.注意: picture 必须 是 单个 portrait 使用 clearer facial features，使用 pixel 大小 的 不 less 比 200*200。",
 			},
 		},
 	}

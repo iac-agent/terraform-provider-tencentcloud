@@ -27,36 +27,36 @@ func ResourceTencentCloudMpsFlow() *schema.Resource {
 			"flow_name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Flow name.",
+				Description: "Flow 名称",
 			},
 
 			"max_bandwidth": {
 				Required:    true,
 				Type:        schema.TypeInt,
-				Description: "Maximum bandwidth, unit bps, optional [10000000, 20000000, 50000000].",
+				Description: "Maximum 带宽，单位 bps，可选 [10000000，20000000，50000000]。",
 			},
 
 			"input_group": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "The input group for the flow.",
+				Description: "input 组 对于 flow。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"input_name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Input name, you can fill in uppercase and lowercase letters, numbers and underscores, and the length is [1, 32].",
+							Description: "Input 名称，您 可以 fill 在 uppercase 和 lowercase letters，numbers 和 underscores，和 长度 是 [1，32]。",
 						},
 						"protocol": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Input protocol, optional [SRT|RTP|RTMP|RTMP_PULL].",
+							Description: "Input 协议，可选 [SRT|RTP|RTMP|RTMP_PULL]。",
 						},
 						"description": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Input description with a length of [0, 255].",
+							Description: "Input 描述 使用 长度 的 [0，255]。",
 						},
 						"allow_ip_list": {
 							Type: schema.TypeSet,
@@ -64,79 +64,79 @@ func ResourceTencentCloudMpsFlow() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Optional:    true,
-							Description: "The input IP whitelist, the format is CIDR.",
+							Description: "input IP whitelist， 格式 是 CIDR。",
 						},
 						"srt_settings": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
 							Computed:    true,
-							Description: "The input SRT configuration information.",
+							Description: "input SRT 配置 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"mode": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "SRT mode, optional [LISTENER|CALLER], default is LISTENER.",
+										Description: "SRT 模式，可选 [LISTENER|CALLER]，默认为 LISTENER。",
 									},
 									"stream_id": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Stream ID, optional uppercase and lowercase letters, numbers and special characters (.#!:&amp;,=_-), length 0~512. For specific format, please refer to:https://github.com/Haivision/srt/blob/master/docs/features/access-control.md#standard-keys.",
+										Description: "Stream ID，可选 uppercase 和 lowercase letters，numbers 和 special 字符 (.#!:&amp;,=_-)，长度 0~512. For 特定 格式，please refer 到:https://github.com/Haivision/srt/blob/master/docs/features/访问-control.md#standard-keys。",
 									},
 									"latency": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "Delay, default 0, unit ms, range [0, 3000].",
+										Description: "延迟，默认值 0，单位 ms，范围 [0，3000]。",
 									},
 									"recv_latency": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "Receiving delay, default is 120, unit ms, range is [0, 3000].",
+										Description: "Receiving 延迟，默认为 120，单位 ms，范围 是 [0，3000]。",
 									},
 									"peer_latency": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "Peer delay, the default is 0, the unit is ms, and the range is [0, 3000].",
+										Description: "Peer 延迟， 默认为 0， 单位 是 ms，和 范围 是 [0，3000]。",
 									},
 									"peer_idle_timeout": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "Peer timeout, default is 5000, unit ms, range is [1000, 10000].",
+										Description: "Peer 超时，默认为 5000，单位 ms，范围 是 [1000，10000]。",
 									},
 									"passphrase": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "The decryption key, which is empty by default, means no encryption. Only ascii code values can be filled in, and the length is [10, 79].",
+										Description: "decryption 键，其中 是 空 通过 默认值，表示 无 加密. Only ascii 代码 值 可以 是 filled 在，和 长度 是 [10，79]。",
 									},
 									"pb_key_len": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "Key length, default is 0, optional [0|16|24|32].",
+										Description: "键 长度，默认为 0，可选 [0|16|24|32]。",
 									},
 									"source_addresses": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "SRT peer address, required when Mode is CALLER, and only 1 set can be filled in.",
+										Description: "SRT peer 地址，必填 当 模式 是 CALLER，和 仅 1 集合 可以 是 filled 在。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"ip": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "Peer IP.",
+													Description: "Peer IP。",
 												},
 												"port": {
 													Type:        schema.TypeInt,
 													Required:    true,
-													Description: "Peer port.",
+													Description: "Peer 端口",
 												},
 											},
 										},
@@ -149,20 +149,20 @@ func ResourceTencentCloudMpsFlow() *schema.Resource {
 							MaxItems:    1,
 							Optional:    true,
 							Computed:    true,
-							Description: "RTP configuration information.",
+							Description: "RTP 配置 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"fec": {
 										Type:        schema.TypeString,
 										Optional:    true,
 										Computed:    true,
-										Description: "Defaults to none, optional values[none].",
+										Description: "默认为 none，可选 值[none]。",
 									},
 									"idle_timeout": {
 										Type:        schema.TypeInt,
 										Optional:    true,
 										Computed:    true,
-										Description: "Idle timeout, the default is 5000, the unit is ms, and the range is [1000, 10000].",
+										Description: "Idle 超时， 默认为 5000， 单位 是 ms，和 范围 是 [1000，10000]。",
 									},
 								},
 							},
@@ -171,31 +171,31 @@ func ResourceTencentCloudMpsFlow() *schema.Resource {
 							Type:        schema.TypeString,
 							Optional:    true,
 							Computed:    true,
-							Description: "The active/standby switch of the input, [OPEN|CLOSE] is optional, and the default is CLOSE.",
+							Description: "活跃/standby switch 的 input，[OPEN|CLOSE] 为可选项，和 默认为 CLOSE。",
 						},
 						"rtmp_pull_settings": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
 							Computed:    true,
-							Description: "Input RTMP_PULL configuration information.",
+							Description: "Input RTMP_PULL 配置 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"source_addresses": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "The source site address of the RTMP source site, there can only be one.",
+										Description: "来源 site 地址 的 RTMP 来源 site，there 可以 仅 是 一个。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"tc_url": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "TcUrl address of the RTMP source server.",
+													Description: "TcUrl 地址 的 RTMP 来源 服务器。",
 												},
 												"stream_key": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "StreamKey information of the RTMP source site.",
+													Description: "StreamKey 信息 的 RTMP 来源 site。",
 												},
 											},
 										},
@@ -208,19 +208,19 @@ func ResourceTencentCloudMpsFlow() *schema.Resource {
 							MaxItems:    1,
 							Optional:    true,
 							Computed:    true,
-							Description: "Input RTSP_PULL configuration information.",
+							Description: "Input RTSP_PULL 配置 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"source_addresses": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "The source site address of the RTSP source site, there can only be one.",
+										Description: "来源 site 地址 的 RTSP 来源 site，there 可以 仅 是 一个。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"url": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The URL address of the RTSP source site.",
+													Description: "URL 地址 的 RTSP 来源 site。",
 												},
 											},
 										},
@@ -233,19 +233,19 @@ func ResourceTencentCloudMpsFlow() *schema.Resource {
 							MaxItems:    1,
 							Optional:    true,
 							Computed:    true,
-							Description: "Input HLS_PULL configuration information.",
+							Description: "Input HLS_PULL 配置 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"source_addresses": {
 										Type:        schema.TypeList,
 										Required:    true,
-										Description: "There is only one origin address of the HLS origin station.",
+										Description: "There 是 仅 一个 源站 地址 的 HLS 源站 station。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"url": {
 													Type:        schema.TypeString,
 													Required:    true,
-													Description: "The URL address of the HLS origin site.",
+													Description: "URL 地址 的 HLS 源站 site。",
 												},
 											},
 										},
@@ -257,18 +257,18 @@ func ResourceTencentCloudMpsFlow() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Delay broadcast smooth streaming configuration information.",
+							Description: "延迟 broadcast smooth streaming 配置 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"enable": {
 										Type:        schema.TypeBool,
 										Optional:    true,
-										Description: "Whether to enable the delayed broadcast smooth spit stream, true is enabled, false is not enabled, and the default is not enabled. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "是否enable delayed broadcast smooth spit 流，true 是 已启用，false 是 不 已启用，和 默认为 不 已启用 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 									"buffer_time": {
 										Type:        schema.TypeInt,
 										Optional:    true,
-										Description: "Delay time, in seconds, currently supports a range of 10 to 300 seconds. Note: This field may return null, indicating that no valid value can be obtained.",
+										Description: "延迟 时间，（秒）， currently 支持 范围 的 10 到 300 秒. 注意：此字段可能返回 null，表示无法获取有效值。",
 									},
 								},
 							},
@@ -280,7 +280,7 @@ func ResourceTencentCloudMpsFlow() *schema.Resource {
 			"event_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "The event ID associated with this Flow. Each flow can only be associated with one Event.",
+				Description: "事件 ID associated 使用 此 Flow. Each flow 可以 仅 是 associated 使用 一个 Event。",
 			},
 		},
 	}

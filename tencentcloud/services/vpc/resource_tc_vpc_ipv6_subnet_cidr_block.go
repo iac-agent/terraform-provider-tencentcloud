@@ -28,7 +28,7 @@ func ResourceTencentCloudVpcIpv6SubnetCidrBlock() *schema.Resource {
 				Required:    true,
 				Type:        schema.TypeString,
 				ForceNew:    true,
-				Description: "The private network `ID` where the subnet is located. Such as:`vpc-f49l6u0z`.",
+				Description: "私有 网络 `ID` 其中 子网 是 located. Such 作为:`vpc-f49l6u0z`。",
 			},
 
 			"ipv6_subnet_cidr_blocks": {
@@ -36,18 +36,18 @@ func ResourceTencentCloudVpcIpv6SubnetCidrBlock() *schema.Resource {
 				Type:        schema.TypeList,
 				ForceNew:    true,
 				MaxItems:    1,
-				Description: "Allocate a list of `IPv6` subnets.",
+				Description: "Allocate 列表 `IPv6` subnets。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"subnet_id": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Subnet instance `ID`. Such as:`subnet-pxir56ns`.",
+							Description: "Subnet 实例 `ID`. Such 作为:`子网-pxir56ns`。",
 						},
 						"ipv6_cidr_block": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "`IPv6` subnet segment. Such as: `3402:4e00:20:1001::/64`.",
+							Description: "`IPv6` 子网 segment. Such 作为: `3402:4e00:20:1001::/64`。",
 						},
 					},
 				},

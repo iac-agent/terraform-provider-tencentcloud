@@ -19,65 +19,65 @@ func DataSourceTencentCloudRedisInstanceShards() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The ID of instance.",
+				Description: "ID 实例。",
 			},
 
 			"filter_slave": {
 				Optional:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to filter out slave information.",
+				Description: "是否filter out slave 信息。",
 			},
 
 			"instance_shards": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Instance shard list information.",
+				Description: "实例 分片 列表 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"shard_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Shard node name.",
+							Description: "Shard 节点名称",
 						},
 						"shard_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Shard node ID.",
+							Description: "Shard 节点 ID",
 						},
 						"role": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "role.",
+							Description: "角色",
 						},
 						"keys": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Number of keys.",
+							Description: "数量 keys。",
 						},
 						"slots": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Slot information.",
+							Description: "Slot 信息。",
 						},
 						"storage": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Used capacity.",
+							Description: "Used 容量。",
 						},
 						"storage_slope": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Capacity tilt.",
+							Description: "Capacity tilt。",
 						},
 						"runid": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "The node ID of the instance runtime.",
+							Description: "节点 ID 实例 runtime。",
 						},
 						"connected": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Service status: 0-down;1-on.",
+							Description: "Service 状态: 0-down;1-在。",
 						},
 					},
 				},
@@ -86,7 +86,7 @@ func DataSourceTencentCloudRedisInstanceShards() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

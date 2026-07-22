@@ -18,100 +18,100 @@ func DataSourceTencentCloudWedataResourceGroupMetrics() *schema.Resource {
 			"resource_group_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Execution resource group ID.",
+				Description: "Execution 资源 组 ID",
 			},
 
 			"start_time": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Usage trend start time (milliseconds), default to the last hour.",
+				Description: "Usage trend 开始时间 (milliseconds)，默认为 last hour。",
 			},
 
 			"end_time": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Usage trend end time (milliseconds), default to current time.",
+				Description: "Usage trend 结束时间 (milliseconds)，默认为 当前 时间。",
 			},
 
 			"metric_type": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Metric dimension.\n\n- all --- All\n- task --- Task metrics\n- system --- System metrics.",
+				Description: "Metric dimension.\n\n- all --- All\n- 任务 --- 任务 metrics\n- 系统 --- System metrics。",
 			},
 
 			"granularity": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Metric collection granularity, unit in minutes, default 1 minute.",
+				Description: "Metric collection granularity，单位 在 minutes，默认值 1 minute。",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Execution group metric information.",
+				Description: "Execution 组 metric 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"cpu_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Resource group specification related: CPU count.",
+							Description: "Resource 组 规格 related: CPU count。",
 						},
 						"disk_volume": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Resource group specification related: disk specification.",
+							Description: "Resource 组 规格 related: 磁盘 规格。",
 						},
 						"mem_size": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Resource group specification related: memory size, unit: G.",
+							Description: "Resource 组 规格 related: 内存 大小，单位: G。",
 						},
 						"life_cycle": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Resource group lifecycle, unit: days.",
+							Description: "Resource 组 lifecycle，单位: days。",
 						},
 						"maximum_concurrency": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Resource group specification related: maximum concurrency.",
+							Description: "Resource 组 规格 related: 最大 并发",
 						},
 						"status": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Resource group status.\n\n- 0 --- Initializing\n- 1 --- Running\n- 2 --- Running abnormally\n- 3 --- Releasing\n- 4 --- Released\n- 5 --- Creating\n- 6 --- Creation failed\n- 7 --- Updating\n- 8 --- Update failed\n- 9 --- Expired\n- 10 --- Release failed\n- 11 --- In use\n- 12 --- Not in use.",
+							Description: "Resource 组 状态\n\n- 0 --- Initializing\n- 1 --- Running\n- 2 --- Running abnormally\n- 3 --- Releasing\n- 4 --- Released\n- 5 --- Creating\n- 6 --- Creation failed\n- 7 --- Updating\n- 8 --- Update failed\n- 9 --- Expired\n- 10 --- Release failed\n- 11 --- In 使用\n- 12 --- Not 在 使用。",
 						},
 						"metric_snapshots": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Metric details.",
+							Description: "Metric details。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"metric_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Metric name.\n\n- ConcurrencyUsage --- Concurrency usage rate\n- CpuCoreUsage --- CPU usage rate\n- CpuLoad --- CPU load\n- DevelopQueueTask --- Number of development tasks in queue\n- DevelopRunningTask --- Number of running development tasks\n- DevelopSchedulingTask --- Number of scheduling development tasks\n- DiskUsage --- Disk usage\n- DiskUsed --- Disk used amount\n- MaximumConcurrency --- Maximum concurrency\n- MemoryLoad --- Memory load\n- MemoryUsage --- Memory usage.",
+										Description: "指标名称\n\n- ConcurrencyUsage --- 并发 usage 速率\n- CpuCoreUsage --- CPU usage 速率\n- CpuLoad --- CPU load\n- DevelopQueueTask --- 数量 development tasks 在 queue\n- DevelopRunningTask --- 数量 running development tasks\n- DevelopSchedulingTask --- 数量 scheduling development tasks\n- DiskUsage --- Disk usage\n- DiskUsed --- Disk 使用 amount\n- MaximumConcurrency --- Maximum 并发\n- MemoryLoad --- Memory load\n- MemoryUsage --- Memory usage。",
 									},
 									"snapshot_value": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Current value.",
+										Description: "当前值",
 									},
 									"trend_list": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Metric trend.",
+										Description: "Metric trend。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"timestamp": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Timestamp.",
+													Description: "时间戳。",
 												},
 												"value": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Metric value.",
+													Description: "指标值",
 												},
 											},
 										},
@@ -126,7 +126,7 @@ func DataSourceTencentCloudWedataResourceGroupMetrics() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

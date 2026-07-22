@@ -28,12 +28,12 @@ func ResourceTencentCloudDasbCmdTemplate() *schema.Resource {
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Template name, maximum length 32 characters, cannot contain blank characters.",
+				Description: "模板名称，最大 长度 32 字符，不能 contain blank 字符。",
 			},
 			"cmd_list": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Command list, n separated, maximum length 32768 bytes.",
+				Description: "Command 列表，n separated，最大 长度 32768 bytes。",
 			},
 		},
 	}

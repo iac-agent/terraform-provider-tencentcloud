@@ -26,43 +26,43 @@ func ResourceTencentCloudCamOIDCSSO() *schema.Resource {
 			"authorization_endpoint": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Authorization request Endpoint, OpenID Connect identity provider authorization address. Corresponds to the value of the `authorization_endpoint` field in the Openid-configuration provided by the Enterprise IdP.",
+				Description: "Authorization 请求 Endpoint，OpenID Connect identity provider authorization 地址 Corresponds 到 值 的 `authorization_endpoint` 字段 在 Openid-配置 提供 通过 Enterprise IdP。",
 			},
 			"client_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Client ID, the client ID registered with the OpenID Connect identity provider.",
+				Description: "Client ID， 客户端 ID registered 使用 OpenID Connect identity provider。",
 			},
 			"identity_key": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "The signature public key requires base64_encode. Verify the public key signed by the OpenID Connect identity provider ID Token. For the security of your account, we recommend that you rotate the signed public key regularly.",
+				Description: "签名 公有 键 requires base64_encode. Verify 公有 键 signed 通过 OpenID Connect identity provider ID 令牌 For 安全 的 your 账号，we recommend 该 您 rotate signed 公有 键 regularly。",
 			},
 			"identity_url": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Identity provider URL. OpenID Connect identity provider identity.Corresponds to the value of the `issuer` field in the Openid-configuration provided by the Enterprise IdP.",
+				Description: "Identity provider URL OpenID Connect identity provider identity.Corresponds 到 值 的 `issuer` 字段 在 Openid-配置 提供 通过 Enterprise IdP。",
 			},
 			"mapping_filed": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Map field names. Which field in the IdP's id_token maps to the user name of the subuser, usually the sub or name field.",
+				Description: "Map 字段 names. Which 字段 在 IdP's id_token maps 到 用户 名称 subuser，usually sub 或 名称 字段。",
 			},
 			"response_mode": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Authorize the request Forsonse mode. Authorization request return mode, form_post and frogment two optional modes, recommended to select form_post mode.",
+				Description: "Authorize 请求 Forsonse 模式 Authorization 请求 返回 模式，form_post 和 frogment two 可选 modes，recommended 到 select form_post 模式",
 			},
 			"response_type": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Authorization requests The Response type, with a fixed value id_token.",
+				Description: "Authorization requests Response 类型，使用 fixed 值 id_token。",
 			},
 			"scope": {
 				Type:        schema.TypeSet,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Authorize the request Scope. openid; email; profile; Authorization request information scope. The default is required openid.",
+				Description: "Authorize 请求 范围 openid; email; profile; Authorization 请求 信息 范围 默认为 必填 openid。",
 			},
 		},
 	}

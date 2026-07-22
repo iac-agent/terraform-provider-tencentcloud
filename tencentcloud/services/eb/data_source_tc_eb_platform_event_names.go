@@ -19,24 +19,24 @@ func DataSourceTencentCloudEbPlatformEventNames() *schema.Resource {
 			"product_type": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Platform product event type.",
+				Description: "Platform product 事件 类型",
 			},
 
 			"event_names": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Platform product list.",
+				Description: "Platform product 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"event_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Event name.Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "事件名称注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 						"event_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Event type.Note: This field may return null, indicating that no valid value can be obtained.",
+							Description: "Event 类型注意：此字段可能返回 null，表示无法获取有效值。",
 						},
 					},
 				},
@@ -45,7 +45,7 @@ func DataSourceTencentCloudEbPlatformEventNames() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

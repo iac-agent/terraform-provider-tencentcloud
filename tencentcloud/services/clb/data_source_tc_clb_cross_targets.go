@@ -19,13 +19,13 @@ func DataSourceTencentCloudClbCrossTargets() *schema.Resource {
 			"filters": {
 				Optional:    true,
 				Type:        schema.TypeList,
-				Description: "Filter conditions to query CVMs and ENIs: vpc-id - String - Required: No - (Filter condition) Filter by VPC ID, such as vpc-12345678. ip - String - Required: No - (Filter condition) Filter by real server IP, such as 192.168.0.1. listener-id - String - Required: No - (Filter condition) Filter by listener ID, such as lbl-12345678. location-id - String - Required: No - (Filter condition) Filter by forwarding rule ID of the layer-7 listener, such as loc-12345678.",
+				Description: "查询云服务器和弹性网卡的过滤条件：vpc-ID - 字符串 - 必填：否 - （过滤条件）按VPC ID过滤，例如vpc-12345678。 ip - String - 必填：否 - （过滤条件）按真实服务器IP过滤，如192.168.0.1。 listener-ID - String - 必填：否 - （过滤条件）按监听器 ID 过滤，如 lbl-12345678。 location-ID - String - 必填：否 - （过滤条件）按七层监听的转发规则ID过滤，如loc-12345678。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Filter name.",
+							Description: "过滤器名称。",
 						},
 						"values": {
 							Type: schema.TypeSet,
@@ -33,7 +33,7 @@ func DataSourceTencentCloudClbCrossTargets() *schema.Resource {
 								Type: schema.TypeString,
 							},
 							Required:    true,
-							Description: "Filter values.",
+							Description: "过滤值。",
 						},
 					},
 				},
@@ -42,48 +42,48 @@ func DataSourceTencentCloudClbCrossTargets() *schema.Resource {
 			"cross_target_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Cross target set.",
+				Description: "交叉目标设定。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"local_vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC ID of the CLB instance.",
+							Description: "CLB实例的VPC ID。",
 						},
 						"vpc_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC ID of the CVM or ENI instance.",
+							Description: "CVM或弹性网卡实例的VPC ID。",
 						},
 						"ip": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "IP address of the CVM or ENI instance.",
+							Description: "CVM或弹性网卡实例的IP地址。",
 						},
 						"vpc_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "VPC name of the CVM or ENI instance.",
+							Description: "CVM或弹性网卡实例的VPC名称。",
 						},
 						"eni_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ENI ID of the CVM instance.",
+							Description: "CVM实例的网卡ID。",
 						},
 						"instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the CVM instance.Note: This field may return null, indicating that no valid value was found.",
+							Description: "CVM实例ID。注意：该字段可能返回null，表示未找到有效值。",
 						},
 						"instance_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the CVM instance. Note: This field may return null, indicating that no valid value was found.",
+							Description: "CVM 实例的名称。注意：该字段可能返回 null，表示未找到有效值。",
 						},
 						"region": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Region of the CVM or ENI instance.",
+							Description: "CVM或弹性网卡实例所属地域。",
 						},
 					},
 				},
@@ -92,7 +92,7 @@ func DataSourceTencentCloudClbCrossTargets() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

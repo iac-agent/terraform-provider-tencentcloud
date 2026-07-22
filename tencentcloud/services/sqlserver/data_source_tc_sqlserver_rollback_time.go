@@ -19,7 +19,7 @@ func DataSourceTencentCloudSqlserverRollbackTime() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例 ID.",
 			},
 			"dbs": {
 				Required: true,
@@ -27,28 +27,28 @@ func DataSourceTencentCloudSqlserverRollbackTime() *schema.Resource {
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Description: "List of databases to be queried.",
+				Description: "List 的 databases 到 是 queried.",
 			},
 			"details": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Information of time range available for database rollback.",
+				Description: "Information 的 时间 范围 可用 对于 数据库 rollback.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"db_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Database name.",
+							Description: "Database 名称.",
 						},
 						"start_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Start time of time range available for rollback.",
+							Description: "Start 时间 的 时间 范围 可用 对于 rollback.",
 						},
 						"end_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "End time of time range available for rollback.",
+							Description: "End 时间 的 时间 范围 可用 对于 rollback.",
 						},
 					},
 				},
@@ -56,7 +56,7 @@ func DataSourceTencentCloudSqlserverRollbackTime() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

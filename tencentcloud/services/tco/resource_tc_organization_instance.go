@@ -26,67 +26,67 @@ func ResourceTencentCloudOrganizationOrganization() *schema.Resource {
 			"org_id": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Enterprise organization ID.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Enterprise organization ID.注意: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"root_node_name": {
 				Optional:    true,
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Root node name.",
+				Description: "Root 节点名称",
 			},
 
 			"host_uin": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Creator Uin.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "创建者 Uin.注意: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"nick_name": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Creator nickname.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "创建者 nickname.注意: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"org_type": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Enterprise organization type.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Enterprise organization 类型Note: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"is_manager": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether to organize an administrator.Yes: true, no: falseNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "是否organize administrator.Yes: true，无: falseNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"org_policy_type": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Strategy type.Financial Management: FinancialNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Strategy 类型Financial Management: FinancialNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"org_policy_name": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Strategic name.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Strategic 名称Note: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"org_permission": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of membership authority of members.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "列表 membership authority 的 members.注意: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Permissions ID.",
+							Description: "Permissions ID。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Permission name.",
+							Description: "Permission 名称",
 						},
 					},
 				},
@@ -95,49 +95,49 @@ func ResourceTencentCloudOrganizationOrganization() *schema.Resource {
 			"root_node_id": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Organize the root node ID.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Organize root 节点 IDNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"create_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Organize the creation time.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Organize 创建时间.注意: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"join_time": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Members join time.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Members join 时间.注意: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"is_allow_quit": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Whether the members are allowed to withdraw.Allow: Allow, not allowed: DENIEDNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "是否members 是 allowed 到 withdraw.Allow: Allow，不 allowed: DENIEDNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"pay_uin": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "UIN on behalf of the payer.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "UIN 在 behalf 的 payer.注意: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"pay_name": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "The name of the payment.Note: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "名称 payment.注意: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"is_assign_manager": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether a trusted service administrator.Yes: true, no: falseNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "Whether trusted 服务 administrator.Yes: true，无: falseNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 
 			"is_auth_manager": {
 				Computed:    true,
 				Type:        schema.TypeBool,
-				Description: "Whether the real -name subject administrator.Yes: true, no: falseNote: This field may return NULL, indicating that the valid value cannot be obtained.",
+				Description: "是否real -名称 subject administrator.Yes: true，无: falseNote: 此 字段 可能 返回 NULL，indicating 该 有效 值 不能 是 获取。",
 			},
 		},
 	}

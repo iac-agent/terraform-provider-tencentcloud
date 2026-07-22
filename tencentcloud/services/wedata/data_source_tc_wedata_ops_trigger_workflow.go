@@ -19,102 +19,102 @@ func DataSourceTencentCloudWedataOpsTriggerWorkflow() *schema.Resource {
 			"project_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Project ID.",
+				Description: "项目 ID",
 			},
 
 			"workflow_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Workflow ID.",
+				Description: "Workflow ID。",
 			},
 
 			"workflow_execution_id": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Workflow execution ID.",
+				Description: "Workflow execution ID。",
 			},
 
 			"data": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Workflow task information.",
+				Description: "Workflow 任务 信息。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"trigger_tasks": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Collection of task information.",
+							Description: "Collection 的 任务 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"project_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Project ID.",
+										Description: "项目 ID",
 									},
 									"project_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Project name.",
+										Description: "项目名称",
 									},
 									"workflow_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Workflow ID.",
+										Description: "Workflow ID。",
 									},
 									"workflow_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Workflow name.",
+										Description: "Workflow 名称",
 									},
 									"task_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task ID.",
+										Description: "任务 ID",
 									},
 									"task_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task name.",
+										Description: "任务 名称",
 									},
 									"task_type": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task type.",
+										Description: "任务 类型",
 									},
 									"user_uin_in_charge": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Person in charge user UIN.",
+										Description: "Person 在 charge 用户 UIN。",
 									},
 									"user_name_in_charge": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Person in charge name.",
+										Description: "Person 在 charge 名称",
 									},
 									"folder_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Folder ID.",
+										Description: "Folder ID。",
 									},
 									"folder_name": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Folder name.",
+										Description: "Folder 名称",
 									},
 									"task_type_id": {
 										Type:        schema.TypeInt,
 										Required:    true,
-										Description: "Task type ID.",
+										Description: "任务 类型 ID。",
 									},
 									"execution_state": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Task status.",
+										Description: "任务 状态",
 									},
 									"execution_start_time": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Execution start time.",
+										Description: "Execution 开始时间。",
 									},
 								},
 							},
@@ -122,33 +122,33 @@ func DataSourceTencentCloudWedataOpsTriggerWorkflow() *schema.Resource {
 						"trigger_task_links": {
 							Type:        schema.TypeList,
 							Required:    true,
-							Description: "Collection of task link information.",
+							Description: "Collection 的 任务 link 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"link_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Link ID.",
+										Description: "Link ID。",
 									},
 									"workflow_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Associated workflow ID.",
+										Description: "Associated 工作流 ID。",
 									},
 									"workflow_version_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Associated workflow version ID.",
+										Description: "Associated 工作流 版本 ID。",
 									},
 									"upstream_task_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Upstream task ID.",
+										Description: "Upstream 任务 ID。",
 									},
 									"downstream_task_id": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Downstream task ID.",
+										Description: "Downstream 任务 ID。",
 									},
 								},
 							},
@@ -160,7 +160,7 @@ func DataSourceTencentCloudWedataOpsTriggerWorkflow() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

@@ -19,51 +19,51 @@ func DataSourceTencentCloudTsfMsApiList() *schema.Resource {
 			"microservice_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Microservice Id.",
+				Description: "Microservice ID。",
 			},
 
 			"search_word": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "search word, support  service name.",
+				Description: "search word，support 服务名称",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "result list.",
+				Description: "结果 列表。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"total_count": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Quantity.",
+							Description: "Quantity。",
 						},
 						"content": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "api list.",
+							Description: "api 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"path": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "api path.",
+										Description: "api 路径",
 									},
 									"method": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "api method.",
+										Description: "api 方法。",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Method description. Note: This field may return null, indicating that no valid value was found.",
+										Description: "Method 描述 注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"status": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "API status. 0: offline, 1: online.Note: This field may return null, indicating that no valid value was found.",
+										Description: "API 状态 0: offline，1: online.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 								},
 							},
@@ -75,7 +75,7 @@ func DataSourceTencentCloudTsfMsApiList() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

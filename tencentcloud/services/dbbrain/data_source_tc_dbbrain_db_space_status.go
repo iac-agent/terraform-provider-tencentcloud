@@ -19,19 +19,19 @@ func DataSourceTencentCloudDbbrainDbSpaceStatus() *schema.Resource {
 			"instance_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "instance id.",
+				Description: "实例 ID.",
 			},
 
 			"range_days": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "The number of days in the time period, the deadline is the current day, and the default is 7 days.",
+				Description: "数量 的 days 在 时间 周期, deadline 是 当前 day, 和 默认值 是 7 days.",
 			},
 
 			"product": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Service product type, supported values include: mysql - cloud database MySQL, cynosdb - cloud database CynosDB for MySQL, the default is mysql.",
+				Description: "Service product 类型, 支持 值 include: mysql - 云 数据库 MySQL, cynosdb - 云 数据库 CynosDB 对于 MySQL, 默认值 是 mysql.",
 			},
 
 			"growth": {
@@ -49,19 +49,19 @@ func DataSourceTencentCloudDbbrainDbSpaceStatus() *schema.Resource {
 			"total": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Total disk size (MB).",
+				Description: "Total 磁盘 大小 (MB).",
 			},
 
 			"available_days": {
 				Computed:    true,
 				Type:        schema.TypeInt,
-				Description: "Estimated number of days available.",
+				Description: "Estimated 数量 的 days 可用.",
 			},
 
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

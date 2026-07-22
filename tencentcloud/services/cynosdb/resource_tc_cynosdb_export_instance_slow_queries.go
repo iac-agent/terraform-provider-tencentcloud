@@ -23,55 +23,55 @@ func ResourceTencentCloudCynosdbExportInstanceSlowQueries() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID.",
+				Description: "实例ID。",
 			},
 
 			"start_time": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Earliest transaction start time.",
+				Description: "最早交易开始时间。",
 			},
 
 			"end_time": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Latest transaction start time.",
+				Description: "最晚交易开始时间。",
 			},
 
 			"username": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "user name.",
+				Description: "用户名。",
 			},
 
 			"host": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Client host.",
+				Description: "客户端主机。",
 			},
 
 			"database": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Database name.",
+				Description: "数据库名称。",
 			},
 
 			"file_type": {
 				Optional:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "File type, optional values: csv, original.",
+				Description: "文件类型，可选值：csv、original。",
 			},
 
 			"file_content": {
 				Computed:    true,
 				Type:        schema.TypeString,
-				Description: "Slow query export content.",
+				Description: "查询导出内容速度慢。",
 			},
 		},
 	}

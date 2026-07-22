@@ -26,38 +26,38 @@ func ResourceTencentCloudWedataOpsTask() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Project Id.",
+				Description: "项目 ID",
 			},
 
 			"task_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Task id.",
+				Description: "任务 ID。",
 			},
 
 			"action": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Action. Valid values: `START`, `PAUSE`.",
+				Description: "操作 有效值：`START`，`PAUSE`。",
 			},
 
 			"enable_data_backfill": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to re-record the intermediate instance from the last pause to the current one when starting. The default value is false, which means no re-recording.",
+				Description: "是否re-记录 intermediate 实例 从 last pause 到 当前 一个 当 starting. 默认值为 false，其中 表示 无 re-recording。",
 			},
 
 			"kill_instance": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether required to terminate the generated instance.",
+				Description: "Whether 必填 到 terminate generated 实例。",
 			},
 
 			"status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Task status.",
+				Description: "任务 状态",
 			},
 		},
 	}

@@ -19,110 +19,110 @@ func DataSourceTencentCloudTsfGroupConfigRelease() *schema.Resource {
 			"group_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "groupId.",
+				Description: "groupId。",
 			},
 
 			"result": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Information related to the deployment group release.Note: This field may return null, which means no valid value was found.",
+				Description: "Information related 到 部署 组 release.注意：此字段可能返回 null，表示未找到有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"package_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Package Id.Note: This field may return null, which means no valid value was found.",
+							Description: "Package ID.注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"package_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Package name.Note: This field may return null, which means no valid value was found.",
+							Description: "Package 名称注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"package_version": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Package version.Note: This field may return null, which means no valid value was found.",
+							Description: "Package 版本注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"repo_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "image name.Note: This field may return null, which means no valid value was found.",
+							Description: "镜像 名称注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"tag_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "image tag name.Note: This field may return null, which means no valid value was found.",
+							Description: "镜像 标签 名称注意：此字段可能返回 null，表示未找到有效值。",
 						},
 						"public_config_release_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Release public config list.",
+							Description: "Release 公有 配置 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"config_release_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release ID.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"config_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item  ID.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"config_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item name.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item 名称注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"config_version": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration version.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration 版本注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"release_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release time.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 时间.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"group_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release group ID.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 组 ID注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"group_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release group name.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 组名称注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"namespace_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release namespace ID.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 命名空间 ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"namespace_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release namespace name.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 命名空间 名称注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"cluster_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release cluster ID.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 集群 ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"cluster_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release cluster name.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 集群名称注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"release_desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release description.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 描述注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"application_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release application ID.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 应用 ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 								},
 							},
@@ -130,73 +130,73 @@ func DataSourceTencentCloudTsfGroupConfigRelease() *schema.Resource {
 						"config_release_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Configuration item release list.Note: This field may return null, which means no valid value was found.",
+							Description: "Configuration item release 列表.注意：此字段可能返回 null，表示未找到有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"config_release_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release ID.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"config_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release config ID.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 配置 ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"config_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release config name.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 配置 名称注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"config_version": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release config version.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 配置 版本注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"release_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release time.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 时间.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"group_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release config group ID.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 配置 组 ID注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"group_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release config group name.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 配置 组名称注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"namespace_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release namespace ID.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 命名空间 ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"namespace_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release namespace name.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 命名空间 名称注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"cluster_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release cluster ID.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 集群 ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"cluster_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release cluster name.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 集群名称注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"release_desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release description.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 描述注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"application_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release config ID.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 配置 ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 								},
 							},
@@ -204,68 +204,68 @@ func DataSourceTencentCloudTsfGroupConfigRelease() *schema.Resource {
 						"file_config_release_list": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "File configuration item release list.Note: This field may return null, which means no valid value was found.",
+							Description: "File 配置 item release 列表.注意：此字段可能返回 null，表示未找到有效值。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"config_release_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release ID.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"config_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release config ID.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 配置 ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"config_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release config name.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 配置 名称注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"config_version": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release config version.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 配置 版本注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"release_time": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release time.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 时间.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"group_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release config group ID.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 配置 组 ID注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"group_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release config group name.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 配置 组名称注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"namespace_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release namespace ID.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 命名空间 ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"namespace_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release namespace name.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 命名空间 名称注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"cluster_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release cluster ID.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 集群 ID.注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"cluster_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release cluster name.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 集群名称注意：此字段可能返回 null，表示未找到有效值。",
 									},
 									"release_desc": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Configuration item release description.Note: This field may return null, which means no valid value was found.",
+										Description: "Configuration item release 描述注意：此字段可能返回 null，表示未找到有效值。",
 									},
 								},
 							},
@@ -277,7 +277,7 @@ func DataSourceTencentCloudTsfGroupConfigRelease() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

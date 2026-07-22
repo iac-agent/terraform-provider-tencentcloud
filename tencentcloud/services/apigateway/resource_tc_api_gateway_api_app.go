@@ -28,43 +28,43 @@ func ResourceTencentCloudAPIGatewayAPIApp() *schema.Resource {
 			"api_app_name": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Api app name.",
+				Description: "Api app 名称",
 			},
 			"api_app_desc": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Computed:    true,
-				Description: "App description.",
+				Description: "App 描述",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "Tag description list.",
+				Description: "标签描述列表",
 			},
 			"api_app_id": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Api app ID.",
+				Description: "Api app ID。",
 			},
 			"api_app_key": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Api app key.",
+				Description: "Api app 键",
 			},
 			"api_app_secret": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Api app secret.",
+				Description: "Api app secret。",
 			},
 			"created_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Api app created time.",
+				Description: "Api app 创建 时间。",
 			},
 			"modified_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Api app modified time.",
+				Description: "Api app modified 时间。",
 			},
 		},
 	}

@@ -29,13 +29,13 @@ func ResourceTencentCloudCbsSnapshot() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the the CBS which this snapshot created from.",
+				Description: "ID CBS 其中 此 快照 创建 从。",
 			},
 			"snapshot_name": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateStringLengthInRange(2, 60),
-				Description:  "Name of the snapshot.",
+				Description:  "名称 快照。",
 			},
 			"disk_usage": {
 				Type:         schema.TypeString,
@@ -43,39 +43,39 @@ func ResourceTencentCloudCbsSnapshot() *schema.Resource {
 				Computed:     true,
 				ForceNew:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"SYSTEM_DISK", "DATA_DISK"}),
-				Description:  "The type of cloud disk associated with the snapshot: SYSTEM_DISK: system disk; DATA_DISK: data disk. If not filled in, the snapshot type will be consistent with the cloud disk type. This parameter is used in some scenarios where users need to create a data disk snapshot from the system disk for shared use.",
+				Description:  "类型 云 磁盘 associated 使用 快照: SYSTEM_DISK: 系统 磁盘; DATA_DISK: 数据 磁盘. 如果未填写 在， 快照 类型 将 是 consistent 使用 云 磁盘 类型 此 参数 是 使用 在 some scenarios 其中 users need 到 create 数据 磁盘 快照 从 系统 磁盘 对于 shared 使用。",
 			},
 			"tags": {
 				Type:        schema.TypeMap,
 				Optional:    true,
-				Description: "The available tags within this CBS Snapshot.",
+				Description: "可用 标签 within 此 CBS Snapshot。",
 			},
 			// computed
 			"storage_size": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Volume of storage which this snapshot created from.",
+				Description: "Volume 的 存储 其中 此 快照 创建 从。",
 			},
 			"snapshot_status": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Status of the snapshot.",
+				Description: "状态 快照。",
 			},
 			"disk_type": {
 				Type:        schema.TypeString,
 				Computed:    true,
 				Deprecated:  "It has been deprecated from version 1.82.14. Please use `disk_usage` instead.",
-				Description: "Types of CBS which this snapshot created from.",
+				Description: "Types 的 CBS 其中 此 快照 创建 从。",
 			},
 			"percent": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Snapshot creation progress percentage. If the snapshot has created successfully, the constant value is 100.",
+				Description: "Snapshot creation progress percentage. 如果 快照 has 创建 successfully， constant 值 是 100。",
 			},
 			"create_time": {
 				Type:        schema.TypeString,
 				Computed:    true,
-				Description: "Creation time of snapshot.",
+				Description: "创建时间 的 快照。",
 			},
 		},
 	}

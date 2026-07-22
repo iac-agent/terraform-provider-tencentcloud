@@ -27,33 +27,33 @@ func ResourceTencentCloudGaapSecurityRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the security policy.",
+				Description: "ID 安全 策略。",
 			},
 			"cidr_ip": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateCidrIp,
-				Description:  "A network address block of the request source.",
+				Description:  "A 网络 地址 block 的 请求来源",
 			},
 			"action": {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"ACCEPT", "DROP"}),
-				Description:  "Policy of the rule. Valid value: `ACCEPT` and `DROP`.",
+				Description:  "Policy 的 规则. 有效 值: `ACCEPT` 和 `DROP`。",
 			},
 			"name": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Default:      "",
 				ValidateFunc: tccommon.ValidateStringLengthInRange(0, 30),
-				Description:  "Name of the security policy rule. Maximum length is 30.",
+				Description:  "名称 安全 策略 规则. Maximum 长度 是 30。",
 			},
 			"protocol": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Default:      "ALL",
 				ValidateFunc: tccommon.ValidateAllowedStringValue([]string{"ALL", "TCP", "UDP"}),
-				Description:  "Protocol of the security policy rule. Default value is `ALL`. Valid value: `TCP`, `UDP` and `ALL`.",
+				Description:  "协议 的 安全 策略 规则. 默认值为 `ALL`. 有效 值: `TCP`，`UDP` 和 `ALL`。",
 			},
 			"port": {
 				Type:     schema.TypeString,
@@ -69,7 +69,7 @@ func ResourceTencentCloudGaapSecurityRule() *schema.Resource {
 					}
 					return
 				},
-				Description: "Target port. Default value is `ALL`. Valid examples: `80`, `80,443` and `3306-20000`.",
+				Description: "Target 端口 默认值为 `ALL`. 有效 examples: `80`，`80,443` 和 `3306-20000`。",
 			},
 		},
 	}

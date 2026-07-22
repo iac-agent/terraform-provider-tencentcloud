@@ -30,13 +30,13 @@ func ResourceTencentCloudMonitorGrafanaEnvConfig() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Grafana instance ID.",
+				Description: "Grafana 实例 ID",
 			},
 
 			"envs": {
 				Optional:    true,
 				Type:        schema.TypeMap,
-				Description: "Environment variables.",
+				Description: "Environment variables。",
 			},
 		},
 	}

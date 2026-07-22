@@ -29,41 +29,41 @@ func ResourceTencentCloudCiMediaVideoProcessTemplate() *schema.Resource {
 			"bucket": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "bucket name.",
+				Description: "存储桶名称",
 			},
 
 			"name": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The template name only supports `Chinese`, `English`, `numbers`, `_`, `-` and `*`.",
+				Description: "模板名称 仅 支持 `Chinese`，`English`，`numbers`，`_`，`-` 和 `*`。",
 			},
 
 			"color_enhance": {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "color enhancement.",
+				Description: "color enhancement。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"enable": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether color enhancement is turned on.",
+							Description: "Whether color enhancement 是 turned 在。",
 						},
 						"contrast": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Contrast, value range: [0, 100], empty string (indicates automatic analysis).",
+							Description: "Contrast，取值范围：[0，100]，空 字符串 (表示automatic analysis)。",
 						},
 						"correction": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "colorcorrection, value range: [0, 100], empty string (indicating automatic analysis).",
+							Description: "colorcorrection，取值范围：[0，100]，空 字符串 (indicating automatic analysis)。",
 						},
 						"saturation": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Saturation, value range: [0, 100], empty string (indicating automatic analysis).",
+							Description: "Saturation，取值范围：[0，100]，空 字符串 (indicating automatic analysis)。",
 						},
 					},
 				},
@@ -73,18 +73,18 @@ func ResourceTencentCloudCiMediaVideoProcessTemplate() *schema.Resource {
 				Optional:    true,
 				Type:        schema.TypeList,
 				MaxItems:    1,
-				Description: "detail enhancement, ColorEnhance and MsSharpen cannot both be empty.",
+				Description: "detail enhancement，ColorEnhance 和 MsSharpen 不能 both 是 空。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"enable": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Whether detail enhancement is enabled.",
+							Description: "Whether detail enhancement 是 已启用",
 						},
 						"sharpen_level": {
 							Type:        schema.TypeString,
 							Optional:    true,
-							Description: "Enhancement level, value range: [0, 10], empty string (indicates automatic analysis).",
+							Description: "Enhancement 级别，取值范围：[0，10]，空 字符串 (表示automatic analysis)。",
 						},
 					},
 				},

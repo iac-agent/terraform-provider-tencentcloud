@@ -18,7 +18,7 @@ func DataSourceTencentCloudEmrJobStatusDetail() *schema.Resource {
 			"instance_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "EMR Instance ID.",
+				Description: "EMR 实例 ID.",
 			},
 
 			"flow_param": {
@@ -31,7 +31,7 @@ func DataSourceTencentCloudEmrJobStatusDetail() *schema.Resource {
 						"f_key": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "Process Parameter Key: value range: TraceId: Query by TraceId FlowId: Query by FlowId.",
+							Description: "Process Parameter Key: 值 范围: TraceId: Query 通过 TraceId FlowId: Query 通过 FlowId.",
 						},
 						"f_value": {
 							Type:        schema.TypeString,
@@ -45,13 +45,13 @@ func DataSourceTencentCloudEmrJobStatusDetail() *schema.Resource {
 			"need_extra_detail": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Whether to return additional task information.",
+				Description: "Whether 到 返回 additional 任务 信息.",
 			},
 
 			"stage_details": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Task Information.",
+				Description: "任务 Information.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"stage": {
@@ -67,12 +67,12 @@ func DataSourceTencentCloudEmrJobStatusDetail() *schema.Resource {
 						"is_show": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether to display the flow.",
+							Description: "Whether 到 display flow.",
 						},
 						"is_sub_flow": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether it is a sub-flow.",
+							Description: "Whether 它 是 sub-flow.",
 						},
 						"sub_flow_flag": {
 							Type:        schema.TypeString,
@@ -107,7 +107,7 @@ func DataSourceTencentCloudEmrJobStatusDetail() *schema.Resource {
 						"had_wood_detail": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Whether to return additional task information.",
+							Description: "Whether 到 返回 additional 任务 信息.",
 						},
 						"wood_job_id": {
 							Type:        schema.TypeInt,
@@ -168,13 +168,13 @@ func DataSourceTencentCloudEmrJobStatusDetail() *schema.Resource {
 			"flow_total_status": {
 				Type:        schema.TypeInt,
 				Computed:    true,
-				Description: "Flow Total Execution Status, 0: Initialized, 1: Running, 2: Completed, 3: Completed (with skipped steps), -1: Failed, -3: Blocke.",
+				Description: "Flow Total Execution Status, 0: Initialized, 1: Running, 2: Completed, 3: Completed (使用 skipped steps), -1: Failed, -3: Blocke.",
 			},
 
 			"flow_extra_detail": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Flow Extra Execution Detail,Return when NeedExtraDetail is true.",
+				Description: "Flow Extra Execution Detail,Return 当 NeedExtraDetail 是 true.",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"title": {
@@ -208,7 +208,7 @@ func DataSourceTencentCloudEmrJobStatusDetail() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "Used 到 save results.",
 			},
 		},
 	}

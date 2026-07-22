@@ -19,24 +19,24 @@ func DataSourceTencentCloudGaapCustomHeader() *schema.Resource {
 			"rule_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Rule IdNote: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "Rule Id注意：此字段可能返回 null，表示无法获取有效值。",
 			},
 
 			"headers": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "HeadersNote: This field may return null, indicating that a valid value cannot be obtained.",
+				Description: "Headers注意：此字段可能返回 null，表示无法获取有效值。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"header_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Header Name.",
+							Description: "Header 名称",
 						},
 						"header_value": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Header Value.",
+							Description: "Header 值",
 						},
 					},
 				},
@@ -45,7 +45,7 @@ func DataSourceTencentCloudGaapCustomHeader() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

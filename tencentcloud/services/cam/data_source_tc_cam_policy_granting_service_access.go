@@ -19,48 +19,48 @@ func DataSourceTencentCloudCamPolicyGrantingServiceAccess() *schema.Resource {
 			"target_uin": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Sub-account uin, one of the three (TargetUin, RoleId, GroupId) must be passed.",
+				Description: "Sub-账号 uin，一个 的 three (TargetUin，RoleId，GroupId) 必须 是 passed。",
 			},
 
 			"role_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Role Id, one of the three (TargetUin, RoleId, GroupId) must be passed.",
+				Description: "角色 ID，一个 的 three (TargetUin，RoleId，GroupId) 必须 是 passed。",
 			},
 
 			"group_id": {
 				Optional:    true,
 				Type:        schema.TypeInt,
-				Description: "Group Id, one of the three (TargetUin, RoleId, GroupId) must be passed.",
+				Description: "Group ID，一个 的 three (TargetUin，RoleId，GroupId) 必须 是 passed。",
 			},
 
 			"service_type": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Service type, this field needs to be passed when viewing the details of the service authorization interface.",
+				Description: "Service 类型，此 字段 needs 到 是 passed 当 viewing details 的 服务 authorization interface。",
 			},
 
 			"list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List.",
+				Description: "List。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"service": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Service info.",
+							Description: "Service info。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"service_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Service type.",
+										Description: "Service 类型",
 									},
 									"service_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Service name.",
+										Description: "服务名称",
 									},
 								},
 							},
@@ -68,18 +68,18 @@ func DataSourceTencentCloudCamPolicyGrantingServiceAccess() *schema.Resource {
 						"action": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Action list.",
+							Description: "操作 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Action name.",
+										Description: "操作 名称",
 									},
 									"description": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Action description.",
+										Description: "操作 描述",
 									},
 								},
 							},
@@ -87,28 +87,28 @@ func DataSourceTencentCloudCamPolicyGrantingServiceAccess() *schema.Resource {
 						"policy": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Policy list.",
+							Description: "Policy 列表。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"policy_id": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Policy Id.",
+										Description: "Policy ID。",
 									},
 									"policy_name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Policy name.",
+										Description: "Policy 名称",
 									},
 									"policy_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Polic type.",
+										Description: "Polic 类型",
 									},
 									"policy_description": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Policy description.",
+										Description: "Policy 描述",
 									},
 								},
 							},
@@ -120,7 +120,7 @@ func DataSourceTencentCloudCamPolicyGrantingServiceAccess() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

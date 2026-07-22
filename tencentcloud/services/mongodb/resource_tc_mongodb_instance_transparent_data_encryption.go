@@ -30,62 +30,62 @@ func ResourceTencentCloudMongodbInstanceTransparentDataEncryption() *schema.Reso
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Instance ID, for example: cmgo-p8vn ***. Currently supported general versions include: 4.4 and 5.0, but the cloud disk version is not currently supported.",
+				Description: "实例 ID，对于 示例: cmgo-p8vn ***. Currently 支持 general versions include: 4.4 和 5.0，但 云 磁盘 版本 是 不 currently 支持。",
 			},
 
 			"kms_region": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "The region where the Key Management Service (KMS) serves, such as ap-shanghai.",
+				Description: "地域 其中 键 Management Service (KMS) serves，such 作为 ap-shanghai。",
 			},
 
 			"key_id": {
 				Optional:    true,
 				Type:        schema.TypeString,
-				Description: "Key ID. If this parameter is not set and the specific key ID is not specified, Tencent Cloud will automatically generate the key and this key will be beyond the control of Terraform.",
+				Description: "键 ID. 如果 此 参数 是 不 集合 和 特定 键 ID 是 不 指定，Tencent Cloud 将 automatically generate 键 和 此 键 将 是 beyond control 的 Terraform。",
 			},
 			"transparent_data_encryption_status": {
 				Computed: true,
 				Type:     schema.TypeString,
-				Description: "Represents whether transparent encryption is turned on. Valid values:\n" +
+				Description: "Represents whether transparent 加密 是 turned 在. 有效 值:\n" +
 					"- close: Not opened;\n" +
 					"- open: It has been opened.",
 			},
 			"key_info_list": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "List of bound keys.",
+				Description: "列表 bound keys。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"key_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Master Key ID.",
+							Description: "Master 键 ID。",
 						},
 						"key_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Master key name.",
+							Description: "Master 键 名称",
 						},
 						"create_time": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance and key binding time.",
+							Description: "实例 和 键 binding 时间。",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Key status.",
+							Description: "键 状态",
 						},
 						"key_usage": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Purpose of the key.",
+							Description: "Purpose 的 键",
 						},
 						"key_origin": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Key origin.",
+							Description: "键 源站。",
 						},
 					},
 				},

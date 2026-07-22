@@ -18,28 +18,28 @@ func DataSourceTencentCloudKubernetesUpgradeTasks() *schema.Resource {
 			"upgrade_tasks": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Upgrade tasks.",
+				Description: "Upgrade tasks。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Task ID.",
+							Description: "任务 ID",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Task name.",
+							Description: "任务 名称",
 						},
 						"component": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Component name.",
+							Description: "组件名称",
 						},
 						"related_resources": {
 							Type:        schema.TypeSet,
 							Computed:    true,
-							Description: "Related resources.",
+							Description: "Related resources。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -47,17 +47,17 @@ func DataSourceTencentCloudKubernetesUpgradeTasks() *schema.Resource {
 						"upgrade_impact": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Upgrade impact.",
+							Description: "Upgrade impact。",
 						},
 						"planed_start_at": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Planned start time.",
+							Description: "Planned 开始时间。",
 						},
 						"created_at": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Creation time.",
+							Description: "创建时间。",
 						},
 					},
 				},
@@ -66,7 +66,7 @@ func DataSourceTencentCloudKubernetesUpgradeTasks() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

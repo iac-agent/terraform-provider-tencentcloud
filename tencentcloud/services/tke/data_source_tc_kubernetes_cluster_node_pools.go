@@ -19,24 +19,24 @@ func DataSourceTencentCloudKubernetesClusterNodePools() *schema.Resource {
 			"cluster_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "ID of the cluster.",
+				Description: "ID 集群。",
 			},
 
 			"filters": {
 				Type:        schema.TypeList,
 				Optional:    true,
-				Description: "NodePoolsName, Filter according to the node pool name, type: String, required: no. NodePoolsId, Filter according to the node pool ID, type: String, required: no. tags, Filter according to the label key value pairs, type: String, required: no. tag:tag-key, Filter according to the label key value pairs, type: String, required: no.",
+				Description: "NodePoolsName，过滤器 according 到 节点 池 名称，类型: String，必填: 无. NodePoolsId，过滤器 according 到 节点 池 ID，类型: String，必填: 无. 标签，过滤器 according 到 标签 键 值 pairs，类型: String，必填: 无. 标签:标签-键，过滤器 according 到 标签 键 值 pairs，类型: String，必填: 无。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"name": {
 							Type:        schema.TypeString,
 							Required:    true,
-							Description: "The attribute name, if there are multiple filters, the relationship between the filters is a logical AND relationship.",
+							Description: "attribute 名称，如果 there 是 多个 filters， relationship between filters 是 logical AND relationship。",
 						},
 						"values": {
 							Type:        schema.TypeSet,
 							Required:    true,
-							Description: "Attribute values, if there are multiple values in the same filter, the relationship between values under the same filter is a logical OR relationship.",
+							Description: "Attribute 值，如果 there 是 多个 值 在 same 过滤器， relationship between 值 under same 过滤器 是 logical OR relationship。",
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
@@ -48,54 +48,54 @@ func DataSourceTencentCloudKubernetesClusterNodePools() *schema.Resource {
 			"node_pool_set": {
 				Type:        schema.TypeList,
 				Computed:    true,
-				Description: "Node Pool List.",
+				Description: "Node Pool List。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"node_pool_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the node pool.",
+							Description: "ID 节点 池。",
 						},
 						"name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Name of the node pool.",
+							Description: "名称 节点 池。",
 						},
 						"cluster_instance_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of the cluster.",
+							Description: "ID 集群。",
 						},
 						"life_state": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Life cycle state of the node pool, include: creating, normal, updating, deleting, deleted.",
+							Description: "Life cycle state 的 节点 池，include: creating，normal，updating，deleting，删除。",
 						},
 						"launch_configuration_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of launch configuration.",
+							Description: "ID launch 配置。",
 						},
 						"autoscaling_group_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of autoscaling group.",
+							Description: "ID autoscaling 组。",
 						},
 						"labels": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Labels of the node pool.",
+							Description: "Labels 的 节点 池。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"name": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Name in the map table.",
+										Description: "名称 在 map 表。",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Value in the map table.",
+										Description: "值 在 map 表。",
 									},
 								},
 							},
@@ -103,23 +103,23 @@ func DataSourceTencentCloudKubernetesClusterNodePools() *schema.Resource {
 						"taints": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Labels of the node pool.",
+							Description: "Labels 的 节点 池。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Key of taints mark.",
+										Description: "键 的 taints mark。",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Value of taints mark.",
+										Description: "值 的 taints mark。",
 									},
 									"effect": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Effect of taints mark.",
+										Description: "Effect 的 taints mark。",
 									},
 								},
 							},
@@ -127,34 +127,34 @@ func DataSourceTencentCloudKubernetesClusterNodePools() *schema.Resource {
 						"node_count_summary": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Node List.",
+							Description: "Node List。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"manually_added": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Manually managed nodes.",
+										Description: "Manually managed nodes。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"joining": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Number of nodes joining.",
+													Description: "节点数量 joining。",
 												},
 												"initializing": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Number of nodes in initialization.",
+													Description: "节点数量 在 initialization。",
 												},
 												"normal": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Normal number of nodes.",
+													Description: "Normal 数量 nodes。",
 												},
 												"total": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Total number of nodes.",
+													Description: "Total 数量 nodes。",
 												},
 											},
 										},
@@ -162,28 +162,28 @@ func DataSourceTencentCloudKubernetesClusterNodePools() *schema.Resource {
 									"autoscaling_added": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Automatically managed nodes.",
+										Description: "Automatically managed nodes。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"joining": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Number of nodes joining.",
+													Description: "节点数量 joining。",
 												},
 												"initializing": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Number of nodes in initialization.",
+													Description: "节点数量 在 initialization。",
 												},
 												"normal": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Normal number of nodes.",
+													Description: "Normal 数量 nodes。",
 												},
 												"total": {
 													Type:        schema.TypeInt,
 													Computed:    true,
-													Description: "Total number of nodes.",
+													Description: "Total 数量 nodes。",
 												},
 											},
 										},
@@ -194,63 +194,63 @@ func DataSourceTencentCloudKubernetesClusterNodePools() *schema.Resource {
 						"autoscaling_group_status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Status information.",
+							Description: "状态 信息。",
 						},
 						"max_nodes_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Maximum number of nodes.",
+							Description: "最大nodes。",
 						},
 						"min_nodes_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Minimum number of nodes.",
+							Description: "最小nodes。",
 						},
 						"desired_nodes_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Expected number of nodes.",
+							Description: "Expected 数量 nodes。",
 						},
 						"node_pool_os": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Node Pool OS Name.",
+							Description: "Node Pool OS 名称",
 						},
 						"os_customize_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Mirror version of container.",
+							Description: "Mirror 版本 的 容器。",
 						},
 						"image_id": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "ID of image.",
+							Description: "ID 镜像。",
 						},
 						"desired_pod_num": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "When the cluster belongs to the node podCIDR size customization mode, the node pool needs to have the pod number attribute.",
+							Description: "当 集群 belongs 到 节点 podCIDR 大小 customization 模式， 节点 池 needs 到 have pod 数量 attribute。",
 						},
 						"user_script": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "User defined scripts.",
+							Description: "用户 defined scripts。",
 						},
 						"tags": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Resource tags.",
+							Description: "Resource 标签",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"key": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Label key.",
+										Description: "标签 键",
 									},
 									"value": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Label value.",
+										Description: "标签值",
 									},
 								},
 							},
@@ -258,18 +258,18 @@ func DataSourceTencentCloudKubernetesClusterNodePools() *schema.Resource {
 						"deletion_protection": {
 							Type:        schema.TypeBool,
 							Computed:    true,
-							Description: "Remove protection switch.",
+							Description: "Remove protection switch。",
 						},
 						"extra_args": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Node configuration.",
+							Description: "Node 配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"kubelet": {
 										Type:        schema.TypeSet,
 										Computed:    true,
-										Description: "Kubelet custom parameters.",
+										Description: "Kubelet 自定义 参数。",
 										Elem: &schema.Schema{
 											Type: schema.TypeString,
 										},
@@ -280,29 +280,29 @@ func DataSourceTencentCloudKubernetesClusterNodePools() *schema.Resource {
 						"gpu_args": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "GPU driver related parameters.",
+							Description: "GPU 驱动 related 参数。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"mig_enable": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Is the MIG feature enabled.",
+										Description: "Is MIG 功能 已启用",
 									},
 									"driver": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "GPU driver version information.",
+										Description: "GPU 驱动 版本 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"version": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "GPU driver or CUDA version.",
+													Description: "GPU 驱动 或 CUDA 版本",
 												},
 												"name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "GPU driver or CUDA name.",
+													Description: "GPU 驱动 或 CUDA 名称",
 												},
 											},
 										},
@@ -310,18 +310,18 @@ func DataSourceTencentCloudKubernetesClusterNodePools() *schema.Resource {
 									"cuda": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "CUDA version information.",
+										Description: "CUDA 版本 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"version": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "GPU driver or CUDA version.",
+													Description: "GPU 驱动 或 CUDA 版本",
 												},
 												"name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "GPU driver or CUDA name.",
+													Description: "GPU 驱动 或 CUDA 名称",
 												},
 											},
 										},
@@ -329,28 +329,28 @@ func DataSourceTencentCloudKubernetesClusterNodePools() *schema.Resource {
 									"cudnn": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "CuDNN version information.",
+										Description: "CuDNN 版本 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"version": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Version of cuDNN.",
+													Description: "版本 的 cuDNN。",
 												},
 												"name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Name of cuDNN.",
+													Description: "名称 cuDNN。",
 												},
 												"doc_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Doc name of cuDNN.",
+													Description: "Doc 名称 cuDNN。",
 												},
 												"dev_name": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Dev name of cuDNN.",
+													Description: "Dev 名称 cuDNN。",
 												},
 											},
 										},
@@ -358,13 +358,13 @@ func DataSourceTencentCloudKubernetesClusterNodePools() *schema.Resource {
 									"custom_driver": {
 										Type:        schema.TypeList,
 										Computed:    true,
-										Description: "Custom GPU driver information.",
+										Description: "Custom GPU 驱动 信息。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"address": {
 													Type:        schema.TypeString,
 													Computed:    true,
-													Description: "Custom GPU driver address link.",
+													Description: "Custom GPU 驱动 地址 link。",
 												},
 											},
 										},
@@ -375,43 +375,43 @@ func DataSourceTencentCloudKubernetesClusterNodePools() *schema.Resource {
 						"docker_graph_path": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Dockerd --graph specified value, default to /var/lib/docker.",
+							Description: "Dockerd --graph 指定 值，默认为 /var/lib/docker。",
 						},
 						"data_disks": {
 							Type:        schema.TypeList,
 							Computed:    true,
-							Description: "Multi disk data disk mounting information.",
+							Description: "Multi 磁盘 数据 磁盘 mounting 信息。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"disk_type": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Cloud disk type.",
+										Description: "Cloud 磁盘 类型",
 									},
 									"file_system": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "File system(ext3/ext4/xfs).",
+										Description: "File 系统(ext3/ext4/xfs)。",
 									},
 									"disk_size": {
 										Type:        schema.TypeInt,
 										Computed:    true,
-										Description: "Cloud disk size(G).",
+										Description: "Cloud 磁盘 大小(G)。",
 									},
 									"auto_format_and_mount": {
 										Type:        schema.TypeBool,
 										Computed:    true,
-										Description: "Whether to automate the format disk and mount it.",
+										Description: "是否automate 格式 磁盘 和 mount 它。",
 									},
 									"mount_target": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Mount directory.",
+										Description: "挂载目录",
 									},
 									"disk_partition": {
 										Type:        schema.TypeString,
 										Computed:    true,
-										Description: "Mount device name or partition name.",
+										Description: "Mount device 名称 或 分区 名称",
 									},
 								},
 							},
@@ -419,12 +419,12 @@ func DataSourceTencentCloudKubernetesClusterNodePools() *schema.Resource {
 						"unschedulable": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Is it not schedulable.",
+							Description: "Is 它 不 schedulable。",
 						},
 						"pre_start_user_script": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "User defined script, executed before User Script.",
+							Description: "用户 defined 脚本，executed before 用户 Script。",
 						},
 					},
 				},
@@ -433,7 +433,7 @@ func DataSourceTencentCloudKubernetesClusterNodePools() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

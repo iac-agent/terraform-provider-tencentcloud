@@ -17,89 +17,89 @@ func DataSourceTencentCloudCdcDedicatedClusterInstanceTypes() *schema.Resource {
 			"dedicated_cluster_id": {
 				Required:    true,
 				Type:        schema.TypeString,
-				Description: "Dedicated Cluster ID.",
+				Description: "Dedicated 集群 ID",
 			},
 			// computed
 			"dedicated_cluster_instance_type_set": {
 				Computed:    true,
 				Type:        schema.TypeList,
-				Description: "Dedicated Cluster Supported InstanceType.",
+				Description: "Dedicated Cluster Supported InstanceType。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"zone": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Zone Name.",
+							Description: "可用区 名称",
 						},
 						"instance_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance Type.",
+							Description: "实例 类型",
 						},
 						"network_card": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance Type.",
+							Description: "实例 类型",
 						},
 						"cpu": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance CPU.",
+							Description: "实例 CPU。",
 						},
 						"memory": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance Memory.",
+							Description: "实例 Memory。",
 						},
 						"instance_family": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance Family.",
+							Description: "实例 Family。",
 						},
 						"type_name": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance Type Name.",
+							Description: "实例 类型 名称",
 						},
 						"storage_block_amount": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance Storage Block Amount.",
+							Description: "实例 Storage Block Amount。",
 						},
 						"instance_bandwidth": {
 							Type:        schema.TypeFloat,
 							Computed:    true,
-							Description: "Instance Bandwidth.",
+							Description: "实例 Bandwidth。",
 						},
 						"instance_pps": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance Pps.",
+							Description: "实例 Pps。",
 						},
 						"cpu_type": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance CPU Type.",
+							Description: "实例 CPU 类型",
 						},
 						"gpu": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance GPU.",
+							Description: "实例 GPU。",
 						},
 						"fpga": {
 							Type:        schema.TypeInt,
 							Computed:    true,
-							Description: "Instance Fpga.",
+							Description: "实例 Fpga。",
 						},
 						"remark": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance Remark.",
+							Description: "实例 备注",
 						},
 						"status": {
 							Type:        schema.TypeString,
 							Computed:    true,
-							Description: "Instance Status.",
+							Description: "实例 状态",
 						},
 					},
 				},
@@ -108,7 +108,7 @@ func DataSourceTencentCloudCdcDedicatedClusterInstanceTypes() *schema.Resource {
 			"result_output_file": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "Used to save results.",
+				Description: "用于保存结果。",
 			},
 		},
 	}

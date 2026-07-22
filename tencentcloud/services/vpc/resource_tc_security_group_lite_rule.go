@@ -26,19 +26,19 @@ func ResourceTencentCloudSecurityGroupLiteRule() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "ID of the security group.",
+				Description: "ID 安全 组。",
 			},
 			"ingress": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Ingress rules set. A rule must match the following format: [action]#[source]#[port]#[protocol]. The available value of 'action' is `ACCEPT` and `DROP`. The 'source' can be an IP address network, segment, security group ID and Address Template ID. The 'port' valid format is `80`, `80,443`, `80-90` or `ALL`. The available value of 'protocol' is `TCP`, `UDP`, `ICMP`, `ALL` and `ppm(g?)-xxxxxxxx`. When 'protocol' is `ICMP` or `ALL`, the 'port' must be `ALL`.",
+				Description: "Ingress 规则 集合. A 规则 必须 match following 格式: [操作]#[来源]#[端口]#[协议]. 可用 值 的 '操作' 是 `ACCEPT` 和 `DROP`. '来源' 可以 是 IP 地址 网络，segment，安全 组 ID 和 地址 模板 ID '端口' 有效 格式 是 `80`，`80,443`，`80-90` 或 `ALL`. 可用 值 的 '协议' 是 `TCP`，`UDP`，`ICMP`，`ALL` 和 `ppm(g?)-xxxxxxxx`. 当 '协议' 是 `ICMP` 或 `ALL`， '端口' 必须 是 `ALL`。",
 			},
 			"egress": {
 				Type:        schema.TypeList,
 				Optional:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
-				Description: "Egress rules set. A rule must match the following format: [action]#[source]#[port]#[protocol]. The available value of 'action' is `ACCEPT` and `DROP`. The 'source' can be an IP address network, segment, security group ID and Address Template ID. The 'port' valid format is `80`, `80,443`, `80-90` or `ALL`. The available value of 'protocol' is `TCP`, `UDP`, `ICMP`, `ALL` and `ppm(g?)-xxxxxxxx`. When 'protocol' is `ICMP` or `ALL`, the 'port' must be `ALL`.",
+				Description: "Egress 规则 集合. A 规则 必须 match following 格式: [操作]#[来源]#[端口]#[协议]. 可用 值 的 '操作' 是 `ACCEPT` 和 `DROP`. '来源' 可以 是 IP 地址 网络，segment，安全 组 ID 和 地址 模板 ID '端口' 有效 格式 是 `80`，`80,443`，`80-90` 或 `ALL`. 可用 值 的 '协议' 是 `TCP`，`UDP`，`ICMP`，`ALL` 和 `ppm(g?)-xxxxxxxx`. 当 '协议' 是 `ICMP` 或 `ALL`， '端口' 必须 是 `ALL`。",
 			},
 		},
 	}

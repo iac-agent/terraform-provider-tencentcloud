@@ -26,14 +26,14 @@ func ResourceTencentCloudCssPullStreamTaskRestart() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Task Id.",
+				Description: "任务 ID。",
 			},
 
 			"operator": {
 				Required:    true,
 				ForceNew:    true,
 				Type:        schema.TypeString,
-				Description: "Task operator.",
+				Description: "任务 操作者",
 			},
 		},
 	}

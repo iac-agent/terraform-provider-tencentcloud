@@ -27,37 +27,37 @@ func ResourceTencentCloudClsIndex() *schema.Resource {
 			"topic_id": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Log topic ID.",
+				Description: "日志主题ID。",
 			},
 			"rule": {
 				Type:        schema.TypeList,
 				MaxItems:    1,
 				Optional:    true,
 				Computed:    true,
-				Description: "Index rule.",
+				Description: "索引规则。",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"full_text": {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Full-Text index configuration.",
+							Description: "全文索引配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"case_sensitive": {
 										Type:        schema.TypeBool,
 										Required:    true,
-										Description: "Case sensitivity.",
+										Description: "区分大小写。",
 									},
 									"tokenizer": {
 										Type:        schema.TypeString,
 										Required:    true,
-										Description: "Full-Text index delimiter. Each character in the string represents a delimiter.",
+										Description: "全文索引分隔符。字符串中的每个字符代表一个分隔符。",
 									},
 									"contain_z_h": {
 										Type:        schema.TypeBool,
 										Required:    true,
-										Description: "Whether Chinese characters are contained.",
+										Description: "是否包含汉字。",
 									},
 								},
 							},
@@ -66,52 +66,52 @@ func ResourceTencentCloudClsIndex() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Key-Value index configuration.",
+							Description: "键值索引配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"case_sensitive": {
 										Type:        schema.TypeBool,
 										Required:    true,
-										Description: "Case sensitivity.",
+										Description: "区分大小写。",
 									},
 									"key_values": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Key-Value pair information of the index to be created. Up to 100 key-value pairs can be configured.",
+										Description: "待创建索引的键值对信息。最多可以配置 100 个键值对。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
 													Type:     schema.TypeString,
 													Required: true,
-													Description: "When a key value or metafield index needs to be configured for a field, the metafield Key does not need to be prefixed with __TAG__. and is consistent " +
+													Description: "当需要为字段配置键值或元字段索引时，元字段Key不需要以__TAG__为前缀。并且是一致的" +
 														"with the one when logs are uploaded. __TAG__. will be prefixed automatically for display in the console..",
 												},
 												"value": {
 													Type:        schema.TypeList,
 													MaxItems:    1,
 													Optional:    true,
-													Description: "Field index description information.",
+													Description: "字段索引描述信息。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"type": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Field type. Valid values: long, text, double.",
+																Description: "字段类型。有效值：long、text、double。",
 															},
 															"tokenizer": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Field delimiter, which is meaningful only if the field type is text. Each character in the entered string represents a delimiter.",
+																Description: "字段分隔符，仅当字段类型为文本时才有意义。输入字符串中的每个字符代表一个分隔符。",
 															},
 															"sql_flag": {
 																Type:        schema.TypeBool,
 																Optional:    true,
-																Description: "Whether the analysis feature is enabled for the field.",
+																Description: "字段是否启用分析功能。",
 															},
 															"contain_z_h": {
 																Type:        schema.TypeBool,
 																Optional:    true,
-																Description: "Whether Chinese characters are contained.",
+																Description: "是否包含汉字。",
 															},
 														},
 													},
@@ -126,52 +126,52 @@ func ResourceTencentCloudClsIndex() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "Metafield index configuration.",
+							Description: "元字段索引配置。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"case_sensitive": {
 										Type:        schema.TypeBool,
 										Required:    true,
-										Description: "Case sensitivity.",
+										Description: "区分大小写。",
 									},
 									"key_values": {
 										Type:        schema.TypeList,
 										Optional:    true,
-										Description: "Key-Value pair information of the index to be created. Up to 100 key-value pairs can be configured.",
+										Description: "待创建索引的键值对信息。最多可以配置 100 个键值对。",
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
 												"key": {
 													Type:     schema.TypeString,
 													Required: true,
-													Description: "When a key value or metafield index needs to be configured for a field, the metafield Key does not need to be prefixed with __TAG__. and is consistent " +
+													Description: "当需要为字段配置键值或元字段索引时，元字段Key不需要以__TAG__为前缀。并且是一致的" +
 														"with the one when logs are uploaded. __TAG__. will be prefixed automatically for display in the console..",
 												},
 												"value": {
 													Type:        schema.TypeList,
 													MaxItems:    1,
 													Optional:    true,
-													Description: "Field index description information.",
+													Description: "字段索引描述信息。",
 													Elem: &schema.Resource{
 														Schema: map[string]*schema.Schema{
 															"type": {
 																Type:        schema.TypeString,
 																Required:    true,
-																Description: "Field type. Valid values: long, text, double.",
+																Description: "字段类型。有效值：long、text、double。",
 															},
 															"tokenizer": {
 																Type:        schema.TypeString,
 																Optional:    true,
-																Description: "Field delimiter, which is meaningful only if the field type is text. Each character in the entered string represents a delimiter.",
+																Description: "字段分隔符，仅当字段类型为文本时才有意义。输入字符串中的每个字符代表一个分隔符。",
 															},
 															"sql_flag": {
 																Type:        schema.TypeBool,
 																Optional:    true,
-																Description: "Whether the analysis feature is enabled for the field.",
+																Description: "字段是否启用分析功能。",
 															},
 															"contain_z_h": {
 																Type:        schema.TypeBool,
 																Optional:    true,
-																Description: "Whether Chinese characters are contained.",
+																Description: "是否包含汉字。",
 															},
 														},
 													},
@@ -186,13 +186,13 @@ func ResourceTencentCloudClsIndex() *schema.Resource {
 							Type:        schema.TypeList,
 							MaxItems:    1,
 							Optional:    true,
-							Description: "The key value index is automatically configured. If it is empty, it means that the function is not enabled.",
+							Description: "键值索引是自动配置的。如果为空，则表示该功能未启用。",
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"status": {
 										Type:        schema.TypeBool,
 										Required:    true,
-										Description: "index automatic configuration switch.",
+										Description: "索引自动配置开关。",
 									},
 								},
 							},
@@ -204,17 +204,17 @@ func ResourceTencentCloudClsIndex() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Computed:    true,
-				Description: "Whether to take effect. Default value: true.",
+				Description: "是否生效。默认值：true。",
 			},
 			"include_internal_fields": {
 				Type:        schema.TypeBool,
 				Optional:    true,
-				Description: "Internal field marker of full-text index. Default value: false. Valid value: false: excluding internal fields; true: including internal fields.",
+				Description: "全文索引的内部字段标记。默认值：假。有效值： false：排除内部字段； true：包括内部字段。",
 			},
 			"metadata_flag": {
 				Type:        schema.TypeInt,
 				Optional:    true,
-				Description: "Metadata flag. Default value: 0. Valid value: 0: full-text index (including the metadata field with key-value index enabled); 1: full-text index (including all metadata fields); 2: full-text index (excluding metadata fields)..",
+				Description: "元数据标志。默认值：0。有效值：0：全文索引（包括启用键值索引的元数据字段）； 1：全文索引（包括所有元数据字段）； 2：全文索引（不包括元数据字段）.。",
 			},
 		},
 	}
