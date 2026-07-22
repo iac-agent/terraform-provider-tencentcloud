@@ -1401,6 +1401,7 @@ func Provider() *schema.Provider {
 			"tencentcloud_cvm_security_group_attachment":                                            cvm.ResourceTencentCloudCvmSecurityGroupAttachment(),
 			"tencentcloud_cvm_reboot_instance":                                                      cvm.ResourceTencentCloudCvmRebootInstance(),
 			"tencentcloud_cvm_chc_config":                                                           cvm.ResourceTencentCloudCvmChcConfig(),
+			"tencentcloud_cvm_chc_network_mode":                                                     cvm.ResourceTencentCloudCvmChcNetworkMode(),
 			"tencentcloud_cvm_sync_image":                                                           cvm.ResourceTencentCloudCvmSyncImage(),
 			"tencentcloud_cvm_renew_instance":                                                       cvm.ResourceTencentCloudCvmRenewInstance(),
 			"tencentcloud_cvm_export_images":                                                        cvm.ResourceTencentCloudCvmExportImages(),

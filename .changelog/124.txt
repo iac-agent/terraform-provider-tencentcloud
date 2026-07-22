@@ -1,0 +1,3 @@
+```release-note:new-resource
+tencentcloud_cvm_chc_network_mode
+```
